@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo authorization'
 
 DESCRIPTION = 'MongoDB based authorization implementation'
 
-VERSIONCOMPONENTS = [0, 1, 306]
+VERSIONCOMPONENTS = [0, 1, 324]
 
-RELEASEDATE = "2017-06-14"
+RELEASEDATE = "2017-06-16"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

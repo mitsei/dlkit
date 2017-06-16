@@ -40,15 +40,15 @@ class TestAuthorizationQuery(unittest.TestCase):
         # From test_templates/resource.py::ResourceQuery::init_template
         cls.svc_mgr.delete_vault(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_explicit_authorizations(self):
         """Tests match_explicit_authorizations"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_explicit_authorizations(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_explicit_authorizations_terms(self):
         """Tests clear_explicit_authorizations_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_explicit_authorizations_terms()
 
     def test_match_related_authorization_id(self):
         """Tests match_related_authorization_id"""
@@ -71,20 +71,20 @@ class TestAuthorizationQuery(unittest.TestCase):
         self.assertNotIn('relatedAuthorizationId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_related_authorization_query(self):
         """Tests supports_related_authorization_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_related_authorization_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_related_authorization_query(self):
         """Tests get_related_authorization_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_related_authorization_query(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_related_authorization_terms(self):
         """Tests clear_related_authorization_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_related_authorization_terms()
 
     def test_match_resource_id(self):
         """Tests match_resource_id"""
@@ -107,25 +107,25 @@ class TestAuthorizationQuery(unittest.TestCase):
         self.assertNotIn('resourceId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_resource_query(self):
         """Tests supports_resource_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_resource_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_query(self):
         """Tests get_resource_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_resource_query(True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_resource(self):
         """Tests match_any_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_resource(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_terms(self):
         """Tests clear_resource_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_resource_terms()
 
     def test_match_trust_id(self):
         """Tests match_trust_id"""
@@ -137,10 +137,10 @@ class TestAuthorizationQuery(unittest.TestCase):
             '$in': [str(test_id)]
         })
 
-    @unittest.skip('unimplemented test')
     def test_match_any_trust_id(self):
         """Tests match_any_trust_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_trust_id(True)
 
     def test_clear_trust_id_terms(self):
         """Tests clear_trust_id_terms"""
@@ -174,25 +174,25 @@ class TestAuthorizationQuery(unittest.TestCase):
         self.assertNotIn('agentId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_agent_query(self):
         """Tests supports_agent_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_agent_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_agent_query(self):
         """Tests get_agent_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_agent_query(True)
 
-    @unittest.skip('unimplemented test')
     def test_match_any_agent(self):
         """Tests match_any_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_agent(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_agent_terms(self):
         """Tests clear_agent_terms"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.clear_agent_terms()
 
     def test_match_function_id(self):
         """Tests match_function_id"""
@@ -215,15 +215,15 @@ class TestAuthorizationQuery(unittest.TestCase):
         self.assertNotIn('functionId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_function_query(self):
         """Tests supports_function_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_function_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_function_query(self):
         """Tests get_function_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_function_query(True)
 
     def test_clear_function_terms(self):
         """Tests clear_function_terms"""
@@ -254,15 +254,15 @@ class TestAuthorizationQuery(unittest.TestCase):
         self.assertNotIn('qualifierId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_qualifier_query(self):
         """Tests supports_qualifier_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_qualifier_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_qualifier_query(self):
         """Tests get_qualifier_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_qualifier_query(True)
 
     def test_clear_qualifier_terms(self):
         """Tests clear_qualifier_terms"""
@@ -292,15 +292,15 @@ class TestAuthorizationQuery(unittest.TestCase):
         self.assertNotIn('assignedVaultIds',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_vault_query(self):
         """Tests supports_vault_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_vault_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_query(self):
         """Tests get_vault_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_vault_query()
 
     def test_clear_vault_terms(self):
         """Tests clear_vault_terms"""
@@ -310,10 +310,10 @@ class TestAuthorizationQuery(unittest.TestCase):
         self.assertNotIn('vault',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_query_record(self):
         """Tests get_authorization_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_authorization_query_record(True)
 
 
 class TestVaultQuery(unittest.TestCase):
@@ -338,10 +338,10 @@ class TestVaultQuery(unittest.TestCase):
         # From test_templates/resource.py::BinQuery::init_template
         cls.svc_mgr.delete_vault(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_match_function_id(self):
         """Tests match_function_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_function_id(True, True)
 
     def test_clear_function_id_terms(self):
         """Tests clear_function_id_terms"""
@@ -351,20 +351,20 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('functionId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_function_query(self):
         """Tests supports_function_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_function_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_function_query(self):
         """Tests get_function_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_function_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_function(self):
         """Tests match_any_function"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_function(True)
 
     def test_clear_function_terms(self):
         """Tests clear_function_terms"""
@@ -374,10 +374,10 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('function',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_qualifier_id(self):
         """Tests match_qualifier_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_qualifier_id(True, True)
 
     def test_clear_qualifier_id_terms(self):
         """Tests clear_qualifier_id_terms"""
@@ -387,20 +387,20 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('qualifierId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_qualifier_query(self):
         """Tests supports_qualifier_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_qualifier_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_qualifier_query(self):
         """Tests get_qualifier_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_qualifier_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_qualifier(self):
         """Tests match_any_qualifier"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_qualifier(True)
 
     def test_clear_qualifier_terms(self):
         """Tests clear_qualifier_terms"""
@@ -410,10 +410,10 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('qualifier',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_authorization_id(self):
         """Tests match_authorization_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_authorization_id(True, True)
 
     def test_clear_authorization_id_terms(self):
         """Tests clear_authorization_id_terms"""
@@ -423,20 +423,20 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('authorizationId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_authorization_query(self):
         """Tests supports_authorization_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_authorization_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_query(self):
         """Tests get_authorization_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_authorization_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_authorization(self):
         """Tests match_any_authorization"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_authorization(True)
 
     def test_clear_authorization_terms(self):
         """Tests clear_authorization_terms"""
@@ -446,10 +446,10 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('authorization',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_ancestor_vault_id(self):
         """Tests match_ancestor_vault_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_ancestor_vault_id(True, True)
 
     def test_clear_ancestor_vault_id_terms(self):
         """Tests clear_ancestor_vault_id_terms"""
@@ -459,20 +459,20 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('ancestorVaultId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_ancestor_vault_query(self):
         """Tests supports_ancestor_vault_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_ancestor_vault_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_ancestor_vault_query(self):
         """Tests get_ancestor_vault_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_ancestor_vault_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_ancestor_vault(self):
         """Tests match_any_ancestor_vault"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_ancestor_vault(True)
 
     def test_clear_ancestor_vault_terms(self):
         """Tests clear_ancestor_vault_terms"""
@@ -482,10 +482,10 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('ancestorVault',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_descendant_vault_id(self):
         """Tests match_descendant_vault_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_descendant_vault_id(True, True)
 
     def test_clear_descendant_vault_id_terms(self):
         """Tests clear_descendant_vault_id_terms"""
@@ -495,20 +495,20 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('descendantVaultId',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_descendant_vault_query(self):
         """Tests supports_descendant_vault_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_descendant_vault_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_descendant_vault_query(self):
         """Tests get_descendant_vault_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_descendant_vault_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_descendant_vault(self):
         """Tests match_any_descendant_vault"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_descendant_vault(True)
 
     def test_clear_descendant_vault_terms(self):
         """Tests clear_descendant_vault_terms"""
@@ -518,7 +518,7 @@ class TestVaultQuery(unittest.TestCase):
         self.assertNotIn('descendantVault',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_query_record(self):
         """Tests get_vault_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_vault_query_record(True)

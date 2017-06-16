@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime, Duration
@@ -24,60 +26,60 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 class TestAssessmentPart(unittest.TestCase):
     """Tests for AssessmentPart"""
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_id(self):
         """Tests get_assessment_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment(self):
         """Tests get_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment()
 
-    @unittest.skip('unimplemented test')
     def test_has_parent_part(self):
         """Tests has_parent_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.has_parent_part()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_id(self):
         """Tests get_assessment_part_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_part_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part(self):
         """Tests get_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_part()
 
-    @unittest.skip('unimplemented test')
     def test_is_section(self):
         """Tests is_section"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_section()
 
-    @unittest.skip('unimplemented test')
     def test_get_weight(self):
         """Tests get_weight"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_weight()
 
-    @unittest.skip('unimplemented test')
     def test_get_allocated_time(self):
         """Tests get_allocated_time"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_allocated_time()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_assessment_part_ids(self):
         """Tests get_child_assessment_part_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_assessment_part_ids()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_assessment_parts(self):
         """Tests get_child_assessment_parts"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_assessment_parts()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_record(self):
         """Tests get_assessment_part_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_part_record(True)
 
 
 class TestAssessmentPartForm(unittest.TestCase):
@@ -112,22 +114,40 @@ class TestAssessmentPartForm(unittest.TestCase):
     def test_get_weight_metadata(self):
         """Tests get_weight_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_weight_metadata(), Metadata))
+        mdata = self.form.get_weight_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'CARDINAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_weight(self):
         """Tests set_weight"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_weight(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_weight(self):
         """Tests clear_weight"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_weight()
 
     def test_get_allocated_time_metadata(self):
         """Tests get_allocated_time_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_allocated_time_metadata(), Metadata))
+        mdata = self.form.get_allocated_time_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DURATION')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_allocated_time(self):
         """Tests set_allocated_time"""
@@ -138,6 +158,8 @@ class TestAssessmentPartForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['allocatedTime']['seconds'], 3600)
         self.assertEqual(self.form._my_map['allocatedTime']['days'], 0)
         self.assertEqual(self.form._my_map['allocatedTime']['microseconds'], 0)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_allocated_time(1.05)
         # reset this for other tests
         self.form._my_map['allocatedTime'] = None
 
@@ -151,7 +173,7 @@ class TestAssessmentPartForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['allocatedTime']['days'], 0)
         self.assertEqual(self.form._my_map['allocatedTime']['microseconds'], 0)
         self.form.clear_allocated_time()
-        self.assertIsNone(self.form._my_map['allocatedTime'])
+        self.assertEqual(self.form._my_map['allocatedTime'], self.form.get_allocated_time_metadata().get_default_duration_values()[0])
 
     def test_get_assessment_part_form_record(self):
         """Tests get_assessment_part_form_record"""
@@ -220,55 +242,54 @@ class TestAssessmentPartList(unittest.TestCase):
 class TestSequenceRule(unittest.TestCase):
     """Tests for SequenceRule"""
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_id(self):
         """Tests get_assessment_part_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_part_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part(self):
         """Tests get_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_part()
 
-    @unittest.skip('unimplemented test')
     def test_get_next_assessment_part_id(self):
         """Tests get_next_assessment_part_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_next_assessment_part(self):
         """Tests get_next_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_assessment_part()
 
-    @unittest.skip('unimplemented test')
     def test_get_minimum_score(self):
         """Tests get_minimum_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_minimum_score()
 
-    @unittest.skip('unimplemented test')
     def test_get_maximum_score(self):
         """Tests get_maximum_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_maximum_score()
 
-    @unittest.skip('unimplemented test')
     def test_is_cumulative(self):
         """Tests is_cumulative"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_cumulative()
 
-    @unittest.skip('unimplemented test')
     def test_get_applied_assessment_part_ids(self):
         """Tests get_applied_assessment_part_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_applied_assessment_part_ids()
 
-    @unittest.skip('unimplemented test')
     def test_get_applied_assessment_parts(self):
         """Tests get_applied_assessment_parts"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_applied_assessment_parts()
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rule_record(self):
         """Tests get_sequence_rule_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_sequence_rule_record(True)
 
 
 class TestSequenceRuleForm(unittest.TestCase):
@@ -313,27 +334,54 @@ class TestSequenceRuleForm(unittest.TestCase):
     def test_get_minimum_score_metadata(self):
         """Tests get_minimum_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_minimum_score_metadata(), Metadata))
+        mdata = self.form.get_minimum_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'CARDINAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_minimum_score(self):
         """Tests set_minimum_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_minimum_score(True)
 
     def test_get_maximum_score_metadata(self):
         """Tests get_maximum_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_maximum_score_metadata(), Metadata))
+        mdata = self.form.get_maximum_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'CARDINAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_maximum_score(self):
         """Tests set_maximum_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_maximum_score(True)
 
     def test_get_cumulative_metadata(self):
         """Tests get_cumulative_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_cumulative_metadata(), Metadata))
+        mdata = self.form.get_cumulative_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_cumulative(self):
         """Tests set_cumulative"""
@@ -343,15 +391,15 @@ class TestSequenceRuleForm(unittest.TestCase):
         create_form.set_cumulative(True)
         self.assertTrue(create_form._my_map['cumulative'])
 
-    @unittest.skip('unimplemented test')
     def test_get_applied_assessment_parts_metadata(self):
         """Tests get_applied_assessment_parts_metadata"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_applied_assessment_parts_metadata()
 
-    @unittest.skip('unimplemented test')
     def test_apply_assessment_parts(self):
         """Tests apply_assessment_parts"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.apply_assessment_parts(True)
 
     def test_get_sequence_rule_form_record(self):
         """Tests get_sequence_rule_form_record"""

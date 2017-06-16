@@ -46,6 +46,9 @@ class TestGradeSystemLookupSession(unittest.TestCase):
             cls.grade_system_list.append(obj)
             cls.grade_system_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -93,10 +96,10 @@ class TestGradeSystemLookupSession(unittest.TestCase):
         obj = self.catalog.get_grade_system(self.grade_system_list[0].ident)
         self.assertEqual(obj.ident, self.grade_system_list[0].ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_by_grade(self):
         """Tests get_grade_system_by_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_system_by_grade(True)
 
     def test_get_grade_systems_by_ids(self):
         """Tests get_grade_systems_by_ids"""
@@ -186,10 +189,10 @@ class TestGradeSystemQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_grade_systems(self):
         """Tests can_search_grade_systems"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_grade_systems()
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
@@ -332,60 +335,60 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         aliased_object = self.catalog.get_grade_system(alias_id)
         self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_create_grades(self):
         """Tests can_create_grades"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_create_grades(True)
 
-    @unittest.skip('unimplemented test')
     def test_can_create_grade_with_record_types(self):
         """Tests can_create_grade_with_record_types"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_create_grade_with_record_types(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_form_for_create(self):
         """Tests get_grade_form_for_create"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_form_for_create(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_create_grade(self):
         """Tests create_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.create_grade(True)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_grades(self):
         """Tests can_update_grades"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_grades(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_form_for_update(self):
         """Tests get_grade_form_for_update"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_form_for_update(True)
 
-    @unittest.skip('unimplemented test')
     def test_update_grade(self):
         """Tests update_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.update_grade(True)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_grades(self):
         """Tests can_delete_grades"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_grades(True)
 
-    @unittest.skip('unimplemented test')
     def test_delete_grade(self):
         """Tests delete_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_grade(True)
 
     def test_can_manage_grade_aliases(self):
         """Tests can_manage_grade_aliases"""
         # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
         self.assertTrue(isinstance(self.catalog.can_manage_grade_aliases(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_alias_grade(self):
         """Tests alias_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.alias_grade(True, True)
 
 
 class TestGradeEntryLookupSession(unittest.TestCase):
@@ -467,15 +470,15 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         """Tests use_isolated_gradebook_view"""
         self.catalog.use_isolated_gradebook_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_effective_grade_entry_view(self):
         """Tests use_effective_grade_entry_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_effective_grade_entry_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_any_effective_grade_entry_view(self):
         """Tests use_any_effective_grade_entry_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_any_effective_grade_entry_view()
 
     def test_get_grade_entry(self):
         """Tests get_grade_entry"""
@@ -523,45 +526,43 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_on_date(self):
         """Tests get_grade_entries_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_entries_on_date(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_for_gradebook_column(self):
         """Tests get_grade_entries_for_gradebook_column"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_for_gradebook_column_on_date(self):
         """Tests get_grade_entries_for_gradebook_column_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_entries_for_gradebook_column_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_for_resource(self):
         """Tests get_grade_entries_for_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_entries_for_resource(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_for_resource_on_date(self):
         """Tests get_grade_entries_for_resource_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_entries_for_resource_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_for_gradebook_column_and_resource(self):
         """Tests get_grade_entries_for_gradebook_column_and_resource"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_for_gradebook_column_and_resource_on_date(self):
         """Tests get_grade_entries_for_gradebook_column_and_resource_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_entries_for_gradebook_column_and_resource_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries_by_grader(self):
         """Tests get_grade_entries_by_grader"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_entries_by_grader(True)
 
     def test_get_grade_entries(self):
         """Tests get_grade_entries"""
@@ -630,10 +631,10 @@ class TestGradeEntryQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_grade_entries(self):
         """Tests can_search_grade_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_grade_entries()
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
@@ -705,14 +706,13 @@ class TestGradeEntryAdminSession(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_gradebooks():
-            for obj in catalog.get_grade_entries():
-                catalog.delete_grade_entry(obj.ident)
-            for obj in catalog.get_gradebook_columns():
-                catalog.delete_gradebook_column(obj.ident)
-            for obj in catalog.get_grade_systems():
-                catalog.delete_grade_system(obj.ident)
-            cls.svc_mgr.delete_gradebook(catalog.ident)
+        for obj in cls.catalog.get_grade_entries():
+            cls.catalog.delete_grade_entry(obj.ident)
+        for obj in cls.catalog.get_gradebook_columns():
+            cls.catalog.delete_gradebook_column(obj.ident)
+        for obj in cls.catalog.get_grade_systems():
+            cls.catalog.delete_grade_system(obj.ident)
+        cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
@@ -749,20 +749,20 @@ class TestGradeEntryAdminSession(unittest.TestCase):
         self.assertEqual(self.osid_object.description.text, 'description of GradeEntry')
         self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_overridecalculated_grade_entries(self):
         """Tests can_overridecalculated_grade_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_overridecalculated_grade_entries()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_form_for_override(self):
         """Tests get_grade_entry_form_for_override"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_grade_entry_form_for_override(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_override_calculated_grade_entry(self):
         """Tests override_calculated_grade_entry"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.override_calculated_grade_entry(True)
 
     def test_can_update_grade_entries(self):
         """Tests can_update_grade_entries"""
@@ -881,10 +881,10 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_gradebook_columns(self):
         """Tests can_lookup_gradebook_columns"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_gradebook_columns()
 
     def test_use_comparative_gradebook_column_view(self):
         """Tests use_comparative_gradebook_column_view"""
@@ -962,10 +962,10 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
         obj = self.catalog.get_gradebook_column(ALIAS_ID)
         self.assertEqual(obj.get_id(), self.gradebook_column_ids[0])
 
-    @unittest.skip('unimplemented test')
     def test_supports_summary(self):
         """Tests supports_summary"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.supports_summary()
 
     def test_get_gradebook_column_summary(self):
         """Tests get_gradebook_column_summary"""
@@ -1010,10 +1010,10 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_gradebook_columns(self):
         """Tests can_search_gradebook_columns"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_gradebook_columns()
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
@@ -1099,10 +1099,10 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         self.assertEqual(self.osid_object.description.text, 'description of GradebookColumn')
         self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_gradebook_columns(self):
         """Tests can_update_gradebook_columns"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_gradebook_columns()
 
     def test_get_gradebook_column_form_for_update(self):
         """Tests get_gradebook_column_form_for_update"""
@@ -1126,25 +1126,25 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         self.assertEqual(updated_object.description.text, 'new description')
         self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_sequence_gradebook_columns(self):
         """Tests sequence_gradebook_columns"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.sequence_gradebook_columns(True)
 
-    @unittest.skip('unimplemented test')
     def test_move_gradebook_column(self):
         """Tests move_gradebook_column"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.move_gradebook_column(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_copy_gradebook_column_entries(self):
         """Tests copy_gradebook_column_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.copy_gradebook_column_entries(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_gradebook_columns(self):
         """Tests can_delete_gradebook_columns"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_gradebook_columns()
 
     def test_delete_gradebook_column(self):
         """Tests delete_gradebook_column"""
@@ -1193,10 +1193,10 @@ class TestGradebookLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_gradebooks():
             cls.svc_mgr.delete_gradebook(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_gradebooks(self):
         """Tests can_lookup_gradebooks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_gradebooks()
 
     def test_use_comparative_gradebook_view(self):
         """Tests use_comparative_gradebook_view"""
@@ -1215,25 +1215,25 @@ class TestGradebookLookupSession(unittest.TestCase):
         """Tests get_gradebooks_by_ids"""
         catalogs = self.svc_mgr.get_gradebooks_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebooks_by_genus_type(self):
         """Tests get_gradebooks_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_gradebooks_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebooks_by_parent_genus_type(self):
         """Tests get_gradebooks_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_gradebooks_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebooks_by_record_type(self):
         """Tests get_gradebooks_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_gradebooks_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebooks_by_provider(self):
         """Tests get_gradebooks_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_gradebooks_by_provider(True)
 
     def test_get_gradebooks(self):
         """Tests get_gradebooks"""
@@ -1290,10 +1290,10 @@ class TestGradebookAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_gradebook(catalog_form)
         self.assertTrue(isinstance(new_catalog, Gradebook))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_gradebooks(self):
         """Tests can_update_gradebooks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_gradebooks()
 
     def test_get_gradebook_form_for_update(self):
         """Tests get_gradebook_form_for_update"""
@@ -1310,10 +1310,10 @@ class TestGradebookAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_gradebook(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_gradebooks(self):
         """Tests can_delete_gradebooks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_gradebooks()
 
     def test_delete_gradebook(self):
         """Tests delete_gradebook"""

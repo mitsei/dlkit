@@ -115,25 +115,25 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
         """Tests use_isolated_bank_view"""
         self.catalog.use_isolated_bank_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_active_assessment_part_view(self):
         """Tests use_active_assessment_part_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_active_assessment_part_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_any_status_assessment_part_view(self):
         """Tests use_any_status_assessment_part_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_any_status_assessment_part_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_sequestered_assessment_part_view(self):
         """Tests use_sequestered_assessment_part_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_sequestered_assessment_part_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_unsequestered_assessment_part_view(self):
         """Tests use_unsequestered_assessment_part_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_unsequestered_assessment_part_view()
 
     def test_get_assessment_part(self):
         """Tests get_assessment_part"""
@@ -181,10 +181,10 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessment_parts_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_parts_for_assessment(self):
         """Tests get_assessment_parts_for_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessment_parts_for_assessment(True)
 
     def test_get_assessment_parts(self):
         """Tests get_assessment_parts"""
@@ -250,10 +250,10 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_assessment_parts(self):
         """Tests can_search_assessment_parts"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_assessment_parts()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -263,15 +263,15 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
         """Tests use_isolated_bank_view"""
         self.catalog.use_isolated_bank_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_sequestered_assessment_part_view(self):
         """Tests use_sequestered_assessment_part_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_sequestered_assessment_part_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_unsequestered_assessment_part_view(self):
         """Tests use_unsequestered_assessment_part_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_unsequestered_assessment_part_view()
 
     def test_get_assessment_part_query(self):
         """Tests get_assessment_part_query"""
@@ -339,25 +339,25 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_assessment_part_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_form_for_create_for_assessment(self):
         """Tests get_assessment_part_form_for_create_for_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessment_part_form_for_create_for_assessment(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_create_assessment_part_for_assessment(self):
         """Tests create_assessment_part_for_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.create_assessment_part_for_assessment(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_part_form_for_create_for_assessment_part(self):
         """Tests get_assessment_part_form_for_create_for_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessment_part_form_for_create_for_assessment_part(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_create_assessment_part_for_assessment_part(self):
         """Tests create_assessment_part_for_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.create_assessment_part_for_assessment_part(True)
 
     def test_can_update_assessment_parts(self):
         """Tests can_update_assessment_parts"""
@@ -371,20 +371,20 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         self.assertTrue(isinstance(form, OsidForm))
         self.assertTrue(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_update_assessment_part(self):
         """Tests update_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.update_assessment_part(True, True)
 
     def test_can_delete_assessment_parts(self):
         """Tests can_delete_assessment_parts"""
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
         self.assertTrue(isinstance(self.catalog.can_delete_assessment_parts(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_assessment_part(self):
         """Tests delete_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_assessment_part(True)
 
     def test_can_manage_assessment_part_aliases(self):
         """Tests can_manage_assessment_part_aliases"""
@@ -450,10 +450,10 @@ class TestAssessmentPartItemSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_access_assessment_part_items(self):
         """Tests can_access_assessment_part_items"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_assessment_part_items()
 
     def test_use_comparative_asseessment_part_item_view(self):
         """Tests use_comparative_asseessment_part_item_view"""
@@ -533,35 +533,35 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_design_assessment_parts(self):
         """Tests can_design_assessment_parts"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_design_assessment_parts()
 
-    @unittest.skip('unimplemented test')
     def test_add_item(self):
         """Tests add_item"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.add_item(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_move_item_ahead(self):
         """Tests move_item_ahead"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.move_item_ahead(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_move_item_behind(self):
         """Tests move_item_behind"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.move_item_behind(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_order_items(self):
         """Tests order_items"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.order_items(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_remove_item(self):
         """Tests remove_item"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.remove_item(True, True)
 
 
 class TestSequenceRuleLookupSession(unittest.TestCase):
@@ -642,15 +642,15 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
         """Tests use_isolated_bank_view"""
         self.catalog.use_isolated_bank_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_active_sequence_rule_view(self):
         """Tests use_active_sequence_rule_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_active_sequence_rule_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_any_status_sequence_rule_view(self):
         """Tests use_any_status_sequence_rule_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_any_status_sequence_rule_view()
 
     def test_get_sequence_rule(self):
         """Tests get_sequence_rule"""
@@ -698,25 +698,25 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rules_for_assessment_part(self):
         """Tests get_sequence_rules_for_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_sequence_rules_for_assessment_part(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rules_for_next_assessment_part(self):
         """Tests get_sequence_rules_for_next_assessment_part"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_sequence_rules_for_next_assessment_part(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rules_for_assessment_parts(self):
         """Tests get_sequence_rules_for_assessment_parts"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_sequence_rules_for_assessment_parts(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_sequence_rules_for_assessment(self):
         """Tests get_sequence_rules_for_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_sequence_rules_for_assessment(True)
 
     def test_get_sequence_rules(self):
         """Tests get_sequence_rules"""
@@ -883,22 +883,22 @@ class TestSequenceRuleAdminSession(unittest.TestCase):
         aliased_object = self.catalog.get_sequence_rule(alias_id)
         self.assertEqual(aliased_object.ident, self.osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_sequence_sequence_rules(self):
         """Tests can_sequence_sequence_rules"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_sequence_sequence_rules()
 
-    @unittest.skip('unimplemented test')
     def test_move_sequence_rule_ahead(self):
         """Tests move_sequence_rule_ahead"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.move_sequence_rule_ahead(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_move_sequence_rule_behind(self):
         """Tests move_sequence_rule_behind"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.move_sequence_rule_behind(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_order_sequence_rules(self):
         """Tests order_sequence_rules"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.order_sequence_rules(True, True)

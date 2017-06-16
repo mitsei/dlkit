@@ -7,150 +7,150 @@ import unittest
 class TestGradeSystemSearch(unittest.TestCase):
     """Tests for GradeSystemSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_grade_systems(self):
         """Tests search_among_grade_systems"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_grade_systems(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_grade_system_results(self):
         """Tests order_grade_system_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_grade_system_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_search_record(self):
         """Tests get_grade_system_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_system_search_record(True)
 
 
 class TestGradeSystemSearchResults(unittest.TestCase):
     """Tests for GradeSystemSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_systems(self):
         """Tests get_grade_systems"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_systems()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_query_inspector(self):
         """Tests get_grade_system_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_system_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_search_results_record(self):
         """Tests get_grade_system_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_system_search_results_record(True)
 
 
 class TestGradeEntrySearch(unittest.TestCase):
     """Tests for GradeEntrySearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_grade_entries(self):
         """Tests search_among_grade_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_grade_entries(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_grade_entry_results(self):
         """Tests order_grade_entry_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_grade_entry_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_search_record(self):
         """Tests get_grade_entry_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_entry_search_record(True)
 
 
 class TestGradeEntrySearchResults(unittest.TestCase):
     """Tests for GradeEntrySearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries(self):
         """Tests get_grade_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_entries()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_query_inspector(self):
         """Tests get_grade_entry_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_entry_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_search_results_record(self):
         """Tests get_grade_entry_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_grade_entry_search_results_record(True)
 
 
 class TestGradebookColumnSearch(unittest.TestCase):
     """Tests for GradebookColumnSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_gradebook_columns(self):
         """Tests search_among_gradebook_columns"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_gradebook_columns(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_gradebook_column_results(self):
         """Tests order_gradebook_column_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_gradebook_column_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_search_record(self):
         """Tests get_gradebook_column_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebook_column_search_record(True)
 
 
 class TestGradebookColumnSearchResults(unittest.TestCase):
     """Tests for GradebookColumnSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_columns(self):
         """Tests get_gradebook_columns"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebook_columns()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_query_inspector(self):
         """Tests get_gradebook_column_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebook_column_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_search_results_record(self):
         """Tests get_gradebook_column_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebook_column_search_results_record(True)
 
 
 class TestGradebookSearch(unittest.TestCase):
     """Tests for GradebookSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_gradebooks(self):
         """Tests search_among_gradebooks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_gradebooks(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_gradebook_results(self):
         """Tests order_gradebook_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_gradebook_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_search_record(self):
         """Tests get_gradebook_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebook_search_record(True)
 
 
 class TestGradebookSearchResults(unittest.TestCase):
     """Tests for GradebookSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebooks(self):
         """Tests get_gradebooks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebooks()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_query_inspector(self):
         """Tests get_gradebook_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebook_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_search_results_record(self):
         """Tests get_gradebook_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_gradebook_search_results_record(True)

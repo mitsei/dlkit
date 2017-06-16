@@ -271,10 +271,10 @@ class TestAuthorizationSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_access_authorizations(self):
         """Tests can_access_authorizations"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_authorizations()
 
     def test_is_authorized(self):
         """Tests is_authorized"""
@@ -308,15 +308,15 @@ class TestAuthorizationSession(unittest.TestCase):
         """Tests is_authorized 5"""
         self.assertTrue(self.catalog.is_authorized(AGENT_ID, LOOKUP_RESOURCE_FUNCTION_ID, self.bin_id_list[7]))
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_condition(self):
         """Tests get_authorization_condition"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorization_condition(True)
 
-    @unittest.skip('unimplemented test')
     def test_is_authorized_on_condition(self):
         """Tests is_authorized_on_condition"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.is_authorized_on_condition(True, True, True, True)
 
 
 class TestAuthorizationLookupSession(unittest.TestCase):
@@ -380,25 +380,25 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         """Tests use_isolated_vault_view"""
         self.catalog.use_isolated_vault_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_effective_authorization_view(self):
         """Tests use_effective_authorization_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_effective_authorization_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_any_effective_authorization_view(self):
         """Tests use_any_effective_authorization_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_any_effective_authorization_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_implicit_authorization_view(self):
         """Tests use_implicit_authorization_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_implicit_authorization_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_explicit_authorization_view(self):
         """Tests use_explicit_authorization_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_explicit_authorization_view()
 
     def test_get_authorization(self):
         """Tests get_authorization"""
@@ -446,70 +446,68 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         self.catalog.use_federated_vault_view()
         objects = self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_on_date(self):
         """Tests get_authorizations_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_on_date(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_resource(self):
         """Tests get_authorizations_for_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_resource(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_resource_on_date(self):
         """Tests get_authorizations_for_resource_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_resource_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_agent(self):
         """Tests get_authorizations_for_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_agent(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_agent_on_date(self):
         """Tests get_authorizations_for_agent_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_agent_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_function(self):
         """Tests get_authorizations_for_function"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_function(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_function_on_date(self):
         """Tests get_authorizations_for_function_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_function_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_resource_and_function(self):
         """Tests get_authorizations_for_resource_and_function"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_resource_and_function_on_date(self):
         """Tests get_authorizations_for_resource_and_function_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_resource_and_function_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_agent_and_function(self):
         """Tests get_authorizations_for_agent_and_function"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_agent_and_function_on_date(self):
         """Tests get_authorizations_for_agent_and_function_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_for_agent_and_function_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorizations_by_qualifier(self):
         """Tests get_authorizations_by_qualifier"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorizations_by_qualifier(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_explicit_authorization(self):
         """Tests get_explicit_authorization"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_explicit_authorization(True)
 
     def test_get_authorizations(self):
         """Tests get_authorizations"""
@@ -568,10 +566,10 @@ class TestAuthorizationQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_authorizations(self):
         """Tests can_search_authorizations"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_authorizations()
 
     def test_use_federated_vault_view(self):
         """Tests use_federated_vault_view"""
@@ -581,15 +579,15 @@ class TestAuthorizationQuerySession(unittest.TestCase):
         """Tests use_isolated_vault_view"""
         self.catalog.use_isolated_vault_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_implicit_authorization_view(self):
         """Tests use_implicit_authorization_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_implicit_authorization_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_explicit_authorization_view(self):
         """Tests use_explicit_authorization_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_explicit_authorization_view()
 
     def test_get_authorization_query(self):
         """Tests get_authorization_query"""
@@ -668,20 +666,20 @@ class TestAuthorizationAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_authorization_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_form_for_create_for_agent(self):
         """Tests get_authorization_form_for_create_for_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorization_form_for_create_for_agent(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_form_for_create_for_resource(self):
         """Tests get_authorization_form_for_create_for_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorization_form_for_create_for_resource(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_form_for_create_for_resource_and_trust(self):
         """Tests get_authorization_form_for_create_for_resource_and_trust"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_authorization_form_for_create_for_resource_and_trust(True, True, True, True, True)
 
     def test_create_authorization(self):
         """Tests create_authorization"""
@@ -773,10 +771,10 @@ class TestVaultLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_vaults():
             cls.svc_mgr.delete_vault(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_vaults(self):
         """Tests can_lookup_vaults"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_vaults()
 
     def test_use_comparative_vault_view(self):
         """Tests use_comparative_vault_view"""
@@ -795,25 +793,25 @@ class TestVaultLookupSession(unittest.TestCase):
         """Tests get_vaults_by_ids"""
         catalogs = self.svc_mgr.get_vaults_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_vaults_by_genus_type(self):
         """Tests get_vaults_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_vaults_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_vaults_by_parent_genus_type(self):
         """Tests get_vaults_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_vaults_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_vaults_by_record_type(self):
         """Tests get_vaults_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_vaults_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_vaults_by_provider(self):
         """Tests get_vaults_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_vaults_by_provider(True)
 
     def test_get_vaults(self):
         """Tests get_vaults"""
@@ -823,20 +821,20 @@ class TestVaultLookupSession(unittest.TestCase):
 class TestVaultQuerySession(unittest.TestCase):
     """Tests for VaultQuerySession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_search_vaults(self):
         """Tests can_search_vaults"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_vaults()
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_query(self):
         """Tests get_vault_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_vault_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_vaults_by_query(self):
         """Tests get_vaults_by_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_vaults_by_query(True)
 
 
 class TestVaultAdminSession(unittest.TestCase):
@@ -889,10 +887,10 @@ class TestVaultAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_vault(catalog_form)
         self.assertTrue(isinstance(new_catalog, Vault))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_vaults(self):
         """Tests can_update_vaults"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_vaults()
 
     def test_get_vault_form_for_update(self):
         """Tests get_vault_form_for_update"""
@@ -909,10 +907,10 @@ class TestVaultAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_vault(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_vaults(self):
         """Tests can_delete_vaults"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_vaults()
 
     def test_delete_vault(self):
         """Tests delete_vault"""

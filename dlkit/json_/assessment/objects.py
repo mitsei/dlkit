@@ -975,6 +975,14 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         """This method can be overwritten by a record extension."""
         return False
 
+    def uses_simple_section_sequencing(self):
+        """This method can be overwritten by a record extension."""
+        return False
+
+    def uses_shuffled_section_sequencing(self):
+        """This method can be overwritten by a record extension."""
+        return False
+
     def _supports_simple_sequencing(self):
         return bool(str(SIMPLE_SEQUENCE_RECORD_TYPE) in self._my_map['recordTypeIds'])
 
@@ -1616,15 +1624,11 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
     def are_sections_sequential(self):
         """This method can be overwritten by a record extension."""
-        if not self.get_assessment().uses_simple_section_sequencing():  # Records should check this
-            return True
-        return True
+        return self.get_assessment().uses_simple_section_sequencing()  # Records should check this
 
     def are_sections_shuffled(self):
         """This method can be overwritten by a record extension."""
-        if not self.get_assessment().uses_simple_section_sequencing():  # Records should check this
-            return False
-        return False
+        return self.get_assessment().uses_shuffled_section_sequencing()  # Records should check this
 
 
 class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_objects.OsidObjectForm, osid_objects.OsidSubjugateableForm):
@@ -1877,7 +1881,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         """
         # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['deadline'])
-        metadata.update({'existing_object_values': self._my_map['deadline']})
+        metadata.update({'existing_date_time_values': self._my_map['deadline']})
         return Metadata(**metadata)
 
     deadline_metadata = property(fget=get_deadline_metadata)
@@ -2621,6 +2625,19 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         else:
             return self._get_assessment_section(
                 Id(self._my_map['sections'][self._my_map['sections'].index(str(assessment_section_id)) + 1]))
+
+    def _get_previous_assessment_section(self, assessment_section_id):
+        """Gets the previous section before section_id.
+
+        Assumes that section list exists in taken and section_id is in section list.
+        Assumes that Section parts only exist as children of Assessments
+
+        """
+        if self._my_map['sections'][0] == str(assessment_section_id):
+            raise errors.IllegalState('already at the first section')
+        else:
+            return self._get_assessment_section(
+                Id(self._my_map['sections'][self._my_map['sections'].index(str(assessment_section_id)) - 1]))
 
     def _get_assessment_section(self, assessment_section_id):
         if assessment_section_id not in self._assessment_sections:

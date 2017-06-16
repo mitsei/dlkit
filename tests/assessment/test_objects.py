@@ -8,6 +8,8 @@ import unittest
 from decimal import Decimal
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.assessment.objects import Assessment
 from dlkit.json_.assessment.objects import AssessmentOffered
@@ -58,10 +60,10 @@ class TestQuestion(unittest.TestCase):
             cls.catalog.delete_item(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_question_record(self):
         """Tests get_question_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_question_record(True)
 
 
 class TestQuestionForm(unittest.TestCase):
@@ -169,10 +171,10 @@ class TestAnswer(unittest.TestCase):
             cls.catalog.delete_item(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_answer_record(self):
         """Tests get_answer_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_answer_record(True)
 
 
 class TestAnswerForm(unittest.TestCase):
@@ -346,10 +348,10 @@ class TestItem(unittest.TestCase):
         self.assertEqual(str(next(answers).genus_type),
                          'answer-genus%3Aright-answer%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_get_item_record(self):
         """Tests get_item_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_item_record(True)
 
 
 class TestItemForm(unittest.TestCase):
@@ -386,6 +388,8 @@ class TestItemForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['learningObjectiveIds']), 1)
         self.assertEqual(self.form._my_map['learningObjectiveIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_learning_objectives('this is not a list')
         # reset this for other tests
         self.form._my_map['learningObjectiveIds'] = list()
 
@@ -507,10 +511,10 @@ class TestAssessment(unittest.TestCase):
         self.assertRaises(errors.IllegalState,
                           self.object.get_rubric)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_record(self):
         """Tests get_assessment_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_record(True)
 
 
 class TestAssessmentForm(unittest.TestCase):
@@ -537,7 +541,16 @@ class TestAssessmentForm(unittest.TestCase):
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
+        mdata = self.form.get_level_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_level(self):
         """Tests set_level"""
@@ -546,6 +559,8 @@ class TestAssessmentForm(unittest.TestCase):
         self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['levelId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_level(True)
 
     def test_clear_level(self):
         """Tests clear_level"""
@@ -554,12 +569,21 @@ class TestAssessmentForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['levelId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_level()
-        self.assertEqual(self.form._my_map['levelId'], '')
+        self.assertEqual(self.form._my_map['levelId'], self.form.get_level_metadata().get_default_id_values()[0])
 
     def test_get_rubric_metadata(self):
         """Tests get_rubric_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_rubric_metadata(), Metadata))
+        mdata = self.form.get_rubric_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_rubric(self):
         """Tests set_rubric"""
@@ -568,6 +592,8 @@ class TestAssessmentForm(unittest.TestCase):
         self.form.set_rubric(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['rubricId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_rubric(True)
 
     def test_clear_rubric(self):
         """Tests clear_rubric"""
@@ -576,7 +602,7 @@ class TestAssessmentForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['rubricId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_rubric()
-        self.assertEqual(self.form._my_map['rubricId'], '')
+        self.assertEqual(self.form._my_map['rubricId'], self.form.get_rubric_metadata().get_default_id_values()[0])
 
     def test_get_assessment_form_record(self):
         """Tests get_assessment_form_record"""
@@ -796,10 +822,10 @@ class TestAssessmentOffered(unittest.TestCase):
         self.assertRaises(KeyError,
                           self.object.get_rubric)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_record(self):
         """Tests get_assessment_offered_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_offered_record(True)
 
 
 class TestAssessmentOfferedForm(unittest.TestCase):
@@ -835,7 +861,16 @@ class TestAssessmentOfferedForm(unittest.TestCase):
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
+        mdata = self.form.get_level_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_level(self):
         """Tests set_level"""
@@ -844,6 +879,8 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['levelId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_level(True)
 
     def test_clear_level(self):
         """Tests clear_level"""
@@ -852,18 +889,29 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['levelId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_level()
-        self.assertEqual(self.form._my_map['levelId'], '')
+        self.assertEqual(self.form._my_map['levelId'], self.form.get_level_metadata().get_default_id_values()[0])
 
     def test_get_items_sequential_metadata(self):
         """Tests get_items_sequential_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_items_sequential_metadata(), Metadata))
+        mdata = self.form.get_items_sequential_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_items_sequential(self):
         """Tests set_items_sequential"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_items_sequential(True)
         self.assertTrue(self.form._my_map['itemsSequential'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_items_sequential('false')
 
     def test_clear_items_sequential(self):
         """Tests clear_items_sequential"""
@@ -876,13 +924,24 @@ class TestAssessmentOfferedForm(unittest.TestCase):
     def test_get_items_shuffled_metadata(self):
         """Tests get_items_shuffled_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_items_shuffled_metadata(), Metadata))
+        mdata = self.form.get_items_shuffled_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_items_shuffled(self):
         """Tests set_items_shuffled"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_items_shuffled(True)
         self.assertTrue(self.form._my_map['itemsShuffled'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_items_shuffled('false')
 
     def test_clear_items_shuffled(self):
         """Tests clear_items_shuffled"""
@@ -895,7 +954,16 @@ class TestAssessmentOfferedForm(unittest.TestCase):
     def test_get_start_time_metadata(self):
         """Tests get_start_time_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_start_time_metadata(), Metadata))
+        mdata = self.form.get_start_time_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DATETIME')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_start_time(self):
         """Tests set_start_time"""
@@ -905,6 +973,8 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.form.set_start_time(test_time)
         self.assertEqual(self.form._my_map['startTime'],
                          test_time)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_start_time(True)
         # reset this for other tests
         self.form._my_map['startTime'] = None
 
@@ -917,12 +987,21 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['startTime'],
                          test_time)
         self.form.clear_start_time()
-        self.assertIsNone(self.form._my_map['startTime'])
+        self.assertEqual(self.form._my_map['startTime'], self.form.get_start_time_metadata().get_default_date_time_values()[0])
 
     def test_get_deadline_metadata(self):
         """Tests get_deadline_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_deadline_metadata(), Metadata))
+        mdata = self.form.get_deadline_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DATETIME')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_deadline(self):
         """Tests set_deadline"""
@@ -932,6 +1011,8 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.form.set_deadline(test_time)
         self.assertEqual(self.form._my_map['deadline'],
                          test_time)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_deadline(True)
         # reset this for other tests
         self.form._my_map['deadline'] = None
 
@@ -944,12 +1025,21 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['deadline'],
                          test_time)
         self.form.clear_deadline()
-        self.assertIsNone(self.form._my_map['deadline'])
+        self.assertEqual(self.form._my_map['deadline'], self.form.get_deadline_metadata().get_default_date_time_values()[0])
 
     def test_get_duration_metadata(self):
         """Tests get_duration_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_duration_metadata(), Metadata))
+        mdata = self.form.get_duration_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DURATION')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_duration(self):
         """Tests set_duration"""
@@ -960,6 +1050,8 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['duration']['seconds'], 3600)
         self.assertEqual(self.form._my_map['duration']['days'], 0)
         self.assertEqual(self.form._my_map['duration']['microseconds'], 0)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_duration(1.05)
         # reset this for other tests
         self.form._my_map['duration'] = None
 
@@ -973,12 +1065,21 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['duration']['days'], 0)
         self.assertEqual(self.form._my_map['duration']['microseconds'], 0)
         self.form.clear_duration()
-        self.assertIsNone(self.form._my_map['duration'])
+        self.assertEqual(self.form._my_map['duration'], self.form.get_duration_metadata().get_default_duration_values()[0])
 
     def test_get_score_system_metadata(self):
         """Tests get_score_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_score_system_metadata(), Metadata))
+        mdata = self.form.get_score_system_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_score_system(self):
         """Tests set_score_system"""
@@ -987,6 +1088,8 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.form.set_score_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['scoreSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_score_system(True)
 
     def test_clear_score_system(self):
         """Tests clear_score_system"""
@@ -995,12 +1098,21 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['scoreSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_score_system()
-        self.assertEqual(self.form._my_map['scoreSystemId'], '')
+        self.assertEqual(self.form._my_map['scoreSystemId'], self.form.get_score_system_metadata().get_default_id_values()[0])
 
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_grade_system_metadata(), Metadata))
+        mdata = self.form.get_grade_system_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_grade_system(self):
         """Tests set_grade_system"""
@@ -1009,6 +1121,8 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['gradeSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_grade_system(True)
 
     def test_clear_grade_system(self):
         """Tests clear_grade_system"""
@@ -1017,7 +1131,7 @@ class TestAssessmentOfferedForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['gradeSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_grade_system()
-        self.assertEqual(self.form._my_map['gradeSystemId'], '')
+        self.assertEqual(self.form._my_map['gradeSystemId'], self.form.get_grade_system_metadata().get_default_id_values()[0])
 
     def test_get_assessment_offered_form_record(self):
         """Tests get_assessment_offered_form_record"""
@@ -1307,10 +1421,10 @@ class TestAssessmentTaken(unittest.TestCase):
         self.assertRaises(KeyError,
                           self.object.get_rubric)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_record(self):
         """Tests get_assessment_taken_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_taken_record(True)
 
 
 class TestAssessmentTakenForm(unittest.TestCase):
@@ -1345,7 +1459,16 @@ class TestAssessmentTakenForm(unittest.TestCase):
     def test_get_taker_metadata(self):
         """Tests get_taker_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_taker_metadata(), Metadata))
+        mdata = self.form.get_taker_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_taker(self):
         """Tests set_taker"""
@@ -1354,6 +1477,8 @@ class TestAssessmentTakenForm(unittest.TestCase):
         self.form.set_taker(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['takerId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_taker(True)
 
     def test_clear_taker(self):
         """Tests clear_taker"""
@@ -1362,7 +1487,7 @@ class TestAssessmentTakenForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['takerId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_taker()
-        self.assertEqual(self.form._my_map['takerId'], '')
+        self.assertEqual(self.form._my_map['takerId'], self.form.get_taker_metadata().get_default_id_values()[0])
 
     def test_get_assessment_taken_form_record(self):
         """Tests get_assessment_taken_form_record"""
@@ -1519,10 +1644,10 @@ class TestAssessmentSection(unittest.TestCase):
         # This does not throw an exception because of the SIMPLE_SEQUENCE record
         self.assertFalse(self.section.are_items_shuffled())
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_section_record(self):
         """Tests get_assessment_section_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_section_record(True)
 
 
 class TestAssessmentSectionList(unittest.TestCase):
@@ -1581,19 +1706,19 @@ class TestAssessmentSectionList(unittest.TestCase):
 class TestBank(unittest.TestCase):
     """Tests for Bank"""
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_record(self):
         """Tests get_bank_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_bank_record(True)
 
 
 class TestBankForm(unittest.TestCase):
     """Tests for BankForm"""
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_form_record(self):
         """Tests get_bank_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_bank_form_record(True)
 
 
 class TestBankList(unittest.TestCase):
@@ -1781,12 +1906,12 @@ class TestBankNodeList(unittest.TestCase):
 class TestResponseList(unittest.TestCase):
     """Tests for ResponseList"""
 
-    @unittest.skip('unimplemented test')
     def test_get_next_response(self):
         """Tests get_next_response"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_response()
 
-    @unittest.skip('unimplemented test')
     def test_get_next_responses(self):
         """Tests get_next_responses"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_responses(True)

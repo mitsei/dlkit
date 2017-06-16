@@ -45,7 +45,6 @@ class TestLoggingSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_id(self):
         """Tests get_log_id"""
         pass
@@ -56,30 +55,28 @@ class TestLoggingSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_log(self):
         """Tests can_log"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_log(self):
         """Tests log"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_log_at_priority(self):
         """Tests log_at_priority"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.log_at_priority(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_form(self):
         """Tests get_log_entry_form"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_log_entry_form()
 
-    @unittest.skip('unimplemented test')
     def test_create_log_entry(self):
         """Tests create_log_entry"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.create_log_entry(True)
 
 
 class TestLogEntryLookupSession(unittest.TestCase):
@@ -103,6 +100,9 @@ class TestLogEntryLookupSession(unittest.TestCase):
             cls.log_entry_list.append(obj)
             cls.log_entry_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -120,10 +120,10 @@ class TestLogEntryLookupSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_read_log(self):
         """Tests can_read_log"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_read_log()
 
     def test_use_comparative_log_entry_view(self):
         """Tests use_comparative_log_entry_view"""
@@ -187,35 +187,35 @@ class TestLogEntryLookupSession(unittest.TestCase):
         self.catalog.use_federated_log_view()
         objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entries_by_priority_type(self):
         """Tests get_log_entries_by_priority_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_log_entries_by_priority_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entries_by_date(self):
         """Tests get_log_entries_by_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_log_entries_by_date(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entries_by_priority_type_and_date(self):
         """Tests get_log_entries_by_priority_type_and_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_log_entries_by_priority_type_and_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entries_for_resource(self):
         """Tests get_log_entries_for_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_log_entries_for_resource(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entries_by_date_for_resource(self):
         """Tests get_log_entries_by_date_for_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_log_entries_by_date_for_resource(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entries_by_priority_type_and_date_for_resource(self):
         """Tests get_log_entries_by_priority_type_and_date_for_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_log_entries_by_priority_type_and_date_for_resource(True, True, True, True)
 
     def test_get_log_entries(self):
         """Tests get_log_entries"""
@@ -269,10 +269,10 @@ class TestLogEntryQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_log_entries(self):
         """Tests can_search_log_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_log_entries()
 
     def test_use_federated_log_view(self):
         """Tests use_federated_log_view"""
@@ -358,10 +358,10 @@ class TestLogEntryAdminSession(unittest.TestCase):
         self.assertEqual(self.osid_object.description.text, 'description of LogEntry')
         self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_can_update_log_entries(self):
         """Tests can_update_log_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_log_entries()
 
     def test_get_log_entry_form_for_update(self):
         """Tests get_log_entry_form_for_update"""
@@ -385,10 +385,10 @@ class TestLogEntryAdminSession(unittest.TestCase):
         self.assertEqual(updated_object.description.text, 'new description')
         self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_log_entries(self):
         """Tests can_delete_log_entries"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_log_entries()
 
     def test_delete_log_entry(self):
         """Tests delete_log_entry"""
@@ -437,10 +437,10 @@ class TestLogLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_logs(self):
         """Tests can_lookup_logs"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_logs()
 
     def test_use_comparative_log_view(self):
         """Tests use_comparative_log_view"""
@@ -459,25 +459,25 @@ class TestLogLookupSession(unittest.TestCase):
         """Tests get_logs_by_ids"""
         catalogs = self.svc_mgr.get_logs_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_logs_by_genus_type(self):
         """Tests get_logs_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_logs_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_logs_by_parent_genus_type(self):
         """Tests get_logs_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_logs_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_logs_by_record_type(self):
         """Tests get_logs_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_logs_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_logs_by_provider(self):
         """Tests get_logs_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_logs_by_provider(True)
 
     def test_get_logs(self):
         """Tests get_logs"""
@@ -534,10 +534,10 @@ class TestLogAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_log(catalog_form)
         self.assertTrue(isinstance(new_catalog, Log))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_logs(self):
         """Tests can_update_logs"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_logs()
 
     def test_get_log_form_for_update(self):
         """Tests get_log_form_for_update"""
@@ -554,10 +554,10 @@ class TestLogAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_log(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_logs(self):
         """Tests can_delete_logs"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_logs()
 
     def test_delete_log(self):
         """Tests delete_log"""

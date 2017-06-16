@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
@@ -96,10 +98,10 @@ class TestObjective(unittest.TestCase):
         self.assertRaises(errors.IllegalState,
                           self.object.get_cognitive_process)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_record(self):
         """Tests get_objective_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective_record(True)
 
 
 class TestObjectiveForm(unittest.TestCase):
@@ -126,7 +128,16 @@ class TestObjectiveForm(unittest.TestCase):
     def test_get_assessment_metadata(self):
         """Tests get_assessment_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_assessment_metadata(), Metadata))
+        mdata = self.form.get_assessment_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_assessment(self):
         """Tests set_assessment"""
@@ -135,6 +146,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_assessment(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['assessmentId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assessment(True)
 
     def test_clear_assessment(self):
         """Tests clear_assessment"""
@@ -143,12 +156,21 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['assessmentId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_assessment()
-        self.assertEqual(self.form._my_map['assessmentId'], '')
+        self.assertEqual(self.form._my_map['assessmentId'], self.form.get_assessment_metadata().get_default_id_values()[0])
 
     def test_get_knowledge_category_metadata(self):
         """Tests get_knowledge_category_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_knowledge_category_metadata(), Metadata))
+        mdata = self.form.get_knowledge_category_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_knowledge_category(self):
         """Tests set_knowledge_category"""
@@ -157,6 +179,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_knowledge_category(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['knowledgeCategoryId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_knowledge_category(True)
 
     def test_clear_knowledge_category(self):
         """Tests clear_knowledge_category"""
@@ -165,12 +189,21 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['knowledgeCategoryId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_knowledge_category()
-        self.assertEqual(self.form._my_map['knowledgeCategoryId'], '')
+        self.assertEqual(self.form._my_map['knowledgeCategoryId'], self.form.get_knowledge_category_metadata().get_default_id_values()[0])
 
     def test_get_cognitive_process_metadata(self):
         """Tests get_cognitive_process_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_cognitive_process_metadata(), Metadata))
+        mdata = self.form.get_cognitive_process_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_cognitive_process(self):
         """Tests set_cognitive_process"""
@@ -179,6 +212,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_cognitive_process(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['cognitiveProcessId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_cognitive_process(True)
 
     def test_clear_cognitive_process(self):
         """Tests clear_cognitive_process"""
@@ -187,7 +222,7 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['cognitiveProcessId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_cognitive_process()
-        self.assertEqual(self.form._my_map['cognitiveProcessId'], '')
+        self.assertEqual(self.form._my_map['cognitiveProcessId'], self.form.get_cognitive_process_metadata().get_default_id_values()[0])
 
     def test_get_objective_form_record(self):
         """Tests get_objective_form_record"""
@@ -248,20 +283,20 @@ class TestObjectiveList(unittest.TestCase):
 class TestObjectiveNode(unittest.TestCase):
     """Tests for ObjectiveNode"""
 
-    @unittest.skip('unimplemented test')
     def test_get_objective(self):
         """Tests get_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective()
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_objective_nodes(self):
         """Tests get_parent_objective_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_parent_objective_nodes()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_objective_nodes(self):
         """Tests get_child_objective_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_objective_nodes()
 
 
 class TestObjectiveNodeList(unittest.TestCase):
@@ -343,65 +378,65 @@ class TestActivity(unittest.TestCase):
         cls.catalog.delete_objective(cls.objective.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_id(self):
         """Tests get_objective_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective(self):
         """Tests get_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective()
 
-    @unittest.skip('unimplemented test')
     def test_is_asset_based_activity(self):
         """Tests is_asset_based_activity"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_asset_based_activity()
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_ids(self):
         """Tests get_asset_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_asset_ids()
 
-    @unittest.skip('unimplemented test')
     def test_get_assets(self):
         """Tests get_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assets()
 
-    @unittest.skip('unimplemented test')
     def test_is_course_based_activity(self):
         """Tests is_course_based_activity"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_course_based_activity()
 
-    @unittest.skip('unimplemented test')
     def test_get_course_ids(self):
         """Tests get_course_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_course_ids()
 
-    @unittest.skip('unimplemented test')
     def test_get_courses(self):
         """Tests get_courses"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_courses()
 
-    @unittest.skip('unimplemented test')
     def test_is_assessment_based_activity(self):
         """Tests is_assessment_based_activity"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_assessment_based_activity()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_ids(self):
         """Tests get_assessment_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessment_ids()
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments(self):
         """Tests get_assessments"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_assessments()
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_record(self):
         """Tests get_activity_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_activity_record(True)
 
 
 class TestActivityForm(unittest.TestCase):
@@ -445,6 +480,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['assetIds']), 1)
         self.assertEqual(self.form._my_map['assetIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assets('this is not a list')
         # reset this for other tests
         self.form._my_map['assetIds'] = list()
 
@@ -472,6 +509,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['courseIds']), 1)
         self.assertEqual(self.form._my_map['courseIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_courses('this is not a list')
         # reset this for other tests
         self.form._my_map['courseIds'] = list()
 
@@ -499,6 +538,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['assessmentIds']), 1)
         self.assertEqual(self.form._my_map['assessmentIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assessments('this is not a list')
         # reset this for other tests
         self.form._my_map['assessmentIds'] = list()
 
@@ -604,50 +645,48 @@ class TestProficiency(unittest.TestCase):
         cls.catalog.delete_objective(cls.objective.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_id(self):
         """Tests get_resource_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_resource(self):
         """Tests get_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_id(self):
         """Tests get_objective_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_objective(self):
         """Tests get_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective()
 
-    @unittest.skip('unimplemented test')
     def test_get_completion(self):
         """Tests get_completion"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_completion()
 
-    @unittest.skip('unimplemented test')
     def test_has_level(self):
         """Tests has_level"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.has_level()
 
-    @unittest.skip('unimplemented test')
     def test_get_level_id(self):
         """Tests get_level_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_level_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_level(self):
         """Tests get_level"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_level()
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_record(self):
         """Tests get_proficiency_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_proficiency_record(True)
 
 
 class TestProficiencyForm(unittest.TestCase):
@@ -679,32 +718,50 @@ class TestProficiencyForm(unittest.TestCase):
     def test_get_completion_metadata(self):
         """Tests get_completion_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_completion_metadata(), Metadata))
+        mdata = self.form.get_completion_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_completion(self):
         """Tests set_completion"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_completion(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_completion(self):
         """Tests clear_completion"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_completion()
 
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
+        mdata = self.form.get_level_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_level(self):
         """Tests set_level"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_level(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_level(self):
         """Tests clear_level"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_level()
 
     def test_get_proficiency_form_record(self):
         """Tests get_proficiency_form_record"""
@@ -772,19 +829,19 @@ class TestProficiencyList(unittest.TestCase):
 class TestObjectiveBank(unittest.TestCase):
     """Tests for ObjectiveBank"""
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank_record(self):
         """Tests get_objective_bank_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective_bank_record(True)
 
 
 class TestObjectiveBankForm(unittest.TestCase):
     """Tests for ObjectiveBankForm"""
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank_form_record(self):
         """Tests get_objective_bank_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective_bank_form_record(True)
 
 
 class TestObjectiveBankList(unittest.TestCase):

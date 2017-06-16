@@ -49,6 +49,9 @@ class TestResourceLookupSession(unittest.TestCase):
             cls.resource_list.append(obj)
             cls.resource_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -184,10 +187,10 @@ class TestResourceQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_resources(self):
         """Tests can_search_resources"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_resources()
 
     def test_use_federated_bin_view(self):
         """Tests use_federated_bin_view"""
@@ -216,25 +219,25 @@ class TestResourceQuerySession(unittest.TestCase):
 class TestResourceSearchSession(unittest.TestCase):
     """Tests for ResourceSearchSession"""
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search(self):
         """Tests get_resource_search"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_resource_search()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search_order(self):
         """Tests get_resource_search_order"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_resource_search_order()
 
-    @unittest.skip('unimplemented test')
     def test_get_resources_by_search(self):
         """Tests get_resources_by_search"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_resources_by_search(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_query_from_inspector(self):
         """Tests get_resource_query_from_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_resource_query_from_inspector(True)
 
 
 class TestResourceAdminSession(unittest.TestCase):
@@ -376,6 +379,9 @@ class TestResourceNotificationSession(unittest.TestCase):
             cls.resource_list.append(obj)
             cls.resource_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -393,10 +399,10 @@ class TestResourceNotificationSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_register_for_resource_notifications(self):
         """Tests can_register_for_resource_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_register_for_resource_notifications()
 
     def test_use_federated_bin_view(self):
         """Tests use_federated_bin_view"""
@@ -406,45 +412,45 @@ class TestResourceNotificationSession(unittest.TestCase):
         """Tests use_isolated_bin_view"""
         self.catalog.use_isolated_bin_view()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_new_resources(self):
         """Tests register_for_new_resources"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_new_resources()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_resources(self):
         """Tests register_for_changed_resources"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_changed_resources()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_resource(self):
         """Tests register_for_changed_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_changed_resource(True)
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_resources(self):
         """Tests register_for_deleted_resources"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_deleted_resources()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_resource(self):
         """Tests register_for_deleted_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_deleted_resource(True)
 
-    @unittest.skip('unimplemented test')
     def test_reliable_resource_notifications(self):
         """Tests reliable_resource_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reliable_resource_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_unreliable_resource_notifications(self):
         """Tests unreliable_resource_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unreliable_resource_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_acknowledge_resource_notification(self):
         """Tests acknowledge_resource_notification"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.acknowledge_resource_notification(True)
 
 
 class TestResourceBinSession(unittest.TestCase):
@@ -494,30 +500,30 @@ class TestResourceBinSession(unittest.TestCase):
         """Tests use_plenary_bin_view"""
         self.svc_mgr.use_plenary_bin_view()
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_resource_bin_mappings(self):
         """Tests can_lookup_resource_bin_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_resource_bin_mappings()
 
     def test_get_resource_ids_by_bin(self):
         """Tests get_resource_ids_by_bin"""
         objects = self.svc_mgr.get_resource_ids_by_bin(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_resources_by_bin(self):
         """Tests get_resources_by_bin"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_resources_by_bin(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_ids_by_bins(self):
         """Tests get_resource_ids_by_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_resource_ids_by_bins(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_resources_by_bins(self):
         """Tests get_resources_by_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_resources_by_bins(True)
 
     def test_get_bin_ids_by_resource(self):
         """Tests get_bin_ids_by_resource"""
@@ -533,35 +539,35 @@ class TestResourceBinSession(unittest.TestCase):
 class TestResourceBinAssignmentSession(unittest.TestCase):
     """Tests for ResourceBinAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_resources(self):
         """Tests can_assign_resources"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_resources()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_resources_to_bin(self):
         """Tests can_assign_resources_to_bin"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_resources_to_bin(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bin_ids(self):
         """Tests get_assignable_bin_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bin_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bin_ids_for_resource(self):
         """Tests get_assignable_bin_ids_for_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bin_ids_for_resource(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_resource_to_bin(self):
         """Tests assign_resource_to_bin"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_resource_to_bin(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_resource_from_bin(self):
         """Tests unassign_resource_from_bin"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_resource_from_bin(True, True)
 
 
 class TestResourceAgentSession(unittest.TestCase):
@@ -603,10 +609,10 @@ class TestResourceAgentSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_resource_agent_mappings(self):
         """Tests can_lookup_resource_agent_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_resource_agent_mappings()
 
     def test_use_comparative_agent_view(self):
         """Tests use_comparative_agent_view"""
@@ -638,10 +644,10 @@ class TestResourceAgentSession(unittest.TestCase):
         id_list = self.catalog.get_agent_ids_by_resource(self.resource_ids[0])
         self.assertEqual(id_list.next(), AGENT_ID_0)
 
-    @unittest.skip('unimplemented test')
     def test_get_agents_by_resource(self):
         """Tests get_agents_by_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_agents_by_resource(True)
 
 
 class TestResourceAgentAssignmentSession(unittest.TestCase):
@@ -681,15 +687,15 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_agents(self):
         """Tests can_assign_agents"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_agents()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_agents_to_resource(self):
         """Tests can_assign_agents_to_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_agents_to_resource(True)
 
     def test_assign_agent_to_resource(self):
         """Tests assign_agent_to_resource"""
@@ -727,10 +733,10 @@ class TestBinLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_bins():
             cls.svc_mgr.delete_bin(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_bins(self):
         """Tests can_lookup_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_bins()
 
     def test_use_comparative_bin_view(self):
         """Tests use_comparative_bin_view"""
@@ -749,25 +755,25 @@ class TestBinLookupSession(unittest.TestCase):
         """Tests get_bins_by_ids"""
         catalogs = self.svc_mgr.get_bins_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_bins_by_genus_type(self):
         """Tests get_bins_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_bins_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_bins_by_parent_genus_type(self):
         """Tests get_bins_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_bins_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_bins_by_record_type(self):
         """Tests get_bins_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_bins_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_bins_by_provider(self):
         """Tests get_bins_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_bins_by_provider(True)
 
     def test_get_bins(self):
         """Tests get_bins"""
@@ -777,20 +783,20 @@ class TestBinLookupSession(unittest.TestCase):
 class TestBinQuerySession(unittest.TestCase):
     """Tests for BinQuerySession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_search_bins(self):
         """Tests can_search_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_bins()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_query(self):
         """Tests get_bin_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_bin_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_bins_by_query(self):
         """Tests get_bins_by_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_bins_by_query(True)
 
 
 class TestBinAdminSession(unittest.TestCase):
@@ -843,10 +849,10 @@ class TestBinAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_bin(catalog_form)
         self.assertTrue(isinstance(new_catalog, Bin))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_bins(self):
         """Tests can_update_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_bins()
 
     def test_get_bin_form_for_update(self):
         """Tests get_bin_form_for_update"""
@@ -863,10 +869,10 @@ class TestBinAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_bin(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_bins(self):
         """Tests can_delete_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_bins()
 
     def test_delete_bin(self):
         """Tests delete_bin"""
@@ -927,10 +933,10 @@ class TestBinHierarchySession(unittest.TestCase):
         hierarchy = self.svc_mgr.get_bin_hierarchy()
         self.assertTrue(isinstance(hierarchy, Hierarchy))
 
-    @unittest.skip('unimplemented test')
     def test_can_access_bin_hierarchy(self):
         """Tests can_access_bin_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_bin_hierarchy()
 
     def test_use_comparative_bin_view(self):
         """Tests use_comparative_bin_view"""

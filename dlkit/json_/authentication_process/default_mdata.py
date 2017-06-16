@@ -12,8 +12,18 @@ def get_authentication_mdata():
     """Return default mdata map for Authentication"""
     return {
         'agent': {
-            'element_label': 'agent',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'agent',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,

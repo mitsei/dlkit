@@ -7,150 +7,150 @@ import unittest
 class TestObjectiveSearch(unittest.TestCase):
     """Tests for ObjectiveSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_objectives(self):
         """Tests search_among_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_objectives(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_objective_results(self):
         """Tests order_objective_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_objective_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_search_record(self):
         """Tests get_objective_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objective_search_record(True)
 
 
 class TestObjectiveSearchResults(unittest.TestCase):
     """Tests for ObjectiveSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_objectives(self):
         """Tests get_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objectives()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_query_inspector(self):
         """Tests get_objective_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objective_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_search_results_record(self):
         """Tests get_objective_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objective_search_results_record(True)
 
 
 class TestActivitySearch(unittest.TestCase):
     """Tests for ActivitySearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_activities(self):
         """Tests search_among_activities"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_activities(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_activity_results(self):
         """Tests order_activity_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_activity_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_search_record(self):
         """Tests get_activity_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_activity_search_record(True)
 
 
 class TestActivitySearchResults(unittest.TestCase):
     """Tests for ActivitySearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_activities(self):
         """Tests get_activities"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_activities()
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_query_inspector(self):
         """Tests get_activity_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_activity_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_search_results_record(self):
         """Tests get_activity_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_activity_search_results_record(True)
 
 
 class TestProficiencySearch(unittest.TestCase):
     """Tests for ProficiencySearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_proficiencies(self):
         """Tests search_among_proficiencies"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_proficiencies(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_proficiency_results(self):
         """Tests order_proficiency_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_proficiency_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_search_record(self):
         """Tests get_proficiency_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_proficiency_search_record(True)
 
 
 class TestProficiencySearchResults(unittest.TestCase):
     """Tests for ProficiencySearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies(self):
         """Tests get_proficiencies"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_proficiencies()
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_query_inspector(self):
         """Tests get_proficiency_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_proficiency_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_search_results_record(self):
         """Tests get_proficiency_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_proficiency_search_results_record(True)
 
 
 class TestObjectiveBankSearch(unittest.TestCase):
     """Tests for ObjectiveBankSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_objective_banks(self):
         """Tests search_among_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_objective_banks(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_objective_bank_results(self):
         """Tests order_objective_bank_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_objective_bank_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank_search_record(self):
         """Tests get_objective_bank_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objective_bank_search_record(True)
 
 
 class TestObjectiveBankSearchResults(unittest.TestCase):
     """Tests for ObjectiveBankSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_banks(self):
         """Tests get_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objective_banks()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank_query_inspector(self):
         """Tests get_objective_bank_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objective_bank_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank_search_results_record(self):
         """Tests get_objective_bank_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_objective_bank_search_results_record(True)

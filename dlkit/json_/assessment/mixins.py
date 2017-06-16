@@ -11,7 +11,7 @@ from .objects import AssessmentSection, NULL_RESPONSE, UNANSWERED, QuestionList,
     ASSESSMENT_AUTHORITY
 from .assessment_utilities import get_level_delta_for_parts, get_provider_manager, get_default_part_map,\
     get_default_question_map, get_assessment_part_lookup_session, get_item_lookup_session
-from .objects import AssessmentSection
+from .objects import AssessmentSection, AnswerList
 from ..utilities import JSONClientValidated
 
 
@@ -565,7 +565,7 @@ class AssessmentSessionSection(object):
             answers += list(item.get_wrong_answers())
         except AttributeError:
             pass
-        return answers  # Should this return and AnswerList?
+        return AnswerList(answers, runtime=self._runtime, proxy=self._proxy)
 
     def get_first_question(self):
         if self._my_map['actualStartTime'] is None:

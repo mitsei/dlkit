@@ -48,6 +48,9 @@ class TestObjectiveLookupSession(unittest.TestCase):
             cls.objective_list.append(obj)
             cls.objective_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -183,10 +186,10 @@ class TestObjectiveQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_objectives(self):
         """Tests can_search_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_objectives()
 
     def test_use_federated_objective_bank_view(self):
         """Tests use_federated_objective_bank_view"""
@@ -304,10 +307,10 @@ class TestObjectiveAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
         self.assertTrue(isinstance(self.catalog.can_delete_objectives(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_objective(self):
         """Tests delete_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_objective(True)
 
     def test_can_manage_objective_aliases(self):
         """Tests can_manage_objective_aliases"""
@@ -356,20 +359,20 @@ class TestObjectiveHierarchySession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy_id(self):
         """Tests get_objective_hierarchy_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_hierarchy_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy(self):
         """Tests get_objective_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_hierarchy()
 
-    @unittest.skip('unimplemented test')
     def test_can_access_objective_hierarchy(self):
         """Tests can_access_objective_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_objective_hierarchy()
 
     def test_use_comparative_objective_view(self):
         """Tests use_comparative_objective_view"""
@@ -379,75 +382,75 @@ class TestObjectiveHierarchySession(unittest.TestCase):
         """Tests use_plenary_objective_view"""
         self.catalog.use_plenary_objective_view()
 
-    @unittest.skip('unimplemented test')
     def test_get_root_objective_ids(self):
         """Tests get_root_objective_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_root_objective_ids()
 
-    @unittest.skip('unimplemented test')
     def test_get_root_objectives(self):
         """Tests get_root_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_root_objectives()
 
-    @unittest.skip('unimplemented test')
     def test_has_parent_objectives(self):
         """Tests has_parent_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.has_parent_objectives(True)
 
-    @unittest.skip('unimplemented test')
     def test_is_parent_of_objective(self):
         """Tests is_parent_of_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.is_parent_of_objective(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_objective_ids(self):
         """Tests get_parent_objective_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_parent_objective_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_objectives(self):
         """Tests get_parent_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_parent_objectives(True)
 
-    @unittest.skip('unimplemented test')
     def test_is_ancestor_of_objective(self):
         """Tests is_ancestor_of_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.is_ancestor_of_objective(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_has_child_objectives(self):
         """Tests has_child_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.has_child_objectives(True)
 
-    @unittest.skip('unimplemented test')
     def test_is_child_of_objective(self):
         """Tests is_child_of_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.is_child_of_objective(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_child_objective_ids(self):
         """Tests get_child_objective_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_child_objective_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_child_objectives(self):
         """Tests get_child_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_child_objectives(True)
 
-    @unittest.skip('unimplemented test')
     def test_is_descendant_of_objective(self):
         """Tests is_descendant_of_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.is_descendant_of_objective(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_node_ids(self):
         """Tests get_objective_node_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_node_ids(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_nodes(self):
         """Tests get_objective_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_nodes(True, True, True, True)
 
 
 class TestObjectiveHierarchyDesignSession(unittest.TestCase):
@@ -481,15 +484,15 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy_id(self):
         """Tests get_objective_hierarchy_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_hierarchy_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy(self):
         """Tests get_objective_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_hierarchy()
 
     def test_can_modify_objective_hierarchy(self):
         """Tests can_modify_objective_hierarchy"""
@@ -526,35 +529,35 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
 class TestObjectiveSequencingSession(unittest.TestCase):
     """Tests for ObjectiveSequencingSession"""
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy_id(self):
         """Tests get_objective_hierarchy_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_hierarchy_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_hierarchy(self):
         """Tests get_objective_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_hierarchy()
 
-    @unittest.skip('unimplemented test')
     def test_can_sequence_objectives(self):
         """Tests can_sequence_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_sequence_objectives()
 
-    @unittest.skip('unimplemented test')
     def test_move_objective_ahead(self):
         """Tests move_objective_ahead"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.move_objective_ahead(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_move_objective_behind(self):
         """Tests move_objective_behind"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.move_objective_behind(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_sequence_objectives(self):
         """Tests sequence_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.sequence_objectives(True, True)
 
 
 class TestObjectiveObjectiveBankSession(unittest.TestCase):
@@ -596,10 +599,10 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
         cls.svc_mgr.delete_objective_bank(cls.assigned_catalog.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_objective_objective_bank_mappings(self):
         """Tests can_lookup_objective_objective_bank_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_objective_objective_bank_mappings()
 
     def test_use_comparative_objective_bank_view(self):
         """Tests use_comparative_objective_bank_view"""
@@ -614,20 +617,20 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
         objects = self.svc_mgr.get_objective_ids_by_objective_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_objectives_by_objective_bank(self):
         """Tests get_objectives_by_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objectives_by_objective_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_ids_by_objective_banks(self):
         """Tests get_objective_ids_by_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_ids_by_objective_banks(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objectives_by_objective_banks(self):
         """Tests get_objectives_by_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objectives_by_objective_banks(True)
 
     def test_get_objective_bank_ids_by_objective(self):
         """Tests get_objective_bank_ids_by_objective"""
@@ -643,40 +646,40 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
 class TestObjectiveObjectiveBankAssignmentSession(unittest.TestCase):
     """Tests for ObjectiveObjectiveBankAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_objectives(self):
         """Tests can_assign_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_objectives()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_objectives_to_objective_bank(self):
         """Tests can_assign_objectives_to_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_objectives_to_objective_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_objective_bank_ids(self):
         """Tests get_assignable_objective_bank_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_objective_bank_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_objective_bank_ids_for_objective(self):
         """Tests get_assignable_objective_bank_ids_for_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_objective_bank_ids_for_objective(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_objective_to_objective_bank(self):
         """Tests assign_objective_to_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_objective_to_objective_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_objective_from_objective_bank(self):
         """Tests unassign_objective_from_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_objective_from_objective_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_reassign_proficiency_to_objective_bank(self):
         """Tests reassign_proficiency_to_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reassign_proficiency_to_objective_bank(True, True, True)
 
 
 class TestObjectiveRequisiteSession(unittest.TestCase):
@@ -723,10 +726,10 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_objective_prerequisites(self):
         """Tests can_lookup_objective_prerequisites"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_objective_prerequisites()
 
     def test_use_comparative_objective_view(self):
         """Tests use_comparative_objective_view"""
@@ -757,10 +760,10 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
                 self.requisite_ids
             )
 
-    @unittest.skip('unimplemented test')
     def test_get_all_requisite_objectives(self):
         """Tests get_all_requisite_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_all_requisite_objectives(True)
 
     def test_get_dependent_objectives(self):
         """Tests get_dependent_objectives"""
@@ -779,15 +782,15 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
             self.objective.ident
         )
 
-    @unittest.skip('unimplemented test')
     def test_is_objective_required(self):
         """Tests is_objective_required"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.is_objective_required(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_equivalent_objectives(self):
         """Tests get_equivalent_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_equivalent_objectives(True)
 
 
 class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
@@ -833,29 +836,29 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_requisites(self):
         """Tests can_assign_requisites"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_requisites()
 
     def test_assign_objective_requisite(self):
         """Tests assign_objective_requisite"""
         self.catalog.assign_objective_requisite(self.objective.ident, self.requisite_ids[0])
 
-    @unittest.skip('unimplemented test')
     def test_unassign_objective_requisite(self):
         """Tests unassign_objective_requisite"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_objective_requisite(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_equivalent_objective(self):
         """Tests assign_equivalent_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_equivalent_objective(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_equivalent_objective(self):
         """Tests unassign_equivalent_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_equivalent_objective(True, True)
 
 
 class TestActivityLookupSession(unittest.TestCase):
@@ -967,25 +970,25 @@ class TestActivityLookupSession(unittest.TestCase):
         self.catalog.use_federated_objective_bank_view()
         objects = self.catalog.get_activities_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_activities_for_objective(self):
         """Tests get_activities_for_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_activities_for_objective(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_activities_for_objectives(self):
         """Tests get_activities_for_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_activities_for_objectives(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_activities_by_asset(self):
         """Tests get_activities_by_asset"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_activities_by_asset(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_activities_by_assets(self):
         """Tests get_activities_by_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_activities_by_assets(True)
 
     def test_get_activities(self):
         """Tests get_activities"""
@@ -1180,10 +1183,10 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_activity_objective_bank_mappings(self):
         """Tests can_lookup_activity_objective_bank_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_activity_objective_bank_mappings()
 
     def test_use_comparative_objective_bank_view(self):
         """Tests use_comparative_objective_bank_view"""
@@ -1198,20 +1201,20 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
         objects = self.svc_mgr.get_activity_ids_by_objective_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_activities_by_objective_bank(self):
         """Tests get_activities_by_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_activities_by_objective_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_ids_by_objective_banks(self):
         """Tests get_activity_ids_by_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_activity_ids_by_objective_banks(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_activities_by_objective_banks(self):
         """Tests get_activities_by_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_activities_by_objective_banks(True)
 
     def test_get_objective_bank_ids_by_activity(self):
         """Tests get_objective_bank_ids_by_activity"""
@@ -1227,40 +1230,40 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
 class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
     """Tests for ActivityObjectiveBankAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_activities(self):
         """Tests can_assign_activities"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_activities()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_activities_to_objective_bank(self):
         """Tests can_assign_activities_to_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_activities_to_objective_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_objective_bank_ids(self):
         """Tests get_assignable_objective_bank_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_objective_bank_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_objective_bank_ids_for_activity(self):
         """Tests get_assignable_objective_bank_ids_for_activity"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_objective_bank_ids_for_activity(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_activity_to_objective_bank(self):
         """Tests assign_activity_to_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_activity_to_objective_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_activity_from_objective_bank(self):
         """Tests unassign_activity_from_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_activity_from_objective_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_reassign_activity_to_objective_bank(self):
         """Tests reassign_activity_to_objective_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reassign_activity_to_objective_bank(True, True, True)
 
 
 class TestProficiencyLookupSession(unittest.TestCase):
@@ -1328,15 +1331,15 @@ class TestProficiencyLookupSession(unittest.TestCase):
         """Tests use_isolated_objective_bank_view"""
         self.catalog.use_isolated_objective_bank_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_effective_proficiency_view(self):
         """Tests use_effective_proficiency_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_effective_proficiency_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_any_effective_proficiency_view(self):
         """Tests use_any_effective_proficiency_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_any_effective_proficiency_view()
 
     def test_get_proficiency(self):
         """Tests get_proficiency"""
@@ -1384,85 +1387,77 @@ class TestProficiencyLookupSession(unittest.TestCase):
         self.catalog.use_federated_objective_bank_view()
         objects = self.catalog.get_proficiencies_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_on_date(self):
         """Tests get_proficiencies_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_on_date(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_by_genus_type_on_date(self):
         """Tests get_proficiencies_by_genus_type_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_by_genus_type_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_objective(self):
         """Tests get_proficiencies_for_objective"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_objective_on_date(self):
         """Tests get_proficiencies_for_objective_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_for_objective_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_by_genus_type_for_objective(self):
         """Tests get_proficiencies_by_genus_type_for_objective"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_by_genus_type_for_objective_on_date(self):
         """Tests get_proficiencies_by_genus_type_for_objective_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_by_genus_type_for_objective_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_objectives(self):
         """Tests get_proficiencies_for_objectives"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_resource(self):
         """Tests get_proficiencies_for_resource"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_resource_on_date(self):
         """Tests get_proficiencies_for_resource_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_for_resource_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_by_genus_type_for_resource(self):
         """Tests get_proficiencies_by_genus_type_for_resource"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_by_genus_type_for_resource_on_date(self):
         """Tests get_proficiencies_by_genus_type_for_resource_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_by_genus_type_for_resource_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_resources(self):
         """Tests get_proficiencies_for_resources"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_objective_and_resource(self):
         """Tests get_proficiencies_for_objective_and_resource"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_for_objective_and_resource_on_date(self):
         """Tests get_proficiencies_for_objective_and_resource_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_for_objective_and_resource_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_by_genus_type_for_objective_and_resource(self):
         """Tests get_proficiencies_by_genus_type_for_objective_and_resource"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiencies_by_genus_type_for_objective_and_resource_on_date(self):
         """Tests get_proficiencies_by_genus_type_for_objective_and_resource_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_proficiencies_by_genus_type_for_objective_and_resource_on_date(True, True, True, True, True)
 
     def test_get_proficiencies(self):
         """Tests get_proficiencies"""
@@ -1524,10 +1519,10 @@ class TestProficiencyQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_proficiencies(self):
         """Tests can_search_proficiencies"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_proficiencies()
 
     def test_use_federated_objective_bank_view(self):
         """Tests use_federated_objective_bank_view"""
@@ -1672,10 +1667,10 @@ class TestProficiencyAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.catalog.get_proficiency(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_delete_proficiencies(self):
         """Tests delete_proficiencies"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_proficiencies()
 
     def test_can_manage_proficiency_aliases(self):
         """Tests can_manage_proficiency_aliases"""
@@ -1712,10 +1707,10 @@ class TestObjectiveBankLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_objective_banks():
             cls.svc_mgr.delete_objective_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_objective_banks(self):
         """Tests can_lookup_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_objective_banks()
 
     def test_use_comparative_objective_bank_view(self):
         """Tests use_comparative_objective_bank_view"""
@@ -1734,25 +1729,25 @@ class TestObjectiveBankLookupSession(unittest.TestCase):
         """Tests get_objective_banks_by_ids"""
         catalogs = self.svc_mgr.get_objective_banks_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_banks_by_genus_type(self):
         """Tests get_objective_banks_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_banks_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_banks_by_parent_genus_type(self):
         """Tests get_objective_banks_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_banks_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_banks_by_record_type(self):
         """Tests get_objective_banks_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_banks_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_banks_by_provider(self):
         """Tests get_objective_banks_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_objective_banks_by_provider(True)
 
     def test_get_objective_banks(self):
         """Tests get_objective_banks"""
@@ -1809,10 +1804,10 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_objective_bank(catalog_form)
         self.assertTrue(isinstance(new_catalog, ObjectiveBank))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_objective_banks(self):
         """Tests can_update_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_objective_banks()
 
     def test_get_objective_bank_form_for_update(self):
         """Tests get_objective_bank_form_for_update"""
@@ -1829,10 +1824,10 @@ class TestObjectiveBankAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_objective_bank(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_objective_banks(self):
         """Tests can_delete_objective_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_objective_banks()
 
     def test_delete_objective_bank(self):
         """Tests delete_objective_bank"""
@@ -1893,10 +1888,10 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
         hierarchy = self.svc_mgr.get_objective_bank_hierarchy()
         self.assertTrue(isinstance(hierarchy, Hierarchy))
 
-    @unittest.skip('unimplemented test')
     def test_can_access_objective_bank_hierarchy(self):
         """Tests can_access_objective_bank_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_objective_bank_hierarchy()
 
     def test_use_comparative_objective_bank_view(self):
         """Tests use_comparative_objective_bank_view"""

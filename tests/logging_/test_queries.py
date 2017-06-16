@@ -202,10 +202,10 @@ class TestLogEntryQuery(unittest.TestCase):
         self.assertNotIn('log',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_query_record(self):
         """Tests get_log_entry_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_log_entry_query_record(True)
 
 
 class TestLogQuery(unittest.TestCase):
@@ -231,7 +231,7 @@ class TestLogQuery(unittest.TestCase):
     def test_match_log_entry_id(self):
         """Tests match_log_entry_id"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_log_entry_id(self.fake_id, True)
+            self.query.match_log_entry_id(True, True)
 
     def test_clear_log_entry_id_terms(self):
         """Tests clear_log_entry_id_terms"""
@@ -267,7 +267,7 @@ class TestLogQuery(unittest.TestCase):
     def test_match_ancestor_log_id(self):
         """Tests match_ancestor_log_id"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_ancestor_log_id(self.fake_id, True)
+            self.query.match_ancestor_log_id(True, True)
 
     def test_clear_ancestor_log_id_terms(self):
         """Tests clear_ancestor_log_id_terms"""
@@ -280,7 +280,7 @@ class TestLogQuery(unittest.TestCase):
     def test_supports_ancestor_log_query(self):
         """Tests supports_ancestor_log_query"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.supports_log_entry_query()
+            self.query.supports_ancestor_log_query()
 
     def test_get_ancestor_log_query(self):
         """Tests get_ancestor_log_query"""
@@ -303,7 +303,7 @@ class TestLogQuery(unittest.TestCase):
     def test_match_descendant_log_id(self):
         """Tests match_descendant_log_id"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_descendant_log_id(self.fake_id, True)
+            self.query.match_descendant_log_id(True, True)
 
     def test_clear_descendant_log_id_terms(self):
         """Tests clear_descendant_log_id_terms"""
@@ -336,7 +336,7 @@ class TestLogQuery(unittest.TestCase):
         self.assertNotIn('descendantLog',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_log_query_record(self):
         """Tests get_log_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_log_query_record(True)

@@ -84,15 +84,15 @@ class TestCommentLookupSession(unittest.TestCase):
         """Tests use_isolated_book_view"""
         self.catalog.use_isolated_book_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_effective_comment_view(self):
         """Tests use_effective_comment_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_effective_comment_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_any_effective_comment_view(self):
         """Tests use_any_effective_comment_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_any_effective_comment_view()
 
     def test_get_comment(self):
         """Tests get_comment"""
@@ -140,75 +140,69 @@ class TestCommentLookupSession(unittest.TestCase):
         self.catalog.use_federated_book_view()
         objects = self.catalog.get_comments_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_on_date(self):
         """Tests get_comments_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_on_date(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_on_date(self):
         """Tests get_comments_by_genus_type_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_by_genus_type_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_for_commentor(self):
         """Tests get_comments_for_commentor"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_for_commentor_on_date(self):
         """Tests get_comments_for_commentor_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_for_commentor_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_commentor(self):
         """Tests get_comments_by_genus_type_for_commentor"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_commentor_on_date(self):
         """Tests get_comments_by_genus_type_for_commentor_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_by_genus_type_for_commentor_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_for_reference(self):
         """Tests get_comments_for_reference"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_for_reference_on_date(self):
         """Tests get_comments_for_reference_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_for_reference_on_date(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_reference(self):
         """Tests get_comments_by_genus_type_for_reference"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_reference_on_date(self):
         """Tests get_comments_by_genus_type_for_reference_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_by_genus_type_for_reference_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_for_commentor_and_reference(self):
         """Tests get_comments_for_commentor_and_reference"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_for_commentor_and_reference_on_date(self):
         """Tests get_comments_for_commentor_and_reference_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_for_commentor_and_reference_on_date(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_commentor_and_reference(self):
         """Tests get_comments_by_genus_type_for_commentor_and_reference"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_commentor_and_reference_on_date(self):
         """Tests get_comments_by_genus_type_for_commentor_and_reference_on_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_comments_by_genus_type_for_commentor_and_reference_on_date(True, True, True, True, True)
 
     def test_get_comments(self):
         """Tests get_comments"""
@@ -263,10 +257,10 @@ class TestCommentQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_comments(self):
         """Tests can_search_comments"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_comments()
 
     def test_use_federated_book_view(self):
         """Tests use_federated_book_view"""
@@ -437,10 +431,10 @@ class TestBookLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_books():
             cls.svc_mgr.delete_book(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_books(self):
         """Tests can_lookup_books"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_books()
 
     def test_use_comparative_book_view(self):
         """Tests use_comparative_book_view"""
@@ -459,25 +453,25 @@ class TestBookLookupSession(unittest.TestCase):
         """Tests get_books_by_ids"""
         catalogs = self.svc_mgr.get_books_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_books_by_genus_type(self):
         """Tests get_books_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_books_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_books_by_parent_genus_type(self):
         """Tests get_books_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_books_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_books_by_record_type(self):
         """Tests get_books_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_books_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_books_by_provider(self):
         """Tests get_books_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_books_by_provider(True)
 
     def test_get_books(self):
         """Tests get_books"""
@@ -534,10 +528,10 @@ class TestBookAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_book(catalog_form)
         self.assertTrue(isinstance(new_catalog, Book))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_books(self):
         """Tests can_update_books"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_books()
 
     def test_get_book_form_for_update(self):
         """Tests get_book_form_for_update"""
@@ -554,10 +548,10 @@ class TestBookAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_book(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_books(self):
         """Tests can_delete_books"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_books()
 
     def test_delete_book(self):
         """Tests delete_book"""
@@ -618,10 +612,10 @@ class TestBookHierarchySession(unittest.TestCase):
         hierarchy = self.svc_mgr.get_book_hierarchy()
         self.assertTrue(isinstance(hierarchy, Hierarchy))
 
-    @unittest.skip('unimplemented test')
     def test_can_access_book_hierarchy(self):
         """Tests can_access_book_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_book_hierarchy()
 
     def test_use_comparative_book_view(self):
         """Tests use_comparative_book_view"""

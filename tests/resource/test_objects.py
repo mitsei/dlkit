@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
@@ -70,10 +72,10 @@ class TestResource(unittest.TestCase):
         self.assertRaises(errors.IllegalState,
                           self.object.get_avatar)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_record(self):
         """Tests get_resource_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource_record(True)
 
 
 class TestResourceForm(unittest.TestCase):
@@ -100,13 +102,24 @@ class TestResourceForm(unittest.TestCase):
     def test_get_group_metadata(self):
         """Tests get_group_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_group_metadata(), Metadata))
+        mdata = self.form.get_group_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_group(self):
         """Tests set_group"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_group(True)
         self.assertTrue(self.form._my_map['group'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_group('false')
 
     def test_clear_group(self):
         """Tests clear_group"""
@@ -119,7 +132,16 @@ class TestResourceForm(unittest.TestCase):
     def test_get_avatar_metadata(self):
         """Tests get_avatar_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_avatar_metadata(), Metadata))
+        mdata = self.form.get_avatar_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_avatar(self):
         """Tests set_avatar"""
@@ -128,6 +150,8 @@ class TestResourceForm(unittest.TestCase):
         self.form.set_avatar(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['avatarId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_avatar(True)
 
     def test_clear_avatar(self):
         """Tests clear_avatar"""
@@ -136,7 +160,7 @@ class TestResourceForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['avatarId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_avatar()
-        self.assertEqual(self.form._my_map['avatarId'], '')
+        self.assertEqual(self.form._my_map['avatarId'], self.form.get_avatar_metadata().get_default_id_values()[0])
 
     def test_get_resource_form_record(self):
         """Tests get_resource_form_record"""
@@ -197,52 +221,52 @@ class TestResourceList(unittest.TestCase):
 class TestResourceNode(unittest.TestCase):
     """Tests for ResourceNode"""
 
-    @unittest.skip('unimplemented test')
     def test_get_resource(self):
         """Tests get_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource()
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_resource_nodes(self):
         """Tests get_parent_resource_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_parent_resource_nodes()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_resource_nodes(self):
         """Tests get_child_resource_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_resource_nodes()
 
 
 class TestResourceNodeList(unittest.TestCase):
     """Tests for ResourceNodeList"""
 
-    @unittest.skip('unimplemented test')
     def test_get_next_resource_node(self):
         """Tests get_next_resource_node"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_resource_node()
 
-    @unittest.skip('unimplemented test')
     def test_get_next_resource_nodes(self):
         """Tests get_next_resource_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_resource_nodes(True)
 
 
 class TestBin(unittest.TestCase):
     """Tests for Bin"""
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_record(self):
         """Tests get_bin_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_bin_record(True)
 
 
 class TestBinForm(unittest.TestCase):
     """Tests for BinForm"""
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_form_record(self):
         """Tests get_bin_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_bin_form_record(True)
 
 
 class TestBinList(unittest.TestCase):

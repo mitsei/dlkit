@@ -339,7 +339,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
                 self._mdata['sequestered'] = kwargs['mdata']['sequestered']
         self._assessment_part_default = self._mdata['assessment_part']['default_id_values'][0]
         self._assessment_default = self._mdata['assessment']['default_id_values'][0]
-        self._weight_default = self._mdata['weight']['default_integer_values'][0]
+        self._weight_default = self._mdata['weight']['default_cardinal_values'][0]
         self._allocated_time_default = self._mdata['allocated_time']['default_duration_values'][0]
         self._items_sequential_default = None
         self._items_shuffled_default = None
@@ -800,8 +800,8 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         """Initialize form metadata"""
         osid_objects.OsidObjectForm._init_metadata(self, **kwargs)
         self._cumulative_default = self._mdata['cumulative']['default_boolean_values'][0]
-        self._minimum_score_default = self._mdata['minimum_score']['default_integer_values'][0]
-        self._maximum_score_default = self._mdata['maximum_score']['default_integer_values'][0]
+        self._minimum_score_default = self._mdata['minimum_score']['default_cardinal_values'][0]
+        self._maximum_score_default = self._mdata['maximum_score']['default_cardinal_values'][0]
 
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""

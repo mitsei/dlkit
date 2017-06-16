@@ -12,8 +12,18 @@ def get_comment_mdata():
     """Return default mdata map for Comment"""
     return {
         'text': {
-            'element_label': 'text',
-            'instructions': 'enter no more than 256 characters.',
+            'element_label': {
+                'text': 'text',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter no more than 256 characters.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -30,8 +40,18 @@ def get_comment_mdata():
             'string_set': [],
         },
         'reference': {
-            'element_label': 'reference',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'reference',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -41,8 +61,18 @@ def get_comment_mdata():
             'id_set': [],
         },
         'rating': {
-            'element_label': 'rating',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'rating',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,

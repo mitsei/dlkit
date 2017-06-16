@@ -458,10 +458,10 @@ class TestObjectiveQuery(unittest.TestCase):
         self.assertNotIn('objectiveBank',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_query_record(self):
         """Tests get_objective_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_objective_query_record(True)
 
 
 class TestActivityQuery(unittest.TestCase):
@@ -692,10 +692,10 @@ class TestActivityQuery(unittest.TestCase):
         self.assertNotIn('objectiveBank',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_query_record(self):
         """Tests get_activity_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_activity_query_record(True)
 
 
 class TestProficiencyQuery(unittest.TestCase):
@@ -913,10 +913,10 @@ class TestProficiencyQuery(unittest.TestCase):
         self.assertNotIn('objectiveBank',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_query_record(self):
         """Tests get_proficiency_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_proficiency_query_record(True)
 
 
 class TestObjectiveBankQuery(unittest.TestCase):
@@ -942,7 +942,7 @@ class TestObjectiveBankQuery(unittest.TestCase):
     def test_match_objective_id(self):
         """Tests match_objective_id"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_objective_id(self.fake_id, True)
+            self.query.match_objective_id(True, True)
 
     def test_clear_objective_id_terms(self):
         """Tests clear_objective_id_terms"""
@@ -978,7 +978,7 @@ class TestObjectiveBankQuery(unittest.TestCase):
     def test_match_activity_id(self):
         """Tests match_activity_id"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_activity_id(self.fake_id, True)
+            self.query.match_activity_id(True, True)
 
     def test_clear_activity_id_terms(self):
         """Tests clear_activity_id_terms"""
@@ -1014,7 +1014,7 @@ class TestObjectiveBankQuery(unittest.TestCase):
     def test_match_ancestor_objective_bank_id(self):
         """Tests match_ancestor_objective_bank_id"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_ancestor_objective_bank_id(self.fake_id, True)
+            self.query.match_ancestor_objective_bank_id(True, True)
 
     def test_clear_ancestor_objective_bank_id_terms(self):
         """Tests clear_ancestor_objective_bank_id_terms"""
@@ -1050,7 +1050,7 @@ class TestObjectiveBankQuery(unittest.TestCase):
     def test_match_descendant_objective_bank_id(self):
         """Tests match_descendant_objective_bank_id"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_descendant_objective_bank_id(self.fake_id, True)
+            self.query.match_descendant_objective_bank_id(True, True)
 
     def test_clear_descendant_objective_bank_id_terms(self):
         """Tests clear_descendant_objective_bank_id_terms"""
@@ -1083,7 +1083,7 @@ class TestObjectiveBankQuery(unittest.TestCase):
         self.assertNotIn('descendantObjectiveBank',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_bank_query_record(self):
         """Tests get_objective_bank_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_objective_bank_query_record(True)

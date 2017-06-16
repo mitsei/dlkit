@@ -13,6 +13,7 @@
 from .. import utilities
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid import metadata as abc_osid_metadata
+from dlkit.primordium.locale.primitives import DisplayText
 
 
 class Metadata(abc_osid_metadata.Metadata):
@@ -46,7 +47,7 @@ class Metadata(abc_osid_metadata.Metadata):
 
         """
         # Implemented from template for osid.Metadata.get_element_id_template
-        return self._kwargs['element_label']
+        return DisplayText(self._kwargs['element_label'])
 
     element_label = property(fget=get_element_label)
 
@@ -62,7 +63,7 @@ class Metadata(abc_osid_metadata.Metadata):
 
         """
         # Implemented from template for osid.Metadata.get_element_id_template
-        return self._kwargs['instructions']
+        return DisplayText(self._kwargs['instructions'])
 
     instructions = property(fget=get_instructions)
 

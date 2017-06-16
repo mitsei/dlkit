@@ -224,9 +224,11 @@ def create_first_assessment_section(assessment_id, runtime, proxy, bank_id):
         update_form.set_children([Id(i) for i in child_ids])
         assessment_admin_session.update_assessment(update_form)
     else:
-        rule_form = rule_admin_session.get_rule_form_for_create(assessment.get_id(), part_id, [])
+        rule_form = rule_admin_session.get_sequence_rule_form_for_create(assessment.get_id(),
+                                                                         part_id,
+                                                                         [])
         rule_form.set_display_name('First Part Rule')
-        rule_admin_session.create_rule(rule_form)
+        rule_admin_session.create_sequence_rule(rule_form)
     return part_id
 
 

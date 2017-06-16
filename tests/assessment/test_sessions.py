@@ -1,23 +1,33 @@
 """Unit tests of assessment sessions."""
 
 
+import datetime
 import unittest
 
 
 from dlkit.abstract_osid.assessment.objects import AssessmentOffered
+from dlkit.abstract_osid.assessment.objects import AssessmentSection, AssessmentSectionList
 from dlkit.abstract_osid.assessment.objects import AssessmentTaken
-from dlkit.abstract_osid.assessment.objects import Bank
+from dlkit.abstract_osid.assessment.objects import Bank, Answer, AnswerList, AnswerForm
+from dlkit.abstract_osid.assessment.objects import Question, QuestionList
+from dlkit.abstract_osid.assessment.objects import ResponseList
+from dlkit.abstract_osid.assessment.rules import Response
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
+from dlkit.json_.assessment import searches
+from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.types.string import get_type_data as get_string_type_data
 from dlkit.primordium.type.primitives import Type
+from dlkit.records import registry
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
 
 
+SEQUENCE_ASSESSMENT = Type(**registry.ASSESSMENT_RECORD_TYPES["simple-child-sequencing"])
 REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
@@ -25,6 +35,7 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+DEFAULT_STRING_MATCH_TYPE = Type(**get_string_type_data("WORDIGNORECASE"))
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE 2', 'authority': 'YOURS 2'})
@@ -35,22 +46,48 @@ class TestAssessmentSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.assessment_offered_list = list()
-        cls.assessment_offered_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for AssessmentOfferedLookupSession tests'
+        create_form.description = 'Test Bank for AssessmentSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
-        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form = cls.catalog.get_assessment_form_for_create([SEQUENCE_ASSESSMENT])
         create_form.display_name = 'Test Assessment'
         create_form.description = 'Test Assessment for AssessmentSession tests'
         cls.assessment = cls.catalog.create_assessment(create_form)
 
+        for number in ['One', 'Two', 'Three', 'Four']:
+            ifc = cls.catalog.get_item_form_for_create([])
+            ifc.set_display_name('Test Assessment Item ' + number)
+            ifc.set_description('This is a Test Item Called Number ' + number)
+            test_item = cls.catalog.create_item(ifc)
+            form = cls.catalog.get_question_form_for_create(test_item.ident, [])
+            cls.catalog.create_question(form)
+
+            if number == 'One':
+                form = cls.catalog.get_answer_form_for_create(test_item.ident, [])
+                cls.catalog.create_answer(form)
+
+            cls.catalog.add_item(cls.assessment.ident, test_item.ident)
+
+        form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+        cls.assessment_offered = cls.catalog.create_assessment_offered(form)
+
+    def setUp(self):
+        self.session = self.catalog
+        form = self.catalog.get_assessment_taken_form_for_create(self.assessment_offered.ident, [])
+        self.taken = self.catalog.create_assessment_taken(form)
+
     @classmethod
     def tearDownClass(cls):
         for obj in cls.catalog.get_assessments():
+            for offered in cls.catalog.get_assessments_offered_for_assessment(obj.ident):
+                for taken in cls.catalog.get_assessments_taken_for_assessment_offered(offered.ident):
+                    cls.catalog.delete_assessment_taken(taken.ident)
+                cls.catalog.delete_assessment_offered(offered.ident)
             cls.catalog.delete_assessment(obj.ident)
+        for item in cls.catalog.get_items():
+            cls.catalog.delete_item(item.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank_id(self):
@@ -62,210 +99,620 @@ class TestAssessmentSession(unittest.TestCase):
         # this test should not be needed....
         self.assertTrue(isinstance(self.catalog, Bank))
 
-    @unittest.skip('unimplemented test')
     def test_can_take_assessments(self):
         """Tests can_take_assessments"""
-        pass
+        self.assertTrue(self.session.can_take_assessments())
 
-    @unittest.skip('unimplemented test')
     def test_has_assessment_begun(self):
         """Tests has_assessment_begun"""
-        pass
+        future_start = DateTime.utcnow() + datetime.timedelta(days=1)
+        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident, [])
+        form.set_start_time(DateTime(**{
+            'year': future_start.year,
+            'month': future_start.month,
+            'day': future_start.day,
+            'hour': future_start.hour,
+            'minute': future_start.minute,
+            'second': future_start.second
+        }))
+        future_offered = self.catalog.create_assessment_offered(form)
+        form = self.catalog.get_assessment_taken_form_for_create(future_offered.ident, [])
+        future_taken = self.catalog.create_assessment_taken(form)
+        self.assertFalse(self.session.has_assessment_begun(future_taken.ident))
 
-    @unittest.skip('unimplemented test')
+        self.assertTrue(self.session.has_assessment_begun(self.taken.ident))
+
     def test_is_assessment_over(self):
         """Tests is_assessment_over"""
-        pass
+        # There are also other conditions that flag "over", but are not
+        # tested here. Like if the offered goes past the deadline...so we
+        # would have to do a time.sleep(). TODO: add those tests in.
 
-    @unittest.skip('unimplemented test')
+        self.assertFalse(self.session.is_assessment_over(self.taken.ident))
+        self.session.finish_assessment(self.taken.ident)
+        self.assertTrue(self.session.is_assessment_over(self.taken.ident))
+
     def test_requires_synchronous_sections(self):
         """Tests requires_synchronous_sections"""
-        pass
+        self.assertFalse(self.session.requires_synchronous_sections(self.taken.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_first_assessment_section(self):
         """Tests get_first_assessment_section"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        self.assertTrue(isinstance(section, AssessmentSection))
 
-    @unittest.skip('unimplemented test')
     def test_has_next_assessment_section(self):
         """Tests has_next_assessment_section"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        self.assertFalse(self.session.has_next_assessment_section(section.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_next_assessment_section(self):
         """Tests get_next_assessment_section"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_next_assessment_section(section.ident)
 
-    @unittest.skip('unimplemented test')
     def test_has_previous_assessment_section(self):
         """Tests has_previous_assessment_section"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        self.assertFalse(self.session.has_previous_assessment_section(section.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_previous_assessment_section(self):
         """Tests get_previous_assessment_section"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_previous_assessment_section(section.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_section(self):
         """Tests get_assessment_section"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        test_section = self.session.get_assessment_section(section.ident)
+        self.assertTrue(isinstance(test_section, AssessmentSection))
+        self.assertEqual(str(test_section.ident),
+                         str(section.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_sections(self):
         """Tests get_assessment_sections"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        test_sections = self.session.get_assessment_sections(self.taken.ident)
+        self.assertTrue(isinstance(test_sections, AssessmentSectionList))
+        self.assertEqual(test_sections.available(), 1)
+        first_section = test_sections.next()
+        self.assertTrue(isinstance(first_section, AssessmentSection))
+        self.assertEqual(str(first_section.ident),
+                         str(section.ident))
 
-    @unittest.skip('unimplemented test')
     def test_is_assessment_section_complete(self):
         """Tests is_assessment_section_complete"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        total_questions = questions.available()
 
-    @unittest.skip('unimplemented test')
+        self.assertFalse(self.session.is_assessment_section_complete(section.ident))
+
+        for index, question in enumerate(questions):
+            form = self.session.get_response_form(section.ident, question.ident)
+            self.session.submit_response(section.ident, question.ident, form)
+            if index < (total_questions - 1):
+                self.assertFalse(self.session.is_assessment_section_complete(section.ident))
+            else:
+                self.assertTrue(self.session.is_assessment_section_complete(section.ident))
+
     def test_get_incomplete_assessment_sections(self):
         """Tests get_incomplete_assessment_sections"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
 
-    @unittest.skip('unimplemented test')
+        test_sections = self.session.get_incomplete_assessment_sections(self.taken.ident)
+        self.assertTrue(isinstance(test_sections, AssessmentSectionList))
+        self.assertEqual(test_sections.available(), 1)
+        first_section = test_sections.next()
+        self.assertTrue(isinstance(first_section, AssessmentSection))
+        self.assertEqual(str(first_section.ident),
+                         str(section.ident))
+
+        for question in questions:
+            form = self.session.get_response_form(section.ident, question.ident)
+            self.session.submit_response(section.ident, question.ident, form)
+
+        self.session._provider_sessions = {}  # need to get rid of the cached taken
+        test_sections = self.session.get_incomplete_assessment_sections(self.taken.ident)
+        self.assertTrue(isinstance(test_sections, AssessmentSectionList))
+        self.assertEqual(test_sections.available(), 0)
+
     def test_has_assessment_section_begun(self):
         """Tests has_assessment_section_begun"""
-        pass
+        future_start = DateTime.utcnow() + datetime.timedelta(days=1)
+        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident, [])
+        form.set_start_time(DateTime(**{
+            'year': future_start.year,
+            'month': future_start.month,
+            'day': future_start.day,
+            'hour': future_start.hour,
+            'minute': future_start.minute,
+            'second': future_start.second
+        }))
+        future_offered = self.catalog.create_assessment_offered(form)
+        form = self.catalog.get_assessment_taken_form_for_create(future_offered.ident, [])
+        future_taken = self.catalog.create_assessment_taken(form)
 
-    @unittest.skip('unimplemented test')
+        with self.assertRaises(errors.IllegalState):
+            # cannot even get the sectionId to call the method
+            self.catalog.get_first_assessment_section(future_taken.ident)
+
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        self.assertTrue(self.session.has_assessment_section_begun(section.ident))
+
     def test_is_assessment_section_over(self):
         """Tests is_assessment_section_over"""
-        pass
+        # There are also other conditions that flag "over", but are not
+        # tested here. Like if the offered goes past the deadline...so we
+        # would have to do a time.sleep(). TODO: add those tests in.
 
-    @unittest.skip('unimplemented test')
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+
+        self.assertFalse(self.session.is_assessment_section_over(section.ident))
+        self.session.finish_assessment_section(section.ident)
+        self.assertTrue(self.session.is_assessment_section_over(section.ident))
+
     def test_requires_synchronous_responses(self):
         """Tests requires_synchronous_responses"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        self.assertFalse(self.session.requires_synchronous_responses(section.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_first_question(self):
         """Tests get_first_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_question = self.session.get_first_question(section.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(first_question.ident),
+                         str(test_question.ident))
+
     def test_has_next_question(self):
         """Tests has_next_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertTrue(self.session.has_next_question(section.ident,
+                                                       first_question.ident))
+        self.assertFalse(self.session.has_next_question(section.ident,
+                                                        fourth_question.ident))
+
     def test_get_next_question(self):
         """Tests get_next_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_question = self.session.get_next_question(section.ident,
+                                                       first_question.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(second_question.ident),
+                         str(test_question.ident))
+
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_next_question(section.ident, fourth_question.ident)
+
     def test_has_previous_question(self):
         """Tests has_previous_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertTrue(self.session.has_previous_question(section.ident,
+                                                           fourth_question.ident))
+        self.assertFalse(self.session.has_previous_question(section.ident,
+                                                            first_question.ident))
+
     def test_get_previous_question(self):
         """Tests get_previous_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_question = self.session.get_previous_question(section.ident,
+                                                           fourth_question.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(third_question.ident),
+                         str(test_question.ident))
+
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_previous_question(section.ident, first_question.ident)
+
     def test_get_question(self):
         """Tests get_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_question = self.session.get_question(section.ident, first_question.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(test_question.ident),
+                         str(first_question.ident))
+
     def test_get_questions(self):
         """Tests get_questions"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_questions = self.session.get_questions(section.ident)
+        self.assertTrue(isinstance(test_questions, QuestionList))
+        self.assertEqual(test_questions.available(), 4)
+        first_test_question = test_questions.next()
+        self.assertTrue(isinstance(first_test_question, Question)),
+        self.assertEqual(str(first_test_question.ident),
+                         str(first_question.ident))
+
     def test_get_response_form(self):
         """Tests get_response_form"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.assertTrue(isinstance(form, AnswerForm))
+
     def test_submit_response(self):
         """Tests submit_response"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertIn('missingResponse',
+                      section._my_map['questions'][0]['responses'][0])
+        self.assertEqual(0, section._my_map['questions'][0]['responses'][0]['missingResponse'])
+
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.session.submit_response(section.ident, first_question.ident, form)
+        section = self.catalog.get_assessment_section(section.ident)
+
+        self.assertNotIn('missingResponse',
+                         section._my_map['questions'][0]['responses'][0])
+
     def test_skip_item(self):
         """Tests skip_item"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertIn('missingResponse',
+                      section._my_map['questions'][0]['responses'][0])
+        self.assertEqual(0, section._my_map['questions'][0]['responses'][0]['missingResponse'])
+
+        self.session.skip_item(section.ident, first_question.ident)
+        section = self.catalog.get_assessment_section(section.ident)
+
+        self.assertIn('missingResponse',
+                      section._my_map['questions'][0]['responses'][0])
+        self.assertEqual(1, section._my_map['questions'][0]['responses'][0]['missingResponse'])
+
     def test_is_question_answered(self):
         """Tests is_question_answered"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertFalse(self.session.is_question_answered(section.ident,
+                                                           first_question.ident))
+
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.session.submit_response(section.ident, first_question.ident, form)
+
+        self.assertTrue(self.session.is_question_answered(section.ident,
+                                                          first_question.ident))
+
     def test_get_unanswered_questions(self):
         """Tests get_unanswered_questions"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        question_ids = [q.ident for q in questions]
 
-    @unittest.skip('unimplemented test')
+        test_questions = self.session.get_unanswered_questions(section.ident)
+        self.assertTrue(isinstance(test_questions, QuestionList))
+        self.assertEqual(test_questions.available(), 4)
+        test_question_ids = [q.ident for q in test_questions]
+        self.assertEqual(question_ids, test_question_ids)
+
+        form = self.session.get_response_form(section.ident, question_ids[1])
+        self.session.submit_response(section.ident, question_ids[1], form)
+
+        test_questions = self.session.get_unanswered_questions(section.ident)
+        self.assertTrue(isinstance(test_questions, QuestionList))
+        self.assertEqual(test_questions.available(), 3)
+        test_question_ids = [q.ident for q in test_questions]
+        self.assertNotIn(question_ids[1], test_question_ids)
+
     def test_has_unanswered_questions(self):
         """Tests has_unanswered_questions"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        total_questions = questions.available()
 
-    @unittest.skip('unimplemented test')
+        self.assertTrue(self.session.has_unanswered_questions(section.ident))
+
+        for index, question in enumerate(questions):
+            form = self.session.get_response_form(section.ident, question.ident)
+            self.session.submit_response(section.ident, question.ident, form)
+            if index < (total_questions - 1):
+                self.assertTrue(self.session.has_unanswered_questions(section.ident))
+            else:
+                self.assertFalse(self.session.has_unanswered_questions(section.ident))
+
     def test_get_first_unanswered_question(self):
         """Tests get_first_unanswered_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        unanswered_question = self.session.get_first_unanswered_question(section.ident)
+        self.assertTrue(isinstance(unanswered_question, Question))
+        self.assertEqual(str(unanswered_question.ident),
+                         str(first_question.ident))
+
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.session.submit_response(section.ident, first_question.ident, form)
+
+        unanswered_question = self.session.get_first_unanswered_question(section.ident)
+        self.assertTrue(isinstance(unanswered_question, Question))
+        self.assertEqual(str(unanswered_question.ident),
+                         str(second_question.ident))
+
     def test_has_next_unanswered_question(self):
         """Tests has_next_unanswered_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertTrue(self.session.has_next_unanswered_question(section.ident,
+                                                                  first_question.ident))
+
+        form = self.session.get_response_form(section.ident, second_question.ident)
+        self.session.submit_response(section.ident, second_question.ident, form)
+
+        self.assertTrue(self.session.has_next_unanswered_question(section.ident,
+                                                                  first_question.ident))
+        self.assertFalse(self.session.has_next_unanswered_question(section.ident,
+                                                                   fourth_question.ident))
+
     def test_get_next_unanswered_question(self):
         """Tests get_next_unanswered_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_question = self.session.get_next_unanswered_question(section.ident,
+                                                                  first_question.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(second_question.ident),
+                         str(test_question.ident))
+
+        form = self.session.get_response_form(section.ident, second_question.ident)
+        self.session.submit_response(section.ident, second_question.ident, form)
+
+        test_question = self.session.get_next_unanswered_question(section.ident,
+                                                                  first_question.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(third_question.ident),
+                         str(test_question.ident))
+
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_next_unanswered_question(section.ident,
+                                                      fourth_question.ident)
+
     def test_has_previous_unanswered_question(self):
         """Tests has_previous_unanswered_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertTrue(self.session.has_previous_unanswered_question(section.ident,
+                                                                      fourth_question.ident))
+
+        form = self.session.get_response_form(section.ident, third_question.ident)
+        self.session.submit_response(section.ident, third_question.ident, form)
+
+        self.assertTrue(self.session.has_previous_unanswered_question(section.ident,
+                                                                      fourth_question.ident))
+        self.assertFalse(self.session.has_previous_unanswered_question(section.ident,
+                                                                       first_question.ident))
+
     def test_get_previous_unanswered_question(self):
         """Tests get_previous_unanswered_question"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
+        third_question = questions.next()
+        fourth_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_question = self.session.get_previous_unanswered_question(section.ident,
+                                                                      fourth_question.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(third_question.ident),
+                         str(test_question.ident))
+
+        form = self.session.get_response_form(section.ident, third_question.ident)
+        self.session.submit_response(section.ident, third_question.ident, form)
+
+        test_question = self.session.get_previous_unanswered_question(section.ident,
+                                                                      fourth_question.ident)
+        self.assertTrue(isinstance(test_question, Question))
+        self.assertEqual(str(second_question.ident),
+                         str(test_question.ident))
+
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_previous_unanswered_question(section.ident,
+                                                          first_question.ident)
+
     def test_get_response(self):
         """Tests get_response"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        test_response = self.session.get_response(section.ident, first_question.ident)
+        self.assertTrue(isinstance(test_response, Response))
+
+        with self.assertRaises(errors.IllegalState):
+            test_response.object_map
+
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.session.submit_response(section.ident, first_question.ident, form)
+
+        test_response = self.session.get_response(section.ident, first_question.ident)
+        self.assertTrue(isinstance(test_response, Response))
+
+        test_response.object_map
+
     def test_get_responses(self):
         """Tests get_responses"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
 
-    @unittest.skip('unimplemented test')
+        test_responses = self.session.get_responses(section.ident)
+        self.assertTrue(isinstance(test_responses, ResponseList))
+        self.assertEqual(test_responses.available(), 4)
+        first_response = test_responses.next()
+        self.assertTrue(isinstance(first_response, Response))
+
+        with self.assertRaises(errors.IllegalState):
+            first_response.object_map
+
     def test_clear_response(self):
         """Tests clear_response"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertIn('missingResponse',
+                      section._my_map['questions'][0]['responses'][0])
+        self.assertEqual(0, section._my_map['questions'][0]['responses'][0]['missingResponse'])
+
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.session.submit_response(section.ident, first_question.ident, form)
+        section = self.catalog.get_assessment_section(section.ident)
+
+        self.assertNotIn('missingResponse',
+                         section._my_map['questions'][0]['responses'][0])
+
+        self.session.clear_response(section.ident, first_question.ident)
+        section = self.catalog.get_assessment_section(section.ident)
+
+        self.assertIn('missingResponse',
+                      section._my_map['questions'][0]['responses'][0])
+        self.assertEqual(1, section._my_map['questions'][0]['responses'][0]['missingResponse'])
+
     def test_finish_assessment_section(self):
         """Tests finish_assessment_section"""
-        pass
+        future_start = DateTime.utcnow() + datetime.timedelta(days=1)
+        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident, [])
+        form.set_start_time(DateTime(**{
+            'year': future_start.year,
+            'month': future_start.month,
+            'day': future_start.day,
+            'hour': future_start.hour,
+            'minute': future_start.minute,
+            'second': future_start.second
+        }))
+        future_offered = self.catalog.create_assessment_offered(form)
+        form = self.catalog.get_assessment_taken_form_for_create(future_offered.ident, [])
+        future_taken = self.catalog.create_assessment_taken(form)
+        with self.assertRaises(errors.IllegalState):
+            self.catalog.get_first_assessment_section(future_taken.ident)
 
-    @unittest.skip('unimplemented test')
+        first_section = self.catalog.get_first_assessment_section(self.taken.ident)
+        self.assertNotIn('completionTime', first_section._my_map)
+        self.session.finish_assessment_section(first_section.ident)
+
+        with self.assertRaises(errors.IllegalState):
+            # it is over, so can't GET the section now
+            self.catalog.get_assessment_section(first_section.ident)
+
     def test_is_answer_available(self):
         """Tests is_answer_available"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        self.assertFalse(self.session.is_answer_available(section.ident,
+                                                          second_question.ident))
+
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.session.submit_response(section.ident, first_question.ident, form)
+
+        answers = self.session.get_answers(section.ident, first_question.ident)
+        self.assertTrue(isinstance(answers, AnswerList))
+        self.assertTrue(self.session.is_answer_available(section.ident,
+                                                         first_question.ident))
+
     def test_get_answers(self):
         """Tests get_answers"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+        second_question = questions.next()
 
-    @unittest.skip('unimplemented test')
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_answers(section.ident, second_question.ident)
+
+        form = self.session.get_response_form(section.ident, first_question.ident)
+        self.session.submit_response(section.ident, first_question.ident, form)
+
+        answers = self.session.get_answers(section.ident, first_question.ident)
+        self.assertTrue(isinstance(answers, AnswerList))
+        self.assertEqual(answers.available(), 1)
+        self.assertTrue(isinstance(answers.next(), Answer))
+
     def test_finish_assessment(self):
         """Tests finish_assessment"""
-        pass
+        future_start = DateTime.utcnow() + datetime.timedelta(days=1)
+        form = self.catalog.get_assessment_offered_form_for_create(self.assessment.ident, [])
+        form.set_start_time(DateTime(**{
+            'year': future_start.year,
+            'month': future_start.month,
+            'day': future_start.day,
+            'hour': future_start.hour,
+            'minute': future_start.minute,
+            'second': future_start.second
+        }))
+        future_offered = self.catalog.create_assessment_offered(form)
+        form = self.catalog.get_assessment_taken_form_for_create(future_offered.ident, [])
+        future_taken = self.catalog.create_assessment_taken(form)
+        with self.assertRaises(errors.IllegalState):
+            self.session.finish_assessment(future_taken.ident)
+
+        self.assertIsNone(self.taken._my_map['completionTime'])
+        self.session.finish_assessment(self.taken.ident)
+        taken = self.catalog.get_assessment_taken(self.taken.ident)
+        self.assertIsNotNone(taken._my_map['completionTime'])
 
 
 class TestAssessmentResultsSession(unittest.TestCase):
@@ -273,22 +720,45 @@ class TestAssessmentResultsSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.assessment_offered_list = list()
-        cls.assessment_offered_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for AssessmentOfferedLookupSession tests'
+        create_form.description = 'Test Bank for AssessmentResultsSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
-        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form = cls.catalog.get_assessment_form_for_create([SEQUENCE_ASSESSMENT])
         create_form.display_name = 'Test Assessment'
-        create_form.description = 'Test Assessment for AssessmentSession tests'
+        create_form.description = 'Test Assessment for AssessmentResultsSession tests'
         cls.assessment = cls.catalog.create_assessment(create_form)
+
+        for number in ['One', 'Two', 'Three', 'Four']:
+            ifc = cls.catalog.get_item_form_for_create([])
+            ifc.set_display_name('Test Assessment Item ' + number)
+            ifc.set_description('This is a Test Item Called Number ' + number)
+            test_item = cls.catalog.create_item(ifc)
+
+            form = cls.catalog.get_question_form_for_create(test_item.ident, [])
+            cls.catalog.create_question(form)
+
+            cls.catalog.add_item(cls.assessment.ident, test_item.ident)
+
+        form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+        cls.assessment_offered = cls.catalog.create_assessment_offered(form)
+
+    def setUp(self):
+        self.session = self.svc_mgr.get_assessment_results_session(proxy=self.catalog._proxy)
+        form = self.catalog.get_assessment_taken_form_for_create(self.assessment_offered.ident, [])
+        self.taken = self.catalog.create_assessment_taken(form)
 
     @classmethod
     def tearDownClass(cls):
         for obj in cls.catalog.get_assessments():
+            for offered in cls.catalog.get_assessments_offered_for_assessment(obj.ident):
+                for taken in cls.catalog.get_assessments_taken_for_assessment_offered(offered.ident):
+                    cls.catalog.delete_assessment_taken(taken.ident)
+                cls.catalog.delete_assessment_offered(offered.ident)
             cls.catalog.delete_assessment(obj.ident)
+        for item in cls.catalog.get_items():
+            cls.catalog.delete_item(item.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank_id(self):
@@ -301,30 +771,38 @@ class TestAssessmentResultsSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_access_assessment_results(self):
         """Tests can_access_assessment_results"""
-        pass
+        self.assertTrue(self.session.can_access_assessment_results())
 
-    @unittest.skip('unimplemented test')
     def test_get_items(self):
         """Tests get_items"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        section.get_questions()
+        self.assertEqual(self.session.get_items(self.taken.ident).available(), 4)
 
-    @unittest.skip('unimplemented test')
     def test_get_responses(self):
         """Tests get_responses"""
-        pass
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
 
-    @unittest.skip('unimplemented test')
+        test_responses = self.session.get_responses(self.taken.ident)
+        self.assertTrue(isinstance(test_responses, ResponseList))
+        self.assertEqual(test_responses.available(), 4)
+        first_response = test_responses.next()
+        self.assertTrue(isinstance(first_response, Response))
+
+        with self.assertRaises(errors.IllegalState):
+            first_response.object_map
+
     def test_are_results_available(self):
         """Tests are_results_available"""
-        pass
+        self.assertFalse(self.session.are_results_available(self.assessment.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entries(self):
         """Tests get_grade_entries"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.session.get_grade_entries(self.assessment.ident)
 
 
 class TestItemLookupSession(unittest.TestCase):
@@ -347,6 +825,9 @@ class TestItemLookupSession(unittest.TestCase):
             obj = cls.catalog.create_item(create_form)
             cls.item_list.append(obj)
             cls.item_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -431,25 +912,25 @@ class TestItemLookupSession(unittest.TestCase):
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_items_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_items_by_question(self):
         """Tests get_items_by_question"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_items_by_question(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_items_by_answer(self):
         """Tests get_items_by_answer"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_items_by_answer(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_items_by_learning_objective(self):
         """Tests get_items_by_learning_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_items_by_learning_objective(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_items_by_learning_objectives(self):
         """Tests get_items_by_learning_objectives"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_items_by_learning_objectives(True)
 
     def test_get_items(self):
         """Tests get_items"""
@@ -471,26 +952,32 @@ class TestItemQuerySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.item_list = list()
-        cls.item_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
         create_form.description = 'Test Bank for ItemQuerySession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
+
         for color in ['Orange', 'Blue', 'Green', 'orange']:
             create_form = cls.catalog.get_item_form_for_create([])
             create_form.display_name = 'Test Item ' + color
             create_form.description = (
                 'Test Item for ItemQuerySession tests, did I mention green')
             obj = cls.catalog.create_item(create_form)
-            cls.item_list.append(obj)
-            cls.item_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
-        for obj in cls.catalog.get_items():
-            cls.catalog.delete_item(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            for offered in cls.catalog.get_assessments_offered_for_assessment(obj.ident):
+                for taken in cls.catalog.get_assessments_taken_for_assessment_offered(offered.ident):
+                    cls.catalog.delete_assessment_taken(taken.ident)
+                cls.catalog.delete_assessment_offered(offered.ident)
+            cls.catalog.delete_assessment(obj.ident)
+        for item in cls.catalog.get_items():
+            cls.catalog.delete_item(item.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank_id(self):
@@ -503,10 +990,9 @@ class TestItemQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_items(self):
         """Tests can_search_items"""
-        pass
+        self.assertTrue(self.session.can_search_items())
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -535,25 +1021,59 @@ class TestItemQuerySession(unittest.TestCase):
 class TestItemSearchSession(unittest.TestCase):
     """Tests for ItemSearchSession"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for ItemSearchSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        for color in ['Orange', 'Blue', 'Green', 'orange']:
+            create_form = cls.catalog.get_item_form_for_create([])
+            create_form.display_name = 'Test Item ' + color
+            create_form.description = (
+                'Test Item for ItemSearchSession tests, did I mention green')
+            obj = cls.catalog.create_item(create_form)
+
+    def setUp(self):
+        self.session = self.catalog
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments():
+            for offered in cls.catalog.get_assessments_offered_for_assessment(obj.ident):
+                for taken in cls.catalog.get_assessments_taken_for_assessment_offered(offered.ident):
+                    cls.catalog.delete_assessment_taken(taken.ident)
+                cls.catalog.delete_assessment_offered(offered.ident)
+            cls.catalog.delete_assessment(obj.ident)
+        for item in cls.catalog.get_items():
+            cls.catalog.delete_item(item.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_item_search(self):
         """Tests get_item_search"""
-        pass
+        search = self.session.get_item_search()
+        self.assertTrue(isinstance(search, searches.ItemSearch))
 
-    @unittest.skip('unimplemented test')
     def test_get_item_search_order(self):
         """Tests get_item_search_order"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_item_search_order()
 
-    @unittest.skip('unimplemented test')
     def test_get_items_by_search(self):
         """Tests get_items_by_search"""
-        pass
+        query = self.session.get_item_query()
+        query.match_display_name('zxy', DEFAULT_STRING_MATCH_TYPE, True)
+        search = self.session.get_item_search()
+        results = self.session.get_items_by_search(query, search)
+        self.assertTrue(isinstance(results, searches.ItemSearchResults))
+        self.assertEqual(results.get_result_size(), 0)
 
-    @unittest.skip('unimplemented test')
     def test_get_item_query_from_inspector(self):
         """Tests get_item_query_from_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_item_query_from_inspector(True)
 
 
 class TestItemAdminSession(unittest.TestCase):
@@ -683,40 +1203,40 @@ class TestItemAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_question_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_question_form_for_create(self):
         """Tests get_question_form_for_create"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_question_form_for_create(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_create_question(self):
         """Tests create_question"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.create_question(True)
 
     def test_can_update_questions(self):
         """Tests can_update_questions"""
         # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
         self.assertTrue(isinstance(self.catalog.can_update_questions(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_question_form_for_update(self):
         """Tests get_question_form_for_update"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_question_form_for_update(True)
 
-    @unittest.skip('unimplemented test')
     def test_update_question(self):
         """Tests update_question"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.update_question(True)
 
     def test_can_delete_questions(self):
         """Tests can_delete_questions"""
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
         self.assertTrue(isinstance(self.catalog.can_delete_questions(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_question(self):
         """Tests delete_question"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_question(True)
 
     def test_can_create_answers(self):
         """Tests can_create_answers"""
@@ -728,40 +1248,40 @@ class TestItemAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_answers_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_answer_form_for_create(self):
         """Tests get_answer_form_for_create"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_answer_form_for_create(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_create_answer(self):
         """Tests create_answer"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.create_answer(True)
 
     def test_can_update_answers(self):
         """Tests can_update_answers"""
         # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
         self.assertTrue(isinstance(self.catalog.can_update_answers(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_answer_form_for_update(self):
         """Tests get_answer_form_for_update"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_answer_form_for_update(True)
 
-    @unittest.skip('unimplemented test')
     def test_update_answer(self):
         """Tests update_answer"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.update_answer(True)
 
     def test_can_delete_answers(self):
         """Tests can_delete_answers"""
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
         self.assertTrue(isinstance(self.catalog.can_delete_answers(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_answer(self):
         """Tests delete_answer"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_answer(True)
 
 
 class TestItemNotificationSession(unittest.TestCase):
@@ -785,6 +1305,9 @@ class TestItemNotificationSession(unittest.TestCase):
             cls.item_list.append(obj)
             cls.item_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -802,10 +1325,10 @@ class TestItemNotificationSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_register_for_item_notifications(self):
         """Tests can_register_for_item_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_register_for_item_notifications()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -815,60 +1338,60 @@ class TestItemNotificationSession(unittest.TestCase):
         """Tests use_isolated_bank_view"""
         self.catalog.use_isolated_bank_view()
 
-    @unittest.skip('unimplemented test')
     def test_reliable_item_notifications(self):
         """Tests reliable_item_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reliable_item_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_unreliable_item_notifications(self):
         """Tests unreliable_item_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unreliable_item_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_acknowledge_item_notification(self):
         """Tests acknowledge_item_notification"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.acknowledge_item_notification(True)
 
-    @unittest.skip('unimplemented test')
     def test_register_for_new_items(self):
         """Tests register_for_new_items"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_new_items()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_items(self):
         """Tests register_for_changed_items"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_changed_items()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_item(self):
         """Tests register_for_changed_item"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_changed_item(True)
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_items(self):
         """Tests register_for_deleted_items"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_deleted_items()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_item(self):
         """Tests register_for_deleted_item"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_deleted_item(True)
 
-    @unittest.skip('unimplemented test')
     def test_reliable_item_notifications(self):
         """Tests reliable_item_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reliable_item_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_unreliable_item_notifications(self):
         """Tests unreliable_item_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unreliable_item_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_acknowledge_item_notification(self):
         """Tests acknowledge_item_notification"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.acknowledge_item_notification(True)
 
 
 class TestItemBankSession(unittest.TestCase):
@@ -910,10 +1433,10 @@ class TestItemBankSession(unittest.TestCase):
         cls.svc_mgr.delete_bank(cls.assigned_catalog.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_item_bank_mappings(self):
         """Tests can_lookup_item_bank_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_item_bank_mappings()
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -928,20 +1451,20 @@ class TestItemBankSession(unittest.TestCase):
         objects = self.svc_mgr.get_item_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_items_by_bank(self):
         """Tests get_items_by_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_items_by_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_item_ids_by_banks(self):
         """Tests get_item_ids_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_item_ids_by_banks(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_items_by_banks(self):
         """Tests get_items_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_items_by_banks(True)
 
     def test_get_bank_ids_by_item(self):
         """Tests get_bank_ids_by_item"""
@@ -957,40 +1480,40 @@ class TestItemBankSession(unittest.TestCase):
 class TestItemBankAssignmentSession(unittest.TestCase):
     """Tests for ItemBankAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_items(self):
         """Tests can_assign_items"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_items()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_items_to_bank(self):
         """Tests can_assign_items_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_items_to_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids_for_item(self):
         """Tests get_assignable_bank_ids_for_item"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids_for_item(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_item_to_bank(self):
         """Tests assign_item_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_item_to_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_item_from_bank(self):
         """Tests unassign_item_from_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_item_from_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_reassign_item_to_billing(self):
         """Tests reassign_item_to_billing"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reassign_item_to_billing(True, True, True)
 
 
 class TestAssessmentLookupSession(unittest.TestCase):
@@ -1013,6 +1536,9 @@ class TestAssessmentLookupSession(unittest.TestCase):
             obj = cls.catalog.create_assessment(create_form)
             cls.assessment_list.append(obj)
             cls.assessment_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -1149,10 +1675,10 @@ class TestAssessmentQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_assessments(self):
         """Tests can_search_assessments"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_assessments()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -1270,10 +1796,10 @@ class TestAssessmentAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
         self.assertTrue(isinstance(self.catalog.can_delete_assessments(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_assessment(self):
         """Tests delete_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_assessment(True)
 
     def test_can_manage_assessment_aliases(self):
         """Tests can_manage_assessment_aliases"""
@@ -1328,10 +1854,10 @@ class TestAssessmentBankSession(unittest.TestCase):
         cls.svc_mgr.delete_bank(cls.assigned_catalog.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_bank_mappings(self):
         """Tests can_lookup_assessment_bank_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_assessment_bank_mappings()
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -1346,20 +1872,20 @@ class TestAssessmentBankSession(unittest.TestCase):
         objects = self.svc_mgr.get_assessment_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_by_bank(self):
         """Tests get_assessments_by_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_by_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_ids_by_banks(self):
         """Tests get_assessment_ids_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessment_ids_by_banks(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_by_banks(self):
         """Tests get_assessments_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_by_banks(True)
 
     def test_get_bank_ids_by_assessment(self):
         """Tests get_bank_ids_by_assessment"""
@@ -1375,40 +1901,40 @@ class TestAssessmentBankSession(unittest.TestCase):
 class TestAssessmentBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentBankAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assessments(self):
         """Tests can_assign_assessments"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assessments()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assessments_to_bank(self):
         """Tests can_assign_assessments_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assessments_to_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids_for_assessment(self):
         """Tests get_assignable_bank_ids_for_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids_for_assessment(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_assessment_to_bank(self):
         """Tests assign_assessment_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_assessment_to_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_assessment_from_bank(self):
         """Tests unassign_assessment_from_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_assessment_from_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_reassign_assessment_to_billing(self):
         """Tests reassign_assessment_to_billing"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reassign_assessment_to_billing(True, True, True)
 
 
 class TestAssessmentBasicAuthoringSession(unittest.TestCase):
@@ -1461,7 +1987,6 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_author_assessments(self):
         """Tests can_author_assessments"""
         pass
@@ -1631,15 +2156,15 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_offered_by_date(self):
         """Tests get_assessments_offered_by_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_offered_by_date(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_offered_for_assessment(self):
         """Tests get_assessments_offered_for_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_offered_for_assessment(True)
 
     def test_get_assessments_offered(self):
         """Tests get_assessments_offered"""
@@ -1700,10 +2225,10 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_assessments_offered(self):
         """Tests can_search_assessments_offered"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_assessments_offered()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -1906,10 +2431,10 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_offered_bank_mappings(self):
         """Tests can_lookup_assessment_offered_bank_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_assessment_offered_bank_mappings()
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -1924,20 +2449,20 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
         objects = self.svc_mgr.get_assessment_offered_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_offered_by_bank(self):
         """Tests get_assessments_offered_by_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_offered_by_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_offered_ids_by_banks(self):
         """Tests get_assessment_offered_ids_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessment_offered_ids_by_banks(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_offered_by_banks(self):
         """Tests get_assessments_offered_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_offered_by_banks(True)
 
     def test_get_bank_ids_by_assessment_offered(self):
         """Tests get_bank_ids_by_assessment_offered"""
@@ -1953,40 +2478,40 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
 class TestAssessmentOfferedBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentOfferedBankAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assessments_offered(self):
         """Tests can_assign_assessments_offered"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assessments_offered()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assessments_offered_to_bank(self):
         """Tests can_assign_assessments_offered_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assessments_offered_to_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids_for_assessment_offered(self):
         """Tests get_assignable_bank_ids_for_assessment_offered"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids_for_assessment_offered(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_assessment_offered_to_bank(self):
         """Tests assign_assessment_offered_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_assessment_offered_to_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_assessment_offered_from_bank(self):
         """Tests unassign_assessment_offered_from_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_assessment_offered_from_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_reassign_assessment_offered_to_billing(self):
         """Tests reassign_assessment_offered_to_billing"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reassign_assessment_offered_to_billing(True, True, True)
 
 
 class TestAssessmentTakenLookupSession(unittest.TestCase):
@@ -2104,60 +2629,58 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_date(self):
         """Tests get_assessments_taken_by_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_date(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_for_taker(self):
         """Tests get_assessments_taken_for_taker"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_for_taker(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_date_for_taker(self):
         """Tests get_assessments_taken_by_date_for_taker"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_date_for_taker(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_for_assessment(self):
         """Tests get_assessments_taken_for_assessment"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_date_for_assessment(self):
         """Tests get_assessments_taken_by_date_for_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_date_for_assessment(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_for_taker_and_assessment(self):
         """Tests get_assessments_taken_for_taker_and_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_for_taker_and_assessment(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_date_for_taker_and_assessment(self):
         """Tests get_assessments_taken_by_date_for_taker_and_assessment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_date_for_taker_and_assessment(True, True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_for_assessment_offered(self):
         """Tests get_assessments_taken_for_assessment_offered"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_for_assessment_offered(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_date_for_assessment_offered(self):
         """Tests get_assessments_taken_by_date_for_assessment_offered"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_date_for_assessment_offered(True, True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_for_taker_and_assessment_offered(self):
         """Tests get_assessments_taken_for_taker_and_assessment_offered"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_date_for_taker_and_assessment_offered(self):
         """Tests get_assessments_taken_by_date_for_taker_and_assessment_offered"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_date_for_taker_and_assessment_offered(True, True, True, True)
 
     def test_get_assessments_taken(self):
         """Tests get_assessments_taken"""
@@ -2224,10 +2747,10 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_assessments_taken(self):
         """Tests can_search_assessments_taken"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_assessments_taken()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -2432,10 +2955,10 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
                 catalog.delete_assessment(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_assessment_taken_bank_mappings(self):
         """Tests can_lookup_assessment_taken_bank_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_assessment_taken_bank_mappings()
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -2450,20 +2973,20 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
         objects = self.svc_mgr.get_assessment_taken_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_bank(self):
         """Tests get_assessments_taken_by_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_taken_ids_by_banks(self):
         """Tests get_assessment_taken_ids_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessment_taken_ids_by_banks(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments_taken_by_banks(self):
         """Tests get_assessments_taken_by_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assessments_taken_by_banks(True)
 
     def test_get_bank_ids_by_assessment_taken(self):
         """Tests get_bank_ids_by_assessment_taken"""
@@ -2479,40 +3002,40 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
 class TestAssessmentTakenBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentTakenBankAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assessments_taken(self):
         """Tests can_assign_assessments_taken"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assessments_taken()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assessments_taken_to_bank(self):
         """Tests can_assign_assessments_taken_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assessments_taken_to_bank(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_bank_ids_for_assessment_taken(self):
         """Tests get_assignable_bank_ids_for_assessment_taken"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_bank_ids_for_assessment_taken(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_assessment_taken_to_bank(self):
         """Tests assign_assessment_taken_to_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_assessment_taken_to_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_assessment_taken_from_bank(self):
         """Tests unassign_assessment_taken_from_bank"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_assessment_taken_from_bank(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_reassign_assessment_taken_to_billing(self):
         """Tests reassign_assessment_taken_to_billing"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reassign_assessment_taken_to_billing(True, True, True)
 
 
 class TestBankLookupSession(unittest.TestCase):
@@ -2536,10 +3059,10 @@ class TestBankLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_banks():
             cls.svc_mgr.delete_bank(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_banks(self):
         """Tests can_lookup_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_banks()
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -2558,25 +3081,25 @@ class TestBankLookupSession(unittest.TestCase):
         """Tests get_banks_by_ids"""
         catalogs = self.svc_mgr.get_banks_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_banks_by_genus_type(self):
         """Tests get_banks_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_banks_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_banks_by_parent_genus_type(self):
         """Tests get_banks_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_banks_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_banks_by_record_type(self):
         """Tests get_banks_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_banks_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_banks_by_provider(self):
         """Tests get_banks_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_banks_by_provider(True)
 
     def test_get_banks(self):
         """Tests get_banks"""
@@ -2586,20 +3109,20 @@ class TestBankLookupSession(unittest.TestCase):
 class TestBankQuerySession(unittest.TestCase):
     """Tests for BankQuerySession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_search_banks(self):
         """Tests can_search_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_banks()
 
-    @unittest.skip('unimplemented test')
     def test_get_bank_query(self):
         """Tests get_bank_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_bank_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_banks_by_query(self):
         """Tests get_banks_by_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_banks_by_query(True)
 
 
 class TestBankAdminSession(unittest.TestCase):
@@ -2652,10 +3175,10 @@ class TestBankAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_bank(catalog_form)
         self.assertTrue(isinstance(new_catalog, Bank))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_banks(self):
         """Tests can_update_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_banks()
 
     def test_get_bank_form_for_update(self):
         """Tests get_bank_form_for_update"""
@@ -2672,10 +3195,10 @@ class TestBankAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_bank(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_banks(self):
         """Tests can_delete_banks"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_banks()
 
     def test_delete_bank(self):
         """Tests delete_bank"""
@@ -2736,10 +3259,10 @@ class TestBankHierarchySession(unittest.TestCase):
         hierarchy = self.svc_mgr.get_bank_hierarchy()
         self.assertTrue(isinstance(hierarchy, Hierarchy))
 
-    @unittest.skip('unimplemented test')
     def test_can_access_bank_hierarchy(self):
         """Tests can_access_bank_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_bank_hierarchy()
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""

@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
@@ -53,80 +55,80 @@ class TestAuthorization(unittest.TestCase):
                 catalog.delete_authorization(obj.ident)
             cls.svc_mgr.delete_vault(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_is_implicit(self):
         """Tests is_implicit"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_implicit()
 
-    @unittest.skip('unimplemented test')
     def test_has_resource(self):
         """Tests has_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.has_resource()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_id(self):
         """Tests get_resource_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource(self):
         """Tests get_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource()
 
-    @unittest.skip('unimplemented test')
     def test_has_trust(self):
         """Tests has_trust"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.has_trust()
 
-    @unittest.skip('unimplemented test')
     def test_get_trust_id(self):
         """Tests get_trust_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_trust_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_trust(self):
         """Tests get_trust"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_trust()
 
-    @unittest.skip('unimplemented test')
     def test_has_agent(self):
         """Tests has_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.has_agent()
 
-    @unittest.skip('unimplemented test')
     def test_get_agent_id(self):
         """Tests get_agent_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_agent_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_agent(self):
         """Tests get_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_agent()
 
-    @unittest.skip('unimplemented test')
     def test_get_function_id(self):
         """Tests get_function_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_function_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_function(self):
         """Tests get_function"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_function()
 
-    @unittest.skip('unimplemented test')
     def test_get_qualifier_id(self):
         """Tests get_qualifier_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_qualifier_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_qualifier(self):
         """Tests get_qualifier"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_qualifier()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_record(self):
         """Tests get_authorization_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_authorization_record(True)
 
 
 class TestAuthorizationForm(unittest.TestCase):
@@ -216,19 +218,19 @@ class TestAuthorizationList(unittest.TestCase):
 class TestVault(unittest.TestCase):
     """Tests for Vault"""
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_record(self):
         """Tests get_vault_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_vault_record(True)
 
 
 class TestVaultForm(unittest.TestCase):
     """Tests for VaultForm"""
 
-    @unittest.skip('unimplemented test')
     def test_get_vault_form_record(self):
         """Tests get_vault_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_vault_form_record(True)
 
 
 class TestVaultList(unittest.TestCase):
@@ -283,31 +285,31 @@ class TestVaultList(unittest.TestCase):
 class TestVaultNode(unittest.TestCase):
     """Tests for VaultNode"""
 
-    @unittest.skip('unimplemented test')
     def test_get_vault(self):
         """Tests get_vault"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_vault()
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_vault_nodes(self):
         """Tests get_parent_vault_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_parent_vault_nodes()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_vault_nodes(self):
         """Tests get_child_vault_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_vault_nodes()
 
 
 class TestVaultNodeList(unittest.TestCase):
     """Tests for VaultNodeList"""
 
-    @unittest.skip('unimplemented test')
     def test_get_next_vault_node(self):
         """Tests get_next_vault_node"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_vault_node()
 
-    @unittest.skip('unimplemented test')
     def test_get_next_vault_nodes(self):
         """Tests get_next_vault_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_vault_nodes(True)

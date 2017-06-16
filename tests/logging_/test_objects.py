@@ -4,6 +4,8 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime, Duration
@@ -42,40 +44,39 @@ class TestLogEntry(unittest.TestCase):
             cls.catalog.delete_log_entry(obj.ident)
         cls.svc_mgr.delete_log(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_priority(self):
         """Tests get_priority"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_timestamp(self):
         """Tests get_timestamp"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_timestamp()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_id(self):
         """Tests get_resource_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource(self):
         """Tests get_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource()
 
-    @unittest.skip('unimplemented test')
     def test_get_agent_id(self):
         """Tests get_agent_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_agent_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_agent(self):
         """Tests get_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_agent()
 
-    @unittest.skip('unimplemented test')
     def test_get_log_entry_record(self):
         """Tests get_log_entry_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_log_entry_record(True)
 
 
 class TestLogEntryForm(unittest.TestCase):
@@ -102,22 +103,48 @@ class TestLogEntryForm(unittest.TestCase):
     def test_get_priority_metadata(self):
         """Tests get_priority_metadata"""
         # From test_templates/logging.py::LogEntryForm::get_priority_metadata_template
-        self.assertTrue(isinstance(self.form.get_priority_metadata(), Metadata))
+        mdata = self.form.get_priority_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'TYPE')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_priority(self):
         """Tests set_priority"""
-        pass
+        # From test_templates/logging.py::LogEntryForm::set_priority_template
+        self.form.set_priority(Type('type.Type%3Afake-type-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['priority'],
+                         'type.Type%3Afake-type-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_priority(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_priority(self):
         """Tests clear_priority"""
-        pass
+        # From test_templates/logging.py::LogEntryForm::clear_priority_template
+        self.form.set_priority(Type('type.Type%3Afake-type-id%40ODL.MIT.EDU'))
+        self.assertEqual(self.form._my_map['priority'],
+                         'type.Type%3Afake-type-id%40ODL.MIT.EDU')
+        self.form.clear_priority()
+        self.assertEqual(self.form._my_map['priorityId'], self.form.get_priority_metadata().get_default_type_values()[0])
 
     def test_get_timestamp_metadata(self):
         """Tests get_timestamp_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_timestamp_metadata(), Metadata))
+        mdata = self.form.get_timestamp_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DATETIME')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_timestamp(self):
         """Tests set_timestamp"""
@@ -127,11 +154,22 @@ class TestLogEntryForm(unittest.TestCase):
         self.form.set_timestamp(test_time)
         self.assertEqual(self.form._my_map['timestamp'],
                          test_time)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_timestamp(True)
 
     def test_get_agent_metadata(self):
         """Tests get_agent_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_agent_metadata(), Metadata))
+        mdata = self.form.get_agent_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_agent(self):
         """Tests set_agent"""
@@ -140,6 +178,8 @@ class TestLogEntryForm(unittest.TestCase):
         self.form.set_agent(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['agentId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_agent(True)
 
     def test_get_log_entry_form_record(self):
         """Tests get_log_entry_form_record"""
@@ -200,19 +240,19 @@ class TestLogEntryList(unittest.TestCase):
 class TestLog(unittest.TestCase):
     """Tests for Log"""
 
-    @unittest.skip('unimplemented test')
     def test_get_log_record(self):
         """Tests get_log_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_log_record(True)
 
 
 class TestLogForm(unittest.TestCase):
     """Tests for LogForm"""
 
-    @unittest.skip('unimplemented test')
     def test_get_log_form_record(self):
         """Tests get_log_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_log_form_record(True)
 
 
 class TestLogList(unittest.TestCase):
@@ -267,31 +307,31 @@ class TestLogList(unittest.TestCase):
 class TestLogNode(unittest.TestCase):
     """Tests for LogNode"""
 
-    @unittest.skip('unimplemented test')
     def test_get_log(self):
         """Tests get_log"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_log()
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_log_nodes(self):
         """Tests get_parent_log_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_parent_log_nodes()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_log_nodes(self):
         """Tests get_child_log_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_log_nodes()
 
 
 class TestLogNodeList(unittest.TestCase):
     """Tests for LogNodeList"""
 
-    @unittest.skip('unimplemented test')
     def test_get_next_log_node(self):
         """Tests get_next_log_node"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_log_node()
 
-    @unittest.skip('unimplemented test')
     def test_get_next_log_nodes(self):
         """Tests get_next_log_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_log_nodes(True)

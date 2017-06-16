@@ -47,6 +47,9 @@ class TestAssetLookupSession(unittest.TestCase):
             cls.asset_list.append(obj)
             cls.asset_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -130,10 +133,10 @@ class TestAssetLookupSession(unittest.TestCase):
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_provider(self):
         """Tests get_assets_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assets_by_provider(True)
 
     def test_get_assets(self):
         """Tests get_assets"""
@@ -187,10 +190,10 @@ class TestAssetQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_assets(self):
         """Tests can_search_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_assets()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
@@ -219,25 +222,25 @@ class TestAssetQuerySession(unittest.TestCase):
 class TestAssetSearchSession(unittest.TestCase):
     """Tests for AssetSearchSession"""
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_search(self):
         """Tests get_asset_search"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_search()
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_search_order(self):
         """Tests get_asset_search_order"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_search_order()
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_search(self):
         """Tests get_assets_by_search"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assets_by_search(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_query_from_inspector(self):
         """Tests get_asset_query_from_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_query_from_inspector(True)
 
 
 class TestAssetAdminSession(unittest.TestCase):
@@ -367,40 +370,40 @@ class TestAssetAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_asset_content_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_form_for_create(self):
         """Tests get_asset_content_form_for_create"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_content_form_for_create(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_create_asset_content(self):
         """Tests create_asset_content"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.create_asset_content(True)
 
     def test_can_update_asset_contents(self):
         """Tests can_update_asset_contents"""
         # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
         self.assertTrue(isinstance(self.catalog.can_update_asset_contents(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_form_for_update(self):
         """Tests get_asset_content_form_for_update"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_content_form_for_update(True)
 
-    @unittest.skip('unimplemented test')
     def test_update_asset_content(self):
         """Tests update_asset_content"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.update_asset_content(True)
 
     def test_can_delete_asset_contents(self):
         """Tests can_delete_asset_contents"""
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
         self.assertTrue(isinstance(self.catalog.can_delete_asset_contents(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_asset_content(self):
         """Tests delete_asset_content"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_asset_content(True)
 
 
 class TestAssetNotificationSession(unittest.TestCase):
@@ -424,6 +427,9 @@ class TestAssetNotificationSession(unittest.TestCase):
             cls.asset_list.append(obj)
             cls.asset_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -441,10 +447,10 @@ class TestAssetNotificationSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_register_for_asset_notifications(self):
         """Tests can_register_for_asset_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_register_for_asset_notifications()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
@@ -454,60 +460,60 @@ class TestAssetNotificationSession(unittest.TestCase):
         """Tests use_isolated_repository_view"""
         self.catalog.use_isolated_repository_view()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_new_assets(self):
         """Tests register_for_new_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_new_assets()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_new_assets_by_genus_type(self):
         """Tests register_for_new_assets_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_new_assets_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_assets(self):
         """Tests register_for_changed_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_changed_assets()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_assets_by_genus_type(self):
         """Tests register_for_changed_assets_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_changed_assets_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_asset(self):
         """Tests register_for_changed_asset"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_changed_asset(True)
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_assets(self):
         """Tests register_for_deleted_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_deleted_assets()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_assets_by_genus_type(self):
         """Tests register_for_deleted_assets_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_deleted_assets_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_asset(self):
         """Tests register_for_deleted_asset"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.register_for_deleted_asset(True)
 
-    @unittest.skip('unimplemented test')
     def test_reliable_asset_notifications(self):
         """Tests reliable_asset_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.reliable_asset_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_unreliable_asset_notifications(self):
         """Tests unreliable_asset_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unreliable_asset_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_acknowledge_asset_notification(self):
         """Tests acknowledge_asset_notification"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.acknowledge_asset_notification(True)
 
 
 class TestAssetRepositorySession(unittest.TestCase):
@@ -549,10 +555,10 @@ class TestAssetRepositorySession(unittest.TestCase):
         cls.svc_mgr.delete_repository(cls.assigned_catalog.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_asset_repository_mappings(self):
         """Tests can_lookup_asset_repository_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_asset_repository_mappings()
 
     def test_use_comparative_repository_view(self):
         """Tests use_comparative_repository_view"""
@@ -567,20 +573,20 @@ class TestAssetRepositorySession(unittest.TestCase):
         objects = self.svc_mgr.get_asset_ids_by_repository(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_repository(self):
         """Tests get_assets_by_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assets_by_repository(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_ids_by_repositories(self):
         """Tests get_asset_ids_by_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_ids_by_repositories(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_repositories(self):
         """Tests get_assets_by_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assets_by_repositories(True)
 
     def test_get_repository_ids_by_asset(self):
         """Tests get_repository_ids_by_asset"""
@@ -596,35 +602,35 @@ class TestAssetRepositorySession(unittest.TestCase):
 class TestAssetRepositoryAssignmentSession(unittest.TestCase):
     """Tests for AssetRepositoryAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assets(self):
         """Tests can_assign_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assets()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assets_to_repository(self):
         """Tests can_assign_assets_to_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_assets_to_repository(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_repository_ids(self):
         """Tests get_assignable_repository_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_repository_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_repository_ids_for_asset(self):
         """Tests get_assignable_repository_ids_for_asset"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_repository_ids_for_asset(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_asset_to_repository(self):
         """Tests assign_asset_to_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_asset_to_repository(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_asset_from_repository(self):
         """Tests unassign_asset_from_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_asset_from_repository(True, True)
 
 
 class TestAssetCompositionSession(unittest.TestCase):
@@ -671,10 +677,10 @@ class TestAssetCompositionSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_access_asset_compositions(self):
         """Tests can_access_asset_compositions"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_asset_compositions()
 
     def test_use_comparative_asset_composition_view(self):
         """Tests use_comparative_asset_composition_view"""
@@ -750,10 +756,10 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_compose_assets(self):
         """Tests can_compose_assets"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_compose_assets()
 
     def test_add_asset(self):
         """Tests add_asset"""
@@ -921,10 +927,10 @@ class TestCompositionLookupSession(unittest.TestCase):
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
 
-    @unittest.skip('unimplemented test')
     def test_get_compositions_by_provider(self):
         """Tests get_compositions_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_compositions_by_provider(True)
 
     def test_get_compositions(self):
         """Tests get_compositions"""
@@ -975,10 +981,10 @@ class TestCompositionQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_compositions(self):
         """Tests can_search_compositions"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_compositions()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
@@ -988,15 +994,15 @@ class TestCompositionQuerySession(unittest.TestCase):
         """Tests use_isolated_repository_view"""
         self.catalog.use_isolated_repository_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_sequestered_composition_view(self):
         """Tests use_sequestered_composition_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_sequestered_composition_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_unsequestered_composition_view(self):
         """Tests use_unsequestered_composition_view"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.use_unsequestered_composition_view()
 
     def test_get_composition_query(self):
         """Tests get_composition_query"""
@@ -1021,25 +1027,25 @@ class TestCompositionQuerySession(unittest.TestCase):
 class TestCompositionSearchSession(unittest.TestCase):
     """Tests for CompositionSearchSession"""
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_search(self):
         """Tests get_composition_search"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_composition_search()
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_search_order(self):
         """Tests get_composition_search_order"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_composition_search_order()
 
-    @unittest.skip('unimplemented test')
     def test_get_compositions_by_search(self):
         """Tests get_compositions_by_search"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_compositions_by_search(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_query_from_inspector(self):
         """Tests get_composition_query_from_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_composition_query_from_inspector(True)
 
 
 class TestCompositionAdminSession(unittest.TestCase):
@@ -1146,20 +1152,20 @@ class TestCompositionAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.catalog.get_composition(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_delete_composition_node(self):
         """Tests delete_composition_node"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_composition_node(True)
 
-    @unittest.skip('unimplemented test')
     def test_add_composition_child(self):
         """Tests add_composition_child"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.add_composition_child(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_remove_composition_child(self):
         """Tests remove_composition_child"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.remove_composition_child(True, True)
 
     def test_can_manage_composition_aliases(self):
         """Tests can_manage_composition_aliases"""
@@ -1240,30 +1246,30 @@ class TestCompositionRepositorySession(unittest.TestCase):
         """Tests use_plenary_composition_repository_view"""
         self.svc_mgr.use_plenary_composition_repository_view()
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_composition_repository_mappings(self):
         """Tests can_lookup_composition_repository_mappings"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_composition_repository_mappings()
 
     def test_get_composition_ids_by_repository(self):
         """Tests get_composition_ids_by_repository"""
         objects = self.svc_mgr.get_composition_ids_by_repository(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_compositions_by_repository(self):
         """Tests get_compositions_by_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_compositions_by_repository(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_ids_by_repositories(self):
         """Tests get_composition_ids_by_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_composition_ids_by_repositories(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_compoitions_by_repositories(self):
         """Tests get_compoitions_by_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_compoitions_by_repositories(True)
 
     def test_get_repository_ids_by_composition(self):
         """Tests get_repository_ids_by_composition"""
@@ -1279,35 +1285,35 @@ class TestCompositionRepositorySession(unittest.TestCase):
 class TestCompositionRepositoryAssignmentSession(unittest.TestCase):
     """Tests for CompositionRepositoryAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_compositions(self):
         """Tests can_assign_compositions"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_compositions()
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_compositions_to_repository(self):
         """Tests can_assign_compositions_to_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_assign_compositions_to_repository(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_repository_ids(self):
         """Tests get_assignable_repository_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_repository_ids(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_repository_ids_for_composition(self):
         """Tests get_assignable_repository_ids_for_composition"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assignable_repository_ids_for_composition(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_assign_composition_to_repository(self):
         """Tests assign_composition_to_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.assign_composition_to_repository(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_composition_from_repository(self):
         """Tests unassign_composition_from_repository"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.unassign_composition_from_repository(True, True)
 
 
 class TestRepositoryLookupSession(unittest.TestCase):
@@ -1331,10 +1337,10 @@ class TestRepositoryLookupSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_repositories():
             cls.svc_mgr.delete_repository(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_repositories(self):
         """Tests can_lookup_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_lookup_repositories()
 
     def test_use_comparative_repository_view(self):
         """Tests use_comparative_repository_view"""
@@ -1353,25 +1359,25 @@ class TestRepositoryLookupSession(unittest.TestCase):
         """Tests get_repositories_by_ids"""
         catalogs = self.svc_mgr.get_repositories_by_ids(self.catalog_ids)
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_genus_type(self):
         """Tests get_repositories_by_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_parent_genus_type(self):
         """Tests get_repositories_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_record_type(self):
         """Tests get_repositories_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_provider(self):
         """Tests get_repositories_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_provider(True)
 
     def test_get_repositories(self):
         """Tests get_repositories"""
@@ -1381,20 +1387,20 @@ class TestRepositoryLookupSession(unittest.TestCase):
 class TestRepositoryQuerySession(unittest.TestCase):
     """Tests for RepositoryQuerySession"""
 
-    @unittest.skip('unimplemented test')
     def test_can_search_repositories(self):
         """Tests can_search_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_search_repositories()
 
-    @unittest.skip('unimplemented test')
     def test_get_repository_query(self):
         """Tests get_repository_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repository_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_query(self):
         """Tests get_repositories_by_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_query(True)
 
 
 class TestRepositoryAdminSession(unittest.TestCase):
@@ -1447,10 +1453,10 @@ class TestRepositoryAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_repository(catalog_form)
         self.assertTrue(isinstance(new_catalog, Repository))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_repositories(self):
         """Tests can_update_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_update_repositories()
 
     def test_get_repository_form_for_update(self):
         """Tests get_repository_form_for_update"""
@@ -1467,10 +1473,10 @@ class TestRepositoryAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_repository(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_repositories(self):
         """Tests can_delete_repositories"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_delete_repositories()
 
     def test_delete_repository(self):
         """Tests delete_repository"""
@@ -1531,10 +1537,10 @@ class TestRepositoryHierarchySession(unittest.TestCase):
         hierarchy = self.svc_mgr.get_repository_hierarchy()
         self.assertTrue(isinstance(hierarchy, Hierarchy))
 
-    @unittest.skip('unimplemented test')
     def test_can_access_repository_hierarchy(self):
         """Tests can_access_repository_hierarchy"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_access_repository_hierarchy()
 
     def test_use_comparative_repository_view(self):
         """Tests use_comparative_repository_view"""

@@ -7,6 +7,8 @@ import unittest
 from decimal import Decimal
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.assessment.objects import AssessmentOffered
 from dlkit.json_.grading.objects import GradebookColumn
@@ -40,35 +42,35 @@ class TestGrade(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):
         """Tests get_grade_system_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_system_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system(self):
         """Tests get_grade_system"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_system()
 
-    @unittest.skip('unimplemented test')
     def test_get_input_score_start_range(self):
         """Tests get_input_score_start_range"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_input_score_start_range()
 
-    @unittest.skip('unimplemented test')
     def test_get_input_score_end_range(self):
         """Tests get_input_score_end_range"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_input_score_end_range()
 
-    @unittest.skip('unimplemented test')
     def test_get_output_score(self):
         """Tests get_output_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_output_score()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_record(self):
         """Tests get_grade_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_record(True)
 
 
 class TestGradeForm(unittest.TestCase):
@@ -83,55 +85,55 @@ class TestGradeForm(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_input_score_start_range_metadata(self):
         """Tests get_input_score_start_range_metadata"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_input_score_start_range_metadata()
 
-    @unittest.skip('unimplemented test')
     def test_set_input_score_start_range(self):
         """Tests set_input_score_start_range"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_input_score_start_range(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_input_score_start_range(self):
         """Tests clear_input_score_start_range"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_input_score_start_range()
 
-    @unittest.skip('unimplemented test')
     def test_get_input_score_end_range_metadata(self):
         """Tests get_input_score_end_range_metadata"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_input_score_end_range_metadata()
 
-    @unittest.skip('unimplemented test')
     def test_set_input_score_end_range(self):
         """Tests set_input_score_end_range"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_input_score_end_range(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_input_score_end_range(self):
         """Tests clear_input_score_end_range"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_input_score_end_range()
 
-    @unittest.skip('unimplemented test')
     def test_get_output_score_metadata(self):
         """Tests get_output_score_metadata"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_output_score_metadata()
 
-    @unittest.skip('unimplemented test')
     def test_set_output_score(self):
         """Tests set_output_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_output_score(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_output_score(self):
         """Tests clear_output_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_output_score()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_form_record(self):
         """Tests get_grade_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_form_record(True)
 
 
 class TestGradeList(unittest.TestCase):
@@ -146,15 +148,15 @@ class TestGradeList(unittest.TestCase):
     def tearDownClass(cls):
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_next_grade(self):
         """Tests get_next_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_grade()
 
-    @unittest.skip('unimplemented test')
     def test_get_next_grades(self):
         """Tests get_next_grades"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_grades(True)
 
 
 class TestGradeSystem(unittest.TestCase):
@@ -178,40 +180,40 @@ class TestGradeSystem(unittest.TestCase):
             cls.catalog.delete_grade_system(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_is_based_on_grades(self):
         """Tests is_based_on_grades"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_based_on_grades()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_ids(self):
         """Tests get_grade_ids"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_ids()
 
-    @unittest.skip('unimplemented test')
     def test_get_grades(self):
         """Tests get_grades"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grades()
 
-    @unittest.skip('unimplemented test')
     def test_get_lowest_numeric_score(self):
         """Tests get_lowest_numeric_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_lowest_numeric_score()
 
-    @unittest.skip('unimplemented test')
     def test_get_numeric_score_increment(self):
         """Tests get_numeric_score_increment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_numeric_score_increment()
 
-    @unittest.skip('unimplemented test')
     def test_get_highest_numeric_score(self):
         """Tests get_highest_numeric_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_highest_numeric_score()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_record(self):
         """Tests get_grade_system_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_system_record(True)
 
 
 class TestGradeSystemForm(unittest.TestCase):
@@ -238,13 +240,24 @@ class TestGradeSystemForm(unittest.TestCase):
     def test_get_based_on_grades_metadata(self):
         """Tests get_based_on_grades_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_based_on_grades_metadata(), Metadata))
+        mdata = self.form.get_based_on_grades_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_based_on_grades(self):
         """Tests set_based_on_grades"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_based_on_grades(True)
         self.assertTrue(self.form._my_map['basedOnGrades'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_based_on_grades('false')
 
     def test_clear_based_on_grades(self):
         """Tests clear_based_on_grades"""
@@ -257,47 +270,74 @@ class TestGradeSystemForm(unittest.TestCase):
     def test_get_lowest_numeric_score_metadata(self):
         """Tests get_lowest_numeric_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_lowest_numeric_score_metadata(), Metadata))
+        mdata = self.form.get_lowest_numeric_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_lowest_numeric_score(self):
         """Tests set_lowest_numeric_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_lowest_numeric_score(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_lowest_numeric_score(self):
         """Tests clear_lowest_numeric_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_lowest_numeric_score()
 
     def test_get_numeric_score_increment_metadata(self):
         """Tests get_numeric_score_increment_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_numeric_score_increment_metadata(), Metadata))
+        mdata = self.form.get_numeric_score_increment_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_numeric_score_increment(self):
         """Tests set_numeric_score_increment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_numeric_score_increment(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_numeric_score_increment(self):
         """Tests clear_numeric_score_increment"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_numeric_score_increment()
 
     def test_get_highest_numeric_score_metadata(self):
         """Tests get_highest_numeric_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_highest_numeric_score_metadata(), Metadata))
+        mdata = self.form.get_highest_numeric_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_highest_numeric_score(self):
         """Tests set_highest_numeric_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_highest_numeric_score(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_highest_numeric_score(self):
         """Tests clear_highest_numeric_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_highest_numeric_score()
 
     def test_get_grade_system_form_record(self):
         """Tests get_grade_system_form_record"""
@@ -391,25 +431,25 @@ class TestGradeEntry(unittest.TestCase):
         cls.catalog.delete_grade_system(cls.grade_system.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_id(self):
         """Tests get_gradebook_column_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_gradebook_column_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column(self):
         """Tests get_gradebook_column"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_gradebook_column()
 
-    @unittest.skip('unimplemented test')
     def test_get_key_resource_id(self):
         """Tests get_key_resource_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_key_resource_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_key_resource(self):
         """Tests get_key_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_key_resource()
 
     def test_is_derived(self):
         """Tests is_derived"""
@@ -417,20 +457,20 @@ class TestGradeEntry(unittest.TestCase):
         self.assertTrue(isinstance(self.object.is_derived(), bool))
         self.assertFalse(self.object.is_derived())
 
-    @unittest.skip('unimplemented test')
     def test_overrides_calculated_entry(self):
         """Tests overrides_calculated_entry"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.overrides_calculated_entry()
 
-    @unittest.skip('unimplemented test')
     def test_get_overridden_calculated_entry_id(self):
         """Tests get_overridden_calculated_entry_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_overridden_calculated_entry_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_overridden_calculated_entry(self):
         """Tests get_overridden_calculated_entry"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_overridden_calculated_entry()
 
     def test_is_ignored_for_calculations(self):
         """Tests is_ignored_for_calculations"""
@@ -438,55 +478,55 @@ class TestGradeEntry(unittest.TestCase):
         self.assertTrue(isinstance(self.object.is_ignored_for_calculations(), bool))
         self.assertFalse(self.object.is_ignored_for_calculations())
 
-    @unittest.skip('unimplemented test')
     def test_is_graded(self):
         """Tests is_graded"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.is_graded()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_id(self):
         """Tests get_grade_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade(self):
         """Tests get_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade()
 
-    @unittest.skip('unimplemented test')
     def test_get_score(self):
         """Tests get_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_score()
 
-    @unittest.skip('unimplemented test')
     def test_get_time_graded(self):
         """Tests get_time_graded"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_time_graded()
 
-    @unittest.skip('unimplemented test')
     def test_get_grader_id(self):
         """Tests get_grader_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grader_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_grader(self):
         """Tests get_grader"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grader()
 
-    @unittest.skip('unimplemented test')
     def test_get_grading_agent_id(self):
         """Tests get_grading_agent_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grading_agent_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_grading_agent(self):
         """Tests get_grading_agent"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grading_agent()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_entry_record(self):
         """Tests get_grade_entry_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_entry_record(True)
 
 
 class TestGradeEntryForm(unittest.TestCase):
@@ -528,12 +568,23 @@ class TestGradeEntryForm(unittest.TestCase):
     def test_get_ignored_for_calculations_metadata(self):
         """Tests get_ignored_for_calculations_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_ignored_for_calculations_metadata(), Metadata))
+        mdata = self.form.get_ignored_for_calculations_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_ignored_for_calculations(self):
         """Tests set_ignored_for_calculations"""
         self.form.set_ignored_for_calculations(True)
         self.assertTrue(self.form._my_map['ignoredForCalculations'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_ignored_for_calculations('false')
 
     def test_clear_ignored_for_calculations(self):
         """Tests clear_ignored_for_calculations"""
@@ -546,12 +597,21 @@ class TestGradeEntryForm(unittest.TestCase):
     def test_get_grade_metadata(self):
         """Tests get_grade_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_grade_metadata(), Metadata))
+        mdata = self.form.get_grade_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_grade(self):
         """Tests set_grade"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_grade(True)
 
     def test_clear_grade(self):
         """Tests clear_grade"""
@@ -567,17 +627,26 @@ class TestGradeEntryForm(unittest.TestCase):
     def test_get_score_metadata(self):
         """Tests get_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_score_metadata(), Metadata))
+        mdata = self.form.get_score_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_score(self):
         """Tests set_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.set_score(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_score(self):
         """Tests clear_score"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_score()
 
     def test_get_grade_entry_form_record(self):
         """Tests get_grade_entry_form_record"""
@@ -670,20 +739,20 @@ class TestGradebookColumn(unittest.TestCase):
             cls.catalog.delete_gradebook_column(obj.ident)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system_id(self):
         """Tests get_grade_system_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_system_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_grade_system(self):
         """Tests get_grade_system"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_grade_system()
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_record(self):
         """Tests get_gradebook_column_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_gradebook_column_record(True)
 
 
 class TestGradebookColumnForm(unittest.TestCase):
@@ -710,7 +779,16 @@ class TestGradebookColumnForm(unittest.TestCase):
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_grade_system_metadata(), Metadata))
+        mdata = self.form.get_grade_system_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_grade_system(self):
         """Tests set_grade_system"""
@@ -719,6 +797,8 @@ class TestGradebookColumnForm(unittest.TestCase):
         self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['gradeSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_grade_system(True)
 
     def test_clear_grade_system(self):
         """Tests clear_grade_system"""
@@ -727,7 +807,7 @@ class TestGradebookColumnForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['gradeSystemId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_grade_system()
-        self.assertEqual(self.form._my_map['gradeSystemId'], '')
+        self.assertEqual(self.form._my_map['gradeSystemId'], self.form.get_grade_system_metadata().get_default_id_values()[0])
 
     def test_get_gradebook_column_form_record(self):
         """Tests get_gradebook_column_form_record"""
@@ -879,28 +959,28 @@ class TestGradebookColumnSummary(unittest.TestCase):
         self.assertTrue(isinstance(self.object.get_sum(), Decimal))
         self.assertEqual(self.object.get_sum(), Decimal('4950'))
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_column_summary_record(self):
         """Tests get_gradebook_column_summary_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_gradebook_column_summary_record(True)
 
 
 class TestGradebook(unittest.TestCase):
     """Tests for Gradebook"""
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_record(self):
         """Tests get_gradebook_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_gradebook_record(True)
 
 
 class TestGradebookForm(unittest.TestCase):
     """Tests for GradebookForm"""
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook_form_record(self):
         """Tests get_gradebook_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_gradebook_form_record(True)
 
 
 class TestGradebookList(unittest.TestCase):
@@ -955,20 +1035,20 @@ class TestGradebookList(unittest.TestCase):
 class TestGradebookNode(unittest.TestCase):
     """Tests for GradebookNode"""
 
-    @unittest.skip('unimplemented test')
     def test_get_gradebook(self):
         """Tests get_gradebook"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_gradebook()
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_gradebook_nodes(self):
         """Tests get_parent_gradebook_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_parent_gradebook_nodes()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_gradebook_nodes(self):
         """Tests get_child_gradebook_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_gradebook_nodes()
 
 
 class TestGradebookNodeList(unittest.TestCase):
@@ -1009,12 +1089,12 @@ class TestGradebookNodeList(unittest.TestCase):
             cls.svc_mgr.delete_gradebook(obj)
         cls.svc_mgr.delete_gradebook(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_next_gradebook_node(self):
         """Tests get_next_gradebook_node"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_gradebook_node()
 
-    @unittest.skip('unimplemented test')
     def test_get_next_gradebook_nodes(self):
         """Tests get_next_gradebook_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_next_gradebook_nodes(True)

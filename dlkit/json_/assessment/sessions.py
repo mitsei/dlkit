@@ -1132,7 +1132,10 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
         # This makes the simple assumption that answers are available only when
         # a response has been submitted for an Item.
         try:
-            self.get_response(assessment_section_id, item_id)
+            response = self.get_response(assessment_section_id, item_id)
+            # need to invoke something like .object_map before
+            # a "null" response throws IllegalState
+            response.object_map
         except errors.IllegalState:
             return False
         else:
@@ -1282,14 +1285,18 @@ class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession,
         """
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         taken_lookup_session = mgr.get_assessment_taken_lookup_session(proxy=self._proxy)
+        taken_lookup_session.use_federated_bank_view()
         taken = taken_lookup_session.get_assessment_taken(assessment_taken_id)
         ils = get_item_lookup_session(runtime=self._runtime, proxy=self._proxy)
+        ils.use_federated_bank_view()
         item_list = []
         if 'sections' in taken._my_map:
             for section_id in taken._my_map['sections']:
-                section = get_assessment_section(Id(section_id))
+                section = get_assessment_section(Id(section_id),
+                                                 runtime=self._runtime,
+                                                 proxy=self._proxy)
                 for question in section._my_map['questions']:
-                    item_list.append(ils.get_item(question['questionId']))
+                    item_list.append(ils.get_item(Id(question['questionId'])))
         return ItemList(item_list)
 
     @utilities.arguments_not_none
@@ -1356,7 +1363,7 @@ class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession,
 
         """
         # not implemented yet and are_results_available is False
-        raise IllegalState()
+        raise errors.IllegalState()
 
 
 class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions.OsidSession):

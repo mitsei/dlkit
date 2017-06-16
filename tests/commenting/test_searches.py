@@ -7,74 +7,74 @@ import unittest
 class TestCommentSearch(unittest.TestCase):
     """Tests for CommentSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_comments(self):
         """Tests search_among_comments"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_comments(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_comment_results(self):
         """Tests order_comment_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_comment_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_comment_search_record(self):
         """Tests get_comment_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_comment_search_record(True)
 
 
 class TestCommentSearchResults(unittest.TestCase):
     """Tests for CommentSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_comments(self):
         """Tests get_comments"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_comments()
 
-    @unittest.skip('unimplemented test')
     def test_get_comment_query_inspector(self):
         """Tests get_comment_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_comment_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_comment_search_results_record(self):
         """Tests get_comment_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_comment_search_results_record(True)
 
 
 class TestBookSearch(unittest.TestCase):
     """Tests for BookSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_books(self):
         """Tests search_among_books"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_books(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_book_results(self):
         """Tests order_book_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_book_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_book_search_record(self):
         """Tests get_book_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_book_search_record(True)
 
 
 class TestBookSearchResults(unittest.TestCase):
     """Tests for BookSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_books(self):
         """Tests get_books"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_books()
 
-    @unittest.skip('unimplemented test')
     def test_get_book_query_inspector(self):
         """Tests get_book_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_book_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_book_search_results_record(self):
         """Tests get_book_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_book_search_results_record(True)

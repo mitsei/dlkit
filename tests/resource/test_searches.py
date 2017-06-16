@@ -7,74 +7,74 @@ import unittest
 class TestResourceSearch(unittest.TestCase):
     """Tests for ResourceSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_resources(self):
         """Tests search_among_resources"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_resources(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_resource_results(self):
         """Tests order_resource_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_resource_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search_record(self):
         """Tests get_resource_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_resource_search_record(True)
 
 
 class TestResourceSearchResults(unittest.TestCase):
     """Tests for ResourceSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_resources(self):
         """Tests get_resources"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_resources()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_query_inspector(self):
         """Tests get_resource_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_resource_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_search_results_record(self):
         """Tests get_resource_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_resource_search_results_record(True)
 
 
 class TestBinSearch(unittest.TestCase):
     """Tests for BinSearch"""
 
-    @unittest.skip('unimplemented test')
     def test_search_among_bins(self):
         """Tests search_among_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.search_among_bins(True)
 
-    @unittest.skip('unimplemented test')
     def test_order_bin_results(self):
         """Tests order_bin_results"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.order_bin_results(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_search_record(self):
         """Tests get_bin_search_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_bin_search_record(True)
 
 
 class TestBinSearchResults(unittest.TestCase):
     """Tests for BinSearchResults"""
 
-    @unittest.skip('unimplemented test')
     def test_get_bins(self):
         """Tests get_bins"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_bins()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_query_inspector(self):
         """Tests get_bin_query_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_bin_query_inspector()
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_search_results_record(self):
         """Tests get_bin_search_results_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.searche.get_bin_search_results_record(True)

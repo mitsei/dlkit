@@ -12,8 +12,18 @@ def get_grade_mdata():
     """Return default mdata map for Grade"""
     return {
         'output_score': {
-            'element_label': 'output score',
-            'instructions': 'enter a decimal value.',
+            'element_label': {
+                'text': 'output score',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a decimal value.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -26,8 +36,18 @@ def get_grade_mdata():
             'decimal_set': [],
         },
         'grade_system': {
-            'element_label': 'grade system',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'grade system',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -37,8 +57,18 @@ def get_grade_mdata():
             'id_set': [],
         },
         'input_score_end_range': {
-            'element_label': 'input score end range',
-            'instructions': 'enter a decimal value.',
+            'element_label': {
+                'text': 'input score end range',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a decimal value.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -51,8 +81,18 @@ def get_grade_mdata():
             'decimal_set': [],
         },
         'input_score_start_range': {
-            'element_label': 'input score start range',
-            'instructions': 'enter a decimal value.',
+            'element_label': {
+                'text': 'input score start range',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a decimal value.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -71,8 +111,18 @@ def get_grade_system_mdata():
     """Return default mdata map for GradeSystem"""
     return {
         'numeric_score_increment': {
-            'element_label': 'numeric score increment',
-            'instructions': 'enter a decimal value.',
+            'element_label': {
+                'text': 'numeric score increment',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a decimal value.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -85,8 +135,18 @@ def get_grade_system_mdata():
             'decimal_set': [],
         },
         'lowest_numeric_score': {
-            'element_label': 'lowest numeric score',
-            'instructions': 'enter a decimal value.',
+            'element_label': {
+                'text': 'lowest numeric score',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a decimal value.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -99,8 +159,18 @@ def get_grade_system_mdata():
             'decimal_set': [],
         },
         'based_on_grades': {
-            'element_label': 'based on grades',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'based on grades',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -109,8 +179,18 @@ def get_grade_system_mdata():
             'syntax': 'BOOLEAN',
         },
         'highest_numeric_score': {
-            'element_label': 'highest numeric score',
-            'instructions': 'enter a decimal value.',
+            'element_label': {
+                'text': 'highest numeric score',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a decimal value.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -129,8 +209,18 @@ def get_grade_entry_mdata():
     """Return default mdata map for GradeEntry"""
     return {
         'resource': {
-            'element_label': 'resource',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'resource',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -140,8 +230,18 @@ def get_grade_entry_mdata():
             'id_set': [],
         },
         'grade': {
-            'element_label': 'grade',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'grade',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -151,8 +251,18 @@ def get_grade_entry_mdata():
             'id_set': [],
         },
         'ignored_for_calculations': {
-            'element_label': 'ignored for calculations',
-            'instructions': 'enter either true or false.',
+            'element_label': {
+                'text': 'ignored for calculations',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter either true or false.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -161,8 +271,18 @@ def get_grade_entry_mdata():
             'syntax': 'BOOLEAN',
         },
         'score': {
-            'element_label': 'score',
-            'instructions': 'enter a decimal value.',
+            'element_label': {
+                'text': 'score',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'enter a decimal value.',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -175,8 +295,18 @@ def get_grade_entry_mdata():
             'decimal_set': [],
         },
         'gradebook_column': {
-            'element_label': 'gradebook column',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'gradebook column',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -192,8 +322,18 @@ def get_gradebook_column_mdata():
     """Return default mdata map for GradebookColumn"""
     return {
         'grade_system': {
-            'element_label': 'grade system',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'grade system',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
@@ -209,8 +349,18 @@ def get_gradebook_column_summary_mdata():
     """Return default mdata map for GradebookColumnSummary"""
     return {
         'gradebook_column': {
-            'element_label': 'gradebook column',
-            'instructions': 'accepts an osid.id.Id object',
+            'element_label': {
+                'text': 'gradebook column',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
+            'instructions': {
+                'text': 'accepts an osid.id.Id object',
+                'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
+                'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
+                'formatTypeId': str(DEFAULT_FORMAT_TYPE),
+            },
             'required': False,
             'read_only': False,
             'linked': False,
