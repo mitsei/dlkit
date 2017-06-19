@@ -28,6 +28,7 @@ class TestObjective(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -40,6 +41,7 @@ class TestObjective(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_objectives():
             cls.catalog.delete_objective(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
@@ -100,7 +102,7 @@ class TestObjective(unittest.TestCase):
 
     def test_get_objective_record(self):
         """Tests get_objective_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_objective_record(True)
 
 
@@ -256,6 +258,7 @@ class TestObjectiveList(unittest.TestCase):
             self.objective_list.append(obj)
             self.objective_ids.append(obj.ident)
         self.objective_list = ObjectiveList(self.objective_list)
+        self.object = self.objective_list
 
     @classmethod
     def tearDownClass(cls):
@@ -435,7 +438,7 @@ class TestActivity(unittest.TestCase):
 
     def test_get_activity_record(self):
         """Tests get_activity_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_activity_record(True)
 
 
@@ -645,6 +648,7 @@ class TestProficiency(unittest.TestCase):
         cls.catalog.delete_objective(cls.objective.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
+    @unittest.skip('unimplemented test')
     def test_get_resource_id(self):
         """Tests get_resource_id"""
         pass
@@ -654,6 +658,7 @@ class TestProficiency(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.object.get_resource()
 
+    @unittest.skip('unimplemented test')
     def test_get_objective_id(self):
         """Tests get_objective_id"""
         pass
@@ -685,7 +690,7 @@ class TestProficiency(unittest.TestCase):
 
     def test_get_proficiency_record(self):
         """Tests get_proficiency_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_proficiency_record(True)
 
 
@@ -829,6 +834,26 @@ class TestProficiencyList(unittest.TestCase):
 class TestObjectiveBank(unittest.TestCase):
     """Tests for ObjectiveBank"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_objective_bank_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_objective_bank(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_objective_bank(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_objective_bank_record(self):
         """Tests get_objective_bank_record"""
         with self.assertRaises(errors.Unimplemented):
@@ -837,6 +862,24 @@ class TestObjectiveBank(unittest.TestCase):
 
 class TestObjectiveBankForm(unittest.TestCase):
     """Tests for ObjectiveBankForm"""
+
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_objective_bank_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
 
     def test_get_objective_bank_form_record(self):
         """Tests get_objective_bank_form_record"""
@@ -926,11 +969,21 @@ class TestObjectiveBankNode(unittest.TestCase):
             self.objective_bank_list[0].ident,
             self.objective_bank_list[1].ident)
 
+        self.object = self.svc_mgr.get_objective_bank_nodes(
+            self.objective_bank_list[0].ident, 0, 5, False)
+
+    def tearDown(self):
+        # Implemented from init template for BinNode
+        self.svc_mgr.remove_child_objective_bank(
+            self.objective_bank_list[0].ident,
+            self.objective_bank_list[1].ident)
+        self.svc_mgr.remove_root_objective_bank(self.objective_bank_list[0].ident)
+        for node in self.objective_bank_list:
+            self.svc_mgr.delete_objective_bank(node.ident)
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for BinNode
-        for obj in cls.objective_bank_ids:
-            cls.svc_mgr.delete_objective_bank(obj)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     def test_get_objective_bank(self):

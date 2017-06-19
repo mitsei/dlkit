@@ -3630,10 +3630,10 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        items = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for item in items:
-            id_list.append(items.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -3651,7 +3651,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_item_to_bank(self, item_id, bank_id):
@@ -4957,10 +4957,10 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        assessments = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for assessment in assessments:
-            id_list.append(assessments.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -4980,7 +4980,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_assessment_to_bank(self, assessment_id, bank_id):
@@ -6500,10 +6500,10 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        assessments_offered = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for assessment_offered in assessments_offered:
-            id_list.append(assessments_offered.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -6523,7 +6523,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_assessment_offered_to_bank(self, assessment_offered_id, bank_id):
@@ -8143,10 +8143,10 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        assessments_taken = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for assessment_taken in assessments_taken:
-            id_list.append(assessments_taken.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -8166,7 +8166,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_assessment_taken_to_bank(self, assessment_taken_id, bank_id):

@@ -7,6 +7,7 @@ import unittest
 
 from dlkit.abstract_osid.assessment import objects
 from dlkit.abstract_osid.assessment import objects as ABCObjects
+from dlkit.abstract_osid.assessment import queries as ABCQueries
 from dlkit.abstract_osid.assessment.objects import AssessmentOffered
 from dlkit.abstract_osid.assessment.objects import AssessmentSection, AssessmentSectionList
 from dlkit.abstract_osid.assessment.objects import AssessmentTaken
@@ -41,6 +42,8 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 DEFAULT_STRING_MATCH_TYPE = Type(**get_string_type_data("WORDIGNORECASE"))
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE 2', 'authority': 'YOURS 2'})
 
 
@@ -1007,18 +1010,19 @@ class TestItemQuerySession(unittest.TestCase):
 
     def test_get_item_query(self):
         """Tests get_item_query"""
-        query = self.catalog.get_item_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_item_query()
 
     def test_get_items_by_query(self):
         """Tests get_items_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_item_query()
+        query = self.session.get_item_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_items_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_items_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_items_by_query(query).available(), 3)
 
 
 class TestItemSearchSession(unittest.TestCase):
@@ -1509,15 +1513,18 @@ class TestItemBankSession(unittest.TestCase):
 
     def test_can_lookup_item_bank_mappings(self):
         """Tests can_lookup_item_bank_mappings"""
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_item_bank_mappings()
         self.assertTrue(result)
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_bank_view()
 
     def test_use_plenary_bank_view(self):
         """Tests use_plenary_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_bank_view()
 
     def test_get_item_ids_by_bank(self):
@@ -1536,7 +1543,7 @@ class TestItemBankSession(unittest.TestCase):
     def test_get_item_ids_by_banks(self):
         """Tests get_item_ids_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         object_ids = self.session.get_item_ids_by_banks(catalog_ids)
         self.assertTrue(isinstance(object_ids, IdList))
         # Currently our impl does not remove duplicate objectIds
@@ -1545,7 +1552,7 @@ class TestItemBankSession(unittest.TestCase):
     def test_get_items_by_banks(self):
         """Tests get_items_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         results = self.session.get_items_by_banks(catalog_ids)
         self.assertTrue(isinstance(results, ABCObjects.ItemList))
         # Currently our impl does not remove duplicate objects
@@ -1567,35 +1574,103 @@ class TestItemBankSession(unittest.TestCase):
 class TestItemBankAssignmentSession(unittest.TestCase):
     """Tests for ItemBankAssignmentSession"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        cls.item_list = list()
+        cls.item_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for ItemBankAssignmentSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank for Assignment'
+        create_form.description = 'Test Bank for ItemBankAssignmentSession tests assignment'
+        cls.assigned_catalog = cls.svc_mgr.create_bank(create_form)
+        for num in [0, 1, 2]:
+            create_form = cls.catalog.get_item_form_for_create([])
+            create_form.display_name = 'Test Item ' + str(num)
+            create_form.description = 'Test Item for ItemBankAssignmentSession tests'
+            obj = cls.catalog.create_item(create_form)
+            cls.item_list.append(obj)
+            cls.item_ids.append(obj.ident)
+
+    def setUp(self):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.assigned_catalog.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_can_assign_items(self):
         """Tests can_assign_items"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_items()
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_items()
+        self.assertTrue(isinstance(result, bool))
 
     def test_can_assign_items_to_bank(self):
         """Tests can_assign_items_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_items_to_bank(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_items_to_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(result, bool))
 
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids(self.catalog.ident)
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_get_assignable_bank_ids_for_item(self):
         """Tests get_assignable_bank_ids_for_item"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids_for_item(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_item_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids_for_item(self.catalog.ident, self.item_ids[0])
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_assign_item_to_bank(self):
         """Tests assign_item_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.assign_item_to_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        results = self.assigned_catalog.get_items()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_item_to_bank(self.item_ids[1], self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_items()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_item_from_bank(
+            self.item_ids[1],
+            self.assigned_catalog.ident)
 
     def test_unassign_item_from_bank(self):
         """Tests unassign_item_from_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unassign_item_from_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        results = self.assigned_catalog.get_items()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_item_to_bank(
+            self.item_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_items()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_item_from_bank(
+            self.item_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_items()
+        self.assertEqual(results.available(), 0)
 
     def test_reassign_item_to_billing(self):
         """Tests reassign_item_to_billing"""
@@ -1730,6 +1805,7 @@ class TestAssessmentQuerySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         cls.assessment_list = list()
         cls.assessment_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
@@ -1746,8 +1822,13 @@ class TestAssessmentQuerySession(unittest.TestCase):
             cls.assessment_list.append(obj)
             cls.assessment_ids.append(obj.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         for obj in cls.catalog.get_assessments():
             cls.catalog.delete_assessment(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
@@ -1764,8 +1845,8 @@ class TestAssessmentQuerySession(unittest.TestCase):
 
     def test_can_search_assessments(self):
         """Tests can_search_assessments"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_assessments()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_assessments(), bool))
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -1777,26 +1858,27 @@ class TestAssessmentQuerySession(unittest.TestCase):
 
     def test_get_assessment_query(self):
         """Tests get_assessment_query"""
-        query = self.catalog.get_assessment_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_assessment_query()
 
     def test_get_assessments_by_query(self):
         """Tests get_assessments_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_assessment_query()
+        query = self.session.get_assessment_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_assessments_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_assessments_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_assessments_by_query(query).available(), 3)
 
 
 class TestAssessmentAdminSession(unittest.TestCase):
     """Tests for AssessmentAdminSession"""
 
-    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
@@ -1809,8 +1891,13 @@ class TestAssessmentAdminSession(unittest.TestCase):
         form.set_genus_type(NEW_TYPE)
         cls.osid_object = cls.catalog.create_assessment(form)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
         for obj in cls.catalog.get_assessments():
             cls.catalog.delete_assessment(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
@@ -1885,8 +1972,24 @@ class TestAssessmentAdminSession(unittest.TestCase):
 
     def test_delete_assessment(self):
         """Tests delete_assessment"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.delete_assessment(True)
+        # From test_templates/learning.py::ObjectiveAdminSession::delete_objective_template
+        results = self.catalog.get_assessments()
+        self.assertEqual(results.available(), 1)
+
+        form = self.catalog.get_assessment_form_for_create([])
+        form.display_name = 'new Assessment'
+        form.description = 'description of Assessment'
+        new_assessment = self.catalog.create_assessment(form)
+
+        results = self.catalog.get_assessments()
+        self.assertEqual(results.available(), 2)
+
+        self.session.delete_assessment(new_assessment.ident)
+
+        results = self.catalog.get_assessments()
+        self.assertEqual(results.available(), 1)
+        self.assertNotEqual(str(results.next().ident),
+                            str(new_assessment.ident))
 
     def test_can_manage_assessment_aliases(self):
         """Tests can_manage_assessment_aliases"""
@@ -1932,6 +2035,7 @@ class TestAssessmentBankSession(unittest.TestCase):
             cls.assessment_ids[2], cls.assigned_catalog.ident)
 
     def setUp(self):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         self.session = self.svc_mgr
 
     @classmethod
@@ -1948,15 +2052,18 @@ class TestAssessmentBankSession(unittest.TestCase):
 
     def test_can_lookup_assessment_bank_mappings(self):
         """Tests can_lookup_assessment_bank_mappings"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_assessment_bank_mappings()
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_assessment_bank_mappings()
+        self.assertTrue(result)
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_bank_view()
 
     def test_use_plenary_bank_view(self):
         """Tests use_plenary_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_bank_view()
 
     def test_get_assessment_ids_by_bank(self):
@@ -1975,7 +2082,7 @@ class TestAssessmentBankSession(unittest.TestCase):
     def test_get_assessment_ids_by_banks(self):
         """Tests get_assessment_ids_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         object_ids = self.session.get_assessment_ids_by_banks(catalog_ids)
         self.assertTrue(isinstance(object_ids, IdList))
         # Currently our impl does not remove duplicate objectIds
@@ -1984,7 +2091,7 @@ class TestAssessmentBankSession(unittest.TestCase):
     def test_get_assessments_by_banks(self):
         """Tests get_assessments_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         results = self.session.get_assessments_by_banks(catalog_ids)
         self.assertTrue(isinstance(results, ABCObjects.AssessmentList))
         # Currently our impl does not remove duplicate objects
@@ -2006,35 +2113,103 @@ class TestAssessmentBankSession(unittest.TestCase):
 class TestAssessmentBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentBankAssignmentSession"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        cls.assessment_list = list()
+        cls.assessment_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentBankAssignmentSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank for Assignment'
+        create_form.description = 'Test Bank for AssessmentBankAssignmentSession tests assignment'
+        cls.assigned_catalog = cls.svc_mgr.create_bank(create_form)
+        for num in [0, 1, 2]:
+            create_form = cls.catalog.get_assessment_form_for_create([])
+            create_form.display_name = 'Test Assessment ' + str(num)
+            create_form.description = 'Test Assessment for AssessmentBankAssignmentSession tests'
+            obj = cls.catalog.create_assessment(create_form)
+            cls.assessment_list.append(obj)
+            cls.assessment_ids.append(obj.ident)
+
+    def setUp(self):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.assigned_catalog.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_can_assign_assessments(self):
         """Tests can_assign_assessments"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_assessments()
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_assessments()
+        self.assertTrue(isinstance(result, bool))
 
     def test_can_assign_assessments_to_bank(self):
         """Tests can_assign_assessments_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_assessments_to_bank(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_assessments_to_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(result, bool))
 
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids(self.catalog.ident)
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_get_assignable_bank_ids_for_assessment(self):
         """Tests get_assignable_bank_ids_for_assessment"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids_for_assessment(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_item_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids_for_assessment(self.catalog.ident, self.assessment_ids[0])
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_assign_assessment_to_bank(self):
         """Tests assign_assessment_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.assign_assessment_to_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        results = self.assigned_catalog.get_assessments()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_assessment_to_bank(self.assessment_ids[1], self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_assessment_from_bank(
+            self.assessment_ids[1],
+            self.assigned_catalog.ident)
 
     def test_unassign_assessment_from_bank(self):
         """Tests unassign_assessment_from_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unassign_assessment_from_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        results = self.assigned_catalog.get_assessments()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_assessment_to_bank(
+            self.assessment_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_assessment_from_bank(
+            self.assessment_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments()
+        self.assertEqual(results.available(), 0)
 
     def test_reassign_assessment_to_billing(self):
         """Tests reassign_assessment_to_billing"""
@@ -2094,7 +2269,7 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
 
     def test_can_author_assessments(self):
         """Tests can_author_assessments"""
-        pass
+        self.assertTrue(isinstance(self.catalog.can_author_assessments(), bool))
 
     def test_get_items(self):
         """Tests get_items"""
@@ -2176,14 +2351,16 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
             cls.assessment_offered_list.append(obj)
             cls.assessment_offered_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessments_offered():
-                catalog.delete_assessment_offered(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -2268,8 +2445,10 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_assessments_offered_for_assessment(self):
         """Tests get_assessments_offered_for_assessment"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_offered_for_assessment(True)
+        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
+        results = self.session.get_assessments_offered_for_assessment(self.assessment.ident)
+        self.assertEqual(results.available(), 2)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentOfferedList))
 
     def test_get_assessments_offered(self):
         """Tests get_assessments_offered"""
@@ -2296,11 +2475,11 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for AssessmentOfferedLookupSession tests'
+        create_form.description = 'Test Bank for AssessmentOfferedQuerySession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
         create_form = cls.catalog.get_assessment_form_for_create([])
         create_form.display_name = 'Test Assessment'
-        create_form.description = 'Test Assessment for AssessmentOfferedLookupSession tests'
+        create_form.description = 'Test Assessment for AssessmentOfferedQuerySession tests'
         cls.assessment = cls.catalog.create_assessment(create_form)
         for color in ['Orange', 'Blue', 'Green', 'orange']:
             create_form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
@@ -2311,14 +2490,16 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
             cls.assessment_offered_list.append(obj)
             cls.assessment_offered_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessments_offered():
-                catalog.delete_assessment_offered(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
@@ -2332,8 +2513,8 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
 
     def test_can_search_assessments_offered(self):
         """Tests can_search_assessments_offered"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_assessments_offered()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_assessments_offered(), bool))
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -2345,18 +2526,19 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
 
     def test_get_assessment_offered_query(self):
         """Tests get_assessment_offered_query"""
-        query = self.catalog.get_assessment_offered_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_assessment_offered_query()
 
     def test_get_assessments_offered_by_query(self):
         """Tests get_assessments_offered_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_assessment_offered_query()
+        query = self.session.get_assessment_offered_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_assessments_offered_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_assessments_offered_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_assessments_offered_by_query(query).available(), 3)
 
 
 class TestAssessmentOfferedAdminSession(unittest.TestCase):
@@ -2501,7 +2683,7 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for AssessmentOfferedLookupSession tests'
+        create_form.description = 'Test Bank for AssessmentOfferedBankSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank Assigned'
@@ -2523,30 +2705,35 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
         cls.svc_mgr.assign_assessment_offered_to_bank(
             cls.assessment_offered_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.unassign_assessment_offered_from_bank(
             cls.assessment_offered_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_assessment_offered_from_bank(
             cls.assessment_offered_ids[2], cls.assigned_catalog.ident)
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessments_offered():
-                catalog.delete_assessment_offered(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_can_lookup_assessment_offered_bank_mappings(self):
         """Tests can_lookup_assessment_offered_bank_mappings"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_assessment_offered_bank_mappings()
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_assessment_offered_bank_mappings()
+        self.assertTrue(result)
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_bank_view()
 
     def test_use_plenary_bank_view(self):
         """Tests use_plenary_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_bank_view()
 
     def test_get_assessment_offered_ids_by_bank(self):
@@ -2565,7 +2752,7 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
     def test_get_assessment_offered_ids_by_banks(self):
         """Tests get_assessment_offered_ids_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         object_ids = self.session.get_assessment_offered_ids_by_banks(catalog_ids)
         self.assertTrue(isinstance(object_ids, IdList))
         # Currently our impl does not remove duplicate objectIds
@@ -2574,7 +2761,7 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
     def test_get_assessments_offered_by_banks(self):
         """Tests get_assessments_offered_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         results = self.session.get_assessments_offered_by_banks(catalog_ids)
         self.assertTrue(isinstance(results, ABCObjects.AssessmentOfferedList))
         # Currently our impl does not remove duplicate objects
@@ -2596,35 +2783,105 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
 class TestAssessmentOfferedBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentOfferedBankAssignmentSession"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.assessment_offered_list = list()
+        cls.assessment_offered_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentOfferedBankAssignmentSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank Assigned'
+        create_form.description = 'Test Bank for AssessmentOfferedBankAssignmentSession tests'
+        cls.assigned_catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentOfferedBankAssignmentSession tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+        for num in [0, 1, 2]:
+            create_form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+            create_form.display_name = 'Test AssessmentOffered ' + str(num)
+            create_form.description = 'Test AssessmentOffered for AssessmentOfferedBankAssignmentSession tests'
+            obj = cls.catalog.create_assessment_offered(create_form)
+            cls.assessment_offered_list.append(obj)
+            cls.assessment_offered_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_can_assign_assessments_offered(self):
         """Tests can_assign_assessments_offered"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_assessments_offered()
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_assessments_offered()
+        self.assertTrue(isinstance(result, bool))
 
     def test_can_assign_assessments_offered_to_bank(self):
         """Tests can_assign_assessments_offered_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_assessments_offered_to_bank(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_assessments_offered_to_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(result, bool))
 
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids(self.catalog.ident)
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_get_assignable_bank_ids_for_assessment_offered(self):
         """Tests get_assignable_bank_ids_for_assessment_offered"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids_for_assessment_offered(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_item_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids_for_assessment_offered(self.catalog.ident, self.assessment_offered_ids[0])
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_assign_assessment_offered_to_bank(self):
         """Tests assign_assessment_offered_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.assign_assessment_offered_to_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        results = self.assigned_catalog.get_assessments_offered()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_assessment_offered_to_bank(self.assessment_offered_ids[1], self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments_offered()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_assessment_offered_from_bank(
+            self.assessment_offered_ids[1],
+            self.assigned_catalog.ident)
 
     def test_unassign_assessment_offered_from_bank(self):
         """Tests unassign_assessment_offered_from_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unassign_assessment_offered_from_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        results = self.assigned_catalog.get_assessments_offered()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_assessment_offered_to_bank(
+            self.assessment_offered_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments_offered()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_assessment_offered_from_bank(
+            self.assessment_offered_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments_offered()
+        self.assertEqual(results.available(), 0)
 
     def test_reassign_assessment_offered_to_billing(self):
         """Tests reassign_assessment_offered_to_billing"""
@@ -2660,15 +2917,20 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
             cls.assessment_taken_list.append(obj)
             cls.assessment_taken_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessments_taken():
-                catalog.delete_assessment_taken(obj.ident)
-            for obj in catalog.get_assessments_offered():
-                catalog.delete_assessment_offered(obj.ident)
             for obj in catalog.get_assessments():
+                for offered in catalog.get_assessments_offered_for_assessment(obj.ident):
+                    for taken in catalog.get_assessments_taken_for_assessment_offered(offered.ident):
+                        catalog.delete_assessment_taken(taken.ident)
+                    catalog.delete_assessment_offered(offered.ident)
                 catalog.delete_assessment(obj.ident)
+            for obj in catalog.get_items():
+                catalog.delete_item(obj.ident)
             cls.svc_mgr.delete_bank(catalog.ident)
 
     def test_get_bank_id(self):
@@ -2764,7 +3026,10 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken_for_assessment(self):
         """Tests get_assessments_taken_for_assessment"""
-        pass
+        from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
+        takens = self.session.get_assessments_taken_for_assessment(self.assessment.ident)
+        self.assertTrue(isinstance(takens, AssessmentTakenList))
+        self.assertEqual(takens.available(), 2)
 
     def test_get_assessments_taken_by_date_for_assessment(self):
         """Tests get_assessments_taken_by_date_for_assessment"""
@@ -2783,8 +3048,10 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken_for_assessment_offered(self):
         """Tests get_assessments_taken_for_assessment_offered"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_taken_for_assessment_offered(True)
+        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
+        results = self.session.get_assessments_taken_for_assessment_offered(self.assessment_offered.ident)
+        self.assertEqual(results.available(), 2)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentTakenList))
 
     def test_get_assessments_taken_by_date_for_assessment_offered(self):
         """Tests get_assessments_taken_by_date_for_assessment_offered"""
@@ -2793,7 +3060,12 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_assessments_taken_for_taker_and_assessment_offered(self):
         """Tests get_assessments_taken_for_taker_and_assessment_offered"""
-        pass
+        from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
+        takens = self.session.get_assessments_taken_for_taker_and_assessment_offered(
+            self.catalog._proxy.get_effective_agent_id(),
+            self.assessment_offered.ident)
+        self.assertTrue(isinstance(takens, AssessmentTakenList))
+        self.assertEqual(takens.available(), 2)
 
     def test_get_assessments_taken_by_date_for_taker_and_assessment_offered(self):
         """Tests get_assessments_taken_by_date_for_taker_and_assessment_offered"""
@@ -2829,11 +3101,11 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_bank(create_form)
         create_form = cls.catalog.get_assessment_form_for_create([])
         create_form.display_name = 'Test Assessment'
-        create_form.description = 'Test Assessment for AssessmentOfferedLookupSession tests'
+        create_form.description = 'Test Assessment for AssessmentTakenLookupSession tests'
         cls.assessment = cls.catalog.create_assessment(create_form)
         create_form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
         create_form.display_name = 'Test AssessmentOffered'
-        create_form.description = 'Test AssessmentOffered for AssessmentOfferedLookupSession tests'
+        create_form.description = 'Test AssessmentOffered for AssessmentTakenLookupSession tests'
         cls.assessment_offered = cls.catalog.create_assessment_offered(create_form)
         for color in ['Orange', 'Blue', 'Green', 'orange']:
             create_form = cls.catalog.get_assessment_taken_form_for_create(cls.assessment_offered.ident, [])
@@ -2843,6 +3115,9 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
             obj = cls.catalog.create_assessment_taken(create_form)
             cls.assessment_taken_list.append(obj)
             cls.assessment_taken_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -2867,8 +3142,8 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
 
     def test_can_search_assessments_taken(self):
         """Tests can_search_assessments_taken"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_assessments_taken()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_assessments_taken(), bool))
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -2880,18 +3155,19 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
 
     def test_get_assessment_taken_query(self):
         """Tests get_assessment_taken_query"""
-        query = self.catalog.get_assessment_taken_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_assessment_taken_query()
 
     def test_get_assessments_taken_by_query(self):
         """Tests get_assessments_taken_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_assessment_taken_query()
+        query = self.session.get_assessment_taken_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_assessments_taken_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_assessments_taken_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_assessments_taken_by_query(query).available(), 3)
 
 
 class TestAssessmentTakenAdminSession(unittest.TestCase):
@@ -3058,32 +3334,37 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
         cls.svc_mgr.assign_assessment_taken_to_bank(
             cls.assessment_taken_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.unassign_assessment_taken_from_bank(
             cls.assessment_taken_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_assessment_taken_from_bank(
             cls.assessment_taken_ids[2], cls.assigned_catalog.ident)
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessments_taken():
-                catalog.delete_assessment_taken(obj.ident)
-            for obj in catalog.get_assessments_offered():
-                catalog.delete_assessment_offered(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+        for obj in cls.catalog.get_assessments_taken():
+            cls.catalog.delete_assessment_taken(obj.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_can_lookup_assessment_taken_bank_mappings(self):
         """Tests can_lookup_assessment_taken_bank_mappings"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_assessment_taken_bank_mappings()
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_assessment_taken_bank_mappings()
+        self.assertTrue(result)
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_bank_view()
 
     def test_use_plenary_bank_view(self):
         """Tests use_plenary_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_bank_view()
 
     def test_get_assessment_taken_ids_by_bank(self):
@@ -3102,7 +3383,7 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
     def test_get_assessment_taken_ids_by_banks(self):
         """Tests get_assessment_taken_ids_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         object_ids = self.session.get_assessment_taken_ids_by_banks(catalog_ids)
         self.assertTrue(isinstance(object_ids, IdList))
         # Currently our impl does not remove duplicate objectIds
@@ -3111,7 +3392,7 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
     def test_get_assessments_taken_by_banks(self):
         """Tests get_assessments_taken_by_banks"""
         # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
-        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
         results = self.session.get_assessments_taken_by_banks(catalog_ids)
         self.assertTrue(isinstance(results, ABCObjects.AssessmentTakenList))
         # Currently our impl does not remove duplicate objects
@@ -3133,35 +3414,111 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
 class TestAssessmentTakenBankAssignmentSession(unittest.TestCase):
     """Tests for AssessmentTakenBankAssignmentSession"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.assessment_taken_list = list()
+        cls.assessment_taken_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentTakenBankAssignmentSession tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank Assigned'
+        create_form.description = 'Test Bank for AssessmentTakenBankAssignmentSession tests'
+        cls.assigned_catalog = cls.svc_mgr.create_bank(create_form)
+        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentTakenBankAssignmentSession tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+        create_form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+        create_form.display_name = 'Test AssessmentOffered'
+        create_form.description = 'Test AssessmentOffered for AssessmentTakenBankAssignmentSession tests'
+        cls.assessment_offered = cls.catalog.create_assessment_offered(create_form)
+        for num in [0, 1, 2]:
+            create_form = cls.catalog.get_assessment_taken_form_for_create(cls.assessment_offered.ident, [])
+            create_form.display_name = 'Test AssessmentTaken ' + str(num)
+            create_form.description = 'Test AssessmentTaken for AssessmentTakenBankAssignmentSession tests'
+            obj = cls.catalog.create_assessment_taken(create_form)
+            cls.assessment_taken_list.append(obj)
+            cls.assessment_taken_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments_taken():
+            cls.catalog.delete_assessment_taken(obj.ident)
+        for obj in cls.catalog.get_assessments_offered():
+            cls.catalog.delete_assessment_offered(obj.ident)
+        for obj in cls.catalog.get_assessments():
+            cls.catalog.delete_assessment(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_can_assign_assessments_taken(self):
         """Tests can_assign_assessments_taken"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_assessments_taken()
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_assessments_taken()
+        self.assertTrue(isinstance(result, bool))
 
     def test_can_assign_assessments_taken_to_bank(self):
         """Tests can_assign_assessments_taken_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_assign_assessments_taken_to_bank(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_assessments_taken_to_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(result, bool))
 
     def test_get_assignable_bank_ids(self):
         """Tests get_assignable_bank_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids(True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids(self.catalog.ident)
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_get_assignable_bank_ids_for_assessment_taken(self):
         """Tests get_assignable_bank_ids_for_assessment_taken"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assignable_bank_ids_for_assessment_taken(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_item_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_bank_ids_for_assessment_taken(self.catalog.ident, self.assessment_taken_ids[0])
+        self.assertTrue(isinstance(results, IdList))
+
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
 
     def test_assign_assessment_taken_to_bank(self):
         """Tests assign_assessment_taken_to_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.assign_assessment_taken_to_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        results = self.assigned_catalog.get_assessments_taken()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_assessment_taken_to_bank(self.assessment_taken_ids[1], self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments_taken()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_assessment_taken_from_bank(
+            self.assessment_taken_ids[1],
+            self.assigned_catalog.ident)
 
     def test_unassign_assessment_taken_from_bank(self):
         """Tests unassign_assessment_taken_from_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unassign_assessment_taken_from_bank(True, True)
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        results = self.assigned_catalog.get_assessments_taken()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_assessment_taken_to_bank(
+            self.assessment_taken_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments_taken()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_assessment_taken_from_bank(
+            self.assessment_taken_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assessments_taken()
+        self.assertEqual(results.available(), 0)
 
     def test_reassign_assessment_taken_to_billing(self):
         """Tests reassign_assessment_taken_to_billing"""
@@ -3174,6 +3531,7 @@ class TestBankLookupSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         cls.catalogs = list()
         cls.catalog_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
@@ -3185,37 +3543,54 @@ class TestBankLookupSession(unittest.TestCase):
             cls.catalogs.append(catalog)
             cls.catalog_ids.append(catalog.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinLookupSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         for catalog in cls.svc_mgr.get_banks():
             cls.svc_mgr.delete_bank(catalog.ident)
 
     def test_can_lookup_banks(self):
         """Tests can_lookup_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_banks()
+        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
+        self.assertTrue(isinstance(self.session.can_lookup_banks(), bool))
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_bank_view()
 
     def test_use_plenary_bank_view(self):
         """Tests use_plenary_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_bank_view()
 
     def test_get_bank(self):
         """Tests get_bank"""
+        # From test_templates/resource.py::BinLookupSession::get_bin_template
         catalog = self.svc_mgr.get_bank(self.catalogs[0].ident)
         self.assertEqual(catalog.ident, self.catalogs[0].ident)
 
     def test_get_banks_by_ids(self):
         """Tests get_banks_by_ids"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_ids_template
         catalogs = self.svc_mgr.get_banks_by_ids(self.catalog_ids)
+        self.assertTrue(catalogs.available() == 2)
+        self.assertTrue(isinstance(catalogs, ABCObjects.BankList))
+        reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+        for index, catalog in enumerate(catalogs):
+            self.assertEqual(str(catalog.ident),
+                             reversed_catalog_ids[index])
 
     def test_get_banks_by_genus_type(self):
         """Tests get_banks_by_genus_type"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_banks_by_genus_type(True)
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_genus_type_template
+        catalogs = self.svc_mgr.get_banks_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.BankList))
 
     def test_get_banks_by_parent_genus_type(self):
         """Tests get_banks_by_parent_genus_type"""
@@ -3234,26 +3609,54 @@ class TestBankLookupSession(unittest.TestCase):
 
     def test_get_banks(self):
         """Tests get_banks"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_template
         catalogs = self.svc_mgr.get_banks()
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.BankList))
 
 
 class TestBankQuerySession(unittest.TestCase):
     """Tests for BankQuerySession"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_can_search_banks(self):
         """Tests can_search_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_banks()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_banks(), bool))
 
     def test_get_bank_query(self):
         """Tests get_bank_query"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_bank_query()
+        # From test_templates/resource.py::BinQuerySession::get_bin_query_template
+        query = self.session.get_bank_query()
+        self.assertTrue(isinstance(query, ABCQueries.BankQuery))
 
     def test_get_banks_by_query(self):
         """Tests get_banks_by_query"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_banks_by_query(True)
+        # From test_templates/resource.py::BinQuerySession::get_bins_by_query_template
+        query = self.session.get_bank_query()
+        query.match_display_name('Test catalog')
+        self.assertEqual(self.session.get_banks_by_query(query).available(), 1)
+        query.clear_display_name_terms()
+        query.match_display_name('Test catalog', match=False)
+        self.assertEqual(self.session.get_banks_by_query(query).available(), 0)
 
 
 class TestBankAdminSession(unittest.TestCase):
@@ -3261,6 +3664,7 @@ class TestBankAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         # Initialize test catalog:
         create_form = cls.svc_mgr.get_bank_form_for_create([])
@@ -3273,8 +3677,13 @@ class TestBankAdminSession(unittest.TestCase):
         create_form.description = 'Test Bank for BankAdminSession deletion test'
         cls.catalog_to_delete = cls.svc_mgr.create_bank(create_form)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinAdminSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         for catalog in cls.svc_mgr.get_banks():
             cls.svc_mgr.delete_bank(catalog.ident)
 
@@ -3308,8 +3717,8 @@ class TestBankAdminSession(unittest.TestCase):
 
     def test_can_update_banks(self):
         """Tests can_update_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_update_banks()
+        # From test_templates/resource.py BinAdminSession.can_update_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_update_banks(), bool))
 
     def test_get_bank_form_for_update(self):
         """Tests get_bank_form_for_update"""
@@ -3328,8 +3737,8 @@ class TestBankAdminSession(unittest.TestCase):
 
     def test_can_delete_banks(self):
         """Tests can_delete_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_delete_banks()
+        # From test_templates/resource.py BinAdminSession.can_delete_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_delete_banks(), bool))
 
     def test_delete_bank(self):
         """Tests delete_bank"""
@@ -3358,6 +3767,7 @@ class TestBankHierarchySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -3370,8 +3780,13 @@ class TestBankHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchySession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr.remove_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_banks(cls.catalogs['Root'].ident)
         cls.svc_mgr.remove_root_bank(cls.catalogs['Root'].ident)
@@ -3392,15 +3807,17 @@ class TestBankHierarchySession(unittest.TestCase):
 
     def test_can_access_bank_hierarchy(self):
         """Tests can_access_bank_hierarchy"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_access_bank_hierarchy()
+        # From test_templates/resource.py::BinHierarchySession::can_access_objective_bank_hierarchy_template
+        self.assertTrue(isinstance(self.svc_mgr.can_access_bank_hierarchy(), bool))
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_bank_view()
 
     def test_use_plenary_bank_view(self):
         """Tests use_plenary_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_bank_view()
 
     def test_get_root_bank_ids(self):
@@ -3558,6 +3975,7 @@ class TestBankHierarchyDesignSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -3570,8 +3988,13 @@ class TestBankHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_bank(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr.remove_child_bank(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_banks(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
@@ -3591,30 +4014,87 @@ class TestBankHierarchyDesignSession(unittest.TestCase):
 
     def test_can_modify_bank_hierarchy(self):
         """Tests can_modify_bank_hierarchy"""
-        # this is tested in the setUpClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::can_modify_bin_hierarchy_template
+        self.assertTrue(isinstance(self.session.can_modify_bank_hierarchy(), bool))
 
     def test_add_root_bank(self):
         """Tests add_root_bank"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_root_bin_template
         # this is tested in the setUpClass
-        self.assertTrue(True)
+        roots = self.session.get_root_banks()
+        self.assertTrue(isinstance(roots, ABCObjects.BankList))
+        self.assertEqual(roots.available(), 1)
 
     def test_remove_root_bank(self):
         """Tests remove_root_bank"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_root_bin_template
+        roots = self.session.get_root_banks()
+        self.assertEqual(roots.available(), 1)
+
+        create_form = self.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'new root'
+        create_form.description = 'Test Bank root'
+        new_bank = self.svc_mgr.create_bank(create_form)
+        self.svc_mgr.add_root_bank(new_bank.ident)
+
+        roots = self.session.get_root_banks()
+        self.assertEqual(roots.available(), 2)
+
+        self.session.remove_root_bank(new_bank.ident)
+
+        roots = self.session.get_root_banks()
+        self.assertEqual(roots.available(), 1)
 
     def test_add_child_bank(self):
         """Tests add_child_bank"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_child_bin_template
         # this is tested in the setUpClass
-        self.assertTrue(True)
+        children = self.session.get_child_banks(self.catalogs['Root'].ident)
+        self.assertTrue(isinstance(children, ABCObjects.BankList))
+        self.assertEqual(children.available(), 2)
 
     def test_remove_child_bank(self):
         """Tests remove_child_bank"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bin_template
+        children = self.session.get_child_banks(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
+
+        create_form = self.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'test child'
+        create_form.description = 'Test Bank child'
+        new_bank = self.svc_mgr.create_bank(create_form)
+        self.svc_mgr.add_child_bank(
+            self.catalogs['Root'].ident,
+            new_bank.ident)
+
+        children = self.session.get_child_banks(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 3)
+
+        self.session.remove_child_bank(
+            self.catalogs['Root'].ident,
+            new_bank.ident)
+
+        children = self.session.get_child_banks(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
 
     def test_remove_child_banks(self):
         """Tests remove_child_banks"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bins_template
+        children = self.session.get_child_banks(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)
+
+        create_form = self.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'test great grandchild'
+        create_form.description = 'Test Bank child'
+        new_bank = self.svc_mgr.create_bank(create_form)
+        self.svc_mgr.add_child_bank(
+            self.catalogs['Grandchild 1'].ident,
+            new_bank.ident)
+
+        children = self.session.get_child_banks(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 1)
+
+        self.session.remove_child_banks(self.catalogs['Grandchild 1'].ident)
+
+        children = self.session.get_child_banks(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)

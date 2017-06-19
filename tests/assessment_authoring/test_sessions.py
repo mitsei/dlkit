@@ -183,8 +183,10 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_parts_for_assessment(self):
         """Tests get_assessment_parts_for_assessment"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessment_parts_for_assessment(True)
+        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
+        results = self.session.get_assessment_parts_for_assessment(self.assessment.ident)
+        self.assertEqual(results.available(), 2)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentPartList))
 
     def test_get_assessment_parts(self):
         """Tests get_assessment_parts"""
@@ -252,8 +254,8 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
 
     def test_can_search_assessment_parts(self):
         """Tests can_search_assessment_parts"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_assessment_parts()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_assessment_parts(), bool))
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -275,18 +277,19 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
 
     def test_get_assessment_part_query(self):
         """Tests get_assessment_part_query"""
-        query = self.catalog.get_assessment_part_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_assessment_part_query()
 
     def test_get_assessment_parts_by_query(self):
         """Tests get_assessment_parts_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_assessment_part_query()
+        query = self.session.get_assessment_part_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_assessment_parts_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_assessment_parts_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_assessment_parts_by_query(query).available(), 3)
 
 
 class TestAssessmentPartAdminSession(unittest.TestCase):
@@ -700,8 +703,10 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rules_for_assessment_part(self):
         """Tests get_sequence_rules_for_assessment_part"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_sequence_rules_for_assessment_part(True)
+        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
+        results = self.session.get_sequence_rules_for_assessment_part(self.assessment_part.ident)
+        self.assertEqual(results.available(), 2)
+        self.assertTrue(isinstance(results, ABCObjects.SequenceRuleList))
 
     def test_get_sequence_rules_for_next_assessment_part(self):
         """Tests get_sequence_rules_for_next_assessment_part"""
@@ -715,8 +720,10 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rules_for_assessment(self):
         """Tests get_sequence_rules_for_assessment"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_sequence_rules_for_assessment(True)
+        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
+        results = self.session.get_sequence_rules_for_assessment(self.assessment.ident)
+        self.assertEqual(results.available(), 2)
+        self.assertTrue(isinstance(results, ABCObjects.SequenceRuleList))
 
     def test_get_sequence_rules(self):
         """Tests get_sequence_rules"""

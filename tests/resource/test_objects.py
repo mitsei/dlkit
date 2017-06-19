@@ -27,6 +27,7 @@ class TestResource(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bin_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -39,6 +40,7 @@ class TestResource(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_resources():
             cls.catalog.delete_resource(obj.ident)
         cls.svc_mgr.delete_bin(cls.catalog.ident)
@@ -74,7 +76,7 @@ class TestResource(unittest.TestCase):
 
     def test_get_resource_record(self):
         """Tests get_resource_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_resource_record(True)
 
 
@@ -194,6 +196,7 @@ class TestResourceList(unittest.TestCase):
             self.resource_list.append(obj)
             self.resource_ids.append(obj.ident)
         self.resource_list = ResourceList(self.resource_list)
+        self.object = self.resource_list
 
     @classmethod
     def tearDownClass(cls):
@@ -254,6 +257,26 @@ class TestResourceNodeList(unittest.TestCase):
 class TestBin(unittest.TestCase):
     """Tests for Bin"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_bin_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_bin(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_bin(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_bin_record(self):
         """Tests get_bin_record"""
         with self.assertRaises(errors.Unimplemented):
@@ -263,10 +286,28 @@ class TestBin(unittest.TestCase):
 class TestBinForm(unittest.TestCase):
     """Tests for BinForm"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_bin_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
     def test_get_bin_form_record(self):
         """Tests get_bin_form_record"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_bin_form_record(True)
+        with self.assertRaises(errors.Unsupported):
+            self.object.${method_name}(DEFAULT_TYPE)
 
 
 class TestBinList(unittest.TestCase):
@@ -351,11 +392,21 @@ class TestBinNode(unittest.TestCase):
             self.bin_list[0].ident,
             self.bin_list[1].ident)
 
+        self.object = self.svc_mgr.get_bin_nodes(
+            self.bin_list[0].ident, 0, 5, False)
+
+    def tearDown(self):
+        # Implemented from init template for BinNode
+        self.svc_mgr.remove_child_bin(
+            self.bin_list[0].ident,
+            self.bin_list[1].ident)
+        self.svc_mgr.remove_root_bin(self.bin_list[0].ident)
+        for node in self.bin_list:
+            self.svc_mgr.delete_bin(node.ident)
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for BinNode
-        for obj in cls.bin_ids:
-            cls.svc_mgr.delete_bin(obj)
         cls.svc_mgr.delete_bin(cls.catalog.ident)
 
     def test_get_bin(self):

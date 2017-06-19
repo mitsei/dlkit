@@ -25,6 +25,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 
 
 class TestCommentLookupSession(unittest.TestCase):
@@ -150,6 +151,7 @@ class TestCommentLookupSession(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.session.get_comments_by_genus_type_on_date(True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_comments_for_commentor(self):
         """Tests get_comments_for_commentor"""
         pass
@@ -159,6 +161,7 @@ class TestCommentLookupSession(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.session.get_comments_for_commentor_on_date(True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_commentor(self):
         """Tests get_comments_by_genus_type_for_commentor"""
         pass
@@ -168,6 +171,7 @@ class TestCommentLookupSession(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.session.get_comments_by_genus_type_for_commentor_on_date(True, True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_comments_for_reference(self):
         """Tests get_comments_for_reference"""
         pass
@@ -177,6 +181,7 @@ class TestCommentLookupSession(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.session.get_comments_for_reference_on_date(True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_reference(self):
         """Tests get_comments_by_genus_type_for_reference"""
         pass
@@ -186,6 +191,7 @@ class TestCommentLookupSession(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.session.get_comments_by_genus_type_for_reference_on_date(True, True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_comments_for_commentor_and_reference(self):
         """Tests get_comments_for_commentor_and_reference"""
         pass
@@ -195,6 +201,7 @@ class TestCommentLookupSession(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.session.get_comments_for_commentor_and_reference_on_date(True, True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_commentor_and_reference(self):
         """Tests get_comments_by_genus_type_for_commentor_and_reference"""
         pass
@@ -259,8 +266,8 @@ class TestCommentQuerySession(unittest.TestCase):
 
     def test_can_search_comments(self):
         """Tests can_search_comments"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_comments()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_comments(), bool))
 
     def test_use_federated_book_view(self):
         """Tests use_federated_book_view"""
@@ -272,18 +279,19 @@ class TestCommentQuerySession(unittest.TestCase):
 
     def test_get_comment_query(self):
         """Tests get_comment_query"""
-        query = self.catalog.get_comment_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_comment_query()
 
     def test_get_comments_by_query(self):
         """Tests get_comments_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_comment_query()
+        query = self.session.get_comment_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_comments_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_comments_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_comments_by_query(query).available(), 3)
 
 
 class TestCommentAdminSession(unittest.TestCase):
@@ -415,6 +423,7 @@ class TestBookLookupSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         cls.catalogs = list()
         cls.catalog_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -426,37 +435,54 @@ class TestBookLookupSession(unittest.TestCase):
             cls.catalogs.append(catalog)
             cls.catalog_ids.append(catalog.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinLookupSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         for catalog in cls.svc_mgr.get_books():
             cls.svc_mgr.delete_book(catalog.ident)
 
     def test_can_lookup_books(self):
         """Tests can_lookup_books"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_books()
+        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
+        self.assertTrue(isinstance(self.session.can_lookup_books(), bool))
 
     def test_use_comparative_book_view(self):
         """Tests use_comparative_book_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_book_view()
 
     def test_use_plenary_book_view(self):
         """Tests use_plenary_book_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_book_view()
 
     def test_get_book(self):
         """Tests get_book"""
+        # From test_templates/resource.py::BinLookupSession::get_bin_template
         catalog = self.svc_mgr.get_book(self.catalogs[0].ident)
         self.assertEqual(catalog.ident, self.catalogs[0].ident)
 
     def test_get_books_by_ids(self):
         """Tests get_books_by_ids"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_ids_template
         catalogs = self.svc_mgr.get_books_by_ids(self.catalog_ids)
+        self.assertTrue(catalogs.available() == 2)
+        self.assertTrue(isinstance(catalogs, ABCObjects.BookList))
+        reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+        for index, catalog in enumerate(catalogs):
+            self.assertEqual(str(catalog.ident),
+                             reversed_catalog_ids[index])
 
     def test_get_books_by_genus_type(self):
         """Tests get_books_by_genus_type"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_books_by_genus_type(True)
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_genus_type_template
+        catalogs = self.svc_mgr.get_books_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.BookList))
 
     def test_get_books_by_parent_genus_type(self):
         """Tests get_books_by_parent_genus_type"""
@@ -475,7 +501,10 @@ class TestBookLookupSession(unittest.TestCase):
 
     def test_get_books(self):
         """Tests get_books"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_template
         catalogs = self.svc_mgr.get_books()
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.BookList))
 
 
 class TestBookAdminSession(unittest.TestCase):
@@ -483,6 +512,7 @@ class TestBookAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
         # Initialize test catalog:
         create_form = cls.svc_mgr.get_book_form_for_create([])
@@ -495,8 +525,13 @@ class TestBookAdminSession(unittest.TestCase):
         create_form.description = 'Test Book for BookAdminSession deletion test'
         cls.catalog_to_delete = cls.svc_mgr.create_book(create_form)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinAdminSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         for catalog in cls.svc_mgr.get_books():
             cls.svc_mgr.delete_book(catalog.ident)
 
@@ -530,8 +565,8 @@ class TestBookAdminSession(unittest.TestCase):
 
     def test_can_update_books(self):
         """Tests can_update_books"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_update_books()
+        # From test_templates/resource.py BinAdminSession.can_update_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_update_books(), bool))
 
     def test_get_book_form_for_update(self):
         """Tests get_book_form_for_update"""
@@ -550,8 +585,8 @@ class TestBookAdminSession(unittest.TestCase):
 
     def test_can_delete_books(self):
         """Tests can_delete_books"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_delete_books()
+        # From test_templates/resource.py BinAdminSession.can_delete_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_delete_books(), bool))
 
     def test_delete_book(self):
         """Tests delete_book"""
@@ -580,6 +615,7 @@ class TestBookHierarchySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -592,8 +628,13 @@ class TestBookHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_book(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchySession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr.remove_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_books(cls.catalogs['Root'].ident)
         cls.svc_mgr.remove_root_book(cls.catalogs['Root'].ident)
@@ -614,15 +655,17 @@ class TestBookHierarchySession(unittest.TestCase):
 
     def test_can_access_book_hierarchy(self):
         """Tests can_access_book_hierarchy"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_access_book_hierarchy()
+        # From test_templates/resource.py::BinHierarchySession::can_access_objective_bank_hierarchy_template
+        self.assertTrue(isinstance(self.svc_mgr.can_access_book_hierarchy(), bool))
 
     def test_use_comparative_book_view(self):
         """Tests use_comparative_book_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_book_view()
 
     def test_use_plenary_book_view(self):
         """Tests use_plenary_book_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_book_view()
 
     def test_get_root_book_ids(self):
@@ -780,6 +823,7 @@ class TestBookHierarchyDesignSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -792,8 +836,13 @@ class TestBookHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_book(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr.remove_child_book(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_books(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
@@ -813,30 +862,87 @@ class TestBookHierarchyDesignSession(unittest.TestCase):
 
     def test_can_modify_book_hierarchy(self):
         """Tests can_modify_book_hierarchy"""
-        # this is tested in the setUpClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::can_modify_bin_hierarchy_template
+        self.assertTrue(isinstance(self.session.can_modify_book_hierarchy(), bool))
 
     def test_add_root_book(self):
         """Tests add_root_book"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_root_bin_template
         # this is tested in the setUpClass
-        self.assertTrue(True)
+        roots = self.session.get_root_books()
+        self.assertTrue(isinstance(roots, ABCObjects.BookList))
+        self.assertEqual(roots.available(), 1)
 
     def test_remove_root_book(self):
         """Tests remove_root_book"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_root_bin_template
+        roots = self.session.get_root_books()
+        self.assertEqual(roots.available(), 1)
+
+        create_form = self.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'new root'
+        create_form.description = 'Test Book root'
+        new_book = self.svc_mgr.create_book(create_form)
+        self.svc_mgr.add_root_book(new_book.ident)
+
+        roots = self.session.get_root_books()
+        self.assertEqual(roots.available(), 2)
+
+        self.session.remove_root_book(new_book.ident)
+
+        roots = self.session.get_root_books()
+        self.assertEqual(roots.available(), 1)
 
     def test_add_child_book(self):
         """Tests add_child_book"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_child_bin_template
         # this is tested in the setUpClass
-        self.assertTrue(True)
+        children = self.session.get_child_books(self.catalogs['Root'].ident)
+        self.assertTrue(isinstance(children, ABCObjects.BookList))
+        self.assertEqual(children.available(), 2)
 
     def test_remove_child_book(self):
         """Tests remove_child_book"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bin_template
+        children = self.session.get_child_books(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
+
+        create_form = self.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'test child'
+        create_form.description = 'Test Book child'
+        new_book = self.svc_mgr.create_book(create_form)
+        self.svc_mgr.add_child_book(
+            self.catalogs['Root'].ident,
+            new_book.ident)
+
+        children = self.session.get_child_books(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 3)
+
+        self.session.remove_child_book(
+            self.catalogs['Root'].ident,
+            new_book.ident)
+
+        children = self.session.get_child_books(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
 
     def test_remove_child_books(self):
         """Tests remove_child_books"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bins_template
+        children = self.session.get_child_books(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)
+
+        create_form = self.svc_mgr.get_book_form_for_create([])
+        create_form.display_name = 'test great grandchild'
+        create_form.description = 'Test Book child'
+        new_book = self.svc_mgr.create_book(create_form)
+        self.svc_mgr.add_child_book(
+            self.catalogs['Grandchild 1'].ident,
+            new_book.ident)
+
+        children = self.session.get_child_books(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 1)
+
+        self.session.remove_child_books(self.catalogs['Grandchild 1'].ident)
+
+        children = self.session.get_child_books(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)

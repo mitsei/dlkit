@@ -4,8 +4,11 @@
 import unittest
 
 
+from dlkit.abstract_osid.hierarchy.objects import Hierarchy
+from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -19,6 +22,8 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 
@@ -45,6 +50,7 @@ class TestLoggingSession(unittest.TestCase):
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
 
+    @unittest.skip('unimplemented test')
     def test_get_log_id(self):
         """Tests get_log_id"""
         pass
@@ -55,10 +61,12 @@ class TestLoggingSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
+    @unittest.skip('unimplemented test')
     def test_can_log(self):
         """Tests can_log"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_log(self):
         """Tests log"""
         pass
@@ -122,8 +130,8 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_can_read_log(self):
         """Tests can_read_log"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_read_log()
+        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
+        self.assertTrue(isinstance(self.session.can_read_log(), bool))
 
     def test_use_comparative_log_entry_view(self):
         """Tests use_comparative_log_entry_view"""
@@ -237,6 +245,7 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         cls.log_entry_list = list()
         cls.log_entry_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -253,8 +262,13 @@ class TestLogEntryQuerySession(unittest.TestCase):
             cls.log_entry_list.append(obj)
             cls.log_entry_ids.append(obj.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         for obj in cls.catalog.get_log_entries():
             cls.catalog.delete_log_entry(obj.ident)
         cls.svc_mgr.delete_log(cls.catalog.ident)
@@ -271,8 +285,8 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     def test_can_search_log_entries(self):
         """Tests can_search_log_entries"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_log_entries()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_log_entries(), bool))
 
     def test_use_federated_log_view(self):
         """Tests use_federated_log_view"""
@@ -284,26 +298,27 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     def test_get_log_entry_query(self):
         """Tests get_log_entry_query"""
-        query = self.catalog.get_log_entry_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_log_entry_query()
 
     def test_get_log_entries_by_query(self):
         """Tests get_log_entries_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_log_entry_query()
+        query = self.session.get_log_entry_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_log_entries_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_log_entries_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_log_entries_by_query(query).available(), 3)
 
 
 class TestLogEntryAdminSession(unittest.TestCase):
     """Tests for LogEntryAdminSession"""
 
-    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_log_form_for_create([])
         create_form.display_name = 'Test Log'
@@ -316,8 +331,13 @@ class TestLogEntryAdminSession(unittest.TestCase):
         form.set_genus_type(NEW_TYPE)
         cls.osid_object = cls.catalog.create_log_entry(form)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
         for obj in cls.catalog.get_log_entries():
             cls.catalog.delete_log_entry(obj.ident)
         cls.svc_mgr.delete_log(cls.catalog.ident)
@@ -360,8 +380,8 @@ class TestLogEntryAdminSession(unittest.TestCase):
 
     def test_can_update_log_entries(self):
         """Tests can_update_log_entries"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_update_log_entries()
+        # From test_templates/resource.py BinAdminSession.can_update_bins_template
+        self.assertTrue(isinstance(self.catalog.can_update_log_entries(), bool))
 
     def test_get_log_entry_form_for_update(self):
         """Tests get_log_entry_form_for_update"""
@@ -387,8 +407,8 @@ class TestLogEntryAdminSession(unittest.TestCase):
 
     def test_can_delete_log_entries(self):
         """Tests can_delete_log_entries"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_delete_log_entries()
+        # From test_templates/resource.py BinAdminSession.can_delete_bins_template
+        self.assertTrue(isinstance(self.catalog.can_delete_log_entries(), bool))
 
     def test_delete_log_entry(self):
         """Tests delete_log_entry"""
@@ -421,6 +441,7 @@ class TestLogLookupSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         cls.catalogs = list()
         cls.catalog_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -432,37 +453,54 @@ class TestLogLookupSession(unittest.TestCase):
             cls.catalogs.append(catalog)
             cls.catalog_ids.append(catalog.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinLookupSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
 
     def test_can_lookup_logs(self):
         """Tests can_lookup_logs"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_logs()
+        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
+        self.assertTrue(isinstance(self.session.can_lookup_logs(), bool))
 
     def test_use_comparative_log_view(self):
         """Tests use_comparative_log_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_log_view()
 
     def test_use_plenary_log_view(self):
         """Tests use_plenary_log_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_log_view()
 
     def test_get_log(self):
         """Tests get_log"""
+        # From test_templates/resource.py::BinLookupSession::get_bin_template
         catalog = self.svc_mgr.get_log(self.catalogs[0].ident)
         self.assertEqual(catalog.ident, self.catalogs[0].ident)
 
     def test_get_logs_by_ids(self):
         """Tests get_logs_by_ids"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_ids_template
         catalogs = self.svc_mgr.get_logs_by_ids(self.catalog_ids)
+        self.assertTrue(catalogs.available() == 2)
+        self.assertTrue(isinstance(catalogs, ABCObjects.LogList))
+        reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+        for index, catalog in enumerate(catalogs):
+            self.assertEqual(str(catalog.ident),
+                             reversed_catalog_ids[index])
 
     def test_get_logs_by_genus_type(self):
         """Tests get_logs_by_genus_type"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_logs_by_genus_type(True)
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_genus_type_template
+        catalogs = self.svc_mgr.get_logs_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.LogList))
 
     def test_get_logs_by_parent_genus_type(self):
         """Tests get_logs_by_parent_genus_type"""
@@ -481,7 +519,10 @@ class TestLogLookupSession(unittest.TestCase):
 
     def test_get_logs(self):
         """Tests get_logs"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_template
         catalogs = self.svc_mgr.get_logs()
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.LogList))
 
 
 class TestLogAdminSession(unittest.TestCase):
@@ -489,6 +530,7 @@ class TestLogAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
         # Initialize test catalog:
         create_form = cls.svc_mgr.get_log_form_for_create([])
@@ -501,8 +543,13 @@ class TestLogAdminSession(unittest.TestCase):
         create_form.description = 'Test Log for LogAdminSession deletion test'
         cls.catalog_to_delete = cls.svc_mgr.create_log(create_form)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinAdminSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         for catalog in cls.svc_mgr.get_logs():
             cls.svc_mgr.delete_log(catalog.ident)
 
@@ -536,8 +583,8 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_can_update_logs(self):
         """Tests can_update_logs"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_update_logs()
+        # From test_templates/resource.py BinAdminSession.can_update_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_update_logs(), bool))
 
     def test_get_log_form_for_update(self):
         """Tests get_log_form_for_update"""
@@ -556,8 +603,8 @@ class TestLogAdminSession(unittest.TestCase):
 
     def test_can_delete_logs(self):
         """Tests can_delete_logs"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_delete_logs()
+        # From test_templates/resource.py BinAdminSession.can_delete_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_delete_logs(), bool))
 
     def test_delete_log(self):
         """Tests delete_log"""
@@ -579,3 +626,341 @@ class TestLogAdminSession(unittest.TestCase):
         self.svc_mgr.alias_log(self.catalog_to_delete.ident, alias_id)
         aliased_catalog = self.svc_mgr.get_log(alias_id)
         self.assertEqual(self.catalog_to_delete.ident, aliased_catalog.ident)
+
+
+class TestLogHierarchySession(unittest.TestCase):
+    """Tests for LogHierarchySession"""
+
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.catalogs = dict()
+        for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
+            create_form = cls.svc_mgr.get_log_form_for_create([])
+            create_form.display_name = name
+            create_form.description = 'Test Log ' + name
+            cls.catalogs[name] = cls.svc_mgr.create_log(create_form)
+        cls.svc_mgr.add_root_log(cls.catalogs['Root'].ident)
+        cls.svc_mgr.add_child_log(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
+        cls.svc_mgr.add_child_log(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
+        cls.svc_mgr.add_child_log(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchySession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
+        cls.svc_mgr.remove_child_log(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+        cls.svc_mgr.remove_child_logs(cls.catalogs['Root'].ident)
+        cls.svc_mgr.remove_root_log(cls.catalogs['Root'].ident)
+        for cat_name in cls.catalogs:
+            cls.svc_mgr.delete_log(cls.catalogs[cat_name].ident)
+
+    def test_get_log_hierarchy_id(self):
+        """Tests get_log_hierarchy_id"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_id_template
+        hierarchy_id = self.svc_mgr.get_log_hierarchy_id()
+        self.assertTrue(isinstance(hierarchy_id, Id))
+
+    def test_get_log_hierarchy(self):
+        """Tests get_log_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_template
+        hierarchy = self.svc_mgr.get_log_hierarchy()
+        self.assertTrue(isinstance(hierarchy, Hierarchy))
+
+    def test_can_access_log_hierarchy(self):
+        """Tests can_access_log_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::can_access_objective_bank_hierarchy_template
+        self.assertTrue(isinstance(self.svc_mgr.can_access_log_hierarchy(), bool))
+
+    def test_use_comparative_log_view(self):
+        """Tests use_comparative_log_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
+        self.svc_mgr.use_comparative_log_view()
+
+    def test_use_plenary_log_view(self):
+        """Tests use_plenary_log_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
+        self.svc_mgr.use_plenary_log_view()
+
+    def test_get_root_log_ids(self):
+        """Tests get_root_log_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_root_bin_ids_template
+        root_ids = self.svc_mgr.get_root_log_ids()
+        self.assertTrue(isinstance(root_ids, IdList))
+        # probably should be == 1, but we seem to be getting test cruft,
+        # and I can't pinpoint where it's being introduced.
+        self.assertTrue(root_ids.available() >= 1)
+
+    def test_get_root_logs(self):
+        """Tests get_root_logs"""
+        # From test_templates/resource.py::BinHierarchySession::get_root_bins_template
+        from dlkit.abstract_osid.logging_.objects import LogList
+        roots = self.svc_mgr.get_root_logs()
+        self.assertTrue(isinstance(roots, LogList))
+        self.assertTrue(roots.available() == 1)
+
+    def test_has_parent_logs(self):
+        """Tests has_parent_logs"""
+        # From test_templates/resource.py::BinHierarchySession::has_parent_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.has_parent_logs(self.catalogs['Child 1'].ident), bool))
+        self.assertTrue(self.svc_mgr.has_parent_logs(self.catalogs['Child 1'].ident))
+        self.assertTrue(self.svc_mgr.has_parent_logs(self.catalogs['Child 2'].ident))
+        self.assertTrue(self.svc_mgr.has_parent_logs(self.catalogs['Grandchild 1'].ident))
+        self.assertFalse(self.svc_mgr.has_parent_logs(self.catalogs['Root'].ident))
+
+    def test_is_parent_of_log(self):
+        """Tests is_parent_of_log"""
+        # From test_templates/resource.py::BinHierarchySession::is_parent_of_bin_template
+        self.assertTrue(isinstance(self.svc_mgr.is_parent_of_log(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
+        self.assertTrue(self.svc_mgr.is_parent_of_log(self.catalogs['Root'].ident, self.catalogs['Child 1'].ident))
+        self.assertTrue(self.svc_mgr.is_parent_of_log(self.catalogs['Child 1'].ident, self.catalogs['Grandchild 1'].ident))
+        self.assertFalse(self.svc_mgr.is_parent_of_log(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident))
+
+    def test_get_parent_log_ids(self):
+        """Tests get_parent_log_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_parent_bin_ids_template
+        from dlkit.abstract_osid.id.objects import IdList
+        catalog_list = self.svc_mgr.get_parent_log_ids(self.catalogs['Child 1'].ident)
+        self.assertTrue(isinstance(catalog_list, IdList))
+        self.assertEqual(catalog_list.available(), 1)
+
+    def test_get_parent_logs(self):
+        """Tests get_parent_logs"""
+        # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
+        from dlkit.abstract_osid.logging.objects import LogList
+        catalog_list = self.svc_mgr.get_parent_logs(self.catalogs['Child 1'].ident)
+        self.assertTrue(isinstance(catalog_list, LogList))
+        self.assertEqual(catalog_list.available(), 1)
+        self.assertEqual(catalog_list.next().display_name.text, 'Root')
+
+    def test_is_ancestor_of_log(self):
+        """Tests is_ancestor_of_log"""
+        # From test_templates/resource.py::BinHierarchySession::is_ancestor_of_bin_template
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_ancestor_of_log,
+                          self.catalogs['Root'].ident,
+                          self.catalogs['Child 1'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_log(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_log(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_log(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Grandchild 1'].ident))
+        # self.assertFalse(self.svc_mgr.is_ancestor_of_log(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
+
+    def test_has_child_logs(self):
+        """Tests has_child_logs"""
+        self.assertTrue(isinstance(self.svc_mgr.has_child_logs(self.catalogs['Child 1'].ident), bool))
+        self.assertTrue(self.svc_mgr.has_child_logs(self.catalogs['Root'].ident))
+        self.assertTrue(self.svc_mgr.has_child_logs(self.catalogs['Child 1'].ident))
+        self.assertFalse(self.svc_mgr.has_child_logs(self.catalogs['Child 2'].ident))
+        self.assertFalse(self.svc_mgr.has_child_logs(self.catalogs['Grandchild 1'].ident))
+
+    def test_is_child_of_log(self):
+        """Tests is_child_of_log"""
+        self.assertTrue(isinstance(self.svc_mgr.is_child_of_log(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
+        self.assertTrue(self.svc_mgr.is_child_of_log(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident))
+        self.assertTrue(self.svc_mgr.is_child_of_log(self.catalogs['Grandchild 1'].ident, self.catalogs['Child 1'].ident))
+        self.assertFalse(self.svc_mgr.is_child_of_log(self.catalogs['Root'].ident, self.catalogs['Child 1'].ident))
+
+    def test_get_child_log_ids(self):
+        """Tests get_child_log_ids"""
+        from dlkit.abstract_osid.id.objects import IdList
+        catalog_list = self.svc_mgr.get_child_log_ids(self.catalogs['Child 1'].ident)
+        self.assertTrue(isinstance(catalog_list, IdList))
+        self.assertEqual(catalog_list.available(), 1)
+
+    def test_get_child_logs(self):
+        """Tests get_child_logs"""
+        from dlkit.abstract_osid.logging.objects import LogList
+        catalog_list = self.svc_mgr.get_child_logs(self.catalogs['Child 1'].ident)
+        self.assertTrue(isinstance(catalog_list, LogList))
+        self.assertEqual(catalog_list.available(), 1)
+        self.assertEqual(catalog_list.next().display_name.text, 'Grandchild 1')
+
+    def test_is_descendant_of_log(self):
+        """Tests is_descendant_of_log"""
+        # From test_templates/resource.py::BinHierarchySession::is_descendant_of_bin_template
+        self.assertRaises(errors.Unimplemented,
+                          self.svc_mgr.is_descendant_of_log,
+                          self.catalogs['Child 1'].ident,
+                          self.catalogs['Root'].ident)
+        # self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_log(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_log(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_log(
+        #     self.catalogs['Grandchild 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertFalse(self.svc_mgr.is_descendant_of_log(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
+
+    def test_get_log_node_ids(self):
+        """Tests get_log_node_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_node_ids_template
+        # Per the spec, perhaps counterintuitively this method returns a
+        #  node, **not** a IdList...
+        node = self.svc_mgr.get_log_node_ids(self.catalogs['Child 1'].ident, 1, 2, False)
+        self.assertTrue(isinstance(node, OsidNode))
+        self.assertFalse(node.is_root())
+        self.assertFalse(node.is_leaf())
+        self.assertTrue(node.get_child_ids().available(), 1)
+        self.assertTrue(isinstance(node.get_child_ids(), IdList))
+        self.assertTrue(node.get_parent_ids().available(), 1)
+        self.assertTrue(isinstance(node.get_parent_ids(), IdList))
+
+    def test_get_log_nodes(self):
+        """Tests get_log_nodes"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_nodes_template
+        node = self.svc_mgr.get_log_nodes(self.catalogs['Child 1'].ident, 1, 2, False)
+        self.assertTrue(isinstance(node, OsidNode))
+        self.assertFalse(node.is_root())
+        self.assertFalse(node.is_leaf())
+        self.assertTrue(node.get_child_ids().available(), 1)
+        self.assertTrue(isinstance(node.get_child_ids(), IdList))
+        self.assertTrue(node.get_parent_ids().available(), 1)
+        self.assertTrue(isinstance(node.get_parent_ids(), IdList))
+
+
+class TestLogHierarchyDesignSession(unittest.TestCase):
+    """Tests for LogHierarchyDesignSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.catalogs = dict()
+        for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
+            create_form = cls.svc_mgr.get_log_form_for_create([])
+            create_form.display_name = name
+            create_form.description = 'Test Log ' + name
+            cls.catalogs[name] = cls.svc_mgr.create_log(create_form)
+        cls.svc_mgr.add_root_log(cls.catalogs['Root'].ident)
+        cls.svc_mgr.add_child_log(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
+        cls.svc_mgr.add_child_log(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
+        cls.svc_mgr.add_child_log(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+        cls.svc_mgr.remove_child_log(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
+        cls.svc_mgr.remove_child_logs(cls.catalogs['Root'].ident)
+        for cat_name in cls.catalogs:
+            cls.svc_mgr.delete_log(cls.catalogs[cat_name].ident)
+
+    def test_get_log_hierarchy_id(self):
+        """Tests get_log_hierarchy_id"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_id_template
+        hierarchy_id = self.svc_mgr.get_log_hierarchy_id()
+        self.assertTrue(isinstance(hierarchy_id, Id))
+
+    def test_get_log_hierarchy(self):
+        """Tests get_log_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_template
+        hierarchy = self.svc_mgr.get_log_hierarchy()
+        self.assertTrue(isinstance(hierarchy, Hierarchy))
+
+    def test_can_modify_log_hierarchy(self):
+        """Tests can_modify_log_hierarchy"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::can_modify_bin_hierarchy_template
+        self.assertTrue(isinstance(self.session.can_modify_log_hierarchy(), bool))
+
+    def test_add_root_log(self):
+        """Tests add_root_log"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_root_bin_template
+        # this is tested in the setUpClass
+        roots = self.session.get_root_logs()
+        self.assertTrue(isinstance(roots, ABCObjects.LogList))
+        self.assertEqual(roots.available(), 1)
+
+    def test_remove_root_log(self):
+        """Tests remove_root_log"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_root_bin_template
+        roots = self.session.get_root_logs()
+        self.assertEqual(roots.available(), 1)
+
+        create_form = self.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'new root'
+        create_form.description = 'Test Log root'
+        new_log = self.svc_mgr.create_log(create_form)
+        self.svc_mgr.add_root_log(new_log.ident)
+
+        roots = self.session.get_root_logs()
+        self.assertEqual(roots.available(), 2)
+
+        self.session.remove_root_log(new_log.ident)
+
+        roots = self.session.get_root_logs()
+        self.assertEqual(roots.available(), 1)
+
+    def test_add_child_log(self):
+        """Tests add_child_log"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_child_bin_template
+        # this is tested in the setUpClass
+        children = self.session.get_child_logs(self.catalogs['Root'].ident)
+        self.assertTrue(isinstance(children, ABCObjects.LogList))
+        self.assertEqual(children.available(), 2)
+
+    def test_remove_child_log(self):
+        """Tests remove_child_log"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bin_template
+        children = self.session.get_child_logs(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
+
+        create_form = self.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'test child'
+        create_form.description = 'Test Log child'
+        new_log = self.svc_mgr.create_log(create_form)
+        self.svc_mgr.add_child_log(
+            self.catalogs['Root'].ident,
+            new_log.ident)
+
+        children = self.session.get_child_logs(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 3)
+
+        self.session.remove_child_log(
+            self.catalogs['Root'].ident,
+            new_log.ident)
+
+        children = self.session.get_child_logs(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
+
+    def test_remove_child_logs(self):
+        """Tests remove_child_logs"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bins_template
+        children = self.session.get_child_logs(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)
+
+        create_form = self.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'test great grandchild'
+        create_form.description = 'Test Log child'
+        new_log = self.svc_mgr.create_log(create_form)
+        self.svc_mgr.add_child_log(
+            self.catalogs['Grandchild 1'].ident,
+            new_log.ident)
+
+        children = self.session.get_child_logs(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 1)
+
+        self.session.remove_child_logs(self.catalogs['Grandchild 1'].ident)
+
+        children = self.session.get_child_logs(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)

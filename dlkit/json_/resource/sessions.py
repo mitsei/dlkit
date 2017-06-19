@@ -1617,10 +1617,10 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('RESOURCE', local=True)
         lookup_session = mgr.get_bin_lookup_session(proxy=self._proxy)
-        resources = lookup_session.get_bins()
+        bins = lookup_session.get_bins()
         id_list = []
-        for resource in resources:
-            id_list.append(resources.get_id())
+        for bin in bins:
+            id_list.append(bin.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -1638,7 +1638,7 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bin_ids(bin_id)
 
     @utilities.arguments_not_none
     def assign_resource_to_bin(self, resource_id, bin_id):

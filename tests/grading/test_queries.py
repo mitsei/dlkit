@@ -83,7 +83,7 @@ class TestGradeQuery(unittest.TestCase):
     def test_match_input_score_start_range(self):
         """Tests match_input_score_start_range"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_input_score_start_range(1.0, 100.0, True)
+            self.query.match_input_score_start_range(True, True, True)
 
     def test_clear_input_score_start_range_terms(self):
         """Tests clear_input_score_start_range_terms"""
@@ -96,7 +96,7 @@ class TestGradeQuery(unittest.TestCase):
     def test_match_input_score_end_range(self):
         """Tests match_input_score_end_range"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_input_score_end_range(1.0, 100.0, True)
+            self.query.match_input_score_end_range(True, True, True)
 
     def test_clear_input_score_end_range_terms(self):
         """Tests clear_input_score_end_range_terms"""
@@ -109,7 +109,7 @@ class TestGradeQuery(unittest.TestCase):
     def test_match_input_score(self):
         """Tests match_input_score"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_input_score(1.0, 100.0, True)
+            self.query.match_input_score(True, True, True)
 
     def test_clear_input_score_terms(self):
         """Tests clear_input_score_terms"""
@@ -119,7 +119,7 @@ class TestGradeQuery(unittest.TestCase):
     def test_match_output_score(self):
         """Tests match_output_score"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_output_score(1.0, 100.0, True)
+            self.query.match_output_score(True, True, True)
 
     def test_clear_output_score_terms(self):
         """Tests clear_output_score_terms"""
@@ -292,7 +292,7 @@ class TestGradeSystemQuery(unittest.TestCase):
     def test_match_lowest_numeric_score(self):
         """Tests match_lowest_numeric_score"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_lowest_numeric_score(1.0, 100.0, True)
+            self.query.match_lowest_numeric_score(True, True, True)
 
     def test_clear_lowest_numeric_score_terms(self):
         """Tests clear_lowest_numeric_score_terms"""
@@ -305,7 +305,7 @@ class TestGradeSystemQuery(unittest.TestCase):
     def test_match_numeric_score_increment(self):
         """Tests match_numeric_score_increment"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_numeric_score_increment(1.0, 100.0, True)
+            self.query.match_numeric_score_increment(True, True, True)
 
     def test_clear_numeric_score_increment_terms(self):
         """Tests clear_numeric_score_increment_terms"""
@@ -318,7 +318,7 @@ class TestGradeSystemQuery(unittest.TestCase):
     def test_match_highest_numeric_score(self):
         """Tests match_highest_numeric_score"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_highest_numeric_score(1.0, 100.0, True)
+            self.query.match_highest_numeric_score(True, True, True)
 
     def test_clear_highest_numeric_score_terms(self):
         """Tests clear_highest_numeric_score_terms"""

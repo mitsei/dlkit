@@ -7,6 +7,7 @@ import unittest
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.assessment.queries import AnswerQuery
 from dlkit.json_.assessment.queries import QuestionQuery
+from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -716,7 +717,13 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
 
     def test_match_start_time(self):
         """Tests match_start_time"""
-        pass
+        start_time = DateTime.utcnow()
+        end_time = DateTime.utcnow()
+        self.query.match_start_time(start_time, end_time, match=True)
+        self.assertEqual(self.query._query_terms['startTime'], {
+            '$gte': start_time,
+            '$lte': end_time
+        })
 
     def test_match_any_start_time(self):
         """Tests match_any_start_time"""
@@ -733,7 +740,13 @@ class TestAssessmentOfferedQuery(unittest.TestCase):
 
     def test_match_deadline(self):
         """Tests match_deadline"""
-        pass
+        start_time = DateTime.utcnow()
+        end_time = DateTime.utcnow()
+        self.query.match_deadline(start_time, end_time, match=True)
+        self.assertEqual(self.query._query_terms['deadline'], {
+            '$gte': start_time,
+            '$lte': end_time
+        })
 
     def test_match_any_deadline(self):
         """Tests match_any_deadline"""

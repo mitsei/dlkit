@@ -69,6 +69,14 @@ class TestGradingProfile(unittest.TestCase):
         """Tests supports_gradebook_admin"""
         self.assertTrue(isinstance(self.mgr.supports_gradebook_admin(), bool))
 
+    def test_supports_gradebook_hierarchy(self):
+        """Tests supports_gradebook_hierarchy"""
+        self.assertTrue(isinstance(self.mgr.supports_gradebook_hierarchy(), bool))
+
+    def test_supports_gradebook_hierarchy_design(self):
+        """Tests supports_gradebook_hierarchy_design"""
+        self.assertTrue(isinstance(self.mgr.supports_gradebook_hierarchy_design(), bool))
+
     def test_get_grade_record_types(self):
         """Tests get_grade_record_types"""
         self.assertTrue(isinstance(self.mgr.get_grade_record_types(), abc_type_list))
@@ -270,6 +278,18 @@ class TestGradingManager(unittest.TestCase):
         if self.svc_mgr.supports_gradebook_admin():
             self.svc_mgr.get_gradebook_admin_session()
 
+    def test_get_gradebook_hierarchy_session(self):
+        """Tests get_gradebook_hierarchy_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_hierarchy():
+            self.svc_mgr.get_gradebook_hierarchy_session()
+
+    def test_get_gradebook_hierarchy_design_session(self):
+        """Tests get_gradebook_hierarchy_design_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_hierarchy_design():
+            self.svc_mgr.get_gradebook_hierarchy_design_session()
+
     def test_get_grading_batch_manager(self):
         """Tests get_grading_batch_manager"""
         # From tests_templates/resource.py::ResourceManager::get_resource_batch_manager_template
@@ -470,6 +490,22 @@ class TestGradingProxyManager(unittest.TestCase):
             self.svc_mgr.get_gradebook_admin_session(PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_gradebook_admin_session()
+
+    def test_get_gradebook_hierarchy_session(self):
+        """Tests get_gradebook_hierarchy_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_hierarchy():
+            self.svc_mgr.get_gradebook_hierarchy_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_hierarchy_session()
+
+    def test_get_gradebook_hierarchy_design_session(self):
+        """Tests get_gradebook_hierarchy_design_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_hierarchy_design():
+            self.svc_mgr.get_gradebook_hierarchy_design_session(PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_hierarchy_design_session()
 
     def test_get_grading_batch_proxy_manager(self):
         """Tests get_grading_batch_proxy_manager"""

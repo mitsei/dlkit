@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo logging'
 
 DESCRIPTION = 'MongoDB based logging implementation'
 
-VERSIONCOMPONENTS = [0, 1, 327]
+VERSIONCOMPONENTS = [0, 1, 344]
 
-RELEASEDATE = "2017-06-16"
+RELEASEDATE = "2017-06-19"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
@@ -38,8 +38,8 @@ SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_log_search',
     'supports_log_admin',
     # 'supports_log_notification',
-    # 'supports_log_hierarchy',
-    # 'supports_log_hierarchy_design',
+    'supports_log_hierarchy',
+    'supports_log_hierarchy_design',
     # 'supports_logging_batch',
     'supports_log_entry_admin',
 ]

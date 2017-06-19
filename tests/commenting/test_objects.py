@@ -46,10 +46,12 @@ class TestComment(unittest.TestCase):
             cls.catalog.delete_comment(obj.ident)
         cls.svc_mgr.delete_book(cls.catalog.ident)
 
+    @unittest.skip('unimplemented test')
     def test_get_reference_id(self):
         """Tests get_reference_id"""
         pass
 
+    @unittest.skip('unimplemented test')
     def test_get_commentor_id(self):
         """Tests get_commentor_id"""
         pass
@@ -96,7 +98,7 @@ class TestComment(unittest.TestCase):
 
     def test_get_comment_record(self):
         """Tests get_comment_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_comment_record(True)
 
 
@@ -241,6 +243,26 @@ class TestCommentList(unittest.TestCase):
 class TestBook(unittest.TestCase):
     """Tests for Book"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_book_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_book(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_book(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_book_record(self):
         """Tests get_book_record"""
         with self.assertRaises(errors.Unimplemented):
@@ -249,6 +271,24 @@ class TestBook(unittest.TestCase):
 
 class TestBookForm(unittest.TestCase):
     """Tests for BookForm"""
+
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_book_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
 
     def test_get_book_form_record(self):
         """Tests get_book_form_record"""
@@ -338,11 +378,21 @@ class TestBookNode(unittest.TestCase):
             self.book_list[0].ident,
             self.book_list[1].ident)
 
+        self.object = self.svc_mgr.get_book_nodes(
+            self.book_list[0].ident, 0, 5, False)
+
+    def tearDown(self):
+        # Implemented from init template for BinNode
+        self.svc_mgr.remove_child_book(
+            self.book_list[0].ident,
+            self.book_list[1].ident)
+        self.svc_mgr.remove_root_book(self.book_list[0].ident)
+        for node in self.book_list:
+            self.svc_mgr.delete_book(node.ident)
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for BinNode
-        for obj in cls.book_ids:
-            cls.svc_mgr.delete_book(obj)
         cls.svc_mgr.delete_book(cls.catalog.ident)
 
     def test_get_book(self):

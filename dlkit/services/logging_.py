@@ -68,6 +68,18 @@ class LoggingProfile(osid.OsidProfile, logging_managers.LoggingProfile):
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_log_admin()
 
+    def supports_log_hierarchy(self):
+        """Pass through to provider supports_log_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_hierarchy()
+
+    def supports_log_hierarchy_design(self):
+        """Pass through to provider supports_log_hierarchy_design"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_hierarchy_design()
+
     def get_log_entry_record_types(self):
         """Pass through to provider get_log_entry_record_types"""
         # Implemented from kitosid template for -
@@ -310,6 +322,22 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     log_admin_session = property(fget=get_log_admin_session)
 
+    def get_log_hierarchy_session(self, *args, **kwargs):
+        """Pass through to provider get_log_hierarchy_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_log_hierarchy_session(*args, **kwargs)
+
+    log_hierarchy_session = property(fget=get_log_hierarchy_session)
+
+    def get_log_hierarchy_design_session(self, *args, **kwargs):
+        """Pass through to provider get_log_hierarchy_design_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_log_hierarchy_design_session(*args, **kwargs)
+
+    log_hierarchy_design_session = property(fget=get_log_hierarchy_design_session)
+
     def get_logging_batch_manager(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')
@@ -540,6 +568,172 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('log_admin_session').alias_log(*args, **kwargs)
+##
+# The following methods are from osid.logging.LogHierarchySession
+
+    def get_log_hierarchy_id(self):
+        """Pass through to provider LogHierarchySession.get_log_hierarchy_id"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        return self._get_provider_session('log_hierarchy_session').get_log_hierarchy_id()
+
+    log_hierarchy_id = property(fget=get_log_hierarchy_id)
+
+    def get_log_hierarchy(self):
+        """Pass through to provider LogHierarchySession.get_log_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        return self._get_provider_session('log_hierarchy_session').get_log_hierarchy()
+
+    log_hierarchy = property(fget=get_log_hierarchy)
+
+    def can_access_log_hierarchy(self):
+        """Pass through to provider LogHierarchySession.can_access_log_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        return self._get_provider_session('log_hierarchy_session').can_access_log_hierarchy()
+
+    def get_root_log_ids(self):
+        """Pass through to provider LogHierarchySession.get_root_log_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_root_bin_ids
+        return self._get_provider_session('log_hierarchy_session').get_root_log_ids()
+
+    root_log_ids = property(fget=get_root_log_ids)
+
+    def get_root_logs(self):
+        """Pass through to provider LogHierarchySession.get_root_logs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_root_bins
+        return self._get_provider_session('log_hierarchy_session').get_root_logs()
+
+    root_logs = property(fget=get_root_logs)
+
+    def has_parent_logs(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.has_parent_logs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.has_parent_bins
+        return self._get_provider_session('log_hierarchy_session').has_parent_logs(*args, **kwargs)
+
+    def is_parent_of_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.is_parent_of_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_parent_of_bin
+        return self._get_provider_session('log_hierarchy_session').is_parent_of_log(*args, **kwargs)
+
+    def get_parent_log_ids(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.get_parent_log_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        return self._get_provider_session('log_hierarchy_session').get_parent_log_ids(*args, **kwargs)
+
+    def get_parent_logs(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.get_parent_logs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_parent_bins
+        return self._get_provider_session('log_hierarchy_session').get_parent_logs(*args, **kwargs)
+
+    def is_ancestor_of_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.is_ancestor_of_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        return self._get_provider_session('log_hierarchy_session').is_ancestor_of_log(*args, **kwargs)
+
+    def has_child_logs(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.has_child_logs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.has_child_bins
+        return self._get_provider_session('log_hierarchy_session').has_child_logs(*args, **kwargs)
+
+    def is_child_of_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.is_child_of_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_child_of_bin
+        return self._get_provider_session('log_hierarchy_session').is_child_of_log(*args, **kwargs)
+
+    def get_child_log_ids(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.get_child_log_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_child_bin_ids
+        return self._get_provider_session('log_hierarchy_session').get_child_log_ids(*args, **kwargs)
+
+    def get_child_logs(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.get_child_logs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_child_bins
+        return self._get_provider_session('log_hierarchy_session').get_child_logs(*args, **kwargs)
+
+    def is_descendant_of_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.is_descendant_of_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        return self._get_provider_session('log_hierarchy_session').is_descendant_of_log(*args, **kwargs)
+
+    def get_log_node_ids(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.get_log_node_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_node_ids
+        return self._get_provider_session('log_hierarchy_session').get_log_node_ids(*args, **kwargs)
+
+    def get_log_nodes(self, *args, **kwargs):
+        """Pass through to provider LogHierarchySession.get_log_nodes"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_nodes
+        return self._get_provider_session('log_hierarchy_session').get_log_nodes(*args, **kwargs)
+##
+# The following methods are from osid.logging.LogHierarchyDesignSession
+
+    def can_modify_log_hierarchy(self):
+        """Pass through to provider LogHierarchyDesignSession.can_modify_log_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy
+        return self._get_provider_session('log_hierarchy_design_session').can_modify_log_hierarchy()
+
+    def create_log_hierarchy(self, *args, **kwargs):
+        """Pass through to provider LogHierarchyDesignSession.can_modify_log_hierarchy"""
+        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
+        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
+        # Will not return an actual object, just JSON
+        # since a BankHierarchy does not seem to be an OSID thing.
+        return self._get_provider_session('log_hierarchy_design_session').create_log_hierarchy(*args, **kwargs)
+
+    def delete_log_hierarchy(self, *args, **kwargs):
+        """Pass through to provider LogHierarchyDesignSession.can_modify_log_hierarchy"""
+        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
+        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
+        # Will not return an actual object, just JSON
+        # since a BankHierarchy does not seem to be an OSID thing.
+        return self._get_provider_session('log_hierarchy_design_session').delete_log_hierarchy(*args, **kwargs)
+
+    def add_root_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchyDesignSession.add_root_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.add_root_bin
+        self._get_provider_session('log_hierarchy_design_session').add_root_log(*args, **kwargs)
+
+    def remove_root_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchyDesignSession.remove_root_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin
+        self._get_provider_session('log_hierarchy_design_session').remove_root_log(*args, **kwargs)
+
+    def add_child_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchyDesignSession.add_child_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.add_child_bin
+        self._get_provider_session('log_hierarchy_design_session').add_child_log(*args, **kwargs)
+
+    def remove_child_log(self, *args, **kwargs):
+        """Pass through to provider LogHierarchyDesignSession.remove_child_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin
+        self._get_provider_session('log_hierarchy_design_session').remove_child_log(*args, **kwargs)
+
+    def remove_child_logs(self, *args, **kwargs):
+        """Pass through to provider LogHierarchyDesignSession.remove_child_logs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_child_bins
+        self._get_provider_session('log_hierarchy_design_session').remove_child_logs(*args, **kwargs)
 
 
 class LoggingProxyManager(osid.OsidProxyManager, LoggingProfile, logging_managers.LoggingProxyManager):
@@ -582,6 +776,14 @@ class LoggingProxyManager(osid.OsidProxyManager, LoggingProfile, logging_manager
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_log_admin_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_log_hierarchy_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_log_hierarchy_design_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 

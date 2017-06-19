@@ -2510,10 +2510,10 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
-        assets = lookup_session.get_repositories()
+        repositories = lookup_session.get_repositories()
         id_list = []
-        for asset in assets:
-            id_list.append(assets.get_id())
+        for repository in repositories:
+            id_list.append(repository.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -2533,7 +2533,7 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_repository_ids(repository_id)
 
     @utilities.arguments_not_none
     def assign_asset_to_repository(self, asset_id, repository_id):
@@ -4492,10 +4492,10 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
-        compositions = lookup_session.get_repositories()
+        repositories = lookup_session.get_repositories()
         id_list = []
-        for composition in compositions:
-            id_list.append(compositions.get_id())
+        for repository in repositories:
+            id_list.append(repository.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -4516,7 +4516,7 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_repository_ids(repository_id)
 
     @utilities.arguments_not_none
     def assign_composition_to_repository(self, composition_id, repository_id):

@@ -104,6 +104,18 @@ class GradingProfile(osid.OsidProfile, grading_managers.GradingProfile):
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_gradebook_admin()
 
+    def supports_gradebook_hierarchy(self):
+        """Pass through to provider supports_gradebook_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_hierarchy()
+
+    def supports_gradebook_hierarchy_design(self):
+        """Pass through to provider supports_gradebook_hierarchy_design"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_hierarchy_design()
+
     def get_grade_record_types(self):
         """Pass through to provider get_grade_record_types"""
         # Implemented from kitosid template for -
@@ -442,6 +454,22 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
 
     gradebook_admin_session = property(fget=get_gradebook_admin_session)
 
+    def get_gradebook_hierarchy_session(self, *args, **kwargs):
+        """Pass through to provider get_gradebook_hierarchy_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_gradebook_hierarchy_session(*args, **kwargs)
+
+    gradebook_hierarchy_session = property(fget=get_gradebook_hierarchy_session)
+
+    def get_gradebook_hierarchy_design_session(self, *args, **kwargs):
+        """Pass through to provider get_gradebook_hierarchy_design_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_gradebook_hierarchy_design_session(*args, **kwargs)
+
+    gradebook_hierarchy_design_session = property(fget=get_gradebook_hierarchy_design_session)
+
     def get_grading_batch_manager(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')
@@ -655,6 +683,166 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('gradebook_admin_session').alias_gradebook(*args, **kwargs)
+##
+# The following methods are from osid.grading.GradebookHierarchySession
+
+    def get_gradebook_hierarchy_id(self):
+        """Pass through to provider GradebookHierarchySession.get_gradebook_hierarchy_id"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        return self._get_provider_session('gradebook_hierarchy_session').get_gradebook_hierarchy_id()
+
+    gradebook_hierarchy_id = property(fget=get_gradebook_hierarchy_id)
+
+    def get_gradebook_hierarchy(self):
+        """Pass through to provider GradebookHierarchySession.get_gradebook_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        return self._get_provider_session('gradebook_hierarchy_session').get_gradebook_hierarchy()
+
+    gradebook_hierarchy = property(fget=get_gradebook_hierarchy)
+
+    def can_access_gradebook_hierarchy(self):
+        """Pass through to provider GradebookHierarchySession.can_access_gradebook_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        return self._get_provider_session('gradebook_hierarchy_session').can_access_gradebook_hierarchy()
+
+    def get_root_gradebook_ids(self):
+        """Pass through to provider GradebookHierarchySession.get_root_gradebook_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_root_bin_ids
+        return self._get_provider_session('gradebook_hierarchy_session').get_root_gradebook_ids()
+
+    root_gradebook_ids = property(fget=get_root_gradebook_ids)
+
+    def get_root_gradebooks(self):
+        """Pass through to provider GradebookHierarchySession.get_root_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_root_bins
+        return self._get_provider_session('gradebook_hierarchy_session').get_root_gradebooks()
+
+    root_gradebooks = property(fget=get_root_gradebooks)
+
+    def has_parent_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.has_parent_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.has_parent_bins
+        return self._get_provider_session('gradebook_hierarchy_session').has_parent_gradebooks(*args, **kwargs)
+
+    def is_parent_of_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.is_parent_of_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_parent_of_bin
+        return self._get_provider_session('gradebook_hierarchy_session').is_parent_of_gradebook(*args, **kwargs)
+
+    def get_parent_gradebook_ids(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.get_parent_gradebook_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        return self._get_provider_session('gradebook_hierarchy_session').get_parent_gradebook_ids(*args, **kwargs)
+
+    def get_parent_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.get_parent_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_parent_bins
+        return self._get_provider_session('gradebook_hierarchy_session').get_parent_gradebooks(*args, **kwargs)
+
+    def is_ancestor_of_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.is_ancestor_of_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        return self._get_provider_session('gradebook_hierarchy_session').is_ancestor_of_gradebook(*args, **kwargs)
+
+    def has_child_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.has_child_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.has_child_bins
+        return self._get_provider_session('gradebook_hierarchy_session').has_child_gradebooks(*args, **kwargs)
+
+    def is_child_of_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.is_child_of_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_child_of_bin
+        return self._get_provider_session('gradebook_hierarchy_session').is_child_of_gradebook(*args, **kwargs)
+
+    def get_child_gradebook_ids(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.get_child_gradebook_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_child_bin_ids
+        return self._get_provider_session('gradebook_hierarchy_session').get_child_gradebook_ids(*args, **kwargs)
+
+    def get_child_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.get_child_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_child_bins
+        return self._get_provider_session('gradebook_hierarchy_session').get_child_gradebooks(*args, **kwargs)
+
+    def is_descendant_of_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.is_descendant_of_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        return self._get_provider_session('gradebook_hierarchy_session').is_descendant_of_gradebook(*args, **kwargs)
+
+    def get_gradebook_node_ids(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.get_gradebook_node_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_node_ids
+        return self._get_provider_session('gradebook_hierarchy_session').get_gradebook_node_ids(*args, **kwargs)
+
+    def get_gradebook_nodes(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchySession.get_gradebook_nodes"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_nodes
+        return self._get_provider_session('gradebook_hierarchy_session').get_gradebook_nodes(*args, **kwargs)
+##
+# The following methods are from osid.grading.GradebookHierarchyDesignSession
+
+    def can_modify_gradebook_hierarchy(self):
+        """Pass through to provider GradebookHierarchyDesignSession.can_modify_gradebook_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy
+        return self._get_provider_session('gradebook_hierarchy_design_session').can_modify_gradebook_hierarchy()
+
+    def create_gradebook_hierarchy(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchyDesignSession.can_modify_gradebook_hierarchy"""
+        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
+        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
+        # Will not return an actual object, just JSON
+        # since a BankHierarchy does not seem to be an OSID thing.
+        return self._get_provider_session('gradebook_hierarchy_design_session').create_gradebook_hierarchy(*args, **kwargs)
+
+    def delete_gradebook_hierarchy(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchyDesignSession.can_modify_gradebook_hierarchy"""
+        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
+        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
+        # Will not return an actual object, just JSON
+        # since a BankHierarchy does not seem to be an OSID thing.
+        return self._get_provider_session('gradebook_hierarchy_design_session').delete_gradebook_hierarchy(*args, **kwargs)
+
+    def add_root_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchyDesignSession.add_root_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.add_root_bin
+        self._get_provider_session('gradebook_hierarchy_design_session').add_root_gradebook(*args, **kwargs)
+
+    def remove_root_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchyDesignSession.remove_root_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin
+        self._get_provider_session('gradebook_hierarchy_design_session').remove_root_gradebook(*args, **kwargs)
+
+    def add_child_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchyDesignSession.add_child_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.add_child_bin
+        self._get_provider_session('gradebook_hierarchy_design_session').add_child_gradebook(*args, **kwargs)
+
+    def remove_child_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookHierarchyDesignSession.remove_child_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin
+        self._get_provider_session('gradebook_hierarchy_design_session').remove_child_gradebook(*args, **kwargs)
 
 
 class GradingProxyManager(osid.OsidProxyManager, GradingProfile, grading_managers.GradingProxyManager):
@@ -753,6 +941,14 @@ class GradingProxyManager(osid.OsidProxyManager, GradingProfile, grading_manager
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_gradebook_admin_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_gradebook_hierarchy_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_gradebook_hierarchy_design_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 

@@ -127,7 +127,7 @@ class TestAuthorization(unittest.TestCase):
 
     def test_get_authorization_record(self):
         """Tests get_authorization_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_authorization_record(True)
 
 
@@ -218,6 +218,26 @@ class TestAuthorizationList(unittest.TestCase):
 class TestVault(unittest.TestCase):
     """Tests for Vault"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_vault_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_vault(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_vault(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_vault_record(self):
         """Tests get_vault_record"""
         with self.assertRaises(errors.Unimplemented):
@@ -226,6 +246,24 @@ class TestVault(unittest.TestCase):
 
 class TestVaultForm(unittest.TestCase):
     """Tests for VaultForm"""
+
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_vault_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
 
     def test_get_vault_form_record(self):
         """Tests get_vault_form_record"""

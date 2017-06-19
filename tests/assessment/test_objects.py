@@ -54,6 +54,9 @@ class TestQuestion(unittest.TestCase):
         form.display_name = 'Test question'
         cls.question = cls.catalog.create_question(form)
 
+    def setUp(self):
+        self.object = self.question
+
     @classmethod
     def tearDownClass(cls):
         for obj in cls.catalog.get_items():
@@ -62,7 +65,7 @@ class TestQuestion(unittest.TestCase):
 
     def test_get_question_record(self):
         """Tests get_question_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_question_record(True)
 
 
@@ -165,6 +168,9 @@ class TestAnswer(unittest.TestCase):
         form.display_name = 'Test answer'
         cls.answer = cls.catalog.create_answer(form)
 
+    def setUp(self):
+        self.object = self.answer
+
     @classmethod
     def tearDownClass(cls):
         for obj in cls.catalog.get_items():
@@ -173,7 +179,7 @@ class TestAnswer(unittest.TestCase):
 
     def test_get_answer_record(self):
         """Tests get_answer_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_answer_record(True)
 
 
@@ -294,6 +300,7 @@ class TestItem(unittest.TestCase):
         self.catalog.create_answer(form)
 
         self.item = self.catalog.get_item(self.item.ident)
+        self.object = self.item
 
     @classmethod
     def tearDownClass(cls):
@@ -350,7 +357,7 @@ class TestItem(unittest.TestCase):
 
     def test_get_item_record(self):
         """Tests get_item_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_item_record(True)
 
 
@@ -436,6 +443,7 @@ class TestItemList(unittest.TestCase):
             self.item_list.append(obj)
             self.item_ids.append(obj.ident)
         self.item_list = ItemList(self.item_list)
+        self.object = self.item_list
 
     @classmethod
     def tearDownClass(cls):
@@ -465,6 +473,7 @@ class TestAssessment(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -477,6 +486,7 @@ class TestAssessment(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_assessments():
             cls.catalog.delete_assessment(obj.ident)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
@@ -513,7 +523,7 @@ class TestAssessment(unittest.TestCase):
 
     def test_get_assessment_record(self):
         """Tests get_assessment_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_assessment_record(True)
 
 
@@ -636,6 +646,7 @@ class TestAssessmentList(unittest.TestCase):
             self.assessment_list.append(obj)
             self.assessment_ids.append(obj.ident)
         self.assessment_list = AssessmentList(self.assessment_list)
+        self.object = self.assessment_list
 
     @classmethod
     def tearDownClass(cls):
@@ -824,7 +835,7 @@ class TestAssessmentOffered(unittest.TestCase):
 
     def test_get_assessment_offered_record(self):
         """Tests get_assessment_offered_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_assessment_offered_record(True)
 
 
@@ -1423,7 +1434,7 @@ class TestAssessmentTaken(unittest.TestCase):
 
     def test_get_assessment_taken_record(self):
         """Tests get_assessment_taken_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_assessment_taken_record(True)
 
 
@@ -1596,6 +1607,7 @@ class TestAssessmentSection(unittest.TestCase):
                                                                  [])
         self.taken = self.catalog.create_assessment_taken(form)
         self.section = self.catalog.get_first_assessment_section(self.taken.ident)
+        self.object = self.section
 
     def tearDown(self):
         self.catalog.delete_assessment_taken(self.taken.ident)
@@ -1646,7 +1658,7 @@ class TestAssessmentSection(unittest.TestCase):
 
     def test_get_assessment_section_record(self):
         """Tests get_assessment_section_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_assessment_section_record(True)
 
 
@@ -1706,6 +1718,26 @@ class TestAssessmentSectionList(unittest.TestCase):
 class TestBank(unittest.TestCase):
     """Tests for Bank"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_bank_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_bank(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_bank(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_bank_record(self):
         """Tests get_bank_record"""
         with self.assertRaises(errors.Unimplemented):
@@ -1715,10 +1747,28 @@ class TestBank(unittest.TestCase):
 class TestBankForm(unittest.TestCase):
     """Tests for BankForm"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_bank_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
     def test_get_bank_form_record(self):
         """Tests get_bank_form_record"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_bank_form_record(True)
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_bank_form_record(DEFAULT_TYPE)
 
 
 class TestBankList(unittest.TestCase):
@@ -1803,11 +1853,21 @@ class TestBankNode(unittest.TestCase):
             self.bank_list[0].ident,
             self.bank_list[1].ident)
 
+        self.object = self.svc_mgr.get_bank_nodes(
+            self.bank_list[0].ident, 0, 5, False)
+
+    def tearDown(self):
+        # Implemented from init template for BinNode
+        self.svc_mgr.remove_child_bank(
+            self.bank_list[0].ident,
+            self.bank_list[1].ident)
+        self.svc_mgr.remove_root_bank(self.bank_list[0].ident)
+        for node in self.bank_list:
+            self.svc_mgr.delete_bank(node.ident)
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for BinNode
-        for obj in cls.bank_ids:
-            cls.svc_mgr.delete_bank(obj)
         cls.svc_mgr.delete_bank(cls.catalog.ident)
 
     def test_get_bank(self):
@@ -1906,12 +1966,73 @@ class TestBankNodeList(unittest.TestCase):
 class TestResponseList(unittest.TestCase):
     """Tests for ResponseList"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for ResponseList tests'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+        create_form = cls.catalog.get_assessment_form_for_create([SEQUENCE_ASSESSMENT])
+        create_form.display_name = 'Test Assessment'
+        create_form.description = 'Test Assessment for AssessmentSession tests'
+        cls.assessment = cls.catalog.create_assessment(create_form)
+
+        for number in ['One', 'Two', 'Three', 'Four']:
+            ifc = cls.catalog.get_item_form_for_create([])
+            ifc.set_display_name('Test Assessment Item ' + number)
+            ifc.set_description('This is a Test Item Called Number ' + number)
+            test_item = cls.catalog.create_item(ifc)
+            form = cls.catalog.get_question_form_for_create(test_item.ident, [])
+            cls.catalog.create_question(form)
+
+            if number == 'One':
+                form = cls.catalog.get_answer_form_for_create(test_item.ident, [])
+                cls.catalog.create_answer(form)
+
+            cls.catalog.add_item(cls.assessment.ident, test_item.ident)
+
+        form = cls.catalog.get_assessment_offered_form_for_create(cls.assessment.ident, [])
+        cls.assessment_offered = cls.catalog.create_assessment_offered(form)
+
+    def setUp(self):
+        form = self.catalog.get_assessment_taken_form_for_create(self.assessment_offered.ident, [])
+        self.taken = self.catalog.create_assessment_taken(form)
+
+        section = self.catalog.get_first_assessment_section(self.taken.ident)
+        questions = section.get_questions()
+        first_question = questions.next()
+
+        for num in [0, 1]:
+            create_form = self.catalog.get_response_form(section.ident, first_question.ident)
+            self.catalog.submit_response(section.ident, first_question.ident, create_form)
+
+        self.response_list = self.catalog.get_responses(section.ident)
+        self.object = self.response_list
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_assessments():
+            for offered in cls.catalog.get_assessments_offered_for_assessment(obj.ident):
+                for taken in cls.catalog.get_assessments_taken_for_assessment_offered(offered.ident):
+                    cls.catalog.delete_assessment_taken(taken.ident)
+                cls.catalog.delete_assessment_offered(offered.ident)
+            cls.catalog.delete_assessment(obj.ident)
+        for obj in cls.catalog.get_items():
+            cls.catalog.delete_item(obj.ident)
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_next_response(self):
         """Tests get_next_response"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_next_response()
+        from dlkit.abstract_osid.assessment.rules import Response
+        self.assertTrue(isinstance(self.response_list.get_next_response(), Response))
 
     def test_get_next_responses(self):
         """Tests get_next_responses"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_next_responses(True)
+        from dlkit.abstract_osid.assessment.objects import ResponseList
+        from dlkit.abstract_osid.assessment.rules import Response
+        new_list = self.response_list.get_next_responses(2)
+        self.assertTrue(isinstance(new_list, ResponseList))
+        for item in new_list:
+            self.assertTrue(isinstance(item, Response))

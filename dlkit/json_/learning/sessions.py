@@ -1875,10 +1875,10 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
-        objectives = lookup_session.get_objective_banks()
+        objective_banks = lookup_session.get_objective_banks()
         id_list = []
-        for objective in objectives:
-            id_list.append(objectives.get_id())
+        for objective_bank in objective_banks:
+            id_list.append(objective_bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -1900,7 +1900,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_objective_bank_ids(objective_bank_id)
 
     @utilities.arguments_not_none
     def assign_objective_to_objective_bank(self, objective_id, objective_bank_id):
@@ -3585,10 +3585,10 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
-        activities = lookup_session.get_objective_banks()
+        objective_banks = lookup_session.get_objective_banks()
         id_list = []
-        for activity in activities:
-            id_list.append(activities.get_id())
+        for objective_bank in objective_banks:
+            id_list.append(objective_bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -3609,7 +3609,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_objective_bank_ids(objective_bank_id)
 
     @utilities.arguments_not_none
     def assign_activity_to_objective_bank(self, activity_id, objective_bank_id):

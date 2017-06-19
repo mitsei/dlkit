@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo type'
 
 DESCRIPTION = 'MongoDB based type implementation'
 
-VERSIONCOMPONENTS = [0, 1, 327]
+VERSIONCOMPONENTS = [0, 1, 344]
 
-RELEASEDATE = "2017-06-16"
+RELEASEDATE = "2017-06-19"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

@@ -28,6 +28,7 @@ class TestAsset(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -40,6 +41,7 @@ class TestAsset(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_assets():
             cls.catalog.delete_asset(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
@@ -156,7 +158,7 @@ class TestAsset(unittest.TestCase):
 
     def test_get_asset_record(self):
         """Tests get_asset_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_asset_record(True)
 
 
@@ -662,6 +664,7 @@ class TestAssetList(unittest.TestCase):
             self.asset_list.append(obj)
             self.asset_ids.append(obj.ident)
         self.asset_list = AssetList(self.asset_list)
+        self.object = self.asset_list
 
     @classmethod
     def tearDownClass(cls):
@@ -755,7 +758,7 @@ class TestAssetContent(unittest.TestCase):
 
     def test_get_asset_content_record(self):
         """Tests get_asset_content_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_asset_content_record(True)
 
 
@@ -935,6 +938,7 @@ class TestComposition(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -947,6 +951,7 @@ class TestComposition(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_compositions():
             cls.catalog.delete_composition(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
@@ -963,7 +968,7 @@ class TestComposition(unittest.TestCase):
 
     def test_get_composition_record(self):
         """Tests get_composition_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_composition_record(True)
 
 
@@ -1020,6 +1025,7 @@ class TestCompositionList(unittest.TestCase):
             self.composition_list.append(obj)
             self.composition_ids.append(obj.ident)
         self.composition_list = CompositionList(self.composition_list)
+        self.object = self.composition_list
 
     @classmethod
     def tearDownClass(cls):
@@ -1047,6 +1053,26 @@ class TestCompositionList(unittest.TestCase):
 class TestRepository(unittest.TestCase):
     """Tests for Repository"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_repository_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_repository(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_repository(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_repository_record(self):
         """Tests get_repository_record"""
         with self.assertRaises(errors.Unimplemented):
@@ -1055,6 +1081,24 @@ class TestRepository(unittest.TestCase):
 
 class TestRepositoryForm(unittest.TestCase):
     """Tests for RepositoryForm"""
+
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_repository_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
 
     def test_get_repository_form_record(self):
         """Tests get_repository_form_record"""
@@ -1144,11 +1188,21 @@ class TestRepositoryNode(unittest.TestCase):
             self.repository_list[0].ident,
             self.repository_list[1].ident)
 
+        self.object = self.svc_mgr.get_repository_nodes(
+            self.repository_list[0].ident, 0, 5, False)
+
+    def tearDown(self):
+        # Implemented from init template for BinNode
+        self.svc_mgr.remove_child_repository(
+            self.repository_list[0].ident,
+            self.repository_list[1].ident)
+        self.svc_mgr.remove_root_repository(self.repository_list[0].ident)
+        for node in self.repository_list:
+            self.svc_mgr.delete_repository(node.ident)
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for BinNode
-        for obj in cls.repository_ids:
-            cls.svc_mgr.delete_repository(obj)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     def test_get_repository(self):

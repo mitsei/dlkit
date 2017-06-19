@@ -28,6 +28,7 @@ class TestLogEntry(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_log_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -40,10 +41,12 @@ class TestLogEntry(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_log_entries():
             cls.catalog.delete_log_entry(obj.ident)
         cls.svc_mgr.delete_log(cls.catalog.ident)
 
+    @unittest.skip('unimplemented test')
     def test_get_priority(self):
         """Tests get_priority"""
         pass
@@ -75,7 +78,7 @@ class TestLogEntry(unittest.TestCase):
 
     def test_get_log_entry_record(self):
         """Tests get_log_entry_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_log_entry_record(True)
 
 
@@ -213,6 +216,7 @@ class TestLogEntryList(unittest.TestCase):
             self.log_entry_list.append(obj)
             self.log_entry_ids.append(obj.ident)
         self.log_entry_list = LogEntryList(self.log_entry_list)
+        self.object = self.log_entry_list
 
     @classmethod
     def tearDownClass(cls):
@@ -240,6 +244,26 @@ class TestLogEntryList(unittest.TestCase):
 class TestLog(unittest.TestCase):
     """Tests for Log"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_log_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_log(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_log(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_log_record(self):
         """Tests get_log_record"""
         with self.assertRaises(errors.Unimplemented):
@@ -248,6 +272,24 @@ class TestLog(unittest.TestCase):
 
 class TestLogForm(unittest.TestCase):
     """Tests for LogForm"""
+
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LOGGING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_log_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
 
     def test_get_log_form_record(self):
         """Tests get_log_form_record"""

@@ -78,7 +78,7 @@ class TestAssessmentPart(unittest.TestCase):
 
     def test_get_assessment_part_record(self):
         """Tests get_assessment_part_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_assessment_part_record(True)
 
 
@@ -252,6 +252,7 @@ class TestSequenceRule(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.object.get_assessment_part()
 
+    @unittest.skip('unimplemented test')
     def test_get_next_assessment_part_id(self):
         """Tests get_next_assessment_part_id"""
         pass
@@ -288,7 +289,7 @@ class TestSequenceRule(unittest.TestCase):
 
     def test_get_sequence_rule_record(self):
         """Tests get_sequence_rule_record"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.Unsupported):
             self.object.get_sequence_rule_record(True)
 
 

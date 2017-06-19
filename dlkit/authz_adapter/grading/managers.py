@@ -87,6 +87,16 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_gradebook_admin()
 
+    def supports_gradebook_hierarchy(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_hierarchy()
+
+    def supports_gradebook_hierarchy_design(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_hierarchy_design()
+
     def get_grade_record_types(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.get_resource_record_types
@@ -490,6 +500,34 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
 
     gradebook_admin_session = property(fget=get_gradebook_admin_session)
 
+    def get_gradebook_hierarchy_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'GradebookHierarchySession')(
+                provider_session=self._provider_manager.get_gradebook_hierarchy_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
+
+    gradebook_hierarchy_session = property(fget=get_gradebook_hierarchy_session)
+
+    def get_gradebook_hierarchy_design_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'GradebookHierarchyDesignSession')(
+                provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
+
+    gradebook_hierarchy_design_session = property(fget=get_gradebook_hierarchy_design_session)
+
     def get_grading_batch_manager(self):
         raise Unimplemented()
 
@@ -840,6 +878,34 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
         try:
             return getattr(sessions, 'GradebookAdminSession')(
                 provider_session=self._provider_manager.get_gradebook_admin_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_gradebook_hierarchy_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'GradebookHierarchySession')(
+                provider_session=self._provider_manager.get_gradebook_hierarchy_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_gradebook_hierarchy_design_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'GradebookHierarchyDesignSession')(
+                provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(proxy),
                 authz_session=self._get_authz_session(),
                 override_lookup_session=self._get_override_lookup_session(),
                 provider_manager=self._provider_manager,

@@ -18,11 +18,11 @@ class Identifiable(abc_markers.Identifiable):
     """Simple Identifiable"""
 
     def __init__(self, id_):
-        self.id_ = id_
+        self._id = id_
 
     def get_id(self):
         """Returns an Id"""
-        return self.id_
+        return self._id
 
     def is_current(self):
         """Immutable and always current"""

@@ -911,7 +911,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return self._my_map['resourceId']
+        return Id(self._my_map['resourceId'])
 
     key_resource_id = property(fget=get_key_resource_id)
 
@@ -926,16 +926,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['keyResourceId']:
-            raise errors.IllegalState('this GradeEntry has no key_resource')
-        mgr = self._get_provider_manager('RESOURCE')
-        if not mgr.supports_resource_lookup():
-            raise errors.OperationFailed('Resource does not support Resource lookup')
-        lookup_session = mgr.get_resource_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_bin_view()
-        osid_object = lookup_session.get_resource(self.get_key_resource_id())
-        return osid_object
+        return Agent(self.get_key_resource_id())
 
     key_resource = property(fget=get_key_resource)
 
@@ -960,7 +951,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return bool(self._my_map('overriddenCalculatedEntryId'))
+        return bool(self._my_map['overriddenCalculatedEntryId'])
 
     def get_overridden_calculated_entry_id(self):
         """Gets the calculated entry ``Id`` this entry overrides.
@@ -1021,7 +1012,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        return bool(self._my_map['gradeId'] is not None or self._my_map['score'] is not None)
+        return bool(self._my_map['gradeId'] != '' or self._my_map['score'] is not None)
 
     def get_grade_id(self):
         """Gets the grade ``Id`` in this entry if the grading system is based on grades.
@@ -1047,13 +1038,12 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
-        mgr = self._get_provider_manager('GRADING')
-        if not mgr.supports_grade_lookup():
-            raise errors.OperationFailed('Grading does not support Grade lookup')
-        lookup_session = mgr.get_grade_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_gradebook_view()
-        return lookup_session.get_grade(self.get_grade_id())
+        grade_system = self.get_gradebook_column().get_grade_system()
+
+        for grade in grade_system.get_grades():
+            if str(grade.ident) == self._my_map['gradeId']:
+                return grade
+        raise errors.IllegalState('gradeId does not exist in this GradeSystem')
 
     grade = property(fget=get_grade)
 
@@ -1084,17 +1074,17 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        if not self.is_graded or self.is_derived():
+        if not self.is_graded() or self.is_derived():
             raise errors.IllegalState()
         time_graded = self._my_map['timeGraded']
         return DateTime(
-            time_graded['year'],
-            time_graded['month'],
-            time_graded['day'],
-            time_graded['hour'],
-            time_graded['minute'],
-            time_graded['second'],
-            time_graded['microsecond'])
+            year=time_graded.year,
+            month=time_graded.month,
+            day=time_graded.day,
+            hour=time_graded.hour,
+            minute=time_graded.minute,
+            second=time_graded.second,
+            microsecond=time_graded.microsecond)
 
     time_graded = property(fget=get_time_graded)
 
@@ -1224,9 +1214,9 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
             self._mdata['score'].update(
                 {'minimum_decimal': self._grade_system.get_lowest_numeric_score(),
                  'maximum_decimal': self._grade_system.get_highest_numeric_score()})
-        self._grade_default = self._mdata['grade']['default_id_values'][0]
-        self._ignored_for_calculations_default = self._mdata['ignored_for_calculations']['default_boolean_values'][0]
-        self._score_default = self._mdata['score']['default_decimal_values'][0]
+        self._grade_default = list(self._mdata['grade']['default_id_values'])[0]
+        self._ignored_for_calculations_default = list(self._mdata['ignored_for_calculations']['default_boolean_values'])[0]
+        self._score_default = list(self._mdata['score']['default_decimal_values'])[0]
 
     def _init_map(self, record_types=None, **kwargs):
         osid_objects.OsidRelationshipForm._init_map(self, record_types=record_types)
@@ -1326,7 +1316,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
             raise errors.InvalidArgument('Grade ID not in the acceptable set.')
         self._my_map['gradeId'] = str(grade_id)
         self._my_map['gradingAgentId'] = str(self._effective_agent_id)
-        self._my_map['timeGraded'] = now_map()
+        self._my_map['timeGraded'] = DateTime.utcnow()
 
     def clear_grade(self):
         """Clears the grade.
@@ -1386,7 +1376,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
             raise errors.InvalidArgument('score must be in increments of ' + str(self._score_increment))
         self._my_map['score'] = float(score)
         self._my_map['gradingAgentId'] = str(self._effective_agent_id)
-        self._my_map['timeGraded'] = now_map()
+        self._my_map['timeGraded'] = DateTime.utcnow()
 
     def clear_score(self):
         """Clears the score.

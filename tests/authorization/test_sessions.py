@@ -4,6 +4,7 @@
 import unittest
 
 
+from dlkit.abstract_osid.authorization import queries as ABCQueries
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.id.primitives import Id
@@ -35,6 +36,7 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 
 
 class TestAuthorizationSession(unittest.TestCase):
@@ -473,14 +475,17 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorizations_for_function(self):
         """Tests get_authorizations_for_function"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_authorizations_for_function(True)
+        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
+        results = self.session.get_authorizations_for_function(self.function.ident)
+        self.assertEqual(results.available(), 2)
+        self.assertTrue(isinstance(results, ABCObjects.AuthorizationList))
 
     def test_get_authorizations_for_function_on_date(self):
         """Tests get_authorizations_for_function_on_date"""
         with self.assertRaises(errors.Unimplemented):
             self.session.get_authorizations_for_function_on_date(True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_resource_and_function(self):
         """Tests get_authorizations_for_resource_and_function"""
         pass
@@ -490,6 +495,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         with self.assertRaises(errors.Unimplemented):
             self.session.get_authorizations_for_resource_and_function_on_date(True, True, True, True)
 
+    @unittest.skip('unimplemented test')
     def test_get_authorizations_for_agent_and_function(self):
         """Tests get_authorizations_for_agent_and_function"""
         pass
@@ -568,8 +574,8 @@ class TestAuthorizationQuerySession(unittest.TestCase):
 
     def test_can_search_authorizations(self):
         """Tests can_search_authorizations"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_authorizations()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_authorizations(), bool))
 
     def test_use_federated_vault_view(self):
         """Tests use_federated_vault_view"""
@@ -591,18 +597,19 @@ class TestAuthorizationQuerySession(unittest.TestCase):
 
     def test_get_authorization_query(self):
         """Tests get_authorization_query"""
-        query = self.catalog.get_authorization_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_authorization_query()
 
     def test_get_authorizations_by_query(self):
         """Tests get_authorizations_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_authorization_query()
+        query = self.session.get_authorization_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_authorizations_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_authorizations_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_authorizations_by_query(query).available(), 3)
 
 
 class TestAuthorizationAdminSession(unittest.TestCase):
@@ -755,6 +762,7 @@ class TestVaultLookupSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         cls.catalogs = list()
         cls.catalog_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
@@ -766,37 +774,54 @@ class TestVaultLookupSession(unittest.TestCase):
             cls.catalogs.append(catalog)
             cls.catalog_ids.append(catalog.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinLookupSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         for catalog in cls.svc_mgr.get_vaults():
             cls.svc_mgr.delete_vault(catalog.ident)
 
     def test_can_lookup_vaults(self):
         """Tests can_lookup_vaults"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_vaults()
+        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
+        self.assertTrue(isinstance(self.session.can_lookup_vaults(), bool))
 
     def test_use_comparative_vault_view(self):
         """Tests use_comparative_vault_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_vault_view()
 
     def test_use_plenary_vault_view(self):
         """Tests use_plenary_vault_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_vault_view()
 
     def test_get_vault(self):
         """Tests get_vault"""
+        # From test_templates/resource.py::BinLookupSession::get_bin_template
         catalog = self.svc_mgr.get_vault(self.catalogs[0].ident)
         self.assertEqual(catalog.ident, self.catalogs[0].ident)
 
     def test_get_vaults_by_ids(self):
         """Tests get_vaults_by_ids"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_ids_template
         catalogs = self.svc_mgr.get_vaults_by_ids(self.catalog_ids)
+        self.assertTrue(catalogs.available() == 2)
+        self.assertTrue(isinstance(catalogs, ABCObjects.VaultList))
+        reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+        for index, catalog in enumerate(catalogs):
+            self.assertEqual(str(catalog.ident),
+                             reversed_catalog_ids[index])
 
     def test_get_vaults_by_genus_type(self):
         """Tests get_vaults_by_genus_type"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_vaults_by_genus_type(True)
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_genus_type_template
+        catalogs = self.svc_mgr.get_vaults_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.VaultList))
 
     def test_get_vaults_by_parent_genus_type(self):
         """Tests get_vaults_by_parent_genus_type"""
@@ -815,26 +840,54 @@ class TestVaultLookupSession(unittest.TestCase):
 
     def test_get_vaults(self):
         """Tests get_vaults"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_template
         catalogs = self.svc_mgr.get_vaults()
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.VaultList))
 
 
 class TestVaultQuerySession(unittest.TestCase):
     """Tests for VaultQuerySession"""
 
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_vault_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_vault(create_form)
+        cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        cls.svc_mgr.delete_vault(cls.catalog.ident)
+
     def test_can_search_vaults(self):
         """Tests can_search_vaults"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_search_vaults()
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_vaults(), bool))
 
     def test_get_vault_query(self):
         """Tests get_vault_query"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_vault_query()
+        # From test_templates/resource.py::BinQuerySession::get_bin_query_template
+        query = self.session.get_vault_query()
+        self.assertTrue(isinstance(query, ABCQueries.VaultQuery))
 
     def test_get_vaults_by_query(self):
         """Tests get_vaults_by_query"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_vaults_by_query(True)
+        # From test_templates/resource.py::BinQuerySession::get_bins_by_query_template
+        query = self.session.get_vault_query()
+        query.match_display_name('Test catalog')
+        self.assertEqual(self.session.get_vaults_by_query(query).available(), 1)
+        query.clear_display_name_terms()
+        query.match_display_name('Test catalog', match=False)
+        self.assertEqual(self.session.get_vaults_by_query(query).available(), 0)
 
 
 class TestVaultAdminSession(unittest.TestCase):
@@ -842,6 +895,7 @@ class TestVaultAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
         # Initialize test catalog:
         create_form = cls.svc_mgr.get_vault_form_for_create([])
@@ -854,8 +908,13 @@ class TestVaultAdminSession(unittest.TestCase):
         create_form.description = 'Test Vault for VaultAdminSession deletion test'
         cls.catalog_to_delete = cls.svc_mgr.create_vault(create_form)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinAdminSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         for catalog in cls.svc_mgr.get_vaults():
             cls.svc_mgr.delete_vault(catalog.ident)
 
@@ -889,8 +948,8 @@ class TestVaultAdminSession(unittest.TestCase):
 
     def test_can_update_vaults(self):
         """Tests can_update_vaults"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_update_vaults()
+        # From test_templates/resource.py BinAdminSession.can_update_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_update_vaults(), bool))
 
     def test_get_vault_form_for_update(self):
         """Tests get_vault_form_for_update"""
@@ -909,8 +968,8 @@ class TestVaultAdminSession(unittest.TestCase):
 
     def test_can_delete_vaults(self):
         """Tests can_delete_vaults"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_delete_vaults()
+        # From test_templates/resource.py BinAdminSession.can_delete_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_delete_vaults(), bool))
 
     def test_delete_vault(self):
         """Tests delete_vault"""
