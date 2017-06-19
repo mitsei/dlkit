@@ -9,6 +9,8 @@ from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
+from dlkit.abstract_osid.resource import objects as ABCObjects
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -458,6 +460,7 @@ class TestResourceBinSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.resource_list = list()
         cls.resource_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
@@ -481,8 +484,12 @@ class TestResourceBinSession(unittest.TestCase):
         cls.svc_mgr.assign_resource_to_bin(
             cls.resource_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.svc_mgr.unassign_resource_from_bin(
             cls.resource_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_resource_from_bin(
@@ -507,31 +514,44 @@ class TestResourceBinSession(unittest.TestCase):
 
     def test_get_resource_ids_by_bin(self):
         """Tests get_resource_ids_by_bin"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_resource_ids_by_bin(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_resources_by_bin(self):
         """Tests get_resources_by_bin"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_resources_by_bin(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_resources_by_bin(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.ResourceList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_resource_ids_by_bins(self):
         """Tests get_resource_ids_by_bins"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_resource_ids_by_bins(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_resource_ids_by_bins(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_resources_by_bins(self):
         """Tests get_resources_by_bins"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_resources_by_bins(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_resources_by_bins(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.ResourceList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_bin_ids_by_resource(self):
         """Tests get_bin_ids_by_resource"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_bin_ids_by_resource(self.resource_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_bins_by_resource(self):
         """Tests get_bins_by_resource"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_bins_by_resource(self.resource_ids[1])
         self.assertEqual(cats.available(), 2)
 

@@ -6,9 +6,11 @@ import unittest
 
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
+from dlkit.abstract_osid.learning import objects as ABCObjects
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -565,6 +567,7 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.objective_list = list()
         cls.objective_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -588,8 +591,12 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
         cls.svc_mgr.assign_objective_to_objective_bank(
             cls.objective_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.svc_mgr.unassign_objective_from_objective_bank(
             cls.objective_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_objective_from_objective_bank(
@@ -614,31 +621,44 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
 
     def test_get_objective_ids_by_objective_bank(self):
         """Tests get_objective_ids_by_objective_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_objective_ids_by_objective_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_objectives_by_objective_bank(self):
         """Tests get_objectives_by_objective_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_objectives_by_objective_bank(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_objectives_by_objective_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.ObjectiveList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_objective_ids_by_objective_banks(self):
         """Tests get_objective_ids_by_objective_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_objective_ids_by_objective_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_objective_ids_by_objective_banks(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_objectives_by_objective_banks(self):
         """Tests get_objectives_by_objective_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_objectives_by_objective_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_objectives_by_objective_banks(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.ObjectiveList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_objective_bank_ids_by_objective(self):
         """Tests get_objective_bank_ids_by_objective"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_objective_bank_ids_by_objective(self.objective_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_objective_banks_by_objective(self):
         """Tests get_objective_banks_by_objective"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_objective_banks_by_objective(self.objective_ids[1])
         self.assertEqual(cats.available(), 2)
 
@@ -1198,31 +1218,44 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
 
     def test_get_activity_ids_by_objective_bank(self):
         """Tests get_activity_ids_by_objective_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_activity_ids_by_objective_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_activities_by_objective_bank(self):
         """Tests get_activities_by_objective_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_activities_by_objective_bank(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_activities_by_objective_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.ActivityList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_activity_ids_by_objective_banks(self):
         """Tests get_activity_ids_by_objective_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_activity_ids_by_objective_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_activity_ids_by_objective_banks(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_activities_by_objective_banks(self):
         """Tests get_activities_by_objective_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_activities_by_objective_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_activities_by_objective_banks(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.ActivityList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_objective_bank_ids_by_activity(self):
         """Tests get_objective_bank_ids_by_activity"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_objective_bank_ids_by_activity(self.activity_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_objective_banks_by_activity(self):
         """Tests get_objective_banks_by_activity"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_objective_banks_by_activity(self.activity_ids[1])
         self.assertEqual(cats.available(), 2)
 

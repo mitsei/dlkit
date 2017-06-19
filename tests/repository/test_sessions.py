@@ -9,6 +9,8 @@ from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
+from dlkit.abstract_osid.repository import objects as ABCObjects
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -521,6 +523,7 @@ class TestAssetRepositorySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.asset_list = list()
         cls.asset_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -544,8 +547,12 @@ class TestAssetRepositorySession(unittest.TestCase):
         cls.svc_mgr.assign_asset_to_repository(
             cls.asset_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.svc_mgr.unassign_asset_from_repository(
             cls.asset_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_asset_from_repository(
@@ -570,31 +577,44 @@ class TestAssetRepositorySession(unittest.TestCase):
 
     def test_get_asset_ids_by_repository(self):
         """Tests get_asset_ids_by_repository"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_asset_ids_by_repository(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_assets_by_repository(self):
         """Tests get_assets_by_repository"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assets_by_repository(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_assets_by_repository(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.AssetList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_asset_ids_by_repositories(self):
         """Tests get_asset_ids_by_repositories"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_asset_ids_by_repositories(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_asset_ids_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_assets_by_repositories(self):
         """Tests get_assets_by_repositories"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assets_by_repositories(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_assets_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.AssetList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_repository_ids_by_asset(self):
         """Tests get_repository_ids_by_asset"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_repository_ids_by_asset(self.asset_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_repositories_by_asset(self):
         """Tests get_repositories_by_asset"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_repositories_by_asset(self.asset_ids[1])
         self.assertEqual(cats.available(), 2)
 
@@ -1204,6 +1224,7 @@ class TestCompositionRepositorySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.composition_list = list()
         cls.composition_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -1227,8 +1248,12 @@ class TestCompositionRepositorySession(unittest.TestCase):
         cls.svc_mgr.assign_composition_to_repository(
             cls.composition_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.svc_mgr.unassign_composition_from_repository(
             cls.composition_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_composition_from_repository(
@@ -1253,31 +1278,44 @@ class TestCompositionRepositorySession(unittest.TestCase):
 
     def test_get_composition_ids_by_repository(self):
         """Tests get_composition_ids_by_repository"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_composition_ids_by_repository(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_compositions_by_repository(self):
         """Tests get_compositions_by_repository"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_compositions_by_repository(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_compositions_by_repository(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.CompositionList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_composition_ids_by_repositories(self):
         """Tests get_composition_ids_by_repositories"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_composition_ids_by_repositories(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_composition_ids_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_compoitions_by_repositories(self):
         """Tests get_compoitions_by_repositories"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_compoitions_by_repositories(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_compoitions_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.CompositionList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_repository_ids_by_composition(self):
         """Tests get_repository_ids_by_composition"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_repository_ids_by_composition(self.composition_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_repositories_by_composition(self):
         """Tests get_repositories_by_composition"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_repositories_by_composition(self.composition_ids[1])
         self.assertEqual(cats.available(), 2)
 

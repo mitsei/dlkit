@@ -6,6 +6,7 @@ import unittest
 
 
 from dlkit.abstract_osid.assessment import objects
+from dlkit.abstract_osid.assessment import objects as ABCObjects
 from dlkit.abstract_osid.assessment.objects import AssessmentOffered
 from dlkit.abstract_osid.assessment.objects import AssessmentSection, AssessmentSectionList
 from dlkit.abstract_osid.assessment.objects import AssessmentTaken
@@ -19,6 +20,7 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.json_.assessment import searches
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.locale.types.string import get_type_data as get_string_type_data
@@ -1491,6 +1493,9 @@ class TestItemBankSession(unittest.TestCase):
         cls.svc_mgr.assign_item_to_bank(
             cls.item_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.unassign_item_from_bank(
@@ -1504,8 +1509,8 @@ class TestItemBankSession(unittest.TestCase):
 
     def test_can_lookup_item_bank_mappings(self):
         """Tests can_lookup_item_bank_mappings"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_lookup_item_bank_mappings()
+        result = self.session.can_lookup_item_bank_mappings()
+        self.assertTrue(result)
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -1517,31 +1522,44 @@ class TestItemBankSession(unittest.TestCase):
 
     def test_get_item_ids_by_bank(self):
         """Tests get_item_ids_by_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_item_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_items_by_bank(self):
         """Tests get_items_by_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_items_by_bank(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_items_by_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.ItemList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_item_ids_by_banks(self):
         """Tests get_item_ids_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_item_ids_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_item_ids_by_banks(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_items_by_banks(self):
         """Tests get_items_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_items_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_items_by_banks(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.ItemList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_bank_ids_by_item(self):
         """Tests get_bank_ids_by_item"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_bank_ids_by_item(self.item_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_banks_by_item(self):
         """Tests get_banks_by_item"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_banks_by_item(self.item_ids[1])
         self.assertEqual(cats.available(), 2)
 
@@ -1889,6 +1907,7 @@ class TestAssessmentBankSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.assessment_list = list()
         cls.assessment_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
@@ -1912,8 +1931,12 @@ class TestAssessmentBankSession(unittest.TestCase):
         cls.svc_mgr.assign_assessment_to_bank(
             cls.assessment_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.svc_mgr.unassign_assessment_from_bank(
             cls.assessment_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_assessment_from_bank(
@@ -1938,31 +1961,44 @@ class TestAssessmentBankSession(unittest.TestCase):
 
     def test_get_assessment_ids_by_bank(self):
         """Tests get_assessment_ids_by_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_assessment_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_assessments_by_bank(self):
         """Tests get_assessments_by_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_by_bank(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_assessments_by_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_assessment_ids_by_banks(self):
         """Tests get_assessment_ids_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessment_ids_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_assessment_ids_by_banks(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_assessments_by_banks(self):
         """Tests get_assessments_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_assessments_by_banks(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_bank_ids_by_assessment(self):
         """Tests get_bank_ids_by_assessment"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_bank_ids_by_assessment(self.assessment_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_banks_by_assessment(self):
         """Tests get_banks_by_assessment"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_banks_by_assessment(self.assessment_ids[1])
         self.assertEqual(cats.available(), 2)
 
@@ -2515,31 +2551,44 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
 
     def test_get_assessment_offered_ids_by_bank(self):
         """Tests get_assessment_offered_ids_by_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_assessment_offered_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_assessments_offered_by_bank(self):
         """Tests get_assessments_offered_by_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_offered_by_bank(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_assessments_offered_by_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentOfferedList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_assessment_offered_ids_by_banks(self):
         """Tests get_assessment_offered_ids_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessment_offered_ids_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_assessment_offered_ids_by_banks(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_assessments_offered_by_banks(self):
         """Tests get_assessments_offered_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_offered_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_assessments_offered_by_banks(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentOfferedList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_bank_ids_by_assessment_offered(self):
         """Tests get_bank_ids_by_assessment_offered"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_bank_ids_by_assessment_offered(self.assessment_offered_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_banks_by_assessment_offered(self):
         """Tests get_banks_by_assessment_offered"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_banks_by_assessment_offered(self.assessment_offered_ids[1])
         self.assertEqual(cats.available(), 2)
 
@@ -3039,31 +3088,44 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
 
     def test_get_assessment_taken_ids_by_bank(self):
         """Tests get_assessment_taken_ids_by_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_assessment_taken_ids_by_bank(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
     def test_get_assessments_taken_by_bank(self):
         """Tests get_assessments_taken_by_bank"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_taken_by_bank(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_assessments_taken_by_bank(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentTakenList))
+        self.assertEqual(results.available(), 2)
 
     def test_get_assessment_taken_ids_by_banks(self):
         """Tests get_assessment_taken_ids_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessment_taken_ids_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_assessment_taken_ids_by_banks(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
     def test_get_assessments_taken_by_banks(self):
         """Tests get_assessments_taken_by_banks"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessments_taken_by_banks(True)
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids= [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_assessments_taken_by_banks(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.AssessmentTakenList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_bank_ids_by_assessment_taken(self):
         """Tests get_bank_ids_by_assessment_taken"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_bank_ids_by_assessment_taken(self.assessment_taken_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_banks_by_assessment_taken(self):
         """Tests get_banks_by_assessment_taken"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_banks_by_assessment_taken(self.assessment_taken_ids[1])
         self.assertEqual(cats.available(), 2)
 
