@@ -1,16 +1,19 @@
 """Unit tests of grading sessions."""
 
 
+import datetime
 import unittest
 
 
 from dlkit.abstract_osid.grading import objects as ABCObjects
+from dlkit.abstract_osid.grading.objects import Grade
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.json_.grading.objects import GradebookColumnSummary
+from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -23,6 +26,7 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
@@ -63,6 +67,7 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -73,22 +78,27 @@ class TestGradeSystemLookupSession(unittest.TestCase):
 
     def test_can_lookup_grade_systems(self):
         """Tests can_lookup_grade_systems"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_grade_systems(), bool))
 
     def test_use_comparative_grade_system_view(self):
         """Tests use_comparative_grade_system_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_grade_system_view()
 
     def test_use_plenary_grade_system_view(self):
         """Tests use_plenary_grade_system_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_grade_system_view()
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_gradebook_view()
 
     def test_use_isolated_gradebook_view(self):
         """Tests use_isolated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_gradebook_view()
 
     def test_get_grade_system(self):
@@ -114,24 +124,30 @@ class TestGradeSystemLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradeSystemList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_grade_systems_by_ids(self.grade_system_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradeSystemList))
 
     def test_get_grade_systems_by_genus_type(self):
         """Tests get_grade_systems_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeSystemList
-        objects = self.catalog.get_grade_systems_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_systems_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, GradeSystemList))
         self.catalog.use_federated_gradebook_view()
-        objects = self.catalog.get_grade_systems_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_systems_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradeSystemList))
 
     def test_get_grade_systems_by_parent_genus_type(self):
         """Tests get_grade_systems_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeSystemList
-        objects = self.catalog.get_grade_systems_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_systems_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, GradeSystemList))
         self.catalog.use_federated_gradebook_view()
-        objects = self.catalog.get_grade_systems_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_systems_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, GradeSystemList))
 
     def test_get_grade_systems_by_record_type(self):
         """Tests get_grade_systems_by_record_type"""
@@ -141,6 +157,8 @@ class TestGradeSystemLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradeSystemList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_grade_systems_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, GradeSystemList))
 
     def test_get_grade_systems(self):
         """Tests get_grade_systems"""
@@ -150,6 +168,8 @@ class TestGradeSystemLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradeSystemList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_grade_systems()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradeSystemList))
 
     def test_get_grade_system_with_alias(self):
         self.catalog.alias_grade_system(self.grade_system_ids[0], ALIAS_ID)
@@ -192,6 +212,7 @@ class TestGradeSystemQuerySession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -207,10 +228,12 @@ class TestGradeSystemQuerySession(unittest.TestCase):
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_gradebook_view()
 
     def test_use_isolated_gradebook_view(self):
         """Tests use_isolated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_gradebook_view()
 
     def test_get_grade_system_query(self):
@@ -242,15 +265,18 @@ class TestGradeSystemAdminSession(unittest.TestCase):
         create_form.description = 'Test Gradebook for GradeSystemAdminSession tests'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
-        form = cls.catalog.get_grade_system_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_grade_system_form_for_create([])
         form.display_name = 'new GradeSystem'
         form.description = 'description of GradeSystem'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_grade_system(form)
-
-    def setUp(self):
-        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.osid_object = self.catalog.create_grade_system(form)
         self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_grade_system(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -261,6 +287,7 @@ class TestGradeSystemAdminSession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -354,23 +381,38 @@ class TestGradeSystemAdminSession(unittest.TestCase):
 
     def test_can_create_grades(self):
         """Tests can_create_grades"""
-        # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
-        self.assertTrue(isinstance(self.catalog.can_create_grades(), bool))
+        self.assertTrue(
+            isinstance(self.session.can_create_grades(self.osid_object.ident),
+                       bool))
 
     def test_can_create_grade_with_record_types(self):
         """Tests can_create_grade_with_record_types"""
-        # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
-        self.assertTrue(isinstance(self.catalog.can_create_grade_with_record_types(DEFAULT_TYPE), bool))
+        self.assertTrue(
+            isinstance(self.session.can_create_grade_with_record_types(self.osid_object.ident,
+                                                                       DEFAULT_TYPE),
+                       bool))
 
     def test_get_grade_form_for_create(self):
         """Tests get_grade_form_for_create"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_grade_form_for_create(True, True)
+        form = self.session.get_grade_form_for_create(
+            self.osid_object.ident,
+            [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
     def test_create_grade(self):
         """Tests create_grade"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.create_grade(True)
+        self.assertEqual(self.osid_object.get_grades().available(), 0)
+        form = self.session.get_grade_form_for_create(
+            self.osid_object.ident,
+            [])
+        form.display_name = 'Test object'
+        grade = self.session.create_grade(form)
+        self.assertTrue(isinstance(grade, Grade))
+        self.assertEqual(grade.display_name.text, 'Test object')
+
+        updated_grade_system = self.catalog.get_grade_system(self.osid_object.ident)
+        self.assertEqual(updated_grade_system.get_grades().available(), 1)
 
     def test_can_update_grades(self):
         """Tests can_update_grades"""
@@ -379,23 +421,58 @@ class TestGradeSystemAdminSession(unittest.TestCase):
 
     def test_get_grade_form_for_update(self):
         """Tests get_grade_form_for_update"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_grade_form_for_update(True)
+        form = self.session.get_grade_form_for_create(
+            self.osid_object.ident,
+            [])
+        grade = self.session.create_grade(form)
+        form = self.session.get_grade_form_for_update(grade.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
 
     def test_update_grade(self):
         """Tests update_grade"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.update_grade(True)
+        self.assertEqual(self.osid_object.get_grades().available(), 0)
+        form = self.session.get_grade_form_for_create(
+            self.osid_object.ident,
+            [])
+        form.display_name = 'Test object'
+        grade = self.session.create_grade(form)
+        self.assertTrue(isinstance(grade, Grade))
+        self.assertEqual(grade.display_name.text, 'Test object')
+
+        form = self.session.get_grade_form_for_update(grade.ident)
+        form.display_name = 'new name'
+        grade = self.session.update_grade(form)
+
+        self.assertTrue(isinstance(grade, Grade))
+        self.assertEqual(grade.display_name.text, 'new name')
+
+        updated_grade_system = self.catalog.get_grade_system(self.osid_object.ident)
+        self.assertEqual(updated_grade_system.get_grades().available(), 1)
 
     def test_can_delete_grades(self):
         """Tests can_delete_grades"""
-        # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
-        self.assertTrue(isinstance(self.catalog.can_delete_grades(), bool))
+        self.assertTrue(
+            isinstance(self.session.can_delete_grades(self.osid_object.ident),
+                       bool))
 
     def test_delete_grade(self):
         """Tests delete_grade"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.delete_grade(True)
+        form = self.session.get_grade_form_for_create(
+            self.osid_object.ident,
+            [])
+        form.display_name = 'Test object'
+        grade = self.session.create_grade(form)
+        self.assertTrue(isinstance(grade, Grade))
+        self.assertEqual(grade.display_name.text, 'Test object')
+
+        updated_grade_system = self.catalog.get_grade_system(self.osid_object.ident)
+        self.assertEqual(updated_grade_system.get_grades().available(), 1)
+
+        self.session.delete_grade(grade.ident)
+
+        updated_grade_system = self.catalog.get_grade_system(self.osid_object.ident)
+        self.assertEqual(updated_grade_system.get_grades().available(), 0)
 
     def test_can_manage_grade_aliases(self):
         """Tests can_manage_grade_aliases"""
@@ -446,6 +523,9 @@ class TestGradeEntryLookupSession(unittest.TestCase):
             cls.grade_entry_list.append(object)
             cls.grade_entry_ids.append(object.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_gradebooks():
@@ -459,6 +539,7 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -469,22 +550,27 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_can_lookup_grade_entries(self):
         """Tests can_lookup_grade_entries"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_grade_entries(), bool))
 
     def test_use_comparative_grade_entry_view(self):
         """Tests use_comparative_grade_entry_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_grade_entry_view()
 
     def test_use_plenary_grade_entry_view(self):
         """Tests use_plenary_grade_entry_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_grade_entry_view()
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_gradebook_view()
 
     def test_use_isolated_gradebook_view(self):
         """Tests use_isolated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_gradebook_view()
 
     def test_use_effective_grade_entry_view(self):
@@ -515,24 +601,30 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradeEntryList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradeEntryList))
 
     def test_get_grade_entries_by_genus_type(self):
         """Tests get_grade_entries_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
-        objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, GradeEntryList))
         self.catalog.use_federated_gradebook_view()
-        objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradeEntryList))
 
     def test_get_grade_entries_by_parent_genus_type(self):
         """Tests get_grade_entries_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
-        objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, GradeEntryList))
         self.catalog.use_federated_gradebook_view()
-        objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, GradeEntryList))
 
     def test_get_grade_entries_by_record_type(self):
         """Tests get_grade_entries_by_record_type"""
@@ -542,6 +634,8 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradeEntryList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, GradeEntryList))
 
     def test_get_grade_entries_on_date(self):
         """Tests get_grade_entries_on_date"""
@@ -555,8 +649,21 @@ class TestGradeEntryLookupSession(unittest.TestCase):
 
     def test_get_grade_entries_for_gradebook_column_on_date(self):
         """Tests get_grade_entries_for_gradebook_column_on_date"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_grade_entries_for_gradebook_column_on_date(True, True, True)
+        end_date = DateTime.utcnow() + datetime.timedelta(days=5)
+        end_date = DateTime(**{
+            'year': end_date.year,
+            'month': end_date.month,
+            'day': end_date.day,
+            'hour': end_date.hour,
+            'minute': end_date.minute,
+            'second': end_date.second,
+            'microsecond': end_date.microsecond
+        })
+        results = self.session.get_grade_entries_for_gradebook_column_on_date(self.gradebook_column_ids[0],
+                                                                              DateTime.utcnow(),
+                                                                              end_date)
+        self.assertTrue(isinstance(results, ABCObjects.GradeEntryList))
+        self.assertEqual(results.available(), 1)
 
     def test_get_grade_entries_for_resource(self):
         """Tests get_grade_entries_for_resource"""
@@ -591,6 +698,8 @@ class TestGradeEntryLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradeEntryList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_grade_entries()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradeEntryList))
 
     def test_get_grade_entry_with_alias(self):
         self.catalog.alias_grade_entry(self.grade_entry_ids[0], ALIAS_ID)
@@ -629,6 +738,9 @@ class TestGradeEntryQuerySession(unittest.TestCase):
             cls.grade_entry_list.append(obj)
             cls.grade_entry_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_gradebooks():
@@ -642,6 +754,7 @@ class TestGradeEntryQuerySession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -657,10 +770,12 @@ class TestGradeEntryQuerySession(unittest.TestCase):
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_gradebook_view()
 
     def test_use_isolated_gradebook_view(self):
         """Tests use_isolated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_gradebook_view()
 
     def test_get_grade_entry_query(self):
@@ -724,6 +839,9 @@ class TestGradeEntryAdminSession(unittest.TestCase):
         create_form.genus_type = NEW_TYPE
         cls.osid_object = cls.catalog.create_grade_entry(create_form)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for obj in cls.catalog.get_grade_entries():
@@ -736,6 +854,7 @@ class TestGradeEntryAdminSession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -880,6 +999,9 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
             cls.grade_entry_list.append(object)
             cls.grade_entry_ids.append(object.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_gradebooks():
@@ -893,6 +1015,7 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -908,18 +1031,22 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
 
     def test_use_comparative_gradebook_column_view(self):
         """Tests use_comparative_gradebook_column_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_gradebook_column_view()
 
     def test_use_plenary_gradebook_column_view(self):
         """Tests use_plenary_gradebook_column_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_gradebook_column_view()
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_gradebook_view()
 
     def test_use_isolated_gradebook_view(self):
         """Tests use_isolated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_gradebook_view()
 
     def test_get_gradebook_column(self):
@@ -940,24 +1067,30 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradebookColumnList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradebookColumnList))
 
     def test_get_gradebook_columns_by_genus_type(self):
         """Tests get_gradebook_columns_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
-        objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, GradebookColumnList))
         self.catalog.use_federated_gradebook_view()
-        objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradebookColumnList))
 
     def test_get_gradebook_columns_by_parent_genus_type(self):
         """Tests get_gradebook_columns_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
-        objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, GradebookColumnList))
         self.catalog.use_federated_gradebook_view()
-        objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, GradebookColumnList))
 
     def test_get_gradebook_columns_by_record_type(self):
         """Tests get_gradebook_columns_by_record_type"""
@@ -967,6 +1100,8 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradebookColumnList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_gradebook_columns_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, GradebookColumnList))
 
     def test_get_gradebook_columns(self):
         """Tests get_gradebook_columns"""
@@ -976,6 +1111,8 @@ class TestGradebookColumnLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, GradebookColumnList))
         self.catalog.use_federated_gradebook_view()
         objects = self.catalog.get_gradebook_columns()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, GradebookColumnList))
 
     def test_get_gradebook_column_with_alias(self):
         self.catalog.alias_gradebook_column(self.gradebook_column_ids[0], ALIAS_ID)
@@ -1028,6 +1165,7 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -1043,10 +1181,12 @@ class TestGradebookColumnQuerySession(unittest.TestCase):
 
     def test_use_federated_gradebook_view(self):
         """Tests use_federated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_gradebook_view()
 
     def test_use_isolated_gradebook_view(self):
         """Tests use_isolated_gradebook_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_gradebook_view()
 
     def test_get_gradebook_column_query(self):
@@ -1078,15 +1218,18 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
         create_form.description = 'Test Gradebook for GradebookColumnAdminSession tests'
         cls.catalog = cls.svc_mgr.create_gradebook(create_form)
 
-        form = cls.catalog.get_gradebook_column_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_gradebook_column_form_for_create([])
         form.display_name = 'new GradebookColumn'
         form.description = 'description of GradebookColumn'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_gradebook_column(form)
-
-    def setUp(self):
-        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.osid_object = self.catalog.create_gradebook_column(form)
         self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_gradebook_column(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -1097,6 +1240,7 @@ class TestGradebookColumnAdminSession(unittest.TestCase):
 
     def test_get_gradebook_id(self):
         """Tests get_gradebook_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_gradebook_id(), self.catalog.ident)
 
     def test_get_gradebook(self):
@@ -1399,9 +1543,9 @@ class TestGradebookAdminSession(unittest.TestCase):
 class TestGradebookHierarchySession(unittest.TestCase):
     """Tests for GradebookHierarchySession"""
 
+    # Override this because spec doesn't have a method ``remove_child_gradebooks``
     @classmethod
     def setUpClass(cls):
-        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -1415,14 +1559,13 @@ class TestGradebookHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_gradebook(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
     def setUp(self):
-        # From test_templates/resource.py::BinHierarchySession::init_template
         self.session = self.svc_mgr
 
     @classmethod
     def tearDownClass(cls):
-        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr.remove_child_gradebook(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
-        cls.svc_mgr.remove_child_gradebooks(cls.catalogs['Root'].ident)
+        cls.svc_mgr.remove_child_gradebook(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
+        cls.svc_mgr.remove_child_gradebook(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.remove_root_gradebook(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_gradebook(cls.catalogs[cat_name].ident)
@@ -1607,9 +1750,9 @@ class TestGradebookHierarchySession(unittest.TestCase):
 class TestGradebookHierarchyDesignSession(unittest.TestCase):
     """Tests for GradebookHierarchyDesignSession"""
 
+    # Override this because spec doesn't have a method ``remove_child_gradebooks``
     @classmethod
     def setUpClass(cls):
-        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('GRADING', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -1623,14 +1766,14 @@ class TestGradebookHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_gradebook(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
     def setUp(self):
-        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         self.session = self.svc_mgr
 
     @classmethod
     def tearDownClass(cls):
-        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr.remove_child_gradebook(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
-        cls.svc_mgr.remove_child_gradebooks(cls.catalogs['Root'].ident)
+        cls.svc_mgr.remove_child_gradebook(cls.catalogs['Root'].ident, cls.catalogs['Child 1'].ident)
+        cls.svc_mgr.remove_child_gradebook(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
+        cls.svc_mgr.remove_root_gradebook(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
             cls.svc_mgr.delete_gradebook(cls.catalogs[cat_name].ident)
 

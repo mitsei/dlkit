@@ -1,6 +1,7 @@
 """Unit tests of authorization sessions."""
 
 
+import datetime
 import unittest
 
 
@@ -10,6 +11,7 @@ from dlkit.abstract_osid.authorization.objects import Authorization
 from dlkit.abstract_osid.authorization.objects import AuthorizationList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -35,6 +37,7 @@ ROOT_QUALIFIER_ID = Id('resource.Bin%3AROOT%40ODL.MIT.EDU')
 BOOTSTRAP_VAULT_TYPE = Type(authority='ODL.MIT.EDU', namespace='authorization.Vault', identifier='bootstrap_vault')
 OVERRIDE_VAULT_TYPE = Type(authority='ODL.MIT.EDU', namespace='authorization.Vault', identifier='override_vault')
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
@@ -271,6 +274,7 @@ class TestAuthorizationSession(unittest.TestCase):
 
     def test_get_vault_id(self):
         """Tests get_vault_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
     def test_get_vault(self):
@@ -363,6 +367,7 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_vault_id(self):
         """Tests get_vault_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
     def test_get_vault(self):
@@ -373,22 +378,27 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_can_lookup_authorizations(self):
         """Tests can_lookup_authorizations"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_authorizations(), bool))
 
     def test_use_comparative_authorization_view(self):
         """Tests use_comparative_authorization_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_authorization_view()
 
     def test_use_plenary_authorization_view(self):
         """Tests use_plenary_authorization_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_authorization_view()
 
     def test_use_federated_vault_view(self):
         """Tests use_federated_vault_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_vault_view()
 
     def test_use_isolated_vault_view(self):
         """Tests use_isolated_vault_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_vault_view()
 
     def test_use_effective_authorization_view(self):
@@ -429,24 +439,30 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AuthorizationList))
         self.catalog.use_federated_vault_view()
         objects = self.catalog.get_authorizations_by_ids(self.authorization_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AuthorizationList))
 
     def test_get_authorizations_by_genus_type(self):
         """Tests get_authorizations_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
-        objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AuthorizationList))
         self.catalog.use_federated_vault_view()
-        objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AuthorizationList))
 
     def test_get_authorizations_by_parent_genus_type(self):
         """Tests get_authorizations_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
-        objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AuthorizationList))
         self.catalog.use_federated_vault_view()
-        objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AuthorizationList))
 
     def test_get_authorizations_by_record_type(self):
         """Tests get_authorizations_by_record_type"""
@@ -456,6 +472,8 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AuthorizationList))
         self.catalog.use_federated_vault_view()
         objects = self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AuthorizationList))
 
     def test_get_authorizations_on_date(self):
         """Tests get_authorizations_on_date"""
@@ -531,6 +549,8 @@ class TestAuthorizationLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AuthorizationList))
         self.catalog.use_federated_vault_view()
         objects = self.catalog.get_authorizations()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AuthorizationList))
 
     def test_get_authorization_with_alias(self):
         self.catalog.alias_authorization(self.authorization_ids[0], ALIAS_ID)
@@ -575,6 +595,7 @@ class TestAuthorizationQuerySession(unittest.TestCase):
 
     def test_get_vault_id(self):
         """Tests get_vault_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
     def test_get_vault(self):
@@ -590,10 +611,12 @@ class TestAuthorizationQuerySession(unittest.TestCase):
 
     def test_use_federated_vault_view(self):
         """Tests use_federated_vault_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_vault_view()
 
     def test_use_isolated_vault_view(self):
         """Tests use_isolated_vault_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_vault_view()
 
     def test_use_implicit_authorization_view(self):
@@ -669,6 +692,7 @@ class TestAuthorizationAdminSession(unittest.TestCase):
 
     def test_get_vault_id(self):
         """Tests get_vault_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_vault_id(), self.catalog.ident)
 
     def test_get_vault(self):

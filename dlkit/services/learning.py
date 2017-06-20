@@ -1410,14 +1410,6 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         """Strange little method to assure conformance for inherited Sessions."""
         return self
 
-    def get_objective_hierarchy_id(self):
-        """WHAT am I doing here?"""
-        return self._catalog_id
-
-    def get_objective_hierarchy(self):
-        """WHAT am I doing here?"""
-        return self
-
     def __getattr__(self, name):
         if '_catalog' in self.__dict__:
             try:
@@ -1653,6 +1645,16 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         self._get_provider_session('objective_admin_session').alias_objective(*args, **kwargs)
 ##
 # The following methods are from osid.learning.ObjectiveHierarchySession
+
+    def get_objective_hierarchy_id(self):
+        return self._get_provider_session('objective_hierarchy_session').get_objective_hierarchy_id()
+
+    objective_hierarchy_id = property(fget=get_objective_hierarchy_id)
+
+    def get_objective_hierarchy(self):
+        return self._get_provider_session('objective_hierarchy_session').get_objective_hierarchy()
+
+    objective_hierarchy = property(fget=get_objective_hierarchy)
 
     def can_access_objective_hierarchy(self):
         """Pass through to provider ObjectiveHierarchySession.can_access_objective_hierarchy"""

@@ -1,6 +1,7 @@
 """Unit tests of commenting sessions."""
 
 
+import datetime
 import unittest
 
 
@@ -10,6 +11,7 @@ from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
+from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -23,6 +25,7 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
@@ -34,6 +37,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/commenting.py::CommentLookupSession::init_template
         cls.comment_list = list()
         cls.comment_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('COMMENTING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -49,8 +53,13 @@ class TestCommentLookupSession(unittest.TestCase):
             cls.comment_list.append(object)
             cls.comment_ids.append(object.ident)
 
+    def setUp(self):
+        # From test_templates/commenting.py::CommentLookupSession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/commenting.py::CommentLookupSession::init_template
         for catalog in cls.svc_mgr.get_books():
             for obj in catalog.get_comments():
                 catalog.delete_comment(obj.ident)
@@ -58,6 +67,7 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_book_id(self):
         """Tests get_book_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_book_id(), self.catalog.ident)
 
     def test_get_book(self):
@@ -68,22 +78,27 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_can_lookup_comments(self):
         """Tests can_lookup_comments"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_comments(), bool))
 
     def test_use_comparative_comment_view(self):
         """Tests use_comparative_comment_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_comment_view()
 
     def test_use_plenary_comment_view(self):
         """Tests use_plenary_comment_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_comment_view()
 
     def test_use_federated_book_view(self):
         """Tests use_federated_book_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_book_view()
 
     def test_use_isolated_book_view(self):
         """Tests use_isolated_book_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_book_view()
 
     def test_use_effective_comment_view(self):
@@ -114,24 +129,30 @@ class TestCommentLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, CommentList))
         self.catalog.use_federated_book_view()
         objects = self.catalog.get_comments_by_ids(self.comment_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, CommentList))
 
     def test_get_comments_by_genus_type(self):
         """Tests get_comments_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.commenting.objects import CommentList
-        objects = self.catalog.get_comments_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_comments_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, CommentList))
         self.catalog.use_federated_book_view()
-        objects = self.catalog.get_comments_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_comments_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, CommentList))
 
     def test_get_comments_by_parent_genus_type(self):
         """Tests get_comments_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.commenting.objects import CommentList
-        objects = self.catalog.get_comments_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_comments_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, CommentList))
         self.catalog.use_federated_book_view()
-        objects = self.catalog.get_comments_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_comments_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, CommentList))
 
     def test_get_comments_by_record_type(self):
         """Tests get_comments_by_record_type"""
@@ -141,6 +162,8 @@ class TestCommentLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, CommentList))
         self.catalog.use_federated_book_view()
         objects = self.catalog.get_comments_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, CommentList))
 
     def test_get_comments_on_date(self):
         """Tests get_comments_on_date"""
@@ -179,8 +202,25 @@ class TestCommentLookupSession(unittest.TestCase):
 
     def test_get_comments_for_reference_on_date(self):
         """Tests get_comments_for_reference_on_date"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_comments_for_reference_on_date(True, True, True)
+        # From test_templates/relationship.py::RelationshipLookupSession::get_relationships_for_source_on_date_template
+        end_date = DateTime.utcnow() + datetime.timedelta(days=5)
+        end_date = DateTime(**{
+            'year': end_date.year,
+            'month': end_date.month,
+            'day': end_date.day,
+            'hour': end_date.hour,
+            'minute': end_date.minute,
+            'second': end_date.second,
+            'microsecond': end_date.microsecond
+        })
+
+        # NOTE: this first argument will probably break in many of the other methods,
+        #   since it's not clear they always use something like AGENT_ID
+        # i.e. in get_grade_entries_for_gradebook_column_on_date it needs to be
+        #   a gradebookColumnId.
+        results = self.session.get_comments_for_reference_on_date(AGENT_ID, DateTime.utcnow(), end_date)
+        self.assertTrue(isinstance(results, ABCObjects.CommentList))
+        self.assertEqual(results.available(), 2)
 
     @unittest.skip('unimplemented test')
     def test_get_comments_by_genus_type_for_reference(self):
@@ -220,6 +260,8 @@ class TestCommentLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, CommentList))
         self.catalog.use_federated_book_view()
         objects = self.catalog.get_comments()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, CommentList))
 
     def test_get_comment_with_alias(self):
         self.catalog.alias_comment(self.comment_ids[0], ALIAS_ID)
@@ -248,6 +290,9 @@ class TestCommentQuerySession(unittest.TestCase):
             cls.comment_list.append(obj)
             cls.comment_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_books():
@@ -257,6 +302,7 @@ class TestCommentQuerySession(unittest.TestCase):
 
     def test_get_book_id(self):
         """Tests get_book_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_book_id(), self.catalog.ident)
 
     def test_get_book(self):
@@ -272,10 +318,12 @@ class TestCommentQuerySession(unittest.TestCase):
 
     def test_use_federated_book_view(self):
         """Tests use_federated_book_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_book_view()
 
     def test_use_isolated_book_view(self):
         """Tests use_isolated_book_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_book_view()
 
     def test_get_comment_query(self):
@@ -329,6 +377,7 @@ class TestCommentAdminSession(unittest.TestCase):
 
     def test_get_book_id(self):
         """Tests get_book_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_book_id(), self.catalog.ident)
 
     def test_get_book(self):

@@ -1222,7 +1222,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             raise errors.Unsupported('grade_form did not originate from this session')
         if not grade_form.is_valid():
             raise errors.InvalidArgument('one or more of the form elements is invalid')
-        grade_system_id = Id(grade_form._my_map['grade_systemId']).get_identifier()
+        grade_system_id = Id(grade_form._my_map['gradeSystemId']).get_identifier()
         grade_system = collection.find_one(
             {'$and': [{'_id': ObjectId(grade_system_id)},
                       {'assigned' + self._catalog_name + 'Ids': {'$in': [str(self._catalog_id)]}}]})

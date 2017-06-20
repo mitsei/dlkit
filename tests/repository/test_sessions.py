@@ -24,6 +24,7 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
@@ -64,6 +65,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -74,22 +76,27 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_can_lookup_assets(self):
         """Tests can_lookup_assets"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_assets(), bool))
 
     def test_use_comparative_asset_view(self):
         """Tests use_comparative_asset_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_asset_view()
 
     def test_use_plenary_asset_view(self):
         """Tests use_plenary_asset_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_asset_view()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_get_asset(self):
@@ -110,24 +117,30 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_assets_by_ids(self.asset_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_assets_by_genus_type(self):
         """Tests get_assets_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
-        objects = self.catalog.get_assets_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_assets_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_assets_by_parent_genus_type(self):
         """Tests get_assets_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
-        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_assets_by_record_type(self):
         """Tests get_assets_by_record_type"""
@@ -137,6 +150,8 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_assets_by_provider(self):
         """Tests get_assets_by_provider"""
@@ -151,6 +166,8 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_assets()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_asset_with_alias(self):
         self.catalog.alias_asset(self.asset_ids[0], ALIAS_ID)
@@ -193,6 +210,7 @@ class TestAssetQuerySession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -208,10 +226,12 @@ class TestAssetQuerySession(unittest.TestCase):
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_get_asset_query(self):
@@ -267,15 +287,18 @@ class TestAssetAdminSession(unittest.TestCase):
         create_form.description = 'Test Repository for AssetAdminSession tests'
         cls.catalog = cls.svc_mgr.create_repository(create_form)
 
-        form = cls.catalog.get_asset_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_asset_form_for_create([])
         form.display_name = 'new Asset'
         form.description = 'description of Asset'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_asset(form)
-
-    def setUp(self):
-        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.osid_object = self.catalog.create_asset(form)
         self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_asset(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -286,6 +309,7 @@ class TestAssetAdminSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -456,6 +480,7 @@ class TestAssetNotificationSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -471,10 +496,12 @@ class TestAssetNotificationSession(unittest.TestCase):
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_register_for_new_assets(self):
@@ -776,6 +803,7 @@ class TestAssetCompositionSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -791,18 +819,22 @@ class TestAssetCompositionSession(unittest.TestCase):
 
     def test_use_comparative_asset_composition_view(self):
         """Tests use_comparative_asset_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_asset_composition_view()
 
     def test_use_plenary_asset_composition_view(self):
         """Tests use_plenary_asset_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_asset_composition_view()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_get_composition_assets(self):
@@ -855,6 +887,7 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -941,6 +974,7 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -951,22 +985,27 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_can_lookup_compositions(self):
         """Tests can_lookup_compositions"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_compositions(), bool))
 
     def test_use_comparative_composition_view(self):
         """Tests use_comparative_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_composition_view()
 
     def test_use_plenary_composition_view(self):
         """Tests use_plenary_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_composition_view()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_use_active_composition_view(self):
@@ -1014,24 +1053,30 @@ class TestCompositionLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_compositions_by_ids(self.composition_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
     def test_get_compositions_by_genus_type(self):
         """Tests get_compositions_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
     def test_get_compositions_by_parent_genus_type(self):
         """Tests get_compositions_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
     def test_get_compositions_by_record_type(self):
         """Tests get_compositions_by_record_type"""
@@ -1041,6 +1086,8 @@ class TestCompositionLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
     def test_get_compositions_by_provider(self):
         """Tests get_compositions_by_provider"""
@@ -1094,6 +1141,7 @@ class TestCompositionQuerySession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -1109,10 +1157,12 @@ class TestCompositionQuerySession(unittest.TestCase):
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_use_sequestered_composition_view(self):
@@ -1184,15 +1234,18 @@ class TestCompositionAdminSession(unittest.TestCase):
         create_form.description = 'Test Repository for CompositionAdminSession tests'
         cls.catalog = cls.svc_mgr.create_repository(create_form)
 
-        form = cls.catalog.get_composition_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_composition_form_for_create([])
         form.display_name = 'new Composition'
         form.description = 'description of Composition'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_composition(form)
-
-    def setUp(self):
-        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.osid_object = self.catalog.create_composition(form)
         self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_composition(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -1203,6 +1256,7 @@ class TestCompositionAdminSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):

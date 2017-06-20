@@ -8,9 +8,12 @@ import unittest
 from decimal import Decimal
 
 
+from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.learning.objects import Objective
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.repository.objects import AssetList
 from dlkit.json_.assessment.objects import Assessment
 from dlkit.json_.assessment.objects import AssessmentOffered
 from dlkit.json_.assessment.objects import AssessmentTaken

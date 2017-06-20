@@ -9,6 +9,7 @@ from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -63,20 +64,22 @@ class TestComment(unittest.TestCase):
 
     def test_get_commenting_agent_id(self):
         """Tests get_commenting_agent_id"""
-        # From test_templates/resources.py::Resource::get_avatar_template
-        self.assertRaises(errors.IllegalState,
-                          self.object.get_commenting_agent_id)
+        result = self.object.get_commenting_agent_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(self.catalog._proxy.get_effective_agent_id()))
 
     def test_get_commenting_agent(self):
         """Tests get_commenting_agent"""
-        # From test_templates/resources.py::Resource::get_avatar_template
-        self.assertRaises(errors.IllegalState,
-                          self.object.get_commenting_agent)
+        # because the resource doesn't actually exist
+        with self.assertRaises(errors.OperationFailed):
+            self.object.get_commenting_agent()
 
     def test_get_text(self):
         """Tests get_text"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_text()
+        result = self.object.get_text()
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text, '')
 
     def test_has_rating(self):
         """Tests has_rating"""

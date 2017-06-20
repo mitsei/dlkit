@@ -22,6 +22,7 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
@@ -121,6 +122,7 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_get_log_id(self):
         """Tests get_log_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_log_id(), self.catalog.ident)
 
     def test_get_log(self):
@@ -136,18 +138,22 @@ class TestLogEntryLookupSession(unittest.TestCase):
 
     def test_use_comparative_log_entry_view(self):
         """Tests use_comparative_log_entry_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_log_entry_view()
 
     def test_use_plenary_log_entry_view(self):
         """Tests use_plenary_log_entry_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_log_entry_view()
 
     def test_use_federated_log_view(self):
         """Tests use_federated_log_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_log_view()
 
     def test_use_isolated_log_view(self):
         """Tests use_isolated_log_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_log_view()
 
     def test_get_log_entry(self):
@@ -168,24 +174,30 @@ class TestLogEntryLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
         objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, LogEntryList))
 
     def test_get_log_entries_by_genus_type(self):
         """Tests get_log_entries_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
-        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
-        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, LogEntryList))
 
     def test_get_log_entries_by_parent_genus_type(self):
         """Tests get_log_entries_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
-        objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
-        objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, LogEntryList))
 
     def test_get_log_entries_by_record_type(self):
         """Tests get_log_entries_by_record_type"""
@@ -195,6 +207,8 @@ class TestLogEntryLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
         objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, LogEntryList))
 
     def test_get_log_entries_by_priority_type(self):
         """Tests get_log_entries_by_priority_type"""
@@ -234,6 +248,8 @@ class TestLogEntryLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, LogEntryList))
         self.catalog.use_federated_log_view()
         objects = self.catalog.get_log_entries()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, LogEntryList))
 
     def test_get_log_entry_with_alias(self):
         self.catalog.alias_log_entry(self.log_entry_ids[0], ALIAS_ID)
@@ -276,6 +292,7 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     def test_get_log_id(self):
         """Tests get_log_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_log_id(), self.catalog.ident)
 
     def test_get_log(self):
@@ -291,10 +308,12 @@ class TestLogEntryQuerySession(unittest.TestCase):
 
     def test_use_federated_log_view(self):
         """Tests use_federated_log_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_log_view()
 
     def test_use_isolated_log_view(self):
         """Tests use_isolated_log_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_log_view()
 
     def test_get_log_entry_query(self):
@@ -326,15 +345,18 @@ class TestLogEntryAdminSession(unittest.TestCase):
         create_form.description = 'Test Log for LogEntryAdminSession tests'
         cls.catalog = cls.svc_mgr.create_log(create_form)
 
-        form = cls.catalog.get_log_entry_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_log_entry_form_for_create([])
         form.display_name = 'new LogEntry'
         form.description = 'description of LogEntry'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_log_entry(form)
-
-    def setUp(self):
-        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.osid_object = self.catalog.create_log_entry(form)
         self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_log_entry(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -345,6 +367,7 @@ class TestLogEntryAdminSession(unittest.TestCase):
 
     def test_get_log_id(self):
         """Tests get_log_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_log_id(), self.catalog.ident)
 
     def test_get_log(self):

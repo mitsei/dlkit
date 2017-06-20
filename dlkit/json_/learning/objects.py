@@ -13,6 +13,9 @@
 import importlib
 
 
+from decimal import Decimal
+
+
 from . import default_mdata
 from .. import utilities
 from ..id.objects import IdList
@@ -616,8 +619,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
-        return bool(self._my_map['assetBasedActivity'])
+        return bool(self._my_map['assetIds'])
 
     def get_asset_ids(self):
         """Gets the ``Ids`` of any assets associated with this activity.
@@ -663,8 +665,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
-        return bool(self._my_map['courseBasedActivity'])
+        return bool(self._my_map['courseIds'])
 
     def get_course_ids(self):
         """Gets the ``Ids`` of any courses associated with this activity.
@@ -713,8 +714,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
-        return bool(self._my_map['assessmentBasedActivity'])
+        return bool(self._my_map['assessmentIds'])
 
     def get_assessment_ids(self):
         """Gets the ``Ids`` of any assessments associated with this activity.
@@ -1337,7 +1337,11 @@ class ProficiencyForm(abc_learning_objects.ProficiencyForm, osid_objects.OsidRel
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if (self.get_level_metadata().is_read_only() or
+                self.get_level_metadata().is_required()):
+            raise errors.NoAccess()
+        self._my_map['levelId'] = self._level_default
+        self._my_map['level'] = self._level_default
 
     level = property(fset=set_level, fdel=clear_level)
 

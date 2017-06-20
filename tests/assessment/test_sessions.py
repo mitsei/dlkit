@@ -38,6 +38,7 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 DEFAULT_STRING_MATCH_TYPE = Type(**get_string_type_data("WORDIGNORECASE"))
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
@@ -98,6 +99,7 @@ class TestAssessmentSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -769,6 +771,7 @@ class TestAssessmentResultsSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -844,6 +847,7 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -854,22 +858,27 @@ class TestItemLookupSession(unittest.TestCase):
 
     def test_can_lookup_items(self):
         """Tests can_lookup_items"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_items(), bool))
 
     def test_use_comparative_item_view(self):
         """Tests use_comparative_item_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_item_view()
 
     def test_use_plenary_item_view(self):
         """Tests use_plenary_item_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_item_view()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_item(self):
@@ -890,24 +899,30 @@ class TestItemLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, ItemList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_items_by_ids(self.item_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, ItemList))
 
     def test_get_items_by_genus_type(self):
         """Tests get_items_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import ItemList
-        objects = self.catalog.get_items_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_items_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, ItemList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_items_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_items_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, ItemList))
 
     def test_get_items_by_parent_genus_type(self):
         """Tests get_items_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import ItemList
-        objects = self.catalog.get_items_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_items_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, ItemList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_items_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_items_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, ItemList))
 
     def test_get_items_by_record_type(self):
         """Tests get_items_by_record_type"""
@@ -917,6 +932,8 @@ class TestItemLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, ItemList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_items_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, ItemList))
 
     def test_get_items_by_question(self):
         """Tests get_items_by_question"""
@@ -946,6 +963,8 @@ class TestItemLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, ItemList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_items()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, ItemList))
 
     def test_get_item_with_alias(self):
         self.catalog.alias_item(self.item_ids[0], ALIAS_ID)
@@ -988,6 +1007,7 @@ class TestItemQuerySession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -1002,10 +1022,12 @@ class TestItemQuerySession(unittest.TestCase):
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_item_query(self):
@@ -1116,6 +1138,7 @@ class TestItemAdminSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -1392,6 +1415,7 @@ class TestItemNotificationSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -1407,10 +1431,12 @@ class TestItemNotificationSession(unittest.TestCase):
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_reliable_item_notifications(self):
@@ -1711,6 +1737,7 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -1721,22 +1748,27 @@ class TestAssessmentLookupSession(unittest.TestCase):
 
     def test_can_lookup_assessments(self):
         """Tests can_lookup_assessments"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_assessments(), bool))
 
     def test_use_comparative_assessment_view(self):
         """Tests use_comparative_assessment_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_assessment_view()
 
     def test_use_plenary_assessment_view(self):
         """Tests use_plenary_assessment_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_assessment_view()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_assessment(self):
@@ -1757,24 +1789,30 @@ class TestAssessmentLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_by_ids(self.assessment_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentList))
 
     def test_get_assessments_by_genus_type(self):
         """Tests get_assessments_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentList
-        objects = self.catalog.get_assessments_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssessmentList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_assessments_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentList))
 
     def test_get_assessments_by_parent_genus_type(self):
         """Tests get_assessments_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentList
-        objects = self.catalog.get_assessments_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssessmentList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_assessments_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssessmentList))
 
     def test_get_assessments_by_record_type(self):
         """Tests get_assessments_by_record_type"""
@@ -1784,6 +1822,8 @@ class TestAssessmentLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssessmentList))
 
     def test_get_assessments(self):
         """Tests get_assessments"""
@@ -1793,6 +1833,8 @@ class TestAssessmentLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentList))
 
     def test_get_assessment_with_alias(self):
         self.catalog.alias_assessment(self.assessment_ids[0], ALIAS_ID)
@@ -1835,6 +1877,7 @@ class TestAssessmentQuerySession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -1850,10 +1893,12 @@ class TestAssessmentQuerySession(unittest.TestCase):
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_assessment_query(self):
@@ -1885,15 +1930,18 @@ class TestAssessmentAdminSession(unittest.TestCase):
         create_form.description = 'Test Bank for AssessmentAdminSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
 
-        form = cls.catalog.get_assessment_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_assessment_form_for_create([])
         form.display_name = 'new Assessment'
         form.description = 'description of Assessment'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_assessment(form)
-
-    def setUp(self):
-        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.osid_object = self.catalog.create_assessment(form)
         self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_assessment(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -1904,6 +1952,7 @@ class TestAssessmentAdminSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -2259,6 +2308,7 @@ class TestAssessmentBasicAuthoringSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -2364,6 +2414,7 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -2374,22 +2425,27 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
 
     def test_can_lookup_assessments_offered(self):
         """Tests can_lookup_assessments_offered"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_assessments_offered(), bool))
 
     def test_use_comparative_assessment_offered_view(self):
         """Tests use_comparative_assessment_offered_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_assessment_offered_view()
 
     def test_use_plenary_assessment_offered_view(self):
         """Tests use_plenary_assessment_offered_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_assessment_offered_view()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_assessment_offered(self):
@@ -2410,24 +2466,30 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentOfferedList))
 
     def test_get_assessments_offered_by_genus_type(self):
         """Tests get_assessments_offered_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
-        objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentOfferedList))
 
     def test_get_assessments_offered_by_parent_genus_type(self):
         """Tests get_assessments_offered_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
-        objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssessmentOfferedList))
 
     def test_get_assessments_offered_by_record_type(self):
         """Tests get_assessments_offered_by_record_type"""
@@ -2437,6 +2499,8 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssessmentOfferedList))
 
     def test_get_assessments_offered_by_date(self):
         """Tests get_assessments_offered_by_date"""
@@ -2458,6 +2522,8 @@ class TestAssessmentOfferedLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentOfferedList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_offered()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentOfferedList))
 
     def test_get_assessment_offered_with_alias(self):
         self.catalog.alias_assessment_offered(self.assessment_offered_ids[0], ALIAS_ID)
@@ -2503,6 +2569,7 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -2518,10 +2585,12 @@ class TestAssessmentOfferedQuerySession(unittest.TestCase):
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_assessment_offered_query(self):
@@ -2584,6 +2653,7 @@ class TestAssessmentOfferedAdminSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -2935,6 +3005,7 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -2945,22 +3016,27 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
 
     def test_can_lookup_assessments_taken(self):
         """Tests can_lookup_assessments_taken"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_assessments_taken(), bool))
 
     def test_use_comparative_assessment_taken_view(self):
         """Tests use_comparative_assessment_taken_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_assessment_taken_view()
 
     def test_use_plenary_assessment_taken_view(self):
         """Tests use_plenary_assessment_taken_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_assessment_taken_view()
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_assessment_taken(self):
@@ -2981,24 +3057,30 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentTakenList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentTakenList))
 
     def test_get_assessments_taken_by_genus_type(self):
         """Tests get_assessments_taken_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
-        objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssessmentTakenList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentTakenList))
 
     def test_get_assessments_taken_by_parent_genus_type(self):
         """Tests get_assessments_taken_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
-        objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssessmentTakenList))
         self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssessmentTakenList))
 
     def test_get_assessments_taken_by_record_type(self):
         """Tests get_assessments_taken_by_record_type"""
@@ -3008,6 +3090,8 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentTakenList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssessmentTakenList))
 
     def test_get_assessments_taken_by_date(self):
         """Tests get_assessments_taken_by_date"""
@@ -3080,6 +3164,8 @@ class TestAssessmentTakenLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssessmentTakenList))
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessments_taken()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssessmentTakenList))
 
     def test_get_assessment_taken_with_alias(self):
         self.catalog.alias_assessment_taken(self.assessment_taken_ids[0], ALIAS_ID)
@@ -3132,6 +3218,7 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):
@@ -3147,10 +3234,12 @@ class TestAssessmentTakenQuerySession(unittest.TestCase):
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bank_view()
 
     def test_use_isolated_bank_view(self):
         """Tests use_isolated_bank_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bank_view()
 
     def test_get_assessment_taken_query(self):
@@ -3209,6 +3298,7 @@ class TestAssessmentTakenAdminSession(unittest.TestCase):
 
     def test_get_bank_id(self):
         """Tests get_bank_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
 
     def test_get_bank(self):

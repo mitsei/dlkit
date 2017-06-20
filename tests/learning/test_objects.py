@@ -4,9 +4,13 @@
 import unittest
 
 
+from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.learning.objects import Objective
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.repository.objects import AssetList
+from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -283,6 +287,36 @@ class TestObjectiveList(unittest.TestCase):
 class TestObjectiveNode(unittest.TestCase):
     """Tests for ObjectiveNode"""
 
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test ObjectiveBank'
+        create_form.description = 'Test ObjectiveBank for ObjectiveNode tests'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+    def setUp(self):
+        from dlkit.json_.learning.objects import ObjectiveNode
+        self.objective_node_list = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_objective_form_for_create([])
+            create_form.display_name = 'Test Objective ' + str(num)
+            create_form.description = 'Test Objective for ObjectiveNodeList tests'
+            obj = self.catalog.create_objective(create_form)
+            self.objective_node_list.append(ObjectiveNode(obj.object_map))
+        # Now put the objectives in a hierarchy
+        self.catalog.add_root_objective(self.objective_node_list[0].ident)
+        self.catalog.add_child_objective(
+            self.objective_node_list[0].ident,
+            self.objective_node_list[1].ident)
+        self.object = ObjectiveNode(self.objective_node_list[0])
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_objectives():
+            cls.catalog.delete_objective(obj.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
     def test_get_objective(self):
         """Tests get_objective"""
         with self.assertRaises(errors.Unimplemented):
@@ -380,58 +414,68 @@ class TestActivity(unittest.TestCase):
 
     def test_get_objective_id(self):
         """Tests get_objective_id"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_objective_id()
+        result = self.object.get_objective_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(self.objective.ident))
 
     def test_get_objective(self):
         """Tests get_objective"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_objective()
+        result = self.object.get_objective()
+        self.assertTrue(isinstance(result, Objective))
+        self.assertEqual(str(result.ident),
+                         str(self.objective.ident))
 
     def test_is_asset_based_activity(self):
         """Tests is_asset_based_activity"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.is_asset_based_activity()
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_asset_based_activity(), bool))
 
     def test_get_asset_ids(self):
         """Tests get_asset_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_asset_ids()
+        result = self.object.get_asset_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
     def test_get_assets(self):
         """Tests get_assets"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_assets()
+        result = self.object.get_assets()
+        self.assertTrue(isinstance(result, AssetList))
+        self.assertEqual(result.available(), 0)
 
     def test_is_course_based_activity(self):
         """Tests is_course_based_activity"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.is_course_based_activity()
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_course_based_activity(), bool))
 
     def test_get_course_ids(self):
         """Tests get_course_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_course_ids()
+        result = self.object.get_course_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
     def test_get_courses(self):
         """Tests get_courses"""
-        with self.assertRaises(errors.Unimplemented):
+        # We don't have the course service yet
+        with self.assertRaises(errors.OperationFailed):
             self.object.get_courses()
 
     def test_is_assessment_based_activity(self):
         """Tests is_assessment_based_activity"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.is_assessment_based_activity()
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_assessment_based_activity(), bool))
 
     def test_get_assessment_ids(self):
         """Tests get_assessment_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_assessment_ids()
+        result = self.object.get_assessment_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
     def test_get_assessments(self):
         """Tests get_assessments"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_assessments()
+        result = self.object.get_assessments()
+        self.assertTrue(isinstance(result, AssessmentList))
+        self.assertEqual(result.available(), 0)
 
     def test_get_activity_record(self):
         """Tests get_activity_record"""
@@ -662,13 +706,24 @@ class TestProficiency(unittest.TestCase):
 
     def test_get_objective(self):
         """Tests get_objective"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_objective()
+        result = self.object.get_objective()
+        self.assertTrue(isinstance(result, Objective))
+        self.assertEqual(str(result.ident),
+                         str(self.objective.ident))
 
     def test_get_completion(self):
         """Tests get_completion"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_completion()
+        score = self.object.get_completion()
+        self.assertIsNone(score)
+
+        # if this is set, should be a Decimal
+        form = self.catalog.get_proficiency_form_for_create(self.objective.ident,
+                                                            AGENT_ID,
+                                                            [])
+        form.set_completion(0.0)
+        new_proficiency = self.catalog.create_proficiency(form)
+
+        self.assertEqual(new_proficiency.get_completion(), 0.0)
 
     def test_has_level(self):
         """Tests has_level"""
@@ -704,9 +759,11 @@ class TestProficiencyForm(unittest.TestCase):
 
         form = cls.catalog.get_objective_form_for_create([])
         form.display_name = "Test LO"
-        objective = cls.catalog.create_objective(form)
+        cls.objective = cls.catalog.create_objective(form)
 
-        cls.form = cls.catalog.get_proficiency_form_for_create(objective.ident, AGENT_ID, [])
+    def setUp(self):
+        self.form = self.catalog.get_proficiency_form_for_create(self.objective.ident, AGENT_ID, [])
+        self.object = self.form
 
     @classmethod
     def tearDownClass(cls):
@@ -733,13 +790,16 @@ class TestProficiencyForm(unittest.TestCase):
 
     def test_set_completion(self):
         """Tests set_completion"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.set_completion(True)
+        self.assertIsNone(self.form._my_map['completion'])
+        self.form.set_completion(50.0)
+        self.assertIsNotNone(self.form._my_map['completion'])
 
     def test_clear_completion(self):
         """Tests clear_completion"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.clear_completion()
+        self.form.set_completion(50.0)
+        self.assertIsNotNone(self.form._my_map['completion'])
+        self.form.clear_completion()
+        self.assertIsNone(self.form._my_map['completion'])
 
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
@@ -757,13 +817,17 @@ class TestProficiencyForm(unittest.TestCase):
 
     def test_set_level(self):
         """Tests set_level"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.set_level(True)
+        # This is a slightly hokey test, because the spec seems to have a typo
+        self.assertEqual(self.form._my_map['levelId'], '')
+        self.form.set_level(Id('grading.Grade%3Afake%40ODL.MIT.EDU'))
+        self.assertIsNotNone(self.form._my_map['level'])
 
     def test_clear_level(self):
         """Tests clear_level"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.clear_level()
+        self.form.set_level(Id('grading.Grade%3Afake%40ODL.MIT.EDU'))
+        self.assertIsNotNone(self.form._my_map['level'])
+        self.form.clear_level()
+        self.assertEqual(self.form._my_map['level'], '')
 
     def test_get_proficiency_form_record(self):
         """Tests get_proficiency_form_record"""

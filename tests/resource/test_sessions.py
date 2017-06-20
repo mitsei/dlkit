@@ -24,6 +24,7 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
@@ -66,6 +67,7 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
     def test_get_bin(self):
@@ -76,22 +78,27 @@ class TestResourceLookupSession(unittest.TestCase):
 
     def test_can_lookup_resources(self):
         """Tests can_lookup_resources"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_resources(), bool))
 
     def test_use_comparative_resource_view(self):
         """Tests use_comparative_resource_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_resource_view()
 
     def test_use_plenary_resource_view(self):
         """Tests use_plenary_resource_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_resource_view()
 
     def test_use_federated_bin_view(self):
         """Tests use_federated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bin_view()
 
     def test_use_isolated_bin_view(self):
         """Tests use_isolated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bin_view()
 
     def test_get_resource(self):
@@ -112,24 +119,30 @@ class TestResourceLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, ResourceList))
         self.catalog.use_federated_bin_view()
         objects = self.catalog.get_resources_by_ids(self.resource_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, ResourceList))
 
     def test_get_resources_by_genus_type(self):
         """Tests get_resources_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
-        objects = self.catalog.get_resources_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, ResourceList))
         self.catalog.use_federated_bin_view()
-        objects = self.catalog.get_resources_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, ResourceList))
 
     def test_get_resources_by_parent_genus_type(self):
         """Tests get_resources_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
-        objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, ResourceList))
         self.catalog.use_federated_bin_view()
-        objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, ResourceList))
 
     def test_get_resources_by_record_type(self):
         """Tests get_resources_by_record_type"""
@@ -139,6 +152,8 @@ class TestResourceLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, ResourceList))
         self.catalog.use_federated_bin_view()
         objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, ResourceList))
 
     def test_get_resources(self):
         """Tests get_resources"""
@@ -148,6 +163,8 @@ class TestResourceLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, ResourceList))
         self.catalog.use_federated_bin_view()
         objects = self.catalog.get_resources()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, ResourceList))
 
     def test_get_resource_with_alias(self):
         self.catalog.alias_resource(self.resource_ids[0], ALIAS_ID)
@@ -190,6 +207,7 @@ class TestResourceQuerySession(unittest.TestCase):
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
     def test_get_bin(self):
@@ -205,10 +223,12 @@ class TestResourceQuerySession(unittest.TestCase):
 
     def test_use_federated_bin_view(self):
         """Tests use_federated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bin_view()
 
     def test_use_isolated_bin_view(self):
         """Tests use_isolated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bin_view()
 
     def test_get_resource_query(self):
@@ -264,15 +284,18 @@ class TestResourceAdminSession(unittest.TestCase):
         create_form.description = 'Test Bin for ResourceAdminSession tests'
         cls.catalog = cls.svc_mgr.create_bin(create_form)
 
-        form = cls.catalog.get_resource_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_resource_form_for_create([])
         form.display_name = 'new Resource'
         form.description = 'description of Resource'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_resource(form)
-
-    def setUp(self):
-        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.osid_object = self.catalog.create_resource(form)
         self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_resource(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -283,6 +306,7 @@ class TestResourceAdminSession(unittest.TestCase):
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
     def test_get_bin(self):
@@ -408,6 +432,7 @@ class TestResourceNotificationSession(unittest.TestCase):
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
     def test_get_bin(self):
@@ -423,10 +448,12 @@ class TestResourceNotificationSession(unittest.TestCase):
 
     def test_use_federated_bin_view(self):
         """Tests use_federated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bin_view()
 
     def test_use_isolated_bin_view(self):
         """Tests use_isolated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bin_view()
 
     def test_register_for_new_resources(self):
@@ -708,6 +735,7 @@ class TestResourceAgentSession(unittest.TestCase):
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
     def test_get_bin(self):
@@ -723,18 +751,22 @@ class TestResourceAgentSession(unittest.TestCase):
 
     def test_use_comparative_agent_view(self):
         """Tests use_comparative_agent_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_agent_view()
 
     def test_use_plenary_agent_view(self):
         """Tests use_plenary_agent_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_agent_view()
 
     def test_use_federated_bin_view(self):
         """Tests use_federated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_bin_view()
 
     def test_use_isolated_bin_view(self):
         """Tests use_isolated_bin_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_bin_view()
 
     def test_get_resource_id_by_agent(self):
@@ -786,6 +818,7 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
 
     def test_get_bin_id(self):
         """Tests get_bin_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_bin_id(), self.catalog.ident)
 
     def test_get_bin(self):

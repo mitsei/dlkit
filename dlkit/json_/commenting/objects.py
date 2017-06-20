@@ -195,6 +195,9 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         """
         return self._get_record(comment_record_type)
 
+    def has_commentor(self):
+        return bool(self._my_map['commentorId'])
+
     def get_object_map(self):
         obj_map = dict(self._my_map)
         obj_map['commentingAgentId'] = str(self.get_commenting_agent_id())
