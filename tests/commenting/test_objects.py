@@ -82,7 +82,6 @@ class TestComment(unittest.TestCase):
         """Tests has_rating"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_rating(), bool))
-        self.assertFalse(self.object.has_rating())
 
     def test_get_rating_id(self):
         """Tests get_rating_id"""

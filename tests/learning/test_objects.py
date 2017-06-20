@@ -50,7 +50,6 @@ class TestObjective(unittest.TestCase):
         """Tests has_assessment"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_assessment(), bool))
-        self.assertFalse(self.object.has_assessment())
 
     def test_get_assessment_id(self):
         """Tests get_assessment_id"""
@@ -68,7 +67,6 @@ class TestObjective(unittest.TestCase):
         """Tests has_knowledge_category"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_knowledge_category(), bool))
-        self.assertFalse(self.object.has_knowledge_category())
 
     def test_get_knowledge_category_id(self):
         """Tests get_knowledge_category_id"""
@@ -86,7 +84,6 @@ class TestObjective(unittest.TestCase):
         """Tests has_cognitive_process"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_cognitive_process(), bool))
-        self.assertFalse(self.object.has_cognitive_process())
 
     def test_get_cognitive_process_id(self):
         """Tests get_cognitive_process_id"""

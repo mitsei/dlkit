@@ -55,13 +55,11 @@ class TestAsset(unittest.TestCase):
         """Tests is_copyright_status_known"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_copyright_status_known(), bool))
-        self.assertFalse(self.object.is_copyright_status_known())
 
     def test_is_public_domain(self):
         """Tests is_public_domain"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_public_domain(), bool))
-        self.assertFalse(self.object.is_public_domain())
 
     def test_get_copyright(self):
         """Tests get_copyright"""
@@ -119,7 +117,6 @@ class TestAsset(unittest.TestCase):
         """Tests is_published"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_published(), bool))
-        self.assertFalse(self.object.is_published())
 
     def test_get_published_date(self):
         """Tests get_published_date"""

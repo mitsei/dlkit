@@ -651,7 +651,6 @@ class TestGradeEntry(unittest.TestCase):
         """Tests is_derived"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_derived(), bool))
-        self.assertFalse(self.object.is_derived())
 
     def test_overrides_calculated_entry(self):
         """Tests overrides_calculated_entry"""
@@ -673,7 +672,6 @@ class TestGradeEntry(unittest.TestCase):
         """Tests is_ignored_for_calculations"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_ignored_for_calculations(), bool))
-        self.assertFalse(self.object.is_ignored_for_calculations())
 
     def test_is_graded(self):
         """Tests is_graded"""

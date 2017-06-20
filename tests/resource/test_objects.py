@@ -49,7 +49,6 @@ class TestResource(unittest.TestCase):
         """Tests is_group"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_group(), bool))
-        self.assertFalse(self.object.is_group())
 
     def test_is_demographic(self):
         """Tests is_demographic"""
@@ -60,7 +59,6 @@ class TestResource(unittest.TestCase):
         """Tests has_avatar"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_avatar(), bool))
-        self.assertFalse(self.object.has_avatar())
 
     def test_get_avatar_id(self):
         """Tests get_avatar_id"""
@@ -307,7 +305,7 @@ class TestBinForm(unittest.TestCase):
     def test_get_bin_form_record(self):
         """Tests get_bin_form_record"""
         with self.assertRaises(errors.Unsupported):
-            self.object.${method_name}(DEFAULT_TYPE)
+            self.object.get_bin_form_record(DEFAULT_TYPE)
 
 
 class TestBinList(unittest.TestCase):

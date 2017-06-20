@@ -57,72 +57,81 @@ class TestAuthorization(unittest.TestCase):
 
     def test_is_implicit(self):
         """Tests is_implicit"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.is_implicit()
+        self.assertTrue(isinstance(self.object.is_implicit(), bool))
 
     def test_has_resource(self):
         """Tests has_resource"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.has_resource()
+        self.assertTrue(isinstance(self.object.has_resource(), bool))
 
     def test_get_resource_id(self):
         """Tests get_resource_id"""
-        with self.assertRaises(errors.Unimplemented):
+        # no resource, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
             self.object.get_resource_id()
 
     def test_get_resource(self):
         """Tests get_resource"""
-        with self.assertRaises(errors.Unimplemented):
+        # no resource, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
             self.object.get_resource()
 
     def test_has_trust(self):
         """Tests has_trust"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.has_trust()
+        self.assertTrue(isinstance(self.object.has_trust(), bool))
 
     def test_get_trust_id(self):
         """Tests get_trust_id"""
-        with self.assertRaises(errors.Unimplemented):
+        # no trust, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
             self.object.get_trust_id()
 
     def test_get_trust(self):
         """Tests get_trust"""
-        with self.assertRaises(errors.Unimplemented):
+        # no trust, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
             self.object.get_trust()
 
     def test_has_agent(self):
         """Tests has_agent"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.has_agent()
+        self.assertTrue(isinstance(self.object.has_agent(), bool))
 
     def test_get_agent_id(self):
         """Tests get_agent_id"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_agent_id()
+        result = self.object.get_agent_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(AGENT_ID))
 
     def test_get_agent(self):
         """Tests get_agent"""
-        with self.assertRaises(errors.Unimplemented):
+        # because we don't have Agency implemented in authentication
+        with self.assertRaises(AttributeError):
             self.object.get_agent()
 
     def test_get_function_id(self):
         """Tests get_function_id"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_function_id()
+        result = self.object.get_function_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(LOOKUP_RESOURCE_FUNCTION_ID))
 
     def test_get_function(self):
         """Tests get_function"""
-        with self.assertRaises(errors.Unimplemented):
+        # not supported
+        with self.assertRaises(errors.OperationFailed):
             self.object.get_function()
 
     def test_get_qualifier_id(self):
         """Tests get_qualifier_id"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_qualifier_id()
+        result = self.object.get_qualifier_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         'resource.Resource%3Afoo%40ODL.MIT.EDU')
 
     def test_get_qualifier(self):
         """Tests get_qualifier"""
-        with self.assertRaises(errors.Unimplemented):
+        # not supported
+        with self.assertRaises(errors.OperationFailed):
             self.object.get_qualifier()
 
     def test_get_authorization_record(self):
@@ -323,31 +332,31 @@ class TestVaultList(unittest.TestCase):
 class TestVaultNode(unittest.TestCase):
     """Tests for VaultNode"""
 
+    @unittest.skip('unimplemented test')
     def test_get_vault(self):
         """Tests get_vault"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_vault()
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_parent_vault_nodes(self):
         """Tests get_parent_vault_nodes"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_parent_vault_nodes()
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_child_vault_nodes(self):
         """Tests get_child_vault_nodes"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_child_vault_nodes()
+        pass
 
 
 class TestVaultNodeList(unittest.TestCase):
     """Tests for VaultNodeList"""
 
+    @unittest.skip('unimplemented test')
     def test_get_next_vault_node(self):
         """Tests get_next_vault_node"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_next_vault_node()
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_next_vault_nodes(self):
         """Tests get_next_vault_nodes"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_next_vault_nodes(True)
+        pass

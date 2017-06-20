@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo learning'
 
 DESCRIPTION = 'MongoDB based learning implementation'
 
-VERSIONCOMPONENTS = [0, 1, 344]
+VERSIONCOMPONENTS = [0, 1, 369]
 
-RELEASEDATE = "2017-06-19"
+RELEASEDATE = "2017-06-20"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

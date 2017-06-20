@@ -4,6 +4,7 @@
 import unittest
 
 
+from dlkit.abstract_osid.grading import objects as ABCObjects
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors

@@ -4,7 +4,10 @@
 import unittest
 
 
+from dlkit.abstract_osid.authorization import objects as ABCObjects
 from dlkit.abstract_osid.authorization import queries as ABCQueries
+from dlkit.abstract_osid.authorization.objects import Authorization
+from dlkit.abstract_osid.authorization.objects import AuthorizationList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.id.primitives import Id
@@ -241,6 +244,9 @@ class TestAuthorizationSession(unittest.TestCase):
             cls.authz_list.append(authz)
             cls.authz_id_list.append(authz.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.resource_mgr.get_bins():
@@ -344,6 +350,9 @@ class TestAuthorizationLookupSession(unittest.TestCase):
             object = cls.catalog.create_authorization(create_form)
             cls.authorization_list.append(object)
             cls.authorization_ids.append(object.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -475,10 +484,9 @@ class TestAuthorizationLookupSession(unittest.TestCase):
 
     def test_get_authorizations_for_function(self):
         """Tests get_authorizations_for_function"""
-        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
-        results = self.session.get_authorizations_for_function(self.function.ident)
+        results = self.session.get_authorizations_for_function(LOOKUP_RESOURCE_FUNCTION_ID)
         self.assertEqual(results.available(), 2)
-        self.assertTrue(isinstance(results, ABCObjects.AuthorizationList))
+        self.assertTrue(isinstance(results, AuthorizationList))
 
     def test_get_authorizations_for_function_on_date(self):
         """Tests get_authorizations_for_function_on_date"""
@@ -554,6 +562,9 @@ class TestAuthorizationQuerySession(unittest.TestCase):
             obj = cls.catalog.create_authorization(create_form)
             cls.authorization_list.append(obj)
             cls.authorization_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -646,6 +657,9 @@ class TestAuthorizationAdminSession(unittest.TestCase):
         form.genus_type = NEW_TYPE
         cls.osid_object = cls.catalog.create_authorization(form)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_vaults():
@@ -675,13 +689,23 @@ class TestAuthorizationAdminSession(unittest.TestCase):
 
     def test_get_authorization_form_for_create_for_agent(self):
         """Tests get_authorization_form_for_create_for_agent"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_authorization_form_for_create_for_agent(True, True, True, True)
+        form = self.catalog.get_authorization_form_for_create_for_agent(
+            AGENT_ID,
+            LOOKUP_RESOURCE_FUNCTION_ID,
+            Id(**{'identifier': 'foo', 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+            [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
     def test_get_authorization_form_for_create_for_resource(self):
         """Tests get_authorization_form_for_create_for_resource"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_authorization_form_for_create_for_resource(True, True, True, True)
+        form = self.catalog.get_authorization_form_for_create_for_resource(
+            AGENT_ID,
+            LOOKUP_RESOURCE_FUNCTION_ID,
+            Id(**{'identifier': 'foo', 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
+            [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
     def test_get_authorization_form_for_create_for_resource_and_trust(self):
         """Tests get_authorization_form_for_create_for_resource_and_trust"""
@@ -711,7 +735,6 @@ class TestAuthorizationAdminSession(unittest.TestCase):
 
     def test_update_authorization(self):
         """Tests update_authorization"""
-        from dlkit.abstract_osid.authorization.objects import Authorization
         form = self.catalog.get_authorization_form_for_update(self.osid_object.ident)
         form.display_name = 'new name'
         form.description = 'new description'

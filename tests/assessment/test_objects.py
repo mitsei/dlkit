@@ -507,7 +507,6 @@ class TestAssessment(unittest.TestCase):
         """Tests has_rubric"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_rubric(), bool))
-        self.assertFalse(self.object.has_rubric())
 
     def test_get_rubric_id(self):
         """Tests get_rubric_id"""
@@ -736,13 +735,11 @@ class TestAssessmentOffered(unittest.TestCase):
         """Tests are_items_sequential"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.are_items_sequential(), bool))
-        self.assertFalse(self.object.are_items_sequential())
 
     def test_are_items_shuffled(self):
         """Tests are_items_shuffled"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.are_items_shuffled(), bool))
-        self.assertFalse(self.object.are_items_shuffled())
 
     def test_has_start_time(self):
         """Tests has_start_time"""

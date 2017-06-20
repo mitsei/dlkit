@@ -4,6 +4,10 @@
 import unittest
 
 
+from random import shuffle
+
+
+from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.id.primitives import Id
@@ -19,6 +23,7 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+SIMPLE_SEQUENCE_RECORD_TYPE = Type(**{"authority": "ODL.MIT.EDU", "namespace": "osid-object", "identifier": "simple-child-sequencing"})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 
@@ -53,6 +58,9 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
             cls.assessment_part_ids.append(obj.ident)
 
         cls.assessment = cls.catalog.get_assessment(cls.assessment.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -117,23 +125,27 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_use_active_assessment_part_view(self):
         """Tests use_active_assessment_part_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_active_assessment_part_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_active_composition_view_template
+        # Ideally also verify the value is set...
+        self.catalog.use_active_assessment_part_view()
 
     def test_use_any_status_assessment_part_view(self):
         """Tests use_any_status_assessment_part_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_any_status_assessment_part_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_any_status_composition_view_template
+        # Ideally also verify the value is set...
+        self.catalog.use_any_status_assessment_part_view()
 
     def test_use_sequestered_assessment_part_view(self):
         """Tests use_sequestered_assessment_part_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_sequestered_assessment_part_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_sequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_sequestered_assessment_part_view()
 
     def test_use_unsequestered_assessment_part_view(self):
         """Tests use_unsequestered_assessment_part_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_unsequestered_assessment_part_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_unsequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_unsequestered_assessment_part_view()
 
     def test_get_assessment_part(self):
         """Tests get_assessment_part"""
@@ -234,6 +246,9 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
 
         cls.assessment = cls.catalog.get_assessment(cls.assessment.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         cls.catalog.use_unsequestered_assessment_part_view()
@@ -267,13 +282,15 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
 
     def test_use_sequestered_assessment_part_view(self):
         """Tests use_sequestered_assessment_part_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_sequestered_assessment_part_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_sequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_sequestered_assessment_part_view()
 
     def test_use_unsequestered_assessment_part_view(self):
         """Tests use_unsequestered_assessment_part_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_unsequestered_assessment_part_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_unsequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_unsequestered_assessment_part_view()
 
     def test_get_assessment_part_query(self):
         """Tests get_assessment_part_query"""
@@ -308,11 +325,21 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
         assessment_form.description = 'Test Assessment for AssessmentPartAdminSession tests'
         cls.assessment = cls.catalog.create_assessment(assessment_form)
 
-        form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+    def setUp(self):
+        form = self.catalog.get_assessment_part_form_for_create_for_assessment(self.assessment.ident,
+                                                                               [SIMPLE_SEQUENCE_RECORD_TYPE])
         form.display_name = 'new AssessmentPart'
         form.description = 'description of AssessmentPart'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_assessment_part_for_assessment(form)
+        self.osid_object = self.catalog.create_assessment_part_for_assessment(form)
+        self.session = self.catalog
+
+    def tearDown(self):
+        self.osid_object = self.catalog.get_assessment_part(self.osid_object.ident)
+        if self.osid_object.has_children():
+            for child_id in self.osid_object.get_child_assessment_part_ids():
+                self.catalog.delete_assessment_part(child_id)
+        self.catalog.delete_assessment_part(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -344,23 +371,43 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
 
     def test_get_assessment_part_form_for_create_for_assessment(self):
         """Tests get_assessment_part_form_for_create_for_assessment"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessment_part_form_for_create_for_assessment(True, True)
+        form = self.session.get_assessment_part_form_for_create_for_assessment(self.assessment.ident, [])
+        self.assertTrue(isinstance(form, ABCObjects.AssessmentPartForm))
+        self.assertFalse(form.is_for_update())
 
     def test_create_assessment_part_for_assessment(self):
         """Tests create_assessment_part_for_assessment"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.create_assessment_part_for_assessment(True)
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
+        self.assertTrue(isinstance(self.osid_object, AssessmentPart))
+        self.assertEqual(self.osid_object.display_name.text, 'new AssessmentPart')
+        self.assertEqual(self.osid_object.description.text, 'description of AssessmentPart')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
+
+        form = self.catalog.get_assessment_part_form_for_create_for_assessment_part(self.osid_object.ident, [])
+        form.display_name = 'new AssessmentPart child'
+        form.description = 'description of AssessmentPart child'
+        child_part = self.catalog.create_assessment_part_for_assessment_part(form)
+
+        parent_part = self.catalog.get_assessment_part(self.osid_object.ident)
+        self.assertTrue(parent_part.has_children())
+        self.assertEqual(parent_part.get_child_assessment_part_ids().available(), 1)
+        self.assertEqual(str(parent_part.get_child_assessment_part_ids().next()),
+                         str(child_part.ident))
 
     def test_get_assessment_part_form_for_create_for_assessment_part(self):
         """Tests get_assessment_part_form_for_create_for_assessment_part"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_assessment_part_form_for_create_for_assessment_part(True, True)
+        form = self.session.get_assessment_part_form_for_create_for_assessment_part(self.osid_object.ident, [])
+        self.assertTrue(isinstance(form, ABCObjects.AssessmentPartForm))
+        self.assertFalse(form.is_for_update())
 
     def test_create_assessment_part_for_assessment_part(self):
         """Tests create_assessment_part_for_assessment_part"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.create_assessment_part_for_assessment_part(True)
+        # From test_templates/resource.py::ResourceAdminSession::create_resource_template
+        from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
+        self.assertTrue(isinstance(self.osid_object, AssessmentPart))
+        self.assertEqual(self.osid_object.display_name.text, 'new AssessmentPart')
+        self.assertEqual(self.osid_object.description.text, 'description of AssessmentPart')
+        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
 
     def test_can_update_assessment_parts(self):
         """Tests can_update_assessment_parts"""
@@ -376,8 +423,16 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
 
     def test_update_assessment_part(self):
         """Tests update_assessment_part"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.update_assessment_part(True, True)
+        form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
+        form.display_name = 'new name'
+        form.description = 'new description'
+        form.set_genus_type(NEW_TYPE_2)
+        updated_object = self.catalog.update_assessment_part(self.osid_object.ident, form)
+        self.assertTrue(isinstance(updated_object, ABCObjects.AssessmentPart))
+        self.assertEqual(updated_object.ident, self.osid_object.ident)
+        self.assertEqual(updated_object.display_name.text, 'new name')
+        self.assertEqual(updated_object.description.text, 'new description')
+        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
 
     def test_can_delete_assessment_parts(self):
         """Tests can_delete_assessment_parts"""
@@ -386,8 +441,24 @@ class TestAssessmentPartAdminSession(unittest.TestCase):
 
     def test_delete_assessment_part(self):
         """Tests delete_assessment_part"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.delete_assessment_part(True)
+        results = self.catalog.get_assessment_parts()
+        self.assertEqual(results.available(), 1)
+
+        form = self.catalog.get_assessment_part_form_for_create_for_assessment(self.assessment.ident,
+                                                                               [])
+        form.display_name = 'new AssessmentPart'
+        form.description = 'description of AssessmentPart'
+        new_assessment_part = self.catalog.create_assessment_part_for_assessment(form)
+
+        results = self.catalog.get_assessment_parts()
+        self.assertEqual(results.available(), 2)
+
+        self.session.delete_assessment_part(new_assessment_part.ident)
+
+        results = self.catalog.get_assessment_parts()
+        self.assertEqual(results.available(), 1)
+        self.assertNotEqual(str(results.next().ident),
+                            str(new_assessment_part.ident))
 
     def test_can_manage_assessment_part_aliases(self):
         """Tests can_manage_assessment_part_aliases"""
@@ -432,10 +503,16 @@ class TestAssessmentPartItemSession(unittest.TestCase):
             cls.item_ids.append(obj.ident)
             cls.catalog.add_item(obj.ident, cls.assessment_part.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_banks():
             for obj in catalog.get_assessment_parts():
+                if obj.has_children():
+                    for child_id in obj.get_child_assessment_part_ids():
+                        catalog.delete_assessment_part(child_id)
                 catalog.delete_assessment_part(obj.ident)
             for obj in catalog.get_assessments():
                 catalog.delete_assessment(obj.ident)
@@ -455,8 +532,7 @@ class TestAssessmentPartItemSession(unittest.TestCase):
 
     def test_can_access_assessment_part_items(self):
         """Tests can_access_assessment_part_items"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_access_assessment_part_items()
+        self.assertTrue(isinstance(self.session.can_access_assessment_part_items(), bool))
 
     def test_use_comparative_asseessment_part_item_view(self):
         """Tests use_comparative_asseessment_part_item_view"""
@@ -498,22 +574,25 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
         cls.catalog = cls.svc_mgr.create_bank(create_form)
         create_form = cls.catalog.get_assessment_form_for_create([])
         create_form.display_name = 'Test Assessment'
-        create_form.description = 'Test Assessment for AssetCompositionSession tests'
+        create_form.description = 'Test Assessment for AssessmentPartItemDesignSession tests'
         cls.assessment = cls.catalog.create_assessment(create_form)
         create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part'
-        create_form.description = 'Test Assessment Part for AssetCompositionSession tests'
+        create_form.description = 'Test Assessment Part for AssessmentPartItemDesignSession tests'
         cls.assessment_part = cls.catalog.create_assessment_part_for_assessment(create_form)
         for num in [0, 1, 2, 3]:
             create_form = cls.catalog.get_item_form_for_create([])
             create_form.display_name = 'Test Item ' + str(num)
-            create_form.description = 'Test Item for AssessmentPartItemSession tests'
+            create_form.description = 'Test Item for AssessmentPartItemDesignSession tests'
             obj = cls.catalog.create_item(create_form)
             cls.item_list.append(obj)
             cls.item_ids.append(obj.ident)
             cls.catalog.add_item(obj.ident, cls.assessment_part.ident)
 
         cls.assessment = cls.catalog.get_assessment(cls.assessment.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -538,33 +617,60 @@ class TestAssessmentPartItemDesignSession(unittest.TestCase):
 
     def test_can_design_assessment_parts(self):
         """Tests can_design_assessment_parts"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_design_assessment_parts()
+        self.assertTrue(isinstance(self.session.can_design_assessment_parts(), bool))
 
     def test_add_item(self):
         """Tests add_item"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.add_item(True, True)
+        self.assertEqual(self.catalog.get_assessment_part_items(self.assessment_part.ident).available(), 4)
+
+        create_form = self.catalog.get_item_form_for_create([])
+        create_form.display_name = 'Test Item 5'
+        create_form.description = 'Test Item for AssessmentPartItemDesignSession tests'
+        obj = self.catalog.create_item(create_form)
+        self.session.add_item(obj.ident, self.assessment_part.ident)
+
+        self.assertEqual(self.catalog.get_assessment_part_items(self.assessment_part.ident).available(), 5)
 
     def test_move_item_ahead(self):
         """Tests move_item_ahead"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.move_item_ahead(True, True, True)
+        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+        original_ids = [item.ident for item in original_item_order]
+        self.session.move_item_ahead(original_ids[-1],
+                                     self.assessment_part.ident,
+                                     original_ids[0])
+        expected_order = [original_ids[-1]] + original_ids[0:-1]
+        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+        self.assertEqual(new_order, expected_order)
 
     def test_move_item_behind(self):
         """Tests move_item_behind"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.move_item_behind(True, True, True)
+        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+        original_ids = [item.ident for item in original_item_order]
+        self.session.move_item_behind(original_ids[0],
+                                      self.assessment_part.ident,
+                                      original_ids[-1])
+        expected_order = original_ids[1::] + [original_ids[0]]
+        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+        self.assertEqual(new_order, expected_order)
 
     def test_order_items(self):
         """Tests order_items"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.order_items(True, True)
+        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+        original_ids = [item.ident for item in original_item_order]
+        shuffle(original_ids)
+        self.session.order_items(original_ids,
+                                 self.assessment_part.ident)
+        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+        self.assertEqual(new_order, original_ids)
 
     def test_remove_item(self):
         """Tests remove_item"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.remove_item(True, True)
+        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+        original_ids = [item.ident for item in original_item_order]
+        self.session.remove_item(original_ids[0],
+                                 self.assessment_part.ident)
+        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+        self.assertEqual(new_order, original_ids[1::])
 
 
 class TestSequenceRuleLookupSession(unittest.TestCase):
@@ -580,14 +686,14 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
         create_form.description = 'Test Bank for SequenceRuleLookupSession tests'
         cls.catalog = cls.svc_mgr.create_bank(create_form)
 
-        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form = cls.catalog.get_assessment_form_for_create([SIMPLE_SEQUENCE_RECORD_TYPE])
         create_form.display_name = 'Test Assessment'
         create_form.description = 'Test Assessment for SequenceRuleLookupSession tests'
         cls.assessment = cls.catalog.create_assessment(create_form)
         create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part 1'
         create_form.description = 'Test Assessment Part for SequenceRuleLookupSession tests'
-        assessment_part_1 = cls.catalog.create_assessment_part_for_assessment(create_form)
+        cls.assessment_part_1 = cls.catalog.create_assessment_part_for_assessment(create_form)
 
         create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part 2'
@@ -595,7 +701,7 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
         assessment_part_2 = cls.catalog.create_assessment_part_for_assessment(create_form)
 
         for num in [0, 1]:
-            create_form = cls.catalog.get_sequence_rule_form_for_create(assessment_part_1.ident,
+            create_form = cls.catalog.get_sequence_rule_form_for_create(cls.assessment_part_1.ident,
                                                                         assessment_part_2.ident,
                                                                         [])
             create_form.display_name = 'Test Sequence Rule ' + str(num)
@@ -603,6 +709,10 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
             obj = cls.catalog.create_sequence_rule(create_form)
             cls.sequence_rule_list.append(obj)
             cls.sequence_rule_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
+        self.assessment_part = self.assessment_part_1
 
     @classmethod
     def tearDownClass(cls):
@@ -647,13 +757,15 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_use_active_sequence_rule_view(self):
         """Tests use_active_sequence_rule_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_active_sequence_rule_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_active_composition_view_template
+        # Ideally also verify the value is set...
+        self.catalog.use_active_sequence_rule_view()
 
     def test_use_any_status_sequence_rule_view(self):
         """Tests use_any_status_sequence_rule_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_any_status_sequence_rule_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_any_status_composition_view_template
+        # Ideally also verify the value is set...
+        self.catalog.use_any_status_sequence_rule_view()
 
     def test_get_sequence_rule(self):
         """Tests get_sequence_rule"""
@@ -784,6 +896,9 @@ class TestSequenceRuleAdminSession(unittest.TestCase):
         create_form.description = 'description of SequenceRule'
         create_form.genus_type = NEW_TYPE
         cls.osid_object = cls.catalog.create_sequence_rule(create_form)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):

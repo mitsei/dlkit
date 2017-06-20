@@ -97,7 +97,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
+        if not self.has_parent_part():
+            raise errors.IllegalState('no parent part')
         return Id(self._my_map['assessmentPartId'])
 
     assessment_part_id = property(fget=get_assessment_part_id)
@@ -112,6 +113,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if not self.has_parent_part():
+            raise errors.IllegalState('no parent part')
         lookup_session = self._get_assessment_part_lookup_session()
         return lookup_session.get_assessment_part(self.get_assessment_part_id())
 
@@ -166,6 +169,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if not self.has_children():
+            raise errors.IllegalState('no children assessment parts')
         return IdList(self._my_map['childIds'])
 
     child_assessment_part_ids = property(fget=get_child_assessment_part_ids)
@@ -179,6 +184,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if not self.has_children():
+            raise errors.IllegalState('no children assessment parts')
         # only returned unsequestered children?
         lookup_session = self._get_assessment_part_lookup_session()
         lookup_session.use_sequestered_assessment_part_view()
@@ -812,6 +819,7 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         self._my_map['maximumScore'] = self._maximum_score_default
         self._my_map['assessmentPartId'] = str(kwargs['assessment_part_id'])
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
+        self._my_map['appliedAssessmentPartIds'] = []
 
     def get_minimum_score_metadata(self):
         """Gets the metadata for the minimum score.
@@ -912,10 +920,7 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
-        metadata = dict(self._mdata['applied_assessment_parts'])
-        metadata.update({'existing_none_values': self._my_map['appliedAssessmentParts']})
-        return Metadata(**metadata)
+        raise errors.Unimplemented()
 
     applied_assessment_parts_metadata = property(fget=get_applied_assessment_parts_metadata)
 

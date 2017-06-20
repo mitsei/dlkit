@@ -971,18 +971,26 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_use_active_composition_view(self):
         """Tests use_active_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_active_composition_view_template
+        # Ideally also verify the value is set...
         self.catalog.use_active_composition_view()
 
     def test_use_any_status_composition_view(self):
         """Tests use_any_status_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_any_status_composition_view_template
+        # Ideally also verify the value is set...
         self.catalog.use_any_status_composition_view()
 
     def test_use_sequestered_composition_view(self):
         """Tests use_sequestered_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_sequestered_composition_view
+        # Ideally also verify the value is set...
         self.catalog.use_sequestered_composition_view()
 
     def test_use_unsequestered_composition_view(self):
         """Tests use_unsequestered_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_unsequestered_composition_view
+        # Ideally also verify the value is set...
         self.catalog.use_unsequestered_composition_view()
 
     def test_get_composition(self):
@@ -1109,13 +1117,15 @@ class TestCompositionQuerySession(unittest.TestCase):
 
     def test_use_sequestered_composition_view(self):
         """Tests use_sequestered_composition_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_sequestered_composition_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_sequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_sequestered_composition_view()
 
     def test_use_unsequestered_composition_view(self):
         """Tests use_unsequestered_composition_view"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.use_unsequestered_composition_view()
+        # From test_templates/repository.py::CompositionLookupSession::use_unsequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_unsequestered_composition_view()
 
     def test_get_composition_query(self):
         """Tests get_composition_query"""
