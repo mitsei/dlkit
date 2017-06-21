@@ -8,12 +8,11 @@ import unittest
 from decimal import Decimal
 
 
+from dlkit.abstract_osid.assessment import objects as ABCObjects
 from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
-from dlkit.abstract_osid.learning.objects import Objective
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
-from dlkit.abstract_osid.repository.objects import AssetList
 from dlkit.json_.assessment.objects import Assessment
 from dlkit.json_.assessment.objects import AssessmentOffered
 from dlkit.json_.assessment.objects import AssessmentTaken
@@ -23,6 +22,7 @@ from dlkit.json_.learning.objects import ObjectiveList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.records import registry
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -747,7 +747,7 @@ class TestAssessmentOffered(unittest.TestCase):
     def test_has_start_time(self):
         """Tests has_start_time"""
         # From test_templates/repository.py::AssetContent::has_url_template
-        self.assertTrue(self.object.has_start_time())
+        self.assertTrue(isinstance(self.object.has_start_time(), bool))
 
     def test_get_start_time(self):
         """Tests get_start_time"""
@@ -757,7 +757,7 @@ class TestAssessmentOffered(unittest.TestCase):
     def test_has_deadline(self):
         """Tests has_deadline"""
         # From test_templates/repository.py::AssetContent::has_url_template
-        self.assertTrue(self.object.has_deadline())
+        self.assertTrue(isinstance(self.object.has_deadline(), bool))
 
     def test_get_deadline(self):
         """Tests get_deadline"""
@@ -767,7 +767,7 @@ class TestAssessmentOffered(unittest.TestCase):
     def test_has_duration(self):
         """Tests has_duration"""
         # From test_templates/repository.py::AssetContent::has_url_template
-        self.assertTrue(self.object.has_duration())
+        self.assertTrue(isinstance(self.object.has_duration(), bool))
 
     def test_get_duration(self):
         """Tests get_duration"""

@@ -11,6 +11,7 @@ from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.abstract_osid.resource import objects as ABCObjects
 from dlkit.abstract_osid.resource import queries as ABCQueries
+from dlkit.abstract_osid.resource import searches as ABCSearches
 from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -24,11 +25,10 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 AGENT_ID_0 = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 AGENT_ID_1 = Id(**{'identifier': 'john_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
@@ -253,8 +253,9 @@ class TestResourceSearchSession(unittest.TestCase):
 
     def test_get_resource_search(self):
         """Tests get_resource_search"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_resource_search()
+        # From test_templates/resource.py::ResourceSearchSession::get_resource_search_template
+        result = self.session.get_resource_search()
+        self.assertTrue(isinstance(result, ABCSearches.ResourceSearch))
 
     def test_get_resource_search_order(self):
         """Tests get_resource_search_order"""
@@ -263,8 +264,11 @@ class TestResourceSearchSession(unittest.TestCase):
 
     def test_get_resources_by_search(self):
         """Tests get_resources_by_search"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_resources_by_search(True, True)
+        # From test_templates/resource.py::ResourceSearchSession::get_resources_by_search_template
+        query = self.catalog.get_resource_query()
+        search = self.session.get_resource_search()
+        results = self.session.get_resources_by_search(query, search)
+        self.assertTrue(isinstance(results, ABCSearches.ResourceSearchResults))
 
     def test_get_resource_query_from_inspector(self):
         """Tests get_resource_query_from_inspector"""
@@ -458,38 +462,31 @@ class TestResourceNotificationSession(unittest.TestCase):
 
     def test_register_for_new_resources(self):
         """Tests register_for_new_resources"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_new_resources()
+        self.session.register_for_new_resources()
 
     def test_register_for_changed_resources(self):
         """Tests register_for_changed_resources"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_changed_resources()
+        self.session.register_for_changed_resources()
 
     def test_register_for_changed_resource(self):
         """Tests register_for_changed_resource"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_changed_resource(True)
+        self.session.register_for_changed_resource(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
     def test_register_for_deleted_resources(self):
         """Tests register_for_deleted_resources"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_deleted_resources()
+        self.session.register_for_deleted_resources()
 
     def test_register_for_deleted_resource(self):
         """Tests register_for_deleted_resource"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_deleted_resource(True)
+        self.session.register_for_deleted_resource(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
     def test_reliable_resource_notifications(self):
         """Tests reliable_resource_notifications"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.reliable_resource_notifications()
+        self.session.reliable_resource_notifications()
 
     def test_unreliable_resource_notifications(self):
         """Tests unreliable_resource_notifications"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unreliable_resource_notifications()
+        self.session.unreliable_resource_notifications()
 
     def test_acknowledge_resource_notification(self):
         """Tests acknowledge_resource_notification"""
@@ -556,7 +553,7 @@ class TestResourceBinSession(unittest.TestCase):
         """Tests can_lookup_resource_bin_mappings"""
         # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_resource_bin_mappings()
-        self.assertTrue(result)
+        self.assertTrue(isinstance(result, bool))
 
     def test_get_resource_ids_by_bin(self):
         """Tests get_resource_ids_by_bin"""
@@ -1220,6 +1217,7 @@ class TestBinHierarchySession(unittest.TestCase):
 
     def test_has_child_bins(self):
         """Tests has_child_bins"""
+        # From test_templates/resource.py::BinHierarchySession::has_child_bins_template
         self.assertTrue(isinstance(self.svc_mgr.has_child_bins(self.catalogs['Child 1'].ident), bool))
         self.assertTrue(self.svc_mgr.has_child_bins(self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.has_child_bins(self.catalogs['Child 1'].ident))
@@ -1228,6 +1226,7 @@ class TestBinHierarchySession(unittest.TestCase):
 
     def test_is_child_of_bin(self):
         """Tests is_child_of_bin"""
+        # From test_templates/resource.py::BinHierarchySession::is_child_of_bin_template
         self.assertTrue(isinstance(self.svc_mgr.is_child_of_bin(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
         self.assertTrue(self.svc_mgr.is_child_of_bin(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.is_child_of_bin(self.catalogs['Grandchild 1'].ident, self.catalogs['Child 1'].ident))
@@ -1235,6 +1234,7 @@ class TestBinHierarchySession(unittest.TestCase):
 
     def test_get_child_bin_ids(self):
         """Tests get_child_bin_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bin_ids_template
         from dlkit.abstract_osid.id.objects import IdList
         catalog_list = self.svc_mgr.get_child_bin_ids(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, IdList))
@@ -1242,6 +1242,7 @@ class TestBinHierarchySession(unittest.TestCase):
 
     def test_get_child_bins(self):
         """Tests get_child_bins"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
         from dlkit.abstract_osid.resource.objects import BinList
         catalog_list = self.svc_mgr.get_child_bins(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, BinList))

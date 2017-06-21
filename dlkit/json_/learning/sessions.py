@@ -975,6 +975,7 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
 
     """
     def __init__(self, catalog_id=None, proxy=None, runtime=None, *args, **kwargs):
+        OsidSession.__init__(self)
         self._catalog_class = objects.Objective
         self._catalog_name = 'ObjectiveBank'
         OsidSession._init_object(
@@ -1086,7 +1087,18 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchySession.get_root_subjects_template
+        root_ids = self._hierarchy_session.get_roots()
+        collection = JSONClientValidated('learning',
+                                         collection='Objective',
+                                         runtime=self._runtime)
+        result = collection.find(
+            dict({'_id': {'$in': [ObjectId(root_id.get_identifier()) for root_id in root_ids]}},
+                 **self._view_filter()))
+        return objects.ObjectiveList(result,
+                                      runtime=self._runtime,
+                                      proxy=self._proxy)
 
     root_objectives = property(fget=get_root_objectives)
 
@@ -1236,7 +1248,20 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchySession.get_child_subjects_template
+        if self._hierarchy_session.has_children(objective_id):
+            child_ids = self._hierarchy_session.get_children(objective_id)
+            collection = JSONClientValidated('learning',
+                                         collection='Objective',
+                                         runtime=self._runtime)
+            result = collection.find(
+                dict({'_id': {'$in': [ObjectId(child_id.get_identifier()) for child_id in child_ids]}},
+                     **self._view_filter()))
+            return objects.ObjectiveList(result,
+                                          runtime=self._runtime,
+                                          proxy=self._proxy)
+        raise errors.IllegalState('no children')
 
     @utilities.arguments_not_none
     def is_descendant_of_objective(self, id_, objective_id):
@@ -1312,6 +1337,7 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
 
     """
     def __init__(self, catalog_id=None, proxy=None, runtime=None, *args, **kwargs):
+        OsidSession.__init__(self)
         self._catalog_class = objects.Objective
         self._catalog_name = 'ObjectiveBank'
         OsidSession._init_object(
@@ -2383,11 +2409,18 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
         """
         requisite_type = Type(**Relationship().get_type_data('OBJECTIVE.REQUISITE'))
         rls = self._get_provider_manager(
-            'RELATIONSHIP').get_relationship_admin_session_for_family(
+            'RELATIONSHIP').get_relationship_lookup_session_for_family(
             self.get_objective_bank_id(), proxy=self._proxy)
         ras = self._get_provider_manager(
             'RELATIONSHIP').get_relationship_admin_session_for_family(
             self.get_objective_bank_id(), proxy=self._proxy)
+        rls.use_federated_family_view()
+        relationships = rls.get_relationships_by_genus_type_for_source(objective_id, requisite_type)
+        if relationships.available() == 0:
+            raise errors.IllegalState('no Objective found')
+        for relationship in relationships:
+            if str(relationship.get_destination_id()) == str(requisite_objective_id):
+                ras.delete_relationship(relationship.ident)
 
     @utilities.arguments_not_none
     def assign_equivalent_objective(self, objective_id, equivalent_objective_id):
@@ -5698,6 +5731,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
     _session_namespace = 'learning.ObjectiveBankHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -5721,7 +5756,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy_id
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -5739,7 +5774,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -5761,7 +5796,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.can_access_bin_hierarchy
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5809,7 +5844,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_root_bin_ids
+        # osid.resource.BinHierarchySession.get_root_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -5827,7 +5862,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_root_bins
+        # osid.resource.BinHierarchySession.get_root_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return ObjectiveBankLookupSession(
@@ -5852,7 +5887,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.has_parent_bins
+        # osid.resource.BinHierarchySession.has_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=objective_bank_id)
         return self._hierarchy_session.has_parents(id_=objective_bank_id)
@@ -5876,7 +5911,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_parent_of_bin
+        # osid.resource.BinHierarchySession.is_parent_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_parent(id_=objective_bank_id, parent_id=id_)
@@ -5897,7 +5932,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_parent_bin_ids
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.git_parent_catalog_ids()
         return self._hierarchy_session.get_parents(id_=objective_bank_id)
@@ -5918,7 +5953,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_parent_bins
+        # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.git_parent_catalogs(catalog_id=objective_bank_id)
         return ObjectiveBankLookupSession(
@@ -5945,7 +5980,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_ancestor_of_bin
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=objective_bank_id)
@@ -5966,7 +6001,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.has_child_bins
+        # osid.resource.BinHierarchySession.has_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=objective_bank_id)
         return self._hierarchy_session.has_children(id_=objective_bank_id)
@@ -5990,7 +6025,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_child_of_bin
+        # osid.resource.BinHierarchySession.is_child_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_child(id_=objective_bank_id, child_id=id_)
@@ -6009,7 +6044,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_child_bin_ids
+        # osid.resource.BinHierarchySession.get_child_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=objective_bank_id)
         return self._hierarchy_session.get_children(id_=objective_bank_id)
@@ -6029,7 +6064,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_child_bins
+        # osid.resource.BinHierarchySession.get_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=objective_bank_id)
         return ObjectiveBankLookupSession(
@@ -6056,7 +6091,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_descendant_of_bin
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=objective_bank_id)
@@ -6084,7 +6119,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_node_ids
+        # osid.resource.BinHierarchySession.get_bin_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=objective_bank_id,
@@ -6121,7 +6156,7 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_nodes
+        # osid.resource.BinHierarchySession.get_bin_nodes
         return objects.ObjectiveBankNode(self.get_objective_bank_node_ids(
             objective_bank_id=objective_bank_id,
             ancestor_levels=ancestor_levels,
@@ -6138,6 +6173,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
     _session_namespace = 'learning.ObjectiveBankHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -6161,7 +6198,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy_id
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -6179,7 +6216,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -6201,7 +6238,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.can_modify_objective_bank_hierarchy
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -6224,7 +6261,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.add_root_bin_template
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=objective_bank_id)
         return self._hierarchy_session.add_root(id_=objective_bank_id)
@@ -6243,7 +6280,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_root_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=objective_bank_id)
         return self._hierarchy_session.remove_root(id_=objective_bank_id)
@@ -6267,7 +6304,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.add_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=objective_bank_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=objective_bank_id, child_id=child_id)
@@ -6289,7 +6326,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=objective_bank_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=objective_bank_id, child_id=child_id)
@@ -6308,7 +6345,7 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=objective_bank_id)
         return self._hierarchy_session.remove_children(id_=objective_bank_id)

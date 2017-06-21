@@ -8,6 +8,7 @@ import unittest
 from dlkit.abstract_osid.assessment import objects
 from dlkit.abstract_osid.assessment import objects as ABCObjects
 from dlkit.abstract_osid.assessment import queries as ABCQueries
+from dlkit.abstract_osid.assessment import searches as ABCSearches
 from dlkit.abstract_osid.assessment.objects import AssessmentOffered
 from dlkit.abstract_osid.assessment.objects import AssessmentSection, AssessmentSectionList
 from dlkit.abstract_osid.assessment.objects import AssessmentTaken
@@ -38,12 +39,11 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 DEFAULT_STRING_MATCH_TYPE = Type(**get_string_type_data("WORDIGNORECASE"))
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE 2', 'authority': 'YOURS 2'})
 
@@ -1441,13 +1441,11 @@ class TestItemNotificationSession(unittest.TestCase):
 
     def test_reliable_item_notifications(self):
         """Tests reliable_item_notifications"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.reliable_item_notifications()
+        self.session.reliable_item_notifications()
 
     def test_unreliable_item_notifications(self):
         """Tests unreliable_item_notifications"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unreliable_item_notifications()
+        self.session.unreliable_item_notifications()
 
     def test_acknowledge_item_notification(self):
         """Tests acknowledge_item_notification"""
@@ -1456,38 +1454,31 @@ class TestItemNotificationSession(unittest.TestCase):
 
     def test_register_for_new_items(self):
         """Tests register_for_new_items"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_new_items()
+        self.session.register_for_new_items()
 
     def test_register_for_changed_items(self):
         """Tests register_for_changed_items"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_changed_items()
+        self.session.register_for_changed_items()
 
     def test_register_for_changed_item(self):
         """Tests register_for_changed_item"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_changed_item(True)
+        self.session.register_for_changed_item(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
     def test_register_for_deleted_items(self):
         """Tests register_for_deleted_items"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_deleted_items()
+        self.session.register_for_deleted_items()
 
     def test_register_for_deleted_item(self):
         """Tests register_for_deleted_item"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.register_for_deleted_item(True)
+        self.session.register_for_deleted_item(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
     def test_reliable_item_notifications(self):
         """Tests reliable_item_notifications"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.reliable_item_notifications()
+        self.session.reliable_item_notifications()
 
     def test_unreliable_item_notifications(self):
         """Tests unreliable_item_notifications"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unreliable_item_notifications()
+        self.session.unreliable_item_notifications()
 
     def test_acknowledge_item_notification(self):
         """Tests acknowledge_item_notification"""
@@ -1541,7 +1532,7 @@ class TestItemBankSession(unittest.TestCase):
         """Tests can_lookup_item_bank_mappings"""
         # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_item_bank_mappings()
-        self.assertTrue(result)
+        self.assertTrue(isinstance(result, bool))
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -2103,7 +2094,7 @@ class TestAssessmentBankSession(unittest.TestCase):
         """Tests can_lookup_assessment_bank_mappings"""
         # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_assessment_bank_mappings()
-        self.assertTrue(result)
+        self.assertTrue(isinstance(result, bool))
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -2794,7 +2785,7 @@ class TestAssessmentOfferedBankSession(unittest.TestCase):
         """Tests can_lookup_assessment_offered_bank_mappings"""
         # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_assessment_offered_bank_mappings()
-        self.assertTrue(result)
+        self.assertTrue(isinstance(result, bool))
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -3445,7 +3436,7 @@ class TestAssessmentTakenBankSession(unittest.TestCase):
         """Tests can_lookup_assessment_taken_bank_mappings"""
         # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_assessment_taken_bank_mappings()
-        self.assertTrue(result)
+        self.assertTrue(isinstance(result, bool))
 
     def test_use_comparative_bank_view(self):
         """Tests use_comparative_bank_view"""
@@ -3984,6 +3975,7 @@ class TestBankHierarchySession(unittest.TestCase):
 
     def test_has_child_banks(self):
         """Tests has_child_banks"""
+        # From test_templates/resource.py::BinHierarchySession::has_child_bins_template
         self.assertTrue(isinstance(self.svc_mgr.has_child_banks(self.catalogs['Child 1'].ident), bool))
         self.assertTrue(self.svc_mgr.has_child_banks(self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.has_child_banks(self.catalogs['Child 1'].ident))
@@ -3992,6 +3984,7 @@ class TestBankHierarchySession(unittest.TestCase):
 
     def test_is_child_of_bank(self):
         """Tests is_child_of_bank"""
+        # From test_templates/resource.py::BinHierarchySession::is_child_of_bin_template
         self.assertTrue(isinstance(self.svc_mgr.is_child_of_bank(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
         self.assertTrue(self.svc_mgr.is_child_of_bank(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.is_child_of_bank(self.catalogs['Grandchild 1'].ident, self.catalogs['Child 1'].ident))
@@ -3999,6 +3992,7 @@ class TestBankHierarchySession(unittest.TestCase):
 
     def test_get_child_bank_ids(self):
         """Tests get_child_bank_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bin_ids_template
         from dlkit.abstract_osid.id.objects import IdList
         catalog_list = self.svc_mgr.get_child_bank_ids(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, IdList))
@@ -4006,6 +4000,7 @@ class TestBankHierarchySession(unittest.TestCase):
 
     def test_get_child_banks(self):
         """Tests get_child_banks"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
         from dlkit.abstract_osid.assessment.objects import BankList
         catalog_list = self.svc_mgr.get_child_banks(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, BankList))

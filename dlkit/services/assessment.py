@@ -3354,10 +3354,9 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('assessment_part_lookup_session').get_assessment_parts_by_ids(*args, **kwargs)
 
     def get_assessment_parts_by_genus_type(self, *args, **kwargs):
-        """Pass through to provider AssessmentPartLookupSession.get_assessment_parts_by_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
-        return self._get_provider_session('assessment_part_lookup_session').get_assessment_parts_by_genus_type(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_lookup_session').get_assessment_parts_by_genus_type(*args, **kwargs)
 
     def get_assessment_parts_by_parent_genus_type(self, *args, **kwargs):
         """Pass through to provider AssessmentPartLookupSession.get_assessment_parts_by_parent_genus_type"""

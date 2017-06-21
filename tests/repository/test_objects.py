@@ -6,14 +6,14 @@ import unittest
 
 from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
-from dlkit.abstract_osid.learning.objects import Objective
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
-from dlkit.abstract_osid.repository.objects import AssetList
+from dlkit.abstract_osid.repository import objects as ABCObjects
 from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -52,8 +52,10 @@ class TestAsset(unittest.TestCase):
 
     def test_get_title(self):
         """Tests get_title"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_title()
+        # From test_templates/repository.py::Asset::get_title_template
+        result = self.object.get_title()
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text, '')
 
     def test_is_copyright_status_known(self):
         """Tests is_copyright_status_known"""
@@ -67,27 +69,30 @@ class TestAsset(unittest.TestCase):
 
     def test_get_copyright(self):
         """Tests get_copyright"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_copyright()
+        # From test_templates/repository.py::Asset::get_title_template
+        result = self.object.get_copyright()
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text, '')
 
     def test_get_copyright_registration(self):
         """Tests get_copyright_registration"""
-        with self.assertRaises(errors.Unimplemented):
+        # From test_templates/repository.py::AssetContent::get_url_template
+        with self.assertRaises(errors.IllegalState):
             self.object.get_copyright_registration()
 
     def test_can_distribute_verbatim(self):
         """Tests can_distribute_verbatim"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.IllegalState):
             self.object.can_distribute_verbatim()
 
     def test_can_distribute_alterations(self):
         """Tests can_distribute_alterations"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.IllegalState):
             self.object.can_distribute_alterations()
 
     def test_can_distribute_compositions(self):
         """Tests can_distribute_compositions"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.IllegalState):
             self.object.can_distribute_compositions()
 
     def test_get_source_id(self):
@@ -104,12 +109,15 @@ class TestAsset(unittest.TestCase):
 
     def test_get_provider_link_ids(self):
         """Tests get_provider_link_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_provider_link_ids()
+        # From test_templates/learning.py::Activity::get_asset_ids_template
+        result = self.object.get_provider_link_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
     def test_get_provider_links(self):
         """Tests get_provider_links"""
-        with self.assertRaises(errors.Unimplemented):
+        # Override because no providerLinkIds
+        with self.assertRaises(errors.IllegalState):
             self.object.get_provider_links()
 
     def test_get_created_date(self):
@@ -129,32 +137,34 @@ class TestAsset(unittest.TestCase):
 
     def test_get_principal_credit_string(self):
         """Tests get_principal_credit_string"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_principal_credit_string()
+        # From test_templates/repository.py::Asset::get_title_template
+        result = self.object.get_principal_credit_string()
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text, '')
 
     def test_get_asset_content_ids(self):
         """Tests get_asset_content_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_asset_content_ids()
+        results = self.object.get_asset_content_ids()
+        self.assertTrue(isinstance(results, IdList))
 
     def test_get_asset_contents(self):
         """Tests get_asset_contents"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_asset_contents()
+        results = self.object.get_asset_contents()
+        self.assertTrue(isinstance(results, ABCObjects.AssetContentList))
 
     def test_is_composition(self):
         """Tests is_composition"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.is_composition()
+        result = self.object.is_composition()
+        self.assertTrue(isinstance(result, bool))
 
     def test_get_composition_id(self):
         """Tests get_composition_id"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.IllegalState):
             self.object.get_composition_id()
 
     def test_get_composition(self):
         """Tests get_composition"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.IllegalState):
             self.object.get_composition()
 
     def test_get_asset_record(self):
@@ -719,13 +729,19 @@ class TestAssetContent(unittest.TestCase):
 
     def test_get_asset_id(self):
         """Tests get_asset_id"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_asset_id()
+        # From test_templates/learning.py::Activity::get_objective_id_template
+        result = self.object.get_asset_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(self.asset.ident))
 
     def test_get_asset(self):
         """Tests get_asset"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_asset()
+        # From test_templates/learning.py::Activity::get_objective_template
+        result = self.object.get_asset()
+        self.assertTrue(isinstance(result, ABCObjects.Asset))
+        self.assertEqual(str(result.ident),
+                         str(self.asset.ident))
 
     def test_get_accessibility_types(self):
         """Tests get_accessibility_types"""
@@ -744,18 +760,18 @@ class TestAssetContent(unittest.TestCase):
 
     def test_get_data(self):
         """Tests get_data"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.IllegalState):
             self.object.get_data()
 
     def test_has_url(self):
         """Tests has_url"""
         # From test_templates/repository.py::AssetContent::has_url_template
-        self.assertTrue(self.object.has_url())
+        self.assertTrue(isinstance(self.object.has_url(), bool))
 
     def test_get_url(self):
         """Tests get_url"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_url()
+        result = self.object.get_url()
+        self.assertEqual(result, 'https://www.google.com')
 
     def test_get_asset_content_record(self):
         """Tests get_asset_content_record"""
@@ -778,8 +794,10 @@ class TestAssetContentForm(unittest.TestCase):
         form.display_name = 'Asset'
         cls.asset = cls.catalog.create_asset(form)
 
-        cls.form = cls.catalog.get_asset_content_form_for_create(cls.asset.ident,
-                                                                 [])
+    def setUp(self):
+        self.form = self.catalog.get_asset_content_form_for_create(self.asset.ident,
+                                                                   [])
+        self.object = self.form
 
     @classmethod
     def tearDownClass(cls):
@@ -832,13 +850,13 @@ class TestAssetContentForm(unittest.TestCase):
 
     def test_set_data(self):
         """Tests set_data"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.set_data(True)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_data('foo')
+        # TODO: should test setting actual data...
 
     def test_clear_data(self):
         """Tests clear_data"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.clear_data()
+        self.form.clear_data()
 
     def test_get_url_metadata(self):
         """Tests get_url_metadata"""
@@ -959,12 +977,14 @@ class TestComposition(unittest.TestCase):
 
     def test_get_children_ids(self):
         """Tests get_children_ids"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_children_ids()
+        # From test_templates/learning.py::Activity::get_asset_ids_template
+        result = self.object.get_children_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
     def test_get_children(self):
         """Tests get_children"""
-        with self.assertRaises(errors.Unimplemented):
+        with self.assertRaises(errors.IllegalState):
             self.object.get_children()
 
     def test_get_composition_record(self):

@@ -310,7 +310,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['sourceId']:
+        if not bool(self._my_map['sourceId']):
             raise errors.IllegalState('this Asset has no source')
         else:
             return Id(self._my_map['sourceId'])
@@ -331,7 +331,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['sourceId']:
+        if not bool(self._my_map['sourceId']):
             raise errors.IllegalState('this Asset has no source')
         mgr = self._get_provider_manager('RESOURCE')
         if not mgr.supports_resource_lookup():
@@ -364,6 +364,8 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.learning.Activity.get_assets_template
+        if not bool(self._my_map['providerLinkIds']):
+            raise errors.IllegalState('no providerLinkIds')
         mgr = self._get_provider_manager('RESOURCE')
         if not mgr.supports_resource_lookup():
             raise errors.OperationFailed('Resource does not support Resource lookup')
@@ -487,7 +489,15 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not self.has_composition():
+            raise errors.IllegalState('composition empty')
         return Id(self._my_map['compositionId'])
+
+    def has_composition(self):
+        """not in spec, useful for other templated methods where it isn't guaranteed
+        that a parent objectId exists"""
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        return bool(self._my_map['compositionId'])
 
     composition_id = property(fget=get_composition_id)
 
@@ -501,6 +511,8 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not self.has_composition():
+            raise errors.IllegalState('composition empty')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_composition_lookup():
             raise errors.OperationFailed('Repository does not support Composition lookup')
@@ -1377,7 +1389,15 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not self.has_asset():
+            raise errors.IllegalState('asset empty')
         return Id(self._my_map['assetId'])
+
+    def has_asset(self):
+        """not in spec, useful for other templated methods where it isn't guaranteed
+        that a parent objectId exists"""
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        return bool(self._my_map['assetId'])
 
     asset_id = property(fget=get_asset_id)
 
@@ -1389,6 +1409,8 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not self.has_asset():
+            raise errors.IllegalState('asset empty')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_asset_lookup():
             raise errors.OperationFailed('Repository does not support Asset lookup')
@@ -1441,6 +1463,8 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if not bool(self._my_map['data']):
+            raise errors.IllegalState('no data')
         dbase = JSONClientValidated('repository',
                                     runtime=self._runtime).raw()
         filesys = gridfs.GridFS(dbase)
@@ -1632,7 +1656,9 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
 
         """
         if data is None:
-            raise errors.NullArgument()
+            raise errors.NullArgument('data cannot be None')
+        if not isinstance(data, DataInputStream):
+            raise errors.InvalidArgument('data must be instance of DataInputStream')
         dbase = JSONClientValidated('repository',
                                     runtime=self._runtime).raw()
         filesys = gridfs.GridFS(dbase)
@@ -1652,7 +1678,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
                 self.get_data_metadata().is_required()):
             raise errors.NoAccess()
         if self._my_map['data'] == self._data_default:
-            pass
+            return
         dbase = JSONClientValidated('repository',
                                     runtime=self._runtime).raw()
         filesys = gridfs.GridFS(dbase)
@@ -1822,6 +1848,8 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
 
         """
         # Implemented from template for osid.learning.Activity.get_assets_template
+        if not bool(self._my_map['childIds']):
+            raise errors.IllegalState('no childIds')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_composition_lookup():
             raise errors.OperationFailed('Repository does not support Composition lookup')

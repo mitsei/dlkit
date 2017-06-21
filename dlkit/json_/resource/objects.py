@@ -93,7 +93,7 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['avatarId']:
+        if not bool(self._my_map['avatarId']):
             raise errors.IllegalState('this Resource has no avatar')
         else:
             return Id(self._my_map['avatarId'])
@@ -110,7 +110,7 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['avatarId']:
+        if not bool(self._my_map['avatarId']):
             raise errors.IllegalState('this Resource has no avatar')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_asset_lookup():

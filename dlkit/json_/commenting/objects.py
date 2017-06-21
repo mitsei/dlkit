@@ -143,7 +143,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['ratingId']:
+        if not bool(self._my_map['ratingId']):
             raise errors.IllegalState('this Comment has no rating')
         else:
             return Id(self._my_map['ratingId'])
@@ -160,7 +160,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['ratingId']:
+        if not bool(self._my_map['ratingId']):
             raise errors.IllegalState('this Comment has no rating')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_lookup():

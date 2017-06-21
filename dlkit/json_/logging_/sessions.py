@@ -1873,6 +1873,8 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
     _session_namespace = 'logging.LogHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -1896,7 +1898,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy_id
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -1914,7 +1916,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -1936,7 +1938,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.can_access_bin_hierarchy
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1984,7 +1986,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_root_bin_ids
+        # osid.resource.BinHierarchySession.get_root_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -2006,7 +2008,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_root_bins
+        # osid.resource.BinHierarchySession.get_root_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return LogLookupSession(
@@ -2030,7 +2032,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.has_parent_bins
+        # osid.resource.BinHierarchySession.has_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=log_id)
         return self._hierarchy_session.has_parents(id_=log_id)
@@ -2052,7 +2054,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_parent_of_bin
+        # osid.resource.BinHierarchySession.is_parent_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_parent(id_=log_id, parent_id=id_)
@@ -2071,7 +2073,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_parent_bin_ids
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.git_parent_catalog_ids()
         return self._hierarchy_session.get_parents(id_=log_id)
@@ -2090,7 +2092,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_parent_bins
+        # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.git_parent_catalogs(catalog_id=log_id)
         return LogLookupSession(
@@ -2115,7 +2117,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_ancestor_of_bin
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=log_id)
@@ -2135,7 +2137,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.has_child_bins
+        # osid.resource.BinHierarchySession.has_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=log_id)
         return self._hierarchy_session.has_children(id_=log_id)
@@ -2157,7 +2159,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_child_of_bin
+        # osid.resource.BinHierarchySession.is_child_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_child(id_=log_id, child_id=id_)
@@ -2176,7 +2178,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_child_bin_ids
+        # osid.resource.BinHierarchySession.get_child_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=log_id)
         return self._hierarchy_session.get_children(id_=log_id)
@@ -2195,7 +2197,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_child_bins
+        # osid.resource.BinHierarchySession.get_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=log_id)
         return LogLookupSession(
@@ -2220,7 +2222,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_descendant_of_bin
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=log_id)
@@ -2248,7 +2250,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_node_ids
+        # osid.resource.BinHierarchySession.get_bin_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=log_id,
@@ -2284,7 +2286,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_nodes
+        # osid.resource.BinHierarchySession.get_bin_nodes
         return objects.LogNode(self.get_log_node_ids(
             log_id=log_id,
             ancestor_levels=ancestor_levels,
@@ -2303,6 +2305,8 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
     _session_namespace = 'logging.LogHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -2326,7 +2330,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy_id
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -2344,7 +2348,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -2366,7 +2370,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.can_modify_objective_bank_hierarchy
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2387,7 +2391,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.add_root_bin_template
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=log_id)
         return self._hierarchy_session.add_root(id_=log_id)
@@ -2405,7 +2409,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_root_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=log_id)
         return self._hierarchy_session.remove_root(id_=log_id)
@@ -2426,7 +2430,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.add_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=log_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=log_id, child_id=child_id)
@@ -2445,7 +2449,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=log_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=log_id, child_id=child_id)
@@ -2463,7 +2467,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=log_id)
         return self._hierarchy_session.remove_children(id_=log_id)

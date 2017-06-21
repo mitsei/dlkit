@@ -6,12 +6,11 @@ import unittest
 
 from dlkit.abstract_osid.assessment.objects import Assessment
 from dlkit.abstract_osid.assessment.objects import AssessmentList
+from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
 from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
-from dlkit.abstract_osid.learning.objects import Objective
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
-from dlkit.abstract_osid.repository.objects import AssetList
 from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime, Duration

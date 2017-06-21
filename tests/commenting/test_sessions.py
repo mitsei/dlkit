@@ -25,11 +25,10 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 
 
 class TestCommentLookupSession(unittest.TestCase):
@@ -792,6 +791,7 @@ class TestBookHierarchySession(unittest.TestCase):
 
     def test_has_child_books(self):
         """Tests has_child_books"""
+        # From test_templates/resource.py::BinHierarchySession::has_child_bins_template
         self.assertTrue(isinstance(self.svc_mgr.has_child_books(self.catalogs['Child 1'].ident), bool))
         self.assertTrue(self.svc_mgr.has_child_books(self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.has_child_books(self.catalogs['Child 1'].ident))
@@ -800,6 +800,7 @@ class TestBookHierarchySession(unittest.TestCase):
 
     def test_is_child_of_book(self):
         """Tests is_child_of_book"""
+        # From test_templates/resource.py::BinHierarchySession::is_child_of_bin_template
         self.assertTrue(isinstance(self.svc_mgr.is_child_of_book(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
         self.assertTrue(self.svc_mgr.is_child_of_book(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.is_child_of_book(self.catalogs['Grandchild 1'].ident, self.catalogs['Child 1'].ident))
@@ -807,6 +808,7 @@ class TestBookHierarchySession(unittest.TestCase):
 
     def test_get_child_book_ids(self):
         """Tests get_child_book_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bin_ids_template
         from dlkit.abstract_osid.id.objects import IdList
         catalog_list = self.svc_mgr.get_child_book_ids(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, IdList))
@@ -814,6 +816,7 @@ class TestBookHierarchySession(unittest.TestCase):
 
     def test_get_child_books(self):
         """Tests get_child_books"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
         from dlkit.abstract_osid.commenting.objects import BookList
         catalog_list = self.svc_mgr.get_child_books(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, BookList))

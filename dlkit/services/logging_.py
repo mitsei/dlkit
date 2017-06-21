@@ -352,8 +352,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
     log_id = property(fget=get_log_id)
 
     def can_log(self):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        return self._get_provider_session('logging_session').can_log()
 
     def log(self, *args, **kwargs):
         """Pass through to provider unimplemented"""

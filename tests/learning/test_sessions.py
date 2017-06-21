@@ -8,6 +8,7 @@ import unittest
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.learning import objects as ABCObjects
+from dlkit.abstract_osid.learning.objects import ObjectiveList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
@@ -25,11 +26,10 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
@@ -395,26 +395,34 @@ class TestObjectiveHierarchySession(unittest.TestCase):
         create_form.display_name = 'Test ObjectiveBank'
         create_form.description = 'Test ObjectiveBank for ObjectiveHierarchySession tests'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
-        create_form = cls.catalog.get_objective_form_for_create([])
-        create_form.display_name = 'Test Objective for ObjectiveHierarchySession Lookup'
-        create_form.description = 'Test Objective for ObjectiveHierarchySession tests'
-        cls.objective = cls.catalog.create_objective(create_form)
-        for num in [0, 1]:
-            create_form = cls.catalog.get_objective_form_for_create([])
-            create_form.display_name = 'Test Objective ' + str(num)
-            create_form.description = 'Test Objective for ObjectiveHierarchySession tests'
-            obj = cls.catalog.create_objective(create_form)
-            cls.child_list.append(obj)
-            cls.child_ids.append(obj.ident)
 
     def setUp(self):
+        self.child_list = list()
+        self.child_ids = list()
+        create_form = self.catalog.get_objective_form_for_create([])
+        create_form.display_name = 'Test Objective for ObjectiveHierarchySession Lookup'
+        create_form.description = 'Test Objective for ObjectiveHierarchySession tests'
+        self.objective = self.catalog.create_objective(create_form)
+        self.catalog.add_root_objective(self.objective.ident)
+        for num in [0, 1]:
+            create_form = self.catalog.get_objective_form_for_create([])
+            create_form.display_name = 'Test Objective ' + str(num)
+            create_form.description = 'Test Objective for ObjectiveHierarchySession tests'
+            obj = self.catalog.create_objective(create_form)
+            self.child_list.append(obj)
+            self.child_ids.append(obj.ident)
+            self.catalog.add_child_objective(self.objective.ident, obj.ident)
         self.session = self.catalog
+
+    def tearDown(self):
+        for obj_id in self.child_ids:
+            self.catalog.delete_objective(obj_id)
+        for obj in self.catalog.get_objectives():
+            self.catalog.delete_objective(obj.ident)
 
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_objective_banks():
-            for obj_id in cls.child_ids:
-                catalog.delete_objective(obj_id)
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
@@ -451,8 +459,11 @@ class TestObjectiveHierarchySession(unittest.TestCase):
 
     def test_get_root_objectives(self):
         """Tests get_root_objectives"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_root_objectives()
+        roots = self.catalog.get_root_objectives()
+        self.assertEqual(roots.available(), 1)
+        self.assertTrue(isinstance(roots, ObjectiveList))
+        self.assertEqual(str(roots.next().ident),
+                         str(self.objective.ident))
 
     def test_has_parent_objectives(self):
         """Tests has_parent_objectives"""
@@ -496,8 +507,13 @@ class TestObjectiveHierarchySession(unittest.TestCase):
 
     def test_get_child_objectives(self):
         """Tests get_child_objectives"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_child_objectives(True)
+        children = self.catalog.get_child_objectives(self.objective.ident)
+        self.assertEqual(children.available(), 2)
+        self.assertTrue(isinstance(children, ObjectiveList))
+        self.assertEqual(str(children.next().ident),
+                         str(self.child_ids[0]))
+        self.assertEqual(str(children.next().ident),
+                         str(self.child_ids[1]))
 
     def test_is_descendant_of_objective(self):
         """Tests is_descendant_of_objective"""
@@ -518,33 +534,39 @@ class TestObjectiveHierarchySession(unittest.TestCase):
 class TestObjectiveHierarchyDesignSession(unittest.TestCase):
     """Tests for ObjectiveHierarchyDesignSession"""
 
-    def setUp(cls):
-        cls.child_list = list()
-        cls.child_ids = list()
+    @classmethod
+    def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test ObjectiveBank'
         create_form.description = 'Test ObjectiveBank for ObjectiveHierarchyDesignSession tests'
         cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
-        create_form = cls.catalog.get_objective_form_for_create([])
-        create_form.display_name = 'Test Objective for ObjectiveHierarchyDesignSession Lookup'
-        create_form.description = 'Test Objective for ObjectiveHierarchyDesignSession tests'
-        cls.objective = cls.catalog.create_objective(create_form)
-        for num in [0, 1]:
-            create_form = cls.catalog.get_objective_form_for_create([])
-            create_form.display_name = 'Test Objective ' + str(num)
-            create_form.description = 'Test Objective for ObjectiveHierarchyDesignSession tests'
-            obj = cls.catalog.create_objective(create_form)
-            cls.child_list.append(obj)
-            cls.child_ids.append(obj.ident)
 
     def setUp(self):
+        self.child_list = list()
+        self.child_ids = list()
+        create_form = self.catalog.get_objective_form_for_create([])
+        create_form.display_name = 'Test Objective for ObjectiveHierarchyDesignSession Lookup'
+        create_form.description = 'Test Objective for ObjectiveHierarchyDesignSession tests'
+        self.objective = self.catalog.create_objective(create_form)
+        for num in [0, 1]:
+            create_form = self.catalog.get_objective_form_for_create([])
+            create_form.display_name = 'Test Objective ' + str(num)
+            create_form.description = 'Test Objective for ObjectiveHierarchyDesignSession tests'
+            obj = self.catalog.create_objective(create_form)
+            self.child_list.append(obj)
+            self.child_ids.append(obj.ident)
         self.session = self.catalog
 
-    def tearDown(cls):
+    def tearDown(self):
+        for obj_id in self.child_ids:
+            self.catalog.delete_objective(obj_id)
+        for obj in self.catalog.get_objectives():
+            self.catalog.delete_objective(obj.ident)
+
+    @classmethod
+    def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_objective_banks():
-            for obj_id in cls.child_ids:
-                catalog.delete_objective(obj_id)
             for obj in catalog.get_objectives():
                 catalog.delete_objective(obj.ident)
             cls.svc_mgr.delete_objective_bank(catalog.ident)
@@ -561,38 +583,107 @@ class TestObjectiveHierarchyDesignSession(unittest.TestCase):
 
     def test_can_modify_objective_hierarchy(self):
         """Tests can_modify_objective_hierarchy"""
-        self.assertTrue(self.catalog.can_modify_objective_hierarchy())
+        self.assertTrue(isinstance(self.catalog.can_modify_objective_hierarchy(), bool))
 
     def test_add_root_objective(self):
         """Tests add_root_objective"""
+        roots = self.catalog.get_root_objectives()
+        self.assertEqual(roots.available(), 0)
+        self.assertTrue(isinstance(roots, ObjectiveList))
+
         self.catalog.add_root_objective(self.objective.ident)
+        roots = self.catalog.get_root_objectives()
+        self.assertEqual(roots.available(), 1)
 
     def test_remove_root_objective(self):
         """Tests remove_root_objective"""
         self.catalog.add_root_objective(self.objective.ident)
+
+        roots = self.catalog.get_root_objectives()
+        self.assertEqual(roots.available(), 1)
+
         self.catalog.remove_root_objective(self.objective.ident)
+
+        roots = self.catalog.get_root_objectives()
+        self.assertEqual(roots.available(), 0)
 
     def test_add_child_objective(self):
         """Tests add_child_objective"""
         self.catalog.add_root_objective(self.objective.ident)
+
+        with self.assertRaises(errors.IllegalState):
+            self.catalog.get_child_objectives(self.objective.ident)
+
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[0])
+
+        children = self.catalog.get_child_objectives(self.objective.ident)
+        self.assertEqual(children.available(), 1)
+        self.assertTrue(isinstance(children, ObjectiveList))
 
     def test_remove_child_objective(self):
         """Tests remove_child_objective"""
         self.catalog.add_root_objective(self.objective.ident)
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[0])
+
+        children = self.catalog.get_child_objectives(self.objective.ident)
+        self.assertEqual(children.available(), 1)
+
         self.catalog.remove_child_objective(self.objective.ident, self.child_ids[0])
+
+        with self.assertRaises(errors.IllegalState):
+            self.catalog.get_child_objectives(self.objective.ident)
 
     def test_remove_child_objectives(self):
         """Tests remove_child_objectives"""
         self.catalog.add_root_objective(self.objective.ident)
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[0])
         self.catalog.add_child_objective(self.objective.ident, self.child_ids[1])
+
+        children = self.catalog.get_child_objectives(self.objective.ident)
+        self.assertEqual(children.available(), 2)
+
         self.catalog.remove_child_objectives(self.objective.ident)
+
+        with self.assertRaises(errors.IllegalState):
+            self.catalog.get_child_objectives(self.objective.ident)
 
 
 class TestObjectiveSequencingSession(unittest.TestCase):
     """Tests for ObjectiveSequencingSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.child_list = list()
+        cls.child_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test ObjectiveBank'
+        create_form.description = 'Test ObjectiveBank for ObjectiveSequencingSession tests'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+    def setUp(self):
+        self.objective_list = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_objective_form_for_create([])
+            create_form.display_name = 'Test Objective ' + str(num)
+            create_form.description = 'Test Objective for ObjectiveSequencingSession tests'
+            obj = self.catalog.create_objective(create_form)
+            self.objective_list.append(obj)
+
+        self.session = self.catalog
+
+    def tearDown(self):
+        for obj_id in self.child_ids:
+            self.catalog.delete_objective(obj_id)
+        for obj in self.catalog.get_objectives():
+            self.catalog.delete_objective(obj.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        for catalog in cls.svc_mgr.get_objective_banks():
+            for obj in catalog.get_objectives():
+                catalog.delete_objective(obj.ident)
+            cls.svc_mgr.delete_objective_bank(catalog.ident)
 
     def test_get_objective_hierarchy_id(self):
         """Tests get_objective_hierarchy_id"""
@@ -674,7 +765,7 @@ class TestObjectiveObjectiveBankSession(unittest.TestCase):
         """Tests can_lookup_objective_objective_bank_mappings"""
         # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_objective_objective_bank_mappings()
-        self.assertTrue(result)
+        self.assertTrue(isinstance(result, bool))
 
     def test_use_comparative_objective_bank_view(self):
         """Tests use_comparative_objective_bank_view"""
@@ -811,7 +902,7 @@ class TestObjectiveObjectiveBankAssignmentSession(unittest.TestCase):
         self.session.assign_objective_to_objective_bank(self.objective_ids[1], self.assigned_catalog.ident)
         results = self.assigned_catalog.get_objectives()
         self.assertEqual(results.available(), 1)
-        self.session.unassign_objective_from_objectivebank(
+        self.session.unassign_objective_from_objective_bank(
             self.objective_ids[1],
             self.assigned_catalog.ident)
 
@@ -820,7 +911,7 @@ class TestObjectiveObjectiveBankAssignmentSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
         results = self.assigned_catalog.get_objectives()
         self.assertEqual(results.available(), 0)
-        self.session.assign_objective_to_objectivebank(
+        self.session.assign_objective_to_objective_bank(
             self.objective_ids[1],
             self.assigned_catalog.ident)
         results = self.assigned_catalog.get_objectives()
@@ -861,6 +952,9 @@ class TestObjectiveRequisiteSession(unittest.TestCase):
             cls.requisite_list.append(obj)
             cls.requisite_ids.append(obj.ident)
             cls.catalog.assign_objective_requisite(cls.objective.ident, obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -977,6 +1071,9 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
             cls.requisite_list.append(obj)
             cls.requisite_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_objective_banks():
@@ -1004,12 +1101,26 @@ class TestObjectiveRequisiteAssignmentSession(unittest.TestCase):
 
     def test_assign_objective_requisite(self):
         """Tests assign_objective_requisite"""
+        results = self.catalog.get_requisite_objectives(self.objective.ident)
+        self.assertTrue(isinstance(results, ObjectiveList))
+        self.assertEqual(results.available(), 0)
+
         self.catalog.assign_objective_requisite(self.objective.ident, self.requisite_ids[0])
+
+        results = self.catalog.get_requisite_objectives(self.objective.ident)
+        self.assertEqual(results.available(), 1)
 
     def test_unassign_objective_requisite(self):
         """Tests unassign_objective_requisite"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.unassign_objective_requisite(True, True)
+        self.catalog.assign_objective_requisite(self.objective.ident, self.requisite_ids[0])
+
+        results = self.catalog.get_requisite_objectives(self.objective.ident)
+        self.assertEqual(results.available(), 1)
+
+        self.catalog.unassign_objective_requisite(self.objective.ident, self.requisite_ids[0])
+
+        results = self.catalog.get_requisite_objectives(self.objective.ident)
+        self.assertEqual(results.available(), 0)
 
     def test_assign_equivalent_objective(self):
         """Tests assign_equivalent_objective"""
@@ -1203,6 +1314,7 @@ class TestActivityAdminSession(unittest.TestCase):
         create_form.display_name = 'Test Objective for Activity Lookup'
         create_form.description = 'Test Objective for ActivityLookupSession tests'
         cls.objective = cls.catalog.create_objective(create_form)
+        cls.parent_object = cls.objective
         for num in [0, 1]:
             create_form = cls.catalog.get_activity_form_for_create(cls.objective.ident, [])
             create_form.display_name = 'Test Activity ' + str(num)
@@ -1249,7 +1361,7 @@ class TestActivityAdminSession(unittest.TestCase):
 
     def test_get_activity_form_for_create(self):
         """Tests get_activity_form_for_create"""
-        form = self.catalog.get_activity_form_for_create(self.objective.ident, [])
+        form = self.catalog.get_activity_form_for_create(self.parent_object.ident, [])
         self.assertTrue(isinstance(form, OsidForm))
         self.assertFalse(form.is_for_update())
 
@@ -1296,7 +1408,8 @@ class TestActivityAdminSession(unittest.TestCase):
 
     def test_delete_activity(self):
         """Tests delete_activity"""
-        form = self.catalog.get_activity_form_for_create(self.objective.ident, [])
+        # From test_templates/resource.py::ResourceAdminSession::delete_resource_template
+        form = self.catalog.get_activity_form_for_create([])
         form.display_name = 'new Activity'
         form.description = 'description of Activity'
         form.set_genus_type(NEW_TYPE)
@@ -1353,6 +1466,9 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
         cls.svc_mgr.assign_activity_to_objective_bank(
             cls.activity_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
         cls.svc_mgr.unassign_activity_from_objective_bank(
@@ -1370,7 +1486,7 @@ class TestActivityObjectiveBankSession(unittest.TestCase):
         """Tests can_lookup_activity_objective_bank_mappings"""
         # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
         result = self.session.can_lookup_activity_objective_bank_mappings()
-        self.assertTrue(result)
+        self.assertTrue(isinstance(result, bool))
 
     def test_use_comparative_objective_bank_view(self):
         """Tests use_comparative_objective_bank_view"""
@@ -1431,7 +1547,6 @@ class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
         cls.activity_list = list()
         cls.activity_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
@@ -1443,8 +1558,14 @@ class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
         create_form.display_name = 'Test ObjectiveBank for Assignment'
         create_form.description = 'Test ObjectiveBank for ActivityObjectiveBankAssignmentSession tests assignment'
         cls.assigned_catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+        create_form = cls.catalog.get_objective_form_for_create([])
+        create_form.display_name = 'Test Objective for Assignment'
+        create_form.description = 'Test Objective for ActivityObjectiveBankAssignmentSession tests assignment'
+        cls.objective = cls.catalog.create_objective(create_form)
+
         for num in [0, 1, 2]:
-            create_form = cls.catalog.get_activity_form_for_create([])
+            create_form = cls.catalog.get_activity_form_for_create(cls.objective.ident, [])
             create_form.display_name = 'Test Activity ' + str(num)
             create_form.description = 'Test Activity for ActivityObjectiveBankAssignmentSession tests'
             obj = cls.catalog.create_activity(create_form)
@@ -1452,14 +1573,14 @@ class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
             cls.activity_ids.append(obj.ident)
 
     def setUp(self):
-        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
         self.session = self.svc_mgr
 
     @classmethod
     def tearDownClass(cls):
-        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
         for obj in cls.catalog.get_activities():
             cls.catalog.delete_activity(obj.ident)
+        for obj in cls.catalog.get_objectives():
+            cls.catalog.delete_objective(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.assigned_catalog.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
@@ -1507,7 +1628,7 @@ class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
         self.session.assign_activity_to_objective_bank(self.activity_ids[1], self.assigned_catalog.ident)
         results = self.assigned_catalog.get_activities()
         self.assertEqual(results.available(), 1)
-        self.session.unassign_activity_from_objectivebank(
+        self.session.unassign_activity_from_objective_bank(
             self.activity_ids[1],
             self.assigned_catalog.ident)
 
@@ -1516,7 +1637,7 @@ class TestActivityObjectiveBankAssignmentSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
         results = self.assigned_catalog.get_activities()
         self.assertEqual(results.available(), 0)
-        self.session.assign_activity_to_objectivebank(
+        self.session.assign_activity_to_objective_bank(
             self.activity_ids[1],
             self.assigned_catalog.ident)
         results = self.assigned_catalog.get_activities()
@@ -1550,7 +1671,7 @@ class TestProficiencyLookupSession(unittest.TestCase):
         form.display_name = "Test LO"
         objective = cls.catalog.create_objective(form)
 
-        for color in ['Orange', 'Blue', 'Green', 'orange']:
+        for color in ['Orange', 'Blue']:
             create_form = cls.catalog.get_proficiency_form_for_create(objective.ident, AGENT_ID, [])
             create_form.display_name = 'Test Proficiency ' + color
             create_form.description = (
@@ -1558,6 +1679,9 @@ class TestProficiencyLookupSession(unittest.TestCase):
             obj = cls.catalog.create_proficiency(create_form)
             cls.proficiency_list.append(obj)
             cls.proficiency_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -1808,6 +1932,9 @@ class TestProficiencyQuerySession(unittest.TestCase):
             cls.proficiency_list.append(obj)
             cls.proficiency_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_objective_banks():
@@ -1891,6 +2018,9 @@ class TestProficiencyAdminSession(unittest.TestCase):
         create_form.description = 'description of Proficiency'
         create_form.genus_type = NEW_TYPE
         cls.osid_object = cls.catalog.create_proficiency(create_form)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):
@@ -2323,6 +2453,7 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_has_child_objective_banks(self):
         """Tests has_child_objective_banks"""
+        # From test_templates/resource.py::BinHierarchySession::has_child_bins_template
         self.assertTrue(isinstance(self.svc_mgr.has_child_objective_banks(self.catalogs['Child 1'].ident), bool))
         self.assertTrue(self.svc_mgr.has_child_objective_banks(self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.has_child_objective_banks(self.catalogs['Child 1'].ident))
@@ -2331,6 +2462,7 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_is_child_of_objective_bank(self):
         """Tests is_child_of_objective_bank"""
+        # From test_templates/resource.py::BinHierarchySession::is_child_of_bin_template
         self.assertTrue(isinstance(self.svc_mgr.is_child_of_objective_bank(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
         self.assertTrue(self.svc_mgr.is_child_of_objective_bank(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.is_child_of_objective_bank(self.catalogs['Grandchild 1'].ident, self.catalogs['Child 1'].ident))
@@ -2338,6 +2470,7 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_get_child_objective_bank_ids(self):
         """Tests get_child_objective_bank_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bin_ids_template
         from dlkit.abstract_osid.id.objects import IdList
         catalog_list = self.svc_mgr.get_child_objective_bank_ids(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, IdList))
@@ -2345,6 +2478,7 @@ class TestObjectiveBankHierarchySession(unittest.TestCase):
 
     def test_get_child_objective_banks(self):
         """Tests get_child_objective_banks"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
         from dlkit.abstract_osid.learning.objects import ObjectiveBankList
         catalog_list = self.svc_mgr.get_child_objective_banks(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, ObjectiveBankList))

@@ -22,7 +22,7 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
-DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'ODL.MIT.EDU'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 SIMPLE_SEQUENCE_RECORD_TYPE = Type(**{"authority": "ODL.MIT.EDU", "namespace": "osid-object", "identifier": "simple-child-sequencing"})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
@@ -577,10 +577,12 @@ class TestAssessmentPartItemSession(unittest.TestCase):
 
     def test_get_assessment_part_items(self):
         """Tests get_assessment_part_items"""
+        # From test_templates/repository.py::AssetCompositionSession::get_composition_assets_template
         self.assertEqual(self.catalog.get_assessment_part_items(self.assessment_part.ident).available(), 4)
 
     def test_get_assessment_parts_by_item(self):
         """Tests get_assessment_parts_by_item"""
+        # From test_templates/repository.py::AssetCompositionSession::get_compositions_by_asset_template
         self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).available(), 1)
         self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).next().ident, self.assessment_part.ident)
 

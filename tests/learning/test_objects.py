@@ -6,10 +6,10 @@ import unittest
 
 from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.learning import objects as ABCObjects
 from dlkit.abstract_osid.learning.objects import Objective
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
-from dlkit.abstract_osid.repository.objects import AssetList
 from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
@@ -414,6 +414,7 @@ class TestActivity(unittest.TestCase):
 
     def test_get_objective_id(self):
         """Tests get_objective_id"""
+        # From test_templates/learning.py::Activity::get_objective_id_template
         result = self.object.get_objective_id()
         self.assertTrue(isinstance(result, Id))
         self.assertEqual(str(result),
@@ -421,8 +422,9 @@ class TestActivity(unittest.TestCase):
 
     def test_get_objective(self):
         """Tests get_objective"""
+        # From test_templates/learning.py::Activity::get_objective_template
         result = self.object.get_objective()
-        self.assertTrue(isinstance(result, Objective))
+        self.assertTrue(isinstance(result, ABCObjects.Objective))
         self.assertEqual(str(result.ident),
                          str(self.objective.ident))
 
@@ -433,12 +435,15 @@ class TestActivity(unittest.TestCase):
 
     def test_get_asset_ids(self):
         """Tests get_asset_ids"""
+        # From test_templates/learning.py::Activity::get_asset_ids_template
         result = self.object.get_asset_ids()
         self.assertTrue(isinstance(result, IdList))
         self.assertEqual(result.available(), 0)
 
     def test_get_assets(self):
         """Tests get_assets"""
+        # From test_templates/learning.py::Activity::get_assets_template
+        from dlkit.abstract_osid.repository.objects import AssetList
         result = self.object.get_assets()
         self.assertTrue(isinstance(result, AssetList))
         self.assertEqual(result.available(), 0)

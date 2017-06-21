@@ -14,10 +14,8 @@ from dlkit.abstract_osid.grading.objects import GradeList
 from dlkit.abstract_osid.grading.objects import GradeSystem
 from dlkit.abstract_osid.grading.objects import GradebookColumn
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
-from dlkit.abstract_osid.learning.objects import Objective
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
-from dlkit.abstract_osid.repository.objects import AssetList
 from dlkit.json_.assessment.objects import AssessmentOffered
 from dlkit.json_.grading.objects import GradeList
 from dlkit.json_.grading.objects import GradebookColumn
@@ -25,6 +23,7 @@ from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.records import registry
 from dlkit.runtime import PROXY_SESSION, proxy_example

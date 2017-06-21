@@ -57,7 +57,15 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not self.has_assessment():
+            raise errors.IllegalState('assessment empty')
         return Id(self._my_map['assessmentId'])
+
+    def has_assessment(self):
+        """not in spec, useful for other templated methods where it isn't guaranteed
+        that a parent objectId exists"""
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        return bool(self._my_map['assessmentId'])
 
     assessment_id = property(fget=get_assessment_id)
 
@@ -70,6 +78,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not self.has_assessment():
+            raise errors.IllegalState('assessment empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
             raise errors.OperationFailed('Assessment does not support Assessment lookup')
@@ -648,7 +658,15 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not self.has_assessment_part():
+            raise errors.IllegalState('assessment_part empty')
         return Id(self._my_map['assessmentPartId'])
+
+    def has_assessment_part(self):
+        """not in spec, useful for other templated methods where it isn't guaranteed
+        that a parent objectId exists"""
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        return bool(self._my_map['assessmentPartId'])
 
     assessment_part_id = property(fget=get_assessment_part_id)
 
@@ -662,6 +680,8 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not self.has_assessment_part():
+            raise errors.IllegalState('assessment_part empty')
         mgr = self._get_provider_manager('ASSESSMENT_AUTHORING')
         if not mgr.supports_assessment_part_lookup():
             raise errors.OperationFailed('Assessment_Authoring does not support AssessmentPart lookup')

@@ -59,7 +59,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['assessmentId']:
+        if not bool(self._my_map['assessmentId']):
             raise errors.IllegalState('this Objective has no assessment')
         else:
             return Id(self._my_map['assessmentId'])
@@ -76,7 +76,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['assessmentId']:
+        if not bool(self._my_map['assessmentId']):
             raise errors.IllegalState('this Objective has no assessment')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
@@ -108,7 +108,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['knowledgeCategoryId']:
+        if not bool(self._my_map['knowledgeCategoryId']):
             raise errors.IllegalState('this Objective has no knowledge_category')
         else:
             return Id(self._my_map['knowledgeCategoryId'])
@@ -125,7 +125,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['knowledgeCategoryId']:
+        if not bool(self._my_map['knowledgeCategoryId']):
             raise errors.IllegalState('this Objective has no knowledge_category')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_lookup():
@@ -157,7 +157,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['cognitiveProcessId']:
+        if not bool(self._my_map['cognitiveProcessId']):
             raise errors.IllegalState('this Objective has no cognitive_process')
         else:
             return Id(self._my_map['cognitiveProcessId'])
@@ -174,7 +174,7 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['cognitiveProcessId']:
+        if not bool(self._my_map['cognitiveProcessId']):
             raise errors.IllegalState('this Objective has no cognitive_process')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_lookup():
@@ -589,7 +589,15 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not self.has_objective():
+            raise errors.IllegalState('objective empty')
         return Id(self._my_map['objectiveId'])
+
+    def has_objective(self):
+        """not in spec, useful for other templated methods where it isn't guaranteed
+        that a parent objectId exists"""
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        return bool(self._my_map['objectiveId'])
 
     objective_id = property(fget=get_objective_id)
 
@@ -602,6 +610,8 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not self.has_objective():
+            raise errors.IllegalState('objective empty')
         mgr = self._get_provider_manager('LEARNING')
         if not mgr.supports_objective_lookup():
             raise errors.OperationFailed('Learning does not support Objective lookup')
@@ -646,6 +656,8 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.learning.Activity.get_assets_template
+        if not bool(self._my_map['assetIds']):
+            raise errors.IllegalState('no assetIds')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_asset_lookup():
             raise errors.OperationFailed('Repository does not support Asset lookup')
@@ -692,6 +704,8 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.learning.Activity.get_assets_template
+        if not bool(self._my_map['courseIds']):
+            raise errors.IllegalState('no courseIds')
         mgr = self._get_provider_manager('COURSE')
         if not mgr.supports_course_lookup():
             raise errors.OperationFailed('Course does not support Course lookup')
@@ -741,6 +755,8 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.learning.Activity.get_assets_template
+        if not bool(self._my_map['assessmentIds']):
+            raise errors.IllegalState('no assessmentIds')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
             raise errors.OperationFailed('Assessment does not support Assessment lookup')
@@ -1095,6 +1111,8 @@ class Proficiency(abc_learning_objects.Proficiency, osid_objects.OsidRelationshi
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not self.has_objective():
+            raise errors.IllegalState('objective empty')
         mgr = self._get_provider_manager('LEARNING')
         if not mgr.supports_objective_lookup():
             raise errors.OperationFailed('Learning does not support Objective lookup')
