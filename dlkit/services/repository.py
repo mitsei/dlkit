@@ -732,11 +732,11 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         return self._get_provider_session('composition_repository_session').get_composition_ids_by_repositories(*args, **kwargs)
 
-    def get_compoitions_by_repositories(self, *args, **kwargs):
-        """Pass through to provider CompositionRepositorySession.get_compoitions_by_repositories"""
+    def get_compositions_by_repositories(self, *args, **kwargs):
+        """Pass through to provider CompositionRepositorySession.get_compositions_by_repositories"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceBinSession.get_resources_by_bins
-        return self._get_provider_session('composition_repository_session').get_compoitions_by_repositories(*args, **kwargs)
+        return self._get_provider_session('composition_repository_session').get_compositions_by_repositories(*args, **kwargs)
 
     def get_repository_ids_by_composition(self, *args, **kwargs):
         """Pass through to provider CompositionRepositorySession.get_repository_ids_by_composition"""

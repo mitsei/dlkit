@@ -4,7 +4,6 @@
 import unittest
 
 
-from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
 from dlkit.abstract_osid.learning import objects as ABCObjects
 from dlkit.abstract_osid.learning.objects import Objective
@@ -443,10 +442,8 @@ class TestActivity(unittest.TestCase):
     def test_get_assets(self):
         """Tests get_assets"""
         # From test_templates/learning.py::Activity::get_assets_template
-        from dlkit.abstract_osid.repository.objects import AssetList
-        result = self.object.get_assets()
-        self.assertTrue(isinstance(result, AssetList))
-        self.assertEqual(result.available(), 0)
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_assets()
 
     def test_is_course_based_activity(self):
         """Tests is_course_based_activity"""
@@ -462,7 +459,7 @@ class TestActivity(unittest.TestCase):
     def test_get_courses(self):
         """Tests get_courses"""
         # We don't have the course service yet
-        with self.assertRaises(errors.OperationFailed):
+        with self.assertRaises(errors.IllegalState):
             self.object.get_courses()
 
     def test_is_assessment_based_activity(self):
@@ -478,9 +475,8 @@ class TestActivity(unittest.TestCase):
 
     def test_get_assessments(self):
         """Tests get_assessments"""
-        result = self.object.get_assessments()
-        self.assertTrue(isinstance(result, AssessmentList))
-        self.assertEqual(result.available(), 0)
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_assessments()
 
     def test_get_activity_record(self):
         """Tests get_activity_record"""

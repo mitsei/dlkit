@@ -589,15 +589,9 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_objective():
+        if not bool(self._my_map['objectiveId']):
             raise errors.IllegalState('objective empty')
         return Id(self._my_map['objectiveId'])
-
-    def has_objective(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['objectiveId'])
 
     objective_id = property(fget=get_objective_id)
 
@@ -610,7 +604,7 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_objective():
+        if not bool(self._my_map['objectiveId']):
             raise errors.IllegalState('objective empty')
         mgr = self._get_provider_manager('LEARNING')
         if not mgr.supports_objective_lookup():
@@ -1111,7 +1105,7 @@ class Proficiency(abc_learning_objects.Proficiency, osid_objects.OsidRelationshi
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_objective():
+        if not bool(self._my_map['objectiveId']):
             raise errors.IllegalState('objective empty')
         mgr = self._get_provider_manager('LEARNING')
         if not mgr.supports_objective_lookup():

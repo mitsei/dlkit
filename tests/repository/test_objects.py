@@ -4,7 +4,6 @@
 import unittest
 
 
-from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id
 from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors

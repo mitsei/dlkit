@@ -1361,6 +1361,7 @@ class TestActivityAdminSession(unittest.TestCase):
 
     def test_get_activity_form_for_create(self):
         """Tests get_activity_form_for_create"""
+        # From test_templates/learning.py::ActivityAdminSession::get_activity_form_for_create_template
         form = self.catalog.get_activity_form_for_create(self.parent_object.ident, [])
         self.assertTrue(isinstance(form, OsidForm))
         self.assertFalse(form.is_for_update())
@@ -1408,8 +1409,7 @@ class TestActivityAdminSession(unittest.TestCase):
 
     def test_delete_activity(self):
         """Tests delete_activity"""
-        # From test_templates/resource.py::ResourceAdminSession::delete_resource_template
-        form = self.catalog.get_activity_form_for_create([])
+        form = self.catalog.get_activity_form_for_create(self.parent_object.ident, [])
         form.display_name = 'new Activity'
         form.description = 'description of Activity'
         form.set_genus_type(NEW_TYPE)

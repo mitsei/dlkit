@@ -1096,9 +1096,10 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         result = collection.find(
             dict({'_id': {'$in': [ObjectId(root_id.get_identifier()) for root_id in root_ids]}},
                  **self._view_filter()))
-        return objects.ObjectiveList(result,
-                                      runtime=self._runtime,
-                                      proxy=self._proxy)
+        return objects.ObjectiveList(
+            result,
+            runtime=self._runtime,
+            proxy=self._proxy)
 
     root_objectives = property(fget=get_root_objectives)
 
@@ -1253,14 +1254,15 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         if self._hierarchy_session.has_children(objective_id):
             child_ids = self._hierarchy_session.get_children(objective_id)
             collection = JSONClientValidated('learning',
-                                         collection='Objective',
-                                         runtime=self._runtime)
+                                             collection='Objective',
+                                             runtime=self._runtime)
             result = collection.find(
                 dict({'_id': {'$in': [ObjectId(child_id.get_identifier()) for child_id in child_ids]}},
                      **self._view_filter()))
-            return objects.ObjectiveList(result,
-                                          runtime=self._runtime,
-                                          proxy=self._proxy)
+            return objects.ObjectiveList(
+                result,
+                runtime=self._runtime,
+                proxy=self._proxy)
         raise errors.IllegalState('no children')
 
     @utilities.arguments_not_none

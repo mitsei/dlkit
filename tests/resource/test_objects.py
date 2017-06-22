@@ -222,34 +222,34 @@ class TestResourceList(unittest.TestCase):
 class TestResourceNode(unittest.TestCase):
     """Tests for ResourceNode"""
 
+    @unittest.skip('unimplemented test')
     def test_get_resource(self):
         """Tests get_resource"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_resource()
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_parent_resource_nodes(self):
         """Tests get_parent_resource_nodes"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_parent_resource_nodes()
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_child_resource_nodes(self):
         """Tests get_child_resource_nodes"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_child_resource_nodes()
+        pass
 
 
 class TestResourceNodeList(unittest.TestCase):
     """Tests for ResourceNodeList"""
 
+    @unittest.skip('unimplemented test')
     def test_get_next_resource_node(self):
         """Tests get_next_resource_node"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_next_resource_node()
+        pass
 
+    @unittest.skip('unimplemented test')
     def test_get_next_resource_nodes(self):
         """Tests get_next_resource_nodes"""
-        with self.assertRaises(errors.Unimplemented):
-            self.object.get_next_resource_nodes(True)
+        pass
 
 
 class TestBin(unittest.TestCase):
@@ -304,8 +304,8 @@ class TestBinForm(unittest.TestCase):
 
     def test_get_bin_form_record(self):
         """Tests get_bin_form_record"""
-        with self.assertRaises(errors.Unsupported):
-            self.object.get_bin_form_record(DEFAULT_TYPE)
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_bin_form_record(True)
 
 
 class TestBinList(unittest.TestCase):

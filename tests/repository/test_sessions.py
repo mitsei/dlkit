@@ -432,6 +432,7 @@ class TestAssetAdminSession(unittest.TestCase):
 
     def test_get_asset_content_form_for_create(self):
         """Tests get_asset_content_form_for_create"""
+        # From test_templates/learning.py::ActivityAdminSession::get_activity_form_for_create_template
         form = self.catalog.get_asset_content_form_for_create(self.parent_object.ident, [])
         self.assertTrue(isinstance(form, OsidForm))
         self.assertFalse(form.is_for_update())
@@ -1539,11 +1540,11 @@ class TestCompositionRepositorySession(unittest.TestCase):
         # Currently our impl does not remove duplicate objectIds
         self.assertEqual(object_ids.available(), 5)
 
-    def test_get_compoitions_by_repositories(self):
-        """Tests get_compoitions_by_repositories"""
+    def test_get_compositions_by_repositories(self):
+        """Tests get_compositions_by_repositories"""
         # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
         catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
-        results = self.session.get_compoitions_by_repositories(catalog_ids)
+        results = self.session.get_compositions_by_repositories(catalog_ids)
         self.assertTrue(isinstance(results, ABCObjects.CompositionList))
         # Currently our impl does not remove duplicate objects
         self.assertEqual(results.available(), 5)

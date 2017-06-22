@@ -1958,7 +1958,7 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         return self._provider_session.get_composition_ids_by_repositories(repository_ids)
 
     @raise_null_argument
-    def get_compoitions_by_repositories(self, repository_ids):
+    def get_compositions_by_repositories(self, repository_ids):
         # Implemented from azosid template for -
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):

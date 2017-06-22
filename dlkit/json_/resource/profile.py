@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo resource'
 
 DESCRIPTION = 'MongoDB based resource implementation'
 
-VERSIONCOMPONENTS = [0, 1, 400]
+VERSIONCOMPONENTS = [0, 1, 409]
 
-RELEASEDATE = "2017-06-21"
+RELEASEDATE = "2017-06-22"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

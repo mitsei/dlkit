@@ -4343,7 +4343,7 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         return IdList(id_list)
 
     @utilities.arguments_not_none
-    def get_compoitions_by_repositories(self, repository_ids):
+    def get_compositions_by_repositories(self, repository_ids):
         """Gets the list of ``Compositions`` corresponding to a list of ``Repository`` objects.
 
         arg:    repository_ids (osid.id.IdList): list of repository

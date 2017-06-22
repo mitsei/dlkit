@@ -18,6 +18,7 @@ from . import queries
 from . import searches
 from .. import MONGO_LISTENER
 from .. import utilities
+from ..authentication.objects import AgentList
 from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession

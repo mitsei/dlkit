@@ -24,6 +24,8 @@ class Identifiable(abc_markers.Identifiable):
         """Returns an Id"""
         return self._id
 
+    ident = property(fget=get_id)
+
     def is_current(self):
         """Immutable and always current"""
         return True

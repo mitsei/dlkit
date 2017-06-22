@@ -7,7 +7,6 @@ import unittest
 from decimal import Decimal
 
 
-from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.authentication.objects import Agent
 from dlkit.abstract_osid.grading import objects as ABCObjects
 from dlkit.abstract_osid.grading.objects import GradeList
@@ -681,7 +680,8 @@ class TestGradeEntry(unittest.TestCase):
 
     def test_get_grade_id(self):
         """Tests get_grade_id"""
-        self.assertTrue(isinstance(self.object.get_grade_id(), Id))
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_grade()
 
     def test_get_grade(self):
         """Tests get_grade"""

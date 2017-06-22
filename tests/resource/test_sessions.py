@@ -4,6 +4,7 @@
 import unittest
 
 
+from dlkit.abstract_osid.authentication.objects import AgentList
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
@@ -12,6 +13,7 @@ from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.abstract_osid.resource import objects as ABCObjects
 from dlkit.abstract_osid.resource import queries as ABCQueries
 from dlkit.abstract_osid.resource import searches as ABCSearches
+from dlkit.abstract_osid.resource.objects import Resource
 from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -250,6 +252,33 @@ class TestResourceQuerySession(unittest.TestCase):
 
 class TestResourceSearchSession(unittest.TestCase):
     """Tests for ResourceSearchSession"""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.resource_list = list()
+        cls.resource_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test Bin'
+        create_form.description = 'Test Bin for ResourceSearchSession tests'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+        for color in ['Orange', 'Blue', 'Green', 'orange']:
+            create_form = cls.catalog.get_resource_form_for_create([])
+            create_form.display_name = 'Test Resource ' + color
+            create_form.description = (
+                'Test Resource for ResourceSearchSession tests, did I mention green')
+            obj = cls.catalog.create_resource(create_form)
+            cls.resource_list.append(obj)
+            cls.resource_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_resources():
+            cls.catalog.delete_resource(obj.ident)
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
 
     def test_get_resource_search(self):
         """Tests get_resource_search"""
@@ -723,6 +752,9 @@ class TestResourceAgentSession(unittest.TestCase):
         cls.catalog.assign_agent_to_resource(AGENT_ID_0, cls.resource_ids[0])
         cls.catalog.assign_agent_to_resource(AGENT_ID_1, cls.resource_ids[1])
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_bins():
@@ -769,21 +801,27 @@ class TestResourceAgentSession(unittest.TestCase):
     def test_get_resource_id_by_agent(self):
         """Tests get_resource_id_by_agent"""
         resource_id = self.catalog.get_resource_id_by_agent(AGENT_ID_0)
+        self.assertTrue(isinstance(resource_id, Id))
+        self.assertEqual(resource_id, self.resource_ids[0])
 
     def test_get_resource_by_agent(self):
         """Tests get_resource_by_agent"""
         resource = self.catalog.get_resource_by_agent(AGENT_ID_1)
+        self.assertTrue(isinstance(resource, Resource))
         self.assertEqual(resource.display_name.text, 'Test Resource 1')
 
     def test_get_agent_ids_by_resource(self):
         """Tests get_agent_ids_by_resource"""
         id_list = self.catalog.get_agent_ids_by_resource(self.resource_ids[0])
         self.assertEqual(id_list.next(), AGENT_ID_0)
+        self.assertTrue(isinstance(id_list, IdList))
 
     def test_get_agents_by_resource(self):
         """Tests get_agents_by_resource"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_agents_by_resource(True)
+        agents = self.catalog.get_agents_by_resource(self.resource_ids[0])
+        self.assertEqual(agents.available(), 1)
+        self.assertTrue(isinstance(agents, AgentList))
+        self.assertEqual(agents.next().ident, AGENT_ID_0)
 
 
 class TestResourceAgentAssignmentSession(unittest.TestCase):
@@ -805,6 +843,9 @@ class TestResourceAgentAssignmentSession(unittest.TestCase):
             obj = cls.catalog.create_resource(create_form)
             cls.resource_list.append(obj)
             cls.resource_ids.append(obj.ident)
+
+    def setUp(self):
+        self.session = self.catalog
 
     @classmethod
     def tearDownClass(cls):

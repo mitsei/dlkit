@@ -489,15 +489,9 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_composition():
+        if not bool(self._my_map['compositionId']):
             raise errors.IllegalState('composition empty')
         return Id(self._my_map['compositionId'])
-
-    def has_composition(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['compositionId'])
 
     composition_id = property(fget=get_composition_id)
 
@@ -511,7 +505,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_composition():
+        if not bool(self._my_map['compositionId']):
             raise errors.IllegalState('composition empty')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_composition_lookup():
@@ -1389,15 +1383,9 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_asset():
+        if not bool(self._my_map['assetId']):
             raise errors.IllegalState('asset empty')
         return Id(self._my_map['assetId'])
-
-    def has_asset(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['assetId'])
 
     asset_id = property(fget=get_asset_id)
 
@@ -1409,7 +1397,7 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_asset():
+        if not bool(self._my_map['assetId']):
             raise errors.IllegalState('asset empty')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_asset_lookup():

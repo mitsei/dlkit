@@ -5,7 +5,6 @@ import unittest
 
 
 from dlkit.abstract_osid.assessment.objects import Assessment
-from dlkit.abstract_osid.assessment.objects import AssessmentList
 from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
 from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
 from dlkit.abstract_osid.id.primitives import Id as ABC_Id

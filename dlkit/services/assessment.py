@@ -580,6 +580,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # osid.resource.ResourceManager.get_resource_notification_session_catalog_template
         return self._provider_manager.get_item_notification_session(*args, **kwargs)
 
+    def get_item_notification_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider get_item_notification_session_for_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_catalog_template
+        return self._provider_manager.get_item_notification_session_for_bank(*args, **kwargs)
+
     def get_item_bank_session(self, *args, **kwargs):
         """Pass through to provider get_item_bank_session"""
         # Implemented from kitosid template for -
@@ -637,6 +643,18 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_admin_session_for_bank(*args, **kwargs)
+
+    def get_assessment_notification_session(self, *args, **kwargs):
+        """Pass through to provider get_assessment_notification_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_catalog_template
+        return self._provider_manager.get_assessment_notification_session(*args, **kwargs)
+
+    def get_assessment_notification_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider get_assessment_notification_session_for_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_catalog_template
+        return self._provider_manager.get_assessment_notification_session_for_bank(*args, **kwargs)
 
     def get_assessment_bank_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_bank_session"""
@@ -1678,6 +1696,10 @@ class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessmen
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
+    def get_item_notification_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
     def get_item_bank_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1715,6 +1737,14 @@ class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessmen
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_assessment_admin_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_assessment_notification_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_assessment_notification_session_for_bank(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 

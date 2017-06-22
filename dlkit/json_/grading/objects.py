@@ -56,15 +56,9 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_grade_system():
+        if not bool(self._my_map['gradeSystemId']):
             raise errors.IllegalState('grade_system empty')
         return Id(self._my_map['gradeSystemId'])
-
-    def has_grade_system(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['gradeSystemId'])
 
     grade_system_id = property(fget=get_grade_system_id)
 
@@ -76,7 +70,7 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_grade_system():
+        if not bool(self._my_map['gradeSystemId']):
             raise errors.IllegalState('grade_system empty')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_system_lookup():
@@ -889,15 +883,9 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_gradebook_column():
+        if not bool(self._my_map['gradebookColumnId']):
             raise errors.IllegalState('gradebook_column empty')
         return Id(self._my_map['gradebookColumnId'])
-
-    def has_gradebook_column(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['gradebookColumnId'])
 
     gradebook_column_id = property(fget=get_gradebook_column_id)
 
@@ -910,7 +898,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_gradebook_column():
+        if not bool(self._my_map['gradebookColumnId']):
             raise errors.IllegalState('gradebook_column empty')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_gradebook_column_lookup():
@@ -1044,15 +1032,9 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_grade():
+        if not bool(self._my_map['gradeId']):
             raise errors.IllegalState('grade empty')
         return Id(self._my_map['gradeId'])
-
-    def has_grade(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['gradeId'])
 
     grade_id = property(fget=get_grade_id)
 
@@ -1518,15 +1500,9 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_grade_system():
+        if not bool(self._my_map['gradeSystemId']):
             raise errors.IllegalState('grade_system empty')
         return Id(self._my_map['gradeSystemId'])
-
-    def has_grade_system(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['gradeSystemId'])
 
     grade_system_id = property(fget=get_grade_system_id)
 
@@ -1539,7 +1515,7 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_grade_system():
+        if not bool(self._my_map['gradeSystemId']):
             raise errors.IllegalState('grade_system empty')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_system_lookup():
@@ -1769,15 +1745,9 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_gradebook_column():
+        if not bool(self._my_map['gradebookColumnId']):
             raise errors.IllegalState('gradebook_column empty')
         return Id(self._my_map['gradebookColumnId'])
-
-    def has_gradebook_column(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['gradebookColumnId'])
 
     gradebook_column_id = property(fget=get_gradebook_column_id)
 
@@ -1790,7 +1760,7 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_gradebook_column():
+        if not bool(self._my_map['gradebookColumnId']):
             raise errors.IllegalState('gradebook_column empty')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_gradebook_column_lookup():

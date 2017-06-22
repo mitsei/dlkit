@@ -232,15 +232,9 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_function():
+        if not bool(self._my_map['functionId']):
             raise errors.IllegalState('function empty')
         return Id(self._my_map['functionId'])
-
-    def has_function(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['functionId'])
 
     function_id = property(fget=get_function_id)
 
@@ -253,7 +247,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_function():
+        if not bool(self._my_map['functionId']):
             raise errors.IllegalState('function empty')
         mgr = self._get_provider_manager('AUTHORIZATION')
         if not mgr.supports_function_lookup():
@@ -272,15 +266,9 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_qualifier():
+        if not bool(self._my_map['qualifierId']):
             raise errors.IllegalState('qualifier empty')
         return Id(self._my_map['qualifierId'])
-
-    def has_qualifier(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['qualifierId'])
 
     qualifier_id = property(fget=get_qualifier_id)
 
@@ -293,7 +281,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_qualifier():
+        if not bool(self._my_map['qualifierId']):
             raise errors.IllegalState('qualifier empty')
         mgr = self._get_provider_manager('AUTHORIZATION')
         if not mgr.supports_qualifier_lookup():

@@ -1229,15 +1229,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_assessment():
+        if not bool(self._my_map['assessmentId']):
             raise errors.IllegalState('assessment empty')
         return Id(self._my_map['assessmentId'])
-
-    def has_assessment(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['assessmentId'])
 
     assessment_id = property(fget=get_assessment_id)
 
@@ -1250,7 +1244,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_assessment():
+        if not bool(self._my_map['assessmentId']):
             raise errors.IllegalState('assessment empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
@@ -2173,15 +2167,9 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_assessment_offered():
+        if not bool(self._my_map['assessmentOfferedId']):
             raise errors.IllegalState('assessment_offered empty')
         return Id(self._my_map['assessmentOfferedId'])
-
-    def has_assessment_offered(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['assessmentOfferedId'])
 
     assessment_offered_id = property(fget=get_assessment_offered_id)
 
@@ -2195,7 +2183,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_assessment_offered():
+        if not bool(self._my_map['assessmentOfferedId']):
             raise errors.IllegalState('assessment_offered empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_offered_lookup():
@@ -3040,15 +3028,9 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
-        if not self.has_assessment_taken():
+        if not bool(self._my_map['assessmentTakenId']):
             raise errors.IllegalState('assessment_taken empty')
         return Id(self._my_map['assessmentTakenId'])
-
-    def has_assessment_taken(self):
-        """not in spec, useful for other templated methods where it isn't guaranteed
-        that a parent objectId exists"""
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        return bool(self._my_map['assessmentTakenId'])
 
     assessment_taken_id = property(fget=get_assessment_taken_id)
 
@@ -3061,7 +3043,7 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
-        if not self.has_assessment_taken():
+        if not bool(self._my_map['assessmentTakenId']):
             raise errors.IllegalState('assessment_taken empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_taken_lookup():
