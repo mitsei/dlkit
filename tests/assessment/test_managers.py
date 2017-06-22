@@ -2,6 +2,7 @@
 
 
 import unittest
+import pytest
 
 
 from dlkit.abstract_osid.osid import errors
@@ -18,12 +19,20 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 
 
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_FUNCTIONAL'])
+def dlkit_service_config(request):
+    print('here in the fixture')
+    request.cls.service_cfg = request.param
+
+
+@pytest.mark.usefixtures('dlkit_service_config')
 class TestAssessmentProfile(unittest.TestCase):
     """Tests for AssessmentProfile"""
 
     @classmethod
     def setUpClass(cls):
-        cls.mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        cls.mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation=cls.service_cfg)
 
     def test_supports_assessment(self):
         """Tests supports_assessment"""
@@ -190,6 +199,7 @@ class TestAssessmentProfile(unittest.TestCase):
         self.assertTrue(isinstance(self.mgr.get_bank_search_record_types(), abc_type_list))
 
 
+@pytest.mark.usefixtures('dlkit_service_config')
 class TestAssessmentManager(unittest.TestCase):
     """Tests for AssessmentManager"""
 
@@ -555,6 +565,7 @@ class TestAssessmentManager(unittest.TestCase):
             self.svc_mgr.get_assessment_batch_manager()
 
 
+@pytest.mark.usefixtures('dlkit_service_config')
 class TestAssessmentProxyManager(unittest.TestCase):
     """Tests for AssessmentProxyManager"""
 
