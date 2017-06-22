@@ -732,11 +732,11 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
         # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         return self._get_provider_session('composition_repository_session').get_composition_ids_by_repositories(*args, **kwargs)
 
-    def get_compoitions_by_repositories(self, *args, **kwargs):
-        """Pass through to provider CompositionRepositorySession.get_compoitions_by_repositories"""
+    def get_compositions_by_repositories(self, *args, **kwargs):
+        """Pass through to provider CompositionRepositorySession.get_compositions_by_repositories"""
         # Implemented from kitosid template for -
         # osid.resource.ResourceBinSession.get_resources_by_bins
-        return self._get_provider_session('composition_repository_session').get_compoitions_by_repositories(*args, **kwargs)
+        return self._get_provider_session('composition_repository_session').get_compositions_by_repositories(*args, **kwargs)
 
     def get_repository_ids_by_composition(self, *args, **kwargs):
         """Pass through to provider CompositionRepositorySession.get_repository_ids_by_composition"""
@@ -1383,9 +1383,17 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
         else:
             session_class = getattr(self._provider_manager, 'get_' + session_name + '_for_repository')
             if self._proxy is None:
-                session = session_class(self._catalog.get_id())
+                if 'notification_session' in session_name:
+                    # Is there something else we should do about the receiver field?
+                    session = session_class('fake receiver', self._catalog.get_id())
+                else:
+                    session = session_class(self._catalog.get_id())
             else:
-                session = session_class(self._catalog.get_id(), self._proxy)
+                if 'notification_session' in session_name:
+                    # Is there something else we should do about the receiver field?
+                    session = session_class('fake receiver', self._catalog.get_id(), self._proxy)
+                else:
+                    session = session_class(self._catalog.get_id(), self._proxy)
             self._set_repository_view(session)
             self._set_object_view(session)
             self._set_operable_view(session)
@@ -1400,14 +1408,6 @@ class Repository(abc_repository_objects.Repository, osid.OsidSession, osid.OsidC
 
     def get_repository(self):
         """Strange little method to assure conformance for inherited Sessions."""
-        return self
-
-    def get_objective_hierarchy_id(self):
-        """WHAT am I doing here?"""
-        return self._catalog_id
-
-    def get_objective_hierarchy(self):
-        """WHAT am I doing here?"""
         return self
 
     def __getattr__(self, name):

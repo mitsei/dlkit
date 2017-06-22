@@ -302,6 +302,14 @@ class TestAssessmentManager(unittest.TestCase):
         if self.svc_mgr.supports_item_notification():
             self.svc_mgr.get_item_notification_session(self.receiver)
 
+    def test_get_item_notification_session_for_bank(self):
+        """Tests get_item_notification_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_notification_session_for_bin_template
+        if self.svc_mgr.supports_item_notification():
+            self.svc_mgr.get_item_notification_session_for_bank(self.receiver, self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_notification_session_for_bank()
+
     def test_get_item_bank_session(self):
         """Tests get_item_bank_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -355,6 +363,20 @@ class TestAssessmentManager(unittest.TestCase):
             self.svc_mgr.get_assessment_admin_session_for_bank(self.catalog_id)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_admin_session_for_bank()
+
+    def test_get_assessment_notification_session(self):
+        """Tests get_assessment_notification_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_notification_session_template
+        if self.svc_mgr.supports_assessment_notification():
+            self.svc_mgr.get_assessment_notification_session(self.receiver)
+
+    def test_get_assessment_notification_session_for_bank(self):
+        """Tests get_assessment_notification_session_for_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_notification_session_for_bin_template
+        if self.svc_mgr.supports_assessment_notification():
+            self.svc_mgr.get_assessment_notification_session_for_bank(self.receiver, self.catalog_id)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_notification_session_for_bank()
 
     def test_get_assessment_bank_session(self):
         """Tests get_assessment_bank_session"""
@@ -657,6 +679,14 @@ class TestAssessmentProxyManager(unittest.TestCase):
         if self.svc_mgr.supports_item_notification():
             self.svc_mgr.get_item_notification_session(self.receiver, proxy=PROXY)
 
+    def test_get_item_notification_session_for_bank(self):
+        """Tests get_item_notification_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_notification_session_for_bin_template
+        if self.svc_mgr.supports_item_notification():
+            self.svc_mgr.get_item_notification_session_for_bank(self.receiver, self.catalog_id, proxy=PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_item_notification_session_for_bank()
+
     def test_get_item_bank_session(self):
         """Tests get_item_bank_session"""
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
@@ -720,6 +750,20 @@ class TestAssessmentProxyManager(unittest.TestCase):
             self.svc_mgr.get_assessment_admin_session_for_bank(self.catalog_id, PROXY)
         with self.assertRaises(errors.NullArgument):
             self.svc_mgr.get_assessment_admin_session_for_bank()
+
+    def test_get_assessment_notification_session(self):
+        """Tests get_assessment_notification_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_notification_session_template
+        if self.svc_mgr.supports_assessment_notification():
+            self.svc_mgr.get_assessment_notification_session(self.receiver, proxy=PROXY)
+
+    def test_get_assessment_notification_session_for_bank(self):
+        """Tests get_assessment_notification_session_for_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_notification_session_for_bin_template
+        if self.svc_mgr.supports_assessment_notification():
+            self.svc_mgr.get_assessment_notification_session_for_bank(self.receiver, self.catalog_id, proxy=PROXY)
+        with self.assertRaises(errors.NullArgument):
+            self.svc_mgr.get_assessment_notification_session_for_bank()
 
     def test_get_assessment_bank_session(self):
         """Tests get_assessment_bank_session"""

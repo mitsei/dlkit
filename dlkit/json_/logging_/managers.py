@@ -84,6 +84,31 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_log_admin' in profile.SUPPORTS
 
+    def supports_log_hierarchy(self):
+        """Tests for the availability of a log hierarchy traversal service.
+
+        return: (boolean) - ``true`` if log hierarchy traversal is
+                available, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_log_hierarchy' in profile.SUPPORTS
+
+    def supports_log_hierarchy_design(self):
+        """Tests for the availability of a log hierarchy design service.
+
+        return: (boolean) - ``true`` if log hierarchy design is
+                available, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented in all
+        providers.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_log_hierarchy_design' in profile.SUPPORTS
+
     def get_log_entry_record_types(self):
         """Gets the supported ``Log`` record types.
 
@@ -451,6 +476,46 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
 
     log_admin_session = property(fget=get_log_admin_session)
 
+    @utilities.remove_null_proxy_kwarg
+    def get_log_hierarchy_session(self):
+        """Gets the ``OsidSession`` associated with the log hierarchy service.
+
+        return: (osid.logging.LogHierarchySession) - a
+                ``LogHierarchySession`` for logs
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_hierarchy()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_hierarchy()`` is ``true``.*
+
+        """
+        if not self.supports_log_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogHierarchySession(runtime=self._runtime)
+
+    log_hierarchy_session = property(fget=get_log_hierarchy_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_log_hierarchy_design_session(self):
+        """Gets the ``OsidSession`` associated with the log hierarchy design service.
+
+        return: (osid.logging.LogHierarchyDesignSession) - a
+                ``HierarchyDesignSession`` for logs
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_hierarchy_design()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_hierarchy_design()`` is ``true``.*
+
+        """
+        if not self.supports_log_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogHierarchyDesignSession(runtime=self._runtime)
+
+    log_hierarchy_design_session = property(fget=get_log_hierarchy_design_session)
+
     def get_logging_batch_manager(self):
         """Gets a ``LoggingBatchManager``.
 
@@ -723,6 +788,46 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
             raise errors.Unimplemented()
         # pylint: disable=no-member
         return sessions.LogAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_log_hierarchy_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the log hierarchy service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.logging.LogHierarchySession) - a
+                ``LogHierarchySession`` for logs
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_hierarchy()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_hierarchy()`` is ``true``.*
+
+        """
+        if not self.supports_log_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogHierarchySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_log_hierarchy_design_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the log hierarchy design service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.logging.LogHierarchyDesignSession) - a
+                ``HierarchyDesignSession`` for logs
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_hierarchy_design()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_hierarchy_design()`` is ``true``.*
+
+        """
+        if not self.supports_log_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
 
     def get_logging_batch_proxy_manager(self):
         """Gets a ``LoggingBatchProxyManager``.

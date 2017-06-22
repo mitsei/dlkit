@@ -1356,7 +1356,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return  # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_item_bank_session(self):
@@ -1576,7 +1576,7 @@ class AssessmentManager:
         ``supports_assessment_notification()`` is ``true``.*
 
         """
-        return  # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id):
@@ -1598,7 +1598,7 @@ class AssessmentManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return  # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_assessment_bank_session(self):
@@ -2742,7 +2742,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return  # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_item_bank_session(self, proxy):
@@ -2980,7 +2980,7 @@ class AssessmentProxyManager:
         ``supports_assessment_notification()`` is ``true``.*
 
         """
-        return  # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id, proxy):
@@ -3004,7 +3004,7 @@ class AssessmentProxyManager:
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        return  # osid.assessment.AssessmentNotificationSession
+        return  # osid.assessment.ItemNotificationSession
 
     @abc.abstractmethod
     def get_assessment_bank_session(self, proxy):

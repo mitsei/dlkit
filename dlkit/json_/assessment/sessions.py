@@ -1132,7 +1132,10 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
         # This makes the simple assumption that answers are available only when
         # a response has been submitted for an Item.
         try:
-            self.get_response(assessment_section_id, item_id)
+            response = self.get_response(assessment_section_id, item_id)
+            # need to invoke something like .object_map before
+            # a "null" response throws IllegalState
+            response.object_map
         except errors.IllegalState:
             return False
         else:
@@ -1282,14 +1285,18 @@ class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession,
         """
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         taken_lookup_session = mgr.get_assessment_taken_lookup_session(proxy=self._proxy)
+        taken_lookup_session.use_federated_bank_view()
         taken = taken_lookup_session.get_assessment_taken(assessment_taken_id)
         ils = get_item_lookup_session(runtime=self._runtime, proxy=self._proxy)
+        ils.use_federated_bank_view()
         item_list = []
         if 'sections' in taken._my_map:
             for section_id in taken._my_map['sections']:
-                section = get_assessment_section(Id(section_id))
+                section = get_assessment_section(Id(section_id),
+                                                 runtime=self._runtime,
+                                                 proxy=self._proxy)
                 for question in section._my_map['questions']:
-                    item_list.append(ils.get_item(question['questionId']))
+                    item_list.append(ils.get_item(Id(question['questionId'])))
         return ItemList(item_list)
 
     @utilities.arguments_not_none
@@ -1356,7 +1363,7 @@ class AssessmentResultsSession(abc_assessment_sessions.AssessmentResultsSession,
 
         """
         # not implemented yet and are_results_available is False
-        raise IllegalState()
+        raise errors.IllegalState()
 
 
 class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions.OsidSession):
@@ -2718,30 +2725,14 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.AssetAdminSession.delete_asset_content_template
-        from dlkit.abstract_osid.id.primitives import Id as ABCId
-        from .objects import Question
         collection = JSONClientValidated('assessment',
                                          collection='Item',
                                          runtime=self._runtime)
         if not isinstance(question_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        item = collection.find_one({'questions._id': ObjectId(question_id.get_identifier())})
+        item = collection.find_one({'question._id': ObjectId(question_id.get_identifier())})
 
-        index = 0
-        found = False
-        for i in item['questions']:
-            if i['_id'] == ObjectId(question_id.get_identifier()):
-                question_map = item['questions'].pop(index)
-            index += 1
-            found = True
-        if not found:
-            raise errors.OperationFailed()
-        Question(
-            osid_object_map=question_map,
-            runtime=self._runtime,
-            proxy=self._proxy)._delete()
+        item['question'] = None
         collection.save(item)
 
     def can_create_answers(self):
@@ -3321,7 +3312,7 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         if not MONGO_LISTENER.receivers[self._ns][self._receiver]['d']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['d'], list):
-            self.MONGO_LISTENER.receivers[self._ns][self._receiver]['d'].append(item_id.get_identifier())
+            MONGO_LISTENER.receivers[self._ns][self._receiver]['d'].append(item_id.get_identifier())
 
     def reliable_item_notifications(self):
         """Reliable notifications are desired.
@@ -3639,10 +3630,10 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        items = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for item in items:
-            id_list.append(items.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -3660,7 +3651,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_item_to_bank(self, item_id, bank_id):
@@ -4966,10 +4957,10 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        assessments = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for assessment in assessments:
-            id_list.append(assessments.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -4989,7 +4980,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_assessment_to_bank(self, assessment_id, bank_id):
@@ -6509,10 +6500,10 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        assessments_offered = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for assessment_offered in assessments_offered:
-            id_list.append(assessments_offered.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -6532,7 +6523,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_assessment_offered_to_bank(self, assessment_offered_id, bank_id):
@@ -8152,10 +8143,10 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        assessments_taken = lookup_session.get_banks()
+        banks = lookup_session.get_banks()
         id_list = []
-        for assessment_taken in assessments_taken:
-            id_list.append(assessments_taken.get_id())
+        for bank in banks:
+            id_list.append(bank.get_id())
         return IdList(id_list)
 
     @utilities.arguments_not_none
@@ -8175,7 +8166,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # Implemented from template for
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
-        return self.get_assignable_bin_ids()
+        return self.get_assignable_bank_ids(bank_id)
 
     @utilities.arguments_not_none
     def assign_assessment_taken_to_bank(self, assessment_taken_id, bank_id):
@@ -8993,6 +8984,8 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
     _session_namespace = 'assessment.BankHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -9016,7 +9009,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy_id
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -9034,7 +9027,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -9056,7 +9049,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.can_access_bin_hierarchy
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -9104,7 +9097,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_root_bin_ids
+        # osid.resource.BinHierarchySession.get_root_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -9121,7 +9114,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_root_bins
+        # osid.resource.BinHierarchySession.get_root_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return BankLookupSession(
@@ -9145,7 +9138,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.has_parent_bins
+        # osid.resource.BinHierarchySession.has_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=bank_id)
         return self._hierarchy_session.has_parents(id_=bank_id)
@@ -9167,7 +9160,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_parent_of_bin
+        # osid.resource.BinHierarchySession.is_parent_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=bank_id)
         return self._hierarchy_session.is_parent(id_=bank_id, parent_id=id_)
@@ -9186,7 +9179,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_parent_bin_ids
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.git_parent_catalog_ids()
         return self._hierarchy_session.get_parents(id_=bank_id)
@@ -9205,7 +9198,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_parent_bins
+        # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.git_parent_catalogs(catalog_id=bank_id)
         return BankLookupSession(
@@ -9230,7 +9223,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_ancestor_of_bin
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=bank_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=bank_id)
@@ -9250,7 +9243,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.has_child_bins
+        # osid.resource.BinHierarchySession.has_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=bank_id)
         return self._hierarchy_session.has_children(id_=bank_id)
@@ -9272,7 +9265,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_child_of_bin
+        # osid.resource.BinHierarchySession.is_child_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=bank_id)
         return self._hierarchy_session.is_child(id_=bank_id, child_id=id_)
@@ -9291,7 +9284,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_child_bin_ids
+        # osid.resource.BinHierarchySession.get_child_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=bank_id)
         return self._hierarchy_session.get_children(id_=bank_id)
@@ -9310,7 +9303,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_child_bins
+        # osid.resource.BinHierarchySession.get_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=bank_id)
         return BankLookupSession(
@@ -9335,7 +9328,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.is_descendant_of_bin
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=bank_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=bank_id)
@@ -9363,7 +9356,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_node_ids
+        # osid.resource.BinHierarchySession.get_bin_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=bank_id,
@@ -9399,7 +9392,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_nodes
+        # osid.resource.BinHierarchySession.get_bin_nodes
         return objects.BankNode(self.get_bank_node_ids(
             bank_id=bank_id,
             ancestor_levels=ancestor_levels,
@@ -9416,6 +9409,8 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
     _session_namespace = 'assessment.BankHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -9439,7 +9434,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy_id
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -9457,7 +9452,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchySession.get_bin_hierarchy
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -9479,7 +9474,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.can_modify_objective_bank_hierarchy
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -9500,7 +9495,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.add_root_bin_template
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=bank_id)
         return self._hierarchy_session.add_root(id_=bank_id)
@@ -9518,7 +9513,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_root_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=bank_id)
         return self._hierarchy_session.remove_root(id_=bank_id)
@@ -9539,7 +9534,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.add_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=bank_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=bank_id, child_id=child_id)
@@ -9558,7 +9553,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=bank_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=bank_id, child_id=child_id)
@@ -9576,7 +9571,7 @@ class BankHierarchyDesignSession(abc_assessment_sessions.BankHierarchyDesignSess
 
         """
         # Implemented from template for
-        # osid.resource.ResourceHierarchyDesignSession.remove_child_bin_template
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=bank_id)
         return self._hierarchy_session.remove_children(id_=bank_id)

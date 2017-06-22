@@ -94,7 +94,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['resourceId']:
+        if not bool(self._my_map['resourceId']):
             raise errors.IllegalState('this Authorization has no resource')
         else:
             return Id(self._my_map['resourceId'])
@@ -111,7 +111,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['resourceId']:
+        if not bool(self._my_map['resourceId']):
             raise errors.IllegalState('this Authorization has no resource')
         mgr = self._get_provider_manager('RESOURCE')
         if not mgr.supports_resource_lookup():
@@ -143,7 +143,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['trustId']:
+        if not bool(self._my_map['trustId']):
             raise errors.IllegalState('this Authorization has no trust')
         else:
             return Id(self._my_map['trustId'])
@@ -160,7 +160,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['trustId']:
+        if not bool(self._my_map['trustId']):
             raise errors.IllegalState('this Authorization has no trust')
         mgr = self._get_provider_manager('AUTHENTICATION.PROCESS')
         if not mgr.supports_trust_lookup():
@@ -195,7 +195,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['agentId']:
+        if not bool(self._my_map['agentId']):
             raise errors.IllegalState('this Authorization has no agent')
         else:
             return Id(self._my_map['agentId'])
@@ -212,7 +212,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['agentId']:
+        if not bool(self._my_map['agentId']):
             raise errors.IllegalState('this Authorization has no agent')
         mgr = self._get_provider_manager('AUTHENTICATION')
         if not mgr.supports_agent_lookup():
@@ -232,6 +232,8 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['functionId']):
+            raise errors.IllegalState('function empty')
         return Id(self._my_map['functionId'])
 
     function_id = property(fget=get_function_id)
@@ -245,6 +247,8 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not bool(self._my_map['functionId']):
+            raise errors.IllegalState('function empty')
         mgr = self._get_provider_manager('AUTHORIZATION')
         if not mgr.supports_function_lookup():
             raise errors.OperationFailed('Authorization does not support Function lookup')
@@ -262,6 +266,8 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['qualifierId']):
+            raise errors.IllegalState('qualifier empty')
         return Id(self._my_map['qualifierId'])
 
     qualifier_id = property(fget=get_qualifier_id)
@@ -275,6 +281,8 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not bool(self._my_map['qualifierId']):
+            raise errors.IllegalState('qualifier empty')
         mgr = self._get_provider_manager('AUTHORIZATION')
         if not mgr.supports_qualifier_lookup():
             raise errors.OperationFailed('Authorization does not support Qualifier lookup')
@@ -365,6 +373,10 @@ class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_object
         self._my_map['assignedVaultIds'] = [str(kwargs['vault_id'])]
         self._my_map['functionId'] = str(kwargs['function_id'])
         self._my_map['qualifierId'] = str(kwargs['qualifier_id'])
+        self._my_map['agentId'] = None
+        self._my_map['resourceId'] = None
+        self._my_map['trustId'] = None
+        self._my_map['implicit'] = None
         if 'agent_id' in kwargs:
             self._my_map['agentId'] = str(kwargs['agent_id'])
         if 'resource_id' in kwargs:

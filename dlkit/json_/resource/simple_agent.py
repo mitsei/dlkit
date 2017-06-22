@@ -18,11 +18,13 @@ class Identifiable(abc_markers.Identifiable):
     """Simple Identifiable"""
 
     def __init__(self, id_):
-        self.id_ = id_
+        self._id = id_
 
     def get_id(self):
         """Returns an Id"""
-        return self.id_
+        return self._id
+
+    ident = property(fget=get_id)
 
     def is_current(self):
         """Immutable and always current"""
@@ -73,6 +75,10 @@ class OsidObject(abcOsidObject, Identifiable, Extensible, Browsable):
     def get_genus_type(self):
         """Returns the genus type"""
         return DEFAULT_GENUS_TYPE
+
+    def is_of_genus_type(self, genus_type):
+        """is the object of the given genusTypeId? Override because simpleAgent to always be True"""
+        return True
 
 
 class Agent(abcAgent, OsidObject):

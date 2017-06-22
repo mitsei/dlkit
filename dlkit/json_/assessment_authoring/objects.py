@@ -57,6 +57,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentId']):
+            raise errors.IllegalState('assessment empty')
         return Id(self._my_map['assessmentId'])
 
     assessment_id = property(fget=get_assessment_id)
@@ -70,6 +72,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not bool(self._my_map['assessmentId']):
+            raise errors.IllegalState('assessment empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
             raise errors.OperationFailed('Assessment does not support Assessment lookup')
@@ -97,7 +101,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
+        if not self.has_parent_part():
+            raise errors.IllegalState('no parent part')
         return Id(self._my_map['assessmentPartId'])
 
     assessment_part_id = property(fget=get_assessment_part_id)
@@ -112,6 +117,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if not self.has_parent_part():
+            raise errors.IllegalState('no parent part')
         lookup_session = self._get_assessment_part_lookup_session()
         return lookup_session.get_assessment_part(self.get_assessment_part_id())
 
@@ -166,6 +173,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if not self.has_children():
+            raise errors.IllegalState('no children assessment parts')
         return IdList(self._my_map['childIds'])
 
     child_assessment_part_ids = property(fget=get_child_assessment_part_ids)
@@ -179,6 +188,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        if not self.has_children():
+            raise errors.IllegalState('no children assessment parts')
         # only returned unsequestered children?
         lookup_session = self._get_assessment_part_lookup_session()
         lookup_session.use_sequestered_assessment_part_view()
@@ -339,7 +350,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
                 self._mdata['sequestered'] = kwargs['mdata']['sequestered']
         self._assessment_part_default = self._mdata['assessment_part']['default_id_values'][0]
         self._assessment_default = self._mdata['assessment']['default_id_values'][0]
-        self._weight_default = self._mdata['weight']['default_integer_values'][0]
+        self._weight_default = self._mdata['weight']['default_cardinal_values'][0]
         self._allocated_time_default = self._mdata['allocated_time']['default_duration_values'][0]
         self._items_sequential_default = None
         self._items_shuffled_default = None
@@ -641,6 +652,8 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentPartId']):
+            raise errors.IllegalState('assessment_part empty')
         return Id(self._my_map['assessmentPartId'])
 
     assessment_part_id = property(fget=get_assessment_part_id)
@@ -655,6 +668,8 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not bool(self._my_map['assessmentPartId']):
+            raise errors.IllegalState('assessment_part empty')
         mgr = self._get_provider_manager('ASSESSMENT_AUTHORING')
         if not mgr.supports_assessment_part_lookup():
             raise errors.OperationFailed('Assessment_Authoring does not support AssessmentPart lookup')
@@ -800,8 +815,8 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         """Initialize form metadata"""
         osid_objects.OsidObjectForm._init_metadata(self, **kwargs)
         self._cumulative_default = self._mdata['cumulative']['default_boolean_values'][0]
-        self._minimum_score_default = self._mdata['minimum_score']['default_integer_values'][0]
-        self._maximum_score_default = self._mdata['maximum_score']['default_integer_values'][0]
+        self._minimum_score_default = self._mdata['minimum_score']['default_cardinal_values'][0]
+        self._maximum_score_default = self._mdata['maximum_score']['default_cardinal_values'][0]
 
     def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
@@ -812,6 +827,7 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         self._my_map['maximumScore'] = self._maximum_score_default
         self._my_map['assessmentPartId'] = str(kwargs['assessment_part_id'])
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
+        self._my_map['appliedAssessmentPartIds'] = []
 
     def get_minimum_score_metadata(self):
         """Gets the metadata for the minimum score.
@@ -912,10 +928,7 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
-        metadata = dict(self._mdata['applied_assessment_parts'])
-        metadata.update({'existing_none_values': self._my_map['appliedAssessmentParts']})
-        return Metadata(**metadata)
+        raise errors.Unimplemented()
 
     applied_assessment_parts_metadata = property(fget=get_applied_assessment_parts_metadata)
 

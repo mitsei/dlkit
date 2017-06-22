@@ -4,7 +4,11 @@
 import unittest
 
 
+from dlkit.abstract_osid.authorization import objects as ABCObjects
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -53,80 +57,89 @@ class TestAuthorization(unittest.TestCase):
                 catalog.delete_authorization(obj.ident)
             cls.svc_mgr.delete_vault(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_is_implicit(self):
         """Tests is_implicit"""
-        pass
+        self.assertTrue(isinstance(self.object.is_implicit(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_has_resource(self):
         """Tests has_resource"""
-        pass
+        self.assertTrue(isinstance(self.object.has_resource(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_id(self):
         """Tests get_resource_id"""
-        pass
+        # no resource, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_resource_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource(self):
         """Tests get_resource"""
-        pass
+        # no resource, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_resource()
 
-    @unittest.skip('unimplemented test')
     def test_has_trust(self):
         """Tests has_trust"""
-        pass
+        self.assertTrue(isinstance(self.object.has_trust(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_trust_id(self):
         """Tests get_trust_id"""
-        pass
+        # no trust, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_trust_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_trust(self):
         """Tests get_trust"""
-        pass
+        # no trust, so throws IllegalState
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_trust()
 
-    @unittest.skip('unimplemented test')
     def test_has_agent(self):
         """Tests has_agent"""
-        pass
+        self.assertTrue(isinstance(self.object.has_agent(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_agent_id(self):
         """Tests get_agent_id"""
-        pass
+        result = self.object.get_agent_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(AGENT_ID))
 
-    @unittest.skip('unimplemented test')
     def test_get_agent(self):
         """Tests get_agent"""
-        pass
+        # because we don't have Agency implemented in authentication
+        with self.assertRaises(AttributeError):
+            self.object.get_agent()
 
-    @unittest.skip('unimplemented test')
     def test_get_function_id(self):
         """Tests get_function_id"""
-        pass
+        result = self.object.get_function_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(LOOKUP_RESOURCE_FUNCTION_ID))
 
-    @unittest.skip('unimplemented test')
     def test_get_function(self):
         """Tests get_function"""
-        pass
+        # not supported
+        with self.assertRaises(errors.OperationFailed):
+            self.object.get_function()
 
-    @unittest.skip('unimplemented test')
     def test_get_qualifier_id(self):
         """Tests get_qualifier_id"""
-        pass
+        result = self.object.get_qualifier_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         'resource.Resource%3Afoo%40ODL.MIT.EDU')
 
-    @unittest.skip('unimplemented test')
     def test_get_qualifier(self):
         """Tests get_qualifier"""
-        pass
+        # not supported
+        with self.assertRaises(errors.OperationFailed):
+            self.object.get_qualifier()
 
-    @unittest.skip('unimplemented test')
     def test_get_authorization_record(self):
         """Tests get_authorization_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_authorization_record(True)
 
 
 class TestAuthorizationForm(unittest.TestCase):
@@ -216,19 +229,57 @@ class TestAuthorizationList(unittest.TestCase):
 class TestVault(unittest.TestCase):
     """Tests for Vault"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_vault_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_vault(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_vault(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_vault_record(self):
         """Tests get_vault_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_vault_record(True)
 
 
 class TestVaultForm(unittest.TestCase):
     """Tests for VaultForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('AUTHORIZATION', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_vault_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
     def test_get_vault_form_record(self):
         """Tests get_vault_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_vault_form_record(True)
 
 
 class TestVaultList(unittest.TestCase):

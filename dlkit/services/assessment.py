@@ -580,6 +580,12 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # osid.resource.ResourceManager.get_resource_notification_session_catalog_template
         return self._provider_manager.get_item_notification_session(*args, **kwargs)
 
+    def get_item_notification_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider get_item_notification_session_for_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_catalog_template
+        return self._provider_manager.get_item_notification_session_for_bank(*args, **kwargs)
+
     def get_item_bank_session(self, *args, **kwargs):
         """Pass through to provider get_item_bank_session"""
         # Implemented from kitosid template for -
@@ -637,6 +643,18 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_assessment_admin_session_for_bank(*args, **kwargs)
+
+    def get_assessment_notification_session(self, *args, **kwargs):
+        """Pass through to provider get_assessment_notification_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_catalog_template
+        return self._provider_manager.get_assessment_notification_session(*args, **kwargs)
+
+    def get_assessment_notification_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider get_assessment_notification_session_for_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_catalog_template
+        return self._provider_manager.get_assessment_notification_session_for_bank(*args, **kwargs)
 
     def get_assessment_bank_session(self, *args, **kwargs):
         """Pass through to provider get_assessment_bank_session"""
@@ -1678,6 +1696,10 @@ class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessmen
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
+    def get_item_notification_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
     def get_item_bank_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1715,6 +1737,14 @@ class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessmen
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_assessment_admin_session_for_bank(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_assessment_notification_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_assessment_notification_session_for_bank(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
@@ -1928,9 +1958,17 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         else:
             session_class = getattr(self._provider_manager, 'get_' + session_name + '_for_bank')
             if self._proxy is None:
-                session = session_class(self._catalog.get_id())
+                if 'notification_session' in session_name:
+                    # Is there something else we should do about the receiver field?
+                    session = session_class('fake receiver', self._catalog.get_id())
+                else:
+                    session = session_class(self._catalog.get_id())
             else:
-                session = session_class(self._catalog.get_id(), self._proxy)
+                if 'notification_session' in session_name:
+                    # Is there something else we should do about the receiver field?
+                    session = session_class('fake receiver', self._catalog.get_id(), self._proxy)
+                else:
+                    session = session_class(self._catalog.get_id(), self._proxy)
             self._set_bank_view(session)
             self._set_object_view(session)
             self._set_operable_view(session)
@@ -3346,10 +3384,9 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('assessment_part_lookup_session').get_assessment_parts_by_ids(*args, **kwargs)
 
     def get_assessment_parts_by_genus_type(self, *args, **kwargs):
-        """Pass through to provider AssessmentPartLookupSession.get_assessment_parts_by_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
-        return self._get_provider_session('assessment_part_lookup_session').get_assessment_parts_by_genus_type(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_lookup_session').get_assessment_parts_by_genus_type(*args, **kwargs)
 
     def get_assessment_parts_by_parent_genus_type(self, *args, **kwargs):
         """Pass through to provider AssessmentPartLookupSession.get_assessment_parts_by_parent_genus_type"""
@@ -3364,10 +3401,9 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('assessment_part_lookup_session').get_assessment_parts_by_record_type(*args, **kwargs)
 
     def get_assessment_parts_for_assessment(self, *args, **kwargs):
-        """Pass through to provider AssessmentPartLookupSession.get_assessment_parts_for_assessment"""
-        # Implemented from kitosid template for -
-        # osid.resource.ActivityLookupSession.get_activities_for_objective
-        return self._get_provider_session('assessment_part_lookup_session').get_assessment_parts_for_assessment(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_lookup_session').get_assessment_parts_for_assessment(*args, **kwargs)
 
     def get_assessment_parts(self):
         """Pass through to provider method"""
@@ -3379,10 +3415,9 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
     # -- Implemented from assessment.authoring - AssessmentPartQuerySession
 
     def can_search_assessment_parts(self):
-        """Pass through to provider AssessmentPartQuerySession.can_search_assessment_parts"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return self._get_provider_session('assessment_part_query_session').can_search_assessment_parts()
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_query_session').can_search_assessment_parts()
 
     def get_assessment_part_query(self):
         """Pass through to provider method"""
@@ -3562,8 +3597,10 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
     # -- Implemented from assessment.authoring - AssessmentPartItemSession
 
     def can_access_assessment_part_items(self):
-        """Pass through to provider AssessmentPartItemSession.can_access_assessment_part_items"""
-        return self._get_provider_session('assessment_part_item_session').can_access_assessment_part_items()
+        """Pass through to provider method"""
+        # Note: this method is different from the underlying signature
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_item_session').can_access_assessment_part_items()
 
     def use_comparative_asseessment_part_item_view(self):
         """Pass through to provider AssessmentPartItemSession.use_comparative_asseessment_part_item_view"""
@@ -3705,10 +3742,9 @@ class Bank(abc_assessment_objects.Bank, osid.OsidSession, osid.OsidCatalog):
         return self._get_provider_session('sequence_rule_lookup_session').get_sequence_rules_for_assessment_parts(*args, **kwargs)
 
     def get_sequence_rules_for_assessment(self, *args, **kwargs):
-        """Pass through to provider SequenceRuleLookupSession.get_sequence_rules_for_assessment"""
-        # Implemented from kitosid template for -
-        # osid.resource.ActivityLookupSession.get_activities_for_objective
-        return self._get_provider_session('sequence_rule_lookup_session').get_sequence_rules_for_assessment(*args, **kwargs)
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'sequence_rule_lookup_session').get_sequence_rules_for_assessment(*args, **kwargs)
 
     def get_sequence_rules(self):
         """Pass through to provider method"""

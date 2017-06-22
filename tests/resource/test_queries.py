@@ -43,7 +43,7 @@ class TestResourceQuery(unittest.TestCase):
     def test_match_group(self):
         """Tests match_group"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_group(match=True)
+            self.query.match_group(True)
 
     def test_clear_group_terms(self):
         """Tests clear_group_terms"""
@@ -56,7 +56,7 @@ class TestResourceQuery(unittest.TestCase):
     def test_match_demographic(self):
         """Tests match_demographic"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_demographic(match=True)
+            self.query.match_demographic(True)
 
     def test_clear_demographic_terms(self):
         """Tests clear_demographic_terms"""
@@ -67,6 +67,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_containing_group_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('containingGroupId', self.query._query_terms)
         self.query.match_containing_group_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['containingGroupId'], {
             '$in': [str(test_id)]
@@ -96,7 +97,7 @@ class TestResourceQuery(unittest.TestCase):
     def test_match_any_containing_group(self):
         """Tests match_any_containing_group"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_any_containing_group(match=True)
+            self.query.match_any_containing_group(True)
 
     def test_clear_containing_group_terms(self):
         """Tests clear_containing_group_terms"""
@@ -107,6 +108,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_avatar_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('avatarId', self.query._query_terms)
         self.query.match_avatar_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['avatarId'], {
             '$in': [str(test_id)]
@@ -136,7 +138,7 @@ class TestResourceQuery(unittest.TestCase):
     def test_match_any_avatar(self):
         """Tests match_any_avatar"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_any_avatar(match=True)
+            self.query.match_any_avatar(True)
 
     def test_clear_avatar_terms(self):
         """Tests clear_avatar_terms"""
@@ -150,6 +152,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_agent_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('agentId', self.query._query_terms)
         self.query.match_agent_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['agentId'], {
             '$in': [str(test_id)]
@@ -179,7 +182,7 @@ class TestResourceQuery(unittest.TestCase):
     def test_match_any_agent(self):
         """Tests match_any_agent"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_any_agent(match=True)
+            self.query.match_any_agent(True)
 
     def test_clear_agent_terms(self):
         """Tests clear_agent_terms"""
@@ -190,6 +193,7 @@ class TestResourceQuery(unittest.TestCase):
         """Tests match_resource_relationship_id"""
         # From test_templates/resource.py::ResourceQuery::match_avatar_id_template
         test_id = Id('osid.Osid%3Afake%40ODL.MIT.EDU')
+        self.assertNotIn('resourceRelationshipId', self.query._query_terms)
         self.query.match_resource_relationship_id(test_id, match=True)
         self.assertEqual(self.query._query_terms['resourceRelationshipId'], {
             '$in': [str(test_id)]
@@ -219,7 +223,7 @@ class TestResourceQuery(unittest.TestCase):
     def test_match_any_resource_relationship(self):
         """Tests match_any_resource_relationship"""
         with self.assertRaises(errors.Unimplemented):
-            self.query.match_any_resource_relationship(match=True)
+            self.query.match_any_resource_relationship(True)
 
     def test_clear_resource_relationship_terms(self):
         """Tests clear_resource_relationship_terms"""
@@ -264,106 +268,143 @@ class TestResourceQuery(unittest.TestCase):
         self.assertNotIn('bin',
                          self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_query_record(self):
         """Tests get_resource_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_resource_query_record(True)
 
 
 class TestBinQuery(unittest.TestCase):
     """Tests for BinQuery"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinQuery::init_template
+        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bin_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bin(create_form)
+        cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinQuery::init_template
+        self.query = self.svc_mgr.get_bin_query()
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinQuery::init_template
+        cls.svc_mgr.delete_bin(cls.catalog.ident)
+
     def test_match_resource_id(self):
         """Tests match_resource_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_resource_id(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_id_terms(self):
         """Tests clear_resource_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['resourceId'] = 'foo'
+        self.query.clear_resource_id_terms()
+        self.assertNotIn('resourceId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_resource_query(self):
         """Tests supports_resource_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_resource_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_resource_query(self):
         """Tests get_resource_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_resource_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_resource(self):
         """Tests match_any_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_resource(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_resource_terms(self):
         """Tests clear_resource_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['resource'] = 'foo'
+        self.query.clear_resource_terms()
+        self.assertNotIn('resource',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_ancestor_bin_id(self):
         """Tests match_ancestor_bin_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_ancestor_bin_id(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_bin_id_terms(self):
         """Tests clear_ancestor_bin_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorBinId'] = 'foo'
+        self.query.clear_ancestor_bin_id_terms()
+        self.assertNotIn('ancestorBinId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_ancestor_bin_query(self):
         """Tests supports_ancestor_bin_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_ancestor_bin_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_ancestor_bin_query(self):
         """Tests get_ancestor_bin_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_ancestor_bin_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_ancestor_bin(self):
         """Tests match_any_ancestor_bin"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_ancestor_bin(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_ancestor_bin_terms(self):
         """Tests clear_ancestor_bin_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['ancestorBin'] = 'foo'
+        self.query.clear_ancestor_bin_terms()
+        self.assertNotIn('ancestorBin',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_match_descendant_bin_id(self):
         """Tests match_descendant_bin_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_descendant_bin_id(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_bin_id_terms(self):
         """Tests clear_descendant_bin_id_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantBinId'] = 'foo'
+        self.query.clear_descendant_bin_id_terms()
+        self.assertNotIn('descendantBinId',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_supports_descendant_bin_query(self):
         """Tests supports_descendant_bin_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.supports_descendant_bin_query()
 
-    @unittest.skip('unimplemented test')
     def test_get_descendant_bin_query(self):
         """Tests get_descendant_bin_query"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_descendant_bin_query()
 
-    @unittest.skip('unimplemented test')
     def test_match_any_descendant_bin(self):
         """Tests match_any_descendant_bin"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.match_any_descendant_bin(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_descendant_bin_terms(self):
         """Tests clear_descendant_bin_terms"""
-        pass
+        # From test_templates/resource.py::BinQuery::clear_group_terms_template
+        self.query._query_terms['descendantBin'] = 'foo'
+        self.query.clear_descendant_bin_terms()
+        self.assertNotIn('descendantBin',
+                         self.query._query_terms)
 
-    @unittest.skip('unimplemented test')
     def test_get_bin_query_record(self):
         """Tests get_bin_query_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.query.get_bin_query_record(True)

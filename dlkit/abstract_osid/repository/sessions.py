@@ -4307,7 +4307,7 @@ class CompositionRepositorySession:
         return  # osid.id.IdList
 
     @abc.abstractmethod
-    def get_compoitions_by_repositories(self, repository_ids):
+    def get_compositions_by_repositories(self, repository_ids):
         """Gets the list of ``Compositions`` corresponding to a list of ``Repository`` objects.
 
         :param repository_ids: list of repository ``Ids``

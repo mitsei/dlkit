@@ -156,6 +156,30 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_gradebook_admin' in profile.SUPPORTS
 
+    def supports_gradebook_hierarchy(self):
+        """Tests if a gradebook hierarchy traversal is supported.
+
+        return: (boolean) - ``true`` if a gradebook hierarchy traversal
+                is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_gradebook_hierarchy' in profile.SUPPORTS
+
+    def supports_gradebook_hierarchy_design(self):
+        """Tests if gradebook hierarchy design is supported.
+
+        return: (boolean) - ``true`` if a gradebook hierarchy design is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_gradebook_hierarchy_design' in profile.SUPPORTS
+
     def get_grade_record_types(self):
         """Gets the supported ``Grade`` record types.
 
@@ -851,6 +875,46 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
 
     gradebook_admin_session = property(fget=get_gradebook_admin_session)
 
+    @utilities.remove_null_proxy_kwarg
+    def get_gradebook_hierarchy_session(self):
+        """Gets the session traversing gradebook hierarchies.
+
+        return: (osid.grading.GradebookHierarchySession) - a
+                ``GradebookHierarchySession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_gradebook_hierarchy() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_hierarchy()`` is true.*
+
+        """
+        if not self.supports_gradebook_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookHierarchySession(runtime=self._runtime)
+
+    gradebook_hierarchy_session = property(fget=get_gradebook_hierarchy_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_gradebook_hierarchy_design_session(self):
+        """Gets the session designing gradebook hierarchies.
+
+        return: (osid.grading.GradebookHierarchyDesignSession) - a
+                ``GradebookHierarchyDesignSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_gradebook_hierarchy_design()
+                is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_hierarchy_design()`` is true.*
+
+        """
+        if not self.supports_gradebook_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookHierarchyDesignSession(runtime=self._runtime)
+
+    gradebook_hierarchy_design_session = property(fget=get_gradebook_hierarchy_design_session)
+
     def get_grading_batch_manager(self):
         """Gets the ``GradingBatchManager``.
 
@@ -1415,6 +1479,46 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             raise errors.Unimplemented()
         # pylint: disable=no-member
         return sessions.GradebookAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_gradebook_hierarchy_session(self, proxy):
+        """Gets the session traversing gradebook hierarchies.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.grading.GradebookHierarchySession) - a
+                ``GradebookHierarchySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_gradebook_hierarchy() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_hierarchy()`` is true.*
+
+        """
+        if not self.supports_gradebook_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookHierarchySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_gradebook_hierarchy_design_session(self, proxy):
+        """Gets the session designing gradebook hierarchies.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.grading.GradebookHierarchyDesignSession) - a
+                ``GradebookHierarchyDesignSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_gradebook_hierarchy_design()
+                is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_hierarchy_design()`` is true.*
+
+        """
+        if not self.supports_gradebook_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
 
     def get_grading_batch_proxy_manager(self):
         """Gets the ``GradingBatchProxyManager``.

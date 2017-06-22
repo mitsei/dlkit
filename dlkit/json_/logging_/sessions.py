@@ -1842,3 +1842,632 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=log_id, alias_id=osid.id.Id)
         self._alias_id(primary_id=log_id, equivalent_id=alias_id)
+
+
+class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_sessions.OsidSession):
+    """This session defines methods for traversing a hierarchy of ``Log`` objects.
+
+    Each node in the hierarchy is a unique ``Log``. The hierarchy may be
+    traversed recursively to establish the tree structure through
+    ``get_parent_logs()`` and ``getChildLogs()``. To relate these
+    ``Ids`` to another OSID, ``get_log_nodes()`` can be used for
+    retrievals that can be used for bulk lookups in other OSIDs. Any
+    ``Log`` available in the Log OSID is known to this hierarchy but
+    does not appear in the hierarchy traversal until added as a root
+    node or a child of another node.
+
+    A user may not be authorized to traverse the entire hierarchy. Parts
+    of the hierarchy may be made invisible through omission from the
+    returns of ``get_parent_logs()`` or ``get_child_logs()`` in lieu of
+    a ``PermissionDenied`` error that may disrupt the traversal through
+    authorized pathways.
+
+    This session defines views that offer differing behaviors when
+    retrieving multiple objects.
+
+      * comparative view: log elements may be silently omitted or re-
+        ordered
+      * plenary view: provides a complete set or is an error condition
+
+    """
+    _session_namespace = 'logging.LogHierarchySession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._forms = dict()
+        self._kwargs = kwargs
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_hierarchy_session()
+        else:
+            hierarchy_mgr = self._get_provider_manager('HIERARCHY')
+            self._hierarchy_session = hierarchy_mgr.get_hierarchy_traversal_session_for_hierarchy(
+                Id(authority='LOGGING',
+                   namespace='CATALOG',
+                   identifier='LOG'),
+                proxy=self._proxy)
+
+    def get_log_hierarchy_id(self):
+        """Gets the hierarchy ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the hierarchy ``Id`` associated with this
+                session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy_id()
+        return self._hierarchy_session.get_hierarchy_id()
+
+    log_hierarchy_id = property(fget=get_log_hierarchy_id)
+
+    def get_log_hierarchy(self):
+        """Gets the hierarchy associated with this session.
+
+        return: (osid.hierarchy.Hierarchy) - the hierarchy associated
+                with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy()
+        return self._hierarchy_session.get_hierarchy()
+
+    log_hierarchy = property(fget=get_log_hierarchy)
+
+    def can_access_log_hierarchy(self):
+        """Tests if this user can perform hierarchy queries.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an an application that may not offer hierrachy
+        traversal operations to unauthorized users.
+
+        return: (boolean) - ``false`` if hierarchy traversal methods are
+                not authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if self._catalog_session is not None:
+            return self._catalog_session.can_access_catalog_hierarchy()
+        return True
+
+    def use_comparative_log_view(self):
+        """The returns from the log methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_log_view(self):
+        """A complete view of the ``Log`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def get_root_log_ids(self):
+        """Gets the root log ``Ids`` in this hierarchy.
+
+        return: (osid.id.IdList) - the root log ``Ids``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_root_catalog_ids()
+        return self._hierarchy_session.get_roots()
+
+    root_log_ids = property(fget=get_root_log_ids)
+
+    def get_root_logs(self):
+        """Gets the root logs in the log hierarchy.
+
+        A node with no parents is an orphan. While all log ``Ids`` are
+        known to the hierarchy, an orphan does not appear in the
+        hierarchy unless explicitly added as a root node or child of
+        another node.
+
+        return: (osid.logging.LogList) - the root logs
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_root_catalogs()
+        return LogLookupSession(
+            self._proxy,
+            self._runtime).get_logs_by_ids(list(self.get_root_log_ids()))
+
+    root_logs = property(fget=get_root_logs)
+
+    @utilities.arguments_not_none
+    def has_parent_logs(self, log_id):
+        """Tests if the ``Log`` has any parents.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        return: (boolean) - ``true`` if the log has parents, ``false``
+                otherwise
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_parent_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.has_parent_catalogs(catalog_id=log_id)
+        return self._hierarchy_session.has_parents(id_=log_id)
+
+    @utilities.arguments_not_none
+    def is_parent_of_log(self, id_, log_id):
+        """Tests if an ``Id`` is a direct parent of a log.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        return: (boolean) - ``true`` if this ``id`` is a parent of
+                ``log_id,``  ``false`` otherwise
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``id`` or ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_parent_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=log_id)
+        return self._hierarchy_session.is_parent(id_=log_id, parent_id=id_)
+
+    @utilities.arguments_not_none
+    def get_parent_log_ids(self, log_id):
+        """Gets the parent ``Ids`` of the given log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        return: (osid.id.IdList) - the parent ``Ids`` of the log
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.git_parent_catalog_ids()
+        return self._hierarchy_session.get_parents(id_=log_id)
+
+    @utilities.arguments_not_none
+    def get_parent_logs(self, log_id):
+        """Gets the parent logs of the given ``id``.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log`` to query
+        return: (osid.logging.LogList) - the parent logs of the ``id``
+        raise:  NotFound - a ``Log`` identified by ``Id is`` not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.git_parent_catalogs(catalog_id=log_id)
+        return LogLookupSession(
+            self._proxy,
+            self._runtime).get_logs_by_ids(
+                list(self.get_parent_log_ids(log_id)))
+
+    @utilities.arguments_not_none
+    def is_ancestor_of_log(self, id_, log_id):
+        """Tests if an ``Id`` is an ancestor of a log.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        return: (boolean) - ``true`` if the ``id`` is an ancestor of the
+                ``log_id,``  ``false`` otherwise
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``id`` or ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` is not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=log_id)
+        return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=log_id)
+
+    @utilities.arguments_not_none
+    def has_child_logs(self, log_id):
+        """Tests if a log has any children.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        return: (boolean) - ``true`` if the ``log_id`` has children,
+                ``false`` otherwise
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_child_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.has_child_catalogs(catalog_id=log_id)
+        return self._hierarchy_session.has_children(id_=log_id)
+
+    @utilities.arguments_not_none
+    def is_child_of_log(self, id_, log_id):
+        """Tests if an ``Id`` is a direct child of a log.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        return: (boolean) - ``true`` if this ``id`` is a child of
+                ``log_id,``  ``false`` otherwise
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``id`` or ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_child_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=log_id)
+        return self._hierarchy_session.is_child(id_=log_id, child_id=id_)
+
+    @utilities.arguments_not_none
+    def get_child_log_ids(self, log_id):
+        """Gets the child ``Ids`` of the given log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` to query
+        return: (osid.id.IdList) - the children of the depot
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_child_catalog_ids(catalog_id=log_id)
+        return self._hierarchy_session.get_children(id_=log_id)
+
+    @utilities.arguments_not_none
+    def get_child_logs(self, log_id):
+        """Gets the child logs of the given ``id``.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log`` to query
+        return: (osid.logging.LogList) - the child logs of the ``id``
+        raise:  NotFound - a ``Log`` identified by ``Id is`` not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_child_catalogs(catalog_id=log_id)
+        return LogLookupSession(
+            self._proxy,
+            self._runtime).get_logs_by_ids(
+                list(self.get_child_log_ids(log_id)))
+
+    @utilities.arguments_not_none
+    def is_descendant_of_log(self, id_, log_id):
+        """Tests if an ``Id`` is a descendant of a log.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        return: (boolean) - ``true`` if the ``id`` is a descendant of
+                the ``log_id,``  ``false`` otherwise
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``id`` or ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` is not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=log_id)
+        return self._hierarchy_session.is_descendant(id_=id_, descendant_id=log_id)
+
+    @utilities.arguments_not_none
+    def get_log_node_ids(self, log_id, ancestor_levels, descendant_levels, include_siblings):
+        """Gets a portion of the hierarchy for the given log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` to query
+        arg:    ancestor_levels (cardinal): the maximum number of
+                ancestor levels to include. A value of 0 returns no
+                parents in the node.
+        arg:    descendant_levels (cardinal): the maximum number of
+                descendant levels to include. A value of 0 returns no
+                children in the node.
+        arg:    include_siblings (boolean): ``true`` to include the
+                siblings of the given node, ``false`` to omit the
+                siblings
+        return: (osid.hierarchy.Node) - a log node
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_node_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_node_ids(
+                catalog_id=log_id,
+                ancestor_levels=ancestor_levels,
+                descendant_levels=descendant_levels,
+                include_siblings=include_siblings)
+        return self._hierarchy_session.get_nodes(
+            id_=log_id,
+            ancestor_levels=ancestor_levels,
+            descendant_levels=descendant_levels,
+            include_siblings=include_siblings)
+
+    @utilities.arguments_not_none
+    def get_log_nodes(self, log_id, ancestor_levels, descendant_levels, include_siblings):
+        """Gets a portion of the hierarchy for the given log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` to query
+        arg:    ancestor_levels (cardinal): the maximum number of
+                ancestor levels to include. A value of 0 returns no
+                parents in the node.
+        arg:    descendant_levels (cardinal): the maximum number of
+                descendant levels to include. A value of 0 returns no
+                children in the node.
+        arg:    include_siblings (boolean): ``true`` to include the
+                siblings of the given node, ``false`` to omit the
+                siblings
+        return: (osid.logging.LogNode) - a log node
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_nodes
+        return objects.LogNode(self.get_log_node_ids(
+            log_id=log_id,
+            ancestor_levels=ancestor_levels,
+            descendant_levels=descendant_levels,
+            include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
+
+
+class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, osid_sessions.OsidSession):
+    """This session manages a hierarchy of logs.
+
+    Logs may be organized into a hierarchy for organizing or federating.
+    A parent ``Log`` includes all of the Ids of its children such that a
+    single root node contains all of the ``Ids`` of the federation.
+
+    """
+    _session_namespace = 'logging.LogHierarchyDesignSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._forms = dict()
+        self._kwargs = kwargs
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_hierarchy_design_session()
+        else:
+            hierarchy_mgr = self._get_provider_manager('HIERARCHY')
+            self._hierarchy_session = hierarchy_mgr.get_hierarchy_design_session_for_hierarchy(
+                Id(authority='LOGGING',
+                   namespace='CATALOG',
+                   identifier='LOG'),
+                proxy=self._proxy)
+
+    def get_log_hierarchy_id(self):
+        """Gets the hierarchy ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the hierarchy ``Id`` associated with this
+                session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy_id()
+        return self._hierarchy_session.get_hierarchy_id()
+
+    log_hierarchy_id = property(fget=get_log_hierarchy_id)
+
+    def get_log_hierarchy(self):
+        """Gets the hierarchy associated with this session.
+
+        return: (osid.hierarchy.Hierarchy) - the hierarchy associated
+                with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy()
+        return self._hierarchy_session.get_hierarchy()
+
+    log_hierarchy = property(fget=get_log_hierarchy)
+
+    def can_modify_log_hierarchy(self):
+        """Tests if this user can change the hierarchy.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known performing any update
+        will result in a ``PermissionDenied``. This is intended as a
+        hint to an application that may opt not to offer these
+        operations to an unauthorized user.
+
+        return: (boolean) - ``false`` if changing this hierarchy is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if self._catalog_session is not None:
+            return self._catalog_session.can_modify_catalog_hierarchy()
+        return True
+
+    @utilities.arguments_not_none
+    def add_root_log(self, log_id):
+        """Adds a root log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        raise:  AlreadyExists - ``log_id`` is already in hierarchy
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.add_root_catalog(catalog_id=log_id)
+        return self._hierarchy_session.add_root(id_=log_id)
+
+    @utilities.arguments_not_none
+    def remove_root_log(self, log_id):
+        """Removes a root log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        raise:  NotFound - ``log_id`` is not a root
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_root_catalog(catalog_id=log_id)
+        return self._hierarchy_session.remove_root(id_=log_id)
+
+    @utilities.arguments_not_none
+    def add_child_log(self, log_id, child_id):
+        """Adds a child to a log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        arg:    child_id (osid.id.Id): the ``Id`` of the new child
+        raise:  AlreadyExists - ``log_id`` is already a parent of
+                ``child_id``
+        raise:  NotFound - ``log_id`` or ``child_id`` not found
+        raise:  NullArgument - ``log_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.add_child_catalog(catalog_id=log_id, child_id=child_id)
+        return self._hierarchy_session.add_child(id_=log_id, child_id=child_id)
+
+    @utilities.arguments_not_none
+    def remove_child_log(self, log_id, child_id):
+        """Removes a child from a log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        arg:    child_id (osid.id.Id): the ``Id`` of the new child
+        raise:  NotFound - ``log_id`` not a parent of ``child_id``
+        raise:  NullArgument - ``log_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_child_catalog(catalog_id=log_id, child_id=child_id)
+        return self._hierarchy_session.remove_child(id_=log_id, child_id=child_id)
+
+    @utilities.arguments_not_none
+    def remove_child_logs(self, log_id):
+        """Removes all children from a log.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of a log
+        raise:  NotFound - ``log_id`` not in hierarchy
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_child_catalogs(catalog_id=log_id)
+        return self._hierarchy_session.remove_children(id_=log_id)

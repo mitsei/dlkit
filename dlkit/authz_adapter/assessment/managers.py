@@ -463,6 +463,10 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
     def get_item_notification_session(self, item_receiver):
         raise Unimplemented()
 
+    @raise_null_argument
+    def get_item_notification_session_for_bank(self, item_receiver, bank_id):
+        raise Unimplemented()
+
     def get_item_bank_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -595,6 +599,14 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
                 provider_manager=self._provider_manager)
         except AttributeError:
             raise OperationFailed()
+
+    @raise_null_argument
+    def get_assessment_notification_session(self, assessment_receiver):
+        raise Unimplemented()
+
+    @raise_null_argument
+    def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id):
+        raise Unimplemented()
 
     def get_assessment_bank_session(self):
         # Implemented from azosid template for -
@@ -1208,6 +1220,10 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
         raise Unimplemented()
 
     @raise_null_argument
+    def get_item_notification_session_for_bank(self, item_receiver, bank_id, proxy):
+        raise Unimplemented()
+
+    @raise_null_argument
     def get_item_bank_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
@@ -1342,6 +1358,14 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
                 proxy=proxy)
         except AttributeError:
             raise OperationFailed()
+
+    @raise_null_argument
+    def get_assessment_notification_session(self, assessment_receiver, proxy):
+        raise Unimplemented()
+
+    @raise_null_argument
+    def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id, proxy):
+        raise Unimplemented()
 
     @raise_null_argument
     def get_assessment_bank_session(self, proxy):

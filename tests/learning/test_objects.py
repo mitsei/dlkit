@@ -4,7 +4,12 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.learning import objects as ABCObjects
+from dlkit.abstract_osid.learning.objects import Objective
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -26,6 +31,7 @@ class TestObjective(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -38,6 +44,7 @@ class TestObjective(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_objectives():
             cls.catalog.delete_objective(obj.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
@@ -46,7 +53,6 @@ class TestObjective(unittest.TestCase):
         """Tests has_assessment"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_assessment(), bool))
-        self.assertFalse(self.object.has_assessment())
 
     def test_get_assessment_id(self):
         """Tests get_assessment_id"""
@@ -64,7 +70,6 @@ class TestObjective(unittest.TestCase):
         """Tests has_knowledge_category"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_knowledge_category(), bool))
-        self.assertFalse(self.object.has_knowledge_category())
 
     def test_get_knowledge_category_id(self):
         """Tests get_knowledge_category_id"""
@@ -82,7 +87,6 @@ class TestObjective(unittest.TestCase):
         """Tests has_cognitive_process"""
         # From test_templates/resources.py::Resource::has_avatar_template
         self.assertTrue(isinstance(self.object.has_cognitive_process(), bool))
-        self.assertFalse(self.object.has_cognitive_process())
 
     def test_get_cognitive_process_id(self):
         """Tests get_cognitive_process_id"""
@@ -96,10 +100,10 @@ class TestObjective(unittest.TestCase):
         self.assertRaises(errors.IllegalState,
                           self.object.get_cognitive_process)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_record(self):
         """Tests get_objective_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_objective_record(True)
 
 
 class TestObjectiveForm(unittest.TestCase):
@@ -126,7 +130,16 @@ class TestObjectiveForm(unittest.TestCase):
     def test_get_assessment_metadata(self):
         """Tests get_assessment_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_assessment_metadata(), Metadata))
+        mdata = self.form.get_assessment_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_assessment(self):
         """Tests set_assessment"""
@@ -135,6 +148,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_assessment(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['assessmentId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assessment(True)
 
     def test_clear_assessment(self):
         """Tests clear_assessment"""
@@ -143,12 +158,21 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['assessmentId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_assessment()
-        self.assertEqual(self.form._my_map['assessmentId'], '')
+        self.assertEqual(self.form._my_map['assessmentId'], self.form.get_assessment_metadata().get_default_id_values()[0])
 
     def test_get_knowledge_category_metadata(self):
         """Tests get_knowledge_category_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_knowledge_category_metadata(), Metadata))
+        mdata = self.form.get_knowledge_category_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_knowledge_category(self):
         """Tests set_knowledge_category"""
@@ -157,6 +181,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_knowledge_category(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['knowledgeCategoryId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_knowledge_category(True)
 
     def test_clear_knowledge_category(self):
         """Tests clear_knowledge_category"""
@@ -165,12 +191,21 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['knowledgeCategoryId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_knowledge_category()
-        self.assertEqual(self.form._my_map['knowledgeCategoryId'], '')
+        self.assertEqual(self.form._my_map['knowledgeCategoryId'], self.form.get_knowledge_category_metadata().get_default_id_values()[0])
 
     def test_get_cognitive_process_metadata(self):
         """Tests get_cognitive_process_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_cognitive_process_metadata(), Metadata))
+        mdata = self.form.get_cognitive_process_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_cognitive_process(self):
         """Tests set_cognitive_process"""
@@ -179,6 +214,8 @@ class TestObjectiveForm(unittest.TestCase):
         self.form.set_cognitive_process(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['cognitiveProcessId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_cognitive_process(True)
 
     def test_clear_cognitive_process(self):
         """Tests clear_cognitive_process"""
@@ -187,7 +224,7 @@ class TestObjectiveForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['cognitiveProcessId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_cognitive_process()
-        self.assertEqual(self.form._my_map['cognitiveProcessId'], '')
+        self.assertEqual(self.form._my_map['cognitiveProcessId'], self.form.get_cognitive_process_metadata().get_default_id_values()[0])
 
     def test_get_objective_form_record(self):
         """Tests get_objective_form_record"""
@@ -221,6 +258,7 @@ class TestObjectiveList(unittest.TestCase):
             self.objective_list.append(obj)
             self.objective_ids.append(obj.ident)
         self.objective_list = ObjectiveList(self.objective_list)
+        self.object = self.objective_list
 
     @classmethod
     def tearDownClass(cls):
@@ -248,20 +286,50 @@ class TestObjectiveList(unittest.TestCase):
 class TestObjectiveNode(unittest.TestCase):
     """Tests for ObjectiveNode"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_objective_bank_form_for_create([])
+        create_form.display_name = 'Test ObjectiveBank'
+        create_form.description = 'Test ObjectiveBank for ObjectiveNode tests'
+        cls.catalog = cls.svc_mgr.create_objective_bank(create_form)
+
+    def setUp(self):
+        from dlkit.json_.learning.objects import ObjectiveNode
+        self.objective_node_list = list()
+        for num in [0, 1]:
+            create_form = self.catalog.get_objective_form_for_create([])
+            create_form.display_name = 'Test Objective ' + str(num)
+            create_form.description = 'Test Objective for ObjectiveNodeList tests'
+            obj = self.catalog.create_objective(create_form)
+            self.objective_node_list.append(ObjectiveNode(obj.object_map))
+        # Now put the objectives in a hierarchy
+        self.catalog.add_root_objective(self.objective_node_list[0].ident)
+        self.catalog.add_child_objective(
+            self.objective_node_list[0].ident,
+            self.objective_node_list[1].ident)
+        self.object = ObjectiveNode(self.objective_node_list[0])
+
+    @classmethod
+    def tearDownClass(cls):
+        for obj in cls.catalog.get_objectives():
+            cls.catalog.delete_objective(obj.ident)
+        cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
+
     def test_get_objective(self):
         """Tests get_objective"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective()
 
-    @unittest.skip('unimplemented test')
     def test_get_parent_objective_nodes(self):
         """Tests get_parent_objective_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_parent_objective_nodes()
 
-    @unittest.skip('unimplemented test')
     def test_get_child_objective_nodes(self):
         """Tests get_child_objective_nodes"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_child_objective_nodes()
 
 
 class TestObjectiveNodeList(unittest.TestCase):
@@ -343,65 +411,77 @@ class TestActivity(unittest.TestCase):
         cls.catalog.delete_objective(cls.objective.ident)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_objective_id(self):
         """Tests get_objective_id"""
-        pass
+        # From test_templates/learning.py::Activity::get_objective_id_template
+        result = self.object.get_objective_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(self.objective.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_objective(self):
         """Tests get_objective"""
-        pass
+        # From test_templates/learning.py::Activity::get_objective_template
+        result = self.object.get_objective()
+        self.assertTrue(isinstance(result, ABCObjects.Objective))
+        self.assertEqual(str(result.ident),
+                         str(self.objective.ident))
 
-    @unittest.skip('unimplemented test')
     def test_is_asset_based_activity(self):
         """Tests is_asset_based_activity"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_asset_based_activity(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_ids(self):
         """Tests get_asset_ids"""
-        pass
+        # From test_templates/learning.py::Activity::get_asset_ids_template
+        result = self.object.get_asset_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
-    @unittest.skip('unimplemented test')
     def test_get_assets(self):
         """Tests get_assets"""
-        pass
+        # From test_templates/learning.py::Activity::get_assets_template
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_assets()
 
-    @unittest.skip('unimplemented test')
     def test_is_course_based_activity(self):
         """Tests is_course_based_activity"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_course_based_activity(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_course_ids(self):
         """Tests get_course_ids"""
-        pass
+        result = self.object.get_course_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
-    @unittest.skip('unimplemented test')
     def test_get_courses(self):
         """Tests get_courses"""
-        pass
+        # We don't have the course service yet
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_courses()
 
-    @unittest.skip('unimplemented test')
     def test_is_assessment_based_activity(self):
         """Tests is_assessment_based_activity"""
-        pass
+        # From test_templates/resources.py::Resource::is_group_template
+        self.assertTrue(isinstance(self.object.is_assessment_based_activity(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_assessment_ids(self):
         """Tests get_assessment_ids"""
-        pass
+        result = self.object.get_assessment_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
-    @unittest.skip('unimplemented test')
     def test_get_assessments(self):
         """Tests get_assessments"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_assessments()
 
-    @unittest.skip('unimplemented test')
     def test_get_activity_record(self):
         """Tests get_activity_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_activity_record(True)
 
 
 class TestActivityForm(unittest.TestCase):
@@ -445,6 +525,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['assetIds']), 1)
         self.assertEqual(self.form._my_map['assetIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assets('this is not a list')
         # reset this for other tests
         self.form._my_map['assetIds'] = list()
 
@@ -472,6 +554,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['courseIds']), 1)
         self.assertEqual(self.form._my_map['courseIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_courses('this is not a list')
         # reset this for other tests
         self.form._my_map['courseIds'] = list()
 
@@ -499,6 +583,8 @@ class TestActivityForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['assessmentIds']), 1)
         self.assertEqual(self.form._my_map['assessmentIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_assessments('this is not a list')
         # reset this for other tests
         self.form._my_map['assessmentIds'] = list()
 
@@ -609,45 +695,56 @@ class TestProficiency(unittest.TestCase):
         """Tests get_resource_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_resource(self):
         """Tests get_resource"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_resource()
 
     @unittest.skip('unimplemented test')
     def test_get_objective_id(self):
         """Tests get_objective_id"""
         pass
 
-    @unittest.skip('unimplemented test')
     def test_get_objective(self):
         """Tests get_objective"""
-        pass
+        result = self.object.get_objective()
+        self.assertTrue(isinstance(result, Objective))
+        self.assertEqual(str(result.ident),
+                         str(self.objective.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_completion(self):
         """Tests get_completion"""
-        pass
+        score = self.object.get_completion()
+        self.assertIsNone(score)
 
-    @unittest.skip('unimplemented test')
+        # if this is set, should be a Decimal
+        form = self.catalog.get_proficiency_form_for_create(self.objective.ident,
+                                                            AGENT_ID,
+                                                            [])
+        form.set_completion(0.0)
+        new_proficiency = self.catalog.create_proficiency(form)
+
+        self.assertEqual(new_proficiency.get_completion(), 0.0)
+
     def test_has_level(self):
         """Tests has_level"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.has_level()
 
-    @unittest.skip('unimplemented test')
     def test_get_level_id(self):
         """Tests get_level_id"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_level_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_level(self):
         """Tests get_level"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_level()
 
-    @unittest.skip('unimplemented test')
     def test_get_proficiency_record(self):
         """Tests get_proficiency_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_proficiency_record(True)
 
 
 class TestProficiencyForm(unittest.TestCase):
@@ -663,9 +760,11 @@ class TestProficiencyForm(unittest.TestCase):
 
         form = cls.catalog.get_objective_form_for_create([])
         form.display_name = "Test LO"
-        objective = cls.catalog.create_objective(form)
+        cls.objective = cls.catalog.create_objective(form)
 
-        cls.form = cls.catalog.get_proficiency_form_for_create(objective.ident, AGENT_ID, [])
+    def setUp(self):
+        self.form = self.catalog.get_proficiency_form_for_create(self.objective.ident, AGENT_ID, [])
+        self.object = self.form
 
     @classmethod
     def tearDownClass(cls):
@@ -679,32 +778,57 @@ class TestProficiencyForm(unittest.TestCase):
     def test_get_completion_metadata(self):
         """Tests get_completion_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_completion_metadata(), Metadata))
+        mdata = self.form.get_completion_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DECIMAL')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_completion(self):
         """Tests set_completion"""
-        pass
+        self.assertIsNone(self.form._my_map['completion'])
+        self.form.set_completion(50.0)
+        self.assertIsNotNone(self.form._my_map['completion'])
 
-    @unittest.skip('unimplemented test')
     def test_clear_completion(self):
         """Tests clear_completion"""
-        pass
+        self.form.set_completion(50.0)
+        self.assertIsNotNone(self.form._my_map['completion'])
+        self.form.clear_completion()
+        self.assertIsNone(self.form._my_map['completion'])
 
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_level_metadata(), Metadata))
+        mdata = self.form.get_level_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_level(self):
         """Tests set_level"""
-        pass
+        # This is a slightly hokey test, because the spec seems to have a typo
+        self.assertEqual(self.form._my_map['levelId'], '')
+        self.form.set_level(Id('grading.Grade%3Afake%40ODL.MIT.EDU'))
+        self.assertIsNotNone(self.form._my_map['level'])
 
-    @unittest.skip('unimplemented test')
     def test_clear_level(self):
         """Tests clear_level"""
-        pass
+        self.form.set_level(Id('grading.Grade%3Afake%40ODL.MIT.EDU'))
+        self.assertIsNotNone(self.form._my_map['level'])
+        self.form.clear_level()
+        self.assertEqual(self.form._my_map['level'], '')
 
     def test_get_proficiency_form_record(self):
         """Tests get_proficiency_form_record"""
@@ -772,19 +896,57 @@ class TestProficiencyList(unittest.TestCase):
 class TestObjectiveBank(unittest.TestCase):
     """Tests for ObjectiveBank"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_objective_bank_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_objective_bank(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_objective_bank(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_objective_bank_record(self):
         """Tests get_objective_bank_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective_bank_record(True)
 
 
 class TestObjectiveBankForm(unittest.TestCase):
     """Tests for ObjectiveBankForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('LEARNING', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_objective_bank_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
     def test_get_objective_bank_form_record(self):
         """Tests get_objective_bank_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_objective_bank_form_record(True)
 
 
 class TestObjectiveBankList(unittest.TestCase):
@@ -869,11 +1031,21 @@ class TestObjectiveBankNode(unittest.TestCase):
             self.objective_bank_list[0].ident,
             self.objective_bank_list[1].ident)
 
+        self.object = self.svc_mgr.get_objective_bank_nodes(
+            self.objective_bank_list[0].ident, 0, 5, False)
+
+    def tearDown(self):
+        # Implemented from init template for BinNode
+        self.svc_mgr.remove_child_objective_bank(
+            self.objective_bank_list[0].ident,
+            self.objective_bank_list[1].ident)
+        self.svc_mgr.remove_root_objective_bank(self.objective_bank_list[0].ident)
+        for node in self.objective_bank_list:
+            self.svc_mgr.delete_objective_bank(node.ident)
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for BinNode
-        for obj in cls.objective_bank_ids:
-            cls.svc_mgr.delete_objective_bank(obj)
         cls.svc_mgr.delete_objective_bank(cls.catalog.ident)
 
     def test_get_objective_bank(self):

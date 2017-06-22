@@ -4,13 +4,46 @@
 import unittest
 
 
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
 class TestItemSearch(unittest.TestCase):
     """Tests for ItemSearch"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    def setUp(self):
+        self.search = self.catalog.get_item_search()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_search_among_items(self):
         """Tests search_among_items"""
-        pass
+        # This is implementation dependent...find some other way?
+        self.assertIsNone(self.search._id_list)
+        fake_list = [self.catalog.ident]
+        self.search.search_among_items(fake_list)
+        self.assertEqual(self.search._id_list, fake_list)
 
     @unittest.skip('unimplemented test')
     def test_order_item_results(self):
@@ -26,10 +59,29 @@ class TestItemSearch(unittest.TestCase):
 class TestItemSearchResults(unittest.TestCase):
     """Tests for ItemSearchResults"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_bank(create_form)
+
+    def setUp(self):
+        self.query = self.catalog.get_item_query()
+        self.search_obj = self.catalog.get_item_search()
+        self.search = self.catalog.get_items_by_search(self.query, self.search_obj)
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_bank(cls.catalog.ident)
+
     def test_get_items(self):
         """Tests get_items"""
-        pass
+        from dlkit.abstract_osid.assessment.objects import ItemList
+        items = self.search.get_items()
+        self.assertTrue(isinstance(items, ItemList))
+        self.assertEqual(items.available(), 0)
 
     @unittest.skip('unimplemented test')
     def test_get_item_query_inspector(self):

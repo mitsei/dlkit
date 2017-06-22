@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo grading'
 
 DESCRIPTION = 'MongoDB based grading implementation'
 
-VERSIONCOMPONENTS = [0, 1, 306]
+VERSIONCOMPONENTS = [0, 1, 411]
 
-RELEASEDATE = "2017-06-14"
+RELEASEDATE = "2017-06-22"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
@@ -51,8 +51,8 @@ SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_gradebook_search',
     'supports_gradebook_admin',
     # 'supports_gradebook_notification',
-    # 'supports_gradebook_hierarchy',
-    # 'supports_gradebook_hierarchy_design',
+    'supports_gradebook_hierarchy',
+    'supports_gradebook_hierarchy_design',
     # 'supports_grading_batch',
     # 'supports_grading_calculation',
     # 'supports_grading_transform',

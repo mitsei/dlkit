@@ -71,16 +71,7 @@ class LogEntry(abc_logging_objects.LogEntry, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['resourceId']:
-            raise errors.IllegalState('this LogEntry has no resource')
-        mgr = self._get_provider_manager('ID')
-        if not mgr.supports_id_lookup():
-            raise errors.OperationFailed('Id does not support Id lookup')
-        lookup_session = mgr.get_id_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_no_catalog_view()
-        osid_object = lookup_session.get_id(self.get_resource_id())
-        return osid_object
+        raise errors.Unimplemented()
 
     resource_id = property(fget=get_resource_id)
 
@@ -92,16 +83,7 @@ class LogEntry(abc_logging_objects.LogEntry, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['resourceId']:
-            raise errors.IllegalState('this LogEntry has no resource')
-        mgr = self._get_provider_manager('RESOURCE')
-        if not mgr.supports_resource_lookup():
-            raise errors.OperationFailed('Resource does not support Resource lookup')
-        lookup_session = mgr.get_resource_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_bin_view()
-        osid_object = lookup_session.get_resource(self.get_resource_id())
-        return osid_object
+        raise errors.Unimplemented()
 
     resource = property(fget=get_resource)
 
@@ -113,7 +95,7 @@ class LogEntry(abc_logging_objects.LogEntry, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['agentId']:
+        if not bool(self._my_map['agentId']):
             raise errors.IllegalState('this LogEntry has no agent')
         else:
             return Id(self._my_map['agentId'])
@@ -129,7 +111,7 @@ class LogEntry(abc_logging_objects.LogEntry, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['agentId']:
+        if not bool(self._my_map['agentId']):
             raise errors.IllegalState('this LogEntry has no agent')
         mgr = self._get_provider_manager('AUTHENTICATION')
         if not mgr.supports_agent_lookup():
@@ -243,8 +225,7 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
         # Implemented from template for osid.logging.LogEntryForm.set_priority
         if self.get_priority_metadata().is_read_only():
             raise errors.NoAccess()
-        if not self._is_valid_type(priority,
-                                   self.get_priority_metadata()):
+        if not self._is_valid_type(priority):
             raise errors.InvalidArgument()
         self._my_map['priority'] = str(priority)
 
@@ -256,7 +237,11 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.logging.LogEntryForm.clear_priority_template
+        if (self.get_priority_metadata().is_read_only() or
+                self.get_priority_metadata().is_required()):
+            raise errors.NoAccess()
+        self._my_map['priority'] = self._priority_default
 
     priority = property(fset=set_priority, fdel=clear_priority)
 

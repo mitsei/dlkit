@@ -9,7 +9,13 @@ from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidNode
+from dlkit.abstract_osid.repository import objects as ABCObjects
+from dlkit.abstract_osid.repository import queries as ABCQueries
+from dlkit.abstract_osid.repository import searches
+from dlkit.abstract_osid.repository import searches as ABCSearches
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.types.string import get_type_data as get_string_type_data
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -21,9 +27,12 @@ CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)
 
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
+DEFAULT_STRING_MATCH_TYPE = Type(**get_string_type_data("WORDIGNORECASE"))
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
 class TestAssetLookupSession(unittest.TestCase):
@@ -47,6 +56,9 @@ class TestAssetLookupSession(unittest.TestCase):
             cls.asset_list.append(obj)
             cls.asset_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -56,6 +68,7 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -66,22 +79,27 @@ class TestAssetLookupSession(unittest.TestCase):
 
     def test_can_lookup_assets(self):
         """Tests can_lookup_assets"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_assets(), bool))
 
     def test_use_comparative_asset_view(self):
         """Tests use_comparative_asset_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_asset_view()
 
     def test_use_plenary_asset_view(self):
         """Tests use_plenary_asset_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_asset_view()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_get_asset(self):
@@ -102,24 +120,30 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_assets_by_ids(self.asset_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_assets_by_genus_type(self):
         """Tests get_assets_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
-        objects = self.catalog.get_assets_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_assets_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_assets_by_parent_genus_type(self):
         """Tests get_assets_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
-        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_assets_by_record_type(self):
         """Tests get_assets_by_record_type"""
@@ -129,11 +153,13 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_provider(self):
         """Tests get_assets_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_assets_by_provider(True)
 
     def test_get_assets(self):
         """Tests get_assets"""
@@ -143,6 +169,8 @@ class TestAssetLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, AssetList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_assets()
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, AssetList))
 
     def test_get_asset_with_alias(self):
         self.catalog.alias_asset(self.asset_ids[0], ALIAS_ID)
@@ -155,6 +183,7 @@ class TestAssetQuerySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         cls.asset_list = list()
         cls.asset_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -171,14 +200,20 @@ class TestAssetQuerySession(unittest.TestCase):
             cls.asset_list.append(obj)
             cls.asset_ids.append(obj.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         for obj in cls.catalog.get_assets():
             cls.catalog.delete_asset(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -187,63 +222,84 @@ class TestAssetQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_assets(self):
         """Tests can_search_assets"""
-        pass
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_assets(), bool))
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_get_asset_query(self):
         """Tests get_asset_query"""
-        query = self.catalog.get_asset_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_asset_query()
 
     def test_get_assets_by_query(self):
         """Tests get_assets_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.catalog.get_asset_query()
+        query = self.session.get_asset_query()
         query.match_display_name('orange')
         self.assertEqual(self.catalog.get_assets_by_query(query).available(), 2)
         query.clear_display_name_terms()
         query.match_display_name('blue', match=False)
-        self.assertEqual(self.catalog.get_assets_by_query(query).available(), 3)
+        self.assertEqual(self.session.get_assets_by_query(query).available(), 3)
 
 
 class TestAssetSearchSession(unittest.TestCase):
     """Tests for AssetSearchSession"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+    def setUp(self):
+        self.session = self.catalog
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_get_asset_search(self):
         """Tests get_asset_search"""
-        pass
+        search = self.session.get_asset_search()
+        self.assertTrue(isinstance(search, searches.AssetSearch))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_search_order(self):
         """Tests get_asset_search_order"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_search_order()
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_search(self):
         """Tests get_assets_by_search"""
-        pass
+        query = self.session.get_asset_query()
+        query.match_display_name('zxy', DEFAULT_STRING_MATCH_TYPE, True)
+        search = self.session.get_asset_search()
+        results = self.session.get_assets_by_search(query, search)
+        self.assertTrue(isinstance(results, searches.AssetSearchResults))
+        self.assertEqual(results.get_result_size(), 0)
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_query_from_inspector(self):
         """Tests get_asset_query_from_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_asset_query_from_inspector(True)
 
 
 class TestAssetAdminSession(unittest.TestCase):
     """Tests for AssetAdminSession"""
 
-    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -252,11 +308,17 @@ class TestAssetAdminSession(unittest.TestCase):
         create_form.description = 'Test Repository for AssetAdminSession tests'
         cls.catalog = cls.svc_mgr.create_repository(create_form)
 
-        form = cls.catalog.get_asset_form_for_create([])
+    def setUp(self):
+        form = self.catalog.get_asset_form_for_create([])
         form.display_name = 'new Asset'
         form.description = 'description of Asset'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_asset(form)
+        self.osid_object = self.catalog.create_asset(form)
+        self.parent_object = self.osid_object
+        self.session = self.catalog
+
+    def tearDown(self):
+        self.catalog.delete_asset(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
@@ -266,6 +328,7 @@ class TestAssetAdminSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -367,40 +430,73 @@ class TestAssetAdminSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
         self.assertTrue(isinstance(self.catalog.can_create_asset_content_with_record_types(DEFAULT_TYPE), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_form_for_create(self):
         """Tests get_asset_content_form_for_create"""
-        pass
+        # From test_templates/learning.py::ActivityAdminSession::get_activity_form_for_create_template
+        form = self.catalog.get_asset_content_form_for_create(self.parent_object.ident, [])
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertFalse(form.is_for_update())
 
-    @unittest.skip('unimplemented test')
     def test_create_asset_content(self):
         """Tests create_asset_content"""
-        pass
+        results = self.parent_object.get_asset_contents()
+        self.assertTrue(isinstance(results, ABCObjects.AssetContentList))
+        self.assertEqual(results.available(), 0)
+
+        form = self.catalog.get_asset_content_form_for_create(self.parent_object.ident, [])
+        result = self.catalog.create_asset_content(form)
+        self.assertTrue(isinstance(result, ABCObjects.AssetContent))
+
+        updated_parent = self.catalog.get_asset(self.parent_object.ident)
+        results = updated_parent.get_asset_contents()
+        self.assertEqual(results.available(), 1)
 
     def test_can_update_asset_contents(self):
         """Tests can_update_asset_contents"""
         # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
         self.assertTrue(isinstance(self.catalog.can_update_asset_contents(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_form_for_update(self):
         """Tests get_asset_content_form_for_update"""
-        pass
+        form = self.catalog.get_asset_content_form_for_create(self.parent_object.ident, [])
+        new_aggregated_object = self.catalog.create_asset_content(form)
 
-    @unittest.skip('unimplemented test')
+        form = self.catalog.get_asset_content_form_for_update(new_aggregated_object.ident)
+        self.assertTrue(isinstance(form, OsidForm))
+        self.assertTrue(form.is_for_update())
+
     def test_update_asset_content(self):
         """Tests update_asset_content"""
-        pass
+        form = self.catalog.get_asset_content_form_for_create(self.parent_object.ident, [])
+        form.display_name = 'old name'
+        new_aggregated_object = self.catalog.create_asset_content(form)
+
+        self.assertEqual(new_aggregated_object.display_name.text, 'old name')
+
+        form = self.catalog.get_asset_content_form_for_update(new_aggregated_object.ident)
+        form.display_name = 'new name'
+        result = self.catalog.update_asset_content(form)
+        self.assertTrue(isinstance(result, ABCObjects.AssetContent))
+        self.assertEqual(result.display_name.text, 'new name')
 
     def test_can_delete_asset_contents(self):
         """Tests can_delete_asset_contents"""
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
         self.assertTrue(isinstance(self.catalog.can_delete_asset_contents(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_delete_asset_content(self):
         """Tests delete_asset_content"""
-        pass
+        form = self.catalog.get_asset_content_form_for_create(self.parent_object.ident, [])
+        result = self.catalog.create_asset_content(form)
+
+        updated_parent = self.catalog.get_asset(self.parent_object.ident)
+        results = updated_parent.get_asset_contents()
+        self.assertEqual(results.available(), 1)
+
+        self.catalog.delete_asset_content(result.ident)
+
+        results = self.parent_object.get_asset_contents()
+        self.assertEqual(results.available(), 0)
 
 
 class TestAssetNotificationSession(unittest.TestCase):
@@ -424,6 +520,9 @@ class TestAssetNotificationSession(unittest.TestCase):
             cls.asset_list.append(obj)
             cls.asset_ids.append(obj.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for ResourceLookupSession
@@ -433,6 +532,7 @@ class TestAssetNotificationSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -441,73 +541,65 @@ class TestAssetNotificationSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_register_for_asset_notifications(self):
         """Tests can_register_for_asset_notifications"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.can_register_for_asset_notifications()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_new_assets(self):
         """Tests register_for_new_assets"""
-        pass
+        self.session.register_for_new_assets()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_new_assets_by_genus_type(self):
         """Tests register_for_new_assets_by_genus_type"""
-        pass
+        self.session.register_for_new_assets_by_genus_type(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_assets(self):
         """Tests register_for_changed_assets"""
-        pass
+        self.session.register_for_changed_assets()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_assets_by_genus_type(self):
         """Tests register_for_changed_assets_by_genus_type"""
-        pass
+        self.session.register_for_changed_assets_by_genus_type(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
-    @unittest.skip('unimplemented test')
     def test_register_for_changed_asset(self):
         """Tests register_for_changed_asset"""
-        pass
+        self.session.register_for_changed_asset(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_assets(self):
         """Tests register_for_deleted_assets"""
-        pass
+        self.session.register_for_deleted_assets()
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_assets_by_genus_type(self):
         """Tests register_for_deleted_assets_by_genus_type"""
-        pass
+        self.session.register_for_deleted_assets_by_genus_type(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
-    @unittest.skip('unimplemented test')
     def test_register_for_deleted_asset(self):
         """Tests register_for_deleted_asset"""
-        pass
+        self.session.register_for_deleted_asset(Id('package.Catalog%3Afake%40DLKIT.MIT.EDU'))
 
-    @unittest.skip('unimplemented test')
     def test_reliable_asset_notifications(self):
         """Tests reliable_asset_notifications"""
-        pass
+        self.session.reliable_asset_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_unreliable_asset_notifications(self):
         """Tests unreliable_asset_notifications"""
-        pass
+        self.session.unreliable_asset_notifications()
 
-    @unittest.skip('unimplemented test')
     def test_acknowledge_asset_notification(self):
         """Tests acknowledge_asset_notification"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.acknowledge_asset_notification(True)
 
 
 class TestAssetRepositorySession(unittest.TestCase):
@@ -515,6 +607,7 @@ class TestAssetRepositorySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.asset_list = list()
         cls.asset_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -538,8 +631,13 @@ class TestAssetRepositorySession(unittest.TestCase):
         cls.svc_mgr.assign_asset_to_repository(
             cls.asset_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceBinSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.svc_mgr.unassign_asset_from_repository(
             cls.asset_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_asset_from_repository(
@@ -549,46 +647,62 @@ class TestAssetRepositorySession(unittest.TestCase):
         cls.svc_mgr.delete_repository(cls.assigned_catalog.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_asset_repository_mappings(self):
         """Tests can_lookup_asset_repository_mappings"""
-        pass
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_asset_repository_mappings()
+        self.assertTrue(isinstance(result, bool))
 
     def test_use_comparative_repository_view(self):
         """Tests use_comparative_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_repository_view()
 
     def test_use_plenary_repository_view(self):
         """Tests use_plenary_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_repository_view()
 
     def test_get_asset_ids_by_repository(self):
         """Tests get_asset_ids_by_repository"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_asset_ids_by_repository(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_repository(self):
         """Tests get_assets_by_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_assets_by_repository(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.AssetList))
+        self.assertEqual(results.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_ids_by_repositories(self):
         """Tests get_asset_ids_by_repositories"""
-        pass
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_asset_ids_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
-    @unittest.skip('unimplemented test')
     def test_get_assets_by_repositories(self):
         """Tests get_assets_by_repositories"""
-        pass
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_assets_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.AssetList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_repository_ids_by_asset(self):
         """Tests get_repository_ids_by_asset"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_repository_ids_by_asset(self.asset_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_repositories_by_asset(self):
         """Tests get_repositories_by_asset"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_repositories_by_asset(self.asset_ids[1])
         self.assertEqual(cats.available(), 2)
 
@@ -596,35 +710,103 @@ class TestAssetRepositorySession(unittest.TestCase):
 class TestAssetRepositoryAssignmentSession(unittest.TestCase):
     """Tests for AssetRepositoryAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        cls.asset_list = list()
+        cls.asset_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test Repository'
+        create_form.description = 'Test Repository for AssetRepositoryAssignmentSession tests'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test Repository for Assignment'
+        create_form.description = 'Test Repository for AssetRepositoryAssignmentSession tests assignment'
+        cls.assigned_catalog = cls.svc_mgr.create_repository(create_form)
+        for num in [0, 1, 2]:
+            create_form = cls.catalog.get_asset_form_for_create([])
+            create_form.display_name = 'Test Asset ' + str(num)
+            create_form.description = 'Test Asset for AssetRepositoryAssignmentSession tests'
+            obj = cls.catalog.create_asset(create_form)
+            cls.asset_list.append(obj)
+            cls.asset_ids.append(obj.ident)
+
+    def setUp(self):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        for obj in cls.catalog.get_assets():
+            cls.catalog.delete_asset(obj.ident)
+        cls.svc_mgr.delete_repository(cls.assigned_catalog.ident)
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_can_assign_assets(self):
         """Tests can_assign_assets"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_assets()
+        self.assertTrue(isinstance(result, bool))
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_assets_to_repository(self):
         """Tests can_assign_assets_to_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_assets_to_repository(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(result, bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_repository_ids(self):
         """Tests get_assignable_repository_ids"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_repository_ids(self.catalog.ident)
+        self.assertTrue(isinstance(results, IdList))
 
-    @unittest.skip('unimplemented test')
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
+
     def test_get_assignable_repository_ids_for_asset(self):
         """Tests get_assignable_repository_ids_for_asset"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_item_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_repository_ids_for_asset(self.catalog.ident, self.asset_ids[0])
+        self.assertTrue(isinstance(results, IdList))
 
-    @unittest.skip('unimplemented test')
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
+
     def test_assign_asset_to_repository(self):
         """Tests assign_asset_to_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        results = self.assigned_catalog.get_assets()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_asset_to_repository(self.asset_ids[1], self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assets()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_asset_from_repository(
+            self.asset_ids[1],
+            self.assigned_catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_asset_from_repository(self):
         """Tests unassign_asset_from_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        results = self.assigned_catalog.get_assets()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_asset_to_repository(
+            self.asset_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assets()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_asset_from_repository(
+            self.asset_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_assets()
+        self.assertEqual(results.available(), 0)
 
 
 class TestAssetCompositionSession(unittest.TestCase):
@@ -652,6 +834,9 @@ class TestAssetCompositionSession(unittest.TestCase):
             cls.asset_ids.append(obj.ident)
             cls.catalog.add_asset(obj.ident, cls.composition.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_repositories():
@@ -663,6 +848,7 @@ class TestAssetCompositionSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -671,33 +857,39 @@ class TestAssetCompositionSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_access_asset_compositions(self):
         """Tests can_access_asset_compositions"""
-        pass
+        # From test_templates/repository.py::AssetCompositionSession::can_access_asset_compositions_template
+        self.assertTrue(isinstance(self.session.can_access_asset_compositions(), bool))
 
     def test_use_comparative_asset_composition_view(self):
         """Tests use_comparative_asset_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_asset_composition_view()
 
     def test_use_plenary_asset_composition_view(self):
         """Tests use_plenary_asset_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_asset_composition_view()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_get_composition_assets(self):
         """Tests get_composition_assets"""
+        # From test_templates/repository.py::AssetCompositionSession::get_composition_assets_template
         self.assertEqual(self.catalog.get_composition_assets(self.composition.ident).available(), 4)
 
     def test_get_compositions_by_asset(self):
         """Tests get_compositions_by_asset"""
+        # From test_templates/repository.py::AssetCompositionSession::get_compositions_by_asset_template
         self.assertEqual(self.catalog.get_compositions_by_asset(self.asset_ids[0]).available(), 1)
         self.assertEqual(self.catalog.get_compositions_by_asset(self.asset_ids[0]).next().ident, self.composition.ident)
 
@@ -731,6 +923,9 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
             cls.composition_list.append(composition)
             cls.composition_ids.append(composition.ident)
 
+    def setUp(self):
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
         for catalog in cls.svc_mgr.get_repositories():
@@ -742,6 +937,7 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -750,10 +946,10 @@ class TestAssetCompositionDesignSession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_compose_assets(self):
         """Tests can_compose_assets"""
-        pass
+        # From test_templates/repository.py::AssetCompositionDesignSession::can_compose_assets_template
+        self.assertTrue(isinstance(self.session.can_compose_assets(), bool))
 
     def test_add_asset(self):
         """Tests add_asset"""
@@ -801,6 +997,7 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/repository.py::CompositionLookupSession::init_template
         cls.composition_list = list()
         cls.composition_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -818,8 +1015,13 @@ class TestCompositionLookupSession(unittest.TestCase):
             cls.composition_list.append(obj)
             cls.composition_ids.append(obj.ident)
 
+    def setUp(self):
+        # From test_templates/repository.py::CompositionLookupSession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/repository.py::CompositionLookupSession::init_template
         for catalog in cls.svc_mgr.get_repositories():
             catalog.use_unsequestered_composition_view()
             for obj in catalog.get_compositions():
@@ -828,6 +1030,7 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -838,38 +1041,51 @@ class TestCompositionLookupSession(unittest.TestCase):
 
     def test_can_lookup_compositions(self):
         """Tests can_lookup_compositions"""
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
         self.assertTrue(isinstance(self.catalog.can_lookup_compositions(), bool))
 
     def test_use_comparative_composition_view(self):
         """Tests use_comparative_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_comparative_resource_view_template
         self.catalog.use_comparative_composition_view()
 
     def test_use_plenary_composition_view(self):
         """Tests use_plenary_composition_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_plenary_resource_view_template
         self.catalog.use_plenary_composition_view()
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
     def test_use_active_composition_view(self):
         """Tests use_active_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_active_composition_view_template
+        # Ideally also verify the value is set...
         self.catalog.use_active_composition_view()
 
     def test_use_any_status_composition_view(self):
         """Tests use_any_status_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_any_status_composition_view_template
+        # Ideally also verify the value is set...
         self.catalog.use_any_status_composition_view()
 
     def test_use_sequestered_composition_view(self):
         """Tests use_sequestered_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_sequestered_composition_view
+        # Ideally also verify the value is set...
         self.catalog.use_sequestered_composition_view()
 
     def test_use_unsequestered_composition_view(self):
         """Tests use_unsequestered_composition_view"""
+        # From test_templates/repository.py::CompositionLookupSession::use_unsequestered_composition_view
+        # Ideally also verify the value is set...
         self.catalog.use_unsequestered_composition_view()
 
     def test_get_composition(self):
@@ -893,24 +1109,30 @@ class TestCompositionLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_compositions_by_ids(self.composition_ids)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
     def test_get_compositions_by_genus_type(self):
         """Tests get_compositions_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() > 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
     def test_get_compositions_by_parent_genus_type(self):
         """Tests get_compositions_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
-        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_TYPE)
+        objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
     def test_get_compositions_by_record_type(self):
         """Tests get_compositions_by_record_type"""
@@ -920,11 +1142,13 @@ class TestCompositionLookupSession(unittest.TestCase):
         self.assertTrue(isinstance(objects, CompositionList))
         self.catalog.use_federated_repository_view()
         objects = self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
+        self.assertTrue(objects.available() == 0)
+        self.assertTrue(isinstance(objects, CompositionList))
 
-    @unittest.skip('unimplemented test')
     def test_get_compositions_by_provider(self):
         """Tests get_compositions_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_compositions_by_provider(True)
 
     def test_get_compositions(self):
         """Tests get_compositions"""
@@ -943,6 +1167,7 @@ class TestCompositionQuerySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         cls.composition_list = list()
         cls.composition_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -959,14 +1184,20 @@ class TestCompositionQuerySession(unittest.TestCase):
             cls.composition_list.append(obj)
             cls.composition_ids.append(obj.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
+        self.session = self.catalog
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceQuerySession::init_template
         for obj in cls.catalog.get_compositions():
             cls.catalog.delete_composition(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -975,32 +1206,37 @@ class TestCompositionQuerySession(unittest.TestCase):
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         self.assertIsNotNone(self.catalog)
 
-    @unittest.skip('unimplemented test')
     def test_can_search_compositions(self):
         """Tests can_search_compositions"""
-        pass
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_compositions(), bool))
 
     def test_use_federated_repository_view(self):
         """Tests use_federated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_federated_bin_view_template
         self.catalog.use_federated_repository_view()
 
     def test_use_isolated_repository_view(self):
         """Tests use_isolated_repository_view"""
+        # From test_templates/resource.py ResourceLookupSession.use_isolated_bin_view_template
         self.catalog.use_isolated_repository_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_sequestered_composition_view(self):
         """Tests use_sequestered_composition_view"""
-        pass
+        # From test_templates/repository.py::CompositionLookupSession::use_sequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_sequestered_composition_view()
 
-    @unittest.skip('unimplemented test')
     def test_use_unsequestered_composition_view(self):
         """Tests use_unsequestered_composition_view"""
-        pass
+        # From test_templates/repository.py::CompositionLookupSession::use_unsequestered_composition_view
+        # Ideally also verify the value is set...
+        self.catalog.use_unsequestered_composition_view()
 
     def test_get_composition_query(self):
         """Tests get_composition_query"""
-        query = self.catalog.get_composition_query()
+        # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
+        query = self.session.get_composition_query()
 
     def test_get_compositions_by_query(self):
         """Tests get_compositions_by_query"""
@@ -1021,53 +1257,81 @@ class TestCompositionQuerySession(unittest.TestCase):
 class TestCompositionSearchSession(unittest.TestCase):
     """Tests for CompositionSearchSession"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test Repository'
+        create_form.description = 'Test Repository for CompositionSearchSession tests'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+
+    def setUp(self):
+        self.session = self.catalog
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_get_composition_search(self):
         """Tests get_composition_search"""
-        pass
+        # From test_templates/resource.py::ResourceSearchSession::get_resource_search_template
+        result = self.session.get_composition_search()
+        self.assertTrue(isinstance(result, ABCSearches.CompositionSearch))
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_search_order(self):
         """Tests get_composition_search_order"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_composition_search_order()
 
-    @unittest.skip('unimplemented test')
     def test_get_compositions_by_search(self):
         """Tests get_compositions_by_search"""
-        pass
+        # From test_templates/resource.py::ResourceSearchSession::get_resources_by_search_template
+        query = self.catalog.get_composition_query()
+        search = self.session.get_composition_search()
+        results = self.session.get_compositions_by_search(query, search)
+        self.assertTrue(isinstance(results, ABCSearches.CompositionSearchResults))
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_query_from_inspector(self):
         """Tests get_composition_query_from_inspector"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_composition_query_from_inspector(True)
 
 
 class TestCompositionAdminSession(unittest.TestCase):
     """Tests for CompositionAdminSession"""
 
-    # From test_templates/resource.py::ResourceAdminSession::init_template
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test Repository'
         create_form.description = 'Test Repository for CompositionAdminSession tests'
         cls.catalog = cls.svc_mgr.create_repository(create_form)
 
-        form = cls.catalog.get_composition_form_for_create([])
+    def setUp(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        form = self.catalog.get_composition_form_for_create([])
         form.display_name = 'new Composition'
         form.description = 'description of Composition'
         form.set_genus_type(NEW_TYPE)
-        cls.osid_object = cls.catalog.create_composition(form)
+        self.osid_object = self.catalog.create_composition(form)
+        self.session = self.catalog
+
+    def tearDown(self):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
+        self.catalog.delete_composition(self.osid_object.ident)
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceAdminSession::init_template
         for obj in cls.catalog.get_compositions():
             cls.catalog.delete_composition(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     def test_get_repository_id(self):
         """Tests get_repository_id"""
+        # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
         self.assertEqual(self.catalog.get_repository_id(), self.catalog.ident)
 
     def test_get_repository(self):
@@ -1146,20 +1410,20 @@ class TestCompositionAdminSession(unittest.TestCase):
         with self.assertRaises(errors.NotFound):
             self.catalog.get_composition(osid_object.ident)
 
-    @unittest.skip('unimplemented test')
     def test_delete_composition_node(self):
         """Tests delete_composition_node"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.delete_composition_node(True)
 
-    @unittest.skip('unimplemented test')
     def test_add_composition_child(self):
         """Tests add_composition_child"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.add_composition_child(True, True)
 
-    @unittest.skip('unimplemented test')
     def test_remove_composition_child(self):
         """Tests remove_composition_child"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.remove_composition_child(True, True)
 
     def test_can_manage_composition_aliases(self):
         """Tests can_manage_composition_aliases"""
@@ -1198,6 +1462,7 @@ class TestCompositionRepositorySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.composition_list = list()
         cls.composition_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -1221,8 +1486,13 @@ class TestCompositionRepositorySession(unittest.TestCase):
         cls.svc_mgr.assign_composition_to_repository(
             cls.composition_ids[2], cls.assigned_catalog.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::ResourceBinSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinSession::init_template
         cls.svc_mgr.unassign_composition_from_repository(
             cls.composition_ids[1], cls.assigned_catalog.ident)
         cls.svc_mgr.unassign_composition_from_repository(
@@ -1234,44 +1504,60 @@ class TestCompositionRepositorySession(unittest.TestCase):
 
     def test_use_comparative_composition_repository_view(self):
         """Tests use_comparative_composition_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_composition_repository_view()
 
     def test_use_plenary_composition_repository_view(self):
         """Tests use_plenary_composition_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_composition_repository_view()
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_composition_repository_mappings(self):
         """Tests can_lookup_composition_repository_mappings"""
-        pass
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_composition_repository_mappings()
+        self.assertTrue(isinstance(result, bool))
 
     def test_get_composition_ids_by_repository(self):
         """Tests get_composition_ids_by_repository"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         objects = self.svc_mgr.get_composition_ids_by_repository(self.assigned_catalog.ident)
         self.assertEqual(objects.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_compositions_by_repository(self):
         """Tests get_compositions_by_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        results = self.session.get_compositions_by_repository(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(results, ABCObjects.CompositionList))
+        self.assertEqual(results.available(), 2)
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_ids_by_repositories(self):
         """Tests get_composition_ids_by_repositories"""
-        pass
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+        object_ids = self.session.get_composition_ids_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(object_ids, IdList))
+        # Currently our impl does not remove duplicate objectIds
+        self.assertEqual(object_ids.available(), 5)
 
-    @unittest.skip('unimplemented test')
-    def test_get_compoitions_by_repositories(self):
-        """Tests get_compoitions_by_repositories"""
-        pass
+    def test_get_compositions_by_repositories(self):
+        """Tests get_compositions_by_repositories"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+        results = self.session.get_compositions_by_repositories(catalog_ids)
+        self.assertTrue(isinstance(results, ABCObjects.CompositionList))
+        # Currently our impl does not remove duplicate objects
+        self.assertEqual(results.available(), 5)
 
     def test_get_repository_ids_by_composition(self):
         """Tests get_repository_ids_by_composition"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
         cats = self.svc_mgr.get_repository_ids_by_composition(self.composition_ids[1])
         self.assertEqual(cats.available(), 2)
 
     def test_get_repositories_by_composition(self):
         """Tests get_repositories_by_composition"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
         cats = self.svc_mgr.get_repositories_by_composition(self.composition_ids[1])
         self.assertEqual(cats.available(), 2)
 
@@ -1279,35 +1565,103 @@ class TestCompositionRepositorySession(unittest.TestCase):
 class TestCompositionRepositoryAssignmentSession(unittest.TestCase):
     """Tests for CompositionRepositoryAssignmentSession"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        cls.composition_list = list()
+        cls.composition_ids = list()
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test Repository'
+        create_form.description = 'Test Repository for CompositionRepositoryAssignmentSession tests'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test Repository for Assignment'
+        create_form.description = 'Test Repository for CompositionRepositoryAssignmentSession tests assignment'
+        cls.assigned_catalog = cls.svc_mgr.create_repository(create_form)
+        for num in [0, 1, 2]:
+            create_form = cls.catalog.get_composition_form_for_create([])
+            create_form.display_name = 'Test Composition ' + str(num)
+            create_form.description = 'Test Composition for CompositionRepositoryAssignmentSession tests'
+            obj = cls.catalog.create_composition(create_form)
+            cls.composition_list.append(obj)
+            cls.composition_ids.append(obj.ident)
+
+    def setUp(self):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+        for obj in cls.catalog.get_compositions():
+            cls.catalog.delete_composition(obj.ident)
+        cls.svc_mgr.delete_repository(cls.assigned_catalog.ident)
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_can_assign_compositions(self):
         """Tests can_assign_compositions"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_compositions()
+        self.assertTrue(isinstance(result, bool))
 
-    @unittest.skip('unimplemented test')
     def test_can_assign_compositions_to_repository(self):
         """Tests can_assign_compositions_to_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_compositions_to_repository(self.assigned_catalog.ident)
+        self.assertTrue(isinstance(result, bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_assignable_repository_ids(self):
         """Tests get_assignable_repository_ids"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_repository_ids(self.catalog.ident)
+        self.assertTrue(isinstance(results, IdList))
 
-    @unittest.skip('unimplemented test')
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
+
     def test_get_assignable_repository_ids_for_composition(self):
         """Tests get_assignable_repository_ids_for_composition"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_item_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        results = self.session.get_assignable_repository_ids_for_composition(self.catalog.ident, self.composition_ids[0])
+        self.assertTrue(isinstance(results, IdList))
 
-    @unittest.skip('unimplemented test')
+        # Because we're not deleting all banks from all tests, we might
+        #   have some crufty banks here...but there should be at least 2.
+        self.assertTrue(results.available() >= 2)
+
     def test_assign_composition_to_repository(self):
         """Tests assign_composition_to_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        results = self.assigned_catalog.get_compositions()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_composition_to_repository(self.composition_ids[1], self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_compositions()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_composition_from_repository(
+            self.composition_ids[1],
+            self.assigned_catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_unassign_composition_from_repository(self):
         """Tests unassign_composition_from_repository"""
-        pass
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        results = self.assigned_catalog.get_compositions()
+        self.assertEqual(results.available(), 0)
+        self.session.assign_composition_to_repository(
+            self.composition_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_compositions()
+        self.assertEqual(results.available(), 1)
+        self.session.unassign_composition_from_repository(
+            self.composition_ids[1],
+            self.assigned_catalog.ident)
+        results = self.assigned_catalog.get_compositions()
+        self.assertEqual(results.available(), 0)
 
 
 class TestRepositoryLookupSession(unittest.TestCase):
@@ -1315,6 +1669,7 @@ class TestRepositoryLookupSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         cls.catalogs = list()
         cls.catalog_ids = list()
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
@@ -1326,75 +1681,120 @@ class TestRepositoryLookupSession(unittest.TestCase):
             cls.catalogs.append(catalog)
             cls.catalog_ids.append(catalog.ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinLookupSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinLookupSession::init_template
         for catalog in cls.svc_mgr.get_repositories():
             cls.svc_mgr.delete_repository(catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_can_lookup_repositories(self):
         """Tests can_lookup_repositories"""
-        pass
+        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
+        self.assertTrue(isinstance(self.session.can_lookup_repositories(), bool))
 
     def test_use_comparative_repository_view(self):
         """Tests use_comparative_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_repository_view()
 
     def test_use_plenary_repository_view(self):
         """Tests use_plenary_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_repository_view()
 
     def test_get_repository(self):
         """Tests get_repository"""
+        # From test_templates/resource.py::BinLookupSession::get_bin_template
         catalog = self.svc_mgr.get_repository(self.catalogs[0].ident)
         self.assertEqual(catalog.ident, self.catalogs[0].ident)
 
     def test_get_repositories_by_ids(self):
         """Tests get_repositories_by_ids"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_ids_template
         catalogs = self.svc_mgr.get_repositories_by_ids(self.catalog_ids)
+        self.assertTrue(catalogs.available() == 2)
+        self.assertTrue(isinstance(catalogs, ABCObjects.RepositoryList))
+        reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+        for index, catalog in enumerate(catalogs):
+            self.assertEqual(str(catalog.ident),
+                             reversed_catalog_ids[index])
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_genus_type(self):
         """Tests get_repositories_by_genus_type"""
-        pass
+        # From test_templates/resource.py::BinLookupSession::get_bins_by_genus_type_template
+        catalogs = self.svc_mgr.get_repositories_by_genus_type(DEFAULT_GENUS_TYPE)
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.RepositoryList))
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_parent_genus_type(self):
         """Tests get_repositories_by_parent_genus_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_parent_genus_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_record_type(self):
         """Tests get_repositories_by_record_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_record_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_provider(self):
         """Tests get_repositories_by_provider"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.session.get_repositories_by_provider(True)
 
     def test_get_repositories(self):
         """Tests get_repositories"""
+        # From test_templates/resource.py::BinLookupSession::get_bins_template
         catalogs = self.svc_mgr.get_repositories()
+        self.assertTrue(catalogs.available() > 0)
+        self.assertTrue(isinstance(catalogs, ABCObjects.RepositoryList))
 
 
 class TestRepositoryQuerySession(unittest.TestCase):
     """Tests for RepositoryQuerySession"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+        create_form = cls.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        cls.catalog = cls.svc_mgr.create_repository(create_form)
+        cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        self.session = self.svc_mgr
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinQuerySession::init_template
+        cls.svc_mgr.delete_repository(cls.catalog.ident)
+
     def test_can_search_repositories(self):
         """Tests can_search_repositories"""
-        pass
+        # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
+        self.assertTrue(isinstance(self.session.can_search_repositories(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_repository_query(self):
         """Tests get_repository_query"""
-        pass
+        # From test_templates/resource.py::BinQuerySession::get_bin_query_template
+        query = self.session.get_repository_query()
+        self.assertTrue(isinstance(query, ABCQueries.RepositoryQuery))
 
-    @unittest.skip('unimplemented test')
     def test_get_repositories_by_query(self):
         """Tests get_repositories_by_query"""
-        pass
+        # From test_templates/resource.py::BinQuerySession::get_bins_by_query_template
+        query = self.session.get_repository_query()
+        query.match_display_name('Test catalog')
+        self.assertEqual(self.session.get_repositories_by_query(query).available(), 1)
+        query.clear_display_name_terms()
+        query.match_display_name('Test catalog', match=False)
+        self.assertEqual(self.session.get_repositories_by_query(query).available(), 0)
 
 
 class TestRepositoryAdminSession(unittest.TestCase):
@@ -1402,6 +1802,7 @@ class TestRepositoryAdminSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         # Initialize test catalog:
         create_form = cls.svc_mgr.get_repository_form_for_create([])
@@ -1414,8 +1815,13 @@ class TestRepositoryAdminSession(unittest.TestCase):
         create_form.description = 'Test Repository for RepositoryAdminSession deletion test'
         cls.catalog_to_delete = cls.svc_mgr.create_repository(create_form)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinAdminSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinAdminSession::init_template
         for catalog in cls.svc_mgr.get_repositories():
             cls.svc_mgr.delete_repository(catalog.ident)
 
@@ -1447,10 +1853,10 @@ class TestRepositoryAdminSession(unittest.TestCase):
         new_catalog = self.svc_mgr.create_repository(catalog_form)
         self.assertTrue(isinstance(new_catalog, Repository))
 
-    @unittest.skip('unimplemented test')
     def test_can_update_repositories(self):
         """Tests can_update_repositories"""
-        pass
+        # From test_templates/resource.py BinAdminSession.can_update_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_update_repositories(), bool))
 
     def test_get_repository_form_for_update(self):
         """Tests get_repository_form_for_update"""
@@ -1467,10 +1873,10 @@ class TestRepositoryAdminSession(unittest.TestCase):
         # Update some elements here?
         self.svc_mgr.update_repository(catalog_form)
 
-    @unittest.skip('unimplemented test')
     def test_can_delete_repositories(self):
         """Tests can_delete_repositories"""
-        pass
+        # From test_templates/resource.py BinAdminSession.can_delete_bins_template
+        self.assertTrue(isinstance(self.svc_mgr.can_delete_repositories(), bool))
 
     def test_delete_repository(self):
         """Tests delete_repository"""
@@ -1499,6 +1905,7 @@ class TestRepositoryHierarchySession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -1511,8 +1918,13 @@ class TestRepositoryHierarchySession(unittest.TestCase):
         cls.svc_mgr.add_child_repository(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchySession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchySession::init_template
         cls.svc_mgr.remove_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_repositories(cls.catalogs['Root'].ident)
         cls.svc_mgr.remove_root_repository(cls.catalogs['Root'].ident)
@@ -1531,17 +1943,19 @@ class TestRepositoryHierarchySession(unittest.TestCase):
         hierarchy = self.svc_mgr.get_repository_hierarchy()
         self.assertTrue(isinstance(hierarchy, Hierarchy))
 
-    @unittest.skip('unimplemented test')
     def test_can_access_repository_hierarchy(self):
         """Tests can_access_repository_hierarchy"""
-        pass
+        # From test_templates/resource.py::BinHierarchySession::can_access_objective_bank_hierarchy_template
+        self.assertTrue(isinstance(self.svc_mgr.can_access_repository_hierarchy(), bool))
 
     def test_use_comparative_repository_view(self):
         """Tests use_comparative_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
         self.svc_mgr.use_comparative_repository_view()
 
     def test_use_plenary_repository_view(self):
         """Tests use_plenary_repository_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
         self.svc_mgr.use_plenary_repository_view()
 
     def test_get_root_repository_ids(self):
@@ -1618,6 +2032,7 @@ class TestRepositoryHierarchySession(unittest.TestCase):
 
     def test_has_child_repositories(self):
         """Tests has_child_repositories"""
+        # From test_templates/resource.py::BinHierarchySession::has_child_bins_template
         self.assertTrue(isinstance(self.svc_mgr.has_child_repositories(self.catalogs['Child 1'].ident), bool))
         self.assertTrue(self.svc_mgr.has_child_repositories(self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.has_child_repositories(self.catalogs['Child 1'].ident))
@@ -1626,6 +2041,7 @@ class TestRepositoryHierarchySession(unittest.TestCase):
 
     def test_is_child_of_repository(self):
         """Tests is_child_of_repository"""
+        # From test_templates/resource.py::BinHierarchySession::is_child_of_bin_template
         self.assertTrue(isinstance(self.svc_mgr.is_child_of_repository(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool))
         self.assertTrue(self.svc_mgr.is_child_of_repository(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident))
         self.assertTrue(self.svc_mgr.is_child_of_repository(self.catalogs['Grandchild 1'].ident, self.catalogs['Child 1'].ident))
@@ -1633,6 +2049,7 @@ class TestRepositoryHierarchySession(unittest.TestCase):
 
     def test_get_child_repository_ids(self):
         """Tests get_child_repository_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bin_ids_template
         from dlkit.abstract_osid.id.objects import IdList
         catalog_list = self.svc_mgr.get_child_repository_ids(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, IdList))
@@ -1640,6 +2057,7 @@ class TestRepositoryHierarchySession(unittest.TestCase):
 
     def test_get_child_repositories(self):
         """Tests get_child_repositories"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
         from dlkit.abstract_osid.repository.objects import RepositoryList
         catalog_list = self.svc_mgr.get_child_repositories(self.catalogs['Child 1'].ident)
         self.assertTrue(isinstance(catalog_list, RepositoryList))
@@ -1699,6 +2117,7 @@ class TestRepositoryHierarchyDesignSession(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         cls.catalogs = dict()
         for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
@@ -1711,8 +2130,13 @@ class TestRepositoryHierarchyDesignSession(unittest.TestCase):
         cls.svc_mgr.add_child_repository(cls.catalogs['Root'].ident, cls.catalogs['Child 2'].ident)
         cls.svc_mgr.add_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
 
+    def setUp(self):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+        self.session = self.svc_mgr
+
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::BinHierarchyDesignSession::init_template
         cls.svc_mgr.remove_child_repository(cls.catalogs['Child 1'].ident, cls.catalogs['Grandchild 1'].ident)
         cls.svc_mgr.remove_child_repositories(cls.catalogs['Root'].ident)
         for cat_name in cls.catalogs:
@@ -1732,30 +2156,87 @@ class TestRepositoryHierarchyDesignSession(unittest.TestCase):
 
     def test_can_modify_repository_hierarchy(self):
         """Tests can_modify_repository_hierarchy"""
-        # this is tested in the setUpClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::can_modify_bin_hierarchy_template
+        self.assertTrue(isinstance(self.session.can_modify_repository_hierarchy(), bool))
 
     def test_add_root_repository(self):
         """Tests add_root_repository"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_root_bin_template
         # this is tested in the setUpClass
-        self.assertTrue(True)
+        roots = self.session.get_root_repositories()
+        self.assertTrue(isinstance(roots, ABCObjects.RepositoryList))
+        self.assertEqual(roots.available(), 1)
 
     def test_remove_root_repository(self):
         """Tests remove_root_repository"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_root_bin_template
+        roots = self.session.get_root_repositories()
+        self.assertEqual(roots.available(), 1)
+
+        create_form = self.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'new root'
+        create_form.description = 'Test Repository root'
+        new_repository = self.svc_mgr.create_repository(create_form)
+        self.svc_mgr.add_root_repository(new_repository.ident)
+
+        roots = self.session.get_root_repositories()
+        self.assertEqual(roots.available(), 2)
+
+        self.session.remove_root_repository(new_repository.ident)
+
+        roots = self.session.get_root_repositories()
+        self.assertEqual(roots.available(), 1)
 
     def test_add_child_repository(self):
         """Tests add_child_repository"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_child_bin_template
         # this is tested in the setUpClass
-        self.assertTrue(True)
+        children = self.session.get_child_repositories(self.catalogs['Root'].ident)
+        self.assertTrue(isinstance(children, ABCObjects.RepositoryList))
+        self.assertEqual(children.available(), 2)
 
     def test_remove_child_repository(self):
         """Tests remove_child_repository"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bin_template
+        children = self.session.get_child_repositories(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
+
+        create_form = self.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'test child'
+        create_form.description = 'Test Repository child'
+        new_repository = self.svc_mgr.create_repository(create_form)
+        self.svc_mgr.add_child_repository(
+            self.catalogs['Root'].ident,
+            new_repository.ident)
+
+        children = self.session.get_child_repositories(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 3)
+
+        self.session.remove_child_repository(
+            self.catalogs['Root'].ident,
+            new_repository.ident)
+
+        children = self.session.get_child_repositories(self.catalogs['Root'].ident)
+        self.assertEqual(children.available(), 2)
 
     def test_remove_child_repositories(self):
         """Tests remove_child_repositories"""
-        # this is tested in the tearDownClass
-        self.assertTrue(True)
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bins_template
+        children = self.session.get_child_repositories(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)
+
+        create_form = self.svc_mgr.get_repository_form_for_create([])
+        create_form.display_name = 'test great grandchild'
+        create_form.description = 'Test Repository child'
+        new_repository = self.svc_mgr.create_repository(create_form)
+        self.svc_mgr.add_child_repository(
+            self.catalogs['Grandchild 1'].ident,
+            new_repository.ident)
+
+        children = self.session.get_child_repositories(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 1)
+
+        self.session.remove_child_repositories(self.catalogs['Grandchild 1'].ident)
+
+        children = self.session.get_child_repositories(self.catalogs['Grandchild 1'].ident)
+        self.assertEqual(children.available(), 0)

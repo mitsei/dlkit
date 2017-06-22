@@ -57,6 +57,16 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_log_admin()
 
+    def supports_log_hierarchy(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_hierarchy()
+
+    def supports_log_hierarchy_design(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_hierarchy_design()
+
     def get_log_entry_record_types(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.get_resource_record_types
@@ -254,6 +264,34 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
 
     log_admin_session = property(fget=get_log_admin_session)
 
+    def get_log_hierarchy_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'LogHierarchySession')(
+                provider_session=self._provider_manager.get_log_hierarchy_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
+
+    log_hierarchy_session = property(fget=get_log_hierarchy_session)
+
+    def get_log_hierarchy_design_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'LogHierarchyDesignSession')(
+                provider_session=self._provider_manager.get_log_hierarchy_design_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
+
+    log_hierarchy_design_session = property(fget=get_log_hierarchy_design_session)
+
     def get_logging_batch_manager(self):
         raise Unimplemented()
 
@@ -406,6 +444,34 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
         try:
             return getattr(sessions, 'LogAdminSession')(
                 provider_session=self._provider_manager.get_log_admin_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_log_hierarchy_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'LogHierarchySession')(
+                provider_session=self._provider_manager.get_log_hierarchy_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_log_hierarchy_design_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'LogHierarchyDesignSession')(
+                provider_session=self._provider_manager.get_log_hierarchy_design_session(proxy),
                 authz_session=self._get_authz_session(),
                 override_lookup_session=self._get_override_lookup_session(),
                 provider_manager=self._provider_manager,

@@ -4,10 +4,15 @@
 import unittest
 
 
+from dlkit.abstract_osid.id.primitives import Id as ABC_Id
+from dlkit.abstract_osid.locale.primitives import DisplayText as ABC_DisplayText
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.repository import objects as ABCObjects
+from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.metadata import Metadata
 from dlkit.primordium.calendaring.primitives import DateTime, Duration
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -26,6 +31,7 @@ class TestAsset(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -38,51 +44,55 @@ class TestAsset(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_assets():
             cls.catalog.delete_asset(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_title(self):
         """Tests get_title"""
-        pass
+        # From test_templates/repository.py::Asset::get_title_template
+        result = self.object.get_title()
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text, '')
 
     def test_is_copyright_status_known(self):
         """Tests is_copyright_status_known"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_copyright_status_known(), bool))
-        self.assertFalse(self.object.is_copyright_status_known())
 
     def test_is_public_domain(self):
         """Tests is_public_domain"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_public_domain(), bool))
-        self.assertFalse(self.object.is_public_domain())
 
-    @unittest.skip('unimplemented test')
     def test_get_copyright(self):
         """Tests get_copyright"""
-        pass
+        # From test_templates/repository.py::Asset::get_title_template
+        result = self.object.get_copyright()
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text, '')
 
-    @unittest.skip('unimplemented test')
     def test_get_copyright_registration(self):
         """Tests get_copyright_registration"""
-        pass
+        # From test_templates/repository.py::AssetContent::get_url_template
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_copyright_registration()
 
-    @unittest.skip('unimplemented test')
     def test_can_distribute_verbatim(self):
         """Tests can_distribute_verbatim"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.can_distribute_verbatim()
 
-    @unittest.skip('unimplemented test')
     def test_can_distribute_alterations(self):
         """Tests can_distribute_alterations"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.can_distribute_alterations()
 
-    @unittest.skip('unimplemented test')
     def test_can_distribute_compositions(self):
         """Tests can_distribute_compositions"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.can_distribute_compositions()
 
     def test_get_source_id(self):
         """Tests get_source_id"""
@@ -96,66 +106,70 @@ class TestAsset(unittest.TestCase):
         self.assertRaises(errors.IllegalState,
                           self.object.get_source)
 
-    @unittest.skip('unimplemented test')
     def test_get_provider_link_ids(self):
         """Tests get_provider_link_ids"""
-        pass
+        # From test_templates/learning.py::Activity::get_asset_ids_template
+        result = self.object.get_provider_link_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
-    @unittest.skip('unimplemented test')
     def test_get_provider_links(self):
         """Tests get_provider_links"""
-        pass
+        # Override because no providerLinkIds
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_provider_links()
 
-    @unittest.skip('unimplemented test')
     def test_get_created_date(self):
         """Tests get_created_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_created_date()
 
     def test_is_published(self):
         """Tests is_published"""
         # From test_templates/resources.py::Resource::is_group_template
         self.assertTrue(isinstance(self.object.is_published(), bool))
-        self.assertFalse(self.object.is_published())
 
-    @unittest.skip('unimplemented test')
     def test_get_published_date(self):
         """Tests get_published_date"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_published_date()
 
-    @unittest.skip('unimplemented test')
     def test_get_principal_credit_string(self):
         """Tests get_principal_credit_string"""
-        pass
+        # From test_templates/repository.py::Asset::get_title_template
+        result = self.object.get_principal_credit_string()
+        self.assertTrue(isinstance(result, DisplayText))
+        self.assertEqual(result.text, '')
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_ids(self):
         """Tests get_asset_content_ids"""
-        pass
+        results = self.object.get_asset_content_ids()
+        self.assertTrue(isinstance(results, IdList))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_contents(self):
         """Tests get_asset_contents"""
-        pass
+        results = self.object.get_asset_contents()
+        self.assertTrue(isinstance(results, ABCObjects.AssetContentList))
 
-    @unittest.skip('unimplemented test')
     def test_is_composition(self):
         """Tests is_composition"""
-        pass
+        result = self.object.is_composition()
+        self.assertTrue(isinstance(result, bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_id(self):
         """Tests get_composition_id"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_composition_id()
 
-    @unittest.skip('unimplemented test')
     def test_get_composition(self):
         """Tests get_composition"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_composition()
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_record(self):
         """Tests get_asset_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_asset_record(True)
 
 
 class TestAssetForm(unittest.TestCase):
@@ -182,28 +196,56 @@ class TestAssetForm(unittest.TestCase):
     def test_get_title_metadata(self):
         """Tests get_title_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_title_metadata(), Metadata))
+        mdata = self.form.get_title_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'STRING')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_title(self):
         """Tests set_title"""
-        pass
+        # From test_templates/repository.py::AssetForm::set_title_template
+        default_value = self.form.get_title_metadata().get_default_string_values()[0]
+        self.assertEqual(self.form._my_map['title'], default_value)
+        self.form.set_title('String')
+        self.assertEqual(self.form._my_map['title']['text'], 'String')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_title(42)
 
-    @unittest.skip('unimplemented test')
     def test_clear_title(self):
         """Tests clear_title"""
-        pass
+        # From test_templates/repository.py::AssetForm::clear_title_template
+        self.form.set_title('A String to Clear')
+        self.assertEqual(self.form._my_map['title']['text'], 'A String to Clear')
+        self.form.clear_title()
+        self.assertEqual(self.form._my_map['title'], self.form.get_title_metadata().get_default_string_values()[0])
 
     def test_get_public_domain_metadata(self):
         """Tests get_public_domain_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_public_domain_metadata(), Metadata))
+        mdata = self.form.get_public_domain_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_public_domain(self):
         """Tests set_public_domain"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_public_domain(True)
         self.assertTrue(self.form._my_map['publicDomain'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_public_domain('false')
 
     def test_clear_public_domain(self):
         """Tests clear_public_domain"""
@@ -216,43 +258,88 @@ class TestAssetForm(unittest.TestCase):
     def test_get_copyright_metadata(self):
         """Tests get_copyright_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_copyright_metadata(), Metadata))
+        mdata = self.form.get_copyright_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'STRING')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_copyright(self):
         """Tests set_copyright"""
-        pass
+        # From test_templates/repository.py::AssetForm::set_title_template
+        default_value = self.form.get_copyright_metadata().get_default_string_values()[0]
+        self.assertEqual(self.form._my_map['copyright'], default_value)
+        self.form.set_copyright('String')
+        self.assertEqual(self.form._my_map['copyright']['text'], 'String')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_copyright(42)
 
-    @unittest.skip('unimplemented test')
     def test_clear_copyright(self):
         """Tests clear_copyright"""
-        pass
+        # From test_templates/repository.py::AssetForm::clear_title_template
+        self.form.set_copyright('A String to Clear')
+        self.assertEqual(self.form._my_map['copyright']['text'], 'A String to Clear')
+        self.form.clear_copyright()
+        self.assertEqual(self.form._my_map['copyright'], self.form.get_copyright_metadata().get_default_string_values()[0])
 
     def test_get_copyright_registration_metadata(self):
         """Tests get_copyright_registration_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_copyright_registration_metadata(), Metadata))
+        mdata = self.form.get_copyright_registration_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'STRING')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_copyright_registration(self):
         """Tests set_copyright_registration"""
-        pass
+        # From test_templates/repository.py::AssetContentForm::set_url_template
+        default_value = self.form.get_copyright_registration_metadata().get_default_string_values()[0]
+        self.assertEqual(self.form._my_map['copyrightRegistration'], default_value)
+        self.form.set_copyright_registration('String')
+        self.assertEqual(self.form._my_map['copyrightRegistration'], 'String')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_copyright_registration(42)
 
-    @unittest.skip('unimplemented test')
     def test_clear_copyright_registration(self):
         """Tests clear_copyright_registration"""
-        pass
+        # From test_templates/repository.py::AssetContentForm::clear_url_template
+        self.form.set_copyright_registration('A String to Clear')
+        self.assertEqual(self.form._my_map['copyrightRegistration'], 'A String to Clear')
+        self.form.clear_copyright_registration()
+        self.assertEqual(self.form._my_map['copyrightRegistration'], self.form.get_copyright_registration_metadata().get_default_string_values()[0])
 
     def test_get_distribute_verbatim_metadata(self):
         """Tests get_distribute_verbatim_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_distribute_verbatim_metadata(), Metadata))
+        mdata = self.form.get_distribute_verbatim_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_distribute_verbatim(self):
         """Tests set_distribute_verbatim"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_distribute_verbatim(True)
         self.assertTrue(self.form._my_map['distributeVerbatim'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_distribute_verbatim('false')
 
     def test_clear_distribute_verbatim(self):
         """Tests clear_distribute_verbatim"""
@@ -265,13 +352,24 @@ class TestAssetForm(unittest.TestCase):
     def test_get_distribute_alterations_metadata(self):
         """Tests get_distribute_alterations_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_distribute_alterations_metadata(), Metadata))
+        mdata = self.form.get_distribute_alterations_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_distribute_alterations(self):
         """Tests set_distribute_alterations"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_distribute_alterations(True)
         self.assertTrue(self.form._my_map['distributeAlterations'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_distribute_alterations('false')
 
     def test_clear_distribute_alterations(self):
         """Tests clear_distribute_alterations"""
@@ -284,13 +382,24 @@ class TestAssetForm(unittest.TestCase):
     def test_get_distribute_compositions_metadata(self):
         """Tests get_distribute_compositions_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_distribute_compositions_metadata(), Metadata))
+        mdata = self.form.get_distribute_compositions_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_distribute_compositions(self):
         """Tests set_distribute_compositions"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_distribute_compositions(True)
         self.assertTrue(self.form._my_map['distributeCompositions'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_distribute_compositions('false')
 
     def test_clear_distribute_compositions(self):
         """Tests clear_distribute_compositions"""
@@ -303,7 +412,16 @@ class TestAssetForm(unittest.TestCase):
     def test_get_source_metadata(self):
         """Tests get_source_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_source_metadata(), Metadata))
+        mdata = self.form.get_source_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_source(self):
         """Tests set_source"""
@@ -312,6 +430,8 @@ class TestAssetForm(unittest.TestCase):
         self.form.set_source(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['sourceId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_source(True)
 
     def test_clear_source(self):
         """Tests clear_source"""
@@ -320,7 +440,7 @@ class TestAssetForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['sourceId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_source()
-        self.assertEqual(self.form._my_map['sourceId'], '')
+        self.assertEqual(self.form._my_map['sourceId'], self.form.get_source_metadata().get_default_id_values()[0])
 
     def test_get_provider_links_metadata(self):
         """Tests get_provider_links_metadata"""
@@ -335,6 +455,8 @@ class TestAssetForm(unittest.TestCase):
         self.assertTrue(len(self.form._my_map['providerLinkIds']), 1)
         self.assertEqual(self.form._my_map['providerLinkIds'][0],
                          str(test_id))
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_provider_links('this is not a list')
         # reset this for other tests
         self.form._my_map['providerLinkIds'] = list()
 
@@ -352,7 +474,16 @@ class TestAssetForm(unittest.TestCase):
     def test_get_created_date_metadata(self):
         """Tests get_created_date_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_created_date_metadata(), Metadata))
+        mdata = self.form.get_created_date_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DATETIME')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_created_date(self):
         """Tests set_created_date"""
@@ -362,6 +493,8 @@ class TestAssetForm(unittest.TestCase):
         self.form.set_created_date(test_time)
         self.assertEqual(self.form._my_map['createdDate'],
                          test_time)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_created_date(True)
         # reset this for other tests
         self.form._my_map['createdDate'] = None
 
@@ -374,18 +507,29 @@ class TestAssetForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['createdDate'],
                          test_time)
         self.form.clear_created_date()
-        self.assertIsNone(self.form._my_map['createdDate'])
+        self.assertEqual(self.form._my_map['createdDate'], self.form.get_created_date_metadata().get_default_date_time_values()[0])
 
     def test_get_published_metadata(self):
         """Tests get_published_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_published_metadata(), Metadata))
+        mdata = self.form.get_published_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'BOOLEAN')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_published(self):
         """Tests set_published"""
         # From test_templates/resource.py::ResourceForm::set_group_template
         self.form.set_published(True)
         self.assertTrue(self.form._my_map['published'])
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_published('false')
 
     def test_clear_published(self):
         """Tests clear_published"""
@@ -398,7 +542,16 @@ class TestAssetForm(unittest.TestCase):
     def test_get_published_date_metadata(self):
         """Tests get_published_date_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_published_date_metadata(), Metadata))
+        mdata = self.form.get_published_date_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'DATETIME')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_published_date(self):
         """Tests set_published_date"""
@@ -408,6 +561,8 @@ class TestAssetForm(unittest.TestCase):
         self.form.set_published_date(test_time)
         self.assertEqual(self.form._my_map['publishedDate'],
                          test_time)
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_published_date(True)
         # reset this for other tests
         self.form._my_map['publishedDate'] = None
 
@@ -420,27 +575,53 @@ class TestAssetForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['publishedDate'],
                          test_time)
         self.form.clear_published_date()
-        self.assertIsNone(self.form._my_map['publishedDate'])
+        self.assertEqual(self.form._my_map['publishedDate'], self.form.get_published_date_metadata().get_default_date_time_values()[0])
 
     def test_get_principal_credit_string_metadata(self):
         """Tests get_principal_credit_string_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_principal_credit_string_metadata(), Metadata))
+        mdata = self.form.get_principal_credit_string_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'STRING')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_principal_credit_string(self):
         """Tests set_principal_credit_string"""
-        pass
+        # From test_templates/repository.py::AssetForm::set_title_template
+        default_value = self.form.get_principal_credit_string_metadata().get_default_string_values()[0]
+        self.assertEqual(self.form._my_map['principalCreditString'], default_value)
+        self.form.set_principal_credit_string('String')
+        self.assertEqual(self.form._my_map['principalCreditString']['text'], 'String')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_principal_credit_string(42)
 
-    @unittest.skip('unimplemented test')
     def test_clear_principal_credit_string(self):
         """Tests clear_principal_credit_string"""
-        pass
+        # From test_templates/repository.py::AssetForm::clear_title_template
+        self.form.set_principal_credit_string('A String to Clear')
+        self.assertEqual(self.form._my_map['principalCreditString']['text'], 'A String to Clear')
+        self.form.clear_principal_credit_string()
+        self.assertEqual(self.form._my_map['principalCreditString'], self.form.get_principal_credit_string_metadata().get_default_string_values()[0])
 
     def test_get_composition_metadata(self):
         """Tests get_composition_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        self.assertTrue(isinstance(self.form.get_composition_metadata(), Metadata))
+        mdata = self.form.get_composition_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'ID')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
     def test_set_composition(self):
         """Tests set_composition"""
@@ -449,6 +630,8 @@ class TestAssetForm(unittest.TestCase):
         self.form.set_composition(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
         self.assertEqual(self.form._my_map['compositionId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_composition(True)
 
     def test_clear_composition(self):
         """Tests clear_composition"""
@@ -457,7 +640,7 @@ class TestAssetForm(unittest.TestCase):
         self.assertEqual(self.form._my_map['compositionId'],
                          'repository.Asset%3Afake-id%40ODL.MIT.EDU')
         self.form.clear_composition()
-        self.assertEqual(self.form._my_map['compositionId'], '')
+        self.assertEqual(self.form._my_map['compositionId'], self.form.get_composition_metadata().get_default_id_values()[0])
 
     def test_get_asset_form_record(self):
         """Tests get_asset_form_record"""
@@ -491,6 +674,7 @@ class TestAssetList(unittest.TestCase):
             self.asset_list.append(obj)
             self.asset_ids.append(obj.ident)
         self.asset_list = AssetList(self.asset_list)
+        self.object = self.asset_list
 
     @classmethod
     def tearDownClass(cls):
@@ -542,50 +726,56 @@ class TestAssetContent(unittest.TestCase):
             cls.catalog.delete_asset(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_id(self):
         """Tests get_asset_id"""
-        pass
+        # From test_templates/learning.py::Activity::get_objective_id_template
+        result = self.object.get_asset_id()
+        self.assertTrue(isinstance(result, Id))
+        self.assertEqual(str(result),
+                         str(self.asset.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_asset(self):
         """Tests get_asset"""
-        pass
+        # From test_templates/learning.py::Activity::get_objective_template
+        result = self.object.get_asset()
+        self.assertTrue(isinstance(result, ABCObjects.Asset))
+        self.assertEqual(str(result.ident),
+                         str(self.asset.ident))
 
-    @unittest.skip('unimplemented test')
     def test_get_accessibility_types(self):
         """Tests get_accessibility_types"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_accessibility_types()
 
-    @unittest.skip('unimplemented test')
     def test_has_data_length(self):
         """Tests has_data_length"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.has_data_length()
 
-    @unittest.skip('unimplemented test')
     def test_get_data_length(self):
         """Tests get_data_length"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_data_length()
 
-    @unittest.skip('unimplemented test')
     def test_get_data(self):
         """Tests get_data"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_data()
 
     def test_has_url(self):
         """Tests has_url"""
         # From test_templates/repository.py::AssetContent::has_url_template
-        self.assertTrue(self.object.has_url())
+        self.assertTrue(isinstance(self.object.has_url(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_get_url(self):
         """Tests get_url"""
-        pass
+        result = self.object.get_url()
+        self.assertEqual(result, 'https://www.google.com')
 
-    @unittest.skip('unimplemented test')
     def test_get_asset_content_record(self):
         """Tests get_asset_content_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_asset_content_record(True)
 
 
 class TestAssetContentForm(unittest.TestCase):
@@ -603,8 +793,10 @@ class TestAssetContentForm(unittest.TestCase):
         form.display_name = 'Asset'
         cls.asset = cls.catalog.create_asset(form)
 
-        cls.form = cls.catalog.get_asset_content_form_for_create(cls.asset.ident,
-                                                                 [])
+    def setUp(self):
+        self.form = self.catalog.get_asset_content_form_for_create(self.asset.ident,
+                                                                   [])
+        self.object = self.form
 
     @classmethod
     def tearDownClass(cls):
@@ -615,52 +807,87 @@ class TestAssetContentForm(unittest.TestCase):
     def test_get_accessibility_type_metadata(self):
         """Tests get_accessibility_type_metadata"""
         # From test_templates/logging.py::LogEntryForm::get_priority_metadata_template
-        self.assertTrue(isinstance(self.form.get_accessibility_type_metadata(), Metadata))
+        mdata = self.form.get_accessibility_type_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'TYPE')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_add_accessibility_type(self):
         """Tests add_accessibility_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.add_accessibility_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_remove_accessibility_type(self):
         """Tests remove_accessibility_type"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.remove_accessibility_type(True)
 
-    @unittest.skip('unimplemented test')
     def test_clear_accessibility_types(self):
         """Tests clear_accessibility_types"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.clear_accessibility_types()
 
     def test_get_data_metadata(self):
         """Tests get_data_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_data_metadata(), Metadata))
+        mdata = self.form.get_data_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'OBJECT')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_data(self):
         """Tests set_data"""
-        pass
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_data('foo')
+        # TODO: should test setting actual data...
 
-    @unittest.skip('unimplemented test')
     def test_clear_data(self):
         """Tests clear_data"""
-        pass
+        self.form.clear_data()
 
     def test_get_url_metadata(self):
         """Tests get_url_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        self.assertTrue(isinstance(self.form.get_url_metadata(), Metadata))
+        mdata = self.form.get_url_metadata()
+        self.assertTrue(isinstance(mdata, Metadata))
+        self.assertTrue(isinstance(mdata.get_element_id(), ABC_Id))
+        self.assertTrue(isinstance(mdata.get_element_label(), ABC_DisplayText))
+        self.assertTrue(isinstance(mdata.get_instructions(), ABC_DisplayText))
+        self.assertEquals(mdata.get_syntax(), 'STRING')
+        self.assertFalse(mdata.is_array())
+        self.assertTrue(isinstance(mdata.is_required(), bool))
+        self.assertTrue(isinstance(mdata.is_read_only(), bool))
+        self.assertTrue(isinstance(mdata.is_linked(), bool))
 
-    @unittest.skip('unimplemented test')
     def test_set_url(self):
         """Tests set_url"""
-        pass
+        # From test_templates/repository.py::AssetContentForm::set_url_template
+        default_value = self.form.get_url_metadata().get_default_string_values()[0]
+        self.assertEqual(self.form._my_map['url'], default_value)
+        self.form.set_url('String')
+        self.assertEqual(self.form._my_map['url'], 'String')
+        with self.assertRaises(errors.InvalidArgument):
+            self.form.set_url(42)
 
-    @unittest.skip('unimplemented test')
     def test_clear_url(self):
         """Tests clear_url"""
-        pass
+        # From test_templates/repository.py::AssetContentForm::clear_url_template
+        self.form.set_url('A String to Clear')
+        self.assertEqual(self.form._my_map['url'], 'A String to Clear')
+        self.form.clear_url()
+        self.assertEqual(self.form._my_map['url'], self.form.get_url_metadata().get_default_string_values()[0])
 
     def test_get_asset_content_form_record(self):
         """Tests get_asset_content_form_record"""
@@ -729,6 +956,7 @@ class TestComposition(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
         create_form = cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test catalog'
@@ -741,24 +969,27 @@ class TestComposition(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
+        # From test_templates/resource.py::Resource::init_template
         for obj in cls.catalog.get_compositions():
             cls.catalog.delete_composition(obj.ident)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
-    @unittest.skip('unimplemented test')
     def test_get_children_ids(self):
         """Tests get_children_ids"""
-        pass
+        # From test_templates/learning.py::Activity::get_asset_ids_template
+        result = self.object.get_children_ids()
+        self.assertTrue(isinstance(result, IdList))
+        self.assertEqual(result.available(), 0)
 
-    @unittest.skip('unimplemented test')
     def test_get_children(self):
         """Tests get_children"""
-        pass
+        with self.assertRaises(errors.IllegalState):
+            self.object.get_children()
 
-    @unittest.skip('unimplemented test')
     def test_get_composition_record(self):
         """Tests get_composition_record"""
-        pass
+        with self.assertRaises(errors.Unsupported):
+            self.object.get_composition_record(True)
 
 
 class TestCompositionForm(unittest.TestCase):
@@ -814,6 +1045,7 @@ class TestCompositionList(unittest.TestCase):
             self.composition_list.append(obj)
             self.composition_ids.append(obj.ident)
         self.composition_list = CompositionList(self.composition_list)
+        self.object = self.composition_list
 
     @classmethod
     def tearDownClass(cls):
@@ -841,19 +1073,57 @@ class TestCompositionList(unittest.TestCase):
 class TestRepository(unittest.TestCase):
     """Tests for Repository"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::Bin::init_template
+        form = self.svc_mgr.get_repository_form_for_create([])
+        form.display_name = 'for testing'
+        self.object = self.svc_mgr.create_repository(form)
+
+    def tearDown(self):
+        # From test_templates/resource.py::Bin::init_template
+        self.svc_mgr.delete_repository(self.object.ident)
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::Bin::init_template
+        pass
+
     def test_get_repository_record(self):
         """Tests get_repository_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_repository_record(True)
 
 
 class TestRepositoryForm(unittest.TestCase):
     """Tests for RepositoryForm"""
 
-    @unittest.skip('unimplemented test')
+    @classmethod
+    def setUpClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        cls.svc_mgr = Runtime().get_service_manager('REPOSITORY', proxy=PROXY, implementation='TEST_SERVICE')
+
+    def setUp(self):
+        # From test_templates/resource.py::BinForm::init_template
+        self.object = self.svc_mgr.get_repository_form_for_create([])
+
+    def tearDown(self):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
+    @classmethod
+    def tearDownClass(cls):
+        # From test_templates/resource.py::BinForm::init_template
+        pass
+
     def test_get_repository_form_record(self):
         """Tests get_repository_form_record"""
-        pass
+        with self.assertRaises(errors.Unimplemented):
+            self.object.get_repository_form_record(True)
 
 
 class TestRepositoryList(unittest.TestCase):
@@ -938,11 +1208,21 @@ class TestRepositoryNode(unittest.TestCase):
             self.repository_list[0].ident,
             self.repository_list[1].ident)
 
+        self.object = self.svc_mgr.get_repository_nodes(
+            self.repository_list[0].ident, 0, 5, False)
+
+    def tearDown(self):
+        # Implemented from init template for BinNode
+        self.svc_mgr.remove_child_repository(
+            self.repository_list[0].ident,
+            self.repository_list[1].ident)
+        self.svc_mgr.remove_root_repository(self.repository_list[0].ident)
+        for node in self.repository_list:
+            self.svc_mgr.delete_repository(node.ident)
+
     @classmethod
     def tearDownClass(cls):
         # Implemented from init template for BinNode
-        for obj in cls.repository_ids:
-            cls.svc_mgr.delete_repository(obj)
         cls.svc_mgr.delete_repository(cls.catalog.ident)
 
     def test_get_repository(self):

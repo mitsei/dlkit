@@ -419,6 +419,8 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
 
         """
         # Implemented from template for osid.learning.Activity.get_assets_template
+        if not bool(self._my_map['learningObjectiveIds']):
+            raise errors.IllegalState('no learningObjectiveIds')
         mgr = self._get_provider_manager('LEARNING')
         if not mgr.supports_objective_lookup():
             raise errors.OperationFailed('Learning does not support Objective lookup')
@@ -825,7 +827,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['levelId']:
+        if not bool(self._my_map['levelId']):
             raise errors.IllegalState('this Assessment has no level')
         else:
             return Id(self._my_map['levelId'])
@@ -841,7 +843,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['levelId']:
+        if not bool(self._my_map['levelId']):
             raise errors.IllegalState('this Assessment has no level')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_lookup():
@@ -873,7 +875,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['rubricId']:
+        if not bool(self._my_map['rubricId']):
             raise errors.IllegalState('this Assessment has no rubric')
         else:
             return Id(self._my_map['rubricId'])
@@ -890,7 +892,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['rubricId']:
+        if not bool(self._my_map['rubricId']):
             raise errors.IllegalState('this Assessment has no rubric')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
@@ -972,6 +974,14 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         return False
 
     def are_items_shuffled(self):
+        """This method can be overwritten by a record extension."""
+        return False
+
+    def uses_simple_section_sequencing(self):
+        """This method can be overwritten by a record extension."""
+        return False
+
+    def uses_shuffled_section_sequencing(self):
         """This method can be overwritten by a record extension."""
         return False
 
@@ -1219,6 +1229,8 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentId']):
+            raise errors.IllegalState('assessment empty')
         return Id(self._my_map['assessmentId'])
 
     assessment_id = property(fget=get_assessment_id)
@@ -1232,6 +1244,8 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not bool(self._my_map['assessmentId']):
+            raise errors.IllegalState('assessment empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
             raise errors.OperationFailed('Assessment does not support Assessment lookup')
@@ -1249,7 +1263,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['levelId']:
+        if not bool(self._my_map['levelId']):
             raise errors.IllegalState('this AssessmentOffered has no level')
         else:
             return Id(self._my_map['levelId'])
@@ -1265,7 +1279,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['levelId']:
+        if not bool(self._my_map['levelId']):
             raise errors.IllegalState('this AssessmentOffered has no level')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_lookup():
@@ -1411,7 +1425,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['scoreSystemId']:
+        if not bool(self._my_map['scoreSystemId']):
             raise errors.IllegalState('this AssessmentOffered has no score_system')
         else:
             return Id(self._my_map['scoreSystemId'])
@@ -1428,7 +1442,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['scoreSystemId']:
+        if not bool(self._my_map['scoreSystemId']):
             raise errors.IllegalState('this AssessmentOffered has no score_system')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_system_lookup():
@@ -1460,7 +1474,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['gradeSystemId']:
+        if not bool(self._my_map['gradeSystemId']):
             raise errors.IllegalState('this AssessmentOffered has no grade_system')
         else:
             return Id(self._my_map['gradeSystemId'])
@@ -1477,7 +1491,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['gradeSystemId']:
+        if not bool(self._my_map['gradeSystemId']):
             raise errors.IllegalState('this AssessmentOffered has no grade_system')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_system_lookup():
@@ -1509,7 +1523,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['rubricId']:
+        if not bool(self._my_map['rubricId']):
             raise errors.IllegalState('this AssessmentOffered has no rubric')
         else:
             return Id(self._my_map['rubricId'])
@@ -1527,7 +1541,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['rubricId']:
+        if not bool(self._my_map['rubricId']):
             raise errors.IllegalState('this AssessmentOffered has no rubric')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_offered_lookup():
@@ -1616,15 +1630,11 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
 
     def are_sections_sequential(self):
         """This method can be overwritten by a record extension."""
-        if not self.get_assessment().uses_simple_section_sequencing():  # Records should check this
-            return True
-        return True
+        return self.get_assessment().uses_simple_section_sequencing()  # Records should check this
 
     def are_sections_shuffled(self):
         """This method can be overwritten by a record extension."""
-        if not self.get_assessment().uses_simple_section_sequencing():  # Records should check this
-            return False
-        return False
+        return self.get_assessment().uses_shuffled_section_sequencing()  # Records should check this
 
 
 class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_objects.OsidObjectForm, osid_objects.OsidSubjugateableForm):
@@ -1877,7 +1887,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         """
         # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['deadline'])
-        metadata.update({'existing_object_values': self._my_map['deadline']})
+        metadata.update({'existing_date_time_values': self._my_map['deadline']})
         return Metadata(**metadata)
 
     deadline_metadata = property(fget=get_deadline_metadata)
@@ -2157,6 +2167,8 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentOfferedId']):
+            raise errors.IllegalState('assessment_offered empty')
         return Id(self._my_map['assessmentOfferedId'])
 
     assessment_offered_id = property(fget=get_assessment_offered_id)
@@ -2171,6 +2183,8 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not bool(self._my_map['assessmentOfferedId']):
+            raise errors.IllegalState('assessment_offered empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_offered_lookup():
             raise errors.OperationFailed('Assessment does not support AssessmentOffered lookup')
@@ -2365,7 +2379,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['scoreSystemId']:
+        if not bool(self._my_map['scoreSystemId']):
             raise errors.IllegalState('this AssessmentTaken has no score_system')
         mgr = self._get_provider_manager('ID')
         if not mgr.supports_id_lookup():
@@ -2387,7 +2401,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['scoreSystemId']:
+        if not bool(self._my_map['scoreSystemId']):
             raise errors.IllegalState('this AssessmentTaken has no score_system')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_system_lookup():
@@ -2432,7 +2446,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['gradeId']:
+        if not bool(self._my_map['gradeId']):
             raise errors.IllegalState('this AssessmentTaken has no grade')
         else:
             return Id(self._my_map['gradeId'])
@@ -2449,7 +2463,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['gradeId']:
+        if not bool(self._my_map['gradeId']):
             raise errors.IllegalState('this AssessmentTaken has no grade')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_lookup():
@@ -2493,7 +2507,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not self._my_map['rubricId']:
+        if not bool(self._my_map['rubricId']):
             raise errors.IllegalState('this AssessmentTaken has no rubric')
         else:
             return Id(self._my_map['rubricId'])
@@ -2510,7 +2524,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
 
         """
         # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not self._my_map['rubricId']:
+        if not bool(self._my_map['rubricId']):
             raise errors.IllegalState('this AssessmentTaken has no rubric')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_taken_lookup():
@@ -2621,6 +2635,19 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         else:
             return self._get_assessment_section(
                 Id(self._my_map['sections'][self._my_map['sections'].index(str(assessment_section_id)) + 1]))
+
+    def _get_previous_assessment_section(self, assessment_section_id):
+        """Gets the previous section before section_id.
+
+        Assumes that section list exists in taken and section_id is in section list.
+        Assumes that Section parts only exist as children of Assessments
+
+        """
+        if self._my_map['sections'][0] == str(assessment_section_id):
+            raise errors.IllegalState('already at the first section')
+        else:
+            return self._get_assessment_section(
+                Id(self._my_map['sections'][self._my_map['sections'].index(str(assessment_section_id)) - 1]))
 
     def _get_assessment_section(self, assessment_section_id):
         if assessment_section_id not in self._assessment_sections:
@@ -3001,6 +3028,8 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentTakenId']):
+            raise errors.IllegalState('assessment_taken empty')
         return Id(self._my_map['assessmentTakenId'])
 
     assessment_taken_id = property(fget=get_assessment_taken_id)
@@ -3014,6 +3043,8 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
 
         """
         # Implemented from template for osid.learning.Activity.get_objective
+        if not bool(self._my_map['assessmentTakenId']):
+            raise errors.IllegalState('assessment_taken empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_taken_lookup():
             raise errors.OperationFailed('Assessment does not support AssessmentTaken lookup')
