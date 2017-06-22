@@ -1741,7 +1741,7 @@ interactions:
     method: GET
     uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/../objectives/mc3-objective%3A8569%40MIT-OEIT
   response:
-    body: {string: !!python/unicode '{"type":"Objective","id":"mc3-objective%3A8569%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-29T16:39:58","updatedBy":"MC3GUE$T","updatedOn":"2015-08-01T17:56:26"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"An
+    body: {string: '{"type":"Objective","id":"mc3-objective%3A8569%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-29T16:39:58","updatedBy":"MC3GUE$T","updatedOn":"2015-08-01T17:56:26"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"An
         operational amplifier (\"op-amp\") is a DC-coupled high-gain electronic voltage
         amplifier with a differential input and, usually, a single-ended output.\n\n---
         Wikipedia"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Operational
@@ -3508,7 +3508,7 @@ interactions:
     method: GET
     uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/../objectives/mc3-objective%3A3812%40MIT-OEIT
   response:
-    body: {string: !!python/unicode '{"type":"Objective","id":"mc3-objective%3A3812%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:58"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Learn
+    body: {string: '{"type":"Objective","id":"mc3-objective%3A3812%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:48:58"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Learn
         The definite integral \\(\\int_a^b f(x) dx\\) is the net signed area between
         the graph of \\(f(x)\\) and the \\(x\\)-axis over the interval \\([a,b]\\).
         "},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Learn
@@ -3535,7 +3535,7 @@ interactions:
     method: GET
     uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/../objectives/mc3-objective%3A8989%40MIT-OEIT
   response:
-    body: {string: !!python/unicode '{"type":"Objective","id":"mc3-objective%3A8989%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-03-15T14:04:42","updatedBy":"MC3GUE$T","updatedOn":"2015-08-02T21:03:30"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"A
+    body: {string: '{"type":"Objective","id":"mc3-objective%3A8989%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-03-15T14:04:42","updatedBy":"MC3GUE$T","updatedOn":"2015-08-02T21:03:30"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"A
         conductor is an object or type of material that allows the flow of electrical
         current in one or more directions. (Wikipedia)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Conductor"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A55983320e7dde0d3c894cc3c%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}'}
     headers:
@@ -3549,5 +3549,33 @@ interactions:
       date: ['Fri, 26 May 2017 18:20:43 GMT']
       keep-alive: ['timeout=15, max=50']
       server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.14.2]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/../objectives/mc3-objective%3A9123%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Objective","id":"mc3-objective%3A9123%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-03-26T23:42:30","updatedBy":"MC3GUE$T","updatedOn":"2015-08-01T20:38:18"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"A
+        relation $R$ on a set $A$ is a weak partial order if it is transitive, antisymmetric,
+        and reflexive. The relation is said to be a strong partial order if it is
+        transitive, antisymmetric, and irreflexive.\n\n--- 6.042 textbook (see Learn
+        section)"},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Partial
+        Order"},"genusTypeId":"mc3-objective%3Amc3.learning.topic%40MIT-OEIT","assessmentId":"assessment.AssessmentOffered%3A5598339ce7dde0bc264412b8%40bazzim.MIT.EDU","cognitiveProcessId":"","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: ['keep-alive, Keep-Alive']
+      Content-Length: ['1027']
+      Content-Type: [application/json]
+      Date: ['Thu, 22 Jun 2017 15:45:40 GMT']
+      Keep-Alive: ['timeout=15, max=50']
+      Server: [Apache]
     status: {code: 200, message: OK}
 version: 1

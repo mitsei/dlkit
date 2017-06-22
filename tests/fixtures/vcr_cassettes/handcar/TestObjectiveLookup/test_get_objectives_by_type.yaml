@@ -5,7 +5,7 @@ interactions:
     method: GET
     uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives?genustypeid=mc3-objective%3Amc3.learning.department%40MIT-OEIT
   response:
-    body: {string: !!python/unicode '[]'}
+    body: {string: '[]'}
     headers:
       Access-Control-Allow-Headers: [Content-Type]
       Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
@@ -27,7 +27,7 @@ interactions:
     method: GET
     uri: https://mc3-dev.mit.edu//handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives?genustypeid=mc3-objective%3Amc3.learning.accomplishment.criteria%40MIT-OEIT
   response:
-    body: {string: !!python/unicode '[]'}
+    body: {string: '[]'}
     headers:
       access-control-allow-headers: [Content-Type]
       access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
@@ -50,7 +50,7 @@ interactions:
     method: GET
     uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives?genustypeid=mc3-objective%3Amc3.learning.specific.objective%40MIT-OEIT
   response:
-    body: {string: !!python/unicode '[]'}
+    body: {string: '[]'}
     headers:
       access-control-allow-headers: [Content-Type]
       access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
@@ -62,5 +62,28 @@ interactions:
       date: ['Fri, 26 May 2017 18:20:44 GMT']
       keep-alive: ['timeout=15, max=50']
       server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.14.2]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/objectives?genustypeid=mc3-objective%3Amc3.learning.course%40MIT-OEIT
+  response:
+    body: {string: '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: ['keep-alive, Keep-Alive']
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Thu, 22 Jun 2017 15:45:41 GMT']
+      Keep-Alive: ['timeout=15, max=50']
+      Server: [Apache]
     status: {code: 200, message: OK}
 version: 1
