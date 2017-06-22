@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo osid'
 
 DESCRIPTION = 'MongoDB based osid implementation'
 
-VERSIONCOMPONENTS = [0, 1, 409]
+VERSIONCOMPONENTS = [0, 1, 410]
 
 RELEASEDATE = "2017-06-22"
 

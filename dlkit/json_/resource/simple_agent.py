@@ -76,6 +76,10 @@ class OsidObject(abcOsidObject, Identifiable, Extensible, Browsable):
         """Returns the genus type"""
         return DEFAULT_GENUS_TYPE
 
+    def is_of_genus_type(self, genus_type):
+        """is the object of the given genusTypeId? Override because simpleAgent to always be True"""
+        return True
+
 
 class Agent(abcAgent, OsidObject):
     """An ``Agent`` represents an authenticatable identity.

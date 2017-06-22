@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo authorization'
 
 DESCRIPTION = 'MongoDB based authorization implementation'
 
-VERSIONCOMPONENTS = [0, 1, 410]
+VERSIONCOMPONENTS = [0, 1, 411]
 
 RELEASEDATE = "2017-06-22"
 
