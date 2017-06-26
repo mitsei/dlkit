@@ -402,7 +402,7 @@ AUTHZ_ADAPTER_1 = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'JSON_1', 'priority': 1}
+                {'value': 'ALWAYS_AUTHZ', 'priority': 1}
             ]
         },
         'assessmentProviderImpl': {
@@ -995,6 +995,15 @@ TEST_JSON_FILESYSTEM_1 = {
     }
 }
 
+ALWAYS_AUTHZ = {
+    'id': 'always_authz_impl',
+    'displayName': 'Always Authz Impl Configuration',
+    'description': 'Configuration for Always True Authorization Impl',
+    'parameters': {
+        'implKey': impl_key_dict('always_authz'),
+    }
+}
+
 TEST_AUTHZ_ADAPTER_1 = {
     'id': 'authz_adapter_configuration_1',
     'displayName': 'AuthZ Adapter Configuration',
@@ -1006,7 +1015,7 @@ TEST_AUTHZ_ADAPTER_1 = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'ALWAYS_AUTHZ', 'priority': 1}
             ]
         },
         'assessmentProviderImpl': {
@@ -1030,7 +1039,7 @@ TEST_AUTHZ_ADAPTER_1 = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
+                {'value': 'TEST_JSON_1', 'priority': 1}
             ]
         },
         'commentingProviderImpl': {
@@ -1087,7 +1096,7 @@ TEST_SERVICE = {
             'displayName': 'Assessment Provider Implementation',
             'description': 'Implementation for assessment service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'assessment_authoringProviderImpl': {
@@ -1095,7 +1104,7 @@ TEST_SERVICE = {
             'displayName': 'Assessment Authoring Provider Implementation',
             'description': 'Implementation for assessment authoring service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'authorizationProviderImpl': {
@@ -1103,7 +1112,7 @@ TEST_SERVICE = {
             'displayName': 'Authorization Provider Implementation',
             'description': 'Implementation for authorization service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'learningProviderImpl': {
@@ -1111,7 +1120,7 @@ TEST_SERVICE = {
             'displayName': 'Learning Provider Implementation',
             'description': 'Implementation for learning service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'repositoryProviderImpl': {
@@ -1119,7 +1128,7 @@ TEST_SERVICE = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'commentingProviderImpl': {
@@ -1127,7 +1136,7 @@ TEST_SERVICE = {
             'displayName': 'Commenting Provider Implementation',
             'description': 'Implementation for commenting service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'resourceProviderImpl': {
@@ -1135,7 +1144,7 @@ TEST_SERVICE = {
             'displayName': 'Resource Provider Implementation',
             'description': 'Implementation for resource service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'gradingProviderImpl': {
@@ -1143,7 +1152,7 @@ TEST_SERVICE = {
             'displayName': 'Grading Provider Implementation',
             'description': 'Implementation for grading provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
         'loggingProviderImpl': {
@@ -1151,7 +1160,7 @@ TEST_SERVICE = {
             'displayName': 'Logging Provider Implementation',
             'description': 'Implementation for logging provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
     }
