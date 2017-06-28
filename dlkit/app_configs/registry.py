@@ -88,5 +88,9 @@ MANAGER_PATHS = {
         'AUTHORIZATION': ('tests.authz_impls.always_authz.AuthorizationManager',
                           'dlkit.authz_impls.always_authz.AuthorizationProxyManager')
     },
+    'never_authz': {
+        'AUTHORIZATION': ('tests.authz_impls.never_authz.AuthorizationManager',
+                          'dlkit.authz_impls.never_authz.AuthorizationProxyManager')
+    },
 
 }
