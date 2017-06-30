@@ -122,7 +122,6 @@ class TestAssetLookupSession(object):
 
     def test_get_asset(self):
         """Tests get_asset"""
-        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         if not is_never_authz(self.service_config):
             self.catalog.use_isolated_repository_view()
             obj = self.catalog.get_asset(self.asset_list[0].ident)
@@ -131,42 +130,37 @@ class TestAssetLookupSession(object):
             obj = self.catalog.get_asset(self.asset_list[0].ident)
             assert obj.ident == self.asset_list[0].ident
         else:
-            with pytest.raises(errors.PermissionDenied):
+            with pytest.raises(errors.NotFound):
                 self.catalog.get_asset(self.fake_id)
 
     def test_get_assets_by_ids(self):
         """Tests get_assets_by_ids"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.repository.objects import AssetList
+        objects = self.catalog.get_assets_by_ids(self.asset_ids)
+        assert isinstance(objects, AssetList)
+        self.catalog.use_federated_repository_view()
+        objects = self.catalog.get_assets_by_ids(self.asset_ids)
+        assert isinstance(objects, AssetList)
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_assets_by_ids(self.asset_ids)
-            assert isinstance(objects, AssetList)
-            self.catalog.use_federated_repository_view()
-            objects = self.catalog.get_assets_by_ids(self.asset_ids)
             assert objects.available() > 0
-            assert isinstance(objects, AssetList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assets_by_ids(self.asset_ids)
+            assert objects.available() == 0
 
     def test_get_assets_by_genus_type(self):
         """Tests get_assets_by_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
+        objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
+        assert isinstance(objects, AssetList)
+        self.catalog.use_federated_repository_view()
+        objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
+        assert isinstance(objects, AssetList)
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, AssetList)
-            self.catalog.use_federated_repository_view()
-            objects = self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
             assert objects.available() > 0
-            assert isinstance(objects, AssetList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assets_by_genus_type(DEFAULT_GENUS_TYPE)
+            assert objects.available() == 0
 
     def test_get_assets_by_parent_genus_type(self):
         """Tests get_assets_by_parent_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
         if not is_never_authz(self.service_config):
             objects = self.catalog.get_assets_by_parent_genus_type(DEFAULT_GENUS_TYPE)
@@ -176,23 +170,20 @@ class TestAssetLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, AssetList)
         else:
-            with pytest.raises(errors.PermissionDenied):
+            with pytest.raises(errors.Unimplemented):
+                # because the never_authz "tries harder" and runs the actual query...
+                #    whereas above the method itself in JSON returns an empty list
                 self.catalog.get_assets_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_assets_by_record_type(self):
         """Tests get_assets_by_record_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.repository.objects import AssetList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
-            assert isinstance(objects, AssetList)
-            self.catalog.use_federated_repository_view()
-            objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, AssetList)
-        else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
+        objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
+        assert isinstance(objects, AssetList)
+        self.catalog.use_federated_repository_view()
+        objects = self.catalog.get_assets_by_record_type(DEFAULT_TYPE)
+        assert objects.available() == 0
+        assert isinstance(objects, AssetList)
 
     def test_get_assets_by_provider(self):
         """Tests get_assets_by_provider"""
@@ -204,22 +195,20 @@ class TestAssetLookupSession(object):
 
     def test_get_assets(self):
         """Tests get_assets"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.repository.objects import AssetList
+        objects = self.catalog.get_assets()
+        assert isinstance(objects, AssetList)
+        self.catalog.use_federated_repository_view()
+        objects = self.catalog.get_assets()
+        assert isinstance(objects, AssetList)
+
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_assets()
-            assert isinstance(objects, AssetList)
-            self.catalog.use_federated_repository_view()
-            objects = self.catalog.get_assets()
             assert objects.available() > 0
-            assert isinstance(objects, AssetList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assets()
+            assert objects.available() == 0
 
     def test_get_asset_with_alias(self):
         if not is_never_authz(self.service_config):
-            # Because you can't create the alias with NEVER_AUTHZ
             self.catalog.alias_asset(self.asset_ids[0], ALIAS_ID)
             obj = self.catalog.get_asset(ALIAS_ID)
             assert obj.get_id() == self.asset_ids[0]
