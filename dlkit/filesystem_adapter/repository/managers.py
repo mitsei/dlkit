@@ -851,7 +851,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         ``supports_asset_notification()`` is ``true``.*
 
         """
-        pass
+        return self._provider_manager.get_asset_notification_session(asset_receiver)
 
     def get_asset_notification_session_for_repository(self,
                                                       asset_receiver=None,
@@ -874,7 +874,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        pass
+        return self._provider_manager.get_asset_notification_session_for_repository(asset_receiver, repository_id)
 
     def get_asset_repository_session(self):
         """Gets the session for retrieving asset to repository mappings.
