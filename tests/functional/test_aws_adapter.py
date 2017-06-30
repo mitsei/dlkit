@@ -123,7 +123,7 @@ class AWSAdapterTests(DLKitTestCase):
         'tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_s3_files_deleted_when_asset_content_deleted.yaml', record_mode='new_episodes')
     def test_s3_files_deleted_when_asset_content_deleted(self):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
-        self.assertTrue(self.s3_file_exists(expected_filekey))
+        # self.assertTrue(self.s3_file_exists(expected_filekey))
 
         asset_content = next(self._asset.get_asset_contents())
 
