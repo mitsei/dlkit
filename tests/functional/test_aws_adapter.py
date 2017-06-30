@@ -94,6 +94,7 @@ class AWSAdapterTests(DLKitTestCase):
             raise ex
         return True
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/setUp.yaml', record_mode='new_episodes')
     def setUp(self):
         super(AWSAdapterTests, self).setUp()
 
@@ -113,7 +114,6 @@ class AWSAdapterTests(DLKitTestCase):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
         self.assertTrue(self.s3_file_exists(expected_filekey))
 
-    @vcr.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_repository_assets_return_cloudfront_url_when_queried.yaml', record_mode='new_episodes')
     def test_repository_assets_return_cloudfront_url_when_queried(self):
         asset_content = next(self._asset.get_asset_contents())
         url = asset_content.get_url()

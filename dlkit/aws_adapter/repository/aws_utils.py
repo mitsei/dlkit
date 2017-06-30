@@ -55,6 +55,11 @@ def get_signed_url(url, config_map):
             rsa.PrivateKey.load_pkcs1(private_key.encode('utf8')),
             'SHA-1')  # CloudFront requires SHA-1 hash
 
+    if any(config_map[key] == '' for key in ['s3_bucket', 'cloudfront_distro',
+                                             'cloudfront_private_key_file', 'cloudfront_keypair_id']):
+        # This is a test configuration
+        return 'You are missing S3 and CF configs: https:///?Expires=X&Signature=X&Key-Pair-Id='
+
     expires = datetime.datetime.utcnow() + datetime.timedelta(days=7)
     s3_bucket = config_map['s3_bucket']
 
