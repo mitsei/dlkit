@@ -1056,7 +1056,7 @@ TEST_AUTHZ_ADAPTER_1 = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
             ]
         },
         'commentingProviderImpl': {
@@ -1145,7 +1145,7 @@ TEST_AUTHZ_ADAPTER_2 = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'TEST_JSON_1', 'priority': 1}
+                {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
             ]
         },
         'commentingProviderImpl': {
