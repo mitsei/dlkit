@@ -31,7 +31,7 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
 
     def is_authorized(self, agent_id=None, function_id=None, qualifier_id=None):
         return False
-        
+
     def get_authorization_condition(self, function_id=None):
         raise Unimplemented()
 

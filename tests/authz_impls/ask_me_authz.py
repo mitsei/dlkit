@@ -34,11 +34,8 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
         if authz in ['y', 'Y', 'yes', 'Yes', 'YES', 'sure', 'Sure', 'SURE', 'of course']:
             return True
         else:
-            return False
-        else:
             print 'Enter either y or n.  If you don\'t follow instructions, you won\'t be authorized!!!'
             return False
-        
 
     def get_authorization_condition(self, function_id=None):
         raise Unimplemented()

@@ -3,6 +3,7 @@
 from dlkit.abstract_osid.osid import sessions as abc_osid_sessions
 from .osid_errors import Unimplemented
 
+
 class OsidSession(abc_osid_sessions.OsidSession):
     """The ``OsidSession`` is the top level interface for all OSID sessions.
 
@@ -21,7 +22,6 @@ class OsidSession(abc_osid_sessions.OsidSession):
 
     """
 
-    
     def get_locale(self):
         """Gets the locale indicating the localization preferences in effect for this session.
 

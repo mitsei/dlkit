@@ -6,6 +6,7 @@ from . import profile
 from .osid_errors import Unimplemented, NullArgument, IllegalState
 from .primitives import Id, Type, DisplayText
 
+
 class Sourceable(abc_osid_markers.Sourceable):
     """osid Sourceable for stupid authz impls"""
 
@@ -35,7 +36,6 @@ class Sourceable(abc_osid_markers.Sourceable):
     license_ = property(fget=get_license)
 
 
-
 class OsidProfile(abc_osid_managers.OsidProfile, Sourceable):
     """osid OsidProfile for stupid authz impls"""
 
@@ -63,16 +63,16 @@ class OsidProfile(abc_osid_managers.OsidProfile, Sourceable):
     description = property(fget=get_description)
 
     def get_version(self):
-        ## THIS ALL NEEDS TO BE FIXED:
-        #try:
+        # THIS ALL NEEDS TO BE FIXED:
+        # try:
         #    from ..installation.primitives import Version
-        #except:
+        # except:
         #    from .common import Version
-        #try:
+        # try:
         #    from ..type.primitives import Type
-        #except:
+        # except:
         #    from .common import Type
-        #return Version(components = profile.VERSIONCOMPONENTS,
+        # return Version(components = profile.VERSIONCOMPONENTS,
         #               scheme = Type(**profile.VERSIONSCHEME))
         raise Unimplemented()
 
@@ -84,16 +84,16 @@ class OsidProfile(abc_osid_managers.OsidProfile, Sourceable):
     release_date = property(fget=get_release_date)
 
     def supports_osid_version(self, version=None):
-        ## THIS ALL NEEDS TO BE FIXED:
-        #try:
+        # THIS ALL NEEDS TO BE FIXED:
+        # try:
         #    from ..installation.primitives import Version
-        #except:
+        # except:
         #    from .common import Version
-        #try:
+        # try:
         #    from ..type.primitives import Type
-        #except:
+        # except:
         #    from .common import Type
-        #return Version(components = profile.OSIDVERSION,
+        # return Version(components = profile.OSIDVERSION,
         #               scheme = Type(**profile.VERSIONSCHEME))
         raise Unimplemented()
 
