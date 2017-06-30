@@ -257,7 +257,7 @@ class AgentQuerySession(abc_authentication_sessions.AgentQuerySession, osid_sess
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_agency_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_agency_view(self):
         # Implemented from azosid template for -
@@ -463,7 +463,10 @@ class AgentAdminSession(abc_authentication_sessions.AgentAdminSession, osid_sess
         return self._provider_session.delete_agent(agent_id)
 
     def can_manage_agent_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_agent(self, agent_id, alias_id):
@@ -621,7 +624,7 @@ class AgentAgencySession(abc_authentication_sessions.AgentAgencySession, osid_se
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_agent_ids_by_agency(agency_id)
+        return self._provider_session.get_agents_by_agency(agency_id)
 
     @raise_null_argument
     def get_agent_ids_by_agencies(self, agency_ids):
@@ -637,7 +640,7 @@ class AgentAgencySession(abc_authentication_sessions.AgentAgencySession, osid_se
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_agents_ids_by_agencies(agency_ids)
+        return self._provider_session.get_agents_by_agencies(agency_ids)
 
     @raise_null_argument
     def get_agency_ids_by_agent(self, agent_id):
@@ -680,7 +683,7 @@ class AgentAgencyAssignmentSession(abc_authentication_sessions.AgentAgencyAssign
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_agency_ids()
+        return self._provider_session.get_assignable_agency_ids(agency_id)
 
     @raise_null_argument
     def get_assignable_agency_ids_for_agent(self, agency_id, agent_id):
@@ -688,7 +691,7 @@ class AgentAgencyAssignmentSession(abc_authentication_sessions.AgentAgencyAssign
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_agency_ids_for_agent(agent_id)
+        return self._provider_session.get_assignable_agency_ids_for_agent(agency_id, agent_id)
 
     @raise_null_argument
     def assign_agent_to_agency(self, agent_id, agency_id):
@@ -841,9 +844,8 @@ class AgencyQuerySession(abc_authentication_sessions.AgencyQuerySession, osid_se
 
     def can_search_agencies(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_agency_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_agency_query(self):
         # Implemented from azosid template for -
@@ -959,7 +961,10 @@ class AgencyAdminSession(abc_authentication_sessions.AgencyAdminSession, osid_se
         return self._provider_session.delete_agency(agency_id)
 
     def can_manage_agency_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_agency(self, agency_id, alias_id):

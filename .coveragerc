@@ -4,3 +4,6 @@ omit =
     dlkit/app_configs/*
     setup.py
     */profile.py
+    tests/authz_impls/*
+    */record_templates.py
+    */settings.py

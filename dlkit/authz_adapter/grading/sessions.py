@@ -261,7 +261,7 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_gradebook_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_gradebook_view(self):
         # Implemented from azosid template for -
@@ -456,7 +456,10 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         return self._provider_session.delete_grade_system(grade_system_id)
 
     def can_manage_grade_system_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_grade_system(self, grade_system_id, alias_id):
@@ -533,7 +536,10 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         return self._provider_session.delete_grade(grade_id)
 
     def can_manage_grade_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_grade(self, grade_id, alias_id):
@@ -673,7 +679,7 @@ class GradeSystemGradebookSession(abc_grading_sessions.GradeSystemGradebookSessi
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_grade_system_ids_by_gradebook(gradebook_id)
+        return self._provider_session.get_grade_systems_by_gradebook(gradebook_id)
 
     @raise_null_argument
     def get_grade_system_ids_by_gradebooks(self, gradebook_ids):
@@ -689,7 +695,7 @@ class GradeSystemGradebookSession(abc_grading_sessions.GradeSystemGradebookSessi
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_grade_systems_ids_by_gradebooks(gradebook_ids)
+        return self._provider_session.get_grade_systems_by_gradebooks(gradebook_ids)
 
     @raise_null_argument
     def get_gradebook_ids_by_grade_system(self, grade_system_id):
@@ -732,7 +738,7 @@ class GradeSystemGradebookAssignmentSession(abc_grading_sessions.GradeSystemGrad
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_gradebook_ids()
+        return self._provider_session.get_assignable_gradebook_ids(gradebook_id)
 
     @raise_null_argument
     def get_assignable_gradebook_ids_for_grade_system(self, gradebook_id, grade_system_id):
@@ -740,7 +746,7 @@ class GradeSystemGradebookAssignmentSession(abc_grading_sessions.GradeSystemGrad
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_gradebook_ids_for_grade_system(grade_system_id)
+        return self._provider_session.get_assignable_gradebook_ids_for_grade_system(gradebook_id, grade_system_id)
 
     @raise_null_argument
     def assign_grade_system_to_gradebook(self, grade_system_id, gradebook_id):
@@ -1102,7 +1108,7 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_gradebook_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_gradebook_view(self):
         # Implemented from azosid template for -
@@ -1308,7 +1314,10 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         return self._provider_session.delete_grade_entry(grade_entry_id)
 
     def can_manage_grade_entry_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_grade_entry(self, grade_entry_id, alias_id):
@@ -1740,7 +1749,7 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_gradebook_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_gradebook_view(self):
         # Implemented from azosid template for -
@@ -1945,7 +1954,10 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         return self._provider_session.delete_gradebook_column(gradebook_column_id)
 
     def can_manage_gradebook_column_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_gradebook_column(self, gradebook_column_id, alias_id):
@@ -2089,7 +2101,7 @@ class GradebookColumnGradebookSession(abc_grading_sessions.GradebookColumnGradeb
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_gradebook_column_ids_by_gradebook(gradebook_id)
+        return self._provider_session.get_gradebook_columns_by_gradebook(gradebook_id)
 
     @raise_null_argument
     def get_gradebook_column_ids_by_gradebooks(self, gradebook_ids):
@@ -2105,7 +2117,7 @@ class GradebookColumnGradebookSession(abc_grading_sessions.GradebookColumnGradeb
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_gradebook_columns_ids_by_gradebooks(gradebook_ids)
+        return self._provider_session.get_gradebook_columns_by_gradebooks(gradebook_ids)
 
     @raise_null_argument
     def get_gradebook_ids_by_gradebook_column(self, gradebook_column_id):
@@ -2148,7 +2160,7 @@ class GradebookColumnGradebookAssignmentSession(abc_grading_sessions.GradebookCo
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_gradebook_ids()
+        return self._provider_session.get_assignable_gradebook_ids(gradebook_id)
 
     @raise_null_argument
     def get_assignable_gradebook_ids_for_gradebook_column(self, gradebook_id, gradebook_column_id):
@@ -2156,7 +2168,7 @@ class GradebookColumnGradebookAssignmentSession(abc_grading_sessions.GradebookCo
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_gradebook_ids_for_gradebook_column(gradebook_column_id)
+        return self._provider_session.get_assignable_gradebook_ids_for_gradebook_column(gradebook_id, gradebook_column_id)
 
     @raise_null_argument
     def assign_gradebook_column_to_gradebook(self, gradebook_column_id, gradebook_id):
@@ -2305,9 +2317,8 @@ class GradebookQuerySession(abc_grading_sessions.GradebookQuerySession, osid_ses
 
     def can_search_gradebooks(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_gradebook_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_gradebook_query(self):
         # Implemented from azosid template for -
@@ -2423,7 +2434,10 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         return self._provider_session.delete_gradebook(gradebook_id)
 
     def can_manage_gradebook_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_gradebook(self, gradebook_id, alias_id):

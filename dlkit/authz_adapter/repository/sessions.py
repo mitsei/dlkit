@@ -388,7 +388,7 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_repository_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_repository_view(self):
         # Implemented from azosid template for -
@@ -604,7 +604,10 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         return self._provider_session.delete_asset(asset_id)
 
     def can_manage_asset_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_asset(self, asset_id, alias_id):
@@ -736,10 +739,10 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
     @raise_null_argument
     def register_for_new_assets_by_genus_type(self, asset_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_new_resources
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
-        self._provider_session.register_for_new_assets_by_genus_type()
+        self._provider_session.register_for_new_assets_by_genus_type(asset_genus_type)
 
     def register_for_changed_assets(self):
         # Implemented from azosid template for -
@@ -774,7 +777,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
     @raise_null_argument
     def register_for_deleted_assets_by_genus_type(self, asset_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_deleted_resource
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
         self._provider_session.register_for_deleted_assets_by_genus_type(asset_genus_type)
@@ -838,7 +841,7 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_asset_ids_by_repository(repository_id)
+        return self._provider_session.get_assets_by_repository(repository_id)
 
     @raise_null_argument
     def get_asset_ids_by_repositories(self, repository_ids):
@@ -854,7 +857,7 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assets_ids_by_repositories(repository_ids)
+        return self._provider_session.get_assets_by_repositories(repository_ids)
 
     @raise_null_argument
     def get_repository_ids_by_asset(self, asset_id):
@@ -897,7 +900,7 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_repository_ids()
+        return self._provider_session.get_assignable_repository_ids(repository_id)
 
     @raise_null_argument
     def get_assignable_repository_ids_for_asset(self, repository_id, asset_id):
@@ -905,7 +908,7 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_repository_ids_for_asset(asset_id)
+        return self._provider_session.get_assignable_repository_ids_for_asset(repository_id, asset_id)
 
     @raise_null_argument
     def assign_asset_to_repository(self, asset_id, repository_id):
@@ -1586,7 +1589,7 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_repository_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_repository_view(self):
         # Implemented from azosid template for -
@@ -1803,7 +1806,10 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         raise Unimplemented()
 
     def can_manage_composition_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_composition(self, composition_id, alias_id):
@@ -1947,7 +1953,7 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_composition_ids_by_repository(repository_id)
+        return self._provider_session.get_compositions_by_repository(repository_id)
 
     @raise_null_argument
     def get_composition_ids_by_repositories(self, repository_ids):
@@ -1963,7 +1969,7 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_compositions_ids_by_repositories(repository_ids)
+        return self._provider_session.get_compositions_by_repositories(repository_ids)
 
     @raise_null_argument
     def get_repository_ids_by_composition(self, composition_id):
@@ -2006,7 +2012,7 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_repository_ids()
+        return self._provider_session.get_assignable_repository_ids(repository_id)
 
     @raise_null_argument
     def get_assignable_repository_ids_for_composition(self, repository_id, composition_id):
@@ -2014,7 +2020,7 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_repository_ids_for_composition(composition_id)
+        return self._provider_session.get_assignable_repository_ids_for_composition(repository_id, composition_id)
 
     @raise_null_argument
     def assign_composition_to_repository(self, composition_id, repository_id):
@@ -2163,9 +2169,8 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
 
     def can_search_repositories(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_repository_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_repository_query(self):
         # Implemented from azosid template for -
@@ -2281,7 +2286,10 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         return self._provider_session.delete_repository(repository_id)
 
     def can_manage_repository_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_repository(self, repository_id, alias_id):

@@ -257,7 +257,7 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_objective_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_objective_bank_view(self):
         # Implemented from azosid template for -
@@ -452,7 +452,10 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         return self._provider_session.delete_objective(objective_id)
 
     def can_manage_objective_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_objective(self, objective_id, alias_id):
@@ -637,7 +640,10 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
     root_objective_ids = property(fget=get_root_objective_ids)
 
     def get_root_objectives(self):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchySession::get_root_subjects_template
+        if not self._can('lookup'):
+            raise PermissionDenied()
+        return self._provider_session.get_root_objectives()
 
     root_objectives = property(fget=get_root_objectives)
 
@@ -675,7 +681,10 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
 
     @raise_null_argument
     def get_child_objectives(self, objective_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchySession::get_child_subjects_template
+        if not self._can('lookup'):
+            raise PermissionDenied()
+        return self._provider_session.get_child_objectives(objective_id)
 
     @raise_null_argument
     def is_descendant_of_objective(self, id_, objective_id):
@@ -711,27 +720,43 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
     objective_hierarchy = property(fget=get_objective_hierarchy)
 
     def can_modify_objective_hierarchy(self):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::can_modify_subject_hierarchy_template
+        return self._can('modify')
 
     @raise_null_argument
     def add_root_objective(self, objective_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::add_root_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.add_root_objective(objective_id)
 
     @raise_null_argument
     def remove_root_objective(self, objective_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::remove_root_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.remove_root_objective(objective_id)
 
     @raise_null_argument
     def add_child_objective(self, objective_id, child_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::add_child_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.add_child_objective(objective_id, child_id)
 
     @raise_null_argument
     def remove_child_objective(self, objective_id, child_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::remove_child_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.remove_child_objective(objective_id, child_id)
 
     @raise_null_argument
     def remove_child_objectives(self, objective_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::remove_child_subjects_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.remove_child_objectives(objective_id)
 
 
 class ObjectiveSequencingSession(abc_learning_sessions.ObjectiveSequencingSession, osid_sessions.OsidSession):
@@ -799,7 +824,7 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_objective_ids_by_objective_bank(objective_bank_id)
+        return self._provider_session.get_objectives_by_objective_bank(objective_bank_id)
 
     @raise_null_argument
     def get_objective_ids_by_objective_banks(self, objective_bank_ids):
@@ -815,7 +840,7 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_objectives_ids_by_objective_banks(objective_bank_ids)
+        return self._provider_session.get_objectives_by_objective_banks(objective_bank_ids)
 
     @raise_null_argument
     def get_objective_bank_ids_by_objective(self, objective_id):
@@ -858,7 +883,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_objective_bank_ids()
+        return self._provider_session.get_assignable_objective_bank_ids(objective_bank_id)
 
     @raise_null_argument
     def get_assignable_objective_bank_ids_for_objective(self, objective_bank_id, objective_id):
@@ -866,7 +891,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_objective_bank_ids_for_objective(objective_id)
+        return self._provider_session.get_assignable_objective_bank_ids_for_objective(objective_bank_id, objective_id)
 
     @raise_null_argument
     def assign_objective_to_objective_bank(self, objective_id, objective_bank_id):
@@ -940,6 +965,12 @@ class ObjectiveSmartObjectiveBankSession(abc_learning_sessions.ObjectiveSmartObj
 
 class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveRequisiteSession methodswith authorization checks."""
+    def __init__(self, *args, **kwargs):
+        osid_sessions.OsidSession.__init__(self, *args, **kwargs)
+        self._qualifier_id = self._provider_session.get_objective_bank_id()
+        self._id_namespace = 'learning.Objective'
+        self._auth_objective_bank_ids = None
+        self._unauth_objective_bank_ids = None
 
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
@@ -991,7 +1022,12 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
 
     @raise_null_argument
     def get_requisite_objectives(self, objective_id):
-        raise Unimplemented()
+        if self._can('lookup'):
+            return self._provider_session.get_requisite_objectives(objective_id)
+        self._check_lookup_conditions()  # raises PermissionDenied
+        query = self._query_session.get_objective_query()
+        query.match_requisite_objective_id(objective_id, match=True)
+        return self._try_harder(query)
 
     @raise_null_argument
     def get_all_requisite_objectives(self, objective_id):
@@ -999,7 +1035,12 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
 
     @raise_null_argument
     def get_dependent_objectives(self, objective_id):
-        raise Unimplemented()
+        if self._can('lookup'):
+            return self._provider_session.get_dependent_objectives(objective_id)
+        self._check_lookup_conditions()  # raises PermissionDenied
+        query = self._query_session.get_objective_query()
+        query.match_dependent_objective_id(objective_id, match=True)
+        return self._try_harder(query)
 
     @raise_null_argument
     def is_objective_required(self, objective_id, required_objective_id):
@@ -1012,6 +1053,12 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
 
 class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisiteAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying ObjectiveRequisiteAssignmentSession methodswith authorization checks."""
+    def __init__(self, *args, **kwargs):
+        osid_sessions.OsidSession.__init__(self, *args, **kwargs)
+        self._qualifier_id = self._provider_session.get_objective_bank_id()
+        self._id_namespace = 'learning.Objective'
+        self._auth_objective_bank_ids = None
+        self._unauth_objective_bank_ids = None
 
     def get_objective_bank_id(self):
         # Implemented from azosid template for -
@@ -1035,11 +1082,15 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
 
     @raise_null_argument
     def assign_objective_requisite(self, objective_id, requisite_objective_id):
-        raise Unimplemented()
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.assign_objective_requisite(objective_id, requisite_objective_id)
 
     @raise_null_argument
     def unassign_objective_requisite(self, objective_id, requisite_objective_id):
-        raise Unimplemented()
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.unassign_objective_requisite(objective_id, requisite_objective_id)
 
     @raise_null_argument
     def assign_equivalent_objective(self, objective_id, equivalent_objective_id):
@@ -1321,7 +1372,7 @@ class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sess
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_objective_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_objective_bank_view(self):
         # Implemented from azosid template for -
@@ -1516,7 +1567,10 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         return self._provider_session.delete_activity(activity_id)
 
     def can_manage_activity_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_activity(self, activity_id, alias_id):
@@ -1698,7 +1752,7 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_activity_ids_by_objective_bank(objective_bank_id)
+        return self._provider_session.get_activities_by_objective_bank(objective_bank_id)
 
     @raise_null_argument
     def get_activity_ids_by_objective_banks(self, objective_bank_ids):
@@ -1714,7 +1768,7 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_activities_ids_by_objective_banks(objective_bank_ids)
+        return self._provider_session.get_activities_by_objective_banks(objective_bank_ids)
 
     @raise_null_argument
     def get_objective_bank_ids_by_activity(self, activity_id):
@@ -1757,7 +1811,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_objective_bank_ids()
+        return self._provider_session.get_assignable_objective_bank_ids(objective_bank_id)
 
     @raise_null_argument
     def get_assignable_objective_bank_ids_for_activity(self, objective_bank_id, activity_id):
@@ -1765,7 +1819,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_objective_bank_ids_for_activity(activity_id)
+        return self._provider_session.get_assignable_objective_bank_ids_for_activity(objective_bank_id, activity_id)
 
     @raise_null_argument
     def assign_activity_to_objective_bank(self, activity_id, objective_bank_id):
@@ -2170,7 +2224,7 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_objective_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_objective_bank_view(self):
         # Implemented from azosid template for -
@@ -2368,7 +2422,10 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         raise Unimplemented()
 
     def can_manage_proficiency_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_proficiency(self, proficiency_id, alias_id):
@@ -2444,10 +2501,10 @@ class ProficiencyNotificationSession(abc_learning_sessions.ProficiencyNotificati
     @raise_null_argument
     def register_for_new_proficiencies_by_genus_type(self, proficiency_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_new_resources
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
-        self._provider_session.register_for_new_proficiencies_by_genus_type()
+        self._provider_session.register_for_new_proficiencies_by_genus_type(proficiency_genus_type)
 
     @raise_null_argument
     def register_for_new_proficiencies_for_objective(self, objective_id):
@@ -2514,7 +2571,7 @@ class ProficiencyNotificationSession(abc_learning_sessions.ProficiencyNotificati
     @raise_null_argument
     def register_for_deleted_proficiencies_by_genus_type(self, proficiency_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_deleted_resource
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
         self._provider_session.register_for_deleted_proficiencies_by_genus_type(proficiency_genus_type)
@@ -2594,7 +2651,7 @@ class ProficiencyObjectiveBankSession(abc_learning_sessions.ProficiencyObjective
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_proficiency_ids_by_objective_bank(objective_bank_id)
+        return self._provider_session.get_proficiencies_by_objective_bank(objective_bank_id)
 
     @raise_null_argument
     def get_proficiency_ids_by_objective_banks(self, objective_bank_ids):
@@ -2610,7 +2667,7 @@ class ProficiencyObjectiveBankSession(abc_learning_sessions.ProficiencyObjective
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_proficiencies_ids_by_objective_banks(objective_bank_ids)
+        return self._provider_session.get_proficiencies_by_objective_banks(objective_bank_ids)
 
     @raise_null_argument
     def get_objective_bank_ids_by_proficiency(self, proficiency_id):
@@ -2653,7 +2710,7 @@ class ProficiencyObjectiveBankAssignmentSession(abc_learning_sessions.Proficienc
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_objective_bank_ids()
+        return self._provider_session.get_assignable_objective_bank_ids(objective_bank_id)
 
     @raise_null_argument
     def get_assignable_objective_bank_ids_for_proficiency(self, objective_bank_id, proficiency_id):
@@ -2661,7 +2718,7 @@ class ProficiencyObjectiveBankAssignmentSession(abc_learning_sessions.Proficienc
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_objective_bank_ids_for_proficiency(proficiency_id)
+        return self._provider_session.get_assignable_objective_bank_ids_for_proficiency(objective_bank_id, proficiency_id)
 
     @raise_null_argument
     def assign_proficiency_to_objective_bank(self, proficiency_id, objective_bank_id):
@@ -2942,9 +2999,8 @@ class ObjectiveBankQuerySession(abc_learning_sessions.ObjectiveBankQuerySession,
 
     def can_search_objective_banks(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_objective_bank_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_objective_bank_query(self):
         # Implemented from azosid template for -
@@ -3060,7 +3116,10 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         return self._provider_session.delete_objective_bank(objective_bank_id)
 
     def can_manage_objective_bank_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_objective_bank(self, objective_bank_id, alias_id):

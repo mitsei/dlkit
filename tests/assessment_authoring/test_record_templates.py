@@ -1,36 +1,47 @@
 """Unit tests of assessment.authoring records."""
 
 
-import unittest
+import pytest
 
 
-class TestAssessmentPartRecord(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("assessment_part_record_class_fixture", "assessment_part_record_test_fixture")
+class TestAssessmentPartRecord(object):
     """Tests for AssessmentPartRecord"""
 
 
-class TestAssessmentPartQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_part_query_record_class_fixture", "assessment_part_query_record_test_fixture")
+class TestAssessmentPartQueryRecord(object):
     """Tests for AssessmentPartQueryRecord"""
 
 
-class TestAssessmentPartFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_part_form_record_class_fixture", "assessment_part_form_record_test_fixture")
+class TestAssessmentPartFormRecord(object):
     """Tests for AssessmentPartFormRecord"""
 
 
-class TestAssessmentPartSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_part_search_record_class_fixture", "assessment_part_search_record_test_fixture")
+class TestAssessmentPartSearchRecord(object):
     """Tests for AssessmentPartSearchRecord"""
 
 
-class TestSequenceRuleRecord(unittest.TestCase):
+@pytest.mark.usefixtures("sequence_rule_record_class_fixture", "sequence_rule_record_test_fixture")
+class TestSequenceRuleRecord(object):
     """Tests for SequenceRuleRecord"""
 
 
-class TestSequenceRuleQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("sequence_rule_query_record_class_fixture", "sequence_rule_query_record_test_fixture")
+class TestSequenceRuleQueryRecord(object):
     """Tests for SequenceRuleQueryRecord"""
 
 
-class TestSequenceRuleFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("sequence_rule_form_record_class_fixture", "sequence_rule_form_record_test_fixture")
+class TestSequenceRuleFormRecord(object):
     """Tests for SequenceRuleFormRecord"""
 
 
-class TestSequenceRuleSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("sequence_rule_search_record_class_fixture", "sequence_rule_search_record_test_fixture")
+class TestSequenceRuleSearchRecord(object):
     """Tests for SequenceRuleSearchRecord"""

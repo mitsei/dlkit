@@ -1056,7 +1056,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        pass
+        return self._provider_session.can_manage_asset_aliases()
 
     def alias_asset(self, asset_id=None, alias_id=None):
         """Adds an ``Id`` to an ``Asset`` for the purpose of creating compatibility.
@@ -1076,7 +1076,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        pass
+        return self._provider_session.alias_asset(asset_id, alias_id)
 
     def can_create_asset_content(self):
         """Tests if this user can create content for ``Assets``.

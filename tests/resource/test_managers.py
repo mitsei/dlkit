@@ -1,11 +1,13 @@
 """Unit tests of resource managers."""
 
 
-import unittest
+import pytest
 
 
+from ..utilities.general import is_never_authz, is_no_authz
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
+from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
@@ -18,116 +20,144 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 
 
-class TestResourceProfile(unittest.TestCase):
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def resource_profile_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.mgr = Runtime().get_service_manager(
+        'RESOURCE',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+
+
+@pytest.fixture(scope="function")
+def resource_profile_test_fixture(request):
+    pass
+
+
+@pytest.mark.usefixtures("resource_profile_class_fixture", "resource_profile_test_fixture")
+class TestResourceProfile(object):
     """Tests for ResourceProfile"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
-
     def test_supports_resource_lookup(self):
         """Tests supports_resource_lookup"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_lookup(), bool))
+        assert isinstance(self.mgr.supports_resource_lookup(), bool)
 
     def test_supports_resource_query(self):
         """Tests supports_resource_query"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_query(), bool))
+        assert isinstance(self.mgr.supports_resource_query(), bool)
 
     def test_supports_resource_search(self):
         """Tests supports_resource_search"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_search(), bool))
+        assert isinstance(self.mgr.supports_resource_search(), bool)
 
     def test_supports_resource_admin(self):
         """Tests supports_resource_admin"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_admin(), bool))
+        assert isinstance(self.mgr.supports_resource_admin(), bool)
 
     def test_supports_resource_notification(self):
         """Tests supports_resource_notification"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_notification(), bool))
+        assert isinstance(self.mgr.supports_resource_notification(), bool)
 
     def test_supports_resource_bin(self):
         """Tests supports_resource_bin"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_bin(), bool))
+        assert isinstance(self.mgr.supports_resource_bin(), bool)
 
     def test_supports_resource_bin_assignment(self):
         """Tests supports_resource_bin_assignment"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_bin_assignment(), bool))
+        assert isinstance(self.mgr.supports_resource_bin_assignment(), bool)
 
     def test_supports_resource_agent(self):
         """Tests supports_resource_agent"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_agent(), bool))
+        assert isinstance(self.mgr.supports_resource_agent(), bool)
 
     def test_supports_resource_agent_assignment(self):
         """Tests supports_resource_agent_assignment"""
-        self.assertTrue(isinstance(self.mgr.supports_resource_agent_assignment(), bool))
+        assert isinstance(self.mgr.supports_resource_agent_assignment(), bool)
 
     def test_supports_bin_lookup(self):
         """Tests supports_bin_lookup"""
-        self.assertTrue(isinstance(self.mgr.supports_bin_lookup(), bool))
+        assert isinstance(self.mgr.supports_bin_lookup(), bool)
 
     def test_supports_bin_query(self):
         """Tests supports_bin_query"""
-        self.assertTrue(isinstance(self.mgr.supports_bin_query(), bool))
+        assert isinstance(self.mgr.supports_bin_query(), bool)
 
     def test_supports_bin_admin(self):
         """Tests supports_bin_admin"""
-        self.assertTrue(isinstance(self.mgr.supports_bin_admin(), bool))
+        assert isinstance(self.mgr.supports_bin_admin(), bool)
 
     def test_supports_bin_hierarchy(self):
         """Tests supports_bin_hierarchy"""
-        self.assertTrue(isinstance(self.mgr.supports_bin_hierarchy(), bool))
+        assert isinstance(self.mgr.supports_bin_hierarchy(), bool)
 
     def test_supports_bin_hierarchy_design(self):
         """Tests supports_bin_hierarchy_design"""
-        self.assertTrue(isinstance(self.mgr.supports_bin_hierarchy_design(), bool))
+        assert isinstance(self.mgr.supports_bin_hierarchy_design(), bool)
 
     def test_get_resource_record_types(self):
         """Tests get_resource_record_types"""
-        self.assertTrue(isinstance(self.mgr.get_resource_record_types(), abc_type_list))
+        assert isinstance(self.mgr.get_resource_record_types(), abc_type_list)
 
     def test_get_resource_search_record_types(self):
         """Tests get_resource_search_record_types"""
-        self.assertTrue(isinstance(self.mgr.get_resource_search_record_types(), abc_type_list))
+        assert isinstance(self.mgr.get_resource_search_record_types(), abc_type_list)
 
     def test_get_resource_relationship_record_types(self):
         """Tests get_resource_relationship_record_types"""
-        self.assertTrue(isinstance(self.mgr.get_resource_relationship_record_types(), abc_type_list))
+        assert isinstance(self.mgr.get_resource_relationship_record_types(), abc_type_list)
 
     def test_get_resource_relationship_search_record_types(self):
         """Tests get_resource_relationship_search_record_types"""
-        self.assertTrue(isinstance(self.mgr.get_resource_relationship_search_record_types(), abc_type_list))
+        assert isinstance(self.mgr.get_resource_relationship_search_record_types(), abc_type_list)
 
     def test_get_bin_record_types(self):
         """Tests get_bin_record_types"""
-        self.assertTrue(isinstance(self.mgr.get_bin_record_types(), abc_type_list))
+        assert isinstance(self.mgr.get_bin_record_types(), abc_type_list)
 
     def test_get_bin_search_record_types(self):
         """Tests get_bin_search_record_types"""
-        self.assertTrue(isinstance(self.mgr.get_bin_search_record_types(), abc_type_list))
+        assert isinstance(self.mgr.get_bin_search_record_types(), abc_type_list)
 
 
-class TestResourceManager(unittest.TestCase):
-    """Tests for ResourceManager"""
-
+class NotificationReceiver(object):
     # Implemented from resource.ResourceManager
-    class NotificationReceiver(object):
-        pass
+    pass
 
-    @classmethod
-    def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bin_form_for_create([])
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def resource_manager_class_fixture(request):
+    # Implemented from resource.ResourceManager
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'RESOURCE',
+        implementation=request.cls.service_config)
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bin_form_for_create([])
         create_form.display_name = 'Test Bin'
         create_form.description = 'Test Bin for resource manager tests'
-        catalog = cls.svc_mgr.create_bin(create_form)
-        cls.catalog_id = catalog.get_id()
-        # cls.mgr = Runtime().get_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
-        cls.receiver = cls.NotificationReceiver()
+        catalog = request.cls.svc_mgr.create_bin(create_form)
+        request.cls.catalog_id = catalog.get_id()
+        request.cls.receiver = NotificationReceiver()
+    else:
+        request.cls.catalog_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.svc_mgr.delete_bin(cls.catalog_id)
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.delete_bin(request.cls.catalog_id)
 
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def resource_manager_test_fixture(request):
+    # Implemented from resource.ResourceManager
+    pass
+
+
+@pytest.mark.usefixtures("resource_manager_class_fixture", "resource_manager_test_fixture")
+class TestResourceManager(object):
+    """Tests for ResourceManager"""
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
@@ -139,7 +169,7 @@ class TestResourceManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_lookup_session_for_bin()
 
     def test_get_resource_query_session(self):
@@ -153,7 +183,7 @@ class TestResourceManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_query_session_for_bin()
 
     def test_get_resource_search_session(self):
@@ -167,7 +197,7 @@ class TestResourceManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_search():
             self.svc_mgr.get_resource_search_session_for_bin(self.catalog_id)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_search_session_for_bin()
 
     def test_get_resource_admin_session(self):
@@ -181,7 +211,7 @@ class TestResourceManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_admin():
             self.svc_mgr.get_resource_admin_session_for_bin(self.catalog_id)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_admin_session_for_bin()
 
     def test_get_resource_notification_session(self):
@@ -195,7 +225,7 @@ class TestResourceManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceManager::get_resource_notification_session_for_bin_template
         if self.svc_mgr.supports_resource_notification():
             self.svc_mgr.get_resource_notification_session_for_bin(self.receiver, self.catalog_id)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_notification_session_for_bin()
 
     def test_get_resource_bin_session(self):
@@ -221,7 +251,7 @@ class TestResourceManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_agent():
             self.svc_mgr.get_resource_agent_session_for_bin(self.catalog_id)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_agent_session_for_bin()
 
     def test_get_resource_agent_assignment_session(self):
@@ -235,7 +265,7 @@ class TestResourceManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_agent_assignment():
             self.svc_mgr.get_resource_agent_assignment_session_for_bin(self.catalog_id)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_agent_assignment_session_for_bin()
 
     def test_get_bin_lookup_session(self):
@@ -281,34 +311,53 @@ class TestResourceManager(unittest.TestCase):
             self.svc_mgr.get_resource_demographic_manager()
 
 
-class TestResourceProxyManager(unittest.TestCase):
-    """Tests for ResourceProxyManager"""
-
+class NotificationReceiver(object):
     # Implemented from resource.ResourceProxyManager
-    class NotificationReceiver(object):
-        pass
+    pass
 
-    @classmethod
-    def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('RESOURCE', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bin_form_for_create([])
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def resource_proxy_manager_class_fixture(request):
+    # Implemented from resource.ResourceProxyManager
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'RESOURCE',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bin_form_for_create([])
         create_form.display_name = 'Test Bin'
         create_form.description = 'Test Bin for resource proxy manager tests'
-        catalog = cls.svc_mgr.create_bin(create_form)
-        cls.catalog_id = catalog.get_id()
-        # cls.mgr = Runtime().get_proxy_manager('RESOURCE', 'TEST_JSON_1', (3, 0, 0))
-        cls.receiver = cls.NotificationReceiver()
+        catalog = request.cls.svc_mgr.create_bin(create_form)
+        request.cls.catalog_id = catalog.get_id()
+    else:
+        request.cls.catalog_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
+    request.cls.receiver = NotificationReceiver()
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.svc_mgr.delete_bin(cls.catalog_id)
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.delete_bin(request.cls.catalog_id)
 
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def resource_proxy_manager_test_fixture(request):
+    # Implemented from resource.ResourceProxyManager
+    pass
+
+
+@pytest.mark.usefixtures("resource_proxy_manager_class_fixture", "resource_proxy_manager_test_fixture")
+class TestResourceProxyManager(object):
+    """Tests for ResourceProxyManager"""
     def test_get_resource_lookup_session(self):
         """Tests get_resource_lookup_session"""
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_lookup_session()
 
     def test_get_resource_lookup_session_for_bin(self):
@@ -316,7 +365,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_lookup():
             self.svc_mgr.get_resource_lookup_session_for_bin(self.catalog_id, PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_lookup_session_for_bin()
 
     def test_get_resource_query_session(self):
@@ -324,7 +373,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_query_session()
 
     def test_get_resource_query_session_for_bin(self):
@@ -332,7 +381,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_resource_query():
             self.svc_mgr.get_resource_query_session_for_bin(self.catalog_id, PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_query_session_for_bin()
 
     def test_get_resource_search_session(self):
@@ -340,7 +389,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_resource_search():
             self.svc_mgr.get_resource_search_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_search_session()
 
     def test_get_resource_search_session_for_bin(self):
@@ -348,7 +397,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_search():
             self.svc_mgr.get_resource_search_session_for_bin(self.catalog_id, PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_search_session_for_bin()
 
     def test_get_resource_admin_session(self):
@@ -356,7 +405,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_resource_admin():
             self.svc_mgr.get_resource_admin_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_admin_session()
 
     def test_get_resource_admin_session_for_bin(self):
@@ -364,7 +413,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_admin():
             self.svc_mgr.get_resource_admin_session_for_bin(self.catalog_id, PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_admin_session_for_bin()
 
     def test_get_resource_notification_session(self):
@@ -378,7 +427,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_notification_session_for_bin_template
         if self.svc_mgr.supports_resource_notification():
             self.svc_mgr.get_resource_notification_session_for_bin(self.receiver, self.catalog_id, proxy=PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_notification_session_for_bin()
 
     def test_get_resource_bin_session(self):
@@ -386,7 +435,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_resource_bin():
             self.svc_mgr.get_resource_bin_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_bin_session()
 
     def test_get_resource_bin_assignment_session(self):
@@ -394,14 +443,14 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_resource_bin_assignment():
             self.svc_mgr.get_resource_bin_assignment_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_bin_assignment_session()
 
     def test_get_group_hierarchy_session(self):
         """Tests get_group_hierarchy_session"""
         if self.svc_mgr.supports_group_hierarchy():
             self.svc_mgr.get_group_hierarchy_session(PROXY)
-        with self.assertRaises(errors.Unimplemented):
+        with pytest.raises(errors.Unimplemented):
             self.svc_mgr.get_group_hierarchy_session()
 
     def test_get_resource_agent_session(self):
@@ -409,7 +458,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_resource_agent():
             self.svc_mgr.get_resource_agent_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_agent_session()
 
     def test_get_resource_agent_session_for_bin(self):
@@ -417,7 +466,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_agent():
             self.svc_mgr.get_resource_agent_session_for_bin(self.catalog_id, PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_agent_session_for_bin()
 
     def test_get_resource_agent_assignment_session(self):
@@ -425,7 +474,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_resource_agent_assignment():
             self.svc_mgr.get_resource_agent_assignment_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_agent_assignment_session()
 
     def test_get_resource_agent_assignment_session_for_bin(self):
@@ -433,7 +482,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
         if self.svc_mgr.supports_resource_agent_assignment():
             self.svc_mgr.get_resource_agent_assignment_session_for_bin(self.catalog_id, PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_resource_agent_assignment_session_for_bin()
 
     def test_get_bin_lookup_session(self):
@@ -441,7 +490,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_bin_lookup():
             self.svc_mgr.get_bin_lookup_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_bin_lookup_session()
 
     def test_get_bin_query_session(self):
@@ -449,7 +498,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_bin_query():
             self.svc_mgr.get_bin_query_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_bin_query_session()
 
     def test_get_bin_admin_session(self):
@@ -457,7 +506,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_bin_admin():
             self.svc_mgr.get_bin_admin_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_bin_admin_session()
 
     def test_get_bin_hierarchy_session(self):
@@ -465,7 +514,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_bin_hierarchy():
             self.svc_mgr.get_bin_hierarchy_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_bin_hierarchy_session()
 
     def test_get_bin_hierarchy_design_session(self):
@@ -473,7 +522,7 @@ class TestResourceProxyManager(unittest.TestCase):
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
         if self.svc_mgr.supports_bin_hierarchy_design():
             self.svc_mgr.get_bin_hierarchy_design_session(PROXY)
-        with self.assertRaises(errors.NullArgument):
+        with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_bin_hierarchy_design_session()
 
     def test_get_resource_batch_proxy_manager(self):

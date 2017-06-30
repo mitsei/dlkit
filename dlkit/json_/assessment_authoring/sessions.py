@@ -606,10 +606,12 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('assessment_authoring',
-                                         collection='AssessmentPart',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('assessment_authoring',
+                                             collection='AssessmentPart',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.AssessmentPartList(result, runtime=self._runtime, proxy=self._proxy)
 
 

@@ -298,7 +298,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bank_view(self):
         # Implemented from azosid template for -
@@ -517,7 +517,10 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         return self._provider_session.delete_assessment_part(assessment_part_id)
 
     def can_manage_assessment_part_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_assessment_part(self, assessment_part_id, alias_id):
@@ -675,7 +678,7 @@ class AssessmentPartBankSession(abc_assessment_authoring_sessions.AssessmentPart
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessment_part_ids_by_bank(bank_id)
+        return self._provider_session.get_assessment_parts_by_bank(bank_id)
 
     @raise_null_argument
     def get_assessment_part_ids_by_banks(self, bank_ids):
@@ -691,7 +694,7 @@ class AssessmentPartBankSession(abc_assessment_authoring_sessions.AssessmentPart
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessment_parts_ids_by_banks(bank_ids)
+        return self._provider_session.get_assessment_parts_by_banks(bank_ids)
 
     @raise_null_argument
     def get_bank_ids_by_assessment_part(self, assessment_part_id):
@@ -734,7 +737,7 @@ class AssessmentPartBankAssignmentSession(abc_assessment_authoring_sessions.Asse
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids()
+        return self._provider_session.get_assignable_bank_ids(bank_id)
 
     @raise_null_argument
     def get_assignable_bank_ids_for_assessment_part(self, bank_id, assessment_part_id):
@@ -742,7 +745,7 @@ class AssessmentPartBankAssignmentSession(abc_assessment_authoring_sessions.Asse
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids_for_assessment_part(assessment_part_id)
+        return self._provider_session.get_assignable_bank_ids_for_assessment_part(bank_id, assessment_part_id)
 
     @raise_null_argument
     def assign_assessment_part_to_bank(self, assessment_part_id, bank_id):
@@ -816,6 +819,12 @@ class AssessmentPartSmartBankSession(abc_assessment_authoring_sessions.Assessmen
 
 class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPartItemSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartItemSession methodswith authorization checks."""
+    def __init__(self, *args, **kwargs):
+        osid_sessions.OsidSession.__init__(self, *args, **kwargs)
+        self._qualifier_id = self._provider_session.get_bank_id()
+        self._id_namespace = 'assessment_authoring.AssessmentPart'
+        self._auth_bank_ids = None
+        self._unauth_bank_ids = None
 
     def get_bank_id(self):
         # Implemented from azosid template for -
@@ -835,7 +844,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
     bank = property(fget=get_bank)
 
     def can_access_assessment_part_items(self):
-        raise Unimplemented()
+        return self._provider_session.can_access_assessment_part_items()
 
     def use_comparative_asseessment_part_item_view(self):
         # Implemented from azosid template for -
@@ -882,6 +891,12 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
 
 class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.AssessmentPartItemDesignSession, osid_sessions.OsidSession):
     """Adapts underlying AssessmentPartItemDesignSession methodswith authorization checks."""
+    def __init__(self, *args, **kwargs):
+        osid_sessions.OsidSession.__init__(self, *args, **kwargs)
+        self._qualifier_id = self._provider_session.get_bank_id()
+        self._id_namespace = 'assessment_authoring.AssessmentPart'
+        self._auth_bank_ids = None
+        self._unauth_bank_ids = None
 
     def get_bank_id(self):
         # Implemented from azosid template for -
@@ -901,7 +916,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
     bank = property(fget=get_bank)
 
     def can_design_assessment_parts(self):
-        raise Unimplemented()
+        return self._provider_session.can_design_assessment_parts()
 
     @raise_null_argument
     def add_item(self, item_id, assessment_part_id):
@@ -1123,10 +1138,9 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
 
     @raise_null_argument
     def get_sequence_rules_for_assessment_parts(self, assessment_part_id, next_assessment_part_id):
-        # Implemented from azosid template for -
-        # osid.learning.ActivityLookupSession.get_activities_for_objectives_template
         if self._can('lookup'):
-            return self._provider_session.get_sequence_rules_for_assessment_parts(assessment_part_id)
+            return self._provider_session.get_sequence_rules_for_assessment_parts(assessment_part_id,
+                                                                                  next_assessment_part_id)
         self._check_lookup_conditions()  # raises PermissionDenied
         query = self._query_session.get_sequence_rule_query()
         for sequence_rule_id in (assessment_part_id):
@@ -1227,7 +1241,7 @@ class SequenceRuleQuerySession(abc_assessment_authoring_sessions.SequenceRuleQue
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bank_view(self):
         # Implemented from azosid template for -
@@ -1366,11 +1380,11 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
 
     @raise_null_argument
     def get_sequence_rule_form_for_create(self, assessment_part_id, next_assessment_part_id, sequence_rule_record_types):
-        # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_create
         if not self._can('create'):
             raise PermissionDenied()
-        return self._provider_session.get_sequence_rule_form_for_create(assessment_part_id)
+        return self._provider_session.get_sequence_rule_form_for_create(assessment_part_id,
+                                                                        next_assessment_part_id,
+                                                                        sequence_rule_record_types)
 
     @raise_null_argument
     def create_sequence_rule(self, sequence_rule_form):
@@ -1422,7 +1436,10 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         return self._provider_session.delete_sequence_rule(sequence_rule_id)
 
     def can_manage_sequence_rule_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_sequence_rule(self, sequence_rule_id, alias_id):
@@ -1643,7 +1660,7 @@ class SequenceRuleBankSession(abc_assessment_authoring_sessions.SequenceRuleBank
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_sequence_rule_ids_by_bank(bank_id)
+        return self._provider_session.get_sequence_rules_by_bank(bank_id)
 
     @raise_null_argument
     def get_sequence_rule_ids_by_banks(self, bank_ids):
@@ -1659,7 +1676,7 @@ class SequenceRuleBankSession(abc_assessment_authoring_sessions.SequenceRuleBank
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_sequence_rules_ids_by_banks(bank_ids)
+        return self._provider_session.get_sequence_rules_by_banks(bank_ids)
 
     @raise_null_argument
     def get_bank_ids_by_sequence_rule(self, sequence_rule_id):
@@ -1702,7 +1719,7 @@ class SequenceRuleBankAssignmentSession(abc_assessment_authoring_sessions.Sequen
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids()
+        return self._provider_session.get_assignable_bank_ids(bank_id)
 
     @raise_null_argument
     def get_assignable_bank_ids_for_sequence_rule(self, bank_id, sequence_rule_id):
@@ -1710,7 +1727,7 @@ class SequenceRuleBankAssignmentSession(abc_assessment_authoring_sessions.Sequen
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids_for_sequence_rule(sequence_rule_id)
+        return self._provider_session.get_assignable_bank_ids_for_sequence_rule(bank_id, sequence_rule_id)
 
     @raise_null_argument
     def assign_sequence_rule_to_bank(self, sequence_rule_id, bank_id):
@@ -1950,7 +1967,7 @@ class SequenceRuleEnablerQuerySession(abc_assessment_authoring_sessions.Sequence
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bank_view(self):
         # Implemented from azosid template for -
@@ -2120,7 +2137,10 @@ class SequenceRuleEnablerAdminSession(abc_assessment_authoring_sessions.Sequence
         return self._provider_session.delete_sequence_rule_enabler(sequence_rule_enabler_id)
 
     def can_manage_sequence_rule_enabler_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_sequence_rule_enabler(self, sequence_rule_enabler_id, alias_id):
@@ -2270,7 +2290,7 @@ class SequenceRuleEnablerBankSession(abc_assessment_authoring_sessions.SequenceR
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_sequence_rule_enabler_ids_by_bank(bank_id)
+        return self._provider_session.get_sequence_rule_enablers_by_bank(bank_id)
 
     @raise_null_argument
     def get_sequence_rule_enabler_ids_by_banks(self, bank_ids):
@@ -2286,7 +2306,7 @@ class SequenceRuleEnablerBankSession(abc_assessment_authoring_sessions.SequenceR
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_sequence_rule_enablers_ids_by_banks(bank_ids)
+        return self._provider_session.get_sequence_rule_enablers_by_banks(bank_ids)
 
     @raise_null_argument
     def get_bank_ids_by_sequence_rule_enabler(self, sequence_rule_enabler_id):
@@ -2325,7 +2345,7 @@ class SequenceRuleEnablerBankAssignmentSession(abc_assessment_authoring_sessions
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids()
+        return self._provider_session.get_assignable_bank_ids(bank_id)
 
     @raise_null_argument
     def get_assignable_bank_ids_for_sequence_rule_enabler(self, bank_id, sequence_rule_enabler_id):
@@ -2333,7 +2353,7 @@ class SequenceRuleEnablerBankAssignmentSession(abc_assessment_authoring_sessions
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids_for_sequence_rule_enabler(sequence_rule_enabler_id)
+        return self._provider_session.get_assignable_bank_ids_for_sequence_rule_enabler(bank_id, sequence_rule_enabler_id)
 
     @raise_null_argument
     def assign_sequence_rule_enabler_to_bank(self, sequence_rule_enabler_id, bank_id):

@@ -84,4 +84,13 @@ MANAGER_PATHS = {
         'REPOSITORY': ('dlkit.filesystem_adapter.repository.managers.RepositoryManager',
                        'dlkit.filesystem_adapter.repository.managers.RepositoryProxyManager')
     },
+    'always_authz': {
+        'AUTHORIZATION': ('tests.authz_impls.always_authz.AuthorizationManager',
+                          'dlkit.authz_impls.always_authz.AuthorizationProxyManager')
+    },
+    'never_authz': {
+        'AUTHORIZATION': ('tests.authz_impls.never_authz.AuthorizationManager',
+                          'dlkit.authz_impls.never_authz.AuthorizationProxyManager')
+    },
+
 }

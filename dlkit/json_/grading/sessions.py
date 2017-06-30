@@ -529,10 +529,12 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('grading',
-                                         collection='GradeSystem',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('grading',
+                                             collection='GradeSystem',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.GradeSystemList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -1972,10 +1974,12 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('grading',
-                                         collection='GradeEntry',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('grading',
+                                             collection='GradeEntry',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.GradeEntryList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -2947,10 +2951,12 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('grading',
-                                         collection='GradebookColumn',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('grading',
+                                             collection='GradebookColumn',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.GradebookColumnList(result, runtime=self._runtime, proxy=self._proxy)
 
 

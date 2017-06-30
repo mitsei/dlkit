@@ -1,156 +1,159 @@
 """Unit tests of learning searches."""
 
 
-import unittest
+import pytest
 
 
-class TestObjectiveSearch(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("objective_search_class_fixture", "objective_search_test_fixture")
+class TestObjectiveSearch(object):
     """Tests for ObjectiveSearch"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_search_among_objectives(self):
         """Tests search_among_objectives"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_order_objective_results(self):
         """Tests order_objective_results"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objective_search_record(self):
         """Tests get_objective_search_record"""
         pass
 
 
-class TestObjectiveSearchResults(unittest.TestCase):
+@pytest.mark.usefixtures("objective_search_results_class_fixture", "objective_search_results_test_fixture")
+class TestObjectiveSearchResults(object):
     """Tests for ObjectiveSearchResults"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objectives(self):
         """Tests get_objectives"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objective_query_inspector(self):
         """Tests get_objective_query_inspector"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objective_search_results_record(self):
         """Tests get_objective_search_results_record"""
         pass
 
 
-class TestActivitySearch(unittest.TestCase):
+@pytest.mark.usefixtures("activity_search_class_fixture", "activity_search_test_fixture")
+class TestActivitySearch(object):
     """Tests for ActivitySearch"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_search_among_activities(self):
         """Tests search_among_activities"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_order_activity_results(self):
         """Tests order_activity_results"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_activity_search_record(self):
         """Tests get_activity_search_record"""
         pass
 
 
-class TestActivitySearchResults(unittest.TestCase):
+@pytest.mark.usefixtures("activity_search_results_class_fixture", "activity_search_results_test_fixture")
+class TestActivitySearchResults(object):
     """Tests for ActivitySearchResults"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_activities(self):
         """Tests get_activities"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_activity_query_inspector(self):
         """Tests get_activity_query_inspector"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_activity_search_results_record(self):
         """Tests get_activity_search_results_record"""
         pass
 
 
-class TestProficiencySearch(unittest.TestCase):
+@pytest.mark.usefixtures("proficiency_search_class_fixture", "proficiency_search_test_fixture")
+class TestProficiencySearch(object):
     """Tests for ProficiencySearch"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_search_among_proficiencies(self):
         """Tests search_among_proficiencies"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_order_proficiency_results(self):
         """Tests order_proficiency_results"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_proficiency_search_record(self):
         """Tests get_proficiency_search_record"""
         pass
 
 
-class TestProficiencySearchResults(unittest.TestCase):
+@pytest.mark.usefixtures("proficiency_search_results_class_fixture", "proficiency_search_results_test_fixture")
+class TestProficiencySearchResults(object):
     """Tests for ProficiencySearchResults"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_proficiencies(self):
         """Tests get_proficiencies"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_proficiency_query_inspector(self):
         """Tests get_proficiency_query_inspector"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_proficiency_search_results_record(self):
         """Tests get_proficiency_search_results_record"""
         pass
 
 
-class TestObjectiveBankSearch(unittest.TestCase):
+@pytest.mark.usefixtures("objective_bank_search_class_fixture", "objective_bank_search_test_fixture")
+class TestObjectiveBankSearch(object):
     """Tests for ObjectiveBankSearch"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_search_among_objective_banks(self):
         """Tests search_among_objective_banks"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_order_objective_bank_results(self):
         """Tests order_objective_bank_results"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objective_bank_search_record(self):
         """Tests get_objective_bank_search_record"""
         pass
 
 
-class TestObjectiveBankSearchResults(unittest.TestCase):
+@pytest.mark.usefixtures("objective_bank_search_results_class_fixture", "objective_bank_search_results_test_fixture")
+class TestObjectiveBankSearchResults(object):
     """Tests for ObjectiveBankSearchResults"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objective_banks(self):
         """Tests get_objective_banks"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objective_bank_query_inspector(self):
         """Tests get_objective_bank_query_inspector"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_objective_bank_search_results_record(self):
         """Tests get_objective_bank_search_results_record"""
         pass

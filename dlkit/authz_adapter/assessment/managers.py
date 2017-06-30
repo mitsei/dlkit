@@ -461,11 +461,29 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
 
     @raise_null_argument
     def get_item_notification_session(self, item_receiver):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_item_notification_session(item_receiver),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_item_notification_session_for_bank(self, item_receiver, bank_id):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_item_notification_session_for_bank(item_receiver, bank_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     def get_item_bank_session(self):
         # Implemented from azosid template for -
@@ -602,11 +620,29 @@ class AssessmentManager(osid_managers.OsidManager, AssessmentProfile, assessment
 
     @raise_null_argument
     def get_assessment_notification_session(self, assessment_receiver):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_assessment_notification_session(assessment_receiver),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_assessment_notification_session_for_bank(assessment_receiver, bank_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     def get_assessment_bank_session(self):
         # Implemented from azosid template for -
@@ -1217,11 +1253,31 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
 
     @raise_null_argument
     def get_item_notification_session(self, item_receiver, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_item_notification_session(item_receiver, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_item_notification_session_for_bank(self, item_receiver, bank_id, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_item_notification_session_for_bank(item_receiver, bank_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_item_bank_session(self, proxy):
@@ -1361,11 +1417,31 @@ class AssessmentProxyManager(osid_managers.OsidProxyManager, AssessmentProfile, 
 
     @raise_null_argument
     def get_assessment_notification_session(self, assessment_receiver, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_assessment_notification_session(assessment_receiver, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_assessment_notification_session_for_bank(self, assessment_receiver, bank_id, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'ItemNotificationSession')(
+                provider_session=self._provider_manager.get_assessment_notification_session_for_bank(assessment_receiver, bank_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_assessment_bank_session(self, proxy):

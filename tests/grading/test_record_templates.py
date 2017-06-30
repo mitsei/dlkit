@@ -1,88 +1,112 @@
 """Unit tests of grading records."""
 
 
-import unittest
+import pytest
 
 
-class TestGradeRecord(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("grade_record_class_fixture", "grade_record_test_fixture")
+class TestGradeRecord(object):
     """Tests for GradeRecord"""
 
 
-class TestGradeQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_query_record_class_fixture", "grade_query_record_test_fixture")
+class TestGradeQueryRecord(object):
     """Tests for GradeQueryRecord"""
 
 
-class TestGradeFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_form_record_class_fixture", "grade_form_record_test_fixture")
+class TestGradeFormRecord(object):
     """Tests for GradeFormRecord"""
 
 
-class TestGradeSystemRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_system_record_class_fixture", "grade_system_record_test_fixture")
+class TestGradeSystemRecord(object):
     """Tests for GradeSystemRecord"""
 
 
-class TestGradeSystemQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_system_query_record_class_fixture", "grade_system_query_record_test_fixture")
+class TestGradeSystemQueryRecord(object):
     """Tests for GradeSystemQueryRecord"""
 
 
-class TestGradeSystemFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_system_form_record_class_fixture", "grade_system_form_record_test_fixture")
+class TestGradeSystemFormRecord(object):
     """Tests for GradeSystemFormRecord"""
 
 
-class TestGradeSystemSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_system_search_record_class_fixture", "grade_system_search_record_test_fixture")
+class TestGradeSystemSearchRecord(object):
     """Tests for GradeSystemSearchRecord"""
 
 
-class TestGradeEntryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_entry_record_class_fixture", "grade_entry_record_test_fixture")
+class TestGradeEntryRecord(object):
     """Tests for GradeEntryRecord"""
 
 
-class TestGradeEntryQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_entry_query_record_class_fixture", "grade_entry_query_record_test_fixture")
+class TestGradeEntryQueryRecord(object):
     """Tests for GradeEntryQueryRecord"""
 
 
-class TestGradeEntryFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_entry_form_record_class_fixture", "grade_entry_form_record_test_fixture")
+class TestGradeEntryFormRecord(object):
     """Tests for GradeEntryFormRecord"""
 
 
-class TestGradeEntrySearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("grade_entry_search_record_class_fixture", "grade_entry_search_record_test_fixture")
+class TestGradeEntrySearchRecord(object):
     """Tests for GradeEntrySearchRecord"""
 
 
-class TestGradebookColumnRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_column_record_class_fixture", "gradebook_column_record_test_fixture")
+class TestGradebookColumnRecord(object):
     """Tests for GradebookColumnRecord"""
 
 
-class TestGradebookColumnQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_column_query_record_class_fixture", "gradebook_column_query_record_test_fixture")
+class TestGradebookColumnQueryRecord(object):
     """Tests for GradebookColumnQueryRecord"""
 
 
-class TestGradebookColumnFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_column_form_record_class_fixture", "gradebook_column_form_record_test_fixture")
+class TestGradebookColumnFormRecord(object):
     """Tests for GradebookColumnFormRecord"""
 
 
-class TestGradebookColumnSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_column_search_record_class_fixture", "gradebook_column_search_record_test_fixture")
+class TestGradebookColumnSearchRecord(object):
     """Tests for GradebookColumnSearchRecord"""
 
 
-class TestGradebookColumnSummaryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_column_summary_record_class_fixture", "gradebook_column_summary_record_test_fixture")
+class TestGradebookColumnSummaryRecord(object):
     """Tests for GradebookColumnSummaryRecord"""
 
 
-class TestGradebookColumnSummaryQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_column_summary_query_record_class_fixture", "gradebook_column_summary_query_record_test_fixture")
+class TestGradebookColumnSummaryQueryRecord(object):
     """Tests for GradebookColumnSummaryQueryRecord"""
 
 
-class TestGradebookRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_record_class_fixture", "gradebook_record_test_fixture")
+class TestGradebookRecord(object):
     """Tests for GradebookRecord"""
 
 
-class TestGradebookQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_query_record_class_fixture", "gradebook_query_record_test_fixture")
+class TestGradebookQueryRecord(object):
     """Tests for GradebookQueryRecord"""
 
 
-class TestGradebookFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_form_record_class_fixture", "gradebook_form_record_test_fixture")
+class TestGradebookFormRecord(object):
     """Tests for GradebookFormRecord"""
 
 
-class TestGradebookSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("gradebook_search_record_class_fixture", "gradebook_search_record_test_fixture")
+class TestGradebookSearchRecord(object):
     """Tests for GradebookSearchRecord"""

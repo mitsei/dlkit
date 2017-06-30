@@ -27,7 +27,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
         # Proxy is not currently used, and will always
         # be None, but someday may come in handy. Manager
         # set_session methods would need to be updated to
-        # pass proxy information to aws_adapter sessiosns.
+        # pass proxy information to aws_adapter sessions.
 
     def get_locale(self):
         """Gets the locale indicating the localization preferences in effect for this session.

@@ -1,36 +1,47 @@
 """Unit tests of commenting records."""
 
 
-import unittest
+import pytest
 
 
-class TestCommentRecord(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("comment_record_class_fixture", "comment_record_test_fixture")
+class TestCommentRecord(object):
     """Tests for CommentRecord"""
 
 
-class TestCommentQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("comment_query_record_class_fixture", "comment_query_record_test_fixture")
+class TestCommentQueryRecord(object):
     """Tests for CommentQueryRecord"""
 
 
-class TestCommentFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("comment_form_record_class_fixture", "comment_form_record_test_fixture")
+class TestCommentFormRecord(object):
     """Tests for CommentFormRecord"""
 
 
-class TestCommentSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("comment_search_record_class_fixture", "comment_search_record_test_fixture")
+class TestCommentSearchRecord(object):
     """Tests for CommentSearchRecord"""
 
 
-class TestBookRecord(unittest.TestCase):
+@pytest.mark.usefixtures("book_record_class_fixture", "book_record_test_fixture")
+class TestBookRecord(object):
     """Tests for BookRecord"""
 
 
-class TestBookQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("book_query_record_class_fixture", "book_query_record_test_fixture")
+class TestBookQueryRecord(object):
     """Tests for BookQueryRecord"""
 
 
-class TestBookFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("book_form_record_class_fixture", "book_form_record_test_fixture")
+class TestBookFormRecord(object):
     """Tests for BookFormRecord"""
 
 
-class TestBookSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("book_search_record_class_fixture", "book_search_record_test_fixture")
+class TestBookSearchRecord(object):
     """Tests for BookSearchRecord"""

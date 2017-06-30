@@ -465,7 +465,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
     def can_search_vaults(self):
         """Pass through to provider VaultQuerySession.can_search_vaults"""
         # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
+        # osid.resource.BinQuerySession.can_search_bins_template
         return self._get_provider_session('vault_query_session').can_search_vaults()
 
     def get_vault_query(self):

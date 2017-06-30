@@ -497,10 +497,12 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('learning',
-                                         collection='Objective',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('learning',
+                                             collection='Objective',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.ObjectiveList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -4559,10 +4561,12 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('learning',
-                                         collection='Proficiency',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('learning',
+                                             collection='Proficiency',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.ProficiencyList(result, runtime=self._runtime, proxy=self._proxy)
 
 

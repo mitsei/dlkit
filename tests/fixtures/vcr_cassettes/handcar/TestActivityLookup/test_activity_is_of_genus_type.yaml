@@ -86,4 +86,50 @@ interactions:
       Keep-Alive: ['timeout=15, max=50']
       Server: [Apache]
     status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.14.2]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/activities?genustypeid=mc3.learning.activity.tool.based
+  response:
+    body: {string: '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: ['keep-alive, Keep-Alive']
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Wed, 28 Jun 2017 15:18:46 GMT']
+      Keep-Alive: ['timeout=15, max=50']
+      Server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.14.2]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/activities?genustypeid=mc3.learning.activity.course.based
+  response:
+    body: {string: '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: ['keep-alive, Keep-Alive']
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Thu, 29 Jun 2017 17:15:20 GMT']
+      Keep-Alive: ['timeout=15, max=50']
+      Server: [Apache]
+    status: {code: 200, message: OK}
 version: 1

@@ -814,10 +814,12 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('commenting',
-                                         collection='Comment',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('commenting',
+                                             collection='Comment',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.CommentList(result, runtime=self._runtime, proxy=self._proxy)
 
 

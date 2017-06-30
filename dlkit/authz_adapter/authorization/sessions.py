@@ -368,7 +368,7 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_vault_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_vault_view(self):
         # Implemented from azosid template for -
@@ -523,7 +523,13 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
 
     @raise_null_argument
     def get_authorization_form_for_create_for_resource(self, resource_id, function_id, qualifier_id, authorization_record_types):
-        raise Unimplemented()
+        if not self._can('create'):
+            raise PermissionDenied()
+        return self._provider_session.get_authorization_form_for_create_for_agent(
+            resource_id,
+            function_id,
+            qualifier_id,
+            authorization_record_types)
 
     @raise_null_argument
     def get_authorization_form_for_create_for_resource_and_trust(self, resource_id, trust_id, function_id, qualifier_id, authorization_record_types):
@@ -579,7 +585,10 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         return self._provider_session.delete_authorization(authorization_id)
 
     def can_manage_authorization_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_authorization(self, authorization_id, alias_id):
@@ -787,7 +796,7 @@ class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSes
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_authorization_ids_by_vault(vault_id)
+        return self._provider_session.get_authorizations_by_vault(vault_id)
 
     @raise_null_argument
     def get_authorizations_ids_by_vault(self, vault_ids):
@@ -803,7 +812,7 @@ class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSes
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_authorization_ids_by_vault(vault_id)
+        return self._provider_session.get_authorizations_by_vault(vault_id)
 
     @raise_null_argument
     def get_vault_ids_by_authorization(self, authorization_id):
@@ -842,7 +851,7 @@ class AuthorizationVaultAssignmentSession(abc_authorization_sessions.Authorizati
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_vault_ids()
+        return self._provider_session.get_assignable_vault_ids(vault_id)
 
     @raise_null_argument
     def get_assignable_vault_ids_for_authorization(self, vault_id, authorization_id):
@@ -850,7 +859,7 @@ class AuthorizationVaultAssignmentSession(abc_authorization_sessions.Authorizati
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_vault_ids_for_authorization(authorization_id)
+        return self._provider_session.get_assignable_vault_ids_for_authorization(vault_id, authorization_id)
 
     @raise_null_argument
     def assign_authorization_to_vault(self, authorization_id, vault_id):
@@ -1172,7 +1181,7 @@ class FunctionQuerySession(abc_authorization_sessions.FunctionQuerySession, osid
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_vault_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_vault_view(self):
         # Implemented from azosid template for -
@@ -1367,7 +1376,10 @@ class FunctionAdminSession(abc_authorization_sessions.FunctionAdminSession, osid
         return self._provider_session.delete_function(function_id)
 
     def can_manage_function_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_function(self, function_id, alias_id):
@@ -1525,7 +1537,7 @@ class FunctionVaultSession(abc_authorization_sessions.FunctionVaultSession, osid
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_function_ids_by_vault(vault_id)
+        return self._provider_session.get_functions_by_vault(vault_id)
 
     @raise_null_argument
     def get_function_ids_by_vaults(self, vault_ids):
@@ -1541,7 +1553,7 @@ class FunctionVaultSession(abc_authorization_sessions.FunctionVaultSession, osid
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_functions_ids_by_vaults(vault_ids)
+        return self._provider_session.get_functions_by_vaults(vault_ids)
 
     @raise_null_argument
     def get_vault_ids_by_function(self, function_id):
@@ -1584,7 +1596,7 @@ class FunctionVaultAssignmentSession(abc_authorization_sessions.FunctionVaultAss
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_vault_ids()
+        return self._provider_session.get_assignable_vault_ids(vault_id)
 
     @raise_null_argument
     def get_assignable_vault_ids_for_function(self, vault_id, function_id):
@@ -1592,7 +1604,7 @@ class FunctionVaultAssignmentSession(abc_authorization_sessions.FunctionVaultAss
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_vault_ids_for_function(function_id)
+        return self._provider_session.get_assignable_vault_ids_for_function(vault_id, function_id)
 
     @raise_null_argument
     def assign_function_to_vault(self, function_id, vault_id):
@@ -1904,7 +1916,7 @@ class QualifierQuerySession(abc_authorization_sessions.QualifierQuerySession, os
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_vault_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_vault_view(self):
         # Implemented from azosid template for -
@@ -2099,7 +2111,10 @@ class QualifierAdminSession(abc_authorization_sessions.QualifierAdminSession, os
         return self._provider_session.delete_qualifier(qualifier_id)
 
     def can_manage_qualifier_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_qualifier(self, qualifier_id, alias_id):
@@ -2278,7 +2293,10 @@ class QualifierHierarchySession(abc_authorization_sessions.QualifierHierarchySes
     root_qualifier_ids = property(fget=get_root_qualifier_ids)
 
     def get_root_qualifiers(self):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchySession::get_root_subjects_template
+        if not self._can('lookup'):
+            raise PermissionDenied()
+        return self._provider_session.get_root_qualifiers()
 
     root_qualifiers = property(fget=get_root_qualifiers)
 
@@ -2316,7 +2334,10 @@ class QualifierHierarchySession(abc_authorization_sessions.QualifierHierarchySes
 
     @raise_null_argument
     def get_child_qualifiers(self, qualifier_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchySession::get_child_subjects_template
+        if not self._can('lookup'):
+            raise PermissionDenied()
+        return self._provider_session.get_child_qualifiers(qualifier_id)
 
     @raise_null_argument
     def is_descendant_of_qualifier(self, id_, qualifier_id):
@@ -2345,27 +2366,43 @@ class QualifierHierarchyDesignSession(abc_authorization_sessions.QualifierHierar
     qualifier_hierarchy = property(fget=get_qualifier_hierarchy)
 
     def can_modify_qualifier_hierarchy(self):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::can_modify_subject_hierarchy_template
+        return self._can('modify')
 
     @raise_null_argument
     def add_root_qualifier(self, qualifier_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::add_root_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.add_root_qualifier(qualifier_id)
 
     @raise_null_argument
     def remove_root_qualifier(self, qualifier_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::remove_root_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.remove_root_qualifier(qualifier_id)
 
     @raise_null_argument
     def add_child_qualifier(self, qualifier_id, child_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::add_child_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.add_child_qualifier(qualifier_id, child_id)
 
     @raise_null_argument
     def remove_child_qualifier(self, qualifier_id, child_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::remove_child_subject_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.remove_child_qualifier(qualifier_id, child_id)
 
     @raise_null_argument
     def remove_child_qualifiers(self, qualifier_id):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::remove_child_subjects_template
+        if not self._can('modify'):
+            raise PermissionDenied()
+        return self._provider_session.remove_child_qualifiers(qualifier_id)
 
 
 class QualifierVaultSession(abc_authorization_sessions.QualifierVaultSession, osid_sessions.OsidSession):
@@ -2404,7 +2441,7 @@ class QualifierVaultSession(abc_authorization_sessions.QualifierVaultSession, os
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_qualifier_ids_by_vault(vault_id)
+        return self._provider_session.get_qualifiers_by_vault(vault_id)
 
     @raise_null_argument
     def get_qualifier_ids_by_vaults(self, vault_ids):
@@ -2420,7 +2457,7 @@ class QualifierVaultSession(abc_authorization_sessions.QualifierVaultSession, os
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_qualifiers_ids_by_vaults(vault_ids)
+        return self._provider_session.get_qualifiers_by_vaults(vault_ids)
 
     @raise_null_argument
     def get_vault_ids_by_qualifier(self, qualifier_id):
@@ -2463,7 +2500,7 @@ class QualifierVaultAssignmentSession(abc_authorization_sessions.QualifierVaultA
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_vault_ids()
+        return self._provider_session.get_assignable_vault_ids(vault_id)
 
     @raise_null_argument
     def get_assignable_vault_ids_for_qualifier(self, vault_id, qualifier_id):
@@ -2471,7 +2508,7 @@ class QualifierVaultAssignmentSession(abc_authorization_sessions.QualifierVaultA
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_vault_ids_for_qualifier(qualifier_id)
+        return self._provider_session.get_assignable_vault_ids_for_qualifier(vault_id, qualifier_id)
 
     @raise_null_argument
     def assign_qualifier_to_vault(self, qualifier_id, vault_id):
@@ -2622,9 +2659,8 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
 
     def can_search_vaults(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_vault_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_vault_query(self):
         # Implemented from azosid template for -
@@ -2740,7 +2776,10 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         return self._provider_session.delete_vault(vault_id)
 
     def can_manage_vault_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_vault(self, vault_id, alias_id):

@@ -411,7 +411,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_book_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_book_view(self):
         # Implemented from azosid template for -
@@ -606,7 +606,10 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         return self._provider_session.delete_comment(comment_id)
 
     def can_manage_comment_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_comment(self, comment_id, alias_id):
@@ -808,7 +811,7 @@ class CommentBookSession(abc_commenting_sessions.CommentBookSession, osid_sessio
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_comment_ids_by_book(book_id)
+        return self._provider_session.get_comments_by_book(book_id)
 
     @raise_null_argument
     def get_comment_ids_by_books(self, book_ids):
@@ -824,7 +827,7 @@ class CommentBookSession(abc_commenting_sessions.CommentBookSession, osid_sessio
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_comments_ids_by_books(book_ids)
+        return self._provider_session.get_comments_by_books(book_ids)
 
     @raise_null_argument
     def get_book_ids_by_comment(self, comment_id):
@@ -867,7 +870,7 @@ class CommentBookAssignmentSession(abc_commenting_sessions.CommentBookAssignment
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_book_ids()
+        return self._provider_session.get_assignable_book_ids(book_id)
 
     @raise_null_argument
     def get_assignable_book_ids_for_comment(self, book_id, comment_id):
@@ -875,7 +878,7 @@ class CommentBookAssignmentSession(abc_commenting_sessions.CommentBookAssignment
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_book_ids_for_comment(comment_id)
+        return self._provider_session.get_assignable_book_ids_for_comment(book_id, comment_id)
 
     @raise_null_argument
     def assign_comment_to_book(self, comment_id, book_id):
@@ -1028,9 +1031,8 @@ class BookQuerySession(abc_commenting_sessions.BookQuerySession, osid_sessions.O
 
     def can_search_books(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_book_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_book_query(self):
         # Implemented from azosid template for -
@@ -1146,7 +1148,10 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         return self._provider_session.delete_book(book_id)
 
     def can_manage_book_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_book(self, book_id, alias_id):

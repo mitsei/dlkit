@@ -1,36 +1,47 @@
 """Unit tests of resource records."""
 
 
-import unittest
+import pytest
 
 
-class TestResourceRecord(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("resource_record_class_fixture", "resource_record_test_fixture")
+class TestResourceRecord(object):
     """Tests for ResourceRecord"""
 
 
-class TestResourceQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("resource_query_record_class_fixture", "resource_query_record_test_fixture")
+class TestResourceQueryRecord(object):
     """Tests for ResourceQueryRecord"""
 
 
-class TestResourceFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("resource_form_record_class_fixture", "resource_form_record_test_fixture")
+class TestResourceFormRecord(object):
     """Tests for ResourceFormRecord"""
 
 
-class TestResourceSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("resource_search_record_class_fixture", "resource_search_record_test_fixture")
+class TestResourceSearchRecord(object):
     """Tests for ResourceSearchRecord"""
 
 
-class TestBinRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bin_record_class_fixture", "bin_record_test_fixture")
+class TestBinRecord(object):
     """Tests for BinRecord"""
 
 
-class TestBinQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bin_query_record_class_fixture", "bin_query_record_test_fixture")
+class TestBinQueryRecord(object):
     """Tests for BinQueryRecord"""
 
 
-class TestBinFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bin_form_record_class_fixture", "bin_form_record_test_fixture")
+class TestBinFormRecord(object):
     """Tests for BinFormRecord"""
 
 
-class TestBinSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bin_search_record_class_fixture", "bin_search_record_test_fixture")
+class TestBinSearchRecord(object):
     """Tests for BinSearchRecord"""

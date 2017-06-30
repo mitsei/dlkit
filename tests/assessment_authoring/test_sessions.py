@@ -1,13 +1,15 @@
 """Unit tests of assessment.authoring sessions."""
 
 
-import unittest
+import pytest
 
 
 from random import shuffle
 
 
+from ..utilities.general import is_never_authz, is_no_authz
 from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
+from dlkit.abstract_osid.assessment_authoring import queries as ABCQueries
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.id.primitives import Id
@@ -29,70 +31,64 @@ NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
 
 
-class TestAssessmentPartLookupSession(unittest.TestCase):
-    """Tests for AssessmentPartLookupSession"""
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_part_lookup_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
 
-    @classmethod
-    def setUpClass(cls):
-        cls.assessment_part_list = list()
-        cls.assessment_part_ids = list()
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bank_form_for_create([])
+
+@pytest.fixture(scope="function")
+def assessment_part_lookup_session_test_fixture(request):
+    request.cls.assessment_part_list = list()
+    request.cls.assessment_part_ids = list()
+
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
         create_form.description = 'Test Bank for AssessmentPartLookupSession tests'
-        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
 
-        assessment_form = cls.catalog.get_assessment_form_for_create([])
+        assessment_form = request.cls.catalog.get_assessment_form_for_create([])
         assessment_form.display_name = 'Test Assessment'
         assessment_form.description = 'Test Assessment for AssessmentPartLookupSession tests'
-        cls.assessment = cls.catalog.create_assessment(assessment_form)
+        request.cls.assessment = request.cls.catalog.create_assessment(assessment_form)
 
         for num in [0, 1, 2, 3]:
-            create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident,
-                                                                                         [])
+            create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident,
+                                                                                                 [])
             create_form.display_name = 'Test AssessmentPart ' + str(num)
             create_form.description = 'Test AssessmentPart for AssessmentPartLookupSession tests'
             if num > 1:
                 create_form.sequestered = True
-            obj = cls.catalog.create_assessment_part_for_assessment(create_form)
-            cls.assessment_part_list.append(obj)
-            cls.assessment_part_ids.append(obj.ident)
+            obj = request.cls.catalog.create_assessment_part_for_assessment(create_form)
+            request.cls.assessment_part_list.append(obj)
+            request.cls.assessment_part_ids.append(obj.ident)
 
-        cls.assessment = cls.catalog.get_assessment(cls.assessment.ident)
+        request.cls.assessment = request.cls.catalog.get_assessment(request.cls.assessment.ident)
+    else:
+        request.cls.catalog = request.cls.svc_mgr.get_assessment_part_lookup_session(proxy=PROXY)
 
-    def setUp(self):
-        self.session = self.catalog
+    request.cls.session = request.cls.catalog
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.catalog.use_unsequestered_assessment_part_view()
-        for obj in cls.catalog.get_assessment_parts():
-            cls.catalog.delete_assessment_part(obj.ident)
-        cls.catalog.delete_assessment(cls.assessment.ident)
-        cls.svc_mgr.delete_bank(cls.catalog.ident)
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.catalog.use_unsequestered_assessment_part_view()
+            for obj in request.cls.catalog.get_assessment_parts():
+                request.cls.catalog.delete_assessment_part(obj.ident)
+            request.cls.catalog.delete_assessment(request.cls.assessment.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
 
-    def test_get_assessment_id(self):
-        """tests get_assessment_id"""
-        self.assertEqual(str(self.assessment_part_list[0].get_assessment_id()),
-                         str(self.assessment.ident))
+    request.addfinalizer(test_tear_down)
 
-    def test_get_assessment(self):
-        """tests get_assessment"""
-        def check_equal(val1, val2):
-            self.assertEqual(val1, val2)
 
-        def check_dict_equal(dict1, dict2):
-            for item in dict1.items():
-                key = item[0]
-                value = item[1]
-                if isinstance(value, dict):
-                    check_dict_equal(value, dict2[key])
-                else:
-                    check_equal(value, dict2[key])
-
-        check_dict_equal(self.assessment_part_list[0].get_assessment().object_map,
-                         self.assessment.object_map)
-
+@pytest.mark.usefixtures("assessment_part_lookup_session_class_fixture", "assessment_part_lookup_session_test_fixture")
+class TestAssessmentPartLookupSession(object):
+    """Tests for AssessmentPartLookupSession"""
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # this should not be here...
@@ -102,12 +98,13 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
         """Tests get_bank"""
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
-        self.assertIsNotNone(self.catalog)
+        if not is_never_authz(self.service_config):
+            assert self.catalog is not None
 
     def test_can_lookup_assessment_parts(self):
         """Tests can_lookup_assessment_parts"""
         # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
-        self.assertTrue(isinstance(self.catalog.can_lookup_assessment_parts(), bool))
+        assert isinstance(self.catalog.can_lookup_assessment_parts(), bool)
 
     def test_use_comparative_assessment_part_view(self):
         """Tests use_comparative_assessment_part_view"""
@@ -155,139 +152,202 @@ class TestAssessmentPartLookupSession(unittest.TestCase):
 
     def test_get_assessment_part(self):
         """Tests get_assessment_part"""
-        # From test_templates/resource.py ResourceLookupSession.get_resource_template
-        self.catalog.use_isolated_bank_view()
-        obj = self.catalog.get_assessment_part(self.assessment_part_list[0].ident)
-        self.assertEqual(obj.ident, self.assessment_part_list[0].ident)
-        self.catalog.use_federated_bank_view()
-        obj = self.catalog.get_assessment_part(self.assessment_part_list[0].ident)
-        self.assertEqual(obj.ident, self.assessment_part_list[0].ident)
+        if not is_never_authz(self.service_config):
+            self.catalog.use_isolated_bank_view()
+            obj = self.catalog.get_assessment_part(self.assessment_part_list[0].ident)
+            assert obj.ident == self.assessment_part_list[0].ident
+            self.catalog.use_federated_bank_view()
+            obj = self.catalog.get_assessment_part(self.assessment_part_list[0].ident)
+            assert obj.ident == self.assessment_part_list[0].ident
+        else:
+            with pytest.raises(errors.NotFound):
+                self.catalog.get_assessment_part(self.fake_id)
 
     def test_get_assessment_parts_by_ids(self):
         """Tests get_assessment_parts_by_ids"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts_by_ids(self.assessment_part_ids)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert isinstance(objects, AssessmentPartList)
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessment_parts_by_ids(self.assessment_part_ids)
-        self.assertTrue(objects.available() > 0)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert isinstance(objects, AssessmentPartList)
+        if not is_never_authz(self.service_config):
+            assert objects.available() > 0
+        else:
+            assert objects.available() == 0
 
     def test_get_assessment_parts_by_genus_type(self):
         """Tests get_assessment_parts_by_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts_by_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert isinstance(objects, AssessmentPartList)
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessment_parts_by_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(objects.available() > 0)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert isinstance(objects, AssessmentPartList)
+        if not is_never_authz(self.service_config):
+            assert objects.available() > 0
+        else:
+            assert objects.available() == 0
 
     def test_get_assessment_parts_by_parent_genus_type(self):
         """Tests get_assessment_parts_by_parent_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
-        objects = self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
-        self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(objects.available() == 0)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        if not is_never_authz(self.service_config):
+            objects = self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            assert isinstance(objects, AssessmentPartList)
+            self.catalog.use_federated_bank_view()
+            objects = self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            assert objects.available() == 0
+            assert isinstance(objects, AssessmentPartList)
+        else:
+            with pytest.raises(errors.Unimplemented):
+                # because the never_authz "tries harder" and runs the actual query...
+                #    whereas above the method itself in JSON returns an empty list
+                self.catalog.get_assessment_parts_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_assessment_parts_by_record_type(self):
         """Tests get_assessment_parts_by_record_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts_by_record_type(DEFAULT_TYPE)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert isinstance(objects, AssessmentPartList)
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessment_parts_by_record_type(DEFAULT_TYPE)
-        self.assertTrue(objects.available() == 0)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert objects.available() == 0
+        assert isinstance(objects, AssessmentPartList)
 
     def test_get_assessment_parts_for_assessment(self):
         """Tests get_assessment_parts_for_assessment"""
-        # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
+        # Override this because we do have AssessmentPartQuerySession implemented,
+        #   so with NEVER_AUTHZ it returns an empty result set
         results = self.session.get_assessment_parts_for_assessment(self.assessment.ident)
-        self.assertEqual(results.available(), 2)
-        self.assertTrue(isinstance(results, ABCObjects.AssessmentPartList))
+        assert isinstance(results, ABCObjects.AssessmentPartList)
+        if not is_never_authz(self.service_config):
+            assert results.available() == 2
+        else:
+            assert results.available() == 0
 
     def test_get_assessment_parts(self):
         """Tests get_assessment_parts"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartList
         objects = self.catalog.get_assessment_parts()
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert isinstance(objects, AssessmentPartList)
         self.catalog.use_federated_bank_view()
         objects = self.catalog.get_assessment_parts()
-        self.assertTrue(objects.available() > 0)
-        self.assertTrue(isinstance(objects, AssessmentPartList))
+        assert isinstance(objects, AssessmentPartList)
+
+        if not is_never_authz(self.service_config):
+            assert objects.available() > 0
+        else:
+            assert objects.available() == 0
 
     def test_get_assessment_part_with_alias(self):
-        self.catalog.alias_assessment_part(self.assessment_part_ids[0], ALIAS_ID)
-        obj = self.catalog.get_assessment_part(ALIAS_ID)
-        self.assertEqual(obj.get_id(), self.assessment_part_ids[0])
+        if not is_never_authz(self.service_config):
+            self.catalog.alias_assessment_part(self.assessment_part_ids[0], ALIAS_ID)
+            obj = self.catalog.get_assessment_part(ALIAS_ID)
+            assert obj.get_id() == self.assessment_part_ids[0]
+
+    def test_get_assessment_id(self):
+        """tests get_assessment_id"""
+        if not is_never_authz(self.service_config):
+            assert str(self.assessment_part_list[0].get_assessment_id()) == str(self.assessment.ident)
+
+    def test_get_assessment(self):
+        """tests get_assessment"""
+        def check_equal(val1, val2):
+            assert val1 == val2
+
+        def check_dict_equal(dict1, dict2):
+            for item in dict1.items():
+                key = item[0]
+                value = item[1]
+                if isinstance(value, dict):
+                    check_dict_equal(value, dict2[key])
+                else:
+                    check_equal(value, dict2[key])
+
+        if not is_never_authz(self.service_config):
+            check_dict_equal(self.assessment_part_list[0].get_assessment().object_map,
+                             self.assessment.object_map)
 
 
-class TestAssessmentPartQuerySession(unittest.TestCase):
-    """Tests for AssessmentPartQuerySession"""
+class FakeQuery:
+    _cat_id_args_list = []
 
-    @classmethod
-    def setUpClass(cls):
-        cls.assessment_part_list = list()
-        cls.assessment_part_ids = list()
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bank_form_for_create([])
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_part_query_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+
+
+@pytest.fixture(scope="function")
+def assessment_part_query_session_test_fixture(request):
+    request.cls.assessment_part_list = list()
+    request.cls.assessment_part_ids = list()
+
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for AssessmentPartLookupSession tests'
-        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form.description = 'Test Bank for AssessmentPartQuerySession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
 
-        assessment_form = cls.catalog.get_assessment_form_for_create([])
+        assessment_form = request.cls.catalog.get_assessment_form_for_create([])
         assessment_form.display_name = 'Test Assessment'
-        assessment_form.description = 'Test Assessment for AssessmentPartLookupSession tests'
-        cls.assessment = cls.catalog.create_assessment(assessment_form)
+        assessment_form.description = 'Test Assessment for AssessmentPartQuerySession tests'
+        request.cls.assessment = request.cls.catalog.create_assessment(assessment_form)
 
         colors = ['Orange', 'Blue', 'Green', 'orange']
 
         for num in [0, 1, 2, 3]:
-            create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident,
-                                                                                         [])
+            create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident,
+                                                                                                 [])
             create_form.display_name = 'Test AssessmentPart ' + str(num) + colors[num]
-            create_form.description = 'Test AssessmentPart for AssessmentPartLookupSession tests'
-            obj = cls.catalog.create_assessment_part_for_assessment(create_form)
-            cls.assessment_part_list.append(obj)
-            cls.assessment_part_ids.append(obj.ident)
+            create_form.description = 'Test AssessmentPart for AssessmentPartQuerySession tests'
+            obj = request.cls.catalog.create_assessment_part_for_assessment(create_form)
+            request.cls.assessment_part_list.append(obj)
+            request.cls.assessment_part_ids.append(obj.ident)
 
-        cls.assessment = cls.catalog.get_assessment(cls.assessment.ident)
+        request.cls.assessment = request.cls.catalog.get_assessment(request.cls.assessment.ident)
+    else:
+        request.cls.catalog = request.cls.svc_mgr.get_assessment_part_query_session(proxy=PROXY)
 
-    def setUp(self):
-        self.session = self.catalog
+    request.cls.session = request.cls.catalog
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.catalog.use_unsequestered_assessment_part_view()
-        for obj in cls.catalog.get_assessment_parts():
-            cls.catalog.delete_assessment_part(obj.ident)
-        cls.catalog.delete_assessment(cls.assessment.ident)
-        cls.svc_mgr.delete_bank(cls.catalog.ident)
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.catalog.use_unsequestered_assessment_part_view()
+            for obj in request.cls.catalog.get_assessment_parts():
+                request.cls.catalog.delete_assessment_part(obj.ident)
+            request.cls.catalog.delete_assessment(request.cls.assessment.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
 
+    request.addfinalizer(test_tear_down)
+
+
+@pytest.mark.usefixtures("assessment_part_query_session_class_fixture", "assessment_part_query_session_test_fixture")
+class TestAssessmentPartQuerySession(object):
+    """Tests for AssessmentPartQuerySession"""
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
-        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_bank_id() == self.catalog.ident
 
     def test_get_bank(self):
         """Tests get_bank"""
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
-        self.assertIsNotNone(self.catalog)
+        if not is_never_authz(self.service_config):
+            assert self.catalog is not None
 
     def test_can_search_assessment_parts(self):
         """Tests can_search_assessment_parts"""
         # From test_templates/resource.py ResourceQuerySession::can_search_resources_template
-        self.assertTrue(isinstance(self.session.can_search_assessment_parts(), bool))
+        assert isinstance(self.session.can_search_assessment_parts(), bool)
 
     def test_use_federated_bank_view(self):
         """Tests use_federated_bank_view"""
@@ -315,245 +375,317 @@ class TestAssessmentPartQuerySession(unittest.TestCase):
         """Tests get_assessment_part_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resource_query_template
         query = self.session.get_assessment_part_query()
+        assert isinstance(query, ABCQueries.AssessmentPartQuery)
 
     def test_get_assessment_parts_by_query(self):
         """Tests get_assessment_parts_by_query"""
         # From test_templates/resource.py ResourceQuerySession::get_resources_by_query_template
         # Need to add some tests with string types
-        query = self.session.get_assessment_part_query()
-        query.match_display_name('orange')
-        self.assertEqual(self.catalog.get_assessment_parts_by_query(query).available(), 2)
-        query.clear_display_name_terms()
-        query.match_display_name('blue', match=False)
-        self.assertEqual(self.session.get_assessment_parts_by_query(query).available(), 3)
+        if not is_never_authz(self.service_config):
+            query = self.session.get_assessment_part_query()
+            query.match_display_name('orange')
+            assert self.catalog.get_assessment_parts_by_query(query).available() == 2
+            query.clear_display_name_terms()
+            query.match_display_name('blue', match=False)
+            assert self.session.get_assessment_parts_by_query(query).available() == 3
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assessment_parts_by_query(FakeQuery())
 
 
-class TestAssessmentPartAdminSession(unittest.TestCase):
-    """Tests for AssessmentPartAdminSession"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bank_form_for_create([])
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_part_admin_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
         create_form.description = 'Test Bank for AssessmentPartAdminSession tests'
-        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
 
-        assessment_form = cls.catalog.get_assessment_form_for_create([])
+        assessment_form = request.cls.catalog.get_assessment_form_for_create([])
         assessment_form.display_name = 'Test Assessment'
         assessment_form.description = 'Test Assessment for AssessmentPartAdminSession tests'
-        cls.assessment = cls.catalog.create_assessment(assessment_form)
+        request.cls.assessment = request.cls.catalog.create_assessment(assessment_form)
+    else:
+        request.cls.catalog = request.cls.svc_mgr.get_assessment_part_admin_session(proxy=PROXY)
 
-    def setUp(self):
-        form = self.catalog.get_assessment_part_form_for_create_for_assessment(self.assessment.ident,
-                                                                               [SIMPLE_SEQUENCE_RECORD_TYPE])
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for obj in request.cls.catalog.get_assessment_parts():
+                request.cls.catalog.delete_assessment_part(obj.ident)
+            for obj in request.cls.catalog.get_assessments():
+                request.cls.catalog.delete_assessment(obj.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def assessment_part_admin_session_test_fixture(request):
+    if not is_never_authz(request.cls.service_config):
+        form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident,
+                                                                                      [SIMPLE_SEQUENCE_RECORD_TYPE])
         form.display_name = 'new AssessmentPart'
         form.description = 'description of AssessmentPart'
         form.set_genus_type(NEW_TYPE)
-        self.osid_object = self.catalog.create_assessment_part_for_assessment(form)
-        self.session = self.catalog
+        request.cls.osid_object = request.cls.catalog.create_assessment_part_for_assessment(form)
+    request.cls.session = request.cls.catalog
 
-    def tearDown(self):
-        self.osid_object = self.catalog.get_assessment_part(self.osid_object.ident)
-        if self.osid_object.has_children():
-            for child_id in self.osid_object.get_child_assessment_part_ids():
-                self.catalog.delete_assessment_part(child_id)
-        self.catalog.delete_assessment_part(self.osid_object.ident)
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.osid_object = request.cls.catalog.get_assessment_part(request.cls.osid_object.ident)
+            if request.cls.osid_object.has_children():
+                for child_id in request.cls.osid_object.get_child_assessment_part_ids():
+                    request.cls.catalog.delete_assessment_part(child_id)
+            request.cls.catalog.delete_assessment_part(request.cls.osid_object.ident)
 
-    @classmethod
-    def tearDownClass(cls):
-        for obj in cls.catalog.get_assessment_parts():
-            cls.catalog.delete_assessment_part(obj.ident)
-        for obj in cls.catalog.get_assessments():
-            cls.catalog.delete_assessment(obj.ident)
-        cls.svc_mgr.delete_bank(cls.catalog.ident)
+    request.addfinalizer(test_tear_down)
 
+
+@pytest.mark.usefixtures("assessment_part_admin_session_class_fixture", "assessment_part_admin_session_test_fixture")
+class TestAssessmentPartAdminSession(object):
+    """Tests for AssessmentPartAdminSession"""
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
-        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_bank_id() == self.catalog.ident
 
     def test_get_bank(self):
         """Tests get_bank"""
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
-        self.assertIsNotNone(self.catalog)
+        if not is_never_authz(self.service_config):
+            assert self.catalog is not None
 
     def test_can_create_assessment_parts(self):
         """Tests can_create_assessment_parts"""
         # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
-        self.assertTrue(isinstance(self.catalog.can_create_assessment_parts(), bool))
+        assert isinstance(self.catalog.can_create_assessment_parts(), bool)
 
     def test_can_create_assessment_part_with_record_types(self):
         """Tests can_create_assessment_part_with_record_types"""
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
-        self.assertTrue(isinstance(self.catalog.can_create_assessment_part_with_record_types(DEFAULT_TYPE), bool))
+        assert isinstance(self.catalog.can_create_assessment_part_with_record_types(DEFAULT_TYPE), bool)
 
     def test_get_assessment_part_form_for_create_for_assessment(self):
         """Tests get_assessment_part_form_for_create_for_assessment"""
-        form = self.session.get_assessment_part_form_for_create_for_assessment(self.assessment.ident, [])
-        self.assertTrue(isinstance(form, ABCObjects.AssessmentPartForm))
-        self.assertFalse(form.is_for_update())
+        if not is_never_authz(self.service_config):
+            form = self.session.get_assessment_part_form_for_create_for_assessment(self.assessment.ident, [])
+            assert isinstance(form, ABCObjects.AssessmentPartForm)
+            assert not form.is_for_update()
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assessment_part_form_for_create_for_assessment(self.fake_id, [])
 
     def test_create_assessment_part_for_assessment(self):
         """Tests create_assessment_part_for_assessment"""
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
-        self.assertTrue(isinstance(self.osid_object, AssessmentPart))
-        self.assertEqual(self.osid_object.display_name.text, 'new AssessmentPart')
-        self.assertEqual(self.osid_object.description.text, 'description of AssessmentPart')
-        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
+        if not is_never_authz(self.service_config):
+            assert isinstance(self.osid_object, AssessmentPart)
+            assert self.osid_object.display_name.text == 'new AssessmentPart'
+            assert self.osid_object.description.text == 'description of AssessmentPart'
+            assert self.osid_object.genus_type == NEW_TYPE
 
-        form = self.catalog.get_assessment_part_form_for_create_for_assessment_part(self.osid_object.ident, [])
-        form.display_name = 'new AssessmentPart child'
-        form.description = 'description of AssessmentPart child'
-        child_part = self.catalog.create_assessment_part_for_assessment_part(form)
+            form = self.catalog.get_assessment_part_form_for_create_for_assessment_part(self.osid_object.ident, [])
+            form.display_name = 'new AssessmentPart child'
+            form.description = 'description of AssessmentPart child'
+            child_part = self.catalog.create_assessment_part_for_assessment_part(form)
 
-        parent_part = self.catalog.get_assessment_part(self.osid_object.ident)
-        self.assertTrue(parent_part.has_children())
-        self.assertEqual(parent_part.get_child_assessment_part_ids().available(), 1)
-        self.assertEqual(str(parent_part.get_child_assessment_part_ids().next()),
-                         str(child_part.ident))
+            parent_part = self.catalog.get_assessment_part(self.osid_object.ident)
+            assert parent_part.has_children()
+            assert parent_part.get_child_assessment_part_ids().available() == 1
+            assert str(parent_part.get_child_assessment_part_ids().next()) == str(child_part.ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.create_assessment_part_for_assessment_part('foo')
 
     def test_get_assessment_part_form_for_create_for_assessment_part(self):
         """Tests get_assessment_part_form_for_create_for_assessment_part"""
-        form = self.session.get_assessment_part_form_for_create_for_assessment_part(self.osid_object.ident, [])
-        self.assertTrue(isinstance(form, ABCObjects.AssessmentPartForm))
-        self.assertFalse(form.is_for_update())
+        if not is_never_authz(self.service_config):
+            form = self.session.get_assessment_part_form_for_create_for_assessment_part(self.osid_object.ident, [])
+            assert isinstance(form, ABCObjects.AssessmentPartForm)
+            assert not form.is_for_update()
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assessment_part_form_for_create_for_assessment_part(self.fake_id, [])
 
     def test_create_assessment_part_for_assessment_part(self):
         """Tests create_assessment_part_for_assessment_part"""
         # From test_templates/resource.py::ResourceAdminSession::create_resource_template
         from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
-        self.assertTrue(isinstance(self.osid_object, AssessmentPart))
-        self.assertEqual(self.osid_object.display_name.text, 'new AssessmentPart')
-        self.assertEqual(self.osid_object.description.text, 'description of AssessmentPart')
-        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
+        if not is_never_authz(self.service_config):
+            assert isinstance(self.osid_object, AssessmentPart)
+            assert self.osid_object.display_name.text == 'new AssessmentPart'
+            assert self.osid_object.description.text == 'description of AssessmentPart'
+            assert self.osid_object.genus_type == NEW_TYPE
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.create_assessment_part_for_assessment_part('foo')
 
     def test_can_update_assessment_parts(self):
         """Tests can_update_assessment_parts"""
         # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
-        self.assertTrue(isinstance(self.catalog.can_update_assessment_parts(), bool))
+        assert isinstance(self.catalog.can_update_assessment_parts(), bool)
 
     def test_get_assessment_part_form_for_update(self):
         """Tests get_assessment_part_form_for_update"""
         # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
-        form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
-        self.assertTrue(isinstance(form, OsidForm))
-        self.assertTrue(form.is_for_update())
+        if not is_never_authz(self.service_config):
+            form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
+            assert isinstance(form, OsidForm)
+            assert form.is_for_update()
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_assessment_part_form_for_update(self.fake_id)
 
     def test_update_assessment_part(self):
         """Tests update_assessment_part"""
-        form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
-        form.display_name = 'new name'
-        form.description = 'new description'
-        form.set_genus_type(NEW_TYPE_2)
-        updated_object = self.catalog.update_assessment_part(self.osid_object.ident, form)
-        self.assertTrue(isinstance(updated_object, ABCObjects.AssessmentPart))
-        self.assertEqual(updated_object.ident, self.osid_object.ident)
-        self.assertEqual(updated_object.display_name.text, 'new name')
-        self.assertEqual(updated_object.description.text, 'new description')
-        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
+        if not is_never_authz(self.service_config):
+            form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
+            form.display_name = 'new name'
+            form.description = 'new description'
+            form.set_genus_type(NEW_TYPE_2)
+            updated_object = self.catalog.update_assessment_part(self.osid_object.ident, form)
+            assert isinstance(updated_object, ABCObjects.AssessmentPart)
+            assert updated_object.ident == self.osid_object.ident
+            assert updated_object.display_name.text == 'new name'
+            assert updated_object.description.text == 'new description'
+            assert updated_object.genus_type == NEW_TYPE_2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.update_assessment_part(self.fake_id, 'foo')
 
     def test_can_delete_assessment_parts(self):
         """Tests can_delete_assessment_parts"""
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
-        self.assertTrue(isinstance(self.catalog.can_delete_assessment_parts(), bool))
+        assert isinstance(self.catalog.can_delete_assessment_parts(), bool)
 
     def test_delete_assessment_part(self):
         """Tests delete_assessment_part"""
-        results = self.catalog.get_assessment_parts()
-        self.assertEqual(results.available(), 1)
+        if not is_never_authz(self.service_config):
+            results = self.catalog.get_assessment_parts()
+            assert results.available() == 1
 
-        form = self.catalog.get_assessment_part_form_for_create_for_assessment(self.assessment.ident,
-                                                                               [])
-        form.display_name = 'new AssessmentPart'
-        form.description = 'description of AssessmentPart'
-        new_assessment_part = self.catalog.create_assessment_part_for_assessment(form)
+            form = self.catalog.get_assessment_part_form_for_create_for_assessment(self.assessment.ident,
+                                                                                   [])
+            form.display_name = 'new AssessmentPart'
+            form.description = 'description of AssessmentPart'
+            new_assessment_part = self.catalog.create_assessment_part_for_assessment(form)
 
-        results = self.catalog.get_assessment_parts()
-        self.assertEqual(results.available(), 2)
+            results = self.catalog.get_assessment_parts()
+            assert results.available() == 2
 
-        self.session.delete_assessment_part(new_assessment_part.ident)
+            self.session.delete_assessment_part(new_assessment_part.ident)
 
-        results = self.catalog.get_assessment_parts()
-        self.assertEqual(results.available(), 1)
-        self.assertNotEqual(str(results.next().ident),
-                            str(new_assessment_part.ident))
+            results = self.catalog.get_assessment_parts()
+            assert results.available() == 1
+            assert str(results.next().ident) != str(new_assessment_part.ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.delete_assessment_part(self.fake_id)
 
     def test_can_manage_assessment_part_aliases(self):
         """Tests can_manage_assessment_part_aliases"""
         # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
-        self.assertTrue(isinstance(self.catalog.can_manage_assessment_part_aliases(), bool))
+        assert isinstance(self.catalog.can_manage_assessment_part_aliases(), bool)
 
     def test_alias_assessment_part(self):
         """Tests alias_assessment_part"""
         # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
-        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
-        self.catalog.alias_assessment_part(self.osid_object.ident, alias_id)
-        aliased_object = self.catalog.get_assessment_part(alias_id)
-        self.assertEqual(aliased_object.ident, self.osid_object.ident)
+        if not is_never_authz(self.service_config):
+            alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+            self.catalog.alias_assessment_part(self.osid_object.ident, alias_id)
+            aliased_object = self.catalog.get_assessment_part(alias_id)
+            assert aliased_object.ident == self.osid_object.ident
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.alias_assessment_part(self.fake_id, self.fake_id)
 
 
-class TestAssessmentPartItemSession(unittest.TestCase):
-    """Tests for AssessmentPartItemSession"""
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_part_item_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT_AUTHORING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
 
-    @classmethod
-    def setUpClass(cls):
-        cls.item_list = list()
-        cls.item_ids = list()
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT_AUTHORING', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bank_form_for_create([])
+
+@pytest.fixture(scope="function")
+def assessment_part_item_session_test_fixture(request):
+    request.cls.item_list = list()
+    request.cls.item_ids = list()
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
         create_form.description = 'Test Bank for AssessmentPartItemSession tests'
-        cls.catalog = cls.svc_mgr.create_bank(create_form)
-        create_form = cls.catalog.get_assessment_form_for_create([])
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+        create_form = request.cls.catalog.get_assessment_form_for_create([])
         create_form.display_name = 'Test Assessment'
-        create_form.description = 'Test Assessment for AssetCompositionSession tests'
-        cls.assessment = cls.catalog.create_assessment(create_form)
-        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        create_form.description = 'Test Assessment for AssessmentPartItemSession tests'
+        request.cls.assessment = request.cls.catalog.create_assessment(create_form)
+        create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part'
-        create_form.description = 'Test Assessment Part for AssetCompositionSession tests'
-        cls.assessment_part = cls.catalog.create_assessment_part_for_assessment(create_form)
+        create_form.description = 'Test Assessment Part for AssessmentPartItemSession tests'
+        request.cls.assessment_part = request.cls.catalog.create_assessment_part_for_assessment(create_form)
         for num in [0, 1, 2, 3]:
-            create_form = cls.catalog.get_item_form_for_create([])
+            create_form = request.cls.catalog.get_item_form_for_create([])
             create_form.display_name = 'Test Item ' + str(num)
             create_form.description = 'Test Item for AssessmentPartItemSession tests'
-            obj = cls.catalog.create_item(create_form)
-            cls.item_list.append(obj)
-            cls.item_ids.append(obj.ident)
-            cls.catalog.add_item(obj.ident, cls.assessment_part.ident)
+            obj = request.cls.catalog.create_item(create_form)
+            request.cls.item_list.append(obj)
+            request.cls.item_ids.append(obj.ident)
+            request.cls.catalog.add_item(obj.ident, request.cls.assessment_part.ident)
+    else:
+        request.cls.catalog = request.cls.svc_mgr.get_assessment_part_item_session(proxy=PROXY)
 
-    def setUp(self):
-        self.session = self.catalog
+    request.cls.session = request.cls.catalog
 
-    @classmethod
-    def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessment_parts():
-                if obj.has_children():
-                    for child_id in obj.get_child_assessment_part_ids():
-                        catalog.delete_assessment_part(child_id)
-                catalog.delete_assessment_part(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            for obj in catalog.get_items():
-                catalog.delete_item(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for catalog in request.cls.svc_mgr.get_banks():
+                for obj in catalog.get_assessment_parts():
+                    if obj.has_children():
+                        for child_id in obj.get_child_assessment_part_ids():
+                            catalog.delete_assessment_part(child_id)
+                    catalog.delete_assessment_part(obj.ident)
+                for obj in catalog.get_assessments():
+                    catalog.delete_assessment(obj.ident)
+                for obj in catalog.get_items():
+                    catalog.delete_item(obj.ident)
+                request.cls.svc_mgr.delete_bank(catalog.ident)
 
+    request.addfinalizer(test_tear_down)
+
+
+@pytest.mark.usefixtures("assessment_part_item_session_class_fixture", "assessment_part_item_session_test_fixture")
+class TestAssessmentPartItemSession(object):
+    """Tests for AssessmentPartItemSession"""
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
-        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_bank_id() == self.catalog.ident
 
     def test_get_bank(self):
         """Tests get_bank"""
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
-        self.assertIsNotNone(self.catalog)
+        if not is_never_authz(self.service_config):
+            assert self.catalog is not None
 
     def test_can_access_assessment_part_items(self):
         """Tests can_access_assessment_part_items"""
-        self.assertTrue(isinstance(self.session.can_access_assessment_part_items(), bool))
+        assert isinstance(self.session.can_access_assessment_part_items(), bool)
 
     def test_use_comparative_asseessment_part_item_view(self):
         """Tests use_comparative_asseessment_part_item_view"""
@@ -578,196 +710,256 @@ class TestAssessmentPartItemSession(unittest.TestCase):
     def test_get_assessment_part_items(self):
         """Tests get_assessment_part_items"""
         # From test_templates/repository.py::AssetCompositionSession::get_composition_assets_template
-        self.assertEqual(self.catalog.get_assessment_part_items(self.assessment_part.ident).available(), 4)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_assessment_part_items(self.assessment_part.ident).available() == 4
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_assessment_part_items(self.fake_id)
 
     def test_get_assessment_parts_by_item(self):
         """Tests get_assessment_parts_by_item"""
         # From test_templates/repository.py::AssetCompositionSession::get_compositions_by_asset_template
-        self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).available(), 1)
-        self.assertEqual(self.catalog.get_assessment_parts_by_item(self.item_ids[0]).next().ident, self.assessment_part.ident)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_assessment_parts_by_item(self.item_ids[0]).available() == 1
+            assert self.catalog.get_assessment_parts_by_item(self.item_ids[0]).next().ident == self.assessment_part.ident
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_assessment_parts_by_item(self.fake_id)
 
 
-class TestAssessmentPartItemDesignSession(unittest.TestCase):
-    """Tests for AssessmentPartItemDesignSession"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.item_list = list()
-        cls.item_ids = list()
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT_AUTHORING', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bank_form_for_create([])
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_part_item_design_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.item_list = list()
+    request.cls.item_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT_AUTHORING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
         create_form.description = 'Test Bank for AssessmentPartItemDesignSession tests'
-        cls.catalog = cls.svc_mgr.create_bank(create_form)
-        create_form = cls.catalog.get_assessment_form_for_create([])
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+        create_form = request.cls.catalog.get_assessment_form_for_create([])
         create_form.display_name = 'Test Assessment'
         create_form.description = 'Test Assessment for AssessmentPartItemDesignSession tests'
-        cls.assessment = cls.catalog.create_assessment(create_form)
-        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        request.cls.assessment = request.cls.catalog.create_assessment(create_form)
+        create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part'
         create_form.description = 'Test Assessment Part for AssessmentPartItemDesignSession tests'
-        cls.assessment_part = cls.catalog.create_assessment_part_for_assessment(create_form)
+        request.cls.assessment_part = request.cls.catalog.create_assessment_part_for_assessment(create_form)
         for num in [0, 1, 2, 3]:
-            create_form = cls.catalog.get_item_form_for_create([])
+            create_form = request.cls.catalog.get_item_form_for_create([])
             create_form.display_name = 'Test Item ' + str(num)
             create_form.description = 'Test Item for AssessmentPartItemDesignSession tests'
-            obj = cls.catalog.create_item(create_form)
-            cls.item_list.append(obj)
-            cls.item_ids.append(obj.ident)
-            cls.catalog.add_item(obj.ident, cls.assessment_part.ident)
+            obj = request.cls.catalog.create_item(create_form)
+            request.cls.item_list.append(obj)
+            request.cls.item_ids.append(obj.ident)
+            request.cls.catalog.add_item(obj.ident, request.cls.assessment_part.ident)
 
-        cls.assessment = cls.catalog.get_assessment(cls.assessment.ident)
+        request.cls.assessment = request.cls.catalog.get_assessment(request.cls.assessment.ident)
+    else:
+        request.cls.catalog = request.cls.svc_mgr.get_assessment_part_item_design_session(proxy=PROXY)
 
-    def setUp(self):
-        self.session = self.catalog
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for catalog in request.cls.svc_mgr.get_banks():
+                for obj in catalog.get_assessment_parts():
+                    catalog.delete_assessment_part(obj.ident)
+                for obj in catalog.get_assessments():
+                    catalog.delete_assessment(obj.ident)
+                for obj in catalog.get_items():
+                    catalog.delete_item(obj.ident)
+                request.cls.svc_mgr.delete_bank(catalog.ident)
 
-    @classmethod
-    def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_assessment_parts():
-                catalog.delete_assessment_part(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            for obj in catalog.get_items():
-                catalog.delete_item(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+    request.addfinalizer(class_tear_down)
 
+
+@pytest.fixture(scope="function")
+def assessment_part_item_design_session_test_fixture(request):
+    request.cls.session = request.cls.catalog
+
+
+@pytest.mark.usefixtures("assessment_part_item_design_session_class_fixture", "assessment_part_item_design_session_test_fixture")
+class TestAssessmentPartItemDesignSession(object):
+    """Tests for AssessmentPartItemDesignSession"""
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
-        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_bank_id() == self.catalog.ident
 
     def test_get_bank(self):
         """Tests get_bank"""
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
-        self.assertIsNotNone(self.catalog)
+        if not is_never_authz(self.service_config):
+            assert self.catalog is not None
 
     def test_can_design_assessment_parts(self):
         """Tests can_design_assessment_parts"""
-        self.assertTrue(isinstance(self.session.can_design_assessment_parts(), bool))
+        assert isinstance(self.session.can_design_assessment_parts(), bool)
 
     def test_add_item(self):
         """Tests add_item"""
-        self.assertEqual(self.catalog.get_assessment_part_items(self.assessment_part.ident).available(), 4)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_assessment_part_items(self.assessment_part.ident).available() == 4
 
-        create_form = self.catalog.get_item_form_for_create([])
-        create_form.display_name = 'Test Item 5'
-        create_form.description = 'Test Item for AssessmentPartItemDesignSession tests'
-        obj = self.catalog.create_item(create_form)
-        self.session.add_item(obj.ident, self.assessment_part.ident)
+            create_form = self.catalog.get_item_form_for_create([])
+            create_form.display_name = 'Test Item 5'
+            create_form.description = 'Test Item for AssessmentPartItemDesignSession tests'
+            obj = self.catalog.create_item(create_form)
+            self.session.add_item(obj.ident, self.assessment_part.ident)
 
-        self.assertEqual(self.catalog.get_assessment_part_items(self.assessment_part.ident).available(), 5)
+            assert self.catalog.get_assessment_part_items(self.assessment_part.ident).available() == 5
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.add_item(self.fake_id, self.fake_id)
 
     def test_move_item_ahead(self):
         """Tests move_item_ahead"""
-        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
-        original_ids = [item.ident for item in original_item_order]
-        self.session.move_item_ahead(original_ids[-1],
-                                     self.assessment_part.ident,
-                                     original_ids[0])
-        expected_order = [original_ids[-1]] + original_ids[0:-1]
-        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
-        self.assertEqual(new_order, expected_order)
+        if not is_never_authz(self.service_config):
+            original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+            original_ids = [item.ident for item in original_item_order]
+            self.session.move_item_ahead(original_ids[-1],
+                                         self.assessment_part.ident,
+                                         original_ids[0])
+            expected_order = [original_ids[-1]] + original_ids[0:-1]
+            new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+            assert new_order == expected_order
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.move_item_ahead(self.fake_id, self.fake_id, self.fake_id)
 
     def test_move_item_behind(self):
         """Tests move_item_behind"""
-        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
-        original_ids = [item.ident for item in original_item_order]
-        self.session.move_item_behind(original_ids[0],
-                                      self.assessment_part.ident,
-                                      original_ids[-1])
-        expected_order = original_ids[1::] + [original_ids[0]]
-        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
-        self.assertEqual(new_order, expected_order)
+        if not is_never_authz(self.service_config):
+            original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+            original_ids = [item.ident for item in original_item_order]
+            self.session.move_item_behind(original_ids[0],
+                                          self.assessment_part.ident,
+                                          original_ids[-1])
+            expected_order = original_ids[1::] + [original_ids[0]]
+            new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+            assert new_order == expected_order
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.move_item_behind(self.fake_id, self.fake_id, self.fake_id)
 
     def test_order_items(self):
         """Tests order_items"""
-        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
-        original_ids = [item.ident for item in original_item_order]
-        shuffle(original_ids)
-        self.session.order_items(original_ids,
-                                 self.assessment_part.ident)
-        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
-        self.assertEqual(new_order, original_ids)
+        if not is_never_authz(self.service_config):
+            original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+            original_ids = [item.ident for item in original_item_order]
+            shuffle(original_ids)
+            self.session.order_items(original_ids,
+                                     self.assessment_part.ident)
+            new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+            assert new_order == original_ids
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.order_items(self.fake_id, self.fake_id)
 
     def test_remove_item(self):
         """Tests remove_item"""
-        original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
-        original_ids = [item.ident for item in original_item_order]
-        self.session.remove_item(original_ids[0],
-                                 self.assessment_part.ident)
-        new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
-        self.assertEqual(new_order, original_ids[1::])
+        if not is_never_authz(self.service_config):
+            original_item_order = list(self.catalog.get_assessment_part_items(self.assessment_part.ident))
+            original_ids = [item.ident for item in original_item_order]
+            self.session.remove_item(original_ids[0],
+                                     self.assessment_part.ident)
+            new_order = [item.ident for item in self.catalog.get_assessment_part_items(self.assessment_part.ident)]
+            assert new_order == original_ids[1::]
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.remove_item(self.fake_id, self.fake_id)
 
 
-class TestSequenceRuleLookupSession(unittest.TestCase):
-    """Tests for SequenceRuleLookupSession"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.sequence_rule_list = list()
-        cls.sequence_rule_ids = list()
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bank_form_for_create([])
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def sequence_rule_lookup_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.sequence_rule_list = list()
+    request.cls.sequence_rule_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
         create_form.description = 'Test Bank for SequenceRuleLookupSession tests'
-        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
 
-        create_form = cls.catalog.get_assessment_form_for_create([SIMPLE_SEQUENCE_RECORD_TYPE])
+        create_form = request.cls.catalog.get_assessment_form_for_create([SIMPLE_SEQUENCE_RECORD_TYPE])
         create_form.display_name = 'Test Assessment'
         create_form.description = 'Test Assessment for SequenceRuleLookupSession tests'
-        cls.assessment = cls.catalog.create_assessment(create_form)
-        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        request.cls.assessment = request.cls.catalog.create_assessment(create_form)
+        create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part 1'
         create_form.description = 'Test Assessment Part for SequenceRuleLookupSession tests'
-        cls.assessment_part_1 = cls.catalog.create_assessment_part_for_assessment(create_form)
+        request.cls.assessment_part_1 = request.cls.catalog.create_assessment_part_for_assessment(create_form)
 
-        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part 2'
         create_form.description = 'Test Assessment Part for SequenceRuleLookupSession tests'
-        assessment_part_2 = cls.catalog.create_assessment_part_for_assessment(create_form)
+        assessment_part_2 = request.cls.catalog.create_assessment_part_for_assessment(create_form)
 
         for num in [0, 1]:
-            create_form = cls.catalog.get_sequence_rule_form_for_create(cls.assessment_part_1.ident,
-                                                                        assessment_part_2.ident,
-                                                                        [])
+            create_form = request.cls.catalog.get_sequence_rule_form_for_create(request.cls.assessment_part_1.ident,
+                                                                                assessment_part_2.ident,
+                                                                                [])
             create_form.display_name = 'Test Sequence Rule ' + str(num)
             create_form.description = 'Test Sequence Rule for SequenceRuleLookupSession tests'
-            obj = cls.catalog.create_sequence_rule(create_form)
-            cls.sequence_rule_list.append(obj)
-            cls.sequence_rule_ids.append(obj.ident)
+            obj = request.cls.catalog.create_sequence_rule(create_form)
+            request.cls.sequence_rule_list.append(obj)
+            request.cls.sequence_rule_ids.append(obj.ident)
+    else:
+        request.cls.catalog = request.cls.svc_mgr.get_sequence_rule_lookup_session(proxy=PROXY)
 
-    def setUp(self):
-        self.session = self.catalog
-        self.assessment_part = self.assessment_part_1
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for catalog in request.cls.svc_mgr.get_banks():
+                for obj in catalog.get_sequence_rules():
+                    catalog.delete_sequence_rule(obj.ident)
+                for obj in catalog.get_assessment_parts():
+                    catalog.delete_assessment_part(obj.ident)
+                for obj in catalog.get_assessments():
+                    catalog.delete_assessment(obj.ident)
+                request.cls.svc_mgr.delete_bank(catalog.ident)
 
-    @classmethod
-    def tearDownClass(cls):
-        for catalog in cls.svc_mgr.get_banks():
-            for obj in catalog.get_sequence_rules():
-                catalog.delete_sequence_rule(obj.ident)
-            for obj in catalog.get_assessment_parts():
-                catalog.delete_assessment_part(obj.ident)
-            for obj in catalog.get_assessments():
-                catalog.delete_assessment(obj.ident)
-            cls.svc_mgr.delete_bank(catalog.ident)
+    request.addfinalizer(class_tear_down)
 
+
+@pytest.fixture(scope="function")
+def sequence_rule_lookup_session_test_fixture(request):
+    request.cls.session = request.cls.catalog
+    request.cls.assessment_part = request.cls.assessment_part_1
+
+
+@pytest.mark.usefixtures("sequence_rule_lookup_session_class_fixture", "sequence_rule_lookup_session_test_fixture")
+class TestSequenceRuleLookupSession(object):
+    """Tests for SequenceRuleLookupSession"""
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
-        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_bank_id() == self.catalog.ident
 
     def test_get_bank(self):
         """Tests get_bank"""
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
-        self.assertIsNotNone(self.catalog)
+        if not is_never_authz(self.service_config):
+            assert self.catalog is not None
 
     def test_can_lookup_sequence_rules(self):
         """Tests can_lookup_sequence_rules"""
         # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
-        self.assertTrue(isinstance(self.catalog.can_lookup_sequence_rules(), bool))
+        assert isinstance(self.catalog.can_lookup_sequence_rules(), bool)
 
     def test_use_comparative_sequence_rule_view(self):
         """Tests use_comparative_sequence_rule_view"""
@@ -803,269 +995,360 @@ class TestSequenceRuleLookupSession(unittest.TestCase):
 
     def test_get_sequence_rule(self):
         """Tests get_sequence_rule"""
-        # From test_templates/resource.py ResourceLookupSession.get_resource_template
-        self.catalog.use_isolated_bank_view()
-        obj = self.catalog.get_sequence_rule(self.sequence_rule_list[0].ident)
-        self.assertEqual(obj.ident, self.sequence_rule_list[0].ident)
-        self.catalog.use_federated_bank_view()
-        obj = self.catalog.get_sequence_rule(self.sequence_rule_list[0].ident)
-        self.assertEqual(obj.ident, self.sequence_rule_list[0].ident)
+        # Override this because we haven't implemented SequenceRuleQuerySession, so will
+        #   throw PermissionDenied with NEVER_AUTHZ
+        if not is_never_authz(self.service_config):
+            self.catalog.use_isolated_bank_view()
+            obj = self.catalog.get_sequence_rule(self.sequence_rule_list[0].ident)
+            assert obj.ident == self.sequence_rule_list[0].ident
+            self.catalog.use_federated_bank_view()
+            obj = self.catalog.get_sequence_rule(self.sequence_rule_list[0].ident)
+            assert obj.ident == self.sequence_rule_list[0].ident
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rule(self.fake_id)
 
     def test_get_sequence_rules_by_ids(self):
         """Tests get_sequence_rules_by_ids"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
+        # Override this because we haven't implemented SequenceRuleQuerySession, so will
+        #   throw PermissionDenied with NEVER_AUTHZ
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
-        objects = self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
-        self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
-        self.assertTrue(objects.available() > 0)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
+        if not is_never_authz(self.service_config):
+            objects = self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
+            assert isinstance(objects, SequenceRuleList)
+            self.catalog.use_federated_bank_view()
+            objects = self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
+            assert isinstance(objects, SequenceRuleList)
+            assert objects.available() > 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rules_by_ids(self.sequence_rule_ids)
 
     def test_get_sequence_rules_by_genus_type(self):
         """Tests get_sequence_rules_by_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
+        # Override this because we haven't implemented SequenceRuleQuerySession, so will
+        #   throw PermissionDenied with NEVER_AUTHZ
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
-        objects = self.catalog.get_sequence_rules_by_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
-        self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_sequence_rules_by_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(objects.available() > 0)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
+        if not is_never_authz(self.service_config):
+            objects = self.catalog.get_sequence_rules_by_genus_type(DEFAULT_GENUS_TYPE)
+            assert isinstance(objects, SequenceRuleList)
+            self.catalog.use_federated_bank_view()
+            objects = self.catalog.get_sequence_rules_by_genus_type(DEFAULT_GENUS_TYPE)
+            assert isinstance(objects, SequenceRuleList)
+            assert objects.available() > 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rules_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_sequence_rules_by_parent_genus_type(self):
         """Tests get_sequence_rules_by_parent_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
+        # Override this because we haven't implemented SequenceRuleQuerySession, so will
+        #   throw PermissionDenied with NEVER_AUTHZ
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
-        objects = self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
-        self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-        self.assertTrue(objects.available() == 0)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
+        if not is_never_authz(self.service_config):
+            objects = self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            assert isinstance(objects, SequenceRuleList)
+            self.catalog.use_federated_bank_view()
+            objects = self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            assert objects.available() == 0
+            assert isinstance(objects, SequenceRuleList)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rules_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_sequence_rules_by_record_type(self):
         """Tests get_sequence_rules_by_record_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
+        # Override this because we haven't implemented SequenceRuleQuerySession, so will
+        #   throw PermissionDenied with NEVER_AUTHZ
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
-        objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
-        self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
-        self.assertTrue(objects.available() == 0)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
+        if not is_never_authz(self.service_config):
+            objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
+            assert isinstance(objects, SequenceRuleList)
+            self.catalog.use_federated_bank_view()
+            objects = self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
+            assert objects.available() == 0
+            assert isinstance(objects, SequenceRuleList)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rules_by_record_type(DEFAULT_TYPE)
 
     def test_get_sequence_rules_for_assessment_part(self):
         """Tests get_sequence_rules_for_assessment_part"""
         # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
-        results = self.session.get_sequence_rules_for_assessment_part(self.assessment_part.ident)
-        self.assertEqual(results.available(), 2)
-        self.assertTrue(isinstance(results, ABCObjects.SequenceRuleList))
+        if not is_never_authz(self.service_config):
+            results = self.session.get_sequence_rules_for_assessment_part(self.assessment_part.ident)
+            assert results.available() == 2
+            assert isinstance(results, ABCObjects.SequenceRuleList)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_sequence_rules_for_assessment_part(self.fake_id)
 
     def test_get_sequence_rules_for_next_assessment_part(self):
         """Tests get_sequence_rules_for_next_assessment_part"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_sequence_rules_for_next_assessment_part(True)
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.get_sequence_rules_for_next_assessment_part(True)
 
     def test_get_sequence_rules_for_assessment_parts(self):
         """Tests get_sequence_rules_for_assessment_parts"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.get_sequence_rules_for_assessment_parts(True, True)
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.get_sequence_rules_for_assessment_parts(True, True)
 
     def test_get_sequence_rules_for_assessment(self):
         """Tests get_sequence_rules_for_assessment"""
         # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
-        results = self.session.get_sequence_rules_for_assessment(self.assessment.ident)
-        self.assertEqual(results.available(), 2)
-        self.assertTrue(isinstance(results, ABCObjects.SequenceRuleList))
+        if not is_never_authz(self.service_config):
+            results = self.session.get_sequence_rules_for_assessment(self.assessment.ident)
+            assert results.available() == 2
+            assert isinstance(results, ABCObjects.SequenceRuleList)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_sequence_rules_for_assessment(self.fake_id)
 
     def test_get_sequence_rules(self):
         """Tests get_sequence_rules"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_template
+        # Override this because we haven't implemented SequenceRuleQuerySession, so will
+        #   throw PermissionDenied with NEVER_AUTHZ
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleList
-        objects = self.catalog.get_sequence_rules()
-        self.assertTrue(isinstance(objects, SequenceRuleList))
-        self.catalog.use_federated_bank_view()
-        objects = self.catalog.get_sequence_rules()
-        self.assertTrue(objects.available() > 0)
-        self.assertTrue(isinstance(objects, SequenceRuleList))
+        if not is_never_authz(self.service_config):
+            objects = self.catalog.get_sequence_rules()
+            assert isinstance(objects, SequenceRuleList)
+            self.catalog.use_federated_bank_view()
+            objects = self.catalog.get_sequence_rules()
+            assert isinstance(objects, SequenceRuleList)
+            assert objects.available() > 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rules()
 
-    def test_get_sequence_rule_with_alias(self):
-        self.catalog.alias_sequence_rule(self.sequence_rule_ids[0], ALIAS_ID)
-        obj = self.catalog.get_sequence_rule(ALIAS_ID)
-        self.assertEqual(obj.get_id(), self.sequence_rule_ids[0])
 
-
-class TestSequenceRuleAdminSession(unittest.TestCase):
-    """Tests for SequenceRuleAdminSession"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.sequence_rule_list = list()
-        cls.sequence_rule_ids = list()
-        cls.svc_mgr = Runtime().get_service_manager('ASSESSMENT', proxy=PROXY, implementation='TEST_SERVICE')
-        create_form = cls.svc_mgr.get_bank_form_for_create([])
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def sequence_rule_admin_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.sequence_rule_list = list()
+    request.cls.sequence_rule_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
-        create_form.description = 'Test Bank for SequenceRuleLookupSession tests'
-        cls.catalog = cls.svc_mgr.create_bank(create_form)
+        create_form.description = 'Test Bank for SequenceRuleAdminSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
 
-        create_form = cls.catalog.get_assessment_form_for_create([])
+        create_form = request.cls.catalog.get_assessment_form_for_create([])
         create_form.display_name = 'Test Assessment'
-        create_form.description = 'Test Assessment for SequenceRuleLookupSession tests'
-        cls.assessment = cls.catalog.create_assessment(create_form)
-        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        create_form.description = 'Test Assessment for SequenceRuleAdminSession tests'
+        request.cls.assessment = request.cls.catalog.create_assessment(create_form)
+        create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part 1'
-        create_form.description = 'Test Assessment Part for SequenceRuleLookupSession tests'
-        cls.assessment_part_1 = cls.catalog.create_assessment_part_for_assessment(create_form)
+        create_form.description = 'Test Assessment Part for SequenceRuleAdminSession tests'
+        request.cls.assessment_part_1 = request.cls.catalog.create_assessment_part_for_assessment(create_form)
 
-        create_form = cls.catalog.get_assessment_part_form_for_create_for_assessment(cls.assessment.ident, [])
+        create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
         create_form.display_name = 'Test Assessment Part 2'
-        create_form.description = 'Test Assessment Part for SequenceRuleLookupSession tests'
-        cls.assessment_part_2 = cls.catalog.create_assessment_part_for_assessment(create_form)
+        create_form.description = 'Test Assessment Part for SequenceRuleAdminSession tests'
+        request.cls.assessment_part_2 = request.cls.catalog.create_assessment_part_for_assessment(create_form)
 
         for num in [0, 1]:
-            create_form = cls.catalog.get_sequence_rule_form_for_create(cls.assessment_part_1.ident,
-                                                                        cls.assessment_part_2.ident,
-                                                                        [])
+            create_form = request.cls.catalog.get_sequence_rule_form_for_create(request.cls.assessment_part_1.ident,
+                                                                                request.cls.assessment_part_2.ident,
+                                                                                [])
             create_form.display_name = 'Test Sequence Rule ' + str(num)
-            create_form.description = 'Test Sequence Rule for SequenceRuleLookupSession tests'
-            obj = cls.catalog.create_sequence_rule(create_form)
-            cls.sequence_rule_list.append(obj)
-            cls.sequence_rule_ids.append(obj.ident)
+            create_form.description = 'Test Sequence Rule for SequenceRuleAdminSession tests'
+            obj = request.cls.catalog.create_sequence_rule(create_form)
+            request.cls.sequence_rule_list.append(obj)
+            request.cls.sequence_rule_ids.append(obj.ident)
 
-        create_form = cls.catalog.get_sequence_rule_form_for_create(cls.assessment_part_1.ident,
-                                                                    cls.assessment_part_2.ident,
-                                                                    [])
+        create_form = request.cls.catalog.get_sequence_rule_form_for_create(request.cls.assessment_part_1.ident,
+                                                                            request.cls.assessment_part_2.ident,
+                                                                            [])
         create_form.display_name = 'new SequenceRule'
         create_form.description = 'description of SequenceRule'
         create_form.genus_type = NEW_TYPE
-        cls.osid_object = cls.catalog.create_sequence_rule(create_form)
+        request.cls.osid_object = request.cls.catalog.create_sequence_rule(create_form)
+    else:
+        request.cls.catalog = request.cls.svc_mgr.get_sequence_rule_admin_session(proxy=PROXY)
 
-    def setUp(self):
-        self.session = self.catalog
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for obj in request.cls.catalog.get_sequence_rules():
+                request.cls.catalog.delete_sequence_rule(obj.ident)
+            for obj in request.cls.catalog.get_assessment_parts():
+                request.cls.catalog.delete_assessment_part(obj.ident)
+            for obj in request.cls.catalog.get_assessments():
+                request.cls.catalog.delete_assessment(obj.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
 
-    @classmethod
-    def tearDownClass(cls):
-        for obj in cls.catalog.get_sequence_rules():
-            cls.catalog.delete_sequence_rule(obj.ident)
-        for obj in cls.catalog.get_assessment_parts():
-            cls.catalog.delete_assessment_part(obj.ident)
-        for obj in cls.catalog.get_assessments():
-            cls.catalog.delete_assessment(obj.ident)
-        cls.svc_mgr.delete_bank(cls.catalog.ident)
+    request.addfinalizer(class_tear_down)
 
+
+@pytest.fixture(scope="function")
+def sequence_rule_admin_session_test_fixture(request):
+    request.cls.session = request.cls.catalog
+
+
+@pytest.mark.usefixtures("sequence_rule_admin_session_class_fixture", "sequence_rule_admin_session_test_fixture")
+class TestSequenceRuleAdminSession(object):
+    """Tests for SequenceRuleAdminSession"""
     def test_get_bank_id(self):
         """Tests get_bank_id"""
         # From test_templates/resource.py ResourceLookupSession.get_bin_id_template
-        self.assertEqual(self.catalog.get_bank_id(), self.catalog.ident)
+        if not is_never_authz(self.service_config):
+            assert self.catalog.get_bank_id() == self.catalog.ident
 
     def test_get_bank(self):
         """Tests get_bank"""
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
-        self.assertIsNotNone(self.catalog)
+        if not is_never_authz(self.service_config):
+            assert self.catalog is not None
 
     def test_can_create_sequence_rule(self):
         """Tests can_create_sequence_rule"""
         # From test_templates/resource.py::ResourceAdminSession::can_create_resources_template
-        self.assertTrue(isinstance(self.catalog.can_create_sequence_rule(), bool))
+        assert isinstance(self.catalog.can_create_sequence_rule(), bool)
 
     def test_can_create_sequence_rule_with_record_types(self):
         """Tests can_create_sequence_rule_with_record_types"""
         # From test_templates/resource.py::ResourceAdminSession::can_create_resource_with_record_types_template
-        self.assertTrue(isinstance(self.catalog.can_create_sequence_rule_with_record_types(DEFAULT_TYPE), bool))
+        assert isinstance(self.catalog.can_create_sequence_rule_with_record_types(DEFAULT_TYPE), bool)
 
     def test_get_sequence_rule_form_for_create(self):
         """Tests get_sequence_rule_form_for_create"""
-        form = self.catalog.get_sequence_rule_form_for_create(self.assessment_part_1.ident,
-                                                              self.assessment_part_2.ident,
-                                                              [])
-        self.assertTrue(isinstance(form, OsidForm))
-        self.assertFalse(form.is_for_update())
+        if not is_never_authz(self.service_config):
+            form = self.catalog.get_sequence_rule_form_for_create(self.assessment_part_1.ident,
+                                                                  self.assessment_part_2.ident,
+                                                                  [])
+            assert isinstance(form, OsidForm)
+            assert not form.is_for_update()
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rule_form_for_create(self.fake_id, self.fake_id, [])
 
     def test_create_sequence_rule(self):
         """Tests create_sequence_rule"""
         # From test_templates/resource.py::ResourceAdminSession::create_resource_template
         from dlkit.abstract_osid.assessment_authoring.objects import SequenceRule
-        self.assertTrue(isinstance(self.osid_object, SequenceRule))
-        self.assertEqual(self.osid_object.display_name.text, 'new SequenceRule')
-        self.assertEqual(self.osid_object.description.text, 'description of SequenceRule')
-        self.assertEqual(self.osid_object.genus_type, NEW_TYPE)
+        if not is_never_authz(self.service_config):
+            assert isinstance(self.osid_object, SequenceRule)
+            assert self.osid_object.display_name.text == 'new SequenceRule'
+            assert self.osid_object.description.text == 'description of SequenceRule'
+            assert self.osid_object.genus_type == NEW_TYPE
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.create_sequence_rule('foo')
 
     def test_can_update_sequence_rules(self):
         """Tests can_update_sequence_rules"""
         # From test_templates/resource.py::ResourceAdminSession::can_update_resources_template
-        self.assertTrue(isinstance(self.catalog.can_update_sequence_rules(), bool))
+        assert isinstance(self.catalog.can_update_sequence_rules(), bool)
 
     def test_get_sequence_rule_form_for_update(self):
         """Tests get_sequence_rule_form_for_update"""
         # From test_templates/resource.py::ResourceAdminSession::get_resource_form_for_update_template
-        form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
-        self.assertTrue(isinstance(form, OsidForm))
-        self.assertTrue(form.is_for_update())
+        if not is_never_authz(self.service_config):
+            form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
+            assert isinstance(form, OsidForm)
+            assert form.is_for_update()
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.get_sequence_rule_form_for_update(self.fake_id)
 
     def test_update_sequence_rule(self):
         """Tests update_sequence_rule"""
         # From test_templates/resource.py::ResourceAdminSession::update_resource_template
-        from dlkit.abstract_osid.assessment_authoring.objects import SequenceRule
-        form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
-        form.display_name = 'new name'
-        form.description = 'new description'
-        form.set_genus_type(NEW_TYPE_2)
-        updated_object = self.catalog.update_sequence_rule(form)
-        self.assertTrue(isinstance(updated_object, SequenceRule))
-        self.assertEqual(updated_object.ident, self.osid_object.ident)
-        self.assertEqual(updated_object.display_name.text, 'new name')
-        self.assertEqual(updated_object.description.text, 'new description')
-        self.assertEqual(updated_object.genus_type, NEW_TYPE_2)
+        if not is_never_authz(self.service_config):
+            from dlkit.abstract_osid.assessment_authoring.objects import SequenceRule
+            form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
+            form.display_name = 'new name'
+            form.description = 'new description'
+            form.set_genus_type(NEW_TYPE_2)
+            updated_object = self.catalog.update_sequence_rule(form)
+            assert isinstance(updated_object, SequenceRule)
+            assert updated_object.ident == self.osid_object.ident
+            assert updated_object.display_name.text == 'new name'
+            assert updated_object.description.text == 'new description'
+            assert updated_object.genus_type == NEW_TYPE_2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.update_sequence_rule('foo')
 
     def test_can_delete_sequence_rules(self):
         """Tests can_delete_sequence_rules"""
         # From test_templates/resource.py::ResourceAdminSession::can_delete_resources_template
-        self.assertTrue(isinstance(self.catalog.can_delete_sequence_rules(), bool))
+        assert isinstance(self.catalog.can_delete_sequence_rules(), bool)
 
     def test_delete_sequence_rule(self):
         """Tests delete_sequence_rule"""
-        create_form = self.catalog.get_sequence_rule_form_for_create(self.assessment_part_1.ident,
-                                                                     self.assessment_part_2.ident,
-                                                                     [])
-        create_form.display_name = 'new SequenceRule'
-        create_form.description = 'description of SequenceRule'
-        create_form.genus_type = NEW_TYPE
-        osid_object = self.catalog.create_sequence_rule(create_form)
-        self.catalog.delete_sequence_rule(osid_object.ident)
-        with self.assertRaises(errors.NotFound):
-            self.catalog.get_sequence_rule(osid_object.ident)
+        if not is_never_authz(self.service_config):
+            create_form = self.catalog.get_sequence_rule_form_for_create(self.assessment_part_1.ident,
+                                                                         self.assessment_part_2.ident,
+                                                                         [])
+            create_form.display_name = 'new SequenceRule'
+            create_form.description = 'description of SequenceRule'
+            create_form.genus_type = NEW_TYPE
+            osid_object = self.catalog.create_sequence_rule(create_form)
+            self.catalog.delete_sequence_rule(osid_object.ident)
+            with pytest.raises(errors.NotFound):
+                self.catalog.get_sequence_rule(osid_object.ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.delete_sequence_rule(self.fake_id)
 
     def test_can_manage_sequence_rule_aliases(self):
         """Tests can_manage_sequence_rule_aliases"""
         # From test_templates/resource.py::ResourceAdminSession::can_manage_resource_aliases_template
-        self.assertTrue(isinstance(self.catalog.can_manage_sequence_rule_aliases(), bool))
+        assert isinstance(self.catalog.can_manage_sequence_rule_aliases(), bool)
 
     def test_alias_sequence_rule(self):
         """Tests alias_sequence_rule"""
         # From test_templates/resource.py::ResourceAdminSession::alias_resource_template
-        alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
-        self.catalog.alias_sequence_rule(self.osid_object.ident, alias_id)
-        aliased_object = self.catalog.get_sequence_rule(alias_id)
-        self.assertEqual(aliased_object.ident, self.osid_object.ident)
+        if not is_never_authz(self.service_config):
+            alias_id = Id(self.catalog.ident.namespace + '%3Amy-alias%40ODL.MIT.EDU')
+            self.catalog.alias_sequence_rule(self.osid_object.ident, alias_id)
+            aliased_object = self.catalog.get_sequence_rule(alias_id)
+            assert aliased_object.ident == self.osid_object.ident
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.catalog.alias_sequence_rule(self.fake_id, self.fake_id)
 
     def test_can_sequence_sequence_rules(self):
         """Tests can_sequence_sequence_rules"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.can_sequence_sequence_rules()
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.can_sequence_sequence_rules()
 
     def test_move_sequence_rule_ahead(self):
         """Tests move_sequence_rule_ahead"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.move_sequence_rule_ahead(True, True, True)
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.move_sequence_rule_ahead(True, True, True)
 
     def test_move_sequence_rule_behind(self):
         """Tests move_sequence_rule_behind"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.move_sequence_rule_behind(True, True, True)
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.move_sequence_rule_behind(True, True, True)
 
     def test_order_sequence_rules(self):
         """Tests order_sequence_rules"""
-        with self.assertRaises(errors.Unimplemented):
-            self.session.order_sequence_rules(True, True)
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.order_sequence_rules(True, True)

@@ -1883,10 +1883,12 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('assessment',
-                                         collection='Item',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('assessment',
+                                             collection='Item',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.ItemList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -4205,10 +4207,12 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
             if and_list:
                 query_terms = {'$and': and_list}
 
-            collection = JSONClientValidated('assessment',
-                                             collection='Assessment',
-                                             runtime=self._runtime)
-            result = collection.find(query_terms).sort('_id', DESCENDING)
+                collection = JSONClientValidated('assessment',
+                                                 collection='Assessment',
+                                                 runtime=self._runtime)
+                result = collection.find(query_terms).sort('_id', DESCENDING)
+            else:
+                result = []
             return objects.AssessmentList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -5748,10 +5752,12 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('assessment',
-                                         collection='AssessmentOffered',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('assessment',
+                                             collection='AssessmentOffered',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.AssessmentOfferedList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -7363,10 +7369,12 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('assessment',
-                                         collection='AssessmentTaken',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('assessment',
+                                             collection='AssessmentTaken',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.AssessmentTakenList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -8546,7 +8554,7 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
 
         """
         # Implemented from template for
-        # osid.resource.ResourceQuerySession.can_search_resources
+        # osid.resource.BinQuerySession.can_search_bins_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True

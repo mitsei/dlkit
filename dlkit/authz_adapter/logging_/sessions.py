@@ -38,7 +38,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
     log = property(fget=get_log)
 
     def can_log(self):
-        raise Unimplemented()
+        return self._provider_session.can_log()
 
     @raise_null_argument
     def log(self, content, content_type):
@@ -321,7 +321,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_log_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_log_view(self):
         # Implemented from azosid template for -
@@ -514,7 +514,10 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         return self._provider_session.delete_log_entry(log_entry_id)
 
     def can_manage_log_entry_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_log_entry(self, log_entry_id, alias_id):
@@ -720,7 +723,7 @@ class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_log_entry_ids_by_log(log_id)
+        return self._provider_session.get_log_entries_by_log(log_id)
 
     @raise_null_argument
     def get_log_entry_ids_by_log(self, log_ids):
@@ -736,7 +739,7 @@ class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_log_entry_ids_by_log(log_id)
+        return self._provider_session.get_log_entries_by_log(log_id)
 
     @raise_null_argument
     def get_log_ids_by_log_entry(self, log_entry_id):
@@ -775,7 +778,7 @@ class LogEntryLogAssignmentSession(abc_logging_sessions.LogEntryLogAssignmentSes
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_log_ids()
+        return self._provider_session.get_assignable_log_ids(log_id)
 
     @raise_null_argument
     def get_assignable_log_ids_for_log_entry(self, log_id, log_entry_id):
@@ -783,7 +786,7 @@ class LogEntryLogAssignmentSession(abc_logging_sessions.LogEntryLogAssignmentSes
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_log_ids_for_log_entry(log_entry_id)
+        return self._provider_session.get_assignable_log_ids_for_log_entry(log_id, log_entry_id)
 
     @raise_null_argument
     def assign_log_entry_to_log(self, log_entry_id, log_id):
@@ -936,9 +939,8 @@ class LogQuerySession(abc_logging_sessions.LogQuerySession, osid_sessions.OsidSe
 
     def can_search_logs(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_log_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_log_query(self):
         # Implemented from azosid template for -
@@ -1054,7 +1056,10 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         return self._provider_session.delete_log(log_id)
 
     def can_manage_log_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_log(self, log_id, alias_id):
