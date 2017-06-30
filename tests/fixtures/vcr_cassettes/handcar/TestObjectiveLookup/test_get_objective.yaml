@@ -3680,4 +3680,51 @@ interactions:
       Keep-Alive: ['timeout=15, max=50']
       Server: [Apache]
     status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.13.0]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/../objectives/mc3-objective%3A3693%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Objective","id":"mc3-objective%3A3693%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2014-10-14T09:47:50","updatedBy":"MC3GUE$T","updatedOn":"2015-03-23T13:54:52"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":"Apply
+        Torque"},"genusTypeId":"mc3-objective%3Amc3.learning.generic.outcome%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"mc3.grade.system.cognitive.process.crosslinks%3Amc3.grade.bloom.apply%40MIT-OEIT","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}'}
+    headers:
+      access-control-allow-headers: [Content-Type]
+      access-control-allow-methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      access-control-allow-origin: ['*']
+      cache-control: ['max-age=604800, must-revalidate']
+      connection: ['keep-alive, Keep-Alive']
+      content-length: ['797']
+      content-type: [application/json]
+      date: ['Fri, 30 Jun 2017 18:15:52 GMT']
+      keep-alive: ['timeout=15, max=50']
+      server: [Apache]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.14.2]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/../objectives/mc3-objective%3A9729%40MIT-OEIT
+  response:
+    body: {string: '{"type":"Objective","id":"mc3-objective%3A9729%40MIT-OEIT","auditTrail":{"addedBy":"MC3GUE$T","addedOn":"2015-04-26T18:30:05"},"current":true,"description":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"displayName":{"formatTypeId":"format.text%3APlain%40okapia.net","languageTypeId":"639-2%3AENG%40iso.org","scriptTypeId":"15924%3ALATN%40iso.org","text":""},"genusTypeId":"mc3-objective%3Amc3.learning.generic.outcome%40MIT-OEIT","assessmentId":"","cognitiveProcessId":"mc3.grade.system.cognitive.process.crosslinks%3Amc3.grade.bloom.learn%40MIT-OEIT","knowledgeCategoryId":"","objectiveBankId":"mc3-objectivebank%3A1%40MIT-OEIT"}'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: ['keep-alive, Keep-Alive']
+      Content-Length: ['728']
+      Content-Type: [application/json]
+      Date: ['Fri, 30 Jun 2017 18:57:08 GMT']
+      Keep-Alive: ['timeout=15, max=50']
+      Server: [Apache]
+    status: {code: 200, message: OK}
 version: 1

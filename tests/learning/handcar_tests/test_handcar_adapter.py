@@ -2,7 +2,6 @@
 # the package
 import codecs
 import unittest
-import random
 import vcr
 
 from dlkit.handcar import utilities
@@ -196,29 +195,25 @@ class TestObjectiveLookup(unittest.TestCase):
 
     @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_get_objective.yaml', record_mode='new_episodes')
     def test_get_objective(self):
-        # Get a random Objective
         all_objectives = self.ols.get_objectives()
-        all_objectives.skip(random.randint(0, all_objectives.available() - 1))
-        rand_objective = all_objectives.get_next_objective()
-        objective = self.ols.get_objective(rand_objective.get_id())
+        objective = all_objectives.get_next_objective()
+        objective = self.ols.get_objective(objective.get_id())
         self.assertTrue(objective.get_id().get_identifier() ==
-                        rand_objective.get_id().get_identifier())
+                        objective.get_id().get_identifier())
 
     @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_get_objectives_by_type.yaml', record_mode='new_episodes')
     def test_get_objectives_by_type(self):
-        # Get a random Objective
-        rand_type_map = self.objective_genus_types[random.randint(0, len(self.objective_genus_types) - 1)]
-        objectives = self.ols.get_objectives_by_genus_type(Type(rand_type_map))
+        type_map = self.objective_genus_types[0]
+        objectives = self.ols.get_objectives_by_genus_type(Type(type_map))
         for objective in objectives:
-            self.assertTrue(objective.get_genus_type().get_identifier() == rand_type_map['identifier'])
+            self.assertTrue(objective.get_genus_type().get_identifier() == type_map['identifier'])
 
     @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestObjectiveLookup/test_objective_is_of_genus_type.yaml', record_mode='new_episodes')
     def test_objective_is_of_genus_type(self):
-        # Get a random Objective
-        rand_type_map = self.objective_genus_types[random.randint(0, len(self.objective_genus_types) - 1)]
-        objectives = self.ols.get_objectives_by_genus_type(Type(rand_type_map))
+        type_map = self.objective_genus_types[0]
+        objectives = self.ols.get_objectives_by_genus_type(Type(type_map))
         for objective in objectives:
-            self.assertTrue(objective.is_of_genus_type(Type(rand_type_map)))
+            self.assertTrue(objective.is_of_genus_type(Type(type_map)))
 
 
 class TestObjectiveRequisite(unittest.TestCase):
@@ -441,29 +436,25 @@ class TestActivityLookup(unittest.TestCase):
 
     @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_get_activity.yaml', record_mode='new_episodes')
     def test_get_activity(self):
-        # Get a random Objective Bank
         all_activities = self.als.get_activities()
-        all_activities.skip(random.randint(0, all_activities.available() - 1))
-        rand_activity = all_activities.get_next_activity()
-        activity = self.als.get_activity(rand_activity.get_id())
+        activity = all_activities.get_next_activity()
+        activity = self.als.get_activity(activity.get_id())
         self.assertTrue(activity.get_id().get_identifier() ==
-                        rand_activity.get_id().get_identifier())
+                        activity.get_id().get_identifier())
 
     @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_get_activities_by_type.yaml', record_mode='new_episodes')
     def test_get_activities_by_type(self):
-        # Get a random activity genus type
-        rand_type_map = self.activity_genus_types[random.randint(0, len(self.activity_genus_types) - 1)]
-        activities = self.als.get_activities_by_genus_type(Type(rand_type_map))
+        type_map = self.activity_genus_types[0]
+        activities = self.als.get_activities_by_genus_type(Type(type_map))
         for activity in activities:
-            self.assertTrue(activity.get_genus_type().get_identifier() == rand_type_map['identifier'])
+            self.assertTrue(activity.get_genus_type().get_identifier() == type_map['identifier'])
 
     @vcr.use_cassette('tests/fixtures/vcr_cassettes/handcar/TestActivityLookup/test_activity_is_of_genus_type.yaml', record_mode='new_episodes')
     def test_activity_is_of_genus_type(self):
-        # Get a random activity genus type
-        rand_type_map = self.activity_genus_types[random.randint(0, len(self.activity_genus_types) - 1)]
-        activities = self.als.get_activities_by_genus_type(Type(rand_type_map))
+        type_map = self.activity_genus_types[0]
+        activities = self.als.get_activities_by_genus_type(Type(type_map))
         for activity in activities:
-            self.assertTrue(activity.is_of_genus_type(Type(rand_type_map)))
+            self.assertTrue(activity.is_of_genus_type(Type(type_map)))
 
 
 class TestObjectiveMetadata(unittest.TestCase):
@@ -480,10 +471,8 @@ class TestObjectiveMetadata(unittest.TestCase):
         all_banks = self.obls.get_objective_banks()
         self.first_bank = all_banks.get_next_objective_bank()
         self.ols = self.lm.get_objective_lookup_session_for_objective_bank(self.first_bank.get_id())
-        # Get a random Objective
         all_objectives = self.ols.get_objectives()
-        all_objectives.skip(random.randint(0, all_objectives.available() - 1))
-        self.rand_objective = all_objectives.get_next_objective()
+        self.objective = all_objectives.get_next_objective()
 
     def test_get_journal_comment_metadata(self):
         from dlkit.handcar.learning import objects

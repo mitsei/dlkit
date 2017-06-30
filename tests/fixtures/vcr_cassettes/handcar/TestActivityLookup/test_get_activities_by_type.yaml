@@ -109,4 +109,27 @@ interactions:
       Keep-Alive: ['timeout=15, max=50']
       Server: [Apache]
     status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      User-Agent: [python-requests/2.14.2]
+    method: GET
+    uri: https://mc3-dev.mit.edu/handcar/services/learning/objectivebanks/mc3-objectivebank%3A1%40MIT-OEIT/activities?genustypeid=mc3.learning.activity.asset.based
+  response:
+    body: {string: '[]'}
+    headers:
+      Access-Control-Allow-Headers: [Content-Type]
+      Access-Control-Allow-Methods: ['GET,POST,PUT,DELETE,OPTIONS']
+      Access-Control-Allow-Origin: ['*']
+      Cache-Control: ['max-age=604800, must-revalidate']
+      Connection: ['keep-alive, Keep-Alive']
+      Content-Length: ['2']
+      Content-Type: [application/json]
+      Date: ['Fri, 30 Jun 2017 18:57:12 GMT']
+      Keep-Alive: ['timeout=15, max=50']
+      Server: [Apache]
+    status: {code: 200, message: OK}
 version: 1
