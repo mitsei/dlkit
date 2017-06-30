@@ -1,0 +1,27 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:1ODTHTAWq/SF35Z7tAZ10HWPW8g=']
+      Date: ['Fri, 30 Jun 2017 19:09:41 GMT']
+      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
+    method: !!python/unicode GET
+    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+  response:
+    body: {string: !!python/unicode 'This is test file 1.
+
+'}
+    headers:
+      accept-ranges: [bytes]
+      content-length: ['21']
+      content-type: [binary/octet-stream]
+      date: ['Fri, 30 Jun 2017 19:09:42 GMT']
+      etag: ['"ee24130e2c82001fea3c165ffd60b995"']
+      last-modified: ['Fri, 30 Jun 2017 19:09:42 GMT']
+      server: [AmazonS3]
+      x-amz-expiration: ['expiry-date="Sat, 08 Jul 2017 00:00:00 GMT", rule-id="Periodic
+          cleaning up of test items"']
+      x-amz-id-2: [il4Wtluyup2unVfe5gf+AiKvXsbRUSIoeLQKM0oEs7Cn1ii5ff2IBM29yHt3gl9OwtSi6cnRxus=]
+      x-amz-request-id: [438F36B17F858D20]
+    status: {code: 200, message: OK}
+version: 1

@@ -2,6 +2,7 @@
 #
 # from boto.s3.key import Key
 import boto3
+import vcr
 
 from botocore.exceptions import ClientError
 
@@ -107,15 +108,19 @@ class AWSAdapterTests(DLKitTestCase):
         """
         super(AWSAdapterTests, self).tearDown()
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_repository_assets_put_into_s3.yaml', record_mode='new_episodes')
     def test_repository_assets_put_into_s3(self):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
         self.assertTrue(self.s3_file_exists(expected_filekey))
 
+    @vcr.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_repository_assets_return_cloudfront_url_when_queried.yaml', record_mode='new_episodes')
     def test_repository_assets_return_cloudfront_url_when_queried(self):
         asset_content = next(self._asset.get_asset_contents())
         url = asset_content.get_url()
         self.is_cloudfront_url(url)
 
+    @vcr.use_cassette(
+        'tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_s3_files_deleted_when_asset_content_deleted.yaml', record_mode='new_episodes')
     def test_s3_files_deleted_when_asset_content_deleted(self):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
         self.assertTrue(self.s3_file_exists(expected_filekey))

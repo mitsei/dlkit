@@ -1,0 +1,63 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:h6KJ8bnsp4Xm2M1n85s43mAjoLo=']
+      Date: ['Fri, 30 Jun 2017 19:09:44 GMT']
+      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
+    method: !!python/unicode GET
+    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+  response:
+    body: {string: !!python/unicode 'This is test file 1.
+
+'}
+    headers:
+      accept-ranges: [bytes]
+      content-length: ['21']
+      content-type: [binary/octet-stream]
+      date: ['Fri, 30 Jun 2017 19:09:45 GMT']
+      etag: ['"ee24130e2c82001fea3c165ffd60b995"']
+      last-modified: ['Fri, 30 Jun 2017 19:09:44 GMT']
+      server: [AmazonS3]
+      x-amz-expiration: ['expiry-date="Sat, 08 Jul 2017 00:00:00 GMT", rule-id="Periodic
+          cleaning up of test items"']
+      x-amz-id-2: [oGN/oKJSy5SJLa/rwkZaotxTWNI9EhX/tLYszrrXMozy0NyrJGEBAHnACSW5zAFCkumNcgF+Gjg=]
+      x-amz-request-id: [1AA14150D351342B]
+    status: {code: 200, message: OK}
+- request:
+    body: null
+    headers:
+      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:HH0DzqDVgnpr+3uVQ+o5HkcRCF4=']
+      Content-Length: ['0']
+      Date: ['Fri, 30 Jun 2017 19:09:44 GMT']
+      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
+    method: !!python/unicode DELETE
+    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      date: ['Fri, 30 Jun 2017 19:09:45 GMT']
+      server: [AmazonS3]
+      x-amz-id-2: [eGJVELzOzDYXhmWvvASfta9M87aCyn5SlweHZkxQTrRte6jYFylaYP4RmWiLDmvAIHXnM27ghk0=]
+      x-amz-request-id: [B5C8698D552B54B4]
+    status: {code: 204, message: No Content}
+- request:
+    body: null
+    headers:
+      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:h6KJ8bnsp4Xm2M1n85s43mAjoLo=']
+      Date: ['Fri, 30 Jun 2017 19:09:44 GMT']
+      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
+    method: !!python/unicode GET
+    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+  response:
+    body: {string: !!python/unicode '<?xml version="1.0" encoding="UTF-8"?>
+
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>58efd696eb761d78b82c545d/test_file_1.txt</Key><RequestId>A064490CAEB901E7</RequestId><HostId>bCMr7ns/AAWDNP68fE41kCFvToL47GypgKg3ulWv9L74nn2hrjt57IfeFCPZmdrPDvQRrTMP2Hk=</HostId></Error>'}
+    headers:
+      content-type: [application/xml]
+      date: ['Fri, 30 Jun 2017 19:09:44 GMT']
+      server: [AmazonS3]
+      x-amz-id-2: [bCMr7ns/AAWDNP68fE41kCFvToL47GypgKg3ulWv9L74nn2hrjt57IfeFCPZmdrPDvQRrTMP2Hk=]
+      x-amz-request-id: [A064490CAEB901E7]
+    status: {code: 404, message: Not Found}
+version: 1
