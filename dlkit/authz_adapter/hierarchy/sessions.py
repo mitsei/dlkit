@@ -10,9 +10,7 @@
 from ..osid import sessions as osid_sessions
 from ..osid.osid_errors import NotFound
 from ..osid.osid_errors import PermissionDenied, NullArgument, Unimplemented
-from ..osid.osid_errors import Unsupported
 from ..primitives import Id
-from ..utilities import QueryWrapper
 from ..utilities import raise_null_argument
 from dlkit.abstract_osid.hierarchy import sessions as abc_hierarchy_sessions
 
@@ -103,7 +101,8 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
     hierarchy = property(fget=get_hierarchy)
 
     def can_modify_hierarchy(self):
-        raise Unimplemented()
+        # From azosid_templates/ontology.py::SubjectHierarchyDesignSession::can_modify_subject_hierarchy_template
+        return self._can('modify')
 
     @raise_null_argument
     def add_root(self, id_):
@@ -342,9 +341,8 @@ class HierarchyQuerySession(abc_hierarchy_sessions.HierarchyQuerySession, osid_s
 
     def can_search_hierarchies(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_hierarchy_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_hierarchy_query(self):
         # Implemented from azosid template for -
@@ -456,7 +454,10 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         raise Unimplemented()
 
     def can_manage_hierarchy_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_hierarchy(self, hierarchy_id, alias_id):

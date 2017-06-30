@@ -292,11 +292,29 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     @raise_null_argument
     def get_resource_notification_session(self, resource_receiver):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'ResourceNotificationSession')(
+                provider_session=self._provider_manager.get_resource_notification_session(resource_receiver),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_resource_notification_session_for_bin(self, resource_receiver, bin_id):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'ResourceNotificationSession')(
+                provider_session=self._provider_manager.get_resource_notification_session_for_bin(resource_receiver, bin_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     def get_resource_bin_session(self):
         # Implemented from azosid template for -
@@ -612,11 +630,31 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
 
     @raise_null_argument
     def get_resource_notification_session(self, resource_receiver, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'ResourceNotificationSession')(
+                provider_session=self._provider_manager.get_resource_notification_session(resource_receiver, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_resource_notification_session_for_bin(self, resource_receiver, bin_id, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'ResourceNotificationSession')(
+                provider_session=self._provider_manager.get_resource_notification_session_for_bin(resource_receiver, bin_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_resource_bin_session(self, proxy):

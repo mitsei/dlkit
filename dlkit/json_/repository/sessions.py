@@ -905,10 +905,12 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('repository',
-                                         collection='Asset',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('repository',
+                                             collection='Asset',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.AssetList(result, runtime=self._runtime, proxy=self._proxy)
 
     def get_asset_content_query(self):
@@ -2067,8 +2069,11 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
 
         """
         # Implemented from template for
-        # osid.resource.ResourceNotificationSession.register_for_new_resources
-        MONGO_LISTENER.receivers[self._ns][self._receiver]['i'] = True
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
+            MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
+        if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
+            MONGO_LISTENER.receivers[self._ns][self._receiver]['u'].append(asset_genus_type.get_identifier())
 
     def register_for_changed_assets(self):
         """Registers for notification of updated assets.
@@ -2160,11 +2165,11 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
 
         """
         # Implemented from template for
-        # osid.resource.ResourceNotificationSession.register_for_deleted_resource
-        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['d']:
-            MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = []
-        if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['d'], list):
-            MONGO_LISTENER.receivers[self._ns][self._receiver]['d'].append(asset_genus_type.get_identifier())
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
+        if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
+            MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
+        if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
+            MONGO_LISTENER.receivers[self._ns][self._receiver]['u'].append(asset_genus_type.get_identifier())
 
     @utilities.arguments_not_none
     def register_for_deleted_asset(self, asset_id):
@@ -3577,10 +3582,12 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
             and_list.append(view_filter)
         if and_list:
             query_terms = {'$and': and_list}
-        collection = JSONClientValidated('repository',
-                                         collection='Composition',
-                                         runtime=self._runtime)
-        result = collection.find(query_terms).sort('_id', DESCENDING)
+            collection = JSONClientValidated('repository',
+                                             collection='Composition',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
         return objects.CompositionList(result, runtime=self._runtime, proxy=self._proxy)
 
 
@@ -4890,7 +4897,7 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
 
         """
         # Implemented from template for
-        # osid.resource.ResourceQuerySession.can_search_resources
+        # osid.resource.BinQuerySession.can_search_bins_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True

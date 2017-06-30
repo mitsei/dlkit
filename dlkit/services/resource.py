@@ -641,7 +641,7 @@ class ResourceManager(osid.OsidManager, osid.OsidSession, ResourceProfile, resou
     def can_search_bins(self):
         """Pass through to provider BinQuerySession.can_search_bins"""
         # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
+        # osid.resource.BinQuerySession.can_search_bins_template
         return self._get_provider_session('bin_query_session').can_search_bins()
 
     def get_bin_query(self):

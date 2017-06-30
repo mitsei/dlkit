@@ -257,7 +257,7 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bin_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bin_view(self):
         # Implemented from azosid template for -
@@ -452,7 +452,10 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         return self._provider_session.delete_resource(resource_id)
 
     def can_manage_resource_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_resource(self, resource_id, alias_id):
@@ -596,7 +599,7 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_resource_ids_by_bin(bin_id)
+        return self._provider_session.get_resources_by_bin(bin_id)
 
     @raise_null_argument
     def get_resource_ids_by_bins(self, bin_ids):
@@ -612,7 +615,7 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_resources_ids_by_bins(bin_ids)
+        return self._provider_session.get_resources_by_bins(bin_ids)
 
     @raise_null_argument
     def get_bin_ids_by_resource(self, resource_id):
@@ -655,7 +658,7 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bin_ids()
+        return self._provider_session.get_assignable_bin_ids(bin_id)
 
     @raise_null_argument
     def get_assignable_bin_ids_for_resource(self, bin_id, resource_id):
@@ -663,7 +666,7 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bin_ids_for_resource(resource_id)
+        return self._provider_session.get_assignable_bin_ids_for_resource(bin_id, resource_id)
 
     @raise_null_argument
     def assign_resource_to_bin(self, resource_id, bin_id):
@@ -1467,7 +1470,7 @@ class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshi
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bin_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bin_view(self):
         # Implemented from azosid template for -
@@ -1662,7 +1665,10 @@ class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshi
         return self._provider_session.delete_resource_relationship(resource_relationship_id)
 
     def can_manage_resource_relationship_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_resource_relationship(self, resource_relationship_id, alias_id):
@@ -1724,10 +1730,10 @@ class ResourceRelationshipNotificationSession(abc_resource_sessions.ResourceRela
     @raise_null_argument
     def register_for_new_resource_relationships_by_genus_type(self, resource_relationship_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_new_resources
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
-        self._provider_session.register_for_new_resource_relationships_by_genus_type()
+        self._provider_session.register_for_new_resource_relationships_by_genus_type(resource_relationship_genus_type)
 
     @raise_null_argument
     def register_for_new_resource_relationships_for_source_resource(self, resource_id):
@@ -1794,7 +1800,7 @@ class ResourceRelationshipNotificationSession(abc_resource_sessions.ResourceRela
     @raise_null_argument
     def register_for_deleted_resource_relationships_by_genus_type(self, resource_relationship_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_deleted_resource
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
         self._provider_session.register_for_deleted_resource_relationships_by_genus_type(resource_relationship_genus_type)
@@ -1874,7 +1880,7 @@ class ResourceRelationshipBinSession(abc_resource_sessions.ResourceRelationshipB
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_resource_relationship_ids_by_bin(bin_id)
+        return self._provider_session.get_resource_relationships_by_bin(bin_id)
 
     @raise_null_argument
     def get_resource_relationships_ids_by_bins(self, bin_ids):
@@ -1890,7 +1896,7 @@ class ResourceRelationshipBinSession(abc_resource_sessions.ResourceRelationshipB
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_resource_relationships_ids_by_bins(bin_ids)
+        return self._provider_session.get_resource_relationships_by_bins(bin_ids)
 
     @raise_null_argument
     def get_bin_ids_by_resource_relationship(self, resource_relationship_id):
@@ -1933,7 +1939,7 @@ class ResourceRelationshipBinAssignmentSession(abc_resource_sessions.ResourceRel
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bin_ids()
+        return self._provider_session.get_assignable_bin_ids(bin_id)
 
     @raise_null_argument
     def get_assignable_bin_ids_for_resource_relationship(self, bin_id, resource_relationship_id):
@@ -1941,7 +1947,7 @@ class ResourceRelationshipBinAssignmentSession(abc_resource_sessions.ResourceRel
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bin_ids_for_resource_relationship(resource_relationship_id)
+        return self._provider_session.get_assignable_bin_ids_for_resource_relationship(bin_id, resource_relationship_id)
 
     @raise_null_argument
     def assign_resource_relationship_to_bin(self, resource_relationship_id, bin_id):
@@ -2090,9 +2096,8 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
 
     def can_search_bins(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_bin_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_bin_query(self):
         # Implemented from azosid template for -
@@ -2208,7 +2213,10 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         return self._provider_session.delete_bin(bin_id)
 
     def can_manage_bin_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_bin(self, bin_id, alias_id):

@@ -1,80 +1,83 @@
 """Unit tests of commenting searches."""
 
 
-import unittest
+import pytest
 
 
-class TestCommentSearch(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("comment_search_class_fixture", "comment_search_test_fixture")
+class TestCommentSearch(object):
     """Tests for CommentSearch"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_search_among_comments(self):
         """Tests search_among_comments"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_order_comment_results(self):
         """Tests order_comment_results"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_comment_search_record(self):
         """Tests get_comment_search_record"""
         pass
 
 
-class TestCommentSearchResults(unittest.TestCase):
+@pytest.mark.usefixtures("comment_search_results_class_fixture", "comment_search_results_test_fixture")
+class TestCommentSearchResults(object):
     """Tests for CommentSearchResults"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_comments(self):
         """Tests get_comments"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_comment_query_inspector(self):
         """Tests get_comment_query_inspector"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_comment_search_results_record(self):
         """Tests get_comment_search_results_record"""
         pass
 
 
-class TestBookSearch(unittest.TestCase):
+@pytest.mark.usefixtures("book_search_class_fixture", "book_search_test_fixture")
+class TestBookSearch(object):
     """Tests for BookSearch"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_search_among_books(self):
         """Tests search_among_books"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_order_book_results(self):
         """Tests order_book_results"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_book_search_record(self):
         """Tests get_book_search_record"""
         pass
 
 
-class TestBookSearchResults(unittest.TestCase):
+@pytest.mark.usefixtures("book_search_results_class_fixture", "book_search_results_test_fixture")
+class TestBookSearchResults(object):
     """Tests for BookSearchResults"""
-
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_books(self):
         """Tests get_books"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_book_query_inspector(self):
         """Tests get_book_query_inspector"""
         pass
 
-    @unittest.skip('unimplemented test')
+    @pytest.mark.skip('unimplemented test')
     def test_get_book_search_results_record(self):
         """Tests get_book_search_results_record"""
         pass

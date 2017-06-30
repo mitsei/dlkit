@@ -176,7 +176,7 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
     def get_incomplete_assessment_sections(self, assessment_taken_id):
         if not self._can('take'):
             raise PermissionDenied()
-        return self._provider_session.is_assessment_section_complete(assessment_taken_id)
+        return self._provider_session.get_incomplete_assessment_sections(assessment_taken_id)
 
     @raise_null_argument
     def has_assessment_section_begun(self, assessment_section_id):
@@ -655,7 +655,7 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bank_view(self):
         # Implemented from azosid template for -
@@ -850,7 +850,10 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         return self._provider_session.delete_item(item_id)
 
     def can_manage_item_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_item(self, item_id, alias_id):
@@ -1140,7 +1143,7 @@ class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.Osi
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_item_ids_by_bank(bank_id)
+        return self._provider_session.get_items_by_bank(bank_id)
 
     @raise_null_argument
     def get_item_ids_by_banks(self, bank_ids):
@@ -1156,7 +1159,7 @@ class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.Osi
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_items_ids_by_banks(bank_ids)
+        return self._provider_session.get_items_by_banks(bank_ids)
 
     @raise_null_argument
     def get_bank_ids_by_item(self, item_id):
@@ -1199,7 +1202,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids()
+        return self._provider_session.get_assignable_bank_ids(bank_id)
 
     @raise_null_argument
     def get_assignable_bank_ids_for_item(self, bank_id, item_id):
@@ -1207,7 +1210,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids_for_item(item_id)
+        return self._provider_session.get_assignable_bank_ids_for_item(bank_id, item_id)
 
     @raise_null_argument
     def assign_item_to_bank(self, item_id, bank_id):
@@ -1519,7 +1522,7 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bank_view(self):
         # Implemented from azosid template for -
@@ -1714,7 +1717,10 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         return self._provider_session.delete_assessment(assessment_id)
 
     def can_manage_assessment_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_assessment(self, assessment_id, alias_id):
@@ -1872,7 +1878,7 @@ class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessment_ids_by_bank(bank_id)
+        return self._provider_session.get_assessments_by_bank(bank_id)
 
     @raise_null_argument
     def get_assessment_ids_by_banks(self, bank_ids):
@@ -1888,7 +1894,7 @@ class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessments_ids_by_banks(bank_ids)
+        return self._provider_session.get_assessments_by_banks(bank_ids)
 
     @raise_null_argument
     def get_bank_ids_by_assessment(self, assessment_id):
@@ -1931,7 +1937,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids()
+        return self._provider_session.get_assignable_bank_ids(bank_id)
 
     @raise_null_argument
     def get_assignable_bank_ids_for_assessment(self, bank_id, assessment_id):
@@ -1939,7 +1945,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids_for_assessment(assessment_id)
+        return self._provider_session.get_assignable_bank_ids_for_assessment(bank_id, assessment_id)
 
     @raise_null_argument
     def assign_assessment_to_bank(self, assessment_id, bank_id):
@@ -2334,7 +2340,7 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bank_view(self):
         # Implemented from azosid template for -
@@ -2529,7 +2535,10 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         return self._provider_session.delete_assessment_offered(assessment_offered_id)
 
     def can_manage_assessment_offered_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_assessment_offered(self, assessment_offered_id, alias_id):
@@ -2711,7 +2720,7 @@ class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBank
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessment_offered_ids_by_bank(bank_id)
+        return self._provider_session.get_assessments_offered_by_bank(bank_id)
 
     @raise_null_argument
     def get_assessment_offered_ids_by_banks(self, bank_ids):
@@ -2727,7 +2736,7 @@ class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBank
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessments_offered_ids_by_banks(bank_ids)
+        return self._provider_session.get_assessments_offered_by_banks(bank_ids)
 
     @raise_null_argument
     def get_bank_ids_by_assessment_offered(self, assessment_offered_id):
@@ -2770,7 +2779,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids()
+        return self._provider_session.get_assignable_bank_ids(bank_id)
 
     @raise_null_argument
     def get_assignable_bank_ids_for_assessment_offered(self, bank_id, assessment_offered_id):
@@ -2778,7 +2787,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids_for_assessment_offered(assessment_offered_id)
+        return self._provider_session.get_assignable_bank_ids_for_assessment_offered(bank_id, assessment_offered_id)
 
     @raise_null_argument
     def assign_assessment_offered_to_bank(self, assessment_offered_id, bank_id):
@@ -3154,7 +3163,7 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def use_federated_bank_view(self):
         # Implemented from azosid template for -
@@ -3349,7 +3358,10 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         return self._provider_session.delete_assessment_taken(assessment_taken_id)
 
     def can_manage_assessment_taken_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_assessment_taken(self, assessment_taken_id, alias_id):
@@ -3579,7 +3591,7 @@ class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSess
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessment_taken_ids_by_bank(bank_id)
+        return self._provider_session.get_assessments_taken_by_bank(bank_id)
 
     @raise_null_argument
     def get_assessment_taken_ids_by_banks(self, bank_ids):
@@ -3595,7 +3607,7 @@ class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSess
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_assessments_taken_ids_by_banks(bank_ids)
+        return self._provider_session.get_assessments_taken_by_banks(bank_ids)
 
     @raise_null_argument
     def get_bank_ids_by_assessment_taken(self, assessment_taken_id):
@@ -3638,7 +3650,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids()
+        return self._provider_session.get_assignable_bank_ids(bank_id)
 
     @raise_null_argument
     def get_assignable_bank_ids_for_assessment_taken(self, bank_id, assessment_taken_id):
@@ -3646,7 +3658,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_bank_ids_for_assessment_taken(assessment_taken_id)
+        return self._provider_session.get_assignable_bank_ids_for_assessment_taken(bank_id, assessment_taken_id)
 
     @raise_null_argument
     def assign_assessment_taken_to_bank(self, assessment_taken_id, bank_id):
@@ -3799,9 +3811,8 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
 
     def can_search_banks(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_bank_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_bank_query(self):
         # Implemented from azosid template for -
@@ -3917,7 +3928,10 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         return self._provider_session.delete_bank(bank_id)
 
     def can_manage_bank_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_bank(self, bank_id, alias_id):

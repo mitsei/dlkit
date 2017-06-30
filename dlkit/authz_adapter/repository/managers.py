@@ -379,11 +379,29 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     @raise_null_argument
     def get_asset_notification_session(self, asset_receiver):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'AssetNotificationSession')(
+                provider_session=self._provider_manager.get_asset_notification_session(asset_receiver),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_asset_notification_session_for_repository(self, asset_receiver, repository_id):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'AssetNotificationSession')(
+                provider_session=self._provider_manager.get_asset_notification_session_for_repository(asset_receiver, repository_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     def get_asset_repository_session(self):
         # Implemented from azosid template for -
@@ -873,11 +891,31 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
 
     @raise_null_argument
     def get_asset_notification_session(self, asset_receiver, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_template
+        try:
+            return getattr(sessions, 'AssetNotificationSession')(
+                provider_session=self._provider_manager.get_asset_notification_session(asset_receiver, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_asset_notification_session_for_repository(self, asset_receiver, repository_id, proxy):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
+        try:
+            return getattr(sessions, 'AssetNotificationSession')(
+                provider_session=self._provider_manager.get_asset_notification_session_for_repository(asset_receiver, repository_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     @raise_null_argument
     def get_asset_repository_session(self, proxy):

@@ -347,7 +347,7 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         # Implemented from azosid template for -
         # osid.resource.ResourceQuerySession.can_search_resources_template
         return (self._can('search') or
-                bool(self._get_overriding_family_ids()))
+                bool(self._get_overriding_catalog_ids('search')))
 
     def get_relationship_query(self):
         # Implemented from azosid template for -
@@ -526,7 +526,10 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         return self._provider_session.delete_relationship(relationship_id)
 
     def can_manage_relationship_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_relationship(self, relationship_id, alias_id):
@@ -618,10 +621,10 @@ class RelationshipNotificationSession(abc_relationship_sessions.RelationshipNoti
     @raise_null_argument
     def register_for_new_relationships_by_genus_type(self, relationship_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_new_resources
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
-        self._provider_session.register_for_new_relationships_by_genus_type()
+        self._provider_session.register_for_new_relationships_by_genus_type(relationship_genus_type)
 
     def register_for_changed_relationships(self):
         # Implemented from azosid template for -
@@ -688,7 +691,7 @@ class RelationshipNotificationSession(abc_relationship_sessions.RelationshipNoti
     @raise_null_argument
     def register_for_deleted_relationships_by_genus_type(self, relationship_genus_type):
         # Implemented from azosid template for -
-        # osid.resource.ResourceNotificationSession.register_for_deleted_resource
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not self._can('register'):
             raise PermissionDenied()
         self._provider_session.register_for_deleted_relationships_by_genus_type(relationship_genus_type)
@@ -752,7 +755,7 @@ class RelationshipFamilySession(abc_relationship_sessions.RelationshipFamilySess
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_relationship_ids_by_family(family_id)
+        return self._provider_session.get_relationships_by_family(family_id)
 
     @raise_null_argument
     def get_relationship_ids_by_families(self, family_ids):
@@ -768,7 +771,7 @@ class RelationshipFamilySession(abc_relationship_sessions.RelationshipFamilySess
         # osid.resource.ResourceBinSession.get_resources_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_relationships_ids_by_families(family_ids)
+        return self._provider_session.get_relationships_by_families(family_ids)
 
     @raise_null_argument
     def get_family_ids_by_relationship(self, relationship_id):
@@ -811,7 +814,7 @@ class RelationshipFamilyAssignmentSession(abc_relationship_sessions.Relationship
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_family_ids()
+        return self._provider_session.get_assignable_family_ids(family_id)
 
     @raise_null_argument
     def get_assignable_family_ids_for_relationship(self, family_id, relationship_id):
@@ -819,7 +822,7 @@ class RelationshipFamilyAssignmentSession(abc_relationship_sessions.Relationship
         # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.get_assignable_family_ids_for_relationship(relationship_id)
+        return self._provider_session.get_assignable_family_ids_for_relationship(family_id, relationship_id)
 
     @raise_null_argument
     def assign_relationship_to_family(self, relationship_id, family_id):
@@ -972,9 +975,8 @@ class FamilyQuerySession(abc_relationship_sessions.FamilyQuerySession, osid_sess
 
     def can_search_families(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
-        return (self._can('search') or
-                bool(self._get_overriding_family_ids()))
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._can('search')
 
     def get_family_query(self):
         # Implemented from azosid template for -
@@ -1090,7 +1092,10 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         return self._provider_session.delete_family(family_id)
 
     def can_manage_family_aliases(self):
-        raise Unimplemented()
+        # Implemented from azosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        return (self._can('alias') or
+                bool(self._get_overriding_catalog_ids('alias')))
 
     @raise_null_argument
     def alias_family(self, family_id, alias_id):

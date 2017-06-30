@@ -1,116 +1,147 @@
 """Unit tests of assessment records."""
 
 
-import unittest
+import pytest
 
 
-class TestQuestionRecord(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("question_record_class_fixture", "question_record_test_fixture")
+class TestQuestionRecord(object):
     """Tests for QuestionRecord"""
 
 
-class TestQuestionQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("question_query_record_class_fixture", "question_query_record_test_fixture")
+class TestQuestionQueryRecord(object):
     """Tests for QuestionQueryRecord"""
 
 
-class TestQuestionFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("question_form_record_class_fixture", "question_form_record_test_fixture")
+class TestQuestionFormRecord(object):
     """Tests for QuestionFormRecord"""
 
 
-class TestAnswerRecord(unittest.TestCase):
+@pytest.mark.usefixtures("answer_record_class_fixture", "answer_record_test_fixture")
+class TestAnswerRecord(object):
     """Tests for AnswerRecord"""
 
 
-class TestAnswerQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("answer_query_record_class_fixture", "answer_query_record_test_fixture")
+class TestAnswerQueryRecord(object):
     """Tests for AnswerQueryRecord"""
 
 
-class TestAnswerFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("answer_form_record_class_fixture", "answer_form_record_test_fixture")
+class TestAnswerFormRecord(object):
     """Tests for AnswerFormRecord"""
 
 
-class TestItemRecord(unittest.TestCase):
+@pytest.mark.usefixtures("item_record_class_fixture", "item_record_test_fixture")
+class TestItemRecord(object):
     """Tests for ItemRecord"""
 
 
-class TestItemQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("item_query_record_class_fixture", "item_query_record_test_fixture")
+class TestItemQueryRecord(object):
     """Tests for ItemQueryRecord"""
 
 
-class TestItemFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("item_form_record_class_fixture", "item_form_record_test_fixture")
+class TestItemFormRecord(object):
     """Tests for ItemFormRecord"""
 
 
-class TestItemSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("item_search_record_class_fixture", "item_search_record_test_fixture")
+class TestItemSearchRecord(object):
     """Tests for ItemSearchRecord"""
 
 
-class TestAssessmentRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_record_class_fixture", "assessment_record_test_fixture")
+class TestAssessmentRecord(object):
     """Tests for AssessmentRecord"""
 
 
-class TestAssessmentQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_query_record_class_fixture", "assessment_query_record_test_fixture")
+class TestAssessmentQueryRecord(object):
     """Tests for AssessmentQueryRecord"""
 
 
-class TestAssessmentFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_form_record_class_fixture", "assessment_form_record_test_fixture")
+class TestAssessmentFormRecord(object):
     """Tests for AssessmentFormRecord"""
 
 
-class TestAssessmentSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_search_record_class_fixture", "assessment_search_record_test_fixture")
+class TestAssessmentSearchRecord(object):
     """Tests for AssessmentSearchRecord"""
 
 
-class TestAssessmentOfferedRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_offered_record_class_fixture", "assessment_offered_record_test_fixture")
+class TestAssessmentOfferedRecord(object):
     """Tests for AssessmentOfferedRecord"""
 
 
-class TestAssessmentOfferedQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_offered_query_record_class_fixture", "assessment_offered_query_record_test_fixture")
+class TestAssessmentOfferedQueryRecord(object):
     """Tests for AssessmentOfferedQueryRecord"""
 
 
-class TestAssessmentOfferedFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_offered_form_record_class_fixture", "assessment_offered_form_record_test_fixture")
+class TestAssessmentOfferedFormRecord(object):
     """Tests for AssessmentOfferedFormRecord"""
 
 
-class TestAssessmentOfferedSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_offered_search_record_class_fixture", "assessment_offered_search_record_test_fixture")
+class TestAssessmentOfferedSearchRecord(object):
     """Tests for AssessmentOfferedSearchRecord"""
 
 
-class TestAssessmentTakenRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_taken_record_class_fixture", "assessment_taken_record_test_fixture")
+class TestAssessmentTakenRecord(object):
     """Tests for AssessmentTakenRecord"""
 
 
-class TestAssessmentTakenQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_taken_query_record_class_fixture", "assessment_taken_query_record_test_fixture")
+class TestAssessmentTakenQueryRecord(object):
     """Tests for AssessmentTakenQueryRecord"""
 
 
-class TestAssessmentTakenFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_taken_form_record_class_fixture", "assessment_taken_form_record_test_fixture")
+class TestAssessmentTakenFormRecord(object):
     """Tests for AssessmentTakenFormRecord"""
 
 
-class TestAssessmentTakenSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_taken_search_record_class_fixture", "assessment_taken_search_record_test_fixture")
+class TestAssessmentTakenSearchRecord(object):
     """Tests for AssessmentTakenSearchRecord"""
 
 
-class TestAssessmentSectionRecord(unittest.TestCase):
+@pytest.mark.usefixtures("assessment_section_record_class_fixture", "assessment_section_record_test_fixture")
+class TestAssessmentSectionRecord(object):
     """Tests for AssessmentSectionRecord"""
 
 
-class TestBankRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bank_record_class_fixture", "bank_record_test_fixture")
+class TestBankRecord(object):
     """Tests for BankRecord"""
 
 
-class TestBankQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bank_query_record_class_fixture", "bank_query_record_test_fixture")
+class TestBankQueryRecord(object):
     """Tests for BankQueryRecord"""
 
 
-class TestBankFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bank_form_record_class_fixture", "bank_form_record_test_fixture")
+class TestBankFormRecord(object):
     """Tests for BankFormRecord"""
 
 
-class TestBankSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("bank_search_record_class_fixture", "bank_search_record_test_fixture")
+class TestBankSearchRecord(object):
     """Tests for BankSearchRecord"""
 
 
-class TestResponseRecord(unittest.TestCase):
+@pytest.mark.usefixtures("response_record_class_fixture", "response_record_test_fixture")
+class TestResponseRecord(object):
     """Tests for ResponseRecord"""

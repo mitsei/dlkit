@@ -871,7 +871,7 @@ class RepositoryManager(osid.OsidManager, osid.OsidSession, RepositoryProfile, r
     def can_search_repositories(self):
         """Pass through to provider RepositoryQuerySession.can_search_repositories"""
         # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
+        # osid.resource.BinQuerySession.can_search_bins_template
         return self._get_provider_session('repository_query_session').can_search_repositories()
 
     def get_repository_query(self):

@@ -11,6 +11,7 @@ from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
 from ..osid.osid_errors import Unimplemented, OperationFailed
+from ..osid.osid_errors import Unsupported
 from ..primitives import Id
 from ..utilities import raise_null_argument
 from dlkit.manager_impls.assessment_authoring import managers as assessment_authoring_managers
@@ -25,7 +26,7 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         # currently proxy not used, even if it's passed in...
         try:
             base_package_mgr = self._get_base_package_provider_manager('assessment')
-            return base_package_mgr.get_bank_hierarchy_session(proxy)
+            return base_package_mgr.get_bank_hierarchy_session(proxy=proxy)
         except Unsupported:
             return None
 
@@ -35,7 +36,7 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         try:
             # need to add version argument
-            return self._my_runtime.get_proxy_manager(base_package.upper(), provider_impl)
+            return self._my_runtime.get_proxy_manager(base_package.upper(), provider_impl, proxy=self._proxy)
         except AttributeError:
             # need to add version argument
             return self._my_runtime.get_manager(base_package.upper(), provider_impl)
@@ -315,20 +316,48 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
             raise OperationFailed()
 
     def get_assessment_part_item_session(self):
-        return self._provider_manager.get_assessment_part_item_session()
+        try:
+            return getattr(sessions, 'AssessmentPartItemSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     assessment_part_item_session = property(fget=get_assessment_part_item_session)
 
     def get_assessment_part_item_session_for_bank(self, bank_id):
-        return self._provider_manager.get_assessment_part_item_session_for_bank(bank_id)
+        try:
+            return getattr(sessions, 'AssessmentPartItemSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_session_for_bank(bank_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     def get_assessment_part_item_design_session(self):
-        return self._provider_manager.get_assessment_part_item_design_session()
+        try:
+            return getattr(sessions, 'AssessmentPartItemDesignSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_design_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
     assessment_part_item_design_session = property(fget=get_assessment_part_item_design_session)
 
     def get_assessment_part_item_design_session_for_bank(self, bank_id):
-        return self._provider_manager.get_assessment_part_item_design_session_for_bank(bank_id)
+        try:
+            return getattr(sessions, 'AssessmentPartItemDesignSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_design_session_for_bank(bank_id),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
 
 
 class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, AssessmentAuthoringProfile, assessment_authoring_managers.AssessmentAuthoringProxyManager):
@@ -521,17 +550,49 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
             raise OperationFailed()
 
     def get_assessment_part_item_session(self, proxy):
-        return self._provider_manager.get_assessment_part_item_session(proxy)
+        try:
+            return getattr(sessions, 'AssessmentPartItemSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     assessment_part_item_session = property(fget=get_assessment_part_item_session)
 
     def get_assessment_part_item_session_for_bank(self, bank_id, proxy):
-        return self._provider_manager.get_assessment_part_item_session_for_bank(bank_id, proxy)
+        try:
+            return getattr(sessions, 'AssessmentPartItemSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_session_for_bank(bank_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     def get_assessment_part_item_design_session(self, proxy):
-        return self._provider_manager.get_assessment_part_item_design_session(proxy)
+        try:
+            return getattr(sessions, 'AssessmentPartItemDesignSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_design_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
 
     assessment_part_item_design_session = property(fget=get_assessment_part_item_design_session)
 
     def get_assessment_part_item_design_session_for_bank(self, bank_id, proxy):
-        return self._provider_manager.get_assessment_part_item_design_session_for_bank(bank_id, proxy)
+        try:
+            return getattr(sessions, 'AssessmentPartItemDesignSession')(
+                provider_session=self._provider_manager.get_assessment_part_item_design_session_for_bank(bank_id, proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()

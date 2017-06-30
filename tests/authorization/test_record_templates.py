@@ -1,36 +1,47 @@
 """Unit tests of authorization records."""
 
 
-import unittest
+import pytest
 
 
-class TestAuthorizationRecord(unittest.TestCase):
+from ..utilities.general import is_never_authz, is_no_authz
+
+
+@pytest.mark.usefixtures("authorization_record_class_fixture", "authorization_record_test_fixture")
+class TestAuthorizationRecord(object):
     """Tests for AuthorizationRecord"""
 
 
-class TestAuthorizationQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("authorization_query_record_class_fixture", "authorization_query_record_test_fixture")
+class TestAuthorizationQueryRecord(object):
     """Tests for AuthorizationQueryRecord"""
 
 
-class TestAuthorizationFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("authorization_form_record_class_fixture", "authorization_form_record_test_fixture")
+class TestAuthorizationFormRecord(object):
     """Tests for AuthorizationFormRecord"""
 
 
-class TestAuthorizationSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("authorization_search_record_class_fixture", "authorization_search_record_test_fixture")
+class TestAuthorizationSearchRecord(object):
     """Tests for AuthorizationSearchRecord"""
 
 
-class TestVaultRecord(unittest.TestCase):
+@pytest.mark.usefixtures("vault_record_class_fixture", "vault_record_test_fixture")
+class TestVaultRecord(object):
     """Tests for VaultRecord"""
 
 
-class TestVaultQueryRecord(unittest.TestCase):
+@pytest.mark.usefixtures("vault_query_record_class_fixture", "vault_query_record_test_fixture")
+class TestVaultQueryRecord(object):
     """Tests for VaultQueryRecord"""
 
 
-class TestVaultFormRecord(unittest.TestCase):
+@pytest.mark.usefixtures("vault_form_record_class_fixture", "vault_form_record_test_fixture")
+class TestVaultFormRecord(object):
     """Tests for VaultFormRecord"""
 
 
-class TestVaultSearchRecord(unittest.TestCase):
+@pytest.mark.usefixtures("vault_search_record_class_fixture", "vault_search_record_test_fixture")
+class TestVaultSearchRecord(object):
     """Tests for VaultSearchRecord"""
