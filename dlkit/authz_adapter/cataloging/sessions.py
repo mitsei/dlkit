@@ -17,6 +17,12 @@ from dlkit.abstract_osid.cataloging import sessions as abc_cataloging_sessions
 
 class CatalogSession(abc_cataloging_sessions.CatalogSession, osid_sessions.OsidSession):
     """Adapts underlying CatalogSession methodswith authorization checks."""
+    def __init__(self, *args, **kwargs):
+        osid_sessions.OsidSession.__init__(self, *args, **kwargs)
+        # This needs to be done right
+        # Build from authority in config
+        self._qualifier_id = Id('cataloging.Catalog%3AROOT%40ODL.MIT.EDU')
+        self._id_namespace = 'cataloging.Catalog'
 
     def can_lookup_mappings(self):
         # Implemented from azosid template for -
@@ -55,7 +61,7 @@ class CatalogSession(abc_cataloging_sessions.CatalogSession, osid_sessions.OsidS
         # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_id_ids_by_catalog(catalog_id)
+        return self._provider_session.get_ids_by_catalog(catalog_id)
 
     @raise_null_argument
     def get_ids_by_catalogs(self, catalog_ids):
@@ -63,7 +69,7 @@ class CatalogSession(abc_cataloging_sessions.CatalogSession, osid_sessions.OsidS
         # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_id_ids_by_catalogs(catalog_ids)
+        return self._provider_session.get_ids_by_catalogs(catalog_ids)
 
     @raise_null_argument
     def get_catalog_ids_by_id(self, id_):
@@ -71,7 +77,7 @@ class CatalogSession(abc_cataloging_sessions.CatalogSession, osid_sessions.OsidS
         # osid.resource.ResourceBinSession.get_bin_ids_by_resource
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_catalog_ids_by_id(id_id)
+        return self._provider_session.get_catalog_ids_by_id(id_)
 
     @raise_null_argument
     def get_catalogs_by_id(self, id_):
@@ -79,11 +85,17 @@ class CatalogSession(abc_cataloging_sessions.CatalogSession, osid_sessions.OsidS
         # osid.resource.ResourceBinSession.get_bins_by_resource
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_catalogs_by_id(id_id)
+        return self._provider_session.get_catalogs_by_id(id_)
 
 
 class CatalogAssignmentSession(abc_cataloging_sessions.CatalogAssignmentSession, osid_sessions.OsidSession):
     """Adapts underlying CatalogAssignmentSession methodswith authorization checks."""
+    def __init__(self, *args, **kwargs):
+        osid_sessions.OsidSession.__init__(self, *args, **kwargs)
+        # This needs to be done right
+        # Build from authority in config
+        self._qualifier_id = Id('cataloging.Catalog%3AROOT%40ODL.MIT.EDU')
+        self._id_namespace = 'cataloging.Catalog'
 
     def can_assign_catalogs(self):
         # Implemented from azosid template for -
@@ -96,7 +108,7 @@ class CatalogAssignmentSession(abc_cataloging_sessions.CatalogAssignmentSession,
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.assign_id_to_catalog(id_id, catalog_id)
+        return self._provider_session.assign_id_to_catalog(id_, catalog_id)
 
     @raise_null_argument
     def unassign_id_from_catalog(self, id_, catalog_id):
@@ -104,7 +116,7 @@ class CatalogAssignmentSession(abc_cataloging_sessions.CatalogAssignmentSession,
         # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         if not self._can('assign'):
             raise PermissionDenied()
-        return self._provider_session.unassign_id_from_catalog(id_id, catalog_id)
+        return self._provider_session.unassign_id_from_catalog(id_, catalog_id)
 
     @raise_null_argument
     def reassign_id_to_catalog(self, id_, from_catalog_id, to_catalog_id):
@@ -386,7 +398,9 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
 
     @raise_null_argument
     def delete_catalog(self, catalog_id):
-        raise Unimplemented()
+        if not self._can('delete'):
+            raise PermissionDenied()
+        return self._provider_session.delete_catalog(catalog_id)
 
     def can_manage_catalog_aliases(self):
         # Implemented from azosid template for -

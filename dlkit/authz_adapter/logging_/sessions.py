@@ -739,7 +739,7 @@ class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_log_entries_by_log(log_id)
+        return self._provider_session.get_log_entrie_by_log(log_id)
 
     @raise_null_argument
     def get_log_ids_by_log_entry(self, log_entry_id):

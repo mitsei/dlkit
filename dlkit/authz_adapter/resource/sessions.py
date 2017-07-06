@@ -1888,7 +1888,7 @@ class ResourceRelationshipBinSession(abc_resource_sessions.ResourceRelationshipB
         # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_resource_relationship_ids_by_bins(bin_ids)
+        return self._provider_session.get_resource_relationships_ids_by_bins(bin_ids)
 
     @raise_null_argument
     def get_resource_relationships_by_bins(self, bin_ids):

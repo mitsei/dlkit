@@ -14,6 +14,7 @@ from bson.objectid import ObjectId
 
 
 from . import objects
+from . import queries
 from .. import utilities
 from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
@@ -69,6 +70,15 @@ class CatalogSession(abc_cataloging_sessions.CatalogSession, osid_sessions.OsidS
     sacrifice some interoperability for the sake of precision.
 
     """
+    _session_namespace = 'cataloging.CatalogSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_session()
+        self._forms = dict()
+        self._kwargs = kwargs
 
     def can_lookup_mappings(self):
         """Tests if this user can perform lookups of ``Id`` to ``Catalog`` mappings.
@@ -242,6 +252,15 @@ class CatalogAssignmentSession(abc_cataloging_sessions.CatalogAssignmentSession,
     operate on it.
 
     """
+    _session_namespace = 'cataloging.CatalogAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_assignment_session()
+        self._forms = dict()
+        self._kwargs = kwargs
 
     def can_assign_catalogs(self):
         """Tests if this user can perform alter ``Id/Catalog`` mappings.
@@ -614,6 +633,85 @@ class CatalogLookupSession(abc_cataloging_sessions.CatalogLookupSession, osid_se
     catalogs = property(fget=get_catalogs)
 
 
+class CatalogQuerySession(abc_cataloging_sessions.CatalogQuerySession, osid_sessions.OsidSession):
+    """This session provides methods for searching ``Catalog`` objects.
+
+    The search query is constructed using the ``CatalogQuery``. The
+    catalog record ``Type`` also specifies the record for the catalog
+    query.
+
+    Catalogs may have a query record indicated by their respective
+    record types. The query record is accessed via the ``CatalogQuery``.
+
+    """
+    _session_namespace = 'cataloging.CatalogQuerySession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_search_catalogs(self):
+        """Tests if this user can perform ``Catalog`` searches.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may opt not to offer search
+        operations to unauthorized users.
+
+        return: (boolean) - ``false`` if search methods are not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinQuerySession.can_search_bins_template
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    def get_catalog_query(self):
+        """Gets a catalog query.
+
+        The returned query will not have an extension query.
+
+        return: (osid.cataloging.CatalogQuery) - the catalog query
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinQuerySession.get_bin_query_template
+        return queries.CatalogQuery(runtime=self._runtime)
+
+    catalog_query = property(fget=get_catalog_query)
+
+    @utilities.arguments_not_none
+    def get_catalogs_by_query(self, catalog_query):
+        """Gets a list of ``Catalogs`` matching the given catalog query.
+
+        arg:    catalog_query (osid.cataloging.CatalogQuery): the
+                catalog query
+        return: (osid.cataloging.CatalogList) - the returned
+                ``CatalogList``
+        raise:  NullArgument - ``catalog_query`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        raise:  Unsupported - ``catalog_query`` is not of this service
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinQuerySession.get_bins_by_query_template
+        query_terms = dict(catalog_query._query_terms)
+        collection = JSONClientValidated('cataloging',
+                                         collection='Catalog',
+                                         runtime=self._runtime)
+        result = collection.find(query_terms).sort('_id', DESCENDING)
+
+        return objects.CatalogList(result, runtime=self._runtime)
+
+
 class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Catalogs``.
 
@@ -920,7 +1018,14 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self._catalog_session is not None:
+            return self._catalog_session.delete_catalog(catalog_id=bin_id)
+        collection = JSONClientValidated('cataloging',
+                                         collection='Catalog',
+                                         runtime=self._runtime)
+        if not isinstance(catalog_id, ABCId):
+            raise errors.InvalidArgument('the argument is not a valid OSID Id')
+        collection.delete_one({'_id': ObjectId(catalog_id.get_identifier())})
 
     def can_manage_catalog_aliases(self):
         """Tests if this user can manage ``Id`` aliases for ``Catalogs``.

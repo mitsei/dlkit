@@ -47,6 +47,11 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_catalog_lookup()
 
+    def supports_catalog_query(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_catalog_query()
+
     def supports_catalog_admin(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -131,6 +136,20 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
             raise OperationFailed()
 
     catalog_lookup_session = property(fget=get_catalog_lookup_session)
+
+    def get_catalog_query_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'CatalogQuerySession')(
+                provider_session=self._provider_manager.get_catalog_query_session(),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager)
+        except AttributeError:
+            raise OperationFailed()
+
+    catalog_query_session = property(fget=get_catalog_query_session)
 
     def get_catalog_admin_session(self):
         # Implemented from azosid template for -
@@ -228,6 +247,20 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
         try:
             return getattr(sessions, 'CatalogLookupSession')(
                 provider_session=self._provider_manager.get_catalog_lookup_session(proxy),
+                authz_session=self._get_authz_session(),
+                override_lookup_session=self._get_override_lookup_session(),
+                provider_manager=self._provider_manager,
+                proxy=proxy)
+        except AttributeError:
+            raise OperationFailed()
+
+    @raise_null_argument
+    def get_catalog_query_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            return getattr(sessions, 'CatalogQuerySession')(
+                provider_session=self._provider_manager.get_catalog_query_session(proxy),
                 authz_session=self._get_authz_session(),
                 override_lookup_session=self._get_override_lookup_session(),
                 provider_manager=self._provider_manager,

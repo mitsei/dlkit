@@ -50,6 +50,10 @@ class TestCatalogingProfile(object):
         """Tests supports_catalog_lookup"""
         assert isinstance(self.mgr.supports_catalog_lookup(), bool)
 
+    def test_supports_catalog_query(self):
+        """Tests supports_catalog_query"""
+        assert isinstance(self.mgr.supports_catalog_query(), bool)
+
     def test_supports_catalog_admin(self):
         """Tests supports_catalog_admin"""
         assert isinstance(self.mgr.supports_catalog_admin(), bool)
@@ -127,6 +131,12 @@ class TestCatalogingManager(object):
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
         if self.svc_mgr.supports_catalog_lookup():
             self.svc_mgr.get_catalog_lookup_session()
+
+    def test_get_catalog_query_session(self):
+        """Tests get_catalog_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_catalog_query():
+            self.svc_mgr.get_catalog_query_session()
 
     def test_get_catalog_admin_session(self):
         """Tests get_catalog_admin_session"""
@@ -217,6 +227,14 @@ class TestCatalogingProxyManager(object):
             self.svc_mgr.get_catalog_lookup_session(PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_catalog_lookup_session()
+
+    def test_get_catalog_query_session(self):
+        """Tests get_catalog_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_catalog_query():
+            self.svc_mgr.get_catalog_query_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_catalog_query_session()
 
     def test_get_catalog_admin_session(self):
         """Tests get_catalog_admin_session"""

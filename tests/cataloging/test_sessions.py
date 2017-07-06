@@ -6,6 +6,7 @@ import pytest
 
 from ..utilities.general import is_never_authz, is_no_authz
 from dlkit.abstract_osid.cataloging import objects as ABCObjects
+from dlkit.abstract_osid.cataloging import queries as ABCQueries
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
@@ -29,6 +30,37 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def catalog_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'CATALOGING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_catalog_form_for_create([])
+        create_form.display_name = 'Test Catalog'
+        create_form.description = 'Test Catalog for CatalogSession tests'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_catalog(create_form)
+
+        request.cls.id_ids = [request.cls.assigned_catalog.ident, request.cls.assigned_catalog.ident]
+    request.cls.catalog = request.cls.svc_mgr
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for catalog in request.cls.svc_mgr.get_catalogs():
+                request.cls.svc_mgr.delete_catalog(catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def catalog_session_test_fixture(request):
+    request.cls.session = request.cls.svc_mgr
 
 
 @pytest.mark.usefixtures("catalog_session_class_fixture", "catalog_session_test_fixture")
@@ -64,7 +96,7 @@ class TestCatalogSession(object):
         """Tests get_ids_by_catalog"""
         # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
         if not is_never_authz(self.service_config):
-            objects = self.svc_mgr.get_id_ids_by_catalog(self.assigned_catalog.ident)
+            objects = self.svc_mgr.get_ids_by_catalog(self.assigned_catalog.ident)
             assert objects.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -104,6 +136,44 @@ class TestCatalogSession(object):
                 self.svc_mgr.get_catalogs_by_id(self.fake_id)
 
 
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def catalog_assignment_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.catalogs = list()
+    request.cls.catalog_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'CATALOGING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+
+
+@pytest.fixture(scope="function")
+def catalog_assignment_session_test_fixture(request):
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_catalog_form_for_create([])
+        create_form.display_name = 'Test Catalog'
+        create_form.description = 'Test Catalog for CatalogAssignmentSession tests'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_catalog(create_form)
+        for num in [0, 1]:
+            create_form = request.cls.svc_mgr.get_catalog_form_for_create([])
+            create_form.display_name = 'Test Catalog ' + str(num)
+            create_form.description = 'Test Catalog for CatalogAssignmentSession tests'
+            catalog = request.cls.svc_mgr.create_catalog(create_form)
+            request.cls.catalogs.append(catalog)
+            request.cls.catalog_ids.append(catalog.ident)
+
+    request.cls.session = request.cls.svc_mgr
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for catalog in request.cls.svc_mgr.get_catalogs():
+                request.cls.svc_mgr.delete_catalog(catalog.ident)
+
+    request.addfinalizer(test_tear_down)
+
+
 @pytest.mark.usefixtures("catalog_assignment_session_class_fixture", "catalog_assignment_session_test_fixture")
 class TestCatalogAssignmentSession(object):
     """Tests for CatalogAssignmentSession"""
@@ -115,39 +185,31 @@ class TestCatalogAssignmentSession(object):
 
     def test_assign_id_to_catalog(self):
         """Tests assign_id_to_catalog"""
-        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
         if not is_never_authz(self.service_config):
-            results = self.assigned_catalog.get_ids()
+            results = self.svc_mgr.get_catalogs_by_id(self.fake_id)
             assert results.available() == 0
-            self.session.assign_id_to_catalog(self.id_ids[1], self.assigned_catalog.ident)
-            results = self.assigned_catalog.get_ids()
+            self.session.assign_id_to_catalog(self.fake_id, self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_catalogs_by_id(self.fake_id)
             assert results.available() == 1
-            self.session.unassign_id_from_catalog(
-                self.id_ids[1],
-                self.assigned_catalog.ident)
+            self.session.assign_id_to_catalog(self.fake_id, self.catalog_ids[0])
+            results = self.assigned_catalog.get_catalogs_by_id(self.fake_id)
+            assert results.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.session.assign_id_to_catalog(self.fake_id, self.fake_id)
 
     def test_unassign_id_from_catalog(self):
         """Tests unassign_id_from_catalog"""
-        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
         if not is_never_authz(self.service_config):
-            results = self.assigned_catalog.get_ids()
-            assert results.available() == 0
-            self.session.assign_id_to_catalog(
-                self.id_ids[1],
-                self.assigned_catalog.ident)
-            results = self.assigned_catalog.get_ids()
+            self.session.assign_id_to_catalog(self.fake_id, self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_catalogs_by_id(self.fake_id)
             assert results.available() == 1
-            self.session.unassign_id_from_catalog(
-                self.id_ids[1],
-                self.assigned_catalog.ident)
-            results = self.assigned_catalog.get_ids()
+            self.session.unassign_id_from_catalog(self.fake_id, self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_catalogs_by_id(self.fake_id)
             assert results.available() == 0
         else:
             with pytest.raises(errors.PermissionDenied):
-                self.session.unassign_id_from_catalog(self.fake_id, self.fake_id)
+                self.session.assign_id_to_catalog(self.fake_id, self.fake_id)
 
     def test_reassign_id_to_catalog(self):
         """Tests reassign_id_to_catalog"""
@@ -284,6 +346,68 @@ class TestCatalogLookupSession(object):
 
 @pytest.fixture(scope="class",
                 params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def catalog_query_session_class_fixture(request):
+    # From test_templates/resource.py::BinQuerySession::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'CATALOGING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_catalog_form_for_create([])
+        create_form.display_name = 'Test catalog'
+        create_form.description = 'Test catalog description'
+        request.cls.catalog = request.cls.svc_mgr.create_catalog(create_form)
+        request.cls.fake_id = Id('resource.Resource%3A1%40ODL.MIT.EDU')
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.delete_catalog(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def catalog_query_session_test_fixture(request):
+    # From test_templates/resource.py::BinQuerySession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("catalog_query_session_class_fixture", "catalog_query_session_test_fixture")
+class TestCatalogQuerySession(object):
+    """Tests for CatalogQuerySession"""
+    def test_can_search_catalogs(self):
+        """Tests can_search_catalogs"""
+        # From test_templates/resource.py::BinQuerySession::can_search_bins_template
+        assert isinstance(self.session.can_search_catalogs(), bool)
+
+    def test_get_catalog_query(self):
+        """Tests get_catalog_query"""
+        # From test_templates/resource.py::BinQuerySession::get_bin_query_template
+        if not is_never_authz(self.service_config):
+            query = self.session.get_catalog_query()
+            assert isinstance(query, ABCQueries.CatalogQuery)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_catalog_query()
+
+    def test_get_catalogs_by_query(self):
+        """Tests get_catalogs_by_query"""
+        # From test_templates/resource.py::BinQuerySession::get_bins_by_query_template
+        if not is_never_authz(self.service_config):
+            query = self.session.get_catalog_query()
+            query.match_display_name('Test catalog')
+            assert self.session.get_catalogs_by_query(query).available() == 1
+            query.clear_display_name_terms()
+            query.match_display_name('Test catalog', match=False)
+            assert self.session.get_catalogs_by_query(query).available() == 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_catalogs_by_query('foo')
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
 def catalog_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -393,11 +517,14 @@ class TestCatalogAdminSession(object):
 
     def test_delete_catalog(self):
         """Tests delete_catalog"""
-        if is_never_authz(self.service_config):
-            pass  # no object to call the method on?
+        if not is_never_authz(self.service_config):
+            cat_id = self.catalog_to_delete.ident
+            self.svc_mgr.delete_catalog(cat_id)
+            with pytest.raises(errors.NotFound):
+                self.svc_mgr.get_catalog(cat_id)
         else:
-            with pytest.raises(errors.Unimplemented):
-                self.session.delete_catalog(True)
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.delete_catalog(self.fake_id)
 
     def test_can_manage_catalog_aliases(self):
         """Tests can_manage_catalog_aliases"""

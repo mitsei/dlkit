@@ -60,6 +60,18 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_catalog_lookup' in profile.SUPPORTS
 
+    def supports_catalog_query(self):
+        """Tests for the availability of a catalog query service that defines more comprehensive queries.
+
+        return: (boolean) - ``true`` if catalog query is available,
+                ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_catalog_query' in profile.SUPPORTS
+
     def supports_catalog_admin(self):
         """Tests for the availability of a catalog administration service for the addition and deletion of catalogs.
 
@@ -221,6 +233,26 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         return sessions.CatalogLookupSession(runtime=self._runtime)
 
     catalog_lookup_session = property(fget=get_catalog_lookup_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_catalog_query_session(self):
+        """Gets the catalog query session.
+
+        return: (osid.cataloging.CatalogQuerySession) - a
+                ``CatalogQuerySession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_catalog_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_catalog_query()`` is ``true``.*
+
+        """
+        if not self.supports_catalog_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CatalogQuerySession(runtime=self._runtime)
+
+    catalog_query_session = property(fget=get_catalog_query_session)
 
     @utilities.remove_null_proxy_kwarg
     def get_catalog_admin_session(self):
@@ -387,6 +419,26 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
             raise errors.Unimplemented()
         # pylint: disable=no-member
         return sessions.CatalogLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_catalog_query_session(self, proxy):
+        """Gets the catalog query session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.cataloging.CatalogQuerySession) - a
+                ``CatalogQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_catalog_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_catalog_query()`` is ``true``.*
+
+        """
+        if not self.supports_catalog_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CatalogQuerySession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_catalog_admin_session(self, proxy):

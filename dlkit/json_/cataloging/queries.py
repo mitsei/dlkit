@@ -16,6 +16,7 @@ from ..osid import queries as osid_queries
 from ..primitives import Id
 from ..utilities import get_registry
 from dlkit.abstract_osid.cataloging import queries as abc_cataloging_queries
+from dlkit.abstract_osid.osid import errors
 
 
 class CatalogQuery(abc_cataloging_queries.CatalogQuery, osid_queries.OsidCatalogQuery):

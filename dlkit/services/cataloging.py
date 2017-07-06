@@ -56,6 +56,12 @@ class CatalogingProfile(osid.OsidProfile, cataloging_managers.CatalogingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_catalog_lookup()
 
+    def supports_catalog_query(self):
+        """Pass through to provider supports_catalog_query"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_catalog_query()
+
     def supports_catalog_admin(self):
         """Pass through to provider supports_catalog_admin"""
         # Implemented from kitosid template for -
@@ -229,6 +235,14 @@ class CatalogingManager(osid.OsidManager, osid.OsidSession, CatalogingProfile, c
         return self._provider_manager.get_catalog_lookup_session(*args, **kwargs)
 
     catalog_lookup_session = property(fget=get_catalog_lookup_session)
+
+    def get_catalog_query_session(self, *args, **kwargs):
+        """Pass through to provider get_catalog_query_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_catalog_query_session(*args, **kwargs)
+
+    catalog_query_session = property(fget=get_catalog_query_session)
 
     def get_catalog_admin_session(self, *args, **kwargs):
         """Pass through to provider get_catalog_admin_session"""
@@ -440,6 +454,28 @@ class CatalogingManager(osid.OsidManager, osid.OsidSession, CatalogingProfile, c
 
     catalogs = property(fget=get_catalogs)
 ##
+# The following methods are from osid.cataloging.CatalogQuerySession
+
+    def can_search_catalogs(self):
+        """Pass through to provider CatalogQuerySession.can_search_catalogs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinQuerySession.can_search_bins_template
+        return self._get_provider_session('catalog_query_session').can_search_catalogs()
+
+    def get_catalog_query(self):
+        """Pass through to provider CatalogQuerySession.get_catalog_query"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinQuerySession.get_bin_query_template
+        return self._get_provider_session('catalog_query_session').get_catalog_query()
+
+    catalog_query = property(fget=get_catalog_query)
+
+    def get_catalogs_by_query(self, *args, **kwargs):
+        """Pass through to provider CatalogQuerySession.get_catalogs_by_query"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinQuerySession.get_bins_by_query_template
+        return self._get_provider_session('catalog_query_session').get_catalogs_by_query(*args, **kwargs)
+##
 # The following methods are from osid.cataloging.CatalogAdminSession
 
     def can_create_catalogs(self):
@@ -519,8 +555,7 @@ class CatalogingManager(osid.OsidManager, osid.OsidSession, CatalogingProfile, c
         return self._get_provider_session('catalog_admin_session').can_delete_catalogs()
 
     def delete_catalog(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        self._get_provider_session('catalog_admin_session').delete_catalog(*args, **kwargs)
 
     def can_manage_catalog_aliases(self):
         """Pass through to provider CatalogAdminSession.can_manage_catalog_aliases"""
@@ -713,6 +748,10 @@ class CatalogingProxyManager(osid.OsidProxyManager, CatalogingProfile, catalogin
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_catalog_lookup_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_catalog_query_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
