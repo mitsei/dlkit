@@ -127,10 +127,8 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
         return Metadata(**self._feedback_metadata)
 
     def set_feedback(self, text):
-        if not self.my_osid_object_form._is_valid_string(
-                text, self.get_feedback_metadata()):
-            raise InvalidArgument('feedback text')
-        self.my_osid_object_form._my_map['feedback']['text'] = text
+        self.my_osid_object_form._my_map['feedback'] = self.my_osid_object_form._get_display_text(
+            text, self.get_feedback_metadata())
 
     def clear_feedback(self):
         self.my_osid_object_form._my_map['feedback'] = \

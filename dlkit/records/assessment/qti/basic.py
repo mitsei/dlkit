@@ -857,8 +857,14 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
 
         if soup.itemBody.choiceInteraction:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD)
-            self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
+            try:
+                self.my_osid_object_form.add_display_name(display_name)
+            except AttributeError:
+                # non-multi-language
+                self.my_osid_object_form.set_display_name(display_name)
+                self.my_osid_object_form.set_description(description)
+            else:
+                self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             choice_interaction = soup.itemBody.choiceInteraction.extract()
 
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
@@ -882,8 +888,14 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
 
         elif soup.itemBody.uploadInteraction:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_FILE_UPLOAD_QUESTION_RECORD)
-            self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
+            try:
+                self.my_osid_object_form.add_display_name(display_name)
+            except AttributeError:
+                # non-multi-language
+                self.my_osid_object_form.set_display_name(display_name)
+                self.my_osid_object_form.set_description(description)
+            else:
+                self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             upload_interaction = soup.itemBody.uploadInteraction.extract()
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
                                                                   language_code))
@@ -897,8 +909,14 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             # the main difference here (MW Sentence) will be that
             # the answer has multiple choices used, not a single choice
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
-            self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
+            try:
+                self.my_osid_object_form.add_display_name(display_name)
+            except AttributeError:
+                # non-multi-language
+                self.my_osid_object_form.set_display_name(display_name)
+                self.my_osid_object_form.set_description(description)
+            else:
+                self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             order_interaction = soup.itemBody.orderInteraction.extract()
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
                                                                   language_code))
@@ -925,8 +943,14 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             # do the multi language one second so that the texts fields and metadata
             # do not get wiped out
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_EXTENDED_TEXT_INTERACTION_QUESTION_RECORD)
-            self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
+            try:
+                self.my_osid_object_form.add_display_name(display_name)
+            except AttributeError:
+                # non-multi-language
+                self.my_osid_object_form.set_display_name(display_name)
+                self.my_osid_object_form.set_description(description)
+            else:
+                self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             text_interaction = soup.itemBody.extendedTextInteraction.extract()
             self.my_osid_object_form.add_text(create_display_text(_stringify(soup.itemBody),
                                                                   language_code))
@@ -941,8 +965,14 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             self.my_osid_object_form.set_genus_type(EXTENDED_TEXT_INTERACTION_QUESTION_GENUS)
         elif soup.itemBody.inlineChoiceInteraction:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_INLINE_CHOICE_QUESTION_RECORD)
-            self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
+            try:
+                self.my_osid_object_form.add_display_name(display_name)
+            except AttributeError:
+                # non-multi-language
+                self.my_osid_object_form.set_display_name(display_name)
+                self.my_osid_object_form.set_description(description)
+            else:
+                self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
 
             for inline_choice_interaction in soup.itemBody.find_all('inlineChoiceInteraction'):
                 region_identifier = inline_choice_interaction['responseIdentifier']
@@ -965,8 +995,14 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             self.my_osid_object_form.set_genus_type(INLINE_CHOICE_MW_FITB_INTERACTION_QUESTION_GENUS)
         elif soup.itemBody.textEntryInteraction and soup.templateDeclaration:
             self.my_osid_object_form.get_question_form_record(MULTI_LANGUAGE_NUMERIC_RESPONSE_QUESTION_RECORD)
-            self.my_osid_object_form.add_display_name(display_name)
-            self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
+            try:
+                self.my_osid_object_form.add_display_name(display_name)
+            except AttributeError:
+                # non-multi-language
+                self.my_osid_object_form.set_display_name(display_name)
+                self.my_osid_object_form.set_description(description)
+            else:
+                self.my_osid_object_form.add_description(description)  # Is there a description in QTI?
             self.my_osid_object_form.set_genus_type(NUMERIC_RESPONSE_QUESTION_GENUS)
 
             soup.itemBody.textEntryInteraction['responseIdentifier'] = 'RESPONSE_1'  # let's standardize ...
@@ -1110,7 +1146,10 @@ class QTIAnswerFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                                 feedback = soup.find('modalFeedback', identifier=feedback_id)
                                 if feedback:
                                     self._add_media_files(feedback, media_files)
-                                    self.my_osid_object_form.add_feedback(create_display_text(_stringify(feedback)))
+                                    try:
+                                        self.my_osid_object_form.add_feedback(create_display_text(_stringify(feedback)))
+                                    except AttributeError:
+                                        self.my_osid_object_form.set_feedback(create_display_text(_stringify(feedback)))
                                     found_direct_feedback = True
                             break
                     break
@@ -1125,17 +1164,22 @@ class QTIAnswerFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                                         feedback = soup.find('modalFeedback', identifier=feedback_id)
                                         if feedback:
                                             self._add_media_files(feedback, media_files)
-                                            self.my_osid_object_form.add_feedback(create_display_text(_stringify(feedback)))
+                                            try:
+                                                self.my_osid_object_form.add_feedback(
+                                                    create_display_text(_stringify(feedback)))
+                                            except AttributeError:
+                                                self.my_osid_object_form.set_feedback(
+                                                    create_display_text(_stringify(feedback)))
                                             found_direct_feedback = True
                                             break
                     except AttributeError:
                         pass
 
             if not found_direct_feedback and correct:
-                if submitted:
+                try:
                     self.my_osid_object_form.add_feedback(empty_modal)
-                else:
-                    self.my_osid_object_form.add_feedback(empty_modal)
+                except AttributeError:
+                    self.my_osid_object_form.set_feedback(empty_modal)
             if not found_direct_feedback and not correct:
                 feedback_found = False
                 for match in matches:
@@ -1148,10 +1192,16 @@ class QTIAnswerFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                                 if feedback:
                                     self._add_media_files(feedback, media_files)
                                     feedback_found = True
-                                    self.my_osid_object_form.add_feedback(create_display_text(_stringify(feedback)))
+                                    try:
+                                        self.my_osid_object_form.add_feedback(create_display_text(_stringify(feedback)))
+                                    except AttributeError:
+                                        self.my_osid_object_form.set_feedback(create_display_text(_stringify(feedback)))
                                     break
                 if not feedback_found:
-                    self.my_osid_object_form.add_feedback(empty_modal)
+                    try:
+                        self.my_osid_object_form.add_feedback(empty_modal)
+                    except AttributeError:
+                        self.my_osid_object_form.set_feedback(empty_modal)
 
     def load_from_qti_item(self, qti_item, keywords=(), correct=False, feedback_choice_id='', media_files=None):
         my_qti_record_identifiers = [Id(i).get_identifier()
