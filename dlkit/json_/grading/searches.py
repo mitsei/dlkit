@@ -10,13 +10,29 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
 from dlkit.abstract_osid.grading import searches as abc_grading_searches
+from dlkit.abstract_osid.osid import errors
 
 
 class GradeSystemSearch(abc_grading_searches.GradeSystemSearch, osid_searches.OsidSearch):
     """The interface for governing grade system searches."""
+    def __init__(self, runtime):
+        self._namespace = 'grading.GradeSystem'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_grade_systems(self, grade_system_ids):
@@ -27,7 +43,7 @@ class GradeSystemSearch(abc_grading_searches.GradeSystemSearch, osid_searches.Os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = grade_system_ids
 
     @utilities.arguments_not_none
     def order_grade_system_results(self, grade_system_search_order):
@@ -69,6 +85,14 @@ class GradeSystemSearch(abc_grading_searches.GradeSystemSearch, osid_searches.Os
 
 class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'grading.GradeSystem'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_grade_systems(self):
         """Gets the grade system list resulting from the search.
@@ -78,7 +102,10 @@ class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.GradeSystemList(self._results, runtime=self._runtime)
 
     grade_systems = property(fget=get_grade_systems)
 
@@ -90,7 +117,7 @@ class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.GradeSystemQueryInspector(self._query_terms, runtime=self._runtime)
 
     grade_system_query_inspector = property(fget=get_grade_system_query_inspector)
 
@@ -119,6 +146,17 @@ class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, os
 
 class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.OsidSearch):
     """``GradeEntrySearch`` defines the interface for specifying package search options."""
+    def __init__(self, runtime):
+        self._namespace = 'grading.GradeEntry'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_grade_entries(self, grade_entry_ids):
@@ -129,7 +167,7 @@ class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = grade_entry_ids
 
     @utilities.arguments_not_none
     def order_grade_entry_results(self, grade_entry_search_order):
@@ -171,6 +209,14 @@ class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.Osid
 
 class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'grading.GradeEntry'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_grade_entries(self):
         """Gets the package list resulting from the search.
@@ -180,7 +226,10 @@ class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.GradeEntryList(self._results, runtime=self._runtime)
 
     grade_entries = property(fget=get_grade_entries)
 
@@ -192,7 +241,7 @@ class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.GradeEntryQueryInspector(self._query_terms, runtime=self._runtime)
 
     grade_entry_query_inspector = property(fget=get_grade_entry_query_inspector)
 
@@ -221,6 +270,17 @@ class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid
 
 class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_searches.OsidSearch):
     """``GradebookColumnSearch`` defines the interface for specifying grading search options."""
+    def __init__(self, runtime):
+        self._namespace = 'grading.GradebookColumn'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_gradebook_columns(self, gradebook_column_ids):
@@ -232,7 +292,7 @@ class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = gradebook_column_ids
 
     @utilities.arguments_not_none
     def order_gradebook_column_results(self, gradebook_column_search_order):
@@ -275,6 +335,14 @@ class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_sea
 
 class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'grading.GradebookColumn'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_gradebook_columns(self):
         """Gets the gradebook column list resulting from the search.
@@ -285,7 +353,10 @@ class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchRes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.GradebookColumnList(self._results, runtime=self._runtime)
 
     gradebook_columns = property(fget=get_gradebook_columns)
 
@@ -297,7 +368,7 @@ class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchRes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.GradebookColumnQueryInspector(self._query_terms, runtime=self._runtime)
 
     gradebook_column_query_inspector = property(fget=get_gradebook_column_query_inspector)
 
@@ -327,6 +398,17 @@ class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchRes
 
 class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSearch):
     """The interface for governing gradebook searches."""
+    def __init__(self, runtime):
+        self._namespace = 'grading.Gradebook'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_gradebooks(self, gradebook_ids):
@@ -337,7 +419,7 @@ class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = gradebook_ids
 
     @utilities.arguments_not_none
     def order_gradebook_results(self, gradebook_search_order):
@@ -379,6 +461,14 @@ class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSe
 
 class GradebookSearchResults(abc_grading_searches.GradebookSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'grading.Gradebook'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_gradebooks(self):
         """Gets the gradebook list resulting from the search.
@@ -388,7 +478,10 @@ class GradebookSearchResults(abc_grading_searches.GradebookSearchResults, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.GradebookList(self._results, runtime=self._runtime)
 
     gradebooks = property(fget=get_gradebooks)
 
@@ -400,7 +493,7 @@ class GradebookSearchResults(abc_grading_searches.GradebookSearchResults, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.GradebookQueryInspector(self._query_terms, runtime=self._runtime)
 
     gradebook_query_inspector = property(fget=get_gradebook_query_inspector)
 

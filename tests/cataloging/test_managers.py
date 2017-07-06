@@ -38,14 +38,6 @@ def cataloging_profile_test_fixture(request):
 @pytest.mark.usefixtures("cataloging_profile_class_fixture", "cataloging_profile_test_fixture")
 class TestCatalogingProfile(object):
     """Tests for CatalogingProfile"""
-    def test_supports_catalog(self):
-        """Tests supports_catalog"""
-        assert isinstance(self.mgr.supports_catalog(), bool)
-
-    def test_supports_catalog_assignment(self):
-        """Tests supports_catalog_assignment"""
-        assert isinstance(self.mgr.supports_catalog_assignment(), bool)
-
     def test_supports_catalog_lookup(self):
         """Tests supports_catalog_lookup"""
         assert isinstance(self.mgr.supports_catalog_lookup(), bool)
@@ -114,18 +106,6 @@ def cataloging_manager_test_fixture(request):
 @pytest.mark.usefixtures("cataloging_manager_class_fixture", "cataloging_manager_test_fixture")
 class TestCatalogingManager(object):
     """Tests for CatalogingManager"""
-    def test_get_catalog_session(self):
-        """Tests get_catalog_session"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
-        if self.svc_mgr.supports_catalog():
-            self.svc_mgr.get_catalog_session()
-
-    def test_get_catalog_assignment_session(self):
-        """Tests get_catalog_assignment_session"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
-        if self.svc_mgr.supports_catalog_assignment():
-            self.svc_mgr.get_catalog_assignment_session()
-
     def test_get_catalog_lookup_session(self):
         """Tests get_catalog_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -204,22 +184,6 @@ def cataloging_proxy_manager_test_fixture(request):
 @pytest.mark.usefixtures("cataloging_proxy_manager_class_fixture", "cataloging_proxy_manager_test_fixture")
 class TestCatalogingProxyManager(object):
     """Tests for CatalogingProxyManager"""
-    def test_get_catalog_session(self):
-        """Tests get_catalog_session"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
-        if self.svc_mgr.supports_catalog():
-            self.svc_mgr.get_catalog_session(PROXY)
-        with pytest.raises(errors.NullArgument):
-            self.svc_mgr.get_catalog_session()
-
-    def test_get_catalog_assignment_session(self):
-        """Tests get_catalog_assignment_session"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
-        if self.svc_mgr.supports_catalog_assignment():
-            self.svc_mgr.get_catalog_assignment_session(PROXY)
-        with pytest.raises(errors.NullArgument):
-            self.svc_mgr.get_catalog_assignment_session()
-
     def test_get_catalog_lookup_session(self):
         """Tests get_catalog_lookup_session"""
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template

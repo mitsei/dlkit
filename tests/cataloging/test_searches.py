@@ -5,6 +5,45 @@ import pytest
 
 
 from ..utilities.general import is_never_authz, is_no_authz
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def catalog_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'CATALOGING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_catalog_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_catalog(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_catalog(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def catalog_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_catalog_search()
 
 
 @pytest.mark.usefixtures("catalog_search_class_fixture", "catalog_search_test_fixture")

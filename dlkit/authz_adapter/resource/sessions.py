@@ -453,9 +453,9 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
 
     def can_manage_resource_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_resource(self, resource_id, alias_id):
@@ -1666,9 +1666,9 @@ class ResourceRelationshipAdminSession(abc_resource_sessions.ResourceRelationshi
 
     def can_manage_resource_relationship_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_resource_relationship(self, resource_relationship_id, alias_id):
@@ -2214,9 +2214,9 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
 
     def can_manage_bin_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_bin(self, bin_id, alias_id):

@@ -404,9 +404,9 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
 
     def can_manage_catalog_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_catalog(self, catalog_id, alias_id):

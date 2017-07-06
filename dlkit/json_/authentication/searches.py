@@ -10,9 +10,14 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
 from dlkit.abstract_osid.authentication import searches as abc_authentication_searches
+from dlkit.abstract_osid.osid import errors
 
 
 class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSearch):
@@ -26,6 +31,17 @@ class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSea
     results.getAgents();
 
     """
+    def __init__(self, runtime):
+        self._namespace = 'authentication.Agent'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_agents(self, agent_ids):
@@ -36,7 +52,7 @@ class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = agent_ids
 
     @utilities.arguments_not_none
     def order_agent_results(self, agent_search_order):
@@ -86,6 +102,14 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
     results.getAgents();
 
     """
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'authentication.Agent'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_agents(self):
         """Gets the agent list resulting from the search.
@@ -95,7 +119,10 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.AgentList(self._results, runtime=self._runtime)
 
     agents = property(fget=get_agents)
 
@@ -107,7 +134,7 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.AgentQueryInspector(self._query_terms, runtime=self._runtime)
 
     agent_query_inspector = property(fget=get_agent_query_inspector)
 

@@ -851,9 +851,9 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
 
     def can_manage_item_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_item(self, item_id, alias_id):
@@ -1718,9 +1718,9 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
 
     def can_manage_assessment_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_assessment(self, assessment_id, alias_id):
@@ -2536,9 +2536,9 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
 
     def can_manage_assessment_offered_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_assessment_offered(self, assessment_offered_id, alias_id):
@@ -3359,9 +3359,9 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
 
     def can_manage_assessment_taken_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_assessment_taken(self, assessment_taken_id, alias_id):
@@ -3929,9 +3929,9 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
 
     def can_manage_bank_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_bank(self, bank_id, alias_id):

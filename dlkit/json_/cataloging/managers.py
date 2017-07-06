@@ -24,30 +24,6 @@ from dlkit.manager_impls.cataloging import managers as cataloging_managers
 class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.CatalogingProfile):
     """The cataloging profile describes the interoperability among cataloging services."""
 
-    def supports_catalog(self):
-        """Tests for the availability of a cataloging service retrieving ``Id`` to ``Catalog`` mappings.
-
-        return: (boolean) - ``true`` if cataloging is available,
-                ``false`` otherwise
-        *compliance: mandatory -- This method must be implemented.*
-
-        """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
-        return 'supports_catalog' in profile.SUPPORTS
-
-    def supports_catalog_assignment(self):
-        """Tests for the availability of a cataloging service for mapping ``Ids`` to ``Catalogs``.
-
-        return: (boolean) - ``true`` if catalog assignment is available,
-                ``false`` otherwise
-        *compliance: mandatory -- This method must be implemented.*
-
-        """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
-        return 'supports_catalog_assignment' in profile.SUPPORTS
-
     def supports_catalog_lookup(self):
         """Tests for the availability of a catalog lookup service.
 
@@ -175,44 +151,6 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
     """
     def __init__(self):
         osid_managers.OsidManager.__init__(self)
-
-    @utilities.remove_null_proxy_kwarg
-    def get_catalog_session(self):
-        """Gets the cataloging session for retrieving mappings to catalogs.
-
-        return: (osid.cataloging.CatalogSession) - a ``CatalogSession``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_catalog()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_catalog()`` is ``true``.*
-
-        """
-        if not self.supports_catalog():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.CatalogSession(runtime=self._runtime)
-
-    catalog_session = property(fget=get_catalog_session)
-
-    @utilities.remove_null_proxy_kwarg
-    def get_catalog_assignment_session(self):
-        """Gets the cataloging session for adding and removing mappings to catalogs.
-
-        return: (osid.cataloging.CatalogAssignmentSession) - a
-                ``CatalogAssignmentSession``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_catalog_assignment()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_catalog_assignment()`` is ``true``.*
-
-        """
-        if not self.supports_catalog_assignment():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.CatalogAssignmentSession(runtime=self._runtime)
-
-    catalog_assignment_session = property(fget=get_catalog_assignment_session)
 
     @utilities.remove_null_proxy_kwarg
     def get_catalog_lookup_session(self):
@@ -361,44 +299,6 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
     """
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
-    @utilities.arguments_not_none
-    def get_catalog_session(self, proxy):
-        """Gets the catalog session for retrieving ``Id`` to ``Catalog`` mappings.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.cataloging.CatalogSession) - a ``CatalogSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_catalog()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_catalog()`` is ``true``.*
-
-        """
-        if not self.supports_catalog():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.CatalogSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_catalog_assignment_session(self, proxy):
-        """Gets the catalog session for mapping ``Ids`` to ``Catalogs``.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.cataloging.CatalogAssignmentSession) - a
-                ``CatalogAssignmentSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_catalog_assignment()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_catalog_assignment()`` is ``true``.*
-
-        """
-        if not self.supports_catalog_assignment():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.CatalogAssignmentSession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_catalog_lookup_session(self, proxy):

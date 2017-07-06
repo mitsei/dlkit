@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo authentication.process'
 
 DESCRIPTION = 'MongoDB based authentication.process implementation'
 
-VERSIONCOMPONENTS = [0, 1, 462]
+VERSIONCOMPONENTS = [0, 1, 464]
 
 RELEASEDATE = "2017-07-06"
 

@@ -10,13 +10,29 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
 from dlkit.abstract_osid.hierarchy import searches as abc_hierarchy_searches
+from dlkit.abstract_osid.osid import errors
 
 
 class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.OsidSearch):
     """``HierarchySearch`` defines the interface for specifying hierarchy search options."""
+    def __init__(self, runtime):
+        self._namespace = 'hierarchy.Hierarchy'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_hierarchies(self, hierarchy_ids):
@@ -27,7 +43,7 @@ class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = hierarchy_ids
 
     @utilities.arguments_not_none
     def order_hierarchy_results(self, hierarchy_search_order):
@@ -68,6 +84,14 @@ class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.Osid
 
 class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'hierarchy.Hierarchy'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_hierarchies(self):
         """Gets the hierarchy list resulting from the search.
@@ -77,7 +101,10 @@ class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.HierarchyList(self._results, runtime=self._runtime)
 
     hierarchies = property(fget=get_hierarchies)
 
@@ -89,7 +116,7 @@ class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.HierarchyQueryInspector(self._query_terms, runtime=self._runtime)
 
     hierarchy_query_inspector = property(fget=get_hierarchy_query_inspector)
 

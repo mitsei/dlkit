@@ -10,13 +10,29 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
 from dlkit.abstract_osid.cataloging import searches as abc_cataloging_searches
+from dlkit.abstract_osid.osid import errors
 
 
 class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSearch):
     """The search interface for governing the search query for ``Catalogs``."""
+    def __init__(self, runtime):
+        self._namespace = 'cataloging.Catalog'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_catalogs(self, catalog_ids):
@@ -27,7 +43,7 @@ class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = catalog_ids
 
     @utilities.arguments_not_none
     def order_catalog_results(self, catalog_search_order):
@@ -69,6 +85,14 @@ class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSea
 
 class CatalogSearchResults(abc_cataloging_searches.CatalogSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'cataloging.Catalog'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_catalogs(self):
         """Gets the catalog list resulting from the search.
@@ -78,7 +102,10 @@ class CatalogSearchResults(abc_cataloging_searches.CatalogSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.CatalogList(self._results, runtime=self._runtime)
 
     catalogs = property(fget=get_catalogs)
 
@@ -90,7 +117,7 @@ class CatalogSearchResults(abc_cataloging_searches.CatalogSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.CatalogQueryInspector(self._query_terms, runtime=self._runtime)
 
     catalog_query_inspector = property(fget=get_catalog_query_inspector)
 

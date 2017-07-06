@@ -10,13 +10,29 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
 from dlkit.abstract_osid.logging_ import searches as abc_logging_searches
+from dlkit.abstract_osid.osid import errors
 
 
 class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSearch):
     """The search interface for governing log entry searches."""
+    def __init__(self, runtime):
+        self._namespace = 'logging.LogEntry'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_log_entries(self, log_entry_ids):
@@ -27,7 +43,7 @@ class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSear
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = log_entry_ids
 
     @utilities.arguments_not_none
     def order_log_entry_results(self, log_entry_search_order):
@@ -69,6 +85,14 @@ class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSear
 
 class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'logging.LogEntry'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_log_entries(self):
         """Gets the log entry list resulting from a search.
@@ -78,7 +102,10 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.LogEntryList(self._results, runtime=self._runtime)
 
     log_entries = property(fget=get_log_entries)
 
@@ -90,7 +117,7 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.LogEntryQueryInspector(self._query_terms, runtime=self._runtime)
 
     log_entry_query_inspector = property(fget=get_log_entry_query_inspector)
 
@@ -119,6 +146,17 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
 
 class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
     """The search interface for governing log searches."""
+    def __init__(self, runtime):
+        self._namespace = 'logging.Log'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_logs(self, log_ids):
@@ -129,7 +167,7 @@ class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = log_ids
 
     @utilities.arguments_not_none
     def order_log_results(self, log_search_order):
@@ -168,6 +206,14 @@ class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
 
 class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'logging.Log'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_logs(self):
         """Gets the log list resulting from a search.
@@ -177,7 +223,10 @@ class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.LogList(self._results, runtime=self._runtime)
 
     logs = property(fget=get_logs)
 
@@ -189,7 +238,7 @@ class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.LogQueryInspector(self._query_terms, runtime=self._runtime)
 
     log_query_inspector = property(fget=get_log_query_inspector)
 

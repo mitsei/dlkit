@@ -11,6 +11,7 @@
 
 
 from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
 from ..primitives import Id
@@ -83,10 +84,12 @@ class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSea
 
 class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, runtime):
+    def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
+        self._namespace = 'resource.Resource'
         self._results = results
+        self._query_terms = query_terms
         self._runtime = runtime
         self.retrieved = False
 
@@ -113,7 +116,7 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.ResourceQueryInspector(self._query_terms, runtime=self._runtime)
 
     resource_query_inspector = property(fget=get_resource_query_inspector)
 
@@ -142,6 +145,17 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
 
 class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
     """The interface for governing bin searches."""
+    def __init__(self, runtime):
+        self._namespace = 'resource.Bin'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_bins(self, bin_ids):
@@ -152,7 +166,7 @@ class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = bin_ids
 
     @utilities.arguments_not_none
     def order_bin_results(self, bin_search_order):
@@ -191,6 +205,14 @@ class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
 
 class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'resource.Bin'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_bins(self):
         """Gets the bin list resulting from the search.
@@ -200,7 +222,10 @@ class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.BinList(self._results, runtime=self._runtime)
 
     bins = property(fget=get_bins)
 
@@ -212,7 +237,7 @@ class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.BinQueryInspector(self._query_terms, runtime=self._runtime)
 
     bin_query_inspector = property(fget=get_bin_query_inspector)
 

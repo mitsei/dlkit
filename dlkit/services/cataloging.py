@@ -38,18 +38,6 @@ class CatalogingProfile(osid.OsidProfile, cataloging_managers.CatalogingProfile)
     def __init__(self):
         self._provider_manager = None
 
-    def supports_catalog(self):
-        """Pass through to provider supports_catalog"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
-        return self._provider_manager.supports_catalog()
-
-    def supports_catalog_assignment(self):
-        """Pass through to provider supports_catalog_assignment"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
-        return self._provider_manager.supports_catalog_assignment()
-
     def supports_catalog_lookup(self):
         """Pass through to provider supports_catalog_lookup"""
         # Implemented from kitosid template for -
@@ -212,22 +200,6 @@ class CatalogingManager(osid.OsidManager, osid.OsidSession, CatalogingProfile, c
         self._session_management = DISABLED
         self.close_sessions()
 
-    def get_catalog_session(self, *args, **kwargs):
-        """Pass through to provider get_catalog_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
-        return self._provider_manager.get_catalog_session(*args, **kwargs)
-
-    catalog_session = property(fget=get_catalog_session)
-
-    def get_catalog_assignment_session(self, *args, **kwargs):
-        """Pass through to provider get_catalog_assignment_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
-        return self._provider_manager.get_catalog_assignment_session(*args, **kwargs)
-
-    catalog_assignment_session = property(fget=get_catalog_assignment_session)
-
     def get_catalog_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_catalog_lookup_session"""
         # Implemented from kitosid template for -
@@ -274,106 +246,6 @@ class CatalogingManager(osid.OsidManager, osid.OsidSession, CatalogingProfile, c
 
     cataloging_rules_manager = property(fget=get_cataloging_rules_manager)
 ##
-# The following methods are from osid.cataloging.CatalogSession
-
-    def can_lookup_mappings(self):
-        """Pass through to provider CatalogSession.can_lookup_mappings"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
-        return self._get_provider_session('catalog_session').can_lookup_mappings()
-
-    def use_comparative_catalog_view(self):
-        """Pass through to provider CatalogSession.use_comparative_catalog_view"""
-        self._catalog_view = COMPARATIVE
-        # self._get_provider_session('catalog_session') # To make sure the session is tracked
-        for session in self._get_provider_sessions():
-            try:
-                session.use_comparative_catalog_view()
-            except AttributeError:
-                pass
-
-    def use_plenary_catalog_view(self):
-        """Pass through to provider CatalogSession.use_plenary_catalog_view"""
-        self._catalog_view = PLENARY
-        # self._get_provider_session('catalog_session') # To make sure the session is tracked
-        for session in self._get_provider_sessions():
-            try:
-                session.use_plenary_catalog_view()
-            except AttributeError:
-                pass
-
-    def use_federated_catalog_view(self):
-        """Pass through to provider CatalogSession.use_federated_catalog_view"""
-        self._catalog_view = FEDERATED
-        # self._get_provider_session('catalog_session') # To make sure the session is tracked
-        for session in self._get_provider_sessions():
-            try:
-                session.use_federated_catalog_view()
-            except AttributeError:
-                pass
-
-    def use_isolated_catalog_view(self):
-        """Pass through to provider CatalogSession.use_isolated_catalog_view"""
-        self._catalog_view = ISOLATED
-        # self._get_provider_session('catalog_session') # To make sure the session is tracked
-        for session in self._get_provider_sessions():
-            try:
-                session.use_isolated_catalog_view()
-            except AttributeError:
-                pass
-
-    def get_ids_by_catalog(self, *args, **kwargs):
-        """Pass through to provider CatalogSession.get_ids_by_catalog"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
-        return self._get_provider_session('catalog_session').get_ids_by_catalog(*args, **kwargs)
-
-    def get_ids_by_catalogs(self, *args, **kwargs):
-        """Pass through to provider CatalogSession.get_ids_by_catalogs"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
-        return self._get_provider_session('catalog_session').get_ids_by_catalogs(*args, **kwargs)
-
-    def get_catalog_ids_by_id(self, *args, **kwargs):
-        """Pass through to provider CatalogSession.get_catalog_ids_by_id"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
-        return self._get_provider_session('catalog_session').get_catalog_ids_by_id(*args, **kwargs)
-
-    def get_catalogs_by_id(self, *args, **kwargs):
-        """Pass through to provider CatalogSession.get_catalogs_by_id"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinSession.get_bins_by_resource
-        catalogs = self._get_provider_session('catalog_session').get_catalogs_by_id(*args, **kwargs)
-        cat_list = []
-        for cat in catalogs:
-            cat_list.append(Catalog(self._provider_manager, cat, self._runtime, self._proxy))
-        return CatalogList(cat_list)
-##
-# The following methods are from osid.cataloging.CatalogAssignmentSession
-
-    def can_assign_catalogs(self):
-        """Pass through to provider CatalogAssignmentSession.can_assign_catalogs"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
-        return self._get_provider_session('catalog_assignment_session').can_assign_catalogs()
-
-    def assign_id_to_catalog(self, *args, **kwargs):
-        """Pass through to provider CatalogAssignmentSession.assign_id_to_catalog"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
-        self._get_provider_session('catalog_assignment_session').assign_id_to_catalog(*args, **kwargs)
-
-    def unassign_id_from_catalog(self, *args, **kwargs):
-        """Pass through to provider CatalogAssignmentSession.unassign_id_from_catalog"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
-        self._get_provider_session('catalog_assignment_session').unassign_id_from_catalog(*args, **kwargs)
-
-    def reassign_id_to_catalog(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-##
 # The following methods are from osid.cataloging.CatalogLookupSession
 
     def can_lookup_catalogs(self):
@@ -381,6 +253,26 @@ class CatalogingManager(osid.OsidManager, osid.OsidSession, CatalogingProfile, c
         # Implemented from kitosid template for -
         # osid.resource.BinLookupSession.can_lookup_bins_template
         return self._get_provider_session('catalog_lookup_session').can_lookup_catalogs()
+
+    def use_comparative_catalog_view(self):
+        """Pass through to provider CatalogLookupSession.use_comparative_catalog_view"""
+        self._catalog_view = COMPARATIVE
+        # self._get_provider_session('catalog_lookup_session') # To make sure the session is tracked
+        for session in self._get_provider_sessions():
+            try:
+                session.use_comparative_catalog_view()
+            except AttributeError:
+                pass
+
+    def use_plenary_catalog_view(self):
+        """Pass through to provider CatalogLookupSession.use_plenary_catalog_view"""
+        self._catalog_view = PLENARY
+        # self._get_provider_session('catalog_lookup_session') # To make sure the session is tracked
+        for session in self._get_provider_sessions():
+            try:
+                session.use_plenary_catalog_view()
+            except AttributeError:
+                pass
 
     def get_catalog(self, *args, **kwargs):
         """Pass through to provider CatalogLookupSession.get_catalog"""
@@ -738,14 +630,6 @@ class CatalogingManager(osid.OsidManager, osid.OsidSession, CatalogingProfile, c
 
 class CatalogingProxyManager(osid.OsidProxyManager, CatalogingProfile, cataloging_managers.CatalogingProxyManager):
     """CatalogingProxyManager convenience adapter including related Session methods."""
-
-    def get_catalog_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_catalog_assignment_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_catalog_lookup_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""

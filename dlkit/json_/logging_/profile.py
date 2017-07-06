@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo logging'
 
 DESCRIPTION = 'MongoDB based logging implementation'
 
-VERSIONCOMPONENTS = [0, 1, 460]
+VERSIONCOMPONENTS = [0, 1, 462]
 
 RELEASEDATE = "2017-07-06"
 

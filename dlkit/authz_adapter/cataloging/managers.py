@@ -10,7 +10,7 @@
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
-from ..osid.osid_errors import Unimplemented, OperationFailed
+from ..osid.osid_errors import Unimplemented, OperationFailed, Unsupported
 from ..primitives import Id
 from ..utilities import raise_null_argument
 from dlkit.manager_impls.cataloging import managers as cataloging_managers
@@ -31,16 +31,6 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
             return self._provider_manager.get_catalog_hierarchy_session()
         except Unimplemented:
             return None
-
-    def supports_catalog(self):
-        # Implemented from azosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
-        return self._provider_manager.supports_catalog()
-
-    def supports_catalog_assignment(self):
-        # Implemented from azosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
-        return self._provider_manager.supports_catalog_assignment()
 
     def supports_catalog_lookup(self):
         # Implemented from azosid template for -
@@ -94,34 +84,6 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_manager('CATALOGING', provider_impl)
         # need to add version argument
-
-    def get_catalog_session(self):
-        # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'CatalogSession')(
-                provider_session=self._provider_manager.get_catalog_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
-
-    catalog_session = property(fget=get_catalog_session)
-
-    def get_catalog_assignment_session(self):
-        # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'CatalogAssignmentSession')(
-                provider_session=self._provider_manager.get_catalog_assignment_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
-
-    catalog_assignment_session = property(fget=get_catalog_assignment_session)
 
     def get_catalog_lookup_session(self):
         # Implemented from azosid template for -
@@ -211,34 +173,6 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
         self._provider_manager = runtime.get_proxy_manager('CATALOGING', provider_impl)
         # need to add version argument
-
-    @raise_null_argument
-    def get_catalog_session(self, proxy):
-        # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'CatalogSession')(
-                provider_session=self._provider_manager.get_catalog_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
-
-    @raise_null_argument
-    def get_catalog_assignment_session(self, proxy):
-        # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'CatalogAssignmentSession')(
-                provider_session=self._provider_manager.get_catalog_assignment_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
 
     @raise_null_argument
     def get_catalog_lookup_session(self, proxy):

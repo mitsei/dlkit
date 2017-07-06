@@ -10,7 +10,7 @@
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
-from ..osid.osid_errors import Unimplemented, OperationFailed
+from ..osid.osid_errors import Unimplemented, OperationFailed, Unsupported
 from ..primitives import Id
 from ..utilities import raise_null_argument
 from dlkit.manager_impls.commenting import managers as commenting_managers
