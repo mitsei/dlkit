@@ -453,9 +453,9 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
 
     def can_manage_objective_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_objective(self, objective_id, alias_id):
@@ -1568,9 +1568,9 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
 
     def can_manage_activity_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_activity(self, activity_id, alias_id):
@@ -2423,9 +2423,9 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
 
     def can_manage_proficiency_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_proficiency(self, proficiency_id, alias_id):
@@ -3117,9 +3117,9 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
 
     def can_manage_objective_bank_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_objective_bank(self, objective_bank_id, alias_id):

@@ -119,6 +119,32 @@ class TestItemSearchResults(object):
         pass
 
 
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def assessment_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_assessment_search()
+
+
 @pytest.mark.usefixtures("assessment_search_class_fixture", "assessment_search_test_fixture")
 class TestAssessmentSearch(object):
     """Tests for AssessmentSearch"""
@@ -155,6 +181,32 @@ class TestAssessmentSearchResults(object):
     def test_get_assessment_search_results_record(self):
         """Tests get_assessment_search_results_record"""
         pass
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_offered_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def assessment_offered_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_assessment_offered_search()
 
 
 @pytest.mark.usefixtures("assessment_offered_search_class_fixture", "assessment_offered_search_test_fixture")
@@ -195,6 +247,32 @@ class TestAssessmentOfferedSearchResults(object):
         pass
 
 
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def assessment_taken_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def assessment_taken_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_assessment_taken_search()
+
+
 @pytest.mark.usefixtures("assessment_taken_search_class_fixture", "assessment_taken_search_test_fixture")
 class TestAssessmentTakenSearch(object):
     """Tests for AssessmentTakenSearch"""
@@ -231,6 +309,32 @@ class TestAssessmentTakenSearchResults(object):
     def test_get_assessment_taken_search_results_record(self):
         """Tests get_assessment_taken_search_results_record"""
         pass
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def bank_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def bank_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_bank_search()
 
 
 @pytest.mark.usefixtures("bank_search_class_fixture", "bank_search_test_fixture")

@@ -5,6 +5,45 @@ import pytest
 
 
 from ..utilities.general import is_never_authz, is_no_authz
+from dlkit.abstract_osid.osid import errors
+from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.type.primitives import Type
+from dlkit.runtime import PROXY_SESSION, proxy_example
+from dlkit.runtime.managers import Runtime
+
+
+REQUEST = proxy_example.SimpleRequest()
+CONDITION = PROXY_SESSION.get_proxy_condition()
+CONDITION.set_http_request(REQUEST)
+PROXY = PROXY_SESSION.get_proxy(CONDITION)
+
+DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def grade_system_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def grade_system_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_grade_system_search()
 
 
 @pytest.mark.usefixtures("grade_system_search_class_fixture", "grade_system_search_test_fixture")
@@ -45,6 +84,32 @@ class TestGradeSystemSearchResults(object):
         pass
 
 
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def grade_entry_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def grade_entry_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_grade_entry_search()
+
+
 @pytest.mark.usefixtures("grade_entry_search_class_fixture", "grade_entry_search_test_fixture")
 class TestGradeEntrySearch(object):
     """Tests for GradeEntrySearch"""
@@ -83,6 +148,32 @@ class TestGradeEntrySearchResults(object):
         pass
 
 
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def gradebook_column_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def gradebook_column_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_gradebook_column_search()
+
+
 @pytest.mark.usefixtures("gradebook_column_search_class_fixture", "gradebook_column_search_test_fixture")
 class TestGradebookColumnSearch(object):
     """Tests for GradebookColumnSearch"""
@@ -119,6 +210,32 @@ class TestGradebookColumnSearchResults(object):
     def test_get_gradebook_column_search_results_record(self):
         """Tests get_gradebook_column_search_results_record"""
         pass
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+def gradebook_search_class_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+    create_form.display_name = 'Test catalog'
+    create_form.description = 'Test catalog description'
+    request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+
+    def class_tear_down():
+        request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def gradebook_search_test_fixture(request):
+    # From test_templates/resource.py::ResourceSearch::init_template
+    request.cls.search = request.cls.catalog.get_gradebook_search()
 
 
 @pytest.mark.usefixtures("gradebook_search_class_fixture", "gradebook_search_test_fixture")
