@@ -359,7 +359,7 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
         """stub"""
         self.my_osid_object_form._my_map['zoneConditions'].append(
             {'droppableId': droppable_id, 'zoneId': zone_id, 'match': match})
-        self.my_osid_object_form._my_map['zoneConditions'].sort()
+        self.my_osid_object_form._my_map['zoneConditions'].sort(key=lambda k: k['zoneId'])
 
     def clear_zone_conditions(self):
         """stub"""
@@ -379,7 +379,7 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
             raise InvalidArgument('coordinate is not a BasicCoordinate')
         self.my_osid_object_form._my_map['coordinateConditions'].append(
             {'droppableId': droppable_id, 'containerId': container_id, 'coordinate': coordinate.get_values(), 'match': match})
-        self.my_osid_object_form._my_map['coordinateConditions'].sort()
+        self.my_osid_object_form._my_map['coordinateConditions'].sort(key=lambda k: k['containerId'])
 
     def clear_coordinate_conditions(self):
         """stub"""
@@ -1062,6 +1062,9 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if not isinstance(name, DisplayText):
             # if default ''
             name = self._str_display_text(name)
+        if not isinstance(description, DisplayText):
+            # if default ''
+            description = self._str_display_text(description)
         zone = {
             'id': str(ObjectId()),
             'spatialUnit': spatial_unit.get_spatial_unit_map(),
