@@ -11,6 +11,7 @@
 
 
 from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
 from ..primitives import Id
@@ -24,7 +25,7 @@ class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
     def __init__(self, runtime):
         self._namespace = 'assessment.Item'
         self._runtime = runtime
-        record_type_data_sets = get_registry('ITEM_RECORD_TYPES', runtime)
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
         self._record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_ids = []
@@ -82,9 +83,12 @@ class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
 
 class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, runtime):
+    def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'assessment.Item'
         self._results = results
+        self._query_terms = query_terms
         self._runtime = runtime
         self.retrieved = False
 
@@ -111,7 +115,7 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.ItemQueryInspector(self._query_terms, runtime=self._runtime)
 
     item_query_inspector = property(fget=get_item_query_inspector)
 
@@ -139,6 +143,17 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
 
 class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.OsidSearch):
     """``AssessmentSearch`` defines the interface for specifying assessment search options."""
+    def __init__(self, runtime):
+        self._namespace = 'assessment.Assessment'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_assessments(self, assessment_ids):
@@ -149,7 +164,7 @@ class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = assessment_ids
 
     @utilities.arguments_not_none
     def order_assessment_results(self, assessment_search_order):
@@ -191,6 +206,14 @@ class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.O
 
 class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'assessment.Assessment'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_assessments(self):
         """Gets the assessment list resulting from the search.
@@ -201,7 +224,10 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.AssessmentList(self._results, runtime=self._runtime)
 
     assessments = property(fget=get_assessments)
 
@@ -213,7 +239,7 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.AssessmentQueryInspector(self._query_terms, runtime=self._runtime)
 
     assessment_query_inspector = property(fget=get_assessment_query_inspector)
 
@@ -242,6 +268,17 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
 
 class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, osid_searches.OsidSearch):
     """``AssessmentOfferedSearch`` defines the interface for specifying assessment search options."""
+    def __init__(self, runtime):
+        self._namespace = 'assessment.AssessmentOffered'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_assessments_offered(self, assessment_offrered_ids):
@@ -253,7 +290,7 @@ class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = assessment_offrered_ids
 
     @utilities.arguments_not_none
     def order_assessment_offered_results(self, assessment_offered_search_order):
@@ -296,6 +333,14 @@ class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, o
 
 class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'assessment.AssessmentOffered'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_assessments_offered(self):
         """Gets the assessment offered list resulting from the search.
@@ -307,7 +352,10 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.AssessmentOfferedList(self._results, runtime=self._runtime)
 
     assessments_offered = property(fget=get_assessments_offered)
 
@@ -319,7 +367,7 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.AssessmentOfferedQueryInspector(self._query_terms, runtime=self._runtime)
 
     assessment_offered_query_inspector = property(fget=get_assessment_offered_query_inspector)
 
@@ -349,6 +397,17 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
 
 class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_searches.OsidSearch):
     """``AssessmentTakenSearch`` defines the interface for specifying assessment search options."""
+    def __init__(self, runtime):
+        self._namespace = 'assessment.AssessmentTaken'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_assessments_taken(self, assessment_taken_ids):
@@ -360,7 +419,7 @@ class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = assessment_taken_ids
 
     @utilities.arguments_not_none
     def order_assessment_taken_results(self, assessment_taken_search_order):
@@ -403,6 +462,14 @@ class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_
 
 class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'assessment.AssessmentTaken'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_assessments_taken(self):
         """Gets the assessment taken list resulting from the search.
@@ -414,7 +481,10 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.AssessmentTakenList(self._results, runtime=self._runtime)
 
     assessments_taken = property(fget=get_assessments_taken)
 
@@ -426,7 +496,7 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.AssessmentTakenQueryInspector(self._query_terms, runtime=self._runtime)
 
     assessment_taken_query_inspector = property(fget=get_assessment_taken_query_inspector)
 
@@ -456,6 +526,17 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
 
 class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
     """The interface for governing bank searches."""
+    def __init__(self, runtime):
+        self._namespace = 'assessment.Bank'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_banks(self, bank_ids):
@@ -466,7 +547,7 @@ class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = bank_ids
 
     @utilities.arguments_not_none
     def order_bank_results(self, bank_search_order):
@@ -506,6 +587,14 @@ class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
 
 class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'assessment.Bank'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_banks(self):
         """Gets the bank list resulting from a search.
@@ -515,7 +604,10 @@ class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.BankList(self._results, runtime=self._runtime)
 
     banks = property(fget=get_banks)
 
@@ -527,7 +619,7 @@ class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.BankQueryInspector(self._query_terms, runtime=self._runtime)
 
     bank_query_inspector = property(fget=get_bank_query_inspector)
 

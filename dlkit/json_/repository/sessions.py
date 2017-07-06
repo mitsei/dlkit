@@ -1088,7 +1088,7 @@ class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQueryS
             result = collection.find(query_terms)[asset_search.start:asset_search.end]
         else:
             result = collection.find(query_terms)
-        return searches.AssetSearchResults(result, runtime=self._runtime)
+        return searches.AssetSearchResults(result, dict(asset_query._query_terms), runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_asset_query_from_inspector(self, asset_query_inspector):
@@ -3696,7 +3696,7 @@ class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession,
             result = collection.find(query_terms)[composition_search.start:composition_search.end]
         else:
             result = collection.find(query_terms)
-        return searches.CompositionSearchResults(result, runtime=self._runtime)
+        return searches.CompositionSearchResults(result, dict(composition_query._query_terms), runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_composition_query_from_inspector(self, composition_query_inspector):

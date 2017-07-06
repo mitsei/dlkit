@@ -607,9 +607,9 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
 
     def can_manage_comment_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_comment(self, comment_id, alias_id):
@@ -1149,9 +1149,9 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
 
     def can_manage_book_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_book(self, book_id, alias_id):

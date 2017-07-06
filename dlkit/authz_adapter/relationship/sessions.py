@@ -527,9 +527,9 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
 
     def can_manage_relationship_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_relationship(self, relationship_id, alias_id):
@@ -1093,9 +1093,9 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
 
     def can_manage_family_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_family(self, family_id, alias_id):

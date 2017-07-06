@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo assessment.authoring'
 
 DESCRIPTION = 'MongoDB based assessment.authoring implementation'
 
-VERSIONCOMPONENTS = [0, 1, 447]
+VERSIONCOMPONENTS = [0, 1, 450]
 
-RELEASEDATE = "2017-06-30"
+RELEASEDATE = "2017-07-06"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

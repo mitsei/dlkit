@@ -515,9 +515,9 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
 
     def can_manage_log_entry_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_log_entry(self, log_entry_id, alias_id):
@@ -1057,9 +1057,9 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
 
     def can_manage_log_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_log(self, log_id, alias_id):
