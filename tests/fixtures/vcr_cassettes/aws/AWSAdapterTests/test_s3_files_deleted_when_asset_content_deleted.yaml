@@ -1,0 +1,38 @@
+interactions:
+- request:
+    body: null
+    headers:
+      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:crCkDhJQOvRZhSIce8e3b7LdTD8=']
+      Content-Length: ['0']
+      Date: ['Fri, 30 Jun 2017 20:01:14 GMT']
+      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
+    method: !!python/unicode DELETE
+    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+  response:
+    body: {string: !!python/unicode ''}
+    headers:
+      date: ['Fri, 30 Jun 2017 20:01:16 GMT']
+      server: [AmazonS3]
+      x-amz-id-2: [oVDobrMFdZdHiFVwUtMguyfFqIdWHwhFlMHXdcJiPrGtc7DTKsuTHCbRBTmfprdYvXa8Vrb8DbU=]
+      x-amz-request-id: [39D1C65DEFB05984]
+    status: {code: 204, message: No Content}
+- request:
+    body: null
+    headers:
+      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:JXlYbzCJuzY4brDpAhx85romoS4=']
+      Date: ['Fri, 30 Jun 2017 20:01:14 GMT']
+      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
+    method: !!python/unicode GET
+    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+  response:
+    body: {string: !!python/unicode '<?xml version="1.0" encoding="UTF-8"?>
+
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>58efd696eb761d78b82c545d/test_file_1.txt</Key><RequestId>BFD8EA65159C0FC0</RequestId><HostId>tNu+NYRCdPJ6XkJ4Uu+kHjv6GFbGnB1UODqlPpFY0Z7ZvQLjfZNpDgAwfpzkdEw+oe65X4+z6f8=</HostId></Error>'}
+    headers:
+      content-type: [application/xml]
+      date: ['Fri, 30 Jun 2017 20:01:15 GMT']
+      server: [AmazonS3]
+      x-amz-id-2: [tNu+NYRCdPJ6XkJ4Uu+kHjv6GFbGnB1UODqlPpFY0Z7ZvQLjfZNpDgAwfpzkdEw+oe65X4+z6f8=]
+      x-amz-request-id: [BFD8EA65159C0FC0]
+    status: {code: 404, message: Not Found}
+version: 1
