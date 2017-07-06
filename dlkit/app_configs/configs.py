@@ -1207,6 +1207,95 @@ TEST_AUTHZ_ADAPTER_2 = {
     }
 }
 
+TEST_AUTHZ_ADAPTER_3 = {
+    'id': 'authz_adapter_configuration_3',
+    'displayName': 'AuthZ Adapter Configuration',
+    'description': 'Configuration for AuthZ Adapter',
+    'parameters': {
+        'implKey': impl_key_dict('authz_adapter'),
+        'authzAuthorityImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Repository Provider Implementation',
+            'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'assessmentProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Assessment Provider Implementation',
+            'description': 'Implementation for assessment service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'assessment_authoringProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Assessment Authoring Provider Implementation',
+            'description': 'Implementation for assessment authoring service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'authorizationProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Authorization Provider Implementation',
+            'description': 'Implementation for authorization service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'repositoryProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Repository Provider Implementation',
+            'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
+            ]
+        },
+        'commentingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Commenting Provider Implementation',
+            'description': 'Implementation for commenting service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'resourceProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Resource Provider Implementation',
+            'description': 'Implementation for resource service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'gradingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Grading Provider Implementation',
+            'description': 'Implementation for grading provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'loggingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Logging Provider Implementation',
+            'description': 'Implementation for logging provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+        'learningProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Learning Provider Implementation',
+            'description': 'Implementation for learning provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
+    }
+}
+
 TEST_SERVICE = {
     'id': 'dlkit_runtime_bootstrap_configuration',
     'displayName': 'DLKit Runtime Bootstrap Configuration',
@@ -1469,6 +1558,87 @@ TEST_SERVICE_NEVER_AUTHZ = {
             'description': 'Implementation for logging provider',
             'values': [
                 {'value': 'TEST_AUTHZ_ADAPTER_2', 'priority': 1}
+            ]
+        },
+    }
+}
+
+TEST_SERVICE_JSON_AUTHZ = {
+    'id': 'dlkit_runtime_bootstrap_configuration',
+    'displayName': 'DLKit Runtime Bootstrap Configuration',
+    'description': 'Bootstrap Configuration for DLKit Runtime',
+    'parameters': {
+        'implKey': impl_key_dict('service'),
+        'assessmentProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Assessment Provider Implementation',
+            'description': 'Implementation for assessment service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'assessment_authoringProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Assessment Authoring Provider Implementation',
+            'description': 'Implementation for assessment authoring service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'authorizationProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Authorization Provider Implementation',
+            'description': 'Implementation for authorization service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'learningProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Learning Provider Implementation',
+            'description': 'Implementation for learning service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'repositoryProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Repository Provider Implementation',
+            'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'commentingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Commenting Provider Implementation',
+            'description': 'Implementation for commenting service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'resourceProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Resource Provider Implementation',
+            'description': 'Implementation for resource service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'gradingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Grading Provider Implementation',
+            'description': 'Implementation for grading provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
+            ]
+        },
+        'loggingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Logging Provider Implementation',
+            'description': 'Implementation for logging provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_3', 'priority': 1}
             ]
         },
     }

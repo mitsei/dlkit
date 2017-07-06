@@ -73,21 +73,21 @@ class TestAuthzAdapter(TestAuthorizationSession):
             bin = janes_resource_mgr.get_bin(self.bin_id_list[0])
             bin.use_isolated_bin_view()
             bin.use_plenary_resource_view()
-            # with pytest.raises(errors.NotFound):
-            #     resources = bin.get_resources()
-            # with pytest.raises(errors.NotFound):
-            #     resources = bin.get_resources_by_genus_type(BLUE_TYPE)
-            # for resource_id in self.resource_id_lists[0]:
-            #     with pytest.raises(errors.NotFound):
-            #         resource = bin.get_resource(resource_id)
-            # with pytest.raises(errors.NotFound):
-            #     resources = bin.get_resources_by_ids(self.resource_id_lists[0])
+            with pytest.raises(errors.NotFound):
+                resources = bin.get_resources()
+            with pytest.raises(errors.NotFound):
+                resources = bin.get_resources_by_genus_type(BLUE_TYPE)
+            for resource_id in self.resource_id_lists[0]:
+                with pytest.raises(errors.NotFound):
+                    resource = bin.get_resource(resource_id)
+            with pytest.raises(errors.NotFound):
+                resources = bin.get_resources_by_ids(self.resource_id_lists[0])
 
     def test_lookup_bank_0_plenary_federated(self):
         if not is_never_authz(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
-                                                               implementation=self.service_config)
+                                                               implementation='TEST_SERVICE_JSON_AUTHZ')
             bin = janes_resource_mgr.get_bin(self.bin_id_list[0])
             bin.use_federated_bin_view()
             bin.use_plenary_resource_view()
