@@ -10,13 +10,29 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
 from dlkit.abstract_osid.commenting import searches as abc_commenting_searches
+from dlkit.abstract_osid.osid import errors
 
 
 class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSearch):
     """The search interface for governing comment searches."""
+    def __init__(self, runtime):
+        self._namespace = 'commenting.Comment'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_comments(self, comment_ids):
@@ -27,7 +43,7 @@ class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = comment_ids
 
     @utilities.arguments_not_none
     def order_comment_results(self, comment_search_order):
@@ -69,6 +85,14 @@ class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSea
 
 class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'commenting.Comment'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_comments(self):
         """Gets the comment list resulting from a search.
@@ -78,7 +102,10 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.CommentList(self._results, runtime=self._runtime)
 
     comments = property(fget=get_comments)
 
@@ -90,7 +117,7 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.CommentQueryInspector(self._query_terms, runtime=self._runtime)
 
     comment_query_inspector = property(fget=get_comment_query_inspector)
 
@@ -119,6 +146,17 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
 
 class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
     """The search interface for governing book searches."""
+    def __init__(self, runtime):
+        self._namespace = 'commenting.Book'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_books(self, book_ids):
@@ -129,7 +167,7 @@ class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = book_ids
 
     @utilities.arguments_not_none
     def order_book_results(self, book_search_order):
@@ -169,6 +207,14 @@ class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
 
 class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'commenting.Book'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_books(self):
         """Gets the book list resulting from a search.
@@ -178,7 +224,10 @@ class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.BookList(self._results, runtime=self._runtime)
 
     books = property(fget=get_books)
 
@@ -190,7 +239,7 @@ class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.BookQueryInspector(self._query_terms, runtime=self._runtime)
 
     book_query_inspector = property(fget=get_book_query_inspector)
 

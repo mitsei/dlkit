@@ -518,9 +518,9 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
 
     def can_manage_assessment_part_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_assessment_part(self, assessment_part_id, alias_id):
@@ -1437,9 +1437,9 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
 
     def can_manage_sequence_rule_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_sequence_rule(self, sequence_rule_id, alias_id):
@@ -2138,9 +2138,9 @@ class SequenceRuleEnablerAdminSession(abc_assessment_authoring_sessions.Sequence
 
     def can_manage_sequence_rule_enabler_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_sequence_rule_enabler(self, sequence_rule_enabler_id, alias_id):

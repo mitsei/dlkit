@@ -11,6 +11,7 @@
 
 
 from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
 from ..primitives import Id
@@ -23,7 +24,8 @@ class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch)
     """The search interface for governing asset searches."""
     def __init__(self, runtime):
         self._namespace = 'repository.Asset'
-        record_type_data_sets = get_registry('ASSET_RECORD_TYPES', runtime)
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
         self._record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_ids = []
@@ -81,9 +83,12 @@ class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch)
 
 class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, runtime):
+    def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'repository.Asset'
         self._results = results
+        self._query_terms = query_terms
         self._runtime = runtime
         self.retrieved = False
 
@@ -110,7 +115,7 @@ class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_search
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.AssetQueryInspector(self._query_terms, runtime=self._runtime)
 
     asset_query_inspector = property(fget=get_asset_query_inspector)
 
@@ -140,7 +145,8 @@ class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches
     """The interface for governing composition searches."""
     def __init__(self, runtime):
         self._namespace = 'repository.Composition'
-        record_type_data_sets = get_registry('COMPOSITION_RECORD_TYPES', runtime)
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
         self._record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_ids = []
@@ -200,9 +206,12 @@ class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches
 
 class CompositionSearchResults(abc_repository_searches.CompositionSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, runtime):
+    def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'repository.Composition'
         self._results = results
+        self._query_terms = query_terms
         self._runtime = runtime
         self.retrieved = False
 
@@ -229,7 +238,7 @@ class CompositionSearchResults(abc_repository_searches.CompositionSearchResults,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.CompositionQueryInspector(self._query_terms, runtime=self._runtime)
 
     composition_query_inspector = property(fget=get_composition_query_inspector)
 
@@ -258,6 +267,17 @@ class CompositionSearchResults(abc_repository_searches.CompositionSearchResults,
 
 class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.OsidSearch):
     """The interface for governing repository searches."""
+    def __init__(self, runtime):
+        self._namespace = 'repository.Repository'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_repositories(self, repository_ids):
@@ -268,7 +288,7 @@ class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = repository_ids
 
     @utilities.arguments_not_none
     def order_repository_results(self, repository_search_order):
@@ -310,6 +330,14 @@ class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.O
 
 class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'repository.Repository'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_repositories(self):
         """Gets the repository list resulting from the search.
@@ -319,7 +347,10 @@ class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.RepositoryList(self._results, runtime=self._runtime)
 
     repositories = property(fget=get_repositories)
 
@@ -331,7 +362,7 @@ class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.RepositoryQueryInspector(self._query_terms, runtime=self._runtime)
 
     repository_query_inspector = property(fget=get_repository_query_inspector)
 

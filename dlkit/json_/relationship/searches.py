@@ -10,13 +10,29 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
+from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.relationship import searches as abc_relationship_searches
 
 
 class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_searches.OsidSearch):
     """The search interface for governing relationship searches."""
+    def __init__(self, runtime):
+        self._namespace = 'relationship.Relationship'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_relationships(self, relationship_ids):
@@ -27,7 +43,7 @@ class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_sear
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = relationship_ids
 
     @utilities.arguments_not_none
     def order_relationship_results(self, relationship_search_order):
@@ -70,6 +86,14 @@ class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_sear
 
 class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'relationship.Relationship'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_relationships(self):
         """Gets the relationship list resulting from a search.
@@ -80,7 +104,10 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.RelationshipList(self._results, runtime=self._runtime)
 
     relationships = property(fget=get_relationships)
 
@@ -92,7 +119,7 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.RelationshipQueryInspector(self._query_terms, runtime=self._runtime)
 
     relationship_query_inspector = property(fget=get_relationship_query_inspector)
 
@@ -124,6 +151,17 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
 
 class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSearch):
     """The search interface for governing family searches."""
+    def __init__(self, runtime):
+        self._namespace = 'relationship.Family'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_families(self, family_ids):
@@ -134,7 +172,7 @@ class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = family_ids
 
     @utilities.arguments_not_none
     def order_family_results(self, family_search_order):
@@ -176,6 +214,14 @@ class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSea
 
 class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search and is used as a vehicle to perform a search within a previous result set."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'relationship.Family'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_families(self):
         """Gets the family list resulting from a search.
@@ -185,7 +231,10 @@ class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.FamilyList(self._results, runtime=self._runtime)
 
     families = property(fget=get_families)
 
@@ -197,7 +246,7 @@ class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.FamilyQueryInspector(self._query_terms, runtime=self._runtime)
 
     family_query_inspector = property(fget=get_family_query_inspector)
 

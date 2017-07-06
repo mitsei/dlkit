@@ -457,9 +457,9 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
 
     def can_manage_grade_system_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_grade_system(self, grade_system_id, alias_id):
@@ -537,9 +537,9 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
 
     def can_manage_grade_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_grade(self, grade_id, alias_id):
@@ -1315,9 +1315,9 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
 
     def can_manage_grade_entry_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_grade_entry(self, grade_entry_id, alias_id):
@@ -1955,9 +1955,9 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
 
     def can_manage_gradebook_column_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_gradebook_column(self, gradebook_column_id, alias_id):
@@ -2435,9 +2435,9 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
 
     def can_manage_gradebook_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_gradebook(self, gradebook_id, alias_id):

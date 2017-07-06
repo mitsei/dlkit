@@ -605,9 +605,9 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
 
     def can_manage_asset_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_asset(self, asset_id, alias_id):
@@ -1807,9 +1807,9 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
 
     def can_manage_composition_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_composition(self, composition_id, alias_id):
@@ -2287,9 +2287,9 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
 
     def can_manage_repository_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_repository(self, repository_id, alias_id):

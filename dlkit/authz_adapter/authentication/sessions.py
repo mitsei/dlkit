@@ -464,9 +464,9 @@ class AgentAdminSession(abc_authentication_sessions.AgentAdminSession, osid_sess
 
     def can_manage_agent_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_agent(self, agent_id, alias_id):
@@ -962,9 +962,9 @@ class AgencyAdminSession(abc_authentication_sessions.AgencyAdminSession, osid_se
 
     def can_manage_agency_aliases(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
-        return (self._can('alias') or
-                bool(self._get_overriding_catalog_ids('alias')))
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases
+        return (self._can('manage') or
+                bool(self._get_overriding_catalog_ids('manage')))
 
     @raise_null_argument
     def alias_agency(self, agency_id, alias_id):

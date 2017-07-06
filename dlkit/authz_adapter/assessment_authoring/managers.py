@@ -10,7 +10,7 @@
 from . import sessions
 from ..osid import managers as osid_managers
 from ..osid.osid_errors import Unimplemented
-from ..osid.osid_errors import Unimplemented, OperationFailed
+from ..osid.osid_errors import Unimplemented, OperationFailed, Unsupported
 from ..osid.osid_errors import Unsupported
 from ..primitives import Id
 from ..utilities import raise_null_argument
@@ -23,21 +23,31 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         osid_managers.OsidProfile.__init__(self)
 
     def _get_hierarchy_session(self, proxy=None):
-        # currently proxy not used, even if it's passed in...
+        base_package_mgr = self._get_base_package_provider_manager('assessment', proxy)
+        if proxy is not None:
+            try:
+                return base_package_mgr.get_bank_hierarchy_session(proxy)
+            except Unsupported:
+                return None
         try:
-            base_package_mgr = self._get_base_package_provider_manager('assessment')
-            return base_package_mgr.get_bank_hierarchy_session(proxy=proxy)
+            return base_package_mgr.get_bank_hierarchy_session()
         except Unsupported:
             return None
 
-    def _get_base_package_provider_manager(self, base_package):
+    def _get_base_package_provider_manager(self, base_package, proxy=None):
         config = self._my_runtime.get_configuration()
         parameter_id = Id('parameter:{0}ProviderImpl@dlkit_service'.format(base_package))
         provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
-        try:
+        # try:
+        #     # need to add version argument
+        #     return self._my_runtime.get_proxy_manager(base_package.upper(), provider_impl)
+        # except AttributeError:
+        #     # need to add version argument
+        #     return self._my_runtime.get_manager(base_package.upper(), provider_impl)
+        if proxy is not None:
             # need to add version argument
-            return self._my_runtime.get_proxy_manager(base_package.upper(), provider_impl, proxy=self._proxy)
-        except AttributeError:
+            return self._my_runtime.get_proxy_manager(base_package.upper(), provider_impl)
+        else:
             # need to add version argument
             return self._my_runtime.get_manager(base_package.upper(), provider_impl)
 

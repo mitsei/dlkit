@@ -10,13 +10,29 @@
 #     Inheritance defined in specification
 
 
+from . import objects
+from . import queries
 from .. import utilities
 from ..osid import searches as osid_searches
+from ..primitives import Id
+from ..utilities import get_registry
 from dlkit.abstract_osid.authorization import searches as abc_authorization_searches
+from dlkit.abstract_osid.osid import errors
 
 
 class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_searches.OsidSearch):
     """``AuthorizationSearch`` defines the interface for specifying authorization search options."""
+    def __init__(self, runtime):
+        self._namespace = 'authorization.Authorization'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_authorizations(self, authorization_ids):
@@ -28,7 +44,7 @@ class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = authorization_ids
 
     @utilities.arguments_not_none
     def order_authorization_results(self, authorization_search_order):
@@ -71,6 +87,14 @@ class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_s
 
 class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'authorization.Authorization'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_authorizations(self):
         """Gets the authorization list resulting from the search.
@@ -81,7 +105,10 @@ class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.AuthorizationList(self._results, runtime=self._runtime)
 
     authorizations = property(fget=get_authorizations)
 
@@ -93,7 +120,7 @@ class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.AuthorizationQueryInspector(self._query_terms, runtime=self._runtime)
 
     authorization_query_inspector = property(fget=get_authorization_query_inspector)
 
@@ -123,6 +150,17 @@ class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchR
 
 class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSearch):
     """The interface for governing vault searches."""
+    def __init__(self, runtime):
+        self._namespace = 'authorization.Vault'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        self._id_list = None
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_vaults(self, vault_ids):
@@ -133,7 +171,7 @@ class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSear
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        self._id_list = vault_ids
 
     @utilities.arguments_not_none
     def order_vault_results(self, vault_search_order):
@@ -174,6 +212,14 @@ class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSear
 
 class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'authorization.Vault'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_vaults(self):
         """Gets the vault list resulting from the search.
@@ -183,7 +229,10 @@ class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        if self.retrieved:
+            raise errors.IllegalState('List has already been retrieved.')
+        self.retrieved = True
+        return objects.VaultList(self._results, runtime=self._runtime)
 
     vaults = property(fget=get_vaults)
 
@@ -195,7 +244,7 @@ class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return queries.VaultQueryInspector(self._query_terms, runtime=self._runtime)
 
     vault_query_inspector = property(fget=get_vault_query_inspector)
 
