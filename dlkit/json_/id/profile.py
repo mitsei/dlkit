@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo id'
 
 DESCRIPTION = 'MongoDB based id implementation'
 
-VERSIONCOMPONENTS = [0, 1, 446]
+VERSIONCOMPONENTS = [0, 1, 447]
 
-RELEASEDATE = "2017-06-30"
+RELEASEDATE = "2017-07-06"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
