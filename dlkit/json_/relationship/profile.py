@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo relationship'
 
 DESCRIPTION = 'MongoDB based relationship implementation'
 
-VERSIONCOMPONENTS = [0, 1, 448]
+VERSIONCOMPONENTS = [0, 1, 463]
 
-RELEASEDATE = "2017-07-06"
+RELEASEDATE = "2017-07-07"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

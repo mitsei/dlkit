@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo commenting'
 
 DESCRIPTION = 'MongoDB based commenting implementation'
 
-VERSIONCOMPONENTS = [0, 1, 449]
+VERSIONCOMPONENTS = [0, 1, 464]
 
-RELEASEDATE = "2017-07-06"
+RELEASEDATE = "2017-07-07"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

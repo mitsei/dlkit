@@ -804,7 +804,7 @@ class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSes
         # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_authorization_ids_by_vault(vault_id)
+        return self._provider_session.get_authorizations_ids_by_vault(vault_id)
 
     @raise_null_argument
     def get_authorizations_by_vault(self, vault_ids):

@@ -1059,6 +1059,14 @@ TEST_AUTHZ_ADAPTER_1 = {
                 {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
             ]
         },
+        'catalogingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Cataloging Provider Implementation',
+            'description': 'Implementation for cataloging service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
         'commentingProviderImpl': {
             'syntax': 'STRING',
             'displayName': 'Commenting Provider Implementation',
@@ -1146,6 +1154,14 @@ TEST_AUTHZ_ADAPTER_2 = {
             'description': 'Implementation for repository service provider',
             'values': [
                 {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
+            ]
+        },
+        'catalogingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Cataloging Provider Implementation',
+            'description': 'Implementation for cataloging service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
             ]
         },
         'commentingProviderImpl': {
@@ -1237,6 +1253,14 @@ TEST_SERVICE = {
                 {'value': 'TEST_JSON_1', 'priority': 1}
             ]
         },
+        'catalogingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Cataloging Provider Implementation',
+            'description': 'Implementation for cataloging service provider',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
         'commentingProviderImpl': {
             'syntax': 'STRING',
             'displayName': 'Commenting Provider Implementation',
@@ -1318,6 +1342,14 @@ TEST_SERVICE_ALWAYS_AUTHZ = {
                 {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
             ]
         },
+        'catalogingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Cataloging Provider Implementation',
+            'description': 'Implementation for cataloging service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_1', 'priority': 1}
+            ]
+        },
         'commentingProviderImpl': {
             'syntax': 'STRING',
             'displayName': 'Commenting Provider Implementation',
@@ -1395,6 +1427,14 @@ TEST_SERVICE_NEVER_AUTHZ = {
             'syntax': 'STRING',
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': 'TEST_AUTHZ_ADAPTER_2', 'priority': 1}
+            ]
+        },
+        'catalogingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Cataloging Provider Implementation',
+            'description': 'Implementation for cataloging service provider',
             'values': [
                 {'value': 'TEST_AUTHZ_ADAPTER_2', 'priority': 1}
             ]

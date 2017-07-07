@@ -17,6 +17,8 @@ MANAGER_PATHS = {
                      'dlkit.services.learning.LearningManager'),
         'LOGGING': ('dlkit.services.logging_.LoggingManager',
                     'dlkit.services.logging_.LoggingManager'),
+        'CATALOGING': ('dlkit.services.cataloging.CatalogingManager',
+                       'dlkit.services.cataloging.CatalogingManager'),
         'COMMENTING': ('dlkit.services.commenting.CommentingManager',
                        'dlkit.services.commenting.CommentingManager'),
         'RESOURCE': ('dlkit.services.resource.ResourceManager',
@@ -41,6 +43,8 @@ MANAGER_PATHS = {
                      'dlkit.json_.learning.managers.LearningProxyManager'),
         'LOGGING': ('dlkit.json_.logging_.managers.LoggingManager',
                     'dlkit.json_.logging_.managers.LoggingProxyManager'),
+        'CATALOGING': ('dlkit.json_.cataloging.managers.CatalogingManager',
+                       'dlkit.json_.cataloging.managers.CatalogingProxyManager'),
         'COMMENTING': ('dlkit.json_.commenting.managers.CommentingManager',
                        'dlkit.json_.commenting.managers.CommentingProxyManager'),
         'RESOURCE': ('dlkit.json_.resource.managers.ResourceManager',
@@ -61,6 +65,8 @@ MANAGER_PATHS = {
                      'dlkit.authz_adapter.learning.managers.LearningProxyManager'),
         'LOGGING': ('dlkit.authz_adapter.logging_.managers.LoggingManager',
                     'dlkit.authz_adapter.logging_.managers.LoggingProxyManager'),
+        'CATALOGING': ('dlkit.authz_adapter.cataloging.managers.CatalogingManager',
+                       'dlkit.authz_adapter.cataloging.managers.CatalogingProxyManager'),
         'COMMENTING': ('dlkit.authz_adapter.commenting.managers.CommentingManager',
                        'dlkit.authz_adapter.commenting.managers.CommentingProxyManager'),
         'RESOURCE': ('dlkit.authz_adapter.resource.managers.ResourceManager',
@@ -86,11 +92,11 @@ MANAGER_PATHS = {
     },
     'always_authz': {
         'AUTHORIZATION': ('tests.authz_impls.always_authz.AuthorizationManager',
-                          'dlkit.authz_impls.always_authz.AuthorizationProxyManager')
+                          'tests.authz_impls.always_authz.AuthorizationProxyManager')
     },
     'never_authz': {
         'AUTHORIZATION': ('tests.authz_impls.never_authz.AuthorizationManager',
-                          'dlkit.authz_impls.never_authz.AuthorizationProxyManager')
+                          'tests.authz_impls.never_authz.AuthorizationProxyManager')
     },
 
 }
