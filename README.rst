@@ -67,7 +67,11 @@ Hand-written modules are:
   * filesystem_adapter
   * handcar
   * records
+  * tests/authz_impls
+  * tests/dlkit
   * tests/functional
   * tests/learning/handcar_tests
-  * tests/records
   * tests/other
+  * tests/records
+  * tests/utilities
+
