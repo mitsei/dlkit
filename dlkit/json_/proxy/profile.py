@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo proxy'
 
 DESCRIPTION = 'MongoDB based proxy implementation'
 
-VERSIONCOMPONENTS = [0, 1, 464]
+VERSIONCOMPONENTS = [0, 1, 465]
 
 RELEASEDATE = "2017-07-07"
 
