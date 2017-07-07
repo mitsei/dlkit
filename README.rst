@@ -18,7 +18,7 @@ The complete `OSID specification`_ provides more details.
 
 .. _OSID specification: https://osid.org/specifications
 
-Currently, DLKit works with Python 2.6 and 2.7.
+Currently, DLKit works with Python 2.7, 3.4, 3.5, and 3.6.
 
 If you are interested in learning more about the DLKit Python libraries documented here, please contact dlkit-info@mit.edu
 

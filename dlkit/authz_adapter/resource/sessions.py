@@ -35,8 +35,9 @@ class ResourceLookupSession(abc_resource_sessions.ResourceLookupSession, osid_se
     #     return self._overriding_bin_ids
 
     def _try_overriding_bins(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bin_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bin_id(catalog_id, match=True)
         return self._query_session.get_resources_by_query(query), query
 
     def _get_unauth_bin_ids(self, bin_id):
@@ -203,8 +204,9 @@ class ResourceQuerySession(abc_resource_sessions.ResourceQuerySession, osid_sess
     #     return self._overriding_bin_ids
 
     def _try_overriding_bins(self, query):
-        for bin_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bin_id(bin_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bin_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bin_id(bin_id, match=True)
         return self._query_session.get_resources_by_query(query), query
 
     def _get_unauth_bin_ids(self, bin_id):
@@ -1174,8 +1176,9 @@ class ResourceRelationshipLookupSession(abc_resource_sessions.ResourceRelationsh
     #     return self._overriding_bin_ids
 
     def _try_overriding_bins(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bin_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bin_id(catalog_id, match=True)
         return self._query_session.get_resource_relationships_by_query(query), query
 
     def _get_unauth_bin_ids(self, bin_id):
@@ -1416,8 +1419,9 @@ class ResourceRelationshipQuerySession(abc_resource_sessions.ResourceRelationshi
     #     return self._overriding_bin_ids
 
     def _try_overriding_bins(self, query):
-        for bin_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bin_id(bin_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bin_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bin_id(bin_id, match=True)
         return self._query_session.get_resource_relationships_by_query(query), query
 
     def _get_unauth_bin_ids(self, bin_id):

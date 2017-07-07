@@ -35,8 +35,9 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
     #     return self._overriding_family_ids
 
     def _try_overriding_families(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_family_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_family_id(catalog_id, match=True)
         return self._query_session.get_relationships_by_query(query), query
 
     def _get_unauth_family_ids(self, family_id):
@@ -277,8 +278,9 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
     #     return self._overriding_family_ids
 
     def _try_overriding_families(self, query):
-        for family_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_family_id(family_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for family_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_family_id(family_id, match=True)
         return self._query_session.get_relationships_by_query(query), query
 
     def _get_unauth_family_ids(self, family_id):

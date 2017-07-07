@@ -417,8 +417,9 @@ class ItemLookupSession(abc_assessment_sessions.ItemLookupSession, osid_sessions
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bank_id(catalog_id, match=True)
         return self._query_session.get_items_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -601,8 +602,9 @@ class ItemQuerySession(abc_assessment_sessions.ItemQuerySession, osid_sessions.O
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bank_id(bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bank_id(bank_id, match=True)
         return self._query_session.get_items_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -1300,8 +1302,9 @@ class AssessmentLookupSession(abc_assessment_sessions.AssessmentLookupSession, o
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bank_id(catalog_id, match=True)
         return self._query_session.get_assessments_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -1468,8 +1471,9 @@ class AssessmentQuerySession(abc_assessment_sessions.AssessmentQuerySession, osi
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bank_id(bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bank_id(bank_id, match=True)
         return self._query_session.get_assessments_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -2103,8 +2107,9 @@ class AssessmentOfferedLookupSession(abc_assessment_sessions.AssessmentOfferedLo
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bank_id(catalog_id, match=True)
         return self._query_session.get_assessments_offered_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -2286,8 +2291,9 @@ class AssessmentOfferedQuerySession(abc_assessment_sessions.AssessmentOfferedQue
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bank_id(bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bank_id(bank_id, match=True)
         return self._query_session.get_assessments_offered_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -2877,8 +2883,9 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bank_id(catalog_id, match=True)
         return self._query_session.get_assessments_taken_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -3109,8 +3116,9 @@ class AssessmentTakenQuerySession(abc_assessment_sessions.AssessmentTakenQuerySe
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bank_id(bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bank_id(bank_id, match=True)
         return self._query_session.get_assessments_taken_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):

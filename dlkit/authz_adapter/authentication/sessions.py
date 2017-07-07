@@ -35,8 +35,9 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
     #     return self._overriding_agency_ids
 
     def _try_overriding_agencies(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_agency_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_agency_id(catalog_id, match=True)
         return self._query_session.get_agents_by_query(query), query
 
     def _get_unauth_agency_ids(self, agency_id):
@@ -203,8 +204,9 @@ class AgentQuerySession(abc_authentication_sessions.AgentQuerySession, osid_sess
     #     return self._overriding_agency_ids
 
     def _try_overriding_agencies(self, query):
-        for agency_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_agency_id(agency_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for agency_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_agency_id(agency_id, match=True)
         return self._query_session.get_agents_by_query(query), query
 
     def _get_unauth_agency_ids(self, agency_id):
