@@ -19,7 +19,7 @@ from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
 
 
-REQUEST = proxy_example.SimpleRequest(username='jane_doe')
+REQUEST = proxy_example.SimpleRequest()
 CONDITION = PROXY_SESSION.get_proxy_condition()
 CONDITION.set_http_request(REQUEST)
 PROXY = PROXY_SESSION.get_proxy(CONDITION)

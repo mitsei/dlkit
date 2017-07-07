@@ -35,8 +35,9 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bank_id(catalog_id, match=True)
         return self._query_session.get_assessment_parts_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -244,8 +245,9 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bank_id(bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bank_id(bank_id, match=True)
         return self._query_session.get_assessment_parts_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -972,8 +974,9 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_bank_id(catalog_id, match=True)
         return self._query_session.get_sequence_rules_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):
@@ -1187,8 +1190,9 @@ class SequenceRuleQuerySession(abc_assessment_authoring_sessions.SequenceRuleQue
     #     return self._overriding_bank_ids
 
     def _try_overriding_banks(self, query):
-        for bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_bank_id(bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_bank_id(bank_id, match=True)
         return self._query_session.get_sequence_rules_by_query(query), query
 
     def _get_unauth_bank_ids(self, bank_id):

@@ -35,8 +35,9 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
     #     return self._overriding_book_ids
 
     def _try_overriding_books(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_book_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_book_id(catalog_id, match=True)
         return self._query_session.get_comments_by_query(query), query
 
     def _get_unauth_book_ids(self, book_id):
@@ -357,8 +358,9 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
     #     return self._overriding_book_ids
 
     def _try_overriding_books(self, query):
-        for book_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_book_id(book_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for book_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_book_id(book_id, match=True)
         return self._query_session.get_comments_by_query(query), query
 
     def _get_unauth_book_ids(self, book_id):

@@ -76,8 +76,9 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
     #     return self._overriding_log_ids
 
     def _try_overriding_logs(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_log_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_log_id(catalog_id, match=True)
         return self._query_session.get_log_entries_by_query(query), query
 
     def _get_unauth_log_ids(self, log_id):
@@ -267,8 +268,9 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
     #     return self._overriding_log_ids
 
     def _try_overriding_logs(self, query):
-        for log_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_log_id(log_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for log_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_log_id(log_id, match=True)
         return self._query_session.get_log_entries_by_query(query), query
 
     def _get_unauth_log_ids(self, log_id):

@@ -93,8 +93,8 @@ class OsidSession(abc_osid_sessions.OsidSession):
         return False
 
     def _get_overriding_catalog_ids(self, func_name):
-        cat_id_list = []
         if self._overriding_catalog_ids is None and self._override_lookup_session is not None:
+            cat_id_list = []
             function_id = Id(
                 identifier=func_name,
                 namespace=self._id_namespace,
@@ -104,7 +104,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
                 function_id)
             for auth in auths:
                 cat_id_list.append(auth.get_qualifier_id())
-        self._overriding_catalog_ids = cat_id_list
+            self._overriding_catalog_ids = cat_id_list
         return self._overriding_catalog_ids
 
     def _check_lookup_conditions(self):

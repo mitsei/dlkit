@@ -35,8 +35,9 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
     #     return self._overriding_repository_ids
 
     def _try_overriding_repositories(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_repository_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_repository_id(catalog_id, match=True)
         return self._query_session.get_assets_by_query(query), query
 
     def _get_unauth_repository_ids(self, repository_id):
@@ -334,8 +335,9 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
     #     return self._overriding_repository_ids
 
     def _try_overriding_repositories(self, query):
-        for repository_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_repository_id(repository_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for repository_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_repository_id(repository_id, match=True)
         return self._query_session.get_assets_by_query(query), query
 
     def _get_unauth_repository_ids(self, repository_id):
@@ -1343,8 +1345,9 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
     #     return self._overriding_repository_ids
 
     def _try_overriding_repositories(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_repository_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_repository_id(catalog_id, match=True)
         return self._query_session.get_compositions_by_query(query), query
 
     def _get_unauth_repository_ids(self, repository_id):
@@ -1535,8 +1538,9 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
     #     return self._overriding_repository_ids
 
     def _try_overriding_repositories(self, query):
-        for repository_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_repository_id(repository_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for repository_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_repository_id(repository_id, match=True)
         return self._query_session.get_compositions_by_query(query), query
 
     def _get_unauth_repository_ids(self, repository_id):

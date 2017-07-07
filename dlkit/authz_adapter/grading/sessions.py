@@ -35,8 +35,9 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
     #     return self._overriding_gradebook_ids
 
     def _try_overriding_gradebooks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_gradebook_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_gradebook_id(catalog_id, match=True)
         return self._query_session.get_grade_systems_by_query(query), query
 
     def _get_unauth_gradebook_ids(self, gradebook_id):
@@ -207,8 +208,9 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
     #     return self._overriding_gradebook_ids
 
     def _try_overriding_gradebooks(self, query):
-        for gradebook_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_gradebook_id(gradebook_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for gradebook_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_gradebook_id(gradebook_id, match=True)
         return self._query_session.get_grade_systems_by_query(query), query
 
     def _get_unauth_gradebook_ids(self, gradebook_id):
@@ -832,8 +834,9 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
     #     return self._overriding_gradebook_ids
 
     def _try_overriding_gradebooks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_gradebook_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_gradebook_id(catalog_id, match=True)
         return self._query_session.get_grade_entries_by_query(query), query
 
     def _get_unauth_gradebook_ids(self, gradebook_id):
@@ -1054,8 +1057,9 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
     #     return self._overriding_gradebook_ids
 
     def _try_overriding_gradebooks(self, query):
-        for gradebook_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_gradebook_id(gradebook_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for gradebook_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_gradebook_id(gradebook_id, match=True)
         return self._query_session.get_grade_entries_by_query(query), query
 
     def _get_unauth_gradebook_ids(self, gradebook_id):
@@ -1511,8 +1515,9 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
     #     return self._overriding_gradebook_ids
 
     def _try_overriding_gradebooks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_gradebook_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_gradebook_id(catalog_id, match=True)
         return self._query_session.get_gradebook_columns_by_query(query), query
 
     def _get_unauth_gradebook_ids(self, gradebook_id):
@@ -1695,8 +1700,9 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
     #     return self._overriding_gradebook_ids
 
     def _try_overriding_gradebooks(self, query):
-        for gradebook_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_gradebook_id(gradebook_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for gradebook_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_gradebook_id(gradebook_id, match=True)
         return self._query_session.get_gradebook_columns_by_query(query), query
 
     def _get_unauth_gradebook_ids(self, gradebook_id):

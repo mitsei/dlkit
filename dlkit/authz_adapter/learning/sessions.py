@@ -35,8 +35,9 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
     #     return self._overriding_objective_bank_ids
 
     def _try_overriding_objective_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_objective_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_objective_bank_id(catalog_id, match=True)
         return self._query_session.get_objectives_by_query(query), query
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
@@ -203,8 +204,9 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
     #     return self._overriding_objective_bank_ids
 
     def _try_overriding_objective_banks(self, query):
-        for objective_bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_objective_bank_id(objective_bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for objective_bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_objective_bank_id(objective_bank_id, match=True)
         return self._query_session.get_objectives_by_query(query), query
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
@@ -1119,8 +1121,9 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
     #     return self._overriding_objective_bank_ids
 
     def _try_overriding_objective_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_objective_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_objective_bank_id(catalog_id, match=True)
         return self._query_session.get_activities_by_query(query), query
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
@@ -1318,8 +1321,9 @@ class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sess
     #     return self._overriding_objective_bank_ids
 
     def _try_overriding_objective_banks(self, query):
-        for objective_bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_objective_bank_id(objective_bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for objective_bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_objective_bank_id(objective_bank_id, match=True)
         return self._query_session.get_activities_by_query(query), query
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
@@ -1909,8 +1913,9 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
     #     return self._overriding_objective_bank_ids
 
     def _try_overriding_objective_banks(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_objective_bank_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_objective_bank_id(catalog_id, match=True)
         return self._query_session.get_proficiencies_by_query(query), query
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):
@@ -2170,8 +2175,9 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
     #     return self._overriding_objective_bank_ids
 
     def _try_overriding_objective_banks(self, query):
-        for objective_bank_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_objective_bank_id(objective_bank_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for objective_bank_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_objective_bank_id(objective_bank_id, match=True)
         return self._query_session.get_proficiencies_by_query(query), query
 
     def _get_unauth_objective_bank_ids(self, objective_bank_id):

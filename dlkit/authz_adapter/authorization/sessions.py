@@ -75,8 +75,9 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
     #     return self._overriding_vault_ids
 
     def _try_overriding_vaults(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_vault_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_vault_id(catalog_id, match=True)
         return self._query_session.get_authorizations_by_query(query), query
 
     def _get_unauth_vault_ids(self, vault_id):
@@ -314,8 +315,9 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
     #     return self._overriding_vault_ids
 
     def _try_overriding_vaults(self, query):
-        for vault_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_vault_id(vault_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for vault_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_vault_id(vault_id, match=True)
         return self._query_session.get_authorizations_by_query(query), query
 
     def _get_unauth_vault_ids(self, vault_id):
@@ -949,8 +951,9 @@ class FunctionLookupSession(abc_authorization_sessions.FunctionLookupSession, os
     #     return self._overriding_vault_ids
 
     def _try_overriding_vaults(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_vault_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_vault_id(catalog_id, match=True)
         return self._query_session.get_functions_by_query(query), query
 
     def _get_unauth_vault_ids(self, vault_id):
@@ -1127,8 +1130,9 @@ class FunctionQuerySession(abc_authorization_sessions.FunctionQuerySession, osid
     #     return self._overriding_vault_ids
 
     def _try_overriding_vaults(self, query):
-        for vault_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_vault_id(vault_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for vault_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_vault_id(vault_id, match=True)
         return self._query_session.get_functions_by_query(query), query
 
     def _get_unauth_vault_ids(self, vault_id):
@@ -1694,8 +1698,9 @@ class QualifierLookupSession(abc_authorization_sessions.QualifierLookupSession, 
     #     return self._overriding_vault_ids
 
     def _try_overriding_vaults(self, query):
-        for catalog_id in self._get_overriding_catalog_ids('lookup'):
-            query.match_vault_id(catalog_id, match=True)
+        if self._get_overriding_catalog_ids('lookup') is not None:
+            for catalog_id in self._get_overriding_catalog_ids('lookup'):
+                query.match_vault_id(catalog_id, match=True)
         return self._query_session.get_qualifiers_by_query(query), query
 
     def _get_unauth_vault_ids(self, vault_id):
@@ -1862,8 +1867,9 @@ class QualifierQuerySession(abc_authorization_sessions.QualifierQuerySession, os
     #     return self._overriding_vault_ids
 
     def _try_overriding_vaults(self, query):
-        for vault_id in self._get_overriding_catalog_ids('search'):
-            query._provider_query.match_vault_id(vault_id, match=True)
+        if self._get_overriding_catalog_ids('search') is not None:
+            for vault_id in self._get_overriding_catalog_ids('search'):
+                query._provider_query.match_vault_id(vault_id, match=True)
         return self._query_session.get_qualifiers_by_query(query), query
 
     def _get_unauth_vault_ids(self, vault_id):
