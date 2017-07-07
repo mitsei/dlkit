@@ -5,6 +5,41 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.5.3] - 2017-07-07
+### Fixed
+- Fix method names for creating and updating sequence rules in `assessment_utilities.py`.
+- Getting existing `mdata` values returns key with matching type, i.e. returns `existing_date_time_values` instead of `existing_object_values`.
+- Fixed method name when checking if `Assessment` has shuffled sections. (out of spec)
+- Missing `Id` use when getting `items` for an `AssessmentTaken`.
+- Extraneous argument when checking `priority` is valid, in `osid.logging.LogEntryForm.set_priority` template.
+- `delete_question` uses the right key to query the database.
+- Handle notification sessions in services better.
+- Fixed various templates in `ResourceBinAssignmentSession` methods to use template contexts, instead of the `resource` words like `bin` and `resource`.
+- Fix `services` builder to handle sub-package methods better.
+- Learning `Activity` methods to check what type of `Activity` it is.
+- Drag and drop record type handles missing `description` field.
+- QTI record type handles non-multilanguage QTI.
+
+### Changed
+- Updated many `mdata` values from basic strings to `DisplayText` objects.
+- `GradeSystem` timestamps to be stored as actual `datetime` objects, not dictionaries.
+- Mocked out external service calls for Handcar and AWS tests.
+- Ignored profile files, `app_configs` and `abstract_osid` directories for coverage reporting.
+
+### Added
+- Unimplemented methods:
+   - `_get_previous_assessment_section`
+   - `SequenceRuleQuery` `__init__`
+   - `GradebookColumnSummaryQuery` `__init__`
+   - `osid.logging.LogEntryForm.clear_priority_template`
+   - Various authz adapter passthroughs that were missing
+- More extensive testing:
+   - Change skipped tests to actually test for `Unimplemented` exception.
+   - Parameterized tests using `pytest`, to test across different service configurations.
+   - Switch to `pytest` syntax instead of `unittest` syntax.
+- Cataloging package.
+- Series of hand-written tests put in the `tests/other` directory.
+
 ## [0.5.2] - 2017-06-12
 ### Fixed
 - Compatibility with `pymongo` 2 and 3.
@@ -115,6 +150,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.3]: https://github.com/mitsei/dlkit/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/mitsei/dlkit/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/mitsei/dlkit/compare/0.5.0...0.5.1
 [0.5.0]: https://github.com/mitsei/dlkit/compare/0.4.2...0.5.0
