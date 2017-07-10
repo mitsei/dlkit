@@ -119,7 +119,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
                 parameter_id = Id('parameter:' + db_name + 'CatalogingProviderImpl@mongo')
                 provider_impl = config.get_value_by_parameter(parameter_id).get_string_value()
                 cataloging_manager = self._runtime.get_manager('CATALOGING',
-                                                                provider_impl)  # need to add version argument
+                                                               provider_impl)  # need to add version argument
             except (AttributeError, KeyError, errors.NotFound):
                 try:
                     collection = JSONClientValidated(db_name,
@@ -141,6 +141,9 @@ class OsidSession(abc_osid_sessions.OsidSession):
             self._catalog_identifier = PHANTOM_ROOT_IDENTIFIER
             self._my_catalog_map = make_catalog_map(cat_name, identifier=self._catalog_identifier)
 
+        # The reason to add in this flag is because Catalogs are not Extensible, which means they
+        #   do not have a ``recordTypeIds`` field. This means when you try to initialize ``cat_class``
+        #   with a map from a Catalog, the Extensible method ``_init_records`` throws a KeyError.
         if not uses_cataloging:
             self._catalog = cat_class(osid_object_map=self._my_catalog_map, runtime=self._runtime, proxy=self._proxy)
 
