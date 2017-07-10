@@ -1,65 +1,41 @@
 interactions:
 - request:
-    body: !!python/object:StringIO.StringIO
-      buf: 'This is test file 1.
-
-'
-      buflist: []
-      closed: false
-      len: 21
-      pos: 0
-      softspace: 0
+    body: !!python/object/new:_io.BytesIO
+      state: !!python/tuple
+      - !!binary |
+        VGhpcyBpcyB0ZXN0IGZpbGUgMS4K
+      - 0
+      - null
     headers:
-      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:w86NFWb/tKqAbAZ1Z3V1tNdVksA=']
+      Authorization:
+      - !!binary |
+        QVdTIDo2ZkJ2My8xZ2JvZFA3QlJ5WXdzVlpra2trT0k9
       Content-Length: ['21']
-      Content-MD5: [7iQTDiyCAB/qPBZf/WC5lQ==]
-      Date: ['Fri, 30 Jun 2017 20:40:12 GMT']
-      Expect: [100-continue]
-      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
-    method: !!python/unicode PUT
+      Content-MD5:
+      - !!binary |
+        N2lRVERpeUNBQi9xUEJaZi9XQzVsUT09
+      Date:
+      - !!binary |
+        TW9uLCAxMCBKdWwgMjAxNyAyMDowNjowMiBHTVQ=
+      Expect:
+      - !!binary |
+        MTAwLWNvbnRpbnVl
+      User-Agent:
+      - !!binary |
+        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+    method: PUT
     uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
   response:
-    body: {string: !!python/unicode ''}
-    headers:
-      content-length: ['0']
-      date: ['Fri, 30 Jun 2017 20:40:14 GMT']
-      etag: ['"ee24130e2c82001fea3c165ffd60b995"']
-      server: [AmazonS3]
-      x-amz-expiration: ['expiry-date="Sat, 08 Jul 2017 00:00:00 GMT", rule-id="Periodic
-          cleaning up of test items"']
-      x-amz-id-2: [bbyQX3LNWy1mxbaka1r75+5hmmxqEa6BGkurvq2S5/FQoGdYB72wwkH+iTJGEZiZO4oj1E2Ag2k=]
-      x-amz-request-id: [1C7A4618B834A8E1]
-    status: {code: 200, message: OK}
-- request:
-    body: !!python/object:StringIO.StringIO
-      buf: 'This is test file 1.
+    body: {string: '<?xml version="1.0" encoding="UTF-8"?>
 
-'
-      buflist: []
-      closed: false
-      len: 21
-      pos: 0
-      softspace: 0
+        <Error><Code>InvalidAccessKeyId</Code><Message>The AWS Access Key Id you provided
+        does not exist in our records.</Message><AWSAccessKeyId></AWSAccessKeyId><RequestId>AF68AA1EE1AB3BA3</RequestId><HostId>3nlaBTdsehe3aJaoiMXuocpYV0e9+SRlMHJEhkYvVpZsylyViKGWZUiwzndVmKE0uPekqenufko=</HostId></Error>'}
     headers:
-      Authorization: ['AWS :J6Ruif0JogIH1GdSmBcmpE5mkrM=']
-      Content-Length: ['21']
-      Content-MD5: [7iQTDiyCAB/qPBZf/WC5lQ==]
-      Date: ['Fri, 30 Jun 2017 20:58:23 GMT']
-      Expect: [100-continue]
-      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
-    method: !!python/unicode PUT
-    uri: https://s3.amazonaws.com/_/58efd696eb761d78b82c545d/test_file_1.txt
-  response:
-    body: {string: !!python/unicode '<?xml version="1.0" encoding="UTF-8"?>
-
-        <Error><Code>InvalidBucketName</Code><Message>The specified bucket is not
-        valid.</Message><BucketName>_</BucketName><RequestId>8DF999B7C31CE8F4</RequestId><HostId>t9aN01R996Qtv0gxS8KRY2WjEhRygHYBnNw/H9R0ZebUsHzRW0NMdF5bMJ5vJ5GkGv0fJCIca+U=</HostId></Error>'}
-    headers:
-      connection: [close]
-      content-type: [application/xml]
-      date: ['Fri, 30 Jun 2017 20:58:24 GMT']
-      server: [AmazonS3]
-      x-amz-id-2: [t9aN01R996Qtv0gxS8KRY2WjEhRygHYBnNw/H9R0ZebUsHzRW0NMdF5bMJ5vJ5GkGv0fJCIca+U=]
-      x-amz-request-id: [8DF999B7C31CE8F4]
-    status: {code: 400, message: Bad Request}
+      Connection: [close]
+      Content-Type: [application/xml]
+      Date: ['Mon, 10 Jul 2017 20:06:02 GMT']
+      Server: [AmazonS3]
+      x-amz-id-2: [3nlaBTdsehe3aJaoiMXuocpYV0e9+SRlMHJEhkYvVpZsylyViKGWZUiwzndVmKE0uPekqenufko=]
+      x-amz-request-id: [AF68AA1EE1AB3BA3]
+    status: {code: 403, message: Forbidden}
 version: 1
