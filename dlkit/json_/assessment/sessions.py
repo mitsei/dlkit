@@ -3462,7 +3462,7 @@ class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.Osi
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_resources_by_bin
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_item_lookup_session_for_bank(bank_id, proxy=self._proxy)
         lookup_session.use_isolated_bank_view()
         return lookup_session.get_items()
@@ -3545,7 +3545,7 @@ class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.Osi
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_bins_by_resource
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
         return lookup_session.get_banks_by_ids(
             self.get_bank_ids_by_item(item_id))
@@ -3695,7 +3695,7 @@ class ItemBankAssignmentSession(abc_assessment_sessions.ItemBankAssignmentSessio
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(item_id, bank_id)
 
     @utilities.arguments_not_none
@@ -4791,7 +4791,7 @@ class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_resources_by_bin
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_assessment_lookup_session_for_bank(bank_id, proxy=self._proxy)
         lookup_session.use_isolated_bank_view()
         return lookup_session.get_assessments()
@@ -4874,7 +4874,7 @@ class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_bins_by_resource
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
         return lookup_session.get_banks_by_ids(
             self.get_bank_ids_by_assessment(assessment_id))
@@ -5030,7 +5030,7 @@ class AssessmentBankAssignmentSession(abc_assessment_sessions.AssessmentBankAssi
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(assessment_id, bank_id)
 
     @utilities.arguments_not_none
@@ -6333,7 +6333,7 @@ class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBank
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_resources_by_bin
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_assessment_offered_lookup_session_for_bank(bank_id, proxy=self._proxy)
         lookup_session.use_isolated_bank_view()
         return lookup_session.get_assessments_offered()
@@ -6419,7 +6419,7 @@ class AssessmentOfferedBankSession(abc_assessment_sessions.AssessmentOfferedBank
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_bins_by_resource
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
         return lookup_session.get_banks_by_ids(
             self.get_bank_ids_by_assessment_offered(assessment_offered_id))
@@ -6577,7 +6577,7 @@ class AssessmentOfferedBankAssignmentSession(abc_assessment_sessions.AssessmentO
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(assessment_offered_id, bank_id)
 
     @utilities.arguments_not_none
@@ -7978,7 +7978,7 @@ class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSess
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_resources_by_bin
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_assessment_taken_lookup_session_for_bank(bank_id, proxy=self._proxy)
         lookup_session.use_isolated_bank_view()
         return lookup_session.get_assessments_taken()
@@ -8064,7 +8064,7 @@ class AssessmentTakenBankSession(abc_assessment_sessions.AssessmentTakenBankSess
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_bins_by_resource
-        mgr = self._get_provider_manager('ASSESSMENT')
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
         return lookup_session.get_banks_by_ids(
             self.get_bank_ids_by_assessment_taken(assessment_taken_id))
@@ -8222,7 +8222,7 @@ class AssessmentTakenBankAssignmentSession(abc_assessment_sessions.AssessmentTak
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('ASSESSMENT', local=True)
         lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bank(bank_id)  # to raise NotFound
+        lookup_session.get_bank(bank_id)  # to raise NotFound
         self._unassign_object_from_catalog(assessment_taken_id, bank_id)
 
     @utilities.arguments_not_none
@@ -8535,7 +8535,10 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
     _session_namespace = 'assessment.BankQuerySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_query_session()
         self._forms = dict()
         self._kwargs = kwargs
 
@@ -8587,6 +8590,8 @@ class BankQuerySession(abc_assessment_sessions.BankQuerySession, osid_sessions.O
         """
         # Implemented from template for
         # osid.resource.BinQuerySession.get_bins_by_query_template
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalogs_by_query(bank_query)
         query_terms = dict(bank_query._query_terms)
         collection = JSONClientValidated('assessment',
                                          collection='Bank',
@@ -8682,7 +8687,7 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
-            return self._catalog_session.can_create_catalogs_with_record_types(catalog_record_types=bank_record_types)
+            return self._catalog_session.can_create_catalog_with_record_types(catalog_record_types=bank_record_types)
         return True
 
     @utilities.arguments_not_none
@@ -8959,7 +8964,7 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         # Implemented from template for
         # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
-            return self._catalog_session.alias_catalog(catalog_id=bank_id, alias_id=osid.id.Id)
+            return self._catalog_session.alias_catalog(catalog_id=bank_id, alias_id=alias_id)
         self._alias_id(primary_id=bank_id, equivalent_id=alias_id)
 
 
@@ -9189,7 +9194,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalog_ids()
+            return self._catalog_session.get_parent_catalog_ids(catalog_id=bank_id)
         return self._hierarchy_session.get_parents(id_=bank_id)
 
     @utilities.arguments_not_none
@@ -9208,7 +9213,7 @@ class BankHierarchySession(abc_assessment_sessions.BankHierarchySession, osid_se
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalogs(catalog_id=bank_id)
+            return self._catalog_session.get_parent_catalogs(catalog_id=bank_id)
         return BankLookupSession(
             self._proxy,
             self._runtime).get_banks_by_ids(

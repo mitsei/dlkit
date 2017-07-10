@@ -1450,7 +1450,7 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_resources_by_bin
-        mgr = self._get_provider_manager('RESOURCE')
+        mgr = self._get_provider_manager('RESOURCE', local=True)
         lookup_session = mgr.get_resource_lookup_session_for_bin(bin_id, proxy=self._proxy)
         lookup_session.use_isolated_bin_view()
         return lookup_session.get_resources()
@@ -1533,7 +1533,7 @@ class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions
         """
         # Implemented from template for
         # osid.resource.ResourceBinSession.get_bins_by_resource
-        mgr = self._get_provider_manager('RESOURCE')
+        mgr = self._get_provider_manager('RESOURCE', local=True)
         lookup_session = mgr.get_bin_lookup_session(proxy=self._proxy)
         return lookup_session.get_bins_by_ids(
             self.get_bin_ids_by_resource(resource_id))
@@ -1683,7 +1683,7 @@ class ResourceBinAssignmentSession(abc_resource_sessions.ResourceBinAssignmentSe
         # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('RESOURCE', local=True)
         lookup_session = mgr.get_bin_lookup_session(proxy=self._proxy)
-        cat = lookup_session.get_bin(bin_id)  # to raise NotFound
+        lookup_session.get_bin(bin_id)  # to raise NotFound
         self._unassign_object_from_catalog(resource_id, bin_id)
 
 
@@ -2327,7 +2327,10 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
     _session_namespace = 'resource.BinQuerySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_query_session()
         self._forms = dict()
         self._kwargs = kwargs
 
@@ -2381,6 +2384,8 @@ class BinQuerySession(abc_resource_sessions.BinQuerySession, osid_sessions.OsidS
         """
         # Implemented from template for
         # osid.resource.BinQuerySession.get_bins_by_query_template
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalogs_by_query(bin_query)
         query_terms = dict(bin_query._query_terms)
         collection = JSONClientValidated('resource',
                                          collection='Bin',
@@ -2475,7 +2480,7 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
-            return self._catalog_session.can_create_catalogs_with_record_types(catalog_record_types=bin_record_types)
+            return self._catalog_session.can_create_catalog_with_record_types(catalog_record_types=bin_record_types)
         return True
 
     @utilities.arguments_not_none
@@ -2747,7 +2752,7 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         # Implemented from template for
         # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
-            return self._catalog_session.alias_catalog(catalog_id=bin_id, alias_id=osid.id.Id)
+            return self._catalog_session.alias_catalog(catalog_id=bin_id, alias_id=alias_id)
         self._alias_id(primary_id=bin_id, equivalent_id=alias_id)
 
 
@@ -2982,7 +2987,7 @@ class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessio
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalog_ids()
+            return self._catalog_session.get_parent_catalog_ids(catalog_id=bin_id)
         return self._hierarchy_session.get_parents(id_=bin_id)
 
     @utilities.arguments_not_none
@@ -3001,7 +3006,7 @@ class BinHierarchySession(abc_resource_sessions.BinHierarchySession, osid_sessio
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalogs(catalog_id=bin_id)
+            return self._catalog_session.get_parent_catalogs(catalog_id=bin_id)
         return BinLookupSession(
             self._proxy,
             self._runtime).get_bins_by_ids(

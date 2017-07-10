@@ -4,13 +4,15 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.cataloging import objects as ABCObjects
 from dlkit.abstract_osid.cataloging import queries as ABCQueries
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -32,7 +34,7 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def catalog_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -123,6 +125,8 @@ class TestCatalogLookupSession(object):
         """Tests get_catalogs_by_parent_genus_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_catalogs_by_parent_genus_type(True)
@@ -131,6 +135,8 @@ class TestCatalogLookupSession(object):
         """Tests get_catalogs_by_record_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_catalogs_by_record_type(True)
@@ -139,6 +145,8 @@ class TestCatalogLookupSession(object):
         """Tests get_catalogs_by_provider"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_catalogs_by_provider(True)
@@ -156,7 +164,7 @@ class TestCatalogLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def catalog_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -218,7 +226,7 @@ class TestCatalogQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def catalog_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -273,7 +281,7 @@ class TestCatalogAdminSession(object):
         from dlkit.abstract_osid.cataloging.objects import CatalogForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_catalog_form_for_create([])
-            assert isinstance(catalog_form, CatalogForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -288,7 +296,7 @@ class TestCatalogAdminSession(object):
             catalog_form.display_name = 'Test Catalog'
             catalog_form.description = 'Test Catalog for CatalogAdminSession.create_catalog tests'
             new_catalog = self.svc_mgr.create_catalog(catalog_form)
-            assert isinstance(new_catalog, Catalog)
+            assert isinstance(new_catalog, OsidCatalog)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_catalog('foo')
@@ -304,7 +312,7 @@ class TestCatalogAdminSession(object):
         from dlkit.abstract_osid.cataloging.objects import CatalogForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_catalog_form_for_update(self.catalog.ident)
-            assert isinstance(catalog_form, CatalogForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -357,7 +365,7 @@ class TestCatalogAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def catalog_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -448,7 +456,7 @@ class TestCatalogHierarchySession(object):
         from dlkit.abstract_osid.cataloging.objects import CatalogList
         if not is_never_authz(self.service_config):
             roots = self.svc_mgr.get_root_catalogs()
-            assert isinstance(roots, CatalogList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -494,10 +502,9 @@ class TestCatalogHierarchySession(object):
     def test_get_parent_catalogs(self):
         """Tests get_parent_catalogs"""
         # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
-        from dlkit.abstract_osid.cataloging.objects import CatalogList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_parent_catalogs(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, CatalogList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Root'
         else:
@@ -569,10 +576,9 @@ class TestCatalogHierarchySession(object):
     def test_get_child_catalogs(self):
         """Tests get_child_catalogs"""
         # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
-        from dlkit.abstract_osid.cataloging.objects import CatalogList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_child_catalogs(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, CatalogList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Grandchild 1'
         else:
@@ -640,7 +646,7 @@ class TestCatalogHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def catalog_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param
@@ -707,7 +713,7 @@ class TestCatalogHierarchyDesignSession(object):
         # this is tested in the setUpClass
         if not is_never_authz(self.service_config):
             roots = self.session.get_root_catalogs()
-            assert isinstance(roots, ABCObjects.CatalogList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -743,7 +749,7 @@ class TestCatalogHierarchyDesignSession(object):
         if not is_never_authz(self.service_config):
             # this is tested in the setUpClass
             children = self.session.get_child_catalogs(self.catalogs['Root'].ident)
-            assert isinstance(children, ABCObjects.CatalogList)
+            assert isinstance(children, OsidList)
             assert children.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):
