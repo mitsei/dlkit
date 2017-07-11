@@ -4,7 +4,7 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.locale.types.numeric_format import get_type_data
 
 
-class TestCalendarFormat(object):
+class TestNumericFormat(object):
     def test_get_type_data_with_gnu(self):
         results = get_type_data('e8.1')
         assert results['identifier'] == 'E8.1'
