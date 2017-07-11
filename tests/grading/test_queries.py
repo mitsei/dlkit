@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.grading.queries import GradeQuery
 from dlkit.json_.grading.queries import GradebookColumnSummaryQuery
@@ -24,7 +24,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -106,6 +106,8 @@ class TestGradeQuery(object):
         """Tests match_input_score_start_range"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_input_score_start_range(True, True, True)
@@ -123,6 +125,8 @@ class TestGradeQuery(object):
         """Tests match_input_score_end_range"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_input_score_end_range(True, True, True)
@@ -140,6 +144,8 @@ class TestGradeQuery(object):
         """Tests match_input_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_input_score(True, True, True)
@@ -156,6 +162,8 @@ class TestGradeQuery(object):
         """Tests match_output_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_output_score(True, True, True)
@@ -212,6 +220,8 @@ class TestGradeQuery(object):
         """Tests match_any_grade_entry"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grade_entry(True)
@@ -275,13 +285,15 @@ class TestGradeQuery(object):
         """Tests get_grade_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_grade_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_system_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -315,6 +327,8 @@ class TestGradeSystemQuery(object):
         """Tests match_based_on_grades"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_based_on_grades(True)
@@ -371,6 +385,8 @@ class TestGradeSystemQuery(object):
         """Tests match_any_grade"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grade(True)
@@ -387,6 +403,8 @@ class TestGradeSystemQuery(object):
         """Tests match_lowest_numeric_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_lowest_numeric_score(True, True, True)
@@ -404,6 +422,8 @@ class TestGradeSystemQuery(object):
         """Tests match_numeric_score_increment"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_numeric_score_increment(True, True, True)
@@ -421,6 +441,8 @@ class TestGradeSystemQuery(object):
         """Tests match_highest_numeric_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_highest_numeric_score(True, True, True)
@@ -477,6 +499,8 @@ class TestGradeSystemQuery(object):
         """Tests match_any_gradebook_column"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_gradebook_column(True)
@@ -540,13 +564,15 @@ class TestGradeSystemQuery(object):
         """Tests get_grade_system_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_grade_system_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_entry_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -667,6 +693,8 @@ class TestGradeEntryQuery(object):
         """Tests match_any_key_resource"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_key_resource(True)
@@ -683,6 +711,8 @@ class TestGradeEntryQuery(object):
         """Tests match_derived"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_derived(True)
@@ -738,6 +768,8 @@ class TestGradeEntryQuery(object):
         """Tests match_any_overridden_grade_entry"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_overridden_grade_entry(True)
@@ -754,6 +786,8 @@ class TestGradeEntryQuery(object):
         """Tests match_ignored_for_calculations"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_ignored_for_calculations(True)
@@ -810,6 +844,8 @@ class TestGradeEntryQuery(object):
         """Tests match_any_grade"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grade(True)
@@ -827,6 +863,8 @@ class TestGradeEntryQuery(object):
         """Tests match_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_score(True, True, True)
@@ -835,6 +873,8 @@ class TestGradeEntryQuery(object):
         """Tests match_any_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_score(True)
@@ -852,6 +892,8 @@ class TestGradeEntryQuery(object):
         """Tests match_time_graded"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_time_graded(True, True, True)
@@ -907,6 +949,8 @@ class TestGradeEntryQuery(object):
         """Tests match_any_grader"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grader(True)
@@ -962,6 +1006,8 @@ class TestGradeEntryQuery(object):
         """Tests match_any_grading_agent"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grading_agent(True)
@@ -1025,13 +1071,15 @@ class TestGradeEntryQuery(object):
         """Tests get_grade_entry_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_grade_entry_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_column_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -1104,6 +1152,8 @@ class TestGradebookColumnQuery(object):
         """Tests match_any_grade_system"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grade_system(True)
@@ -1160,6 +1210,8 @@ class TestGradebookColumnQuery(object):
         """Tests match_any_grade_entry"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grade_entry(True)
@@ -1247,13 +1299,15 @@ class TestGradebookColumnQuery(object):
         """Tests get_gradebook_column_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_gradebook_column_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_column_summary_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.grade_entry_list = list()
@@ -1297,6 +1351,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_gradebook_column_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_gradebook_column_id(True, True)
@@ -1329,6 +1385,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_any_gradebook_column"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_gradebook_column(True)
@@ -1345,6 +1403,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_mean"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_mean(True, True, True)
@@ -1361,6 +1421,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_minimum_mean"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_minimum_mean(True, True)
@@ -1377,6 +1439,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_median"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_median(True, True, True)
@@ -1393,6 +1457,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_minimum_median"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_minimum_median(True, True)
@@ -1409,6 +1475,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_mode"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_mode(True, True, True)
@@ -1425,6 +1493,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_minimum_mode"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_minimum_mode(True, True)
@@ -1441,6 +1511,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_rms"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_rms(True, True, True)
@@ -1457,6 +1529,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_minimum_rms"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_minimum_rms(True, True)
@@ -1473,6 +1547,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_standard_deviation"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_standard_deviation(True, True, True)
@@ -1489,6 +1565,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_minimum_standard_deviation"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_minimum_standard_deviation(True, True)
@@ -1505,6 +1583,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_sum"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_sum(True, True, True)
@@ -1521,6 +1601,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_minimum_sum"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_minimum_sum(True, True)
@@ -1537,6 +1619,8 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests match_gradebook_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_gradebook_id(True, True)
@@ -1577,13 +1661,15 @@ class TestGradebookColumnSummaryQuery(object):
         """Tests get_gradebook_column_summary_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_gradebook_column_summary_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1618,6 +1704,8 @@ class TestGradebookQuery(object):
         """Tests match_grade_system_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_grade_system_id(True, True)
@@ -1654,6 +1742,8 @@ class TestGradebookQuery(object):
         """Tests match_any_grade_system"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grade_system(True)
@@ -1674,6 +1764,8 @@ class TestGradebookQuery(object):
         """Tests match_grade_entry_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_grade_entry_id(True, True)
@@ -1710,6 +1802,8 @@ class TestGradebookQuery(object):
         """Tests match_any_grade_entry"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_grade_entry(True)
@@ -1730,6 +1824,8 @@ class TestGradebookQuery(object):
         """Tests match_gradebook_column_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_gradebook_column_id(True, True)
@@ -1766,6 +1862,8 @@ class TestGradebookQuery(object):
         """Tests match_any_gradebook_column"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_gradebook_column(True)
@@ -1786,6 +1884,8 @@ class TestGradebookQuery(object):
         """Tests match_ancestor_gradebook_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_ancestor_gradebook_id(True, True)
@@ -1822,6 +1922,8 @@ class TestGradebookQuery(object):
         """Tests match_any_ancestor_gradebook"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_ancestor_gradebook(True)
@@ -1842,6 +1944,8 @@ class TestGradebookQuery(object):
         """Tests match_descendant_gradebook_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_descendant_gradebook_id(True, True)
@@ -1878,6 +1982,8 @@ class TestGradebookQuery(object):
         """Tests match_any_descendant_gradebook"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_descendant_gradebook(True)
@@ -1898,6 +2004,8 @@ class TestGradebookQuery(object):
         """Tests get_gradebook_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_gradebook_query_record(True)

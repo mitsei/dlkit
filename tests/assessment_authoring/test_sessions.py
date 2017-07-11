@@ -7,7 +7,7 @@ import pytest
 from random import shuffle
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
 from dlkit.abstract_osid.assessment_authoring import queries as ABCQueries
 from dlkit.abstract_osid.osid import errors
@@ -32,7 +32,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'Y
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -275,7 +275,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -394,7 +394,7 @@ class TestAssessmentPartQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -610,7 +610,7 @@ class TestAssessmentPartAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_item_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -728,7 +728,7 @@ class TestAssessmentPartItemSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_item_design_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.item_list = list()
@@ -878,7 +878,7 @@ class TestAssessmentPartItemDesignSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def sequence_rule_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.sequence_rule_list = list()
@@ -1087,6 +1087,8 @@ class TestSequenceRuleLookupSession(object):
         """Tests get_sequence_rules_for_next_assessment_part"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_sequence_rules_for_next_assessment_part(True)
@@ -1095,6 +1097,8 @@ class TestSequenceRuleLookupSession(object):
         """Tests get_sequence_rules_for_assessment_parts"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_sequence_rules_for_assessment_parts(True, True)
@@ -1128,7 +1132,7 @@ class TestSequenceRuleLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def sequence_rule_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.sequence_rule_list = list()
@@ -1333,6 +1337,8 @@ class TestSequenceRuleAdminSession(object):
         """Tests move_sequence_rule_ahead"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.move_sequence_rule_ahead(True, True, True)
@@ -1341,6 +1347,8 @@ class TestSequenceRuleAdminSession(object):
         """Tests move_sequence_rule_behind"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.move_sequence_rule_behind(True, True, True)
@@ -1349,6 +1357,8 @@ class TestSequenceRuleAdminSession(object):
         """Tests order_sequence_rules"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.order_sequence_rules(True, True)

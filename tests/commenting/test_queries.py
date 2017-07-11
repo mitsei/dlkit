@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.commenting.queries import BookQuery
 from dlkit.primordium.id.primitives import Id
@@ -22,7 +22,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def comment_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -174,6 +174,8 @@ class TestCommentQuery(object):
         """Tests match_text"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_text(True, True, True)
@@ -182,6 +184,8 @@ class TestCommentQuery(object):
         """Tests match_any_text"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_text(True)
@@ -238,6 +242,8 @@ class TestCommentQuery(object):
         """Tests match_any_rating"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_rating(True)
@@ -302,13 +308,15 @@ class TestCommentQuery(object):
         """Tests get_comment_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_comment_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -343,6 +351,8 @@ class TestBookQuery(object):
         """Tests match_comment_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_comment_id(True, True)
@@ -379,6 +389,8 @@ class TestBookQuery(object):
         """Tests match_any_comment"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_comment(True)
@@ -399,6 +411,8 @@ class TestBookQuery(object):
         """Tests match_ancestor_book_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_ancestor_book_id(True, True)
@@ -435,6 +449,8 @@ class TestBookQuery(object):
         """Tests match_any_ancestor_book"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_ancestor_book(True)
@@ -455,6 +471,8 @@ class TestBookQuery(object):
         """Tests match_descendant_book_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_descendant_book_id(True, True)
@@ -491,6 +509,8 @@ class TestBookQuery(object):
         """Tests match_any_descendant_book"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_descendant_book(True)
@@ -511,6 +531,8 @@ class TestBookQuery(object):
         """Tests get_book_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_book_query_record(True)

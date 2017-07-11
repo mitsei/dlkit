@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.assessment.objects import Assessment
 from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
 from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPart
@@ -30,7 +30,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_part_list = list()
@@ -187,7 +187,7 @@ class TestAssessmentPart(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_form_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_part_list = list()
@@ -246,6 +246,8 @@ class TestAssessmentPartForm(object):
         """Tests set_weight"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.object.set_weight(True)
@@ -308,7 +310,7 @@ class TestAssessmentPartForm(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_list_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_part_list = list()
@@ -379,7 +381,7 @@ class TestAssessmentPartList(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def sequence_rule_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.sequence_rule_list = list()
@@ -505,7 +507,7 @@ class TestSequenceRule(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def sequence_rule_form_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.sequence_rule_list = list()
@@ -575,6 +577,8 @@ class TestSequenceRuleForm(object):
         """Tests set_minimum_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.object.set_minimum_score(True)
@@ -597,6 +601,8 @@ class TestSequenceRuleForm(object):
         """Tests set_maximum_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.object.set_maximum_score(True)
@@ -636,6 +642,8 @@ class TestSequenceRuleForm(object):
         """Tests apply_assessment_parts"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.object.apply_assessment_parts(True)
@@ -648,7 +656,7 @@ class TestSequenceRuleForm(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def sequence_rule_list_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.sequence_rule_list = list()

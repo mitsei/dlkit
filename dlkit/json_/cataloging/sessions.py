@@ -333,7 +333,10 @@ class CatalogQuerySession(abc_cataloging_sessions.CatalogQuerySession, osid_sess
     _session_namespace = 'cataloging.CatalogQuerySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_query_session()
         self._forms = dict()
         self._kwargs = kwargs
 
@@ -389,6 +392,8 @@ class CatalogQuerySession(abc_cataloging_sessions.CatalogQuerySession, osid_sess
         """
         # Implemented from template for
         # osid.resource.BinQuerySession.get_bins_by_query_template
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalogs_by_query(catalog_query)
         query_terms = dict(catalog_query._query_terms)
         collection = JSONClientValidated('cataloging',
                                          collection='Catalog',
@@ -485,7 +490,7 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
-            return self._catalog_session.can_create_catalogs_with_record_types(catalog_record_types=catalog_record_types)
+            return self._catalog_session.can_create_catalog_with_record_types(catalog_record_types=catalog_record_types)
         return True
 
     @utilities.arguments_not_none
@@ -754,7 +759,7 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
         # Implemented from template for
         # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
-            return self._catalog_session.alias_catalog(catalog_id=catalog_id, alias_id=osid.id.Id)
+            return self._catalog_session.alias_catalog(catalog_id=catalog_id, alias_id=alias_id)
         self._alias_id(primary_id=catalog_id, equivalent_id=alias_id)
 
 
@@ -989,7 +994,7 @@ class CatalogHierarchySession(abc_cataloging_sessions.CatalogHierarchySession, o
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalog_ids()
+            return self._catalog_session.get_parent_catalog_ids(catalog_id=catalog_id)
         return self._hierarchy_session.get_parents(id_=catalog_id)
 
     @utilities.arguments_not_none
@@ -1011,7 +1016,7 @@ class CatalogHierarchySession(abc_cataloging_sessions.CatalogHierarchySession, o
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalogs(catalog_id=catalog_id)
+            return self._catalog_session.get_parent_catalogs(catalog_id=catalog_id)
         return CatalogLookupSession(
             self._proxy,
             self._runtime).get_catalogs_by_ids(

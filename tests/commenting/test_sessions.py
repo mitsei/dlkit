@@ -5,13 +5,15 @@ import datetime
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.commenting import objects as ABCObjects
 from dlkit.abstract_osid.commenting import queries as ABCQueries
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
@@ -34,7 +36,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'Y
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def comment_lookup_session_class_fixture(request):
     # From test_templates/commenting.py::CommentLookupSession::init_template
     request.cls.service_config = request.param
@@ -211,6 +213,8 @@ class TestCommentLookupSession(object):
         """Tests get_comments_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_comments_on_date(True, True)
@@ -219,6 +223,8 @@ class TestCommentLookupSession(object):
         """Tests get_comments_by_genus_type_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_comments_by_genus_type_on_date(True, True, True)
@@ -232,6 +238,8 @@ class TestCommentLookupSession(object):
         """Tests get_comments_for_commentor_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_comments_for_commentor_on_date(True, True, True)
@@ -245,6 +253,8 @@ class TestCommentLookupSession(object):
         """Tests get_comments_by_genus_type_for_commentor_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_comments_by_genus_type_for_commentor_on_date(True, True, True, True)
@@ -286,6 +296,8 @@ class TestCommentLookupSession(object):
         """Tests get_comments_by_genus_type_for_reference_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_comments_by_genus_type_for_reference_on_date(True, True, True, True)
@@ -299,6 +311,8 @@ class TestCommentLookupSession(object):
         """Tests get_comments_for_commentor_and_reference_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_comments_for_commentor_and_reference_on_date(True, True, True, True)
@@ -312,6 +326,8 @@ class TestCommentLookupSession(object):
         """Tests get_comments_by_genus_type_for_commentor_and_reference_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_comments_by_genus_type_for_commentor_and_reference_on_date(True, True, True, True, True)
@@ -344,7 +360,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def comment_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.comment_list = list()
@@ -439,7 +455,7 @@ class TestCommentQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def comment_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.comment_list = list()
@@ -607,7 +623,7 @@ class TestCommentAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -698,6 +714,8 @@ class TestBookLookupSession(object):
         """Tests get_books_by_parent_genus_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_books_by_parent_genus_type(True)
@@ -706,6 +724,8 @@ class TestBookLookupSession(object):
         """Tests get_books_by_record_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_books_by_record_type(True)
@@ -714,6 +734,8 @@ class TestBookLookupSession(object):
         """Tests get_books_by_provider"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_books_by_provider(True)
@@ -731,7 +753,7 @@ class TestBookLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -786,7 +808,7 @@ class TestBookAdminSession(object):
         from dlkit.abstract_osid.commenting.objects import BookForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_book_form_for_create([])
-            assert isinstance(catalog_form, BookForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -801,7 +823,7 @@ class TestBookAdminSession(object):
             catalog_form.display_name = 'Test Book'
             catalog_form.description = 'Test Book for BookAdminSession.create_book tests'
             new_catalog = self.svc_mgr.create_book(catalog_form)
-            assert isinstance(new_catalog, Book)
+            assert isinstance(new_catalog, OsidCatalog)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_book('foo')
@@ -817,7 +839,7 @@ class TestBookAdminSession(object):
         from dlkit.abstract_osid.commenting.objects import BookForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_book_form_for_update(self.catalog.ident)
-            assert isinstance(catalog_form, BookForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -871,7 +893,7 @@ class TestBookAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -962,7 +984,7 @@ class TestBookHierarchySession(object):
         from dlkit.abstract_osid.commenting.objects import BookList
         if not is_never_authz(self.service_config):
             roots = self.svc_mgr.get_root_books()
-            assert isinstance(roots, BookList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1008,10 +1030,9 @@ class TestBookHierarchySession(object):
     def test_get_parent_books(self):
         """Tests get_parent_books"""
         # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
-        from dlkit.abstract_osid.commenting.objects import BookList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_parent_books(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, BookList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Root'
         else:
@@ -1083,10 +1104,9 @@ class TestBookHierarchySession(object):
     def test_get_child_books(self):
         """Tests get_child_books"""
         # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
-        from dlkit.abstract_osid.commenting.objects import BookList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_child_books(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, BookList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Grandchild 1'
         else:
@@ -1154,7 +1174,7 @@ class TestBookHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param
@@ -1221,7 +1241,7 @@ class TestBookHierarchyDesignSession(object):
         # this is tested in the setUpClass
         if not is_never_authz(self.service_config):
             roots = self.session.get_root_books()
-            assert isinstance(roots, ABCObjects.BookList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1257,7 +1277,7 @@ class TestBookHierarchyDesignSession(object):
         if not is_never_authz(self.service_config):
             # this is tested in the setUpClass
             children = self.session.get_child_books(self.catalogs['Root'].ident)
-            assert isinstance(children, ABCObjects.BookList)
+            assert isinstance(children, OsidList)
             assert children.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):

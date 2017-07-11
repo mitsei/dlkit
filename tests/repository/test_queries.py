@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
@@ -24,7 +24,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def asset_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -58,6 +58,8 @@ class TestAssetQuery(object):
         """Tests match_title"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_title(True, True, True)
@@ -66,6 +68,8 @@ class TestAssetQuery(object):
         """Tests match_any_title"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_title(True)
@@ -83,6 +87,8 @@ class TestAssetQuery(object):
         """Tests match_public_domain"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_public_domain(True)
@@ -91,6 +97,8 @@ class TestAssetQuery(object):
         """Tests match_any_public_domain"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_public_domain(True)
@@ -108,6 +116,8 @@ class TestAssetQuery(object):
         """Tests match_copyright"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_copyright(True, True, True)
@@ -116,6 +126,8 @@ class TestAssetQuery(object):
         """Tests match_any_copyright"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_copyright(True)
@@ -133,6 +145,8 @@ class TestAssetQuery(object):
         """Tests match_copyright_registration"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_copyright_registration(True, True, True)
@@ -141,6 +155,8 @@ class TestAssetQuery(object):
         """Tests match_any_copyright_registration"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_copyright_registration(True)
@@ -158,6 +174,8 @@ class TestAssetQuery(object):
         """Tests match_distribute_verbatim"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_distribute_verbatim(True)
@@ -175,6 +193,8 @@ class TestAssetQuery(object):
         """Tests match_distribute_alterations"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_distribute_alterations(True)
@@ -192,6 +212,8 @@ class TestAssetQuery(object):
         """Tests match_distribute_compositions"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_distribute_compositions(True)
@@ -248,6 +270,8 @@ class TestAssetQuery(object):
         """Tests match_any_source"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_source(True)
@@ -276,6 +300,8 @@ class TestAssetQuery(object):
         """Tests match_any_created_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_created_date(True)
@@ -293,6 +319,8 @@ class TestAssetQuery(object):
         """Tests match_published"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_published(True)
@@ -321,6 +349,8 @@ class TestAssetQuery(object):
         """Tests match_any_published_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_published_date(True)
@@ -338,6 +368,8 @@ class TestAssetQuery(object):
         """Tests match_principal_credit_string"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_principal_credit_string(True, True, True)
@@ -346,6 +378,8 @@ class TestAssetQuery(object):
         """Tests match_any_principal_credit_string"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_principal_credit_string(True)
@@ -363,6 +397,8 @@ class TestAssetQuery(object):
         """Tests match_temporal_coverage"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_temporal_coverage(True, True, True)
@@ -371,6 +407,8 @@ class TestAssetQuery(object):
         """Tests match_any_temporal_coverage"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_temporal_coverage(True)
@@ -426,6 +464,8 @@ class TestAssetQuery(object):
         """Tests match_any_location"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_location(True)
@@ -442,6 +482,8 @@ class TestAssetQuery(object):
         """Tests match_spatial_coverage"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_spatial_coverage(True, True)
@@ -458,6 +500,8 @@ class TestAssetQuery(object):
         """Tests match_spatial_coverage_overlap"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_spatial_coverage_overlap(True, True)
@@ -466,6 +510,8 @@ class TestAssetQuery(object):
         """Tests match_any_spatial_coverage"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_spatial_coverage(True)
@@ -521,6 +567,8 @@ class TestAssetQuery(object):
         """Tests match_any_asset_content"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_asset_content(True)
@@ -576,6 +624,8 @@ class TestAssetQuery(object):
         """Tests match_any_composition"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_composition(True)
@@ -640,13 +690,15 @@ class TestAssetQuery(object):
         """Tests get_asset_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_asset_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def asset_content_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -680,6 +732,8 @@ class TestAssetContentQuery(object):
         """Tests match_accessibility_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_accessibility_type(True, True)
@@ -688,6 +742,8 @@ class TestAssetContentQuery(object):
         """Tests match_any_accessibility_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_accessibility_type(True)
@@ -705,6 +761,8 @@ class TestAssetContentQuery(object):
         """Tests match_data_length"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_data_length(True, True, True)
@@ -713,6 +771,8 @@ class TestAssetContentQuery(object):
         """Tests match_any_data_length"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_data_length(True)
@@ -729,6 +789,8 @@ class TestAssetContentQuery(object):
         """Tests match_data"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_data(True, True, True)
@@ -737,6 +799,8 @@ class TestAssetContentQuery(object):
         """Tests match_any_data"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_data(True)
@@ -754,6 +818,8 @@ class TestAssetContentQuery(object):
         """Tests match_url"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_url(True, True, True)
@@ -762,6 +828,8 @@ class TestAssetContentQuery(object):
         """Tests match_any_url"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_url(True)
@@ -779,13 +847,15 @@ class TestAssetContentQuery(object):
         """Tests get_asset_content_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_asset_content_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def composition_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -851,6 +921,8 @@ class TestCompositionQuery(object):
         """Tests match_any_asset"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_asset(True)
@@ -899,6 +971,8 @@ class TestCompositionQuery(object):
         """Tests match_any_containing_composition"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_containing_composition(True)
@@ -947,6 +1021,8 @@ class TestCompositionQuery(object):
         """Tests match_any_contained_composition"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_contained_composition(True)
@@ -1010,13 +1086,15 @@ class TestCompositionQuery(object):
         """Tests get_composition_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_composition_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def repository_query_class_fixture(request):
     # From test_templates/resource.py::BinQuery::init_template
     request.cls.service_config = request.param
@@ -1052,6 +1130,8 @@ class TestRepositoryQuery(object):
         """Tests match_asset_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_asset_id(True, True)
@@ -1088,6 +1168,8 @@ class TestRepositoryQuery(object):
         """Tests match_any_asset"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_asset(True)
@@ -1108,6 +1190,8 @@ class TestRepositoryQuery(object):
         """Tests match_composition_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_composition_id(True, True)
@@ -1144,6 +1228,8 @@ class TestRepositoryQuery(object):
         """Tests match_any_composition"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_composition(True)
@@ -1164,6 +1250,8 @@ class TestRepositoryQuery(object):
         """Tests match_ancestor_repository_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_ancestor_repository_id(True, True)
@@ -1200,6 +1288,8 @@ class TestRepositoryQuery(object):
         """Tests match_any_ancestor_repository"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_ancestor_repository(True)
@@ -1220,6 +1310,8 @@ class TestRepositoryQuery(object):
         """Tests match_descendant_repository_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_descendant_repository_id(True, True)
@@ -1256,6 +1348,8 @@ class TestRepositoryQuery(object):
         """Tests match_any_descendant_repository"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_descendant_repository(True)
@@ -1276,6 +1370,8 @@ class TestRepositoryQuery(object):
         """Tests get_repository_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_repository_query_record(True)

@@ -5,12 +5,13 @@ import datetime
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.authorization import objects as ABCObjects
 from dlkit.abstract_osid.authorization import queries as ABCQueries
 from dlkit.abstract_osid.authorization.objects import Authorization
 from dlkit.abstract_osid.authorization.objects import AuthorizationList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
@@ -46,7 +47,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'Y
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authz_mgr = Runtime().get_manager(
@@ -356,6 +357,8 @@ class TestAuthorizationSession(object):
         """Tests get_authorization_condition"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorization_condition(True)
@@ -364,13 +367,15 @@ class TestAuthorizationSession(object):
         """Tests is_authorized_on_condition"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.is_authorized_on_condition(True, True, True, True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -565,6 +570,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_on_date(True, True)
@@ -573,6 +580,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_for_resource"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_for_resource(True)
@@ -581,6 +590,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_for_resource_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_for_resource_on_date(True, True, True)
@@ -589,6 +600,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_for_agent"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_for_agent(True)
@@ -597,6 +610,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_for_agent_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_for_agent_on_date(True, True, True)
@@ -615,6 +630,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_for_function_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_for_function_on_date(True, True, True)
@@ -628,6 +645,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_for_resource_and_function_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_for_resource_and_function_on_date(True, True, True, True)
@@ -641,6 +660,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_for_agent_and_function_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_for_agent_and_function_on_date(True, True, True, True)
@@ -649,6 +670,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations_by_qualifier"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorizations_by_qualifier(True)
@@ -657,6 +680,8 @@ class TestAuthorizationLookupSession(object):
         """Tests get_explicit_authorization"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_explicit_authorization(True)
@@ -689,7 +714,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -804,7 +829,7 @@ class TestAuthorizationQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -924,6 +949,8 @@ class TestAuthorizationAdminSession(object):
         """Tests get_authorization_form_for_create_for_resource_and_trust"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_authorization_form_for_create_for_resource_and_trust(True, True, True, True, True)
@@ -1017,7 +1044,7 @@ class TestAuthorizationAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -1108,6 +1135,8 @@ class TestVaultLookupSession(object):
         """Tests get_vaults_by_parent_genus_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_vaults_by_parent_genus_type(True)
@@ -1116,6 +1145,8 @@ class TestVaultLookupSession(object):
         """Tests get_vaults_by_record_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_vaults_by_record_type(True)
@@ -1124,6 +1155,8 @@ class TestVaultLookupSession(object):
         """Tests get_vaults_by_provider"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_vaults_by_provider(True)
@@ -1141,7 +1174,7 @@ class TestVaultLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -1203,7 +1236,7 @@ class TestVaultQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -1258,7 +1291,7 @@ class TestVaultAdminSession(object):
         from dlkit.abstract_osid.authorization.objects import VaultForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_vault_form_for_create([])
-            assert isinstance(catalog_form, VaultForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1273,7 +1306,7 @@ class TestVaultAdminSession(object):
             catalog_form.display_name = 'Test Vault'
             catalog_form.description = 'Test Vault for VaultAdminSession.create_vault tests'
             new_catalog = self.svc_mgr.create_vault(catalog_form)
-            assert isinstance(new_catalog, Vault)
+            assert isinstance(new_catalog, OsidCatalog)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_vault('foo')
@@ -1289,7 +1322,7 @@ class TestVaultAdminSession(object):
         from dlkit.abstract_osid.authorization.objects import VaultForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_vault_form_for_update(self.catalog.ident)
-            assert isinstance(catalog_form, VaultForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
