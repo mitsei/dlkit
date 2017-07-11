@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo locale'
 
 DESCRIPTION = 'MongoDB based locale implementation'
 
-VERSIONCOMPONENTS = [0, 1, 469]
+VERSIONCOMPONENTS = [0, 1, 486]
 
 RELEASEDATE = "2017-07-11"
 

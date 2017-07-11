@@ -1,4 +1,4 @@
-"""Unit tests of enclosure functionality."""
+"""Unit tests of QTI item type functionality."""
 
 
 import unittest
