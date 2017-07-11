@@ -38,5 +38,5 @@ def get_type_data(name):
                             GNU_BASIC_NUMERIC_FORMAT_TYPES[name] +
                             ' numeric format.')
         }
-    except IndexError:
+    except KeyError:
         raise NotFound('NumericFormat Type: ' + name)
