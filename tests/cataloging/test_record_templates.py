@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 
 
 @pytest.mark.usefixtures("catalog_record_class_fixture", "catalog_record_test_fixture")

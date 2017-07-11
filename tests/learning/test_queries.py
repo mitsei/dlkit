@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.learning.queries import ActivityQuery
 from dlkit.json_.learning.queries import ObjectiveBankQuery
@@ -23,7 +23,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -96,6 +96,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_assessment"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_assessment(True)
@@ -152,6 +154,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_knowledge_category"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_knowledge_category(True)
@@ -208,6 +212,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_cognitive_process"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_cognitive_process(True)
@@ -264,6 +270,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_activity"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_activity(True)
@@ -319,6 +327,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_requisite_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_requisite_objective(True)
@@ -374,6 +384,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_dependent_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_dependent_objective(True)
@@ -429,6 +441,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_equivalent_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_equivalent_objective(True)
@@ -484,6 +498,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_ancestor_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_ancestor_objective(True)
@@ -539,6 +555,8 @@ class TestObjectiveQuery(object):
         """Tests match_any_descendant_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_descendant_objective(True)
@@ -602,13 +620,15 @@ class TestObjectiveQuery(object):
         """Tests get_objective_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_objective_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def activity_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -738,6 +758,8 @@ class TestActivityQuery(object):
         """Tests match_any_asset"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_asset(True)
@@ -793,6 +815,8 @@ class TestActivityQuery(object):
         """Tests match_any_course"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_course(True)
@@ -848,6 +872,8 @@ class TestActivityQuery(object):
         """Tests match_any_assessment"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_assessment(True)
@@ -911,13 +937,15 @@ class TestActivityQuery(object):
         """Tests get_activity_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_activity_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def proficiency_query_class_fixture(request):
     # From test_templates/resource.py::ResourceQuery::init_template
     request.cls.service_config = request.param
@@ -1038,6 +1066,8 @@ class TestProficiencyQuery(object):
         """Tests match_any_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_objective(True)
@@ -1131,6 +1161,8 @@ class TestProficiencyQuery(object):
         """Tests match_any_level"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_level(True)
@@ -1195,13 +1227,15 @@ class TestProficiencyQuery(object):
         """Tests get_proficiency_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_proficiency_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_bank_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1236,6 +1270,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_objective_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_objective_id(True, True)
@@ -1272,6 +1308,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_any_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_objective(True)
@@ -1292,6 +1330,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_activity_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_activity_id(True, True)
@@ -1328,6 +1368,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_any_activity"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_activity(True)
@@ -1348,6 +1390,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_ancestor_objective_bank_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_ancestor_objective_bank_id(True, True)
@@ -1384,6 +1428,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_any_ancestor_objective_bank"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_ancestor_objective_bank(True)
@@ -1404,6 +1450,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_descendant_objective_bank_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_descendant_objective_bank_id(True, True)
@@ -1440,6 +1488,8 @@ class TestObjectiveBankQuery(object):
         """Tests match_any_descendant_objective_bank"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_descendant_objective_bank(True)
@@ -1460,6 +1510,8 @@ class TestObjectiveBankQuery(object):
         """Tests get_objective_bank_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_objective_bank_query_record(True)

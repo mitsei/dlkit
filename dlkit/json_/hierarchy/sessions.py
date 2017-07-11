@@ -997,7 +997,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
-            return self._catalog_session.can_create_catalogs_with_record_types(catalog_record_types=hierarchy_record_types)
+            return self._catalog_session.can_create_catalog_with_record_types(catalog_record_types=hierarchy_record_types)
         return True
 
     @utilities.arguments_not_none
@@ -1272,5 +1272,5 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         # Implemented from template for
         # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
-            return self._catalog_session.alias_catalog(catalog_id=hierarchy_id, alias_id=osid.id.Id)
+            return self._catalog_session.alias_catalog(catalog_id=hierarchy_id, alias_id=alias_id)
         self._alias_id(primary_id=hierarchy_id, equivalent_id=alias_id)

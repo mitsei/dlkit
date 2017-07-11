@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.assessment_authoring.queries import SequenceRuleQuery
 from dlkit.primordium.id.primitives import Id
@@ -22,7 +22,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_part_list = list()
@@ -151,6 +151,8 @@ class TestAssessmentPartQuery(object):
         """Tests match_any_parent_assessment_part"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_parent_assessment_part(True)
@@ -167,6 +169,8 @@ class TestAssessmentPartQuery(object):
         """Tests match_section"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_section(True)
@@ -183,6 +187,8 @@ class TestAssessmentPartQuery(object):
         """Tests match_weight"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_weight(True, True, True)
@@ -191,6 +197,8 @@ class TestAssessmentPartQuery(object):
         """Tests match_any_weight"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_weight(True)
@@ -208,6 +216,8 @@ class TestAssessmentPartQuery(object):
         """Tests match_allocated_time"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_allocated_time(True, True, True)
@@ -216,6 +226,8 @@ class TestAssessmentPartQuery(object):
         """Tests match_any_allocated_time"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_allocated_time(True)
@@ -272,6 +284,8 @@ class TestAssessmentPartQuery(object):
         """Tests match_any_child_assessment_part"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_child_assessment_part(True)
@@ -335,13 +349,15 @@ class TestAssessmentPartQuery(object):
         """Tests get_assessment_part_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_assessment_part_query_record(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def sequence_rule_query_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -379,6 +395,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_assessment_part_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_assessment_part_id(True, True)
@@ -419,6 +437,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_next_assessment_part_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_next_assessment_part_id(True, True)
@@ -459,6 +479,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_minimum_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_minimum_score(True, True, True)
@@ -467,6 +489,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_any_minimum_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_minimum_score(True)
@@ -483,6 +507,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_maximum_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_maximum_score(True, True, True)
@@ -491,6 +517,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_any_maximum_score"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_maximum_score(True)
@@ -507,6 +535,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_cumulative"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_cumulative(True)
@@ -523,6 +553,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_applied_assessment_part_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_applied_assessment_part_id(True, True)
@@ -555,6 +587,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_any_applied_assessment_part"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_any_applied_assessment_part(True)
@@ -571,6 +605,8 @@ class TestSequenceRuleQuery(object):
         """Tests match_bank_id"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.match_bank_id(True, True)
@@ -611,6 +647,8 @@ class TestSequenceRuleQuery(object):
         """Tests get_sequence_rule_query_record"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.query.get_sequence_rule_query_record(True)

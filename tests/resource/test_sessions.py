@@ -4,12 +4,14 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.authentication.objects import AgentList
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.abstract_osid.resource import objects as ABCObjects
 from dlkit.abstract_osid.resource import queries as ABCQueries
@@ -38,7 +40,7 @@ AGENT_ID_1 = Id(**{'identifier': 'john_doe', 'namespace': 'osid.agent.Agent', 'a
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -212,7 +214,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -309,7 +311,7 @@ class TestResourceQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_search_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.resource_list = list()
@@ -375,13 +377,15 @@ class TestResourceSearchSession(object):
         """Tests get_resource_query_from_inspector"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_resource_query_from_inspector(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -556,7 +560,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_notification_session_class_fixture(request):
     # Implemented from init template for ResourceNotificationSession
     request.cls.service_config = request.param
@@ -692,13 +696,15 @@ class TestResourceNotificationSession(object):
         """Tests acknowledge_resource_notification"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.acknowledge_resource_notification(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_bin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
@@ -838,7 +844,7 @@ class TestResourceBinSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_bin_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -967,7 +973,7 @@ class TestResourceBinAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_agent_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.resource_list = list()
@@ -1096,7 +1102,7 @@ class TestResourceAgentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def resource_agent_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1192,7 +1198,7 @@ class TestResourceAgentAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bin_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -1283,6 +1289,8 @@ class TestBinLookupSession(object):
         """Tests get_bins_by_parent_genus_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_bins_by_parent_genus_type(True)
@@ -1291,6 +1299,8 @@ class TestBinLookupSession(object):
         """Tests get_bins_by_record_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_bins_by_record_type(True)
@@ -1299,6 +1309,8 @@ class TestBinLookupSession(object):
         """Tests get_bins_by_provider"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_bins_by_provider(True)
@@ -1316,7 +1328,7 @@ class TestBinLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bin_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -1378,7 +1390,7 @@ class TestBinQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bin_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -1433,7 +1445,7 @@ class TestBinAdminSession(object):
         from dlkit.abstract_osid.resource.objects import BinForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_bin_form_for_create([])
-            assert isinstance(catalog_form, BinForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1448,7 +1460,7 @@ class TestBinAdminSession(object):
             catalog_form.display_name = 'Test Bin'
             catalog_form.description = 'Test Bin for BinAdminSession.create_bin tests'
             new_catalog = self.svc_mgr.create_bin(catalog_form)
-            assert isinstance(new_catalog, Bin)
+            assert isinstance(new_catalog, OsidCatalog)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_bin('foo')
@@ -1464,7 +1476,7 @@ class TestBinAdminSession(object):
         from dlkit.abstract_osid.resource.objects import BinForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_bin_form_for_update(self.catalog.ident)
-            assert isinstance(catalog_form, BinForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1518,7 +1530,7 @@ class TestBinAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bin_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -1609,7 +1621,7 @@ class TestBinHierarchySession(object):
         from dlkit.abstract_osid.resource.objects import BinList
         if not is_never_authz(self.service_config):
             roots = self.svc_mgr.get_root_bins()
-            assert isinstance(roots, BinList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1655,10 +1667,9 @@ class TestBinHierarchySession(object):
     def test_get_parent_bins(self):
         """Tests get_parent_bins"""
         # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
-        from dlkit.abstract_osid.resource.objects import BinList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_parent_bins(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, BinList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Root'
         else:
@@ -1730,10 +1741,9 @@ class TestBinHierarchySession(object):
     def test_get_child_bins(self):
         """Tests get_child_bins"""
         # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
-        from dlkit.abstract_osid.resource.objects import BinList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_child_bins(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, BinList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Grandchild 1'
         else:
@@ -1801,7 +1811,7 @@ class TestBinHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bin_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param
@@ -1868,7 +1878,7 @@ class TestBinHierarchyDesignSession(object):
         # this is tested in the setUpClass
         if not is_never_authz(self.service_config):
             roots = self.session.get_root_bins()
-            assert isinstance(roots, ABCObjects.BinList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1904,7 +1914,7 @@ class TestBinHierarchyDesignSession(object):
         if not is_never_authz(self.service_config):
             # this is tested in the setUpClass
             children = self.session.get_child_bins(self.catalogs['Root'].ident)
-            assert isinstance(children, ABCObjects.BinList)
+            assert isinstance(children, OsidList)
             assert children.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):

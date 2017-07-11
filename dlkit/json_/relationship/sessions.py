@@ -1678,7 +1678,7 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
-            return self._catalog_session.can_create_catalogs_with_record_types(catalog_record_types=family_record_types)
+            return self._catalog_session.can_create_catalog_with_record_types(catalog_record_types=family_record_types)
         return True
 
     @utilities.arguments_not_none
@@ -1955,7 +1955,7 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         # Implemented from template for
         # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
-            return self._catalog_session.alias_catalog(catalog_id=family_id, alias_id=osid.id.Id)
+            return self._catalog_session.alias_catalog(catalog_id=family_id, alias_id=alias_id)
         self._alias_id(primary_id=family_id, equivalent_id=alias_id)
 
 
@@ -2190,7 +2190,7 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalog_ids()
+            return self._catalog_session.get_parent_catalog_ids(catalog_id=family_id)
         return self._hierarchy_session.get_parents(id_=family_id)
 
     @utilities.arguments_not_none
@@ -2212,7 +2212,7 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         # Implemented from template for
         # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
-            return self._catalog_session.git_parent_catalogs(catalog_id=family_id)
+            return self._catalog_session.get_parent_catalogs(catalog_id=family_id)
         return FamilyLookupSession(
             self._proxy,
             self._runtime).get_families_by_ids(

@@ -5,14 +5,16 @@ import datetime
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.grading import objects as ABCObjects
 from dlkit.abstract_osid.grading import queries as ABCQueries
 from dlkit.abstract_osid.grading.objects import Grade
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.json_.grading.objects import GradebookColumnSummary
 from dlkit.primordium.calendaring.primitives import DateTime
@@ -36,7 +38,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_system_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -136,6 +138,8 @@ class TestGradeSystemLookupSession(object):
         """Tests get_grade_system_by_grade"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_grade_system_by_grade(True)
@@ -218,7 +222,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_system_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -315,7 +319,7 @@ class TestGradeSystemQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_system_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -528,6 +532,8 @@ class TestGradeSystemAdminSession(object):
         """Tests can_update_grades"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.can_update_grades(True)
@@ -607,13 +613,15 @@ class TestGradeSystemAdminSession(object):
         """Tests alias_grade"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.alias_grade(True, True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_entry_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.grade_entry_list = list()
@@ -810,6 +818,8 @@ class TestGradeEntryLookupSession(object):
         """Tests get_grade_entries_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_grade_entries_on_date(True, True)
@@ -847,6 +857,8 @@ class TestGradeEntryLookupSession(object):
         """Tests get_grade_entries_for_resource"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_grade_entries_for_resource(True)
@@ -855,6 +867,8 @@ class TestGradeEntryLookupSession(object):
         """Tests get_grade_entries_for_resource_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_grade_entries_for_resource_on_date(True, True, True)
@@ -868,6 +882,8 @@ class TestGradeEntryLookupSession(object):
         """Tests get_grade_entries_for_gradebook_column_and_resource_on_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_grade_entries_for_gradebook_column_and_resource_on_date(True, True, True, True)
@@ -876,6 +892,8 @@ class TestGradeEntryLookupSession(object):
         """Tests get_grade_entries_by_grader"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_grade_entries_by_grader(True)
@@ -904,7 +922,7 @@ class TestGradeEntryLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_entry_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.grade_entry_list = list()
@@ -1013,7 +1031,7 @@ class TestGradeEntryQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def grade_entry_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.grade_entry_list = list()
@@ -1141,6 +1159,8 @@ class TestGradeEntryAdminSession(object):
         """Tests get_grade_entry_form_for_override"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_grade_entry_form_for_override(True, True)
@@ -1149,6 +1169,8 @@ class TestGradeEntryAdminSession(object):
         """Tests override_calculated_grade_entry"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.override_calculated_grade_entry(True)
@@ -1227,7 +1249,7 @@ class TestGradeEntryAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_column_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.grade_entry_list = list()
@@ -1450,7 +1472,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_column_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -1547,7 +1569,7 @@ class TestGradebookColumnQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_column_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -1681,6 +1703,8 @@ class TestGradebookColumnAdminSession(object):
         """Tests sequence_gradebook_columns"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.sequence_gradebook_columns(True)
@@ -1689,6 +1713,8 @@ class TestGradebookColumnAdminSession(object):
         """Tests move_gradebook_column"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.move_gradebook_column(True, True)
@@ -1697,6 +1723,8 @@ class TestGradebookColumnAdminSession(object):
         """Tests copy_gradebook_column_entries"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.copy_gradebook_column_entries(True, True)
@@ -1741,7 +1769,7 @@ class TestGradebookColumnAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -1832,6 +1860,8 @@ class TestGradebookLookupSession(object):
         """Tests get_gradebooks_by_parent_genus_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_gradebooks_by_parent_genus_type(True)
@@ -1840,6 +1870,8 @@ class TestGradebookLookupSession(object):
         """Tests get_gradebooks_by_record_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_gradebooks_by_record_type(True)
@@ -1848,6 +1880,8 @@ class TestGradebookLookupSession(object):
         """Tests get_gradebooks_by_provider"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_gradebooks_by_provider(True)
@@ -1865,7 +1899,7 @@ class TestGradebookLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -1920,7 +1954,7 @@ class TestGradebookAdminSession(object):
         from dlkit.abstract_osid.grading.objects import GradebookForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_gradebook_form_for_create([])
-            assert isinstance(catalog_form, GradebookForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1935,7 +1969,7 @@ class TestGradebookAdminSession(object):
             catalog_form.display_name = 'Test Gradebook'
             catalog_form.description = 'Test Gradebook for GradebookAdminSession.create_gradebook tests'
             new_catalog = self.svc_mgr.create_gradebook(catalog_form)
-            assert isinstance(new_catalog, Gradebook)
+            assert isinstance(new_catalog, OsidCatalog)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_gradebook('foo')
@@ -1951,7 +1985,7 @@ class TestGradebookAdminSession(object):
         from dlkit.abstract_osid.grading.objects import GradebookForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_gradebook_form_for_update(self.catalog.ident)
-            assert isinstance(catalog_form, GradebookForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -2006,7 +2040,7 @@ class TestGradebookAdminSession(object):
 
 # Override this because spec doesn't have a method ``remove_child_gradebooks``
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_hierarchy_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -2096,7 +2130,7 @@ class TestGradebookHierarchySession(object):
         from dlkit.abstract_osid.grading.objects import GradebookList
         if not is_never_authz(self.service_config):
             roots = self.svc_mgr.get_root_gradebooks()
-            assert isinstance(roots, GradebookList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -2142,10 +2176,9 @@ class TestGradebookHierarchySession(object):
     def test_get_parent_gradebooks(self):
         """Tests get_parent_gradebooks"""
         # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
-        from dlkit.abstract_osid.grading.objects import GradebookList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_parent_gradebooks(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, GradebookList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Root'
         else:
@@ -2217,10 +2250,9 @@ class TestGradebookHierarchySession(object):
     def test_get_child_gradebooks(self):
         """Tests get_child_gradebooks"""
         # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
-        from dlkit.abstract_osid.grading.objects import GradebookList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_child_gradebooks(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, GradebookList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Grandchild 1'
         else:
@@ -2289,7 +2321,7 @@ class TestGradebookHierarchySession(object):
 
 # Override this because spec doesn't have a method ``remove_child_gradebooks``
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def gradebook_hierarchy_design_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -2356,7 +2388,7 @@ class TestGradebookHierarchyDesignSession(object):
         # this is tested in the setUpClass
         if not is_never_authz(self.service_config):
             roots = self.session.get_root_gradebooks()
-            assert isinstance(roots, ABCObjects.GradebookList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -2392,7 +2424,7 @@ class TestGradebookHierarchyDesignSession(object):
         if not is_never_authz(self.service_config):
             # this is tested in the setUpClass
             children = self.session.get_child_gradebooks(self.catalogs['Root'].ident)
-            assert isinstance(children, ABCObjects.GradebookList)
+            assert isinstance(children, OsidList)
             assert children.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):

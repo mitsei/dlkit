@@ -4,13 +4,15 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.logging_ import objects as ABCObjects
 from dlkit.abstract_osid.logging_ import queries as ABCQueries
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -32,7 +34,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'Y
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def logging_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -88,6 +90,8 @@ class TestLoggingSession(object):
         """Tests log"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.log(True, True)
@@ -96,6 +100,8 @@ class TestLoggingSession(object):
         """Tests log_at_priority"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.log_at_priority(True, True, True)
@@ -112,13 +118,15 @@ class TestLoggingSession(object):
         """Tests create_log_entry"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.create_log_entry(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def log_entry_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -279,6 +287,8 @@ class TestLogEntryLookupSession(object):
         """Tests get_log_entries_by_priority_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_log_entries_by_priority_type(True)
@@ -287,6 +297,8 @@ class TestLogEntryLookupSession(object):
         """Tests get_log_entries_by_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_log_entries_by_date(True, True)
@@ -295,6 +307,8 @@ class TestLogEntryLookupSession(object):
         """Tests get_log_entries_by_priority_type_and_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_log_entries_by_priority_type_and_date(True, True, True)
@@ -303,6 +317,8 @@ class TestLogEntryLookupSession(object):
         """Tests get_log_entries_for_resource"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_log_entries_for_resource(True)
@@ -311,6 +327,8 @@ class TestLogEntryLookupSession(object):
         """Tests get_log_entries_by_date_for_resource"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_log_entries_by_date_for_resource(True, True, True)
@@ -319,6 +337,8 @@ class TestLogEntryLookupSession(object):
         """Tests get_log_entries_by_priority_type_and_date_for_resource"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_log_entries_by_priority_type_and_date_for_resource(True, True, True, True)
@@ -351,7 +371,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def log_entry_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -448,7 +468,7 @@ class TestLogEntryQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def log_entry_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -618,7 +638,7 @@ class TestLogEntryAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def log_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -709,6 +729,8 @@ class TestLogLookupSession(object):
         """Tests get_logs_by_parent_genus_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_logs_by_parent_genus_type(True)
@@ -717,6 +739,8 @@ class TestLogLookupSession(object):
         """Tests get_logs_by_record_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_logs_by_record_type(True)
@@ -725,6 +749,8 @@ class TestLogLookupSession(object):
         """Tests get_logs_by_provider"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_logs_by_provider(True)
@@ -742,7 +768,7 @@ class TestLogLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def log_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -797,7 +823,7 @@ class TestLogAdminSession(object):
         from dlkit.abstract_osid.logging_.objects import LogForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_log_form_for_create([])
-            assert isinstance(catalog_form, LogForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -812,7 +838,7 @@ class TestLogAdminSession(object):
             catalog_form.display_name = 'Test Log'
             catalog_form.description = 'Test Log for LogAdminSession.create_log tests'
             new_catalog = self.svc_mgr.create_log(catalog_form)
-            assert isinstance(new_catalog, Log)
+            assert isinstance(new_catalog, OsidCatalog)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_log('foo')
@@ -828,7 +854,7 @@ class TestLogAdminSession(object):
         from dlkit.abstract_osid.logging_.objects import LogForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_log_form_for_update(self.catalog.ident)
-            assert isinstance(catalog_form, LogForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -882,7 +908,7 @@ class TestLogAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def log_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -973,7 +999,7 @@ class TestLogHierarchySession(object):
         from dlkit.abstract_osid.logging_.objects import LogList
         if not is_never_authz(self.service_config):
             roots = self.svc_mgr.get_root_logs()
-            assert isinstance(roots, LogList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1019,10 +1045,9 @@ class TestLogHierarchySession(object):
     def test_get_parent_logs(self):
         """Tests get_parent_logs"""
         # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
-        from dlkit.abstract_osid.logging_.objects import LogList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_parent_logs(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, LogList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Root'
         else:
@@ -1094,10 +1119,9 @@ class TestLogHierarchySession(object):
     def test_get_child_logs(self):
         """Tests get_child_logs"""
         # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
-        from dlkit.abstract_osid.logging_.objects import LogList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_child_logs(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, LogList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Grandchild 1'
         else:
@@ -1165,7 +1189,7 @@ class TestLogHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def log_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param
@@ -1232,7 +1256,7 @@ class TestLogHierarchyDesignSession(object):
         # this is tested in the setUpClass
         if not is_never_authz(self.service_config):
             roots = self.session.get_root_logs()
-            assert isinstance(roots, ABCObjects.LogList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -1268,7 +1292,7 @@ class TestLogHierarchyDesignSession(object):
         if not is_never_authz(self.service_config):
             # this is tested in the setUpClass
             children = self.session.get_child_logs(self.catalogs['Root'].ident)
-            assert isinstance(children, ABCObjects.LogList)
+            assert isinstance(children, OsidList)
             assert children.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):

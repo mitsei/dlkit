@@ -5,7 +5,7 @@ import datetime
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.assessment import objects
 from dlkit.abstract_osid.assessment import objects as ABCObjects
 from dlkit.abstract_osid.assessment import queries as ABCQueries
@@ -20,7 +20,9 @@ from dlkit.abstract_osid.assessment.rules import Response
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
+from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.json_.assessment import searches
 from dlkit.json_.id.objects import IdList
@@ -50,7 +52,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE 2', 'authority': 
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -883,7 +885,7 @@ class TestAssessmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_results_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1007,7 +1009,7 @@ class TestAssessmentResultsSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def item_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -1159,6 +1161,8 @@ class TestItemLookupSession(object):
         """Tests get_items_by_question"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_items_by_question(True)
@@ -1167,6 +1171,8 @@ class TestItemLookupSession(object):
         """Tests get_items_by_answer"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_items_by_answer(True)
@@ -1175,6 +1181,8 @@ class TestItemLookupSession(object):
         """Tests get_items_by_learning_objective"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_items_by_learning_objective(True)
@@ -1183,6 +1191,8 @@ class TestItemLookupSession(object):
         """Tests get_items_by_learning_objectives"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_items_by_learning_objectives(True)
@@ -1209,7 +1219,7 @@ class TestItemLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def item_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1306,7 +1316,7 @@ class TestItemQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def item_search_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1386,13 +1396,15 @@ class TestItemSearchSession(object):
         """Tests get_item_query_from_inspector"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_item_query_from_inspector(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def item_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1755,7 +1767,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def item_notification_session_class_fixture(request):
     # Implemented from init template for ResourceNotificationSession
     request.cls.service_config = request.param
@@ -1846,6 +1858,8 @@ class TestItemNotificationSession(object):
         """Tests acknowledge_item_notification"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.acknowledge_item_notification(True)
@@ -1909,13 +1923,15 @@ class TestItemNotificationSession(object):
         """Tests acknowledge_item_notification"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.acknowledge_item_notification(True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def item_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.item_list = list()
@@ -2055,7 +2071,7 @@ class TestItemBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def item_bank_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -2186,13 +2202,15 @@ class TestItemBankAssignmentSession(object):
         """Tests reassign_item_to_billing"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.reassign_item_to_billing(True, True, True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -2366,7 +2384,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -2463,7 +2481,7 @@ class TestAssessmentQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -2641,7 +2659,7 @@ class TestAssessmentAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_bank_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
@@ -2781,7 +2799,7 @@ class TestAssessmentBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_bank_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -2912,13 +2930,15 @@ class TestAssessmentBankAssignmentSession(object):
         """Tests reassign_assessment_to_billing"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.reassign_assessment_to_billing(True, True, True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_basic_authoring_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3067,7 +3087,7 @@ class TestAssessmentBasicAuthoringSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_offered_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3231,6 +3251,8 @@ class TestAssessmentOfferedLookupSession(object):
         """Tests get_assessments_offered_by_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_offered_by_date(True, True)
@@ -3270,7 +3292,7 @@ class TestAssessmentOfferedLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_offered_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3371,7 +3393,7 @@ class TestAssessmentOfferedQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_offered_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3547,7 +3569,7 @@ class TestAssessmentOfferedAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_offered_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3692,7 +3714,7 @@ class TestAssessmentOfferedBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_offered_bank_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3828,13 +3850,15 @@ class TestAssessmentOfferedBankAssignmentSession(object):
         """Tests reassign_assessment_offered_to_billing"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.reassign_assessment_offered_to_billing(True, True, True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_taken_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_taken_list = list()
@@ -4007,6 +4031,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_by_date"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_by_date(True, True)
@@ -4015,6 +4041,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_for_taker"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_for_taker(True)
@@ -4023,6 +4051,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_by_date_for_taker"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_by_date_for_taker(True, True, True)
@@ -4042,6 +4072,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_by_date_for_assessment"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_by_date_for_assessment(True, True, True)
@@ -4050,6 +4082,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_for_taker_and_assessment"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_for_taker_and_assessment(True, True)
@@ -4058,6 +4092,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_by_date_for_taker_and_assessment"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_by_date_for_taker_and_assessment(True, True, True, True)
@@ -4077,6 +4113,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_by_date_for_assessment_offered"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_by_date_for_assessment_offered(True, True, True)
@@ -4100,6 +4138,8 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken_by_date_for_taker_and_assessment_offered"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_assessments_taken_by_date_for_taker_and_assessment_offered(True, True, True, True)
@@ -4128,7 +4168,7 @@ class TestAssessmentTakenLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_taken_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_taken_list = list()
@@ -4236,7 +4276,7 @@ class TestAssessmentTakenQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_taken_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -4408,7 +4448,7 @@ class TestAssessmentTakenAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_taken_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_taken_list = list()
@@ -4559,7 +4599,7 @@ class TestAssessmentTakenBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_taken_bank_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_taken_list = list()
@@ -4701,13 +4741,15 @@ class TestAssessmentTakenBankAssignmentSession(object):
         """Tests reassign_assessment_taken_to_billing"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.reassign_assessment_taken_to_billing(True, True, True)
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bank_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -4798,6 +4840,8 @@ class TestBankLookupSession(object):
         """Tests get_banks_by_parent_genus_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_banks_by_parent_genus_type(True)
@@ -4806,6 +4850,8 @@ class TestBankLookupSession(object):
         """Tests get_banks_by_record_type"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_banks_by_record_type(True)
@@ -4814,6 +4860,8 @@ class TestBankLookupSession(object):
         """Tests get_banks_by_provider"""
         if is_never_authz(self.service_config):
             pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
         else:
             with pytest.raises(errors.Unimplemented):
                 self.session.get_banks_by_provider(True)
@@ -4831,7 +4879,7 @@ class TestBankLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bank_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -4893,7 +4941,7 @@ class TestBankQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bank_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -4948,7 +4996,7 @@ class TestBankAdminSession(object):
         from dlkit.abstract_osid.assessment.objects import BankForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_bank_form_for_create([])
-            assert isinstance(catalog_form, BankForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -4963,7 +5011,7 @@ class TestBankAdminSession(object):
             catalog_form.display_name = 'Test Bank'
             catalog_form.description = 'Test Bank for BankAdminSession.create_bank tests'
             new_catalog = self.svc_mgr.create_bank(catalog_form)
-            assert isinstance(new_catalog, Bank)
+            assert isinstance(new_catalog, OsidCatalog)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_bank('foo')
@@ -4979,7 +5027,7 @@ class TestBankAdminSession(object):
         from dlkit.abstract_osid.assessment.objects import BankForm
         if not is_never_authz(self.service_config):
             catalog_form = self.svc_mgr.get_bank_form_for_update(self.catalog.ident)
-            assert isinstance(catalog_form, BankForm)
+            assert isinstance(catalog_form, OsidCatalogForm)
             assert catalog_form.is_for_update()
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -5033,7 +5081,7 @@ class TestBankAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bank_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -5124,7 +5172,7 @@ class TestBankHierarchySession(object):
         from dlkit.abstract_osid.assessment.objects import BankList
         if not is_never_authz(self.service_config):
             roots = self.svc_mgr.get_root_banks()
-            assert isinstance(roots, BankList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -5170,10 +5218,9 @@ class TestBankHierarchySession(object):
     def test_get_parent_banks(self):
         """Tests get_parent_banks"""
         # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
-        from dlkit.abstract_osid.assessment.objects import BankList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_parent_banks(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, BankList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Root'
         else:
@@ -5245,10 +5292,9 @@ class TestBankHierarchySession(object):
     def test_get_child_banks(self):
         """Tests get_child_banks"""
         # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
-        from dlkit.abstract_osid.assessment.objects import BankList
         if not is_never_authz(self.service_config):
             catalog_list = self.svc_mgr.get_child_banks(self.catalogs['Child 1'].ident)
-            assert isinstance(catalog_list, BankList)
+            assert isinstance(catalog_list, OsidList)
             assert catalog_list.available() == 1
             assert catalog_list.next().display_name.text == 'Grandchild 1'
         else:
@@ -5316,7 +5362,7 @@ class TestBankHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def bank_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param
@@ -5383,7 +5429,7 @@ class TestBankHierarchyDesignSession(object):
         # this is tested in the setUpClass
         if not is_never_authz(self.service_config):
             roots = self.session.get_root_banks()
-            assert isinstance(roots, ABCObjects.BankList)
+            assert isinstance(roots, OsidList)
             assert roots.available() == 1
         else:
             with pytest.raises(errors.PermissionDenied):
@@ -5419,7 +5465,7 @@ class TestBankHierarchyDesignSession(object):
         if not is_never_authz(self.service_config):
             # this is tested in the setUpClass
             children = self.session.get_child_banks(self.catalogs['Root'].ident)
-            assert isinstance(children, ABCObjects.BankList)
+            assert isinstance(children, OsidList)
             assert children.available() == 2
         else:
             with pytest.raises(errors.PermissionDenied):
