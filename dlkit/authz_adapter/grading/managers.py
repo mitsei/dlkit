@@ -189,15 +189,12 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemLookupSession')(
-                provider_session=self._provider_manager.get_grade_system_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemLookupSession')(
+            provider_session=self._provider_manager.get_grade_system_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     grade_system_lookup_session = property(fget=get_grade_system_lookup_session)
 
@@ -210,15 +207,12 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemLookupSession')(
-                provider_session=self._provider_manager.get_grade_system_lookup_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemLookupSession')(
+            provider_session=self._provider_manager.get_grade_system_lookup_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_grade_system_query_session(self):
         # Implemented from azosid template for -
@@ -228,15 +222,12 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemQuerySession')(
-                provider_session=self._provider_manager.get_grade_system_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemQuerySession')(
+            provider_session=self._provider_manager.get_grade_system_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     grade_system_query_session = property(fget=get_grade_system_query_session)
 
@@ -249,27 +240,21 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemQuerySession')(
-                provider_session=self._provider_manager.get_grade_system_query_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemQuerySession')(
+            provider_session=self._provider_manager.get_grade_system_query_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_grade_system_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradeSystemAdminSession')(
-                provider_session=self._provider_manager.get_grade_system_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemAdminSession')(
+            provider_session=self._provider_manager.get_grade_system_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     grade_system_admin_session = property(fget=get_grade_system_admin_session)
 
@@ -277,14 +262,11 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_grade_system_admin_session_for_gradebook(self, gradebook_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradeSystemAdminSession')(
-                provider_session=self._provider_manager.get_grade_system_admin_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemAdminSession')(
+            provider_session=self._provider_manager.get_grade_system_admin_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_grade_entry_lookup_session(self):
         # Implemented from azosid template for -
@@ -294,15 +276,12 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryLookupSession')(
-                provider_session=self._provider_manager.get_grade_entry_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryLookupSession')(
+            provider_session=self._provider_manager.get_grade_entry_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     grade_entry_lookup_session = property(fget=get_grade_entry_lookup_session)
 
@@ -315,15 +294,12 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryLookupSession')(
-                provider_session=self._provider_manager.get_grade_entry_lookup_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryLookupSession')(
+            provider_session=self._provider_manager.get_grade_entry_lookup_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_grade_entry_query_session(self):
         # Implemented from azosid template for -
@@ -333,15 +309,12 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryQuerySession')(
-                provider_session=self._provider_manager.get_grade_entry_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryQuerySession')(
+            provider_session=self._provider_manager.get_grade_entry_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     grade_entry_query_session = property(fget=get_grade_entry_query_session)
 
@@ -354,27 +327,21 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryQuerySession')(
-                provider_session=self._provider_manager.get_grade_entry_query_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryQuerySession')(
+            provider_session=self._provider_manager.get_grade_entry_query_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_grade_entry_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradeEntryAdminSession')(
-                provider_session=self._provider_manager.get_grade_entry_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryAdminSession')(
+            provider_session=self._provider_manager.get_grade_entry_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     grade_entry_admin_session = property(fget=get_grade_entry_admin_session)
 
@@ -382,26 +349,20 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_grade_entry_admin_session_for_gradebook(self, gradebook_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradeEntryAdminSession')(
-                provider_session=self._provider_manager.get_grade_entry_admin_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryAdminSession')(
+            provider_session=self._provider_manager.get_grade_entry_admin_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_gradebook_column_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookColumnLookupSession')(
-                provider_session=self._provider_manager.get_gradebook_column_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnLookupSession')(
+            provider_session=self._provider_manager.get_gradebook_column_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     gradebook_column_lookup_session = property(fget=get_gradebook_column_lookup_session)
 
@@ -409,26 +370,20 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradebookColumnLookupSession')(
-                provider_session=self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnLookupSession')(
+            provider_session=self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_gradebook_column_query_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookColumnQuerySession')(
-                provider_session=self._provider_manager.get_gradebook_column_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnQuerySession')(
+            provider_session=self._provider_manager.get_gradebook_column_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     gradebook_column_query_session = property(fget=get_gradebook_column_query_session)
 
@@ -436,26 +391,20 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_gradebook_column_query_session_for_gradebook(self, gradebook_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradebookColumnQuerySession')(
-                provider_session=self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnQuerySession')(
+            provider_session=self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_gradebook_column_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookColumnAdminSession')(
-                provider_session=self._provider_manager.get_gradebook_column_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnAdminSession')(
+            provider_session=self._provider_manager.get_gradebook_column_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     gradebook_column_admin_session = property(fget=get_gradebook_column_admin_session)
 
@@ -463,68 +412,53 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_gradebook_column_admin_session_for_gradebook(self, gradebook_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradebookColumnAdminSession')(
-                provider_session=self._provider_manager.get_gradebook_column_admin_session_for_gradebook(gradebook_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnAdminSession')(
+            provider_session=self._provider_manager.get_gradebook_column_admin_session_for_gradebook(gradebook_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_gradebook_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookLookupSession')(
-                provider_session=self._provider_manager.get_gradebook_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookLookupSession')(
+            provider_session=self._provider_manager.get_gradebook_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     gradebook_lookup_session = property(fget=get_gradebook_lookup_session)
 
     def get_gradebook_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookAdminSession')(
-                provider_session=self._provider_manager.get_gradebook_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookAdminSession')(
+            provider_session=self._provider_manager.get_gradebook_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     gradebook_admin_session = property(fget=get_gradebook_admin_session)
 
     def get_gradebook_hierarchy_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookHierarchySession')(
-                provider_session=self._provider_manager.get_gradebook_hierarchy_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookHierarchySession')(
+            provider_session=self._provider_manager.get_gradebook_hierarchy_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     gradebook_hierarchy_session = property(fget=get_gradebook_hierarchy_session)
 
     def get_gradebook_hierarchy_design_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     gradebook_hierarchy_design_session = property(fget=get_gradebook_hierarchy_design_session)
 
@@ -566,16 +500,13 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemLookupSession')(
-                provider_session=self._provider_manager.get_grade_system_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemLookupSession')(
+            provider_session=self._provider_manager.get_grade_system_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_system_lookup_session_for_gradebook(self, gradebook_id, proxy):
@@ -586,16 +517,13 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemLookupSession')(
-                provider_session=self._provider_manager.get_grade_system_lookup_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemLookupSession')(
+            provider_session=self._provider_manager.get_grade_system_lookup_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_system_query_session(self, proxy):
@@ -606,16 +534,13 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemQuerySession')(
-                provider_session=self._provider_manager.get_grade_system_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemQuerySession')(
+            provider_session=self._provider_manager.get_grade_system_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_system_query_session_for_gradebook(self, gradebook_id, proxy):
@@ -626,44 +551,35 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeSystemQuerySession')(
-                provider_session=self._provider_manager.get_grade_system_query_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemQuerySession')(
+            provider_session=self._provider_manager.get_grade_system_query_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_system_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradeSystemAdminSession')(
-                provider_session=self._provider_manager.get_grade_system_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemAdminSession')(
+            provider_session=self._provider_manager.get_grade_system_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_grade_system_admin_session_for_gradebook(self, gradebook_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradeSystemAdminSession')(
-                provider_session=self._provider_manager.get_grade_system_admin_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeSystemAdminSession')(
+            provider_session=self._provider_manager.get_grade_system_admin_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_grade_entry_lookup_session(self, proxy):
@@ -674,16 +590,13 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryLookupSession')(
-                provider_session=self._provider_manager.get_grade_entry_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryLookupSession')(
+            provider_session=self._provider_manager.get_grade_entry_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_entry_lookup_session_for_gradebook(self, gradebook_id, proxy):
@@ -694,16 +607,13 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryLookupSession')(
-                provider_session=self._provider_manager.get_grade_entry_lookup_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryLookupSession')(
+            provider_session=self._provider_manager.get_grade_entry_lookup_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_entry_query_session(self, proxy):
@@ -714,16 +624,13 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryQuerySession')(
-                provider_session=self._provider_manager.get_grade_entry_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryQuerySession')(
+            provider_session=self._provider_manager.get_grade_entry_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_entry_query_session_for_gradebook(self, gradebook_id, proxy):
@@ -734,184 +641,145 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             query_session.use_federated_gradebook_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'GradeEntryQuerySession')(
-                provider_session=self._provider_manager.get_grade_entry_query_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryQuerySession')(
+            provider_session=self._provider_manager.get_grade_entry_query_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_grade_entry_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradeEntryAdminSession')(
-                provider_session=self._provider_manager.get_grade_entry_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryAdminSession')(
+            provider_session=self._provider_manager.get_grade_entry_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_grade_entry_admin_session_for_gradebook(self, gradebook_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradeEntryAdminSession')(
-                provider_session=self._provider_manager.get_grade_entry_admin_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradeEntryAdminSession')(
+            provider_session=self._provider_manager.get_grade_entry_admin_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_column_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookColumnLookupSession')(
-                provider_session=self._provider_manager.get_gradebook_column_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnLookupSession')(
+            provider_session=self._provider_manager.get_gradebook_column_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradebookColumnLookupSession')(
-                provider_session=self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnLookupSession')(
+            provider_session=self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_column_query_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookColumnQuerySession')(
-                provider_session=self._provider_manager.get_gradebook_column_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnQuerySession')(
+            provider_session=self._provider_manager.get_gradebook_column_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_column_query_session_for_gradebook(self, gradebook_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradebookColumnQuerySession')(
-                provider_session=self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnQuerySession')(
+            provider_session=self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_column_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookColumnAdminSession')(
-                provider_session=self._provider_manager.get_gradebook_column_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnAdminSession')(
+            provider_session=self._provider_manager.get_gradebook_column_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_column_admin_session_for_gradebook(self, gradebook_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'GradebookColumnAdminSession')(
-                provider_session=self._provider_manager.get_gradebook_column_admin_session_for_gradebook(gradebook_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookColumnAdminSession')(
+            provider_session=self._provider_manager.get_gradebook_column_admin_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookLookupSession')(
-                provider_session=self._provider_manager.get_gradebook_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookLookupSession')(
+            provider_session=self._provider_manager.get_gradebook_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookAdminSession')(
-                provider_session=self._provider_manager.get_gradebook_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookAdminSession')(
+            provider_session=self._provider_manager.get_gradebook_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookHierarchySession')(
-                provider_session=self._provider_manager.get_gradebook_hierarchy_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookHierarchySession')(
+            provider_session=self._provider_manager.get_gradebook_hierarchy_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_gradebook_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'GradebookHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'GradebookHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     def get_grading_batch_proxy_manager(self):
         raise Unimplemented()

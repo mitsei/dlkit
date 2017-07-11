@@ -83,14 +83,11 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
     def get_hierarchy_traversal_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyTraversalSession')(
-                provider_session=self._provider_manager.get_hierarchy_traversal_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyTraversalSession')(
+            provider_session=self._provider_manager.get_hierarchy_traversal_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     hierarchy_traversal_session = property(fget=get_hierarchy_traversal_session)
 
@@ -98,26 +95,20 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
     def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'HierarchyTraversalSession')(
-                provider_session=self._provider_manager.get_hierarchy_traversal_session_for_hierarchy(hierarchy_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyTraversalSession')(
+            provider_session=self._provider_manager.get_hierarchy_traversal_session_for_hierarchy(hierarchy_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_hierarchy_design_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyDesignSession')(
-                provider_session=self._provider_manager.get_hierarchy_design_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyDesignSession')(
+            provider_session=self._provider_manager.get_hierarchy_design_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     hierarchy_design_session = property(fget=get_hierarchy_design_session)
 
@@ -125,40 +116,31 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
     def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'HierarchyDesignSession')(
-                provider_session=self._provider_manager.get_hierarchy_design_session_for_hierarchy(hierarchy_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyDesignSession')(
+            provider_session=self._provider_manager.get_hierarchy_design_session_for_hierarchy(hierarchy_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_hierarchy_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyLookupSession')(
-                provider_session=self._provider_manager.get_hierarchy_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyLookupSession')(
+            provider_session=self._provider_manager.get_hierarchy_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     hierarchy_lookup_session = property(fget=get_hierarchy_lookup_session)
 
     def get_hierarchy_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyAdminSession')(
-                provider_session=self._provider_manager.get_hierarchy_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyAdminSession')(
+            provider_session=self._provider_manager.get_hierarchy_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 
@@ -180,82 +162,64 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
     def get_hierarchy_traversal_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyTraversalSession')(
-                provider_session=self._provider_manager.get_hierarchy_traversal_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyTraversalSession')(
+            provider_session=self._provider_manager.get_hierarchy_traversal_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'HierarchyTraversalSession')(
-                provider_session=self._provider_manager.get_hierarchy_traversal_session_for_hierarchy(hierarchy_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyTraversalSession')(
+            provider_session=self._provider_manager.get_hierarchy_traversal_session_for_hierarchy(hierarchy_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyDesignSession')(
-                provider_session=self._provider_manager.get_hierarchy_design_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyDesignSession')(
+            provider_session=self._provider_manager.get_hierarchy_design_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'HierarchyDesignSession')(
-                provider_session=self._provider_manager.get_hierarchy_design_session_for_hierarchy(hierarchy_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyDesignSession')(
+            provider_session=self._provider_manager.get_hierarchy_design_session_for_hierarchy(hierarchy_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_hierarchy_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyLookupSession')(
-                provider_session=self._provider_manager.get_hierarchy_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyLookupSession')(
+            provider_session=self._provider_manager.get_hierarchy_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_hierarchy_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'HierarchyAdminSession')(
-                provider_session=self._provider_manager.get_hierarchy_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'HierarchyAdminSession')(
+            provider_session=self._provider_manager.get_hierarchy_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
