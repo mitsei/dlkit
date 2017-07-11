@@ -4,7 +4,7 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.locale.types.calendar import get_type_data
 
 
-class TestCoordinate(object):
+class TestCalendar(object):
     def test_get_type_data_with_celestial(self):
         results = get_type_data('xhosa')
         assert results['domain'] == 'Calendar Types'
