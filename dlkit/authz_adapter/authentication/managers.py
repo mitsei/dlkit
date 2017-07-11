@@ -87,15 +87,12 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
             query_session.use_federated_agency_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AgentLookupSession')(
-                provider_session=self._provider_manager.get_agent_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AgentLookupSession')(
+            provider_session=self._provider_manager.get_agent_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     agent_lookup_session = property(fget=get_agent_lookup_session)
 
@@ -108,15 +105,12 @@ class AuthenticationManager(osid_managers.OsidManager, AuthenticationProfile, au
             query_session.use_federated_agency_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AgentLookupSession')(
-                provider_session=self._provider_manager.get_agent_lookup_session_for_agency(agency_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AgentLookupSession')(
+            provider_session=self._provider_manager.get_agent_lookup_session_for_agency(agency_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_authentication_batch_manager(self):
         raise Unimplemented()
@@ -156,16 +150,13 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
             query_session.use_federated_agency_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AgentLookupSession')(
-                provider_session=self._provider_manager.get_agent_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AgentLookupSession')(
+            provider_session=self._provider_manager.get_agent_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_agent_lookup_session_for_agency(self, agency_id, proxy):
@@ -176,16 +167,13 @@ class AuthenticationProxyManager(osid_managers.OsidProxyManager, AuthenticationP
             query_session.use_federated_agency_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AgentLookupSession')(
-                provider_session=self._provider_manager.get_agent_lookup_session_for_agency(agency_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AgentLookupSession')(
+            provider_session=self._provider_manager.get_agent_lookup_session_for_agency(agency_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     def get_authentication_batch_proxy_manager(self):
         raise Unimplemented()

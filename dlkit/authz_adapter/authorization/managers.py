@@ -147,14 +147,11 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     def get_authorization_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'AuthorizationSession')(
-                provider_session=self._provider_manager.get_authorization_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationSession')(
+            provider_session=self._provider_manager.get_authorization_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     authorization_session = property(fget=get_authorization_session)
 
@@ -162,14 +159,11 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     def get_authorization_session_for_vault(self, vault_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'AuthorizationSession')(
-                provider_session=self._provider_manager.get_authorization_session_for_vault(vault_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationSession')(
+            provider_session=self._provider_manager.get_authorization_session_for_vault(vault_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_authorization_lookup_session(self):
         # Implemented from azosid template for -
@@ -179,15 +173,12 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationLookupSession')(
-                provider_session=self._provider_manager.get_authorization_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationLookupSession')(
+            provider_session=self._provider_manager.get_authorization_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     authorization_lookup_session = property(fget=get_authorization_lookup_session)
 
@@ -200,15 +191,12 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationLookupSession')(
-                provider_session=self._provider_manager.get_authorization_lookup_session_for_vault(vault_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationLookupSession')(
+            provider_session=self._provider_manager.get_authorization_lookup_session_for_vault(vault_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_authorization_query_session(self):
         # Implemented from azosid template for -
@@ -218,15 +206,12 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationQuerySession')(
-                provider_session=self._provider_manager.get_authorization_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationQuerySession')(
+            provider_session=self._provider_manager.get_authorization_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     authorization_query_session = property(fget=get_authorization_query_session)
 
@@ -239,27 +224,21 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationQuerySession')(
-                provider_session=self._provider_manager.get_authorization_query_session_for_vault(vault_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationQuerySession')(
+            provider_session=self._provider_manager.get_authorization_query_session_for_vault(vault_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_authorization_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'AuthorizationAdminSession')(
-                provider_session=self._provider_manager.get_authorization_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationAdminSession')(
+            provider_session=self._provider_manager.get_authorization_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     authorization_admin_session = property(fget=get_authorization_admin_session)
 
@@ -267,54 +246,42 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     def get_authorization_admin_session_for_vault(self, vault_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'AuthorizationAdminSession')(
-                provider_session=self._provider_manager.get_authorization_admin_session_for_vault(vault_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationAdminSession')(
+            provider_session=self._provider_manager.get_authorization_admin_session_for_vault(vault_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_vault_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'VaultLookupSession')(
-                provider_session=self._provider_manager.get_vault_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'VaultLookupSession')(
+            provider_session=self._provider_manager.get_vault_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     vault_lookup_session = property(fget=get_vault_lookup_session)
 
     def get_vault_query_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'VaultQuerySession')(
-                provider_session=self._provider_manager.get_vault_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'VaultQuerySession')(
+            provider_session=self._provider_manager.get_vault_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     vault_query_session = property(fget=get_vault_query_session)
 
     def get_vault_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'VaultAdminSession')(
-                provider_session=self._provider_manager.get_vault_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'VaultAdminSession')(
+            provider_session=self._provider_manager.get_vault_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     vault_admin_session = property(fget=get_vault_admin_session)
 
@@ -346,29 +313,23 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
     def get_authorization_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'AuthorizationSession')(
-                provider_session=self._provider_manager.get_authorization_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationSession')(
+            provider_session=self._provider_manager.get_authorization_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_authorization_session_for_vault(self, vault_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'AuthorizationSession')(
-                provider_session=self._provider_manager.get_authorization_session_for_vault(vault_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationSession')(
+            provider_session=self._provider_manager.get_authorization_session_for_vault(vault_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_authorization_lookup_session(self, proxy):
@@ -379,16 +340,13 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationLookupSession')(
-                provider_session=self._provider_manager.get_authorization_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationLookupSession')(
+            provider_session=self._provider_manager.get_authorization_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_authorization_lookup_session_for_vault(self, vault_id, proxy):
@@ -399,16 +357,13 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationLookupSession')(
-                provider_session=self._provider_manager.get_authorization_lookup_session_for_vault(vault_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationLookupSession')(
+            provider_session=self._provider_manager.get_authorization_lookup_session_for_vault(vault_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_authorization_query_session(self, proxy):
@@ -419,16 +374,13 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationQuerySession')(
-                provider_session=self._provider_manager.get_authorization_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationQuerySession')(
+            provider_session=self._provider_manager.get_authorization_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_authorization_query_session_for_vault(self, vault_id, proxy):
@@ -439,86 +391,68 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
             query_session.use_federated_vault_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'AuthorizationQuerySession')(
-                provider_session=self._provider_manager.get_authorization_query_session_for_vault(vault_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationQuerySession')(
+            provider_session=self._provider_manager.get_authorization_query_session_for_vault(vault_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_authorization_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'AuthorizationAdminSession')(
-                provider_session=self._provider_manager.get_authorization_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationAdminSession')(
+            provider_session=self._provider_manager.get_authorization_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_authorization_admin_session_for_vault(self, vault_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'AuthorizationAdminSession')(
-                provider_session=self._provider_manager.get_authorization_admin_session_for_vault(vault_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'AuthorizationAdminSession')(
+            provider_session=self._provider_manager.get_authorization_admin_session_for_vault(vault_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_vault_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'VaultLookupSession')(
-                provider_session=self._provider_manager.get_vault_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'VaultLookupSession')(
+            provider_session=self._provider_manager.get_vault_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_vault_query_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'VaultQuerySession')(
-                provider_session=self._provider_manager.get_vault_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'VaultQuerySession')(
+            provider_session=self._provider_manager.get_vault_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_vault_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'VaultAdminSession')(
-                provider_session=self._provider_manager.get_vault_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'VaultAdminSession')(
+            provider_session=self._provider_manager.get_vault_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     def get_authorization_batch_proxy_manager(self):
         raise Unimplemented()

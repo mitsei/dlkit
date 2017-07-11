@@ -117,15 +117,12 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipLookupSession')(
-                provider_session=self._provider_manager.get_relationship_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipLookupSession')(
+            provider_session=self._provider_manager.get_relationship_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     relationship_lookup_session = property(fget=get_relationship_lookup_session)
 
@@ -138,15 +135,12 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipLookupSession')(
-                provider_session=self._provider_manager.get_relationship_lookup_session_for_family(family_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipLookupSession')(
+            provider_session=self._provider_manager.get_relationship_lookup_session_for_family(family_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_relationship_query_session(self):
         # Implemented from azosid template for -
@@ -156,15 +150,12 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipQuerySession')(
-                provider_session=self._provider_manager.get_relationship_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipQuerySession')(
+            provider_session=self._provider_manager.get_relationship_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     relationship_query_session = property(fget=get_relationship_query_session)
 
@@ -177,27 +168,21 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipQuerySession')(
-                provider_session=self._provider_manager.get_relationship_query_session_for_family(family_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipQuerySession')(
+            provider_session=self._provider_manager.get_relationship_query_session_for_family(family_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_relationship_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'RelationshipAdminSession')(
-                provider_session=self._provider_manager.get_relationship_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipAdminSession')(
+            provider_session=self._provider_manager.get_relationship_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     relationship_admin_session = property(fget=get_relationship_admin_session)
 
@@ -205,68 +190,53 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
     def get_relationship_admin_session_for_family(self, family_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'RelationshipAdminSession')(
-                provider_session=self._provider_manager.get_relationship_admin_session_for_family(family_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipAdminSession')(
+            provider_session=self._provider_manager.get_relationship_admin_session_for_family(family_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_family_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyLookupSession')(
-                provider_session=self._provider_manager.get_family_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyLookupSession')(
+            provider_session=self._provider_manager.get_family_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     family_lookup_session = property(fget=get_family_lookup_session)
 
     def get_family_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyAdminSession')(
-                provider_session=self._provider_manager.get_family_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyAdminSession')(
+            provider_session=self._provider_manager.get_family_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     family_admin_session = property(fget=get_family_admin_session)
 
     def get_family_hierarchy_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyHierarchySession')(
-                provider_session=self._provider_manager.get_family_hierarchy_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyHierarchySession')(
+            provider_session=self._provider_manager.get_family_hierarchy_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     family_hierarchy_session = property(fget=get_family_hierarchy_session)
 
     def get_family_hierarchy_design_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_family_hierarchy_design_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_family_hierarchy_design_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     family_hierarchy_design_session = property(fget=get_family_hierarchy_design_session)
 
@@ -303,16 +273,13 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipLookupSession')(
-                provider_session=self._provider_manager.get_relationship_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipLookupSession')(
+            provider_session=self._provider_manager.get_relationship_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_relationship_lookup_session_for_family(self, family_id, proxy):
@@ -323,16 +290,13 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipLookupSession')(
-                provider_session=self._provider_manager.get_relationship_lookup_session_for_family(family_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipLookupSession')(
+            provider_session=self._provider_manager.get_relationship_lookup_session_for_family(family_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_relationship_query_session(self, proxy):
@@ -343,16 +307,13 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipQuerySession')(
-                provider_session=self._provider_manager.get_relationship_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipQuerySession')(
+            provider_session=self._provider_manager.get_relationship_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_relationship_query_session_for_family(self, family_id, proxy):
@@ -363,100 +324,79 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
             query_session.use_federated_family_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'RelationshipQuerySession')(
-                provider_session=self._provider_manager.get_relationship_query_session_for_family(family_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipQuerySession')(
+            provider_session=self._provider_manager.get_relationship_query_session_for_family(family_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_relationship_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'RelationshipAdminSession')(
-                provider_session=self._provider_manager.get_relationship_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipAdminSession')(
+            provider_session=self._provider_manager.get_relationship_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_relationship_admin_session_for_family(self, family_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'RelationshipAdminSession')(
-                provider_session=self._provider_manager.get_relationship_admin_session_for_family(family_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'RelationshipAdminSession')(
+            provider_session=self._provider_manager.get_relationship_admin_session_for_family(family_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_family_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyLookupSession')(
-                provider_session=self._provider_manager.get_family_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyLookupSession')(
+            provider_session=self._provider_manager.get_family_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_family_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyAdminSession')(
-                provider_session=self._provider_manager.get_family_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyAdminSession')(
+            provider_session=self._provider_manager.get_family_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_family_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyHierarchySession')(
-                provider_session=self._provider_manager.get_family_hierarchy_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyHierarchySession')(
+            provider_session=self._provider_manager.get_family_hierarchy_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_family_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'FamilyHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_family_hierarchy_design_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'FamilyHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_family_hierarchy_design_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     def get_relationship_batch_proxy_manager(self):
         raise Unimplemented()

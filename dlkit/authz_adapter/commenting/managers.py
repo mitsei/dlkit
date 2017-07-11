@@ -117,15 +117,12 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentLookupSession')(
-                provider_session=self._provider_manager.get_comment_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentLookupSession')(
+            provider_session=self._provider_manager.get_comment_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     comment_lookup_session = property(fget=get_comment_lookup_session)
 
@@ -138,15 +135,12 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentLookupSession')(
-                provider_session=self._provider_manager.get_comment_lookup_session_for_book(book_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentLookupSession')(
+            provider_session=self._provider_manager.get_comment_lookup_session_for_book(book_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_comment_query_session(self):
         # Implemented from azosid template for -
@@ -156,15 +150,12 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentQuerySession')(
-                provider_session=self._provider_manager.get_comment_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentQuerySession')(
+            provider_session=self._provider_manager.get_comment_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     comment_query_session = property(fget=get_comment_query_session)
 
@@ -177,27 +168,21 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentQuerySession')(
-                provider_session=self._provider_manager.get_comment_query_session_for_book(book_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentQuerySession')(
+            provider_session=self._provider_manager.get_comment_query_session_for_book(book_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_comment_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'CommentAdminSession')(
-                provider_session=self._provider_manager.get_comment_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentAdminSession')(
+            provider_session=self._provider_manager.get_comment_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     comment_admin_session = property(fget=get_comment_admin_session)
 
@@ -205,68 +190,53 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
     def get_comment_admin_session_for_book(self, book_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'CommentAdminSession')(
-                provider_session=self._provider_manager.get_comment_admin_session_for_book(book_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentAdminSession')(
+            provider_session=self._provider_manager.get_comment_admin_session_for_book(book_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_book_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookLookupSession')(
-                provider_session=self._provider_manager.get_book_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookLookupSession')(
+            provider_session=self._provider_manager.get_book_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     book_lookup_session = property(fget=get_book_lookup_session)
 
     def get_book_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookAdminSession')(
-                provider_session=self._provider_manager.get_book_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookAdminSession')(
+            provider_session=self._provider_manager.get_book_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     book_admin_session = property(fget=get_book_admin_session)
 
     def get_book_hierarchy_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookHierarchySession')(
-                provider_session=self._provider_manager.get_book_hierarchy_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookHierarchySession')(
+            provider_session=self._provider_manager.get_book_hierarchy_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     book_hierarchy_session = property(fget=get_book_hierarchy_session)
 
     def get_book_hierarchy_design_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_book_hierarchy_design_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_book_hierarchy_design_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     book_hierarchy_design_session = property(fget=get_book_hierarchy_design_session)
 
@@ -298,16 +268,13 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentLookupSession')(
-                provider_session=self._provider_manager.get_comment_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentLookupSession')(
+            provider_session=self._provider_manager.get_comment_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_comment_lookup_session_for_book(self, book_id, proxy):
@@ -318,16 +285,13 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentLookupSession')(
-                provider_session=self._provider_manager.get_comment_lookup_session_for_book(book_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentLookupSession')(
+            provider_session=self._provider_manager.get_comment_lookup_session_for_book(book_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_comment_query_session(self, proxy):
@@ -338,16 +302,13 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentQuerySession')(
-                provider_session=self._provider_manager.get_comment_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentQuerySession')(
+            provider_session=self._provider_manager.get_comment_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_comment_query_session_for_book(self, book_id, proxy):
@@ -358,100 +319,79 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
             query_session.use_federated_book_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'CommentQuerySession')(
-                provider_session=self._provider_manager.get_comment_query_session_for_book(book_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentQuerySession')(
+            provider_session=self._provider_manager.get_comment_query_session_for_book(book_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_comment_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'CommentAdminSession')(
-                provider_session=self._provider_manager.get_comment_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentAdminSession')(
+            provider_session=self._provider_manager.get_comment_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_comment_admin_session_for_book(self, book_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'CommentAdminSession')(
-                provider_session=self._provider_manager.get_comment_admin_session_for_book(book_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'CommentAdminSession')(
+            provider_session=self._provider_manager.get_comment_admin_session_for_book(book_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_book_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookLookupSession')(
-                provider_session=self._provider_manager.get_book_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookLookupSession')(
+            provider_session=self._provider_manager.get_book_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_book_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookAdminSession')(
-                provider_session=self._provider_manager.get_book_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookAdminSession')(
+            provider_session=self._provider_manager.get_book_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_book_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookHierarchySession')(
-                provider_session=self._provider_manager.get_book_hierarchy_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookHierarchySession')(
+            provider_session=self._provider_manager.get_book_hierarchy_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_book_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BookHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_book_hierarchy_design_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BookHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_book_hierarchy_design_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     def get_commenting_batch_proxy_manager(self):
         raise Unimplemented()

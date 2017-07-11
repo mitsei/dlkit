@@ -166,15 +166,12 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceLookupSession')(
-                provider_session=self._provider_manager.get_resource_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceLookupSession')(
+            provider_session=self._provider_manager.get_resource_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     resource_lookup_session = property(fget=get_resource_lookup_session)
 
@@ -187,15 +184,12 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceLookupSession')(
-                provider_session=self._provider_manager.get_resource_lookup_session_for_bin(bin_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceLookupSession')(
+            provider_session=self._provider_manager.get_resource_lookup_session_for_bin(bin_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_resource_query_session(self):
         # Implemented from azosid template for -
@@ -205,15 +199,12 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceQuerySession')(
-                provider_session=self._provider_manager.get_resource_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceQuerySession')(
+            provider_session=self._provider_manager.get_resource_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     resource_query_session = property(fget=get_resource_query_session)
 
@@ -226,27 +217,21 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceQuerySession')(
-                provider_session=self._provider_manager.get_resource_query_session_for_bin(bin_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                hierarchy_session=self._get_hierarchy_session(),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceQuerySession')(
+            provider_session=self._provider_manager.get_resource_query_session_for_bin(bin_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_resource_search_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceSearchSession')(
-                provider_session=self._provider_manager.get_resource_search_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceSearchSession')(
+            provider_session=self._provider_manager.get_resource_search_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     resource_search_session = property(fget=get_resource_search_session)
 
@@ -254,26 +239,20 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
     def get_resource_search_session_for_bin(self, bin_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceSearchSession')(
-                provider_session=self._provider_manager.get_resource_search_session_for_bin(bin_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceSearchSession')(
+            provider_session=self._provider_manager.get_resource_search_session_for_bin(bin_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_resource_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceAdminSession')(
-                provider_session=self._provider_manager.get_resource_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAdminSession')(
+            provider_session=self._provider_manager.get_resource_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     resource_admin_session = property(fget=get_resource_admin_session)
 
@@ -281,80 +260,62 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
     def get_resource_admin_session_for_bin(self, bin_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceAdminSession')(
-                provider_session=self._provider_manager.get_resource_admin_session_for_bin(bin_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAdminSession')(
+            provider_session=self._provider_manager.get_resource_admin_session_for_bin(bin_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     @raise_null_argument
     def get_resource_notification_session(self, resource_receiver):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_template
-        try:
-            return getattr(sessions, 'ResourceNotificationSession')(
-                provider_session=self._provider_manager.get_resource_notification_session(resource_receiver),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceNotificationSession')(
+            provider_session=self._provider_manager.get_resource_notification_session(resource_receiver),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     @raise_null_argument
     def get_resource_notification_session_for_bin(self, resource_receiver, bin_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceNotificationSession')(
-                provider_session=self._provider_manager.get_resource_notification_session_for_bin(resource_receiver, bin_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceNotificationSession')(
+            provider_session=self._provider_manager.get_resource_notification_session_for_bin(resource_receiver, bin_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_resource_bin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceBinSession')(
-                provider_session=self._provider_manager.get_resource_bin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceBinSession')(
+            provider_session=self._provider_manager.get_resource_bin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     resource_bin_session = property(fget=get_resource_bin_session)
 
     def get_resource_bin_assignment_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceBinAssignmentSession')(
-                provider_session=self._provider_manager.get_resource_bin_assignment_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceBinAssignmentSession')(
+            provider_session=self._provider_manager.get_resource_bin_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     resource_bin_assignment_session = property(fget=get_resource_bin_assignment_session)
 
     def get_resource_agent_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceAgentSession')(
-                provider_session=self._provider_manager.get_resource_agent_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentSession')(
+            provider_session=self._provider_manager.get_resource_agent_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     resource_agent_session = property(fget=get_resource_agent_session)
 
@@ -362,26 +323,20 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
     def get_resource_agent_session_for_bin(self, bin_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceAgentSession')(
-                provider_session=self._provider_manager.get_resource_agent_session_for_bin(bin_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentSession')(
+            provider_session=self._provider_manager.get_resource_agent_session_for_bin(bin_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_resource_agent_assignment_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceAgentAssignmentSession')(
-                provider_session=self._provider_manager.get_resource_agent_assignment_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentAssignmentSession')(
+            provider_session=self._provider_manager.get_resource_agent_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     resource_agent_assignment_session = property(fget=get_resource_agent_assignment_session)
 
@@ -389,82 +344,64 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
     def get_resource_agent_assignment_session_for_bin(self, bin_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceAgentAssignmentSession')(
-                provider_session=self._provider_manager.get_resource_agent_assignment_session_for_bin(bin_id),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentAssignmentSession')(
+            provider_session=self._provider_manager.get_resource_agent_assignment_session_for_bin(bin_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     def get_bin_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinLookupSession')(
-                provider_session=self._provider_manager.get_bin_lookup_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinLookupSession')(
+            provider_session=self._provider_manager.get_bin_lookup_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     bin_lookup_session = property(fget=get_bin_lookup_session)
 
     def get_bin_query_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinQuerySession')(
-                provider_session=self._provider_manager.get_bin_query_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinQuerySession')(
+            provider_session=self._provider_manager.get_bin_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     bin_query_session = property(fget=get_bin_query_session)
 
     def get_bin_admin_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinAdminSession')(
-                provider_session=self._provider_manager.get_bin_admin_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinAdminSession')(
+            provider_session=self._provider_manager.get_bin_admin_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     bin_admin_session = property(fget=get_bin_admin_session)
 
     def get_bin_hierarchy_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinHierarchySession')(
-                provider_session=self._provider_manager.get_bin_hierarchy_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinHierarchySession')(
+            provider_session=self._provider_manager.get_bin_hierarchy_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     bin_hierarchy_session = property(fget=get_bin_hierarchy_session)
 
     def get_bin_hierarchy_design_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_bin_hierarchy_design_session(),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_bin_hierarchy_design_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
 
     bin_hierarchy_design_session = property(fget=get_bin_hierarchy_design_session)
 
@@ -501,16 +438,13 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceLookupSession')(
-                provider_session=self._provider_manager.get_resource_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceLookupSession')(
+            provider_session=self._provider_manager.get_resource_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_resource_lookup_session_for_bin(self, bin_id, proxy):
@@ -521,16 +455,13 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceLookupSession')(
-                provider_session=self._provider_manager.get_resource_lookup_session_for_bin(bin_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceLookupSession')(
+            provider_session=self._provider_manager.get_resource_lookup_session_for_bin(bin_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_resource_query_session(self, proxy):
@@ -541,16 +472,13 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceQuerySession')(
-                provider_session=self._provider_manager.get_resource_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceQuerySession')(
+            provider_session=self._provider_manager.get_resource_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_resource_query_session_for_bin(self, bin_id, proxy):
@@ -561,268 +489,211 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
             query_session.use_federated_bin_view()
         except Unimplemented:
             query_session = None
-        try:
-            return getattr(sessions, 'ResourceQuerySession')(
-                provider_session=self._provider_manager.get_resource_query_session_for_bin(bin_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                proxy=proxy,
-                hierarchy_session=self._get_hierarchy_session(proxy),
-                query_session=query_session)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceQuerySession')(
+            provider_session=self._provider_manager.get_resource_query_session_for_bin(bin_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_resource_search_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceSearchSession')(
-                provider_session=self._provider_manager.get_resource_search_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceSearchSession')(
+            provider_session=self._provider_manager.get_resource_search_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_search_session_for_bin(self, bin_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceSearchSession')(
-                provider_session=self._provider_manager.get_resource_search_session_for_bin(bin_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceSearchSession')(
+            provider_session=self._provider_manager.get_resource_search_session_for_bin(bin_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceAdminSession')(
-                provider_session=self._provider_manager.get_resource_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAdminSession')(
+            provider_session=self._provider_manager.get_resource_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_admin_session_for_bin(self, bin_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceAdminSession')(
-                provider_session=self._provider_manager.get_resource_admin_session_for_bin(bin_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAdminSession')(
+            provider_session=self._provider_manager.get_resource_admin_session_for_bin(bin_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_notification_session(self, resource_receiver, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_template
-        try:
-            return getattr(sessions, 'ResourceNotificationSession')(
-                provider_session=self._provider_manager.get_resource_notification_session(resource_receiver, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceNotificationSession')(
+            provider_session=self._provider_manager.get_resource_notification_session(resource_receiver, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_notification_session_for_bin(self, resource_receiver, bin_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_notification_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceNotificationSession')(
-                provider_session=self._provider_manager.get_resource_notification_session_for_bin(resource_receiver, bin_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceNotificationSession')(
+            provider_session=self._provider_manager.get_resource_notification_session_for_bin(resource_receiver, bin_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_bin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceBinSession')(
-                provider_session=self._provider_manager.get_resource_bin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceBinSession')(
+            provider_session=self._provider_manager.get_resource_bin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_bin_assignment_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceBinAssignmentSession')(
-                provider_session=self._provider_manager.get_resource_bin_assignment_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceBinAssignmentSession')(
+            provider_session=self._provider_manager.get_resource_bin_assignment_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_group_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinHierarchySession')(
-                provider_session=self._provider_manager.get_group_hierarchy_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinHierarchySession')(
+            provider_session=self._provider_manager.get_group_hierarchy_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_agent_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceAgentSession')(
-                provider_session=self._provider_manager.get_resource_agent_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentSession')(
+            provider_session=self._provider_manager.get_resource_agent_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_agent_session_for_bin(self, bin_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceAgentSession')(
-                provider_session=self._provider_manager.get_resource_agent_session_for_bin(bin_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentSession')(
+            provider_session=self._provider_manager.get_resource_agent_session_for_bin(bin_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_agent_assignment_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'ResourceAgentAssignmentSession')(
-                provider_session=self._provider_manager.get_resource_agent_assignment_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentAssignmentSession')(
+            provider_session=self._provider_manager.get_resource_agent_assignment_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_resource_agent_assignment_session_for_bin(self, bin_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
-        try:
-            return getattr(sessions, 'ResourceAgentAssignmentSession')(
-                provider_session=self._provider_manager.get_resource_agent_assignment_session_for_bin(bin_id, proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'ResourceAgentAssignmentSession')(
+            provider_session=self._provider_manager.get_resource_agent_assignment_session_for_bin(bin_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_bin_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinLookupSession')(
-                provider_session=self._provider_manager.get_bin_lookup_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinLookupSession')(
+            provider_session=self._provider_manager.get_bin_lookup_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_bin_query_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinQuerySession')(
-                provider_session=self._provider_manager.get_bin_query_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinQuerySession')(
+            provider_session=self._provider_manager.get_bin_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_bin_admin_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinAdminSession')(
-                provider_session=self._provider_manager.get_bin_admin_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinAdminSession')(
+            provider_session=self._provider_manager.get_bin_admin_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_bin_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinHierarchySession')(
-                provider_session=self._provider_manager.get_bin_hierarchy_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinHierarchySession')(
+            provider_session=self._provider_manager.get_bin_hierarchy_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     @raise_null_argument
     def get_bin_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
-        try:
-            return getattr(sessions, 'BinHierarchyDesignSession')(
-                provider_session=self._provider_manager.get_bin_hierarchy_design_session(proxy),
-                authz_session=self._get_authz_session(),
-                override_lookup_session=self._get_override_lookup_session(),
-                provider_manager=self._provider_manager,
-                proxy=proxy)
-        except AttributeError:
-            raise OperationFailed()
+        return getattr(sessions, 'BinHierarchyDesignSession')(
+            provider_session=self._provider_manager.get_bin_hierarchy_design_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
 
     def get_resource_batch_proxy_manager(self):
         raise Unimplemented()
