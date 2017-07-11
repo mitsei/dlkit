@@ -2,10 +2,8 @@ from dlkit.abstract_osid.authentication_process import objects as abc_authentica
 from ..osid import markers as osid_markers
 from ..osid import objects as osid_objects
 from ..authentication.objects import Agent
-from .. import settings
-from ..primitives import Id, Type, DisplayText
+from ..primitives import Id
 from ..osid.osid_errors import *
-import socket
 
 
 class DjangoAuthentication(abc_authentication_process_objects.Authentication, osid_objects.OsidObject):

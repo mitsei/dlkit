@@ -6,11 +6,8 @@
 # package as well as the learning package sessions for Objective, Activities
 # and ObjectiveBanks.
 
-import json
 from dlkit.abstract_osid.osid import sessions as abc_osid_sessions
 from ..osid.osid_errors import *
-from .. import settings
-from ..primitives import *
 
 COMPARATIVE = 0
 PLENARY = 1

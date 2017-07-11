@@ -6,9 +6,6 @@
 from dlkit.abstract_osid.proxy import sessions as abc_proxy_sessions
 from ..osid import sessions as osid_sessions
 from ..authentication_process.objects import DjangoAuthentication, XBlockAuthentication
-from .. import settings
-from ..primitives import Id, Type, DisplayText
-from ..osid.osid_errors import *
 from . import rules
 
 

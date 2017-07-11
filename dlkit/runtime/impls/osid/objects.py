@@ -4,12 +4,8 @@
 # Catalog (MC3) Handcar based implementation of the OSID  Service.
 
 from dlkit.abstract_osid.osid import objects as abc_osid_objects
-from dlkit.abstract_osid.id.primitives import Id as AbstractId
-from dlkit.abstract_osid.type.primitives import Type as AbstractType
-from .. import settings
 from ..primitives import Id, Type, DisplayText
 from .osid_errors import *
-from .metadata import Metadata
 from . import markers
 
 INVALID = 0

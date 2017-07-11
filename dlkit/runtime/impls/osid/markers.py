@@ -1,5 +1,4 @@
 from dlkit.abstract_osid.osid import markers as abc_osid_markers
-from .. import settings
 
 
 class OsidPrimitive(abc_osid_markers.OsidPrimitive):
