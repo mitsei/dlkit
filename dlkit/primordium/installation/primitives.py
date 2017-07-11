@@ -21,7 +21,7 @@ class Version(abc_version, OsidPrimitive):
             raise InvalidArgument()
 
     def get_scheme(self):
-        """Gets the versioining scheme as a type.
+        """Gets the versioning scheme as a type.
 
         :return: the versioning scheme type
         :rtype: ``osid.type.Type``
