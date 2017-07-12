@@ -52,9 +52,9 @@ class RectangularSpatialUnit(abc_mapping_primitives.SpatialUnit, OsidPrimitive):
                 raise NullArgument('height must be provided with a coordinate')
             if width is None:
                 raise NullArgument('width must be provided with a coordinate')
-            if not isinstance(height, int) or not isinstance(height, float):
+            if not (isinstance(height, int) or isinstance(height, float)):
                 raise InvalidArgument('height must be an int or float')
-            if not isinstance(width, int) or not isinstance(width, float):
+            if not (isinstance(width, int) or isinstance(width, float)):
                 raise InvalidArgument('width must be an int or float')
             if width <= 0 or height <= 0:
                 raise InvalidArgument('width and height must be positive values')
