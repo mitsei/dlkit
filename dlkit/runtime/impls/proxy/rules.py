@@ -5,9 +5,7 @@
 
 from dlkit.abstract_osid.proxy import rules as abc_proxy_rules
 from ..osid import rules as osid_rules
-from .. import settings
-from .. import profile
-from ..primitives import Id, Type, DisplayText
+from ..primitives import Id
 from ..osid.osid_errors import *
 
 
