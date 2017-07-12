@@ -27,6 +27,7 @@ class SpatialUnitFactory(object):
             raise InvalidArgument()
         if record_type.get_identifier() == 'rectangle':
             return RectangularSpatialUnit(spatial_unit_map=spatial_unit_map)
+        raise InvalidArgument()
 
 
 class RectangularSpatialUnit(abc_mapping_primitives.SpatialUnit, OsidPrimitive):
@@ -38,6 +39,8 @@ class RectangularSpatialUnit(abc_mapping_primitives.SpatialUnit, OsidPrimitive):
     """
 
     def __init__(self, coordinate=None, width=None, height=None, spatial_unit_map=None):
+        if spatial_unit_map is None and coordinate is None and width is None and height is None:
+            raise NullArgument('must provide a coordinate or a spatial_unit_map')
         if spatial_unit_map is not None:
             self._coordinate = BasicCoordinate(spatial_unit_map['coordinateValues'])
             self._width = spatial_unit_map['width']
@@ -45,6 +48,14 @@ class RectangularSpatialUnit(abc_mapping_primitives.SpatialUnit, OsidPrimitive):
         else:
             if not isinstance(coordinate, abc_mapping_primitives.Coordinate):
                 raise InvalidArgument('coordinate must be a Coordinate')
+            if height is None:
+                raise NullArgument('height must be provided with a coordinate')
+            if width is None:
+                raise NullArgument('width must be provided with a coordinate')
+            if not isinstance(height, int) or not isinstance(height, float):
+                raise InvalidArgument('height must be an int or float')
+            if not isinstance(width, int) or not isinstance(width, float):
+                raise InvalidArgument('width must be an int or float')
             if width <= 0 or height <= 0:
                 raise InvalidArgument('width and height must be positive values')
             self._coordinate = coordinate
@@ -90,7 +101,7 @@ class RectangularSpatialUnit(abc_mapping_primitives.SpatialUnit, OsidPrimitive):
                  identifier='rectangle')]
 
     def is_of_record_type(self, record_type):
-        return bool(record_type in self.get_record_types)
+        return bool(record_type in self.get_record_types())
 
     def get_spatial_unit_map(self):
         record_types = []
