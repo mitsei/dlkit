@@ -2796,6 +2796,28 @@ class TestTemporalRecord(unittest.TestCase):
         self.check_is_effective(past, near_future, True)
         self.check_is_effective(near_future, future, False)
 
+    def test_update_object_map_converts_start_date_to_dict(self):
+        obj_map_to_test = deepcopy(self.temporal_object.my_osid_object._my_map)
+        self.temporal_object._update_object_map(obj_map_to_test)
+        self.assertTrue(isinstance(obj_map_to_test['startDate'], dict))
+        self.assertEqual(obj_map_to_test['startDate']['year'], self.start_date.year)
+        self.assertEqual(obj_map_to_test['startDate']['month'], self.start_date.month)
+        self.assertEqual(obj_map_to_test['startDate']['day'], self.start_date.day)
+        self.assertEqual(obj_map_to_test['startDate']['hour'], self.start_date.hour)
+        self.assertEqual(obj_map_to_test['startDate']['second'], self.start_date.second)
+        self.assertEqual(obj_map_to_test['startDate']['microsecond'], self.start_date.microsecond)
+
+    def test_update_object_map_converts_end_date_to_dict(self):
+        obj_map_to_test = deepcopy(self.temporal_object.my_osid_object._my_map)
+        self.temporal_object._update_object_map(obj_map_to_test)
+        self.assertTrue(isinstance(obj_map_to_test['endDate'], dict))
+        self.assertEqual(obj_map_to_test['endDate']['year'], self.end_date.year)
+        self.assertEqual(obj_map_to_test['endDate']['month'], self.end_date.month)
+        self.assertEqual(obj_map_to_test['endDate']['day'], self.end_date.day)
+        self.assertEqual(obj_map_to_test['endDate']['hour'], self.end_date.hour)
+        self.assertEqual(obj_map_to_test['endDate']['second'], self.end_date.second)
+        self.assertEqual(obj_map_to_test['endDate']['microsecond'], self.end_date.microsecond)
+
 
 class TestSourceableFormRecord(unittest.TestCase):
     """Tests for SourceableFormRecord"""
