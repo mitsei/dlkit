@@ -9,14 +9,14 @@ interactions:
     headers:
       Authorization:
       - !!binary |
-        QVdTIDo2ZkJ2My8xZ2JvZFA3QlJ5WXdzVlpra2trT0k9
+        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROmlLZndOLzRENmRJalRDY2ZLODY0VVlxZjFpMD0=
       Content-Length: ['21']
       Content-MD5:
       - !!binary |
         N2lRVERpeUNBQi9xUEJaZi9XQzVsUT09
       Date:
       - !!binary |
-        TW9uLCAxMCBKdWwgMjAxNyAyMDowNjowMiBHTVQ=
+        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMCBHTVQ=
       Expect:
       - !!binary |
         MTAwLWNvbnRpbnVl
@@ -26,16 +26,15 @@ interactions:
     method: PUT
     uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
   response:
-    body: {string: '<?xml version="1.0" encoding="UTF-8"?>
-
-        <Error><Code>InvalidAccessKeyId</Code><Message>The AWS Access Key Id you provided
-        does not exist in our records.</Message><AWSAccessKeyId></AWSAccessKeyId><RequestId>AF68AA1EE1AB3BA3</RequestId><HostId>3nlaBTdsehe3aJaoiMXuocpYV0e9+SRlMHJEhkYvVpZsylyViKGWZUiwzndVmKE0uPekqenufko=</HostId></Error>'}
+    body: {string: ''}
     headers:
-      Connection: [close]
-      Content-Type: [application/xml]
-      Date: ['Mon, 10 Jul 2017 20:06:02 GMT']
+      Content-Length: ['0']
+      Date: ['Thu, 13 Jul 2017 16:03:31 GMT']
+      ETag: ['"ee24130e2c82001fea3c165ffd60b995"']
       Server: [AmazonS3]
-      x-amz-id-2: [3nlaBTdsehe3aJaoiMXuocpYV0e9+SRlMHJEhkYvVpZsylyViKGWZUiwzndVmKE0uPekqenufko=]
-      x-amz-request-id: [AF68AA1EE1AB3BA3]
-    status: {code: 403, message: Forbidden}
+      x-amz-expiration: ['expiry-date="Fri, 21 Jul 2017 00:00:00 GMT", rule-id="Periodic
+          cleaning up of test items"']
+      x-amz-id-2: [Voe4hq1lRVJi5cW3Gql3jPEBvxk81Rc3+4nlrKRVs6mM99dTpSWg+Iob7uhpXfTZqEGrhjQHfyw=]
+      x-amz-request-id: [472A7F369092E1E4]
+    status: {code: 200, message: OK}
 version: 1

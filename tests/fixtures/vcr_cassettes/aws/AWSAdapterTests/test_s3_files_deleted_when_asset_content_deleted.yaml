@@ -2,37 +2,49 @@ interactions:
 - request:
     body: null
     headers:
-      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:crCkDhJQOvRZhSIce8e3b7LdTD8=']
+      Authorization:
+      - !!binary |
+        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROlQySzZhbllBaTVGUmxtYUprWEo0RG1KUXc1ND0=
       Content-Length: ['0']
-      Date: ['Fri, 30 Jun 2017 20:01:14 GMT']
-      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
-    method: !!python/unicode DELETE
+      Date:
+      - !!binary |
+        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMyBHTVQ=
+      User-Agent:
+      - !!binary |
+        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+    method: DELETE
     uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
   response:
-    body: {string: !!python/unicode ''}
+    body: {string: ''}
     headers:
-      date: ['Fri, 30 Jun 2017 20:01:16 GMT']
-      server: [AmazonS3]
-      x-amz-id-2: [oVDobrMFdZdHiFVwUtMguyfFqIdWHwhFlMHXdcJiPrGtc7DTKsuTHCbRBTmfprdYvXa8Vrb8DbU=]
-      x-amz-request-id: [39D1C65DEFB05984]
+      Date: ['Thu, 13 Jul 2017 16:03:34 GMT']
+      Server: [AmazonS3]
+      x-amz-id-2: [XD2eNX/A95o1anEQYYTQyZ4APKWAXLmpA2eD3NkqD6ktpd+UOkZUThW0+G+mLlBabLJ/2jpRmUo=]
+      x-amz-request-id: [C28360CE0217D204]
     status: {code: 204, message: No Content}
 - request:
     body: null
     headers:
-      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:JXlYbzCJuzY4brDpAhx85romoS4=']
-      Date: ['Fri, 30 Jun 2017 20:01:14 GMT']
-      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
-    method: !!python/unicode GET
+      Authorization:
+      - !!binary |
+        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROmdXVXRBN0pLaW4xSENraE9FVm4wcVdoUU56VT0=
+      Date:
+      - !!binary |
+        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMyBHTVQ=
+      User-Agent:
+      - !!binary |
+        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+    method: GET
     uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
   response:
-    body: {string: !!python/unicode '<?xml version="1.0" encoding="UTF-8"?>
+    body: {string: '<?xml version="1.0" encoding="UTF-8"?>
 
-        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>58efd696eb761d78b82c545d/test_file_1.txt</Key><RequestId>BFD8EA65159C0FC0</RequestId><HostId>tNu+NYRCdPJ6XkJ4Uu+kHjv6GFbGnB1UODqlPpFY0Z7ZvQLjfZNpDgAwfpzkdEw+oe65X4+z6f8=</HostId></Error>'}
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>58efd696eb761d78b82c545d/test_file_1.txt</Key><RequestId>6BB0632CC1AAB7A3</RequestId><HostId>YJsbvcxMCIquEITKjh7paoj0+S2XoMLnL790X3wOLHE5p3E3/LU+kAabTMQyIuCYSs7XUH1sTj8=</HostId></Error>'}
     headers:
-      content-type: [application/xml]
-      date: ['Fri, 30 Jun 2017 20:01:15 GMT']
-      server: [AmazonS3]
-      x-amz-id-2: [tNu+NYRCdPJ6XkJ4Uu+kHjv6GFbGnB1UODqlPpFY0Z7ZvQLjfZNpDgAwfpzkdEw+oe65X4+z6f8=]
-      x-amz-request-id: [BFD8EA65159C0FC0]
+      Content-Type: [application/xml]
+      Date: ['Thu, 13 Jul 2017 16:03:33 GMT']
+      Server: [AmazonS3]
+      x-amz-id-2: [YJsbvcxMCIquEITKjh7paoj0+S2XoMLnL790X3wOLHE5p3E3/LU+kAabTMQyIuCYSs7XUH1sTj8=]
+      x-amz-request-id: [6BB0632CC1AAB7A3]
     status: {code: 404, message: Not Found}
 version: 1
