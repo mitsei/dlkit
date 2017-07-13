@@ -2,26 +2,32 @@ interactions:
 - request:
     body: null
     headers:
-      Authorization: ['AWS AKIAIT3DXRKVISAGIM7Q:SpQ6JdcLjcDV72W6aW6aoBIwHwI=']
-      Date: ['Fri, 30 Jun 2017 20:01:12 GMT']
-      User-Agent: [Boto3/1.4.4 Python/2.7.10 Darwin/16.6.0 Botocore/1.5.56]
-    method: !!python/unicode GET
+      Authorization:
+      - !!binary |
+        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROjluUlp5MkhHQnVWMkZjVEZOQUhjYzVvT2JUYz0=
+      Date:
+      - !!binary |
+        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMSBHTVQ=
+      User-Agent:
+      - !!binary |
+        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+    method: GET
     uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
   response:
-    body: {string: !!python/unicode 'This is test file 1.
+    body: {string: 'This is test file 1.
 
 '}
     headers:
-      accept-ranges: [bytes]
-      content-length: ['21']
-      content-type: [binary/octet-stream]
-      date: ['Fri, 30 Jun 2017 20:01:14 GMT']
-      etag: ['"ee24130e2c82001fea3c165ffd60b995"']
-      last-modified: ['Fri, 30 Jun 2017 20:01:14 GMT']
-      server: [AmazonS3]
-      x-amz-expiration: ['expiry-date="Sat, 08 Jul 2017 00:00:00 GMT", rule-id="Periodic
+      Accept-Ranges: [bytes]
+      Content-Length: ['21']
+      Content-Type: [binary/octet-stream]
+      Date: ['Thu, 13 Jul 2017 16:03:32 GMT']
+      ETag: ['"ee24130e2c82001fea3c165ffd60b995"']
+      Last-Modified: ['Thu, 13 Jul 2017 16:03:31 GMT']
+      Server: [AmazonS3]
+      x-amz-expiration: ['expiry-date="Fri, 21 Jul 2017 00:00:00 GMT", rule-id="Periodic
           cleaning up of test items"']
-      x-amz-id-2: [2JEzzBYwPR7RKmaA4+Ee3lY1luRsa38tt2saOuIj2x2s+idEoxsmf0p8+5TiQpPkQXiF/tvMFCo=]
-      x-amz-request-id: [D567029E5357D8DB]
+      x-amz-id-2: [Ya7Y3IJaYJcI0iLS8nH+T4I1FRxG1K/30rWtuM+F2ub2b+rXvexz4cPcCs9iqyFlfGaoiDNhI7U=]
+      x-amz-request-id: [4D2B9602857476BB]
     status: {code: 200, message: OK}
 version: 1
