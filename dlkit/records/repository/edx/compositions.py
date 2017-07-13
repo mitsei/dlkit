@@ -346,7 +346,13 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         course_node = None
         found_course = False
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        cqs = rm.get_composition_query_session_for_repository(Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+        if self.my_osid_object._proxy is None:
+            cqs = rm.get_composition_query_session_for_repository(Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+        else:
+            cqs = rm.get_composition_query_session_for_repository(
+                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
+                proxy=self.my_osid_object._proxy
+            )
         search_node = self.my_osid_object
         while not found_course:
             querier = cqs.get_composition_query()
@@ -386,15 +392,26 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         resources = []
         try:
             rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-            acs = rm.get_asset_composition_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+            if self.my_osid_object._proxy is None:
+                acs = rm.get_asset_composition_session_for_repository(
+                    Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+            else:
+                acs = rm.get_asset_composition_session_for_repository(
+                    Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
+                    proxy=self.my_osid_object._proxy)
             for asset in acs.get_composition_assets(self.my_osid_object.ident):
                 asset_map = asset.object_map
                 if 'enclosedObjectId' in asset_map:
                     assessment = asset.get_enclosed_object()
                     am = self.my_osid_object._get_provider_manager('ASSESSMENT')
-                    abas = am.get_assessment_basic_authoring_session_for_bank(
-                        Id(assessment.object_map['assignedBankIds'][0]))
+                    if self.my_osid_object._proxy is None:
+                        abas = am.get_assessment_basic_authoring_session_for_bank(
+                            Id(assessment.object_map['assignedBankIds'][0]))
+                    else:
+                        abas = am.get_assessment_basic_authoring_session_for_bank(
+                            Id(assessment.object_map['assignedBankIds'][0]),
+                            proxy=self.my_osid_object._proxy
+                        )
                     for item in abas.get_items(assessment.ident):
                         resources.append(item)
                 else:
@@ -409,6 +426,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
         if repository is None:
             repository_id = Id(self.my_osid_object.object_map['assignedRepositoryIds'][0])
+            # What to do about proxy here??
             rls = rm.get_repository_lookup_session()
 
             repository = rls.get_repository(repository_id)
@@ -417,11 +435,18 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         missing_child_ids = []
 
         for child_id in self.my_osid_object.get_child_ids():
-            try:
-                # need to use unsequestered view so get a lookup manager separately
+            # need to use unsequestered view so get a lookup manager separately
+            if repository._proxy is not None:
+                composition_lookup_session = rm.get_composition_lookup_session_for_repository(
+                    repository.ident,
+                    proxy=repository._proxy
+                )
+            else:
                 composition_lookup_session = rm.get_composition_lookup_session_for_repository(repository.ident)
-                composition_lookup_session.use_federated_repository_view()
-                composition_lookup_session.use_unsequestered_composition_view()
+            composition_lookup_session.use_federated_repository_view()
+            composition_lookup_session.use_unsequestered_composition_view()
+
+            try:
                 child = composition_lookup_session.get_composition(child_id)
                 if child.is_sequestered():
                     try:
@@ -433,11 +458,14 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                 else:
                     child_objects.append((child, True))
             except NotFound:
-                try:
-                    # append the child, but flag it as not belonging to the user...
+                # append the child, but flag it as not belonging to the user...
+                if repository._proxy is not None:
+                    composition_lookup_session = rm.get_composition_lookup_session(proxy=repository._proxy)
+                else:
                     composition_lookup_session = rm.get_composition_lookup_session()
-                    composition_lookup_session.use_federated_repository_view()
-                    composition_lookup_session.use_unsequestered_composition_view()
+                composition_lookup_session.use_federated_repository_view()
+                composition_lookup_session.use_unsequestered_composition_view()
+                try:
                     child = composition_lookup_session.get_composition(child_id)
                     if child.is_sequestered():
                         try:
@@ -452,7 +480,13 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                     # the composition must be deleted or no longer accessible to
                     # the user. Remove the ID from the child_ids list, and
                     # add a sequestered child here notifying the user
-                    cas = rm.get_composition_admin_session_for_repository(repository.ident)
+                    if repository._proxy is not None:
+                        cas = rm.get_composition_admin_session_for_repository(
+                            repository.ident,
+                            proxy=repository._proxy
+                        )
+                    else:
+                        cas = rm.get_composition_admin_session_for_repository(repository.ident)
                     form = cas.get_composition_form_for_create([Type(**COMPOSITION_RECORD_TYPES['edx-composition'])])
                     form.set_genus_type(Type(**COMPOSITION_GENUS_TYPES['error-deleted']))
                     form.display_name = 'Missing composition: ' + str(child_id)
@@ -471,7 +505,13 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                     current_child_idstrs[index] = str(error_compositions[missing_child_ids.index(child_id)].ident)
 
             updated_child_ids = [Id(i) for i in current_child_idstrs]
-            cas = rm.get_composition_admin_session_for_repository(repository.ident)
+            if repository._proxy is not None:
+                cas = rm.get_composition_admin_session_for_repository(
+                    repository.ident,
+                    proxy=repository._proxy
+                )
+            else:
+                cas = rm.get_composition_admin_session_for_repository(repository.ident)
             form = cas.get_composition_form_for_update(self.my_osid_object.ident)
             form.set_children(updated_child_ids)
             cas.update_composition(form)
@@ -514,7 +554,10 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                 getattr(my_soup, my_tag)['user_partition_id'] = self.my_osid_object.user_partition_id
 
             rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-            cls = rm.get_composition_lookup_session()
+            if self.my_osid_object._proxy is None:
+                cls = rm.get_composition_lookup_session()
+            else:
+                cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
             cls.use_federated_repository_view()
             cls.use_unsequestered_composition_view()
             for child_id in self.my_osid_object.get_child_ids():
@@ -630,8 +673,14 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
     def export_run_olx(self):
         run_comp = self.my_osid_object
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        cqs = rm.get_composition_query_session_for_repository(
-            Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+        if self.my_osid_object._proxy is None:
+            cqs = rm.get_composition_query_session_for_repository(
+                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+        else:
+            cqs = rm.get_composition_query_session_for_repository(
+                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
+                proxy=self.my_osid_object._proxy
+            )
         cqs.use_unsequestered_composition_view()
         querier = cqs.get_composition_query()
         querier.match_contained_composition_id(run_comp.ident, True)
@@ -665,11 +714,20 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
         course_xml_path = '{0}course/{1}.xml'.format(root_path,
                                                      run_comp.display_name.text)
         for child_id in run_comp.get_child_ids():
-            try:
+            if self.my_osid_object._proxy is None:
                 cls = rm.get_composition_lookup_session_for_repository(run_comp.ident)
+            else:
+                cls = rm.get_composition_lookup_session_for_repository(
+                    run_comp.ident,
+                    proxy=self.my_osid_object._proxy
+                )
+            try:
                 child = cls.get_composition(child_id)
             except NotFound:
-                cls = rm.get_composition_lookup_session()
+                if self.my_osid_object._proxy is None:
+                    cls = rm.get_composition_lookup_session()
+                else:
+                    cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
                 cls.use_federated_repository_view()
                 cls.use_unsequestered_composition_view()
                 child = cls.get_composition(child_id)
