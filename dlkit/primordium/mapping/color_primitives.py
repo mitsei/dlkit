@@ -16,11 +16,12 @@ class RGBColorCoordinate(abc_mapping_primitives.Coordinate, OsidPrimitive):
     """
     A coordinate represents a position.
 
-    In this case a position in a 3 dimentional RGB color space.
+    In this case a position in a 3 dimensional RGB color space.
 
     """
 
-    def __init__(self, hexstr=None,
+    def __init__(self,
+                 hexstr=None,
                  values=None,
                  uncertainty_minus=None,
                  uncertainty_plus=None):

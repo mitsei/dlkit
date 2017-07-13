@@ -24,7 +24,7 @@ def get_type_data(name):
             'authority': 'birdland.mit.edu',
             'namespace': 'coordinate format',
             'identifier': name,
-            'domain': 'Currency Format Types',
+            'domain': 'Coordinate Format Types',
             'display_name': JEFFS_COORDINATE_FORMAT_TYPES[name] + ' Coordinate Format Type',
             'display_label': JEFFS_COORDINATE_FORMAT_TYPES[name],
             'description': ('The type for the ' +
