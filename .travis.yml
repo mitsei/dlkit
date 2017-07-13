@@ -7,6 +7,19 @@ python:
 services:
 - mongodb
 - memcached
+env:
+  - TEST_SUITE=tests/dlkit.py
+  - TEST_SUITE=tests/functional.py
+  - TEST_SUITE=tests/other.py
+  - TEST_SUITE=tests/records.py
+  - TEST_SUITE=tests/*/test_managers.py
+  - TEST_SUITE=tests/*/test_objects.py
+  - TEST_SUITE=tests/*/test_queries.py
+  - TEST_SUITE=tests/*/test_record_templates.py
+  - TEST_SUITE=tests/*/test_rules.py
+  - TEST_SUITE=tests/*/test_searches.py
+  - TEST_SUITE=tests/*/test_sessions.py
+  - TEST_SUITE='not tests'
 cache: pip
 sudo: false
 before_install:
@@ -16,6 +29,6 @@ before_install:
 - pip install coveralls
 install:
 - pip install -r test_requirements.txt
-script: python -m pytest -x
+script: "python -m pytest -x -k \"$TEST_SUITE\""
 after_success:
 - coveralls
