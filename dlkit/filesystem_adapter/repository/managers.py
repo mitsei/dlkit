@@ -8,6 +8,7 @@ from .sessions import AssetLookupSession, AssetQuerySession, AssetAdminSession, 
 
 from . import profile
 from . import settings
+from ...json_.utilities import remove_null_proxy_kwarg
 
 
 class RepositoryProfile(abc_repository_managers.RepositoryProfile,
@@ -653,6 +654,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         self._provider_manager = runtime.get_manager('REPOSITORY', provider_impl)
         # need to add version argument
 
+    @remove_null_proxy_kwarg
     def get_asset_lookup_session(self):
         """Gets the ``OsidSession`` associated with the asset lookup service.
 
@@ -669,6 +671,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_lookup_session = property(fget=get_asset_lookup_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_lookup_session_for_repository(self, repository_id=None):
         """Gets the ``OsidSession`` associated with the asset lookup service for
         the given repository.
@@ -690,6 +693,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
             self._provider_manager.get_asset_lookup_session_for_repository(repository_id),
             self._config_map)
 
+    @remove_null_proxy_kwarg
     def get_asset_content_lookup_session(self):
         """Gets the ``OsidSession`` associated with the asset content lookup service.
 
@@ -706,6 +710,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_content_lookup_session = property(fget=get_asset_content_lookup_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_content_lookup_session_for_repository(self, repository_id=None):
         """Gets the ``OsidSession`` associated with the asset content lookup service for
         the given repository.
@@ -727,6 +732,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
             self._provider_manager.get_asset_content_lookup_session_for_repository(repository_id),
             self._config_map)
 
+    @remove_null_proxy_kwarg
     def get_asset_query_session(self):
         """Gets an asset query session.
 
@@ -743,6 +749,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_query_session = property(fget=get_asset_query_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_query_session_for_repository(self, repository_id=None):
         """Gets an asset query session for the given repository.
 
@@ -763,6 +770,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
             self._provider_manager.get_asset_query_session_for_repository(repository_id),
             self._config_map)
 
+    @remove_null_proxy_kwarg
     def get_asset_search_session(self):
         """Gets an asset search session.
 
@@ -778,6 +786,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_search_session = property(fget=get_asset_search_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_search_session_for_repository(self, repository_id=None):
         """Gets an asset search session for the given repository.
 
@@ -796,6 +805,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         return self._provider_manager.get_asset_search_session_for_repository(repository_id)
 
+    @remove_null_proxy_kwarg
     def get_asset_admin_session(self):
         """Gets an asset administration session for creating, updating and deleting assets.
 
@@ -813,6 +823,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_admin_session = property(fget=get_asset_admin_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_admin_session_for_repository(self, repository_id=None):
         """Gets an asset administration session for the given repository.
 
@@ -836,6 +847,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
             self._config_map,
             asset_lookup_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_notification_session(self, asset_receiver=None):
         """Gets the notification session for notifications pertaining to asset changes.
 
@@ -853,6 +865,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         return self._provider_manager.get_asset_notification_session(asset_receiver)
 
+    @remove_null_proxy_kwarg
     def get_asset_notification_session_for_repository(self,
                                                       asset_receiver=None,
                                                       repository_id=None):
@@ -876,6 +889,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         return self._provider_manager.get_asset_notification_session_for_repository(asset_receiver, repository_id)
 
+    @remove_null_proxy_kwarg
     def get_asset_repository_session(self):
         """Gets the session for retrieving asset to repository mappings.
 
@@ -894,6 +908,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_repository_session = property(fget=get_asset_repository_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_repository_assignment_session(self):
         """Gets the session for assigning asset to repository mappings.
 
@@ -912,6 +927,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_repository_assignment_session = property(fget=get_asset_repository_assignment_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_smart_repository_session(self, repository_id=None):
         """Gets an asset smart repository session for the given repository.
 
@@ -929,6 +945,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         pass
 
+    @remove_null_proxy_kwarg
     def get_asset_temporal_session(self):
         """Gets the session for retrieving temporal coverage of an asset.
 
@@ -947,6 +964,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_temporal_session = property(fget=get_asset_temporal_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_temporal_session_for_repository(self, repository_id=None):
         """Gets the session for retrieving temporal coverage of an asset for the
         given repository.
@@ -969,6 +987,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_asset_temporal_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_asset_temporal_assignment_session(self):
         """Gets the session for assigning temporal coverage to an asset.
 
@@ -987,6 +1006,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_temporal_assignment_session = property(fget=get_asset_temporal_assignment_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_temporal_assignment_session_for_repository(self,
                                                              repository_id=None):
         """Gets the session for assigning temporal coverage of an asset for the
@@ -1010,6 +1030,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_asset_temporal_assignment_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_asset_spatial_session(self):
         """Gets the session for retrieving spatial coverage of an asset.
 
@@ -1028,6 +1049,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_spatial_session = property(fget=get_asset_spatial_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_spatial_session_for_repository(self, repository_id=None):
         """Gets the session for retrieving spatial coverage of an asset for the
         given repository.
@@ -1050,6 +1072,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_asset_spatial_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_asset_spatial_assignment_session(self):
         """Gets the session for assigning spatial coverage to an asset.
 
@@ -1068,6 +1091,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_spatial_assignment_session = property(fget=get_asset_spatial_assignment_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_spatial_assignment_session_for_repository(self,
                                                             repository_id=None):
         """Gets the session for assigning spatial coverage of an asset for the
@@ -1091,6 +1115,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_asset_spatial_assignment_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_asset_composition_session(self):
         """Gets the session for retrieving asset compositions.
 
@@ -1109,10 +1134,12 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_composition_session = property(fget=get_asset_composition_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_composition_session_for_repository(self, repository_id):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         return self._provider_manager.get_asset_composition_session_for_repository(repository_id)
 
+    @remove_null_proxy_kwarg
     def get_asset_composition_design_session(self):
         """Gets the session for creating asset compositions.
 
@@ -1131,10 +1158,12 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     asset_composition_design_session = property(fget=get_asset_composition_design_session)
 
+    @remove_null_proxy_kwarg
     def get_asset_composition_design_session_for_repository(self, repository_id):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
         return self._provider_manager.get_asset_composition_design_session_for_repository(repository_id)
 
+    @remove_null_proxy_kwarg
     def get_composition_lookup_session(self):
         """Gets the ``OsidSession`` associated with the composition lookup service.
 
@@ -1153,6 +1182,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     composition_lookup_session = property(fget=get_composition_lookup_session)
 
+    @remove_null_proxy_kwarg
     def get_composition_lookup_session_for_repository(self, repository_id=None):
         """Gets the ``OsidSession`` associated with the composition lookup service
         for the given repository.
@@ -1175,6 +1205,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_composition_lookup_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_composition_query_session(self):
         """Gets a composition query session.
 
@@ -1193,6 +1224,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     composition_query_session = property(fget=get_composition_query_session)
 
+    @remove_null_proxy_kwarg
     def get_composition_query_session_for_repository(self, repository_id=None):
         """Gets a composition query session for the given repository.
 
@@ -1214,6 +1246,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_composition_query_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_composition_search_session(self):
         """Gets a composition search session.
 
@@ -1232,6 +1265,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     composition_search_session = property(fget=get_composition_search_session)
 
+    @remove_null_proxy_kwarg
     def get_composition_search_session_for_repository(self, repository_id=None):
         """Gets a composition search session for the given repository.
 
@@ -1253,6 +1287,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_composition_search_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_composition_admin_session(self):
         """Gets a composition administration session for creating, updating and
         deleting compositions.
@@ -1272,6 +1307,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     composition_admin_session = property(fget=get_composition_admin_session)
 
+    @remove_null_proxy_kwarg
     def get_composition_admin_session_for_repository(self, repository_id=None):
         """Gets a composiiton administrative session for the given repository.
 
@@ -1293,6 +1329,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         return self._provider_manager.get_composition_admin_session_for_repository(
             repository_id)
 
+    @remove_null_proxy_kwarg
     def get_composition_notification_session(self, composition_receiver=None):
         """Gets the notification session for notifications pertaining to composition changes.
 
@@ -1311,6 +1348,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         pass
 
+    @remove_null_proxy_kwarg
     def get_composition_notification_session_for_repository(self,
                                                             composition_receiver=None,
                                                             repository_id=None):
@@ -1335,6 +1373,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         pass
 
+    @remove_null_proxy_kwarg
     def get_composition_repository_session(self):
         """Gets the session for retrieving composition to repository mappings.
 
@@ -1353,6 +1392,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     composition_repository_session = property(fget=get_composition_repository_session)
 
+    @remove_null_proxy_kwarg
     def get_composition_repository_assignment_session(self):
         """Gets the session for assigning composition to repository mappings.
 
@@ -1373,6 +1413,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
     composition_repository_assignment_session = property(
         fget=get_composition_repository_assignment_session)
 
+    @remove_null_proxy_kwarg
     def get_composition_smart_repository_session(self, repository_id=None):
         """Gets a composition smart repository session for the given repository.
 
@@ -1390,6 +1431,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         pass
 
+    @remove_null_proxy_kwarg
     def get_repository_lookup_session(self):
         """Gets the repository lookup session.
 
@@ -1408,6 +1450,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     repository_lookup_session = property(fget=get_repository_lookup_session)
 
+    @remove_null_proxy_kwarg
     def get_repository_query_session(self):
         """Gets the repository query session.
 
@@ -1426,6 +1469,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     repository_query_session = property(fget=get_repository_query_session)
 
+    @remove_null_proxy_kwarg
     def get_repository_search_session(self):
         """Gets the repository search session.
 
@@ -1444,6 +1488,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     repository_search_session = property(fget=get_repository_search_session)
 
+    @remove_null_proxy_kwarg
     def get_repository_admin_session(self):
         """Gets the repository administrative session for creating, updating and
         deleteing repositories.
@@ -1463,6 +1508,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     repository_admin_session = property(fget=get_repository_admin_session)
 
+    @remove_null_proxy_kwarg
     def get_repository_notification_session(self, repository_receiver=None):
         """Gets the notification session for subscribing to changes to a repository.
 
@@ -1481,6 +1527,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
         """
         pass
 
+    @remove_null_proxy_kwarg
     def get_repository_hierarchy_session(self):
         """Gets the repository hierarchy traversal session.
 
@@ -1499,6 +1546,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     repository_hierarchy_session = property(fget=get_repository_hierarchy_session)
 
+    @remove_null_proxy_kwarg
     def get_repository_hierarchy_design_session(self):
         """Gets the repository hierarchy design session.
 
@@ -1517,6 +1565,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     repository_hierarchy_design_session = property(fget=get_repository_hierarchy_design_session)
 
+    @remove_null_proxy_kwarg
     def get_repository_batch_manager(self):
         """Gets a ``RepositoryBatchManager``.
 
@@ -1533,6 +1582,7 @@ class RepositoryManager(abc_repository_managers.RepositoryManager,
 
     repository_batch_manager = property(fget=get_repository_batch_manager)
 
+    @remove_null_proxy_kwarg
     def get_repository_rules_manager(self):
         """Gets a ``RepositoryRulesManager``.
 
