@@ -346,13 +346,13 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         course_node = None
         found_course = False
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        if self.my_osid_object._proxy is None:
-            cqs = rm.get_composition_query_session_for_repository(Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
-        else:
+        if self.my_osid_object._proxy is not None:
             cqs = rm.get_composition_query_session_for_repository(
                 Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
-                proxy=self.my_osid_object._proxy
-            )
+                proxy=self.my_osid_object._proxy)
+        else:
+            cqs = rm.get_composition_query_session_for_repository(
+                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
         search_node = self.my_osid_object
         while not found_course:
             querier = cqs.get_composition_query()
@@ -373,7 +373,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
             return ''
         else:
             for index, child in enumerate(self.my_osid_object.get_children()):
-                group_ids[index] = 'i4x://{0}/{1}/{2}/{3}'.format(course_node.org,
+                group_ids[index] = 'i4x://{0}/{1}/{2}/{3}'.format(course_node.org['text'],
                                                                   re.sub('[^\w\s-]', '', course_node.display_name.text),
                                                                   child.genus_type.identifier,
                                                                   child.url)

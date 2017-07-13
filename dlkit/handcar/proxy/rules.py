@@ -124,7 +124,7 @@ class Proxy(abc_proxy_rules.Proxy, osid_rules.OsidResult):
         try:
             return json.load(result)
         except ValueError:
-            return result
+            return result.read()
 
     def has_authentication(self):
         """Tests if an authentication is available.

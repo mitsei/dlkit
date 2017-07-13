@@ -1,6 +1,9 @@
+# populate with default registry
+from dlkit.app_configs.registry import MANAGER_PATHS
+
+# try finding these from the main project to override our defaults
 try:
-    # try finding these from the main project
-    from dlkit_configs.registry import *
+    from dlkit_configs.registry import MANAGER_PATHS as USER_MANAGER_PATHS
+    MANAGER_PATHS.update(USER_MANAGER_PATHS)
 except ImportError:
-    # fall back to default configs
-    from dlkit.app_configs.registry import *
+    pass

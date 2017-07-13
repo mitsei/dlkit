@@ -150,7 +150,13 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
     @property
     def course_node(self):
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        cls = rm.get_composition_lookup_session_for_repository(self.my_osid_object.ident)
+        if self.my_osid_object._proxy is None:
+            cls = rm.get_composition_lookup_session_for_repository(self.my_osid_object.ident)
+        else:
+            cls = rm.get_composition_lookup_session_for_repository(
+                self.my_osid_object.ident,
+                proxy=self.my_osid_object._proxy
+            )
         cls.use_unsequestered_composition_view()
         try:
             return next(cls.get_compositions_by_genus_type(
@@ -161,7 +167,10 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
     def export_olx(self):
         run_repo = self.my_osid_object
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        rhs = rm.get_repository_hierarchy_session()
+        if self.my_osid_object._proxy is None:
+            rhs = rm.get_repository_hierarchy_session()
+        else:
+            rhs = rm.get_repository_hierarchy_session(proxy=self.my_osid_object._proxy)
         course_repo = next(rhs.get_parent_repositories(run_repo.ident))
 
         filename = '{0}_{1}_{2}'.format(course_repo.display_name.text,
@@ -209,11 +218,22 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
                                                      run_repo.display_name.text)
         course_node = self.course_node
         for child_id in course_node.get_child_ids():
-            try:
+            if self.my_osid_object._proxy is None:
                 cls = rm.get_composition_lookup_session_for_repository(run_repo.ident)
+            else:
+                cls = rm.get_composition_lookup_session_for_repository(
+                    run_repo.ident,
+                    proxy=self.my_osid_object._proxy
+                )
+
+            try:
                 child = cls.get_composition(child_id)
             except NotFound:
-                cls = rm.get_composition_lookup_session()
+                if self.my_osid_object._proxy is None:
+                    cls = rm.get_composition_lookup_session()
+                else:
+                    cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
+
                 cls.use_unsequestered_composition_view()
                 cls.use_federated_repository_view()
                 child = cls.get_composition(child_id)
@@ -252,29 +272,58 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         am = self.my_osid_object._get_provider_manager('ASSESSMENT')
         run_repo = self.my_osid_object
 
-        bls = am.get_bank_lookup_session()
+        if self.my_osid_object._proxy is None:
+            bls = am.get_bank_lookup_session()
+        else:
+            bls = am.get_bank_lookup_session(proxy=self.my_osid_object._proxy)
+
         user_bank = bls.get_bank(user_repo.ident)
 
-        cls = rm.get_composition_lookup_session_for_repository(run_repo.ident)
+        if self.my_osid_object._proxy is None:
+            cls = rm.get_composition_lookup_session_for_repository(run_repo.ident)
+            cqs = rm.get_composition_query_session_for_repository(run_repo.ident)
+            cas = rm.get_composition_admin_session_for_repository(run_repo.ident)
+            cras = rm.get_composition_repository_assignment_session()
+            crs = rm.get_composition_repository_session()
+            acs = rm.get_asset_composition_session_for_repository(user_repo.ident)
+            aas = rm.get_asset_admin_session_for_repository(user_repo.ident)
+            assessment_as = am.get_assessment_admin_session_for_bank(user_bank.ident)
+            abas = am.get_assessment_basic_authoring_session_for_bank(user_bank.ident)
+            ias = am.get_item_admin_session_for_bank(user_bank.ident)
+            aqs = am.get_assessment_query_session_for_bank(user_bank.ident)
+        else:
+            cls = rm.get_composition_lookup_session_for_repository(
+                run_repo.ident,
+                proxy=self.my_osid_object._proxy
+            )
+            cqs = rm.get_composition_query_session_for_repository(
+                run_repo.ident,
+                proxy=self.my_osid_object._proxy
+            )
+            cas = rm.get_composition_admin_session_for_repository(
+                run_repo.ident,
+                proxy=self.my_osid_object._proxy
+            )
+            cras = rm.get_composition_repository_assignment_session(proxy=self.my_osid_object._proxy)
+            crs = rm.get_composition_repository_session(proxy=self.my_osid_object._proxy)
+            acs = rm.get_asset_composition_session_for_repository(user_repo.ident,
+                                                                  proxy=self.my_osid_object._proxy)
+            aas = rm.get_asset_admin_session_for_repository(user_repo.ident,
+                                                            proxy=self.my_osid_object._proxy)
+            assessment_as = am.get_assessment_admin_session_for_bank(user_bank.ident,
+                                                                     proxy=self.my_osid_object._proxy)
+            abas = am.get_assessment_basic_authoring_session_for_bank(user_bank.ident,
+                                                                      proxy=self.my_osid_object._proxy)
+            ias = am.get_item_admin_session_for_bank(user_bank.ident,
+                                                     proxy=self.my_osid_object._proxy)
+            aqs = am.get_assessment_query_session_for_bank(user_bank.ident,
+                                                           proxy=self.my_osid_object._proxy)
+
         cls.use_unsequestered_composition_view()
         cls.use_federated_repository_view()
-
-        cqs = rm.get_composition_query_session_for_repository(run_repo.ident)
         cqs.use_unsequestered_composition_view()
         cqs.use_federated_repository_view()
-
-        cas = rm.get_composition_admin_session_for_repository(run_repo.ident)
-
-        cras = rm.get_composition_repository_assignment_session()
-        crs = rm.get_composition_repository_session()
-        acs = rm.get_asset_composition_session_for_repository(user_repo.ident)
         acs.use_federated_repository_view()
-        aas = rm.get_asset_admin_session_for_repository(user_repo.ident)
-
-        assessment_as = am.get_assessment_admin_session_for_bank(user_bank.ident)
-        abas = am.get_assessment_basic_authoring_session_for_bank(user_bank.ident)
-        ias = am.get_item_admin_session_for_bank(user_bank.ident)
-        aqs = am.get_assessment_query_session_for_bank(user_bank.ident)
         aqs.use_federated_bank_view()
 
         for composition in cls.get_compositions():
@@ -324,7 +373,10 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
                 # unassign the composition from this repository
                 cras.unassign_composition_from_repository(composition.ident, run_repo.ident)
 
-        ras = rm.get_repository_admin_session()
+        if self.my_osid_object._proxy is None:
+            ras = rm.get_repository_admin_session()
+        else:
+            ras = rm.get_repository_admin_session(proxy=self.my_osid_object._proxy)
         ras.delete_repository(run_repo.ident)
 
 
