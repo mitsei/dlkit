@@ -38,26 +38,26 @@ try:
     # If you are using Django, you can also configure dlkit from your
     # Django settings.py file.
     from django.conf import settings
-    HANDCAR_IMPL = settings.HANDCAR_IMPL
-    CLOUDFRONT_PUBLIC_KEY = settings.CLOUDFRONT_PUBLIC_KEY
-    CLOUDFRONT_PRIVATE_KEY = settings.CLOUDFRONT_PRIVATE_KEY
-    CLOUDFRONT_SIGNING_KEYPAIR_ID = settings.CLOUDFRONT_SIGNING_KEYPAIR_ID
-    CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE = settings.CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE
-    CLOUDFRONT_DISTRO = settings.CLOUDFRONT_DISTRO
-    CLOUDFRONT_DISTRO_ID = settings.CLOUDFRONT_DISTRO_ID
-    CLOUDFRONT_TEST_DISTRO = settings.CLOUDFRONT_TEST_DISTRO
-    CLOUDFRONT_TEST_DISTRO_ID = settings.CLOUDFRONT_TEST_DISTRO_ID
-    S3_PRIVATE_KEY = settings.S3_PRIVATE_KEY
-    S3_PUBLIC_KEY = settings.S3_PUBLIC_KEY
-    S3_BUCKET = settings.S3_BUCKET
-    S3_TEST_BUCKET = settings.S3_TEST_BUCKET
-    S3_TEST_PRIVATE_KEY = settings.S3_TEST_PRIVATE_KEY
-    S3_TEST_PUBLIC_KEY = settings.S3_TEST_PUBLIC_KEY
-    DLKIT_MONGO_DB_PREFIX = settings.DLKIT_MONGO_DB_PREFIX
-    DLKIT_AUTHORITY = settings.DLKIT_AUTHORITY
-    DLKIT_MONGO_DB_INDEXES = settings.DLKIT_MONGO_DB_INDEXES
-    DLKIT_MONGO_KEYWORD_FIELDS = settings.DLKIT_MONGO_KEYWORD_FIELDS
-    MONGO_HOST_URI = settings.MONGO_HOST_URI
+    HANDCAR_IMPL = getattr(settings, 'HANDCAR_IMPL', '')
+    CLOUDFRONT_PUBLIC_KEY = getattr(settings, 'CLOUDFRONT_PUBLIC_KEY', '')
+    CLOUDFRONT_PRIVATE_KEY = getattr(settings, 'CLOUDFRONT_PRIVATE_KEY', '')
+    CLOUDFRONT_SIGNING_KEYPAIR_ID = getattr(settings, 'CLOUDFRONT_SIGNING_KEYPAIR_ID', '')
+    CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE = getattr(settings, 'CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE', '')
+    CLOUDFRONT_DISTRO = getattr(settings, 'CLOUDFRONT_DISTRO', '')
+    CLOUDFRONT_DISTRO_ID = getattr(settings, 'CLOUDFRONT_DISTRO_ID', '')
+    CLOUDFRONT_TEST_DISTRO = getattr(settings, 'CLOUDFRONT_TEST_DISTRO', '')
+    CLOUDFRONT_TEST_DISTRO_ID = getattr(settings, 'CLOUDFRONT_TEST_DISTRO_ID', '')
+    S3_PRIVATE_KEY = getattr(settings, 'S3_PRIVATE_KEY', '')
+    S3_PUBLIC_KEY = getattr(settings, 'S3_PUBLIC_KEY', '')
+    S3_BUCKET = getattr(settings, 'S3_BUCKET', '')
+    S3_TEST_BUCKET = getattr(settings, 'S3_TEST_BUCKET', '')
+    S3_TEST_PRIVATE_KEY = getattr(settings, 'S3_TEST_PRIVATE_KEY', '')
+    S3_TEST_PUBLIC_KEY = getattr(settings, 'S3_TEST_PUBLIC_KEY', '')
+    DLKIT_MONGO_DB_PREFIX = getattr(settings, 'DLKIT_MONGO_DB_PREFIX', '')
+    DLKIT_AUTHORITY = getattr(settings, 'DLKIT_AUTHORITY', '')
+    DLKIT_MONGO_DB_INDEXES = getattr(settings, 'DLKIT_MONGO_DB_INDEXES', '')
+    DLKIT_MONGO_KEYWORD_FIELDS = getattr(settings, 'DLKIT_MONGO_KEYWORD_FIELDS', '')
+    MONGO_HOST_URI = getattr(settings, 'MONGO_HOST_URI', '')
 except ImportError:
     # or get them from the environment
     if 'HANDCAR_IMPL' in os.environ:
