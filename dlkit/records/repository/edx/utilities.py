@@ -82,7 +82,7 @@ class EdXUtilitiesMixin(object):
         fixed_path = remove_redundant_drafts(path)
         f = tarfile.TarInfo(name=remove_trailing_slash(fixed_path))
         f.mtime = get_current_time_in_secs()
-        f.mode = 0755
+        f.mode = 0o755
         f.uname = 'MIT_ODL'
         f.gname = 'staff'
 
