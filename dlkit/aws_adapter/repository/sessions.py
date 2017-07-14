@@ -2439,6 +2439,140 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
     compositions = property(fget=get_compositions)
 
 
+class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, osid_sessions.OsidSession):
+    """This session provides methods for searching among ``Composition`` objects.
+
+    The search query is constructed using the ``CompositionQuery``.
+
+    This session defines views that offer differing behaviors when
+    searching.
+
+      * federated repository view: searches include compositions in
+        repositories of which this repository is an ancestor in the
+        repository hierarchy
+      * isolated repository view: searches are restricted to subjects in
+        this repository
+      * sequestered composition viiew: All composition methods suppress
+        sequestered compositions.
+      * unsequestered composition view: All composition methods return
+        all compositions.
+
+
+    Compositions may have a query record indicated by their respective
+    record types. The query record is accessed via the
+    ``CompositionQuery``.
+
+    """
+    def get_repository_id(self):
+        """Gets the ``Repository``  ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the ``Repository Id`` associated with
+                this session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        return self._provider_session.get_repository_id()
+
+    repository_id = property(fget=get_repository_id)
+
+    def get_repository(self):
+        """Gets the ``Repository`` associated with this session.
+
+        return: (osid.repository.Repository) - the ``Repository``
+                associated with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        return self._provider_session.get_repository()
+
+    repository = property(fget=get_repository)
+
+    def can_search_compositions(self):
+        """Tests if this user can perform ``Composition`` searches.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may opt not to offer search
+        operations to unauthorized users.
+
+        return: (boolean) - ``false`` if search methods are not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        return self._provider_session.can_search_compositions()
+
+    def use_federated_repository_view(self):
+        """Federates the view for methods in this session.
+
+        A federated view will include compositions in repositories which
+        are children of this repository in the repository hierarchy.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        self._provider_session.use_federated_repository_view()
+
+    def use_isolated_repository_view(self):
+        """Isolates the view for methods in this session.
+
+        An isolated view restricts lookups to this repository only.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        self._provider_session._use_isolated_catalog_view()
+
+    def use_sequestered_composition_view(self):
+        """The methods in this session omit sequestered compositions.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        self._provider_session.use_sequestered_composition_view()
+
+    def use_unsequestered_composition_view(self):
+        """The methods in this session return all compositions, including sequestered compositions.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        self._provider_session.use_unsequestered_composition_view()
+
+    def get_composition_query(self):
+        """Gets a composition query.
+
+        return: (osid.repository.CompositionQuery) - the composition
+                query
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        return self._provider_session.get_composition_query()
+
+    composition_query = property(fget=get_composition_query)
+
+    @utilities.arguments_not_none
+    def get_compositions_by_query(self, composition_query):
+        """Gets a list of ``Compositions`` matching the given composition query.
+
+        arg:    composition_query (osid.repository.CompositionQuery):
+                the composition query
+        return: (osid.repository.CompositionList) - the returned
+                ``CompositionList``
+        raise:  NullArgument - ``composition_query`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        raise:  Unsupported - ``composition_query`` is not of this
+                service
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        return self._provider_session.get_compositions_by_query(composition_query)
+
+
 class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Compositions``.
 
