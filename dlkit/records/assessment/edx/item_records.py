@@ -70,7 +70,7 @@ class edXItemRecord(ItemTextsRecord,
     def get_raw_edxml(self):
         """stub"""
         if self.has_raw_edxml():
-            return self.get_text('edxml')
+            return self.get_text('edxml').text
         raise IllegalState()
 
     def get_edxml(self):
@@ -78,7 +78,7 @@ class edXItemRecord(ItemTextsRecord,
         if self.has_raw_edxml():
             has_python = False
             my_files = self.my_osid_object.object_map['fileIds']
-            raw_text = self.get_text('edxml')
+            raw_text = self.get_text('edxml').text
             soup = BeautifulSoup(raw_text, 'xml')
             # replace all file listings with an appropriate path...
             attrs = {
@@ -118,7 +118,7 @@ class edXItemRecord(ItemTextsRecord,
             except Exception:
                 # if the edxml is not valid XML, it will not parse properly in soup
                 # return just the raw edxml
-                return self.get_text('edxml')
+                return self.get_text('edxml').text
         else:
             # have to construct the edxml from various components
             obj_map = self.my_osid_object.object_map
@@ -269,7 +269,7 @@ class edXItemRecord(ItemTextsRecord,
     def get_urlname(self):
         """stub"""
         if self.has_urlname():
-            return self.get_text('urlname')
+            return self.get_text('urlname').text
         raise IllegalState()
 
     def has_python_script(self):
@@ -281,7 +281,7 @@ class edXItemRecord(ItemTextsRecord,
     def get_python_script(self):
         """stub"""
         if self.has_python_script():
-            return self.get_text('python_script')
+            return self.get_text('python_script').text
         raise IllegalState()
 
     def has_raw_latex(self):
@@ -293,13 +293,13 @@ class edXItemRecord(ItemTextsRecord,
     def get_raw_latex(self):
         """stub"""
         if self.has_raw_latex():
-            return self.get_text('latex')
+            return self.get_text('latex').text
         raise IllegalState()
 
     def get_xproblem(self, parameters=None):
         """stub"""
         if not self.get_text('python_script'):
-            return self.get_text('edxml')
+            return self.get_text('edxml').text
         if not parameters:
             parameters = self.get_parameters()
         return self._get_parameterized_text(parameters)
@@ -316,12 +316,12 @@ class edXItemRecord(ItemTextsRecord,
             raise IllegalState()
         try:
             if not self.get_text('python_script'):
-                return self.get_text('solution')
+                return self.get_text('solution').text
             if not parameters:
                 parameters = self.get_parameters()
             return self._get_parameterized_text(parameters)
         except Exception:
-            return self.get_text('solution')
+            return self.get_text('solution').text
 
     def is_parameterized(self):
         """stub"""
@@ -349,7 +349,7 @@ class edXItemRecord(ItemTextsRecord,
 
     def _get_parameterized_text(self, parameters):
         """stub"""
-        text = self.get_text('edxml')
+        text = self.get_text('edxml').text
         done = False
         while not done:
             result = re.search(r'\$\w+', text)
