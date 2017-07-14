@@ -426,8 +426,10 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
         if repository is None:
             repository_id = Id(self.my_osid_object.object_map['assignedRepositoryIds'][0])
-            # What to do about proxy here??
-            rls = rm.get_repository_lookup_session()
+            if self.my_osid_object._proxy is None:
+                rls = rm.get_repository_lookup_session()
+            else:
+                rls = rm.get_repository_lookup_session(proxy=self.my_osid_object._proxy)
 
             repository = rls.get_repository(repository_id)
         append_error_child = False
