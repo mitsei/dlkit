@@ -8,17 +8,20 @@ services:
 - mongodb
 - memcached
 env:
-  - TEST_SUITE=tests/dlkit.py
-  - TEST_SUITE=tests/functional.py
-  - TEST_SUITE=tests/other.py
-  - TEST_SUITE=tests/records.py
-  - TEST_SUITE=tests/*/test_managers.py
-  - TEST_SUITE=tests/*/test_objects.py
-  - TEST_SUITE=tests/*/test_queries.py
-  - TEST_SUITE=tests/*/test_record_templates.py
-  - TEST_SUITE=tests/*/test_rules.py
-  - TEST_SUITE=tests/*/test_searches.py
-  - TEST_SUITE=tests/*/test_sessions.py
+  - TEST_SUITE=tests/dlkit/
+  - TEST_SUITE=tests/functional/
+  - TEST_SUITE=tests/other/
+  - TEST_SUITE=tests/records/
+  - TEST_SUITE=tests/assessment/
+  - TEST_SUITE=tests/assessment_authoring/
+  - TEST_SUITE=tests/authorization/
+  - TEST_SUITE=tests/cataloging/
+  - TEST_SUITE=tests/commenting/
+  - TEST_SUITE=tests/grading/
+  - TEST_SUITE=tests/learning/
+  - TEST_SUITE=tests/logging_/
+  - TEST_SUITE=tests/repository/
+  - TEST_SUITE=tests/resource/
   - TEST_SUITE='not tests'
 cache: pip
 sudo: false
