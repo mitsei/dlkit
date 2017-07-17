@@ -712,6 +712,55 @@ TEST_FILESYSTEM_ADAPTER_1 = {
     }
 }
 
+TEST_FILESYSTEM_ADAPTER_2 = {
+    'id': 'filesystem_adapter_configuration_2',
+    'displayName': 'Filesystem Adapter Configuration',
+    'description': 'Configuration for Filesystem Adapter',
+    'parameters': {
+        'implKey': impl_key_dict('filesystem_adapter'),
+        'repositoryProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Repository Provider Implementation',
+            'description': 'Implementation for repository service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
+        'dataStorePath': {
+            'syntax': 'STRING',
+            'displayName': 'Path to local filesystem datastore',
+            'description': 'Filesystem path for setting the MongoClient host.',
+            'values': [
+                {'value': TEST_DATA_STORE_PATH, 'priority': 1}  # Mac
+            ]
+        },
+        # 'secondaryDataStorePath': {
+        #     'syntax': 'STRING',
+        #     'displayName': 'Path to local filesystem datastore',
+        #     'description': 'Filesystem path for setting the MongoClient host.',
+        #     'values': [
+        #         {'value': TEST_STUDENT_RESPONSE_DATA_STORE_PATH, 'priority': 1}  # Mac
+        #     ]
+        # },
+        'dataStoreFullPath': {
+            'syntax': 'STRING',
+            'displayName': 'Full path to local filesystem datastore',
+            'description': 'Filesystem path for setting the JSONClient host.',
+            'values': [
+                {'value': ABS_PATH, 'priority': 1}
+            ]
+        },
+        'urlHostname': {
+            'syntax': 'STRING',
+            'displayName': 'Hostname config for serving files over the network',
+            'description': 'Hostname config for serving files.',
+            'values': [
+                {'value': '/api/v1', 'priority': 1}  # Mac
+            ]
+        },
+    }
+}
+
 TEST_JSON_1 = {
     'id': 'test_json_configuration_1',
     'displayName': 'Mongo Configuration',
@@ -1022,7 +1071,7 @@ TEST_JSON_FILESYSTEM_1 = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'TEST_FILESYSTEM_ADAPTER_1', 'priority': 1}
+                {'value': 'TEST_FILESYSTEM_ADAPTER_2', 'priority': 1}
             ]
         },
         'assetContentRecordTypeForFiles': {
@@ -2076,7 +2125,7 @@ TEST_SERVICE_FILESYSTEM = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+                {'value': 'TEST_FILESYSTEM_ADAPTER_2', 'priority': 1}
             ]
         },
         'commentingProviderImpl': {

@@ -91,7 +91,7 @@ class edXAssetContentRecord(AssetContentTextRecord,
                     asset_id = item[attr]
                     asset_content = self._get_asset_content(Id(asset_id))
                     asset_url = asset_content.get_url()
-                    asset_file = StringIO(requests.get(asset_url).content)
+                    asset_file = asset_content.get_data()
                     asset_file_name = asset_url.split('?')[0].split('/')[-1]
                     static_file_path = '{0}static/{1}'.format(root_path,
                                                               asset_file_name)
@@ -133,7 +133,8 @@ class edXAssetContentRecord(AssetContentTextRecord,
 
         soup = BeautifulSoup(edxml, 'xml').find('html')
         if soup is None:
-            soup = BeautifulSoup('', 'xml').append(BeautifulSoup(edxml, 'html5lib'))
+            soup = BeautifulSoup('', 'xml')
+            soup.append(BeautifulSoup(edxml, 'html5lib'))
 
         attrs = {
             'draggable': ['icon'],

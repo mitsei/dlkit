@@ -10,7 +10,6 @@ from dlkit.abstract_osid.osid import errors
 from dlkit.json_.osid.objects import OsidObject, OsidObjectForm
 from dlkit.json_.osid.queries import OsidObjectQuery
 from dlkit.primordium.calendaring.primitives import DateTime
-from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.records.registry import COMPOSITION_RECORD_TYPES, COMPOSITION_GENUS_TYPES
@@ -355,6 +354,10 @@ class TestEdXCompositionQueryRecord(object):
         assert '_id' not in composition_query._my_osid_query._query_terms
 
         rm.delete_repository(repo.ident)
+
+
+class TestEdXCompositionRecord(object):
+    pass
 
 
 @pytest.fixture(scope="function")
