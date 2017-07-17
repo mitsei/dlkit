@@ -572,7 +572,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         filename = clean_str(filename) + '.tar.gz'
         root_path = ''
 
-        olx = StringIO()
+        olx = BytesIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
         self.my_osid_object.export_olx(tarball, root_path)
 
