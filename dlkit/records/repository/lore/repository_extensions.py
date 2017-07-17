@@ -186,7 +186,7 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         soup = BeautifulSoup('<course/>', 'xml')
         soup.course['course'] = course_repo.display_name.text
         soup.course['url_name'] = run_repo.display_name.text
-        soup.course['org'] = course_repo.org
+        soup.course['org'] = course_repo.org.text
 
         course_path = '{0}course.xml'.format(root_path)
         self.write_to_tarfile(tarball, course_path, soup)
