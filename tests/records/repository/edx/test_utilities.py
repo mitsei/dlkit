@@ -41,7 +41,7 @@ class TestUtilityMethods(object):
 
 
 @pytest.fixture(scope="class")
-def edx_utilities_mixing_class_fixture(request):
+def edx_utilities_mixin_class_fixture(request):
     request.cls.mixin = EdXUtilitiesMixin()
 
     obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
@@ -70,7 +70,7 @@ def edx_utilities_mixing_class_fixture(request):
 
 
 @pytest.fixture(scope="function")
-def edx_utilities_mixing_test_fixture(request):
+def edx_utilities_mixin_test_fixture(request):
     stream = BytesIO()
     request.cls.tarfile = tarfile.open(fileobj=stream, mode='w')
     test_file = tarfile.TarInfo(name='/vertical/a-simple-path.xml')
@@ -78,7 +78,7 @@ def edx_utilities_mixing_test_fixture(request):
     request.cls.tarfile.addfile(test_file, test_data)
 
 
-@pytest.mark.usefixtures('edx_utilities_mixing_class_fixture', 'edx_utilities_mixing_test_fixture')
+@pytest.mark.usefixtures('edx_utilities_mixin_class_fixture', 'edx_utilities_mixin_test_fixture')
 class TestEdXUtilitiesMixin(object):
     def test_get_unique_name_works(self):
         assert self.mixin.get_unique_name(self.tarfile, 'a-simple-path', 'vertical', '/') == 'a-simple-path-1'

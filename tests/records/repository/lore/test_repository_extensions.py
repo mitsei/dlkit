@@ -393,7 +393,7 @@ class TestLoreCourseRunRepositoryFormRecord(unittest.TestCase):
         pass
 
     def test_can_set_platform(self):
-        """Tests set_org"""
+        """Tests set_platform"""
         form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
         self.assertNotIn('platform', form.my_osid_object_form._my_map['texts'])
         form.set_platform('FooX')

@@ -4,16 +4,11 @@ import time
 import tarfile
 import functools
 
-try:
-    # python 2
-    from cStringIO import StringIO
-except ImportError:
-    # python 3
-    from io import StringIO
-
 from bs4 import BeautifulSoup
 
 from bson import ObjectId
+
+from six import BytesIO
 
 from dlkit.abstract_osid.assessment.objects import Item
 from dlkit.abstract_osid.osid.errors import IllegalState, NotFound
@@ -34,7 +29,7 @@ def valid_for(whitelist):
     """ descriptor to check the genus type of an item, to see
     if the method is valid for that type
     From http://stackoverflow.com/questions/30809814/python-descriptors-with-arguments
-    :param func:
+    :param whitelist: list of OLX tag names, like 'chapter' or 'vertical'
     :return:
     """
     def decorator(func):
@@ -88,9 +83,9 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
         self.my_osid_object_form._my_map['draft'] = \
             self._draft_metadata['default_boolean_values'][0]
         self.my_osid_object_form._my_map['texts']['userPartitionId'] = \
-            self._user_partition_id_metadata['default_string_values'][0]
+            self._text_metadata['default_string_values'][0]
         self.my_osid_object_form._my_map['texts']['org'] = \
-            self._org_metadata['default_string_values'][0]
+            self._text_metadata['default_string_values'][0]
         self.my_osid_object_form._my_map['learningObjectiveIds'] = \
             self._learning_objective_ids_metadata['default_string_values'][0]
 
@@ -125,38 +120,6 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
             'default_boolean_values': [False],
             'syntax': 'BOOLEAN'
         }
-        self._user_partition_id_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
-                             'user_partition_id'),
-            'element_label': 'user_partition_id',
-            'instructions': 'enter a text string',
-            'required': False,
-            'read_only': False,
-            'linked': False,
-            'array': False,
-            'default_string_values': [''],
-            'syntax': 'STRING',
-            'minimum_string_length': self._min_string_length,
-            'maximum_string_length': self._max_string_length,
-            'string_set': []
-        }
-        self._org_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
-                             'org'),
-            'element_label': 'org',
-            'instructions': 'enter a text string',
-            'required': False,
-            'read_only': False,
-            'linked': False,
-            'array': False,
-            'default_string_values': [''],
-            'syntax': 'STRING',
-            'minimum_string_length': self._min_string_length,
-            'maximum_string_length': self._max_string_length,
-            'string_set': []
-        }
 
         # ideally this would be type LIST?
         self._learning_objective_ids_metadata = {
@@ -168,7 +131,7 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
             'required': False,
             'read_only': False,
             'linked': False,
-            'array': False,
+            'array': True,
             'default_string_values': [[]],
             'syntax': 'STRING',
             'minimum_string_length': self._min_string_length,
@@ -209,7 +172,7 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
     @valid_for(['course'])
     def clear_org(self):
         self.my_osid_object_form._my_map['texts']['org'] = \
-            self._org_metadata['default_string_values'][0]
+            self._text_metadata['default_string_values'][0]
 
     @valid_for(['vertical'])
     def set_draft(self, is_draft):
@@ -226,8 +189,8 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
     @valid_for(['split_test'])
     def clear_user_partition_id(self):
-        self.my_osid_object_form._my_map['userPartitionId'] = \
-            self._user_partition_id_metadata['default_string_values'][0]
+        self.my_osid_object_form._my_map['texts']['userPartitionId'] = \
+            self._text_metadata['default_string_values'][0]
 
     @valid_for(['vertical', 'chapter', 'sequential', 'split_test'])
     def set_learning_objective_ids(self, learning_objective_ids):
@@ -646,10 +609,10 @@ class EdXCourseRunCompositionFormRecord(TextsFormRecord):
         self.clear_text('policy')
 
     def set_grading_policy(self, grading_policy):
-        self.add_text(str(grading_policy), 'grading_policy')
+        self.add_text(str(grading_policy), 'gradingPolicy')
 
     def clear_grading_policy(self):
-        self.clear_text('grading_policy')
+        self.clear_text('gradingPolicy')
 
 
 class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRecord):
@@ -663,7 +626,7 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
 
     @property
     def grading_policy(self):
-        return self.get_text('grading_policy')
+        return self.get_text('gradingPolicy')
 
     @property
     def policy(self):
@@ -672,8 +635,13 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
     def export_run_olx(self):
         run_comp = self.my_osid_object
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        cqs = rm.get_composition_query_session_for_repository(
-            Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+        if self.my_osid_object._proxy is None:
+            cqs = rm.get_composition_query_session_for_repository(
+                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+        else:
+            cqs = rm.get_composition_query_session_for_repository(
+                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
+                proxy=self.my_osid_object._proxy)
         cqs.use_unsequestered_composition_view()
         querier = cqs.get_composition_query()
         querier.match_contained_composition_id(run_comp.ident, True)
@@ -685,7 +653,7 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
         filename = clean_str(filename) + '.tar.gz'
         root_path = '{0}/'.format(run_comp.display_name.text)
 
-        olx = StringIO()
+        olx = BytesIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
 
         # write the course.xml files first
@@ -708,10 +676,18 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
                                                      run_comp.display_name.text)
         for child_id in run_comp.get_child_ids():
             try:
-                cls = rm.get_composition_lookup_session_for_repository(run_comp.ident)
+                if self.my_osid_object._proxy is None:
+                    cls = rm.get_composition_lookup_session_for_repository(run_comp.ident)
+                else:
+                    cls = rm.get_composition_lookup_session_for_repository(
+                        run_comp.ident,
+                        proxy=self.my_osid_object._proxy)
                 child = cls.get_composition(child_id)
             except NotFound:
-                cls = rm.get_composition_lookup_session()
+                if self.my_osid_object._proxy is None:
+                    cls = rm.get_composition_lookup_session()
+                else:
+                    cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
                 cls.use_federated_repository_view()
                 cls.use_unsequestered_composition_view()
                 child = cls.get_composition(child_id)
@@ -738,5 +714,6 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
         self.write_to_tarfile(tarball, errors_path, exceptions)
 
         tarball.close()
+        olx.seek(0)
 
         return filename, olx
