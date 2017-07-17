@@ -101,7 +101,7 @@ class EdXUtilitiesMixin(object):
             else:
                 try:
                     stream = BytesIO(str(soup))
-                except UnicodeDecodeError:
+                except (UnicodeDecodeError, TypeError):
                     stream = BytesIO(soup.encode('utf-8'))
             f.size = get_byte_stream_size(stream)
             stream.seek(0)

@@ -1,13 +1,9 @@
 import re
+import sys
 import time
 import tarfile
 
-try:
-    # python 2
-    from cStringIO import StringIO
-except ImportError:
-    # python 3
-    from io import StringIO
+from six import BytesIO
 
 from bs4 import BeautifulSoup
 
@@ -34,18 +30,22 @@ class LoreRepositoryRecord(TextsRecord, abc_repository_records.RepositoryRecord)
 
     @property
     def id(self):
-        return str(self.my_osid_object.ident)
+        return self.my_osid_object.ident
 
     @property
     def name(self):
-        return self.my_osid_object.display_name.text
+        return self.my_osid_object.display_name
 
     @property
     def slug(self):
+        if sys.version_info >= (3, 6):
+            raised_exception = ModuleNotFoundError
+        else:
+            raised_exception = ImportError
         try:
             from django.utils.text import slugify
             return slugify(self.my_osid_object.display_name.text)
-        except ImportError:
+        except raised_exception:
             name = re.sub('[^\w\s-]', '', self.my_osid_object.display_name.text.lower())
             return re.sub('[-\s]+', '-', name)
 
@@ -53,7 +53,10 @@ class LoreRepositoryRecord(TextsRecord, abc_repository_records.RepositoryRecord)
         obj_map.update({
             'slug': self.my_osid_object.slug
         })
-        super(LoreRepositoryRecord, self)._update_object_map(obj_map)
+        try:
+            super(LoreRepositoryRecord, self)._update_object_map(obj_map)
+        except AttributeError:
+            pass
 
 
 class LoreRepositoryFormRecord(TextsFormRecord, abc_repository_records.RepositoryFormRecord):
@@ -128,24 +131,15 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
 
     @property
     def platform(self):
-        try:
-            return self.get_text('platform')
-        except IllegalState:
-            return ''
+        return self.get_text('platform')
 
     @property
     def grading_policy(self):
-        try:
-            return self.get_text('grading_policy')
-        except IllegalState:
-            return ''
+        return self.get_text('gradingPolicy')
 
     @property
     def policy(self):
-        try:
-            return self.get_text('policy')
-        except IllegalState:
-            return ''
+        return self.get_text('policy')
 
     @property
     def course_node(self):
@@ -179,7 +173,7 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         filename = clean_str(filename) + '.tar.gz'
         root_path = '{0}/'.format(run_repo.display_name.text)
 
-        olx = StringIO()
+        olx = BytesIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
 
         # write the course.xml files first
@@ -196,19 +190,27 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         self.write_to_tarfile(tarball, root_file_path, soup)
 
         # write policy files
-        if run_repo.policy != '':
+        try:
+            policy = run_repo.policy
+        except IllegalState:
+            pass
+        else:
             policy_path = '{0}policies/{1}/policy.json'.format(root_path,
                                                                run_repo.display_name.text)
             self.write_to_tarfile(tarball,
                                   policy_path,
-                                  soup=run_repo.policy,
+                                  soup=policy.text,
                                   prettify=False)
-        if run_repo.grading_policy != '':
+        try:
+            grading_policy = run_repo.grading_policy
+        except IllegalState:
+            pass
+        else:
             policy_path = '{0}policies/{1}/grading_policy.json'.format(root_path,
                                                                        run_repo.display_name.text)
             self.write_to_tarfile(tarball,
                                   policy_path,
-                                  soup=run_repo.grading_policy,
+                                  soup=grading_policy.text,
                                   prettify=False)
 
         exceptions = BeautifulSoup('<errors/>', 'xml')
@@ -260,6 +262,7 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         self.write_to_tarfile(tarball, errors_path, exceptions)
 
         tarball.close()
+        olx.seek(0)
 
         return filename, olx
 
@@ -416,7 +419,7 @@ class LoreCourseRunRepositoryFormRecord(TextsFormRecord, abc_repository_records.
         self.clear_text('policy')
 
     def set_grading_policy(self, grading_policy):
-        self.add_text(str(grading_policy), 'grading_policy')
+        self.add_text(str(grading_policy), 'gradingPolicy')
 
     def clear_grading_policy(self):
-        self.clear_text('grading_policy')
+        self.clear_text('gradingPolicy')

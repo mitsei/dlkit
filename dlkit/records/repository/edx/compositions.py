@@ -347,9 +347,8 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         found_course = False
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
         if self.my_osid_object._proxy is not None:
-            cqs = rm.get_composition_query_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
-                proxy=self.my_osid_object._proxy)
+            cqs = rm.get_composition_query_session_for_repository(Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
+                                                                  proxy=self.my_osid_object._proxy)
         else:
             cqs = rm.get_composition_query_session_for_repository(
                 Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
@@ -410,8 +409,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                     else:
                         abas = am.get_assessment_basic_authoring_session_for_bank(
                             Id(assessment.object_map['assignedBankIds'][0]),
-                            proxy=self.my_osid_object._proxy
-                        )
+                            proxy=self.my_osid_object._proxy)
                     for item in abas.get_items(assessment.ident):
                         resources.append(item)
                 else:
@@ -437,7 +435,6 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         missing_child_ids = []
 
         for child_id in self.my_osid_object.get_child_ids():
-            # need to use unsequestered view so get a lookup manager separately
             if repository._proxy is not None:
                 composition_lookup_session = rm.get_composition_lookup_session_for_repository(
                     repository.ident,
@@ -460,14 +457,14 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                 else:
                     child_objects.append((child, True))
             except NotFound:
-                # append the child, but flag it as not belonging to the user...
-                if repository._proxy is not None:
-                    composition_lookup_session = rm.get_composition_lookup_session(proxy=repository._proxy)
-                else:
-                    composition_lookup_session = rm.get_composition_lookup_session()
-                composition_lookup_session.use_federated_repository_view()
-                composition_lookup_session.use_unsequestered_composition_view()
                 try:
+                    # append the child, but flag it as not belonging to the user...
+                    if repository._proxy is not None:
+                        composition_lookup_session = rm.get_composition_lookup_session(proxy=repository._proxy)
+                    else:
+                        composition_lookup_session = rm.get_composition_lookup_session()
+                    composition_lookup_session.use_federated_repository_view()
+                    composition_lookup_session.use_unsequestered_composition_view()
                     child = composition_lookup_session.get_composition(child_id)
                     if child.is_sequestered():
                         try:
@@ -579,15 +576,15 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                             for ac in asset.get_asset_contents():
                                 asset_type = ac.genus_type.identifier
 
-                                if asset_type == 'video' or asset_type == 'videoalpha':
-                                    asset_olx = ac.get_text().text
-                                    asset_tag = BeautifulSoup(asset_olx, 'html5lib').find(asset_type)
-                                else:
-                                    unique_url = asset.export_olx(tarball, root_path)[0]  # Assumption
-                                    unique_name = unique_url.split('/')[-1].replace('.xml', '')
-                                    asset_tag = my_soup.new_tag(asset_type)
-                                    # asset_tag['display_name'] = asset.display_name.text
-                                    asset_tag['url_name'] = unique_name
+                                # if asset_type == 'video' or asset_type == 'videoalpha':
+                                #     asset_olx = ac.get_text().text
+                                #     asset_tag = BeautifulSoup(asset_olx, 'html5lib').find(asset_type)
+                                # else:
+                                unique_url = asset.export_olx(tarball, root_path)[0]  # Assumption
+                                unique_name = unique_url.split('/')[-1].replace('.xml', '')
+                                asset_tag = my_soup.new_tag(asset_type)
+                                # asset_tag['display_name'] = asset.display_name.text
+                                asset_tag['url_name'] = unique_name
                                 getattr(my_soup, my_tag).append(asset_tag)
                 else:
                     child_type = child.genus_type.identifier
@@ -675,14 +672,8 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
     def export_run_olx(self):
         run_comp = self.my_osid_object
         rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        if self.my_osid_object._proxy is None:
-            cqs = rm.get_composition_query_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
-        else:
-            cqs = rm.get_composition_query_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
-                proxy=self.my_osid_object._proxy
-            )
+        cqs = rm.get_composition_query_session_for_repository(
+            Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
         cqs.use_unsequestered_composition_view()
         querier = cqs.get_composition_query()
         querier.match_contained_composition_id(run_comp.ident, True)
@@ -716,20 +707,11 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
         course_xml_path = '{0}course/{1}.xml'.format(root_path,
                                                      run_comp.display_name.text)
         for child_id in run_comp.get_child_ids():
-            if self.my_osid_object._proxy is None:
-                cls = rm.get_composition_lookup_session_for_repository(run_comp.ident)
-            else:
-                cls = rm.get_composition_lookup_session_for_repository(
-                    run_comp.ident,
-                    proxy=self.my_osid_object._proxy
-                )
             try:
+                cls = rm.get_composition_lookup_session_for_repository(run_comp.ident)
                 child = cls.get_composition(child_id)
             except NotFound:
-                if self.my_osid_object._proxy is None:
-                    cls = rm.get_composition_lookup_session()
-                else:
-                    cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
+                cls = rm.get_composition_lookup_session()
                 cls.use_federated_repository_view()
                 cls.use_unsequestered_composition_view()
                 child = cls.get_composition(child_id)

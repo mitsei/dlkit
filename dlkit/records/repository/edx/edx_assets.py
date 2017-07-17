@@ -62,45 +62,46 @@ class edXAssetContentRecord(AssetContentTextRecord,
                                               expected_name)
 
         getattr(my_soup, my_tag)['display_name'] = parent_asset.display_name.text
+
+        try:
+            edxml_soup = BeautifulSoup(edxml, 'xml')
+            edxml_soup.html['display_name'] = parent_asset.display_name.text
+        except TypeError:
+            edxml_soup = BeautifulSoup('', 'xml')
+            edxml_soup.append(BeautifulSoup(edxml, 'html5lib'))
+            edxml_soup.html['display_name'] = parent_asset.display_name.text
+
+        attrs = {
+            'draggable': ['icon'],
+            'drag_and_drop_input': ['img'],
+            'files': ['included_files'],
+            'img': ['src'],
+            'a': ['href'],
+            'script': ['src'],
+            'video': ['sub', 'youtube', 'youtube_id_1_0'],
+            'encoded_video': ['url']
+        }
+        # replace all file listings with an appropriate path...
+        for key, attributes in attrs.items():
+            for attr in attributes:
+                local_regex = re.compile('^repository.Asset')
+                search = {attr: local_regex}
+                tags = edxml_soup.find_all(**search)
+                for item in tags:
+                    asset_id = item[attr]
+                    asset_content = self._get_asset_content(Id(asset_id))
+                    asset_url = asset_content.get_url()
+                    asset_file = StringIO(requests.get(asset_url).content)
+                    asset_file_name = asset_url.split('?')[0].split('/')[-1]
+                    static_file_path = '{0}static/{1}'.format(root_path,
+                                                              asset_file_name)
+
+                    self.write_to_tarfile(tarball, static_file_path, asset_file)
+
+                    relative_static_file_path = '/static/{0}'.format(asset_file_name)
+                    item[attr] = relative_static_file_path
+
         if my_tag == 'html':
-            try:
-                edxml_soup = BeautifulSoup(edxml, 'xml')
-                edxml_soup.html['display_name'] = parent_asset.display_name.text
-            except TypeError:
-                edxml_soup = BeautifulSoup('', 'xml')
-                edxml_soup.append(BeautifulSoup(edxml, 'html5lib'))
-                edxml_soup.html['display_name'] = parent_asset.display_name.text
-
-            attrs = {
-                'draggable': ['icon'],
-                'drag_and_drop_input': ['img'],
-                'files': ['included_files'],
-                'img': ['src'],
-                'a': ['href'],
-                'script': ['src'],
-                'video': ['sub', 'youtube', 'youtube_id_1_0'],
-                'encoded_video': ['url']
-            }
-            # replace all file listings with an appropriate path...
-            for key, attributes in attrs.items():
-                for attr in attributes:
-                    local_regex = re.compile('^repository.Asset')
-                    search = {attr: local_regex}
-                    tags = edxml_soup.find_all(**search)
-                    for item in tags:
-                        asset_id = item[attr]
-                        asset_content = self._get_asset_content(Id(asset_id))
-                        asset_url = asset_content.get_url()
-                        asset_file = StringIO(requests.get(asset_url).content)
-                        asset_file_name = asset_url.split('?')[0].split('/')[-1]
-                        static_file_path = '{0}static/{1}'.format(root_path,
-                                                                  asset_file_name)
-
-                        self.write_to_tarfile(tarball, static_file_path, asset_file)
-
-                        relative_static_file_path = '/static/{0}'.format(asset_file_name)
-                        item[attr] = relative_static_file_path
-
             # save the HTML file separately and point to it via the XML file
             my_html_path = '{0}{1}/{2}.html'.format(root_path,
                                                     my_tag,
@@ -117,12 +118,12 @@ class edXAssetContentRecord(AssetContentTextRecord,
             # my_soup = edxml_soup
             # self.write_to_tarfile(tarball, my_xml_path, my_soup)
         else:
-            if my_tag == 'video' or my_tag == 'videoalpha':
-                pass
-            else:
-                edxml_soup = BeautifulSoup(edxml, 'html5lib')
-                getattr(my_soup, my_tag).append(edxml_soup)
-                self.write_to_tarfile(tarball, my_xml_path, my_soup)
+            # if my_tag == 'video' or my_tag == 'videoalpha':
+            #     pass
+            # else:
+            # edxml_soup = BeautifulSoup(edxml, 'html5lib')
+            my_soup = getattr(edxml_soup, my_tag)
+            self.write_to_tarfile(tarball, my_xml_path, my_soup)
 
         return my_xml_path
 
