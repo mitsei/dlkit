@@ -6,18 +6,13 @@ import time
 import tarfile
 import requests
 
-try:
-    # python 2
-    from cStringIO import StringIO
-except ImportError:
-    # python 3
-    from io import StringIO
 
 from bs4 import BeautifulSoup
-
 from bson import ObjectId
+from six import BytesIO
 
 from dlkit.abstract_osid.osid.errors import NotFound
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 
 from ..basic.simple_records import AssetContentTextFormRecord,\
@@ -229,14 +224,19 @@ class edXAssetRecord(TextsRecord, ProvenanceAssetRecord, EdXUtilitiesMixin):
         filename = clean_str(filename) + '.tar.gz'
         root_path = ''
 
-        olx = StringIO()
+        olx = BytesIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
         self.my_osid_object.export_olx(tarball, root_path)
+
+        tarball.close()
+        olx.seek(0)
 
         return filename, olx
 
     def get_learning_objective_ids(self):
-        return self.my_osid_object._my_map['learningObjectiveIds']
+        return IdList(self.my_osid_object._my_map['learningObjectiveIds'],
+                      runtime=self.my_osid_object._runtime,
+                      proxy=self.my_osid_object._proxy)
 
     learning_objective_ids = property(fget=get_learning_objective_ids)
 

@@ -3,15 +3,24 @@ import pytest
 import tarfile
 
 from bs4 import BeautifulSoup
+from bson import ObjectId
 from copy import deepcopy
 from six import BytesIO
 
 from dlkit.abstract_osid.osid import errors
+from dlkit.json_.id.objects import IdList
 from dlkit.json_.osid.objects import OsidObject
+from dlkit.json_.osid.queries import OsidObjectQuery
 from dlkit.records.repository.edx.edx_assets import *
 from dlkit.runtime import RUNTIME, PROXY_SESSION
 from dlkit.runtime.proxy_example import SimpleRequest
-from dlkit.runtime.primitives import DataInputStream, DisplayText, Id
+from dlkit.runtime.primitives import DataInputStream, DisplayText, Id, Type
+from dlkit.records.registry import COMPOSITION_RECORD_TYPES,\
+    COMPOSITION_GENUS_TYPES,\
+    ASSET_RECORD_TYPES,\
+    ASSET_CONTENT_RECORD_TYPES,\
+    ASSET_CONTENT_GENUS_TYPES,\
+    ASSESSMENT_RECORD_TYPES
 
 from ... import utilities
 
@@ -397,3 +406,253 @@ class TestedXAssetContentRecord(object):
 
         xml_soup = BeautifulSoup(olx, 'xml')
         assert xml_soup.discussion is not None
+
+
+class TestedXAssetContentFormRecord(object):
+    # Don't write new tests, since there are no non-inherited methods.
+    # The tests should all be covered in osid.base_records.py tests
+    pass
+
+
+@pytest.fixture(scope="function")
+def edx_asset_test_fixture(request):
+    request.cls.stream = BytesIO()
+    request.cls.tarball = tarfile.open(fileobj=request.cls.stream, mode='w')
+
+    request.cls.rm = get_repository_manager()
+
+    edx_asset_record = Type(**ASSET_RECORD_TYPES['edx-asset'])
+    edx_asset_content_record = Type(**ASSET_CONTENT_RECORD_TYPES['edx-asset-content-text-files'])
+    edx_asset_content_genus = Type(**ASSET_CONTENT_GENUS_TYPES['html'])
+
+    form = request.cls.rm.get_repository_form_for_create([])
+    form.display_name = 'Test Repo 1'
+    request.cls.repo_1 = request.cls.rm.create_repository(form)
+
+    form = request.cls.rm.get_repository_form_for_create([])
+    form.display_name = 'Test Repo 2'
+    request.cls.repo_2 = request.cls.rm.create_repository(form)
+
+    form = request.cls.repo_1.get_asset_form_for_create([edx_asset_record])
+    form.display_name = 'Introduction to Python'
+    request.cls.asset = request.cls.repo_1.create_asset(form)
+
+    form = request.cls.repo_1.get_asset_content_form_for_create(request.cls.asset.ident, [edx_asset_content_record])
+    form.set_text('<html><body><div>foo!</div></body></html>')
+    form.set_genus_type(edx_asset_content_genus)
+    request.cls.repo_1.create_asset_content(form)
+    request.cls.asset = request.cls.repo_1.get_asset(request.cls.asset.ident)
+
+    def test_tear_down():
+        for repository in request.cls.rm.get_repositories():
+            repository.use_unsequestered_composition_view()
+            for asset in repository.get_assets():
+                repository.delete_asset(asset.ident)
+            while repository.get_compositions().available() > 0:
+                for composition in repository.get_compositions():
+                    try:
+                        repository.delete_composition(composition.ident)
+                    except errors.IllegalState:
+                        pass
+            request.cls.rm.delete_repository(repository.ident)
+
+    request.addfinalizer(test_tear_down)
+
+
+@pytest.mark.usefixtures('edx_asset_test_fixture')
+class TestedXAssetRecord(object):
+    def test_can_clone_asset_to_new_repository(self):
+        assert self.repo_2.get_assets().available() == 0
+
+        new_asset = self.asset.clone_to(self.repo_2)
+
+        assert self.repo_2.get_assets().available() == 1
+        assert str(new_asset.ident) != str(self.asset.ident)
+        assert new_asset._my_map['provenanceId'] == str(self.asset.ident)
+
+    def test_can_export_olx(self):
+        result = self.asset.export_olx(self.tarball, '')
+
+        self.stream.seek(0)
+        reader = tarfile.open(fileobj=self.stream, mode='r')
+
+        assert reader.getnames() == ['html/introduction-to-python.html',
+                                     'html/introduction-to-python.xml']
+
+        assert result == ['html/introduction-to-python.xml']
+
+    def test_can_export_standalone_olx(self):
+        filename, olx = self.asset.export_standalone_olx()
+
+        assert 'Introduction_to_Python' in filename
+        assert '.tar.gz' in filename
+
+        reader = tarfile.open(fileobj=olx, mode='r')
+
+        assert reader.getnames() == ['html/introduction-to-python.html',
+                                     'html/introduction-to-python.xml']
+
+    def test_can_get_learning_objective_ids(self):
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
+        obj_map['learningObjectiveIds'] = ['package.One%3A1%40ODL.MIT.EDU',
+                                           'package.Two%3A2%40ODL.MIT.EDU']
+        obj_map['recordTypeIds'] = ['asset-content-record-type%3Aedx-asset-content-text-files%40ODL.MIT.EDU']
+        osid_object = OsidObject(object_name='REPOSITORY',
+                                 osid_object_map=obj_map)
+        asset = edXAssetRecord(osid_object)
+
+        result = asset.get_learning_objective_ids()
+        assert isinstance(result, IdList)
+        assert result.available() == 2
+        assert str(next(result)) == 'package.One%3A1%40ODL.MIT.EDU'
+        assert str(next(result)) == 'package.Two%3A2%40ODL.MIT.EDU'
+
+
+class QueryWrapper(OsidObjectQuery):
+    def __init__(self, runtime=None):
+        self._all_supported_record_type_ids = []
+        super(QueryWrapper, self).__init__(runtime)
+
+
+@pytest.fixture(scope="function")
+def edx_asset_query_test_fixture(request):
+    request.cls.osid_query = QueryWrapper()
+    request.cls.query = edXAssetQueryRecord(request.cls.osid_query)
+
+
+@pytest.mark.usefixtures('edx_asset_query_test_fixture')
+class TestedXAssetQueryRecord(object):
+    def test_match_asset_content_genus_type(self):
+        assert self.query._my_osid_query._query_terms == {}
+
+        self.query.match_asset_content_genus_type(Type('fake%3Agenus%40MIT'), True)
+        assert 'assetContents.0.genusTypeId' in self.query._my_osid_query._query_terms
+        assert self.query._my_osid_query._query_terms['assetContents.0.genusTypeId'] == {'$in': ['fake%3Agenus%40MIT']}
+
+    def test_clear_match_asset_content_genus_type(self):
+        self.query.match_asset_content_genus_type(Type('fake%3Agenus%40MIT'), True)
+        assert 'assetContents.0.genusTypeId' in self.query._my_osid_query._query_terms
+        assert self.query._my_osid_query._query_terms['assetContents.0.genusTypeId'] == {'$in': ['fake%3Agenus%40MIT']}
+
+        self.query.clear_match_asset_content_genus_type()
+
+        assert self.query._my_osid_query._query_terms == {}
+
+    def test_match_learning_objective(self):
+        assert self.query._my_osid_query._query_terms == {}
+
+        self.query.match_learning_objective(Id('fake%3Aidentifier%40MIT'), True)
+        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
+        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {'$in': ['fake%3Aidentifier%40MIT']}
+
+    def test_clear_match_learning_objective(self):
+        self.query.match_learning_objective(Id('fake%3Aidentifier%40MIT'), True)
+        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
+        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {'$in': ['fake%3Aidentifier%40MIT']}
+
+        self.query.clear_match_learning_objective()
+
+        assert self.query._my_osid_query._query_terms == {}
+
+    def test_match_any_learning_objective(self):
+        assert self.query._my_osid_query._query_terms == {}
+
+        self.query.match_any_learning_objective(True)
+        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
+        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {
+            '$nin': [[], ['']],
+            '$exists': 'true'
+        }
+
+    def test_clear_learning_objective_terms(self):
+        self.query.match_any_learning_objective(True)
+        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
+        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {
+            '$nin': [[], ['']],
+            '$exists': 'true'
+        }
+
+        self.query.clear_learning_objective_terms()
+
+        assert self.query._my_osid_query._query_terms == {}
+
+    def test_match_composition_descendants(self):
+        rm = get_repository_manager()
+
+        edx_asset_record = Type(**ASSET_RECORD_TYPES['edx-asset'])
+
+        form = rm.get_repository_form_for_create([])
+        form.display_name = 'Test Repo'
+        repo = rm.create_repository(form)
+
+        form = repo.get_asset_form_for_create([edx_asset_record])
+        form.display_name = 'Introduction to Python'
+        asset = repo.create_asset(form)
+
+        form = repo.get_composition_form_for_create([])
+        child = repo.create_composition(form)
+
+        repo.add_asset(asset.ident, child.ident)
+
+        form = repo.get_composition_form_for_create([])
+        form.set_children([child.ident])
+        composition = repo.create_composition(form)
+
+        query = QueryWrapper(runtime=repo._catalog._runtime)
+        query = edXAssetQueryRecord(query)
+
+        assert '_id' not in query._my_osid_query._query_terms
+        query.match_composition_descendants(composition.ident, repo.ident, True)
+
+        assert '_id' in query._my_osid_query._query_terms
+        assert query._my_osid_query._query_terms['_id'] == {
+            '$in': [ObjectId(asset.ident.identifier)]
+        }
+
+        for asset in repo.get_assets():
+            repo.delete_asset(asset.ident)
+        for composition in repo.get_compositions():
+            repo.delete_composition(composition.ident)
+        rm.delete_repository(repo.ident)
+
+    def test_clear_match_composition_descendants(self):
+        rm = get_repository_manager()
+
+        edx_asset_record = Type(**ASSET_RECORD_TYPES['edx-asset'])
+
+        form = rm.get_repository_form_for_create([])
+        form.display_name = 'Test Repo'
+        repo = rm.create_repository(form)
+
+        form = repo.get_asset_form_for_create([edx_asset_record])
+        form.display_name = 'Introduction to Python'
+        asset = repo.create_asset(form)
+
+        form = repo.get_composition_form_for_create([])
+        child = repo.create_composition(form)
+
+        repo.add_asset(asset.ident, child.ident)
+
+        form = repo.get_composition_form_for_create([])
+        form.set_children([child.ident])
+        composition = repo.create_composition(form)
+
+        query = QueryWrapper(runtime=repo._catalog._runtime)
+        query = edXAssetQueryRecord(query)
+
+        query.match_composition_descendants(composition.ident, repo.ident, True)
+
+        assert '_id' in query._my_osid_query._query_terms
+        assert query._my_osid_query._query_terms['_id'] == {
+            '$in': [ObjectId(asset.ident.identifier)]
+        }
+
+        query.clear_match_composition_descendants()
+
+        assert '_id' not in query._my_osid_query._query_terms
+
+        for asset in repo.get_assets():
+            repo.delete_asset(asset.ident)
+        for composition in repo.get_compositions():
+            repo.delete_composition(composition.ident)
+        rm.delete_repository(repo.ident)
