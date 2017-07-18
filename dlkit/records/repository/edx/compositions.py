@@ -10,9 +10,11 @@ from bson import ObjectId
 
 from six import BytesIO
 
-from dlkit.abstract_osid.assessment.objects import Item
+from dlkit.abstract_osid.assessment.objects import Item, Assessment
 from dlkit.abstract_osid.osid.errors import IllegalState, NotFound
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
+from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 
 from ...osid.base_records import TextsFormRecord, TextsRecord,\
@@ -274,7 +276,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
 
     @property
     def filename(self):
-        return self.my_osid_object._my_map['texts']['fileName']
+        return DisplayText(display_text_map=self.my_osid_object._my_map['texts']['fileName'])
 
     @valid_for(['chapter', 'sequential'])
     def get_visible_to_students(self):
@@ -290,18 +292,32 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
 
     @valid_for(['course'])
     def get_org(self):
-        return self.my_osid_object._my_map['texts']['org']
+        return DisplayText(display_text_map=self.my_osid_object._my_map['texts']['org'])
 
     org = property(fget=get_org)
 
     @valid_for(['split_test'])
     def get_user_partition_id(self):
-        return self.my_osid_object._my_map['texts']['userPartitionId']
+        return DisplayText(display_text_map=self.my_osid_object._my_map['texts']['userPartitionId'])
 
     user_partition_id = property(fget=get_user_partition_id)
 
     @valid_for(['split_test'])
     def get_group_id_to_child(self):
+        """ At a minimum need a course composition parent and two children to the split test
+
+            course composition
+                    |
+            split_test composition
+                |           |
+            vertical     vertical
+
+        And the expected output is a URL-safe (&quot; instead of ") JSON string, of this object
+            {
+                0: "i4x://<org>/<course-name-slug>/<child-tag>/<child-name-slug>,
+                1: "i4x://<org>/<course-name-slug>/<tag>/<child-name-slug>
+            }
+        """
         # get the children compositions, then construct
         # the escaped-JSON structure for this split_test
         group_ids = {}
@@ -335,7 +351,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
             return ''
         else:
             for index, child in enumerate(self.my_osid_object.get_children()):
-                group_ids[index] = 'i4x://{0}/{1}/{2}/{3}'.format(course_node.org['text'],
+                group_ids[index] = 'i4x://{0}/{1}/{2}/{3}'.format(course_node.org.text,
                                                                   re.sub('[^\w\s-]', '', course_node.display_name.text),
                                                                   child.genus_type.identifier,
                                                                   child.url)
@@ -345,7 +361,9 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
 
     @valid_for(['vertical', 'chapter', 'sequential', 'split_test'])
     def get_learning_objective_ids(self):
-        return self.my_osid_object._my_map['learningObjectiveIds']
+        return IdList(self.my_osid_object._my_map['learningObjectiveIds'],
+                      runtime=self.my_osid_object._runtime,
+                      proxy=self.my_osid_object._proxy)
 
     learning_objective_ids = property(fget=get_learning_objective_ids)
 
@@ -364,17 +382,20 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
             for asset in acs.get_composition_assets(self.my_osid_object.ident):
                 asset_map = asset.object_map
                 if 'enclosedObjectId' in asset_map:
-                    assessment = asset.get_enclosed_object()
-                    am = self.my_osid_object._get_provider_manager('ASSESSMENT')
-                    if self.my_osid_object._proxy is None:
-                        abas = am.get_assessment_basic_authoring_session_for_bank(
-                            Id(assessment.object_map['assignedBankIds'][0]))
-                    else:
-                        abas = am.get_assessment_basic_authoring_session_for_bank(
-                            Id(assessment.object_map['assignedBankIds'][0]),
-                            proxy=self.my_osid_object._proxy)
-                    for item in abas.get_items(assessment.ident):
-                        resources.append(item)
+                    enclosed_object = asset.get_enclosed_object()
+                    if isinstance(enclosed_object, Assessment):
+                        am = self.my_osid_object._get_provider_manager('ASSESSMENT')
+                        if self.my_osid_object._proxy is None:
+                            abas = am.get_assessment_basic_authoring_session_for_bank(
+                                Id(enclosed_object.object_map['assignedBankIds'][0]))
+                        else:
+                            abas = am.get_assessment_basic_authoring_session_for_bank(
+                                Id(enclosed_object.object_map['assignedBankIds'][0]),
+                                proxy=self.my_osid_object._proxy)
+                        for item in abas.get_items(enclosed_object.ident):
+                            resources.append(item)
+                    elif isinstance(enclosed_object, Item):
+                        resources.append(enclosed_object)
                 else:
                     resources.append(asset)
         except NotFound:
@@ -513,7 +534,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
 
             if my_tag == 'split_test':
                 getattr(my_soup, my_tag)['group_id_to_child'] = self.my_osid_object.group_id_to_child
-                getattr(my_soup, my_tag)['user_partition_id'] = self.my_osid_object.user_partition_id
+                getattr(my_soup, my_tag)['user_partition_id'] = self.my_osid_object.user_partition_id.text
 
             rm = self.my_osid_object._get_provider_manager('REPOSITORY')
             if self.my_osid_object._proxy is None:
@@ -539,20 +560,16 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                             for ac in asset.get_asset_contents():
                                 asset_type = ac.genus_type.identifier
 
-                                # if asset_type == 'video' or asset_type == 'videoalpha':
-                                #     asset_olx = ac.get_text().text
-                                #     asset_tag = BeautifulSoup(asset_olx, 'html5lib').find(asset_type)
-                                # else:
-                                unique_url = asset.export_olx(tarball, root_path)[0]  # Assumption
+                                unique_url = asset.export_olx(tarball, root_path)[0]  # Assumption that there is only 1 asset content
                                 unique_name = unique_url.split('/')[-1].replace('.xml', '')
                                 asset_tag = my_soup.new_tag(asset_type)
-                                # asset_tag['display_name'] = asset.display_name.text
+
                                 asset_tag['url_name'] = unique_name
                                 getattr(my_soup, my_tag).append(asset_tag)
                 else:
                     child_type = child.genus_type.identifier
                     child_tag = my_soup.new_tag(child_type)
-                    # child_tag['display_name'] = child.display_name.text
+
                     child_tag['url_name'] = child.url
                     getattr(my_soup, my_tag).append(child_tag)
 
@@ -575,6 +592,9 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         olx = BytesIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
         self.my_osid_object.export_olx(tarball, root_path)
+
+        tarball.close()
+        olx.seek(0)
 
         return filename, olx
 
