@@ -98,7 +98,11 @@ def edx_asset_content_test_fixture(request):
 @pytest.mark.usefixtures('edx_asset_content_class_fixture', 'edx_asset_content_test_fixture')
 class TestedXAssetContentRecord(object):
     """ NOTE: for these tests, assume ``TEST_SERVICE_FILESYSTEM`` in get_repository_manager()
-              above, so the asset_content URL is something like /api/v1/repository..../stream"""
+              above, so the asset_content URL is something like /api/v1/repository..../stream
+              That is why all of the replacement URL assertions look for ``/static/stream``, since
+              the record extension logic assumes the "filename" is the last part of the
+              returned assetContent URL (``stream`` in this case).
+    """
     def test_can_export_olx_for_html_asset_content(self):
         markup = """
 <html>
