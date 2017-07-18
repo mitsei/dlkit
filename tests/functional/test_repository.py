@@ -439,7 +439,7 @@ class EdXCompositionTests(CompositionTests):
                 form.set_file_name('file for ' + case)
                 comp = self._repo.update_composition(form)
                 self.assertEqual(
-                    comp.filename['text'],
+                    comp.filename.text,
                     'file for ' + case
                 )
             except errors.IllegalState:
@@ -456,7 +456,7 @@ class EdXCompositionTests(CompositionTests):
                 form.set_file_name('file for ' + case)
                 comp = self._repo.update_composition(form)
                 self.assertEqual(
-                    comp.filename['text'],
+                    comp.filename.text,
                     'course.xml'
                 )
             except errors.IllegalState:
