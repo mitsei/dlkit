@@ -118,10 +118,6 @@ class edXAssetContentRecord(AssetContentTextRecord,
             # my_soup = edxml_soup
             # self.write_to_tarfile(tarball, my_xml_path, my_soup)
         else:
-            # if my_tag == 'video' or my_tag == 'videoalpha':
-            #     pass
-            # else:
-            # edxml_soup = BeautifulSoup(edxml, 'html5lib')
             my_soup = getattr(edxml_soup, my_tag)
             self.write_to_tarfile(tarball, my_xml_path, my_soup)
 
