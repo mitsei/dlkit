@@ -762,6 +762,8 @@ class TestEdXCompositionRecord(object):
 
         updated_sequential = sequential.clone_to(test_repo_2, chapter)
 
+        assert updated_sequential._my_map['provenanceId'] == str(sequential.ident)
+
         assert test_repo_2.get_compositions().available() == 2
         assert str(updated_sequential.ident) != str(sequential.ident)
 
