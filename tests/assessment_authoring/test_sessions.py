@@ -8,6 +8,7 @@ from random import shuffle
 
 
 from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from dlkit.abstract_osid.assessment.objects import Bank as ABCBank
 from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
 from dlkit.abstract_osid.assessment_authoring import queries as ABCQueries
 from dlkit.abstract_osid.osid import errors
@@ -99,7 +100,7 @@ class TestAssessmentPartLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_lookup_assessment_parts(self):
         """Tests can_lookup_assessment_parts"""
@@ -342,7 +343,7 @@ class TestAssessmentPartQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_search_assessment_parts(self):
         """Tests can_search_assessment_parts"""
@@ -429,12 +430,12 @@ def assessment_part_admin_session_class_fixture(request):
 @pytest.fixture(scope="function")
 def assessment_part_admin_session_test_fixture(request):
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident,
-                                                                                      [SIMPLE_SEQUENCE_RECORD_TYPE])
-        form.display_name = 'new AssessmentPart'
-        form.description = 'description of AssessmentPart'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_assessment_part_for_assessment(form)
+        request.cls.form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident,
+                                                                                                  [SIMPLE_SEQUENCE_RECORD_TYPE])
+        request.cls.form.display_name = 'new AssessmentPart'
+        request.cls.form.description = 'description of AssessmentPart'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_assessment_part_for_assessment(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -462,7 +463,7 @@ class TestAssessmentPartAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_create_assessment_parts(self):
         """Tests can_create_assessment_parts"""
@@ -525,6 +526,13 @@ class TestAssessmentPartAdminSession(object):
             assert self.osid_object.display_name.text == 'new AssessmentPart'
             assert self.osid_object.description.text == 'description of AssessmentPart'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_assessment_part_for_assessment_part(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment_part_for_assessment_part('I Will Break You!')
+            update_form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment_part_for_assessment_part(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_assessment_part_for_assessment_part('foo')
@@ -541,6 +549,13 @@ class TestAssessmentPartAdminSession(object):
             form = self.catalog.get_assessment_part_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_part_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_part_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='assessment.authoring.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_assessment_part_form_for_update(self.fake_id)
@@ -681,7 +696,7 @@ class TestAssessmentPartItemSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_access_assessment_part_items(self):
         """Tests can_access_assessment_part_items"""
@@ -797,7 +812,7 @@ class TestAssessmentPartItemDesignSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_design_assessment_parts(self):
         """Tests can_design_assessment_parts"""
@@ -954,7 +969,7 @@ class TestSequenceRuleLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_lookup_sequence_rules(self):
         """Tests can_lookup_sequence_rules"""
@@ -1172,13 +1187,13 @@ def sequence_rule_admin_session_class_fixture(request):
             request.cls.sequence_rule_list.append(obj)
             request.cls.sequence_rule_ids.append(obj.ident)
 
-        create_form = request.cls.catalog.get_sequence_rule_form_for_create(request.cls.assessment_part_1.ident,
-                                                                            request.cls.assessment_part_2.ident,
-                                                                            [])
-        create_form.display_name = 'new SequenceRule'
-        create_form.description = 'description of SequenceRule'
-        create_form.genus_type = NEW_TYPE
-        request.cls.osid_object = request.cls.catalog.create_sequence_rule(create_form)
+        request.cls.form = request.cls.catalog.get_sequence_rule_form_for_create(request.cls.assessment_part_1.ident,
+                                                                                 request.cls.assessment_part_2.ident,
+                                                                                 [])
+        request.cls.form.display_name = 'new SequenceRule'
+        request.cls.form.description = 'description of SequenceRule'
+        request.cls.form.genus_type = NEW_TYPE
+        request.cls.osid_object = request.cls.catalog.create_sequence_rule(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_sequence_rule_admin_session(proxy=PROXY)
 
@@ -1214,7 +1229,7 @@ class TestSequenceRuleAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_create_sequence_rule(self):
         """Tests can_create_sequence_rule"""
@@ -1247,6 +1262,13 @@ class TestSequenceRuleAdminSession(object):
             assert self.osid_object.display_name.text == 'new SequenceRule'
             assert self.osid_object.description.text == 'description of SequenceRule'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_sequence_rule(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_sequence_rule('I Will Break You!')
+            update_form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_sequence_rule(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_sequence_rule('foo')
@@ -1263,6 +1285,13 @@ class TestSequenceRuleAdminSession(object):
             form = self.catalog.get_sequence_rule_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_sequence_rule_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_sequence_rule_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='assessment.authoring.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_sequence_rule_form_for_update(self.fake_id)
@@ -1282,6 +1311,12 @@ class TestSequenceRuleAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_sequence_rule(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_sequence_rule('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_sequence_rule(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_sequence_rule('foo')

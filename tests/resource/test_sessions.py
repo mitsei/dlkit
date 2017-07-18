@@ -16,6 +16,7 @@ from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.abstract_osid.resource import objects as ABCObjects
 from dlkit.abstract_osid.resource import queries as ABCQueries
 from dlkit.abstract_osid.resource import searches as ABCSearches
+from dlkit.abstract_osid.resource.objects import Bin as ABCBin
 from dlkit.abstract_osid.resource.objects import Resource
 from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
@@ -96,7 +97,7 @@ class TestResourceLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bin(), ABCBin)
 
     def test_can_lookup_resources(self):
         """Tests can_lookup_resources"""
@@ -271,7 +272,7 @@ class TestResourceQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bin(), ABCBin)
 
     def test_can_search_resources(self):
         """Tests can_search_resources"""
@@ -393,6 +394,10 @@ def resource_admin_session_class_fixture(request):
         'RESOURCE',
         proxy=PROXY,
         implementation=request.cls.service_config)
+    request.cls.assessment_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_bin_form_for_create([])
@@ -415,11 +420,11 @@ def resource_admin_session_class_fixture(request):
 def resource_admin_session_test_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_resource_form_for_create([])
-        form.display_name = 'new Resource'
-        form.description = 'description of Resource'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_resource(form)
+        request.cls.form = request.cls.catalog.get_resource_form_for_create([])
+        request.cls.form.display_name = 'new Resource'
+        request.cls.form.description = 'description of Resource'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_resource(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -444,7 +449,7 @@ class TestResourceAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bin(), ABCBin)
 
     def test_can_create_resources(self):
         """Tests can_create_resources"""
@@ -463,6 +468,8 @@ class TestResourceAdminSession(object):
             form = self.catalog.get_resource_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_resource_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_resource_form_for_create([])
@@ -476,6 +483,13 @@ class TestResourceAdminSession(object):
             assert self.osid_object.display_name.text == 'new Resource'
             assert self.osid_object.description.text == 'description of Resource'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_resource(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_resource('I Will Break You!')
+            update_form = self.catalog.get_resource_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_resource(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_resource('foo')
@@ -492,6 +506,13 @@ class TestResourceAdminSession(object):
             form = self.catalog.get_resource_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_resource_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_resource_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='resource.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_resource_form_for_update(self.fake_id)
@@ -511,6 +532,12 @@ class TestResourceAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_resource(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_resource('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_resource(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_resource('foo')
@@ -616,7 +643,7 @@ class TestResourceNotificationSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bin(), ABCBin)
 
     def test_can_register_for_resource_notifications(self):
         """Tests can_register_for_resource_notifications"""
@@ -1029,7 +1056,7 @@ class TestResourceAgentSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bin(), ABCBin)
 
     def test_can_lookup_resource_agent_mappings(self):
         """Tests can_lookup_resource_agent_mappings"""
@@ -1156,7 +1183,7 @@ class TestResourceAgentAssignmentSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bin(), ABCBin)
 
     def test_can_assign_agents(self):
         """Tests can_assign_agents"""
@@ -1447,6 +1474,8 @@ class TestBinAdminSession(object):
             catalog_form = self.svc_mgr.get_bin_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_bin_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_bin_form_for_create([])
@@ -1461,6 +1490,13 @@ class TestBinAdminSession(object):
             catalog_form.description = 'Test Bin for BinAdminSession.create_bin tests'
             new_catalog = self.svc_mgr.create_bin(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_bin(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_bin('I Will Break You!')
+            update_form = self.svc_mgr.get_bin_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_bin(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_bin('foo')

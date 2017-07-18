@@ -8,6 +8,7 @@ import pytest
 from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.commenting import objects as ABCObjects
 from dlkit.abstract_osid.commenting import queries as ABCQueries
+from dlkit.abstract_osid.commenting.objects import Book as ABCBook
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
@@ -92,7 +93,7 @@ class TestCommentLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_book(), ABCBook)
 
     def test_can_lookup_comments(self):
         """Tests can_lookup_comments"""
@@ -415,7 +416,7 @@ class TestCommentQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_book(), ABCBook)
 
     def test_can_search_comments(self):
         """Tests can_search_comments"""
@@ -477,11 +478,11 @@ def comment_admin_session_class_fixture(request):
             object = request.cls.catalog.create_comment(create_form)
             request.cls.comment_list.append(object)
             request.cls.comment_ids.append(object.ident)
-        create_form = request.cls.catalog.get_comment_form_for_create(AGENT_ID, [])
-        create_form.display_name = 'new Comment'
-        create_form.description = 'description of Comment'
-        create_form.genus_type = NEW_TYPE
-        request.cls.osid_object = request.cls.catalog.create_comment(create_form)
+        request.cls.form = request.cls.catalog.get_comment_form_for_create(AGENT_ID, [])
+        request.cls.form.display_name = 'new Comment'
+        request.cls.form.description = 'description of Comment'
+        request.cls.form.genus_type = NEW_TYPE
+        request.cls.osid_object = request.cls.catalog.create_comment(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_comment_admin_session(proxy=PROXY)
 
@@ -514,7 +515,7 @@ class TestCommentAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_book(), ABCBook)
 
     def test_can_create_comments(self):
         """Tests can_create_comments"""
@@ -545,6 +546,13 @@ class TestCommentAdminSession(object):
             assert self.osid_object.display_name.text == 'new Comment'
             assert self.osid_object.description.text == 'description of Comment'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_comment(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_comment('I Will Break You!')
+            update_form = self.catalog.get_comment_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_comment(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_comment('foo')
@@ -561,6 +569,13 @@ class TestCommentAdminSession(object):
             form = self.catalog.get_comment_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_comment_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_comment_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='commenting.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_comment_form_for_update(self.fake_id)
@@ -580,6 +595,12 @@ class TestCommentAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_comment(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_comment('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_comment(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_comment('foo')
@@ -810,6 +831,8 @@ class TestBookAdminSession(object):
             catalog_form = self.svc_mgr.get_book_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_book_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_book_form_for_create([])
@@ -824,6 +847,13 @@ class TestBookAdminSession(object):
             catalog_form.description = 'Test Book for BookAdminSession.create_book tests'
             new_catalog = self.svc_mgr.create_book(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_book(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_book('I Will Break You!')
+            update_form = self.svc_mgr.get_book_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_book(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_book('foo')

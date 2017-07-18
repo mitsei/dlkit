@@ -10,6 +10,7 @@ from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.learning import objects as ABCObjects
 from dlkit.abstract_osid.learning import queries as ABCQueries
+from dlkit.abstract_osid.learning.objects import ObjectiveBank as ABCObjectiveBank
 from dlkit.abstract_osid.learning.objects import ObjectiveList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
@@ -94,7 +95,7 @@ class TestObjectiveLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_lookup_objectives(self):
         """Tests can_lookup_objectives"""
@@ -269,7 +270,7 @@ class TestObjectiveQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_search_objectives(self):
         """Tests can_search_objectives"""
@@ -317,6 +318,10 @@ def objective_admin_session_class_fixture(request):
         'LEARNING',
         proxy=PROXY,
         implementation=request.cls.service_config)
+    request.cls.assessment_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_objective_bank_form_for_create([])
@@ -339,11 +344,11 @@ def objective_admin_session_class_fixture(request):
 def objective_admin_session_test_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_objective_form_for_create([])
-        form.display_name = 'new Objective'
-        form.description = 'description of Objective'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_objective(form)
+        request.cls.form = request.cls.catalog.get_objective_form_for_create([])
+        request.cls.form.display_name = 'new Objective'
+        request.cls.form.description = 'description of Objective'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_objective(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -368,7 +373,7 @@ class TestObjectiveAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_create_objectives(self):
         """Tests can_create_objectives"""
@@ -387,6 +392,8 @@ class TestObjectiveAdminSession(object):
             form = self.catalog.get_objective_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_objective_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_objective_form_for_create([])
@@ -400,6 +407,13 @@ class TestObjectiveAdminSession(object):
             assert self.osid_object.display_name.text == 'new Objective'
             assert self.osid_object.description.text == 'description of Objective'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_objective(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_objective('I Will Break You!')
+            update_form = self.catalog.get_objective_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_objective(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_objective('foo')
@@ -416,6 +430,13 @@ class TestObjectiveAdminSession(object):
             form = self.catalog.get_objective_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_objective_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_objective_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='learning.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_objective_form_for_update(self.fake_id)
@@ -435,6 +456,12 @@ class TestObjectiveAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_objective(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_objective('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_objective(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_objective('foo')
@@ -1335,7 +1362,7 @@ class TestObjectiveRequisiteSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_lookup_objective_prerequisites(self):
         """Tests can_lookup_objective_prerequisites"""
@@ -1482,7 +1509,7 @@ class TestObjectiveRequisiteAssignmentSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_assign_requisites(self):
         """Tests can_assign_requisites"""
@@ -1607,7 +1634,7 @@ class TestActivityLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_lookup_activities(self):
         """Tests can_lookup_activities"""
@@ -1801,11 +1828,11 @@ def activity_admin_session_class_fixture(request):
             request.cls.activity_list.append(obj)
             request.cls.activity_ids.append(obj.ident)
 
-        create_form = request.cls.catalog.get_activity_form_for_create(request.cls.objective.ident, [])
-        create_form.display_name = 'new Activity'
-        create_form.description = 'description of Activity'
-        create_form.genus_type = NEW_TYPE
-        request.cls.osid_object = request.cls.catalog.create_activity(create_form)
+        request.cls.form = request.cls.catalog.get_activity_form_for_create(request.cls.objective.ident, [])
+        request.cls.form.display_name = 'new Activity'
+        request.cls.form.description = 'description of Activity'
+        request.cls.form.genus_type = NEW_TYPE
+        request.cls.osid_object = request.cls.catalog.create_activity(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_activity_admin_session(proxy=PROXY)
 
@@ -1840,7 +1867,7 @@ class TestActivityAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_create_activities(self):
         """Tests can_create_activities"""
@@ -1872,6 +1899,13 @@ class TestActivityAdminSession(object):
             assert self.osid_object.display_name.text == 'new Activity'
             assert self.osid_object.description.text == 'description of Activity'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_activity(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_activity('I Will Break You!')
+            update_form = self.catalog.get_activity_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_activity(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_activity('foo')
@@ -1888,6 +1922,13 @@ class TestActivityAdminSession(object):
             form = self.catalog.get_activity_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_activity_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_activity_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='learning.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_activity_form_for_update(self.fake_id)
@@ -1907,6 +1948,12 @@ class TestActivityAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_activity(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_activity('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_activity(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_activity('foo')
@@ -2303,7 +2350,7 @@ class TestProficiencyLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_lookup_proficiencies(self):
         """Tests can_lookup_proficiencies"""
@@ -2639,7 +2686,7 @@ class TestProficiencyQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_search_proficiencies(self):
         """Tests can_search_proficiencies"""
@@ -2708,11 +2755,11 @@ def proficiency_admin_session_class_fixture(request):
             request.cls.proficiency_list.append(obj)
             request.cls.proficiency_ids.append(obj.ident)
 
-        create_form = request.cls.catalog.get_proficiency_form_for_create(request.cls.objective.ident, AGENT_ID, [])
-        create_form.display_name = 'new Proficiency'
-        create_form.description = 'description of Proficiency'
-        create_form.genus_type = NEW_TYPE
-        request.cls.osid_object = request.cls.catalog.create_proficiency(create_form)
+        request.cls.form = request.cls.catalog.get_proficiency_form_for_create(request.cls.objective.ident, AGENT_ID, [])
+        request.cls.form.display_name = 'new Proficiency'
+        request.cls.form.description = 'description of Proficiency'
+        request.cls.form.genus_type = NEW_TYPE
+        request.cls.osid_object = request.cls.catalog.create_proficiency(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_proficiency_admin_session(proxy=PROXY)
 
@@ -2747,7 +2794,7 @@ class TestProficiencyAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_objective_bank(), ABCObjectiveBank)
 
     def test_can_create_proficiencies(self):
         """Tests can_create_proficiencies"""
@@ -2778,6 +2825,13 @@ class TestProficiencyAdminSession(object):
             assert self.osid_object.display_name.text == 'new Proficiency'
             assert self.osid_object.description.text == 'description of Proficiency'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_proficiency(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_proficiency('I Will Break You!')
+            update_form = self.catalog.get_proficiency_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_proficiency(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_proficiency('foo')
@@ -2794,6 +2848,13 @@ class TestProficiencyAdminSession(object):
             form = self.catalog.get_proficiency_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_proficiency_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_proficiency_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='learning.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_proficiency_form_for_update(self.fake_id)
@@ -2813,6 +2874,12 @@ class TestProficiencyAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_proficiency(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_proficiency('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_proficiency(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_proficiency('foo')
@@ -3051,6 +3118,8 @@ class TestObjectiveBankAdminSession(object):
             catalog_form = self.svc_mgr.get_objective_bank_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_objective_bank_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_objective_bank_form_for_create([])
@@ -3065,6 +3134,13 @@ class TestObjectiveBankAdminSession(object):
             catalog_form.description = 'Test ObjectiveBank for ObjectiveBankAdminSession.create_objective_bank tests'
             new_catalog = self.svc_mgr.create_objective_bank(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_objective_bank(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_objective_bank('I Will Break You!')
+            update_form = self.svc_mgr.get_objective_bank_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_objective_bank(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_objective_bank('foo')

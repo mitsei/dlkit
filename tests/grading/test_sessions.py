@@ -9,6 +9,7 @@ from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
 from dlkit.abstract_osid.grading import objects as ABCObjects
 from dlkit.abstract_osid.grading import queries as ABCQueries
 from dlkit.abstract_osid.grading.objects import Grade
+from dlkit.abstract_osid.grading.objects import Gradebook as ABCGradebook
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
@@ -94,7 +95,7 @@ class TestGradeSystemLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_lookup_grade_systems(self):
         """Tests can_lookup_grade_systems"""
@@ -279,7 +280,7 @@ class TestGradeSystemQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_search_grade_systems(self):
         """Tests can_search_grade_systems"""
@@ -327,6 +328,10 @@ def grade_system_admin_session_class_fixture(request):
         'GRADING',
         proxy=PROXY,
         implementation=request.cls.service_config)
+    request.cls.assessment_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
@@ -349,11 +354,11 @@ def grade_system_admin_session_class_fixture(request):
 def grade_system_admin_session_test_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_grade_system_form_for_create([])
-        form.display_name = 'new GradeSystem'
-        form.description = 'description of GradeSystem'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_grade_system(form)
+        request.cls.form = request.cls.catalog.get_grade_system_form_for_create([])
+        request.cls.form.display_name = 'new GradeSystem'
+        request.cls.form.description = 'description of GradeSystem'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_grade_system(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -378,7 +383,7 @@ class TestGradeSystemAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_create_grade_systems(self):
         """Tests can_create_grade_systems"""
@@ -397,6 +402,8 @@ class TestGradeSystemAdminSession(object):
             form = self.catalog.get_grade_system_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_grade_system_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_grade_system_form_for_create([])
@@ -410,6 +417,13 @@ class TestGradeSystemAdminSession(object):
             assert self.osid_object.display_name.text == 'new GradeSystem'
             assert self.osid_object.description.text == 'description of GradeSystem'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_grade_system(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_grade_system('I Will Break You!')
+            update_form = self.catalog.get_grade_system_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_grade_system(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_grade_system('foo')
@@ -426,6 +440,13 @@ class TestGradeSystemAdminSession(object):
             form = self.catalog.get_grade_system_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_grade_system_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_grade_system_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='grading.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_grade_system_form_for_update(self.fake_id)
@@ -445,6 +466,12 @@ class TestGradeSystemAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_grade_system(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_grade_system('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_grade_system(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_grade_system('foo')
@@ -697,7 +724,7 @@ class TestGradeEntryLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_lookup_grade_entries(self):
         """Tests can_lookup_grade_entries"""
@@ -991,7 +1018,7 @@ class TestGradeEntryQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_search_grade_entries(self):
         """Tests can_search_grade_entries"""
@@ -1072,11 +1099,11 @@ def grade_entry_admin_session_class_fixture(request):
             request.cls.grade_entry_list.append(object)
             request.cls.grade_entry_ids.append(object.ident)
 
-        create_form = request.cls.catalog.get_grade_entry_form_for_create(request.cls.gradebook_column_ids[0], AGENT_ID, [])
-        create_form.display_name = 'new GradeEntry'
-        create_form.description = 'description of GradeEntry'
-        create_form.genus_type = NEW_TYPE
-        request.cls.osid_object = request.cls.catalog.create_grade_entry(create_form)
+        request.cls.form = request.cls.catalog.get_grade_entry_form_for_create(request.cls.gradebook_column_ids[0], AGENT_ID, [])
+        request.cls.form.display_name = 'new GradeEntry'
+        request.cls.form.description = 'description of GradeEntry'
+        request.cls.form.genus_type = NEW_TYPE
+        request.cls.osid_object = request.cls.catalog.create_grade_entry(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_grade_entry_admin_session(proxy=PROXY)
 
@@ -1112,7 +1139,7 @@ class TestGradeEntryAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_create_grade_entries(self):
         """Tests can_create_grade_entries"""
@@ -1143,6 +1170,13 @@ class TestGradeEntryAdminSession(object):
             assert self.osid_object.display_name.text == 'new GradeEntry'
             assert self.osid_object.description.text == 'description of GradeEntry'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_grade_entry(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_grade_entry('I Will Break You!')
+            update_form = self.catalog.get_grade_entry_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_grade_entry(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_grade_entry('foo')
@@ -1187,6 +1221,13 @@ class TestGradeEntryAdminSession(object):
             form = self.catalog.get_grade_entry_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_grade_entry_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_grade_entry_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='grading.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_grade_entry_form_for_update(self.fake_id)
@@ -1206,6 +1247,12 @@ class TestGradeEntryAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_grade_entry(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_grade_entry('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_grade_entry(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_grade_entry('foo')
@@ -1326,7 +1373,7 @@ class TestGradebookColumnLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_lookup_gradebook_columns(self):
         """Tests can_lookup_gradebook_columns"""
@@ -1529,7 +1576,7 @@ class TestGradebookColumnQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_search_gradebook_columns(self):
         """Tests can_search_gradebook_columns"""
@@ -1577,6 +1624,10 @@ def gradebook_column_admin_session_class_fixture(request):
         'GRADING',
         proxy=PROXY,
         implementation=request.cls.service_config)
+    request.cls.assessment_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
@@ -1599,11 +1650,11 @@ def gradebook_column_admin_session_class_fixture(request):
 def gradebook_column_admin_session_test_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_gradebook_column_form_for_create([])
-        form.display_name = 'new GradebookColumn'
-        form.description = 'description of GradebookColumn'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_gradebook_column(form)
+        request.cls.form = request.cls.catalog.get_gradebook_column_form_for_create([])
+        request.cls.form.display_name = 'new GradebookColumn'
+        request.cls.form.description = 'description of GradebookColumn'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_gradebook_column(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -1628,7 +1679,7 @@ class TestGradebookColumnAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_gradebook(), ABCGradebook)
 
     def test_can_create_gradebook_columns(self):
         """Tests can_create_gradebook_columns"""
@@ -1647,6 +1698,8 @@ class TestGradebookColumnAdminSession(object):
             form = self.catalog.get_gradebook_column_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_gradebook_column_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_gradebook_column_form_for_create([])
@@ -1660,6 +1713,13 @@ class TestGradebookColumnAdminSession(object):
             assert self.osid_object.display_name.text == 'new GradebookColumn'
             assert self.osid_object.description.text == 'description of GradebookColumn'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_gradebook_column(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_gradebook_column('I Will Break You!')
+            update_form = self.catalog.get_gradebook_column_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_gradebook_column(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_gradebook_column('foo')
@@ -1676,6 +1736,13 @@ class TestGradebookColumnAdminSession(object):
             form = self.catalog.get_gradebook_column_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_gradebook_column_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_gradebook_column_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='grading.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_gradebook_column_form_for_update(self.fake_id)
@@ -1695,6 +1762,12 @@ class TestGradebookColumnAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_gradebook_column(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_gradebook_column('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_gradebook_column(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_gradebook_column('foo')
@@ -1956,6 +2029,8 @@ class TestGradebookAdminSession(object):
             catalog_form = self.svc_mgr.get_gradebook_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_gradebook_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_gradebook_form_for_create([])
@@ -1970,6 +2045,13 @@ class TestGradebookAdminSession(object):
             catalog_form.description = 'Test Gradebook for GradebookAdminSession.create_gradebook tests'
             new_catalog = self.svc_mgr.create_gradebook(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_gradebook(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_gradebook('I Will Break You!')
+            update_form = self.svc_mgr.get_gradebook_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_gradebook(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_gradebook('foo')

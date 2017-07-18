@@ -1085,61 +1085,15 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
                                          runtime=self._runtime)
         if not isinstance(comment_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if comment_id.get_identifier_namespace() != 'commenting.Comment':
-            if comment_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                comment_id = self._get_comment_id_with_enclosure(comment_id)
+        if (comment_id.get_identifier_namespace() != 'commenting.Comment' or
+                comment_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(comment_id.get_identifier())})
 
         obj_form = objects.CommentForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_comment_id_with_enclosure(self, enclosure_id):
-        """Create an Comment with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Comment
-
-        """
-        mgr = self._get_provider_manager('COMMENTING')
-        query_session = mgr.get_comment_query_session_for_book(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_comment_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_comments_by_query(query_form)
-        if query_result.available() > 0:
-            comment_id = query_result.next().get_id()
-        else:
-            create_form = self.get_comment_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            comment_id = self.create_comment(create_form).get_id()
-        return comment_id
-
-    @utilities.arguments_not_none
-    def duplicate_comment(self, comment_id):
-        collection = JSONClientValidated('commenting',
-                                         collection='Comment',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('COMMENTING')
-        lookup_session = mgr.get_comment_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_book_view()
-        try:
-            lookup_session.use_unsequestered_comment_view()
-        except AttributeError:
-            pass
-        comment_map = dict(lookup_session.get_comment(comment_id)._my_map)
-        del comment_map['_id']
-        if 'bookId' in comment_map:
-            comment_map['bookId'] = str(self._catalog_id)
-        if 'assignedBookIds' in comment_map:
-            comment_map['assignedBookIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(comment_map)
-        result = objects.Comment(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_comment(self, comment_form):

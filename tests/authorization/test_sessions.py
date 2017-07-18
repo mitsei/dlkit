@@ -10,6 +10,7 @@ from dlkit.abstract_osid.authorization import objects as ABCObjects
 from dlkit.abstract_osid.authorization import queries as ABCQueries
 from dlkit.abstract_osid.authorization.objects import Authorization
 from dlkit.abstract_osid.authorization.objects import AuthorizationList
+from dlkit.abstract_osid.authorization.objects import Vault as ABCVault
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
@@ -303,7 +304,7 @@ class TestAuthorizationSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_vault(), ABCVault)
 
     def test_can_access_authorizations(self):
         """Tests can_access_authorizations"""
@@ -433,7 +434,7 @@ class TestAuthorizationLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_vault(), ABCVault)
 
     def test_can_lookup_authorizations(self):
         """Tests can_lookup_authorizations"""
@@ -773,7 +774,7 @@ class TestAuthorizationQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_vault(), ABCVault)
 
     def test_can_search_authorizations(self):
         """Tests can_search_authorizations"""
@@ -856,15 +857,15 @@ def authorization_admin_session_class_fixture(request):
             request.cls.authorization_list.append(object)
             request.cls.authorization_ids.append(object.ident)
 
-        form = request.cls.catalog.get_authorization_form_for_create_for_agent(
+        request.cls.form = request.cls.catalog.get_authorization_form_for_create_for_agent(
             AGENT_ID,
             LOOKUP_RESOURCE_FUNCTION_ID,
             Id(**{'identifier': 'foo', 'namespace': 'resource.Resource', 'authority': 'ODL.MIT.EDU'}),
             [])
-        form.display_name = 'new Authorization'
-        form.description = 'description of Authorization'
-        form.genus_type = NEW_TYPE
-        request.cls.osid_object = request.cls.catalog.create_authorization(form)
+        request.cls.form.display_name = 'new Authorization'
+        request.cls.form.description = 'description of Authorization'
+        request.cls.form.genus_type = NEW_TYPE
+        request.cls.osid_object = request.cls.catalog.create_authorization(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_authorization_admin_session(proxy=PROXY)
 
@@ -897,7 +898,7 @@ class TestAuthorizationAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_vault(), ABCVault)
 
     def test_can_create_authorizations(self):
         """Tests can_create_authorizations"""
@@ -964,6 +965,13 @@ class TestAuthorizationAdminSession(object):
             assert self.osid_object.display_name.text == 'new Authorization'
             assert self.osid_object.description.text == 'description of Authorization'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_authorization(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_authorization('I Will Break You!')
+            update_form = self.catalog.get_authorization_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_authorization(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_authorization('foo')
@@ -980,6 +988,13 @@ class TestAuthorizationAdminSession(object):
             form = self.catalog.get_authorization_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_authorization_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_authorization_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='authorization.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_authorization_form_for_update(self.fake_id)
@@ -1293,6 +1308,8 @@ class TestVaultAdminSession(object):
             catalog_form = self.svc_mgr.get_vault_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_vault_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_vault_form_for_create([])
@@ -1307,6 +1324,13 @@ class TestVaultAdminSession(object):
             catalog_form.description = 'Test Vault for VaultAdminSession.create_vault tests'
             new_catalog = self.svc_mgr.create_vault(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_vault(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_vault('I Will Break You!')
+            update_form = self.svc_mgr.get_vault_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_vault(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_vault('foo')

@@ -16,6 +16,7 @@ from dlkit.abstract_osid.repository import objects as ABCObjects
 from dlkit.abstract_osid.repository import queries as ABCQueries
 from dlkit.abstract_osid.repository import searches
 from dlkit.abstract_osid.repository import searches as ABCSearches
+from dlkit.abstract_osid.repository.objects import Repository as ABCRepository
 from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.locale.types.string import get_type_data as get_string_type_data
@@ -95,7 +96,7 @@ class TestAssetLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_lookup_assets(self):
         """Tests can_lookup_assets"""
@@ -280,7 +281,7 @@ class TestAssetQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_search_assets(self):
         """Tests can_search_assets"""
@@ -420,11 +421,11 @@ def asset_admin_session_class_fixture(request):
 @pytest.fixture(scope="function")
 def asset_admin_session_test_fixture(request):
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_asset_form_for_create([])
-        form.display_name = 'new Asset'
-        form.description = 'description of Asset'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_asset(form)
+        request.cls.form = request.cls.catalog.get_asset_form_for_create([])
+        request.cls.form.display_name = 'new Asset'
+        request.cls.form.description = 'description of Asset'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_asset(request.cls.form)
         request.cls.parent_object = request.cls.osid_object
     request.cls.session = request.cls.catalog
 
@@ -449,7 +450,7 @@ class TestAssetAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_create_assets(self):
         """Tests can_create_assets"""
@@ -468,6 +469,8 @@ class TestAssetAdminSession(object):
             form = self.catalog.get_asset_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_asset_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_asset_form_for_create([])
@@ -481,6 +484,13 @@ class TestAssetAdminSession(object):
             assert self.osid_object.display_name.text == 'new Asset'
             assert self.osid_object.description.text == 'description of Asset'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_asset(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_asset('I Will Break You!')
+            update_form = self.catalog.get_asset_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_asset(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_asset('foo')
@@ -497,6 +507,13 @@ class TestAssetAdminSession(object):
             form = self.catalog.get_asset_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_asset_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_asset_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='repository.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_asset_form_for_update(self.fake_id)
@@ -516,6 +533,12 @@ class TestAssetAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_asset(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_asset('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_asset(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_asset('foo')
@@ -719,7 +742,7 @@ class TestAssetNotificationSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_register_for_asset_notifications(self):
         """Tests can_register_for_asset_notifications"""
@@ -1163,7 +1186,7 @@ class TestAssetCompositionSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_access_asset_compositions(self):
         """Tests can_access_asset_compositions"""
@@ -1276,7 +1299,7 @@ class TestAssetCompositionDesignSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_compose_assets(self):
         """Tests can_compose_assets"""
@@ -1405,7 +1428,7 @@ class TestCompositionLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_lookup_compositions(self):
         """Tests can_lookup_compositions"""
@@ -1625,7 +1648,7 @@ class TestCompositionQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_search_compositions(self):
         """Tests can_search_compositions"""
@@ -1751,6 +1774,10 @@ def composition_admin_session_class_fixture(request):
         'REPOSITORY',
         proxy=PROXY,
         implementation=request.cls.service_config)
+    request.cls.assessment_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_repository_form_for_create([])
@@ -1773,11 +1800,11 @@ def composition_admin_session_class_fixture(request):
 def composition_admin_session_test_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_composition_form_for_create([])
-        form.display_name = 'new Composition'
-        form.description = 'description of Composition'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_composition(form)
+        request.cls.form = request.cls.catalog.get_composition_form_for_create([])
+        request.cls.form.display_name = 'new Composition'
+        request.cls.form.description = 'description of Composition'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_composition(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -1802,7 +1829,7 @@ class TestCompositionAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_repository(), ABCRepository)
 
     def test_can_create_compositions(self):
         """Tests can_create_compositions"""
@@ -1821,6 +1848,8 @@ class TestCompositionAdminSession(object):
             form = self.catalog.get_composition_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_composition_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_composition_form_for_create([])
@@ -1834,6 +1863,13 @@ class TestCompositionAdminSession(object):
             assert self.osid_object.display_name.text == 'new Composition'
             assert self.osid_object.description.text == 'description of Composition'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_composition(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_composition('I Will Break You!')
+            update_form = self.catalog.get_composition_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_composition(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_composition('foo')
@@ -1850,6 +1886,13 @@ class TestCompositionAdminSession(object):
             form = self.catalog.get_composition_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_composition_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_composition_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='repository.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_composition_form_for_update(self.fake_id)
@@ -1869,6 +1912,12 @@ class TestCompositionAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_composition(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_composition('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_composition(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_composition('foo')
@@ -2480,6 +2529,8 @@ class TestRepositoryAdminSession(object):
             catalog_form = self.svc_mgr.get_repository_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_repository_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_repository_form_for_create([])
@@ -2494,6 +2545,13 @@ class TestRepositoryAdminSession(object):
             catalog_form.description = 'Test Repository for RepositoryAdminSession.create_repository tests'
             new_catalog = self.svc_mgr.create_repository(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_repository(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_repository('I Will Break You!')
+            update_form = self.svc_mgr.get_repository_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_repository(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_repository('foo')

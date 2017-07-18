@@ -13,6 +13,7 @@ from dlkit.abstract_osid.assessment import searches as ABCSearches
 from dlkit.abstract_osid.assessment.objects import AssessmentOffered
 from dlkit.abstract_osid.assessment.objects import AssessmentSection, AssessmentSectionList
 from dlkit.abstract_osid.assessment.objects import AssessmentTaken
+from dlkit.abstract_osid.assessment.objects import Bank as ABCBank
 from dlkit.abstract_osid.assessment.objects import Bank, Answer, AnswerList, AnswerForm
 from dlkit.abstract_osid.assessment.objects import Question, QuestionList
 from dlkit.abstract_osid.assessment.objects import ResponseList
@@ -956,7 +957,7 @@ class TestAssessmentResultsSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_access_assessment_results(self):
         """Tests can_access_assessment_results"""
@@ -1065,7 +1066,7 @@ class TestItemLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_lookup_items(self):
         """Tests can_lookup_items"""
@@ -1277,7 +1278,7 @@ class TestItemQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_search_items(self):
         """Tests can_search_items"""
@@ -1438,11 +1439,11 @@ def item_admin_session_class_fixture(request):
 @pytest.fixture(scope="function")
 def item_admin_session_test_fixture(request):
     if not is_never_authz(request.cls.service_config):
-        create_form = request.cls.catalog.get_item_form_for_create([])
-        create_form.display_name = 'new Item'
-        create_form.description = 'description of Item'
-        create_form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_item(create_form)
+        request.cls.form = request.cls.catalog.get_item_form_for_create([])
+        request.cls.form.display_name = 'new Item'
+        request.cls.form.description = 'description of Item'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_item(request.cls.form)
     request.cls.session = request.cls.catalog
 
 
@@ -1460,7 +1461,7 @@ class TestItemAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_create_items(self):
         """Tests can_create_items"""
@@ -1479,6 +1480,8 @@ class TestItemAdminSession(object):
             form = self.catalog.get_item_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_item_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_item_form_for_create([])
@@ -1492,6 +1495,13 @@ class TestItemAdminSession(object):
             assert self.osid_object.display_name.text == 'new Item'
             assert self.osid_object.description.text == 'description of Item'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_item(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_item('I Will Break You!')
+            update_form = self.catalog.get_item_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_item(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_item('foo')
@@ -1508,6 +1518,13 @@ class TestItemAdminSession(object):
             form = self.catalog.get_item_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_item_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_item_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='assessment.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_item_form_for_update(self.fake_id)
@@ -1527,6 +1544,12 @@ class TestItemAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_item(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_item('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_item(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_item('foo')
@@ -1823,7 +1846,7 @@ class TestItemNotificationSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_register_for_item_notifications(self):
         """Tests can_register_for_item_notifications"""
@@ -2266,7 +2289,7 @@ class TestAssessmentLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_lookup_assessments(self):
         """Tests can_lookup_assessments"""
@@ -2441,7 +2464,7 @@ class TestAssessmentQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_search_assessments(self):
         """Tests can_search_assessments"""
@@ -2489,6 +2512,10 @@ def assessment_admin_session_class_fixture(request):
         'ASSESSMENT',
         proxy=PROXY,
         implementation=request.cls.service_config)
+    request.cls.assessment_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_bank_form_for_create([])
@@ -2511,11 +2538,11 @@ def assessment_admin_session_class_fixture(request):
 def assessment_admin_session_test_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_assessment_form_for_create([])
-        form.display_name = 'new Assessment'
-        form.description = 'description of Assessment'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_assessment(form)
+        request.cls.form = request.cls.catalog.get_assessment_form_for_create([])
+        request.cls.form.display_name = 'new Assessment'
+        request.cls.form.description = 'description of Assessment'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_assessment(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -2540,7 +2567,7 @@ class TestAssessmentAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_create_assessments(self):
         """Tests can_create_assessments"""
@@ -2559,6 +2586,8 @@ class TestAssessmentAdminSession(object):
             form = self.catalog.get_assessment_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_assessment_form_for_create([])
@@ -2572,6 +2601,13 @@ class TestAssessmentAdminSession(object):
             assert self.osid_object.display_name.text == 'new Assessment'
             assert self.osid_object.description.text == 'description of Assessment'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_assessment(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment('I Will Break You!')
+            update_form = self.catalog.get_assessment_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_assessment('foo')
@@ -2588,6 +2624,13 @@ class TestAssessmentAdminSession(object):
             form = self.catalog.get_assessment_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='assessment.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_assessment_form_for_update(self.fake_id)
@@ -2607,6 +2650,12 @@ class TestAssessmentAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_assessment(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_assessment('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_assessment(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_assessment('foo')
@@ -3004,7 +3053,7 @@ class TestAssessmentBasicAuthoringSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_author_assessments(self):
         """Tests can_author_assessments"""
@@ -3146,7 +3195,7 @@ class TestAssessmentOfferedLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_lookup_assessments_offered(self):
         """Tests can_lookup_assessments_offered"""
@@ -3353,7 +3402,7 @@ class TestAssessmentOfferedQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_search_assessments_offered(self):
         """Tests can_search_assessments_offered"""
@@ -3419,11 +3468,11 @@ def assessment_offered_admin_session_class_fixture(request):
             obj = request.cls.catalog.create_assessment_offered(create_form)
             request.cls.assessment_offered_list.append(obj)
             request.cls.assessment_offered_ids.append(obj.ident)
-        create_form = request.cls.catalog.get_assessment_offered_form_for_create(request.cls.assessment.ident, [])
-        create_form.display_name = 'new AssessmentOffered'
-        create_form.description = 'description of AssessmentOffered'
-        create_form.genus_type = NEW_TYPE
-        request.cls.osid_object = request.cls.catalog.create_assessment_offered(create_form)
+        request.cls.form = request.cls.catalog.get_assessment_offered_form_for_create(request.cls.assessment.ident, [])
+        request.cls.form.display_name = 'new AssessmentOffered'
+        request.cls.form.description = 'description of AssessmentOffered'
+        request.cls.form.genus_type = NEW_TYPE
+        request.cls.osid_object = request.cls.catalog.create_assessment_offered(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_assessment_offered_admin_session(proxy=PROXY)
 
@@ -3461,7 +3510,7 @@ class TestAssessmentOfferedAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_create_assessments_offered(self):
         """Tests can_create_assessments_offered"""
@@ -3492,6 +3541,13 @@ class TestAssessmentOfferedAdminSession(object):
             assert self.osid_object.display_name.text == 'new AssessmentOffered'
             assert self.osid_object.description.text == 'description of AssessmentOffered'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_assessment_offered(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment_offered('I Will Break You!')
+            update_form = self.catalog.get_assessment_offered_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment_offered(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_assessment_offered('foo')
@@ -3508,6 +3564,13 @@ class TestAssessmentOfferedAdminSession(object):
             form = self.catalog.get_assessment_offered_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_offered_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_offered_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='assessment.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_assessment_offered_form_for_update(self.fake_id)
@@ -3527,6 +3590,12 @@ class TestAssessmentOfferedAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_assessment_offered(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_assessment_offered('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_assessment_offered(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_assessment_offered('foo')
@@ -3926,7 +3995,7 @@ class TestAssessmentTakenLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_lookup_assessments_taken(self):
         """Tests can_lookup_assessments_taken"""
@@ -4236,7 +4305,7 @@ class TestAssessmentTakenQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_search_assessments_taken(self):
         """Tests can_search_assessments_taken"""
@@ -4298,11 +4367,11 @@ def assessment_taken_admin_session_class_fixture(request):
         create_form.description = 'Test AssessmentOffered for AssessmentTakenAdminSession tests'
         obj = request.cls.catalog.create_assessment_offered(create_form)
         request.cls.assessment_offered = obj
-        form = request.cls.catalog.get_assessment_taken_form_for_create(request.cls.assessment_offered.ident, [])
-        form.display_name = 'new AssessmentTaken'
-        form.description = 'description of AssessmentTaken'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_assessment_taken(form)
+        request.cls.form = request.cls.catalog.get_assessment_taken_form_for_create(request.cls.assessment_offered.ident, [])
+        request.cls.form.display_name = 'new AssessmentTaken'
+        request.cls.form.description = 'description of AssessmentTaken'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_assessment_taken(request.cls.form)
     else:
         request.cls.catalog = request.cls.svc_mgr.get_assessment_taken_admin_session(proxy=PROXY)
 
@@ -4340,7 +4409,7 @@ class TestAssessmentTakenAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_bank(), ABCBank)
 
     def test_can_create_assessments_taken(self):
         """Tests can_create_assessments_taken"""
@@ -4371,6 +4440,13 @@ class TestAssessmentTakenAdminSession(object):
             assert self.osid_object.display_name.text == 'new AssessmentTaken'
             assert self.osid_object.description.text == 'description of AssessmentTaken'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_assessment_taken(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment_taken('I Will Break You!')
+            update_form = self.catalog.get_assessment_taken_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_assessment_taken(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_assessment_taken('foo')
@@ -4387,6 +4463,13 @@ class TestAssessmentTakenAdminSession(object):
             form = self.catalog.get_assessment_taken_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_taken_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_assessment_taken_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='assessment.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_assessment_taken_form_for_update(self.fake_id)
@@ -4406,6 +4489,12 @@ class TestAssessmentTakenAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_assessment_taken(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_assessment_taken('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_assessment_taken(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_assessment_taken('foo')
@@ -4998,6 +5087,8 @@ class TestBankAdminSession(object):
             catalog_form = self.svc_mgr.get_bank_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_bank_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_bank_form_for_create([])
@@ -5012,6 +5103,13 @@ class TestBankAdminSession(object):
             catalog_form.description = 'Test Bank for BankAdminSession.create_bank tests'
             new_catalog = self.svc_mgr.create_bank(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_bank(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_bank('I Will Break You!')
+            update_form = self.svc_mgr.get_bank_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_bank(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_bank('foo')

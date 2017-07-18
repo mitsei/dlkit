@@ -1022,61 +1022,15 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
                                          runtime=self._runtime)
         if not isinstance(log_entry_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if log_entry_id.get_identifier_namespace() != 'logging.LogEntry':
-            if log_entry_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                log_entry_id = self._get_log_entry_id_with_enclosure(log_entry_id)
+        if (log_entry_id.get_identifier_namespace() != 'logging.LogEntry' or
+                log_entry_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(log_entry_id.get_identifier())})
 
         obj_form = objects.LogEntryForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_log_entry_id_with_enclosure(self, enclosure_id):
-        """Create an LogEntry with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new LogEntry
-
-        """
-        mgr = self._get_provider_manager('LOGGING')
-        query_session = mgr.get_log_entry_query_session_for_log(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_log_entry_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_log_entries_by_query(query_form)
-        if query_result.available() > 0:
-            log_entry_id = query_result.next().get_id()
-        else:
-            create_form = self.get_log_entry_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            log_entry_id = self.create_log_entry(create_form).get_id()
-        return log_entry_id
-
-    @utilities.arguments_not_none
-    def duplicate_log_entry(self, log_entry_id):
-        collection = JSONClientValidated('logging',
-                                         collection='LogEntry',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('LOGGING')
-        lookup_session = mgr.get_log_entry_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_log_view()
-        try:
-            lookup_session.use_unsequestered_log_entry_view()
-        except AttributeError:
-            pass
-        log_entry_map = dict(lookup_session.get_log_entry(log_entry_id)._my_map)
-        del log_entry_map['_id']
-        if 'logId' in log_entry_map:
-            log_entry_map['logId'] = str(self._catalog_id)
-        if 'assignedLogIds' in log_entry_map:
-            log_entry_map['assignedLogIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(log_entry_map)
-        result = objects.LogEntry(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_log_entry(self, log_entry_form):

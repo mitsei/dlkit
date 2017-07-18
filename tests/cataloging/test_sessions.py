@@ -283,6 +283,8 @@ class TestCatalogAdminSession(object):
             catalog_form = self.svc_mgr.get_catalog_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_catalog_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_catalog_form_for_create([])
@@ -297,6 +299,13 @@ class TestCatalogAdminSession(object):
             catalog_form.description = 'Test Catalog for CatalogAdminSession.create_catalog tests'
             new_catalog = self.svc_mgr.create_catalog(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_catalog(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_catalog('I Will Break You!')
+            update_form = self.svc_mgr.get_catalog_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_catalog(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_catalog('foo')

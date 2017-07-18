@@ -756,61 +756,15 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
                                          runtime=self._runtime)
         if not isinstance(objective_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if objective_id.get_identifier_namespace() != 'learning.Objective':
-            if objective_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                objective_id = self._get_objective_id_with_enclosure(objective_id)
+        if (objective_id.get_identifier_namespace() != 'learning.Objective' or
+                objective_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(objective_id.get_identifier())})
 
         obj_form = objects.ObjectiveForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_objective_id_with_enclosure(self, enclosure_id):
-        """Create an Objective with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Objective
-
-        """
-        mgr = self._get_provider_manager('LEARNING')
-        query_session = mgr.get_objective_query_session_for_objective_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_objective_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_objectives_by_query(query_form)
-        if query_result.available() > 0:
-            objective_id = query_result.next().get_id()
-        else:
-            create_form = self.get_objective_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            objective_id = self.create_objective(create_form).get_id()
-        return objective_id
-
-    @utilities.arguments_not_none
-    def duplicate_objective(self, objective_id):
-        collection = JSONClientValidated('learning',
-                                         collection='Objective',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('LEARNING')
-        lookup_session = mgr.get_objective_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_objective_bank_view()
-        try:
-            lookup_session.use_unsequestered_objective_view()
-        except AttributeError:
-            pass
-        objective_map = dict(lookup_session.get_objective(objective_id)._my_map)
-        del objective_map['_id']
-        if 'objectivebankId' in objective_map:
-            objective_map['objectivebankId'] = str(self._catalog_id)
-        if 'assignedObjectiveBankIds' in objective_map:
-            objective_map['assignedObjectiveBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(objective_map)
-        result = objects.Objective(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_objective(self, objective_form):
@@ -3145,61 +3099,15 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
                                          runtime=self._runtime)
         if not isinstance(activity_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if activity_id.get_identifier_namespace() != 'learning.Activity':
-            if activity_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                activity_id = self._get_activity_id_with_enclosure(activity_id)
+        if (activity_id.get_identifier_namespace() != 'learning.Activity' or
+                activity_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(activity_id.get_identifier())})
 
         obj_form = objects.ActivityForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_activity_id_with_enclosure(self, enclosure_id):
-        """Create an Activity with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Activity
-
-        """
-        mgr = self._get_provider_manager('LEARNING')
-        query_session = mgr.get_activity_query_session_for_objective_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_activity_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_activities_by_query(query_form)
-        if query_result.available() > 0:
-            activity_id = query_result.next().get_id()
-        else:
-            create_form = self.get_activity_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            activity_id = self.create_activity(create_form).get_id()
-        return activity_id
-
-    @utilities.arguments_not_none
-    def duplicate_activity(self, activity_id):
-        collection = JSONClientValidated('learning',
-                                         collection='Activity',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('LEARNING')
-        lookup_session = mgr.get_activity_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_objective_bank_view()
-        try:
-            lookup_session.use_unsequestered_activity_view()
-        except AttributeError:
-            pass
-        activity_map = dict(lookup_session.get_activity(activity_id)._my_map)
-        del activity_map['_id']
-        if 'objectivebankId' in activity_map:
-            activity_map['objectivebankId'] = str(self._catalog_id)
-        if 'assignedObjectiveBankIds' in activity_map:
-            activity_map['assignedObjectiveBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(activity_map)
-        result = objects.Activity(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_activity(self, activity_form):
@@ -4839,61 +4747,15 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
                                          runtime=self._runtime)
         if not isinstance(proficiency_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if proficiency_id.get_identifier_namespace() != 'learning.Proficiency':
-            if proficiency_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                proficiency_id = self._get_proficiency_id_with_enclosure(proficiency_id)
+        if (proficiency_id.get_identifier_namespace() != 'learning.Proficiency' or
+                proficiency_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(proficiency_id.get_identifier())})
 
         obj_form = objects.ProficiencyForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_proficiency_id_with_enclosure(self, enclosure_id):
-        """Create an Proficiency with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Proficiency
-
-        """
-        mgr = self._get_provider_manager('LEARNING')
-        query_session = mgr.get_proficiency_query_session_for_objective_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_proficiency_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_proficiencies_by_query(query_form)
-        if query_result.available() > 0:
-            proficiency_id = query_result.next().get_id()
-        else:
-            create_form = self.get_proficiency_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            proficiency_id = self.create_proficiency(create_form).get_id()
-        return proficiency_id
-
-    @utilities.arguments_not_none
-    def duplicate_proficiency(self, proficiency_id):
-        collection = JSONClientValidated('learning',
-                                         collection='Proficiency',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('LEARNING')
-        lookup_session = mgr.get_proficiency_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_objective_bank_view()
-        try:
-            lookup_session.use_unsequestered_proficiency_view()
-        except AttributeError:
-            pass
-        proficiency_map = dict(lookup_session.get_proficiency(proficiency_id)._my_map)
-        del proficiency_map['_id']
-        if 'objectivebankId' in proficiency_map:
-            proficiency_map['objectivebankId'] = str(self._catalog_id)
-        if 'assignedObjectiveBankIds' in proficiency_map:
-            proficiency_map['assignedObjectiveBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(proficiency_map)
-        result = objects.Proficiency(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_proficiency(self, proficiency_form):

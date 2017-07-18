@@ -1401,61 +1401,15 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
                                          runtime=self._runtime)
         if not isinstance(asset_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if asset_id.get_identifier_namespace() != 'repository.Asset':
-            if asset_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                asset_id = self._get_asset_id_with_enclosure(asset_id)
+        if (asset_id.get_identifier_namespace() != 'repository.Asset' or
+                asset_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(asset_id.get_identifier())})
 
         obj_form = objects.AssetForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_asset_id_with_enclosure(self, enclosure_id):
-        """Create an Asset with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Asset
-
-        """
-        mgr = self._get_provider_manager('REPOSITORY')
-        query_session = mgr.get_asset_query_session_for_repository(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_asset_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_assets_by_query(query_form)
-        if query_result.available() > 0:
-            asset_id = query_result.next().get_id()
-        else:
-            create_form = self.get_asset_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            asset_id = self.create_asset(create_form).get_id()
-        return asset_id
-
-    @utilities.arguments_not_none
-    def duplicate_asset(self, asset_id):
-        collection = JSONClientValidated('repository',
-                                         collection='Asset',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('REPOSITORY')
-        lookup_session = mgr.get_asset_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_repository_view()
-        try:
-            lookup_session.use_unsequestered_asset_view()
-        except AttributeError:
-            pass
-        asset_map = dict(lookup_session.get_asset(asset_id)._my_map)
-        del asset_map['_id']
-        if 'repositoryId' in asset_map:
-            asset_map['repositoryId'] = str(self._catalog_id)
-        if 'assignedRepositoryIds' in asset_map:
-            asset_map['assignedRepositoryIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(asset_map)
-        result = objects.Asset(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_asset(self, asset_form):
@@ -1911,6 +1865,27 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             runtime=self._runtime,
             proxy=self._proxy)._delete()
         collection.save(asset)
+
+    def _get_asset_id_with_enclosure(self, enclosure_id):
+        """Create an Asset with an enclosed foreign object.
+
+        This is here to support AssetCompositionSession.set_asset. May need
+        to add this in other objects to support other osid.Containable objects.
+        return: (osid.id.Id) - the id of the new Asset
+
+        """
+        mgr = self._get_provider_manager('REPOSITORY')
+        query_session = mgr.get_asset_query_session_for_repository(self._catalog_id, proxy=self._proxy)
+        query_form = query_session.get_asset_query()
+        query_form.match_enclosed_object_id(enclosure_id)
+        query_result = query_session.get_assets_by_query(query_form)
+        if query_result.available() > 0:
+            asset_id = query_result.next().get_id()
+        else:
+            create_form = self.get_asset_form_for_create([ENCLOSURE_RECORD_TYPE])
+            create_form.set_enclosed_object(enclosure_id)
+            asset_id = self.create_asset(create_form).get_id()
+        return asset_id
 
 
 class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession, osid_sessions.OsidSession):
@@ -3970,61 +3945,15 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
                                          runtime=self._runtime)
         if not isinstance(composition_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if composition_id.get_identifier_namespace() != 'repository.Composition':
-            if composition_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                composition_id = self._get_composition_id_with_enclosure(composition_id)
+        if (composition_id.get_identifier_namespace() != 'repository.Composition' or
+                composition_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(composition_id.get_identifier())})
 
         obj_form = objects.CompositionForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_composition_id_with_enclosure(self, enclosure_id):
-        """Create an Composition with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Composition
-
-        """
-        mgr = self._get_provider_manager('REPOSITORY')
-        query_session = mgr.get_composition_query_session_for_repository(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_composition_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_compositions_by_query(query_form)
-        if query_result.available() > 0:
-            composition_id = query_result.next().get_id()
-        else:
-            create_form = self.get_composition_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            composition_id = self.create_composition(create_form).get_id()
-        return composition_id
-
-    @utilities.arguments_not_none
-    def duplicate_composition(self, composition_id):
-        collection = JSONClientValidated('repository',
-                                         collection='Composition',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('REPOSITORY')
-        lookup_session = mgr.get_composition_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_repository_view()
-        try:
-            lookup_session.use_unsequestered_composition_view()
-        except AttributeError:
-            pass
-        composition_map = dict(lookup_session.get_composition(composition_id)._my_map)
-        del composition_map['_id']
-        if 'repositoryId' in composition_map:
-            composition_map['repositoryId'] = str(self._catalog_id)
-        if 'assignedRepositoryIds' in composition_map:
-            composition_map['assignedRepositoryIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(composition_map)
-        result = objects.Composition(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_composition(self, composiiton_form):

@@ -789,61 +789,15 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
                                          runtime=self._runtime)
         if not isinstance(grade_system_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if grade_system_id.get_identifier_namespace() != 'grading.GradeSystem':
-            if grade_system_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                grade_system_id = self._get_grade_system_id_with_enclosure(grade_system_id)
+        if (grade_system_id.get_identifier_namespace() != 'grading.GradeSystem' or
+                grade_system_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(grade_system_id.get_identifier())})
 
         obj_form = objects.GradeSystemForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_grade_system_id_with_enclosure(self, enclosure_id):
-        """Create an GradeSystem with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new GradeSystem
-
-        """
-        mgr = self._get_provider_manager('GRADING')
-        query_session = mgr.get_grade_system_query_session_for_gradebook(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_grade_system_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_grade_systems_by_query(query_form)
-        if query_result.available() > 0:
-            grade_system_id = query_result.next().get_id()
-        else:
-            create_form = self.get_grade_system_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            grade_system_id = self.create_grade_system(create_form).get_id()
-        return grade_system_id
-
-    @utilities.arguments_not_none
-    def duplicate_grade_system(self, grade_system_id):
-        collection = JSONClientValidated('grading',
-                                         collection='GradeSystem',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('GRADING')
-        lookup_session = mgr.get_grade_system_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_gradebook_view()
-        try:
-            lookup_session.use_unsequestered_grade_system_view()
-        except AttributeError:
-            pass
-        grade_system_map = dict(lookup_session.get_grade_system(grade_system_id)._my_map)
-        del grade_system_map['_id']
-        if 'gradebookId' in grade_system_map:
-            grade_system_map['gradebookId'] = str(self._catalog_id)
-        if 'assignedGradebookIds' in grade_system_map:
-            grade_system_map['assignedGradebookIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(grade_system_map)
-        result = objects.GradeSystem(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_grade_system(self, grade_system_form):
@@ -2310,11 +2264,9 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
                                          runtime=self._runtime)
         if not isinstance(grade_entry_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if grade_entry_id.get_identifier_namespace() != 'grading.GradeEntry':
-            if grade_entry_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                grade_entry_id = self._get_grade_entry_id_with_enclosure(grade_entry_id)
+        if (grade_entry_id.get_identifier_namespace() != 'grading.GradeEntry' or
+                grade_entry_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(grade_entry_id.get_identifier())})
 
         obj_form = objects.GradeEntryForm(
@@ -3224,61 +3176,15 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
                                          runtime=self._runtime)
         if not isinstance(gradebook_column_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if gradebook_column_id.get_identifier_namespace() != 'grading.GradebookColumn':
-            if gradebook_column_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                gradebook_column_id = self._get_gradebook_column_id_with_enclosure(gradebook_column_id)
+        if (gradebook_column_id.get_identifier_namespace() != 'grading.GradebookColumn' or
+                gradebook_column_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(gradebook_column_id.get_identifier())})
 
         obj_form = objects.GradebookColumnForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_gradebook_column_id_with_enclosure(self, enclosure_id):
-        """Create an GradebookColumn with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new GradebookColumn
-
-        """
-        mgr = self._get_provider_manager('GRADING')
-        query_session = mgr.get_gradebook_column_query_session_for_gradebook(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_gradebook_column_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_gradebook_columns_by_query(query_form)
-        if query_result.available() > 0:
-            gradebook_column_id = query_result.next().get_id()
-        else:
-            create_form = self.get_gradebook_column_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            gradebook_column_id = self.create_gradebook_column(create_form).get_id()
-        return gradebook_column_id
-
-    @utilities.arguments_not_none
-    def duplicate_gradebook_column(self, gradebook_column_id):
-        collection = JSONClientValidated('grading',
-                                         collection='GradebookColumn',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('GRADING')
-        lookup_session = mgr.get_gradebook_column_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_gradebook_view()
-        try:
-            lookup_session.use_unsequestered_gradebook_column_view()
-        except AttributeError:
-            pass
-        gradebook_column_map = dict(lookup_session.get_gradebook_column(gradebook_column_id)._my_map)
-        del gradebook_column_map['_id']
-        if 'gradebookId' in gradebook_column_map:
-            gradebook_column_map['gradebookId'] = str(self._catalog_id)
-        if 'assignedGradebookIds' in gradebook_column_map:
-            gradebook_column_map['assignedGradebookIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(gradebook_column_map)
-        result = objects.GradebookColumn(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_gradebook_column(self, gradebook_column_form):

@@ -983,11 +983,9 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
                                          runtime=self._runtime)
         if not isinstance(assessment_part_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if assessment_part_id.get_identifier_namespace() != 'assessment_authoring.AssessmentPart':
-            if assessment_part_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                assessment_part_id = self._get_assessment_part_id_with_enclosure(assessment_part_id)
+        if (assessment_part_id.get_identifier_namespace() != 'assessment_authoring.AssessmentPart' or
+                assessment_part_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(assessment_part_id.get_identifier())})
 
         mdata = {}
@@ -2188,61 +2186,15 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
                                          runtime=self._runtime)
         if not isinstance(sequence_rule_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if sequence_rule_id.get_identifier_namespace() != 'assessment_authoring.SequenceRule':
-            if sequence_rule_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                sequence_rule_id = self._get_sequence_rule_id_with_enclosure(sequence_rule_id)
+        if (sequence_rule_id.get_identifier_namespace() != 'assessment_authoring.SequenceRule' or
+                sequence_rule_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(sequence_rule_id.get_identifier())})
 
         obj_form = objects.SequenceRuleForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_sequence_rule_id_with_enclosure(self, enclosure_id):
-        """Create an SequenceRule with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new SequenceRule
-
-        """
-        mgr = self._get_provider_manager('ASSESSMENT_AUTHORING')
-        query_session = mgr.get_sequence_rule_query_session_for_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_sequence_rule_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_sequence_rules_by_query(query_form)
-        if query_result.available() > 0:
-            sequence_rule_id = query_result.next().get_id()
-        else:
-            create_form = self.get_sequence_rule_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            sequence_rule_id = self.create_sequence_rule(create_form).get_id()
-        return sequence_rule_id
-
-    @utilities.arguments_not_none
-    def duplicate_sequence_rule(self, sequence_rule_id):
-        collection = JSONClientValidated('assessment_authoring',
-                                         collection='SequenceRule',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('ASSESSMENT_AUTHORING')
-        lookup_session = mgr.get_sequence_rule_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_bank_view()
-        try:
-            lookup_session.use_unsequestered_sequence_rule_view()
-        except AttributeError:
-            pass
-        sequence_rule_map = dict(lookup_session.get_sequence_rule(sequence_rule_id)._my_map)
-        del sequence_rule_map['_id']
-        if 'bankId' in sequence_rule_map:
-            sequence_rule_map['bankId'] = str(self._catalog_id)
-        if 'assignedBankIds' in sequence_rule_map:
-            sequence_rule_map['assignedBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(sequence_rule_map)
-        result = objects.SequenceRule(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_sequence_rule(self, sequence_rule_form):
