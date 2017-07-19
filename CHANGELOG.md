@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.5.5] - 2017-07-19
+### Added
+- `dupliate_item` and `duplicate_assessment` methods with tests.
+
 ## [0.5.4] - 2017-07-19
 ### Added
 - Tests for the `edX` and `lore` `repository` record extensions.
@@ -169,6 +173,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.5]: https://github.com/mitsei/dlkit/compare/0.5.4...0.5.5
 [0.5.4]: https://github.com/mitsei/dlkit/compare/0.5.3...0.5.4
 [0.5.3]: https://github.com/mitsei/dlkit/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/mitsei/dlkit/compare/0.5.1...0.5.2
