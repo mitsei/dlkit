@@ -496,8 +496,7 @@ class TestedXAssetRecord(object):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['learningObjectiveIds'] = ['package.One%3A1%40ODL.MIT.EDU',
                                            'package.Two%3A2%40ODL.MIT.EDU']
-        obj_map['recordTypeIds'] = ['asset-content-record-type%3Aedx-asset-content-text-files%40ODL.MIT.EDU']
-        osid_object = OsidObject(object_name='REPOSITORY',
+        osid_object = OsidObject(object_name='ASSET_CONTENT',
                                  osid_object_map=obj_map)
         asset = edXAssetRecord(osid_object)
 
