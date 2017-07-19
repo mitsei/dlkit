@@ -28,6 +28,16 @@ PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 ABS_PATH = os.path.abspath(os.path.join(PROJECT_PATH, os.pardir))
 
 
+def get_assessment_manager():
+    request = SimpleRequest(username='tester')
+    condition = PROXY_SESSION.get_proxy_condition()
+    condition.set_http_request(request)
+    proxy = PROXY_SESSION.get_proxy(condition)
+    return RUNTIME.get_service_manager('ASSESSMENT',
+                                       implementation='TEST_SERVICE_FILESYSTEM',
+                                       proxy=proxy)
+
+
 def get_repository_manager():
     request = SimpleRequest(username='tester')
     condition = PROXY_SESSION.get_proxy_condition()
@@ -469,6 +479,62 @@ class TestedXAssetRecord(object):
         assert self.repo_2.get_assets().available() == 1
         assert str(new_asset.ident) != str(self.asset.ident)
         assert new_asset._my_map['provenanceId'] == str(self.asset.ident)
+
+    def test_cloning_asset_with_enclosed_assessment_also_clones_assessment(self):
+        edx_asset_record = Type(**ASSET_RECORD_TYPES['edx-asset'])
+        enclosure_record_type = Type(**ASSET_RECORD_TYPES['enclosure'])
+
+        am = get_assessment_manager()
+        bank_1 = am.get_bank(self.repo_1.ident)
+        form = bank_1.get_assessment_form_for_create([])
+        assessment = bank_1.create_assessment(form)
+
+        create_form = self.repo_1.get_asset_form_for_create([edx_asset_record, enclosure_record_type])
+        create_form.set_enclosed_object(assessment.ident)
+        asset = self.repo_1.create_asset(create_form)
+
+        bank_2 = am.get_bank(self.repo_2.ident)
+
+        assert bank_2.get_assessments().available() == 0
+
+        new_asset = asset.clone_to(self.repo_2)
+
+        assert bank_2.get_assessments().available() == 1
+
+        assert new_asset._my_map['enclosedObjectId'] != asset._my_map['enclosedObjectId']
+
+        for bank in am.get_banks():
+            for assessment in bank.get_assessments():
+                bank.delete_assessment(assessment.ident)
+            am.delete_bank(bank.ident)
+
+    def test_cloning_asset_with_enclosed_item_also_clones_item(self):
+        edx_asset_record = Type(**ASSET_RECORD_TYPES['edx-asset'])
+        enclosure_record_type = Type(**ASSET_RECORD_TYPES['enclosure'])
+
+        am = get_assessment_manager()
+        bank_1 = am.get_bank(self.repo_1.ident)
+        form = bank_1.get_item_form_for_create([])
+        item = bank_1.create_item(form)
+
+        create_form = self.repo_1.get_asset_form_for_create([edx_asset_record, enclosure_record_type])
+        create_form.set_enclosed_object(item.ident)
+        asset = self.repo_1.create_asset(create_form)
+
+        bank_2 = am.get_bank(self.repo_2.ident)
+
+        assert bank_2.get_items().available() == 0
+
+        new_asset = asset.clone_to(self.repo_2)
+
+        assert bank_2.get_items().available() == 1
+
+        assert new_asset._my_map['enclosedObjectId'] != asset._my_map['enclosedObjectId']
+
+        for bank in am.get_banks():
+            for item in bank.get_items():
+                bank.delete_item(item.ident)
+            am.delete_bank(bank.ident)
 
     def test_can_export_olx(self):
         result = self.asset.export_olx(self.tarball, '')
