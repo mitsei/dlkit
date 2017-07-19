@@ -3013,6 +3013,32 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             proxy=self._proxy)._delete()
         collection.save(item)
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_item(self, item_id):
+        collection = JSONClientValidated('assessment',
+                                         collection='Item',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('ASSESSMENT')
+        lookup_session = mgr.get_item_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        try:
+            lookup_session.use_unsequestered_item_view()
+        except AttributeError:
+            pass
+        item_map = dict(lookup_session.get_item(item_id)._my_map)
+        del item_map['_id']
+        if 'bankId' in item_map:
+            item_map['bankId'] = str(self._catalog_id)
+        if 'assignedBankIds' in item_map:
+            item_map['assignedBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(item_map)
+        result = objects.Item(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
 
 class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, osid_sessions.OsidSession):
     """This session defines methods to receive asynchronous notifications on adds/changes to ``Item`` objects.
@@ -4589,6 +4615,32 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         # Implemented from template for
         # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=assessment_id, equivalent_id=alias_id)
+
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_assessment(self, assessment_id):
+        collection = JSONClientValidated('assessment',
+                                         collection='Assessment',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('ASSESSMENT')
+        lookup_session = mgr.get_assessment_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        try:
+            lookup_session.use_unsequestered_assessment_view()
+        except AttributeError:
+            pass
+        assessment_map = dict(lookup_session.get_assessment(assessment_id)._my_map)
+        del assessment_map['_id']
+        if 'bankId' in assessment_map:
+            assessment_map['bankId'] = str(self._catalog_id)
+        if 'assignedBankIds' in assessment_map:
+            assessment_map['assignedBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(assessment_map)
+        result = objects.Assessment(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
 
 
 class AssessmentBankSession(abc_assessment_sessions.AssessmentBankSession, osid_sessions.OsidSession):
