@@ -5,6 +5,25 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
+## [0.5.4] - 2017-07-19
+### Added
+- Tests for the `edX` and `lore` `repository` record extensions.
+- Decorator in AWS and Filesystem adapters to remove `None` proxy for
+  Manager methods.
+- Test cassettes for AWS tests.
+- Tests for most `primordium` objects.
+- Cataloging tests.
+
+### Changed
+- Temporal record extension returns `DateTime` object, not `dict`.
+
+### Fixed
+- Various bugs in the `edX` and `lore` `repository` record extensions.
+
+### Removed
+- Unused `duplicate_X` methods.
+- Auto-enclosure on create and update asset forms.
+
 ## [0.5.3] - 2017-07-07
 ### Fixed
 - Fix method names for creating and updating sequence rules in `assessment_utilities.py`.
@@ -150,6 +169,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.4]: https://github.com/mitsei/dlkit/compare/0.5.3...0.5.4
 [0.5.3]: https://github.com/mitsei/dlkit/compare/0.5.2...0.5.3
 [0.5.2]: https://github.com/mitsei/dlkit/compare/0.5.1...0.5.2
 [0.5.1]: https://github.com/mitsei/dlkit/compare/0.5.0...0.5.1
