@@ -1158,6 +1158,7 @@ def asset_composition_session_class_fixture(request):
     def class_tear_down():
         if not is_never_authz(request.cls.service_config):
             for catalog in request.cls.svc_mgr.get_repositories():
+                catalog.use_unsequestered_composition_view()
                 for obj in catalog.get_assets():
                     catalog.delete_asset(obj.ident)
                 for obj in catalog.get_compositions():
