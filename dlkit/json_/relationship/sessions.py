@@ -1136,32 +1136,6 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
 
         return obj_form
 
-    # This is out of spec, but used by the EdX / LORE record extensions...
-    @utilities.arguments_not_none
-    def duplicate_relationship(self, relationship_id):
-        collection = JSONClientValidated('relationship',
-                                         collection='Relationship',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('RELATIONSHIP')
-        lookup_session = mgr.get_relationship_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_family_view()
-        try:
-            lookup_session.use_unsequestered_relationship_view()
-        except AttributeError:
-            pass
-        relationship_map = dict(lookup_session.get_relationship(relationship_id)._my_map)
-        del relationship_map['_id']
-        if 'familyId' in relationship_map:
-            relationship_map['familyId'] = str(self._catalog_id)
-        if 'assignedFamilyIds' in relationship_map:
-            relationship_map['assignedFamilyIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(relationship_map)
-        result = objects.Relationship(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
-
     @utilities.arguments_not_none
     def update_relationship(self, relationship_form):
         """Updates an existing relationship.

@@ -1095,32 +1095,6 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
 
         return obj_form
 
-    # This is out of spec, but used by the EdX / LORE record extensions...
-    @utilities.arguments_not_none
-    def duplicate_comment(self, comment_id):
-        collection = JSONClientValidated('commenting',
-                                         collection='Comment',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('COMMENTING')
-        lookup_session = mgr.get_comment_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_book_view()
-        try:
-            lookup_session.use_unsequestered_comment_view()
-        except AttributeError:
-            pass
-        comment_map = dict(lookup_session.get_comment(comment_id)._my_map)
-        del comment_map['_id']
-        if 'bookId' in comment_map:
-            comment_map['bookId'] = str(self._catalog_id)
-        if 'assignedBookIds' in comment_map:
-            comment_map['assignedBookIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(comment_map)
-        result = objects.Comment(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
-
     @utilities.arguments_not_none
     def update_comment(self, comment_form):
         """Updates an existing comment.

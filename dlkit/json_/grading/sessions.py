@@ -799,32 +799,6 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
 
         return obj_form
 
-    # This is out of spec, but used by the EdX / LORE record extensions...
-    @utilities.arguments_not_none
-    def duplicate_grade_system(self, grade_system_id):
-        collection = JSONClientValidated('grading',
-                                         collection='GradeSystem',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('GRADING')
-        lookup_session = mgr.get_grade_system_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_gradebook_view()
-        try:
-            lookup_session.use_unsequestered_grade_system_view()
-        except AttributeError:
-            pass
-        grade_system_map = dict(lookup_session.get_grade_system(grade_system_id)._my_map)
-        del grade_system_map['_id']
-        if 'gradebookId' in grade_system_map:
-            grade_system_map['gradebookId'] = str(self._catalog_id)
-        if 'assignedGradebookIds' in grade_system_map:
-            grade_system_map['assignedGradebookIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(grade_system_map)
-        result = objects.GradeSystem(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
-
     @utilities.arguments_not_none
     def update_grade_system(self, grade_system_form):
         """Updates an existing grade system.
@@ -3211,32 +3185,6 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    # This is out of spec, but used by the EdX / LORE record extensions...
-    @utilities.arguments_not_none
-    def duplicate_gradebook_column(self, gradebook_column_id):
-        collection = JSONClientValidated('grading',
-                                         collection='GradebookColumn',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('GRADING')
-        lookup_session = mgr.get_gradebook_column_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_gradebook_view()
-        try:
-            lookup_session.use_unsequestered_gradebook_column_view()
-        except AttributeError:
-            pass
-        gradebook_column_map = dict(lookup_session.get_gradebook_column(gradebook_column_id)._my_map)
-        del gradebook_column_map['_id']
-        if 'gradebookId' in gradebook_column_map:
-            gradebook_column_map['gradebookId'] = str(self._catalog_id)
-        if 'assignedGradebookIds' in gradebook_column_map:
-            gradebook_column_map['assignedGradebookIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(gradebook_column_map)
-        result = objects.GradebookColumn(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_gradebook_column(self, gradebook_column_form):

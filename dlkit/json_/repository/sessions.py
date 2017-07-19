@@ -1411,32 +1411,6 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
 
         return obj_form
 
-    # This is out of spec, but used by the EdX / LORE record extensions...
-    @utilities.arguments_not_none
-    def duplicate_asset(self, asset_id):
-        collection = JSONClientValidated('repository',
-                                         collection='Asset',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('REPOSITORY')
-        lookup_session = mgr.get_asset_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_repository_view()
-        try:
-            lookup_session.use_unsequestered_asset_view()
-        except AttributeError:
-            pass
-        asset_map = dict(lookup_session.get_asset(asset_id)._my_map)
-        del asset_map['_id']
-        if 'repositoryId' in asset_map:
-            asset_map['repositoryId'] = str(self._catalog_id)
-        if 'assignedRepositoryIds' in asset_map:
-            asset_map['assignedRepositoryIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(asset_map)
-        result = objects.Asset(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
-
     @utilities.arguments_not_none
     def update_asset(self, asset_form):
         """Updates an existing asset.
@@ -1912,6 +1886,32 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             create_form.set_enclosed_object(enclosure_id)
             asset_id = self.create_asset(create_form).get_id()
         return asset_id
+
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_asset(self, asset_id):
+        collection = JSONClientValidated('repository',
+                                         collection='Asset',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('REPOSITORY')
+        lookup_session = mgr.get_asset_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_repository_view()
+        try:
+            lookup_session.use_unsequestered_asset_view()
+        except AttributeError:
+            pass
+        asset_map = dict(lookup_session.get_asset(asset_id)._my_map)
+        del asset_map['_id']
+        if 'repositoryId' in asset_map:
+            asset_map['repositoryId'] = str(self._catalog_id)
+        if 'assignedRepositoryIds' in asset_map:
+            asset_map['assignedRepositoryIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(asset_map)
+        result = objects.Asset(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
 
 
 class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession, osid_sessions.OsidSession):
@@ -3981,32 +3981,6 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
 
         return obj_form
 
-    # This is out of spec, but used by the EdX / LORE record extensions...
-    @utilities.arguments_not_none
-    def duplicate_composition(self, composition_id):
-        collection = JSONClientValidated('repository',
-                                         collection='Composition',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('REPOSITORY')
-        lookup_session = mgr.get_composition_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_repository_view()
-        try:
-            lookup_session.use_unsequestered_composition_view()
-        except AttributeError:
-            pass
-        composition_map = dict(lookup_session.get_composition(composition_id)._my_map)
-        del composition_map['_id']
-        if 'repositoryId' in composition_map:
-            composition_map['repositoryId'] = str(self._catalog_id)
-        if 'assignedRepositoryIds' in composition_map:
-            composition_map['assignedRepositoryIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(composition_map)
-        result = objects.Composition(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
-
     @utilities.arguments_not_none
     def update_composition(self, composiiton_form):
         """Updates an existing composition.
@@ -4195,6 +4169,32 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         # Implemented from template for
         # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=composition_id, equivalent_id=alias_id)
+
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_composition(self, composition_id):
+        collection = JSONClientValidated('repository',
+                                         collection='Composition',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('REPOSITORY')
+        lookup_session = mgr.get_composition_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_repository_view()
+        try:
+            lookup_session.use_unsequestered_composition_view()
+        except AttributeError:
+            pass
+        composition_map = dict(lookup_session.get_composition(composition_id)._my_map)
+        del composition_map['_id']
+        if 'repositoryId' in composition_map:
+            composition_map['repositoryId'] = str(self._catalog_id)
+        if 'assignedRepositoryIds' in composition_map:
+            composition_map['assignedRepositoryIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(composition_map)
+        result = objects.Composition(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
 
 
 class CompositionRepositorySession(abc_repository_sessions.CompositionRepositorySession, osid_sessions.OsidSession):

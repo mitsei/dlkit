@@ -1611,32 +1611,6 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
 
         return obj_form
 
-    # This is out of spec, but used by the EdX / LORE record extensions...
-    @utilities.arguments_not_none
-    def duplicate_authorization(self, authorization_id):
-        collection = JSONClientValidated('authorization',
-                                         collection='Authorization',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('AUTHORIZATION')
-        lookup_session = mgr.get_authorization_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_vault_view()
-        try:
-            lookup_session.use_unsequestered_authorization_view()
-        except AttributeError:
-            pass
-        authorization_map = dict(lookup_session.get_authorization(authorization_id)._my_map)
-        del authorization_map['_id']
-        if 'vaultId' in authorization_map:
-            authorization_map['vaultId'] = str(self._catalog_id)
-        if 'assignedVaultIds' in authorization_map:
-            authorization_map['assignedVaultIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(authorization_map)
-        result = objects.Authorization(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
-
     @utilities.arguments_not_none
     def update_authorization(self, authorization_form):
         """Updates an existing authorization.
