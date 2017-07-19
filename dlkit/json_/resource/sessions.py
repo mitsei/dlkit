@@ -912,6 +912,32 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
 
         return obj_form
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_resource(self, resource_id):
+        collection = JSONClientValidated('resource',
+                                         collection='Resource',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('RESOURCE')
+        lookup_session = mgr.get_resource_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bin_view()
+        try:
+            lookup_session.use_unsequestered_resource_view()
+        except AttributeError:
+            pass
+        resource_map = dict(lookup_session.get_resource(resource_id)._my_map)
+        del resource_map['_id']
+        if 'binId' in resource_map:
+            resource_map['binId'] = str(self._catalog_id)
+        if 'assignedBinIds' in resource_map:
+            resource_map['assignedBinIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(resource_map)
+        result = objects.Resource(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
     @utilities.arguments_not_none
     def update_resource(self, resource_form):
         """Updates an existing resource.

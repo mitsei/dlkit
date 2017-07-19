@@ -766,6 +766,32 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
 
         return obj_form
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_objective(self, objective_id):
+        collection = JSONClientValidated('learning',
+                                         collection='Objective',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('LEARNING')
+        lookup_session = mgr.get_objective_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_objective_bank_view()
+        try:
+            lookup_session.use_unsequestered_objective_view()
+        except AttributeError:
+            pass
+        objective_map = dict(lookup_session.get_objective(objective_id)._my_map)
+        del objective_map['_id']
+        if 'objectivebankId' in objective_map:
+            objective_map['objectivebankId'] = str(self._catalog_id)
+        if 'assignedObjectiveBankIds' in objective_map:
+            objective_map['assignedObjectiveBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(objective_map)
+        result = objects.Objective(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
     @utilities.arguments_not_none
     def update_objective(self, objective_form):
         """Updates an existing objective.
@@ -3109,6 +3135,32 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
 
         return obj_form
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_activity(self, activity_id):
+        collection = JSONClientValidated('learning',
+                                         collection='Activity',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('LEARNING')
+        lookup_session = mgr.get_activity_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_objective_bank_view()
+        try:
+            lookup_session.use_unsequestered_activity_view()
+        except AttributeError:
+            pass
+        activity_map = dict(lookup_session.get_activity(activity_id)._my_map)
+        del activity_map['_id']
+        if 'objectivebankId' in activity_map:
+            activity_map['objectivebankId'] = str(self._catalog_id)
+        if 'assignedObjectiveBankIds' in activity_map:
+            activity_map['assignedObjectiveBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(activity_map)
+        result = objects.Activity(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
     @utilities.arguments_not_none
     def update_activity(self, activity_form):
         """Updates an existing activity,.
@@ -4756,6 +4808,32 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
+
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_proficiency(self, proficiency_id):
+        collection = JSONClientValidated('learning',
+                                         collection='Proficiency',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('LEARNING')
+        lookup_session = mgr.get_proficiency_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_objective_bank_view()
+        try:
+            lookup_session.use_unsequestered_proficiency_view()
+        except AttributeError:
+            pass
+        proficiency_map = dict(lookup_session.get_proficiency(proficiency_id)._my_map)
+        del proficiency_map['_id']
+        if 'objectivebankId' in proficiency_map:
+            proficiency_map['objectivebankId'] = str(self._catalog_id)
+        if 'assignedObjectiveBankIds' in proficiency_map:
+            proficiency_map['assignedObjectiveBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(proficiency_map)
+        result = objects.Proficiency(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
 
     @utilities.arguments_not_none
     def update_proficiency(self, proficiency_form):

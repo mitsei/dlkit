@@ -2275,6 +2275,32 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
 
         return obj_form
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_item(self, item_id):
+        collection = JSONClientValidated('assessment',
+                                         collection='Item',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('ASSESSMENT')
+        lookup_session = mgr.get_item_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        try:
+            lookup_session.use_unsequestered_item_view()
+        except AttributeError:
+            pass
+        item_map = dict(lookup_session.get_item(item_id)._my_map)
+        del item_map['_id']
+        if 'bankId' in item_map:
+            item_map['bankId'] = str(self._catalog_id)
+        if 'assignedBankIds' in item_map:
+            item_map['assignedBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(item_map)
+        result = objects.Item(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
     @utilities.arguments_not_none
     def update_item(self, item_form):
         """Updates an existing item.
@@ -4431,6 +4457,32 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
 
         return obj_form
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_assessment(self, assessment_id):
+        collection = JSONClientValidated('assessment',
+                                         collection='Assessment',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('ASSESSMENT')
+        lookup_session = mgr.get_assessment_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        try:
+            lookup_session.use_unsequestered_assessment_view()
+        except AttributeError:
+            pass
+        assessment_map = dict(lookup_session.get_assessment(assessment_id)._my_map)
+        del assessment_map['_id']
+        if 'bankId' in assessment_map:
+            assessment_map['bankId'] = str(self._catalog_id)
+        if 'assignedBankIds' in assessment_map:
+            assessment_map['assignedBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(assessment_map)
+        result = objects.Assessment(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
     @utilities.arguments_not_none
     def update_assessment(self, assessment_form):
         """Updates an existing assessment.
@@ -5947,6 +5999,32 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
+
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_assessment_offered(self, assessment_offered_id):
+        collection = JSONClientValidated('assessment',
+                                         collection='AssessmentOffered',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('ASSESSMENT')
+        lookup_session = mgr.get_assessment_offered_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        try:
+            lookup_session.use_unsequestered_assessment_offered_view()
+        except AttributeError:
+            pass
+        assessment_offered_map = dict(lookup_session.get_assessment_offered(assessment_offered_id)._my_map)
+        del assessment_offered_map['_id']
+        if 'bankId' in assessment_offered_map:
+            assessment_offered_map['bankId'] = str(self._catalog_id)
+        if 'assignedBankIds' in assessment_offered_map:
+            assessment_offered_map['assignedBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(assessment_offered_map)
+        result = objects.AssessmentOffered(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
 
     @utilities.arguments_not_none
     def update_assessment_offered(self, assessment_offered_form):
@@ -7547,6 +7625,32 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
+
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_assessment_taken(self, assessment_taken_id):
+        collection = JSONClientValidated('assessment',
+                                         collection='AssessmentTaken',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('ASSESSMENT')
+        lookup_session = mgr.get_assessment_taken_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        try:
+            lookup_session.use_unsequestered_assessment_taken_view()
+        except AttributeError:
+            pass
+        assessment_taken_map = dict(lookup_session.get_assessment_taken(assessment_taken_id)._my_map)
+        del assessment_taken_map['_id']
+        if 'bankId' in assessment_taken_map:
+            assessment_taken_map['bankId'] = str(self._catalog_id)
+        if 'assignedBankIds' in assessment_taken_map:
+            assessment_taken_map['assignedBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(assessment_taken_map)
+        result = objects.AssessmentTaken(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
 
     @utilities.arguments_not_none
     def update_assessment_taken(self, assessment_taken_form):

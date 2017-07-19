@@ -1032,6 +1032,32 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
 
         return obj_form
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_log_entry(self, log_entry_id):
+        collection = JSONClientValidated('logging',
+                                         collection='LogEntry',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('LOGGING')
+        lookup_session = mgr.get_log_entry_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_log_view()
+        try:
+            lookup_session.use_unsequestered_log_entry_view()
+        except AttributeError:
+            pass
+        log_entry_map = dict(lookup_session.get_log_entry(log_entry_id)._my_map)
+        del log_entry_map['_id']
+        if 'logId' in log_entry_map:
+            log_entry_map['logId'] = str(self._catalog_id)
+        if 'assignedLogIds' in log_entry_map:
+            log_entry_map['assignedLogIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(log_entry_map)
+        result = objects.LogEntry(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
     @utilities.arguments_not_none
     def update_log_entry(self, log_entry_form):
         """Updates an existing log entry.

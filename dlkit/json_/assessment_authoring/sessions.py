@@ -2196,6 +2196,32 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
 
         return obj_form
 
+    # This is out of spec, but used by the EdX / LORE record extensions...
+    @utilities.arguments_not_none
+    def duplicate_sequence_rule(self, sequence_rule_id):
+        collection = JSONClientValidated('assessment_authoring',
+                                         collection='SequenceRule',
+                                         runtime=self._runtime)
+        mgr = self._get_provider_manager('ASSESSMENT_AUTHORING')
+        lookup_session = mgr.get_sequence_rule_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        try:
+            lookup_session.use_unsequestered_sequence_rule_view()
+        except AttributeError:
+            pass
+        sequence_rule_map = dict(lookup_session.get_sequence_rule(sequence_rule_id)._my_map)
+        del sequence_rule_map['_id']
+        if 'bankId' in sequence_rule_map:
+            sequence_rule_map['bankId'] = str(self._catalog_id)
+        if 'assignedBankIds' in sequence_rule_map:
+            sequence_rule_map['assignedBankIds'] = [str(self._catalog_id)]
+        insert_result = collection.insert_one(sequence_rule_map)
+        result = objects.SequenceRule(
+            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
+            runtime=self._runtime,
+            proxy=self._proxy)
+        return result
+
     @utilities.arguments_not_none
     def update_sequence_rule(self, sequence_rule_form):
         """Updates an existing sequence rule.
