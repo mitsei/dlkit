@@ -5,6 +5,8 @@ from datetime import datetime
 
 from io import BytesIO
 
+from dlkit.runtime.errors import IllegalState
+
 
 def clean_str(input_):
     """
@@ -89,6 +91,8 @@ class EdXUtilitiesMixin(object):
         if soup is None and fileobj is None:
             f.type = tarfile.DIRTYPE
             tarball.addfile(f)
+        elif soup is not None and fileobj is not None:
+            raise IllegalState('cannot provide both soup and fileobj')
         elif soup is not None:
             if prettify:
                 try:
@@ -101,7 +105,7 @@ class EdXUtilitiesMixin(object):
             else:
                 try:
                     stream = BytesIO(str(soup))
-                except UnicodeDecodeError:
+                except (UnicodeDecodeError, TypeError):
                     stream = BytesIO(soup.encode('utf-8'))
             f.size = get_byte_stream_size(stream)
             stream.seek(0)

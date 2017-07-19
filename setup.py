@@ -81,6 +81,7 @@ setup(
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=['numpy', 'pymongo', 'boto3', 'lxml', 'sympy',
                       'inflection', 'bs4', 'python-memcached',
+                      'html5lib',
                       'rsa', 'requests'],
 
     # List additional groups of dependencies here (e.g. development
@@ -92,6 +93,7 @@ setup(
         'test': ['pymongo', 'numpy', 'envoy', 'lxml', 'sympy',
                  'bs4', 'python-memcached', 'requests',
                  'rsa', 'requests', 'vcrpy', 'future',
+                 'html5lib',
                  'pytest', 'pytest-pep8', 'pytest-cov'],
     },
 

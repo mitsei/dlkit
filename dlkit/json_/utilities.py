@@ -498,8 +498,7 @@ class JSONClientValidated(object):
             results = []
             if query is None:
                 for target_file in glob.iglob(self._cursor + '/*.json'):
-                    with open(target_file, 'rb') as found_object:
-                        results.append(json.load(found_object))
+                    results.append(self._get_file_contents_as_json(target_file))
             else:
                 query = self._convert_to_dict(query)
                 query = splice_and_query(query)
