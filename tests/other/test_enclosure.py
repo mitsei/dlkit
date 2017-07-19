@@ -73,22 +73,22 @@ class TestEnclosure(unittest.TestCase):
         assert asset.get_description().text == self.assessment.get_description().text
         assert asset.get_genus_type() == ENCLOSED_ASSESSMENT_TYPE
 
-    def test_update_asset_with_assessment(self):
-        """
-        Tests silently creating an assessment enclosed in an asset through update
-
-        And that if one already exists, that we get it instead.
-
-        """
-        update_form = self.repository.get_asset_form_for_update(self.assessment.ident)
-        update_form.set_title('This is the Asset Title')
-        updated_asset = self.repository.update_asset(update_form)
-        updated_asset_assessment_id = updated_asset.enclosed_object_id
-        assert updated_asset.title.text == 'This is the Asset Title'
-        new_update_form = self.repository.get_asset_form_for_update(self.assessment.ident)
-        new_updated_asset = self.repository.update_asset(new_update_form)
-        assert new_updated_asset.enclosed_object_id == updated_asset_assessment_id
-        assert updated_asset.title.text == 'This is the Asset Title'
+    # def test_update_asset_with_assessment(self):
+    #     """
+    #     Tests silently creating an assessment enclosed in an asset through update
+    #
+    #     And that if one already exists, that we get it instead.
+    #
+    #     """
+    #     update_form = self.repository.get_asset_form_for_update(self.assessment.ident)
+    #     update_form.set_title('This is the Asset Title')
+    #     updated_asset = self.repository.update_asset(update_form)
+    #     updated_asset_assessment_id = updated_asset.enclosed_object_id
+    #     assert updated_asset.title.text == 'This is the Asset Title'
+    #     new_update_form = self.repository.get_asset_form_for_update(self.assessment.ident)
+    #     new_updated_asset = self.repository.update_asset(new_update_form)
+    #     assert new_updated_asset.enclosed_object_id == updated_asset_assessment_id
+    #     assert updated_asset.title.text == 'This is the Asset Title'
 
     def test_assessment_asset_composition(self):
         """Tests silently creating an enclosure through asset composition design."""

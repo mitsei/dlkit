@@ -9,6 +9,7 @@ from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.logging_ import objects as ABCObjects
 from dlkit.abstract_osid.logging_ import queries as ABCQueries
+from dlkit.abstract_osid.logging_.objects import Log as ABCLog
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
@@ -80,7 +81,7 @@ class TestLoggingSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_log(), ABCLog)
 
     def test_can_log(self):
         """Tests can_log"""
@@ -182,7 +183,7 @@ class TestLogEntryLookupSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_log(), ABCLog)
 
     def test_can_read_log(self):
         """Tests can_read_log"""
@@ -428,7 +429,7 @@ class TestLogEntryQuerySession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_log(), ABCLog)
 
     def test_can_search_log_entries(self):
         """Tests can_search_log_entries"""
@@ -476,6 +477,10 @@ def log_entry_admin_session_class_fixture(request):
         'LOGGING',
         proxy=PROXY,
         implementation=request.cls.service_config)
+    request.cls.assessment_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_log_form_for_create([])
@@ -498,11 +503,11 @@ def log_entry_admin_session_class_fixture(request):
 def log_entry_admin_session_test_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     if not is_never_authz(request.cls.service_config):
-        form = request.cls.catalog.get_log_entry_form_for_create([])
-        form.display_name = 'new LogEntry'
-        form.description = 'description of LogEntry'
-        form.set_genus_type(NEW_TYPE)
-        request.cls.osid_object = request.cls.catalog.create_log_entry(form)
+        request.cls.form = request.cls.catalog.get_log_entry_form_for_create([])
+        request.cls.form.display_name = 'new LogEntry'
+        request.cls.form.description = 'description of LogEntry'
+        request.cls.form.set_genus_type(NEW_TYPE)
+        request.cls.osid_object = request.cls.catalog.create_log_entry(request.cls.form)
     request.cls.session = request.cls.catalog
 
     def test_tear_down():
@@ -527,7 +532,7 @@ class TestLogEntryAdminSession(object):
         # is this test really needed?
         # From test_templates/resource.py::ResourceLookupSession::get_bin_template
         if not is_never_authz(self.service_config):
-            assert self.catalog is not None
+            assert isinstance(self.catalog.get_log(), ABCLog)
 
     def test_can_create_log_entries(self):
         """Tests can_create_log_entries"""
@@ -546,6 +551,8 @@ class TestLogEntryAdminSession(object):
             form = self.catalog.get_log_entry_form_for_create([])
             assert isinstance(form, OsidForm)
             assert not form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_log_entry_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_log_entry_form_for_create([])
@@ -559,6 +566,13 @@ class TestLogEntryAdminSession(object):
             assert self.osid_object.display_name.text == 'new LogEntry'
             assert self.osid_object.description.text == 'description of LogEntry'
             assert self.osid_object.genus_type == NEW_TYPE
+            with pytest.raises(errors.IllegalState):
+                self.catalog.create_log_entry(self.form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_log_entry('I Will Break You!')
+            update_form = self.catalog.get_log_entry_form_for_update(self.osid_object.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.create_log_entry(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.create_log_entry('foo')
@@ -575,6 +589,13 @@ class TestLogEntryAdminSession(object):
             form = self.catalog.get_log_entry_form_for_update(self.osid_object.ident)
             assert isinstance(form, OsidForm)
             assert form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_log_entry_form_for_update(['This is Doomed!'])
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.get_log_entry_form_for_update(
+                    Id(authority='Respect my Authoritay!',
+                       namespace='logging.{object_name}',
+                       identifier='1'))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.get_log_entry_form_for_update(self.fake_id)
@@ -594,6 +615,12 @@ class TestLogEntryAdminSession(object):
             assert updated_object.display_name.text == 'new name'
             assert updated_object.description.text == 'new description'
             assert updated_object.genus_type == NEW_TYPE_2
+            with pytest.raises(errors.IllegalState):
+                self.catalog.update_log_entry(form)
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_log_entry('I Will Break You!')
+            with pytest.raises(errors.InvalidArgument):
+                self.catalog.update_log_entry(self.form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.update_log_entry('foo')
@@ -825,6 +852,8 @@ class TestLogAdminSession(object):
             catalog_form = self.svc_mgr.get_log_form_for_create([])
             assert isinstance(catalog_form, OsidCatalogForm)
             assert not catalog_form.is_for_update()
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.get_log_form_for_create([1])
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_log_form_for_create([])
@@ -839,6 +868,13 @@ class TestLogAdminSession(object):
             catalog_form.description = 'Test Log for LogAdminSession.create_log tests'
             new_catalog = self.svc_mgr.create_log(catalog_form)
             assert isinstance(new_catalog, OsidCatalog)
+            with pytest.raises(errors.IllegalState):
+                self.svc_mgr.create_log(catalog_form)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_log('I Will Break You!')
+            update_form = self.svc_mgr.get_log_form_for_update(new_catalog.ident)
+            with pytest.raises(errors.InvalidArgument):
+                self.svc_mgr.create_log(update_form)
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.create_log('foo')

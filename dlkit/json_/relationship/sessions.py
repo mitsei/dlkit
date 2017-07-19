@@ -1126,61 +1126,15 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
                                          runtime=self._runtime)
         if not isinstance(relationship_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if relationship_id.get_identifier_namespace() != 'relationship.Relationship':
-            if relationship_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                relationship_id = self._get_relationship_id_with_enclosure(relationship_id)
+        if (relationship_id.get_identifier_namespace() != 'relationship.Relationship' or
+                relationship_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(relationship_id.get_identifier())})
 
         obj_form = objects.RelationshipForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_relationship_id_with_enclosure(self, enclosure_id):
-        """Create an Relationship with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Relationship
-
-        """
-        mgr = self._get_provider_manager('RELATIONSHIP')
-        query_session = mgr.get_relationship_query_session_for_family(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_relationship_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_relationships_by_query(query_form)
-        if query_result.available() > 0:
-            relationship_id = query_result.next().get_id()
-        else:
-            create_form = self.get_relationship_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            relationship_id = self.create_relationship(create_form).get_id()
-        return relationship_id
-
-    @utilities.arguments_not_none
-    def duplicate_relationship(self, relationship_id):
-        collection = JSONClientValidated('relationship',
-                                         collection='Relationship',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('RELATIONSHIP')
-        lookup_session = mgr.get_relationship_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_family_view()
-        try:
-            lookup_session.use_unsequestered_relationship_view()
-        except AttributeError:
-            pass
-        relationship_map = dict(lookup_session.get_relationship(relationship_id)._my_map)
-        del relationship_map['_id']
-        if 'familyId' in relationship_map:
-            relationship_map['familyId'] = str(self._catalog_id)
-        if 'assignedFamilyIds' in relationship_map:
-            relationship_map['assignedFamilyIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(relationship_map)
-        result = objects.Relationship(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_relationship(self, relationship_form):

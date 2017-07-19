@@ -2265,61 +2265,15 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
                                          runtime=self._runtime)
         if not isinstance(item_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if item_id.get_identifier_namespace() != 'assessment.Item':
-            if item_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                item_id = self._get_item_id_with_enclosure(item_id)
+        if (item_id.get_identifier_namespace() != 'assessment.Item' or
+                item_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(item_id.get_identifier())})
 
         obj_form = objects.ItemForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_item_id_with_enclosure(self, enclosure_id):
-        """Create an Item with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Item
-
-        """
-        mgr = self._get_provider_manager('ASSESSMENT')
-        query_session = mgr.get_item_query_session_for_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_item_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_items_by_query(query_form)
-        if query_result.available() > 0:
-            item_id = query_result.next().get_id()
-        else:
-            create_form = self.get_item_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            item_id = self.create_item(create_form).get_id()
-        return item_id
-
-    @utilities.arguments_not_none
-    def duplicate_item(self, item_id):
-        collection = JSONClientValidated('assessment',
-                                         collection='Item',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('ASSESSMENT')
-        lookup_session = mgr.get_item_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_bank_view()
-        try:
-            lookup_session.use_unsequestered_item_view()
-        except AttributeError:
-            pass
-        item_map = dict(lookup_session.get_item(item_id)._my_map)
-        del item_map['_id']
-        if 'bankId' in item_map:
-            item_map['bankId'] = str(self._catalog_id)
-        if 'assignedBankIds' in item_map:
-            item_map['assignedBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(item_map)
-        result = objects.Item(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_item(self, item_form):
@@ -4467,61 +4421,15 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
                                          runtime=self._runtime)
         if not isinstance(assessment_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if assessment_id.get_identifier_namespace() != 'assessment.Assessment':
-            if assessment_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                assessment_id = self._get_assessment_id_with_enclosure(assessment_id)
+        if (assessment_id.get_identifier_namespace() != 'assessment.Assessment' or
+                assessment_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(assessment_id.get_identifier())})
 
         obj_form = objects.AssessmentForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_assessment_id_with_enclosure(self, enclosure_id):
-        """Create an Assessment with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Assessment
-
-        """
-        mgr = self._get_provider_manager('ASSESSMENT')
-        query_session = mgr.get_assessment_query_session_for_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_assessment_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_assessments_by_query(query_form)
-        if query_result.available() > 0:
-            assessment_id = query_result.next().get_id()
-        else:
-            create_form = self.get_assessment_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            assessment_id = self.create_assessment(create_form).get_id()
-        return assessment_id
-
-    @utilities.arguments_not_none
-    def duplicate_assessment(self, assessment_id):
-        collection = JSONClientValidated('assessment',
-                                         collection='Assessment',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('ASSESSMENT')
-        lookup_session = mgr.get_assessment_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_bank_view()
-        try:
-            lookup_session.use_unsequestered_assessment_view()
-        except AttributeError:
-            pass
-        assessment_map = dict(lookup_session.get_assessment(assessment_id)._my_map)
-        del assessment_map['_id']
-        if 'bankId' in assessment_map:
-            assessment_map['bankId'] = str(self._catalog_id)
-        if 'assignedBankIds' in assessment_map:
-            assessment_map['assignedBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(assessment_map)
-        result = objects.Assessment(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_assessment(self, assessment_form):
@@ -6030,61 +5938,15 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
                                          runtime=self._runtime)
         if not isinstance(assessment_offered_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if assessment_offered_id.get_identifier_namespace() != 'assessment.AssessmentOffered':
-            if assessment_offered_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                assessment_offered_id = self._get_assessment_offered_id_with_enclosure(assessment_offered_id)
+        if (assessment_offered_id.get_identifier_namespace() != 'assessment.AssessmentOffered' or
+                assessment_offered_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(assessment_offered_id.get_identifier())})
 
         obj_form = objects.AssessmentOfferedForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_assessment_offered_id_with_enclosure(self, enclosure_id):
-        """Create an AssessmentOffered with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new AssessmentOffered
-
-        """
-        mgr = self._get_provider_manager('ASSESSMENT')
-        query_session = mgr.get_assessment_offered_query_session_for_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_assessment_offered_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_assessments_offered_by_query(query_form)
-        if query_result.available() > 0:
-            assessment_offered_id = query_result.next().get_id()
-        else:
-            create_form = self.get_assessment_offered_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            assessment_offered_id = self.create_assessment_offered(create_form).get_id()
-        return assessment_offered_id
-
-    @utilities.arguments_not_none
-    def duplicate_assessment_offered(self, assessment_offered_id):
-        collection = JSONClientValidated('assessment',
-                                         collection='AssessmentOffered',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('ASSESSMENT')
-        lookup_session = mgr.get_assessment_offered_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_bank_view()
-        try:
-            lookup_session.use_unsequestered_assessment_offered_view()
-        except AttributeError:
-            pass
-        assessment_offered_map = dict(lookup_session.get_assessment_offered(assessment_offered_id)._my_map)
-        del assessment_offered_map['_id']
-        if 'bankId' in assessment_offered_map:
-            assessment_offered_map['bankId'] = str(self._catalog_id)
-        if 'assignedBankIds' in assessment_offered_map:
-            assessment_offered_map['assignedBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(assessment_offered_map)
-        result = objects.AssessmentOffered(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_assessment_offered(self, assessment_offered_form):
@@ -7676,61 +7538,15 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
                                          runtime=self._runtime)
         if not isinstance(assessment_taken_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if assessment_taken_id.get_identifier_namespace() != 'assessment.AssessmentTaken':
-            if assessment_taken_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                assessment_taken_id = self._get_assessment_taken_id_with_enclosure(assessment_taken_id)
+        if (assessment_taken_id.get_identifier_namespace() != 'assessment.AssessmentTaken' or
+                assessment_taken_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(assessment_taken_id.get_identifier())})
 
         obj_form = objects.AssessmentTakenForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_assessment_taken_id_with_enclosure(self, enclosure_id):
-        """Create an AssessmentTaken with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new AssessmentTaken
-
-        """
-        mgr = self._get_provider_manager('ASSESSMENT')
-        query_session = mgr.get_assessment_taken_query_session_for_bank(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_assessment_taken_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_assessments_taken_by_query(query_form)
-        if query_result.available() > 0:
-            assessment_taken_id = query_result.next().get_id()
-        else:
-            create_form = self.get_assessment_taken_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            assessment_taken_id = self.create_assessment_taken(create_form).get_id()
-        return assessment_taken_id
-
-    @utilities.arguments_not_none
-    def duplicate_assessment_taken(self, assessment_taken_id):
-        collection = JSONClientValidated('assessment',
-                                         collection='AssessmentTaken',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('ASSESSMENT')
-        lookup_session = mgr.get_assessment_taken_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_bank_view()
-        try:
-            lookup_session.use_unsequestered_assessment_taken_view()
-        except AttributeError:
-            pass
-        assessment_taken_map = dict(lookup_session.get_assessment_taken(assessment_taken_id)._my_map)
-        del assessment_taken_map['_id']
-        if 'bankId' in assessment_taken_map:
-            assessment_taken_map['bankId'] = str(self._catalog_id)
-        if 'assignedBankIds' in assessment_taken_map:
-            assessment_taken_map['assignedBankIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(assessment_taken_map)
-        result = objects.AssessmentTaken(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_assessment_taken(self, assessment_taken_form):

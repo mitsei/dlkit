@@ -17,16 +17,16 @@ DISPLAYNAME = 'Mongo cataloging'
 
 DESCRIPTION = 'MongoDB based cataloging implementation'
 
-VERSIONCOMPONENTS = [0, 1, 42]
+VERSIONCOMPONENTS = [0, 1, 1]
 
-RELEASEDATE = "2017-07-11"
+RELEASEDATE = "2017-07-18"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
     # 'supports_journal_branching',
     # 'supports_visible_federation',
-    'supports_catalog',
-    'supports_catalog_assignment',
+    # 'supports_catalog',
+    # 'supports_catalog_assignment',
     # 'supports_catalog_entry_notification',
     'supports_catalog_lookup',
     'supports_catalog_query',

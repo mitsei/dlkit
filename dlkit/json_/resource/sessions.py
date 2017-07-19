@@ -902,61 +902,15 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
                                          runtime=self._runtime)
         if not isinstance(resource_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if resource_id.get_identifier_namespace() != 'resource.Resource':
-            if resource_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                resource_id = self._get_resource_id_with_enclosure(resource_id)
+        if (resource_id.get_identifier_namespace() != 'resource.Resource' or
+                resource_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(resource_id.get_identifier())})
 
         obj_form = objects.ResourceForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_resource_id_with_enclosure(self, enclosure_id):
-        """Create an Resource with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Resource
-
-        """
-        mgr = self._get_provider_manager('RESOURCE')
-        query_session = mgr.get_resource_query_session_for_bin(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_resource_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_resources_by_query(query_form)
-        if query_result.available() > 0:
-            resource_id = query_result.next().get_id()
-        else:
-            create_form = self.get_resource_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            resource_id = self.create_resource(create_form).get_id()
-        return resource_id
-
-    @utilities.arguments_not_none
-    def duplicate_resource(self, resource_id):
-        collection = JSONClientValidated('resource',
-                                         collection='Resource',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('RESOURCE')
-        lookup_session = mgr.get_resource_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_bin_view()
-        try:
-            lookup_session.use_unsequestered_resource_view()
-        except AttributeError:
-            pass
-        resource_map = dict(lookup_session.get_resource(resource_id)._my_map)
-        del resource_map['_id']
-        if 'binId' in resource_map:
-            resource_map['binId'] = str(self._catalog_id)
-        if 'assignedBinIds' in resource_map:
-            resource_map['assignedBinIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(resource_map)
-        result = objects.Resource(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_resource(self, resource_form):

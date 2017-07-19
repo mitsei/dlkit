@@ -696,22 +696,22 @@ class EnclosureTests(DLKitTestCase):
         self.assertEqual(asset.get_description().text, self._assessment.get_description().text)
         self.assertEqual(str(asset.get_genus_type()), str(ENCLOSED_ASSESSMENT_TYPE))
 
-    def test_update_asset_with_assessment(self):
-        """
-        Tests silently creating an assessment enclosed in an asset through update
-
-        And that if one already exists, that we get it instead.
-
-        """
-        update_form = self._repo.get_asset_form_for_update(self._assessment.ident)
-        update_form.set_title('This is the Asset Title')
-        updated_asset = self._repo.update_asset(update_form)
-        updated_asset_assessment_id = updated_asset.enclosed_object_id
-        self.assertEqual(updated_asset.title.text, 'This is the Asset Title')
-        new_update_form = self._repo.get_asset_form_for_update(self._assessment.ident)
-        new_updated_asset = self._repo.update_asset(new_update_form)
-        self.assertEqual(new_updated_asset.enclosed_object_id, updated_asset_assessment_id)
-        self.assertEqual(updated_asset.title.text, 'This is the Asset Title')
+    # def test_update_asset_with_assessment(self):
+    #     """
+    #     Tests silently creating an assessment enclosed in an asset through update
+    #
+    #     And that if one already exists, that we get it instead.
+    #
+    #     """
+    #     update_form = self._repo.get_asset_form_for_update(self._assessment.ident)
+    #     update_form.set_title('This is the Asset Title')
+    #     updated_asset = self._repo.update_asset(update_form)
+    #     updated_asset_assessment_id = updated_asset.enclosed_object_id
+    #     self.assertEqual(updated_asset.title.text, 'This is the Asset Title')
+    #     new_update_form = self._repo.get_asset_form_for_update(self._assessment.ident)
+    #     new_updated_asset = self._repo.update_asset(new_update_form)
+    #     self.assertEqual(new_updated_asset.enclosed_object_id, updated_asset_assessment_id)
+    #     self.assertEqual(updated_asset.title.text, 'This is the Asset Title')
 
     def test_assessment_asset_composition(self):
         """Tests silently creating an enclosure through asset composition design."""

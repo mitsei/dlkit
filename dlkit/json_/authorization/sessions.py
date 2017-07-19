@@ -1601,61 +1601,15 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
                                          runtime=self._runtime)
         if not isinstance(authorization_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
-        if authorization_id.get_identifier_namespace() != 'authorization.Authorization':
-            if authorization_id.get_authority() != self._authority:
-                raise errors.InvalidArgument()
-            else:
-                authorization_id = self._get_authorization_id_with_enclosure(authorization_id)
+        if (authorization_id.get_identifier_namespace() != 'authorization.Authorization' or
+                authorization_id.get_authority() != self._authority):
+            raise errors.InvalidArgument()
         result = collection.find_one({'_id': ObjectId(authorization_id.get_identifier())})
 
         obj_form = objects.AuthorizationForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
-
-    def _get_authorization_id_with_enclosure(self, enclosure_id):
-        """Create an Authorization with an enclosed foreign object.
-
-        return: (osid.id.Id) - the id of the new Authorization
-
-        """
-        mgr = self._get_provider_manager('AUTHORIZATION')
-        query_session = mgr.get_authorization_query_session_for_vault(self._catalog_id, proxy=self._proxy)
-        query_form = query_session.get_authorization_query()
-        query_form.match_enclosed_object_id(enclosure_id)
-        query_result = query_session.get_authorizations_by_query(query_form)
-        if query_result.available() > 0:
-            authorization_id = query_result.next().get_id()
-        else:
-            create_form = self.get_authorization_form_for_create([ENCLOSURE_RECORD_TYPE])
-            create_form.set_enclosed_object(enclosure_id)
-            authorization_id = self.create_authorization(create_form).get_id()
-        return authorization_id
-
-    @utilities.arguments_not_none
-    def duplicate_authorization(self, authorization_id):
-        collection = JSONClientValidated('authorization',
-                                         collection='Authorization',
-                                         runtime=self._runtime)
-        mgr = self._get_provider_manager('AUTHORIZATION')
-        lookup_session = mgr.get_authorization_lookup_session(proxy=self._proxy)
-        lookup_session.use_federated_vault_view()
-        try:
-            lookup_session.use_unsequestered_authorization_view()
-        except AttributeError:
-            pass
-        authorization_map = dict(lookup_session.get_authorization(authorization_id)._my_map)
-        del authorization_map['_id']
-        if 'vaultId' in authorization_map:
-            authorization_map['vaultId'] = str(self._catalog_id)
-        if 'assignedVaultIds' in authorization_map:
-            authorization_map['assignedVaultIds'] = [str(self._catalog_id)]
-        insert_result = collection.insert_one(authorization_map)
-        result = objects.Authorization(
-            osid_object_map=collection.find_one({'_id': insert_result.inserted_id}),
-            runtime=self._runtime,
-            proxy=self._proxy)
-        return result
 
     @utilities.arguments_not_none
     def update_authorization(self, authorization_form):
