@@ -547,6 +547,58 @@ class TestedXAssetRecord(object):
 
         assert result == ['html/introduction-to-python.xml']
 
+    def test_export_olx_handles_identical_display_names(self):
+        edx_asset_record = Type(**ASSET_RECORD_TYPES['edx-asset'])
+        edx_asset_content_record = Type(**ASSET_CONTENT_RECORD_TYPES['edx-asset-content-text-files'])
+        edx_asset_content_genus = Type(**ASSET_CONTENT_GENUS_TYPES['html'])
+        edx_composition_record = Type(**COMPOSITION_RECORD_TYPES['edx-composition'])
+
+        form = self.repo_1.get_asset_form_for_create([edx_asset_record])
+        form.display_name = 'Introduction to Python'
+        asset_2 = self.repo_1.create_asset(form)
+
+        form = self.repo_1.get_asset_content_form_for_create(asset_2.ident, [edx_asset_content_record])
+        form.set_text('<html><body><div>foo2!</div></body></html>')
+        form.set_genus_type(edx_asset_content_genus)
+        self.repo_1.create_asset_content(form)
+        asset_2 = self.repo_1.get_asset(asset_2.ident)
+
+        form = self.repo_1.get_composition_form_for_create([edx_composition_record])
+        form.display_name = 'A vertical!'
+        form.set_genus_type(Type(**COMPOSITION_GENUS_TYPES['vertical']))
+        form.set_file_name('vertical/a-vertical.xml')
+        vertical = self.repo_1.create_composition(form)
+
+        self.repo_1.add_asset(self.asset.ident, vertical.ident)
+        self.repo_1.add_asset(asset_2.ident, vertical.ident)
+
+        vertical = self.repo_1.get_composition(vertical.ident)
+
+        vertical.export_olx(self.tarball, '')
+
+        self.stream.seek(0)
+        reader = tarfile.open(fileobj=self.stream, mode='r')
+
+        included_files = reader.getnames()
+        assert len(included_files) == 5
+
+        for expected_file in ['html/introduction-to-python.html',
+                              'html/introduction-to-python.xml',
+                              'html/introduction-to-python-1.html',
+                              'html/introduction-to-python-1.xml',
+                              'vertical/a-vertical.xml']:
+            assert expected_file in included_files
+
+        html_1 = reader.extractfile('html/introduction-to-python.html')
+        assert 'foo!' in html_1.read().decode('utf-8')
+
+        html_2 = reader.extractfile('html/introduction-to-python-1.html')
+        assert 'foo2!' in html_2.read().decode('utf-8')
+
+        vertical_xml = reader.extractfile('vertical/a-vertical.xml').read().decode('utf-8')
+        assert '"introduction-to-python"' in vertical_xml
+        assert '"introduction-to-python-1"' in vertical_xml
+
     def test_can_export_standalone_olx(self):
         filename, olx = self.asset.export_standalone_olx()
 

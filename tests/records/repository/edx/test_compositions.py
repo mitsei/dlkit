@@ -789,6 +789,71 @@ class TestEdXCompositionRecord(object):
         assert 'html/introduction-to-python.xml' in included_files
         assert 'html/introduction-to-python.html' in included_files
 
+    def test_export_olx_handles_identical_display_names(self):
+        """The method should make sure that the output file name is unique, i.e. if you have
+             two verticals both having displayName "Introduction", there should be two
+             files output, with the parent sequentials pointing to the appropriate vertical.
+        """
+        edx_composition_record = Type(**COMPOSITION_RECORD_TYPES['edx-composition'])
+
+        form = self.rm.get_repository_form_for_create([])
+        form.display_name = 'Test Repo 1'
+        test_repo_1 = self.rm.create_repository(form)
+
+        form = test_repo_1.get_composition_form_for_create([edx_composition_record])
+        form.display_name = 'A vertical!'
+        form.set_genus_type(Type(**COMPOSITION_GENUS_TYPES['vertical']))
+        form.set_file_name('vertical/a-vertical.xml')
+        vertical_1 = test_repo_1.create_composition(form)
+
+        form = test_repo_1.get_composition_form_for_create([edx_composition_record])
+        form.display_name = 'A vertical!'
+        form.set_genus_type(Type(**COMPOSITION_GENUS_TYPES['vertical']))
+        form.set_file_name('vertical/a-vertical.xml')
+        vertical_2 = test_repo_1.create_composition(form)
+
+        form = test_repo_1.get_composition_form_for_create([edx_composition_record])
+        form.display_name = 'A sequential!'
+        form.set_genus_type(Type(**COMPOSITION_GENUS_TYPES['sequential']))
+        form.set_file_name('sequential/a-sequential.xml')
+        form.set_children([vertical_1.ident])
+        sequential_1 = test_repo_1.create_composition(form)
+
+        form = test_repo_1.get_composition_form_for_create([edx_composition_record])
+        form.display_name = 'A sequential!'
+        form.set_genus_type(Type(**COMPOSITION_GENUS_TYPES['sequential']))
+        form.set_file_name('sequential/a-sequential.xml')
+        form.set_children([vertical_2.ident])
+        sequential_2 = test_repo_1.create_composition(form)
+
+        form = test_repo_1.get_composition_form_for_create([edx_composition_record])
+        form.display_name = 'A chapter!'
+        form.set_genus_type(Type(**COMPOSITION_GENUS_TYPES['chapter']))
+        form.set_file_name('chapter/a-chapter.xml')
+        form.set_children([sequential_1.ident, sequential_2.ident])
+        chapter = test_repo_1.create_composition(form)
+
+        olx = BytesIO()
+        tarball = tarfile.open(fileobj=olx, mode='w')
+
+        chapter.export_olx(tarball, '')
+
+        olx.seek(0)
+        tarball_reader = tarfile.open(fileobj=olx, mode='r')
+        included_files = tarball_reader.getnames()
+
+        assert len(included_files) == 5
+        assert 'vertical/a-vertical.xml' in included_files
+        assert 'vertical/a-vertical-1.xml' in included_files
+        assert 'sequential/a-sequential.xml' in included_files
+        assert 'sequential/a-sequential-1.xml' in included_files
+
+        sequential_1_xml = tarball_reader.extractfile('sequential/a-sequential.xml')
+        assert '"a-vertical"' in sequential_1_xml.read().decode('utf-8')
+
+        sequential_2_xml = tarball_reader.extractfile('sequential/a-sequential-1.xml')
+        assert '"a-vertical-1"' in sequential_2_xml.read().decode('utf-8')
+
     def test_can_export_standalone_olx(self):
         # This is a really slimmed down test and should probably include more of the branching logic
         sequential = self._set_up_simple_structure()
