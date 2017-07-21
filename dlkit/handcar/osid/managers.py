@@ -295,9 +295,6 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
 
     """
     def __init__(self):
-        self._host = settings.HOST
-        self._app_key = settings.APP_KEYS[self._host.lower()]
-        self._runtime = None
         self._converted_proxy = None
         self._host = settings.HOST
         self._app_key = settings.APP_KEYS[self._host.lower()]
