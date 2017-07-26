@@ -28,6 +28,7 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid_objects.OsidCatalog):
     any persisted references should use the Id.
 
     """
+    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'hierarchy.Hierarchy'
 
     def __init__(self, **kwargs):
@@ -67,6 +68,7 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'hierarchy.Hierarchy'
 
     def __init__(self, **kwargs):
@@ -99,7 +101,8 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
+        return self._get_record(hierarchy_record_type)
 
 
 class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
@@ -127,7 +130,7 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -155,7 +158,7 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(HierarchyList, number=n)
 
 
@@ -214,7 +217,7 @@ class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -241,5 +244,5 @@ class NodeList(abc_hierarchy_objects.NodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(NodeList, number=n)

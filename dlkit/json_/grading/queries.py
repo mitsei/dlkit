@@ -26,6 +26,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
     invocations of a method produces a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.Grade'
         self._runtime = runtime
@@ -47,7 +48,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('gradeSystemId', str(grade_system_id), match)
 
     def clear_grade_system_id_terms(self):
@@ -56,7 +57,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradeSystemId')
 
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
@@ -93,7 +94,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('gradeSystem')
 
     grade_system_terms = property(fdel=clear_grade_system_terms)
@@ -118,7 +119,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('inputScoreStartRange')
 
     input_score_start_range_terms = property(fdel=clear_input_score_start_range_terms)
@@ -143,7 +144,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('inputScoreEndRange')
 
     input_score_end_range_terms = property(fdel=clear_input_score_end_range_terms)
@@ -192,7 +193,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('outputScore')
 
     output_score_terms = property(fdel=clear_output_score_terms)
@@ -208,7 +209,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('gradeEntryId', str(grade_entry_id), match)
 
     def clear_grade_entry_id_terms(self):
@@ -217,7 +218,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradeEntryId')
 
     grade_entry_id_terms = property(fdel=clear_grade_entry_id_terms)
@@ -281,7 +282,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedGradebookIds', str(gradebook_id), match)
 
     def clear_gradebook_id_terms(self):
@@ -290,7 +291,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedGradebookIds')
 
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
@@ -327,7 +328,7 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('gradebook')
 
     gradebook_terms = property(fdel=clear_gradebook_terms)
@@ -358,6 +359,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
     invocations of a method produces a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.GradeSystem'
         self._runtime = runtime
@@ -385,7 +387,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('basedOnGrades')
 
     based_on_grades_terms = property(fdel=clear_based_on_grades_terms)
@@ -401,7 +403,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('gradeId', str(grade_id), match)
 
     def clear_grade_id_terms(self):
@@ -410,7 +412,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradeId')
 
     grade_id_terms = property(fdel=clear_grade_id_terms)
@@ -482,7 +484,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('lowestNumericScore')
 
     lowest_numeric_score_terms = property(fdel=clear_lowest_numeric_score_terms)
@@ -508,7 +510,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('numericScoreIncrement')
 
     numeric_score_increment_terms = property(fdel=clear_numeric_score_increment_terms)
@@ -534,7 +536,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('highestNumericScore')
 
     highest_numeric_score_terms = property(fdel=clear_highest_numeric_score_terms)
@@ -551,7 +553,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('gradebookColumnId', str(gradebook_column_id), match)
 
     def clear_gradebook_column_id_terms(self):
@@ -560,7 +562,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradebookColumnId')
 
     gradebook_column_id_terms = property(fdel=clear_gradebook_column_id_terms)
@@ -625,7 +627,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedGradebookIds', str(gradebook_id), match)
 
     def clear_gradebook_id_terms(self):
@@ -634,7 +636,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedGradebookIds')
 
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
@@ -671,7 +673,7 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('gradebook')
 
     gradebook_terms = property(fdel=clear_gradebook_terms)
@@ -704,6 +706,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
     invocations of a method produces a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.GradeEntry'
         self._runtime = runtime
@@ -715,7 +718,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         osid_queries.OsidObjectQuery.__init__(self, runtime)
 
     @utilities.arguments_not_none
-    def match_gradebook_column_id(self, gradebook_column_id, match):
+    def match_gradebook_column_id(self, gradebook_column_id):
         """Sets the gradebook column ``Id`` for this query.
 
         arg:    gradebook_column_id (osid.id.Id): a gradebook column
@@ -736,7 +739,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradebookColumnId')
 
     gradebook_column_id_terms = property(fdel=clear_gradebook_column_id_terms)
@@ -774,7 +777,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('gradebookColumn')
 
     gradebook_column_terms = property(fdel=clear_gradebook_column_terms)
@@ -790,7 +793,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('keyResourceId', str(resource_id), match)
 
     def clear_key_resource_id_terms(self):
@@ -799,7 +802,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('keyResourceId')
 
     key_resource_id_terms = property(fdel=clear_key_resource_id_terms)
@@ -884,7 +887,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('overriddenGradeEntryId', str(grade_entry_id), match)
 
     def clear_overridden_grade_entry_id_terms(self):
@@ -893,7 +896,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('overriddenGradeEntryId')
 
     overridden_grade_entry_id_terms = property(fdel=clear_overridden_grade_entry_id_terms)
@@ -964,7 +967,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('ignoredForCalculations')
 
     ignored_for_calculations_terms = property(fdel=clear_ignored_for_calculations_terms)
@@ -980,7 +983,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('gradeId', str(grade_id), match)
 
     def clear_grade_id_terms(self):
@@ -989,7 +992,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradeId')
 
     grade_id_terms = property(fdel=clear_grade_id_terms)
@@ -1036,7 +1039,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('grade')
 
     grade_terms = property(fdel=clear_grade_terms)
@@ -1072,7 +1075,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('score')
 
     score_terms = property(fdel=clear_score_terms)
@@ -1112,7 +1115,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('graderId', str(resource_id), match)
 
     def clear_grader_id_terms(self):
@@ -1121,7 +1124,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('graderId')
 
     grader_id_terms = property(fdel=clear_grader_id_terms)
@@ -1184,7 +1187,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('gradingAgentId', str(agent_id), match)
 
     def clear_grading_agent_id_terms(self):
@@ -1193,7 +1196,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradingAgentId')
 
     grading_agent_id_terms = property(fdel=clear_grading_agent_id_terms)
@@ -1257,7 +1260,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedGradebookIds', str(gradebook_id), match)
 
     def clear_gradebook_id_terms(self):
@@ -1266,7 +1269,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedGradebookIds')
 
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
@@ -1303,7 +1306,7 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('gradebook')
 
     gradebook_terms = property(fdel=clear_gradebook_terms)
@@ -1336,6 +1339,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
     invocations of a method produces a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.GradebookColumn'
         self._runtime = runtime
@@ -1365,7 +1369,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradeSystemId')
 
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
@@ -1414,7 +1418,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('gradeSystem')
 
     grade_system_terms = property(fdel=clear_grade_system_terms)
@@ -1430,7 +1434,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('gradeEntryId', str(grade_entry_id), match)
 
     def clear_grade_entry_id_terms(self):
@@ -1439,7 +1443,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('gradeEntryId')
 
     grade_entry_id_terms = property(fdel=clear_grade_entry_id_terms)
@@ -1541,7 +1545,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedGradebookIds', str(gradebook_id), match)
 
     def clear_gradebook_id_terms(self):
@@ -1550,7 +1554,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedGradebookIds')
 
     gradebook_id_terms = property(fdel=clear_gradebook_id_terms)
@@ -1587,7 +1591,7 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('gradebook')
 
     gradebook_terms = property(fdel=clear_gradebook_terms)
@@ -2069,6 +2073,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
     the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('GRADEBOOK_RECORD_TYPES', runtime)
@@ -2111,6 +2116,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('gradeSystemId')
 
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
@@ -2159,6 +2165,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('gradeSystem')
 
     grade_system_terms = property(fdel=clear_grade_system_terms)
@@ -2182,6 +2189,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('gradeEntryId')
 
     grade_entry_id_terms = property(fdel=clear_grade_entry_id_terms)
@@ -2230,6 +2238,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('gradeEntry')
 
     grade_entry_terms = property(fdel=clear_grade_entry_terms)
@@ -2254,6 +2263,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('gradebookColumnId')
 
     gradebook_column_id_terms = property(fdel=clear_gradebook_column_id_terms)
@@ -2302,6 +2312,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('gradebookColumn')
 
     gradebook_column_terms = property(fdel=clear_gradebook_column_terms)
@@ -2325,6 +2336,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorGradebookId')
 
     ancestor_gradebook_id_terms = property(fdel=clear_ancestor_gradebook_id_terms)
@@ -2372,6 +2384,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorGradebook')
 
     ancestor_gradebook_terms = property(fdel=clear_ancestor_gradebook_terms)
@@ -2395,6 +2408,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantGradebookId')
 
     descendant_gradebook_id_terms = property(fdel=clear_descendant_gradebook_id_terms)
@@ -2442,6 +2456,7 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantGradebook')
 
     descendant_gradebook_terms = property(fdel=clear_descendant_gradebook_terms)

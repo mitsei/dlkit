@@ -32,8 +32,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_logging' in profile.SUPPORTS
 
     def supports_log_entry_lookup(self):
@@ -44,8 +43,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_log_entry_lookup' in profile.SUPPORTS
 
     def supports_log_entry_query(self):
@@ -56,8 +54,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_log_entry_query' in profile.SUPPORTS
 
     def supports_log_lookup(self):
@@ -68,8 +65,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_log_lookup' in profile.SUPPORTS
 
     def supports_log_admin(self):
@@ -80,8 +76,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_log_admin' in profile.SUPPORTS
 
     def supports_log_hierarchy(self):
@@ -92,8 +87,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_log_hierarchy' in profile.SUPPORTS
 
     def supports_log_hierarchy_design(self):
@@ -105,8 +99,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         providers.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_log_hierarchy_design' in profile.SUPPORTS
 
     def get_log_entry_record_types(self):
@@ -117,8 +110,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('LOG_ENTRY_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -135,8 +127,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('LOG_ENTRY_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -153,8 +144,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('LOG_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -171,8 +161,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('LOG_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -189,8 +178,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.RepositoryProfile.get_coordinate_types
+        # Built from: templates/osid_managers.GenericProfile.get_type_list
         return TypeList([])
 
     priority_types = property(fget=get_priority_types)
@@ -203,8 +191,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.RepositoryProfile.get_coordinate_types
+        # Built from: templates/osid_managers.GenericProfile.get_type_list
         return TypeList([])
 
     content_types = property(fget=get_content_types)
@@ -217,8 +204,7 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_log_entry_admin' in profile.SUPPORTS
 
 
@@ -260,7 +246,7 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         osid_managers.OsidManager.__init__(self)
 
     @utilities.remove_null_proxy_kwarg
-    def get_logging_session(self):
+    def get_logging_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the logging service.
 
         return: (osid.logging.LoggingSession) - a ``LoggingSession``
@@ -270,16 +256,18 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_logging()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_logging():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LoggingSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LoggingSession(runtime=self._runtime)
 
     logging_session = property(fget=get_logging_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_logging_session_for_log(self, log_id):
+    def get_logging_session_for_log(self, log_id, **kwargs):
         """Gets the ``OsidSession`` associated with the logging service for the given log.
 
         arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
@@ -294,16 +282,22 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_logging():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LoggingSession(
+                log_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.LoggingSession(log_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_log_entry_lookup_session(self):
+    def get_log_entry_lookup_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the log reading service.
 
         return: (osid.logging.LogEntryLookupSession) - a
@@ -315,16 +309,18 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_log_entry_lookup()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_log_entry_lookup():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogEntryLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LogEntryLookupSession(runtime=self._runtime)
 
     log_entry_lookup_session = property(fget=get_log_entry_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_log_entry_lookup_session_for_log(self, log_id):
+    def get_log_entry_lookup_session_for_log(self, log_id, **kwargs):
         """Gets the ``OsidSession`` associated with the log reading service for the given log.
 
         arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
@@ -340,16 +336,22 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_log_entry_lookup():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogEntryLookupSession(
+                log_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.LogEntryLookupSession(log_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_log_entry_query_session(self):
+    def get_log_entry_query_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the logging entry query service.
 
         return: (osid.logging.LogEntryQuerySession) - a
@@ -361,16 +363,18 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_log_entry_query()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_log_entry_query():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogEntryQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LogEntryQuerySession(runtime=self._runtime)
 
     log_entry_query_session = property(fget=get_log_entry_query_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_log_entry_query_session_for_log(self, log_id):
+    def get_log_entry_query_session_for_log(self, log_id, **kwargs):
         """Gets the ``OsidSession`` associated with the log entry query service for the given log.
 
         arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
@@ -386,16 +390,22 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_log_entry_query():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogEntryQuerySession(
+                log_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.LogEntryQuerySession(log_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_log_entry_admin_session(self):
+    def get_log_entry_admin_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the logging entry administrative service.
 
         return: (osid.logging.LogEntryAdminSession) - a
@@ -407,16 +417,18 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_log_entry_admin()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_log_entry_admin():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogEntryAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LogEntryAdminSession(runtime=self._runtime)
 
     log_entry_admin_session = property(fget=get_log_entry_admin_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_log_entry_admin_session_for_log(self, log_id):
+    def get_log_entry_admin_session_for_log(self, log_id, **kwargs):
         """Gets the ``OsidSession`` associated with the log entry administrative service for the given log.
 
         arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
@@ -432,16 +444,22 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_log_entry_admin():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogEntryAdminSession(
+                log_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.LogEntryAdminSession(log_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_log_lookup_session(self):
+    def get_log_lookup_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the log lookup service.
 
         return: (osid.logging.LogLookupSession) - a ``LogLookupSession``
@@ -451,15 +469,17 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_log_lookup()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_log_lookup():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LogLookupSession(runtime=self._runtime)
 
     log_lookup_session = property(fget=get_log_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_log_admin_session(self):
+    def get_log_admin_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the log administrative service.
 
         return: (osid.logging.LogAdminSession) - a ``LogAdminSession``
@@ -469,15 +489,17 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_log_admin()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_log_admin():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LogAdminSession(runtime=self._runtime)
 
     log_admin_session = property(fget=get_log_admin_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_log_hierarchy_session(self):
+    def get_log_hierarchy_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the log hierarchy service.
 
         return: (osid.logging.LogHierarchySession) - a
@@ -489,15 +511,17 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_log_hierarchy()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_log_hierarchy():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogHierarchySession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LogHierarchySession(runtime=self._runtime)
 
     log_hierarchy_session = property(fget=get_log_hierarchy_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_log_hierarchy_design_session(self):
+    def get_log_hierarchy_design_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the log hierarchy design service.
 
         return: (osid.logging.LogHierarchyDesignSession) - a
@@ -509,9 +533,11 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         ``supports_log_hierarchy_design()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_log_hierarchy_design():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.LogHierarchyDesignSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.LogHierarchyDesignSession(runtime=self._runtime)
 
     log_hierarchy_design_session = property(fget=get_log_hierarchy_design_session)
@@ -533,7 +559,7 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
     logging_batch_manager = property(fget=get_logging_batch_manager)
 
 
-class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, logging_managers.LoggingProxyManager):
+class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, LoggingManager, logging_managers.LoggingProxyManager):
     """The logging manager provides access to logging sessions and provides interoperability tests for various aspects of this service.
 
     Methods in this manager support the passing of a ``Proxy`` for the
@@ -569,278 +595,6 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
     supported search types supported by this service.
 
     """
+    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
-    @utilities.arguments_not_none
-    def get_logging_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the logging service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LoggingSession) - a ``LoggingSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_logging()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_logging()`` is ``true``.*
-
-        """
-        if not self.supports_logging():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LoggingSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_logging_session_for_log(self, log_id, proxy):
-        """Gets the ``OsidSession`` associated with the logging service for the given log.
-
-        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LoggingSession) - a ``LoggingSession``
-        raise:  NotFound - no ``Log`` found by the given ``Id``
-        raise:  NullArgument - ``log_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_logging()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_logging()`` and ``supports_visible_federation()`` are
-        ``true``*
-
-        """
-        if not self.supports_logging():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.LoggingSession(log_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_entry_lookup_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the logging reading service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogEntryLookupSession) - a
-                ``LogEntryLookupSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_entry_lookup()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_entry_lookup()`` is ``true``.*
-
-        """
-        if not self.supports_log_entry_lookup():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LogEntryLookupSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_entry_lookup_session_for_log(self, log_id, proxy):
-        """Gets the ``OsidSession`` associated with the log reading service for the given log.
-
-        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogEntryLookupSession) - a
-                ``LogEntryLookupSession``
-        raise:  NotFound - no ``Log`` found by the given ``Id``
-        raise:  NullArgument - ``log_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_entry_lookup()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_entry_lookup()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_log_entry_lookup():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.LogEntryLookupSession(log_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_entry_query_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the logging entry query service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogEntryQuerySession) - a
-                ``LogEntryQuerySession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_entry_query()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_entry_query()`` is ``true``.*
-
-        """
-        if not self.supports_log_entry_query():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LogEntryQuerySession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_entry_query_session_for_log(self, log_id, proxy):
-        """Gets the ``OsidSession`` associated with the log entry query service for the given log.
-
-        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogEntryQuerySession) - a
-                ``LogEntryQuerySession``
-        raise:  NotFound - no ``Log`` found by the given ``Id``
-        raise:  NullArgument - ``log_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_entry_query()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_entry_query()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_log_entry_query():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.LogEntryQuerySession(log_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_entry_admin_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the logging entry administrative service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogEntryAdminSession) - a
-                ``LogEntryAdminSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_entry_admin()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_entry_admin()`` is ``true``.*
-
-        """
-        if not self.supports_log_entry_admin():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LogEntryAdminSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_entry_admin_session_for_log(self, log_id, proxy):
-        """Gets the ``OsidSession`` associated with the log entry administrative service for the given log.
-
-        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogEntryAdminSession) - a
-                ``LogEntryAdminSession``
-        raise:  NotFound - no ``Log`` found by the given ``Id``
-        raise:  NullArgument - ``log_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_entry_admin()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_entry_admin()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_log_entry_admin():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.LogEntryAdminSession(log_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_lookup_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the log lookup service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogLookupSession) - a ``LogLookupSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_lookup()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_lookup()`` is ``true``.*
-
-        """
-        if not self.supports_log_lookup():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LogLookupSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_admin_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the log administrative service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogAdminSession) - a ``LogAdminSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_admin()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_admin()`` is ``true``.*
-
-        """
-        if not self.supports_log_admin():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LogAdminSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_hierarchy_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the log hierarchy service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogHierarchySession) - a
-                ``LogHierarchySession`` for logs
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_hierarchy()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_hierarchy()`` is ``true``.*
-
-        """
-        if not self.supports_log_hierarchy():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LogHierarchySession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_log_hierarchy_design_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the log hierarchy design service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.logging.LogHierarchyDesignSession) - a
-                ``HierarchyDesignSession`` for logs
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_log_hierarchy_design()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_log_hierarchy_design()`` is ``true``.*
-
-        """
-        if not self.supports_log_hierarchy_design():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.LogHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
-
-    def get_logging_batch_proxy_manager(self):
-        """Gets a ``LoggingBatchProxyManager``.
-
-        return: (osid.logging.batch.LoggingBatchProxyManager) - a
-                ``LoggingBatchProxyManager``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_logging_batch()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_logging_batch()`` is ``true``.*
-
-        """
-        raise errors.Unimplemented()
-
-    logging_batch_proxy_manager = property(fget=get_logging_batch_proxy_manager)

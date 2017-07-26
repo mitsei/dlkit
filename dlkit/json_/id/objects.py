@@ -254,5 +254,5 @@ class IdList(abc_id_objects.IdList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(IdList, number=n)

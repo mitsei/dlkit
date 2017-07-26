@@ -22,6 +22,7 @@ from dlkit.abstract_osid.osid import errors
 
 class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.OsidSearch):
     """``HierarchySearch`` defines the interface for specifying hierarchy search options."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'hierarchy.Hierarchy'
         self._runtime = runtime
@@ -43,6 +44,7 @@ class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = hierarchy_ids
 
     @utilities.arguments_not_none
@@ -84,6 +86,7 @@ class HierarchySearch(abc_hierarchy_searches.HierarchySearch, osid_searches.Osid
 
 class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -101,6 +104,7 @@ class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -116,6 +120,7 @@ class HierarchySearchResults(abc_hierarchy_searches.HierarchySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.HierarchyQueryInspector(self._query_terms, runtime=self._runtime)
 
     hierarchy_query_inspector = property(fget=get_hierarchy_query_inspector)

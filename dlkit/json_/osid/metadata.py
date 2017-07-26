@@ -34,7 +34,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['element_id']
 
     element_id = property(fget=get_element_id)
@@ -46,7 +46,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_label
         return DisplayText(self._kwargs['element_label'])
 
     element_label = property(fget=get_element_label)
@@ -62,7 +62,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_label
         return DisplayText(self._kwargs['instructions'])
 
     instructions = property(fget=get_instructions)
@@ -75,7 +75,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['syntax']
 
     syntax = property(fget=get_syntax)
@@ -88,7 +88,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['array']
 
     def is_required(self):
@@ -99,7 +99,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['required']
 
     def is_read_only(self):
@@ -114,7 +114,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['read_only']
 
     def is_linked(self):
@@ -128,7 +128,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['linked']
 
     def is_value_known(self):
@@ -142,7 +142,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['value_known']
 
     def has_value(self):
@@ -154,7 +154,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['']:
             raise errors.IllegalState()
         return self._kwargs['value']
@@ -167,7 +167,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['units']
 
     units = property(fget=get_units)
@@ -180,7 +180,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['minimum_elements']
 
     minimum_elements = property(fget=get_minimum_elements)
@@ -193,7 +193,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_element_id_template
+        # Built from: templates/osid_metadata.GenericMetadata.get_element_id
         return self._kwargs['maximum_elements']
 
     maximum_elements = property(fget=get_maximum_elements)
@@ -206,7 +206,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CARDINAL']:
             raise errors.IllegalState()
         return self._kwargs['minimum_cardinal']
@@ -221,7 +221,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CARDINAL']:
             raise errors.IllegalState()
         return self._kwargs['maximum_cardinal']
@@ -237,7 +237,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CARDINAL']:
             raise errors.IllegalState()
         return self._kwargs['cardinal_set']
@@ -257,7 +257,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CARDINAL']:
             raise errors.IllegalState()
         return self._kwargs['default_cardinal_values']
@@ -277,7 +277,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CARDINAL']:
             raise errors.IllegalState()
         return self._kwargs['existing_cardinal_values']
@@ -293,7 +293,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['COORDINATE', 'SPATIALUNIT']:
             raise errors.IllegalState()
         return self._kwargs['coordinate_types']
@@ -301,7 +301,7 @@ class Metadata(abc_osid_metadata.Metadata):
     coordinate_types = property(fget=get_coordinate_types)
 
     @utilities.arguments_not_none
-    def supports_coordinate_type(self, coordinate_type):
+    def supports_coordinate_type(self):
         """Tests if the given coordinate type is supported.
 
         arg:    coordinate_type (osid.type.Type): a coordinate Type
@@ -312,7 +312,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``COORDINATE``']:
             raise errors.IllegalState()
         return coordinate_type in self.get_coordinate_types
@@ -374,7 +374,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['COORDINATE']:
             raise errors.IllegalState()
         return self._kwargs['coordinate_set']
@@ -395,7 +395,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['COORDINATE']:
             raise errors.IllegalState()
         return self._kwargs['default_coordinate_values']
@@ -416,7 +416,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['COORDINATE']:
             raise errors.IllegalState()
         return self._kwargs['existing_coordinate_values']
@@ -431,7 +431,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CURRENCY']:
             raise errors.IllegalState()
         return self._kwargs['currency_types']
@@ -439,7 +439,7 @@ class Metadata(abc_osid_metadata.Metadata):
     currency_types = property(fget=get_currency_types)
 
     @utilities.arguments_not_none
-    def supports_currency_type(self, currency_type):
+    def supports_currency_type(self):
         """Tests if the given currency type is supported.
 
         arg:    currency_type (osid.type.Type): a currency Type
@@ -450,7 +450,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``CURRENCY``']:
             raise errors.IllegalState()
         return currency_type in self.get_currency_types
@@ -463,7 +463,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CURRENCY']:
             raise errors.IllegalState()
         return self._kwargs['minimum_currency']
@@ -478,7 +478,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CURRENCY']:
             raise errors.IllegalState()
         return self._kwargs['maximum_currency']
@@ -494,7 +494,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CURRENCY']:
             raise errors.IllegalState()
         return self._kwargs['currency_set']
@@ -514,7 +514,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CURRENCY']:
             raise errors.IllegalState()
         return self._kwargs['default_currency_values']
@@ -535,7 +535,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['CURRENCY']:
             raise errors.IllegalState()
         return self._kwargs['existing_currency_values']
@@ -551,7 +551,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME,', 'DURATION', 'TIME']:
             raise errors.IllegalState()
         return self._kwargs['date_time_resolution']
@@ -567,7 +567,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME', 'DURATION']:
             raise errors.IllegalState()
         return self._kwargs['calendar_types']
@@ -575,7 +575,7 @@ class Metadata(abc_osid_metadata.Metadata):
     calendar_types = property(fget=get_calendar_types)
 
     @utilities.arguments_not_none
-    def supports_calendar_type(self, calendar_type):
+    def supports_calendar_type(self):
         """Tests if the given calendar type is supported.
 
         arg:    calendar_type (osid.type.Type): a calendar Type
@@ -587,7 +587,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``DATETIME``', '``DURATION``']:
             raise errors.IllegalState()
         return calendar_type in self.get_calendar_types
@@ -602,7 +602,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME,', 'DURATION,', 'TIME']:
             raise errors.IllegalState()
         return self._kwargs['time_types']
@@ -610,7 +610,7 @@ class Metadata(abc_osid_metadata.Metadata):
     time_types = property(fget=get_time_types)
 
     @utilities.arguments_not_none
-    def supports_time_type(self, time_type):
+    def supports_time_type(self):
         """Tests if the given time type is supported.
 
         arg:    time_type (osid.type.Type): a time Type
@@ -622,7 +622,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``DATETIME,', 'DURATION,``', '``TIME``']:
             raise errors.IllegalState()
         return time_type in self.get_time_types
@@ -635,7 +635,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME']:
             raise errors.IllegalState()
         return self._kwargs['minimum_date_time']
@@ -650,7 +650,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME']:
             raise errors.IllegalState()
         return self._kwargs['maximum_date_time']
@@ -666,7 +666,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME']:
             raise errors.IllegalState()
         return self._kwargs['date_time_set']
@@ -687,7 +687,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME']:
             raise errors.IllegalState()
         return self._kwargs['default_date_time_values']
@@ -708,7 +708,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DATETIME']:
             raise errors.IllegalState()
         return self._kwargs['existing_date_time_values']
@@ -723,7 +723,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DECIMAL']:
             raise errors.IllegalState()
         return self._kwargs['decimal_scale']
@@ -738,7 +738,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DECIMAL']:
             raise errors.IllegalState()
         return self._kwargs['minimum_decimal']
@@ -753,7 +753,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DECIMAL']:
             raise errors.IllegalState()
         return self._kwargs['maximum_decimal']
@@ -769,7 +769,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DECIMAL']:
             raise errors.IllegalState()
         return self._kwargs['decimal_set']
@@ -789,7 +789,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DECIMAL']:
             raise errors.IllegalState()
         return self._kwargs['default_decimal_values']
@@ -809,7 +809,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DECIMAL']:
             raise errors.IllegalState()
         return self._kwargs['existing_decimal_values']
@@ -824,7 +824,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DISTANCE']:
             raise errors.IllegalState()
         return self._kwargs['distance_resolution']
@@ -839,7 +839,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DISTANCE']:
             raise errors.IllegalState()
         return self._kwargs['minimum_distance']
@@ -854,7 +854,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DISTANCE']:
             raise errors.IllegalState()
         return self._kwargs['maximum_distance']
@@ -870,7 +870,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DISTANCE']:
             raise errors.IllegalState()
         return self._kwargs['distance_set']
@@ -890,7 +890,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DISTANCE']:
             raise errors.IllegalState()
         return self._kwargs['default_distance_values']
@@ -910,7 +910,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DISTANCE']:
             raise errors.IllegalState()
         return self._kwargs['existing_distance_values']
@@ -925,7 +925,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DURATION']:
             raise errors.IllegalState()
         return self._kwargs['minimum_duration']
@@ -940,7 +940,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DURATION']:
             raise errors.IllegalState()
         return self._kwargs['maximum_duration']
@@ -956,7 +956,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DURATION']:
             raise errors.IllegalState()
         return self._kwargs['duration_set']
@@ -977,7 +977,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DURATION']:
             raise errors.IllegalState()
         return self._kwargs['default_duration_values']
@@ -998,7 +998,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['DURATION']:
             raise errors.IllegalState()
         return self._kwargs['existing_duration_values']
@@ -1014,7 +1014,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['HEADING']:
             raise errors.IllegalState()
         return self._kwargs['heading_types']
@@ -1022,7 +1022,7 @@ class Metadata(abc_osid_metadata.Metadata):
     heading_types = property(fget=get_heading_types)
 
     @utilities.arguments_not_none
-    def supports_heading_type(self, heading_type):
+    def supports_heading_type(self):
         """Tests if the given heading type is supported.
 
         arg:    heading_type (osid.type.Type): a heading Type
@@ -1033,7 +1033,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``HEADING``']:
             raise errors.IllegalState()
         return heading_type in self.get_heading_types
@@ -1091,7 +1091,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['HEADING']:
             raise errors.IllegalState()
         return self._kwargs['heading_set']
@@ -1111,7 +1111,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['HEADING']:
             raise errors.IllegalState()
         return self._kwargs['default_heading_values']
@@ -1131,7 +1131,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['HEADING']:
             raise errors.IllegalState()
         return self._kwargs['existing_heading_values']
@@ -1147,7 +1147,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['ID']:
             raise errors.IllegalState()
         return self._kwargs['id_set']
@@ -1167,7 +1167,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['ID']:
             raise errors.IllegalState()
         return self._kwargs['default_id_values']
@@ -1186,7 +1186,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['ID']:
             raise errors.IllegalState()
         return self._kwargs['existing_id_values']
@@ -1201,7 +1201,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['INTEGER']:
             raise errors.IllegalState()
         return self._kwargs['minimum_integer']
@@ -1216,7 +1216,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['INTEGER']:
             raise errors.IllegalState()
         return self._kwargs['maximum_integer']
@@ -1232,7 +1232,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['INTEGER']:
             raise errors.IllegalState()
         return self._kwargs['integer_set']
@@ -1252,7 +1252,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['INTEGER']:
             raise errors.IllegalState()
         return self._kwargs['default_integer_values']
@@ -1272,7 +1272,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['INTEGER']:
             raise errors.IllegalState()
         return self._kwargs['existing_integer_values']
@@ -1288,7 +1288,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['OBJECT']:
             raise errors.IllegalState()
         return self._kwargs['object_types']
@@ -1296,7 +1296,7 @@ class Metadata(abc_osid_metadata.Metadata):
     object_types = property(fget=get_object_types)
 
     @utilities.arguments_not_none
-    def supports_object_type(self, object_type):
+    def supports_object_type(self):
         """Tests if the given object type is supported.
 
         arg:    object_type (osid.type.Type): an object Type
@@ -1307,7 +1307,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``OBJECT``']:
             raise errors.IllegalState()
         return object_type in self.get_object_types
@@ -1321,7 +1321,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['OBJECT']:
             raise errors.IllegalState()
         return self._kwargs['object_set']
@@ -1341,7 +1341,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['OBJECT']:
             raise errors.IllegalState()
         return self._kwargs['default_object_values']
@@ -1361,7 +1361,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['OBJECT']:
             raise errors.IllegalState()
         return self._kwargs['existing_object_values']
@@ -1376,7 +1376,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPATIALUNIT']:
             raise errors.IllegalState()
         return self._kwargs['spatial_unit_record_types']
@@ -1384,7 +1384,7 @@ class Metadata(abc_osid_metadata.Metadata):
     spatial_unit_record_types = property(fget=get_spatial_unit_record_types)
 
     @utilities.arguments_not_none
-    def supports_spatial_unit_record_type(self, spatial_unit_record_type):
+    def supports_spatial_unit_record_type(self):
         """Tests if the given spatial unit record type is supported.
 
         arg:    spatial_unit_record_type (osid.type.Type): a spatial
@@ -1396,7 +1396,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``SPATIALUNIT``']:
             raise errors.IllegalState()
         return spatial_unit_record_type in self.get_spatial_unit_record_types
@@ -1410,7 +1410,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPATIALUNIT']:
             raise errors.IllegalState()
         return self._kwargs['spatial_unit_set']
@@ -1431,7 +1431,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPATIALUNIT']:
             raise errors.IllegalState()
         return self._kwargs['default_spatial_unit_values']
@@ -1452,7 +1452,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPATIALUNIT']:
             raise errors.IllegalState()
         return self._kwargs['existing_spatial_unit_values']
@@ -1467,7 +1467,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPEED']:
             raise errors.IllegalState()
         return self._kwargs['minimum_speed']
@@ -1482,7 +1482,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPEED']:
             raise errors.IllegalState()
         return self._kwargs['maximum_speed']
@@ -1498,7 +1498,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPEED']:
             raise errors.IllegalState()
         return self._kwargs['speed_set']
@@ -1518,7 +1518,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPEED']:
             raise errors.IllegalState()
         return self._kwargs['default_speed_values']
@@ -1538,7 +1538,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['SPEED']:
             raise errors.IllegalState()
         return self._kwargs['existing_speed_values']
@@ -1553,7 +1553,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['STRING']:
             raise errors.IllegalState()
         return self._kwargs['minimum_string_length']
@@ -1568,7 +1568,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['STRING']:
             raise errors.IllegalState()
         return self._kwargs['maximum_string_length']
@@ -1586,7 +1586,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['STRING']:
             raise errors.IllegalState()
         return self._kwargs['string_match_types']
@@ -1594,7 +1594,7 @@ class Metadata(abc_osid_metadata.Metadata):
     string_match_types = property(fget=get_string_match_types)
 
     @utilities.arguments_not_none
-    def supports_string_match_type(self, string_match_type):
+    def supports_string_match_type(self):
         """Tests if the given string match type is supported.
 
         arg:    string_match_type (osid.type.Type): a string match type
@@ -1605,7 +1605,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``STRING``']:
             raise errors.IllegalState()
         return string_match_type in self.get_string_match_types
@@ -1634,7 +1634,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['STRING']:
             raise errors.IllegalState()
         return self._kwargs['string_format_types']
@@ -1650,7 +1650,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['STRING']:
             raise errors.IllegalState()
         return self._kwargs['string_set']
@@ -1670,7 +1670,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['STRING']:
             raise errors.IllegalState()
         return self._kwargs['default_string_values']
@@ -1690,7 +1690,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['STRING']:
             raise errors.IllegalState()
         return self._kwargs['existing_string_values']
@@ -1705,7 +1705,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TIME']:
             raise errors.IllegalState()
         return self._kwargs['minimum_time']
@@ -1720,7 +1720,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TIME']:
             raise errors.IllegalState()
         return self._kwargs['maximum_time']
@@ -1736,7 +1736,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TIME']:
             raise errors.IllegalState()
         return self._kwargs['time_set']
@@ -1756,7 +1756,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TIME']:
             raise errors.IllegalState()
         return self._kwargs['default_time_values']
@@ -1776,7 +1776,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TIME']:
             raise errors.IllegalState()
         return self._kwargs['existing_time_values']
@@ -1792,7 +1792,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TYPE']:
             raise errors.IllegalState()
         return self._kwargs['type_set']
@@ -1812,7 +1812,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TYPE']:
             raise errors.IllegalState()
         return self._kwargs['default_type_values']
@@ -1832,7 +1832,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TYPE']:
             raise errors.IllegalState()
         return self._kwargs['existing_type_values']
@@ -1847,7 +1847,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['VERSION']:
             raise errors.IllegalState()
         return self._kwargs['version_types']
@@ -1855,7 +1855,7 @@ class Metadata(abc_osid_metadata.Metadata):
     version_types = property(fget=get_version_types)
 
     @utilities.arguments_not_none
-    def supports_version_type(self, version_type):
+    def supports_version_type(self):
         """Tests if the given version type is supported.
 
         arg:    version_type (osid.type.Type): a version Type
@@ -1866,7 +1866,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.supports_coordinate_type
+        # Built from: templates/osid_metadata.GenericMetadata.supports_coordinate_type
         if self._kwargs['syntax'] not in ['``VERSION``']:
             raise errors.IllegalState()
         return version_type in self.get_version_types
@@ -1879,7 +1879,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['VERSION']:
             raise errors.IllegalState()
         return self._kwargs['minimum_version']
@@ -1894,7 +1894,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['VERSION']:
             raise errors.IllegalState()
         return self._kwargs['maximum_version']
@@ -1910,7 +1910,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['VERSION']:
             raise errors.IllegalState()
         return self._kwargs['version_set']
@@ -1930,7 +1930,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['TIME']:
             raise errors.IllegalState()
         return self._kwargs['default_version_values']
@@ -1951,7 +1951,7 @@ class Metadata(abc_osid_metadata.Metadata):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.Metadata.get_minimum_cardinal
+        # Built from: templates/osid_metadata.GenericMetadata.get_minimum_cardinal
         if self._kwargs['syntax'] not in ['VERSION']:
             raise errors.IllegalState()
         return self._kwargs['existing_version_values']

@@ -64,7 +64,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     log_id = property(fget=get_log_id)
@@ -78,7 +78,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     log = property(fget=get_log)
@@ -124,8 +124,10 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
         """
         if content_type not in self._content_types:
             raise errors.Unsupported()
-        lefc = self._leas.get_content_form_for_create([])
+        lefc = self._leas.get_content_form_for_create([content_type])
         lefc.set_timestamp(DateTime.utcnow())
+        lefc.set_content(content)
+        self._leas.create_log_entry(lefc)
 
     @utilities.arguments_not_none
     def log_at_priority(self, priority_type, content, content_type):
@@ -182,6 +184,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
 
 class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``log entries``."""
+    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Log
@@ -204,7 +207,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     log_id = property(fget=get_log_id)
@@ -218,7 +221,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     log = property(fget=get_log)
@@ -237,8 +240,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.can_lookup_bins
+        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -254,8 +256,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_comparative_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
         self._use_comparative_object_view()
 
     def use_plenary_log_entry_view(self):
@@ -268,8 +269,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_plenary_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
         self._use_plenary_object_view()
 
     def use_federated_log_view(self):
@@ -281,8 +281,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_log_view(self):
@@ -293,8 +292,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -317,8 +315,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resource
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('logging',
                                          collection='LogEntry',
@@ -351,8 +348,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_ids
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('logging',
                                          collection='LogEntry',
@@ -390,8 +386,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('logging',
                                          collection='LogEntry',
@@ -419,8 +414,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.LogEntryList([])
 
@@ -443,8 +437,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_record_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.LogEntryList([])
 
@@ -593,8 +586,7 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('logging',
                                          collection='LogEntry',
@@ -619,6 +611,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         log only
 
     """
+    # Built from: templates/osid_session.GenericObjectQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Log
@@ -641,7 +634,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     log_id = property(fget=get_log_id)
@@ -656,7 +649,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     log = property(fget=get_log)
@@ -675,8 +668,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.can_search_resources
+        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -690,8 +682,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_log_view(self):
@@ -702,8 +693,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     def get_log_entry_query(self):
@@ -713,8 +703,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.get_resource_query_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
         return queries.LogEntryQuery(runtime=self._runtime)
 
     log_entry_query = property(fget=get_log_entry_query)
@@ -734,8 +723,7 @@ class LogEntryQuerySession(abc_logging_sessions.LogEntryQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.get_resources_by_query
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
         and_list = list()
         or_list = list()
         for term in log_entry_query._query_terms:
@@ -798,6 +786,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
     external ``Id`` to an internally assigned Id.
 
     """
+    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Log
@@ -821,7 +810,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     log_id = property(fget=get_log_id)
@@ -836,7 +825,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     log = property(fget=get_log)
@@ -855,8 +844,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -864,7 +852,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         return True
 
     @utilities.arguments_not_none
-    def can_create_log_entry_with_record_types(self, log_entry_record_types):
+    def can_create_log_entry_with_record_types(self):
         """Tests if this user can create a single ``LogEntry`` using the desired record types.
 
         While ``LoggingManager.getLogEntryRecordTypes()`` can be used to
@@ -882,8 +870,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bin_with_record_types
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -907,8 +894,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.get_resource_form_for_create_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_create
         for arg in log_entry_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
@@ -929,7 +915,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         return obj_form
 
     @utilities.arguments_not_none
-    def create_log_entry(self, log_entry_form):
+    def create_log_entry(self):
         """Creates a new ``LogEntry``.
 
         arg:    log_entry_form (osid.logging.LogEntryForm): the form for
@@ -990,8 +976,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_update_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1015,8 +1000,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
         collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
@@ -1049,8 +1033,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.update_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
         collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
@@ -1089,8 +1072,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_delete_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1110,8 +1092,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.delete_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
         collection = JSONClientValidated('logging',
                                          collection='LogEntry',
                                          runtime=self._runtime)
@@ -1138,6 +1119,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1162,8 +1144,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.alias_resources_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
         self._alias_id(primary_id=log_entry_id, equivalent_id=alias_id)
 
 
@@ -1188,6 +1169,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
     interoperability for the sake of precision.
 
     """
+    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'logging.LogLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1213,8 +1195,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.can_lookup_bins
+        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1230,8 +1211,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_comparative_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1246,8 +1226,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_plenary_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -1270,8 +1249,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bin
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=log_id)
         collection = JSONClientValidated('logging',
@@ -1281,7 +1259,8 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         if log_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Log, cat_name='Log')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(log_id, 'logging').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(log_id,
+                                                                       'logging').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Log.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(log_id, 'logging', 'Log')
@@ -1310,8 +1289,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_by_ids_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_Log() instead of direct to database
         if self._catalog_session is not None:
@@ -1342,8 +1320,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_by_genus_type_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_genus_type(catalog_genus_type=log_genus_type)
@@ -1421,8 +1398,7 @@ class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -1466,6 +1442,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
     external ``Id`` to an internally assigned Id.
 
     """
+    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'logging.LogAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1490,8 +1467,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1499,7 +1475,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         return True
 
     @utilities.arguments_not_none
-    def can_create_log_with_record_types(self, log_record_types):
+    def can_create_log_with_record_types(self):
         """Tests if this user can create a single ``Log`` using the desired record types.
 
         While ``LoggingManager.getLogRecordTypes()`` can be used to
@@ -1517,8 +1493,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bin_with_record_types
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1542,8 +1517,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.get_bin_form_for_create_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=log_record_types)
         for arg in log_record_types:
@@ -1582,8 +1556,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.create_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=log_form)
         collection = JSONClientValidated('logging',
@@ -1624,8 +1597,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_update_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1647,8 +1619,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.get_bin_form_for_update_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=log_id)
         collection = JSONClientValidated('logging',
@@ -1680,8 +1651,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.update_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=log_form)
         collection = JSONClientValidated('logging',
@@ -1719,8 +1689,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_delete_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1739,8 +1708,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.delete_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
         if self._catalog_session is not None:
             return self._catalog_session.delete_catalog(catalog_id=log_id)
         collection = JSONClientValidated('logging',
@@ -1770,6 +1738,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1793,8 +1762,7 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.alias_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=log_id, alias_id=alias_id)
         self._alias_id(primary_id=log_id, equivalent_id=alias_id)
@@ -1826,11 +1794,10 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
       * plenary view: provides a complete set or is an error condition
 
     """
+    # Built from: templates/osid_session.GenericCatalogHierarchySession.init_template
     _session_namespace = 'logging.LogHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -1853,8 +1820,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -1871,8 +1837,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -1893,8 +1858,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.can_access_catalog_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1910,8 +1874,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_comparative_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1926,8 +1889,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_plenary_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -1941,8 +1903,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_root_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalog_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -1963,8 +1924,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_root_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return LogLookupSession(
@@ -1987,8 +1947,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.has_parent_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_parent_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=log_id)
         return self._hierarchy_session.has_parents(id_=log_id)
@@ -2009,8 +1968,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_parent_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_parent_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_parent(id_=log_id, parent_id=id_)
@@ -2028,8 +1986,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalog_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalog_ids(catalog_id=log_id)
         return self._hierarchy_session.get_parents(id_=log_id)
@@ -2047,8 +2004,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_parent_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalogs(catalog_id=log_id)
         return LogLookupSession(
@@ -2072,8 +2028,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_ancestor_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=log_id)
@@ -2092,8 +2047,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.has_child_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_child_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=log_id)
         return self._hierarchy_session.has_children(id_=log_id)
@@ -2114,8 +2068,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_child_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_child_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_child(id_=log_id, child_id=id_)
@@ -2133,8 +2086,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_child_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalog_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=log_id)
         return self._hierarchy_session.get_children(id_=log_id)
@@ -2152,8 +2104,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_child_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=log_id)
         return LogLookupSession(
@@ -2177,8 +2128,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_descendant_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=log_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=log_id)
@@ -2205,8 +2155,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_node_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=log_id,
@@ -2241,8 +2190,7 @@ class LogHierarchySession(abc_logging_sessions.LogHierarchySession, osid_session
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_nodes
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_nodes
         return objects.LogNode(self.get_log_node_ids(
             log_id=log_id,
             ancestor_levels=ancestor_levels,
@@ -2258,11 +2206,10 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
     single root node contains all of the ``Ids`` of the federation.
 
     """
+    # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.init_template
     _session_namespace = 'logging.LogHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -2285,8 +2232,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -2303,8 +2249,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -2325,8 +2270,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.can_modify_catalog_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2346,8 +2290,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_root_catalog
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=log_id)
         return self._hierarchy_session.add_root(id_=log_id)
@@ -2364,8 +2307,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_root_catalog
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=log_id)
         return self._hierarchy_session.remove_root(id_=log_id)
@@ -2385,8 +2327,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_child_catalog
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=log_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=log_id, child_id=child_id)
@@ -2404,8 +2345,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalog
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=log_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=log_id, child_id=child_id)
@@ -2422,8 +2362,7 @@ class LogHierarchyDesignSession(abc_logging_sessions.LogHierarchyDesignSession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=log_id)
         return self._hierarchy_session.remove_children(id_=log_id)

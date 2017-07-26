@@ -10,7 +10,12 @@
 #     Inheritance defined in specification
 
 
+import base64
+import gridfs
 import importlib
+
+
+from decimal import Decimal
 
 
 from . import default_mdata
@@ -19,6 +24,9 @@ from ..id.objects import IdList
 from ..osid import objects as osid_objects
 from ..osid.metadata import Metadata
 from ..primitives import Id
+from ..primitives import Id, DateTime, Duration, DataInputStream
+from ..primitives import Id, DateTime, Duration, DisplayText
+from ..utilities import JSONClientValidated
 from ..utilities import get_provider_manager
 from ..utilities import get_registry
 from ..utilities import update_display_text_defaults
@@ -57,6 +65,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
     ``Agent``.
 
     """
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'authorization.Authorization'
 
     def __init__(self, **kwargs):
@@ -71,7 +80,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
+        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
         return bool(self._my_map['implicit'])
 
     def has_resource(self):
@@ -82,8 +91,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.has_avatar_template
-        return bool(self._my_map['resourceId'])
+        raise errors.Unimplemented()
 
     def get_resource_id(self):
         """Gets the ``resource _id`` for this authorization.
@@ -93,11 +101,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not bool(self._my_map['resourceId']):
-            raise errors.IllegalState('this Authorization has no resource')
-        else:
-            return Id(self._my_map['resourceId'])
+        raise errors.Unimplemented()
 
     resource_id = property(fget=get_resource_id)
 
@@ -110,16 +114,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not bool(self._my_map['resourceId']):
-            raise errors.IllegalState('this Authorization has no resource')
-        mgr = self._get_provider_manager('RESOURCE')
-        if not mgr.supports_resource_lookup():
-            raise errors.OperationFailed('Resource does not support Resource lookup')
-        lookup_session = mgr.get_resource_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_bin_view()
-        osid_object = lookup_session.get_resource(self.get_resource_id())
-        return osid_object
+        raise errors.Unimplemented()
 
     resource = property(fget=get_resource)
 
@@ -131,8 +126,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.has_avatar_template
-        return bool(self._my_map['trustId'])
+        raise errors.Unimplemented()
 
     def get_trust_id(self):
         """Gets the ``Trust``  ``Id`` for this authorization.
@@ -142,11 +136,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not bool(self._my_map['trustId']):
-            raise errors.IllegalState('this Authorization has no trust')
-        else:
-            return Id(self._my_map['trustId'])
+        raise errors.Unimplemented()
 
     trust_id = property(fget=get_trust_id)
 
@@ -159,16 +149,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not bool(self._my_map['trustId']):
-            raise errors.IllegalState('this Authorization has no trust')
-        mgr = self._get_provider_manager('AUTHENTICATION.PROCESS')
-        if not mgr.supports_trust_lookup():
-            raise errors.OperationFailed('Authentication.Process does not support Trust lookup')
-        lookup_session = mgr.get_trust_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_agency_view()
-        osid_object = lookup_session.get_trust(self.get_trust_id())
-        return osid_object
+        raise errors.Unimplemented()
 
     trust = property(fget=get_trust)
 
@@ -183,8 +164,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.has_avatar_template
-        return bool(self._my_map['agentId'])
+        raise errors.Unimplemented()
 
     def get_agent_id(self):
         """Gets the ``Agent Id`` for this authorization.
@@ -194,11 +174,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_id_template
-        if not bool(self._my_map['agentId']):
-            raise errors.IllegalState('this Authorization has no agent')
-        else:
-            return Id(self._my_map['agentId'])
+        raise errors.Unimplemented()
 
     agent_id = property(fget=get_agent_id)
 
@@ -211,16 +187,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
-        if not bool(self._my_map['agentId']):
-            raise errors.IllegalState('this Authorization has no agent')
-        mgr = self._get_provider_manager('AUTHENTICATION')
-        if not mgr.supports_agent_lookup():
-            raise errors.OperationFailed('Authentication does not support Agent lookup')
-        lookup_session = mgr.get_agent_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_agency_view()
-        osid_object = lookup_session.get_agent(self.get_agent_id())
-        return osid_object
+        raise errors.Unimplemented()
 
     agent = property(fget=get_agent)
 
@@ -231,9 +198,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['functionId']):
-            raise errors.IllegalState('function empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['functionId'])
 
     function_id = property(fget=get_function_id)
@@ -246,15 +211,16 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['functionId']):
-            raise errors.IllegalState('function empty')
+            raise errors.IllegalState('this Authorization has no function')
         mgr = self._get_provider_manager('AUTHORIZATION')
         if not mgr.supports_function_lookup():
             raise errors.OperationFailed('Authorization does not support Function lookup')
         lookup_session = mgr.get_function_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_vault_view()
-        return lookup_session.get_function(self.get_function_id())
+        osid_object = lookup_session.get_function(self.get_function_id())
+        return osid_object
 
     function = property(fget=get_function)
 
@@ -265,9 +231,7 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['qualifierId']):
-            raise errors.IllegalState('qualifier empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['qualifierId'])
 
     qualifier_id = property(fget=get_qualifier_id)
@@ -280,15 +244,16 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['qualifierId']):
-            raise errors.IllegalState('qualifier empty')
+            raise errors.IllegalState('this Authorization has no qualifier')
         mgr = self._get_provider_manager('AUTHORIZATION')
         if not mgr.supports_qualifier_lookup():
             raise errors.OperationFailed('Authorization does not support Qualifier lookup')
         lookup_session = mgr.get_qualifier_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_vault_view()
-        return lookup_session.get_qualifier(self.get_qualifier_id())
+        osid_object = lookup_session.get_qualifier(self.get_qualifier_id())
+        return osid_object
 
     qualifier = property(fget=get_qualifier)
 
@@ -314,8 +279,8 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(authorization_record_type)
-
     def get_object_map(self):
         obj_map = dict(self._my_map)
         if obj_map['startDate'] is not None:
@@ -398,6 +363,7 @@ class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_object
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(authorization_record_type)
 
 
@@ -427,7 +393,7 @@ class AuthorizationList(abc_authorization_objects.AuthorizationList, osid_object
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -452,12 +418,13 @@ class AuthorizationList(abc_authorization_objects.AuthorizationList, osid_object
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(AuthorizationList, number=n)
 
 
 class Vault(abc_authorization_objects.Vault, osid_objects.OsidCatalog):
     """A vault defines a collection of authorizations and functions."""
+    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'authorization.Vault'
 
     def __init__(self, **kwargs):
@@ -496,6 +463,7 @@ class VaultForm(abc_authorization_objects.VaultForm, osid_objects.OsidCatalogFor
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'authorization.Vault'
 
     def __init__(self, **kwargs):
@@ -527,7 +495,8 @@ class VaultForm(abc_authorization_objects.VaultForm, osid_objects.OsidCatalogFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
+        return self._get_record(vault_record_type)
 
 
 class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
@@ -554,7 +523,7 @@ class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -578,7 +547,7 @@ class VaultList(abc_authorization_objects.VaultList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(VaultList, number=n)
 
 
@@ -590,6 +559,7 @@ class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
     ``VaultHierarchySession``.
 
     """
+    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -615,6 +585,7 @@ class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('AUTHORIZATION', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_vault_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -630,6 +601,7 @@ class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_vault_nodes = []
         for node in self._my_map['parentNodes']:
             parent_vault_nodes.append(VaultNode(
@@ -649,6 +621,7 @@ class VaultNode(abc_authorization_objects.VaultNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_vault_nodes = []
         for node in self._my_map['childNodes']:
             parent_vault_nodes.append(VaultNode(
@@ -686,7 +659,7 @@ class VaultNodeList(abc_authorization_objects.VaultNodeList, osid_objects.OsidLi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -711,5 +684,5 @@ class VaultNodeList(abc_authorization_objects.VaultNodeList, osid_objects.OsidLi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(VaultNodeList, number=n)

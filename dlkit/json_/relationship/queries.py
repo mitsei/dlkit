@@ -26,6 +26,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
     invocations of the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'relationship.Relationship'
         self._runtime = runtime
@@ -47,7 +48,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('sourceId', str(peer), match)
 
     def clear_source_id_terms(self):
@@ -56,7 +57,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('sourceId')
 
     source_id_terms = property(fdel=clear_source_id_terms)
@@ -72,7 +73,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('destinationId', str(peer), match)
 
     def clear_destination_id_terms(self):
@@ -81,7 +82,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('destinationId')
 
     destination_id_terms = property(fdel=clear_destination_id_terms)
@@ -103,7 +104,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('samePeerId')
 
     same_peer_id_terms = property(fdel=clear_same_peer_id_terms)
@@ -119,7 +120,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedFamilyIds', str(family_id), match)
 
     def clear_family_id_terms(self):
@@ -128,7 +129,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedFamilyIds')
 
     family_id_terms = property(fdel=clear_family_id_terms)
@@ -164,7 +165,7 @@ class RelationshipQuery(abc_relationship_queries.RelationshipQuery, osid_queries
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('family')
 
     family_terms = property(fdel=clear_family_terms)
@@ -198,6 +199,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
     the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('FAMILY_RECORD_TYPES', runtime)
@@ -240,6 +242,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('relationshipId')
 
     relationship_id_terms = property(fdel=clear_relationship_id_terms)
@@ -287,6 +290,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('relationship')
 
     relationship_terms = property(fdel=clear_relationship_terms)
@@ -310,6 +314,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorFamilyId')
 
     ancestor_family_id_terms = property(fdel=clear_ancestor_family_id_terms)
@@ -357,6 +362,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorFamily')
 
     ancestor_family_terms = property(fdel=clear_ancestor_family_terms)
@@ -380,6 +386,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantFamilyId')
 
     descendant_family_id_terms = property(fdel=clear_descendant_family_id_terms)
@@ -427,6 +434,7 @@ class FamilyQuery(abc_relationship_queries.FamilyQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantFamily')
 
     descendant_family_terms = property(fdel=clear_descendant_family_terms)

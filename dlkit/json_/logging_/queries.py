@@ -26,6 +26,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
     the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'logging.LogEntry'
         self._runtime = runtime
@@ -67,7 +68,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('priority')
 
     priority_terms = property(fdel=clear_priority_terms)
@@ -110,6 +111,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericObjectQuery.match_date_time
         self._match_minimum_date_time('timestamp', start_time, match)
         self._match_maximum_date_time('timestamp', end_time, match)
 
@@ -119,7 +121,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('timestamp')
 
     timestamp_terms = property(fdel=clear_timestamp_terms)
@@ -135,7 +137,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('resourceId', str(resource_id), match)
 
     def clear_resource_id_terms(self):
@@ -144,7 +146,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('resourceId')
 
     resource_id_terms = property(fdel=clear_resource_id_terms)
@@ -202,7 +204,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('agentId')
 
     agent_id_terms = property(fdel=clear_agent_id_terms)
@@ -236,7 +238,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('agent')
 
     agent_terms = property(fdel=clear_agent_terms)
@@ -252,7 +254,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedLogIds', str(log_id), match)
 
     def clear_log_id_terms(self):
@@ -261,7 +263,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedLogIds')
 
     log_id_terms = property(fdel=clear_log_id_terms)
@@ -295,7 +297,7 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('log')
 
     log_terms = property(fdel=clear_log_terms)
@@ -327,6 +329,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
     the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('LOG_RECORD_TYPES', runtime)
@@ -369,6 +372,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('logEntryId')
 
     log_entry_id_terms = property(fdel=clear_log_entry_id_terms)
@@ -414,6 +418,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('logEntry')
 
     log_entry_terms = property(fdel=clear_log_entry_terms)
@@ -437,6 +442,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorLogId')
 
     ancestor_log_id_terms = property(fdel=clear_ancestor_log_id_terms)
@@ -484,6 +490,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorLog')
 
     ancestor_log_terms = property(fdel=clear_ancestor_log_terms)
@@ -507,6 +514,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantLogId')
 
     descendant_log_id_terms = property(fdel=clear_descendant_log_id_terms)
@@ -554,6 +562,7 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantLog')
 
     descendant_log_terms = property(fdel=clear_descendant_log_terms)

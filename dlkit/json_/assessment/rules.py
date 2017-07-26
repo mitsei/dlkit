@@ -155,7 +155,6 @@ class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
         if str(item_record_type) not in self._records:
             raise errors.Unimplemented()
         return self._records[str(item_record_type)]
-
     def is_answered(self):
         if self._my_answer in [UNANSWERED, NULL_SUBMISSION]:
             return False

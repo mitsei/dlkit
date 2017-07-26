@@ -10,6 +10,8 @@
 #     Inheritance defined in specification
 
 
+import base64
+import gridfs
 import importlib
 import numpy as np
 
@@ -24,7 +26,10 @@ from ..osid import markers as osid_markers
 from ..osid import objects as osid_objects
 from ..osid.metadata import Metadata
 from ..primitives import Id
+from ..primitives import Id, DateTime, Duration, DataInputStream
+from ..primitives import Id, DateTime, Duration, DisplayText
 from ..resource.simple_agent import Agent
+from ..utilities import JSONClientValidated
 from ..utilities import get_provider_manager
 from ..utilities import get_registry
 from ..utilities import now_map
@@ -42,6 +47,7 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
     grading system.
 
     """
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'grading.Grade'
 
     def __init__(self, **kwargs):
@@ -55,9 +61,7 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['gradeSystemId']):
-            raise errors.IllegalState('grade_system empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['gradeSystemId'])
 
     grade_system_id = property(fget=get_grade_system_id)
@@ -69,15 +73,16 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['gradeSystemId']):
-            raise errors.IllegalState('grade_system empty')
+            raise errors.IllegalState('this Grade has no grade_system')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_system_lookup():
             raise errors.OperationFailed('Grading does not support GradeSystem lookup')
         lookup_session = mgr.get_grade_system_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_gradebook_view()
-        return lookup_session.get_grade_system(self.get_grade_system_id())
+        osid_object = lookup_session.get_grade_system(self.get_grade_system_id())
+        return osid_object
 
     grade_system = property(fget=get_grade_system)
 
@@ -88,11 +93,10 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystem.get_lowest_numeric_score_template
-        if self._my_map['inputScoreStartRange'] is None:
-            return None
-        else:
-            return Decimal(str(self._my_map['inputScoreStartRange']))
+        # Built from: templates/osid_object.GenericObject.get_decimal_attribute
+        if not self.has_input_score_start_range():
+            raise errors.IllegalState('input_score_start_range not set')
+        return Decimal(str(self._my_map['inputScoreStartRange']))
 
     input_score_start_range = property(fget=get_input_score_start_range)
 
@@ -103,11 +107,10 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystem.get_lowest_numeric_score_template
-        if self._my_map['inputScoreEndRange'] is None:
-            return None
-        else:
-            return Decimal(str(self._my_map['inputScoreEndRange']))
+        # Built from: templates/osid_object.GenericObject.get_decimal_attribute
+        if not self.has_input_score_end_range():
+            raise errors.IllegalState('input_score_end_range not set')
+        return Decimal(str(self._my_map['inputScoreEndRange']))
 
     input_score_end_range = property(fget=get_input_score_end_range)
 
@@ -118,11 +121,10 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystem.get_lowest_numeric_score_template
-        if self._my_map['outputScore'] is None:
-            return None
-        else:
-            return Decimal(str(self._my_map['outputScore']))
+        # Built from: templates/osid_object.GenericObject.get_decimal_attribute
+        if not self.has_output_score():
+            raise errors.IllegalState('output_score not set')
+        return Decimal(str(self._my_map['outputScore']))
 
     output_score = property(fget=get_output_score)
 
@@ -146,6 +148,7 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(grade_record_type)
 
 
@@ -159,6 +162,7 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'grading.Grade'
 
     def __init__(self, **kwargs):
@@ -192,7 +196,7 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['input_score_start_range'])
         metadata.update({'existing_decimal_values': self._my_map['inputScoreStartRange']})
         return Metadata(**metadata)
@@ -209,15 +213,15 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.set_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.set_decimal_attribute
         if self.get_input_score_start_range_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('score is read only')
         try:
             score = float(score)
         except ValueError:
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score needs to be a float')
         if not self._is_valid_decimal(score, self.get_input_score_start_range_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score is not a valid float')
         self._my_map['inputScoreStartRange'] = score
 
     def clear_input_score_start_range(self):
@@ -228,10 +232,10 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.clear_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.clear_decimal_attribute
         if (self.get_input_score_start_range_metadata().is_read_only() or
                 self.get_input_score_start_range_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear input_score_start_range')
         self._my_map['inputScoreStartRange'] = self._input_score_start_range_default
 
     input_score_start_range = property(fset=set_input_score_start_range, fdel=clear_input_score_start_range)
@@ -244,7 +248,7 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['input_score_end_range'])
         metadata.update({'existing_decimal_values': self._my_map['inputScoreEndRange']})
         return Metadata(**metadata)
@@ -261,15 +265,15 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.set_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.set_decimal_attribute
         if self.get_input_score_end_range_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('score is read only')
         try:
             score = float(score)
         except ValueError:
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score needs to be a float')
         if not self._is_valid_decimal(score, self.get_input_score_end_range_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score is not a valid float')
         self._my_map['inputScoreEndRange'] = score
 
     def clear_input_score_end_range(self):
@@ -280,10 +284,10 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.clear_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.clear_decimal_attribute
         if (self.get_input_score_end_range_metadata().is_read_only() or
                 self.get_input_score_end_range_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear input_score_end_range')
         self._my_map['inputScoreEndRange'] = self._input_score_end_range_default
 
     input_score_end_range = property(fset=set_input_score_end_range, fdel=clear_input_score_end_range)
@@ -296,7 +300,7 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['output_score'])
         metadata.update({'existing_decimal_values': self._my_map['outputScore']})
         return Metadata(**metadata)
@@ -313,15 +317,15 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.set_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.set_decimal_attribute
         if self.get_output_score_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('score is read only')
         try:
             score = float(score)
         except ValueError:
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score needs to be a float')
         if not self._is_valid_decimal(score, self.get_output_score_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score is not a valid float')
         self._my_map['outputScore'] = score
 
     def clear_output_score(self):
@@ -332,10 +336,10 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.clear_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.clear_decimal_attribute
         if (self.get_output_score_metadata().is_read_only() or
                 self.get_output_score_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear output_score')
         self._my_map['outputScore'] = self._output_score_default
 
     output_score = property(fset=set_output_score, fdel=clear_output_score)
@@ -355,6 +359,7 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(grade_record_type)
 
 
@@ -381,7 +386,7 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -405,7 +410,7 @@ class GradeList(abc_grading_objects.GradeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(GradeList, number=n)
 
 
@@ -416,6 +421,7 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
     scale.
 
     """
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'grading.GradeSystem'
 
     def __init__(self, **kwargs):
@@ -430,8 +436,8 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.is_asset_based_activity_template
-        return self._my_map['basedOnGrades']
+        # Built from: templates/osid_object.GenericObject.is_object_based_object
+        return bool(self._my_map['based_on_gradesIds'])
 
     def get_grade_ids(self):
         """Gets the grade ``Ids`` in this system ranked from highest to lowest.
@@ -441,7 +447,7 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.Asset.get_asset_content_ids_template
+        # Built from: templates/osid_object.GenericObject.get_id_list_attribute_same_package
         id_list = []
         for grade in self.get_grades():
             id_list.append(grade.get_id())
@@ -458,7 +464,7 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.Asset.get_asset_contents_template
+        # Built from: templates/osid_object.GenericObject.get_aggregated_objects
         return GradeList(
             self._my_map['grades'],
             runtime=self._runtime,
@@ -544,8 +550,8 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(grade_system_record_type)
-
     def get_object_map(self):
         obj_map = dict(self._my_map)
         obj_map['grades'] = []
@@ -566,6 +572,7 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'grading.GradeSystem'
 
     def __init__(self, **kwargs):
@@ -601,7 +608,7 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['based_on_grades'])
         metadata.update({'existing_boolean_values': self._my_map['basedOnGrades']})
         return Metadata(**metadata)
@@ -618,11 +625,11 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_group_template
+        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
         if self.get_based_on_grades_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('grades is read only')
         if not self._is_valid_boolean(grades):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('grades is not a valid boolean')
         self._my_map['basedOnGrades'] = grades
 
     def clear_based_on_grades(self):
@@ -633,10 +640,10 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_group_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
         if (self.get_based_on_grades_metadata().is_read_only() or
                 self.get_based_on_grades_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear based_on_grades')
         self._my_map['basedOnGrades'] = self._based_on_grades_default
 
     based_on_grades = property(fset=set_based_on_grades, fdel=clear_based_on_grades)
@@ -648,7 +655,7 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['lowest_numeric_score'])
         metadata.update({'existing_decimal_values': self._my_map['lowestNumericScore']})
         return Metadata(**metadata)
@@ -665,15 +672,15 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.set_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.set_decimal_attribute
         if self.get_lowest_numeric_score_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('score is read only')
         try:
             score = float(score)
         except ValueError:
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score needs to be a float')
         if not self._is_valid_decimal(score, self.get_lowest_numeric_score_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score is not a valid float')
         self._my_map['lowestNumericScore'] = score
 
     def clear_lowest_numeric_score(self):
@@ -684,10 +691,10 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.clear_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.clear_decimal_attribute
         if (self.get_lowest_numeric_score_metadata().is_read_only() or
                 self.get_lowest_numeric_score_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear lowest_numeric_score')
         self._my_map['lowestNumericScore'] = self._lowest_numeric_score_default
 
     lowest_numeric_score = property(fset=set_lowest_numeric_score, fdel=clear_lowest_numeric_score)
@@ -699,7 +706,7 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['numeric_score_increment'])
         metadata.update({'existing_decimal_values': self._my_map['numericScoreIncrement']})
         return Metadata(**metadata)
@@ -716,15 +723,15 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.set_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.set_decimal_attribute
         if self.get_numeric_score_increment_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('increment is read only')
         try:
             increment = float(increment)
         except ValueError:
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('increment needs to be a float')
         if not self._is_valid_decimal(increment, self.get_numeric_score_increment_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('increment is not a valid float')
         self._my_map['numericScoreIncrement'] = increment
 
     def clear_numeric_score_increment(self):
@@ -735,10 +742,10 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.clear_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.clear_decimal_attribute
         if (self.get_numeric_score_increment_metadata().is_read_only() or
                 self.get_numeric_score_increment_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear numeric_score_increment')
         self._my_map['numericScoreIncrement'] = self._numeric_score_increment_default
 
     numeric_score_increment = property(fset=set_numeric_score_increment, fdel=clear_numeric_score_increment)
@@ -750,7 +757,7 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['highest_numeric_score'])
         metadata.update({'existing_decimal_values': self._my_map['highestNumericScore']})
         return Metadata(**metadata)
@@ -767,15 +774,15 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.set_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.set_decimal_attribute
         if self.get_highest_numeric_score_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('score is read only')
         try:
             score = float(score)
         except ValueError:
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score needs to be a float')
         if not self._is_valid_decimal(score, self.get_highest_numeric_score_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('score is not a valid float')
         self._my_map['highestNumericScore'] = score
 
     def clear_highest_numeric_score(self):
@@ -786,10 +793,10 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystemForm.clear_lowest_numeric_score
+        # Built from: templates/osid_form.GenericObjectForm.clear_decimal_attribute
         if (self.get_highest_numeric_score_metadata().is_read_only() or
                 self.get_highest_numeric_score_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear highest_numeric_score')
         self._my_map['highestNumericScore'] = self._highest_numeric_score_default
 
     highest_numeric_score = property(fset=set_highest_numeric_score, fdel=clear_highest_numeric_score)
@@ -810,6 +817,7 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(grade_system_record_type)
 
 
@@ -838,7 +846,7 @@ class GradeSystemList(abc_grading_objects.GradeSystemList, osid_objects.OsidList
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -863,12 +871,13 @@ class GradeSystemList(abc_grading_objects.GradeSystemList, osid_objects.OsidList
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(GradeSystemList, number=n)
 
 
 class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
     """A ``GradeEntry`` represents an entry in a ``Gradebook``."""
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'grading.GradeEntry'
 
     def __init__(self, **kwargs):
@@ -882,9 +891,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['gradebookColumnId']):
-            raise errors.IllegalState('gradebook_column empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['gradebookColumnId'])
 
     gradebook_column_id = property(fget=get_gradebook_column_id)
@@ -897,15 +904,16 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['gradebookColumnId']):
-            raise errors.IllegalState('gradebook_column empty')
+            raise errors.IllegalState('this GradeEntry has no gradebook_column')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_gradebook_column_lookup():
             raise errors.OperationFailed('Grading does not support GradebookColumn lookup')
         lookup_session = mgr.get_gradebook_column_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_gradebook_view()
-        return lookup_session.get_gradebook_column(self.get_gradebook_column_id())
+        osid_object = lookup_session.get_gradebook_column(self.get_gradebook_column_id())
+        return osid_object
 
     gradebook_column = property(fget=get_gradebook_column)
 
@@ -947,7 +955,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
+        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
         return bool(self._my_map['derived'])
 
     def overrides_calculated_entry(self):
@@ -986,7 +994,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['overriddenCalculatedEntryId']):
             raise errors.IllegalState('this GradeEntry has no overridden_calculated_entry')
         mgr = self._get_provider_manager('GRADING')
@@ -1007,7 +1015,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
+        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
         return bool(self._my_map['ignoredForCalculations'])
 
     def is_graded(self):
@@ -1031,9 +1039,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['gradeId']):
-            raise errors.IllegalState('grade empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['gradeId'])
 
     grade_id = property(fget=get_grade_id)
@@ -1066,11 +1072,10 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.grading.GradeSystem.get_lowest_numeric_score_template
-        if self._my_map['score'] is None:
-            return None
-        else:
-            return Decimal(str(self._my_map['score']))
+        # Built from: templates/osid_object.GenericObject.get_decimal_attribute
+        if not self.has_score():
+            raise errors.IllegalState('score not set')
+        return Decimal(str(self._my_map['score']))
 
     score = property(fget=get_score)
 
@@ -1107,7 +1112,16 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        if not bool(self._my_map['graderId']):
+            raise errors.IllegalState('this GradeEntry has no grader')
+        mgr = self._get_provider_manager('ID')
+        if not mgr.supports_id_lookup():
+            raise errors.OperationFailed('Id does not support Id lookup')
+        lookup_session = mgr.get_id_lookup_session(proxy=getattr(self, "_proxy", None))
+        lookup_session.use_federated_no_catalog_view()
+        osid_object = lookup_session.get_id(self.get_grader_id())
+        return osid_object
 
     grader_id = property(fget=get_grader_id)
 
@@ -1121,7 +1135,16 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        if not bool(self._my_map['graderId']):
+            raise errors.IllegalState('this GradeEntry has no grader')
+        mgr = self._get_provider_manager('RESOURCE')
+        if not mgr.supports_resource_lookup():
+            raise errors.OperationFailed('Resource does not support Resource lookup')
+        lookup_session = mgr.get_resource_lookup_session(proxy=getattr(self, "_proxy", None))
+        lookup_session.use_federated_bin_view()
+        osid_object = lookup_session.get_resource(self.get_grader_id())
+        return osid_object
 
     grader = property(fget=get_grader)
 
@@ -1176,6 +1199,7 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(grade_entry_record_type)
 
 
@@ -1249,7 +1273,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['ignored_for_calculations'])
         metadata.update({'existing_boolean_values': self._my_map['ignoredForCalculations']})
         return Metadata(**metadata)
@@ -1266,11 +1290,11 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_group_template
+        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
         if self.get_ignored_for_calculations_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('ignore is read only')
         if not self._is_valid_boolean(ignore):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('ignore is not a valid boolean')
         self._my_map['ignoredForCalculations'] = ignore
 
     def clear_ignored_for_calculations(self):
@@ -1281,10 +1305,10 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_group_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
         if (self.get_ignored_for_calculations_metadata().is_read_only() or
                 self.get_ignored_for_calculations_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear ignored_for_calculations')
         self._my_map['ignoredForCalculations'] = self._ignored_for_calculations_default
 
     ignored_for_calculations = property(fset=set_ignored_for_calculations, fdel=clear_ignored_for_calculations)
@@ -1296,7 +1320,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
         metadata = dict(self._mdata['grade'])
         metadata.update({'existing_id_values': self._my_map['gradeId']})
         return Metadata(**metadata)
@@ -1354,7 +1378,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['score'])
         metadata.update({'existing_decimal_values': self._my_map['score']})
         return Metadata(**metadata)
@@ -1423,6 +1447,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(grade_entry_record_type)
 
 
@@ -1451,7 +1476,7 @@ class GradeEntryList(abc_grading_objects.GradeEntryList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -1476,7 +1501,7 @@ class GradeEntryList(abc_grading_objects.GradeEntryList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(GradeEntryList, number=n)
 
 
@@ -1486,6 +1511,7 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
     Each GradeEntry in a column share the same ``GradeSystem``.
 
     """
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'grading.GradebookColumn'
 
     def __init__(self, **kwargs):
@@ -1499,9 +1525,7 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['gradeSystemId']):
-            raise errors.IllegalState('grade_system empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['gradeSystemId'])
 
     grade_system_id = property(fget=get_grade_system_id)
@@ -1514,15 +1538,16 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['gradeSystemId']):
-            raise errors.IllegalState('grade_system empty')
+            raise errors.IllegalState('this GradebookColumn has no grade_system')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_grade_system_lookup():
             raise errors.OperationFailed('Grading does not support GradeSystem lookup')
         lookup_session = mgr.get_grade_system_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_gradebook_view()
-        return lookup_session.get_grade_system(self.get_grade_system_id())
+        osid_object = lookup_session.get_grade_system(self.get_grade_system_id())
+        return osid_object
 
     grade_system = property(fget=get_grade_system)
 
@@ -1549,6 +1574,7 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(gradebook_column_record_type)
 
 
@@ -1562,6 +1588,7 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'grading.GradebookColumn'
 
     def __init__(self, **kwargs):
@@ -1589,7 +1616,7 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
         metadata = dict(self._mdata['grade_system'])
         metadata.update({'existing_id_values': self._my_map['gradeSystemId']})
         return Metadata(**metadata)
@@ -1607,11 +1634,11 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
+        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
         if self.get_grade_system_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('grade_system_id is read only')
         if not self._is_valid_id(grade_system_id):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('grade_system_id is not a valid ID')
         self._my_map['gradeSystemId'] = str(grade_system_id)
 
     def clear_grade_system(self):
@@ -1622,10 +1649,10 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
         if (self.get_grade_system_metadata().is_read_only() or
                 self.get_grade_system_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear grade_system')
         self._my_map['gradeSystemId'] = self._grade_system_default
 
     grade_system = property(fset=set_grade_system, fdel=clear_grade_system)
@@ -1647,6 +1674,7 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(gradebook_column_record_type)
 
 
@@ -1676,7 +1704,7 @@ class GradebookColumnList(abc_grading_objects.GradebookColumnList, osid_objects.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -1701,7 +1729,7 @@ class GradebookColumnList(abc_grading_objects.GradebookColumnList, osid_objects.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(GradebookColumnList, number=n)
 
 
@@ -1744,9 +1772,7 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['gradebookColumnId']):
-            raise errors.IllegalState('gradebook_column empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['gradebookColumnId'])
 
     gradebook_column_id = property(fget=get_gradebook_column_id)
@@ -1759,15 +1785,16 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['gradebookColumnId']):
-            raise errors.IllegalState('gradebook_column empty')
+            raise errors.IllegalState('this GradebookColumnSummary has no gradebook_column')
         mgr = self._get_provider_manager('GRADING')
         if not mgr.supports_gradebook_column_lookup():
             raise errors.OperationFailed('Grading does not support GradebookColumn lookup')
         lookup_session = mgr.get_gradebook_column_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_gradebook_view()
-        return lookup_session.get_gradebook_column(self.get_gradebook_column_id())
+        osid_object = lookup_session.get_gradebook_column(self.get_gradebook_column_id())
+        return osid_object
 
     gradebook_column = property(fget=get_gradebook_column)
 
@@ -1880,11 +1907,13 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(gradebook_column_summary_record_type)
 
 
 class Gradebook(abc_grading_objects.Gradebook, osid_objects.OsidCatalog):
     """A gradebook defines a collection of grade entries."""
+    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'grading.Gradebook'
 
     def __init__(self, **kwargs):
@@ -1924,6 +1953,7 @@ class GradebookForm(abc_grading_objects.GradebookForm, osid_objects.OsidCatalogF
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'grading.Gradebook'
 
     def __init__(self, **kwargs):
@@ -1956,7 +1986,8 @@ class GradebookForm(abc_grading_objects.GradebookForm, osid_objects.OsidCatalogF
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
+        return self._get_record(gradebook_record_type)
 
 
 class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
@@ -1984,7 +2015,7 @@ class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -2009,7 +2040,7 @@ class GradebookList(abc_grading_objects.GradebookList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(GradebookList, number=n)
 
 
@@ -2021,6 +2052,7 @@ class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
     ``GradebookHierarchySession``.
 
     """
+    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -2046,6 +2078,7 @@ class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('GRADING', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_gradebook_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -2061,6 +2094,7 @@ class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_gradebook_nodes = []
         for node in self._my_map['parentNodes']:
             parent_gradebook_nodes.append(GradebookNode(
@@ -2080,6 +2114,7 @@ class GradebookNode(abc_grading_objects.GradebookNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_gradebook_nodes = []
         for node in self._my_map['childNodes']:
             parent_gradebook_nodes.append(GradebookNode(
@@ -2118,7 +2153,7 @@ class GradebookNodeList(abc_grading_objects.GradebookNodeList, osid_objects.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -2143,5 +2178,5 @@ class GradebookNodeList(abc_grading_objects.GradebookNodeList, osid_objects.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(GradebookNodeList, number=n)

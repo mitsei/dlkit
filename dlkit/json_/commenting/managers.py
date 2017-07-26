@@ -32,8 +32,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_comment_lookup' in profile.SUPPORTS
 
     def supports_comment_query(self):
@@ -44,8 +43,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_comment_query' in profile.SUPPORTS
 
     def supports_comment_admin(self):
@@ -56,8 +54,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_comment_admin' in profile.SUPPORTS
 
     def supports_book_lookup(self):
@@ -68,8 +65,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_book_lookup' in profile.SUPPORTS
 
     def supports_book_admin(self):
@@ -80,8 +76,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_book_admin' in profile.SUPPORTS
 
     def supports_book_hierarchy(self):
@@ -92,8 +87,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_book_hierarchy' in profile.SUPPORTS
 
     def supports_book_hierarchy_design(self):
@@ -105,8 +99,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         providers.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_book_hierarchy_design' in profile.SUPPORTS
 
     def get_comment_record_types(self):
@@ -117,8 +110,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('COMMENT_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -135,8 +127,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('COMMENT_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -153,8 +144,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('BOOK_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -171,8 +161,7 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('BOOK_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -221,7 +210,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         osid_managers.OsidManager.__init__(self)
 
     @utilities.remove_null_proxy_kwarg
-    def get_comment_lookup_session(self):
+    def get_comment_lookup_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the comment lookup service.
 
         return: (osid.commenting.CommentLookupSession) - a
@@ -233,16 +222,18 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_comment_lookup()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_comment_lookup():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.CommentLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.CommentLookupSession(runtime=self._runtime)
 
     comment_lookup_session = property(fget=get_comment_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_comment_lookup_session_for_book(self, book_id):
+    def get_comment_lookup_session_for_book(self, book_id, **kwargs):
         """Gets the ``OsidSession`` associated with the comment lookup service for the given book.
 
         arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
@@ -258,16 +249,22 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_comment_lookup():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.CommentLookupSession(
+                book_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.CommentLookupSession(book_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_comment_query_session(self):
+    def get_comment_query_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the comment query service.
 
         return: (osid.commenting.CommentQuerySession) - a
@@ -279,16 +276,18 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_comment_query()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_comment_query():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.CommentQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.CommentQuerySession(runtime=self._runtime)
 
     comment_query_session = property(fget=get_comment_query_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_comment_query_session_for_book(self, book_id):
+    def get_comment_query_session_for_book(self, book_id, **kwargs):
         """Gets the ``OsidSession`` associated with the comment query service for the given book.
 
         arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
@@ -304,16 +303,22 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_comment_query():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.CommentQuerySession(
+                book_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.CommentQuerySession(book_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_comment_admin_session(self):
+    def get_comment_admin_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the comment administration service.
 
         return: (osid.commenting.CommentAdminSession) - a
@@ -325,16 +330,18 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_comment_admin()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_comment_admin():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.CommentAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.CommentAdminSession(runtime=self._runtime)
 
     comment_admin_session = property(fget=get_comment_admin_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_comment_admin_session_for_book(self, book_id):
+    def get_comment_admin_session_for_book(self, book_id, **kwargs):
         """Gets the ``OsidSession`` associated with the comment administration service for the given book.
 
         arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
@@ -350,16 +357,22 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_comment_admin():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.CommentAdminSession(
+                book_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.CommentAdminSession(book_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_book_lookup_session(self):
+    def get_book_lookup_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the book lookup service.
 
         return: (osid.commenting.BookLookupSession) - a
@@ -370,15 +383,17 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_book_lookup()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_book_lookup():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.BookLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.BookLookupSession(runtime=self._runtime)
 
     book_lookup_session = property(fget=get_book_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_book_admin_session(self):
+    def get_book_admin_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the book administrative service.
 
         return: (osid.commenting.BookAdminSession) - a
@@ -389,15 +404,17 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_book_admin()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_book_admin():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.BookAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.BookAdminSession(runtime=self._runtime)
 
     book_admin_session = property(fget=get_book_admin_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_book_hierarchy_session(self):
+    def get_book_hierarchy_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the book hierarchy service.
 
         return: (osid.commenting.BookHierarchySession) - a
@@ -409,15 +426,17 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_book_hierarchy()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_book_hierarchy():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.BookHierarchySession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.BookHierarchySession(runtime=self._runtime)
 
     book_hierarchy_session = property(fget=get_book_hierarchy_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_book_hierarchy_design_session(self):
+    def get_book_hierarchy_design_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the book hierarchy design service.
 
         return: (osid.commenting.BookHierarchyDesignSession) - a
@@ -429,9 +448,11 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         ``supports_book_hierarchy_design()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_book_hierarchy_design():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.BookHierarchyDesignSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.BookHierarchyDesignSession(runtime=self._runtime)
 
     book_hierarchy_design_session = property(fget=get_book_hierarchy_design_session)
@@ -453,7 +474,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
     commenting_batch_manager = property(fget=get_commenting_batch_manager)
 
 
-class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, commenting_managers.CommentingProxyManager):
+class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, CommentingManager, commenting_managers.CommentingProxyManager):
     """The commenting manager provides access to commenting sessions and provides interoperability tests for various aspects of this service.
 
     Methods in this manager accept a ``Proxy`` for passing information
@@ -490,237 +511,6 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
     supported search types supported by this service.
 
     """
+    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
-    @utilities.arguments_not_none
-    def get_comment_lookup_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the comment lookup service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.CommentLookupSession) - a
-                ``CommentLookupSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_comment_lookup()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_comment_lookup()`` is ``true``.*
-
-        """
-        if not self.supports_comment_lookup():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.CommentLookupSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_comment_lookup_session_for_book(self, book_id, proxy):
-        """Gets the ``OsidSession`` associated with the comment lookup service for the given book.
-
-        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.CommentLookupSession) - a
-                ``CommentLookupSession``
-        raise:  NotFound - no ``Book`` found by the given ``Id``
-        raise:  NullArgument - ``book_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_comment_lookup()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_comment_lookup()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_comment_lookup():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.CommentLookupSession(book_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_comment_query_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the comment query service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.CommentQuerySession) - a
-                ``CommentQuerySession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_comment_query()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_comment_query()`` is ``true``.*
-
-        """
-        if not self.supports_comment_query():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.CommentQuerySession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_comment_query_session_for_book(self, book_id, proxy):
-        """Gets the ``OsidSession`` associated with the comment query service for the given book.
-
-        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.CommentQuerySession) - a
-                ``CommentQuerySession``
-        raise:  NotFound - no ``Comment`` found by the given ``Id``
-        raise:  NullArgument - ``book_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_comment_query()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_comment_query()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_comment_query():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.CommentQuerySession(book_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_comment_admin_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the comment administration service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.CommentAdminSession) - a
-                ``CommentAdminSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_comment_admin()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_comment_admin()`` is ``true``.*
-
-        """
-        if not self.supports_comment_admin():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.CommentAdminSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_comment_admin_session_for_book(self, book_id, proxy):
-        """Gets the ``OsidSession`` associated with the comment administration service for the given book.
-
-        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.CommentAdminSession) - a
-                ``CommentAdminSession``
-        raise:  NotFound - no ``Comment`` found by the given ``Id``
-        raise:  NullArgument - ``book_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_comment_admin()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_comment_admin()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_comment_admin():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.CommentAdminSession(book_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_book_lookup_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the book lookup service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.BookLookupSession) - a
-                ``BookLookupSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_book_lookup()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_book_lookup()`` is ``true``.*
-
-        """
-        if not self.supports_book_lookup():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.BookLookupSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_book_admin_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the book administrative service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.BookAdminSession) - a
-                ``BookAdminSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_book_admin()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_book_admin()`` is ``true``.*
-
-        """
-        if not self.supports_book_admin():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.BookAdminSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_book_hierarchy_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the book hierarchy service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.BookHierarchySession) - a
-                ``BookHierarchySession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_book_hierarchy()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_book_hierarchy()`` is ``true``.*
-
-        """
-        if not self.supports_book_hierarchy():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.BookHierarchySession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_book_hierarchy_design_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the book hierarchy design service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.commenting.BookHierarchyDesignSession) - a
-                ``BookHierarchyDesignSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_book_hierarchy_design()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_book_hierarchy_design()`` is ``true``.*
-
-        """
-        if not self.supports_book_hierarchy_design():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.BookHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
-
-    def get_commenting_batch_proxy_manager(self):
-        """Gets a ``CommentingBatchProxyManager``.
-
-        return: (osid.commenting.batch.CommentingBatchProxyManager) - a
-                ``CommentingBatchProxyManager``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_commenting_batch()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_commenting_batch()`` is ``true``.*
-
-        """
-        raise errors.Unimplemented()
-
-    commenting_batch_proxy_manager = property(fget=get_commenting_batch_proxy_manager)

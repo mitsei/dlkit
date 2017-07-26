@@ -132,7 +132,7 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
     release_date = property(fget=get_release_date)
 
     @utilities.arguments_not_none
-    def supports_osid_version(self, version):
+    def supports_osid_version(self):
         """Test for support of an OSID specification version.
 
         arg:    version (osid.installation.Version): the specification
@@ -237,16 +237,6 @@ class OsidProfile(abc_osid_managers.OsidProfile, osid_markers.Sourceable):
     proxy_record_types = property(fget=get_proxy_record_types)
 
     @utilities.arguments_not_none
-    def supports_proxy_record_type(self, proxy_record_type):
-        """Test for support of a proxy type.
-
-        arg:    proxy_record_type (osid.type.Type): a proxy record type
-        return: (boolean) - ``true`` if this service supports the given
-                proxy record type, ``false`` otherwise
-        raise:  NullArgument - ``proxy_record_type`` is ``null``
-        *compliance: mandatory -- This method must be implemented.*
-
-        """
         # NEED TO IMPLEMENT
         raise errors.Unimplemented()
 
@@ -269,7 +259,7 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
         OsidProfile.__init__(self)
 
     @utilities.arguments_not_none
-    def initialize(self, runtime):
+    def initialize(self):
         """Initializes this manager.
 
         A manager is initialized once at the time of creation.
@@ -325,7 +315,6 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
 
         """
         raise errors.Unimplemented()
-
     def _proxy_in_args(self, *args, **kwargs):
         for arg in args:
             if isinstance(arg, abc_proxy):
@@ -336,7 +325,7 @@ class OsidManager(abc_osid_managers.OsidManager, OsidProfile):
             return False
 
 
-class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
+class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile, OsidManager):
     """The ``OsidProxyManager`` is the top level interface for all OSID proxy managers.
 
     A proxy manager accepts parameters to pass through end-user
@@ -360,67 +349,6 @@ class OsidProxyManager(abc_osid_managers.OsidProxyManager, OsidProfile):
     """
     def __init__(self):
         OsidProfile.__init__(self)
-
-    @utilities.arguments_not_none
-    def initialize(self, runtime):
-        """Initializes this manager.
-
-        A manager is initialized once at the time of creation.
-
-        arg:    runtime (osid.OsidRuntimeManager): the runtime
-                environment
-        raise:  ConfigurationError - an error with implementation
-                configuration
-        raise:  IllegalState - this manager has already been initialized
-                by the ``OsidRuntime``
-        raise:  NullArgument - ``runtime`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        *compliance: mandatory -- This method must be implemented.*
-        *implementation notes*: In addition to loading its runtime
-        configuration an implementation may create shared resources such
-        as connection pools to be shared among all sessions of this
-        service and released when this manager is closed. Providers must
-        thread-protect any data stored in the manager.  To maximize
-        interoperability, providers should not honor a second call to
-        ``initialize()`` and must set an ``IllegalState`` error.
-
-        """
-        OsidProfile._initialize_manager(self, runtime)
-
-    @utilities.arguments_not_none
-    def rollback_service(self, rollback_time, proxy):
-        """Rolls back this service to a point in time.
-
-        arg:    rollback_time (timestamp): the requested time
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.journaling.JournalEntry) - the journal entry
-                corresponding to the actual state of this service
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  PermissionDenied - authorization failure occurred
-        raise:  Unimplemented - ``supports_journal_rollback()`` is
-                ``false``
-        *compliance: mandatory -- This method must be implemented.*
-
-        """
-        raise errors.Unimplemented()
-
-    @utilities.arguments_not_none
-    def change_branch(self, branch_id, proxy):
-        """Changes the service branch.
-
-        arg:    branch_id (osid.id.Id): the new service branch
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        raise:  NotFound - ``branch_id`` not found
-        raise:  NullArgument - ``branch_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  PermissionDenied - authorization failure occurred
-        raise:  Unimplemented - ``supports_journal_branching()`` is
-                ``false``
-        *compliance: mandatory -- This method must be implemented.*
-
-        """
-        raise errors.Unimplemented()
 
 
 class OsidRuntimeProfile(abc_osid_managers.OsidRuntimeProfile, OsidProfile):

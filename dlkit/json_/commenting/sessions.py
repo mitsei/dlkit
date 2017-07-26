@@ -46,6 +46,7 @@ PLENARY = 1
 
 class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving comments."""
+    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Book
@@ -68,7 +69,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     book_id = property(fget=get_book_id)
@@ -82,7 +83,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     book = property(fget=get_book)
@@ -101,8 +102,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.can_lookup_resources
+        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -116,8 +116,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_comparative_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
         self._use_comparative_object_view()
 
     def use_plenary_comment_view(self):
@@ -130,8 +129,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_plenary_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
         self._use_plenary_object_view()
 
     def use_federated_book_view(self):
@@ -143,8 +141,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_book_view(self):
@@ -155,8 +152,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     def use_effective_comment_view(self):
@@ -165,8 +161,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.use_effective_relationship_view
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_effective_relationship_view
         self._use_effective_view()
 
     def use_any_effective_comment_view(self):
@@ -175,8 +170,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.use_any_effective_relationship_view
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_any_effective_relationship_view
         self._use_any_effective_view()
 
     @utilities.arguments_not_none
@@ -193,8 +187,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resource
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -219,8 +212,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_ids
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -254,8 +246,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -279,8 +270,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.CommentList([])
 
@@ -298,8 +288,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_record_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.CommentList([])
 
@@ -318,8 +307,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_on_date
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_on_date
         comment_list = []
         for comment in self.get_comments():
             if overlap(from_, to, comment.start_date, comment.end_date):
@@ -359,8 +347,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_for_destination
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_destination
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -387,8 +374,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_for_destination_on_date
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_destination_on_date
         comment_list = []
         for comment in self.get_comments_for_commentor():
             if overlap(from_, to, comment.start_date, comment.end_date):
@@ -411,8 +397,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_destination
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_destination
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -457,8 +442,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_for_source
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -485,8 +469,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_for_source_on_date
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source_on_date
         comment_list = []
         for comment in self.get_comments_for_reference(reference_id):
             if overlap(from_, to, comment.start_date, comment.end_date):
@@ -509,8 +492,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_source
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -540,8 +522,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_source_on_date
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_source_on_date
         comment_list = []
         for comment in self.get_comments_by_genus_type_for_reference():
             if overlap(from_, to, comment.start_date, comment.end_date):
@@ -563,8 +544,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_for_peers
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -612,8 +592,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_peers
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -656,8 +635,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
@@ -680,6 +658,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
     interfaces.
 
     """
+    # Built from: templates/osid_session.GenericRelationshipQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Book
@@ -702,7 +681,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     book_id = property(fget=get_book_id)
@@ -716,7 +695,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     book = property(fget=get_book)
@@ -735,8 +714,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.can_search_resources
+        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -750,8 +728,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_book_view(self):
@@ -762,8 +739,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     def get_comment_query(self):
@@ -773,8 +749,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.get_resource_query_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
         return queries.CommentQuery(runtime=self._runtime)
 
     comment_query = property(fget=get_comment_query)
@@ -794,8 +769,7 @@ class CommentQuerySession(abc_commenting_sessions.CommentQuerySession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.get_resources_by_query
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
         and_list = list()
         or_list = list()
         for term in comment_query._query_terms:
@@ -859,6 +833,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
     external ``Id`` to an internally assigned Id.
 
     """
+    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Book
@@ -882,7 +857,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     book_id = property(fget=get_book_id)
@@ -896,7 +871,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     book = property(fget=get_book)
@@ -915,8 +890,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_create_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -940,8 +914,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -966,8 +939,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.relationship.CommentAdminSession.get_comment_form_for_create_template
+        # Built from: templates/osid_session.GenericRelationshipAdminSession.get_relationship_form_for_create_for_agent
         # These really need to be in module imports:
         if not isinstance(reference_id, ABCId):
             raise errors.InvalidArgument('argument is not a valid OSID Id')
@@ -1016,8 +988,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.create_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
                                          runtime=self._runtime)
@@ -1056,8 +1027,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_update_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1078,8 +1048,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
                                          runtime=self._runtime)
@@ -1112,8 +1081,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.update_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
                                          runtime=self._runtime)
@@ -1152,8 +1120,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_delete_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1171,8 +1138,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.delete_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
         collection = JSONClientValidated('commenting',
                                          collection='Comment',
                                          runtime=self._runtime)
@@ -1199,6 +1165,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1223,8 +1190,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.alias_resources_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
         self._alias_id(primary_id=comment_id, equivalent_id=alias_id)
 
 
@@ -1240,6 +1206,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
       * plenary view: provides a complete set or is an error condition
 
     """
+    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'commenting.BookLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1265,8 +1232,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.can_lookup_bins
+        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1282,8 +1248,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_comparative_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1298,8 +1263,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_plenary_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -1322,8 +1286,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bin
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=book_id)
         collection = JSONClientValidated('commenting',
@@ -1333,7 +1296,8 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         if book_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Book, cat_name='Book')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(book_id, 'commenting').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(book_id,
+                                                                       'commenting').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Book.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(book_id, 'commenting', 'Book')
@@ -1362,8 +1326,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_by_ids_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_Book() instead of direct to database
         if self._catalog_session is not None:
@@ -1394,8 +1357,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_by_genus_type_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_genus_type(catalog_genus_type=book_genus_type)
@@ -1473,8 +1435,7 @@ class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -1519,6 +1480,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
     external ``Id`` to an internally assigned Id.
 
     """
+    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'commenting.BookAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1543,8 +1505,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1552,7 +1513,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         return True
 
     @utilities.arguments_not_none
-    def can_create_book_with_record_types(self, book_record_types):
+    def can_create_book_with_record_types(self):
         """Tests if this user can create a single ``Book`` using the desired record types.
 
         While ``CommentingManager.getBookRecordTypes()`` can be used to
@@ -1570,8 +1531,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bin_with_record_types
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1595,8 +1555,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.get_bin_form_for_create_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=book_record_types)
         for arg in book_record_types:
@@ -1635,8 +1594,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.create_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=book_form)
         collection = JSONClientValidated('commenting',
@@ -1677,8 +1635,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_update_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1700,8 +1657,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.get_bin_form_for_update_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=book_id)
         collection = JSONClientValidated('commenting',
@@ -1733,8 +1689,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.update_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=book_form)
         collection = JSONClientValidated('commenting',
@@ -1771,8 +1726,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_delete_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1792,8 +1746,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.delete_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
         if self._catalog_session is not None:
             return self._catalog_session.delete_catalog(catalog_id=book_id)
         collection = JSONClientValidated('commenting',
@@ -1823,6 +1776,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1846,8 +1800,7 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.alias_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=book_id, alias_id=alias_id)
         self._alias_id(primary_id=book_id, equivalent_id=alias_id)
@@ -1879,11 +1832,10 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
       * plenary view: provides a complete set or is an error condition
 
     """
+    # Built from: templates/osid_session.GenericCatalogHierarchySession.init_template
     _session_namespace = 'commenting.BookHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -1906,8 +1858,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -1924,8 +1875,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -1946,8 +1896,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.can_access_catalog_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1963,8 +1912,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_comparative_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1979,8 +1927,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_plenary_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -1994,8 +1941,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_root_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalog_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -2016,8 +1962,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_root_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return BookLookupSession(
@@ -2040,8 +1985,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.has_parent_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_parent_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=book_id)
         return self._hierarchy_session.has_parents(id_=book_id)
@@ -2062,8 +2006,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_parent_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_parent_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=book_id)
         return self._hierarchy_session.is_parent(id_=book_id, parent_id=id_)
@@ -2081,8 +2024,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalog_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalog_ids(catalog_id=book_id)
         return self._hierarchy_session.get_parents(id_=book_id)
@@ -2102,8 +2044,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_parent_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalogs(catalog_id=book_id)
         return BookLookupSession(
@@ -2127,8 +2068,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_ancestor_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=book_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=book_id)
@@ -2147,8 +2087,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.has_child_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_child_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=book_id)
         return self._hierarchy_session.has_children(id_=book_id)
@@ -2169,8 +2108,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_child_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_child_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=book_id)
         return self._hierarchy_session.is_child(id_=book_id, child_id=id_)
@@ -2188,8 +2126,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_child_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalog_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=book_id)
         return self._hierarchy_session.get_children(id_=book_id)
@@ -2209,8 +2146,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_child_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=book_id)
         return BookLookupSession(
@@ -2234,8 +2170,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_descendant_of_catalog
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=book_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=book_id)
@@ -2262,8 +2197,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_node_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=book_id,
@@ -2298,8 +2232,7 @@ class BookHierarchySession(abc_commenting_sessions.BookHierarchySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_nodes
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_nodes
         return objects.BookNode(self.get_book_node_ids(
             book_id=book_id,
             ancestor_levels=ancestor_levels,
@@ -2316,11 +2249,10 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
     of the federation.
 
     """
+    # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.init_template
     _session_namespace = 'commenting.BookHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -2343,8 +2275,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -2361,8 +2292,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -2383,8 +2313,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.can_modify_catalog_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2404,8 +2333,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_root_catalog
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=book_id)
         return self._hierarchy_session.add_root(id_=book_id)
@@ -2422,8 +2350,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_root_catalog
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=book_id)
         return self._hierarchy_session.remove_root(id_=book_id)
@@ -2443,8 +2370,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_child_catalog
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=book_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=book_id, child_id=child_id)
@@ -2462,8 +2388,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalog
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=book_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=book_id, child_id=child_id)
@@ -2480,8 +2405,7 @@ class BookHierarchyDesignSession(abc_commenting_sessions.BookHierarchyDesignSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalogs
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=book_id)
         return self._hierarchy_session.remove_children(id_=book_id)

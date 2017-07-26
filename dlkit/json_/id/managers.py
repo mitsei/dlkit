@@ -45,7 +45,7 @@ class IdManager(osid_managers.OsidManager, IdProfile, id_managers.IdManager):
     id_batch_manager = property(fget=get_id_batch_manager)
 
 
-class IdProxyManager(osid_managers.OsidProxyManager, IdProfile, id_managers.IdProxyManager):
+class IdProxyManager(osid_managers.OsidProxyManager, IdProfile, IdManager, id_managers.IdProxyManager):
     """This manager provides access to the available sessions of the Id service.
 
     Methods in this manager support the passing of a ``Proxy`` object
@@ -57,18 +57,3 @@ class IdProxyManager(osid_managers.OsidProxyManager, IdProfile, id_managers.IdPr
     a list of the assigned identifiers.
 
     """
-
-    def get_id_batch_proxy_manager(self):
-        """Gets an ``IdnProxyManager``.
-
-        return: (osid.id.batch.IdBatchProxyManager) - an
-                ``IdBatchProxyManager``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_id_batch()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_id_batch()`` is ``true``.*
-
-        """
-        raise errors.Unimplemented()
-
-    id_batch_proxy_manager = property(fget=get_id_batch_proxy_manager)

@@ -140,7 +140,7 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     hierarchy_id = property(fget=get_hierarchy_id)
@@ -155,7 +155,7 @@ class HierarchyTraversalSession(abc_hierarchy_sessions.HierarchyTraversalSession
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     hierarchy = property(fget=get_hierarchy)
@@ -472,7 +472,7 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     hierarchy_id = property(fget=get_hierarchy_id)
@@ -487,7 +487,7 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     hierarchy = property(fget=get_hierarchy)
@@ -606,7 +606,6 @@ class HierarchyDesignSession(abc_hierarchy_sessions.HierarchyDesignSession, osid
             raise errors.NotFound()
         for r in results:
             self._ras.delete_relationship(r.get_id())
-
     def _adopt_orphans(self, negligent_parent_id):
         """Clean up orphaned children"""
         for child_id in self._hts.get_children(negligent_parent_id):
@@ -645,6 +644,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
     of precision.
 
     """
+    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'hierarchy.HierarchyLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -670,8 +670,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.can_lookup_bins
+        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -687,8 +686,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_comparative_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -703,8 +701,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.use_plenary_bin_view
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -729,8 +726,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bin
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=hierarchy_id)
         collection = JSONClientValidated('hierarchy',
@@ -740,7 +736,8 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         if hierarchy_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Hierarchy, cat_name='Hierarchy')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(hierarchy_id, 'hierarchy').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(hierarchy_id,
+                                                                       'hierarchy').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Hierarchy.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(hierarchy_id, 'hierarchy', 'Hierarchy')
@@ -770,8 +767,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_by_ids_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_Hierarchy() instead of direct to database
         if self._catalog_session is not None:
@@ -805,8 +801,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_by_genus_type_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_genus_type(catalog_genus_type=hierarchy_genus_type)
@@ -896,8 +891,7 @@ class HierarchyLookupSession(abc_hierarchy_sessions.HierarchyLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.get_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -942,6 +936,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
     external ``Id`` to an internally assigned Id.
 
     """
+    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'hierarchy.HierarchyAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -966,8 +961,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -975,7 +969,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         return True
 
     @utilities.arguments_not_none
-    def can_create_hierarchy_with_record_types(self, hierarchy_record_types):
+    def can_create_hierarchy_with_record_types(self):
         """Tests if this user can create a single ``Hierarchy`` using the desired record types.
 
         While ``HierarchyManager.getHierarchyRecordTypes()`` can be used
@@ -992,8 +986,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_create_bin_with_record_types
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1019,8 +1012,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.get_bin_form_for_create_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=hierarchy_record_types)
         for arg in hierarchy_record_types:
@@ -1059,8 +1051,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.create_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=hierarchy_form)
         collection = JSONClientValidated('hierarchy',
@@ -1101,8 +1092,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_update_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1126,8 +1116,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.get_bin_form_for_update_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=hierarchy_id)
         collection = JSONClientValidated('hierarchy',
@@ -1160,8 +1149,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.update_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=hierarchy_form)
         collection = JSONClientValidated('hierarchy',
@@ -1199,8 +1187,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinAdminSession.can_delete_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1208,18 +1195,6 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         return True
 
     @utilities.arguments_not_none
-    def delete_hierarchy(self, hierarchy_id):
-        """Deletes a ``Hierarchy``.
-
-        arg:    hierarchy_id (osid.id.Id): the ``Id`` of the
-                ``Hierarchy`` to remove
-        raise:  NotFound - ``hierarchy_id`` not found
-        raise:  NullArgument - ``hierarchy_id`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  PermissionDenied - authorization failure
-        *compliance: mandatory -- This method must be implemented.*
-
-        """
         collection = JSONClientValidated('hierarchy',
                                          collection='Hierarchy',
                                          runtime=self._runtime)
@@ -1244,6 +1219,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1269,8 +1245,7 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.alias_bin_template
+        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=hierarchy_id, alias_id=alias_id)
         self._alias_id(primary_id=hierarchy_id, equivalent_id=alias_id)

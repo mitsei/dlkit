@@ -10,14 +10,23 @@
 #     Inheritance defined in specification
 
 
+import base64
+import gridfs
 import importlib
+
+
+from decimal import Decimal
 
 
 from . import default_mdata
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import objects as osid_objects
 from ..osid.metadata import Metadata
 from ..primitives import Id
+from ..primitives import Id, DateTime, Duration, DataInputStream
+from ..primitives import Id, DateTime, Duration, DisplayText
+from ..utilities import JSONClientValidated
 from ..utilities import get_provider_manager
 from ..utilities import get_registry
 from ..utilities import update_display_text_defaults
@@ -33,6 +42,7 @@ class Relationship(abc_relationship_objects.Relationship, osid_objects.OsidRelat
     related peer.
 
     """
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'relationship.Relationship'
 
     def __init__(self, **kwargs):
@@ -46,7 +56,7 @@ class Relationship(abc_relationship_objects.Relationship, osid_objects.OsidRelat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.relationship.Relationship.get_source_id
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['sourceId'])
 
     source_id = property(fget=get_source_id)
@@ -58,7 +68,7 @@ class Relationship(abc_relationship_objects.Relationship, osid_objects.OsidRelat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.relationship.Relationship.get_source_id
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['destinationId'])
 
     destination_id = property(fget=get_destination_id)
@@ -86,6 +96,7 @@ class Relationship(abc_relationship_objects.Relationship, osid_objects.OsidRelat
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(relationship_record_type)
 
 
@@ -99,6 +110,7 @@ class RelationshipForm(abc_relationship_objects.RelationshipForm, osid_objects.O
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'relationship.Relationship'
 
     def __init__(self, **kwargs):
@@ -136,6 +148,7 @@ class RelationshipForm(abc_relationship_objects.RelationshipForm, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(relationship_record_type)
 
 
@@ -164,7 +177,7 @@ class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -192,7 +205,7 @@ class RelationshipList(abc_relationship_objects.RelationshipList, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(RelationshipList, number=n)
 
 
@@ -203,6 +216,7 @@ class Family(abc_relationship_objects.Family, osid_objects.OsidCatalog):
     any persisted references should use the ``Id``.
 
     """
+    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'relationship.Family'
 
     def __init__(self, **kwargs):
@@ -243,6 +257,7 @@ class FamilyForm(abc_relationship_objects.FamilyForm, osid_objects.OsidCatalogFo
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'relationship.Family'
 
     def __init__(self, **kwargs):
@@ -276,7 +291,8 @@ class FamilyForm(abc_relationship_objects.FamilyForm, osid_objects.OsidCatalogFo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
+        return self._get_record(family_record_type)
 
 
 class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
@@ -304,7 +320,7 @@ class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -332,7 +348,7 @@ class FamilyList(abc_relationship_objects.FamilyList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(FamilyList, number=n)
 
 
@@ -344,6 +360,7 @@ class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
     ``FamilyHierarchySession``.
 
     """
+    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -369,6 +386,7 @@ class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('RELATIONSHIP', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_family_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -384,6 +402,7 @@ class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_family_nodes = []
         for node in self._my_map['parentNodes']:
             parent_family_nodes.append(FamilyNode(
@@ -403,6 +422,7 @@ class FamilyNode(abc_relationship_objects.FamilyNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_family_nodes = []
         for node in self._my_map['childNodes']:
             parent_family_nodes.append(FamilyNode(
@@ -440,7 +460,7 @@ class FamilyNodeList(abc_relationship_objects.FamilyNodeList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -468,5 +488,5 @@ class FamilyNodeList(abc_relationship_objects.FamilyNodeList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(FamilyNodeList, number=n)

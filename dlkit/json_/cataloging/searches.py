@@ -22,6 +22,7 @@ from dlkit.abstract_osid.osid import errors
 
 class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSearch):
     """The search interface for governing the search query for ``Catalogs``."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'cataloging.Catalog'
         self._runtime = runtime
@@ -43,6 +44,7 @@ class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = catalog_ids
 
     @utilities.arguments_not_none
@@ -85,6 +87,7 @@ class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSea
 
 class CatalogSearchResults(abc_cataloging_searches.CatalogSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -102,6 +105,7 @@ class CatalogSearchResults(abc_cataloging_searches.CatalogSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -117,6 +121,7 @@ class CatalogSearchResults(abc_cataloging_searches.CatalogSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.CatalogQueryInspector(self._query_terms, runtime=self._runtime)
 
     catalog_query_inspector = property(fget=get_catalog_query_inspector)

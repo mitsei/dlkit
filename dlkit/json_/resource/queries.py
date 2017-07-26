@@ -26,6 +26,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
     the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'resource.Resource'
         self._runtime = runtime
@@ -53,7 +54,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('group')
 
     group_terms = property(fdel=clear_group_terms)
@@ -90,7 +91,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('containingGroupId', str(resource_id), match)
 
     def clear_containing_group_id_terms(self):
@@ -99,7 +100,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('containingGroupId')
 
     containing_group_id_terms = property(fdel=clear_containing_group_id_terms)
@@ -162,7 +163,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('avatarId', str(asset_id), match)
 
     def clear_avatar_id_terms(self):
@@ -171,7 +172,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('avatarId')
 
     avatar_id_terms = property(fdel=clear_avatar_id_terms)
@@ -218,7 +219,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('avatar')
 
     avatar_terms = property(fdel=clear_avatar_terms)
@@ -234,7 +235,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('agentId', str(agent_id), match)
 
     def clear_agent_id_terms(self):
@@ -243,7 +244,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('agentId')
 
     agent_id_terms = property(fdel=clear_agent_id_terms)
@@ -306,7 +307,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('resourceRelationshipId', str(resource_relationship_id), match)
 
     def clear_resource_relationship_id_terms(self):
@@ -315,7 +316,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('resourceRelationshipId')
 
     resource_relationship_id_terms = property(fdel=clear_resource_relationship_id_terms)
@@ -380,7 +381,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedBinIds', str(bin_id), match)
 
     def clear_bin_id_terms(self):
@@ -389,7 +390,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedBinIds')
 
     bin_id_terms = property(fdel=clear_bin_id_terms)
@@ -425,7 +426,7 @@ class ResourceQuery(abc_resource_queries.ResourceQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('bin')
 
     bin_terms = property(fdel=clear_bin_terms)
@@ -457,6 +458,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
     the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('BIN_RECORD_TYPES', runtime)
@@ -499,6 +501,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('resourceId')
 
     resource_id_terms = property(fdel=clear_resource_id_terms)
@@ -546,6 +549,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('resource')
 
     resource_terms = property(fdel=clear_resource_terms)
@@ -569,6 +573,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorBinId')
 
     ancestor_bin_id_terms = property(fdel=clear_ancestor_bin_id_terms)
@@ -616,6 +621,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorBin')
 
     ancestor_bin_terms = property(fdel=clear_ancestor_bin_terms)
@@ -639,6 +645,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantBinId')
 
     descendant_bin_id_terms = property(fdel=clear_descendant_bin_id_terms)
@@ -686,6 +693,7 @@ class BinQuery(abc_resource_queries.BinQuery, osid_queries.OsidCatalogQuery):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantBin')
 
     descendant_bin_terms = property(fdel=clear_descendant_bin_terms)

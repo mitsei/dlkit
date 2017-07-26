@@ -32,14 +32,14 @@ from dlkit.json_.assessment.assessment_utilities import get_assessment_part_look
 from dlkit.primordium.id.primitives import Id
 
 
-DESCENDING = -1
-ASCENDING = 1
-CREATED = True
-UPDATED = True
 ACTIVE = 0
 ANY_STATUS = 1
 SEQUESTERED = 0
 UNSEQUESTERED = 1
+DESCENDING = -1
+ASCENDING = 1
+CREATED = True
+UPDATED = True
 ENCLOSURE_RECORD_TYPE = Type(
     identifier='enclosure',
     namespace='osid-object',
@@ -49,6 +49,7 @@ ISOLATED = 1
 
 class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPartLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving assessment parts."""
+    # Built from: templates/osid_session.GenericContainableObjectLookupSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Bank
@@ -83,7 +84,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     bank_id = property(fget=get_bank_id)
@@ -98,7 +99,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     bank = property(fget=get_bank)
@@ -117,8 +118,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.can_lookup_resources
+        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -132,8 +132,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_comparative_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
         self._use_comparative_object_view()
 
     def use_plenary_assessment_part_view(self):
@@ -146,8 +145,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_plenary_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
         self._use_plenary_object_view()
 
     def use_federated_bank_view(self):
@@ -159,8 +157,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_bank_view(self):
@@ -171,8 +168,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     def use_active_assessment_part_view(self):
@@ -181,8 +177,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_active_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_active_containable_view
         self._status_view = ACTIVE
 
     def use_any_status_assessment_part_view(self):
@@ -191,8 +186,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_any_status_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_any_status_containable_view
         self._status_view = ANY_STATUS
 
     def use_sequestered_assessment_part_view(self):
@@ -201,8 +195,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_sequestered_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_sequestered_containable_view
         self._sequestered_view = SEQUESTERED
 
     def use_unsequestered_assessment_part_view(self):
@@ -211,8 +204,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_unsequestered_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_unsequestered_containable_view
         self._sequestered_view = UNSEQUESTERED
 
     @utilities.arguments_not_none
@@ -231,8 +223,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resource
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
@@ -257,8 +248,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_ids
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
@@ -293,8 +283,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
@@ -319,8 +308,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AssessmentPartList([])
 
@@ -339,8 +327,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_record_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AssessmentPartList([])
 
@@ -357,8 +344,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.learning.ActivityLookupSession.get_activities_for_objective_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_subjugated_objects_for_object
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
@@ -378,8 +364,7 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
@@ -388,7 +373,6 @@ class AssessmentPartLookupSession(abc_assessment_authoring_sessions.AssessmentPa
         return objects.AssessmentPartList(result, runtime=self._runtime, proxy=self._proxy)
 
     assessment_parts = property(fget=get_assessment_parts)
-
     @utilities.arguments_not_none
     def get_assessment_parts_for_assessment_part(self, assessment_part_id):
         """Gets an ``AssessmentPart`` for the given assessment part.
@@ -437,6 +421,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
     ``AssessmentPartQuery``.
 
     """
+    # Built from: templates/osid_session.GenericContainableObjectQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Bank
@@ -471,7 +456,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     bank_id = property(fget=get_bank_id)
@@ -485,7 +470,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     bank = property(fget=get_bank)
@@ -504,8 +489,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.can_search_resources
+        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -519,8 +503,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_bank_view(self):
@@ -531,8 +514,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     def use_sequestered_assessment_part_view(self):
@@ -541,8 +523,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_sequestered_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_sequestered_containable_view
         self._sequestered_view = SEQUESTERED
 
     def use_unsequestered_assessment_part_view(self):
@@ -551,8 +532,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_unsequestered_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_unsequestered_containable_view
         self._sequestered_view = UNSEQUESTERED
 
     def get_assessment_part_query(self):
@@ -563,8 +543,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.get_resource_query_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
         return queries.AssessmentPartQuery(runtime=self._runtime)
 
     assessment_part_query = property(fget=get_assessment_part_query)
@@ -586,8 +565,7 @@ class AssessmentPartQuerySession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceQuerySession.get_resources_by_query
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
         and_list = list()
         or_list = list()
         for term in assessment_part_query._query_terms:
@@ -647,6 +625,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
     external ``Id`` to an internally assigned Id.
 
     """
+    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Bank
@@ -670,7 +649,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     bank_id = property(fget=get_bank_id)
@@ -685,7 +664,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     bank = property(fget=get_bank)
@@ -704,8 +683,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_create_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -731,8 +709,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -759,8 +736,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.learning.ActivityAdminSession.get_activity_form_for_create_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_subjugated_object_form_for_create
 
         if not isinstance(assessment_id, ABCId):
             raise errors.InvalidArgument('argument is not a valid OSID Id')
@@ -809,8 +785,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.create_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
                                          runtime=self._runtime)
@@ -914,8 +889,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.create_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
                                          runtime=self._runtime)
@@ -954,8 +928,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_update_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1024,8 +997,6 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
                                          runtime=self._runtime)
@@ -1064,8 +1035,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_delete_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1123,6 +1093,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1149,13 +1120,13 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.alias_resources_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
         self._alias_id(primary_id=assessment_part_id, equivalent_id=alias_id)
 
 
 class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPartItemSession, osid_sessions.OsidSession):
     """This session defines methods for looking up ``Item`` to ``AssessmentPart`` mappings."""
+    # Built from: templates/osid_session.GenericObjectContainableSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Bank
@@ -1178,7 +1149,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     bank_id = property(fget=get_bank_id)
@@ -1193,7 +1164,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     bank = property(fget=get_bank)
@@ -1212,8 +1183,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.AssetCompositionSession.can_access_asset_compositions
+        # Built from: templates/osid_session.GenericObjectContainableSession.can_access_object_containables
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1227,8 +1197,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_comparative_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
         self._use_comparative_object_view()
 
     def use_plenary_assessment_part_item_view(self):
@@ -1241,8 +1210,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_plenary_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
         self._use_plenary_object_view()
 
     def use_federated_bank_view(self):
@@ -1254,8 +1222,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_bank_view(self):
@@ -1266,8 +1233,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -1319,8 +1285,7 @@ class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPart
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.AssetCompositionSession.get_compositions_by_asset
+        # Built from: templates/osid_session.GenericObjectContainableSession.get_containables_by_object
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
                                          runtime=self._runtime)
@@ -1339,6 +1304,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
     ``AssessmentPart`` hierarchy.
 
     """
+    # Built from: templates/osid_session.GenericObjectContainableDesignSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Bank
@@ -1361,7 +1327,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     bank_id = property(fget=get_bank_id)
@@ -1376,7 +1342,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     bank = property(fget=get_bank)
@@ -1395,8 +1361,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.AssetCompositionDesignSession.can_compose_assets_template
+        # Built from: templates/osid_session.GenericObjectContainableDesignSession.can_compose_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1419,6 +1384,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectContainableDesignSession.add_object_to_containable
         # The item found check may want to be run through _get_provider_manager
         # so as to ensure access control:
         from dlkit.abstract_osid.id.primitives import Id as ABCId
@@ -1467,6 +1433,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectContainableDesignSession.move_object_ahead
         if (not isinstance(assessment_part_id, ABCId) and
                 assessment_part_id.get_identifier_namespace() != 'assessment_authoring.AssessmentPart'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -1492,6 +1459,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectContainableDesignSession.move_object_behind
         if (not isinstance(assessment_part_id, ABCId) and
                 assessment_part_id.get_identifier_namespace() != 'assessment_authoring.AssessmentPart'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -1514,6 +1482,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectContainableDesignSession.order_objects
         if (not isinstance(assessment_part_id, ABCId) and
                 assessment_part_id.get_identifier_namespace() != 'assessment_authoring.AssessmentPart'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -1537,6 +1506,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectContainableDesignSession.remove_object_from_containable
         if (not isinstance(assessment_part_id, ABCId) and
                 assessment_part_id.get_identifier_namespace() != 'assessment_authoring.AssessmentPart'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -1560,6 +1530,7 @@ class AssessmentPartItemDesignSession(abc_assessment_authoring_sessions.Assessme
 
 class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``SequenceRules``."""
+    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Bank
@@ -1582,7 +1553,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     bank_id = property(fget=get_bank_id)
@@ -1596,7 +1567,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     bank = property(fget=get_bank)
@@ -1615,8 +1586,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.can_lookup_resources
+        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1630,8 +1600,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_comparative_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
         self._use_comparative_object_view()
 
     def use_plenary_sequence_rule_view(self):
@@ -1644,8 +1613,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_plenary_resource_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
         self._use_plenary_object_view()
 
     def use_federated_bank_view(self):
@@ -1657,8 +1625,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         self._use_federated_catalog_view()
 
     def use_isolated_bank_view(self):
@@ -1669,8 +1636,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         self._use_isolated_catalog_view()
 
     def use_active_sequence_rule_view(self):
@@ -1679,8 +1645,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_active_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_active_containable_view
         self._status_view = ACTIVE
 
     def use_any_status_sequence_rule_view(self):
@@ -1689,8 +1654,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.repository.CompositionLookupSession.use_any_status_composition_view_template
+        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_any_status_containable_view
         self._status_view = ANY_STATUS
 
     @utilities.arguments_not_none
@@ -1708,8 +1672,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resource
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
@@ -1734,8 +1697,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_ids
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
@@ -1769,8 +1731,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
@@ -1794,8 +1755,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.SequenceRuleList([])
 
@@ -1813,8 +1773,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources_by_record_type
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.SequenceRuleList([])
 
@@ -1832,8 +1791,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.learning.ActivityLookupSession.get_activities_for_objective_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_subjugated_objects_for_object
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
@@ -1876,7 +1834,17 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # NOTE: This implementation currently ignores plenary view
+        collection = JSONClientValidated('assessment_authoring',
+                                         collection='SequenceRule',
+                                         runtime=self._runtime)
+        id_str_list = [str(id_) for id_ in assessment_part_id]
+        next_id_str_list = [str(id_) for id_ in next_assessment_part_id]
+        result = collection.find(
+            dict({'assessmentPartId': {'$in': id_str_list},
+                  'nextAssessmentPartId': {'$in': next_id_str_list}},
+                 **self._view_filter()))
+        return objects.SequenceRuleList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_sequence_rules_for_assessment(self, assessment_id):
@@ -1935,8 +1903,7 @@ class SequenceRuleLookupSession(abc_assessment_authoring_sessions.SequenceRuleLo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceLookupSession.get_resources
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
@@ -1954,6 +1921,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
     ``SequenceRuleForm``.
 
     """
+    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Bank
@@ -1977,7 +1945,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._catalog_id
 
     bank_id = property(fget=get_bank_id)
@@ -1991,7 +1959,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
         return self._catalog
 
     bank = property(fget=get_bank)
@@ -2010,8 +1978,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_create_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2037,8 +2004,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2073,7 +2039,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         """
         for arg in sequence_rule_record_types:
             if not isinstance(arg, ABCId):
-                raise errors.InvalidArgument('one or more argument array elements is not a valid OSID ${arg0_type}')
+                raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Id')
         if sequence_rule_record_types == []:
             obj_form = objects.SequenceRuleForm(
                 bank_id=self._catalog_id,
@@ -2115,8 +2081,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.create_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
                                          runtime=self._runtime)
@@ -2155,8 +2120,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_update_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2179,8 +2143,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
                                          runtime=self._runtime)
@@ -2214,8 +2177,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.update_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
                                          runtime=self._runtime)
@@ -2254,8 +2216,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.can_delete_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2273,8 +2234,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.delete_resource_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
         collection = JSONClientValidated('assessment_authoring',
                                          collection='SequenceRule',
                                          runtime=self._runtime)
@@ -2301,6 +2261,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2326,8 +2287,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceAdminSession.alias_resources_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
         self._alias_id(primary_id=sequence_rule_id, equivalent_id=alias_id)
 
     def can_sequence_sequence_rules(self):

@@ -22,6 +22,7 @@ from dlkit.abstract_osid.osid import errors
 
 class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
     """``ItemSearch`` defines the interface for specifying item search options."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.Item'
         self._runtime = runtime
@@ -43,6 +44,7 @@ class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = item_ids
 
     @utilities.arguments_not_none
@@ -83,6 +85,7 @@ class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
 
 class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -100,6 +103,7 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -115,6 +119,7 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.ItemQueryInspector(self._query_terms, runtime=self._runtime)
 
     item_query_inspector = property(fget=get_item_query_inspector)
@@ -143,6 +148,7 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
 
 class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.OsidSearch):
     """``AssessmentSearch`` defines the interface for specifying assessment search options."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.Assessment'
         self._runtime = runtime
@@ -164,6 +170,7 @@ class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = assessment_ids
 
     @utilities.arguments_not_none
@@ -206,6 +213,7 @@ class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.O
 
 class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -224,6 +232,7 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -239,6 +248,7 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.AssessmentQueryInspector(self._query_terms, runtime=self._runtime)
 
     assessment_query_inspector = property(fget=get_assessment_query_inspector)
@@ -268,6 +278,7 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
 
 class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, osid_searches.OsidSearch):
     """``AssessmentOfferedSearch`` defines the interface for specifying assessment search options."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.AssessmentOffered'
         self._runtime = runtime
@@ -290,6 +301,7 @@ class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = assessment_offrered_ids
 
     @utilities.arguments_not_none
@@ -333,6 +345,7 @@ class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, o
 
 class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -352,6 +365,7 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -367,6 +381,7 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.AssessmentOfferedQueryInspector(self._query_terms, runtime=self._runtime)
 
     assessment_offered_query_inspector = property(fget=get_assessment_offered_query_inspector)
@@ -397,6 +412,7 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
 
 class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_searches.OsidSearch):
     """``AssessmentTakenSearch`` defines the interface for specifying assessment search options."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.AssessmentTaken'
         self._runtime = runtime
@@ -419,6 +435,7 @@ class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = assessment_taken_ids
 
     @utilities.arguments_not_none
@@ -462,6 +479,7 @@ class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_
 
 class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -481,6 +499,7 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -496,6 +515,7 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.AssessmentTakenQueryInspector(self._query_terms, runtime=self._runtime)
 
     assessment_taken_query_inspector = property(fget=get_assessment_taken_query_inspector)
@@ -526,6 +546,7 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
 
 class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
     """The interface for governing bank searches."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.Bank'
         self._runtime = runtime
@@ -547,6 +568,7 @@ class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = bank_ids
 
     @utilities.arguments_not_none
@@ -587,6 +609,7 @@ class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
 
 class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -604,6 +627,7 @@ class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -619,6 +643,7 @@ class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.BankQueryInspector(self._query_terms, runtime=self._runtime)
 
     bank_query_inspector = property(fget=get_bank_query_inspector)

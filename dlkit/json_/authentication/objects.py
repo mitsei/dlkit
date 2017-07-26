@@ -10,14 +10,23 @@
 #     Inheritance defined in specification
 
 
+import base64
+import gridfs
 import importlib
+
+
+from decimal import Decimal
 
 
 from . import default_mdata
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import objects as osid_objects
 from ..osid.metadata import Metadata
 from ..primitives import Id
+from ..primitives import Id, DateTime, Duration, DataInputStream
+from ..primitives import Id, DateTime, Duration, DisplayText
+from ..utilities import JSONClientValidated
 from ..utilities import get_registry
 from ..utilities import update_display_text_defaults
 from dlkit.abstract_osid.authentication import objects as abc_authentication_objects
@@ -88,6 +97,7 @@ class Agent(abc_authentication_objects.Agent, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(agent_record_type)
 
 
@@ -101,6 +111,7 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'authentication.Agent'
 
     def __init__(self, **kwargs):
@@ -134,6 +145,7 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(agent_record_type)
 
 
@@ -161,7 +173,7 @@ class AgentList(abc_authentication_objects.AgentList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -185,5 +197,5 @@ class AgentList(abc_authentication_objects.AgentList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(AgentList, number=n)

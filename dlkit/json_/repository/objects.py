@@ -11,9 +11,11 @@
 
 
 import base64
-import datetime
 import gridfs
 import importlib
+
+
+from decimal import Decimal
 
 
 from . import default_mdata
@@ -23,11 +25,11 @@ from ..osid import markers as osid_markers
 from ..osid import objects as osid_objects
 from ..osid.markers import Extensible
 from ..osid.metadata import Metadata
-from ..osid.osid_errors import *
-from ..primitives import *
 from ..primitives import DataInputStream
 from ..primitives import DisplayText
 from ..primitives import Id
+from ..primitives import Id, DateTime, Duration, DataInputStream
+from ..primitives import Id, DateTime, Duration, DisplayText
 from ..utilities import JSONClientValidated
 from ..utilities import get_provider_manager
 from ..utilities import get_registry
@@ -135,8 +137,8 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.Asset.get_title_template
-        return DisplayText(self._my_map['title'])
+        # Built from: templates/osid_object.GenericObject.get_display_text_attribute
+        return DisplayText(display_text_map=self._my_map['title'])
 
     title = property(fget=get_title)
 
@@ -170,7 +172,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
+        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
         return bool(self._my_map['publicDomain'])
 
     def get_copyright(self):
@@ -187,8 +189,8 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.Asset.get_title_template
-        return DisplayText(self._my_map['copyright'])
+        # Built from: templates/osid_object.GenericObject.get_display_text_attribute
+        return DisplayText(display_text_map=self._my_map['copyright'])
 
     copyright_ = property(fget=get_copyright)
 
@@ -202,9 +204,9 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetContent.get_url_template
-        if not bool(self._my_map['copyrightRegistration']):
-            raise errors.IllegalState()
+        # Built from: templates/osid_object.GenericObject.get_string_attribute
+        if not self.has_copyright_registration():
+            raise errors.IllegalState('copyright_registration not set')
         return self._my_map['copyrightRegistration']
 
     copyright_registration = property(fget=get_copyright_registration)
@@ -227,7 +229,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.can_distribute_verbatim
+        # Built from: templates/osid_object.GenericObject.can_attribute_boolean
         if self._my_map['distributeVerbatim'] is None:
             raise errors.IllegalState()
         else:
@@ -255,7 +257,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.can_distribute_verbatim
+        # Built from: templates/osid_object.GenericObject.can_attribute_boolean
         if self._my_map['distributeAlterations'] is None:
             raise errors.IllegalState()
         else:
@@ -281,7 +283,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.can_distribute_verbatim
+        # Built from: templates/osid_object.GenericObject.can_attribute_boolean
         if self._my_map['distributeCompositions'] is None:
             raise errors.IllegalState()
         else:
@@ -309,9 +311,9 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_id_template
+        # Built from: templates/osid_object.GenericObject.get_id_attribute
         if not bool(self._my_map['sourceId']):
-            raise errors.IllegalState('this Asset has no source')
+            raise errors.IllegalState('source not set')
         else:
             return Id(self._my_map['sourceId'])
 
@@ -330,7 +332,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.get_avatar_template
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['sourceId']):
             raise errors.IllegalState('this Asset has no source')
         mgr = self._get_provider_manager('RESOURCE')
@@ -350,7 +352,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_asset_ids_template
+        # Built from: templates/osid_object.GenericObject.get_id_list_attribute_different_package
         return IdList(self._my_map['providerLinkIds'])
 
     provider_link_ids = property(fget=get_provider_link_ids)
@@ -363,7 +365,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_assets_template
+        # Built from: templates/osid_object.GenericObject.get_id_list_objects_different_package
         if not bool(self._my_map['providerLinkIds']):
             raise errors.IllegalState('no providerLinkIds')
         mgr = self._get_provider_manager('RESOURCE')
@@ -403,7 +405,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.Resource.is_group_template
+        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
         return bool(self._my_map['published'])
 
     def get_published_date(self):
@@ -429,8 +431,8 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.Asset.get_title_template
-        return DisplayText(self._my_map['principalCreditString'])
+        # Built from: templates/osid_object.GenericObject.get_display_text_attribute
+        return DisplayText(display_text_map=self._my_map['principalCreditString'])
 
     principal_credit_string = property(fget=get_principal_credit_string)
 
@@ -441,7 +443,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.Asset.get_asset_content_ids_template
+        # Built from: templates/osid_object.GenericObject.get_id_list_attribute_same_package
         id_list = []
         for asset_content in self.get_asset_contents():
             id_list.append(asset_content.get_id())
@@ -457,7 +459,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.Asset.get_asset_contents_template
+        # Built from: templates/osid_object.GenericObject.get_aggregated_objects
         return AssetContentList(
             self._my_map['assetContents'],
             runtime=self._runtime,
@@ -488,9 +490,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['compositionId']):
-            raise errors.IllegalState('composition empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['compositionId'])
 
     composition_id = property(fget=get_composition_id)
@@ -504,15 +504,16 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['compositionId']):
-            raise errors.IllegalState('composition empty')
+            raise errors.IllegalState('this Asset has no composition')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_composition_lookup():
             raise errors.OperationFailed('Repository does not support Composition lookup')
         lookup_session = mgr.get_composition_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_repository_view()
-        return lookup_session.get_composition(self.get_composition_id())
+        osid_object = lookup_session.get_composition(self.get_composition_id())
+        return osid_object
 
     composition = property(fget=get_composition)
 
@@ -535,8 +536,8 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(asset_record_type)
-
     def get_object_map(self):
         obj_map = dict(self._my_map)
         obj_map['assetContent'] = obj_map['assetContents'] = [ac.object_map
@@ -557,6 +558,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'repository.Asset'
 
     def __init__(self, **kwargs):
@@ -618,7 +620,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['title'])
         metadata.update({'existing_string_values': self._my_map['title']})
         return Metadata(**metadata)
@@ -636,7 +638,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.set_title_template
+        # Built from: templates/osid_form.GenericObjectForm.set_display_text_attribute
         self._my_map['title'] = self._get_display_text(title, self.get_title_metadata())
 
     def clear_title(self):
@@ -647,10 +649,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.clear_title_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_display_text_attribute
         if (self.get_title_metadata().is_read_only() or
                 self.get_title_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear title')
         self._my_map['title'] = dict(self._title_default)
 
     title = property(fset=set_title, fdel=clear_title)
@@ -662,7 +664,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['public_domain'])
         metadata.update({'existing_boolean_values': self._my_map['publicDomain']})
         return Metadata(**metadata)
@@ -678,11 +680,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_group_template
+        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
         if self.get_public_domain_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('public_domain is read only')
         if not self._is_valid_boolean(public_domain):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('public_domain is not a valid boolean')
         self._my_map['publicDomain'] = public_domain
 
     def clear_public_domain(self):
@@ -693,10 +695,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_group_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
         if (self.get_public_domain_metadata().is_read_only() or
                 self.get_public_domain_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear public_domain')
         self._my_map['publicDomain'] = self._public_domain_default
 
     public_domain = property(fset=set_public_domain, fdel=clear_public_domain)
@@ -708,7 +710,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['copyright'])
         metadata.update({'existing_string_values': self._my_map['copyright']})
         return Metadata(**metadata)
@@ -726,7 +728,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.set_title_template
+        # Built from: templates/osid_form.GenericObjectForm.set_display_text_attribute
         self._my_map['copyright'] = self._get_display_text(copyright_, self.get_copyright_metadata())
 
     def clear_copyright(self):
@@ -737,10 +739,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.clear_title_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_display_text_attribute
         if (self.get_copyright_metadata().is_read_only() or
                 self.get_copyright_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear copyright')
         self._my_map['copyright'] = dict(self._copyright_default)
 
     copyright_ = property(fset=set_copyright, fdel=clear_copyright)
@@ -753,7 +755,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['copyright_registration'])
         metadata.update({'existing_string_values': self._my_map['copyrightRegistration']})
         return Metadata(**metadata)
@@ -771,13 +773,13 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetContentForm.set_url_template
+        # Built from: templates/osid_form.GenericObjectForm.set_string_attribute
         if self.get_copyright_registration_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('registration is read only')
         if not self._is_valid_string(
                 registration,
                 self.get_copyright_registration_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('registration is not a valid string')
         self._my_map['copyrightRegistration'] = registration
 
     def clear_copyright_registration(self):
@@ -788,10 +790,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetContentForm.clear_url_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_string_attribute
         if (self.get_copyright_registration_metadata().is_read_only() or
                 self.get_copyright_registration_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear copyright_registration')
         self._my_map['copyrightRegistration'] = self._copyright_registration_default
 
     copyright_registration = property(fset=set_copyright_registration, fdel=clear_copyright_registration)
@@ -804,7 +806,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['distribute_verbatim'])
         metadata.update({'existing_boolean_values': self._my_map['distributeVerbatim']})
         return Metadata(**metadata)
@@ -822,11 +824,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_group_template
+        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
         if self.get_distribute_verbatim_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('distribute_verbatim is read only')
         if not self._is_valid_boolean(distribute_verbatim):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('distribute_verbatim is not a valid boolean')
         self._my_map['distributeVerbatim'] = distribute_verbatim
 
     def clear_distribute_verbatim(self):
@@ -837,10 +839,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_group_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
         if (self.get_distribute_verbatim_metadata().is_read_only() or
                 self.get_distribute_verbatim_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear distribute_verbatim')
         self._my_map['distributeVerbatim'] = self._distribute_verbatim_default
 
     distribute_verbatim = property(fset=set_distribute_verbatim, fdel=clear_distribute_verbatim)
@@ -853,7 +855,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['distribute_alterations'])
         metadata.update({'existing_boolean_values': self._my_map['distributeAlterations']})
         return Metadata(**metadata)
@@ -873,11 +875,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_group_template
+        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
         if self.get_distribute_alterations_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('distribute_mods is read only')
         if not self._is_valid_boolean(distribute_mods):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('distribute_mods is not a valid boolean')
         self._my_map['distributeAlterations'] = distribute_mods
 
     def clear_distribute_alterations(self):
@@ -888,10 +890,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_group_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
         if (self.get_distribute_alterations_metadata().is_read_only() or
                 self.get_distribute_alterations_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear distribute_alterations')
         self._my_map['distributeAlterations'] = self._distribute_alterations_default
 
     distribute_alterations = property(fset=set_distribute_alterations, fdel=clear_distribute_alterations)
@@ -904,7 +906,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['distribute_compositions'])
         metadata.update({'existing_boolean_values': self._my_map['distributeCompositions']})
         return Metadata(**metadata)
@@ -924,11 +926,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_group_template
+        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
         if self.get_distribute_compositions_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('distribute_comps is read only')
         if not self._is_valid_boolean(distribute_comps):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('distribute_comps is not a valid boolean')
         self._my_map['distributeCompositions'] = distribute_comps
 
     def clear_distribute_compositions(self):
@@ -939,10 +941,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_group_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
         if (self.get_distribute_compositions_metadata().is_read_only() or
                 self.get_distribute_compositions_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear distribute_compositions')
         self._my_map['distributeCompositions'] = self._distribute_compositions_default
 
     distribute_compositions = property(fset=set_distribute_compositions, fdel=clear_distribute_compositions)
@@ -954,7 +956,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
         metadata = dict(self._mdata['source'])
         metadata.update({'existing_id_values': self._my_map['sourceId']})
         return Metadata(**metadata)
@@ -972,11 +974,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
+        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
         if self.get_source_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('source_id is read only')
         if not self._is_valid_id(source_id):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('source_id is not a valid ID')
         self._my_map['sourceId'] = str(source_id)
 
     def clear_source(self):
@@ -987,10 +989,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
         if (self.get_source_metadata().is_read_only() or
                 self.get_source_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear source')
         self._my_map['sourceId'] = self._source_default
 
     source = property(fset=set_source, fdel=clear_source)
@@ -1002,7 +1004,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.ActivityForm.get_assets_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_id_list_attribute_metadata
         metadata = dict(self._mdata['provider_links'])
         metadata.update({'existing_provider_links_values': self._my_map['providerLinkIds']})
         return Metadata(**metadata)
@@ -1020,7 +1022,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.ActivityForm.set_assets_template
+        # Built from: templates/osid_form.GenericObjectForm.set_id_list_attribute
         if not isinstance(resource_ids, list):
             raise errors.InvalidArgument()
         if self.get_provider_links_metadata().is_read_only():
@@ -1028,7 +1030,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         idstr_list = []
         for object_id in resource_ids:
             if not self._is_valid_id(object_id):
-                raise errors.InvalidArgument()
+                raise errors.InvalidArgument('{0} is not a valid ID'.format(object_id))
             idstr_list.append(str(object_id))
         self._my_map['providerLinkIds'] = idstr_list
 
@@ -1040,10 +1042,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.ActivityForm.clear_assets_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_id_list_attribute
         if (self.get_provider_links_metadata().is_read_only() or
                 self.get_provider_links_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear provider_links')
         self._my_map['providerLinkIds'] = self._provider_links_default
 
     provider_links = property(fset=set_provider_links, fdel=clear_provider_links)
@@ -1055,7 +1057,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['created_date'])
         metadata.update({'existing_date_time_values': self._my_map['createdDate']})
         return Metadata(**metadata)
@@ -1074,13 +1076,15 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.assessment.AssessmentOfferedForm.set_start_time_template
+        # Built from: templates/osid_form.GenericObjectForm.set_date_time_attribute
         if self.get_created_date_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('created_date is read only')
+        if not isinstance(created_date, DateTime):
+            raise errors.InvalidArgument('created_date is not a DateTime')
         if not self._is_valid_date_time(
                 created_date,
                 self.get_created_date_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('created_date is not a valid DateTime')
         self._my_map['createdDate'] = created_date
 
     def clear_created_date(self):
@@ -1091,10 +1095,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_date_time_attribute
         if (self.get_created_date_metadata().is_read_only() or
                 self.get_created_date_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear created_date')
         self._my_map['createdDate'] = self._created_date_default
 
     created_date = property(fset=set_created_date, fdel=clear_created_date)
@@ -1106,7 +1110,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['published'])
         metadata.update({'existing_boolean_values': self._my_map['published']})
         return Metadata(**metadata)
@@ -1122,11 +1126,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_group_template
+        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
         if self.get_published_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('published is read only')
         if not self._is_valid_boolean(published):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('published is not a valid boolean')
         self._my_map['published'] = published
 
     def clear_published(self):
@@ -1137,10 +1141,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_group_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
         if (self.get_published_metadata().is_read_only() or
                 self.get_published_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear published')
         self._my_map['published'] = self._published_default
 
     published = property(fset=set_published, fdel=clear_published)
@@ -1152,7 +1156,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['published_date'])
         metadata.update({'existing_date_time_values': self._my_map['publishedDate']})
         return Metadata(**metadata)
@@ -1171,13 +1175,15 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.assessment.AssessmentOfferedForm.set_start_time_template
+        # Built from: templates/osid_form.GenericObjectForm.set_date_time_attribute
         if self.get_published_date_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('published_date is read only')
+        if not isinstance(published_date, DateTime):
+            raise errors.InvalidArgument('published_date is not a DateTime')
         if not self._is_valid_date_time(
                 published_date,
                 self.get_published_date_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('published_date is not a valid DateTime')
         self._my_map['publishedDate'] = published_date
 
     def clear_published_date(self):
@@ -1188,10 +1194,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_date_time_attribute
         if (self.get_published_date_metadata().is_read_only() or
                 self.get_published_date_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear published_date')
         self._my_map['publishedDate'] = self._published_date_default
 
     published_date = property(fset=set_published_date, fdel=clear_published_date)
@@ -1203,7 +1209,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['principal_credit_string'])
         metadata.update({'existing_string_values': self._my_map['principalCreditString']})
         return Metadata(**metadata)
@@ -1221,7 +1227,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.set_title_template
+        # Built from: templates/osid_form.GenericObjectForm.set_display_text_attribute
         self._my_map['principalCreditString'] = self._get_display_text(credit_string, self.get_principal_credit_string_metadata())
 
     def clear_principal_credit_string(self):
@@ -1232,10 +1238,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetForm.clear_title_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_display_text_attribute
         if (self.get_principal_credit_string_metadata().is_read_only() or
                 self.get_principal_credit_string_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear principal_credit_string')
         self._my_map['principalCreditString'] = dict(self._principal_credit_string_default)
 
     principal_credit_string = property(fset=set_principal_credit_string, fdel=clear_principal_credit_string)
@@ -1247,7 +1253,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
         metadata = dict(self._mdata['composition'])
         metadata.update({'existing_id_values': self._my_map['compositionId']})
         return Metadata(**metadata)
@@ -1265,11 +1271,11 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
+        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
         if self.get_composition_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('composition_id is read only')
         if not self._is_valid_id(composition_id):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('composition_id is not a valid ID')
         self._my_map['compositionId'] = str(composition_id)
 
     def clear_composition(self):
@@ -1280,10 +1286,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
         if (self.get_composition_metadata().is_read_only() or
                 self.get_composition_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear composition')
         self._my_map['compositionId'] = self._composition_default
 
     composition = property(fset=set_composition, fdel=clear_composition)
@@ -1302,6 +1308,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(asset_record_type)
 
 
@@ -1329,7 +1336,7 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -1353,7 +1360,7 @@ class AssetList(abc_repository_objects.AssetList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(AssetList, number=n)
 
 
@@ -1369,6 +1376,7 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
     application evnironment.
 
     """
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'repository.AssetContent'
 
     def __init__(self, **kwargs):
@@ -1382,9 +1390,7 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective_id
-        if not bool(self._my_map['assetId']):
-            raise errors.IllegalState('asset empty')
+        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
         return Id(self._my_map['assetId'])
 
     asset_id = property(fget=get_asset_id)
@@ -1396,15 +1402,16 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_objective
+        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
         if not bool(self._my_map['assetId']):
-            raise errors.IllegalState('asset empty')
+            raise errors.IllegalState('this AssetContent has no asset')
         mgr = self._get_provider_manager('REPOSITORY')
         if not mgr.supports_asset_lookup():
             raise errors.OperationFailed('Repository does not support Asset lookup')
         lookup_session = mgr.get_asset_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_repository_view()
-        return lookup_session.get_asset(self.get_asset_id())
+        osid_object = lookup_session.get_asset(self.get_asset_id())
+        return osid_object
 
     asset = property(fget=get_asset)
 
@@ -1468,11 +1475,12 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetContent.has_url_template
+        # Built from: templates/osid_object.GenericObject.has_simple_attribute
         try:
             return bool(self._my_map['url'])
         except KeyError:
-            return False
+            pass
+        return False
 
     def get_url(self):
         """Gets the URL associated with this content for web-based retrieval.
@@ -1482,9 +1490,9 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetContent.get_url_template
-        if not bool(self._my_map['url']):
-            raise errors.IllegalState()
+        # Built from: templates/osid_object.GenericObject.get_string_attribute
+        if not self.has_url():
+            raise errors.IllegalState('url not set')
         return self._my_map['url']
 
     url = property(fget=get_url)
@@ -1511,8 +1519,8 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(asset_content_content_record_type)
-
     def _delete(self):
         dbase = JSONClientValidated('repository',
                                     runtime=self._runtime).raw()
@@ -1538,6 +1546,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'repository.AssetContent'
 
     def __init__(self, **kwargs):
@@ -1570,7 +1579,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.logging.LogEntryForm.get_priority_metadata
+        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
         metadata = dict(self._mdata['accessibility_type'])
         metadata.update({'existing_type_values': self._my_map['accessibilityTypeId']})
         return Metadata(**metadata)
@@ -1591,10 +1600,20 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericObjectForm.set_id_list_attribute
+        if not isinstance(accessibility_type, list):
+            raise errors.InvalidArgument()
+        if self.get_accessibility_type_metadata().is_read_only():
+            raise errors.NoAccess()
+        idstr_list = []
+        for object_id in accessibility_type:
+            if not self._is_valid_type(object_id):
+                raise errors.InvalidArgument('{0} is not a valid TYPE'.format(object_id))
+            idstr_list.append(str(object_id))
+        self._my_map['accessibilityTypeIds'] = idstr_list
 
     @utilities.arguments_not_none
-    def remove_accessibility_type(self, accessibility_type):
+    def remove_accessibility_type(self):
         """Removes an accessibility type.
 
         arg:    accessibility_type (osid.type.Type): accessibility type
@@ -1605,7 +1624,14 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericObjectForm.clear_single_id_list_attribute
+        if (self.get_accessibility_type_metadata().is_read_only() or
+                self.get_accessibility_type_metadata().is_required()):
+            raise errors.NoAccess('Sorry you cannot clear accessibility_type')
+        if not isinstance(accessibility_type, Type):
+            raise errors.InvalidArgument('accessibility_type is not Type')
+        self._my_map['accessibilityTypeIds'] = [current_id for current_id in self._my_map['accessibilityTypeIds']
+                                                         if current_id != str(accessibility_type)]
 
     def clear_accessibility_types(self):
         """Removes all accessibility types.
@@ -1614,7 +1640,11 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericObjectForm.clear_id_list_attribute
+        if (self.get_accessibility_type_metadata().is_read_only() or
+                self.get_accessibility_type_metadata().is_required()):
+            raise errors.NoAccess('Sorry you cannot clear accessibility_type')
+        self._my_map['accessibilityTypeIds'] = self._accessibility_type_default
 
     accessibility_types = property(fdel=clear_accessibility_types)
 
@@ -1625,7 +1655,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['data'])
         metadata.update({'existing_object_values': self._my_map['data']})
         return Metadata(**metadata)
@@ -1683,7 +1713,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
+        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
         metadata = dict(self._mdata['url'])
         metadata.update({'existing_string_values': self._my_map['url']})
         return Metadata(**metadata)
@@ -1701,13 +1731,13 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetContentForm.set_url_template
+        # Built from: templates/osid_form.GenericObjectForm.set_string_attribute
         if self.get_url_metadata().is_read_only():
-            raise errors.NoAccess()
+            raise errors.NoAccess('url is read only')
         if not self._is_valid_string(
                 url,
                 self.get_url_metadata()):
-            raise errors.InvalidArgument()
+            raise errors.InvalidArgument('url is not a valid string')
         self._my_map['url'] = url
 
     def clear_url(self):
@@ -1718,10 +1748,10 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.repository.AssetContentForm.clear_url_template
+        # Built from: templates/osid_form.GenericObjectForm.clear_string_attribute
         if (self.get_url_metadata().is_read_only() or
                 self.get_url_metadata().is_required()):
-            raise errors.NoAccess()
+            raise errors.NoAccess('Sorry you cannot clear url')
         self._my_map['url'] = self._url_default
 
     url = property(fset=set_url, fdel=clear_url)
@@ -1742,6 +1772,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(asset_content_record_type)
 
 
@@ -1770,7 +1801,7 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -1795,7 +1826,7 @@ class AssetContentList(abc_repository_objects.AssetContentList, osid_objects.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(AssetContentList, number=n)
 
 
@@ -1806,6 +1837,7 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
     any persisted references should use the Id.
 
     """
+    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'repository.Composition'
 
     def __init__(self, **kwargs):
@@ -1835,7 +1867,7 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.learning.Activity.get_assets_template
+        # Built from: templates/osid_object.GenericObject.get_id_list_objects_different_package
         if not bool(self._my_map['childIds']):
             raise errors.IllegalState('no childIds')
         mgr = self._get_provider_manager('REPOSITORY')
@@ -1871,8 +1903,8 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(composition_record_type)
-
     def get_object_map(self):
         obj_map = dict(self._my_map)
         if 'assetIds' in obj_map:
@@ -1892,6 +1924,7 @@ class CompositionForm(abc_repository_objects.CompositionForm, osid_objects.OsidO
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'repository.Composition'
 
     def __init__(self, **kwargs):
@@ -1934,8 +1967,8 @@ class CompositionForm(abc_repository_objects.CompositionForm, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(composition_record_type)
-
     def get_children_metadata(self):
         """Gets the metadata for children.
 
@@ -2012,7 +2045,7 @@ class CompositionList(abc_repository_objects.CompositionList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -2037,12 +2070,13 @@ class CompositionList(abc_repository_objects.CompositionList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(CompositionList, number=n)
 
 
 class Repository(abc_repository_objects.Repository, osid_objects.OsidCatalog):
     """A repository defines a collection of assets."""
+    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'repository.Repository'
 
     def __init__(self, **kwargs):
@@ -2082,6 +2116,7 @@ class RepositoryForm(abc_repository_objects.RepositoryForm, osid_objects.OsidCat
     constraints.
 
     """
+    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'repository.Repository'
 
     def __init__(self, **kwargs):
@@ -2114,7 +2149,8 @@ class RepositoryForm(abc_repository_objects.RepositoryForm, osid_objects.OsidCat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
+        return self._get_record(repository_record_type)
 
 
 class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidList):
@@ -2142,7 +2178,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -2167,7 +2203,7 @@ class RepositoryList(abc_repository_objects.RepositoryList, osid_objects.OsidLis
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(RepositoryList, number=n)
 
 
@@ -2179,6 +2215,7 @@ class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNod
     ``RepositoryHierarchySession``.
 
     """
+    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -2204,6 +2241,7 @@ class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNod
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('REPOSITORY', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_repository_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -2219,6 +2257,7 @@ class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNod
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_repository_nodes = []
         for node in self._my_map['parentNodes']:
             parent_repository_nodes.append(RepositoryNode(
@@ -2238,6 +2277,7 @@ class RepositoryNode(abc_repository_objects.RepositoryNode, osid_objects.OsidNod
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_repository_nodes = []
         for node in self._my_map['childNodes']:
             parent_repository_nodes.append(RepositoryNode(
@@ -2276,7 +2316,7 @@ class RepositoryNodeList(abc_repository_objects.RepositoryNodeList, osid_objects
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resource
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
         return next(self)
 
     def next(self):
@@ -2301,5 +2341,5 @@ class RepositoryNodeList(abc_repository_objects.RepositoryNodeList, osid_objects
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceList.get_next_resources
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
         return self._get_next_n(RepositoryNodeList, number=n)

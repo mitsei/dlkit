@@ -22,6 +22,7 @@ from dlkit.abstract_osid.osid import errors
 
 class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSearch):
     """The search interface for governing comment searches."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'commenting.Comment'
         self._runtime = runtime
@@ -43,6 +44,7 @@ class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = comment_ids
 
     @utilities.arguments_not_none
@@ -85,6 +87,7 @@ class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSea
 
 class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -102,6 +105,7 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -117,6 +121,7 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.CommentQueryInspector(self._query_terms, runtime=self._runtime)
 
     comment_query_inspector = property(fget=get_comment_query_inspector)
@@ -146,6 +151,7 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
 
 class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
     """The search interface for governing book searches."""
+    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'commenting.Book'
         self._runtime = runtime
@@ -167,6 +173,7 @@ class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = book_ids
 
     @utilities.arguments_not_none
@@ -207,6 +214,7 @@ class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
 
 class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
+    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -224,6 +232,7 @@ class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -239,6 +248,7 @@ class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.BookQueryInspector(self._query_terms, runtime=self._runtime)
 
     book_query_inspector = property(fget=get_book_query_inspector)

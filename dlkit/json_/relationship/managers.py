@@ -32,8 +32,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_relationship_lookup' in profile.SUPPORTS
 
     def supports_relationship_query(self):
@@ -44,8 +43,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_relationship_query' in profile.SUPPORTS
 
     def supports_relationship_admin(self):
@@ -56,8 +54,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_relationship_admin' in profile.SUPPORTS
 
     def supports_family_lookup(self):
@@ -68,8 +65,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_family_lookup' in profile.SUPPORTS
 
     def supports_family_admin(self):
@@ -80,8 +76,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_family_admin' in profile.SUPPORTS
 
     def supports_family_hierarchy(self):
@@ -93,8 +88,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         providers.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_family_hierarchy' in profile.SUPPORTS
 
     def supports_family_hierarchy_design(self):
@@ -105,8 +99,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return 'supports_family_hierarchy_design' in profile.SUPPORTS
 
     def get_relationship_record_types(self):
@@ -117,8 +110,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('RELATIONSHIP_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -135,8 +127,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('RELATIONSHIP_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -153,8 +144,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('FAMILY_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -171,8 +161,7 @@ class RelationshipProfile(osid_managers.OsidProfile, relationship_managers.Relat
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.ResourceProfile.get_resource_record_types_template
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         record_type_maps = get_registry('FAMILY_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -218,7 +207,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         osid_managers.OsidManager.__init__(self)
 
     @utilities.remove_null_proxy_kwarg
-    def get_relationship_lookup_session(self):
+    def get_relationship_lookup_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the relationship lookup service.
 
         return: (osid.relationship.RelationshipLookupSession) - a
@@ -230,16 +219,18 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_relationship_lookup()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_relationship_lookup():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.RelationshipLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.RelationshipLookupSession(runtime=self._runtime)
 
     relationship_lookup_session = property(fget=get_relationship_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_relationship_lookup_session_for_family(self, family_id):
+    def get_relationship_lookup_session_for_family(self, family_id, **kwargs):
         """Gets the ``OsidSession`` associated with the relationship lookup service for the given family.
 
         arg:    family_id (osid.id.Id): the ``Id`` of the family
@@ -255,16 +246,22 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_relationship_lookup():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.RelationshipLookupSession(
+                family_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.RelationshipLookupSession(family_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_relationship_query_session(self):
+    def get_relationship_query_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the relationship query service.
 
         return: (osid.relationship.RelationshipQuerySession) - a
@@ -276,16 +273,18 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_relationship_query()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_relationship_query():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.RelationshipQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.RelationshipQuerySession(runtime=self._runtime)
 
     relationship_query_session = property(fget=get_relationship_query_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_relationship_query_session_for_family(self, family_id):
+    def get_relationship_query_session_for_family(self, family_id, **kwargs):
         """Gets the ``OsidSession`` associated with the relationship query service for the given family.
 
         arg:    family_id (osid.id.Id): the ``Id`` of the family
@@ -301,16 +300,22 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_relationship_query():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.RelationshipQuerySession(
+                family_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.RelationshipQuerySession(family_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_relationship_admin_session(self):
+    def get_relationship_admin_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the relationship administration service.
 
         return: (osid.relationship.RelationshipAdminSession) - a
@@ -322,16 +327,18 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_relationship_admin()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_relationship_admin():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.RelationshipAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.RelationshipAdminSession(runtime=self._runtime)
 
     relationship_admin_session = property(fget=get_relationship_admin_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_relationship_admin_session_for_family(self, family_id):
+    def get_relationship_admin_session_for_family(self, family_id, **kwargs):
         """Gets the ``OsidSession`` associated with the relationship administration service for the given family.
 
         arg:    family_id (osid.id.Id): the ``Id`` of the ``Family``
@@ -347,16 +354,22 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_visible_federation()`` are ``true``*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_relationship_admin():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.RelationshipAdminSession(
+                family_id,
+                proxy=kwargs['proxy'],
+                runtime=self._runtime)
         return sessions.RelationshipAdminSession(family_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_family_lookup_session(self):
+    def get_family_lookup_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the family lookup service.
 
         return: (osid.relationship.FamilyLookupSession) - a
@@ -368,15 +381,17 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_family_lookup()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_family_lookup():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.FamilyLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.FamilyLookupSession(runtime=self._runtime)
 
     family_lookup_session = property(fget=get_family_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_family_admin_session(self):
+    def get_family_admin_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the family administrative service.
 
         return: (osid.relationship.FamilyAdminSession) - a
@@ -387,15 +402,17 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_family_admin()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_family_admin():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.FamilyAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.FamilyAdminSession(runtime=self._runtime)
 
     family_admin_session = property(fget=get_family_admin_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_family_hierarchy_session(self):
+    def get_family_hierarchy_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the family hierarchy service.
 
         return: (osid.relationship.FamilyHierarchySession) - a
@@ -407,15 +424,17 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_family_hierarchy()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_family_hierarchy():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.FamilyHierarchySession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.FamilyHierarchySession(runtime=self._runtime)
 
     family_hierarchy_session = property(fget=get_family_hierarchy_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_family_hierarchy_design_session(self):
+    def get_family_hierarchy_design_session(self, **kwargs):
         """Gets the ``OsidSession`` associated with the family hierarchy design service.
 
         return: (osid.relationship.FamilyHierarchyDesignSession) - a
@@ -427,9 +446,11 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
         ``supports_family_hierarchy_design()`` is ``true``.*
 
         """
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_family_hierarchy_design():
             raise errors.Unimplemented()
-        # pylint: disable=no-member
+        if 'proxy' in kwargs:
+            return sessions.FamilyHierarchyDesignSession(proxy=kwargs['proxy'], runtime=self._runtime)
         return sessions.FamilyHierarchyDesignSession(runtime=self._runtime)
 
     family_hierarchy_design_session = property(fget=get_family_hierarchy_design_session)
@@ -467,7 +488,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
     relationship_rules_manager = property(fget=get_relationship_rules_manager)
 
 
-class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfile, relationship_managers.RelationshipProxyManager):
+class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfile, RelationshipManager, relationship_managers.RelationshipProxyManager):
     """The relationship manager provides access to relationship sessions and provides interoperability tests for various aspects of this service.
 
     Methods in this manager support the passing of a Proxy. The sessions
@@ -500,254 +521,6 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
         hierarchy
 
     """
+    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
-
-    @utilities.arguments_not_none
-    def get_relationship_lookup_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the relationship lookup service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.RelationshipLookupSession) - a
-                ``RelationshipLookupSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_lookup()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_lookup()`` is ``true``.*
-
-        """
-        if not self.supports_relationship_lookup():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.RelationshipLookupSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_relationship_lookup_session_for_family(self, family_id, proxy):
-        """Gets the ``OsidSession`` associated with the relationship lookup service for the given family.
-
-        arg:    family_id (osid.id.Id): the ``Id`` of the family
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.RelationshipLookupSession) - a
-                ``RelationshipLookupSession``
-        raise:  NotFound - no ``Family`` found by the given ``Id``
-        raise:  NullArgument - ``family_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_lookup()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_lookup()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_relationship_lookup():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.RelationshipLookupSession(family_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_relationship_query_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the relationship query service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.RelationshipQuerySession) - a
-                ``RelationshipQuerySession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_query()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_query()`` is ``true``.*
-
-        """
-        if not self.supports_relationship_query():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.RelationshipQuerySession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_relationship_query_session_for_family(self, family_id, proxy):
-        """Gets the ``OsidSession`` associated with the relationship query service for the given family.
-
-        arg:    family_id (osid.id.Id): the ``Id`` of the family
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.RelationshipQuerySession) - a
-                ``RelationshipQuerySession``
-        raise:  NotFound - no ``Family`` found by the given ``Id``
-        raise:  NullArgument - ``family_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_query()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_query()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_relationship_query():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.RelationshipQuerySession(family_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_relationship_admin_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the relationship administration service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.RelationshipAdminSession) - a
-                ``RelationshipAdminSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_admin()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_admin()`` is ``true``.*
-
-        """
-        if not self.supports_relationship_admin():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.RelationshipAdminSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_relationship_admin_session_for_family(self, family_id, proxy):
-        """Gets the ``OsidSession`` associated with the relationship administration service for the given family.
-
-        arg:    family_id (osid.id.Id): the ``Id`` of the family
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.RelationshipAdminSession) - a
-                ``RelationshipAdminSession``
-        raise:  NotFound - no ``Family`` found by the given ``Id``
-        raise:  NullArgument - ``family_id`` or ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_admin()`` or
-                ``supports_visible_federation()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_admin()`` and
-        ``supports_visible_federation()`` are ``true``*
-
-        """
-        if not self.supports_relationship_admin():
-            raise errors.Unimplemented()
-        ##
-        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
-        ##
-        # pylint: disable=no-member
-        return sessions.RelationshipAdminSession(family_id, proxy, self._runtime)
-
-    @utilities.arguments_not_none
-    def get_family_lookup_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the family lookup service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.FamilyLookupSession) - a
-                ``FamilyLookupSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_family_lookup()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_family_lookup()`` is ``true``.*
-
-        """
-        if not self.supports_family_lookup():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.FamilyLookupSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_family_admin_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the family administrative service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.FamilyAdminSession) - a
-                ``FamilyAdminSession``
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_family_admin()`` is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_family_admin()`` is ``true``.*
-
-        """
-        if not self.supports_family_admin():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.FamilyAdminSession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_family_hierarchy_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the family hierarchy service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.FamilyHierarchySession) - a
-                ``FamilyHierarchySession`` for families
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_family_hierarchy()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_family_hierarchy()`` is ``true``.*
-
-        """
-        if not self.supports_family_hierarchy():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.FamilyHierarchySession(proxy=proxy, runtime=self._runtime)
-
-    @utilities.arguments_not_none
-    def get_family_hierarchy_design_session(self, proxy):
-        """Gets the ``OsidSession`` associated with the family hierarchy design service.
-
-        arg:    proxy (osid.proxy.Proxy): a proxy
-        return: (osid.relationship.FamilyHierarchyDesignSession) - a
-                ``HierarchyDesignSession`` for families
-        raise:  NullArgument - ``proxy`` is ``null``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_family_hierarchy_design()``
-                is ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_family_hierarchy_design()`` is ``true``.*
-
-        """
-        if not self.supports_family_hierarchy_design():
-            raise errors.Unimplemented()
-        # pylint: disable=no-member
-        return sessions.FamilyHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
-
-    def get_relationship_batch_proxy_manager(self):
-        """Gets the relationship batch proxy manager.
-
-        return: (osid.relationship.batch.RelationshipBatchProxyManager)
-                - a ``RelationshipBatchProxyManager``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_rules()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_rules()`` is ``true``.*
-
-        """
-        raise errors.Unimplemented()
-
-    relationship_batch_proxy_manager = property(fget=get_relationship_batch_proxy_manager)
-
-    def get_relationship_rules_proxy_manager(self):
-        """Gets the relationship rules proxy manager.
-
-        return: (osid.relationship.rules.RelationshipRulesProxyManager)
-                - a ``RelationshipRulesProxyManager``
-        raise:  OperationFailed - unable to complete request
-        raise:  Unimplemented - ``supports_relationship_rules()`` is
-                ``false``
-        *compliance: optional -- This method must be implemented if
-        ``supports_relationship_rules()`` is ``true``.*
-
-        """
-        raise errors.Unimplemented()
-
-    relationship_rules_proxy_manager = property(fget=get_relationship_rules_proxy_manager)

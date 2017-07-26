@@ -26,6 +26,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
     invocations of a method produces a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'learning.Objective'
         self._runtime = runtime
@@ -47,7 +48,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('assessmentId', str(assessment_id), match)
 
     def clear_assessment_id_terms(self):
@@ -56,7 +57,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('assessmentId')
 
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
@@ -105,7 +106,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('assessment')
 
     assessment_terms = property(fdel=clear_assessment_terms)
@@ -121,7 +122,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('knowledgeCategoryId', str(grade_id), match)
 
     def clear_knowledge_category_id_terms(self):
@@ -130,7 +131,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('knowledgeCategoryId')
 
     knowledge_category_id_terms = property(fdel=clear_knowledge_category_id_terms)
@@ -179,7 +180,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('knowledgeCategory')
 
     knowledge_category_terms = property(fdel=clear_knowledge_category_terms)
@@ -195,7 +196,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('cognitiveProcessId', str(grade_id), match)
 
     def clear_cognitive_process_id_terms(self):
@@ -204,7 +205,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('cognitiveProcessId')
 
     cognitive_process_id_terms = property(fdel=clear_cognitive_process_id_terms)
@@ -253,7 +254,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('cognitiveProcess')
 
     cognitive_process_terms = property(fdel=clear_cognitive_process_terms)
@@ -269,7 +270,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('activityId', str(activity_id), match)
 
     def clear_activity_id_terms(self):
@@ -278,7 +279,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('activityId')
 
     activity_id_terms = property(fdel=clear_activity_id_terms)
@@ -342,7 +343,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('requisiteObjectiveId', str(requisite_objective_id), match)
 
     def clear_requisite_objective_id_terms(self):
@@ -351,7 +352,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('requisiteObjectiveId')
 
     requisite_objective_id_terms = property(fdel=clear_requisite_objective_id_terms)
@@ -416,7 +417,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('dependentObjectiveId', str(dependent_objective_id), match)
 
     def clear_dependent_objective_id_terms(self):
@@ -425,7 +426,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('dependentObjectiveId')
 
     dependent_objective_id_terms = property(fdel=clear_dependent_objective_id_terms)
@@ -490,7 +491,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('equivalentObjectiveId', str(equivalent_objective_id), match)
 
     def clear_equivalent_objective_id_terms(self):
@@ -499,7 +500,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('equivalentObjectiveId')
 
     equivalent_objective_id_terms = property(fdel=clear_equivalent_objective_id_terms)
@@ -563,7 +564,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('ancestorObjectiveId', str(objective_id), match)
 
     def clear_ancestor_objective_id_terms(self):
@@ -572,7 +573,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('ancestorObjectiveId')
 
     ancestor_objective_id_terms = property(fdel=clear_ancestor_objective_id_terms)
@@ -635,7 +636,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('descendantObjectiveId', str(objective_id), match)
 
     def clear_descendant_objective_id_terms(self):
@@ -644,7 +645,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('descendantObjectiveId')
 
     descendant_objective_id_terms = property(fdel=clear_descendant_objective_id_terms)
@@ -707,7 +708,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedObjectiveBankIds', str(objective_bank_id), match)
 
     def clear_objective_bank_id_terms(self):
@@ -716,7 +717,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedObjectiveBankIds')
 
     objective_bank_id_terms = property(fdel=clear_objective_bank_id_terms)
@@ -754,7 +755,7 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('objectiveBank')
 
     objective_bank_terms = property(fdel=clear_objective_bank_terms)
@@ -786,6 +787,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
     invocations of a method produces a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'learning.Activity'
         self._runtime = runtime
@@ -807,7 +809,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('objectiveId', str(objective_id), match)
 
     def clear_objective_id_terms(self):
@@ -816,7 +818,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('objectiveId')
 
     objective_id_terms = property(fdel=clear_objective_id_terms)
@@ -853,7 +855,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('objective')
 
     objective_terms = property(fdel=clear_objective_terms)
@@ -869,7 +871,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('assetId', str(asset_id), match)
 
     def clear_asset_id_terms(self):
@@ -878,7 +880,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('assetId')
 
     asset_id_terms = property(fdel=clear_asset_id_terms)
@@ -940,7 +942,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('courseId', str(course_id), match)
 
     def clear_course_id_terms(self):
@@ -949,7 +951,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('courseId')
 
     course_id_terms = property(fdel=clear_course_id_terms)
@@ -1011,7 +1013,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
         self._add_match('assessmentId', str(assessment_id), match)
 
     def clear_assessment_id_terms(self):
@@ -1020,7 +1022,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('assessmentId')
 
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
@@ -1084,7 +1086,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedObjectiveBankIds', str(objective_bank_id), match)
 
     def clear_objective_bank_id_terms(self):
@@ -1093,7 +1095,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedObjectiveBankIds')
 
     objective_bank_id_terms = property(fdel=clear_objective_bank_id_terms)
@@ -1131,7 +1133,7 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('objectiveBank')
 
     objective_bank_terms = property(fdel=clear_objective_bank_terms)
@@ -1174,7 +1176,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         osid_queries.OsidObjectQuery.__init__(self, runtime)
 
     @utilities.arguments_not_none
-    def match_resource_id(self, resource_id, match):
+    def match_resource_id(self, resource_id):
         """Sets the resource ``Id`` for this query.
 
         arg:    resource_id (osid.id.Id): a resource ``Id``
@@ -1194,7 +1196,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('resourceId')
 
     resource_id_terms = property(fdel=clear_resource_id_terms)
@@ -1231,13 +1233,13 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('resource')
 
     resource_terms = property(fdel=clear_resource_terms)
 
     @utilities.arguments_not_none
-    def match_objective_id(self, objective_id, match):
+    def match_objective_id(self, objective_id):
         """Sets the objective ``Id`` for this query.
 
         arg:    objective_id (osid.id.Id): an objective ``Id``
@@ -1257,7 +1259,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('objectiveId')
 
     objective_id_terms = property(fdel=clear_objective_id_terms)
@@ -1306,7 +1308,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('objective')
 
     objective_terms = property(fdel=clear_objective_terms)
@@ -1347,7 +1349,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('completion')
 
     completion_terms = property(fdel=clear_completion_terms)
@@ -1395,7 +1397,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
+        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
         self._clear_terms('levelId')
 
     level_id_terms = property(fdel=clear_level_id_terms)
@@ -1442,7 +1444,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('level')
 
     level_terms = property(fdel=clear_level_terms)
@@ -1458,7 +1460,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
+        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
         self._add_match('assignedObjectiveBankIds', str(objective_bank_id), match)
 
     def clear_objective_bank_id_terms(self):
@@ -1467,7 +1469,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
         self._clear_terms('assignedObjectiveBankIds')
 
     objective_bank_id_terms = property(fdel=clear_objective_bank_id_terms)
@@ -1505,7 +1507,7 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
+        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
         self._clear_terms('objectiveBank')
 
     objective_bank_terms = property(fdel=clear_objective_bank_terms)
@@ -1539,6 +1541,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
     the same method produce a nested ``OR``.
 
     """
+    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('OBJECTIVEBANK_RECORD_TYPES', runtime)
@@ -1581,6 +1584,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('objectiveId')
 
     objective_id_terms = property(fdel=clear_objective_id_terms)
@@ -1629,6 +1633,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('objective')
 
     objective_terms = property(fdel=clear_objective_terms)
@@ -1652,6 +1657,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('activityId')
 
     activity_id_terms = property(fdel=clear_activity_id_terms)
@@ -1700,6 +1706,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('activity')
 
     activity_terms = property(fdel=clear_activity_terms)
@@ -1723,6 +1730,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorObjectiveBankId')
 
     ancestor_objective_bank_id_terms = property(fdel=clear_ancestor_objective_bank_id_terms)
@@ -1772,6 +1780,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorObjectiveBank')
 
     ancestor_objective_bank_terms = property(fdel=clear_ancestor_objective_bank_terms)
@@ -1795,6 +1804,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantObjectiveBankId')
 
     descendant_objective_bank_id_terms = property(fdel=clear_descendant_objective_bank_id_terms)
@@ -1844,6 +1854,7 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantObjectiveBank')
 
     descendant_objective_bank_terms = property(fdel=clear_descendant_objective_bank_terms)

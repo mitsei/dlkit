@@ -28,6 +28,7 @@ class HierarchyQuery(abc_hierarchy_queries.HierarchyQuery, osid_queries.OsidCata
     accessing the ``HierarchyQuery`` record.
 
     """
+    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('HIERARCHY_RECORD_TYPES', runtime)
@@ -84,6 +85,7 @@ class HierarchyQuery(abc_hierarchy_queries.HierarchyQuery, osid_queries.OsidCata
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('nodeId')
 
     node_id_terms = property(fdel=clear_node_id_terms)
