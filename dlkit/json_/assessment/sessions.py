@@ -3159,7 +3159,11 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_session.GenericObjectNotificationSession.acknowledge_object_notification
+        try:
+            del MONGO_LISTENER.notifications[notification_id]
+        except KeyError:
+            pass
 
     def register_for_new_items(self):
         """Register for notifications of new assessment items.
@@ -3284,7 +3288,11 @@ class ItemNotificationSession(abc_assessment_sessions.ItemNotificationSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_session.GenericObjectNotificationSession.acknowledge_object_notification
+        try:
+            del MONGO_LISTENER.notifications[notification_id]
+        except KeyError:
+            pass
 
 
 class ItemBankSession(abc_assessment_sessions.ItemBankSession, osid_sessions.OsidSession):

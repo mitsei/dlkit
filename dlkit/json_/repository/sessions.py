@@ -2184,7 +2184,11 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_session.GenericObjectNotificationSession.acknowledge_object_notification
+        try:
+            del MONGO_LISTENER.notifications[notification_id]
+        except KeyError:
+            pass
 
 
 class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osid_sessions.OsidSession):

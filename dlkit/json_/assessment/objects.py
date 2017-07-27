@@ -3197,11 +3197,7 @@ class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_o
 
 class Bank(abc_assessment_objects.Bank, osid_objects.OsidCatalog):
     """A bank defines a collection of assessments and items."""
-    # Built from: templates/osid_catalog.GenericCatalog.init_template
-    _namespace = 'assessment.Bank'
 
-    def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, object_name='BANK', **kwargs)
 
     @utilities.arguments_not_none
     def get_bank_record(self, bank_record_type):

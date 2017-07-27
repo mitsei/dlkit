@@ -1263,7 +1263,11 @@ class ResourceNotificationSession(abc_resource_sessions.ResourceNotificationSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Built from: templates/osid_session.GenericObjectNotificationSession.acknowledge_object_notification
+        try:
+            del MONGO_LISTENER.notifications[notification_id]
+        except KeyError:
+            pass
 
 
 class ResourceBinSession(abc_resource_sessions.ResourceBinSession, osid_sessions.OsidSession):

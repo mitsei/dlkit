@@ -29,6 +29,7 @@ class TypeManager(osid_managers.OsidManager, TypeProfile, type_managers.TypeMana
     """
 
 
+
 class TypeProxyManager(osid_managers.OsidProxyManager, TypeProfile, TypeManager, type_managers.TypeProxyManager):
     """This manager provides access to the available sessions of the type service.
 
