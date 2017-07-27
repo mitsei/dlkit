@@ -39,75 +39,48 @@ class ProxyProfile(osid.OsidProfile, proxy_managers.ProxyProfile):
 
     def supports_proxy(self):
         """Pass through to provider supports_proxy"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_proxy()
 
     def get_proxy_record_types(self):
         """Pass through to provider get_proxy_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_proxy_record_types()
 
     proxy_record_types = property(fget=get_proxy_record_types)
 
     def get_proxy_condition_record_types(self):
         """Pass through to provider get_proxy_condition_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_proxy_condition_record_types()
 
     proxy_condition_record_types = property(fget=get_proxy_condition_record_types)
 
 
-class ProxyManager(osid.OsidManager, osid.OsidSession, ProxyProfile, proxy_managers.ProxyManager):
+class ProxyManager(osid.OsidManager, osid.OsidSession, ProxyProfile, Manager, proxy_managers.ProxyManager):
     """ProxyManager convenience adapter including related Session methods."""
-    def __init__(self):
-        import settings
-        import importlib
-        provider_module = importlib.import_module(settings.PROXY_PROVIDER_MANAGER_PATH, settings.ANCHOR_PATH)
-        provider_manager_class = getattr(provider_module, 'ProxyManager')
-        self._provider_manager = provider_manager_class()
-        self._provider_sessions = dict()
 
-    def _get_provider_session(self, session):
-        if session in self._provider_sessions:
-            return self._provider_sessions[session]
-        else:
-            try:
-                get_session = getattr(self._provider_manager, 'get_' + session)
-            except:
-                raise  # Unimplemented???
-            else:
-                self._provider_sessions[session] = get_session()
-            return self._provider_sessions[session]
 
     def get_proxy_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
+        """Pass through to provider get_proxy_session"""
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
+        return self._provider_manager.get_proxy_session(*args, **kwargs)
 
     proxy_session = property(fget=get_proxy_session)
 ##
 # The following methods are from osid.proxy.ProxySession
 
     def get_proxy_condition(self):
-        """Pass through to provider method"""
-        # Implemented from
-        # osid.proxy.ProxySession.get_proxy_condition
-        return self._get_provider_session('proxy_session').get_proxy_condition()
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services')
 
     proxy_condition = property(fget=get_proxy_condition)
 
     def get_proxy(self, *args, **kwargs):
-        """Pass through to provider method"""
-        # Implemented from
-        # osid.proxy.ProxySession.get_proxy
-        return self._get_provider_session('proxy_session').get_proxy(*args, **kwargs)
-
-
-class ProxyProxyManager(osid.OsidProxyManager, ProxyProfile, proxy_managers.ProxyProxyManager):
-    """ProxyProxyManager convenience adapter including related Session methods."""
-
-    def get_proxy_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+
+class ProxyProxyManager(osid.OsidProxyManager, ProxyProfile, Manager, proxy_managers.ProxyProxyManager):
+    """ProxyProxyManager convenience adapter including related Session methods."""
+    pass

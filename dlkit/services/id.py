@@ -47,11 +47,6 @@ class IdManager(osid.OsidManager, osid.OsidSession, IdProfile, id_managers.IdMan
     id_batch_manager = property(fget=get_id_batch_manager)
 
 
-class IdProxyManager(osid.OsidProxyManager, IdProfile, id_managers.IdProxyManager):
+class IdProxyManager(osid.OsidProxyManager, IdProfile, IdManager, id_managers.IdProxyManager):
     """IdProxyManager convenience adapter including related Session methods."""
-
-    def get_id_batch_proxy_manager(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
-
-    id_batch_proxy_manager = property(fget=get_id_batch_proxy_manager)
+    pass

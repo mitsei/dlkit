@@ -89,6 +89,6 @@ class TypeManager(osid.OsidManager, osid.OsidSession, TypeProfile, type_managers
         return self._provider_manager.get_type_admin_session(*args, **kwargs)
 
 
-class TypeProxyManager(osid.OsidProxyManager, TypeProfile, type_managers.TypeProxyManager):
+class TypeProxyManager(osid.OsidProxyManager, TypeProfile, TypeManager, type_managers.TypeProxyManager):
     """TypeProxyManager convenience adapter including related Session methods."""
     pass

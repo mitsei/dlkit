@@ -39,38 +39,33 @@ class AuthenticationProfile(osid.OsidProfile, authentication_managers.Authentica
 
     def supports_agent_lookup(self):
         """Pass through to provider supports_agent_lookup"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_agent_lookup()
 
     def get_agent_record_types(self):
         """Pass through to provider get_agent_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_agent_record_types()
 
     agent_record_types = property(fget=get_agent_record_types)
 
     def get_agent_search_record_types(self):
         """Pass through to provider get_agent_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_agent_search_record_types()
 
     agent_search_record_types = property(fget=get_agent_search_record_types)
 
     def get_agency_record_types(self):
         """Pass through to provider get_agency_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_agency_record_types()
 
     agency_record_types = property(fget=get_agency_record_types)
 
     def get_agency_search_record_types(self):
         """Pass through to provider get_agency_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_agency_search_record_types()
 
     agency_search_record_types = property(fget=get_agency_search_record_types)
@@ -79,40 +74,35 @@ class AuthenticationProfile(osid.OsidProfile, authentication_managers.Authentica
 
     def get_authentication_record_types(self):
         """Pass through to provider get_authentication_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_authentication_record_types()
 
     authentication_record_types = property(fget=get_authentication_record_types)
 
     def get_authentication_input_record_types(self):
         """Pass through to provider get_authentication_input_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_authentication_input_record_types()
 
     authentication_input_record_types = property(fget=get_authentication_input_record_types)
 
     def get_challenge_record_types(self):
         """Pass through to provider get_challenge_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_challenge_record_types()
 
     challenge_record_types = property(fget=get_challenge_record_types)
 
     def get_credential_types(self):
         """Pass through to provider get_credential_types"""
-        # Implemented from kitosid template for -
-        # osid.repository.RepositoryProfile.get_coordinate_types
+        # Built from: templates/osid_managers.GenericProfile.get_type_list
         return self._provider_manager.get_credential_types()
 
     credential_types = property(fget=get_credential_types)
 
     def get_trust_types(self):
         """Pass through to provider get_trust_types"""
-        # Implemented from kitosid template for -
-        # osid.repository.RepositoryProfile.get_coordinate_types
+        # Built from: templates/osid_managers.GenericProfile.get_type_list
         return self._provider_manager.get_trust_types()
 
     trust_types = property(fget=get_trust_types)
@@ -235,16 +225,14 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
 
     def get_agent_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_agent_lookup_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         return self._provider_manager.get_agent_lookup_session(*args, **kwargs)
 
     agent_lookup_session = property(fget=get_agent_lookup_session)
 
     def get_agent_lookup_session_for_agency(self, *args, **kwargs):
         """Pass through to provider get_agent_lookup_session_for_agency"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         return self._provider_manager.get_agent_lookup_session_for_agency(*args, **kwargs)
 
     def get_authentication_batch_manager(self, *args, **kwargs):
@@ -266,35 +254,6 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
     authentication_process_manager = property(fget=get_authentication_process_manager)
 
 
-class AuthenticationProxyManager(osid.OsidProxyManager, AuthenticationProfile, authentication_managers.AuthenticationProxyManager):
+class AuthenticationProxyManager(osid.OsidProxyManager, AuthenticationProfile, AuthenticationManager, authentication_managers.AuthenticationProxyManager):
     """AuthenticationProxyManager convenience adapter including related Session methods."""
-
-    def get_agent_lookup_session(self, *args, **kwargs):
-        """Sends control to Manager"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
-        return AuthenticationManager.get_agent_lookup_session(*args, **kwargs)
-
-    def get_agent_lookup_session_for_agency(self, *args, **kwargs):
-        """Sends control to Manager"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
-        return AuthenticationManager.get_agent_lookup_session_for_agency(*args, **kwargs)
-
-    def get_authentication_batch_proxy_manager(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
-
-    authentication_batch_proxy_manager = property(fget=get_authentication_batch_proxy_manager)
-
-    def get_authentication_keys_proxy_manager(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
-
-    authentication_keys_proxy_manager = property(fget=get_authentication_keys_proxy_manager)
-
-    def get_authentication_process_proxy_manager(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
-
-    authentication_process_proxy_manager = property(fget=get_authentication_process_proxy_manager)
+    pass

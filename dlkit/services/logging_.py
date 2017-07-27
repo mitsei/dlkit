@@ -40,98 +40,84 @@ class LoggingProfile(osid.OsidProfile, logging_managers.LoggingProfile):
 
     def supports_logging(self):
         """Pass through to provider supports_logging"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_logging()
 
     def supports_log_entry_lookup(self):
         """Pass through to provider supports_log_entry_lookup"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_log_entry_lookup()
 
     def supports_log_entry_query(self):
         """Pass through to provider supports_log_entry_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_log_entry_query()
 
     def supports_log_lookup(self):
         """Pass through to provider supports_log_lookup"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_log_lookup()
 
     def supports_log_admin(self):
         """Pass through to provider supports_log_admin"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_log_admin()
 
     def supports_log_hierarchy(self):
         """Pass through to provider supports_log_hierarchy"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_log_hierarchy()
 
     def supports_log_hierarchy_design(self):
         """Pass through to provider supports_log_hierarchy_design"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_log_hierarchy_design()
 
     def get_log_entry_record_types(self):
         """Pass through to provider get_log_entry_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_log_entry_record_types()
 
     log_entry_record_types = property(fget=get_log_entry_record_types)
 
     def get_log_entry_search_record_types(self):
         """Pass through to provider get_log_entry_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_log_entry_search_record_types()
 
     log_entry_search_record_types = property(fget=get_log_entry_search_record_types)
 
     def get_log_record_types(self):
         """Pass through to provider get_log_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_log_record_types()
 
     log_record_types = property(fget=get_log_record_types)
 
     def get_log_search_record_types(self):
         """Pass through to provider get_log_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_log_search_record_types()
 
     log_search_record_types = property(fget=get_log_search_record_types)
 
     def get_priority_types(self):
         """Pass through to provider get_priority_types"""
-        # Implemented from kitosid template for -
-        # osid.repository.RepositoryProfile.get_coordinate_types
+        # Built from: templates/osid_managers.GenericProfile.get_type_list
         return self._provider_manager.get_priority_types()
 
     priority_types = property(fget=get_priority_types)
 
     def get_content_types(self):
         """Pass through to provider get_content_types"""
-        # Implemented from kitosid template for -
-        # osid.repository.RepositoryProfile.get_coordinate_types
+        # Built from: templates/osid_managers.GenericProfile.get_type_list
         return self._provider_manager.get_content_types()
 
     content_types = property(fget=get_content_types)
 
     def supports_log_entry_admin(self):
         """Pass through to provider supports_log_entry_admin"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_log_entry_admin()
 
 
@@ -252,88 +238,76 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_logging_session(self, *args, **kwargs):
         """Pass through to provider get_logging_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_logging_session(*args, **kwargs)
 
     logging_session = property(fget=get_logging_session)
 
     def get_logging_session_for_log(self, *args, **kwargs):
         """Pass through to provider get_logging_session_for_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         return self._provider_manager.get_logging_session_for_log(*args, **kwargs)
 
     def get_log_entry_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_log_entry_lookup_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_log_entry_lookup_session(*args, **kwargs)
 
     log_entry_lookup_session = property(fget=get_log_entry_lookup_session)
 
     def get_log_entry_lookup_session_for_log(self, *args, **kwargs):
         """Pass through to provider get_log_entry_lookup_session_for_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         return self._provider_manager.get_log_entry_lookup_session_for_log(*args, **kwargs)
 
     def get_log_entry_query_session(self, *args, **kwargs):
         """Pass through to provider get_log_entry_query_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_log_entry_query_session(*args, **kwargs)
 
     log_entry_query_session = property(fget=get_log_entry_query_session)
 
     def get_log_entry_query_session_for_log(self, *args, **kwargs):
         """Pass through to provider get_log_entry_query_session_for_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         return self._provider_manager.get_log_entry_query_session_for_log(*args, **kwargs)
 
     def get_log_entry_admin_session(self, *args, **kwargs):
         """Pass through to provider get_log_entry_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_log_entry_admin_session(*args, **kwargs)
 
     log_entry_admin_session = property(fget=get_log_entry_admin_session)
 
     def get_log_entry_admin_session_for_log(self, *args, **kwargs):
         """Pass through to provider get_log_entry_admin_session_for_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         return self._provider_manager.get_log_entry_admin_session_for_log(*args, **kwargs)
 
     def get_log_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_log_lookup_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_log_lookup_session(*args, **kwargs)
 
     log_lookup_session = property(fget=get_log_lookup_session)
 
     def get_log_admin_session(self, *args, **kwargs):
         """Pass through to provider get_log_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_log_admin_session(*args, **kwargs)
 
     log_admin_session = property(fget=get_log_admin_session)
 
     def get_log_hierarchy_session(self, *args, **kwargs):
         """Pass through to provider get_log_hierarchy_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_log_hierarchy_session(*args, **kwargs)
 
     log_hierarchy_session = property(fget=get_log_hierarchy_session)
 
     def get_log_hierarchy_design_session(self, *args, **kwargs):
         """Pass through to provider get_log_hierarchy_design_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_log_hierarchy_design_session(*args, **kwargs)
 
     log_hierarchy_design_session = property(fget=get_log_hierarchy_design_session)
@@ -347,12 +321,27 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 # The following methods are from osid.logging.LoggingSession
 
     def get_log_id(self):
+        """Pass through to provider LoggingSession.get_log_id"""
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
         return self._get_provider_session('logging_session').get_log_id()
 
     log_id = property(fget=get_log_id)
 
+    def get_log(self):
+        """Pass through to provider LoggingSession.get_log"""
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        return Log(
+            self._provider_manager,
+            self._get_provider_session('logging_session').get_log(*args, **kwargs),
+            self._runtime,
+            self._proxy)
+
+    log = property(fget=get_log)
+
     def can_log(self):
-        return self._get_provider_session('logging_session').can_log()
+        """Pass through to provider LoggingSession.can_log"""
+        # Not templated -- check the hand-built implementations
+        self._get_provider_session('logging_session').can_log()
 
     def log(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
@@ -376,12 +365,12 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def can_lookup_logs(self):
         """Pass through to provider LogLookupSession.can_lookup_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
         return self._get_provider_session('log_lookup_session').can_lookup_logs()
 
     def use_comparative_log_view(self):
         """Pass through to provider LogLookupSession.use_comparative_log_view"""
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._log_view = COMPARATIVE
         # self._get_provider_session('log_lookup_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
@@ -392,6 +381,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def use_plenary_log_view(self):
         """Pass through to provider LogLookupSession.use_plenary_log_view"""
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._log_view = PLENARY
         # self._get_provider_session('log_lookup_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
@@ -402,8 +392,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_log(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bin
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
         return Log(
             self._provider_manager,
             self._get_provider_session('log_lookup_session').get_log(*args, **kwargs),
@@ -412,8 +401,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_logs_by_ids(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_logs_by_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_ids
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
         catalogs = self._get_provider_session('log_lookup_session').get_logs_by_ids(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -422,8 +410,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_logs_by_genus_type(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_logs_by_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_genus_type
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
         catalogs = self._get_provider_session('log_lookup_session').get_logs_by_genus_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -432,8 +419,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_logs_by_parent_genus_type(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_logs_by_parent_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_parent_genus_type
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_parent_genus_type
         catalogs = self._get_provider_session('log_lookup_session').get_logs_by_parent_genus_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -442,8 +428,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_logs_by_record_type(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_logs_by_record_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_record_type
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_record_type
         catalogs = self._get_provider_session('log_lookup_session').get_logs_by_record_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -452,8 +437,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_logs_by_provider(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_logs_by_provider"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_provider
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_provider
         catalogs = self._get_provider_session('log_lookup_session').get_logs_by_provider(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -462,8 +446,7 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def get_logs(self):
         """Pass through to provider LogLookupSession.get_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
         catalogs = self._get_provider_session('log_lookup_session').get_logs()
         cat_list = []
         for cat in catalogs:
@@ -476,26 +459,22 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def can_create_logs(self):
         """Pass through to provider LogAdminSession.can_create_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_create_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
         return self._get_provider_session('log_admin_session').can_create_logs()
 
     def can_create_log_with_record_types(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.can_create_log_with_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_create_bin_with_record_types
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
         return self._get_provider_session('log_admin_session').can_create_log_with_record_types(*args, **kwargs)
 
     def get_log_form_for_create(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.get_log_form_for_create"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.get_bin_form_for_create
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
         return self._get_provider_session('log_admin_session').get_log_form_for_create(*args, **kwargs)
 
     def create_log(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.create_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.create_bin
+        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
         return Log(
             self._provider_manager,
             self._get_provider_session('log_admin_session').create_log(*args, **kwargs),
@@ -504,297 +483,179 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
 
     def can_update_logs(self):
         """Pass through to provider LogAdminSession.can_update_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_update_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
         return self._get_provider_session('log_admin_session').can_update_logs()
 
     def get_log_form_for_update(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.get_log_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.get_bin_form_for_update
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
         return self._get_provider_session('log_admin_session').get_log_form_for_update(*args, **kwargs)
-
-    def get_log_form(self, *args, **kwargs):
-        """Pass through to provider LogAdminSession.get_log_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.get_bin_form_for_update_template
-        # This method might be a bit sketchy. Time will tell.
-        if isinstance(args[-1], list) or 'log_record_types' in kwargs:
-            return self.get_log_form_for_create(*args, **kwargs)
-        else:
-            return self.get_log_form_for_update(*args, **kwargs)
 
     def update_log(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.update_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.update_bin
-        # OSID spec does not require returning updated catalog
+        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
         return Log(
             self._provider_manager,
             self._get_provider_session('log_admin_session').update_log(*args, **kwargs),
             self._runtime,
             self._proxy)
 
-    def save_log(self, log_form, *args, **kwargs):
-        """Pass through to provider LogAdminSession.update_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.update_bin
-        if log_form.is_for_update():
-            return self.update_log(log_form, *args, **kwargs)
-        else:
-            return self.create_log(log_form, *args, **kwargs)
-
     def can_delete_logs(self):
         """Pass through to provider LogAdminSession.can_delete_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_delete_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
         return self._get_provider_session('log_admin_session').can_delete_logs()
 
     def delete_log(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.delete_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.delete_bin
+        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
         self._get_provider_session('log_admin_session').delete_log(*args, **kwargs)
 
     def can_manage_log_aliases(self):
         """Pass through to provider LogAdminSession.can_manage_log_aliases"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         return self._get_provider_session('log_admin_session').can_manage_log_aliases()
 
     def alias_log(self, *args, **kwargs):
         """Pass through to provider LogAdminSession.alias_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.alias_bin
+        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
         self._get_provider_session('log_admin_session').alias_log(*args, **kwargs)
 ##
 # The following methods are from osid.logging.LogHierarchySession
 
     def get_log_hierarchy_id(self):
         """Pass through to provider LogHierarchySession.get_log_hierarchy_id"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
         return self._get_provider_session('log_hierarchy_session').get_log_hierarchy_id()
 
     log_hierarchy_id = property(fget=get_log_hierarchy_id)
 
     def get_log_hierarchy(self):
         """Pass through to provider LogHierarchySession.get_log_hierarchy"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
         return self._get_provider_session('log_hierarchy_session').get_log_hierarchy()
 
     log_hierarchy = property(fget=get_log_hierarchy)
 
     def can_access_log_hierarchy(self):
         """Pass through to provider LogHierarchySession.can_access_log_hierarchy"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.can_access_catalog_hierarchy
         return self._get_provider_session('log_hierarchy_session').can_access_log_hierarchy()
 
     def get_root_log_ids(self):
         """Pass through to provider LogHierarchySession.get_root_log_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_root_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalog_ids
         return self._get_provider_session('log_hierarchy_session').get_root_log_ids()
 
     root_log_ids = property(fget=get_root_log_ids)
 
     def get_root_logs(self):
         """Pass through to provider LogHierarchySession.get_root_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_root_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalogs
         return self._get_provider_session('log_hierarchy_session').get_root_logs()
 
     root_logs = property(fget=get_root_logs)
 
     def has_parent_logs(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.has_parent_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.has_parent_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_parent_catalogs
         return self._get_provider_session('log_hierarchy_session').has_parent_logs(*args, **kwargs)
 
     def is_parent_of_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.is_parent_of_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.is_parent_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_parent_of_catalog
         return self._get_provider_session('log_hierarchy_session').is_parent_of_log(*args, **kwargs)
 
     def get_parent_log_ids(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.get_parent_log_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalog_ids
         return self._get_provider_session('log_hierarchy_session').get_parent_log_ids(*args, **kwargs)
 
     def get_parent_logs(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.get_parent_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_parent_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalogs
         return self._get_provider_session('log_hierarchy_session').get_parent_logs(*args, **kwargs)
 
     def is_ancestor_of_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.is_ancestor_of_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_ancestor_of_catalog
         return self._get_provider_session('log_hierarchy_session').is_ancestor_of_log(*args, **kwargs)
 
     def has_child_logs(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.has_child_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.has_child_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_child_catalogs
         return self._get_provider_session('log_hierarchy_session').has_child_logs(*args, **kwargs)
 
     def is_child_of_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.is_child_of_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.is_child_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_child_of_catalog
         return self._get_provider_session('log_hierarchy_session').is_child_of_log(*args, **kwargs)
 
     def get_child_log_ids(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.get_child_log_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_child_bin_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalog_ids
         return self._get_provider_session('log_hierarchy_session').get_child_log_ids(*args, **kwargs)
 
     def get_child_logs(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.get_child_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_child_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalogs
         return self._get_provider_session('log_hierarchy_session').get_child_logs(*args, **kwargs)
 
     def is_descendant_of_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.is_descendant_of_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_descendant_of_catalog
         return self._get_provider_session('log_hierarchy_session').is_descendant_of_log(*args, **kwargs)
 
     def get_log_node_ids(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.get_log_node_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_bin_node_ids
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_node_ids
         return self._get_provider_session('log_hierarchy_session').get_log_node_ids(*args, **kwargs)
 
     def get_log_nodes(self, *args, **kwargs):
         """Pass through to provider LogHierarchySession.get_log_nodes"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchySession.get_bin_nodes
+        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_nodes
         return self._get_provider_session('log_hierarchy_session').get_log_nodes(*args, **kwargs)
 ##
 # The following methods are from osid.logging.LogHierarchyDesignSession
 
     def can_modify_log_hierarchy(self):
         """Pass through to provider LogHierarchyDesignSession.can_modify_log_hierarchy"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.can_modify_catalog_hierarchy
         return self._get_provider_session('log_hierarchy_design_session').can_modify_log_hierarchy()
-
-    def create_log_hierarchy(self, *args, **kwargs):
-        """Pass through to provider LogHierarchyDesignSession.can_modify_log_hierarchy"""
-        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
-        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
-        # Will not return an actual object, just JSON
-        # since a BankHierarchy does not seem to be an OSID thing.
-        return self._get_provider_session('log_hierarchy_design_session').create_log_hierarchy(*args, **kwargs)
-
-    def delete_log_hierarchy(self, *args, **kwargs):
-        """Pass through to provider LogHierarchyDesignSession.can_modify_log_hierarchy"""
-        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
-        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
-        # Will not return an actual object, just JSON
-        # since a BankHierarchy does not seem to be an OSID thing.
-        return self._get_provider_session('log_hierarchy_design_session').delete_log_hierarchy(*args, **kwargs)
 
     def add_root_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchyDesignSession.add_root_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchyDesignSession.add_root_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_root_catalog
         self._get_provider_session('log_hierarchy_design_session').add_root_log(*args, **kwargs)
 
     def remove_root_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchyDesignSession.remove_root_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchyDesignSession.remove_root_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_root_catalog
         self._get_provider_session('log_hierarchy_design_session').remove_root_log(*args, **kwargs)
 
     def add_child_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchyDesignSession.add_child_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchyDesignSession.add_child_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_child_catalog
         self._get_provider_session('log_hierarchy_design_session').add_child_log(*args, **kwargs)
 
     def remove_child_log(self, *args, **kwargs):
         """Pass through to provider LogHierarchyDesignSession.remove_child_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchyDesignSession.remove_child_bin
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalog
         self._get_provider_session('log_hierarchy_design_session').remove_child_log(*args, **kwargs)
 
     def remove_child_logs(self, *args, **kwargs):
         """Pass through to provider LogHierarchyDesignSession.remove_child_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinHierarchyDesignSession.remove_child_bins
+        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalogs
         self._get_provider_session('log_hierarchy_design_session').remove_child_logs(*args, **kwargs)
 
 
-class LoggingProxyManager(osid.OsidProxyManager, LoggingProfile, logging_managers.LoggingProxyManager):
+class LoggingProxyManager(osid.OsidProxyManager, LoggingProfile, LoggingManager, logging_managers.LoggingProxyManager):
     """LoggingProxyManager convenience adapter including related Session methods."""
-
-    def get_logging_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_logging_session_for_log(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_entry_lookup_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_entry_lookup_session_for_log(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_entry_query_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_entry_query_session_for_log(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_entry_admin_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_entry_admin_session_for_log(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_lookup_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_admin_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_hierarchy_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_log_hierarchy_design_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_logging_batch_proxy_manager(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
-
-    logging_batch_proxy_manager = property(fget=get_logging_batch_proxy_manager)
+    pass
 
 
 class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
     """Log convenience adapter including related Session methods."""
+    # Built from: templates/osid_catalog.GenericCatalog.init_template
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -939,13 +800,31 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
 ##
 # The following methods are from osid.logging.LogEntryLookupSession
 
+    def get_log_id(self):
+        """Pass through to provider LogEntryLookupSession.get_log_id"""
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        return self._get_provider_session('log_entry_lookup_session').get_log_id()
+
+    log_id = property(fget=get_log_id)
+
+    def get_log(self):
+        """Pass through to provider LogEntryLookupSession.get_log"""
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        return Log(
+            self._provider_manager,
+            self._get_provider_session('log_entry_lookup_session').get_log(*args, **kwargs),
+            self._runtime,
+            self._proxy)
+
+    log = property(fget=get_log)
+
     def can_read_log(self):
         """Pass through to provider LogEntryLookupSession.can_read_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
         return self._get_provider_session('log_entry_lookup_session').can_read_log()
 
     def use_comparative_log_entry_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
         """Pass through to provider LogEntryLookupSession.use_comparative_log_entry_view"""
         self._object_views['log_entry'] = COMPARATIVE
         # self._get_provider_session('log_entry_lookup_session') # To make sure the session is tracked
@@ -956,6 +835,7 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
                 pass
 
     def use_plenary_log_entry_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
         """Pass through to provider LogEntryLookupSession.use_plenary_log_entry_view"""
         self._object_views['log_entry'] = PLENARY
         # self._get_provider_session('log_entry_lookup_session') # To make sure the session is tracked
@@ -966,6 +846,7 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
                 pass
 
     def use_federated_log_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         """Pass through to provider LogEntryLookupSession.use_federated_log_view"""
         self._log_view = FEDERATED
         # self._get_provider_session('log_entry_lookup_session') # To make sure the session is tracked
@@ -976,6 +857,7 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
                 pass
 
     def use_isolated_log_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         """Pass through to provider LogEntryLookupSession.use_isolated_log_view"""
         self._log_view = ISOLATED
         # self._get_provider_session('log_entry_lookup_session') # To make sure the session is tracked
@@ -987,32 +869,27 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
 
     def get_log_entry(self, *args, **kwargs):
         """Pass through to provider LogEntryLookupSession.get_log_entry"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resource_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
         return self._get_provider_session('log_entry_lookup_session').get_log_entry(*args, **kwargs)
 
     def get_log_entries_by_ids(self, *args, **kwargs):
         """Pass through to provider LogEntryLookupSession.get_log_entries_by_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_ids_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
         return self._get_provider_session('log_entry_lookup_session').get_log_entries_by_ids(*args, **kwargs)
 
     def get_log_entries_by_genus_type(self, *args, **kwargs):
         """Pass through to provider LogEntryLookupSession.get_log_entries_by_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
         return self._get_provider_session('log_entry_lookup_session').get_log_entries_by_genus_type(*args, **kwargs)
 
     def get_log_entries_by_parent_genus_type(self, *args, **kwargs):
         """Pass through to provider LogEntryLookupSession.get_log_entries_by_parent_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
         return self._get_provider_session('log_entry_lookup_session').get_log_entries_by_parent_genus_type(*args, **kwargs)
 
     def get_log_entries_by_record_type(self, *args, **kwargs):
         """Pass through to provider LogEntryLookupSession.get_log_entries_by_record_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
         return self._get_provider_session('log_entry_lookup_session').get_log_entries_by_record_type(*args, **kwargs)
 
     def get_log_entries_by_priority_type(self, *args, **kwargs):
@@ -1041,8 +918,7 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
 
     def get_log_entries(self):
         """Pass through to provider LogEntryLookupSession.get_log_entries"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
         return self._get_provider_session('log_entry_lookup_session').get_log_entries()
 
     log_entries = property(fget=get_log_entries)
@@ -1051,115 +927,76 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
 
     def can_search_log_entries(self):
         """Pass through to provider LogEntryQuerySession.can_search_log_entries"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
         return self._get_provider_session('log_entry_query_session').can_search_log_entries()
 
     def get_log_entry_query(self):
         """Pass through to provider LogEntryQuerySession.get_log_entry_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.get_item_query_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
         return self._get_provider_session('log_entry_query_session').get_log_entry_query()
 
     log_entry_query = property(fget=get_log_entry_query)
 
     def get_log_entries_by_query(self, *args, **kwargs):
         """Pass through to provider LogEntryQuerySession.get_log_entries_by_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.get_items_by_query_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
         return self._get_provider_session('log_entry_query_session').get_log_entries_by_query(*args, **kwargs)
 ##
 # The following methods are from osid.logging.LogEntryAdminSession
 
     def can_create_log_entries(self):
         """Pass through to provider LogEntryAdminSession.can_create_log_entries"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_create_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
         return self._get_provider_session('log_entry_admin_session').can_create_log_entries()
 
     def can_create_log_entry_with_record_types(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.can_create_log_entry_with_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_create_bin_with_record_types
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
         return self._get_provider_session('log_entry_admin_session').can_create_log_entry_with_record_types(*args, **kwargs)
 
     def get_log_entry_form_for_create(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.get_log_entry_form_for_create"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_create
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_create
         return self._get_provider_session('log_entry_admin_session').get_log_entry_form_for_create(*args, **kwargs)
 
     def create_log_entry(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.create_log_entry"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.create_resource
+        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
         return self._get_provider_session('log_entry_admin_session').create_log_entry(*args, **kwargs)
 
     def can_update_log_entries(self):
         """Pass through to provider LogEntryAdminSession.can_update_log_entries"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_update_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
         return self._get_provider_session('log_entry_admin_session').can_update_log_entries()
 
     def get_log_entry_form_for_update(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.get_log_entry_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
         return self._get_provider_session('log_entry_admin_session').get_log_entry_form_for_update(*args, **kwargs)
-
-    def get_log_entry_form(self, *args, **kwargs):
-        """Pass through to provider LogEntryAdminSession.get_log_entry_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update
-        # This method might be a bit sketchy. Time will tell.
-        if isinstance(args[-1], list) or 'log_entry_record_types' in kwargs:
-            return self.get_log_entry_form_for_create(*args, **kwargs)
-        else:
-            return self.get_log_entry_form_for_update(*args, **kwargs)
-
-    def duplicate_log_entry(self, log_entry_id):
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update
-        return self._get_provider_session('log_entry_admin_session').duplicate_log_entry(log_entry_id)
 
     def update_log_entry(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.update_log_entry"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.update_resource
-        # Note: The OSID spec does not require returning updated object
+        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
         return self._get_provider_session('log_entry_admin_session').update_log_entry(*args, **kwargs)
-
-    def save_log_entry(self, log_entry_form, *args, **kwargs):
-        """Pass through to provider LogEntryAdminSession.update_log_entry"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.update_resource
-        if log_entry_form.is_for_update():
-            return self.update_log_entry(log_entry_form, *args, **kwargs)
-        else:
-            return self.create_log_entry(log_entry_form, *args, **kwargs)
 
     def can_delete_log_entries(self):
         """Pass through to provider LogEntryAdminSession.can_delete_log_entries"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_delete_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
         return self._get_provider_session('log_entry_admin_session').can_delete_log_entries()
 
     def delete_log_entry(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.delete_log_entry"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.delete_resource
+        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
         self._get_provider_session('log_entry_admin_session').delete_log_entry(*args, **kwargs)
 
     def can_manage_log_entry_aliases(self):
         """Pass through to provider LogEntryAdminSession.can_manage_log_entry_aliases"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         return self._get_provider_session('log_entry_admin_session').can_manage_log_entry_aliases()
 
     def alias_log_entry(self, *args, **kwargs):
         """Pass through to provider LogEntryAdminSession.alias_log_entry"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.alias_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
         self._get_provider_session('log_entry_admin_session').alias_log_entry(*args, **kwargs)
 
 
@@ -1168,40 +1005,17 @@ class LogList(abc_logging_objects.LogList, osid.OsidList):
 
     def get_next_log(self):
         """Gets next object"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceList.get_next_resource
-        try:
-            next_item = next(self)
-        except StopIteration:
-            raise IllegalState('no more elements available in this list')
-        else:
-            return next_item
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        return next(self)
 
     def next(self):
         """next method for enumerator"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceList.get_next_resource
-        next_item = osid.OsidList.next(self)
-        return next_item
+        return self._get_next_object(Log)
 
     __next__ = next
 
     next_log = property(fget=get_next_log)
 
     def get_next_logs(self, n):
-        """gets next n objects from list"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceList.get_next_resources
-        if n > self.available():
-            # !!! This is not quite as specified (see method docs) !!!
-            raise IllegalState('not enough elements available in this list')
-        else:
-            next_list = []
-            i = 0
-            while i < n:
-                try:
-                    next_list.append(next(self))
-                except StopIteration:
-                    break
-                i += 1
-            return next_list
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        return self._get_next_n(LogList, number=n)

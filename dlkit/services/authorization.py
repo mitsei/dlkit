@@ -40,114 +40,98 @@ class AuthorizationProfile(osid.OsidProfile, authorization_managers.Authorizatio
 
     def supports_authorization(self):
         """Pass through to provider supports_authorization"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_authorization()
 
     def supports_authorization_lookup(self):
         """Pass through to provider supports_authorization_lookup"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_authorization_lookup()
 
     def supports_authorization_query(self):
         """Pass through to provider supports_authorization_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_authorization_query()
 
     def supports_authorization_admin(self):
         """Pass through to provider supports_authorization_admin"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_authorization_admin()
 
     def supports_vault_lookup(self):
         """Pass through to provider supports_vault_lookup"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_vault_lookup()
 
     def supports_vault_query(self):
         """Pass through to provider supports_vault_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_vault_query()
 
     def supports_vault_admin(self):
         """Pass through to provider supports_vault_admin"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.supports_resource_lookup
+        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
         return self._provider_manager.supports_vault_admin()
 
     def get_authorization_record_types(self):
         """Pass through to provider get_authorization_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_authorization_record_types()
 
     authorization_record_types = property(fget=get_authorization_record_types)
 
     def get_authorization_search_record_types(self):
         """Pass through to provider get_authorization_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_authorization_search_record_types()
 
     authorization_search_record_types = property(fget=get_authorization_search_record_types)
 
     def get_function_record_types(self):
         """Pass through to provider get_function_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_function_record_types()
 
     function_record_types = property(fget=get_function_record_types)
 
     def get_function_search_record_types(self):
         """Pass through to provider get_function_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_function_search_record_types()
 
     function_search_record_types = property(fget=get_function_search_record_types)
 
     def get_qualifier_record_types(self):
         """Pass through to provider get_qualifier_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_qualifier_record_types()
 
     qualifier_record_types = property(fget=get_qualifier_record_types)
 
     def get_qualifier_search_record_types(self):
         """Pass through to provider get_qualifier_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_qualifier_search_record_types()
 
     qualifier_search_record_types = property(fget=get_qualifier_search_record_types)
 
     def get_vault_record_types(self):
         """Pass through to provider get_vault_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_vault_record_types()
 
     vault_record_types = property(fget=get_vault_record_types)
 
     def get_vault_search_record_types(self):
         """Pass through to provider get_vault_search_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_vault_search_record_types()
 
     vault_search_record_types = property(fget=get_vault_search_record_types)
 
     def get_authorization_condition_record_types(self):
         """Pass through to provider get_authorization_condition_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProfile.get_resource_record_types
+        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
         return self._provider_manager.get_authorization_condition_record_types()
 
     authorization_condition_record_types = property(fget=get_authorization_condition_record_types)
@@ -270,80 +254,69 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_authorization_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_authorization_session(*args, **kwargs)
 
     authorization_session = property(fget=get_authorization_session)
 
     def get_authorization_session_for_vault(self, *args, **kwargs):
         """Pass through to provider get_authorization_session_for_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         return self._provider_manager.get_authorization_session_for_vault(*args, **kwargs)
 
     def get_authorization_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_lookup_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         return self._provider_manager.get_authorization_lookup_session(*args, **kwargs)
 
     authorization_lookup_session = property(fget=get_authorization_lookup_session)
 
     def get_authorization_lookup_session_for_vault(self, *args, **kwargs):
         """Pass through to provider get_authorization_lookup_session_for_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         return self._provider_manager.get_authorization_lookup_session_for_vault(*args, **kwargs)
 
     def get_authorization_query_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_query_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         return self._provider_manager.get_authorization_query_session(*args, **kwargs)
 
     authorization_query_session = property(fget=get_authorization_query_session)
 
     def get_authorization_query_session_for_vault(self, *args, **kwargs):
         """Pass through to provider get_authorization_query_session_for_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         return self._provider_manager.get_authorization_query_session_for_vault(*args, **kwargs)
 
     def get_authorization_admin_session(self, *args, **kwargs):
         """Pass through to provider get_authorization_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_authorization_admin_session(*args, **kwargs)
 
     authorization_admin_session = property(fget=get_authorization_admin_session)
 
     def get_authorization_admin_session_for_vault(self, *args, **kwargs):
         """Pass through to provider get_authorization_admin_session_for_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         return self._provider_manager.get_authorization_admin_session_for_vault(*args, **kwargs)
 
     def get_vault_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_vault_lookup_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_vault_lookup_session(*args, **kwargs)
 
     vault_lookup_session = property(fget=get_vault_lookup_session)
 
     def get_vault_query_session(self, *args, **kwargs):
         """Pass through to provider get_vault_query_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_vault_query_session(*args, **kwargs)
 
     vault_query_session = property(fget=get_vault_query_session)
 
     def get_vault_admin_session(self, *args, **kwargs):
         """Pass through to provider get_vault_admin_session"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         return self._provider_manager.get_vault_admin_session(*args, **kwargs)
 
     vault_admin_session = property(fget=get_vault_admin_session)
@@ -364,12 +337,12 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def can_lookup_vaults(self):
         """Pass through to provider VaultLookupSession.can_lookup_vaults"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
         return self._get_provider_session('vault_lookup_session').can_lookup_vaults()
 
     def use_comparative_vault_view(self):
         """Pass through to provider VaultLookupSession.use_comparative_vault_view"""
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._vault_view = COMPARATIVE
         # self._get_provider_session('vault_lookup_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
@@ -380,6 +353,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def use_plenary_vault_view(self):
         """Pass through to provider VaultLookupSession.use_plenary_vault_view"""
+        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._vault_view = PLENARY
         # self._get_provider_session('vault_lookup_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
@@ -390,8 +364,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_vault(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bin
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
         return Vault(
             self._provider_manager,
             self._get_provider_session('vault_lookup_session').get_vault(*args, **kwargs),
@@ -400,8 +373,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_vaults_by_ids(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vaults_by_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_ids
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
         catalogs = self._get_provider_session('vault_lookup_session').get_vaults_by_ids(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -410,8 +382,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_vaults_by_genus_type(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vaults_by_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_genus_type
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
         catalogs = self._get_provider_session('vault_lookup_session').get_vaults_by_genus_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -420,8 +391,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_vaults_by_parent_genus_type(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vaults_by_parent_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_parent_genus_type
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_parent_genus_type
         catalogs = self._get_provider_session('vault_lookup_session').get_vaults_by_parent_genus_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -430,8 +400,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_vaults_by_record_type(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vaults_by_record_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_record_type
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_record_type
         catalogs = self._get_provider_session('vault_lookup_session').get_vaults_by_record_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -440,8 +409,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_vaults_by_provider(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vaults_by_provider"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_by_provider
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_provider
         catalogs = self._get_provider_session('vault_lookup_session').get_vaults_by_provider(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -450,8 +418,7 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def get_vaults(self):
         """Pass through to provider VaultLookupSession.get_vaults"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.get_bins_template
+        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
         catalogs = self._get_provider_session('vault_lookup_session').get_vaults()
         cat_list = []
         for cat in catalogs:
@@ -464,48 +431,41 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def can_search_vaults(self):
         """Pass through to provider VaultQuerySession.can_search_vaults"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinQuerySession.can_search_bins_template
+        # Built from: templates/osid_session.GenericCatalogQuerySession.can_search_catalogs
         return self._get_provider_session('vault_query_session').can_search_vaults()
 
     def get_vault_query(self):
         """Pass through to provider VaultQuerySession.get_vault_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinQuerySession.get_bin_query_template
+        # Built from: templates/osid_session.GenericCatalogQuerySession.get_catalog_query
         return self._get_provider_session('vault_query_session').get_vault_query()
 
     vault_query = property(fget=get_vault_query)
 
     def get_vaults_by_query(self, *args, **kwargs):
         """Pass through to provider VaultQuerySession.get_vaults_by_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinQuerySession.get_bins_by_query_template
+        # Built from: templates/osid_session.GenericCatalogQuerySession.get_catalogs_by_query
         return self._get_provider_session('vault_query_session').get_vaults_by_query(*args, **kwargs)
 ##
 # The following methods are from osid.authorization.VaultAdminSession
 
     def can_create_vaults(self):
         """Pass through to provider VaultAdminSession.can_create_vaults"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_create_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
         return self._get_provider_session('vault_admin_session').can_create_vaults()
 
     def can_create_vault_with_record_types(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.can_create_vault_with_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_create_bin_with_record_types
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
         return self._get_provider_session('vault_admin_session').can_create_vault_with_record_types(*args, **kwargs)
 
     def get_vault_form_for_create(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.get_vault_form_for_create"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.get_bin_form_for_create
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
         return self._get_provider_session('vault_admin_session').get_vault_form_for_create(*args, **kwargs)
 
     def create_vault(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.create_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.create_bin
+        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
         return Vault(
             self._provider_manager,
             self._get_provider_session('vault_admin_session').create_vault(*args, **kwargs),
@@ -514,141 +474,52 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     def can_update_vaults(self):
         """Pass through to provider VaultAdminSession.can_update_vaults"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_update_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
         return self._get_provider_session('vault_admin_session').can_update_vaults()
 
     def get_vault_form_for_update(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.get_vault_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.get_bin_form_for_update
+        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
         return self._get_provider_session('vault_admin_session').get_vault_form_for_update(*args, **kwargs)
-
-    def get_vault_form(self, *args, **kwargs):
-        """Pass through to provider VaultAdminSession.get_vault_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.get_bin_form_for_update_template
-        # This method might be a bit sketchy. Time will tell.
-        if isinstance(args[-1], list) or 'vault_record_types' in kwargs:
-            return self.get_vault_form_for_create(*args, **kwargs)
-        else:
-            return self.get_vault_form_for_update(*args, **kwargs)
 
     def update_vault(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.update_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.update_bin
-        # OSID spec does not require returning updated catalog
+        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
         return Vault(
             self._provider_manager,
             self._get_provider_session('vault_admin_session').update_vault(*args, **kwargs),
             self._runtime,
             self._proxy)
 
-    def save_vault(self, vault_form, *args, **kwargs):
-        """Pass through to provider VaultAdminSession.update_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.update_bin
-        if vault_form.is_for_update():
-            return self.update_vault(vault_form, *args, **kwargs)
-        else:
-            return self.create_vault(vault_form, *args, **kwargs)
-
     def can_delete_vaults(self):
         """Pass through to provider VaultAdminSession.can_delete_vaults"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.can_delete_bins
+        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
         return self._get_provider_session('vault_admin_session').can_delete_vaults()
 
     def delete_vault(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.delete_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.delete_bin
+        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
         self._get_provider_session('vault_admin_session').delete_vault(*args, **kwargs)
 
     def can_manage_vault_aliases(self):
         """Pass through to provider VaultAdminSession.can_manage_vault_aliases"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         return self._get_provider_session('vault_admin_session').can_manage_vault_aliases()
 
     def alias_vault(self, *args, **kwargs):
         """Pass through to provider VaultAdminSession.alias_vault"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinAdminSession.alias_bin
+        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
         self._get_provider_session('vault_admin_session').alias_vault(*args, **kwargs)
 
 
-class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, authorization_managers.AuthorizationProxyManager):
+class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, AuthorizationManager, authorization_managers.AuthorizationProxyManager):
     """AuthorizationProxyManager convenience adapter including related Session methods."""
-
-    def get_authorization_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_authorization_session_for_vault(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_authorization_lookup_session(self, *args, **kwargs):
-        """Sends control to Manager"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
-        return AuthorizationManager.get_authorization_lookup_session(*args, **kwargs)
-
-    def get_authorization_lookup_session_for_vault(self, *args, **kwargs):
-        """Sends control to Manager"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
-        return AuthorizationManager.get_authorization_lookup_session_for_vault(*args, **kwargs)
-
-    def get_authorization_query_session(self, *args, **kwargs):
-        """Sends control to Manager"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
-        return AuthorizationManager.get_authorization_query_session(*args, **kwargs)
-
-    def get_authorization_query_session_for_vault(self, *args, **kwargs):
-        """Sends control to Manager"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
-        return AuthorizationManager.get_authorization_query_session_for_vault(*args, **kwargs)
-
-    def get_authorization_admin_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_authorization_admin_session_for_vault(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_vault_lookup_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_vault_query_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_vault_admin_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
-
-    def get_authorization_batch_proxy_manager(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
-
-    authorization_batch_proxy_manager = property(fget=get_authorization_batch_proxy_manager)
-
-    def get_authorization_rules_proxy_manager(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services')
-
-    authorization_rules_proxy_manager = property(fget=get_authorization_rules_proxy_manager)
+    pass
 
 
 class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog):
     """Vault convenience adapter including related Session methods."""
+    # Built from: templates/osid_catalog.GenericCatalog.init_template
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -793,12 +664,31 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
 ##
 # The following methods are from osid.authorization.AuthorizationSession
 
+    def get_vault_id(self):
+        """Pass through to provider AuthorizationSession.get_vault_id"""
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        return self._get_provider_session('authorization_session').get_vault_id()
+
+    vault_id = property(fget=get_vault_id)
+
+    def get_vault(self):
+        """Pass through to provider AuthorizationSession.get_vault"""
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        return Vault(
+            self._provider_manager,
+            self._get_provider_session('authorization_session').get_vault(*args, **kwargs),
+            self._runtime,
+            self._proxy)
+
+    vault = property(fget=get_vault)
+
     def can_access_authorizations(self):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')
 
     def is_authorized(self, *args, **kwargs):
         """Pass through to provider AuthorizationSession.is_authorized"""
+        # Not templated -- check the hand-built implementations
         return self._get_provider_session('authorization_session').is_authorized(*args, **kwargs)
 
     def get_authorization_condition(self, *args, **kwargs):
@@ -813,11 +703,11 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
 
     def can_lookup_authorizations(self):
         """Pass through to provider AuthorizationLookupSession.can_lookup_authorizations"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.can_lookup_resources_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
         return self._get_provider_session('authorization_lookup_session').can_lookup_authorizations()
 
     def use_comparative_authorization_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
         """Pass through to provider AuthorizationLookupSession.use_comparative_authorization_view"""
         self._object_views['authorization'] = COMPARATIVE
         # self._get_provider_session('authorization_lookup_session') # To make sure the session is tracked
@@ -828,6 +718,7 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
                 pass
 
     def use_plenary_authorization_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
         """Pass through to provider AuthorizationLookupSession.use_plenary_authorization_view"""
         self._object_views['authorization'] = PLENARY
         # self._get_provider_session('authorization_lookup_session') # To make sure the session is tracked
@@ -838,6 +729,7 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
                 pass
 
     def use_federated_vault_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
         """Pass through to provider AuthorizationLookupSession.use_federated_vault_view"""
         self._vault_view = FEDERATED
         # self._get_provider_session('authorization_lookup_session') # To make sure the session is tracked
@@ -848,6 +740,7 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
                 pass
 
     def use_isolated_vault_view(self):
+        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
         """Pass through to provider AuthorizationLookupSession.use_isolated_vault_view"""
         self._vault_view = ISOLATED
         # self._get_provider_session('authorization_lookup_session') # To make sure the session is tracked
@@ -875,37 +768,33 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
 
     def get_authorization(self, *args, **kwargs):
         """Pass through to provider AuthorizationLookupSession.get_authorization"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resource_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
         return self._get_provider_session('authorization_lookup_session').get_authorization(*args, **kwargs)
 
     def get_authorizations_by_ids(self, *args, **kwargs):
         """Pass through to provider AuthorizationLookupSession.get_authorizations_by_ids"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_ids_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
         return self._get_provider_session('authorization_lookup_session').get_authorizations_by_ids(*args, **kwargs)
 
     def get_authorizations_by_genus_type(self, *args, **kwargs):
         """Pass through to provider AuthorizationLookupSession.get_authorizations_by_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_genus_type_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
         return self._get_provider_session('authorization_lookup_session').get_authorizations_by_genus_type(*args, **kwargs)
 
     def get_authorizations_by_parent_genus_type(self, *args, **kwargs):
         """Pass through to provider AuthorizationLookupSession.get_authorizations_by_parent_genus_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
         return self._get_provider_session('authorization_lookup_session').get_authorizations_by_parent_genus_type(*args, **kwargs)
 
     def get_authorizations_by_record_type(self, *args, **kwargs):
         """Pass through to provider AuthorizationLookupSession.get_authorizations_by_record_type"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_by_record_type_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
         return self._get_provider_session('authorization_lookup_session').get_authorizations_by_record_type(*args, **kwargs)
 
     def get_authorizations_on_date(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Pass through to provider AuthorizationLookupSession.get_authorizations_on_date"""
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_on_date
+        return self._get_provider_session('authorization_lookup_session').get_authorizations_on_date(*args, **kwargs)
 
     def get_authorizations_for_resource(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
@@ -925,8 +814,7 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
 
     def get_authorizations_for_function(self, *args, **kwargs):
         """Pass through to provider AuthorizationLookupSession.get_authorizations_for_function"""
-        # Implemented from kitosid template for -
-        # osid.resource.ActivityLookupSession.get_activities_for_objective
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_subjugated_objects_for_object
         return self._get_provider_session('authorization_lookup_session').get_authorizations_for_function(*args, **kwargs)
 
     def get_authorizations_for_function_on_date(self, *args, **kwargs):
@@ -934,16 +822,18 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_authorizations_for_resource_and_function(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Pass through to provider AuthorizationLookupSession.get_authorizations_for_resource_and_function"""
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_peers
+        return self._get_provider_session('authorization_lookup_session').get_authorizations_for_resource_and_function(*args, **kwargs)
 
     def get_authorizations_for_resource_and_function_on_date(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_authorizations_for_agent_and_function(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Pass through to provider AuthorizationLookupSession.get_authorizations_for_agent_and_function"""
+        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_peers
+        return self._get_provider_session('authorization_lookup_session').get_authorizations_for_agent_and_function(*args, **kwargs)
 
     def get_authorizations_for_agent_and_function_on_date(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
@@ -959,8 +849,7 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
 
     def get_authorizations(self):
         """Pass through to provider AuthorizationLookupSession.get_authorizations"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceLookupSession.get_resources_template
+        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
         return self._get_provider_session('authorization_lookup_session').get_authorizations()
 
     authorizations = property(fget=get_authorizations)
@@ -969,44 +858,41 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
 
     def can_search_authorizations(self):
         """Pass through to provider AuthorizationQuerySession.can_search_authorizations"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.can_search_resources_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
         return self._get_provider_session('authorization_query_session').can_search_authorizations()
 
     def get_authorization_query(self):
         """Pass through to provider AuthorizationQuerySession.get_authorization_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.get_item_query_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
         return self._get_provider_session('authorization_query_session').get_authorization_query()
 
     authorization_query = property(fget=get_authorization_query)
 
     def get_authorizations_by_query(self, *args, **kwargs):
         """Pass through to provider AuthorizationQuerySession.get_authorizations_by_query"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceQuerySession.get_items_by_query_template
+        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
         return self._get_provider_session('authorization_query_session').get_authorizations_by_query(*args, **kwargs)
 ##
 # The following methods are from osid.authorization.AuthorizationAdminSession
 
     def can_create_authorizations(self):
         """Pass through to provider AuthorizationAdminSession.can_create_authorizations"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_create_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
         return self._get_provider_session('authorization_admin_session').can_create_authorizations()
 
     def can_create_authorization_with_record_types(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.can_create_authorization_with_record_types"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
         return self._get_provider_session('authorization_admin_session').can_create_authorization_with_record_types(*args, **kwargs)
 
     def get_authorization_form_for_create_for_agent(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.get_authorization_form_for_create_for_agent"""
+        # Not templated -- check the hand-built implementations
         return self._get_provider_session('authorization_admin_session').get_authorization_form_for_create_for_agent(*args, **kwargs)
 
     def get_authorization_form_for_create_for_resource(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.get_authorization_form_for_create_for_resource"""
+        # Not templated -- check the hand-built implementations
         return self._get_provider_session('authorization_admin_session').get_authorization_form_for_create_for_resource(*args, **kwargs)
 
     def get_authorization_form_for_create_for_resource_and_trust(self, *args, **kwargs):
@@ -1015,75 +901,42 @@ class Vault(abc_authorization_objects.Vault, osid.OsidSession, osid.OsidCatalog)
 
     def create_authorization(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.create_authorization"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.create_resource
+        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
         return self._get_provider_session('authorization_admin_session').create_authorization(*args, **kwargs)
 
     def can_update_authorizations(self):
         """Pass through to provider AuthorizationAdminSession.can_update_authorizations"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_update_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
         return self._get_provider_session('authorization_admin_session').can_update_authorizations()
 
     def get_authorization_form_for_update(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.get_authorization_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update
+        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
         return self._get_provider_session('authorization_admin_session').get_authorization_form_for_update(*args, **kwargs)
-
-    def get_authorization_form(self, *args, **kwargs):
-        """Pass through to provider AuthorizationAdminSession.get_authorization_form_for_update"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update
-        # This method might be a bit sketchy. Time will tell.
-        if isinstance(args[-1], list) or 'authorization_record_types' in kwargs:
-            return self.get_authorization_form_for_create(*args, **kwargs)
-        else:
-            return self.get_authorization_form_for_update(*args, **kwargs)
-
-    def duplicate_authorization(self, authorization_id):
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.get_resource_form_for_update
-        return self._get_provider_session('authorization_admin_session').duplicate_authorization(authorization_id)
 
     def update_authorization(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.update_authorization"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.update_resource
-        # Note: The OSID spec does not require returning updated object
+        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
         return self._get_provider_session('authorization_admin_session').update_authorization(*args, **kwargs)
-
-    def save_authorization(self, authorization_form, *args, **kwargs):
-        """Pass through to provider AuthorizationAdminSession.update_authorization"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.update_resource
-        if authorization_form.is_for_update():
-            return self.update_authorization(authorization_form, *args, **kwargs)
-        else:
-            return self.create_authorization(authorization_form, *args, **kwargs)
 
     def can_delete_authorizations(self):
         """Pass through to provider AuthorizationAdminSession.can_delete_authorizations"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_delete_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
         return self._get_provider_session('authorization_admin_session').can_delete_authorizations()
 
     def delete_authorization(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.delete_authorization"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.delete_resource
+        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
         self._get_provider_session('authorization_admin_session').delete_authorization(*args, **kwargs)
 
     def can_manage_authorization_aliases(self):
         """Pass through to provider AuthorizationAdminSession.can_manage_authorization_aliases"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
+        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         return self._get_provider_session('authorization_admin_session').can_manage_authorization_aliases()
 
     def alias_authorization(self, *args, **kwargs):
         """Pass through to provider AuthorizationAdminSession.alias_authorization"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceAdminSession.alias_resources
+        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
         self._get_provider_session('authorization_admin_session').alias_authorization(*args, **kwargs)
 
 
@@ -1092,40 +945,17 @@ class VaultList(abc_authorization_objects.VaultList, osid.OsidList):
 
     def get_next_vault(self):
         """Gets next object"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceList.get_next_resource
-        try:
-            next_item = next(self)
-        except StopIteration:
-            raise IllegalState('no more elements available in this list')
-        else:
-            return next_item
+        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        return next(self)
 
     def next(self):
         """next method for enumerator"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceList.get_next_resource
-        next_item = osid.OsidList.next(self)
-        return next_item
+        return self._get_next_object(Vault)
 
     __next__ = next
 
     next_vault = property(fget=get_next_vault)
 
     def get_next_vaults(self, n):
-        """gets next n objects from list"""
-        # Implemented from kitosid template for -
-        # osid.resource.ResourceList.get_next_resources
-        if n > self.available():
-            # !!! This is not quite as specified (see method docs) !!!
-            raise IllegalState('not enough elements available in this list')
-        else:
-            next_list = []
-            i = 0
-            while i < n:
-                try:
-                    next_list.append(next(self))
-                except StopIteration:
-                    break
-                i += 1
-            return next_list
+        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        return self._get_next_n(VaultList, number=n)
