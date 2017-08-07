@@ -944,6 +944,14 @@ TEST_JSON_CATALOGING_1 = {
                 {'value': 'TEST_JSON_1', 'priority': 1}
             ]
         },
+        'assessment_authoringCatalogingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Provider implementation for cataloging service',
+            'description': 'Provider implementation for cataloging service',
+            'values': [
+                {'value': 'TEST_JSON_1', 'priority': 1}
+            ]
+        },
     }
 }
 

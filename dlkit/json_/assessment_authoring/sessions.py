@@ -16,12 +16,14 @@ from bson.objectid import ObjectId
 from . import objects
 from . import queries
 from .. import utilities
+from ..id.objects import IdList
 from ..list_utilities import move_id_ahead, move_id_behind, order_ids
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession
 from ..primitives import Id
 from ..primitives import Type
 from ..utilities import JSONClientValidated
+from ..utilities import PHANTOM_ROOT_IDENTIFIER
 from dlkit.abstract_osid.assessment_authoring import sessions as abc_assessment_authoring_sessions
 from dlkit.abstract_osid.assessment_authoring.objects import AssessmentPartForm as ABCAssessmentPartForm
 from dlkit.abstract_osid.assessment_authoring.objects import SequenceRuleForm as ABCSequenceRuleForm
@@ -44,6 +46,8 @@ ENCLOSURE_RECORD_TYPE = Type(
     identifier='enclosure',
     namespace='osid-object',
     authority='ODL.MIT.EDU')
+COMPARATIVE = 0
+PLENARY = 1
 ISOLATED = 1
 
 
@@ -1152,6 +1156,386 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         # Implemented from template for
         # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=assessment_part_id, equivalent_id=alias_id)
+
+
+class AssessmentPartBankSession(abc_assessment_authoring_sessions.AssessmentPartBankSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``AssessmentPart`` to ``Bank`` mappings.
+
+    an ``AssessmentPart`` may appear in multiple ``Bank`` objects. Each
+    bank may have its own authorizations governing who is allowed to
+    look at it.
+
+    This lookup session defines several views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'assessment_authoring.AssessmentPartBankSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def can_lookup_assessment_part_bank_mappings(self):
+        """Tests if this user can perform lookups of assessment part/bank mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    def use_comparative_assessment_part_bank_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_assessment_part_bank_view(self):
+        """A complete view of the ``AssessmentPart`` and ``Bank`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    @utilities.arguments_not_none
+    def get_assessment_part_ids_by_bank(self, bank_id):
+        """Gets the list of ``AssessmentPartIds`` associated with an ``Bank``.
+
+        arg:    bank_id (osid.id.Id): ``Id`` of the ``Bank``
+        return: (osid.id.IdList) - list of related assessment part
+                ``Ids``
+        raise:  NotFound - ``bank_id`` is not found
+        raise:  NullArgument - ``bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for assessment_part in self.get_assessment_parts_by_bank(bank_id):
+            id_list.append(assessment_part.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assessment_parts_by_bank(self, bank_id):
+        """Gets the list of assessment parts associated with an ``Bank``.
+
+        arg:    bank_id (osid.id.Id): ``Id`` of the ``Bank``
+        return: (osid.assessment.authoring.AssessmentPartList) - list of
+                related assessment parts
+        raise:  NotFound - ``bank_id`` is not found
+        raise:  NullArgument - ``bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('ASSESSMENT_AUTHORING', local=True)
+        lookup_session = mgr.get_assessment_part_lookup_session_for_bank(bank_id, proxy=self._proxy)
+        lookup_session.use_isolated_bank_view()
+        return lookup_session.get_assessment_parts()
+
+    @utilities.arguments_not_none
+    def get_assessment_part_ids_by_banks(self, bank_ids):
+        """Gets the list of ``AssessmentPart Ids`` corresponding to a list of ``Banks``.
+
+        arg:    bank_ids (osid.id.IdList): list of bank ``Ids``
+        return: (osid.id.IdList) - list of assessment part ``Ids``
+        raise:  NullArgument - ``bank_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        id_list = []
+        for assessment_part in self.get_assessment_parts_by_banks(bank_ids):
+            id_list.append(assessment_part.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assessment_parts_by_banks(self, bank_ids):
+        """Gets the list of assessment part corresponding to a list of ``Banks``.
+
+        arg:    bank_ids (osid.id.IdList): list of bank ``Ids``
+        return: (osid.assessment.authoring.AssessmentPartList) - list of
+                assessment parts
+        raise:  NullArgument - ``bank_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        assessment_part_list = []
+        for bank_id in bank_ids:
+            assessment_part_list += list(
+                self.get_assessment_parts_by_bank(bank_id))
+        return objects.AssessmentPartList(assessment_part_list)
+
+    @utilities.arguments_not_none
+    def get_bank_ids_by_assessment_part(self, assessment_part_id):
+        """Gets the ``Bank``  ``Ids`` mapped to an ``AssessmentPart``.
+
+        arg:    assessment_part_id (osid.id.Id): ``Id`` of an
+                ``AssessmentPart``
+        return: (osid.id.IdList) - list of banks
+        raise:  NotFound - ``assessment_part_id`` is not found
+        raise:  NullArgument - ``assessment_part_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('ASSESSMENT_AUTHORING', local=True)
+        lookup_session = mgr.get_assessment_part_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_bank_view()
+        assessment_part = lookup_session.get_assessment_part(assessment_part_id)
+        id_list = []
+        for idstr in assessment_part._my_map['assignedBankIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_banks_by_assessment_part(self, assessment_part_id):
+        """Gets the ``Banks`` mapped to an ``AssessmentPart``.
+
+        arg:    assessment_part_id (osid.id.Id): ``Id`` of an
+                ``AssessmentPart``
+        return: (osid.assessment.BankList) - list of banks
+        raise:  NotFound - ``assessment_part_id`` is not found
+        raise:  NullArgument - ``assessment_part_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
+        lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
+        return lookup_session.get_banks_by_ids(
+            self.get_bank_ids_by_assessment_part(assessment_part_id))
+
+
+class AssessmentPartBankAssignmentSession(abc_assessment_authoring_sessions.AssessmentPartBankAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign ``AssessmentPart`` to ``Bank`` mappings.
+
+    An ``AssessmentPart`` may appear in multiple ``Bank`` objects and
+    removing the last reference to an ``AssessmentPart`` is the
+    equivalent of deleting it. Each ``Bank`` may have its own
+    authorizations governing who is allowed to operate on it.
+
+    Adding a reference of an ``AssessmentPart`` to another ``Bank`` is
+    not a copy operation (eg: does not change its ``Id`` ).
+
+    """
+    _session_namespace = 'assessment_authoring.AssessmentPartBankAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Bank'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_assessment_parts(self):
+        """Tests if this user can alter assessment part/bank mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_assessment_parts_to_bank(self, bank_id):
+        """Tests if this user can alter assessment part/bank mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        arg:    bank_id (osid.id.Id): the ``Id`` of the ``Bank``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``bank_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if bank_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_bank_ids(self, bank_id):
+        """Gets a list of bank including and under the given bank node in which any assessment part can be assigned.
+
+        arg:    bank_id (osid.id.Id): the ``Id`` of the ``Bank``
+        return: (osid.id.IdList) - list of assignable bank ``Ids``
+        raise:  NullArgument - ``bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
+        lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
+        banks = lookup_session.get_banks()
+        id_list = []
+        for bank in banks:
+            id_list.append(bank.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_bank_ids_for_assessment_part(self, bank_id, assessment_part_id):
+        """Gets a list of bank including and under the given bank node in which a specific assessment part can be assigned.
+
+        arg:    bank_id (osid.id.Id): the ``Id`` of the ``Bank``
+        arg:    assessment_part_id (osid.id.Id): the ``Id`` of the
+                ``AssessmentPart``
+        return: (osid.id.IdList) - list of assignable bank ``Ids``
+        raise:  NullArgument - ``bank_id`` or ``assessment_part_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_bank_ids(bank_id)
+
+    @utilities.arguments_not_none
+    def assign_assessment_part_to_bank(self, assessment_part_id, bank_id):
+        """Adds an existing ``AssessmentPart`` to an ``Bank``.
+
+        arg:    assessment_part_id (osid.id.Id): the ``Id`` of the
+                ``AssessmentPart``
+        arg:    bank_id (osid.id.Id): the ``Id`` of the ``Bank``
+        raise:  AlreadyExists - ``assessment_part_id`` is already
+                assigned to ``bank_id``
+        raise:  NotFound - ``assessment_part_id`` or ``bank_id`` not
+                found
+        raise:  NullArgument - ``assessment_part_id`` or ``bank_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
+        lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
+        lookup_session.get_bank(bank_id)  # to raise NotFound
+        self._assign_object_to_catalog(assessment_part_id, bank_id)
+
+    @utilities.arguments_not_none
+    def unassign_assessment_part_from_bank(self, assessment_part_id, bank_id):
+        """Removes an ``AssessmentPart`` from an ``Bank``.
+
+        arg:    assessment_part_id (osid.id.Id): the ``Id`` of the
+                ``AssessmentPart``
+        arg:    bank_id (osid.id.Id): the ``Id`` of the ``Bank``
+        raise:  NotFound - ``assessment_part_id`` or ``bank_id`` not
+                found or ``assessment_part_id`` not assigned to
+                ``bank_id``
+        raise:  NullArgument - ``assessment_part_id`` or ``bank_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        mgr = self._get_provider_manager('ASSESSMENT', local=True)
+        lookup_session = mgr.get_bank_lookup_session(proxy=self._proxy)
+        lookup_session.get_bank(bank_id)  # to raise NotFound
+        self._unassign_object_from_catalog(assessment_part_id, bank_id)
+
+    @utilities.arguments_not_none
+    def reassign_assessment_part_to_bank(self, assessment_part_id, from_biank_id, to_bank_id):
+        """Moves an ``AssessmentPart`` from one ``Bank`` to another.
+
+        Mappings to other ``Banks`` are unaffected.
+
+        arg:    assessment_part_id (osid.id.Id): the ``Id`` of the
+                ``AssessmentPart``
+        arg:    from_biank_id (osid.id.Id): the ``Id`` of the current
+                ``Bank``
+        arg:    to_bank_id (osid.id.Id): the ``Id`` of the destination
+                ``Bank``
+        raise:  NotFound - ``assessment_part_id, from_bank_id,`` or
+                ``to_bank_id`` not found or ``assessment_part_id`` not
+                mapped to ``from_bank_id``
+        raise:  NullArgument - ``assessment_part_id, from_bank_id,`` or
+                ``to_bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
+        self.assign_assessment_part_to_bank(assessment_part_id, to_bank_id)
+        try:
+            self.unassign_assessment_part_from_bank(assessment_part_id, from_biank_id)
+        except:  # something went wrong, roll back assignment to to_bank_id
+            self.unassign_assessment_part_from_bank(assessment_part_id, to_bank_id)
+            raise
 
 
 class AssessmentPartItemSession(abc_assessment_authoring_sessions.AssessmentPartItemSession, osid_sessions.OsidSession):

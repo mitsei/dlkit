@@ -177,9 +177,14 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
             return self._provider_sessions[agent_key][session_name]
         else:
             manager = self._get_sub_package_provider_manager(sub_package)
-            session = self._instantiate_session('get_' + session_name + '_for_bank',
-                                                proxy=self._proxy,
-                                                manager=manager)
+            try:
+                session = self._instantiate_session('get_' + session_name + '_for_bank',
+                                                    proxy=self._proxy,
+                                                    manager=manager)
+            except AttributeError:
+                session = self._instantiate_session('get_' + session_name,
+                                                    proxy=self._proxy,
+                                                    manager=manager)
             self._set_bank_view(session)
             if self._session_management != DISABLED:
                 self._provider_sessions[agent_key][session_name] = session
@@ -187,7 +192,11 @@ class AuthenticationManager(osid.OsidManager, osid.OsidSession, AuthenticationPr
 
     def _instantiate_session(self, method_name, proxy=None, *args, **kwargs):
         """Instantiates a provider session"""
-        session_class = getattr(self._provider_manager, method_name)
+        if 'manager' in kwargs:
+            session_class = getattr(kwargs['manager'], method_name)
+            del kwargs['manager']
+        else:
+            session_class = getattr(self._provider_manager, method_name)
         if proxy is None:
             try:
                 return session_class(bank_id=self._catalog_id, *args, **kwargs)

@@ -13,6 +13,7 @@ from dlkit.abstract_osid.assessment_authoring import objects as ABCObjects
 from dlkit.abstract_osid.assessment_authoring import queries as ABCQueries
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -30,6 +31,7 @@ ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIA
 SIMPLE_SEQUENCE_RECORD_TYPE = Type(**{"authority": "ODL.MIT.EDU", "namespace": "osid-object", "identifier": "simple-child-sequencing"})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
 @pytest.fixture(scope="class",
@@ -622,6 +624,295 @@ class TestAssessmentPartAdminSession(object):
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.alias_assessment_part(self.fake_id, self.fake_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+def assessment_part_bank_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.assessment_part_list = list()
+    request.cls.assessment_part_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentPartBankSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank for Assignment'
+        create_form.description = 'Test Bank for AssessmentPartBankSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_bank(create_form)
+
+        assessment_form = request.cls.catalog.get_assessment_form_for_create([])
+        assessment_form.display_name = 'Test Assessment'
+        assessment_form.description = 'Test Assessment for AssessmentPartBankSession tests'
+        request.cls.assessment = request.cls.catalog.create_assessment(assessment_form)
+
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
+            create_form.display_name = 'Test AssessmentPart ' + str(num)
+            create_form.description = 'Test AssessmentPart for AssessmentPartBankSession tests'
+            obj = request.cls.catalog.create_assessment_part_for_assessment(create_form)
+            request.cls.assessment_part_list.append(obj)
+            request.cls.assessment_part_ids.append(obj.ident)
+        request.cls.svc_mgr.assign_assessment_part_to_bank(
+            request.cls.assessment_part_ids[1], request.cls.assigned_catalog.ident)
+        request.cls.svc_mgr.assign_assessment_part_to_bank(
+            request.cls.assessment_part_ids[2], request.cls.assigned_catalog.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.unassign_assessment_part_from_bank(
+                request.cls.assessment_part_ids[1], request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.unassign_assessment_part_from_bank(
+                request.cls.assessment_part_ids[2], request.cls.assigned_catalog.ident)
+            for obj in request.cls.catalog.get_assessment_parts():
+                request.cls.catalog.delete_assessment_part(obj.ident)
+            request.cls.catalog.delete_assessment(request.cls.assessment.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def assessment_part_bank_session_test_fixture(request):
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("assessment_part_bank_session_class_fixture", "assessment_part_bank_session_test_fixture")
+class TestAssessmentPartBankSession(object):
+    """Tests for AssessmentPartBankSession"""
+    def test_can_lookup_assessment_part_bank_mappings(self):
+        """Tests can_lookup_assessment_part_bank_mappings"""
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_assessment_part_bank_mappings()
+        assert isinstance(result, bool)
+
+    def test_use_comparative_assessment_part_bank_view(self):
+        """Tests use_comparative_assessment_part_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
+        self.svc_mgr.use_comparative_assessment_part_bank_view()
+
+    def test_use_plenary_assessment_part_bank_view(self):
+        """Tests use_plenary_assessment_part_bank_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
+        self.svc_mgr.use_plenary_assessment_part_bank_view()
+
+    def test_get_assessment_part_ids_by_bank(self):
+        """Tests get_assessment_part_ids_by_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
+        if not is_never_authz(self.service_config):
+            objects = self.svc_mgr.get_assessment_part_ids_by_bank(self.assigned_catalog.ident)
+            assert objects.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_assessment_part_ids_by_bank(self.fake_id)
+
+    def test_get_assessment_parts_by_bank(self):
+        """Tests get_assessment_parts_by_bank"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assessment_parts_by_bank(self.assigned_catalog.ident)
+            assert isinstance(results, ABCObjects.AssessmentPartList)
+            assert results.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assessment_parts_by_bank(self.fake_id)
+
+    def test_get_assessment_part_ids_by_banks(self):
+        """Tests get_assessment_part_ids_by_banks"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+            object_ids = self.session.get_assessment_part_ids_by_banks(catalog_ids)
+            assert isinstance(object_ids, IdList)
+            # Currently our impl does not remove duplicate objectIds
+            assert object_ids.available() == 5
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assessment_part_ids_by_banks([self.fake_id])
+
+    def test_get_assessment_parts_by_banks(self):
+        """Tests get_assessment_parts_by_banks"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+            results = self.session.get_assessment_parts_by_banks(catalog_ids)
+            assert isinstance(results, ABCObjects.AssessmentPartList)
+            # Currently our impl does not remove duplicate objects
+            assert results.available() == 5
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assessment_parts_by_banks([self.fake_id])
+
+    def test_get_bank_ids_by_assessment_part(self):
+        """Tests get_bank_ids_by_assessment_part"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
+        if not is_never_authz(self.service_config):
+            cats = self.svc_mgr.get_bank_ids_by_assessment_part(self.assessment_part_ids[1])
+            assert cats.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_bank_ids_by_assessment_part(self.fake_id)
+
+    def test_get_banks_by_assessment_part(self):
+        """Tests get_banks_by_assessment_part"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
+        if not is_never_authz(self.service_config):
+            cats = self.svc_mgr.get_banks_by_assessment_part(self.assessment_part_ids[1])
+            assert cats.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_banks_by_assessment_part(self.fake_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+def assessment_part_bank_assignment_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.assessment_part_list = list()
+    request.cls.assessment_part_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'ASSESSMENT',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank'
+        create_form.description = 'Test Bank for AssessmentPartBankAssignmentSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_bank(create_form)
+        create_form = request.cls.svc_mgr.get_bank_form_for_create([])
+        create_form.display_name = 'Test Bank for Assignment'
+        create_form.description = 'Test Bank for AssessmentPartBankAssignmentSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_bank(create_form)
+
+        assessment_form = request.cls.catalog.get_assessment_form_for_create([])
+        assessment_form.display_name = 'Test Assessment'
+        assessment_form.description = 'Test Assessment for AssessmentPartBankAssignmentSession tests'
+        request.cls.assessment = request.cls.catalog.create_assessment(assessment_form)
+
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_assessment_part_form_for_create_for_assessment(request.cls.assessment.ident, [])
+            create_form.display_name = 'Test AssessmentPart ' + str(num)
+            create_form.description = 'Test AssessmentPart for AssessmentPartBankAssignmentSession tests'
+            obj = request.cls.catalog.create_assessment_part_for_assessment(create_form)
+            request.cls.assessment_part_list.append(obj)
+            request.cls.assessment_part_ids.append(obj.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for obj in request.cls.catalog.get_assessment_parts():
+                request.cls.catalog.delete_assessment_part(obj.ident)
+            request.cls.catalog.delete_assessment(request.cls.assessment.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def assessment_part_bank_assignment_session_test_fixture(request):
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("assessment_part_bank_assignment_session_class_fixture", "assessment_part_bank_assignment_session_test_fixture")
+class TestAssessmentPartBankAssignmentSession(object):
+    """Tests for AssessmentPartBankAssignmentSession"""
+    def test_can_assign_assessment_parts(self):
+        """Tests can_assign_assessment_parts"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_assessment_parts()
+        assert isinstance(result, bool)
+
+    def test_can_assign_assessment_parts_to_bank(self):
+        """Tests can_assign_assessment_parts_to_bank"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_assessment_parts_to_bank(self.assigned_catalog.ident)
+        assert isinstance(result, bool)
+
+    def test_get_assignable_bank_ids(self):
+        """Tests get_assignable_bank_ids"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_bank_ids(self.catalog.ident)
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_bank_ids(self.fake_id)
+
+    def test_get_assignable_bank_ids_for_assessment_part(self):
+        """Tests get_assignable_bank_ids_for_assessment_part"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_resource_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_bank_ids_for_assessment_part(self.catalog.ident, self.assessment_part_ids[0])
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_bank_ids_for_assessment_part(self.fake_id, self.fake_id)
+
+    def test_assign_assessment_part_to_bank(self):
+        """Tests assign_assessment_part_to_bank"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_assessment_parts()
+            assert results.available() == 0
+            self.session.assign_assessment_part_to_bank(self.assessment_part_ids[1], self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_assessment_parts()
+            assert results.available() == 1
+            self.session.unassign_assessment_part_from_bank(
+                self.assessment_part_ids[1],
+                self.assigned_catalog.ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.assign_assessment_part_to_bank(self.fake_id, self.fake_id)
+
+    def test_unassign_assessment_part_from_bank(self):
+        """Tests unassign_assessment_part_from_bank"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_assessment_parts()
+            assert results.available() == 0
+            self.session.assign_assessment_part_to_bank(
+                self.assessment_part_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_assessment_parts()
+            assert results.available() == 1
+            self.session.unassign_assessment_part_from_bank(
+                self.assessment_part_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_assessment_parts()
+            assert results.available() == 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.unassign_assessment_part_from_bank(self.fake_id, self.fake_id)
+
+    def test_reassign_assessment_part_to_bank(self):
+        """Tests reassign_assessment_part_to_bank"""
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.reassign_assessment_part_to_bank(True, True, True)
 
 
 @pytest.fixture(scope="class",

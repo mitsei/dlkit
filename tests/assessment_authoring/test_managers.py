@@ -50,6 +50,14 @@ class TestAssessmentAuthoringProfile(object):
         """Tests supports_assessment_part_admin"""
         assert isinstance(self.mgr.supports_assessment_part_admin(), bool)
 
+    def test_supports_assessment_part_bank(self):
+        """Tests supports_assessment_part_bank"""
+        assert isinstance(self.mgr.supports_assessment_part_bank(), bool)
+
+    def test_supports_assessment_part_bank_assignment(self):
+        """Tests supports_assessment_part_bank_assignment"""
+        assert isinstance(self.mgr.supports_assessment_part_bank_assignment(), bool)
+
     def test_supports_assessment_part_item(self):
         """Tests supports_assessment_part_item"""
         assert isinstance(self.mgr.supports_assessment_part_item(), bool)
@@ -165,6 +173,18 @@ class TestAssessmentAuthoringManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_assessment_part_admin_session_for_bank()
 
+    def test_get_assessment_part_bank_session(self):
+        """Tests get_assessment_part_bank_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_part_bank():
+            self.svc_mgr.get_assessment_part_bank_session()
+
+    def test_get_assessment_part_bank_assignment_session(self):
+        """Tests get_assessment_part_bank_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_part_bank_assignment():
+            self.svc_mgr.get_assessment_part_bank_assignment_session()
+
     def test_get_sequence_rule_lookup_session(self):
         """Tests get_sequence_rule_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
@@ -274,6 +294,22 @@ class TestAssessmentAuthoringProxyManager(object):
             self.svc_mgr.get_assessment_part_admin_session_for_bank(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_assessment_part_admin_session_for_bank()
+
+    def test_get_assessment_part_bank_session(self):
+        """Tests get_assessment_part_bank_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_part_bank():
+            self.svc_mgr.get_assessment_part_bank_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_bank_session()
+
+    def test_get_assessment_part_bank_assignment_session(self):
+        """Tests get_assessment_part_bank_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_assessment_part_bank_assignment():
+            self.svc_mgr.get_assessment_part_bank_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_assessment_part_bank_assignment_session()
 
     def test_get_sequence_rule_lookup_session(self):
         """Tests get_sequence_rule_lookup_session"""

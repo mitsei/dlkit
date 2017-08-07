@@ -60,6 +60,30 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_assessment_part_admin' in profile.SUPPORTS
 
+    def supports_assessment_part_bank(self):
+        """Tests if an assessment part bank lookup service is supported.
+
+        return: (boolean) - ``true`` if an assessment part bank lookup
+                service is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_assessment_part_bank' in profile.SUPPORTS
+
+    def supports_assessment_part_bank_assignment(self):
+        """Tests if an assessment part bank service is supported.
+
+        return: (boolean) - ``true`` if assessment part bank assignment
+                service is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_assessment_part_bank_assignment' in profile.SUPPORTS
+
     def supports_assessment_part_item(self):
         """Tests if an assessment part item service is supported for looking up assessment part and item mappings.
 
@@ -422,6 +446,48 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
         ##
         # pylint: disable=no-member
         return sessions.AssessmentPartAdminSession(bank_id, runtime=self._runtime)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_assessment_part_bank_session(self):
+        """Gets the ``OsidSession`` to lookup assessment part/bank mappings for assessment parts.
+
+        return: (osid.assessment.authoring.AssessmentPartBankSession) -
+                an ``AssessmentPartBankSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_assessment_part_bank()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_bank()`` is ``true``.*
+
+        """
+        if not self.supports_assessment_part_bank():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssessmentPartBankSession(runtime=self._runtime)
+
+    assessment_part_bank_session = property(fget=get_assessment_part_bank_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_assessment_part_bank_assignment_session(self):
+        """Gets the ``OsidSession`` associated with assigning assessment part to bank.
+
+        return:
+                (osid.assessment.authoring.AssessmentPartBankAssignmentS
+                ession) - an ``AssessmentPartBankAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_assessment_part_bank_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_bank_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_assessment_part_bank_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssessmentPartBankAssignmentSession(runtime=self._runtime)
+
+    assessment_part_bank_assignment_session = property(fget=get_assessment_part_bank_assignment_session)
 
     @utilities.remove_null_proxy_kwarg
     def get_sequence_rule_lookup_session(self):
@@ -822,6 +888,48 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         ##
         # pylint: disable=no-member
         return sessions.AssessmentPartAdminSession(bank_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_assessment_part_bank_session(self, proxy):
+        """Gets the ``OsidSession`` to lookup assessment part/bank mappings for assessment parts.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.assessment.authoring.AssessmentPartBankSession) -
+                an ``AssessmentPartBankSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_assessment_part_bank()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_bank()`` is ``true``.*
+
+        """
+        if not self.supports_assessment_part_bank():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssessmentPartBankSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_assessment_part_bank_assignment_session(self, proxy):
+        """Gets the ``OsidSession`` associated with assigning assessment part to bank.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return:
+                (osid.assessment.authoring.AssessmentPartBankAssignmentS
+                ession) - an ``AssessmentPartBankAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_assessment_part_bank_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_assessment_part_bank_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_assessment_part_bank_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssessmentPartBankAssignmentSession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_sequence_rule_lookup_session(self, proxy):
