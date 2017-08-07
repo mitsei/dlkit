@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo assessment.authoring'
 
 DESCRIPTION = 'MongoDB based assessment.authoring implementation'
 
-VERSIONCOMPONENTS = [0, 1, 1]
+VERSIONCOMPONENTS = [0, 1, 27]
 
-RELEASEDATE = "2017-07-19"
+RELEASEDATE = "2017-08-07"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
@@ -30,8 +30,8 @@ SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_assessment_part_search',
     'supports_assessment_part_admin',
     # 'supports_assessment_part_notification',
-    # 'supports_assessment_part_bank',
-    # 'supports_assessment_part_bank_assignment',
+    'supports_assessment_part_bank',
+    'supports_assessment_part_bank_assignment',
     # 'supports_assessment_part_smart_bank',
     'supports_assessment_part_item',
     'supports_assessment_part_item_design',

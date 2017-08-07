@@ -322,6 +322,12 @@ class AssessmentProfile(osid.OsidProfile, assessment_managers.AssessmentProfile)
         """Pass through to provider method"""
         return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_admin()
 
+    def supports_assessment_part_bank(self):
+        return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_bank()
+
+    def supports_assessment_part_bank_assignment(self):
+        return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_bank_assignment()
+
     def supports_assessment_part_item(self):
         """Pass through to provider method"""
         return self._get_sub_package_provider_manager('assessment_authoring').supports_assessment_part_item()
@@ -434,9 +440,14 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
             return self._provider_sessions[agent_key][session_name]
         else:
             manager = self._get_sub_package_provider_manager(sub_package)
-            session = self._instantiate_session('get_' + session_name + '_for_bank',
-                                                proxy=self._proxy,
-                                                manager=manager)
+            try:
+                session = self._instantiate_session('get_' + session_name + '_for_bank',
+                                                    proxy=self._proxy,
+                                                    manager=manager)
+            except AttributeError:
+                session = self._instantiate_session('get_' + session_name,
+                                                    proxy=self._proxy,
+                                                    manager=manager)
             self._set_bank_view(session)
             if self._session_management != DISABLED:
                 self._provider_sessions[agent_key][session_name] = session
@@ -444,7 +455,11 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
 
     def _instantiate_session(self, method_name, proxy=None, *args, **kwargs):
         """Instantiates a provider session"""
-        session_class = getattr(self._provider_manager, method_name)
+        if 'manager' in kwargs:
+            session_class = getattr(kwargs['manager'], method_name)
+            del kwargs['manager']
+        else:
+            session_class = getattr(self._provider_manager, method_name)
         if proxy is None:
             try:
                 return session_class(bank_id=self._catalog_id, *args, **kwargs)
@@ -1612,6 +1627,18 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         """Pass through to provider method"""
         return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_admin_session_for_bank(*args, **kwargs)
 
+    def get_assessment_part_bank_session(self, *args, **kwargs):
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_bank_session(*args, **kwargs)
+
+    assessment_part_bank_session = property(fget=get_assessment_part_bank_session)
+
+    def get_assessment_part_bank_assignment_session(self, *args, **kwargs):
+        """Pass through to provider method"""
+        return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_bank_assignment_session(*args, **kwargs)
+
+    assessment_part_bank_assignment_session = property(fget=get_assessment_part_bank_assignment_session)
+
     def get_sequence_rule_lookup_session(self, *args, **kwargs):
         """Pass through to provider method"""
         return self._get_sub_package_provider_manager('assessment_authoring').get_sequence_rule_lookup_session(*args, **kwargs)
@@ -1651,6 +1678,106 @@ class AssessmentManager(osid.OsidManager, osid.OsidSession, AssessmentProfile, a
         """Pass through to provider method"""
         # Missing in the spec
         return self._get_sub_package_provider_manager('assessment_authoring').get_assessment_part_item_design_session_for_bank(*args, **kwargs)
+
+    # -- Implemented from assessment.authoring - AssessmentPartBankSession
+
+    def can_lookup_assessment_part_bank_mappings(self):
+        """Pass through to provider AssessmentPartBankSession.can_lookup_assessment_part_bank_mappings"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_bank_session').can_lookup_assessment_part_bank_mappings()
+
+    def use_comparative_assessment_part_bank_view(self):
+        """Pass through to provider AssessmentPartBankSession.use_comparative_assessment_part_bank_view"""
+        self._bank_view = COMPARATIVE
+        # self._get_provider_session('assessment_part_bank_session') # To make sure the session is tracked
+        for session in self._get_provider_sessions():
+            try:
+                session.use_comparative_bank_view()
+            except AttributeError:
+                pass
+
+    def use_plenary_assessment_part_bank_view(self):
+        """Pass through to provider AssessmentPartBankSession.use_plenary_assessment_part_bank_view"""
+        self._bank_view = PLENARY
+        # self._get_provider_session('assessment_part_bank_session') # To make sure the session is tracked
+        for session in self._get_provider_sessions():
+            try:
+                session.use_plenary_bank_view()
+            except AttributeError:
+                pass
+
+    def get_assessment_part_ids_by_bank(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankSession.get_assessment_part_ids_by_bank"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_bank_session').get_assessment_part_ids_by_bank(*args, **kwargs)
+
+    def get_assessment_parts_by_bank(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankSession.get_assessment_parts_by_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        return self._get_provider_session('assessment_part_bank_session').get_assessment_parts_by_bank(*args, **kwargs)
+
+    def get_assessment_part_ids_by_banks(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankSession.get_assessment_part_ids_by_banks"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        return self._get_provider_session('assessment_part_bank_session').get_assessment_part_ids_by_banks(*args, **kwargs)
+
+    def get_assessment_parts_by_banks(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankSession.get_assessment_parts_by_banks"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        return self._get_provider_session('assessment_part_bank_session').get_assessment_parts_by_banks(*args, **kwargs)
+
+    def get_bank_ids_by_assessment_part(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankSession.get_bank_ids_by_assessment_part"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        return self._get_provider_session('assessment_part_bank_session').get_bank_ids_by_assessment_part(*args, **kwargs)
+
+    def get_banks_by_assessment_part(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankSession.get_banks_by_assessment_part"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        catalogs = self._get_provider_session('assessment_part_bank_session').get_banks_by_assessment_part(*args, **kwargs)
+        cat_list = []
+        for cat in catalogs:
+            cat_list.append(Bank(self._provider_manager, cat, self._runtime, self._proxy))
+        return BankList(cat_list)
+
+    # -- Implemented from assessment.authoring - AssessmentPartBankAssignmentSession
+
+    def can_assign_assessment_parts(self):
+        """Pass through to provider AssessmentPartBankAssignmentSession.can_assign_assessment_parts"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_bank_assignment_session').can_assign_assessment_parts()
+
+    def can_assign_assessment_parts_to_bank(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankAssignmentSession.can_assign_assessment_parts_to_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        return self._get_provider_session('assessment_part_bank_assignment_session').can_assign_assessment_parts_to_bank(*args, **kwargs)
+
+    def get_assignable_bank_ids_for_assessment_part(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankAssignmentSession.get_assignable_bank_ids_for_assessment_part"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        return self._get_provider_session('assessment_part_bank_assignment_session').get_assignable_bank_ids_for_assessment_part(*args, **kwargs)
+
+    def assign_assessment_part_to_bank(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankAssignmentSession.assign_assessment_part_to_bank"""
+        return self._get_sub_package_provider_session('assessment_authoring',
+                                                      'assessment_part_bank_assignment_session').assign_assessment_part_to_bank(*args, **kwargs)
+
+    def unassign_assessment_part_from_bank(self, *args, **kwargs):
+        """Pass through to provider AssessmentPartBankAssignmentSession.unassign_assessment_part_from_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        self._get_provider_session('assessment_part_bank_assignment_session').unassign_assessment_part_from_bank(*args, **kwargs)
+
+    def reassign_assessment_part_to_bank(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
 
 class AssessmentProxyManager(osid.OsidProxyManager, AssessmentProfile, assessment_managers.AssessmentProxyManager):
