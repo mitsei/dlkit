@@ -114,6 +114,30 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_vault_admin' in profile.SUPPORTS
 
+    def supports_vault_hierarchy(self):
+        """Tests if a vault hierarchy traversal is supported.
+
+        return: (boolean) - ``true`` if a vault hierarchy traversal is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_vault_hierarchy' in profile.SUPPORTS
+
+    def supports_vault_hierarchy_design(self):
+        """Tests if vault hierarchy design is supported.
+
+        return: (boolean) - ``true`` if a function hierarchy design is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_vault_hierarchy_design' in profile.SUPPORTS
+
     def get_authorization_record_types(self):
         """Gets the supported ``Authorization`` record types.
 
@@ -590,6 +614,45 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
 
     vault_admin_session = property(fget=get_vault_admin_session)
 
+    @utilities.remove_null_proxy_kwarg
+    def get_vault_hierarchy_session(self):
+        """Gets the session traversing vault hierarchies.
+
+        return: (osid.authorization.VaultHierarchySession) - a
+                ``VaultHierarchySession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy() is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchySession(runtime=self._runtime)
+
+    vault_hierarchy_session = property(fget=get_vault_hierarchy_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_vault_hierarchy_design_session(self):
+        """Gets the session designing vault hierarchies.
+
+        return: (osid.authorization.VaultHierarchyDesignSession) - a
+                ``VaultHierarchyDesignSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy_design() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy_design()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchyDesignSession(runtime=self._runtime)
+
+    vault_hierarchy_design_session = property(fget=get_vault_hierarchy_design_session)
+
     def get_authorization_batch_manager(self):
         """Gets an ``AuthorizationBatchManager``.
 
@@ -934,6 +997,45 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
             raise errors.Unimplemented()
         # pylint: disable=no-member
         return sessions.VaultAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_vault_hierarchy_session(self, proxy):
+        """Gets the session traversing vault hierarchies.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.VaultHierarchySession) - a
+                ``VaultHierarchySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy() is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_vault_hierarchy_design_session(self, proxy):
+        """Gets the session designing vault hierarchies.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.VaultHierarchyDesignSession) - a
+                ``VaultHierarchySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy_design() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy_design()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
 
     def get_authorization_batch_proxy_manager(self):
         """Gets an ``AuthorizationBatchProxyManager``.

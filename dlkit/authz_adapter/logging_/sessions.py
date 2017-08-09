@@ -38,7 +38,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
     log = property(fget=get_log)
 
     def can_log(self):
-        return self._provider_session.can_log()
+        raise Unimplemented()
 
     @raise_null_argument
     def log(self, content, content_type):
@@ -124,9 +124,12 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
     log = property(fget=get_log)
 
     def can_read_log(self):
-        # Implemented from azosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
-        return self._can('read')
+        return self.can_lookup_log_entries()
+
+    def can_lookup_log_entries(self):
+        """Tests if the user can lookup log entries"""
+        return (self._can('lookup') or
+                bool(self._get_overriding_catalog_ids('lookup')))
 
     def use_comparative_log_entry_view(self):
         # Implemented from azosid template for -

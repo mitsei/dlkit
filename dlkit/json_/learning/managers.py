@@ -159,6 +159,18 @@ class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfi
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_activity_lookup' in profile.SUPPORTS
 
+    def supports_activity_query(self):
+        """Tests if an activity query service is supported.
+
+        return: (boolean) - ``true`` if activity query is supported,
+                ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_activity_query' in profile.SUPPORTS
+
     def supports_activity_admin(self):
         """Tests if an activity administrative service is supported.
 
@@ -230,6 +242,18 @@ class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfi
         # Implemented from template for
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_proficiency_admin' in profile.SUPPORTS
+
+    def supports_proficiency_objective_bank_assignment(self):
+        """Tests if a proficiency objective bank mapping service is supported.
+
+        return: (boolean) - ``true`` if proficiency to objective bank
+                mapping service is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_proficiency_objective_bank_assignment' in profile.SUPPORTS
 
     def supports_objective_bank_lookup(self):
         """Tests if an objective bank lookup service is supported.
@@ -974,6 +998,53 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
         return sessions.ActivityLookupSession(objective_bank_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
+    def get_activity_query_session(self):
+        """Gets the ``OsidSession`` associated with the activity query service.
+
+        return: (osid.learning.ActivityQuerySession) - a
+                ``ActivityQuerySession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_activity_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_activity_query()`` is ``true``.*
+
+        """
+        if not self.supports_activity_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.ActivityQuerySession(runtime=self._runtime)
+
+    activity_query_session = property(fget=get_activity_query_session)
+
+    @utilities.remove_null_proxy_kwarg
+    @utilities.arguments_not_none
+    def get_activity_query_session_for_objective_bank(self, objective_bank_id):
+        """Gets the ``OsidSession`` associated with the activity query service for the given objective bank.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                objective bank
+        return: (osid.learning.ActivityQuerySession) - an
+                ``ActivityQuerySession``
+        raise:  NotFound - ``objective_bank_id`` not found
+        raise:  NullArgument - ``objective_bank_id`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_activity_query()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_activity_query()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_activity_query():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.ActivityQuerySession(objective_bank_id, runtime=self._runtime)
+
+    @utilities.remove_null_proxy_kwarg
     def get_activity_admin_session(self):
         """Gets the ``OsidSession`` associated with the activity administration service.
 
@@ -1203,6 +1274,29 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
         ##
         # pylint: disable=no-member
         return sessions.ProficiencyAdminSession(objective_bank_id, runtime=self._runtime)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_proficiency_objective_bank_assignment_session(self):
+        """Gets the ``OsidSession`` associated with assigning proficiencys to objective banks.
+
+        return:
+                (osid.learning.ProficiencyObjectiveBankAssignmentSession
+                ) - a ``ProficiencyObjectiveBankAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_proficiency_objective_bank_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_proficiency_objective_bank_assignment()`` is
+        ``true``.*
+
+        """
+        if not self.supports_proficiency_objective_bank_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.ProficiencyObjectiveBankAssignmentSession(runtime=self._runtime)
+
+    proficiency_objective_bank_assignment_session = property(fget=get_proficiency_objective_bank_assignment_session)
 
     @utilities.remove_null_proxy_kwarg
     def get_objective_bank_lookup_session(self):
@@ -1860,6 +1954,54 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
         return sessions.ActivityLookupSession(objective_bank_id, proxy, self._runtime)
 
     @utilities.arguments_not_none
+    def get_activity_query_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the activity query service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.learning.ActivityQuerySession) - an
+                ``ActivityQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_activity_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_activity_query()`` is ``true``.*
+
+        """
+        if not self.supports_activity_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.ActivityQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_activity_query_session_for_objective_bank(self, objective_bank_id, proxy):
+        """Gets the ``OsidSession`` associated with the activity query service for the given objective bank.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                objective bank
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.learning.ActivityQuerySession) - an
+                ``ActivityQuerySession``
+        raise:  NotFound - ``objective_bank_id`` not found
+        raise:  NullArgument - ``objective_bank_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_activity_query()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_activity_query()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_activity_query():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.ActivityQuerySession(objective_bank_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
     def get_activity_admin_session(self, proxy):
         """Gets the ``OsidSession`` associated with the activity administration service.
 
@@ -2093,6 +2235,29 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
         ##
         # pylint: disable=no-member
         return sessions.ProficiencyAdminSession(objective_bank_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_proficiency_objective_bank_assignment_session(self, proxy):
+        """Gets the ``OsidSession`` associated with assigning proficiencies to objective banks.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return:
+                (osid.learning.ProficiencyObjectiveBankAssignmentSession
+                ) - a ``ProficiencyObjectiveBankAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_proficiency_objective_bank_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_proficiency_objective_bank_assignment()`` is
+        ``true``.*
+
+        """
+        if not self.supports_proficiency_objective_bank_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.ProficiencyObjectiveBankAssignmentSession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_objective_bank_lookup_session(self, proxy):

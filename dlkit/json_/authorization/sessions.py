@@ -2466,3 +2466,627 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=vault_id, alias_id=alias_id)
         self._alias_id(primary_id=vault_id, equivalent_id=alias_id)
+
+
+class VaultHierarchySession(abc_authorization_sessions.VaultHierarchySession, osid_sessions.OsidSession):
+    """This session defines methods for traversing a hierarchy of ``Vault`` objects.
+
+    Each node in the hierarchy is a unique ``Vault``. The hierarchy may
+    be traversed recursively to establish the tree structure through
+    ``get_parent_vaults()`` and ``getChildVaults()``. To relate these
+    ``Ids`` to another OSID, ``get_vault_nodes()`` can be used for
+    retrievals that can be used for bulk lookups in other OSIDs. Any
+    ``Vault`` available in the Authorization OSID is known to this
+    hierarchy but does not appear in the hierarchy traversal until added
+    as a root node or a child of another node.
+
+    A user may not be authorized to traverse the entire hierarchy. Parts
+    of the hierarchy may be made invisible through omission from the
+    returns of ``get_parent_vaults()`` or ``get_child_vaults()`` in lieu
+    of a ``PermissionDenied`` error that may disrupt the traversal
+    through authorized pathways.
+
+    This session defines views that offer differing behaviors when
+    retrieving multiple objects.
+
+      * comparative view: vault elements may be silently omitted or re-
+        ordered
+      * plenary view: provides a complete set or is an error condition
+
+    """
+    _session_namespace = 'authorization.VaultHierarchySession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._forms = dict()
+        self._kwargs = kwargs
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_hierarchy_session()
+        else:
+            hierarchy_mgr = self._get_provider_manager('HIERARCHY')
+            self._hierarchy_session = hierarchy_mgr.get_hierarchy_traversal_session_for_hierarchy(
+                Id(authority='AUTHORIZATION',
+                   namespace='CATALOG',
+                   identifier='VAULT'),
+                proxy=self._proxy)
+
+    def get_vault_hierarchy_id(self):
+        """Gets the hierarchy ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the hierarchy ``Id`` associated with this
+                session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy_id()
+        return self._hierarchy_session.get_hierarchy_id()
+
+    vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
+
+    def get_vault_hierarchy(self):
+        """Gets the hierarchy associated with this session.
+
+        return: (osid.hierarchy.Hierarchy) - the hierarchy associated
+                with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy()
+        return self._hierarchy_session.get_hierarchy()
+
+    vault_hierarchy = property(fget=get_vault_hierarchy)
+
+    def can_access_vault_hierarchy(self):
+        """Tests if this user can perform hierarchy queries.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may opt not to offer lookup
+        operations.
+
+        return: (boolean) - ``false`` if hierarchy traversal methods are
+                not authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if self._catalog_session is not None:
+            return self._catalog_session.can_access_catalog_hierarchy()
+        return True
+
+    def use_comparative_vault_view(self):
+        """The returns from the vault methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_vault_view(self):
+        """A complete view of the ``Hierarchy`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def get_root_vault_ids(self):
+        """Gets the root vault ``Ids`` in this hierarchy.
+
+        return: (osid.id.IdList) - the root vault ``Ids``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_root_catalog_ids()
+        return self._hierarchy_session.get_roots()
+
+    root_vault_ids = property(fget=get_root_vault_ids)
+
+    def get_root_vaults(self):
+        """Gets the root vaults in this vault hierarchy.
+
+        return: (osid.authorization.VaultList) - the root vaults
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_root_catalogs()
+        return VaultLookupSession(
+            self._proxy,
+            self._runtime).get_vaults_by_ids(list(self.get_root_vault_ids()))
+
+    root_vaults = property(fget=get_root_vaults)
+
+    @utilities.arguments_not_none
+    def has_parent_vaults(self, vault_id):
+        """Tests if the ``Vault`` has any parents.
+
+        arg:    vault_id (osid.id.Id): a vault ``Id``
+        return: (boolean) - ``true`` if the vault has parents, ``false``
+                otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_parent_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.has_parent_catalogs(catalog_id=vault_id)
+        return self._hierarchy_session.has_parents(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def is_parent_of_vault(self, id_, vault_id):
+        """Tests if an ``Id`` is a direct parent of a vault.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if this ``id`` is a parent of
+                ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``id`` or ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_parent_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_parent(id_=vault_id, parent_id=id_)
+
+    @utilities.arguments_not_none
+    def get_parent_vault_ids(self, vault_id):
+        """Gets the parent ``Ids`` of the given vault.
+
+        arg:    vault_id (osid.id.Id): a vault ``Id``
+        return: (osid.id.IdList) - the parent ``Ids`` of the vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_parent_catalog_ids(catalog_id=vault_id)
+        return self._hierarchy_session.get_parents(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def get_parent_vaults(self, vault_id):
+        """Gets the parents of the given vault.
+
+        arg:    vault_id (osid.id.Id): a vault ``Id``
+        return: (osid.authorization.VaultList) - the parents of the
+                vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_parent_catalogs(catalog_id=vault_id)
+        return VaultLookupSession(
+            self._proxy,
+            self._runtime).get_vaults_by_ids(
+                list(self.get_parent_vault_ids(vault_id)))
+
+    @utilities.arguments_not_none
+    def is_ancestor_of_vault(self, id_, vault_id):
+        """Tests if an ``Id`` is an ancestor of a vault.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if this ``id`` is an ancestor of
+                ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` or ``id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=vault_id)
+
+    @utilities.arguments_not_none
+    def has_child_vaults(self, vault_id):
+        """Tests if a vault has any children.
+
+        arg:    vault_id (osid.id.Id): a ``vault_id``
+        return: (boolean) - ``true`` if the ``vault_id`` has children,
+                ``false`` otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_child_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.has_child_catalogs(catalog_id=vault_id)
+        return self._hierarchy_session.has_children(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def is_child_of_vault(self, id_, vault_id):
+        """Tests if a vault is a direct child of another.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if the ``id`` is a child of
+                ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_child_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_child(id_=vault_id, child_id=id_)
+
+    @utilities.arguments_not_none
+    def get_child_vault_ids(self, vault_id):
+        """Gets the child ``Ids`` of the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        return: (osid.id.IdList) - the children of the vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_child_catalog_ids(catalog_id=vault_id)
+        return self._hierarchy_session.get_children(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def get_child_vaults(self, vault_id):
+        """Gets the children of the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        return: (osid.authorization.VaultList) - the children of the
+                vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_child_catalogs(catalog_id=vault_id)
+        return VaultLookupSession(
+            self._proxy,
+            self._runtime).get_vaults_by_ids(
+                list(self.get_child_vault_ids(vault_id)))
+
+    @utilities.arguments_not_none
+    def is_descendant_of_vault(self, id_, vault_id):
+        """Tests if an ``Id`` is a descendant of a vault.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if the ``id`` is a descendant of
+                the ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` is not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_descendant(id_=id_, descendant_id=vault_id)
+
+    @utilities.arguments_not_none
+    def get_vault_node_ids(self, vault_id, ancestor_levels, descendant_levels, include_siblings):
+        """Gets a portion of the hierarchy for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        arg:    ancestor_levels (cardinal): the maximum number of
+                ancestor levels to include. A value of 0 returns no
+                parents in the node.
+        arg:    descendant_levels (cardinal): the maximum number of
+                descendant levels to include. A value of 0 returns no
+                children in the node.
+        arg:    include_siblings (boolean): ``true`` to include the
+                siblings of the given node, ``false`` to omit the
+                siblings
+        return: (osid.hierarchy.Node) - a vault node
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_node_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_node_ids(
+                catalog_id=vault_id,
+                ancestor_levels=ancestor_levels,
+                descendant_levels=descendant_levels,
+                include_siblings=include_siblings)
+        return self._hierarchy_session.get_nodes(
+            id_=vault_id,
+            ancestor_levels=ancestor_levels,
+            descendant_levels=descendant_levels,
+            include_siblings=include_siblings)
+
+    @utilities.arguments_not_none
+    def get_vault_nodes(self, vault_id, ancestor_levels, descendant_levels, include_siblings):
+        """Gets a portion of the hierarchy for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        arg:    ancestor_levels (cardinal): the maximum number of
+                ancestor levels to include. A value of 0 returns no
+                parents in the node.
+        arg:    descendant_levels (cardinal): the maximum number of
+                descendant levels to include. A value of 0 returns no
+                children in the node.
+        arg:    include_siblings (boolean): ``true`` to include the
+                siblings of the given node, ``false`` to omit the
+                siblings
+        return: (osid.authorization.VaultNode) - a vault node
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_nodes
+        return objects.VaultNode(self.get_vault_node_ids(
+            vault_id=vault_id,
+            ancestor_levels=ancestor_levels,
+            descendant_levels=descendant_levels,
+            include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
+
+
+class VaultHierarchyDesignSession(abc_authorization_sessions.VaultHierarchyDesignSession, osid_sessions.OsidSession):
+    """This session defines methods for managing a hierarchy of ``Vault`` objects.
+
+    Each node in the hierarchy is a unique ``Vault``.
+
+    """
+    _session_namespace = 'authorization.VaultHierarchyDesignSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._forms = dict()
+        self._kwargs = kwargs
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_hierarchy_design_session()
+        else:
+            hierarchy_mgr = self._get_provider_manager('HIERARCHY')
+            self._hierarchy_session = hierarchy_mgr.get_hierarchy_design_session_for_hierarchy(
+                Id(authority='AUTHORIZATION',
+                   namespace='CATALOG',
+                   identifier='VAULT'),
+                proxy=self._proxy)
+
+    def get_vault_hierarchy_id(self):
+        """Gets the hierarchy ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the hierarchy ``Id`` associated with this
+                session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy_id()
+        return self._hierarchy_session.get_hierarchy_id()
+
+    vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
+
+    def get_vault_hierarchy(self):
+        """Gets the hierarchy associated with this session.
+
+        return: (osid.hierarchy.Hierarchy) - the hierarchy associated
+                with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy()
+        return self._hierarchy_session.get_hierarchy()
+
+    vault_hierarchy = property(fget=get_vault_hierarchy)
+
+    def can_modify_vault_hierarchy(self):
+        """Tests if this user can change the hierarchy.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known performing any update
+        will result in a ``PermissionDenied``. This is intended as a
+        hint to an application that may opt not to offer these
+        operations to an unauthorized user.
+
+        return: (boolean) - ``false`` if changing this hierarchy is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if self._catalog_session is not None:
+            return self._catalog_session.can_modify_catalog_hierarchy()
+        return True
+
+    @utilities.arguments_not_none
+    def add_root_vault(self, vault_id):
+        """Adds a root vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        raise:  AlreadyExists - ``vault_id`` is already in hierarchy
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.add_root_catalog(catalog_id=vault_id)
+        return self._hierarchy_session.add_root(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def remove_root_vault(self, vault_id):
+        """Removes a root vault from this hierarchy.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        raise:  NotFound - ``vault_id`` not a parent of ``child_id``
+        raise:  NullArgument - ``vault_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_root_catalog(catalog_id=vault_id)
+        return self._hierarchy_session.remove_root(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def add_child_vault(self, vault_id, child_id):
+        """Adds a child to a vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        arg:    child_id (osid.id.Id): the ``Id`` of the new child
+        raise:  AlreadyExists - ``vault_id`` is already a parent of
+                ``child_id``
+        raise:  NotFound - ``vault_id`` or ``child_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.add_child_catalog(catalog_id=vault_id, child_id=child_id)
+        return self._hierarchy_session.add_child(id_=vault_id, child_id=child_id)
+
+    @utilities.arguments_not_none
+    def remove_child_vault(self, vault_id, child_id):
+        """Removes a child from a vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        arg:    child_id (osid.id.Id): the ``Id`` of the child
+        raise:  NotFound - ``vault_id`` not parent of ``child_id``
+        raise:  NullArgument - ``vault_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_child_catalog(catalog_id=vault_id, child_id=child_id)
+        return self._hierarchy_session.remove_child(id_=vault_id, child_id=child_id)
+
+    @utilities.arguments_not_none
+    def remove_child_vaults(self, vault_id):
+        """Removes all children from a vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        raise:  NotFound - ``vault_id`` is not in hierarchy
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_child_catalogs(catalog_id=vault_id)
+        return self._hierarchy_session.remove_children(id_=vault_id)

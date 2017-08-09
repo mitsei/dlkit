@@ -35,7 +35,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def assessment_part_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -278,7 +278,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def assessment_part_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -397,7 +397,7 @@ class TestAssessmentPartQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def assessment_part_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -627,7 +627,7 @@ class TestAssessmentPartAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def assessment_part_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_part_list = list()
@@ -772,7 +772,7 @@ class TestAssessmentPartBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def assessment_part_bank_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_part_list = list()
@@ -916,7 +916,7 @@ class TestAssessmentPartBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def assessment_part_item_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1034,7 +1034,7 @@ class TestAssessmentPartItemSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def assessment_part_item_design_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.item_list = list()
@@ -1184,7 +1184,7 @@ class TestAssessmentPartItemDesignSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def sequence_rule_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.sequence_rule_list = list()
@@ -1438,7 +1438,7 @@ class TestSequenceRuleLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def sequence_rule_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.sequence_rule_list = list()

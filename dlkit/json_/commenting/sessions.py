@@ -16,6 +16,7 @@ from bson.objectid import ObjectId
 from . import objects
 from . import queries
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession
 from ..primitives import DateTime
@@ -1226,6 +1227,379 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         # Implemented from template for
         # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=comment_id, equivalent_id=alias_id)
+
+
+class CommentBookSession(abc_commenting_sessions.CommentBookSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``Comment`` to ``Book`` mappings.
+
+    A ``Comment`` may appear in multiple ``Books``. Each ``Book`` may
+    have its own authorizations governing who is allowed to look at it.
+
+    This lookup session defines several views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'commenting.CommentBookSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def can_lookup_comment_book_mappings(self):
+        """Tests if this user can perform lookups of comment/book mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intendedas a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    def use_comparative_book_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_book_view(self):
+        """A complete view of the ``Comment`` and ``Book`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    @utilities.arguments_not_none
+    def get_comment_ids_by_book(self, book_id):
+        """Gets the list of Comment Ids associated with a ``Book``.
+
+        arg:    book_id (osid.id.Id): ``Id`` of a ``Book``.
+        return: (osid.id.IdList) - list of related comment ``Ids``
+        raise:  NotFound - ``book_id`` is not found
+        raise:  NullArgument - ``book_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for comment in self.get_comments_by_book(book_id):
+            id_list.append(comment.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_comments_by_book(self, book_id):
+        """Gets the list of ``Comments`` associated with a ``Book``.
+
+        arg:    book_id (osid.id.Id): ``Id`` of a ``Book``
+        return: (osid.commenting.CommentList) - list of related comments
+        raise:  NotFound - ``book_id`` is not found
+        raise:  NullArgument - ``book_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('COMMENTING', local=True)
+        lookup_session = mgr.get_comment_lookup_session_for_book(book_id, proxy=self._proxy)
+        lookup_session.use_isolated_book_view()
+        return lookup_session.get_comments()
+
+    @utilities.arguments_not_none
+    def get_comment_ids_by_books(self, book_ids):
+        """Gets the list of ``Comment Ids`` corresponding to a list of ``Book`` objects.
+
+        arg:    book_ids (osid.id.IdList): list of book ``Ids``
+        return: (osid.id.IdList) - list of comment ``Ids``
+        raise:  NullArgument - ``book_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        id_list = []
+        for comment in self.get_comments_by_books(book_ids):
+            id_list.append(comment.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_comments_by_books(self, book_ids):
+        """Gets the list of ``Comments`` corresponding to a list of ``Books``.
+
+        arg:    book_ids (osid.id.IdList): list of book ``Ids``
+        return: (osid.commenting.CommentList) - list of comments
+        raise:  NullArgument - ``book_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        comment_list = []
+        for book_id in book_ids:
+            comment_list += list(
+                self.get_comments_by_book(book_id))
+        return objects.CommentList(comment_list)
+
+    @utilities.arguments_not_none
+    def get_book_ids_by_comment(self, comment_id):
+        """Gets the list of ``Book``  ``Ids`` mapped to a ``Comment``.
+
+        arg:    comment_id (osid.id.Id): ``Id`` of a ``Comment``
+        return: (osid.id.IdList) - list of book ``Ids``
+        raise:  NotFound - ``comment_id`` is not found
+        raise:  NullArgument - ``comment_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('COMMENTING', local=True)
+        lookup_session = mgr.get_comment_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_book_view()
+        comment = lookup_session.get_comment(comment_id)
+        id_list = []
+        for idstr in comment._my_map['assignedBookIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_books_by_comment(self, comment_id):
+        """Gets the list of ``Book`` objects mapped to a ``Comment``.
+
+        arg:    comment_id (osid.id.Id): ``Id`` of a ``Comment``
+        return: (osid.commenting.BookList) - list of books
+        raise:  NotFound - ``comment_id`` is not found
+        raise:  NullArgument - ``comment_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        mgr = self._get_provider_manager('COMMENTING', local=True)
+        lookup_session = mgr.get_book_lookup_session(proxy=self._proxy)
+        return lookup_session.get_books_by_ids(
+            self.get_book_ids_by_comment(comment_id))
+
+
+class CommentBookAssignmentSession(abc_commenting_sessions.CommentBookAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign ``Comments`` to ``Books``.
+
+    A ``Comment`` may map to multiple ``Books`` and removing the last
+    reference to a ``Comment`` is the equivalent of deleting it. Each
+    ``Book`` may have its own authorizations governing who is allowed to
+    operate on it.
+
+    Adding a reference of a ``Comment`` to another ``Book`` is not a
+    copy operation (eg: does not change its ``Id`` ).
+
+    """
+    _session_namespace = 'commenting.CommentBookAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Book'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_comments(self):
+        """Tests if this user can alter comment/book mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_comments_to_book(self, book_id):
+        """Tests if this user can alter comment/book mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``book_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if book_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_book_ids(self, book_id):
+        """Gets a list of books including and under the given book node in which any comment can be assigned.
+
+        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
+        return: (osid.id.IdList) - list of assignable book ``Ids``
+        raise:  NullArgument - ``book_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('COMMENTING', local=True)
+        lookup_session = mgr.get_book_lookup_session(proxy=self._proxy)
+        books = lookup_session.get_books()
+        id_list = []
+        for book in books:
+            id_list.append(book.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_book_ids_for_comment(self, book_id, comment_id):
+        """Gets a list of books including and under the given book node in which a specific comment can be assigned.
+
+        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
+        arg:    comment_id (osid.id.Id): the ``Id`` of the ``Comment``
+        return: (osid.id.IdList) - list of assignable book ``Ids``
+        raise:  NullArgument - ``book_id`` or ``comment_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_book_ids(book_id)
+
+    @utilities.arguments_not_none
+    def assign_comment_to_book(self, comment_id, book_id):
+        """Adds an existing ``Comment`` to a ``Book``.
+
+        arg:    comment_id (osid.id.Id): the ``Id`` of the ``Comment``
+        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
+        raise:  AlreadyExists - ``comment_id`` is already assigned to
+                ``book_id``
+        raise:  NotFound - ``comment_id`` or ``book_id`` not found
+        raise:  NullArgument - ``comment_id`` or ``book_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('COMMENTING', local=True)
+        lookup_session = mgr.get_book_lookup_session(proxy=self._proxy)
+        lookup_session.get_book(book_id)  # to raise NotFound
+        self._assign_object_to_catalog(comment_id, book_id)
+
+    @utilities.arguments_not_none
+    def unassign_comment_from_book(self, comment_id, book_id):
+        """Removes a ``Comment`` from a ``Book``.
+
+        arg:    comment_id (osid.id.Id): the ``Id`` of the ``Comment``
+        arg:    book_id (osid.id.Id): the ``Id`` of the ``Book``
+        raise:  NotFound - ``comment_id`` or ``book_id`` not found or
+                ``comment_id`` not assigned to ``book_id``
+        raise:  NullArgument - ``comment_id`` or ``book_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('COMMENTING', local=True)
+        lookup_session = mgr.get_book_lookup_session(proxy=self._proxy)
+        lookup_session.get_book(book_id)  # to raise NotFound
+        self._unassign_object_from_catalog(comment_id, book_id)
+
+    @utilities.arguments_not_none
+    def reassign_comment_to_book(self, comment_id, from_book_id, to_book_id):
+        """Moves a ``Credit`` from one ``Book`` to another.
+
+        Mappings to other ``Books`` are unaffected.
+
+        arg:    comment_id (osid.id.Id): the ``Id`` of the ``Comment``
+        arg:    from_book_id (osid.id.Id): the ``Id`` of the current
+                ``Book``
+        arg:    to_book_id (osid.id.Id): the ``Id`` of the destination
+                ``Book``
+        raise:  NotFound - ``comment_id, from_book_id,`` or
+                ``to_book_id`` not found or ``comment`` not mapped to
+                ``from_book_id``
+        raise:  NullArgument - ``comment_id, book_id_id,`` or
+                ``to_book_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
+        self.assign_comment_to_book(comment_id, to_book_id)
+        try:
+            self.unassign_comment_from_book(comment_id, from_book_id)
+        except:  # something went wrong, roll back assignment to to_book_id
+            self.unassign_comment_from_book(comment_id, to_book_id)
+            raise
 
 
 class BookLookupSession(abc_commenting_sessions.BookLookupSession, osid_sessions.OsidSession):

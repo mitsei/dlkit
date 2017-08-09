@@ -21,7 +21,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def learning_profile_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.mgr = Runtime().get_service_manager(
@@ -82,6 +82,10 @@ class TestLearningProfile(object):
         """Tests supports_activity_lookup"""
         assert isinstance(self.mgr.supports_activity_lookup(), bool)
 
+    def test_supports_activity_query(self):
+        """Tests supports_activity_query"""
+        assert isinstance(self.mgr.supports_activity_query(), bool)
+
     def test_supports_activity_admin(self):
         """Tests supports_activity_admin"""
         assert isinstance(self.mgr.supports_activity_admin(), bool)
@@ -105,6 +109,10 @@ class TestLearningProfile(object):
     def test_supports_proficiency_admin(self):
         """Tests supports_proficiency_admin"""
         assert isinstance(self.mgr.supports_proficiency_admin(), bool)
+
+    def test_supports_proficiency_objective_bank_assignment(self):
+        """Tests supports_proficiency_objective_bank_assignment"""
+        assert isinstance(self.mgr.supports_proficiency_objective_bank_assignment(), bool)
 
     def test_supports_objective_bank_lookup(self):
         """Tests supports_objective_bank_lookup"""
@@ -161,7 +169,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def learning_manager_class_fixture(request):
     # Implemented from resource.ResourceManager
     request.cls.service_config = request.param
@@ -332,6 +340,20 @@ class TestLearningManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_activity_lookup_session_for_objective_bank()
 
+    def test_get_activity_query_session(self):
+        """Tests get_activity_query_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
+        if self.svc_mgr.supports_activity_query():
+            self.svc_mgr.get_activity_query_session()
+
+    def test_get_activity_query_session_for_objective_bank(self):
+        """Tests get_activity_query_session_for_objective_bank"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
+        if self.svc_mgr.supports_activity_query():
+            self.svc_mgr.get_activity_query_session_for_objective_bank(self.catalog_id)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_activity_query_session_for_objective_bank()
+
     def test_get_activity_admin_session(self):
         """Tests get_activity_admin_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -400,6 +422,12 @@ class TestLearningManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_proficiency_admin_session_for_objective_bank()
 
+    def test_get_proficiency_objective_bank_assignment_session(self):
+        """Tests get_proficiency_objective_bank_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_proficiency_objective_bank_assignment():
+            self.svc_mgr.get_proficiency_objective_bank_assignment_session()
+
     def test_get_objective_bank_lookup_session(self):
         """Tests get_objective_bank_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -437,7 +465,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE'])
 def learning_proxy_manager_class_fixture(request):
     # Implemented from resource.ResourceProxyManager
     request.cls.service_config = request.param
@@ -632,6 +660,22 @@ class TestLearningProxyManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_activity_lookup_session_for_objective_bank()
 
+    def test_get_activity_query_session(self):
+        """Tests get_activity_query_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
+        if self.svc_mgr.supports_activity_query():
+            self.svc_mgr.get_activity_query_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_activity_query_session()
+
+    def test_get_activity_query_session_for_objective_bank(self):
+        """Tests get_activity_query_session_for_objective_bank"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
+        if self.svc_mgr.supports_activity_query():
+            self.svc_mgr.get_activity_query_session_for_objective_bank(self.catalog_id, PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_activity_query_session_for_objective_bank()
+
     def test_get_activity_admin_session(self):
         """Tests get_activity_admin_session"""
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
@@ -711,6 +755,14 @@ class TestLearningProxyManager(object):
             self.svc_mgr.get_proficiency_admin_session_for_objective_bank(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_proficiency_admin_session_for_objective_bank()
+
+    def test_get_proficiency_objective_bank_assignment_session(self):
+        """Tests get_proficiency_objective_bank_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_proficiency_objective_bank_assignment():
+            self.svc_mgr.get_proficiency_objective_bank_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_proficiency_objective_bank_assignment_session()
 
     def test_get_objective_bank_lookup_session(self):
         """Tests get_objective_bank_lookup_session"""

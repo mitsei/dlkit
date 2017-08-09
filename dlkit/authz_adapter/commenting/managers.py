@@ -47,6 +47,16 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_comment_admin()
 
+    def supports_comment_book(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_comment_book()
+
+    def supports_comment_book_assignment(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_comment_book_assignment()
+
     def supports_book_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -177,7 +187,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
 
     def get_comment_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CommentAdminSession')(
             provider_session=self._provider_manager.get_comment_admin_session(),
             authz_session=self._get_authz_session(),
@@ -196,9 +206,31 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager)
 
+    def get_comment_book_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'CommentBookSession')(
+            provider_session=self._provider_manager.get_comment_book_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    comment_book_session = property(fget=get_comment_book_session)
+
+    def get_comment_book_assignment_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'CommentBookAssignmentSession')(
+            provider_session=self._provider_manager.get_comment_book_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    comment_book_assignment_session = property(fget=get_comment_book_assignment_session)
+
     def get_book_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookLookupSession')(
             provider_session=self._provider_manager.get_book_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -209,7 +241,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
 
     def get_book_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookAdminSession')(
             provider_session=self._provider_manager.get_book_admin_session(),
             authz_session=self._get_authz_session(),
@@ -220,7 +252,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
 
     def get_book_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookHierarchySession')(
             provider_session=self._provider_manager.get_book_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -231,7 +263,7 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
 
     def get_book_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookHierarchyDesignSession')(
             provider_session=self._provider_manager.get_book_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -330,7 +362,7 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
     @raise_null_argument
     def get_comment_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CommentAdminSession')(
             provider_session=self._provider_manager.get_comment_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -350,9 +382,31 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
             proxy=proxy)
 
     @raise_null_argument
+    def get_comment_book_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'CommentBookSession')(
+            provider_session=self._provider_manager.get_comment_book_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_comment_book_assignment_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'CommentBookAssignmentSession')(
+            provider_session=self._provider_manager.get_comment_book_assignment_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
     def get_book_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookLookupSession')(
             provider_session=self._provider_manager.get_book_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -363,7 +417,7 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
     @raise_null_argument
     def get_book_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookAdminSession')(
             provider_session=self._provider_manager.get_book_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -374,7 +428,7 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
     @raise_null_argument
     def get_book_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookHierarchySession')(
             provider_session=self._provider_manager.get_book_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -385,7 +439,7 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
     @raise_null_argument
     def get_book_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BookHierarchyDesignSession')(
             provider_session=self._provider_manager.get_book_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

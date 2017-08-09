@@ -87,7 +87,7 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
 
     def get_catalog_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogLookupSession')(
             provider_session=self._provider_manager.get_catalog_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -98,7 +98,7 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
 
     def get_catalog_query_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogQuerySession')(
             provider_session=self._provider_manager.get_catalog_query_session(),
             authz_session=self._get_authz_session(),
@@ -109,7 +109,7 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
 
     def get_catalog_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogAdminSession')(
             provider_session=self._provider_manager.get_catalog_admin_session(),
             authz_session=self._get_authz_session(),
@@ -120,7 +120,7 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
 
     def get_catalog_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogHierarchySession')(
             provider_session=self._provider_manager.get_catalog_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -131,7 +131,7 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
 
     def get_catalog_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogHierarchyDesignSession')(
             provider_session=self._provider_manager.get_catalog_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -162,7 +162,7 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
     @raise_null_argument
     def get_catalog_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogLookupSession')(
             provider_session=self._provider_manager.get_catalog_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -173,7 +173,7 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
     @raise_null_argument
     def get_catalog_query_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogQuerySession')(
             provider_session=self._provider_manager.get_catalog_query_session(proxy),
             authz_session=self._get_authz_session(),
@@ -184,7 +184,7 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
     @raise_null_argument
     def get_catalog_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogAdminSession')(
             provider_session=self._provider_manager.get_catalog_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -195,7 +195,7 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
     @raise_null_argument
     def get_catalog_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogHierarchySession')(
             provider_session=self._provider_manager.get_catalog_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -206,7 +206,7 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
     @raise_null_argument
     def get_catalog_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CatalogHierarchyDesignSession')(
             provider_session=self._provider_manager.get_catalog_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

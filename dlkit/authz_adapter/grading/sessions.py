@@ -1564,8 +1564,9 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
 
     def can_lookup_gradebook_columns(self):
         # Implemented from azosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
-        return self._can('lookup')
+        # osid.resource.ResourceLookupSession.can_lookup_resources_template
+        return (self._can('lookup') or
+                bool(self._get_overriding_catalog_ids('lookup')))
 
     def use_comparative_gradebook_column_view(self):
         # Implemented from azosid template for -

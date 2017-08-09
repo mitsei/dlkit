@@ -16,6 +16,7 @@ from bson.objectid import ObjectId
 from . import objects
 from . import queries
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession
 from ..primitives import DateTime
@@ -1318,6 +1319,369 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         return columns.available() > 0
 
 
+class GradeSystemGradebookSession(abc_grading_sessions.GradeSystemGradebookSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``GradeSystem`` to ``Gradebook`` mappings.
+
+    A ``GradeSystem`` may appear in multiple ``Gradebooks``. Each
+    ``Gradebook`` may have its own authorizations governing who is
+    allowed to look at it.
+
+    This lookup session defines two views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'grading.GradeSystemGradebookSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def use_comparative_gradebook_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_gradebook_view(self):
+        """A complete view of the ``GradebookColumn`` and ``Gradebook`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def can_lookup_grade_system_gradebook_mappings(self):
+        """Tests if this user can perform lookups of gradebook/grade system mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def get_grade_system_ids_by_gradebook(self, gradebook_id):
+        """Gets the list of ``GradeSystem``  ``Ids`` associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.id.IdList) - list of related grade system ``Ids``
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for grade_system in self.get_grade_systems_by_gradebook(gradebook_id):
+            id_list.append(grade_system.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_grade_systems_by_gradebook(self, gradebook_id):
+        """Gets the list of grade systems associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.grading.GradeSystemList) - list of related grade
+                systems
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_grade_system_lookup_session_for_gradebook(gradebook_id, proxy=self._proxy)
+        lookup_session.use_isolated_gradebook_view()
+        return lookup_session.get_grade_systems()
+
+    @utilities.arguments_not_none
+    def get_grade_system_ids_by_gradebooks(self, gradebook_ids):
+        """Gets the list of ``GradeSystem Ids`` corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.id.IdList) - list of grade systems ``Ids``
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        id_list = []
+        for grade_system in self.get_grade_systems_by_gradebooks(gradebook_ids):
+            id_list.append(grade_system.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_grade_systems_by_gradebooks(self, gradebook_ids):
+        """Gets the list of grade systems corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.grading.GradeSystemList) - list of grade systems
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        grade_system_list = []
+        for gradebook_id in gradebook_ids:
+            grade_system_list += list(
+                self.get_grade_systems_by_gradebook(gradebook_id))
+        return objects.GradeSystemList(grade_system_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_ids_by_grade_system(self, grade_system_id):
+        """Gets the list of ``Gradebook``  ``Ids`` mapped to a ``GradeSystem``.
+
+        arg:    grade_system_id (osid.id.Id): ``Id`` of a
+                ``GradeSystem``
+        return: (osid.id.IdList) - list of gradebook ``Ids``
+        raise:  NotFound - ``grade_system_id`` is not found
+        raise:  NullArgument - ``grade_system_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_grade_system_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_gradebook_view()
+        grade_system = lookup_session.get_grade_system(grade_system_id)
+        id_list = []
+        for idstr in grade_system._my_map['assignedGradebookIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebooks_by_grade_system(self, grade_system_id):
+        """Gets the list of ``Gradebooks`` mapped to a ``GradeSystem``.
+
+        arg:    grade_system_id (osid.id.Id): ``Id`` of a
+                ``GradeSystem``
+        return: (osid.grading.GradebookList) - list of gradebooks
+        raise:  NotFound - ``grade_system_id`` is not found
+        raise:  NullArgument - ``grade_system_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        return lookup_session.get_gradebooks_by_ids(
+            self.get_gradebook_ids_by_grade_system(grade_system_id))
+
+
+class GradeSystemGradebookAssignmentSession(abc_grading_sessions.GradeSystemGradebookAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign grade systems to ``Gradebooks``.
+
+    A ``GradeSystem`` may map to multiple ``Gradebooks`` and removing
+    the last reference to a ``GradeSystem`` is the equivalent of
+    deleting it. Each ``Gradebook`` may have its own authorizations
+    governing who is allowed to operate on it.
+
+    Moving or adding a reference of a ``GradeSystem`` to another
+    ``Gradebook`` is not a copy operation (eg: does not change its
+    ``Id`` ).
+
+    """
+    _session_namespace = 'grading.GradeSystemGradebookAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Gradebook'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_grade_system(self):
+        """Tests if this user can alter grade system/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_grade_systems_to_gradebook(self, gradebook_id):
+        """Tests if this user can alter grade system/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if gradebook_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids(self, gradebook_id):
+        """Gets a list of gradebooks including and under the given gradebook node in which any grade system can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        gradebooks = lookup_session.get_gradebooks()
+        id_list = []
+        for gradebook in gradebooks:
+            id_list.append(gradebook.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids_for_grade_system(self, gradebook_id, grade_system_id):
+        """Gets a list of gradebooks including and under the given gradebook node in which a specific grade system can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        arg:    grade_system_id (osid.id.Id): the ``Id`` of the
+                ``GradeSystem``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` or ``grade_system_id``
+                is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_gradebook_ids(gradebook_id)
+
+    @utilities.arguments_not_none
+    def assign_grade_system_to_gradebook(self, grade_system_id, gradebook_id):
+        """Adds an existing ``GradeSystem`` to a ``Gradebook``.
+
+        arg:    grade_system_id (osid.id.Id): the ``Id`` of the
+                ``GradeSystem``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  AlreadyExists - ``grade_system_id`` is already assigned
+                to ``gradebook_id``
+        raise:  NotFound - ``grade_system_id`` or ``gradebook_id`` not
+                found
+        raise:  NullArgument - ``grade_system_id`` or ``gradebook_id``
+                is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._assign_object_to_catalog(grade_system_id, gradebook_id)
+
+    @utilities.arguments_not_none
+    def unassign_grade_system_from_gradebook(self, grade_system_id, gradebook_id):
+        """Removes a ``GradeSystem`` from a ``Gradebook``.
+
+        arg:    grade_system_id (osid.id.Id): the ``Id`` of the
+                ``GradeSystem``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  NotFound - ``grade_system_id`` or ``gradebook_id`` not
+                found or ``grade_system_id`` not assigned to
+                ``gradebook_id``
+        raise:  NullArgument - ``grade_system_id`` or ``gradebook_id``
+                is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._unassign_object_from_catalog(grade_system_id, gradebook_id)
+
+
 class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``GradeEntrie`` s."""
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
@@ -2472,11 +2836,9 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
 
         """
         # Implemented from template for
-        # osid.resource.BinLookupSession.can_lookup_bins
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
-        if self._catalog_session is not None:
-            return self._catalog_session.can_lookup_catalogs()
         return True
 
     def use_comparative_gradebook_column_view(self):
@@ -3400,6 +3762,371 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         gels.use_federated_gradebook_view()
         entries = gels.get_grade_entries_for_gradebook_column(gradebook_column_id)
         return entries.available() > 0
+
+
+class GradebookColumnGradebookSession(abc_grading_sessions.GradebookColumnGradebookSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``GradebookColumn`` to ``Gradebook`` mappings.
+
+    A ``GradebookColumn`` may appear in multiple ``Gradebooks``. Each
+    ``Gradebook`` may have its own authorizations governing who is
+    allowed to look at it.
+
+    This lookup session defines two views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'grading.GradebookColumnGradebookSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def use_comparative_gradebook_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_gradebook_view(self):
+        """A complete view of the ``GradebookColumn`` and ``Gradebook`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def can_lookup_gradebook_column_gradebook_mappings(self):
+        """Tests if this user can perform lookups of gradebook/column mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def get_gradebook_column_ids_by_gradebook(self, gradebook_id):
+        """Gets the list of ``GradebookColumn``  ``Ids`` associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.id.IdList) - list of related gradebook column
+                ``Ids``
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for gradebook_column in self.get_gradebook_columns_by_gradebook(gradebook_id):
+            id_list.append(gradebook_column.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_columns_by_gradebook(self, gradebook_id):
+        """Gets the list of gradebook columns associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.grading.GradebookColumnList) - list of related
+                gradebook columns
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_column_lookup_session_for_gradebook(gradebook_id, proxy=self._proxy)
+        lookup_session.use_isolated_gradebook_view()
+        return lookup_session.get_gradebook_columns()
+
+    @utilities.arguments_not_none
+    def get_gradebook_column_ids_by_gradebooks(self, gradebook_ids):
+        """Gets the list of ``GradebookColumn Ids`` corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.id.IdList) - list of gradebook column ``Ids``
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        id_list = []
+        for gradebook_column in self.get_gradebook_columns_by_gradebooks(gradebook_ids):
+            id_list.append(gradebook_column.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_columns_by_gradebooks(self, gradebook_ids):
+        """Gets the list of gradebook columns corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.grading.GradebookColumnList) - list of gradebook
+                columns
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        gradebook_column_list = []
+        for gradebook_id in gradebook_ids:
+            gradebook_column_list += list(
+                self.get_gradebook_columns_by_gradebook(gradebook_id))
+        return objects.GradebookColumnList(gradebook_column_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_ids_by_gradebook_column(self, gradebook_column_id):
+        """Gets the list of ``Gradebook``  ``Ids`` mapped to a ``GradebookColumn``.
+
+        arg:    gradebook_column_id (osid.id.Id): ``Id`` of a
+                ``GradebookColumn``
+        return: (osid.id.IdList) - list of gradebook ``Ids``
+        raise:  NotFound - ``gradebook_column_id`` is not found
+        raise:  NullArgument - ``gradebook_column_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_column_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_gradebook_view()
+        gradebook_column = lookup_session.get_gradebook_column(gradebook_column_id)
+        id_list = []
+        for idstr in gradebook_column._my_map['assignedGradebookIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebooks_by_gradebook_column(self, gradebook_column_id):
+        """Gets the list of ``Gradebooks`` mapped to a ``GradebookColumn``.
+
+        arg:    gradebook_column_id (osid.id.Id): ``Id`` of a
+                ``GradebookColumn``
+        return: (osid.grading.GradebookList) - list of gradebooks
+        raise:  NotFound - ``gradebook_column_id`` is not found
+        raise:  NullArgument - ``gradebook_column_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        return lookup_session.get_gradebooks_by_ids(
+            self.get_gradebook_ids_by_gradebook_column(gradebook_column_id))
+
+
+class GradebookColumnGradebookAssignmentSession(abc_grading_sessions.GradebookColumnGradebookAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign gradebook columns to ``Gradebooks``.
+
+    A ``GradebookColumn`` may map to multiple ``Gradebooks`` and
+    removing the last reference to a ``GradebookColumn`` is the
+    equivalent of deleting it. Each ``Gradebook`` may have its own
+    authorizations governing who is allowed to operate on it.
+
+    Moving or adding a reference of a ``GradebookColumn`` to another
+    ``Gradebook`` is not a copy operation (eg: does not change its
+    ``Id`` ).
+
+    """
+    _session_namespace = 'grading.GradebookColumnGradebookAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Gradebook'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_gradebook_columns(self):
+        """Tests if this user can alter gradebook column/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_gradebook_columns_to_gradebook(self, gradebook_id):
+        """Tests if this user can alter gradebook column/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if gradebook_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids(self, gradebook_id):
+        """Gets a list of gradebook ``Ids`` including and under the given gradebook node in which any gradebook column can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        gradebooks = lookup_session.get_gradebooks()
+        id_list = []
+        for gradebook in gradebooks:
+            id_list.append(gradebook.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids_for_gradebook_column(self, gradebook_id, gradebook_column_id):
+        """Gets a list of gradebooks including and under the given gradebook node in which a specific gradebook column can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        arg:    gradebook_column_id (osid.id.Id): the ``Id`` of the
+                ``GradebokColumn``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` or
+                ``gradebook_column_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_gradebook_ids(gradebook_id)
+
+    @utilities.arguments_not_none
+    def assign_gradebook_column_to_gradebook(self, gradebook_column_id, gradebook_id):
+        """Adds an existing ``GradebookColumn`` to a ``Gradebook``.
+
+        arg:    gradebook_column_id (osid.id.Id): the ``Id`` of the
+                ``GradebookColumn``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  AlreadyExists - ``gradebook_column_id`` is already
+                assigned to ``gradebook_id``
+        raise:  NotFound - ``gradebook_column_id`` or ``gradebook_id``
+                not found
+        raise:  NullArgument - ``gradebook_column_id`` or
+                ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._assign_object_to_catalog(gradebook_column_id, gradebook_id)
+
+    @utilities.arguments_not_none
+    def unassign_gradebook_column_from_gradebook(self, gradebook_column_id, gradebook_id):
+        """Removes a ``GradebookColumn`` from a ``Gradebook``.
+
+        arg:    gradebook_column_id (osid.id.Id): the ``Id`` of the
+                ``GradebookColumn``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  NotFound - ``gradebook_column_id`` or ``gradebook_id``
+                not found or ``gradebook_column_id`` not assigned to
+                ``gradebook_id``
+        raise:  NullArgument - ``gradebook_column_id`` or
+                ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._unassign_object_from_catalog(gradebook_column_id, gradebook_id)
 
 
 class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_sessions.OsidSession):

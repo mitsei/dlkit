@@ -56,6 +56,18 @@ class GradingProfile(osid.OsidProfile, grading_managers.GradingProfile):
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_grade_system_admin()
 
+    def supports_grade_system_gradebook(self):
+        """Pass through to provider supports_grade_system_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_grade_system_gradebook()
+
+    def supports_grade_system_gradebook_assignment(self):
+        """Pass through to provider supports_grade_system_gradebook_assignment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_grade_system_gradebook_assignment()
+
     def supports_grade_entry_lookup(self):
         """Pass through to provider supports_grade_entry_lookup"""
         # Implemented from kitosid template for -
@@ -91,6 +103,18 @@ class GradingProfile(osid.OsidProfile, grading_managers.GradingProfile):
         # Implemented from kitosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_gradebook_column_admin()
+
+    def supports_gradebook_column_gradebook(self):
+        """Pass through to provider supports_gradebook_column_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_column_gradebook()
+
+    def supports_gradebook_column_gradebook_assignment(self):
+        """Pass through to provider supports_gradebook_column_gradebook_assignment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_column_gradebook_assignment()
 
     def supports_gradebook_lookup(self):
         """Pass through to provider supports_gradebook_lookup"""
@@ -363,6 +387,22 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_grade_system_admin_session_for_gradebook(*args, **kwargs)
 
+    def get_grade_system_gradebook_session(self, *args, **kwargs):
+        """Pass through to provider get_grade_system_gradebook_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_grade_system_gradebook_session(*args, **kwargs)
+
+    grade_system_gradebook_session = property(fget=get_grade_system_gradebook_session)
+
+    def get_grade_system_gradebook_assignment_session(self, *args, **kwargs):
+        """Pass through to provider get_grade_system_gradebook_assignment_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_grade_system_gradebook_assignment_session(*args, **kwargs)
+
+    grade_system_gradebook_assignment_session = property(fget=get_grade_system_gradebook_assignment_session)
+
     def get_grade_entry_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_grade_entry_lookup_session"""
         # Implemented from kitosid template for -
@@ -447,6 +487,22 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_gradebook_column_admin_session_for_gradebook(*args, **kwargs)
 
+    def get_gradebook_column_gradebook_session(self, *args, **kwargs):
+        """Pass through to provider get_gradebook_column_gradebook_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_gradebook_column_gradebook_session(*args, **kwargs)
+
+    gradebook_column_gradebook_session = property(fget=get_gradebook_column_gradebook_session)
+
+    def get_gradebook_column_gradebook_assignment_session(self, *args, **kwargs):
+        """Pass through to provider get_gradebook_column_gradebook_assignment_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_gradebook_column_gradebook_assignment_session(*args, **kwargs)
+
+    gradebook_column_gradebook_assignment_session = property(fget=get_gradebook_column_gradebook_assignment_session)
+
     def get_gradebook_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_gradebook_lookup_session"""
         # Implemented from kitosid template for -
@@ -497,18 +553,12 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
 
     grading_transform_manager = property(fget=get_grading_transform_manager)
 ##
-# The following methods are from osid.grading.GradebookLookupSession
-
-    def can_lookup_gradebooks(self):
-        """Pass through to provider GradebookLookupSession.can_lookup_gradebooks"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
-        return self._get_provider_session('gradebook_lookup_session').can_lookup_gradebooks()
+# The following methods are from osid.grading.GradeSystemGradebookSession
 
     def use_comparative_gradebook_view(self):
-        """Pass through to provider GradebookLookupSession.use_comparative_gradebook_view"""
+        """Pass through to provider GradeSystemGradebookSession.use_comparative_gradebook_view"""
         self._gradebook_view = COMPARATIVE
-        # self._get_provider_session('gradebook_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('grade_system_gradebook_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_comparative_gradebook_view()
@@ -516,14 +566,186 @@ class GradingManager(osid.OsidManager, osid.OsidSession, GradingProfile, grading
                 pass
 
     def use_plenary_gradebook_view(self):
-        """Pass through to provider GradebookLookupSession.use_plenary_gradebook_view"""
+        """Pass through to provider GradeSystemGradebookSession.use_plenary_gradebook_view"""
         self._gradebook_view = PLENARY
-        # self._get_provider_session('gradebook_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('grade_system_gradebook_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_plenary_gradebook_view()
             except AttributeError:
                 pass
+
+    def can_lookup_grade_system_gradebook_mappings(self):
+        """Pass through to provider GradeSystemGradebookSession.can_lookup_grade_system_gradebook_mappings"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        return self._get_provider_session('grade_system_gradebook_session').can_lookup_grade_system_gradebook_mappings()
+
+    def get_grade_system_ids_by_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookSession.get_grade_system_ids_by_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        return self._get_provider_session('grade_system_gradebook_session').get_grade_system_ids_by_gradebook(*args, **kwargs)
+
+    def get_grade_systems_by_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookSession.get_grade_systems_by_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        return self._get_provider_session('grade_system_gradebook_session').get_grade_systems_by_gradebook(*args, **kwargs)
+
+    def get_grade_system_ids_by_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookSession.get_grade_system_ids_by_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        return self._get_provider_session('grade_system_gradebook_session').get_grade_system_ids_by_gradebooks(*args, **kwargs)
+
+    def get_grade_systems_by_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookSession.get_grade_systems_by_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        return self._get_provider_session('grade_system_gradebook_session').get_grade_systems_by_gradebooks(*args, **kwargs)
+
+    def get_gradebook_ids_by_grade_system(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookSession.get_gradebook_ids_by_grade_system"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        return self._get_provider_session('grade_system_gradebook_session').get_gradebook_ids_by_grade_system(*args, **kwargs)
+
+    def get_gradebooks_by_grade_system(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookSession.get_gradebooks_by_grade_system"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        catalogs = self._get_provider_session('grade_system_gradebook_session').get_gradebooks_by_grade_system(*args, **kwargs)
+        cat_list = []
+        for cat in catalogs:
+            cat_list.append(Gradebook(self._provider_manager, cat, self._runtime, self._proxy))
+        return GradebookList(cat_list)
+##
+# The following methods are from osid.grading.GradeSystemGradebookAssignmentSession
+
+    def can_assign_grade_system(self):
+        """Pass through to provider GradeSystemGradebookAssignmentSession.can_assign_grade_system"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        return self._get_provider_session('grade_system_gradebook_assignment_session').can_assign_grade_system()
+
+    def can_assign_grade_systems_to_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookAssignmentSession.can_assign_grade_systems_to_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        return self._get_provider_session('grade_system_gradebook_assignment_session').can_assign_grade_systems_to_gradebook(*args, **kwargs)
+
+    def get_assignable_gradebook_ids(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookAssignmentSession.get_assignable_gradebook_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        return self._get_provider_session('grade_system_gradebook_assignment_session').get_assignable_gradebook_ids(*args, **kwargs)
+
+    def get_assignable_gradebook_ids_for_grade_system(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookAssignmentSession.get_assignable_gradebook_ids_for_grade_system"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        return self._get_provider_session('grade_system_gradebook_assignment_session').get_assignable_gradebook_ids_for_grade_system(*args, **kwargs)
+
+    def assign_grade_system_to_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookAssignmentSession.assign_grade_system_to_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        self._get_provider_session('grade_system_gradebook_assignment_session').assign_grade_system_to_gradebook(*args, **kwargs)
+
+    def unassign_grade_system_from_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradeSystemGradebookAssignmentSession.unassign_grade_system_from_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        self._get_provider_session('grade_system_gradebook_assignment_session').unassign_grade_system_from_gradebook(*args, **kwargs)
+##
+# The following methods are from osid.grading.GradebookColumnGradebookSession
+
+    def can_lookup_gradebook_column_gradebook_mappings(self):
+        """Pass through to provider GradebookColumnGradebookSession.can_lookup_gradebook_column_gradebook_mappings"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        return self._get_provider_session('gradebook_column_gradebook_session').can_lookup_gradebook_column_gradebook_mappings()
+
+    def get_gradebook_column_ids_by_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookSession.get_gradebook_column_ids_by_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        return self._get_provider_session('gradebook_column_gradebook_session').get_gradebook_column_ids_by_gradebook(*args, **kwargs)
+
+    def get_gradebook_columns_by_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookSession.get_gradebook_columns_by_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        return self._get_provider_session('gradebook_column_gradebook_session').get_gradebook_columns_by_gradebook(*args, **kwargs)
+
+    def get_gradebook_column_ids_by_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookSession.get_gradebook_column_ids_by_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        return self._get_provider_session('gradebook_column_gradebook_session').get_gradebook_column_ids_by_gradebooks(*args, **kwargs)
+
+    def get_gradebook_columns_by_gradebooks(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookSession.get_gradebook_columns_by_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        return self._get_provider_session('gradebook_column_gradebook_session').get_gradebook_columns_by_gradebooks(*args, **kwargs)
+
+    def get_gradebook_ids_by_gradebook_column(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookSession.get_gradebook_ids_by_gradebook_column"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        return self._get_provider_session('gradebook_column_gradebook_session').get_gradebook_ids_by_gradebook_column(*args, **kwargs)
+
+    def get_gradebooks_by_gradebook_column(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookSession.get_gradebooks_by_gradebook_column"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        catalogs = self._get_provider_session('gradebook_column_gradebook_session').get_gradebooks_by_gradebook_column(*args, **kwargs)
+        cat_list = []
+        for cat in catalogs:
+            cat_list.append(Gradebook(self._provider_manager, cat, self._runtime, self._proxy))
+        return GradebookList(cat_list)
+##
+# The following methods are from osid.grading.GradebookColumnGradebookAssignmentSession
+
+    def can_assign_gradebook_columns(self):
+        """Pass through to provider GradebookColumnGradebookAssignmentSession.can_assign_gradebook_columns"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        return self._get_provider_session('gradebook_column_gradebook_assignment_session').can_assign_gradebook_columns()
+
+    def can_assign_gradebook_columns_to_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookAssignmentSession.can_assign_gradebook_columns_to_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        return self._get_provider_session('gradebook_column_gradebook_assignment_session').can_assign_gradebook_columns_to_gradebook(*args, **kwargs)
+
+    def get_assignable_gradebook_ids_for_gradebook_column(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookAssignmentSession.get_assignable_gradebook_ids_for_gradebook_column"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        return self._get_provider_session('gradebook_column_gradebook_assignment_session').get_assignable_gradebook_ids_for_gradebook_column(*args, **kwargs)
+
+    def assign_gradebook_column_to_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookAssignmentSession.assign_gradebook_column_to_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        self._get_provider_session('gradebook_column_gradebook_assignment_session').assign_gradebook_column_to_gradebook(*args, **kwargs)
+
+    def unassign_gradebook_column_from_gradebook(self, *args, **kwargs):
+        """Pass through to provider GradebookColumnGradebookAssignmentSession.unassign_gradebook_column_from_gradebook"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        self._get_provider_session('gradebook_column_gradebook_assignment_session').unassign_gradebook_column_from_gradebook(*args, **kwargs)
+##
+# The following methods are from osid.grading.GradebookLookupSession
+
+    def can_lookup_gradebooks(self):
+        """Pass through to provider GradebookLookupSession.can_lookup_gradebooks"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.can_lookup_bins_template
+        return self._get_provider_session('gradebook_lookup_session').can_lookup_gradebooks()
 
     def get_gradebook(self, *args, **kwargs):
         """Pass through to provider GradebookLookupSession.get_gradebook"""
@@ -889,6 +1111,14 @@ class GradingProxyManager(osid.OsidProxyManager, GradingProfile, grading_manager
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
+    def get_grade_system_gradebook_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_grade_system_gradebook_assignment_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
     def get_grade_entry_lookup_session(self, *args, **kwargs):
         """Sends control to Manager"""
         # Implemented from kitosid template for -
@@ -922,26 +1152,42 @@ class GradingProxyManager(osid.OsidProxyManager, GradingProfile, grading_manager
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_gradebook_column_lookup_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
+        return GradingManager.get_gradebook_column_lookup_session(*args, **kwargs)
 
     def get_gradebook_column_lookup_session_for_gradebook(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
+        return GradingManager.get_gradebook_column_lookup_session_for_gradebook(*args, **kwargs)
 
     def get_gradebook_column_query_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
+        return GradingManager.get_gradebook_column_query_session(*args, **kwargs)
 
     def get_gradebook_column_query_session_for_gradebook(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
+        return GradingManager.get_gradebook_column_query_session_for_gradebook(*args, **kwargs)
 
     def get_gradebook_column_admin_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_gradebook_column_admin_session_for_gradebook(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_gradebook_column_gradebook_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_gradebook_column_gradebook_assignment_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
@@ -1635,7 +1881,7 @@ class Gradebook(abc_grading_objects.Gradebook, osid.OsidSession, osid.OsidCatalo
     def can_lookup_gradebook_columns(self):
         """Pass through to provider GradebookColumnLookupSession.can_lookup_gradebook_columns"""
         # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
+        # osid.resource.ResourceLookupSession.can_lookup_resources_template
         return self._get_provider_session('gradebook_column_lookup_session').can_lookup_gradebook_columns()
 
     def use_comparative_gradebook_column_view(self):

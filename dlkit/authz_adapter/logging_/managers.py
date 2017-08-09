@@ -47,6 +47,16 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_log_entry_query()
 
+    def supports_log_entry_log(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_entry_log()
+
+    def supports_log_entry_log_assignment(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_entry_log_assignment()
+
     def supports_log_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -130,7 +140,7 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
 
     def get_logging_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LoggingSession')(
             provider_session=self._provider_manager.get_logging_session(),
             authz_session=self._get_authz_session(),
@@ -152,11 +162,17 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
     def get_log_entry_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session()
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryLookupSession')(
             provider_session=self._provider_manager.get_log_entry_lookup_session(),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     log_entry_lookup_session = property(fget=get_log_entry_lookup_session)
 
@@ -164,20 +180,32 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
     def get_log_entry_lookup_session_for_log(self, log_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session_for_log(log_id)
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryLookupSession')(
             provider_session=self._provider_manager.get_log_entry_lookup_session_for_log(log_id),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_log_entry_query_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session()
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryQuerySession')(
             provider_session=self._provider_manager.get_log_entry_query_session(),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     log_entry_query_session = property(fget=get_log_entry_query_session)
 
@@ -185,15 +213,21 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
     def get_log_entry_query_session_for_log(self, log_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session_for_log(log_id)
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryQuerySession')(
             provider_session=self._provider_manager.get_log_entry_query_session_for_log(log_id),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_log_entry_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogEntryAdminSession')(
             provider_session=self._provider_manager.get_log_entry_admin_session(),
             authz_session=self._get_authz_session(),
@@ -212,9 +246,31 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager)
 
+    def get_log_entry_log_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'LogEntryLogSession')(
+            provider_session=self._provider_manager.get_log_entry_log_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    log_entry_log_session = property(fget=get_log_entry_log_session)
+
+    def get_log_entry_log_assignment_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'LogEntryLogAssignmentSession')(
+            provider_session=self._provider_manager.get_log_entry_log_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    log_entry_log_assignment_session = property(fget=get_log_entry_log_assignment_session)
+
     def get_log_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogLookupSession')(
             provider_session=self._provider_manager.get_log_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -225,7 +281,7 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
 
     def get_log_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogAdminSession')(
             provider_session=self._provider_manager.get_log_admin_session(),
             authz_session=self._get_authz_session(),
@@ -236,7 +292,7 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
 
     def get_log_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogHierarchySession')(
             provider_session=self._provider_manager.get_log_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -247,7 +303,7 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
 
     def get_log_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogHierarchyDesignSession')(
             provider_session=self._provider_manager.get_log_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -278,7 +334,7 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
     @raise_null_argument
     def get_logging_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LoggingSession')(
             provider_session=self._provider_manager.get_logging_session(proxy),
             authz_session=self._get_authz_session(),
@@ -301,50 +357,74 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
     def get_log_entry_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session(proxy)
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryLookupSession')(
             provider_session=self._provider_manager.get_log_entry_lookup_session(proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_log_entry_lookup_session_for_log(self, log_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session_for_log(log_id, proxy)
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryLookupSession')(
             provider_session=self._provider_manager.get_log_entry_lookup_session_for_log(log_id, proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_log_entry_query_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session(proxy)
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryQuerySession')(
             provider_session=self._provider_manager.get_log_entry_query_session(proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_log_entry_query_session_for_log(self, log_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_log_entry_query_session_for_log(log_id, proxy)
+            query_session.use_federated_log_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'LogEntryQuerySession')(
             provider_session=self._provider_manager.get_log_entry_query_session_for_log(log_id, proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_log_entry_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogEntryAdminSession')(
             provider_session=self._provider_manager.get_log_entry_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -364,9 +444,31 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
             proxy=proxy)
 
     @raise_null_argument
+    def get_log_entry_log_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'LogEntryLogSession')(
+            provider_session=self._provider_manager.get_log_entry_log_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_log_entry_log_assignment_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'LogEntryLogAssignmentSession')(
+            provider_session=self._provider_manager.get_log_entry_log_assignment_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
     def get_log_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogLookupSession')(
             provider_session=self._provider_manager.get_log_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -377,7 +479,7 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
     @raise_null_argument
     def get_log_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogAdminSession')(
             provider_session=self._provider_manager.get_log_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -388,7 +490,7 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
     @raise_null_argument
     def get_log_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogHierarchySession')(
             provider_session=self._provider_manager.get_log_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -399,7 +501,7 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
     @raise_null_argument
     def get_log_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'LogHierarchyDesignSession')(
             provider_session=self._provider_manager.get_log_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

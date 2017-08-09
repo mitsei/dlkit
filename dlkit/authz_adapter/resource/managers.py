@@ -226,7 +226,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_resource_search_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceSearchSession')(
             provider_session=self._provider_manager.get_resource_search_session(),
             authz_session=self._get_authz_session(),
@@ -247,7 +247,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_resource_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceAdminSession')(
             provider_session=self._provider_manager.get_resource_admin_session(),
             authz_session=self._get_authz_session(),
@@ -288,7 +288,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_resource_bin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceBinSession')(
             provider_session=self._provider_manager.get_resource_bin_session(),
             authz_session=self._get_authz_session(),
@@ -299,7 +299,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_resource_bin_assignment_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceBinAssignmentSession')(
             provider_session=self._provider_manager.get_resource_bin_assignment_session(),
             authz_session=self._get_authz_session(),
@@ -310,7 +310,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_resource_agent_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceAgentSession')(
             provider_session=self._provider_manager.get_resource_agent_session(),
             authz_session=self._get_authz_session(),
@@ -331,7 +331,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_resource_agent_assignment_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceAgentAssignmentSession')(
             provider_session=self._provider_manager.get_resource_agent_assignment_session(),
             authz_session=self._get_authz_session(),
@@ -352,7 +352,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_bin_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinLookupSession')(
             provider_session=self._provider_manager.get_bin_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -363,7 +363,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_bin_query_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinQuerySession')(
             provider_session=self._provider_manager.get_bin_query_session(),
             authz_session=self._get_authz_session(),
@@ -374,7 +374,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_bin_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinAdminSession')(
             provider_session=self._provider_manager.get_bin_admin_session(),
             authz_session=self._get_authz_session(),
@@ -385,7 +385,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_bin_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinHierarchySession')(
             provider_session=self._provider_manager.get_bin_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -396,7 +396,7 @@ class ResourceManager(osid_managers.OsidManager, ResourceProfile, resource_manag
 
     def get_bin_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinHierarchyDesignSession')(
             provider_session=self._provider_manager.get_bin_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -500,7 +500,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_resource_search_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceSearchSession')(
             provider_session=self._provider_manager.get_resource_search_session(proxy),
             authz_session=self._get_authz_session(),
@@ -522,7 +522,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_resource_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceAdminSession')(
             provider_session=self._provider_manager.get_resource_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -566,7 +566,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_resource_bin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceBinSession')(
             provider_session=self._provider_manager.get_resource_bin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -577,7 +577,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_resource_bin_assignment_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceBinAssignmentSession')(
             provider_session=self._provider_manager.get_resource_bin_assignment_session(proxy),
             authz_session=self._get_authz_session(),
@@ -588,7 +588,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_group_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinHierarchySession')(
             provider_session=self._provider_manager.get_group_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -599,7 +599,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_resource_agent_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceAgentSession')(
             provider_session=self._provider_manager.get_resource_agent_session(proxy),
             authz_session=self._get_authz_session(),
@@ -621,7 +621,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_resource_agent_assignment_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ResourceAgentAssignmentSession')(
             provider_session=self._provider_manager.get_resource_agent_assignment_session(proxy),
             authz_session=self._get_authz_session(),
@@ -643,7 +643,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_bin_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinLookupSession')(
             provider_session=self._provider_manager.get_bin_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -654,7 +654,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_bin_query_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinQuerySession')(
             provider_session=self._provider_manager.get_bin_query_session(proxy),
             authz_session=self._get_authz_session(),
@@ -665,7 +665,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_bin_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinAdminSession')(
             provider_session=self._provider_manager.get_bin_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -676,7 +676,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_bin_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinHierarchySession')(
             provider_session=self._provider_manager.get_bin_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -687,7 +687,7 @@ class ResourceProxyManager(osid_managers.OsidProxyManager, ResourceProfile, reso
     @raise_null_argument
     def get_bin_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'BinHierarchyDesignSession')(
             provider_session=self._provider_manager.get_bin_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

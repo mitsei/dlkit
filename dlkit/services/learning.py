@@ -104,6 +104,12 @@ class LearningProfile(osid.OsidProfile, learning_managers.LearningProfile):
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_activity_lookup()
 
+    def supports_activity_query(self):
+        """Pass through to provider supports_activity_query"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_activity_query()
+
     def supports_activity_admin(self):
         """Pass through to provider supports_activity_admin"""
         # Implemented from kitosid template for -
@@ -139,6 +145,12 @@ class LearningProfile(osid.OsidProfile, learning_managers.LearningProfile):
         # Implemented from kitosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_proficiency_admin()
+
+    def supports_proficiency_objective_bank_assignment(self):
+        """Pass through to provider supports_proficiency_objective_bank_assignment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_proficiency_objective_bank_assignment()
 
     def supports_objective_bank_lookup(self):
         """Pass through to provider supports_objective_bank_lookup"""
@@ -495,6 +507,20 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_activity_lookup_session_for_objective_bank(*args, **kwargs)
 
+    def get_activity_query_session(self, *args, **kwargs):
+        """Pass through to provider get_activity_query_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_catalog_template
+        return self._provider_manager.get_activity_query_session(*args, **kwargs)
+
+    activity_query_session = property(fget=get_activity_query_session)
+
+    def get_activity_query_session_for_objective_bank(self, *args, **kwargs):
+        """Pass through to provider get_activity_query_session_for_objective_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
+        return self._provider_manager.get_activity_query_session_for_objective_bank(*args, **kwargs)
+
     def get_activity_admin_session(self, *args, **kwargs):
         """Pass through to provider get_activity_admin_session"""
         # Implemented from kitosid template for -
@@ -566,6 +592,14 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
         # Implemented from kitosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_proficiency_admin_session_for_objective_bank(*args, **kwargs)
+
+    def get_proficiency_objective_bank_assignment_session(self, *args, **kwargs):
+        """Pass through to provider get_proficiency_objective_bank_assignment_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_proficiency_objective_bank_assignment_session(*args, **kwargs)
+
+    proficiency_objective_bank_assignment_session = property(fget=get_proficiency_objective_bank_assignment_session)
 
     def get_objective_bank_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_objective_bank_lookup_session"""
@@ -798,6 +832,38 @@ class LearningManager(osid.OsidManager, osid.OsidSession, LearningProfile, learn
     def reassign_activity_to_objective_bank(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+##
+# The following methods are from osid.learning.ProficiencyObjectiveBankAssignmentSession
+
+    def can_assign_proficiencies(self):
+        """Pass through to provider ProficiencyObjectiveBankAssignmentSession.can_assign_proficiencies"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        return self._get_provider_session('proficiency_objective_bank_assignment_session').can_assign_proficiencies()
+
+    def can_assign_proficiencies_to_objective_bank(self, *args, **kwargs):
+        """Pass through to provider ProficiencyObjectiveBankAssignmentSession.can_assign_proficiencies_to_objective_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        return self._get_provider_session('proficiency_objective_bank_assignment_session').can_assign_proficiencies_to_objective_bank(*args, **kwargs)
+
+    def get_assignable_objective_bank_ids_for_proficiency(self, *args, **kwargs):
+        """Pass through to provider ProficiencyObjectiveBankAssignmentSession.get_assignable_objective_bank_ids_for_proficiency"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        return self._get_provider_session('proficiency_objective_bank_assignment_session').get_assignable_objective_bank_ids_for_proficiency(*args, **kwargs)
+
+    def assign_proficiency_to_objective_bank(self, *args, **kwargs):
+        """Pass through to provider ProficiencyObjectiveBankAssignmentSession.assign_proficiency_to_objective_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        self._get_provider_session('proficiency_objective_bank_assignment_session').assign_proficiency_to_objective_bank(*args, **kwargs)
+
+    def unassign_proficiency_from_objective_bank(self, *args, **kwargs):
+        """Pass through to provider ProficiencyObjectiveBankAssignmentSession.unassign_proficiency_from_objective_bank"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        self._get_provider_session('proficiency_objective_bank_assignment_session').unassign_proficiency_from_objective_bank(*args, **kwargs)
 ##
 # The following methods are from osid.learning.ObjectiveBankLookupSession
 
@@ -1237,6 +1303,18 @@ class LearningProxyManager(osid.OsidProxyManager, LearningProfile, learning_mana
         # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
         return LearningManager.get_activity_lookup_session_for_objective_bank(*args, **kwargs)
 
+    def get_activity_query_session(self, *args, **kwargs):
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
+        return LearningManager.get_activity_query_session(*args, **kwargs)
+
+    def get_activity_query_session_for_objective_bank(self, *args, **kwargs):
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
+        return LearningManager.get_activity_query_session_for_objective_bank(*args, **kwargs)
+
     def get_activity_admin_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
@@ -1282,6 +1360,10 @@ class LearningProxyManager(osid.OsidProxyManager, LearningProfile, learning_mana
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_proficiency_admin_session_for_objective_bank(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_proficiency_objective_bank_assignment_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
@@ -1968,6 +2050,28 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid.OsidSession, osid.O
         return self._get_provider_session('activity_lookup_session').get_activities()
 
     activities = property(fget=get_activities)
+##
+# The following methods are from osid.learning.ActivityQuerySession
+
+    def can_search_activities(self):
+        """Pass through to provider ActivityQuerySession.can_search_activities"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceQuerySession.can_search_resources_template
+        return self._get_provider_session('activity_query_session').can_search_activities()
+
+    def get_activity_query(self):
+        """Pass through to provider ActivityQuerySession.get_activity_query"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceQuerySession.get_item_query_template
+        return self._get_provider_session('activity_query_session').get_activity_query()
+
+    activity_query = property(fget=get_activity_query)
+
+    def get_activities_by_query(self, *args, **kwargs):
+        """Pass through to provider ActivityQuerySession.get_activities_by_query"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceQuerySession.get_items_by_query_template
+        return self._get_provider_session('activity_query_session').get_activities_by_query(*args, **kwargs)
 ##
 # The following methods are from osid.learning.ActivityAdminSession
 
