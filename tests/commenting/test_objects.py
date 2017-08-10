@@ -29,7 +29,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def comment_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -134,7 +134,7 @@ class TestComment(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def comment_form_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -235,7 +235,7 @@ class TestCommentForm(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def comment_list_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -298,7 +298,7 @@ class TestCommentList(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_class_fixture(request):
     # From test_templates/resource.py::Bin::init_template
     request.cls.service_config = request.param
@@ -343,7 +343,7 @@ class TestBook(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_form_class_fixture(request):
     # From test_templates/resource.py::BinForm::init_template
     request.cls.service_config = request.param
@@ -385,7 +385,7 @@ class TestBookForm(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_list_class_fixture(request):
     # Implemented from init template for BinList
     request.cls.service_config = request.param
@@ -447,7 +447,7 @@ class TestBookList(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_node_class_fixture(request):
     # Implemented from init template for BinNode
     request.cls.service_config = request.param
@@ -547,7 +547,7 @@ class TestBookNode(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def book_node_list_class_fixture(request):
     # Implemented from init template for BinNodeList
     request.cls.service_config = request.param

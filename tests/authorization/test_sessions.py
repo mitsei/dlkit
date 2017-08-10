@@ -52,7 +52,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'Y
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authz_mgr = Runtime().get_manager(
@@ -380,7 +380,7 @@ class TestAuthorizationSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -719,7 +719,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -834,7 +834,7 @@ class TestAuthorizationQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def authorization_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -1063,7 +1063,7 @@ class TestAuthorizationAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -1193,7 +1193,7 @@ class TestVaultLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -1255,7 +1255,7 @@ class TestVaultQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -1404,7 +1404,7 @@ class TestVaultAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -1685,7 +1685,7 @@ class TestVaultHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def vault_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param

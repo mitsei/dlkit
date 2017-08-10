@@ -39,7 +39,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -213,7 +213,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -310,7 +310,7 @@ class TestObjectiveQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -514,7 +514,7 @@ class TestObjectiveAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_hierarchy_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -752,7 +752,7 @@ class TestObjectiveHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_hierarchy_design_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -913,7 +913,7 @@ class TestObjectiveHierarchyDesignSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_sequencing_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.child_list = list()
@@ -1022,7 +1022,7 @@ class TestObjectiveSequencingSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_objective_bank_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
@@ -1162,7 +1162,7 @@ class TestObjectiveObjectiveBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_objective_bank_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -1301,7 +1301,7 @@ class TestObjectiveObjectiveBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_requisite_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.requisite_list = list()
@@ -1449,7 +1449,7 @@ class TestObjectiveRequisiteSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_requisite_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.requisite_list = list()
@@ -1574,7 +1574,7 @@ class TestObjectiveRequisiteAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def activity_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.activity_list = list()
@@ -1800,7 +1800,7 @@ class TestActivityLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def activity_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1900,7 +1900,7 @@ class TestActivityQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def activity_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.activity_list = list()
@@ -2097,7 +2097,7 @@ class TestActivityAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def activity_objective_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.activity_list = list()
@@ -2243,7 +2243,7 @@ class TestActivityObjectiveBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def activity_objective_bank_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.activity_list = list()
@@ -2388,7 +2388,7 @@ class TestActivityObjectiveBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def proficiency_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.proficiency_list = list()
@@ -2724,7 +2724,7 @@ class TestProficiencyLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def proficiency_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -2826,7 +2826,7 @@ class TestProficiencyQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def proficiency_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.proficiency_list = list()
@@ -3031,7 +3031,7 @@ class TestProficiencyAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def proficiency_objective_bank_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.proficiency_list = list()
@@ -3174,7 +3174,7 @@ class TestProficiencyObjectiveBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_bank_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -3304,7 +3304,7 @@ class TestObjectiveBankLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_bank_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -3453,7 +3453,7 @@ class TestObjectiveBankAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_bank_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -3734,7 +3734,7 @@ class TestObjectiveBankHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def objective_bank_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param

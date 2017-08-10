@@ -21,7 +21,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def assessment_part_search_class_fixture(request):
     # From test_templates/resource.py::ResourceSearch::init_template
     request.cls.service_config = request.param
@@ -85,7 +85,7 @@ class TestAssessmentPartSearchResults(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
 def sequence_rule_search_class_fixture(request):
     # From test_templates/resource.py::ResourceSearch::init_template
     request.cls.service_config = request.param
