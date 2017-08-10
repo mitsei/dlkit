@@ -19,6 +19,27 @@ from dlkit.abstract_osid.logging_ import sessions as abc_logging_sessions
 
 class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSession):
     """Adapts underlying LoggingSession methodswith authorization checks."""
+    def __init__(self, provider_manager, *args, **kwargs):
+        osid_sessions.OsidSession.__init__(self, *args, **kwargs)
+        self._qualifier_id = self._provider_session.get_log_id()
+        self._id_namespace = 'logging.LogEntry'
+        self._overriding_log_ids = None
+        if self._proxy is not None:
+            try:
+                self._object_catalog_session = provider_manager.get_log_entry_log_session(self._proxy)
+            except (Unimplemented, AttributeError):
+                pass
+        else:
+            try:
+                self._object_catalog_session = provider_manager.get_log_entry_log_session()
+                self.get_log_ids_by_log_entry = self._object_catalog_session.get_log_ids_by_log_entry
+            except (Unimplemented, AttributeError):
+                pass
+
+    def _get_overriding_log_ids(self):
+        if self._overriding_log_ids is None:
+            self._overriding_log_ids = self._get_overriding_catalog_ids('lookup')
+        return self._overriding_log_ids
 
     def get_log_id(self):
         # Implemented from azosid template for -
@@ -38,7 +59,7 @@ class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSess
     log = property(fget=get_log)
 
     def can_log(self):
-        raise Unimplemented()
+        return self._can('create')
 
     @raise_null_argument
     def log(self, content, content_type):
@@ -720,7 +741,7 @@ class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.
         # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_log_entry_ids_by_log(log_id)
+        return self._provider_session.get_log_entry_ids_by_log(log_ids)
 
     @raise_null_argument
     def get_log_entries_by_log(self, log_id):
@@ -736,7 +757,7 @@ class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.
         # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_log_entry_ids_by_log(log_id)
+        return self._provider_session.get_log_entry_ids_by_log(log_ids)
 
     @raise_null_argument
     def get_log_entrie_by_log(self, log_ids):
@@ -744,7 +765,7 @@ class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_log_entrie_by_log(log_id)
+        return self._provider_session.get_log_entrie_by_log(log_ids)
 
     @raise_null_argument
     def get_log_ids_by_log_entry(self, log_entry_id):

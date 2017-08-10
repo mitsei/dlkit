@@ -213,7 +213,6 @@ class TestLogEntryLookupSession(object):
 
     def test_get_log_entry(self):
         """Tests get_log_entry"""
-        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         if not is_never_authz(self.service_config):
             self.catalog.use_isolated_log_view()
             obj = self.catalog.get_log_entry(self.log_entry_list[0].ident)
@@ -222,42 +221,37 @@ class TestLogEntryLookupSession(object):
             obj = self.catalog.get_log_entry(self.log_entry_list[0].ident)
             assert obj.ident == self.log_entry_list[0].ident
         else:
-            with pytest.raises(errors.PermissionDenied):
+            with pytest.raises(errors.NotFound):
                 self.catalog.get_log_entry(self.fake_id)
 
     def test_get_log_entries_by_ids(self):
         """Tests get_log_entries_by_ids"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
+        objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
+        assert isinstance(objects, LogEntryList)
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
             assert objects.available() > 0
-            assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries_by_ids(self.log_entry_ids)
+            assert objects.available() == 0
 
     def test_get_log_entries_by_genus_type(self):
         """Tests get_log_entries_by_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
+        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+        assert isinstance(objects, LogEntryList)
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
             assert objects.available() > 0
-            assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+            assert objects.available() == 0
 
     def test_get_log_entries_by_parent_genus_type(self):
         """Tests get_log_entries_by_parent_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
         if not is_never_authz(self.service_config):
             objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
@@ -267,23 +261,20 @@ class TestLogEntryLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
+            with pytest.raises(errors.Unimplemented):
+                # because the never_authz "tries harder" and runs the actual query...
+                #    whereas above the method itself in JSON returns an empty list
                 self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_log_entries_by_record_type(self):
         """Tests get_log_entries_by_record_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, LogEntryList)
-        else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
+        objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
+        assert objects.available() == 0
+        assert isinstance(objects, LogEntryList)
 
     def test_get_log_entries_by_priority_type(self):
         """Tests get_log_entries_by_priority_type"""
@@ -347,22 +338,20 @@ class TestLogEntryLookupSession(object):
 
     def test_get_log_entries(self):
         """Tests get_log_entries"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
+        objects = self.catalog.get_log_entries()
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries()
+        assert isinstance(objects, LogEntryList)
+
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries()
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries()
             assert objects.available() > 0
-            assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries()
+            assert objects.available() == 0
 
     def test_get_log_entry_with_alias(self):
         if not is_never_authz(self.service_config):
-            # Because you can't create the alias with NEVER_AUTHZ
             self.catalog.alias_log_entry(self.log_entry_ids[0], ALIAS_ID)
             obj = self.catalog.get_log_entry(ALIAS_ID)
             assert obj.get_id() == self.log_entry_ids[0]
