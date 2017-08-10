@@ -60,6 +60,30 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_grade_system_admin' in profile.SUPPORTS
 
+    def supports_grade_system_gradebook(self):
+        """Tests if a grade system to gradebook lookup session is available.
+
+        return: (boolean) - ``true`` if grade system gradebook lookup
+                session is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_grade_system_gradebook' in profile.SUPPORTS
+
+    def supports_grade_system_gradebook_assignment(self):
+        """Tests if a grade system to gradebook assignment session is available.
+
+        return: (boolean) - ``true`` if grade system gradebook
+                assignment is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_grade_system_gradebook_assignment' in profile.SUPPORTS
+
     def supports_grade_entry_lookup(self):
         """Tests if a grade entry lookup service is supported.
 
@@ -131,6 +155,30 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
         # Implemented from template for
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_gradebook_column_admin' in profile.SUPPORTS
+
+    def supports_gradebook_column_gradebook(self):
+        """Tests if a gradebook column to gradebook lookup session is available.
+
+        return: (boolean) - ``true`` if gradebook column gradebook
+                lookup session is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_gradebook_column_gradebook' in profile.SUPPORTS
+
+    def supports_gradebook_column_gradebook_assignment(self):
+        """Tests if a gradebook column to gradebook assignment session is available.
+
+        return: (boolean) - ``true`` if gradebook column gradebook
+                assignment is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_gradebook_column_gradebook_assignment' in profile.SUPPORTS
 
     def supports_gradebook_lookup(self):
         """Tests if a gradebook lookup service is supported.
@@ -562,6 +610,47 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
         return sessions.GradeSystemAdminSession(gradebook_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
+    def get_grade_system_gradebook_session(self):
+        """Gets the session for retrieving grade system to gradebook mappings.
+
+        return: (osid.grading.GradeSystemGradebookSession) - a
+                ``GradeSystemGradebookSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_grade_system_gradebook()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_grade_system_gradebook()`` is ``true``.*
+
+        """
+        if not self.supports_grade_system_gradebook():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradeSystemGradebookSession(runtime=self._runtime)
+
+    grade_system_gradebook_session = property(fget=get_grade_system_gradebook_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_grade_system_gradebook_assignment_session(self):
+        """Gets the session for assigning grade system to gradebook mappings.
+
+        return: (osid.grading.GradeSystemGradebookSession) - a
+                ``GradeSystemGradebookAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_grade_system_gradebook_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_grade_system_gradebook_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_grade_system_gradebook_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradeSystemGradebookAssignmentSession(runtime=self._runtime)
+
+    grade_system_gradebook_assignment_session = property(fget=get_grade_system_gradebook_assignment_session)
+
+    @utilities.remove_null_proxy_kwarg
     def get_grade_entry_lookup_session(self):
         """Gets the ``OsidSession`` associated with the grade entry lookup service.
 
@@ -836,6 +925,48 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
         ##
         # pylint: disable=no-member
         return sessions.GradebookColumnAdminSession(gradebook_id, runtime=self._runtime)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_gradebook_column_gradebook_session(self):
+        """Gets the session for retrieving gradebook column to gradebook mappings.
+
+        return: (osid.grading.GradebookColumnGradebookSession) - a
+                ``GradebookColumnGradebookSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_gradebook_column_gradebook()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_column_gradebook()`` is ``true``.*
+
+        """
+        if not self.supports_gradebook_column_gradebook():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookColumnGradebookSession(runtime=self._runtime)
+
+    gradebook_column_gradebook_session = property(fget=get_gradebook_column_gradebook_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_gradebook_column_gradebook_assignment_session(self):
+        """Gets the session for assigning gradebook column to gradebook mappings.
+
+        return: (osid.grading.GradebookColumnGradebookAssignmentSession)
+                - a ``GradebookColumnGradebookAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_gradebook_column_gradebook_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_column_gradebook_assignment()`` is
+        ``true``.*
+
+        """
+        if not self.supports_gradebook_column_gradebook_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookColumnGradebookAssignmentSession(runtime=self._runtime)
+
+    gradebook_column_gradebook_assignment_session = property(fget=get_gradebook_column_gradebook_assignment_session)
 
     @utilities.remove_null_proxy_kwarg
     def get_gradebook_lookup_session(self):
@@ -1167,6 +1298,47 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
         return sessions.GradeSystemAdminSession(gradebook_id, proxy, self._runtime)
 
     @utilities.arguments_not_none
+    def get_grade_system_gradebook_session(self, proxy):
+        """Gets the session for retrieving grade system to gradebook mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.grading.GradeSystemGradebookSession) - a
+                ``GradeSystemGradebookSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_grade_system_gradebook()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_grade_system_gradebook()`` is ``true``.*
+
+        """
+        if not self.supports_grade_system_gradebook():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradeSystemGradebookSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_grade_system_gradebook_assignment_session(self, proxy):
+        """Gets the session for assigning grade system to gradebook mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.grading.GradeSystemGradebookSession) - a
+                ``GradeSystemGradebookAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_grade_system_gradebook_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_grade_system_gradebook_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_grade_system_gradebook_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradeSystemGradebookAssignmentSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
     def get_grade_entry_lookup_session(self, proxy):
         """Gets the ``OsidSession`` associated with the grade entry lookup service.
 
@@ -1441,6 +1613,48 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
         ##
         # pylint: disable=no-member
         return sessions.GradebookColumnAdminSession(gradebook_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_gradebook_column_gradebook_session(self, proxy):
+        """Gets the session for retrieving gradebook column to gradebook mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.grading.GradebookColumnGradebookSession) - a
+                ``GradebookColumnGradebookSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_gradebook_column_gradebook()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_column_gradebook()`` is ``true``.*
+
+        """
+        if not self.supports_gradebook_column_gradebook():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookColumnGradebookSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_gradebook_column_gradebook_assignment_session(self, proxy):
+        """Gets the session for assigning gradebook column to gradebook mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.grading.GradebookColumnGradebookAssignmentSession)
+                - a ``GradebookColumnGradebookAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_gradebook_column_gradebook_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_gradebook_column_gradebook_assignment()`` is
+        ``true``.*
+
+        """
+        if not self.supports_gradebook_column_gradebook_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.GradebookColumnGradebookAssignmentSession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_gradebook_lookup_session(self, proxy):

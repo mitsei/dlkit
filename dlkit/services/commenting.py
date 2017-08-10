@@ -56,6 +56,18 @@ class CommentingProfile(osid.OsidProfile, commenting_managers.CommentingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_comment_admin()
 
+    def supports_comment_book(self):
+        """Pass through to provider supports_comment_book"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_comment_book()
+
+    def supports_comment_book_assignment(self):
+        """Pass through to provider supports_comment_book_assignment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_comment_book_assignment()
+
     def supports_book_lookup(self):
         """Pass through to provider supports_book_lookup"""
         # Implemented from kitosid template for -
@@ -279,6 +291,22 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_comment_admin_session_for_book(*args, **kwargs)
 
+    def get_comment_book_session(self, *args, **kwargs):
+        """Pass through to provider get_comment_book_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_comment_book_session(*args, **kwargs)
+
+    comment_book_session = property(fget=get_comment_book_session)
+
+    def get_comment_book_assignment_session(self, *args, **kwargs):
+        """Pass through to provider get_comment_book_assignment_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_comment_book_assignment_session(*args, **kwargs)
+
+    comment_book_assignment_session = property(fget=get_comment_book_assignment_session)
+
     def get_book_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_book_lookup_session"""
         # Implemented from kitosid template for -
@@ -317,18 +345,18 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
 
     commenting_batch_manager = property(fget=get_commenting_batch_manager)
 ##
-# The following methods are from osid.commenting.BookLookupSession
+# The following methods are from osid.commenting.CommentBookSession
 
-    def can_lookup_books(self):
-        """Pass through to provider BookLookupSession.can_lookup_books"""
+    def can_lookup_comment_book_mappings(self):
+        """Pass through to provider CommentBookSession.can_lookup_comment_book_mappings"""
         # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
-        return self._get_provider_session('book_lookup_session').can_lookup_books()
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        return self._get_provider_session('comment_book_session').can_lookup_comment_book_mappings()
 
     def use_comparative_book_view(self):
-        """Pass through to provider BookLookupSession.use_comparative_book_view"""
+        """Pass through to provider CommentBookSession.use_comparative_book_view"""
         self._book_view = COMPARATIVE
-        # self._get_provider_session('book_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('comment_book_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_comparative_book_view()
@@ -336,14 +364,104 @@ class CommentingManager(osid.OsidManager, osid.OsidSession, CommentingProfile, c
                 pass
 
     def use_plenary_book_view(self):
-        """Pass through to provider BookLookupSession.use_plenary_book_view"""
+        """Pass through to provider CommentBookSession.use_plenary_book_view"""
         self._book_view = PLENARY
-        # self._get_provider_session('book_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('comment_book_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_plenary_book_view()
             except AttributeError:
                 pass
+
+    def get_comment_ids_by_book(self, *args, **kwargs):
+        """Pass through to provider CommentBookSession.get_comment_ids_by_book"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        return self._get_provider_session('comment_book_session').get_comment_ids_by_book(*args, **kwargs)
+
+    def get_comments_by_book(self, *args, **kwargs):
+        """Pass through to provider CommentBookSession.get_comments_by_book"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        return self._get_provider_session('comment_book_session').get_comments_by_book(*args, **kwargs)
+
+    def get_comment_ids_by_books(self, *args, **kwargs):
+        """Pass through to provider CommentBookSession.get_comment_ids_by_books"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        return self._get_provider_session('comment_book_session').get_comment_ids_by_books(*args, **kwargs)
+
+    def get_comments_by_books(self, *args, **kwargs):
+        """Pass through to provider CommentBookSession.get_comments_by_books"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        return self._get_provider_session('comment_book_session').get_comments_by_books(*args, **kwargs)
+
+    def get_book_ids_by_comment(self, *args, **kwargs):
+        """Pass through to provider CommentBookSession.get_book_ids_by_comment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        return self._get_provider_session('comment_book_session').get_book_ids_by_comment(*args, **kwargs)
+
+    def get_books_by_comment(self, *args, **kwargs):
+        """Pass through to provider CommentBookSession.get_books_by_comment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        catalogs = self._get_provider_session('comment_book_session').get_books_by_comment(*args, **kwargs)
+        cat_list = []
+        for cat in catalogs:
+            cat_list.append(Book(self._provider_manager, cat, self._runtime, self._proxy))
+        return BookList(cat_list)
+##
+# The following methods are from osid.commenting.CommentBookAssignmentSession
+
+    def can_assign_comments(self):
+        """Pass through to provider CommentBookAssignmentSession.can_assign_comments"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        return self._get_provider_session('comment_book_assignment_session').can_assign_comments()
+
+    def can_assign_comments_to_book(self, *args, **kwargs):
+        """Pass through to provider CommentBookAssignmentSession.can_assign_comments_to_book"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        return self._get_provider_session('comment_book_assignment_session').can_assign_comments_to_book(*args, **kwargs)
+
+    def get_assignable_book_ids(self, *args, **kwargs):
+        """Pass through to provider CommentBookAssignmentSession.get_assignable_book_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        return self._get_provider_session('comment_book_assignment_session').get_assignable_book_ids(*args, **kwargs)
+
+    def get_assignable_book_ids_for_comment(self, *args, **kwargs):
+        """Pass through to provider CommentBookAssignmentSession.get_assignable_book_ids_for_comment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        return self._get_provider_session('comment_book_assignment_session').get_assignable_book_ids_for_comment(*args, **kwargs)
+
+    def assign_comment_to_book(self, *args, **kwargs):
+        """Pass through to provider CommentBookAssignmentSession.assign_comment_to_book"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        self._get_provider_session('comment_book_assignment_session').assign_comment_to_book(*args, **kwargs)
+
+    def unassign_comment_from_book(self, *args, **kwargs):
+        """Pass through to provider CommentBookAssignmentSession.unassign_comment_from_book"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        self._get_provider_session('comment_book_assignment_session').unassign_comment_from_book(*args, **kwargs)
+
+    def reassign_comment_to_book(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+##
+# The following methods are from osid.commenting.BookLookupSession
+
+    def can_lookup_books(self):
+        """Pass through to provider BookLookupSession.can_lookup_books"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.can_lookup_bins_template
+        return self._get_provider_session('book_lookup_session').can_lookup_books()
 
     def get_book(self, *args, **kwargs):
         """Pass through to provider BookLookupSession.get_book"""
@@ -712,6 +830,14 @@ class CommentingProxyManager(osid.OsidProxyManager, CommentingProfile, commentin
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_comment_admin_session_for_book(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_comment_book_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_comment_book_assignment_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 

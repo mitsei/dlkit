@@ -80,6 +80,18 @@ class AuthorizationProfile(osid.OsidProfile, authorization_managers.Authorizatio
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_vault_admin()
 
+    def supports_vault_hierarchy(self):
+        """Pass through to provider supports_vault_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_vault_hierarchy()
+
+    def supports_vault_hierarchy_design(self):
+        """Pass through to provider supports_vault_hierarchy_design"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_vault_hierarchy_design()
+
     def get_authorization_record_types(self):
         """Pass through to provider get_authorization_record_types"""
         # Implemented from kitosid template for -
@@ -357,6 +369,22 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     vault_admin_session = property(fget=get_vault_admin_session)
 
+    def get_vault_hierarchy_session(self, *args, **kwargs):
+        """Pass through to provider get_vault_hierarchy_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_vault_hierarchy_session(*args, **kwargs)
+
+    vault_hierarchy_session = property(fget=get_vault_hierarchy_session)
+
+    def get_vault_hierarchy_design_session(self, *args, **kwargs):
+        """Pass through to provider get_vault_hierarchy_design_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_vault_hierarchy_design_session(*args, **kwargs)
+
+    vault_hierarchy_design_session = property(fget=get_vault_hierarchy_design_session)
+
     def get_authorization_batch_manager(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services')
@@ -586,6 +614,172 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # Implemented from kitosid template for -
         # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('vault_admin_session').alias_vault(*args, **kwargs)
+##
+# The following methods are from osid.authorization.VaultHierarchySession
+
+    def get_vault_hierarchy_id(self):
+        """Pass through to provider VaultHierarchySession.get_vault_hierarchy_id"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        return self._get_provider_session('vault_hierarchy_session').get_vault_hierarchy_id()
+
+    vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
+
+    def get_vault_hierarchy(self):
+        """Pass through to provider VaultHierarchySession.get_vault_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        return self._get_provider_session('vault_hierarchy_session').get_vault_hierarchy()
+
+    vault_hierarchy = property(fget=get_vault_hierarchy)
+
+    def can_access_vault_hierarchy(self):
+        """Pass through to provider VaultHierarchySession.can_access_vault_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        return self._get_provider_session('vault_hierarchy_session').can_access_vault_hierarchy()
+
+    def get_root_vault_ids(self):
+        """Pass through to provider VaultHierarchySession.get_root_vault_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_root_bin_ids
+        return self._get_provider_session('vault_hierarchy_session').get_root_vault_ids()
+
+    root_vault_ids = property(fget=get_root_vault_ids)
+
+    def get_root_vaults(self):
+        """Pass through to provider VaultHierarchySession.get_root_vaults"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_root_bins
+        return self._get_provider_session('vault_hierarchy_session').get_root_vaults()
+
+    root_vaults = property(fget=get_root_vaults)
+
+    def has_parent_vaults(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.has_parent_vaults"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.has_parent_bins
+        return self._get_provider_session('vault_hierarchy_session').has_parent_vaults(*args, **kwargs)
+
+    def is_parent_of_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.is_parent_of_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_parent_of_bin
+        return self._get_provider_session('vault_hierarchy_session').is_parent_of_vault(*args, **kwargs)
+
+    def get_parent_vault_ids(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.get_parent_vault_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        return self._get_provider_session('vault_hierarchy_session').get_parent_vault_ids(*args, **kwargs)
+
+    def get_parent_vaults(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.get_parent_vaults"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_parent_bins
+        return self._get_provider_session('vault_hierarchy_session').get_parent_vaults(*args, **kwargs)
+
+    def is_ancestor_of_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.is_ancestor_of_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        return self._get_provider_session('vault_hierarchy_session').is_ancestor_of_vault(*args, **kwargs)
+
+    def has_child_vaults(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.has_child_vaults"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.has_child_bins
+        return self._get_provider_session('vault_hierarchy_session').has_child_vaults(*args, **kwargs)
+
+    def is_child_of_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.is_child_of_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_child_of_bin
+        return self._get_provider_session('vault_hierarchy_session').is_child_of_vault(*args, **kwargs)
+
+    def get_child_vault_ids(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.get_child_vault_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_child_bin_ids
+        return self._get_provider_session('vault_hierarchy_session').get_child_vault_ids(*args, **kwargs)
+
+    def get_child_vaults(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.get_child_vaults"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_child_bins
+        return self._get_provider_session('vault_hierarchy_session').get_child_vaults(*args, **kwargs)
+
+    def is_descendant_of_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.is_descendant_of_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        return self._get_provider_session('vault_hierarchy_session').is_descendant_of_vault(*args, **kwargs)
+
+    def get_vault_node_ids(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.get_vault_node_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_node_ids
+        return self._get_provider_session('vault_hierarchy_session').get_vault_node_ids(*args, **kwargs)
+
+    def get_vault_nodes(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchySession.get_vault_nodes"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchySession.get_bin_nodes
+        return self._get_provider_session('vault_hierarchy_session').get_vault_nodes(*args, **kwargs)
+##
+# The following methods are from osid.authorization.VaultHierarchyDesignSession
+
+    def can_modify_vault_hierarchy(self):
+        """Pass through to provider VaultHierarchyDesignSession.can_modify_vault_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy
+        return self._get_provider_session('vault_hierarchy_design_session').can_modify_vault_hierarchy()
+
+    def create_vault_hierarchy(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchyDesignSession.can_modify_vault_hierarchy"""
+        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
+        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
+        # Will not return an actual object, just JSON
+        # since a BankHierarchy does not seem to be an OSID thing.
+        return self._get_provider_session('vault_hierarchy_design_session').create_vault_hierarchy(*args, **kwargs)
+
+    def delete_vault_hierarchy(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchyDesignSession.can_modify_vault_hierarchy"""
+        # Patched in by cjshaw@mit.edu, Jul 23, 2014, added by birdland to template on Aug 8, 2014
+        # Is not part of specs for catalog hierarchy design sessions, but may want to be in hierarchy service instead
+        # Will not return an actual object, just JSON
+        # since a BankHierarchy does not seem to be an OSID thing.
+        return self._get_provider_session('vault_hierarchy_design_session').delete_vault_hierarchy(*args, **kwargs)
+
+    def add_root_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchyDesignSession.add_root_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.add_root_bin
+        self._get_provider_session('vault_hierarchy_design_session').add_root_vault(*args, **kwargs)
+
+    def remove_root_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchyDesignSession.remove_root_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin
+        self._get_provider_session('vault_hierarchy_design_session').remove_root_vault(*args, **kwargs)
+
+    def add_child_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchyDesignSession.add_child_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.add_child_bin
+        self._get_provider_session('vault_hierarchy_design_session').add_child_vault(*args, **kwargs)
+
+    def remove_child_vault(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchyDesignSession.remove_child_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin
+        self._get_provider_session('vault_hierarchy_design_session').remove_child_vault(*args, **kwargs)
+
+    def remove_child_vaults(self, *args, **kwargs):
+        """Pass through to provider VaultHierarchyDesignSession.remove_child_vaults"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinHierarchyDesignSession.remove_child_bins
+        self._get_provider_session('vault_hierarchy_design_session').remove_child_vaults(*args, **kwargs)
 
 
 class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, authorization_managers.AuthorizationProxyManager):
@@ -640,6 +834,14 @@ class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, aut
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_vault_admin_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_vault_hierarchy_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_vault_hierarchy_design_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 

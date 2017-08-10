@@ -301,7 +301,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_asset_search_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetSearchSession')(
             provider_session=self._provider_manager.get_asset_search_session(),
             authz_session=self._get_authz_session(),
@@ -322,7 +322,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_asset_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetAdminSession')(
             provider_session=self._provider_manager.get_asset_admin_session(),
             authz_session=self._get_authz_session(),
@@ -363,7 +363,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_asset_repository_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetRepositorySession')(
             provider_session=self._provider_manager.get_asset_repository_session(),
             authz_session=self._get_authz_session(),
@@ -374,7 +374,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_asset_repository_assignment_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetRepositoryAssignmentSession')(
             provider_session=self._provider_manager.get_asset_repository_assignment_session(),
             authz_session=self._get_authz_session(),
@@ -385,7 +385,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_asset_composition_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetCompositionSession')(
             provider_session=self._provider_manager.get_asset_composition_session(),
             authz_session=self._get_authz_session(),
@@ -396,7 +396,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_asset_composition_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetCompositionDesignSession')(
             provider_session=self._provider_manager.get_asset_composition_design_session(),
             authz_session=self._get_authz_session(),
@@ -473,7 +473,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_composition_search_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionSearchSession')(
             provider_session=self._provider_manager.get_composition_search_session(),
             authz_session=self._get_authz_session(),
@@ -494,7 +494,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_composition_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionAdminSession')(
             provider_session=self._provider_manager.get_composition_admin_session(),
             authz_session=self._get_authz_session(),
@@ -515,7 +515,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_composition_repository_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionRepositorySession')(
             provider_session=self._provider_manager.get_composition_repository_session(),
             authz_session=self._get_authz_session(),
@@ -526,7 +526,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_composition_repository_assignment_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionRepositoryAssignmentSession')(
             provider_session=self._provider_manager.get_composition_repository_assignment_session(),
             authz_session=self._get_authz_session(),
@@ -537,7 +537,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_repository_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryLookupSession')(
             provider_session=self._provider_manager.get_repository_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -548,7 +548,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_repository_query_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryQuerySession')(
             provider_session=self._provider_manager.get_repository_query_session(),
             authz_session=self._get_authz_session(),
@@ -559,7 +559,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_repository_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryAdminSession')(
             provider_session=self._provider_manager.get_repository_admin_session(),
             authz_session=self._get_authz_session(),
@@ -570,7 +570,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_repository_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryHierarchySession')(
             provider_session=self._provider_manager.get_repository_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -581,7 +581,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
 
     def get_repository_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryHierarchyDesignSession')(
             provider_session=self._provider_manager.get_repository_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -713,7 +713,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_asset_search_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetSearchSession')(
             provider_session=self._provider_manager.get_asset_search_session(proxy),
             authz_session=self._get_authz_session(),
@@ -735,7 +735,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_asset_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetAdminSession')(
             provider_session=self._provider_manager.get_asset_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -779,7 +779,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_asset_repository_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetRepositorySession')(
             provider_session=self._provider_manager.get_asset_repository_session(proxy),
             authz_session=self._get_authz_session(),
@@ -790,7 +790,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_asset_repository_assignment_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetRepositoryAssignmentSession')(
             provider_session=self._provider_manager.get_asset_repository_assignment_session(proxy),
             authz_session=self._get_authz_session(),
@@ -801,7 +801,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_asset_composition_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetCompositionSession')(
             provider_session=self._provider_manager.get_asset_composition_session(proxy),
             authz_session=self._get_authz_session(),
@@ -812,7 +812,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_asset_composition_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssetCompositionDesignSession')(
             provider_session=self._provider_manager.get_asset_composition_design_session(proxy),
             authz_session=self._get_authz_session(),
@@ -891,7 +891,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_composition_search_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionSearchSession')(
             provider_session=self._provider_manager.get_composition_search_session(proxy),
             authz_session=self._get_authz_session(),
@@ -913,7 +913,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_composition_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionAdminSession')(
             provider_session=self._provider_manager.get_composition_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -935,7 +935,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_composition_repository_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionRepositorySession')(
             provider_session=self._provider_manager.get_composition_repository_session(proxy),
             authz_session=self._get_authz_session(),
@@ -946,7 +946,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_composition_repository_assignment_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'CompositionRepositoryAssignmentSession')(
             provider_session=self._provider_manager.get_composition_repository_assignment_session(proxy),
             authz_session=self._get_authz_session(),
@@ -957,7 +957,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_repository_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryLookupSession')(
             provider_session=self._provider_manager.get_repository_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -968,7 +968,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_repository_query_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryQuerySession')(
             provider_session=self._provider_manager.get_repository_query_session(proxy),
             authz_session=self._get_authz_session(),
@@ -979,7 +979,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_repository_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryAdminSession')(
             provider_session=self._provider_manager.get_repository_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -990,7 +990,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_repository_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryHierarchySession')(
             provider_session=self._provider_manager.get_repository_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -1001,7 +1001,7 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
     @raise_null_argument
     def get_repository_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RepositoryHierarchyDesignSession')(
             provider_session=self._provider_manager.get_repository_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

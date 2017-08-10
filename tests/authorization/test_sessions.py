@@ -11,9 +11,13 @@ from dlkit.abstract_osid.authorization import queries as ABCQueries
 from dlkit.abstract_osid.authorization.objects import Authorization
 from dlkit.abstract_osid.authorization.objects import AuthorizationList
 from dlkit.abstract_osid.authorization.objects import Vault as ABCVault
+from dlkit.abstract_osid.hierarchy.objects import Hierarchy
+from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
+from dlkit.abstract_osid.osid.objects import OsidList
+from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -1397,3 +1401,449 @@ class TestVaultAdminSession(object):
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.alias_vault(self.fake_id, alias_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+def vault_hierarchy_session_class_fixture(request):
+    # From test_templates/resource.py::BinHierarchySession::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'AUTHORIZATION',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.catalogs = dict()
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
+            create_form = request.cls.svc_mgr.get_vault_form_for_create([])
+            create_form.display_name = name
+            create_form.description = 'Test Vault ' + name
+            request.cls.catalogs[name] = request.cls.svc_mgr.create_vault(create_form)
+        request.cls.svc_mgr.add_root_vault(request.cls.catalogs['Root'].ident)
+        request.cls.svc_mgr.add_child_vault(request.cls.catalogs['Root'].ident, request.cls.catalogs['Child 1'].ident)
+        request.cls.svc_mgr.add_child_vault(request.cls.catalogs['Root'].ident, request.cls.catalogs['Child 2'].ident)
+        request.cls.svc_mgr.add_child_vault(request.cls.catalogs['Child 1'].ident, request.cls.catalogs['Grandchild 1'].ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.remove_child_vault(request.cls.catalogs['Child 1'].ident, request.cls.catalogs['Grandchild 1'].ident)
+            request.cls.svc_mgr.remove_child_vaults(request.cls.catalogs['Root'].ident)
+            request.cls.svc_mgr.remove_root_vault(request.cls.catalogs['Root'].ident)
+            for cat_name in request.cls.catalogs:
+                request.cls.svc_mgr.delete_vault(request.cls.catalogs[cat_name].ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def vault_hierarchy_session_test_fixture(request):
+    # From test_templates/resource.py::BinHierarchySession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("vault_hierarchy_session_class_fixture", "vault_hierarchy_session_test_fixture")
+class TestVaultHierarchySession(object):
+    """Tests for VaultHierarchySession"""
+    def test_get_vault_hierarchy_id(self):
+        """Tests get_vault_hierarchy_id"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_id_template
+        hierarchy_id = self.svc_mgr.get_vault_hierarchy_id()
+        assert isinstance(hierarchy_id, Id)
+
+    def test_get_vault_hierarchy(self):
+        """Tests get_vault_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_template
+        if not is_never_authz(self.service_config):
+            hierarchy = self.svc_mgr.get_vault_hierarchy()
+            assert isinstance(hierarchy, Hierarchy)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_vault_hierarchy()
+
+    def test_can_access_vault_hierarchy(self):
+        """Tests can_access_vault_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::can_access_objective_bank_hierarchy_template
+        assert isinstance(self.svc_mgr.can_access_vault_hierarchy(), bool)
+
+    def test_use_comparative_vault_view(self):
+        """Tests use_comparative_vault_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
+        self.svc_mgr.use_comparative_vault_view()
+
+    def test_use_plenary_vault_view(self):
+        """Tests use_plenary_vault_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
+        self.svc_mgr.use_plenary_vault_view()
+
+    def test_get_root_vault_ids(self):
+        """Tests get_root_vault_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_root_bin_ids_template
+        if not is_never_authz(self.service_config):
+            root_ids = self.svc_mgr.get_root_vault_ids()
+            assert isinstance(root_ids, IdList)
+            # probably should be == 1, but we seem to be getting test cruft,
+            # and I can't pinpoint where it's being introduced.
+            assert root_ids.available() >= 1
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_root_vault_ids()
+
+    def test_get_root_vaults(self):
+        """Tests get_root_vaults"""
+        # From test_templates/resource.py::BinHierarchySession::get_root_bins_template
+        from dlkit.abstract_osid.authorization.objects import VaultList
+        if not is_never_authz(self.service_config):
+            roots = self.svc_mgr.get_root_vaults()
+            assert isinstance(roots, OsidList)
+            assert roots.available() == 1
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_root_vaults()
+
+    def test_has_parent_vaults(self):
+        """Tests has_parent_vaults"""
+        # From test_templates/resource.py::BinHierarchySession::has_parent_bins_template
+        if not is_never_authz(self.service_config):
+            assert isinstance(self.svc_mgr.has_parent_vaults(self.catalogs['Child 1'].ident), bool)
+            assert self.svc_mgr.has_parent_vaults(self.catalogs['Child 1'].ident)
+            assert self.svc_mgr.has_parent_vaults(self.catalogs['Child 2'].ident)
+            assert self.svc_mgr.has_parent_vaults(self.catalogs['Grandchild 1'].ident)
+            assert not self.svc_mgr.has_parent_vaults(self.catalogs['Root'].ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.has_parent_vaults(self.fake_id)
+
+    def test_is_parent_of_vault(self):
+        """Tests is_parent_of_vault"""
+        # From test_templates/resource.py::BinHierarchySession::is_parent_of_bin_template
+        if not is_never_authz(self.service_config):
+            assert isinstance(self.svc_mgr.is_parent_of_vault(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool)
+            assert self.svc_mgr.is_parent_of_vault(self.catalogs['Root'].ident, self.catalogs['Child 1'].ident)
+            assert self.svc_mgr.is_parent_of_vault(self.catalogs['Child 1'].ident, self.catalogs['Grandchild 1'].ident)
+            assert not self.svc_mgr.is_parent_of_vault(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.is_parent_of_vault(self.fake_id, self.fake_id)
+
+    def test_get_parent_vault_ids(self):
+        """Tests get_parent_vault_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_parent_bin_ids_template
+        from dlkit.abstract_osid.id.objects import IdList
+        if not is_never_authz(self.service_config):
+            catalog_list = self.svc_mgr.get_parent_vault_ids(self.catalogs['Child 1'].ident)
+            assert isinstance(catalog_list, IdList)
+            assert catalog_list.available() == 1
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_parent_vault_ids(self.fake_id)
+
+    def test_get_parent_vaults(self):
+        """Tests get_parent_vaults"""
+        # From test_templates/resource.py::BinHierarchySession::get_parent_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_list = self.svc_mgr.get_parent_vaults(self.catalogs['Child 1'].ident)
+            assert isinstance(catalog_list, OsidList)
+            assert catalog_list.available() == 1
+            assert catalog_list.next().display_name.text == 'Root'
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_parent_vaults(self.fake_id)
+
+    def test_is_ancestor_of_vault(self):
+        """Tests is_ancestor_of_vault"""
+        # From test_templates/resource.py::BinHierarchySession::is_ancestor_of_bin_template
+        if not is_never_authz(self.service_config):
+            pytest.raises(errors.Unimplemented,
+                          self.svc_mgr.is_ancestor_of_vault,
+                          self.catalogs['Root'].ident,
+                          self.catalogs['Child 1'].ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.is_ancestor_of_vault(self.fake_id, self.fake_id)
+        # self.assertTrue(isinstance(self.svc_mgr.is_ancestor_of_vault(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_vault(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
+        # self.assertTrue(self.svc_mgr.is_ancestor_of_vault(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Grandchild 1'].ident))
+        # self.assertFalse(self.svc_mgr.is_ancestor_of_vault(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
+
+    def test_has_child_vaults(self):
+        """Tests has_child_vaults"""
+        # From test_templates/resource.py::BinHierarchySession::has_child_bins_template
+        if not is_never_authz(self.service_config):
+            assert isinstance(self.svc_mgr.has_child_vaults(self.catalogs['Child 1'].ident), bool)
+            assert self.svc_mgr.has_child_vaults(self.catalogs['Root'].ident)
+            assert self.svc_mgr.has_child_vaults(self.catalogs['Child 1'].ident)
+            assert not self.svc_mgr.has_child_vaults(self.catalogs['Child 2'].ident)
+            assert not self.svc_mgr.has_child_vaults(self.catalogs['Grandchild 1'].ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.has_child_vaults(self.fake_id)
+
+    def test_is_child_of_vault(self):
+        """Tests is_child_of_vault"""
+        # From test_templates/resource.py::BinHierarchySession::is_child_of_bin_template
+        if not is_never_authz(self.service_config):
+            assert isinstance(self.svc_mgr.is_child_of_vault(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident), bool)
+            assert self.svc_mgr.is_child_of_vault(self.catalogs['Child 1'].ident, self.catalogs['Root'].ident)
+            assert self.svc_mgr.is_child_of_vault(self.catalogs['Grandchild 1'].ident, self.catalogs['Child 1'].ident)
+            assert not self.svc_mgr.is_child_of_vault(self.catalogs['Root'].ident, self.catalogs['Child 1'].ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.is_child_of_vault(self.fake_id, self.fake_id)
+
+    def test_get_child_vault_ids(self):
+        """Tests get_child_vault_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bin_ids_template
+        from dlkit.abstract_osid.id.objects import IdList
+        if not is_never_authz(self.service_config):
+            catalog_list = self.svc_mgr.get_child_vault_ids(self.catalogs['Child 1'].ident)
+            assert isinstance(catalog_list, IdList)
+            assert catalog_list.available() == 1
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_child_vault_ids(self.fake_id)
+
+    def test_get_child_vaults(self):
+        """Tests get_child_vaults"""
+        # From test_templates/resource.py::BinHierarchySession::get_child_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_list = self.svc_mgr.get_child_vaults(self.catalogs['Child 1'].ident)
+            assert isinstance(catalog_list, OsidList)
+            assert catalog_list.available() == 1
+            assert catalog_list.next().display_name.text == 'Grandchild 1'
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_child_vaults(self.fake_id)
+
+    def test_is_descendant_of_vault(self):
+        """Tests is_descendant_of_vault"""
+        # From test_templates/resource.py::BinHierarchySession::is_descendant_of_bin_template
+        if not is_never_authz(self.service_config):
+            pytest.raises(errors.Unimplemented,
+                          self.svc_mgr.is_descendant_of_vault,
+                          self.catalogs['Child 1'].ident,
+                          self.catalogs['Root'].ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.is_descendant_of_vault(self.fake_id, self.fake_id)
+        # self.assertTrue(isinstance(self.svc_mgr.is_descendant_of_vault(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident),
+        #     bool))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_vault(
+        #     self.catalogs['Child 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertTrue(self.svc_mgr.is_descendant_of_vault(
+        #     self.catalogs['Grandchild 1'].ident,
+        #     self.catalogs['Root'].ident))
+        # self.assertFalse(self.svc_mgr.is_descendant_of_vault(
+        #     self.catalogs['Root'].ident,
+        #     self.catalogs['Child 1'].ident))
+
+    def test_get_vault_node_ids(self):
+        """Tests get_vault_node_ids"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_node_ids_template
+        # Per the spec, perhaps counterintuitively this method returns a
+        #  node, **not** a IdList...
+        if not is_never_authz(self.service_config):
+            node = self.svc_mgr.get_vault_node_ids(self.catalogs['Child 1'].ident, 1, 2, False)
+            assert isinstance(node, OsidNode)
+            assert not node.is_root()
+            assert not node.is_leaf()
+            assert node.get_child_ids().available() == 1
+            assert isinstance(node.get_child_ids(), IdList)
+            assert node.get_parent_ids().available() == 1
+            assert isinstance(node.get_parent_ids(), IdList)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_vault_node_ids(self.fake_id, 1, 2, False)
+
+    def test_get_vault_nodes(self):
+        """Tests get_vault_nodes"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_nodes_template
+        if not is_never_authz(self.service_config):
+            node = self.svc_mgr.get_vault_nodes(self.catalogs['Child 1'].ident, 1, 2, False)
+            assert isinstance(node, OsidNode)
+            assert not node.is_root()
+            assert not node.is_leaf()
+            assert node.get_child_ids().available() == 1
+            assert isinstance(node.get_child_ids(), IdList)
+            assert node.get_parent_ids().available() == 1
+            assert isinstance(node.get_parent_ids(), IdList)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_vault_nodes(self.fake_id, 1, 2, False)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+def vault_hierarchy_design_session_class_fixture(request):
+    # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'AUTHORIZATION',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.catalogs = dict()
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        for name in ['Root', 'Child 1', 'Child 2', 'Grandchild 1']:
+            create_form = request.cls.svc_mgr.get_vault_form_for_create([])
+            create_form.display_name = name
+            create_form.description = 'Test Vault ' + name
+            request.cls.catalogs[name] = request.cls.svc_mgr.create_vault(create_form)
+        request.cls.svc_mgr.add_root_vault(request.cls.catalogs['Root'].ident)
+        request.cls.svc_mgr.add_child_vault(request.cls.catalogs['Root'].ident, request.cls.catalogs['Child 1'].ident)
+        request.cls.svc_mgr.add_child_vault(request.cls.catalogs['Root'].ident, request.cls.catalogs['Child 2'].ident)
+        request.cls.svc_mgr.add_child_vault(request.cls.catalogs['Child 1'].ident, request.cls.catalogs['Grandchild 1'].ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.remove_child_vault(request.cls.catalogs['Child 1'].ident, request.cls.catalogs['Grandchild 1'].ident)
+            request.cls.svc_mgr.remove_child_vaults(request.cls.catalogs['Root'].ident)
+            for cat_name in request.cls.catalogs:
+                request.cls.svc_mgr.delete_vault(request.cls.catalogs[cat_name].ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def vault_hierarchy_design_session_test_fixture(request):
+    # From test_templates/resource.py::BinHierarchyDesignSession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("vault_hierarchy_design_session_class_fixture", "vault_hierarchy_design_session_test_fixture")
+class TestVaultHierarchyDesignSession(object):
+    """Tests for VaultHierarchyDesignSession"""
+    def test_get_vault_hierarchy_id(self):
+        """Tests get_vault_hierarchy_id"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_id_template
+        hierarchy_id = self.svc_mgr.get_vault_hierarchy_id()
+        assert isinstance(hierarchy_id, Id)
+
+    def test_get_vault_hierarchy(self):
+        """Tests get_vault_hierarchy"""
+        # From test_templates/resource.py::BinHierarchySession::get_bin_hierarchy_template
+        if not is_never_authz(self.service_config):
+            hierarchy = self.svc_mgr.get_vault_hierarchy()
+            assert isinstance(hierarchy, Hierarchy)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_vault_hierarchy()
+
+    def test_can_modify_vault_hierarchy(self):
+        """Tests can_modify_vault_hierarchy"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::can_modify_bin_hierarchy_template
+        assert isinstance(self.session.can_modify_vault_hierarchy(), bool)
+
+    def test_add_root_vault(self):
+        """Tests add_root_vault"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_root_bin_template
+        # this is tested in the setUpClass
+        if not is_never_authz(self.service_config):
+            roots = self.session.get_root_vaults()
+            assert isinstance(roots, OsidList)
+            assert roots.available() == 1
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.add_root_vault(self.fake_id)
+
+    def test_remove_root_vault(self):
+        """Tests remove_root_vault"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_root_bin_template
+        if not is_never_authz(self.service_config):
+            roots = self.session.get_root_vaults()
+            assert roots.available() == 1
+
+            create_form = self.svc_mgr.get_vault_form_for_create([])
+            create_form.display_name = 'new root'
+            create_form.description = 'Test Vault root'
+            new_vault = self.svc_mgr.create_vault(create_form)
+            self.svc_mgr.add_root_vault(new_vault.ident)
+
+            roots = self.session.get_root_vaults()
+            assert roots.available() == 2
+
+            self.session.remove_root_vault(new_vault.ident)
+
+            roots = self.session.get_root_vaults()
+            assert roots.available() == 1
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.remove_root_vault(self.fake_id)
+
+    def test_add_child_vault(self):
+        """Tests add_child_vault"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::add_child_bin_template
+        if not is_never_authz(self.service_config):
+            # this is tested in the setUpClass
+            children = self.session.get_child_vaults(self.catalogs['Root'].ident)
+            assert isinstance(children, OsidList)
+            assert children.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.add_child_vault(self.fake_id, self.fake_id)
+
+    def test_remove_child_vault(self):
+        """Tests remove_child_vault"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bin_template
+        if not is_never_authz(self.service_config):
+            children = self.session.get_child_vaults(self.catalogs['Root'].ident)
+            assert children.available() == 2
+
+            create_form = self.svc_mgr.get_vault_form_for_create([])
+            create_form.display_name = 'test child'
+            create_form.description = 'Test Vault child'
+            new_vault = self.svc_mgr.create_vault(create_form)
+            self.svc_mgr.add_child_vault(
+                self.catalogs['Root'].ident,
+                new_vault.ident)
+
+            children = self.session.get_child_vaults(self.catalogs['Root'].ident)
+            assert children.available() == 3
+
+            self.session.remove_child_vault(
+                self.catalogs['Root'].ident,
+                new_vault.ident)
+
+            children = self.session.get_child_vaults(self.catalogs['Root'].ident)
+            assert children.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.remove_child_vault(self.fake_id, self.fake_id)
+
+    def test_remove_child_vaults(self):
+        """Tests remove_child_vaults"""
+        # From test_templates/resource.py::BinHierarchyDesignSession::remove_child_bins_template
+        if not is_never_authz(self.service_config):
+            children = self.session.get_child_vaults(self.catalogs['Grandchild 1'].ident)
+            assert children.available() == 0
+
+            create_form = self.svc_mgr.get_vault_form_for_create([])
+            create_form.display_name = 'test great grandchild'
+            create_form.description = 'Test Vault child'
+            new_vault = self.svc_mgr.create_vault(create_form)
+            self.svc_mgr.add_child_vault(
+                self.catalogs['Grandchild 1'].ident,
+                new_vault.ident)
+
+            children = self.session.get_child_vaults(self.catalogs['Grandchild 1'].ident)
+            assert children.available() == 1
+
+            self.session.remove_child_vaults(self.catalogs['Grandchild 1'].ident)
+
+            children = self.session.get_child_vaults(self.catalogs['Grandchild 1'].ident)
+            assert children.available() == 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.remove_child_vaults(self.fake_id)

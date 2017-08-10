@@ -1025,7 +1025,7 @@ class GradingManager:
         ``supports_grade_system_gradebook_assignment()`` is ``true``.*
 
         """
-        return  # osid.grading.GradeSystemGradebookSession
+        return  # osid.grading.GradeSystemGradebookAssignmentSession
 
     grade_system_gradebook_assignment_session = property(fget=get_grade_system_gradebook_assignment_session)
 
@@ -1952,7 +1952,7 @@ class GradingProxyManager:
         ``supports_grade_system_gradebook_assignment()`` is ``true``.*
 
         """
-        return  # osid.grading.GradeSystemGradebookSession
+        return  # osid.grading.GradeSystemGradebookAssignmentSession
 
     @abc.abstractmethod
     def get_grade_system_smart_gradebook_session(self, gradebook_id, proxy):

@@ -2839,6 +2839,173 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
     activities = property(fget=get_activities)
 
 
+class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sessions.OsidSession):
+    """This session provides methods for searching ``Activity`` objects.
+
+    The search query is constructed using the ``ActivityQuery``. The
+    activity record ``Type`` also specifies the record for the activity
+    query.
+
+    This session defines views that offer differing behaviors for
+    searching.
+
+      * federated objective bank view: searches include activities in
+        objective banks of which this objective bank is a ancestor in
+        the objective bank hierarchy
+      * isolated objective bank view: searches are restricted to
+        activities in this objective bank
+
+
+    Activities may have a query record indicated by their respective
+    record types. The query record is accessed via the
+    ``ActivityQuery``.
+
+    """
+    def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
+        self._catalog_class = objects.ObjectiveBank
+        self._catalog_name = 'ObjectiveBank'
+        OsidSession._init_object(
+            self,
+            catalog_id,
+            proxy,
+            runtime,
+            db_name='learning',
+            cat_name='ObjectiveBank',
+            cat_class=objects.ObjectiveBank)
+        self._kwargs = kwargs
+
+    def get_objective_bank_id(self):
+        """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the ``ObjectiveBank Id`` associated with
+                this session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        return self._catalog_id
+
+    objective_bank_id = property(fget=get_objective_bank_id)
+
+    def get_objective_bank(self):
+        """Gets the ``ObjectiveBank`` associated with this session.
+
+        return: (osid.learning.ObjectiveBank) - the ``ObjectiveBank``
+                associated with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        return self._catalog
+
+    objective_bank = property(fget=get_objective_bank)
+
+    def can_search_activities(self):
+        """Tests if this user can perform ``Activity`` searches.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may opt not to offer search
+        operations to unauthorized users.
+
+        return: (boolean) - ``false`` if search methods are not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    def use_federated_objective_bank_view(self):
+        """Federates the view for methods in this session.
+
+        A federated view will include activities in objective banks
+        which are children of this objective bank in the objective bank
+        hierarchy.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        self._use_federated_catalog_view()
+
+    def use_isolated_objective_bank_view(self):
+        """Isolates the view for methods in this session.
+
+        An isolated view restricts searches to this objective bank only.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        self._use_isolated_catalog_view()
+
+    def get_activity_query(self):
+        """Gets an activity query.
+
+        return: (osid.learning.ActivityQuery) - the activity query
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
+        return queries.ActivityQuery(runtime=self._runtime)
+
+    activity_query = property(fget=get_activity_query)
+
+    @utilities.arguments_not_none
+    def get_activities_by_query(self, activity_query):
+        """Gets a list of ``Activities`` matching the given activity query.
+
+        arg:    activity_query (osid.learning.ActivityQuery): the
+                activity query
+        return: (osid.learning.ActivityList) - the returned
+                ``ActivityList``
+        raise:  NullArgument - ``activity_query`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        raise:  Unsupported - ``activity_query`` is not of this service
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
+        and_list = list()
+        or_list = list()
+        for term in activity_query._query_terms:
+            if '$in' in activity_query._query_terms[term] and '$nin' in activity_query._query_terms[term]:
+                and_list.append(
+                    {'$or': [{term: {'$in': activity_query._query_terms[term]['$in']}},
+                             {term: {'$nin': activity_query._query_terms[term]['$nin']}}]})
+            else:
+                and_list.append({term: activity_query._query_terms[term]})
+        for term in activity_query._keyword_terms:
+            or_list.append({term: activity_query._keyword_terms[term]})
+        if or_list:
+            and_list.append({'$or': or_list})
+        view_filter = self._view_filter()
+        if view_filter:
+            and_list.append(view_filter)
+        if and_list:
+            query_terms = {'$and': and_list}
+            collection = JSONClientValidated('learning',
+                                             collection='Activity',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
+        return objects.ActivityList(result, runtime=self._runtime, proxy=self._proxy)
+
+
 class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sessions.OsidSession):
     """This session creates, updates, and deletes ``Activities``.
 
@@ -4899,6 +5066,202 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         # Implemented from template for
         # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=proficiency_id, equivalent_id=alias_id)
+
+
+class ProficiencyObjectiveBankAssignmentSession(abc_learning_sessions.ProficiencyObjectiveBankAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign ``Proficiencies`` to ``ObjectiveBank`` objects.
+
+    A ``Proficiency`` may appear in multiple ``ObjectiveBank`` objects
+    and removing the last reference to a ``Proficiency`` is the
+    equivalent of deleting it. Each ``ObjectiveBank`` may have its own
+    authorizations governing who is allowed to operate on it.
+
+    Adding a reference of a ``Proficiency`` to another ``ObjectiveBank``
+    is not a copy operation (eg: does not change its ``Id`` ).
+
+    """
+    _session_namespace = 'learning.ProficiencyObjectiveBankAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'ObjectiveBank'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_proficiencies(self):
+        """Tests if this user can alter proficiency/objective bank mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_proficiencies_to_objective_bank(self, objective_bank_id):
+        """Tests if this user can alter proficiency/objective bank mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``objective_bank_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if objective_bank_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_objective_bank_ids(self, objective_bank_id):
+        """Gets a list of objective banks including and under the given objective bank proficiency in which any proficiency can be assigned.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        return: (osid.id.IdList) - list of assignable objectiveBank
+                ``Ids``
+        raise:  NullArgument - ``objective_bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('LEARNING', local=True)
+        lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
+        objective_banks = lookup_session.get_objective_banks()
+        id_list = []
+        for objective_bank in objective_banks:
+            id_list.append(objective_bank.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_objective_bank_ids_for_proficiency(self, objective_bank_id, proficiency_id):
+        """Gets a list of objective banks including and under the given objective bank proficiency in which a specific proficiency can be assigned.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        return: (osid.id.IdList) - list of assignable objectiveBank
+                ``Ids``
+        raise:  NullArgument - ``objective_bank_id`` or
+                ``proficiency_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_objective_bank_ids(objective_bank_id)
+
+    @utilities.arguments_not_none
+    def assign_proficiency_to_objective_bank(self, proficiency_id, objective_bank_id):
+        """Adds an existing ``Proficiency`` to a ``ObjectiveBank``.
+
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        raise:  AlreadyExists - ``proficiency_id`` is already mapped to
+                ``objective_bank_id``
+        raise:  NotFound - ``proficiency_id`` or ``objective_bank_id``
+                not found
+        raise:  NullArgument - ``proficiency_id`` or
+                ``objective_bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('LEARNING', local=True)
+        lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
+        lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
+        self._assign_object_to_catalog(proficiency_id, objective_bank_id)
+
+    @utilities.arguments_not_none
+    def unassign_proficiency_from_objective_bank(self, proficiency_id, objective_bank_id):
+        """Removes a ``Proficiency`` from a ``ObjectiveBank``.
+
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        raise:  NotFound - ``proficiency_id`` or ``objective_bank_id``
+                not found or ``proficiency_id`` not mapped to
+                ``objective_bank_id``
+        raise:  NullArgument - ``proficiency_id`` or
+                ``objective_bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('LEARNING', local=True)
+        lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
+        lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
+        self._unassign_object_from_catalog(proficiency_id, objective_bank_id)
+
+    @utilities.arguments_not_none
+    def reassign_proficiency_to_objective_bank(self, proficiency_id, from_objective_bank_id, to_objective_bank_id):
+        """Moves a ``Proficiency`` from one ``ObjectiveBank`` to another.
+
+        Mappings to other ``ObjectiveBanks`` are unaffected.
+
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        arg:    from_objective_bank_id (osid.id.Id): the ``Id`` of the
+                current ``ObjectiveBank``
+        arg:    to_objective_bank_id (osid.id.Id): the ``Id`` of the
+                destination ``ObjectiveBank``
+        raise:  NotFound - ``proficiency_id, from_objective_bank_id,``
+                or ``to_objective_bank_id`` not found or
+                ``proficiency_id`` not mapped to
+                ``from_objective_bank_id``
+        raise:  NullArgument - ``proficiency_id,
+                from_objective_bank_id,`` or ``to_objective_bank_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
+        self.assign_proficiency_to_objective_bank(proficiency_id, to_objective_bank_id)
+        try:
+            self.unassign_proficiency_from_objective_bank(proficiency_id, from_objective_bank_id)
+        except:  # something went wrong, roll back assignment to to_objective_bank_id
+            self.unassign_proficiency_from_objective_bank(proficiency_id, to_objective_bank_id)
+            raise
 
 
 class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSession, osid_sessions.OsidSession):

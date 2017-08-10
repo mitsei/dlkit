@@ -60,6 +60,30 @@ class CommentingProfile(osid_managers.OsidProfile, commenting_managers.Commentin
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_comment_admin' in profile.SUPPORTS
 
+    def supports_comment_book(self):
+        """Tests if a comment to book lookup session is available.
+
+        return: (boolean) - ``true`` if comment book lookup session is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_comment_book' in profile.SUPPORTS
+
+    def supports_comment_book_assignment(self):
+        """Tests if a comment to book assignment session is available.
+
+        return: (boolean) - ``true`` if comment book assignment is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_comment_book_assignment' in profile.SUPPORTS
+
     def supports_book_lookup(self):
         """Tests for the availability of an book lookup service.
 
@@ -359,6 +383,45 @@ class CommentingManager(osid_managers.OsidManager, CommentingProfile, commenting
         return sessions.CommentAdminSession(book_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
+    def get_comment_book_session(self):
+        """Gets the session for retrieving comment to book mappings.
+
+        return: (osid.commenting.CommentBookSession) - a
+                ``CommentBookSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_comment_book()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_comment_book()`` is ``true``.*
+
+        """
+        if not self.supports_comment_book():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CommentBookSession(runtime=self._runtime)
+
+    comment_book_session = property(fget=get_comment_book_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_comment_book_assignment_session(self):
+        """Gets the session for assigning comment to book mappings.
+
+        return: (osid.commenting.CommentBookAssignmentSession) - a
+                ``CommentBookAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_comment_book_assignment()``
+                is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_comment_book_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_comment_book_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CommentBookAssignmentSession(runtime=self._runtime)
+
+    comment_book_assignment_session = property(fget=get_comment_book_assignment_session)
+
+    @utilities.remove_null_proxy_kwarg
     def get_book_lookup_session(self):
         """Gets the ``OsidSession`` associated with the book lookup service.
 
@@ -630,6 +693,45 @@ class CommentingProxyManager(osid_managers.OsidProxyManager, CommentingProfile, 
         ##
         # pylint: disable=no-member
         return sessions.CommentAdminSession(book_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_comment_book_session(self, proxy):
+        """Gets the session for retrieving comment to book mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.commenting.CommentBookSession) - a
+                ``CommentBookSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_comment_book()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_comment_book()`` is ``true``.*
+
+        """
+        if not self.supports_comment_book():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CommentBookSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_comment_book_assignment_session(self, proxy):
+        """Gets the session for assigning comment to book mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.commenting.CommentBookAssignmentSession) - a
+                ``CommentBookAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_comment_book_assignment()``
+                is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_comment_book_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_comment_book_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CommentBookAssignmentSession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_book_lookup_session(self, proxy):

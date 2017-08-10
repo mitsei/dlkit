@@ -82,7 +82,7 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
 
     def get_hierarchy_traversal_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyTraversalSession')(
             provider_session=self._provider_manager.get_hierarchy_traversal_session(),
             authz_session=self._get_authz_session(),
@@ -103,7 +103,7 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
 
     def get_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyDesignSession')(
             provider_session=self._provider_manager.get_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -124,7 +124,7 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
 
     def get_hierarchy_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyLookupSession')(
             provider_session=self._provider_manager.get_hierarchy_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -135,7 +135,7 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
 
     def get_hierarchy_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyAdminSession')(
             provider_session=self._provider_manager.get_hierarchy_admin_session(),
             authz_session=self._get_authz_session(),
@@ -161,7 +161,7 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
     @raise_null_argument
     def get_hierarchy_traversal_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyTraversalSession')(
             provider_session=self._provider_manager.get_hierarchy_traversal_session(proxy),
             authz_session=self._get_authz_session(),
@@ -183,7 +183,7 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
     @raise_null_argument
     def get_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyDesignSession')(
             provider_session=self._provider_manager.get_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),
@@ -205,7 +205,7 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
     @raise_null_argument
     def get_hierarchy_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyLookupSession')(
             provider_session=self._provider_manager.get_hierarchy_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -216,7 +216,7 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hi
     @raise_null_argument
     def get_hierarchy_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'HierarchyAdminSession')(
             provider_session=self._provider_manager.get_hierarchy_admin_session(proxy),
             authz_session=self._get_authz_session(),

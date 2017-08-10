@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo learning'
 
 DESCRIPTION = 'MongoDB based learning implementation'
 
-VERSIONCOMPONENTS = [0, 1, 27]
+VERSIONCOMPONENTS = [0, 1, 29]
 
-RELEASEDATE = "2017-08-07"
+RELEASEDATE = "2017-08-10"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
@@ -39,7 +39,7 @@ SUPPORTS = [  # 'Remove the # when implementations exist:'
     'supports_objective_requisite',
     'supports_objective_requisite_assignment',
     'supports_activity_lookup',
-    # 'supports_activity_query',
+    'supports_activity_query',
     # 'supports_activity_search',
     'supports_activity_admin',
     # 'supports_activity_notification',
@@ -52,7 +52,7 @@ SUPPORTS = [  # 'Remove the # when implementations exist:'
     'supports_proficiency_admin',
     # 'supports_proficiency_notification',
     # 'supports_proficiency_objective_bank',
-    # 'supports_proficiency_objective_bank_assignment',
+    'supports_proficiency_objective_bank_assignment',
     # 'supports_proficiency_smart_objective_bank',
     # 'supports_my_learning_path',
     # 'supports_learning_path',

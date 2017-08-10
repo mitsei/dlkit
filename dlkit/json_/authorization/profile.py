@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo authorization'
 
 DESCRIPTION = 'MongoDB based authorization implementation'
 
-VERSIONCOMPONENTS = [0, 1, 27]
+VERSIONCOMPONENTS = [0, 1, 29]
 
-RELEASEDATE = "2017-08-07"
+RELEASEDATE = "2017-08-10"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',
@@ -57,8 +57,8 @@ SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_vault_search',
     'supports_vault_admin',
     # 'supports_vault_notification',
-    # 'supports_vault_hierarchy',
-    # 'supports_vault_hierarchy_design',
+    'supports_vault_hierarchy',
+    'supports_vault_hierarchy_design',
     # 'supports_authorization_batch',
     # 'supports_authorization_rules',
 ]

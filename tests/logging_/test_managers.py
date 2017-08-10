@@ -50,6 +50,14 @@ class TestLoggingProfile(object):
         """Tests supports_log_entry_query"""
         assert isinstance(self.mgr.supports_log_entry_query(), bool)
 
+    def test_supports_log_entry_log(self):
+        """Tests supports_log_entry_log"""
+        assert isinstance(self.mgr.supports_log_entry_log(), bool)
+
+    def test_supports_log_entry_log_assignment(self):
+        """Tests supports_log_entry_log_assignment"""
+        assert isinstance(self.mgr.supports_log_entry_log_assignment(), bool)
+
     def test_supports_log_lookup(self):
         """Tests supports_log_lookup"""
         assert isinstance(self.mgr.supports_log_lookup(), bool)
@@ -150,13 +158,13 @@ class TestLoggingManager(object):
 
     def test_get_log_entry_lookup_session(self):
         """Tests get_log_entry_lookup_session"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_log_entry_lookup():
             self.svc_mgr.get_log_entry_lookup_session()
 
     def test_get_log_entry_lookup_session_for_log(self):
         """Tests get_log_entry_lookup_session_for_log"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_log_entry_lookup():
             self.svc_mgr.get_log_entry_lookup_session_for_log(self.catalog_id)
         with pytest.raises(errors.NullArgument):
@@ -164,13 +172,13 @@ class TestLoggingManager(object):
 
     def test_get_log_entry_query_session(self):
         """Tests get_log_entry_query_session"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_log_entry_query():
             self.svc_mgr.get_log_entry_query_session()
 
     def test_get_log_entry_query_session_for_log(self):
         """Tests get_log_entry_query_session_for_log"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_log_entry_query():
             self.svc_mgr.get_log_entry_query_session_for_log(self.catalog_id)
         with pytest.raises(errors.NullArgument):
@@ -189,6 +197,18 @@ class TestLoggingManager(object):
             self.svc_mgr.get_log_entry_admin_session_for_log(self.catalog_id)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_log_entry_admin_session_for_log()
+
+    def test_get_log_entry_log_session(self):
+        """Tests get_log_entry_log_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_log():
+            self.svc_mgr.get_log_entry_log_session()
+
+    def test_get_log_entry_log_assignment_session(self):
+        """Tests get_log_entry_log_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_log_assignment():
+            self.svc_mgr.get_log_entry_log_assignment_session()
 
     def test_get_log_lookup_session(self):
         """Tests get_log_lookup_session"""
@@ -280,7 +300,7 @@ class TestLoggingProxyManager(object):
 
     def test_get_log_entry_lookup_session(self):
         """Tests get_log_entry_lookup_session"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_log_entry_lookup():
             self.svc_mgr.get_log_entry_lookup_session(PROXY)
         with pytest.raises(errors.NullArgument):
@@ -288,7 +308,7 @@ class TestLoggingProxyManager(object):
 
     def test_get_log_entry_lookup_session_for_log(self):
         """Tests get_log_entry_lookup_session_for_log"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_log_entry_lookup():
             self.svc_mgr.get_log_entry_lookup_session_for_log(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
@@ -296,7 +316,7 @@ class TestLoggingProxyManager(object):
 
     def test_get_log_entry_query_session(self):
         """Tests get_log_entry_query_session"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_log_entry_query():
             self.svc_mgr.get_log_entry_query_session(PROXY)
         with pytest.raises(errors.NullArgument):
@@ -304,7 +324,7 @@ class TestLoggingProxyManager(object):
 
     def test_get_log_entry_query_session_for_log(self):
         """Tests get_log_entry_query_session_for_log"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_log_entry_query():
             self.svc_mgr.get_log_entry_query_session_for_log(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
@@ -325,6 +345,22 @@ class TestLoggingProxyManager(object):
             self.svc_mgr.get_log_entry_admin_session_for_log(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_log_entry_admin_session_for_log()
+
+    def test_get_log_entry_log_session(self):
+        """Tests get_log_entry_log_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_log():
+            self.svc_mgr.get_log_entry_log_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_log_session()
+
+    def test_get_log_entry_log_assignment_session(self):
+        """Tests get_log_entry_log_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_log_entry_log_assignment():
+            self.svc_mgr.get_log_entry_log_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_log_entry_log_assignment_session()
 
     def test_get_log_lookup_session(self):
         """Tests get_log_lookup_session"""

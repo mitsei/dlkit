@@ -56,6 +56,18 @@ class LoggingProfile(osid.OsidProfile, logging_managers.LoggingProfile):
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_log_entry_query()
 
+    def supports_log_entry_log(self):
+        """Pass through to provider supports_log_entry_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_entry_log()
+
+    def supports_log_entry_log_assignment(self):
+        """Pass through to provider supports_log_entry_log_assignment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_log_entry_log_assignment()
+
     def supports_log_lookup(self):
         """Pass through to provider supports_log_lookup"""
         # Implemented from kitosid template for -
@@ -315,6 +327,22 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_log_entry_admin_session_for_log(*args, **kwargs)
 
+    def get_log_entry_log_session(self, *args, **kwargs):
+        """Pass through to provider get_log_entry_log_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_log_entry_log_session(*args, **kwargs)
+
+    log_entry_log_session = property(fget=get_log_entry_log_session)
+
+    def get_log_entry_log_assignment_session(self, *args, **kwargs):
+        """Pass through to provider get_log_entry_log_assignment_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_log_entry_log_assignment_session(*args, **kwargs)
+
+    log_entry_log_assignment_session = property(fget=get_log_entry_log_assignment_session)
+
     def get_log_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_log_lookup_session"""
         # Implemented from kitosid template for -
@@ -381,18 +409,12 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 ##
-# The following methods are from osid.logging.LogLookupSession
-
-    def can_lookup_logs(self):
-        """Pass through to provider LogLookupSession.can_lookup_logs"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
-        return self._get_provider_session('log_lookup_session').can_lookup_logs()
+# The following methods are from osid.logging.LogEntryLogSession
 
     def use_comparative_log_view(self):
-        """Pass through to provider LogLookupSession.use_comparative_log_view"""
+        """Pass through to provider LogEntryLogSession.use_comparative_log_view"""
         self._log_view = COMPARATIVE
-        # self._get_provider_session('log_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('log_entry_log_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_comparative_log_view()
@@ -400,14 +422,98 @@ class LoggingManager(osid.OsidManager, osid.OsidSession, LoggingProfile, logging
                 pass
 
     def use_plenary_log_view(self):
-        """Pass through to provider LogLookupSession.use_plenary_log_view"""
+        """Pass through to provider LogEntryLogSession.use_plenary_log_view"""
         self._log_view = PLENARY
-        # self._get_provider_session('log_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('log_entry_log_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_plenary_log_view()
             except AttributeError:
                 pass
+
+    def can_lookup_log_entry_log_mappings(self):
+        """Pass through to provider LogEntryLogSession.can_lookup_log_entry_log_mappings"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        return self._get_provider_session('log_entry_log_session').can_lookup_log_entry_log_mappings()
+
+    def get_log_entry_ids_by_log(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogSession.get_log_entry_ids_by_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        return self._get_provider_session('log_entry_log_session').get_log_entry_ids_by_log(*args, **kwargs)
+
+    def get_log_entries_by_log(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogSession.get_log_entries_by_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        return self._get_provider_session('log_entry_log_session').get_log_entries_by_log(*args, **kwargs)
+
+    def get_log_entrie_by_log(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogSession.get_log_entrie_by_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        return self._get_provider_session('log_entry_log_session').get_log_entrie_by_log(*args, **kwargs)
+
+    def get_log_ids_by_log_entry(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogSession.get_log_ids_by_log_entry"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        return self._get_provider_session('log_entry_log_session').get_log_ids_by_log_entry(*args, **kwargs)
+
+    def get_log_by_log_entry(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+##
+# The following methods are from osid.logging.LogEntryLogAssignmentSession
+
+    def can_assign_log_entries(self):
+        """Pass through to provider LogEntryLogAssignmentSession.can_assign_log_entries"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        return self._get_provider_session('log_entry_log_assignment_session').can_assign_log_entries()
+
+    def can_assign_log_entries_to_log(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogAssignmentSession.can_assign_log_entries_to_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        return self._get_provider_session('log_entry_log_assignment_session').can_assign_log_entries_to_log(*args, **kwargs)
+
+    def get_assignable_log_ids(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogAssignmentSession.get_assignable_log_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        return self._get_provider_session('log_entry_log_assignment_session').get_assignable_log_ids(*args, **kwargs)
+
+    def get_assignable_log_ids_for_log_entry(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogAssignmentSession.get_assignable_log_ids_for_log_entry"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        return self._get_provider_session('log_entry_log_assignment_session').get_assignable_log_ids_for_log_entry(*args, **kwargs)
+
+    def assign_log_entry_to_log(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogAssignmentSession.assign_log_entry_to_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        self._get_provider_session('log_entry_log_assignment_session').assign_log_entry_to_log(*args, **kwargs)
+
+    def unassign_log_entry_from_log(self, *args, **kwargs):
+        """Pass through to provider LogEntryLogAssignmentSession.unassign_log_entry_from_log"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        self._get_provider_session('log_entry_log_assignment_session').unassign_log_entry_from_log(*args, **kwargs)
+
+    def reassign_log_entry_to_log(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+##
+# The following methods are from osid.logging.LogLookupSession
+
+    def can_lookup_logs(self):
+        """Pass through to provider LogLookupSession.can_lookup_logs"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.can_lookup_bins_template
+        return self._get_provider_session('log_lookup_session').can_lookup_logs()
 
     def get_log(self, *args, **kwargs):
         """Pass through to provider LogLookupSession.get_log"""
@@ -756,26 +862,42 @@ class LoggingProxyManager(osid.OsidProxyManager, LoggingProfile, logging_manager
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_log_entry_lookup_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
+        return LoggingManager.get_log_entry_lookup_session(*args, **kwargs)
 
     def get_log_entry_lookup_session_for_log(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
+        return LoggingManager.get_log_entry_lookup_session_for_log(*args, **kwargs)
 
     def get_log_entry_query_session(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_template
+        return LoggingManager.get_log_entry_query_session(*args, **kwargs)
 
     def get_log_entry_query_session_for_log(self, *args, **kwargs):
-        """Pass through to provider unimplemented"""
-        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+        """Sends control to Manager"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProxyManager.get_resource_lookup_session_for_bin_template
+        return LoggingManager.get_log_entry_query_session_for_log(*args, **kwargs)
 
     def get_log_entry_admin_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_log_entry_admin_session_for_log(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_log_entry_log_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_log_entry_log_assignment_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
@@ -949,10 +1071,11 @@ class Log(abc_logging_objects.Log, osid.OsidSession, osid.OsidCatalog):
 # The following methods are from osid.logging.LogEntryLookupSession
 
     def can_read_log(self):
-        """Pass through to provider LogEntryLookupSession.can_read_log"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
-        return self._get_provider_session('log_entry_lookup_session').can_read_log()
+        return self.can_lookup_log_entries()
+
+    def can_lookup_log_entries(self):
+        """Pass through to provider LogEntryLookupSession.can_lookup_log_entries"""
+        return self._get_provider_session('log_entry_lookup_session').can_lookup_log_entries()
 
     def use_comparative_log_entry_view(self):
         """Pass through to provider LogEntryLookupSession.use_comparative_log_entry_view"""

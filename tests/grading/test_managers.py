@@ -50,6 +50,14 @@ class TestGradingProfile(object):
         """Tests supports_grade_system_admin"""
         assert isinstance(self.mgr.supports_grade_system_admin(), bool)
 
+    def test_supports_grade_system_gradebook(self):
+        """Tests supports_grade_system_gradebook"""
+        assert isinstance(self.mgr.supports_grade_system_gradebook(), bool)
+
+    def test_supports_grade_system_gradebook_assignment(self):
+        """Tests supports_grade_system_gradebook_assignment"""
+        assert isinstance(self.mgr.supports_grade_system_gradebook_assignment(), bool)
+
     def test_supports_grade_entry_lookup(self):
         """Tests supports_grade_entry_lookup"""
         assert isinstance(self.mgr.supports_grade_entry_lookup(), bool)
@@ -73,6 +81,14 @@ class TestGradingProfile(object):
     def test_supports_gradebook_column_admin(self):
         """Tests supports_gradebook_column_admin"""
         assert isinstance(self.mgr.supports_gradebook_column_admin(), bool)
+
+    def test_supports_gradebook_column_gradebook(self):
+        """Tests supports_gradebook_column_gradebook"""
+        assert isinstance(self.mgr.supports_gradebook_column_gradebook(), bool)
+
+    def test_supports_gradebook_column_gradebook_assignment(self):
+        """Tests supports_gradebook_column_gradebook_assignment"""
+        assert isinstance(self.mgr.supports_gradebook_column_gradebook_assignment(), bool)
 
     def test_supports_gradebook_lookup(self):
         """Tests supports_gradebook_lookup"""
@@ -212,6 +228,18 @@ class TestGradingManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_grade_system_admin_session_for_gradebook()
 
+    def test_get_grade_system_gradebook_session(self):
+        """Tests get_grade_system_gradebook_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_system_gradebook():
+            self.svc_mgr.get_grade_system_gradebook_session()
+
+    def test_get_grade_system_gradebook_assignment_session(self):
+        """Tests get_grade_system_gradebook_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_system_gradebook_assignment():
+            self.svc_mgr.get_grade_system_gradebook_assignment_session()
+
     def test_get_grade_entry_lookup_session(self):
         """Tests get_grade_entry_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
@@ -256,13 +284,13 @@ class TestGradingManager(object):
 
     def test_get_gradebook_column_lookup_session(self):
         """Tests get_gradebook_column_lookup_session"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_gradebook_column_lookup():
             self.svc_mgr.get_gradebook_column_lookup_session()
 
     def test_get_gradebook_column_lookup_session_for_gradebook(self):
         """Tests get_gradebook_column_lookup_session_for_gradebook"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_gradebook_column_lookup():
             self.svc_mgr.get_gradebook_column_lookup_session_for_gradebook(self.catalog_id)
         with pytest.raises(errors.NullArgument):
@@ -270,13 +298,13 @@ class TestGradingManager(object):
 
     def test_get_gradebook_column_query_session(self):
         """Tests get_gradebook_column_query_session"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_gradebook_column_query():
             self.svc_mgr.get_gradebook_column_query_session()
 
     def test_get_gradebook_column_query_session_for_gradebook(self):
         """Tests get_gradebook_column_query_session_for_gradebook"""
-        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_gradebook_column_query():
             self.svc_mgr.get_gradebook_column_query_session_for_gradebook(self.catalog_id)
         with pytest.raises(errors.NullArgument):
@@ -295,6 +323,18 @@ class TestGradingManager(object):
             self.svc_mgr.get_gradebook_column_admin_session_for_gradebook(self.catalog_id)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_gradebook_column_admin_session_for_gradebook()
+
+    def test_get_gradebook_column_gradebook_session(self):
+        """Tests get_gradebook_column_gradebook_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_gradebook():
+            self.svc_mgr.get_gradebook_column_gradebook_session()
+
+    def test_get_gradebook_column_gradebook_assignment_session(self):
+        """Tests get_gradebook_column_gradebook_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_gradebook_assignment():
+            self.svc_mgr.get_gradebook_column_gradebook_assignment_session()
 
     def test_get_gradebook_lookup_session(self):
         """Tests get_gradebook_lookup_session"""
@@ -428,6 +468,22 @@ class TestGradingProxyManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_grade_system_admin_session_for_gradebook()
 
+    def test_get_grade_system_gradebook_session(self):
+        """Tests get_grade_system_gradebook_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_system_gradebook():
+            self.svc_mgr.get_grade_system_gradebook_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_grade_system_gradebook_session()
+
+    def test_get_grade_system_gradebook_assignment_session(self):
+        """Tests get_grade_system_gradebook_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_grade_system_gradebook_assignment():
+            self.svc_mgr.get_grade_system_gradebook_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_grade_system_gradebook_assignment_session()
+
     def test_get_grade_entry_lookup_session(self):
         """Tests get_grade_entry_lookup_session"""
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
@@ -478,7 +534,7 @@ class TestGradingProxyManager(object):
 
     def test_get_gradebook_column_lookup_session(self):
         """Tests get_gradebook_column_lookup_session"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_gradebook_column_lookup():
             self.svc_mgr.get_gradebook_column_lookup_session(PROXY)
         with pytest.raises(errors.NullArgument):
@@ -486,7 +542,7 @@ class TestGradingProxyManager(object):
 
     def test_get_gradebook_column_lookup_session_for_gradebook(self):
         """Tests get_gradebook_column_lookup_session_for_gradebook"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_gradebook_column_lookup():
             self.svc_mgr.get_gradebook_column_lookup_session_for_gradebook(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
@@ -494,7 +550,7 @@ class TestGradingProxyManager(object):
 
     def test_get_gradebook_column_query_session(self):
         """Tests get_gradebook_column_query_session"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_template
         if self.svc_mgr.supports_gradebook_column_query():
             self.svc_mgr.get_gradebook_column_query_session(PROXY)
         with pytest.raises(errors.NullArgument):
@@ -502,7 +558,7 @@ class TestGradingProxyManager(object):
 
     def test_get_gradebook_column_query_session_for_gradebook(self):
         """Tests get_gradebook_column_query_session_for_gradebook"""
-        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_for_bin_template
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_lookup_session_for_bin_template
         if self.svc_mgr.supports_gradebook_column_query():
             self.svc_mgr.get_gradebook_column_query_session_for_gradebook(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
@@ -523,6 +579,22 @@ class TestGradingProxyManager(object):
             self.svc_mgr.get_gradebook_column_admin_session_for_gradebook(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_gradebook_column_admin_session_for_gradebook()
+
+    def test_get_gradebook_column_gradebook_session(self):
+        """Tests get_gradebook_column_gradebook_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_gradebook():
+            self.svc_mgr.get_gradebook_column_gradebook_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_gradebook_session()
+
+    def test_get_gradebook_column_gradebook_assignment_session(self):
+        """Tests get_gradebook_column_gradebook_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_gradebook_column_gradebook_assignment():
+            self.svc_mgr.get_gradebook_column_gradebook_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_gradebook_column_gradebook_assignment_session()
 
     def test_get_gradebook_lookup_session(self):
         """Tests get_gradebook_lookup_session"""

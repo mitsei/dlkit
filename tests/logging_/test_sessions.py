@@ -15,6 +15,7 @@ from dlkit.abstract_osid.osid.objects import OsidCatalogForm, OsidCatalog
 from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
@@ -29,9 +30,9 @@ PROXY = PROXY_SESSION.get_proxy(CONDITION)
 DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authority': 'DEFAULT'})
 DEFAULT_GENUS_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'GenusType', 'authority': 'DLKIT.MIT.EDU'})
 ALIAS_ID = Id(**{'identifier': 'ALIAS', 'namespace': 'ALIAS', 'authority': 'ALIAS'})
-AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 NEW_TYPE = Type(**{'identifier': 'NEW', 'namespace': 'MINE', 'authority': 'YOURS'})
 NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'YOURS'})
+AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'authority': 'MIT-ODL'})
 
 
 @pytest.fixture(scope="class",
@@ -187,8 +188,8 @@ class TestLogEntryLookupSession(object):
 
     def test_can_read_log(self):
         """Tests can_read_log"""
-        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
-        assert isinstance(self.session.can_read_log(), bool)
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
+        assert isinstance(self.catalog.can_read_log(), bool)
 
     def test_use_comparative_log_entry_view(self):
         """Tests use_comparative_log_entry_view"""
@@ -212,7 +213,6 @@ class TestLogEntryLookupSession(object):
 
     def test_get_log_entry(self):
         """Tests get_log_entry"""
-        # From test_templates/resource.py ResourceLookupSession.get_resource_template
         if not is_never_authz(self.service_config):
             self.catalog.use_isolated_log_view()
             obj = self.catalog.get_log_entry(self.log_entry_list[0].ident)
@@ -221,42 +221,37 @@ class TestLogEntryLookupSession(object):
             obj = self.catalog.get_log_entry(self.log_entry_list[0].ident)
             assert obj.ident == self.log_entry_list[0].ident
         else:
-            with pytest.raises(errors.PermissionDenied):
+            with pytest.raises(errors.NotFound):
                 self.catalog.get_log_entry(self.fake_id)
 
     def test_get_log_entries_by_ids(self):
         """Tests get_log_entries_by_ids"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
+        objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
+        assert isinstance(objects, LogEntryList)
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries_by_ids(self.log_entry_ids)
             assert objects.available() > 0
-            assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries_by_ids(self.log_entry_ids)
+            assert objects.available() == 0
 
     def test_get_log_entries_by_genus_type(self):
         """Tests get_log_entries_by_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
+        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+        assert isinstance(objects, LogEntryList)
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
             assert objects.available() > 0
-            assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+            assert objects.available() == 0
 
     def test_get_log_entries_by_parent_genus_type(self):
         """Tests get_log_entries_by_parent_genus_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
         if not is_never_authz(self.service_config):
             objects = self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
@@ -266,23 +261,20 @@ class TestLogEntryLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
+            with pytest.raises(errors.Unimplemented):
+                # because the never_authz "tries harder" and runs the actual query...
+                #    whereas above the method itself in JSON returns an empty list
                 self.catalog.get_log_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_log_entries_by_record_type(self):
         """Tests get_log_entries_by_record_type"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, LogEntryList)
-        else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
+        objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries_by_record_type(DEFAULT_TYPE)
+        assert objects.available() == 0
+        assert isinstance(objects, LogEntryList)
 
     def test_get_log_entries_by_priority_type(self):
         """Tests get_log_entries_by_priority_type"""
@@ -346,22 +338,20 @@ class TestLogEntryLookupSession(object):
 
     def test_get_log_entries(self):
         """Tests get_log_entries"""
-        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.logging_.objects import LogEntryList
+        objects = self.catalog.get_log_entries()
+        assert isinstance(objects, LogEntryList)
+        self.catalog.use_federated_log_view()
+        objects = self.catalog.get_log_entries()
+        assert isinstance(objects, LogEntryList)
+
         if not is_never_authz(self.service_config):
-            objects = self.catalog.get_log_entries()
-            assert isinstance(objects, LogEntryList)
-            self.catalog.use_federated_log_view()
-            objects = self.catalog.get_log_entries()
             assert objects.available() > 0
-            assert isinstance(objects, LogEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_log_entries()
+            assert objects.available() == 0
 
     def test_get_log_entry_with_alias(self):
         if not is_never_authz(self.service_config):
-            # Because you can't create the alias with NEVER_AUTHZ
             self.catalog.alias_log_entry(self.log_entry_ids[0], ALIAS_ID)
             obj = self.catalog.get_log_entry(ALIAS_ID)
             assert obj.get_id() == self.log_entry_ids[0]
@@ -662,6 +652,280 @@ class TestLogEntryAdminSession(object):
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.catalog.alias_log_entry(self.fake_id, self.fake_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+def log_entry_log_session_class_fixture(request):
+    # From test_templates/resource.py::ResourceBinSession::init_template
+    request.cls.service_config = request.param
+    request.cls.log_entry_list = list()
+    request.cls.log_entry_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'LOGGING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test Log'
+        create_form.description = 'Test Log for LogEntryLogSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_log(create_form)
+        create_form = request.cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test Log for Assignment'
+        create_form.description = 'Test Log for LogEntryLogSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_log(create_form)
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_log_entry_form_for_create([])
+            create_form.display_name = 'Test LogEntry ' + str(num)
+            create_form.description = 'Test LogEntry for LogEntryLogSession tests'
+            obj = request.cls.catalog.create_log_entry(create_form)
+            request.cls.log_entry_list.append(obj)
+            request.cls.log_entry_ids.append(obj.ident)
+        request.cls.svc_mgr.assign_log_entry_to_log(
+            request.cls.log_entry_ids[1], request.cls.assigned_catalog.ident)
+        request.cls.svc_mgr.assign_log_entry_to_log(
+            request.cls.log_entry_ids[2], request.cls.assigned_catalog.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.unassign_log_entry_from_log(
+                request.cls.log_entry_ids[1], request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.unassign_log_entry_from_log(
+                request.cls.log_entry_ids[2], request.cls.assigned_catalog.ident)
+            for obj in request.cls.catalog.get_log_entries():
+                request.cls.catalog.delete_log_entry(obj.ident)
+            request.cls.svc_mgr.delete_log(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_log(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def log_entry_log_session_test_fixture(request):
+    # From test_templates/resource.py::ResourceBinSession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("log_entry_log_session_class_fixture", "log_entry_log_session_test_fixture")
+class TestLogEntryLogSession(object):
+    """Tests for LogEntryLogSession"""
+    def test_use_comparative_log_view(self):
+        """Tests use_comparative_log_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
+        self.svc_mgr.use_comparative_log_view()
+
+    def test_use_plenary_log_view(self):
+        """Tests use_plenary_log_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
+        self.svc_mgr.use_plenary_log_view()
+
+    def test_can_lookup_log_entry_log_mappings(self):
+        """Tests can_lookup_log_entry_log_mappings"""
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_log_entry_log_mappings()
+        assert isinstance(result, bool)
+
+    def test_get_log_entry_ids_by_log(self):
+        """Tests get_log_entry_ids_by_log"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
+        if not is_never_authz(self.service_config):
+            objects = self.svc_mgr.get_log_entry_ids_by_log(self.assigned_catalog.ident)
+            assert objects.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_log_entry_ids_by_log(self.fake_id)
+
+    def test_get_log_entries_by_log(self):
+        """Tests get_log_entries_by_log"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.session.get_log_entries_by_log(self.assigned_catalog.ident)
+            assert isinstance(results, ABCObjects.LogEntryList)
+            assert results.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_log_entries_by_log(self.fake_id)
+
+    def test_get_log_entry_ids_by_log(self):
+        """Tests get_log_entry_ids_by_log"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
+        if not is_never_authz(self.service_config):
+            objects = self.svc_mgr.get_log_entry_ids_by_log(self.assigned_catalog.ident)
+            assert objects.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_log_entry_ids_by_log(self.fake_id)
+
+    def test_get_log_entrie_by_log(self):
+        """Tests get_log_entrie_by_log"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.session.get_log_entrie_by_log(self.assigned_catalog.ident)
+            assert isinstance(results, ABCObjects.LogEntryList)
+            assert results.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_log_entrie_by_log(self.fake_id)
+
+    def test_get_log_ids_by_log_entry(self):
+        """Tests get_log_ids_by_log_entry"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
+        if not is_never_authz(self.service_config):
+            cats = self.svc_mgr.get_log_ids_by_log_entry(self.log_entry_ids[1])
+            assert cats.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_log_ids_by_log_entry(self.fake_id)
+
+    def test_get_log_by_log_entry(self):
+        """Tests get_log_by_log_entry"""
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.get_log_by_log_entry(True)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+def log_entry_log_assignment_session_class_fixture(request):
+    # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+    request.cls.service_config = request.param
+    request.cls.log_entry_list = list()
+    request.cls.log_entry_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'LOGGING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test Log'
+        create_form.description = 'Test Log for LogEntryLogAssignmentSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_log(create_form)
+        create_form = request.cls.svc_mgr.get_log_form_for_create([])
+        create_form.display_name = 'Test Log for Assignment'
+        create_form.description = 'Test Log for LogEntryLogAssignmentSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_log(create_form)
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_log_entry_form_for_create([])
+            create_form.display_name = 'Test LogEntry ' + str(num)
+            create_form.description = 'Test LogEntry for LogEntryLogAssignmentSession tests'
+            obj = request.cls.catalog.create_log_entry(create_form)
+            request.cls.log_entry_list.append(obj)
+            request.cls.log_entry_ids.append(obj.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for obj in request.cls.catalog.get_log_entries():
+                request.cls.catalog.delete_log_entry(obj.ident)
+            request.cls.svc_mgr.delete_log(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_log(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def log_entry_log_assignment_session_test_fixture(request):
+    # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("log_entry_log_assignment_session_class_fixture", "log_entry_log_assignment_session_test_fixture")
+class TestLogEntryLogAssignmentSession(object):
+    """Tests for LogEntryLogAssignmentSession"""
+    def test_can_assign_log_entries(self):
+        """Tests can_assign_log_entries"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_log_entries()
+        assert isinstance(result, bool)
+
+    def test_can_assign_log_entries_to_log(self):
+        """Tests can_assign_log_entries_to_log"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_log_entries_to_log(self.assigned_catalog.ident)
+        assert isinstance(result, bool)
+
+    def test_get_assignable_log_ids(self):
+        """Tests get_assignable_log_ids"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_log_ids(self.catalog.ident)
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_log_ids(self.fake_id)
+
+    def test_get_assignable_log_ids_for_log_entry(self):
+        """Tests get_assignable_log_ids_for_log_entry"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_resource_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_log_ids_for_log_entry(self.catalog.ident, self.log_entry_ids[0])
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_log_ids_for_log_entry(self.fake_id, self.fake_id)
+
+    def test_assign_log_entry_to_log(self):
+        """Tests assign_log_entry_to_log"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_log_entries()
+            assert results.available() == 0
+            self.session.assign_log_entry_to_log(self.log_entry_ids[1], self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_log_entries()
+            assert results.available() == 1
+            self.session.unassign_log_entry_from_log(
+                self.log_entry_ids[1],
+                self.assigned_catalog.ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.assign_log_entry_to_log(self.fake_id, self.fake_id)
+
+    def test_unassign_log_entry_from_log(self):
+        """Tests unassign_log_entry_from_log"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_log_entries()
+            assert results.available() == 0
+            self.session.assign_log_entry_to_log(
+                self.log_entry_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_log_entries()
+            assert results.available() == 1
+            self.session.unassign_log_entry_from_log(
+                self.log_entry_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_log_entries()
+            assert results.available() == 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.unassign_log_entry_from_log(self.fake_id, self.fake_id)
+
+    def test_reassign_log_entry_to_log(self):
+        """Tests reassign_log_entry_to_log"""
+        if is_never_authz(self.service_config):
+            pass  # no object to call the method on?
+        elif uses_cataloging(self.service_config):
+            pass  # cannot call the _get_record() methods on catalogs
+        else:
+            with pytest.raises(errors.Unimplemented):
+                self.session.reassign_log_entry_to_log(True, True, True)
 
 
 @pytest.fixture(scope="class",

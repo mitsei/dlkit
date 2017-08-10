@@ -50,6 +50,14 @@ class TestCommentingProfile(object):
         """Tests supports_comment_admin"""
         assert isinstance(self.mgr.supports_comment_admin(), bool)
 
+    def test_supports_comment_book(self):
+        """Tests supports_comment_book"""
+        assert isinstance(self.mgr.supports_comment_book(), bool)
+
+    def test_supports_comment_book_assignment(self):
+        """Tests supports_comment_book_assignment"""
+        assert isinstance(self.mgr.supports_comment_book_assignment(), bool)
+
     def test_supports_book_lookup(self):
         """Tests supports_book_lookup"""
         assert isinstance(self.mgr.supports_book_lookup(), bool)
@@ -163,6 +171,18 @@ class TestCommentingManager(object):
             self.svc_mgr.get_comment_admin_session_for_book(self.catalog_id)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_comment_admin_session_for_book()
+
+    def test_get_comment_book_session(self):
+        """Tests get_comment_book_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book():
+            self.svc_mgr.get_comment_book_session()
+
+    def test_get_comment_book_assignment_session(self):
+        """Tests get_comment_book_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book_assignment():
+            self.svc_mgr.get_comment_book_assignment_session()
 
     def test_get_book_lookup_session(self):
         """Tests get_book_lookup_session"""
@@ -283,6 +303,22 @@ class TestCommentingProxyManager(object):
             self.svc_mgr.get_comment_admin_session_for_book(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_comment_admin_session_for_book()
+
+    def test_get_comment_book_session(self):
+        """Tests get_comment_book_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book():
+            self.svc_mgr.get_comment_book_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_comment_book_session()
+
+    def test_get_comment_book_assignment_session(self):
+        """Tests get_comment_book_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book_assignment():
+            self.svc_mgr.get_comment_book_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_comment_book_assignment_session()
 
     def test_get_book_lookup_session(self):
         """Tests get_book_lookup_session"""

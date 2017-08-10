@@ -47,6 +47,16 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_grade_system_admin()
 
+    def supports_grade_system_gradebook(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_grade_system_gradebook()
+
+    def supports_grade_system_gradebook_assignment(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_grade_system_gradebook_assignment()
+
     def supports_grade_entry_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -76,6 +86,16 @@ class GradingProfile(osid_managers.OsidProfile, grading_managers.GradingProfile)
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_gradebook_column_admin()
+
+    def supports_gradebook_column_gradebook(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_column_gradebook()
+
+    def supports_gradebook_column_gradebook_assignment(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_gradebook_column_gradebook_assignment()
 
     def supports_gradebook_lookup(self):
         # Implemented from azosid template for -
@@ -249,7 +269,7 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
 
     def get_grade_system_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradeSystemAdminSession')(
             provider_session=self._provider_manager.get_grade_system_admin_session(),
             authz_session=self._get_authz_session(),
@@ -267,6 +287,28 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager)
+
+    def get_grade_system_gradebook_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradeSystemGradebookSession')(
+            provider_session=self._provider_manager.get_grade_system_gradebook_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    grade_system_gradebook_session = property(fget=get_grade_system_gradebook_session)
+
+    def get_grade_system_gradebook_assignment_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradeSystemGradebookAssignmentSession')(
+            provider_session=self._provider_manager.get_grade_system_gradebook_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    grade_system_gradebook_assignment_session = property(fget=get_grade_system_gradebook_assignment_session)
 
     def get_grade_entry_lookup_session(self):
         # Implemented from azosid template for -
@@ -336,7 +378,7 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
 
     def get_grade_entry_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradeEntryAdminSession')(
             provider_session=self._provider_manager.get_grade_entry_admin_session(),
             authz_session=self._get_authz_session(),
@@ -358,11 +400,17 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_gradebook_column_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session()
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnLookupSession')(
             provider_session=self._provider_manager.get_gradebook_column_lookup_session(),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     gradebook_column_lookup_session = property(fget=get_gradebook_column_lookup_session)
 
@@ -370,20 +418,32 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id)
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnLookupSession')(
             provider_session=self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(gradebook_id),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_gradebook_column_query_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session()
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnQuerySession')(
             provider_session=self._provider_manager.get_gradebook_column_query_session(),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     gradebook_column_query_session = property(fget=get_gradebook_column_query_session)
 
@@ -391,15 +451,21 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
     def get_gradebook_column_query_session_for_gradebook(self, gradebook_id):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id)
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnQuerySession')(
             provider_session=self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager)
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
 
     def get_gradebook_column_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookColumnAdminSession')(
             provider_session=self._provider_manager.get_gradebook_column_admin_session(),
             authz_session=self._get_authz_session(),
@@ -418,9 +484,31 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager)
 
+    def get_gradebook_column_gradebook_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradebookColumnGradebookSession')(
+            provider_session=self._provider_manager.get_gradebook_column_gradebook_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    gradebook_column_gradebook_session = property(fget=get_gradebook_column_gradebook_session)
+
+    def get_gradebook_column_gradebook_assignment_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradebookColumnGradebookAssignmentSession')(
+            provider_session=self._provider_manager.get_gradebook_column_gradebook_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    gradebook_column_gradebook_assignment_session = property(fget=get_gradebook_column_gradebook_assignment_session)
+
     def get_gradebook_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookLookupSession')(
             provider_session=self._provider_manager.get_gradebook_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -431,7 +519,7 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
 
     def get_gradebook_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookAdminSession')(
             provider_session=self._provider_manager.get_gradebook_admin_session(),
             authz_session=self._get_authz_session(),
@@ -442,7 +530,7 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
 
     def get_gradebook_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookHierarchySession')(
             provider_session=self._provider_manager.get_gradebook_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -453,7 +541,7 @@ class GradingManager(osid_managers.OsidManager, GradingProfile, grading_managers
 
     def get_gradebook_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookHierarchyDesignSession')(
             provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -562,7 +650,7 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
     @raise_null_argument
     def get_grade_system_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradeSystemAdminSession')(
             provider_session=self._provider_manager.get_grade_system_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -576,6 +664,28 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
         return getattr(sessions, 'GradeSystemAdminSession')(
             provider_session=self._provider_manager.get_grade_system_admin_session_for_gradebook(gradebook_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_grade_system_gradebook_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradeSystemGradebookSession')(
+            provider_session=self._provider_manager.get_grade_system_gradebook_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_grade_system_gradebook_assignment_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradeSystemGradebookAssignmentSession')(
+            provider_session=self._provider_manager.get_grade_system_gradebook_assignment_session(proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager,
@@ -652,7 +762,7 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
     @raise_null_argument
     def get_grade_entry_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradeEntryAdminSession')(
             provider_session=self._provider_manager.get_grade_entry_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -675,50 +785,74 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
     def get_gradebook_column_lookup_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session(proxy)
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnLookupSession')(
             provider_session=self._provider_manager.get_gradebook_column_lookup_session(proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_gradebook_column_lookup_session_for_gradebook(self, gradebook_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id, proxy)
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnLookupSession')(
             provider_session=self._provider_manager.get_gradebook_column_lookup_session_for_gradebook(gradebook_id, proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_gradebook_column_query_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session(proxy)
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnQuerySession')(
             provider_session=self._provider_manager.get_gradebook_column_query_session(proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_gradebook_column_query_session_for_gradebook(self, gradebook_id, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id, proxy)
+            query_session.use_federated_gradebook_view()
+        except Unimplemented:
+            query_session = None
         return getattr(sessions, 'GradebookColumnQuerySession')(
             provider_session=self._provider_manager.get_gradebook_column_query_session_for_gradebook(gradebook_id, proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
-            provider_manager=self._provider_manager,
-            proxy=proxy)
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
 
     @raise_null_argument
     def get_gradebook_column_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookColumnAdminSession')(
             provider_session=self._provider_manager.get_gradebook_column_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -738,9 +872,31 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
             proxy=proxy)
 
     @raise_null_argument
+    def get_gradebook_column_gradebook_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradebookColumnGradebookSession')(
+            provider_session=self._provider_manager.get_gradebook_column_gradebook_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_gradebook_column_gradebook_assignment_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'GradebookColumnGradebookAssignmentSession')(
+            provider_session=self._provider_manager.get_gradebook_column_gradebook_assignment_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
     def get_gradebook_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookLookupSession')(
             provider_session=self._provider_manager.get_gradebook_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -751,7 +907,7 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
     @raise_null_argument
     def get_gradebook_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookAdminSession')(
             provider_session=self._provider_manager.get_gradebook_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -762,7 +918,7 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
     @raise_null_argument
     def get_gradebook_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookHierarchySession')(
             provider_session=self._provider_manager.get_gradebook_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -773,7 +929,7 @@ class GradingProxyManager(osid_managers.OsidProxyManager, GradingProfile, gradin
     @raise_null_argument
     def get_gradebook_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'GradebookHierarchyDesignSession')(
             provider_session=self._provider_manager.get_gradebook_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

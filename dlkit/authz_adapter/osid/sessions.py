@@ -108,8 +108,9 @@ class OsidSession(abc_osid_sessions.OsidSession):
         return self._overriding_catalog_ids
 
     def _check_lookup_conditions(self):
-        if ((self._is_plenary_object_view() or self._is_isolated_catalog_view() or self._query_session is None) and
-                not self._get_overriding_catalog_ids('lookup')):
+        if ((self._is_plenary_object_view() or self._is_isolated_catalog_view()) and
+                not self._get_overriding_catalog_ids('lookup') or
+                self._query_session is None):
             raise PermissionDenied()
 
     def _check_search_conditions(self):

@@ -60,6 +60,30 @@ class LoggingProfile(osid_managers.OsidProfile, logging_managers.LoggingProfile)
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_log_entry_query' in profile.SUPPORTS
 
+    def supports_log_entry_log(self):
+        """Tests if looking up log entry log mappings is supported.
+
+        return: (boolean) - ``true`` if log entry logs is supported,
+                ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_log_entry_log' in profile.SUPPORTS
+
+    def supports_log_entry_log_assignment(self):
+        """Tests if managing log entry log mappings is supported.
+
+        return: (boolean) - ``true`` if log entry logs mapping
+                assignment is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_log_entry_log_assignment' in profile.SUPPORTS
+
     def supports_log_lookup(self):
         """Tests for the availability of a log lookup service.
 
@@ -441,6 +465,46 @@ class LoggingManager(osid_managers.OsidManager, LoggingProfile, logging_managers
         return sessions.LogEntryAdminSession(log_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
+    def get_log_entry_log_session(self):
+        """Gets the session for retrieving log entry to log mappings.
+
+        return: (osid.logging.LogEntryLogSession) - a
+                ``LogEntryLogSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_entry_log()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_entry_log()`` is ``true``.*
+
+        """
+        if not self.supports_log_entry_log():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogEntryLogSession(runtime=self._runtime)
+
+    log_entry_log_session = property(fget=get_log_entry_log_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_log_entry_log_assignment_session(self):
+        """Gets the session for assigning log entry to logs mappings.
+
+        return: (osid.logging.LogEntryLogAssignmentSession) - a
+                ``LogEntryLogAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_entry_log_assignment()``
+                is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_entry_log_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_log_entry_log_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogEntryLogAssignmentSession(runtime=self._runtime)
+
+    log_entry_log_assignment_session = property(fget=get_log_entry_log_assignment_session)
+
+    @utilities.remove_null_proxy_kwarg
     def get_log_lookup_session(self):
         """Gets the ``OsidSession`` associated with the log lookup service.
 
@@ -752,6 +816,46 @@ class LoggingProxyManager(osid_managers.OsidProxyManager, LoggingProfile, loggin
         ##
         # pylint: disable=no-member
         return sessions.LogEntryAdminSession(log_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_log_entry_log_session(self, proxy):
+        """Gets the session for retrieving log entry to log mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.logging.LogEntryLogSession) - a
+                ``LogEntryLogSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_entry_log()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_entry_log()`` is ``true``.*
+
+        """
+        if not self.supports_log_entry_log():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogEntryLogSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_log_entry_log_assignment_session(self, proxy):
+        """Gets the session for assigning log entry to log mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.logging.LogEntryLogAssignmentSession) - a
+                ``LogEntryLogAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_log_entry_log_assignment()``
+                is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_log_entry_log_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_log_entry_log_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.LogEntryLogAssignmentSession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_log_lookup_session(self, proxy):

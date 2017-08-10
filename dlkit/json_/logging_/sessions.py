@@ -16,6 +16,7 @@ from bson.objectid import ObjectId
 from . import objects
 from . import queries
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession
 from ..primitives import *
@@ -35,12 +36,12 @@ DESCENDING = -1
 ASCENDING = 1
 CREATED = True
 UPDATED = True
-COMPARATIVE = 0
-PLENARY = 1
 ENCLOSURE_RECORD_TYPE = Type(
     identifier='enclosure',
     namespace='osid-object',
     authority='ODL.MIT.EDU')
+COMPARATIVE = 0
+PLENARY = 1
 
 
 class LoggingSession(abc_logging_sessions.LoggingSession, osid_sessions.OsidSession):
@@ -237,12 +238,25 @@ class LogEntryLookupSession(abc_logging_sessions.LogEntryLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Implemented from template for
-        # osid.resource.BinLookupSession.can_lookup_bins
+        """Tests if this user can read the log.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may opt not to offer reading
+        operations.
+
+        return: (boolean) - ``false`` if reading methods are not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        return self.can_lookup_log_entries()
+
+    def can_lookup_log_entries(self):
+        """Tests if a user can read logs :)"""
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
-        if self._catalog_session is not None:
-            return self._catalog_session.can_lookup_catalogs()
         return True
 
     def use_comparative_log_entry_view(self):
@@ -1165,6 +1179,380 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         # Implemented from template for
         # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=log_entry_id, equivalent_id=alias_id)
+
+
+class LogEntryLogSession(abc_logging_sessions.LogEntryLogSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``LogEntry`` to ``Log`` mappings.
+
+    An entry may appear in multiple ``Logs``. Each ``Log`` may have its
+    own authorizations governing who is allowed to look at it.
+
+    This lookup session defines several views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'logging.LogEntryLogSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def use_comparative_log_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_log_view(self):
+        """A complete view of the ``LogEntry`` and ``Log`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def can_lookup_log_entry_log_mappings(self):
+        """Tests if this user can perform lookups of logEntry/log mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def get_log_entry_ids_by_log(self, log_id):
+        """Gets the list of ``LogEntry``  ``Ids`` associated with a ``Log``.
+
+        arg:    log_id (osid.id.Id): ``Id`` of a ``Log``
+        return: (osid.id.IdList) - list of related logEntry ``Ids``
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for log_entry in self.get_log_entries_by_log(log_ids):
+            id_list.append(log_entry.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_log_entries_by_log(self, log_id):
+        """Gets the list of log entries associated with a ``Log``.
+
+        arg:    log_id (osid.id.Id): ``Id`` of a ``Log``
+        return: (osid.logging.LogEntryList) - list of related logEntry
+        raise:  NotFound - ``log_id`` is not found
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('LOGGING', local=True)
+        lookup_session = mgr.get_log_entry_lookup_session_for_log(log_id, proxy=self._proxy)
+        lookup_session.use_isolated_log_view()
+        return lookup_session.get_log_entries()
+
+    @utilities.arguments_not_none
+    def get_log_entry_ids_by_log(self, log_ids):
+        """Gets the list of ``LogEntry Ids`` corresponding to a list of ``Log`` objects.
+
+        arg:    log_ids (osid.id.IdList): list of log ``Ids``
+        return: (osid.id.IdList) - list of logEntry ``Ids``
+        raise:  NullArgument - ``log_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for log_entry in self.get_log_entries_by_log(log_ids):
+            id_list.append(log_entry.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_log_entrie_by_log(self, log_ids):
+        """Gets the list of log entries corresponding to a list of ``Log``.
+
+        arg:    log_ids (osid.id.IdList): list of log ``Ids``
+        return: (osid.logging.LogEntryList) - list of log entries
+        raise:  NullArgument - ``log_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('LOGGING', local=True)
+        lookup_session = mgr.get_log_entry_lookup_session_for_log(log_ids, proxy=self._proxy)
+        lookup_session.use_isolated_log_view()
+        return lookup_session.get_log_entries()
+
+    @utilities.arguments_not_none
+    def get_log_ids_by_log_entry(self, log_entry_id):
+        """Gets the list of ``Log``  ``Ids`` mapped to a ``LogEntry``.
+
+        arg:    log_entry_id (osid.id.Id): ``Id`` of a ``LogEntry``
+        return: (osid.id.IdList) - list of log ``Ids``
+        raise:  NotFound - ``log_entry_id`` is not found
+        raise:  NullArgument - ``log_entry_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('LOGGING', local=True)
+        lookup_session = mgr.get_log_entry_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_log_view()
+        log_entry = lookup_session.get_log_entry(log_entry_id)
+        id_list = []
+        for idstr in log_entry._my_map['assignedLogIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_log_by_log_entry(self, log_entry_id):
+        """Gets the list of ``Log`` objects mapped to a ``LogEntry``.
+
+        arg:    log_entry_id (osid.id.Id): ``Id`` of a ``LogEntry``
+        return: (osid.logging.LogList) - list of log
+        raise:  NotFound - ``log_entry_id`` is not found
+        raise:  NullArgument - ``log_entry_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        raise errors.Unimplemented()
+
+
+class LogEntryLogAssignmentSession(abc_logging_sessions.LogEntryLogAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign log entries to ``Logs``.
+
+    A ``LogEntry`` may map to multiple ``Log`` objects and removing the
+    last reference to a ``LogEntry`` is the equivalent of deleting it.
+    Each ``Log`` may have its own authorizations governing who is
+    allowed to operate on it.
+
+    Moving or adding a reference of a ``LogEntry`` to another ``Log`` is
+    not a copy operation (eg: does not change its ``Id`` ).
+
+    """
+    _session_namespace = 'logging.LogEntryLogAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Log'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_log_entries(self):
+        """Tests if this user can alter log entry/log mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_log_entries_to_log(self, log_id):
+        """Tests if this user can alter log entry/log mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``log_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if log_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_log_ids(self, log_id):
+        """Gets a list of log including and under the given log node in which any log entry can be assigned.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
+        return: (osid.id.IdList) - list of assignable log ``Ids``
+        raise:  NullArgument - ``log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('LOGGING', local=True)
+        lookup_session = mgr.get_log_lookup_session(proxy=self._proxy)
+        logs = lookup_session.get_logs()
+        id_list = []
+        for log in logs:
+            id_list.append(log.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_log_ids_for_log_entry(self, log_id, log_entry_id):
+        """Gets a list of log including and under the given log node in which a specific log entry can be assigned.
+
+        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
+        arg:    log_entry_id (osid.id.Id): the ``Id`` of the
+                ``LogEntry``
+        return: (osid.id.IdList) - list of assignable log ``Ids``
+        raise:  NullArgument - ``log_id`` or ``log_entry_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_log_ids(log_id)
+
+    @utilities.arguments_not_none
+    def assign_log_entry_to_log(self, log_entry_id, log_id):
+        """Adds an existing ``LogEntry`` to a ``Log``.
+
+        arg:    log_entry_id (osid.id.Id): the ``Id`` of the
+                ``LogEntry``
+        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
+        raise:  AlreadyExists - ``log_entry_id`` is already assigned to
+                ``log_id``
+        raise:  NotFound - ``log_entry_id`` or ``log_id`` not found
+        raise:  NullArgument - ``log_entry_id`` or ``log_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('LOGGING', local=True)
+        lookup_session = mgr.get_log_lookup_session(proxy=self._proxy)
+        lookup_session.get_log(log_id)  # to raise NotFound
+        self._assign_object_to_catalog(log_entry_id, log_id)
+
+    @utilities.arguments_not_none
+    def unassign_log_entry_from_log(self, log_entry_id, log_id):
+        """Removes a ``LogEntry`` from a ``Log``.
+
+        arg:    log_entry_id (osid.id.Id): the ``Id`` of the
+                ``LogEntry``
+        arg:    log_id (osid.id.Id): the ``Id`` of the ``Log``
+        raise:  NotFound - ``log_entry_id`` or ``log_id`` not found or
+                ``log_entry_id`` not assigned to ``log_id``
+        raise:  NullArgument - ``log_entry_id`` or ``log_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('LOGGING', local=True)
+        lookup_session = mgr.get_log_lookup_session(proxy=self._proxy)
+        lookup_session.get_log(log_id)  # to raise NotFound
+        self._unassign_object_from_catalog(log_entry_id, log_id)
+
+    @utilities.arguments_not_none
+    def reassign_log_entry_to_log(self, log_entry_id, from_log_id, to_log_id):
+        """Moves a ``LogEntry`` from one ``Log`` to another.
+
+        Mappings to other ``Logs`` are unaffected.
+
+        arg:    log_entry_id (osid.id.Id): the ``Id`` of the
+                ``LogEntry``
+        arg:    from_log_id (osid.id.Id): the ``Id`` of the current
+                ``Log``
+        arg:    to_log_id (osid.id.Id): the ``Id`` of the destination
+                ``Log``
+        raise:  NotFound - ``log_entry_id, from_log_id,`` or
+                ``to_log_id`` not found or ``log_entry_id`` not mapped
+                to ``from_log_id``
+        raise:  NullArgument - ``log_entry_id, from_log_id,`` or
+                ``to_log_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
+        self.assign_log_entry_to_log(log_entry_id, to_log_id)
+        try:
+            self.unassign_log_entry_from_log(log_entry_id, from_log_id)
+        except:  # something went wrong, roll back assignment to to_log_id
+            self.unassign_log_entry_from_log(log_entry_id, to_log_id)
+            raise
 
 
 class LogLookupSession(abc_logging_sessions.LogLookupSession, osid_sessions.OsidSession):
