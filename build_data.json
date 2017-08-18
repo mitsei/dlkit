@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"date": "2017-09-01 14:04:09.076671", "commit": "d3cfb2b", "command": "build_dlkit.py --buildto dlkit-pip/dlkit", "user": "cjshaw"}
+=======
+{"date": "2017-08-18 18:08:45.861489", "commit": "4215c0b", "command": "build_dlkit.py --buildto dlkit-pip/dlkit", "user": "cjshaw"}
+>>>>>>> catch exception thrown by fitb for results
