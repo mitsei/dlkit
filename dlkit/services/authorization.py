@@ -62,6 +62,18 @@ class AuthorizationProfile(osid.OsidProfile, authorization_managers.Authorizatio
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_authorization_admin()
 
+    def supports_authorization_vault(self):
+        """Pass through to provider supports_authorization_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_authorization_vault()
+
+    def supports_authorization_vault_assignment(self):
+        """Pass through to provider supports_authorization_vault_assignment"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_authorization_vault_assignment()
+
     def supports_vault_lookup(self):
         """Pass through to provider supports_vault_lookup"""
         # Implemented from kitosid template for -
@@ -345,6 +357,22 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_catalog_template
         return self._provider_manager.get_authorization_admin_session_for_vault(*args, **kwargs)
 
+    def get_authorization_vault_session(self, *args, **kwargs):
+        """Pass through to provider get_authorization_vault_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_authorization_vault_session(*args, **kwargs)
+
+    authorization_vault_session = property(fget=get_authorization_vault_session)
+
+    def get_authorization_vault_assignment_session(self, *args, **kwargs):
+        """Pass through to provider get_authorization_vault_assignment_session"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
+        return self._provider_manager.get_authorization_vault_assignment_session(*args, **kwargs)
+
+    authorization_vault_assignment_session = property(fget=get_authorization_vault_assignment_session)
+
     def get_vault_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_vault_lookup_session"""
         # Implemented from kitosid template for -
@@ -397,18 +425,12 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
 
     authorization_rules_manager = property(fget=get_authorization_rules_manager)
 ##
-# The following methods are from osid.authorization.VaultLookupSession
-
-    def can_lookup_vaults(self):
-        """Pass through to provider VaultLookupSession.can_lookup_vaults"""
-        # Implemented from kitosid template for -
-        # osid.resource.BinLookupSession.can_lookup_bins_template
-        return self._get_provider_session('vault_lookup_session').can_lookup_vaults()
+# The following methods are from osid.authorization.AuthorizationVaultSession
 
     def use_comparative_vault_view(self):
-        """Pass through to provider VaultLookupSession.use_comparative_vault_view"""
+        """Pass through to provider AuthorizationVaultSession.use_comparative_vault_view"""
         self._vault_view = COMPARATIVE
-        # self._get_provider_session('vault_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('authorization_vault_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_comparative_vault_view()
@@ -416,14 +438,98 @@ class AuthorizationManager(osid.OsidManager, osid.OsidSession, AuthorizationProf
                 pass
 
     def use_plenary_vault_view(self):
-        """Pass through to provider VaultLookupSession.use_plenary_vault_view"""
+        """Pass through to provider AuthorizationVaultSession.use_plenary_vault_view"""
         self._vault_view = PLENARY
-        # self._get_provider_session('vault_lookup_session') # To make sure the session is tracked
+        # self._get_provider_session('authorization_vault_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
             try:
                 session.use_plenary_vault_view()
             except AttributeError:
                 pass
+
+    def can_lookup_authorization_vault_mappings(self):
+        """Pass through to provider AuthorizationVaultSession.can_lookup_authorization_vault_mappings"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        return self._get_provider_session('authorization_vault_session').can_lookup_authorization_vault_mappings()
+
+    def get_authorization_ids_by_vault(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultSession.get_authorization_ids_by_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        return self._get_provider_session('authorization_vault_session').get_authorization_ids_by_vault(*args, **kwargs)
+
+    def get_authorizations_by_vault(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultSession.get_authorizations_by_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        return self._get_provider_session('authorization_vault_session').get_authorizations_by_vault(*args, **kwargs)
+
+    def get_authorizations_ids_by_vault(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultSession.get_authorizations_ids_by_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        return self._get_provider_session('authorization_vault_session').get_authorizations_ids_by_vault(*args, **kwargs)
+
+    def get_vault_ids_by_authorization(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultSession.get_vault_ids_by_authorization"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        return self._get_provider_session('authorization_vault_session').get_vault_ids_by_authorization(*args, **kwargs)
+
+    def get_vault_by_authorization(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+##
+# The following methods are from osid.authorization.AuthorizationVaultAssignmentSession
+
+    def can_assign_authorizations(self):
+        """Pass through to provider AuthorizationVaultAssignmentSession.can_assign_authorizations"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        return self._get_provider_session('authorization_vault_assignment_session').can_assign_authorizations()
+
+    def can_assign_authorizations_to_vault(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultAssignmentSession.can_assign_authorizations_to_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        return self._get_provider_session('authorization_vault_assignment_session').can_assign_authorizations_to_vault(*args, **kwargs)
+
+    def get_assignable_vault_ids(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultAssignmentSession.get_assignable_vault_ids"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        return self._get_provider_session('authorization_vault_assignment_session').get_assignable_vault_ids(*args, **kwargs)
+
+    def get_assignable_vault_ids_for_authorization(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultAssignmentSession.get_assignable_vault_ids_for_authorization"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        return self._get_provider_session('authorization_vault_assignment_session').get_assignable_vault_ids_for_authorization(*args, **kwargs)
+
+    def assign_authorization_to_vault(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultAssignmentSession.assign_authorization_to_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        self._get_provider_session('authorization_vault_assignment_session').assign_authorization_to_vault(*args, **kwargs)
+
+    def unassign_authorization_from_vault(self, *args, **kwargs):
+        """Pass through to provider AuthorizationVaultAssignmentSession.unassign_authorization_from_vault"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        self._get_provider_session('authorization_vault_assignment_session').unassign_authorization_from_vault(*args, **kwargs)
+
+    def reassign_authorization_to_vault(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+##
+# The following methods are from osid.authorization.VaultLookupSession
+
+    def can_lookup_vaults(self):
+        """Pass through to provider VaultLookupSession.can_lookup_vaults"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.can_lookup_bins_template
+        return self._get_provider_session('vault_lookup_session').can_lookup_vaults()
 
     def get_vault(self, *args, **kwargs):
         """Pass through to provider VaultLookupSession.get_vault"""
@@ -822,6 +928,14 @@ class AuthorizationProxyManager(osid.OsidProxyManager, AuthorizationProfile, aut
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
     def get_authorization_admin_session_for_vault(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_authorization_vault_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_authorization_vault_assignment_session(self, *args, **kwargs):
         """Pass through to provider unimplemented"""
         raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 

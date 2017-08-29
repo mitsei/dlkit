@@ -16,6 +16,7 @@ from bson.objectid import ObjectId
 from . import objects
 from . import queries
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession
 from ..primitives import DateTime
@@ -1746,6 +1747,387 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         # Implemented from template for
         # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=authorization_id, equivalent_id=alias_id)
+
+
+class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``Authorization`` to ``Vault`` mappings.
+
+    An ``Authorization`` may appear in multiple ``Vaults``. Each
+    ``Vault`` may have its own authorizations governing who is allowed
+    to look at it.
+
+    This lookup session defines several views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'authorization.AuthorizationVaultSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def use_comparative_vault_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_vault_view(self):
+        """A complete view of the ``Authorization`` and ``Vault`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def can_lookup_authorization_vault_mappings(self):
+        """Tests if this user can perform lookups of authorization/vault mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def get_authorization_ids_by_vault(self, vault_id):
+        """Gets the list of ``Authorization``  ``Ids`` associated with a ``Vault``.
+
+        arg:    vault_id (osid.id.Id): ``Id`` of a ``Vault``
+        return: (osid.id.IdList) - list of related authorization ``Ids``
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for authorization in self.get_authorizations_by_vault(vault_id):
+            id_list.append(authorization.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_authorizations_by_vault(self, vault_id):
+        """Gets the list of ``Authorizations`` associated with a ``Vault``.
+
+        arg:    vault_id (osid.id.Id): ``Id`` of a ``Vault``
+        return: (osid.authorization.AuthorizationList) - list of related
+                authorization
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_authorization_lookup_session_for_vault(vault_ids, proxy=self._proxy)
+        lookup_session.use_isolated_vault_view()
+        return lookup_session.get_authorizations()
+
+    @utilities.arguments_not_none
+    def get_authorizations_ids_by_vault(self, vault_ids):
+        """Gets the list of ``Authorization Ids`` corresponding to a list of ``Vault`` objects.
+
+        arg:    vault_ids (osid.id.IdList): list of vault ``Ids``
+        return: (osid.id.IdList) - list of authorization ``Ids``
+        raise:  NullArgument - ``vault_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for authorization in self.get_authorizations_by_vault(vault_ids):
+            id_list.append(authorization.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_authorizations_by_vault(self, vault_ids):
+        """Gets the list of ``Authorizations`` corresponding to a list of ``Vault``.
+
+        arg:    vault_ids (osid.id.IdList): list of vault ``Ids``
+        return: (osid.authorization.AuthorizationList) - list of
+                authorizations
+        raise:  NullArgument - ``vault_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_authorization_lookup_session_for_vault(vault_ids, proxy=self._proxy)
+        lookup_session.use_isolated_vault_view()
+        return lookup_session.get_authorizations()
+
+    @utilities.arguments_not_none
+    def get_vault_ids_by_authorization(self, authorization_id):
+        """Gets the list of ``Vault``  ``Ids`` mapped to an ``Authorization``.
+
+        arg:    authorization_id (osid.id.Id): ``Id`` of an
+                ``Authorization``
+        return: (osid.id.IdList) - list of vault ``Ids``
+        raise:  NotFound - ``authorization_id`` is not found
+        raise:  NullArgument - ``authorization_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_authorization_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_vault_view()
+        authorization = lookup_session.get_authorization(authorization_id)
+        id_list = []
+        for idstr in authorization._my_map['assignedVaultIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_vault_by_authorization(self, authorization_id):
+        """Gets the list of ``Vault`` objects mapped to an ``Authorization``.
+
+        arg:    authorization_id (osid.id.Id): ``Id`` of an
+                ``Authorization``
+        return: (osid.authorization.VaultList) - list of vault
+        raise:  NotFound - ``authorization_id`` is not found
+        raise:  NullArgument - ``authorization_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        raise errors.Unimplemented()
+
+
+class AuthorizationVaultAssignmentSession(abc_authorization_sessions.AuthorizationVaultAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign ``Authorizations`` to ``Vault``.
+
+    An ``Authorization`` may map to multiple ``Vault`` objects and
+    removing the last reference to a ``Authorization`` is the equivalent
+    of deleting it. Each ``Vault`` may have its own authorizations
+    governing who is allowed to operate on it.
+
+    Moving or adding a reference of a ``Authorization`` to another
+    ``Vault`` is not a copy operation (eg: does not change its ``Id`` ).
+
+    """
+    _session_namespace = 'authorization.AuthorizationVaultAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Vault'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_authorizations(self):
+        """Tests if this user can alter authorization/vault mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_authorizations_to_vault(self, vault_id):
+        """Tests if this user can alter authorization/vault mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``vault_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if vault_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_vault_ids(self, vault_id):
+        """Gets a list of vault including and under the given vault node in which any authorization can be assigned.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        return: (osid.id.IdList) - list of assignable vault ``Ids``
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_vault_lookup_session(proxy=self._proxy)
+        vaults = lookup_session.get_vaults()
+        id_list = []
+        for vault in vaults:
+            id_list.append(vault.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_vault_ids_for_authorization(self, vault_id, authorization_id):
+        """Gets a list of vault including and under the given vault node in which a specific authorization can be assigned.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        return: (osid.id.IdList) - list of assignable vault ``Ids``
+        raise:  NullArgument - ``vault_id`` or ``authorization_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_vault_ids(vault_id)
+
+    @utilities.arguments_not_none
+    def assign_authorization_to_vault(self, authorization_id, vault_id):
+        """Adds an existing ``Authorization`` to a ``Vault``.
+
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        raise:  AlreadyExists - ``authorization_id`` is already assigned
+                to ``vault_id``
+        raise:  NotFound - ``authorization_id`` or ``vault_id`` not
+                found
+        raise:  NullArgument - ``authorization_id`` or ``vault_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_vault_lookup_session(proxy=self._proxy)
+        lookup_session.get_vault(vault_id)  # to raise NotFound
+        self._assign_object_to_catalog(authorization_id, vault_id)
+
+    @utilities.arguments_not_none
+    def unassign_authorization_from_vault(self, authorization_id, vault_id):
+        """Removes an ``Authorization`` from a ``Vault``.
+
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        raise:  NotFound - ``authorization_id`` or ``vault_id`` not
+                found or ``authorization_id`` not assigned to
+                ``vault_id``
+        raise:  NullArgument - ``authorization_id`` or ``vault_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_vault_lookup_session(proxy=self._proxy)
+        lookup_session.get_vault(vault_id)  # to raise NotFound
+        self._unassign_object_from_catalog(authorization_id, vault_id)
+
+    @utilities.arguments_not_none
+    def reassign_authorization_to_vault(self, authorization_id, from_vault_id, to_vault_id):
+        """Moves an ``Authorization`` from one ``Vault`` to another.
+
+        Mappings to other ``Vaults`` are unaffected.
+
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        arg:    from_vault_id (osid.id.Id): the ``Id`` of the current
+                ``Vault``
+        arg:    to_vault_id (osid.id.Id): the ``Id`` of the destination
+                ``Vault``
+        raise:  NotFound - ``authorization_id, from_vault_id,`` or
+                ``to_vault_id`` not found or ``authorization_id`` not
+                mapped to ``from_vault_id``
+        raise:  NullArgument - ``authorization_id, from_vault_id,`` or
+                ``to_vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
+        self.assign_authorization_to_vault(authorization_id, to_vault_id)
+        try:
+            self.unassign_authorization_from_vault(authorization_id, from_vault_id)
+        except:  # something went wrong, roll back assignment to to_vault_id
+            self.unassign_authorization_from_vault(authorization_id, to_vault_id)
+            raise
 
 
 class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_sessions.OsidSession):

@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo locale'
 
 DESCRIPTION = 'MongoDB based locale implementation'
 
-VERSIONCOMPONENTS = [0, 1, 29]
+VERSIONCOMPONENTS = [0, 1, 33]
 
-RELEASEDATE = "2017-08-10"
+RELEASEDATE = "2017-08-29"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

@@ -75,6 +75,30 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_authorization_admin' in profile.SUPPORTS
 
+    def supports_authorization_vault(self):
+        """Tests if an authorization to vault lookup session is available.
+
+        return: (boolean) - ``true`` if authorization vault lookup
+                session is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_authorization_vault' in profile.SUPPORTS
+
+    def supports_authorization_vault_assignment(self):
+        """Tests if an authorization to vault assignment session is available.
+
+        return: (boolean) - ``true`` if authorization vault assignment
+                is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_authorization_vault_assignment' in profile.SUPPORTS
+
     def supports_vault_lookup(self):
         """Tests if a vault lookup service is supported.
 
@@ -558,6 +582,47 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         return sessions.AuthorizationAdminSession(vault_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
+    def get_authorization_vault_session(self):
+        """Gets the session for retrieving authorization to vault mappings.
+
+        return: (osid.authorization.AuthorizationVaultSession) - an
+                ``AuthorizationVaultSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_vault()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultSession(runtime=self._runtime)
+
+    authorization_vault_session = property(fget=get_authorization_vault_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_authorization_vault_assignment_session(self):
+        """Gets the session for assigning authorizations to vault mappings.
+
+        return: (osid.authorization.AuthorizationVaultAssignmentSession)
+                - a ``AuthorizationVaultAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_authorization_vault_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultAssignmentSession(runtime=self._runtime)
+
+    authorization_vault_assignment_session = property(fget=get_authorization_vault_assignment_session)
+
+    @utilities.remove_null_proxy_kwarg
     def get_vault_lookup_session(self):
         """Gets the OsidSession associated with the vault lookup service.
 
@@ -940,6 +1005,47 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
         ##
         # pylint: disable=no-member
         return sessions.AuthorizationAdminSession(vault_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_vault_session(self, proxy):
+        """Gets the session for retrieving authorization to vault mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationVaultSession) - an
+                ``AuthorizationVaultSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_vault()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_vault_assignment_session(self, proxy):
+        """Gets the session for assigning authorization to vault mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationVaultAssignmentSession)
+                - a ``AuthorizationVaultAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_authorization_vault_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultAssignmentSession(proxy=proxy, runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_vault_lookup_session(self, proxy):
