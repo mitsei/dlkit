@@ -54,6 +54,14 @@ class TestAuthorizationProfile(object):
         """Tests supports_authorization_admin"""
         assert isinstance(self.mgr.supports_authorization_admin(), bool)
 
+    def test_supports_authorization_vault(self):
+        """Tests supports_authorization_vault"""
+        assert isinstance(self.mgr.supports_authorization_vault(), bool)
+
+    def test_supports_authorization_vault_assignment(self):
+        """Tests supports_authorization_vault_assignment"""
+        assert isinstance(self.mgr.supports_authorization_vault_assignment(), bool)
+
     def test_supports_vault_lookup(self):
         """Tests supports_vault_lookup"""
         assert isinstance(self.mgr.supports_vault_lookup(), bool)
@@ -206,6 +214,18 @@ class TestAuthorizationManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_authorization_admin_session_for_vault()
 
+    def test_get_authorization_vault_session(self):
+        """Tests get_authorization_vault_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault():
+            self.svc_mgr.get_authorization_vault_session()
+
+    def test_get_authorization_vault_assignment_session(self):
+        """Tests get_authorization_vault_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault_assignment():
+            self.svc_mgr.get_authorization_vault_assignment_session()
+
     def test_get_vault_lookup_session(self):
         """Tests get_vault_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -353,6 +373,22 @@ class TestAuthorizationProxyManager(object):
             self.svc_mgr.get_authorization_admin_session_for_vault(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_authorization_admin_session_for_vault()
+
+    def test_get_authorization_vault_session(self):
+        """Tests get_authorization_vault_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault():
+            self.svc_mgr.get_authorization_vault_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_authorization_vault_session()
+
+    def test_get_authorization_vault_assignment_session(self):
+        """Tests get_authorization_vault_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault_assignment():
+            self.svc_mgr.get_authorization_vault_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_authorization_vault_assignment_session()
 
     def test_get_vault_lookup_session(self):
         """Tests get_vault_lookup_session"""

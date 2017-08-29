@@ -52,6 +52,16 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_authorization_admin()
 
+    def supports_authorization_vault(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_authorization_vault()
+
+    def supports_authorization_vault_assignment(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_authorization_vault_assignment()
+
     def supports_vault_lookup(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -262,6 +272,28 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager)
 
+    def get_authorization_vault_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AuthorizationVaultSession')(
+            provider_session=self._provider_manager.get_authorization_vault_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    authorization_vault_session = property(fget=get_authorization_vault_session)
+
+    def get_authorization_vault_assignment_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AuthorizationVaultAssignmentSession')(
+            provider_session=self._provider_manager.get_authorization_vault_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    authorization_vault_assignment_session = property(fget=get_authorization_vault_assignment_session)
+
     def get_vault_lookup_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_admin_session_template
@@ -448,6 +480,28 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
         return getattr(sessions, 'AuthorizationAdminSession')(
             provider_session=self._provider_manager.get_authorization_admin_session_for_vault(vault_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_authorization_vault_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AuthorizationVaultSession')(
+            provider_session=self._provider_manager.get_authorization_vault_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_authorization_vault_assignment_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AuthorizationVaultAssignmentSession')(
+            provider_session=self._provider_manager.get_authorization_vault_assignment_session(proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager,
