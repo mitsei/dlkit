@@ -402,7 +402,7 @@ AUTHZ_ADAPTER_1 = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'ALWAYS_AUTHZ', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'assessmentProviderImpl': {
