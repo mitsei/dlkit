@@ -388,6 +388,30 @@ JSON_1 = {
                 {'value': True, 'priority': 1}
             ]
         },
+        # 'useFilesystem': {
+        #     'syntax': 'BOOLEAN',
+        #     'displayName': 'Use the filesystem instead of MongoDB',
+        #     'description': 'Use the filesystem instead of MongoDB',
+        #     'values': [
+        #         {'value': True, 'priority': 1}
+        #     ]
+        # },
+        # 'dataStorePath': {
+        #     'syntax': 'STRING',
+        #     'displayName': 'Path to local filesystem datastore',
+        #     'description': 'Filesystem path for setting the MongoClient host.',
+        #     'values': [
+        #         {'value': DATA_STORE_PATH, 'priority': 1}
+        #     ]
+        # },
+        # 'dataStoreFullPath': {
+        #     'syntax': 'STRING',
+        #     'displayName': 'Full path to local filesystem datastore',
+        #     'description': 'Filesystem path for setting the MongoClient host.',
+        #     'values': [
+        #         {'value': ABS_PATH, 'priority': 1}
+        #     ]
+        # },
     }
 }
 
@@ -491,7 +515,7 @@ SERVICE = {
             'displayName': 'Assessment Provider Implementation',
             'description': 'Implementation for assessment service provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'assessment_authoringProviderImpl': {
@@ -499,7 +523,7 @@ SERVICE = {
             'displayName': 'Assessment Authoring Provider Implementation',
             'description': 'Implementation for assessment authoring service provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'authorizationProviderImpl': {
@@ -507,7 +531,7 @@ SERVICE = {
             'displayName': 'Authorization Provider Implementation',
             'description': 'Implementation for authorization service provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'learningProviderImpl': {
@@ -515,7 +539,7 @@ SERVICE = {
             'displayName': 'Learning Provider Implementation',
             'description': 'Implementation for learning service provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'repositoryProviderImpl': {
@@ -523,7 +547,7 @@ SERVICE = {
             'displayName': 'Repository Provider Implementation',
             'description': 'Implementation for repository service provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'commentingProviderImpl': {
@@ -531,7 +555,7 @@ SERVICE = {
             'displayName': 'Commenting Provider Implementation',
             'description': 'Implementation for commenting service provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'resourceProviderImpl': {
@@ -539,7 +563,7 @@ SERVICE = {
             'displayName': 'Resource Provider Implementation',
             'description': 'Implementation for resource service provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'gradingProviderImpl': {
@@ -547,7 +571,7 @@ SERVICE = {
             'displayName': 'Grading Provider Implementation',
             'description': 'Implementation for grading provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
         'loggingProviderImpl': {
@@ -555,7 +579,7 @@ SERVICE = {
             'displayName': 'Logging Provider Implementation',
             'description': 'Implementation for logging provider',
             'values': [
-                {'value': 'AUTHZ_ADAPTER_1', 'priority': 1}
+                {'value': 'JSON_1', 'priority': 1}
             ]
         },
     }
