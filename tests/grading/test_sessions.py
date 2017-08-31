@@ -5,7 +5,7 @@ import datetime
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.grading import objects as ABCObjects
 from dlkit.abstract_osid.grading import queries as ABCQueries
 from dlkit.abstract_osid.grading.objects import Grade

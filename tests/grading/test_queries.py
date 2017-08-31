@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.osid import errors
 from dlkit.json_.grading.queries import GradeQuery
 from dlkit.json_.grading.queries import GradebookColumnSummaryQuery

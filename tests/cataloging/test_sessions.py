@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.cataloging import objects as ABCObjects
 from dlkit.abstract_osid.cataloging import queries as ABCQueries
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
