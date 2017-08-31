@@ -27,7 +27,7 @@ from ..osid import markers as osid_markers
 from ..primitives import DisplayText
 from ..primitives import Id
 from ..primitives import Type
-from ..utilities import OsidListList, is_string
+from ..utilities import OsidListList, is_string, ListFiller
 from ..utilities import get_locale_with_proxy
 from ..utilities import is_string
 from ..utilities import update_display_text_defaults
@@ -2347,7 +2347,7 @@ class OsidList(abc_osid_objects.OsidList):
             iter_object = itertools.chain(*iter_object)
         elif isinstance(iter_object, dict) or isinstance(iter_object, list):
             self._count = len(iter_object)
-        elif isinstance(iter_object, Cursor):
+        elif isinstance(iter_object, (Cursor, ListFiller)):
             self._count = iter_object.count(True)
         else:
             self._count = None

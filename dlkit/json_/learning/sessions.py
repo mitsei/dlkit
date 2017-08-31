@@ -4130,7 +4130,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
                                          runtime=self._runtime)
         result = collection.find(
             dict({'objectiveId': str(objective_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4183,7 +4183,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         result = collection.find(
             dict({'objectiveId': str(objective_id),
                   'genusTypeId': str(proficiency_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4228,7 +4228,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
                                          runtime=self._runtime)
         result = collection.find(
             dict({'objectiveId': str(objective_ids)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4305,7 +4305,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         result = collection.find(
             dict({'resourceId': str(resource_id),
                   'genusTypeId': str(proficiency_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4383,7 +4383,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         result = collection.find(
             dict({'resourceId': str(objective_id),
                   'objectiveId': str(resource_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4433,7 +4433,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
             dict({'resourceId': str(objective_id),
                   'objectiveId': str(resource_id),
                   'genusTypeId': str(proficiency_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none

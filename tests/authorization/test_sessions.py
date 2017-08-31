@@ -53,7 +53,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE', 'authority': 'Y
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def authorization_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authz_mgr = Runtime().get_manager(
@@ -381,7 +381,7 @@ class TestAuthorizationSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def authorization_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -501,67 +501,115 @@ class TestAuthorizationLookupSession(object):
     def test_get_authorization(self):
         """Tests get_authorization"""
         # From test_templates/resource.py ResourceLookupSession.get_resource_template
-        if not is_never_authz(self.service_config):
-            self.catalog.use_isolated_vault_view()
-            obj = self.catalog.get_authorization(self.authorization_list[0].ident)
-            assert obj.ident == self.authorization_list[0].ident
-            self.catalog.use_federated_vault_view()
-            obj = self.catalog.get_authorization(self.authorization_list[0].ident)
-            assert obj.ident == self.authorization_list[0].ident
+        if self.svc_mgr.supports_authorization_query():
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_vault_view()
+                obj = self.catalog.get_authorization(self.authorization_list[0].ident)
+                assert obj.ident == self.authorization_list[0].ident
+                self.catalog.use_federated_vault_view()
+                obj = self.catalog.get_authorization(self.authorization_list[0].ident)
+                assert obj.ident == self.authorization_list[0].ident
+            else:
+                with pytest.raises(errors.NotFound):
+                    self.catalog.get_authorization(self.fake_id)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_authorization(self.fake_id)
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_vault_view()
+                obj = self.catalog.get_authorization(self.authorization_list[0].ident)
+                assert obj.ident == self.authorization_list[0].ident
+                self.catalog.use_federated_vault_view()
+                obj = self.catalog.get_authorization(self.authorization_list[0].ident)
+                assert obj.ident == self.authorization_list[0].ident
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_authorization(self.fake_id)
 
     def test_get_authorizations_by_ids(self):
         """Tests get_authorizations_by_ids"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_authorization_query():
             objects = self.catalog.get_authorizations_by_ids(self.authorization_ids)
             assert isinstance(objects, AuthorizationList)
             self.catalog.use_federated_vault_view()
             objects = self.catalog.get_authorizations_by_ids(self.authorization_ids)
-            assert objects.available() > 0
             assert isinstance(objects, AuthorizationList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_authorizations_by_ids(self.authorization_ids)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_authorizations_by_ids(self.authorization_ids)
+                assert isinstance(objects, AuthorizationList)
+                self.catalog.use_federated_vault_view()
+                objects = self.catalog.get_authorizations_by_ids(self.authorization_ids)
+                assert objects.available() > 0
+                assert isinstance(objects, AuthorizationList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_authorizations_by_ids(self.authorization_ids)
 
     def test_get_authorizations_by_genus_type(self):
         """Tests get_authorizations_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_authorization_query():
             objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
             assert isinstance(objects, AuthorizationList)
             self.catalog.use_federated_vault_view()
             objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() > 0
             assert isinstance(objects, AuthorizationList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AuthorizationList)
+                self.catalog.use_federated_vault_view()
+                objects = self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() > 0
+                assert isinstance(objects, AuthorizationList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_authorizations_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_authorizations_by_parent_genus_type(self):
         """Tests get_authorizations_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, AuthorizationList)
-            self.catalog.use_federated_vault_view()
-            objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, AuthorizationList)
+        if self.svc_mgr.supports_authorization_query():
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AuthorizationList)
+                self.catalog.use_federated_vault_view()
+                objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AuthorizationList)
+            else:
+                with pytest.raises(errors.Unimplemented):
+                    # because the never_authz "tries harder" and runs the actual query...
+                    #    whereas above the method itself in JSON returns an empty list
+                    self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AuthorizationList)
+                self.catalog.use_federated_vault_view()
+                objects = self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AuthorizationList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_authorizations_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_authorizations_by_record_type(self):
         """Tests get_authorizations_by_record_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_authorization_query():
             objects = self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
             assert isinstance(objects, AuthorizationList)
             self.catalog.use_federated_vault_view()
@@ -569,8 +617,16 @@ class TestAuthorizationLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, AuthorizationList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
+                assert isinstance(objects, AuthorizationList)
+                self.catalog.use_federated_vault_view()
+                objects = self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AuthorizationList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_authorizations_by_record_type(DEFAULT_TYPE)
 
     def test_get_authorizations_on_date(self):
         """Tests get_authorizations_on_date"""
@@ -696,16 +752,28 @@ class TestAuthorizationLookupSession(object):
         """Tests get_authorizations"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.authorization.objects import AuthorizationList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_authorization_query():
             objects = self.catalog.get_authorizations()
             assert isinstance(objects, AuthorizationList)
             self.catalog.use_federated_vault_view()
             objects = self.catalog.get_authorizations()
-            assert objects.available() > 0
             assert isinstance(objects, AuthorizationList)
+
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_authorizations()
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_authorizations()
+                assert isinstance(objects, AuthorizationList)
+                self.catalog.use_federated_vault_view()
+                objects = self.catalog.get_authorizations()
+                assert objects.available() > 0
+                assert isinstance(objects, AuthorizationList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_authorizations()
 
     def test_get_authorization_with_alias(self):
         if not is_never_authz(self.service_config):
@@ -720,7 +788,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def authorization_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -835,7 +903,7 @@ class TestAuthorizationQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def authorization_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.authorization_list = list()
@@ -1362,7 +1430,7 @@ class TestAuthorizationVaultAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def vault_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -1431,9 +1499,10 @@ class TestVaultLookupSession(object):
             catalogs = self.svc_mgr.get_vaults_by_ids(self.catalog_ids)
             assert catalogs.available() == 2
             assert isinstance(catalogs, ABCObjects.VaultList)
-            reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+            catalog_id_strs = [str(cat_id) for cat_id in self.catalog_ids]
             for index, catalog in enumerate(catalogs):
-                assert str(catalog.ident) == reversed_catalog_ids[index]
+                assert str(catalog.ident) in catalog_id_strs
+                catalog_id_strs.remove(str(catalog.ident))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_vaults_by_ids([self.fake_id])
@@ -1492,7 +1561,7 @@ class TestVaultLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def vault_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -1554,7 +1623,7 @@ class TestVaultQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def vault_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -1703,7 +1772,7 @@ class TestVaultAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def vault_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -1984,7 +2053,7 @@ class TestVaultHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def vault_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param

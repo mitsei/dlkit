@@ -41,7 +41,7 @@ AGENT_ID_1 = Id(**{'identifier': 'john_doe', 'namespace': 'osid.agent.Agent', 'a
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -126,85 +126,164 @@ class TestResourceLookupSession(object):
 
     def test_get_resource(self):
         """Tests get_resource"""
-        if not is_never_authz(self.service_config):
-            self.catalog.use_isolated_bin_view()
-            obj = self.catalog.get_resource(self.resource_list[0].ident)
-            assert obj.ident == self.resource_list[0].ident
-            self.catalog.use_federated_bin_view()
-            obj = self.catalog.get_resource(self.resource_list[0].ident)
-            assert obj.ident == self.resource_list[0].ident
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
+        if self.svc_mgr.supports_resource_query():
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_bin_view()
+                obj = self.catalog.get_resource(self.resource_list[0].ident)
+                assert obj.ident == self.resource_list[0].ident
+                self.catalog.use_federated_bin_view()
+                obj = self.catalog.get_resource(self.resource_list[0].ident)
+                assert obj.ident == self.resource_list[0].ident
+            else:
+                with pytest.raises(errors.NotFound):
+                    self.catalog.get_resource(self.fake_id)
         else:
-            with pytest.raises(errors.NotFound):
-                self.catalog.get_resource(self.fake_id)
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_bin_view()
+                obj = self.catalog.get_resource(self.resource_list[0].ident)
+                assert obj.ident == self.resource_list[0].ident
+                self.catalog.use_federated_bin_view()
+                obj = self.catalog.get_resource(self.resource_list[0].ident)
+                assert obj.ident == self.resource_list[0].ident
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_resource(self.fake_id)
 
     def test_get_resources_by_ids(self):
         """Tests get_resources_by_ids"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.resource.objects import ResourceList
-        objects = self.catalog.get_resources_by_ids(self.resource_ids)
-        assert isinstance(objects, ResourceList)
-        self.catalog.use_federated_bin_view()
-        objects = self.catalog.get_resources_by_ids(self.resource_ids)
-        assert isinstance(objects, ResourceList)
-        if not is_never_authz(self.service_config):
-            assert objects.available() > 0
+        if self.svc_mgr.supports_resource_query():
+            objects = self.catalog.get_resources_by_ids(self.resource_ids)
+            assert isinstance(objects, ResourceList)
+            self.catalog.use_federated_bin_view()
+            objects = self.catalog.get_resources_by_ids(self.resource_ids)
+            assert isinstance(objects, ResourceList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            assert objects.available() == 0
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_resources_by_ids(self.resource_ids)
+                assert isinstance(objects, ResourceList)
+                self.catalog.use_federated_bin_view()
+                objects = self.catalog.get_resources_by_ids(self.resource_ids)
+                assert objects.available() > 0
+                assert isinstance(objects, ResourceList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_resources_by_ids(self.resource_ids)
 
     def test_get_resources_by_genus_type(self):
         """Tests get_resources_by_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
-        objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
-        assert isinstance(objects, ResourceList)
-        self.catalog.use_federated_bin_view()
-        objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
-        assert isinstance(objects, ResourceList)
-        if not is_never_authz(self.service_config):
-            assert objects.available() > 0
+        if self.svc_mgr.supports_resource_query():
+            objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
+            assert isinstance(objects, ResourceList)
+            self.catalog.use_federated_bin_view()
+            objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
+            assert isinstance(objects, ResourceList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            assert objects.available() == 0
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, ResourceList)
+                self.catalog.use_federated_bin_view()
+                objects = self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() > 0
+                assert isinstance(objects, ResourceList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_resources_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_resources_by_parent_genus_type(self):
         """Tests get_resources_by_parent_genus_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, ResourceList)
-            self.catalog.use_federated_bin_view()
-            objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, ResourceList)
+        if self.svc_mgr.supports_resource_query():
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, ResourceList)
+                self.catalog.use_federated_bin_view()
+                objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, ResourceList)
+            else:
+                with pytest.raises(errors.Unimplemented):
+                    # because the never_authz "tries harder" and runs the actual query...
+                    #    whereas above the method itself in JSON returns an empty list
+                    self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         else:
-            with pytest.raises(errors.Unimplemented):
-                # because the never_authz "tries harder" and runs the actual query...
-                #    whereas above the method itself in JSON returns an empty list
-                self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, ResourceList)
+                self.catalog.use_federated_bin_view()
+                objects = self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, ResourceList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_resources_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_resources_by_record_type(self):
         """Tests get_resources_by_record_type"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.resource.objects import ResourceList
-        objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
-        assert isinstance(objects, ResourceList)
-        self.catalog.use_federated_bin_view()
-        objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
-        assert objects.available() == 0
-        assert isinstance(objects, ResourceList)
+        if self.svc_mgr.supports_resource_query():
+            objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
+            assert isinstance(objects, ResourceList)
+            self.catalog.use_federated_bin_view()
+            objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
+            assert objects.available() == 0
+            assert isinstance(objects, ResourceList)
+        else:
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
+                assert isinstance(objects, ResourceList)
+                self.catalog.use_federated_bin_view()
+                objects = self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, ResourceList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_resources_by_record_type(DEFAULT_TYPE)
 
     def test_get_resources(self):
         """Tests get_resources"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.resource.objects import ResourceList
-        objects = self.catalog.get_resources()
-        assert isinstance(objects, ResourceList)
-        self.catalog.use_federated_bin_view()
-        objects = self.catalog.get_resources()
-        assert isinstance(objects, ResourceList)
+        if self.svc_mgr.supports_resource_query():
+            objects = self.catalog.get_resources()
+            assert isinstance(objects, ResourceList)
+            self.catalog.use_federated_bin_view()
+            objects = self.catalog.get_resources()
+            assert isinstance(objects, ResourceList)
 
-        if not is_never_authz(self.service_config):
-            assert objects.available() > 0
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            assert objects.available() == 0
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_resources()
+                assert isinstance(objects, ResourceList)
+                self.catalog.use_federated_bin_view()
+                objects = self.catalog.get_resources()
+                assert objects.available() > 0
+                assert isinstance(objects, ResourceList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_resources()
 
     def test_get_resource_with_alias(self):
         if not is_never_authz(self.service_config):
+            # Because you can't create the alias with NEVER_AUTHZ
             self.catalog.alias_resource(self.resource_ids[0], ALIAS_ID)
             obj = self.catalog.get_resource(ALIAS_ID)
             assert obj.get_id() == self.resource_ids[0]
@@ -215,7 +294,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -312,7 +391,7 @@ class TestResourceQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_search_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.resource_list = list()
@@ -386,7 +465,7 @@ class TestResourceSearchSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -587,7 +666,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_notification_session_class_fixture(request):
     # Implemented from init template for ResourceNotificationSession
     request.cls.service_config = request.param
@@ -731,7 +810,7 @@ class TestResourceNotificationSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_bin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
@@ -871,7 +950,7 @@ class TestResourceBinSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_bin_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -1000,7 +1079,7 @@ class TestResourceBinAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_agent_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.resource_list = list()
@@ -1129,7 +1208,7 @@ class TestResourceAgentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def resource_agent_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1225,7 +1304,7 @@ class TestResourceAgentAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bin_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -1294,9 +1373,10 @@ class TestBinLookupSession(object):
             catalogs = self.svc_mgr.get_bins_by_ids(self.catalog_ids)
             assert catalogs.available() == 2
             assert isinstance(catalogs, ABCObjects.BinList)
-            reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+            catalog_id_strs = [str(cat_id) for cat_id in self.catalog_ids]
             for index, catalog in enumerate(catalogs):
-                assert str(catalog.ident) == reversed_catalog_ids[index]
+                assert str(catalog.ident) in catalog_id_strs
+                catalog_id_strs.remove(str(catalog.ident))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_bins_by_ids([self.fake_id])
@@ -1355,7 +1435,7 @@ class TestBinLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bin_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -1417,7 +1497,7 @@ class TestBinQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bin_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -1566,7 +1646,7 @@ class TestBinAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bin_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -1847,7 +1927,7 @@ class TestBinHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bin_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param
