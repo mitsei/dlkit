@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.9] - 2017-09-05
+### Changed
+- `GradeLookupSession` in `authz_adapter` to throw Permission Denied,
+  due to a non-existent method from the template.
+
+### Fixed
+- Various test setups to work with new `QuerySessions`.
+
 ## [0.5.8] - 2017-08-31
 ### Changed
 - Default config to remove authorization adapter.
@@ -189,6 +197,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.9]: https://github.com/mitsei/dlkit/compare/0.5.8...0.5.9
 [0.5.8]: https://github.com/mitsei/dlkit/compare/0.5.7...0.5.8
 [0.5.7]: https://github.com/mitsei/dlkit/compare/0.5.6...0.5.7
 [0.5.6]: https://github.com/mitsei/dlkit/compare/0.5.5...0.5.6
