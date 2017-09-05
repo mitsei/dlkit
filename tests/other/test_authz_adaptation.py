@@ -10,7 +10,7 @@ from dlkit.primordium.type.primitives import Type
 from ..authorization.test_sessions import TestAuthorizationSession,\
     authorization_session_class_fixture,\
     authorization_session_test_fixture
-from ..utilities.general import is_never_authz
+from ..utilities.general import is_never_authz, uses_filesystem_only
 
 JANE_REQUEST = proxy_example.SimpleRequest(username='jane_doe')
 JANE_CONDITION = PROXY_SESSION.get_proxy_condition()
@@ -26,7 +26,7 @@ BLUE_TYPE = Type(authority='BLUE',
 def authz_adapter_class_fixture(request):
     request.cls.resource_id_lists = []
     count = 0
-    if not is_never_authz(request.cls.service_config):
+    if not is_never_authz(request.cls.service_config) and not uses_filesystem_only(request.cls.service_config):
         for bin_ in request.cls.bin_list:
             # print bin.display_name.text, "ID =", bin.ident.identifier
             request.cls.resource_id_lists.append([])
@@ -44,7 +44,7 @@ def authz_adapter_class_fixture(request):
             count += 1
 
     def test_tear_down():
-        if not is_never_authz(request.cls.service_config):
+        if not is_never_authz(request.cls.service_config) and not uses_filesystem_only(request.cls.service_config):
             for index, bin_ in enumerate(request.cls.bin_list):
                 # print bin.display_name.text, "ID =", bin.ident.identifier
                 for resource_id in request.cls.resource_id_lists[index]:
@@ -66,7 +66,7 @@ def authz_adapter_class_fixture(request):
 class TestAuthzAdapter(TestAuthorizationSession):
 
     def test_lookup_bank_0_plenary_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -84,7 +84,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             #     resources = bin.get_resources_by_ids(self.resource_id_lists[0])
 
     def test_lookup_bank_0_plenary_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -101,7 +101,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
                     resource = bin.get_resource(self.resource_id_lists[2][resource_num])
 
     def test_lookup_bank_0_comparative_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -142,7 +142,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
                     resource = bin.get_resource(resource_id)
 
     def test_lookup_bank_0_comparative_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -153,7 +153,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 0
 
     def test_lookup_bank_1_plenary_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -164,7 +164,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 1
 
     def test_lookup_bank_1_plenary_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -175,7 +175,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 3
 
     def test_lookup_bank_1_comparative_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -186,7 +186,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 3
 
     def test_lookup_bank_1_comparative_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -197,7 +197,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 1
 
     def test_lookup_bank_2_plenary_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -212,7 +212,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             #     resources = bin.get_resources_by_genus_type(BLUE_TYPE)
 
     def test_lookup_bank_2_plenary_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -227,7 +227,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             #     resources = bin.get_resources_by_genus_type(BLUE_TYPE)
 
     def test_lookup_bank_2_comparative_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -240,7 +240,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             # self.assertEqual(bin.get_resources_by_genus_type(BLUE_TYPE).available(), 1)
 
     def test_lookup_bank_2_comparative_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -255,7 +255,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             #     resources = bin.get_resources_by_genus_type(BLUE_TYPE)
 
     def test_lookup_bank_3_plenary_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -266,7 +266,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 1
 
     def test_lookup_bank_3_plenary_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -277,7 +277,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 1
 
     def test_lookup_bank_3_comparative_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -288,7 +288,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 1
 
     def test_lookup_bank_3_comparative_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -299,7 +299,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_genus_type(BLUE_TYPE).available() == 1
 
     def test_query_bank_0_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -309,7 +309,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
                 query = bin.get_resource_query()
 
     def test_query_bank_0_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -323,7 +323,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_query(query).available() == 5
 
     def test_query_bank_1_isolated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')
@@ -334,7 +334,7 @@ class TestAuthzAdapter(TestAuthorizationSession):
             assert bin.get_resources_by_query(query).available() == 2
 
     def test_query_bank_1_federated(self):
-        if not is_never_authz(self.service_config):
+        if not is_never_authz(self.service_config) and not uses_filesystem_only(self.service_config):
             janes_resource_mgr = Runtime().get_service_manager('RESOURCE',
                                                                proxy=JANE_PROXY,
                                                                implementation='TEST_SERVICE_JSON_AUTHZ')

@@ -18,6 +18,7 @@ from .osid_errors import InvalidArgument
 from .osid_errors import Unimplemented, IllegalState, InvalidArgument
 from dlkit.abstract_osid.assessment import objects as abc_assessment_objects
 from dlkit.manager_impls.assessment import managers as assessment_managers
+from dlkit.manager_impls.assessment_authoring import managers as assessment_authoring_managers
 from dlkit.primordium.id.primitives import Id
 
 
@@ -35,7 +36,7 @@ MANDATORY = 1
 DISABLED = -1
 
 
-class AssessmentProfile(osid.OsidProfile, assessment_managers.AssessmentProfile):
+class AssessmentProfile(osid.OsidProfile, assessment_authoring_managers.AssessmentAuthoringProfile, assessment_managers.AssessmentProfile):
     """AssessmentProfile convenience adapter including related Session methods."""
     def __init__(self):
         self._provider_manager = None

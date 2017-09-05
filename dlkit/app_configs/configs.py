@@ -2192,5 +2192,13 @@ TEST_SERVICE_FILESYSTEM = {
                 {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
             ]
         },
+        'catalogingProviderImpl': {
+            'syntax': 'STRING',
+            'displayName': 'Cataloging Provider Implementation',
+            'description': 'Implementation for cataloging service provider',
+            'values': [
+                {'value': 'TEST_JSON_FILESYSTEM_1', 'priority': 1}
+            ]
+        },
     }
 }

@@ -887,7 +887,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         result = collection.find(
             dict({'sourceId': str(resource_id),
                   'destinationId': str(function_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.AuthorizationList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none

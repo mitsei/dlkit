@@ -368,7 +368,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
                                          runtime=self._runtime)
         result = collection.find(
             dict({'commentorId': str(resource_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.CommentList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -421,7 +421,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         result = collection.find(
             dict({'commentorId': str(resource_id),
                   'genusTypeId': str(comment_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.CommentList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -519,7 +519,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         result = collection.find(
             dict({'referenceId': str(reference_id),
                   'genusTypeId': str(comment_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.CommentList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -573,7 +573,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
         result = collection.find(
             dict({'referenceId': str(resource_id),
                   'commentorId': str(reference_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.CommentList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -623,7 +623,7 @@ class CommentLookupSession(abc_commenting_sessions.CommentLookupSession, osid_se
             dict({'referenceId': str(resource_id),
                   'commentorId': str(reference_id),
                   'genusTypeId': str(comment_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.CommentList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none

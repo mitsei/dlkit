@@ -5,7 +5,7 @@ import datetime
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.assessment import objects
 from dlkit.abstract_osid.assessment import objects as ABCObjects
 from dlkit.abstract_osid.assessment import queries as ABCQueries
@@ -53,7 +53,7 @@ NEW_TYPE_2 = Type(**{'identifier': 'NEW 2', 'namespace': 'MINE 2', 'authority': 
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -886,7 +886,7 @@ class TestAssessmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_results_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1010,7 +1010,7 @@ class TestAssessmentResultsSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def item_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -1220,7 +1220,7 @@ class TestItemLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def item_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1317,7 +1317,7 @@ class TestItemQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def item_search_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1405,7 +1405,7 @@ class TestItemSearchSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def item_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1790,7 +1790,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def item_notification_session_class_fixture(request):
     # Implemented from init template for ResourceNotificationSession
     request.cls.service_config = request.param
@@ -1954,7 +1954,7 @@ class TestItemNotificationSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def item_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.item_list = list()
@@ -2094,7 +2094,7 @@ class TestItemBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def item_bank_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -2233,7 +2233,7 @@ class TestItemBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -2407,7 +2407,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -2504,7 +2504,7 @@ class TestAssessmentQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -2708,7 +2708,7 @@ class TestAssessmentAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_bank_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
@@ -2848,7 +2848,7 @@ class TestAssessmentBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_bank_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -2987,7 +2987,7 @@ class TestAssessmentBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_basic_authoring_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3136,16 +3136,21 @@ class TestAssessmentBasicAuthoringSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_offered_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
-    request.cls.assessment_offered_list = list()
-    request.cls.assessment_offered_ids = list()
     request.cls.svc_mgr = Runtime().get_service_manager(
         'ASSESSMENT',
         proxy=PROXY,
         implementation=request.cls.service_config)
-    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    request.cls.fake_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
+
+
+@pytest.fixture(scope="function")
+def assessment_offered_lookup_session_test_fixture(request):
+    request.cls.assessment_offered_list = list()
+    request.cls.assessment_offered_ids = list()
+
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
@@ -3165,7 +3170,9 @@ def assessment_offered_lookup_session_class_fixture(request):
     else:
         request.cls.catalog = request.cls.svc_mgr.get_assessment_offered_lookup_session(proxy=PROXY)
 
-    def class_tear_down():
+    request.cls.session = request.cls.catalog
+
+    def test_tear_down():
         if not is_never_authz(request.cls.service_config):
             for obj in request.cls.catalog.get_assessments_offered():
                 request.cls.catalog.delete_assessment_offered(obj.ident)
@@ -3173,12 +3180,7 @@ def assessment_offered_lookup_session_class_fixture(request):
                 request.cls.catalog.delete_assessment(obj.ident)
             request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
 
-    request.addfinalizer(class_tear_down)
-
-
-@pytest.fixture(scope="function")
-def assessment_offered_lookup_session_test_fixture(request):
-    request.cls.session = request.cls.catalog
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("assessment_offered_lookup_session_class_fixture", "assessment_offered_lookup_session_test_fixture")
@@ -3225,67 +3227,115 @@ class TestAssessmentOfferedLookupSession(object):
     def test_get_assessment_offered(self):
         """Tests get_assessment_offered"""
         # From test_templates/resource.py ResourceLookupSession.get_resource_template
-        if not is_never_authz(self.service_config):
-            self.catalog.use_isolated_bank_view()
-            obj = self.catalog.get_assessment_offered(self.assessment_offered_list[0].ident)
-            assert obj.ident == self.assessment_offered_list[0].ident
-            self.catalog.use_federated_bank_view()
-            obj = self.catalog.get_assessment_offered(self.assessment_offered_list[0].ident)
-            assert obj.ident == self.assessment_offered_list[0].ident
+        if self.svc_mgr.supports_assessment_offered_query():
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_bank_view()
+                obj = self.catalog.get_assessment_offered(self.assessment_offered_list[0].ident)
+                assert obj.ident == self.assessment_offered_list[0].ident
+                self.catalog.use_federated_bank_view()
+                obj = self.catalog.get_assessment_offered(self.assessment_offered_list[0].ident)
+                assert obj.ident == self.assessment_offered_list[0].ident
+            else:
+                with pytest.raises(errors.NotFound):
+                    self.catalog.get_assessment_offered(self.fake_id)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessment_offered(self.fake_id)
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_bank_view()
+                obj = self.catalog.get_assessment_offered(self.assessment_offered_list[0].ident)
+                assert obj.ident == self.assessment_offered_list[0].ident
+                self.catalog.use_federated_bank_view()
+                obj = self.catalog.get_assessment_offered(self.assessment_offered_list[0].ident)
+                assert obj.ident == self.assessment_offered_list[0].ident
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessment_offered(self.fake_id)
 
     def test_get_assessments_offered_by_ids(self):
         """Tests get_assessments_offered_by_ids"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_offered_query():
             objects = self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
             assert isinstance(objects, AssessmentOfferedList)
             self.catalog.use_federated_bank_view()
             objects = self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
-            assert objects.available() > 0
             assert isinstance(objects, AssessmentOfferedList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
+                assert isinstance(objects, AssessmentOfferedList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
+                assert objects.available() > 0
+                assert isinstance(objects, AssessmentOfferedList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_offered_by_ids(self.assessment_offered_ids)
 
     def test_get_assessments_offered_by_genus_type(self):
         """Tests get_assessments_offered_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_offered_query():
             objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
             assert isinstance(objects, AssessmentOfferedList)
             self.catalog.use_federated_bank_view()
             objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() > 0
             assert isinstance(objects, AssessmentOfferedList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AssessmentOfferedList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() > 0
+                assert isinstance(objects, AssessmentOfferedList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_offered_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_assessments_offered_by_parent_genus_type(self):
         """Tests get_assessments_offered_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, AssessmentOfferedList)
-            self.catalog.use_federated_bank_view()
-            objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, AssessmentOfferedList)
+        if self.svc_mgr.supports_assessment_offered_query():
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AssessmentOfferedList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AssessmentOfferedList)
+            else:
+                with pytest.raises(errors.Unimplemented):
+                    # because the never_authz "tries harder" and runs the actual query...
+                    #    whereas above the method itself in JSON returns an empty list
+                    self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AssessmentOfferedList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AssessmentOfferedList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_offered_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_assessments_offered_by_record_type(self):
         """Tests get_assessments_offered_by_record_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_offered_query():
             objects = self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
             assert isinstance(objects, AssessmentOfferedList)
             self.catalog.use_federated_bank_view()
@@ -3293,8 +3343,16 @@ class TestAssessmentOfferedLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, AssessmentOfferedList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
+                assert isinstance(objects, AssessmentOfferedList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AssessmentOfferedList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_offered_by_record_type(DEFAULT_TYPE)
 
     def test_get_assessments_offered_by_date(self):
         """Tests get_assessments_offered_by_date"""
@@ -3309,28 +3367,48 @@ class TestAssessmentOfferedLookupSession(object):
     def test_get_assessments_offered_for_assessment(self):
         """Tests get_assessments_offered_for_assessment"""
         # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_offered_query():
             results = self.session.get_assessments_offered_for_assessment(self.assessment.ident)
-            assert results.available() == 2
             assert isinstance(results, ABCObjects.AssessmentOfferedList)
+            if not is_never_authz(self.service_config):
+                assert results.available() == 2
+            else:
+                assert results.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.session.get_assessments_offered_for_assessment(self.fake_id)
+            if not is_never_authz(self.service_config):
+                results = self.session.get_assessments_offered_for_assessment(self.assessment.ident)
+                assert results.available() == 2
+                assert isinstance(results, ABCObjects.AssessmentOfferedList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.session.get_assessments_offered_for_assessment(self.fake_id)
 
     def test_get_assessments_offered(self):
         """Tests get_assessments_offered"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment.objects import AssessmentOfferedList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_offered_query():
             objects = self.catalog.get_assessments_offered()
             assert isinstance(objects, AssessmentOfferedList)
             self.catalog.use_federated_bank_view()
             objects = self.catalog.get_assessments_offered()
-            assert objects.available() > 0
             assert isinstance(objects, AssessmentOfferedList)
+
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_offered()
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_offered()
+                assert isinstance(objects, AssessmentOfferedList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_offered()
+                assert objects.available() > 0
+                assert isinstance(objects, AssessmentOfferedList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_offered()
 
     def test_get_assessment_offered_with_alias(self):
         if not is_never_authz(self.service_config):
@@ -3341,7 +3419,7 @@ class TestAssessmentOfferedLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_offered_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3442,7 +3520,7 @@ class TestAssessmentOfferedQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_offered_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3638,7 +3716,7 @@ class TestAssessmentOfferedAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_offered_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3783,7 +3861,7 @@ class TestAssessmentOfferedBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_offered_bank_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_offered_list = list()
@@ -3927,16 +4005,21 @@ class TestAssessmentOfferedBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_taken_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
-    request.cls.assessment_taken_list = list()
-    request.cls.assessment_taken_ids = list()
     request.cls.svc_mgr = Runtime().get_service_manager(
         'ASSESSMENT',
         proxy=PROXY,
         implementation=request.cls.service_config)
-    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    request.cls.fake_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
+
+
+@pytest.fixture(scope="function")
+def assessment_taken_lookup_session_test_fixture(request):
+    request.cls.assessment_taken_list = list()
+    request.cls.assessment_taken_ids = list()
+
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_bank_form_for_create([])
         create_form.display_name = 'Test Bank'
@@ -3960,7 +4043,9 @@ def assessment_taken_lookup_session_class_fixture(request):
     else:
         request.cls.catalog = request.cls.svc_mgr.get_assessment_taken_lookup_session(proxy=PROXY)
 
-    def class_tear_down():
+    request.cls.session = request.cls.catalog
+
+    def test_tear_down():
         if not is_never_authz(request.cls.service_config):
             for catalog in request.cls.svc_mgr.get_banks():
                 for obj in catalog.get_assessments():
@@ -3973,12 +4058,7 @@ def assessment_taken_lookup_session_class_fixture(request):
                     catalog.delete_item(obj.ident)
                 request.cls.svc_mgr.delete_bank(catalog.ident)
 
-    request.addfinalizer(class_tear_down)
-
-
-@pytest.fixture(scope="function")
-def assessment_taken_lookup_session_test_fixture(request):
-    request.cls.session = request.cls.catalog
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("assessment_taken_lookup_session_class_fixture", "assessment_taken_lookup_session_test_fixture")
@@ -4025,67 +4105,115 @@ class TestAssessmentTakenLookupSession(object):
     def test_get_assessment_taken(self):
         """Tests get_assessment_taken"""
         # From test_templates/resource.py ResourceLookupSession.get_resource_template
-        if not is_never_authz(self.service_config):
-            self.catalog.use_isolated_bank_view()
-            obj = self.catalog.get_assessment_taken(self.assessment_taken_list[0].ident)
-            assert obj.ident == self.assessment_taken_list[0].ident
-            self.catalog.use_federated_bank_view()
-            obj = self.catalog.get_assessment_taken(self.assessment_taken_list[0].ident)
-            assert obj.ident == self.assessment_taken_list[0].ident
+        if self.svc_mgr.supports_assessment_taken_query():
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_bank_view()
+                obj = self.catalog.get_assessment_taken(self.assessment_taken_list[0].ident)
+                assert obj.ident == self.assessment_taken_list[0].ident
+                self.catalog.use_federated_bank_view()
+                obj = self.catalog.get_assessment_taken(self.assessment_taken_list[0].ident)
+                assert obj.ident == self.assessment_taken_list[0].ident
+            else:
+                with pytest.raises(errors.NotFound):
+                    self.catalog.get_assessment_taken(self.fake_id)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessment_taken(self.fake_id)
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_bank_view()
+                obj = self.catalog.get_assessment_taken(self.assessment_taken_list[0].ident)
+                assert obj.ident == self.assessment_taken_list[0].ident
+                self.catalog.use_federated_bank_view()
+                obj = self.catalog.get_assessment_taken(self.assessment_taken_list[0].ident)
+                assert obj.ident == self.assessment_taken_list[0].ident
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessment_taken(self.fake_id)
 
     def test_get_assessments_taken_by_ids(self):
         """Tests get_assessments_taken_by_ids"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_taken_query():
             objects = self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
             assert isinstance(objects, AssessmentTakenList)
             self.catalog.use_federated_bank_view()
             objects = self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
-            assert objects.available() > 0
             assert isinstance(objects, AssessmentTakenList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
+                assert isinstance(objects, AssessmentTakenList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
+                assert objects.available() > 0
+                assert isinstance(objects, AssessmentTakenList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_taken_by_ids(self.assessment_taken_ids)
 
     def test_get_assessments_taken_by_genus_type(self):
         """Tests get_assessments_taken_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_taken_query():
             objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
             assert isinstance(objects, AssessmentTakenList)
             self.catalog.use_federated_bank_view()
             objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() > 0
             assert isinstance(objects, AssessmentTakenList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AssessmentTakenList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() > 0
+                assert isinstance(objects, AssessmentTakenList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_taken_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_assessments_taken_by_parent_genus_type(self):
         """Tests get_assessments_taken_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, AssessmentTakenList)
-            self.catalog.use_federated_bank_view()
-            objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, AssessmentTakenList)
+        if self.svc_mgr.supports_assessment_taken_query():
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AssessmentTakenList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AssessmentTakenList)
+            else:
+                with pytest.raises(errors.Unimplemented):
+                    # because the never_authz "tries harder" and runs the actual query...
+                    #    whereas above the method itself in JSON returns an empty list
+                    self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, AssessmentTakenList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AssessmentTakenList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_taken_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_assessments_taken_by_record_type(self):
         """Tests get_assessments_taken_by_record_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_taken_query():
             objects = self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
             assert isinstance(objects, AssessmentTakenList)
             self.catalog.use_federated_bank_view()
@@ -4093,8 +4221,16 @@ class TestAssessmentTakenLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, AssessmentTakenList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
+                assert isinstance(objects, AssessmentTakenList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, AssessmentTakenList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_taken_by_record_type(DEFAULT_TYPE)
 
     def test_get_assessments_taken_by_date(self):
         """Tests get_assessments_taken_by_date"""
@@ -4170,13 +4306,21 @@ class TestAssessmentTakenLookupSession(object):
     def test_get_assessments_taken_for_assessment_offered(self):
         """Tests get_assessments_taken_for_assessment_offered"""
         # From test_templates/learning.py::ActivityLookupSession::get_activities_for_objective_template
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_taken_query():
             results = self.session.get_assessments_taken_for_assessment_offered(self.assessment_offered.ident)
-            assert results.available() == 2
             assert isinstance(results, ABCObjects.AssessmentTakenList)
+            if not is_never_authz(self.service_config):
+                assert results.available() == 2
+            else:
+                assert results.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.session.get_assessments_taken_for_assessment_offered(self.fake_id)
+            if not is_never_authz(self.service_config):
+                results = self.session.get_assessments_taken_for_assessment_offered(self.assessment_offered.ident)
+                assert results.available() == 2
+                assert isinstance(results, ABCObjects.AssessmentTakenList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.session.get_assessments_taken_for_assessment_offered(self.fake_id)
 
     def test_get_assessments_taken_by_date_for_assessment_offered(self):
         """Tests get_assessments_taken_by_date_for_assessment_offered"""
@@ -4191,17 +4335,14 @@ class TestAssessmentTakenLookupSession(object):
     def test_get_assessments_taken_for_taker_and_assessment_offered(self):
         """Tests get_assessments_taken_for_taker_and_assessment_offered"""
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
+        takens = self.session.get_assessments_taken_for_taker_and_assessment_offered(
+            self.catalog._proxy.get_effective_agent_id(),
+            self.assessment_offered.ident)
+        assert isinstance(takens, AssessmentTakenList)
         if not is_never_authz(self.service_config):
-            takens = self.session.get_assessments_taken_for_taker_and_assessment_offered(
-                self.catalog._proxy.get_effective_agent_id(),
-                self.assessment_offered.ident)
-            assert isinstance(takens, AssessmentTakenList)
             assert takens.available() == 2
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.session.get_assessments_taken_for_taker_and_assessment_offered(
-                    self.fake_id,
-                    self.fake_id)
+            assert takens.available() == 0
 
     def test_get_assessments_taken_by_date_for_taker_and_assessment_offered(self):
         """Tests get_assessments_taken_by_date_for_taker_and_assessment_offered"""
@@ -4217,16 +4358,28 @@ class TestAssessmentTakenLookupSession(object):
         """Tests get_assessments_taken"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.assessment.objects import AssessmentTakenList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_assessment_taken_query():
             objects = self.catalog.get_assessments_taken()
             assert isinstance(objects, AssessmentTakenList)
             self.catalog.use_federated_bank_view()
             objects = self.catalog.get_assessments_taken()
-            assert objects.available() > 0
             assert isinstance(objects, AssessmentTakenList)
+
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_assessments_taken()
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_assessments_taken()
+                assert isinstance(objects, AssessmentTakenList)
+                self.catalog.use_federated_bank_view()
+                objects = self.catalog.get_assessments_taken()
+                assert objects.available() > 0
+                assert isinstance(objects, AssessmentTakenList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_assessments_taken()
 
     def test_get_assessment_taken_with_alias(self):
         if not is_never_authz(self.service_config):
@@ -4237,7 +4390,7 @@ class TestAssessmentTakenLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_taken_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_taken_list = list()
@@ -4345,7 +4498,7 @@ class TestAssessmentTakenQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_taken_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -4537,7 +4690,7 @@ class TestAssessmentTakenAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_taken_bank_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_taken_list = list()
@@ -4688,7 +4841,7 @@ class TestAssessmentTakenBankSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def assessment_taken_bank_assignment_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.assessment_taken_list = list()
@@ -4838,7 +4991,7 @@ class TestAssessmentTakenBankAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bank_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -4907,9 +5060,10 @@ class TestBankLookupSession(object):
             catalogs = self.svc_mgr.get_banks_by_ids(self.catalog_ids)
             assert catalogs.available() == 2
             assert isinstance(catalogs, ABCObjects.BankList)
-            reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+            catalog_id_strs = [str(cat_id) for cat_id in self.catalog_ids]
             for index, catalog in enumerate(catalogs):
-                assert str(catalog.ident) == reversed_catalog_ids[index]
+                assert str(catalog.ident) in catalog_id_strs
+                catalog_id_strs.remove(str(catalog.ident))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_banks_by_ids([self.fake_id])
@@ -4968,7 +5122,7 @@ class TestBankLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bank_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -5030,7 +5184,7 @@ class TestBankQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bank_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -5179,7 +5333,7 @@ class TestBankAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bank_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -5460,7 +5614,7 @@ class TestBankHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def bank_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param

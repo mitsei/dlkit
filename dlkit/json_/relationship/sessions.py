@@ -434,7 +434,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         result = collection.find(
             dict({'sourceId': str(source_id),
                   'genusTypeId': str(relationship_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -483,7 +483,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
                                          runtime=self._runtime)
         result = collection.find(
             dict({'destinationId': str(destination_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -548,7 +548,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         result = collection.find(
             dict({'destinationId': str(destination_id),
                   'genusTypeId': str(relationship_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -594,7 +594,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         result = collection.find(
             dict({'sourceId': str(source_id),
                   'destinationId': str(destination_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -654,7 +654,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
             dict({'sourceId': str(source_id),
                   'destinationId': str(destination_id),
                   'genusTypeId': str(relationship_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none

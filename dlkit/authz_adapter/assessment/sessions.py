@@ -3037,14 +3037,15 @@ class AssessmentTakenLookupSession(abc_assessment_sessions.AssessmentTakenLookup
 
     @raise_null_argument
     def get_assessments_taken_for_assessment(self, assessment_id):
-        # Implemented from azosid template for -
-        # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         if self._can('lookup'):
             return self._provider_session.get_assessments_taken_for_assessment(assessment_id)
         self._check_lookup_conditions()  # raises PermissionDenied
-        query = self._query_session.get_assessment_taken_query()
-        query.match_assessment_id(assessment_id, match=True)
-        return self._try_harder(query)
+        raise PermissionDenied()
+        # The following doesn't work with the queries...
+        # query = self._query_session.get_assessment_taken_query()
+        # query.match_taking_agent_id(resource_id, match=True)
+        # query.match_assessment_offered_id(assessment_offered_id, match=True)
+        # return self._try_harder(query)
 
     @raise_null_argument
     def get_assessments_taken_by_date_for_assessment(self, assessment_id, from_, to):
