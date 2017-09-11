@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.10] - 2017-09-11
+### Fixed
+- For getting section results, account for non-magic-multiple-choice
+  choices.
+
 ## [0.5.9] - 2017-09-05
 ### Changed
 - `GradeLookupSession` in `authz_adapter` to throw Permission Denied,
@@ -197,6 +202,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.10]: https://github.com/mitsei/dlkit/compare/0.5.9...0.5.10
 [0.5.9]: https://github.com/mitsei/dlkit/compare/0.5.8...0.5.9
 [0.5.8]: https://github.com/mitsei/dlkit/compare/0.5.7...0.5.8
 [0.5.7]: https://github.com/mitsei/dlkit/compare/0.5.6...0.5.7
