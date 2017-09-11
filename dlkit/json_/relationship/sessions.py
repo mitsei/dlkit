@@ -68,7 +68,6 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
     cast of the ``Relationship``.
 
     """
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Family
@@ -91,7 +90,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     family_id = property(fget=get_family_id)
@@ -105,7 +104,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     family = property(fget=get_family)
@@ -124,7 +123,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -138,7 +138,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_relationship_view(self):
@@ -151,7 +152,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_family_view(self):
@@ -163,7 +165,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_family_view(self):
@@ -174,7 +177,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def use_effective_relationship_view(self):
@@ -183,7 +187,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_effective_relationship_view
         self._use_effective_view()
 
     def use_any_effective_relationship_view(self):
@@ -192,7 +197,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_any_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_any_effective_relationship_view
         self._use_any_effective_view()
 
     @utilities.arguments_not_none
@@ -211,7 +217,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -236,7 +243,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -270,7 +278,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -294,7 +303,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.RelationshipList([])
 
@@ -312,7 +322,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.RelationshipList([])
 
@@ -330,7 +341,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_on_date
         relationship_list = []
         for relationship in self.get_relationships():
             if overlap(from_, to, relationship.start_date, relationship.end_date):
@@ -349,7 +361,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -375,7 +388,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source_on_date
         relationship_list = []
         for relationship in self.get_relationships_for_source(source_id):
             if overlap(from_, to, relationship.start_date, relationship.end_date):
@@ -411,7 +425,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_source
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -419,7 +434,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         result = collection.find(
             dict({'sourceId': str(source_id),
                   'genusTypeId': str(relationship_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -440,7 +455,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_source_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_source_on_date
         relationship_list = []
         for relationship in self.get_relationships_by_genus_type_for_source():
             if overlap(from_, to, relationship.start_date, relationship.end_date):
@@ -459,14 +475,15 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_destination
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_destination
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
                                          runtime=self._runtime)
         result = collection.find(
             dict({'destinationId': str(destination_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -485,7 +502,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_destination_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_destination_on_date
         relationship_list = []
         for relationship in self.get_relationships_for_destination():
             if overlap(from_, to, relationship.start_date, relationship.end_date):
@@ -521,7 +539,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_destination
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_destination
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -529,7 +548,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         result = collection.find(
             dict({'destinationId': str(destination_id),
                   'genusTypeId': str(relationship_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -566,7 +585,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_peers
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -574,7 +594,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         result = collection.find(
             dict({'sourceId': str(source_id),
                   'destinationId': str(destination_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -624,7 +644,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_peers
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -633,7 +654,7 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
             dict({'sourceId': str(source_id),
                   'destinationId': str(destination_id),
                   'genusTypeId': str(relationship_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.RelationshipList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -667,7 +688,8 @@ class RelationshipLookupSession(abc_relationship_sessions.RelationshipLookupSess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
@@ -688,7 +710,6 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
     ``RelationshipQuery``.
 
     """
-    # Built from: templates/osid_session.GenericRelationshipQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Family
@@ -711,7 +732,7 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     family_id = property(fget=get_family_id)
@@ -725,7 +746,7 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     family = property(fget=get_family)
@@ -739,7 +760,8 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_family_view(self):
@@ -750,7 +772,8 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def can_search_relationships(self):
@@ -767,7 +790,8 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -780,7 +804,8 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.RelationshipQuery(runtime=self._runtime)
 
     relationship_query = property(fget=get_relationship_query)
@@ -802,7 +827,8 @@ class RelationshipQuerySession(abc_relationship_sessions.RelationshipQuerySessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in relationship_query._query_terms:
@@ -866,7 +892,6 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Family
@@ -890,7 +915,7 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     family_id = property(fget=get_family_id)
@@ -904,7 +929,7 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     family = property(fget=get_family)
@@ -922,7 +947,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -946,7 +972,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -974,7 +1001,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipAdminSession.get_relationship_form_for_create
+        # Implemented from template for
+        # osid.relationship.RelationshipAdminSession.get_relationship_form_for_create
         # These really need to be in module imports:
         from dlkit.abstract_osid.id.primitives import Id as ABCId
         from dlkit.abstract_osid.type.primitives import Type as ABCType
@@ -1027,7 +1055,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
                                          runtime=self._runtime)
@@ -1066,7 +1095,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1089,7 +1119,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
                                          runtime=self._runtime)
@@ -1122,7 +1153,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
                                          runtime=self._runtime)
@@ -1161,7 +1193,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1179,7 +1212,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.delete_resource_template
         collection = JSONClientValidated('relationship',
                                          collection='Relationship',
                                          runtime=self._runtime)
@@ -1206,7 +1240,6 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1232,7 +1265,8 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=relationship_id, equivalent_id=alias_id)
 
 
@@ -1257,7 +1291,6 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
     sacrifice some interoperability for the sake of precision.
 
     """
-    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'relationship.FamilyLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1283,7 +1316,8 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.can_lookup_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1299,7 +1333,8 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1314,7 +1349,8 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -1337,7 +1373,8 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bin
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=family_id)
         collection = JSONClientValidated('relationship',
@@ -1347,8 +1384,7 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         if family_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Family, cat_name='Family')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(family_id,
-                                                                       'relationship').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(family_id, 'relationship').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Family.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(family_id, 'relationship', 'Family')
@@ -1378,7 +1414,8 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_ids_template
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_Family() instead of direct to database
         if self._catalog_session is not None:
@@ -1410,7 +1447,8 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_genus_type_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_genus_type(catalog_genus_type=family_genus_type)
@@ -1492,7 +1530,8 @@ class FamilyLookupSession(abc_relationship_sessions.FamilyLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -1537,7 +1576,6 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'relationship.FamilyAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1562,7 +1600,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1570,7 +1609,7 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         return True
 
     @utilities.arguments_not_none
-    def can_create_family_with_record_types(self):
+    def can_create_family_with_record_types(self, family_record_types):
         """Tests if this user can create a single ``Family`` using the desired record types.
 
         While ``RelationshipManager.getFamilyRecordTypes()`` can be used
@@ -1588,7 +1627,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bin_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1612,7 +1652,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_create_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=family_record_types)
         for arg in family_record_types:
@@ -1651,7 +1692,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.create_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=family_form)
         collection = JSONClientValidated('relationship',
@@ -1692,7 +1734,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_update_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1715,7 +1758,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_update_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=family_id)
         collection = JSONClientValidated('relationship',
@@ -1748,7 +1792,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.update_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=family_form)
         collection = JSONClientValidated('relationship',
@@ -1786,7 +1831,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_delete_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1806,7 +1852,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.delete_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.delete_catalog(catalog_id=family_id)
         collection = JSONClientValidated('relationship',
@@ -1836,7 +1883,6 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1860,7 +1906,8 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=family_id, alias_id=alias_id)
         self._alias_id(primary_id=family_id, equivalent_id=alias_id)
@@ -1892,10 +1939,11 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
       * plenary view: provides a complete set or is an error condition
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchySession.init_template
     _session_namespace = 'relationship.FamilyHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -1918,7 +1966,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -1935,7 +1984,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -1956,7 +2006,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.can_access_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1972,7 +2023,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1987,7 +2039,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -2001,7 +2054,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -2022,7 +2076,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return FamilyLookupSession(
@@ -2045,7 +2100,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=family_id)
         return self._hierarchy_session.has_parents(id_=family_id)
@@ -2066,7 +2122,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_parent_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_parent_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=family_id)
         return self._hierarchy_session.is_parent(id_=family_id, parent_id=id_)
@@ -2084,7 +2141,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalog_ids(catalog_id=family_id)
         return self._hierarchy_session.get_parents(id_=family_id)
@@ -2105,7 +2163,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalogs(catalog_id=family_id)
         return FamilyLookupSession(
@@ -2129,7 +2188,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_ancestor_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=family_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=family_id)
@@ -2148,7 +2208,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=family_id)
         return self._hierarchy_session.has_children(id_=family_id)
@@ -2169,7 +2230,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_child_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_child_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=family_id)
         return self._hierarchy_session.is_child(id_=family_id, child_id=id_)
@@ -2187,7 +2249,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=family_id)
         return self._hierarchy_session.get_children(id_=family_id)
@@ -2208,7 +2271,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=family_id)
         return FamilyLookupSession(
@@ -2232,7 +2296,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_descendant_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=family_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=family_id)
@@ -2259,7 +2324,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_node_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=family_id,
@@ -2294,7 +2360,8 @@ class FamilyHierarchySession(abc_relationship_sessions.FamilyHierarchySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_nodes
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_nodes
         return objects.FamilyNode(self.get_family_node_ids(
             family_id=family_id,
             ancestor_levels=ancestor_levels,
@@ -2310,10 +2377,11 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
     relationships of the federation.
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.init_template
     _session_namespace = 'relationship.FamilyHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -2336,7 +2404,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -2353,7 +2422,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -2374,7 +2444,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.can_modify_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2394,7 +2465,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=family_id)
         return self._hierarchy_session.add_root(id_=family_id)
@@ -2411,7 +2483,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=family_id)
         return self._hierarchy_session.remove_root(id_=family_id)
@@ -2431,7 +2504,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=family_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=family_id, child_id=child_id)
@@ -2449,7 +2523,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=family_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=family_id, child_id=child_id)
@@ -2466,7 +2541,8 @@ class FamilyHierarchyDesignSession(abc_relationship_sessions.FamilyHierarchyDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=family_id)
         return self._hierarchy_session.remove_children(id_=family_id)

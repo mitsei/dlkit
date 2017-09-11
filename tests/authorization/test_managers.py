@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.primordium.id.primitives import Id
@@ -21,7 +21,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def authorization_profile_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.mgr = Runtime().get_service_manager(
@@ -54,6 +54,14 @@ class TestAuthorizationProfile(object):
         """Tests supports_authorization_admin"""
         assert isinstance(self.mgr.supports_authorization_admin(), bool)
 
+    def test_supports_authorization_vault(self):
+        """Tests supports_authorization_vault"""
+        assert isinstance(self.mgr.supports_authorization_vault(), bool)
+
+    def test_supports_authorization_vault_assignment(self):
+        """Tests supports_authorization_vault_assignment"""
+        assert isinstance(self.mgr.supports_authorization_vault_assignment(), bool)
+
     def test_supports_vault_lookup(self):
         """Tests supports_vault_lookup"""
         assert isinstance(self.mgr.supports_vault_lookup(), bool)
@@ -65,6 +73,14 @@ class TestAuthorizationProfile(object):
     def test_supports_vault_admin(self):
         """Tests supports_vault_admin"""
         assert isinstance(self.mgr.supports_vault_admin(), bool)
+
+    def test_supports_vault_hierarchy(self):
+        """Tests supports_vault_hierarchy"""
+        assert isinstance(self.mgr.supports_vault_hierarchy(), bool)
+
+    def test_supports_vault_hierarchy_design(self):
+        """Tests supports_vault_hierarchy_design"""
+        assert isinstance(self.mgr.supports_vault_hierarchy_design(), bool)
 
     def test_get_authorization_record_types(self):
         """Tests get_authorization_record_types"""
@@ -109,7 +125,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def authorization_manager_class_fixture(request):
     # Implemented from resource.ResourceManager
     request.cls.service_config = request.param
@@ -198,6 +214,18 @@ class TestAuthorizationManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_authorization_admin_session_for_vault()
 
+    def test_get_authorization_vault_session(self):
+        """Tests get_authorization_vault_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault():
+            self.svc_mgr.get_authorization_vault_session()
+
+    def test_get_authorization_vault_assignment_session(self):
+        """Tests get_authorization_vault_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault_assignment():
+            self.svc_mgr.get_authorization_vault_assignment_session()
+
     def test_get_vault_lookup_session(self):
         """Tests get_vault_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -215,6 +243,18 @@ class TestAuthorizationManager(object):
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
         if self.svc_mgr.supports_vault_admin():
             self.svc_mgr.get_vault_admin_session()
+
+    def test_get_vault_hierarchy_session(self):
+        """Tests get_vault_hierarchy_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_hierarchy():
+            self.svc_mgr.get_vault_hierarchy_session()
+
+    def test_get_vault_hierarchy_design_session(self):
+        """Tests get_vault_hierarchy_design_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_hierarchy_design():
+            self.svc_mgr.get_vault_hierarchy_design_session()
 
     def test_get_authorization_batch_manager(self):
         """Tests get_authorization_batch_manager"""
@@ -235,7 +275,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def authorization_proxy_manager_class_fixture(request):
     # Implemented from resource.ResourceProxyManager
     request.cls.service_config = request.param
@@ -334,6 +374,22 @@ class TestAuthorizationProxyManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_authorization_admin_session_for_vault()
 
+    def test_get_authorization_vault_session(self):
+        """Tests get_authorization_vault_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault():
+            self.svc_mgr.get_authorization_vault_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_authorization_vault_session()
+
+    def test_get_authorization_vault_assignment_session(self):
+        """Tests get_authorization_vault_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_authorization_vault_assignment():
+            self.svc_mgr.get_authorization_vault_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_authorization_vault_assignment_session()
+
     def test_get_vault_lookup_session(self):
         """Tests get_vault_lookup_session"""
         # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
@@ -357,6 +413,22 @@ class TestAuthorizationProxyManager(object):
             self.svc_mgr.get_vault_admin_session(PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_vault_admin_session()
+
+    def test_get_vault_hierarchy_session(self):
+        """Tests get_vault_hierarchy_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_hierarchy():
+            self.svc_mgr.get_vault_hierarchy_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_vault_hierarchy_session()
+
+    def test_get_vault_hierarchy_design_session(self):
+        """Tests get_vault_hierarchy_design_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_vault_hierarchy_design():
+            self.svc_mgr.get_vault_hierarchy_design_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_vault_hierarchy_design_session()
 
     def test_get_authorization_batch_proxy_manager(self):
         """Tests get_authorization_batch_proxy_manager"""

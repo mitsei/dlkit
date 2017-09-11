@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.hierarchy.objects import Hierarchy
 from dlkit.abstract_osid.id.objects import IdList
 from dlkit.abstract_osid.osid import errors
@@ -40,7 +40,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -224,7 +224,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -321,7 +321,7 @@ class TestAssetQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_search_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -393,7 +393,7 @@ class TestAssetSearchSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -686,7 +686,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_notification_session_class_fixture(request):
     # Implemented from init template for ResourceNotificationSession
     request.cls.service_config = request.param
@@ -856,7 +856,7 @@ class TestAssetNotificationSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_repository_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
@@ -996,7 +996,7 @@ class TestAssetRepositorySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_repository_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -1125,7 +1125,7 @@ class TestAssetRepositoryAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_composition_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.asset_list = list()
@@ -1235,7 +1235,7 @@ class TestAssetCompositionSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def asset_composition_design_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.asset_list = list()
@@ -1369,17 +1369,23 @@ class TestAssetCompositionDesignSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def composition_lookup_session_class_fixture(request):
     # From test_templates/repository.py::CompositionLookupSession::init_template
     request.cls.service_config = request.param
-    request.cls.composition_list = list()
-    request.cls.composition_ids = list()
     request.cls.svc_mgr = Runtime().get_service_manager(
         'REPOSITORY',
         proxy=PROXY,
         implementation=request.cls.service_config)
-    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    request.cls.fake_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
+
+
+@pytest.fixture(scope="function")
+def composition_lookup_session_test_fixture(request):
+    # From test_templates/repository.py::CompositionLookupSession::init_template
+    request.cls.composition_list = list()
+    request.cls.composition_ids = list()
+
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_repository_form_for_create([])
         create_form.display_name = 'Test Repository'
@@ -1397,7 +1403,9 @@ def composition_lookup_session_class_fixture(request):
     else:
         request.cls.catalog = request.cls.svc_mgr.get_composition_lookup_session(proxy=PROXY)
 
-    def class_tear_down():
+    request.cls.session = request.cls.catalog
+
+    def test_tear_down():
         if not is_never_authz(request.cls.service_config):
             for catalog in request.cls.svc_mgr.get_repositories():
                 catalog.use_unsequestered_composition_view()
@@ -1405,14 +1413,7 @@ def composition_lookup_session_class_fixture(request):
                     catalog.delete_composition(obj.ident)
                 request.cls.svc_mgr.delete_repository(catalog.ident)
 
-    request.addfinalizer(class_tear_down)
-
-
-@pytest.fixture(scope="function")
-def composition_lookup_session_test_fixture(request):
-    # From test_templates/repository.py::CompositionLookupSession::init_template
-    if not is_never_authz(request.cls.service_config):
-        request.cls.session = request.cls.catalog
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("composition_lookup_session_class_fixture", "composition_lookup_session_test_fixture")
@@ -1482,75 +1483,116 @@ class TestCompositionLookupSession(object):
 
     def test_get_composition(self):
         """Tests get_composition"""
-        if not is_never_authz(self.service_config):
-            self.catalog.use_isolated_repository_view()
-            obj = self.catalog.get_composition(self.composition_list[0].ident)
-            assert obj.ident == self.composition_list[0].ident
-            self.catalog.use_federated_repository_view()
-            obj = self.catalog.get_composition(self.composition_list[0].ident)
-            assert obj.ident == self.composition_list[0].ident
-            self.catalog.use_sequestered_composition_view()
-            obj = self.catalog.get_composition(self.composition_list[1].ident)
-            with pytest.raises(errors.NotFound):
-                obj = self.catalog.get_composition(self.composition_list[3].ident)
+        # From test_templates/resource.py ResourceLookupSession.get_resource_template
+        if self.svc_mgr.supports_composition_query():
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_repository_view()
+                obj = self.catalog.get_composition(self.composition_list[0].ident)
+                assert obj.ident == self.composition_list[0].ident
+                self.catalog.use_federated_repository_view()
+                obj = self.catalog.get_composition(self.composition_list[0].ident)
+                assert obj.ident == self.composition_list[0].ident
+            else:
+                with pytest.raises(errors.NotFound):
+                    self.catalog.get_composition(self.fake_id)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_composition(self.fake_id)
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_repository_view()
+                obj = self.catalog.get_composition(self.composition_list[0].ident)
+                assert obj.ident == self.composition_list[0].ident
+                self.catalog.use_federated_repository_view()
+                obj = self.catalog.get_composition(self.composition_list[0].ident)
+                assert obj.ident == self.composition_list[0].ident
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_composition(self.fake_id)
 
     def test_get_compositions_by_ids(self):
         """Tests get_compositions_by_ids"""
-        # Override this because we haven't implemented CompositionQuerySession, so will
-        #   throw PermissionDenied with NEVER_AUTHZ
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_composition_query():
             objects = self.catalog.get_compositions_by_ids(self.composition_ids)
             assert isinstance(objects, CompositionList)
             self.catalog.use_federated_repository_view()
             objects = self.catalog.get_compositions_by_ids(self.composition_ids)
             assert isinstance(objects, CompositionList)
-            assert objects.available() > 0
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_compositions_by_ids(self.composition_ids)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_compositions_by_ids(self.composition_ids)
+                assert isinstance(objects, CompositionList)
+                self.catalog.use_federated_repository_view()
+                objects = self.catalog.get_compositions_by_ids(self.composition_ids)
+                assert objects.available() > 0
+                assert isinstance(objects, CompositionList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_compositions_by_ids(self.composition_ids)
 
     def test_get_compositions_by_genus_type(self):
         """Tests get_compositions_by_genus_type"""
-        # Override this because we haven't implemented CompositionQuerySession, so will
-        #   throw PermissionDenied with NEVER_AUTHZ
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_composition_query():
             objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
             assert isinstance(objects, CompositionList)
             self.catalog.use_federated_repository_view()
             objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
             assert isinstance(objects, CompositionList)
-            assert objects.available() > 0
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, CompositionList)
+                self.catalog.use_federated_repository_view()
+                objects = self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() > 0
+                assert isinstance(objects, CompositionList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_compositions_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_compositions_by_parent_genus_type(self):
         """Tests get_compositions_by_parent_genus_type"""
-        # Override this because we haven't implemented CompositionQuerySession, so will
-        #   throw PermissionDenied with NEVER_AUTHZ
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, CompositionList)
-            self.catalog.use_federated_repository_view()
-            objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, CompositionList)
+        if self.svc_mgr.supports_composition_query():
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, CompositionList)
+                self.catalog.use_federated_repository_view()
+                objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, CompositionList)
+            else:
+                with pytest.raises(errors.Unimplemented):
+                    # because the never_authz "tries harder" and runs the actual query...
+                    #    whereas above the method itself in JSON returns an empty list
+                    self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, CompositionList)
+                self.catalog.use_federated_repository_view()
+                objects = self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, CompositionList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_compositions_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_compositions_by_record_type(self):
         """Tests get_compositions_by_record_type"""
-        # Override this because we haven't implemented CompositionQuerySession, so will
-        #   throw PermissionDenied with NEVER_AUTHZ
+        # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_composition_query():
             objects = self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
             assert isinstance(objects, CompositionList)
             self.catalog.use_federated_repository_view()
@@ -1558,8 +1600,16 @@ class TestCompositionLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, CompositionList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
+                assert isinstance(objects, CompositionList)
+                self.catalog.use_federated_repository_view()
+                objects = self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, CompositionList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_compositions_by_record_type(DEFAULT_TYPE)
 
     def test_get_compositions_by_provider(self):
         """Tests get_compositions_by_provider"""
@@ -1573,18 +1623,37 @@ class TestCompositionLookupSession(object):
 
     def test_get_compositions(self):
         """Tests get_compositions"""
+        # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.repository.objects import CompositionList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_composition_query():
             objects = self.catalog.get_compositions()
             assert isinstance(objects, CompositionList)
             self.catalog.use_federated_repository_view()
-            self.catalog.use_unsequestered_composition_view()
-            assert self.catalog.get_compositions().available() == 4
-            self.catalog.use_sequestered_composition_view()
-            assert self.catalog.get_compositions().available() == 2
+            objects = self.catalog.get_compositions()
+            assert isinstance(objects, CompositionList)
+
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_compositions()
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_compositions()
+                assert isinstance(objects, CompositionList)
+                self.catalog.use_federated_repository_view()
+                objects = self.catalog.get_compositions()
+                assert objects.available() > 0
+                assert isinstance(objects, CompositionList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_compositions()
+
+    def test_get_composition_with_alias(self):
+        if not is_never_authz(self.service_config):
+            # Because you can't create the alias with NEVER_AUTHZ
+            self.catalog.alias_composition(self.composition_ids[0], ALIAS_ID)
+            obj = self.catalog.get_composition(ALIAS_ID)
+            assert obj.get_id() == self.composition_ids[0]
 
 
 class FakeQuery:
@@ -1592,7 +1661,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def composition_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -1705,7 +1774,7 @@ class TestCompositionQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def composition_search_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -1767,7 +1836,7 @@ class TestCompositionSearchSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def composition_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -2012,7 +2081,7 @@ class TestCompositionAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def composition_repository_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
@@ -2152,7 +2221,7 @@ class TestCompositionRepositorySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def composition_repository_assignment_session_class_fixture(request):
     # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
     request.cls.service_config = request.param
@@ -2281,7 +2350,7 @@ class TestCompositionRepositoryAssignmentSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def repository_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -2350,9 +2419,10 @@ class TestRepositoryLookupSession(object):
             catalogs = self.svc_mgr.get_repositories_by_ids(self.catalog_ids)
             assert catalogs.available() == 2
             assert isinstance(catalogs, ABCObjects.RepositoryList)
-            reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+            catalog_id_strs = [str(cat_id) for cat_id in self.catalog_ids]
             for index, catalog in enumerate(catalogs):
-                assert str(catalog.ident) == reversed_catalog_ids[index]
+                assert str(catalog.ident) in catalog_id_strs
+                catalog_id_strs.remove(str(catalog.ident))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_repositories_by_ids([self.fake_id])
@@ -2411,7 +2481,7 @@ class TestRepositoryLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def repository_query_session_class_fixture(request):
     # From test_templates/resource.py::BinQuerySession::init_template
     request.cls.service_config = request.param
@@ -2473,7 +2543,7 @@ class TestRepositoryQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def repository_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -2622,7 +2692,7 @@ class TestRepositoryAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def repository_hierarchy_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchySession::init_template
     request.cls.service_config = request.param
@@ -2903,7 +2973,7 @@ class TestRepositoryHierarchySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def repository_hierarchy_design_session_class_fixture(request):
     # From test_templates/resource.py::BinHierarchyDesignSession::init_template
     request.cls.service_config = request.param

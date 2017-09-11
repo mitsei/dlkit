@@ -177,7 +177,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
 
     def get_relationship_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RelationshipAdminSession')(
             provider_session=self._provider_manager.get_relationship_admin_session(),
             authz_session=self._get_authz_session(),
@@ -198,7 +198,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
 
     def get_family_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyLookupSession')(
             provider_session=self._provider_manager.get_family_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -209,7 +209,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
 
     def get_family_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyAdminSession')(
             provider_session=self._provider_manager.get_family_admin_session(),
             authz_session=self._get_authz_session(),
@@ -220,7 +220,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
 
     def get_family_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyHierarchySession')(
             provider_session=self._provider_manager.get_family_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -231,7 +231,7 @@ class RelationshipManager(osid_managers.OsidManager, RelationshipProfile, relati
 
     def get_family_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyHierarchyDesignSession')(
             provider_session=self._provider_manager.get_family_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -335,7 +335,7 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
     @raise_null_argument
     def get_relationship_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'RelationshipAdminSession')(
             provider_session=self._provider_manager.get_relationship_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -357,7 +357,7 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
     @raise_null_argument
     def get_family_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyLookupSession')(
             provider_session=self._provider_manager.get_family_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -368,7 +368,7 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
     @raise_null_argument
     def get_family_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyAdminSession')(
             provider_session=self._provider_manager.get_family_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -379,7 +379,7 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
     @raise_null_argument
     def get_family_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyHierarchySession')(
             provider_session=self._provider_manager.get_family_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -390,7 +390,7 @@ class RelationshipProxyManager(osid_managers.OsidProxyManager, RelationshipProfi
     @raise_null_argument
     def get_family_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'FamilyHierarchyDesignSession')(
             provider_session=self._provider_manager.get_family_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

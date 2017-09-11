@@ -26,7 +26,6 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
     the same method produce a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'commenting.Comment'
         self._runtime = runtime
@@ -48,7 +47,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('referenceId', str(source_id), match)
 
     def clear_reference_id_terms(self):
@@ -57,7 +56,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('referenceId')
 
     reference_id_terms = property(fdel=clear_reference_id_terms)
@@ -73,7 +72,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('commentorId', str(resource_id), match)
 
     def clear_commentor_id_terms(self):
@@ -82,7 +81,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('commentorId')
 
     commentor_id_terms = property(fdel=clear_commentor_id_terms)
@@ -119,7 +118,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('commentor')
 
     commentor_terms = property(fdel=clear_commentor_terms)
@@ -135,7 +134,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('commentingAgentId', str(agent_id), match)
 
     def clear_commenting_agent_id_terms(self):
@@ -144,7 +143,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('commentingAgentId')
 
     commenting_agent_id_terms = property(fdel=clear_commenting_agent_id_terms)
@@ -221,7 +220,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('text')
 
     text_terms = property(fdel=clear_text_terms)
@@ -237,7 +236,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('ratingId', str(grade_id), match)
 
     def clear_rating_id_terms(self):
@@ -246,7 +245,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('ratingId')
 
     rating_id_terms = property(fdel=clear_rating_id_terms)
@@ -293,7 +292,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('rating')
 
     rating_terms = property(fdel=clear_rating_terms)
@@ -309,7 +308,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedBookIds', str(book_id), match)
 
     def clear_book_id_terms(self):
@@ -318,7 +317,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedBookIds')
 
     book_id_terms = property(fdel=clear_book_id_terms)
@@ -354,7 +353,7 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('book')
 
     book_terms = property(fdel=clear_book_terms)
@@ -386,7 +385,6 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
     the same method produce a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('BOOK_RECORD_TYPES', runtime)
@@ -429,7 +427,6 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('commentId')
 
     comment_id_terms = property(fdel=clear_comment_id_terms)
@@ -475,7 +472,6 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('comment')
 
     comment_terms = property(fdel=clear_comment_terms)
@@ -499,7 +495,6 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorBookId')
 
     ancestor_book_id_terms = property(fdel=clear_ancestor_book_id_terms)
@@ -547,7 +542,6 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorBook')
 
     ancestor_book_terms = property(fdel=clear_ancestor_book_terms)
@@ -571,7 +565,6 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantBookId')
 
     descendant_book_id_terms = property(fdel=clear_descendant_book_id_terms)
@@ -619,7 +612,6 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantBook')
 
     descendant_book_terms = property(fdel=clear_descendant_book_terms)

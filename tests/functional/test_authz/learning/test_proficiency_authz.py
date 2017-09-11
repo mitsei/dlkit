@@ -194,3 +194,332 @@ def authz_adapter_class_fixture(request):
                 request.cls.vault_admin_session.delete_vault(vault.ident)
 
     request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def authz_adapter_test_fixture(request):
+    request.cls.proficiency_id_lists = []
+    count = 0
+    if not is_never_authz(request.cls.service_config):
+        resource_id = Id(authority='TEST', namespace='resource.Resource', identifier='TEST')
+        create_form = request.cls.objective_bank_list[0].get_objective_form_for_create([])
+        create_form.display_name = 'Objective for Proficiency Tests'
+        create_form.description = 'Objective for authz adapter tests for Proficiency'
+        request.cls.objective = request.cls.objective_bank_list[0].create_objective(create_form)
+        for objective_bank_ in request.cls.objective_bank_list:
+            request.cls.proficiency_id_lists.append([])
+            for color in ['Red', 'Blue', 'Red']:
+                create_form = objective_bank_.get_proficiency_form_for_create(resource_id, request.cls.objective.ident, [])
+                create_form.display_name = color + ' ' + str(count) + ' Proficiency'
+                create_form.description = color + ' proficiency for authz adapter tests from ObjectiveBank number ' + str(count)
+                if color == 'Blue':
+                    create_form.genus_type = BLUE_TYPE
+                proficiency = objective_bank_.create_proficiency(create_form)
+                if count == 2 and color == 'Blue':
+                    request.cls.learning_mgr.assign_proficiency_to_objective_bank(
+                        proficiency.ident,
+                        request.cls.objective_bank_id_list[7])
+                request.cls.proficiency_id_lists[count].append(proficiency.ident)
+            count += 1
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for index, objective_bank_ in enumerate(request.cls.objective_bank_list):
+                for proficiency_id in request.cls.proficiency_id_lists[index]:
+                    objective_bank_.delete_proficiency(proficiency_id)
+            request.cls.objective_bank_list[0].delete_objective(request.cls.objective.ident)
+
+    request.addfinalizer(test_tear_down)
+
+
+@pytest.mark.usefixtures("authz_adapter_class_fixture", "authz_adapter_test_fixture")
+class TestProficiencyAuthzAdapter(object):
+
+    def test_lookup_objective_bank_0_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[0])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            # with pytest.raises(errors.NotFound):
+            #     proficiencies = objective_bank.get_proficiencies()
+            # with pytest.raises(errors.NotFound):
+            #     proficiencies = objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE)
+            # for proficiency_id in self.proficiency_id_lists[0]:
+            #     with pytest.raises(errors.NotFound):
+            #         proficiency = objective_bank.get_proficiency(proficiency_id)
+            # with pytest.raises(errors.NotFound):
+            #     proficiencies = objective_bank.get_proficiencies_by_ids(self.proficiency_id_lists[0])
+
+    def test_lookup_objective_bank_0_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[0])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            assert objective_bank.can_lookup_proficiencies()
+            assert objective_bank.get_proficiencies().available() == 1
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).next().ident == self.proficiency_id_lists[2][1]
+            objective_bank.get_proficiency(self.proficiency_id_lists[2][1])
+            for proficiency_num in [0, 2]:
+                with pytest.raises(errors.NotFound):  # Is this right?  Perhaps PermissionDenied
+                    proficiency = objective_bank.get_proficiency(self.proficiency_id_lists[2][proficiency_num])
+
+    def test_lookup_objective_bank_0_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[0])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            # print "START"
+            assert objective_bank.get_proficiencies().available() == 13
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 5
+            for proficiency in objective_bank.get_proficiencies():
+                objective_bank.get_proficiency(proficiency.ident)
+            proficiency_ids = [proficiency.ident for proficiency in objective_bank.get_proficiencies()]
+            objective_bank.get_proficiencies_by_ids(proficiency_ids)
+            for proficiency_id in self.proficiency_id_lists[0]:
+                with pytest.raises(errors.NotFound):
+                    proficiency = objective_bank.get_proficiency(proficiency_id)
+            proficiency = objective_bank.get_proficiency(self.proficiency_id_lists[2][1])
+            for proficiency_num in [0, 2]:
+                with pytest.raises(errors.NotFound):
+                    proficiency = objective_bank.get_proficiency(self.proficiency_id_lists[2][proficiency_num])
+            for proficiency_id in self.proficiency_id_lists[1]:
+                    proficiency = objective_bank.get_proficiency(proficiency_id)
+            for proficiency_id in self.proficiency_id_lists[3]:
+                    proficiency = objective_bank.get_proficiency(proficiency_id)
+            for proficiency_id in self.proficiency_id_lists[4]:
+                    proficiency = objective_bank.get_proficiency(proficiency_id)
+            for proficiency_id in self.proficiency_id_lists[5]:
+                    proficiency = objective_bank.get_proficiency(proficiency_id)
+
+    def test_lookup_objective_bank_0_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[0])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 0
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 0
+
+    def test_lookup_objective_bank_1_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[1])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 3
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_objective_bank_1_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[1])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 9
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 3
+
+    def test_lookup_objective_bank_1_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[1])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 9
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 3
+
+    def test_lookup_objective_bank_1_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[1])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 3
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_objective_bank_2_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[2])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 1
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     proficiencies = objective_bank.get_proficiencies()
+            # with pytest.raises(errors.PermissionDenied):
+            #     proficiencies = objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_objective_bank_2_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[2])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 1
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     proficiencies = objective_bank.get_proficiencies()
+            # with pytest.raises(errors.PermissionDenied):
+            #     proficiencies = objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_objective_bank_2_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[2])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 4
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 2
+            # self.assertEqual(objective_bank.get_proficiencies().available(), 3)
+            # self.assertEqual(objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available(), 1)
+
+    def test_lookup_objective_bank_2_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[2])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 1
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     proficiencies = objective_bank.get_proficiencies()
+            # with pytest.raises(errors.PermissionDenied):
+            #     proficiencies = objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_objective_bank_3_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[3])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 3
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_objective_bank_3_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[3])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_plenary_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 3
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_objective_bank_3_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[3])
+            objective_bank.use_federated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 3
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_objective_bank_3_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[3])
+            objective_bank.use_isolated_objective_bank_view()
+            objective_bank.use_comparative_proficiency_view()
+            assert objective_bank.get_proficiencies().available() == 3
+            assert objective_bank.get_proficiencies_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_query_objective_bank_0_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[0])
+            objective_bank.use_isolated_objective_bank_view()
+            with pytest.raises(errors.PermissionDenied):
+                query = objective_bank.get_proficiency_query()
+
+    def test_query_objective_bank_0_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[0])
+            objective_bank.use_federated_objective_bank_view()
+            query = objective_bank.get_proficiency_query()
+            query.match_display_name('red')
+            assert objective_bank.get_proficiencies_by_query(query).available() == 8
+            query.clear_display_name_terms()
+            query.match_display_name('blue')
+            assert objective_bank.get_proficiencies_by_query(query).available() == 5
+
+    def test_query_objective_bank_1_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[1])
+            objective_bank.use_isolated_objective_bank_view()
+            query = objective_bank.get_proficiency_query()
+            query.match_display_name('red')
+            assert objective_bank.get_proficiencies_by_query(query).available() == 2
+
+    def test_query_objective_bank_1_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_learning_mgr = Runtime().get_service_manager(
+                'LEARNING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            objective_bank = janes_learning_mgr.get_objective_bank(self.objective_bank_id_list[1])
+            objective_bank.use_federated_objective_bank_view()
+            query = objective_bank.get_proficiency_query()
+            query.match_display_name('red')
+            assert objective_bank.get_proficiencies_by_query(query).available() == 6

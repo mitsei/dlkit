@@ -29,7 +29,6 @@ class QuestionQuery(abc_assessment_queries.QuestionQuery, osid_queries.OsidObjec
     invocations of a method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.Question'
         self._runtime = runtime
@@ -67,7 +66,6 @@ class AnswerQuery(abc_assessment_queries.AnswerQuery, osid_queries.OsidObjectQue
     invocations of a method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.Answer'
         self._runtime = runtime
@@ -105,7 +103,6 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
     invocations of a method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.Item'
         self._runtime = runtime
@@ -209,7 +206,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('questionId', str(question_id), match)
 
     def clear_question_id_terms(self):
@@ -218,7 +215,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('questionId')
 
     question_id_terms = property(fdel=clear_question_id_terms)
@@ -281,7 +278,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('answerId', str(answer_id), match)
 
     def clear_answer_id_terms(self):
@@ -290,7 +287,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('answerId')
 
     answer_id_terms = property(fdel=clear_answer_id_terms)
@@ -352,7 +349,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('assessmentId', str(assessment_id), match)
 
     def clear_assessment_id_terms(self):
@@ -361,7 +358,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('assessmentId')
 
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
@@ -424,7 +421,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedBankIds', str(bank_id), match)
 
     def clear_bank_id_terms(self):
@@ -433,7 +430,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedBankIds')
 
     bank_id_terms = property(fdel=clear_bank_id_terms)
@@ -469,7 +466,7 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('bank')
 
     bank_terms = property(fdel=clear_bank_terms)
@@ -500,7 +497,6 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
     invocations of a method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.Assessment'
         self._runtime = runtime
@@ -522,7 +518,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('levelId', str(grade_id), match)
 
     def clear_level_id_terms(self):
@@ -531,7 +527,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('levelId')
 
     level_id_terms = property(fdel=clear_level_id_terms)
@@ -578,7 +574,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('level')
 
     level_terms = property(fdel=clear_level_terms)
@@ -594,7 +590,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('rubricId', str(assessment_id), match)
 
     def clear_rubric_id_terms(self):
@@ -603,7 +599,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('rubricId')
 
     rubric_id_terms = property(fdel=clear_rubric_id_terms)
@@ -650,7 +646,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('rubric')
 
     rubric_terms = property(fdel=clear_rubric_terms)
@@ -744,7 +740,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('assessmentOfferedId')
 
     assessment_offered_id_terms = property(fdel=clear_assessment_offered_id_terms)
@@ -810,7 +806,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('assessmentTakenId', str(assessment_taken_id), match)
 
     def clear_assessment_taken_id_terms(self):
@@ -819,7 +815,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('assessmentTakenId')
 
     assessment_taken_id_terms = property(fdel=clear_assessment_taken_id_terms)
@@ -884,7 +880,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedBankIds', str(bank_id), match)
 
     def clear_bank_id_terms(self):
@@ -893,7 +889,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedBankIds')
 
     bank_id_terms = property(fdel=clear_bank_id_terms)
@@ -929,7 +925,7 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('bank')
 
     bank_terms = property(fdel=clear_bank_terms)
@@ -961,7 +957,6 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
     invocations of a method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.AssessmentOffered'
         self._runtime = runtime
@@ -991,7 +986,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('assessmentId')
 
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
@@ -1028,7 +1023,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('assessment')
 
     assessment_terms = property(fdel=clear_assessment_terms)
@@ -1044,7 +1039,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('levelId', str(grade_id), match)
 
     def clear_level_id_terms(self):
@@ -1053,7 +1048,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('levelId')
 
     level_id_terms = property(fdel=clear_level_id_terms)
@@ -1100,7 +1095,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('level')
 
     level_terms = property(fdel=clear_level_terms)
@@ -1122,7 +1117,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('itemsSequential')
 
     items_sequential_terms = property(fdel=clear_items_sequential_terms)
@@ -1144,7 +1139,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('itemsShuffled')
 
     items_shuffled_terms = property(fdel=clear_items_shuffled_terms)
@@ -1161,7 +1156,6 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_date_time
         self._match_minimum_date_time('startTime', start, match)
         self._match_maximum_date_time('startTime', end, match)
 
@@ -1183,7 +1177,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('startTime')
 
     start_time_terms = property(fdel=clear_start_time_terms)
@@ -1201,7 +1195,6 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_date_time
         self._match_minimum_date_time('deadline', start, match)
         self._match_maximum_date_time('deadline', end, match)
 
@@ -1222,7 +1215,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('deadline')
 
     deadline_terms = property(fdel=clear_deadline_terms)
@@ -1259,7 +1252,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('duration')
 
     duration_terms = property(fdel=clear_duration_terms)
@@ -1275,7 +1268,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('scoreSystemId', str(grade_system_id), match)
 
     def clear_score_system_id_terms(self):
@@ -1284,7 +1277,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('scoreSystemId')
 
     score_system_id_terms = property(fdel=clear_score_system_id_terms)
@@ -1333,7 +1326,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('scoreSystem')
 
     score_system_terms = property(fdel=clear_score_system_terms)
@@ -1349,7 +1342,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('gradeSystemId', str(grade_system_id), match)
 
     def clear_grade_system_id_terms(self):
@@ -1358,7 +1351,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('gradeSystemId')
 
     grade_system_id_terms = property(fdel=clear_grade_system_id_terms)
@@ -1407,7 +1400,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('gradeSystem')
 
     grade_system_terms = property(fdel=clear_grade_system_terms)
@@ -1424,7 +1417,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('rubricId', str(assessment_offered_id), match)
 
     def clear_rubric_id_terms(self):
@@ -1433,7 +1426,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('rubricId')
 
     rubric_id_terms = property(fdel=clear_rubric_id_terms)
@@ -1498,7 +1491,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('assessmentTakenId', str(assessment_taken_id), match)
 
     def clear_assessment_taken_id_terms(self):
@@ -1507,7 +1500,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('assessmentTakenId')
 
     assessment_taken_id_terms = property(fdel=clear_assessment_taken_id_terms)
@@ -1572,7 +1565,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedBankIds', str(bank_id), match)
 
     def clear_bank_id_terms(self):
@@ -1581,7 +1574,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedBankIds')
 
     bank_id_terms = property(fdel=clear_bank_id_terms)
@@ -1617,7 +1610,7 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('bank')
 
     bank_terms = property(fdel=clear_bank_terms)
@@ -1651,7 +1644,6 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
     invocations of a method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.AssessmentTaken'
         self._runtime = runtime
@@ -1681,7 +1673,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('assessmentOfferedId')
 
     assessment_offered_id_terms = property(fdel=clear_assessment_offered_id_terms)
@@ -1719,7 +1711,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('assessmentOffered')
 
     assessment_offered_terms = property(fdel=clear_assessment_offered_terms)
@@ -1735,7 +1727,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('takerId', str(resource_id), match)
 
     def clear_taker_id_terms(self):
@@ -1744,7 +1736,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('takerId')
 
     taker_id_terms = property(fdel=clear_taker_id_terms)
@@ -1780,7 +1772,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('taker')
 
     taker_terms = property(fdel=clear_taker_terms)
@@ -1804,7 +1796,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('takingAgentId')
 
     taking_agent_id_terms = property(fdel=clear_taking_agent_id_terms)
@@ -1955,7 +1947,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('scoreSystemId', str(grade_system_id), match)
 
     def clear_score_system_id_terms(self):
@@ -1964,7 +1956,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('scoreSystemId')
 
     score_system_id_terms = property(fdel=clear_score_system_id_terms)
@@ -2063,7 +2055,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('gradeId', str(grade_id), match)
 
     def clear_grade_id_terms(self):
@@ -2072,7 +2064,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('gradeId')
 
     grade_id_terms = property(fdel=clear_grade_id_terms)
@@ -2178,7 +2170,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('rubricId', str(assessment_taken_id), match)
 
     def clear_rubric_id_terms(self):
@@ -2187,7 +2179,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('rubricId')
 
     rubric_id_terms = property(fdel=clear_rubric_id_terms)
@@ -2251,7 +2243,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedBankIds', str(bank_id), match)
 
     def clear_bank_id_terms(self):
@@ -2260,7 +2252,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedBankIds')
 
     bank_id_terms = property(fdel=clear_bank_id_terms)
@@ -2296,7 +2288,7 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('bank')
 
     bank_terms = property(fdel=clear_bank_terms)
@@ -2325,7 +2317,6 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
 
 class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching banks Each method specifies an ``AND`` term while multiple invocations of the same method produce a nested ``OR``."""
-    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('BANK_RECORD_TYPES', runtime)
@@ -2368,7 +2359,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('itemId')
 
     item_id_terms = property(fdel=clear_item_id_terms)
@@ -2415,7 +2405,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('item')
 
     item_terms = property(fdel=clear_item_terms)
@@ -2439,7 +2428,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('assessmentId')
 
     assessment_id_terms = property(fdel=clear_assessment_id_terms)
@@ -2487,7 +2475,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('assessment')
 
     assessment_terms = property(fdel=clear_assessment_terms)
@@ -2511,7 +2498,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('assessmentOfferedId')
 
     assessment_offered_id_terms = property(fdel=clear_assessment_offered_id_terms)
@@ -2561,7 +2547,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('assessmentOffered')
 
     assessment_offered_terms = property(fdel=clear_assessment_offered_terms)
@@ -2589,7 +2574,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorBankId')
 
     ancestor_bank_id_terms = property(fdel=clear_ancestor_bank_id_terms)
@@ -2637,7 +2621,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorBank')
 
     ancestor_bank_terms = property(fdel=clear_ancestor_bank_terms)
@@ -2661,7 +2644,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantBankId')
 
     descendant_bank_id_terms = property(fdel=clear_descendant_bank_id_terms)
@@ -2709,7 +2691,6 @@ class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantBank')
 
     descendant_bank_terms = property(fdel=clear_descendant_bank_terms)

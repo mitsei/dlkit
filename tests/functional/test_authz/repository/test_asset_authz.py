@@ -196,6 +196,34 @@ def authz_adapter_class_fixture(request):
     request.addfinalizer(class_tear_down)
 
 
+@pytest.fixture(scope="function")
+def authz_adapter_test_fixture(request):
+    request.cls.asset_id_lists = []
+    count = 0
+    if not is_never_authz(request.cls.service_config):
+        for repository_ in request.cls.repository_list:
+            request.cls.asset_id_lists.append([])
+            for color in ['Red', 'Blue', 'Red']:
+                create_form = repository_.get_asset_form_for_create([])
+                create_form.display_name = color + ' ' + str(count) + ' Asset'
+                create_form.description = color + ' asset for authz adapter tests from Repository number ' + str(count)
+                if color == 'Blue':
+                    create_form.genus_type = BLUE_TYPE
+                asset = repository_.create_asset(create_form)
+                if count == 2 and color == 'Blue':
+                    request.cls.repository_mgr.assign_asset_to_repository(
+                        asset.ident,
+                        request.cls.repository_id_list[7])
+                request.cls.asset_id_lists[count].append(asset.ident)
+            count += 1
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for index, repository_ in enumerate(request.cls.repository_list):
+                for asset_id in request.cls.asset_id_lists[index]:
+                    repository_.delete_asset(asset_id)
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("authz_adapter_class_fixture", "authz_adapter_test_fixture")

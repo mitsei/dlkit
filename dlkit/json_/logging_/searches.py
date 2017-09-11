@@ -22,7 +22,6 @@ from dlkit.abstract_osid.osid import errors
 
 class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSearch):
     """The search interface for governing log entry searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'logging.LogEntry'
         self._runtime = runtime
@@ -44,7 +43,6 @@ class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSear
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = log_entry_ids
 
     @utilities.arguments_not_none
@@ -87,7 +85,6 @@ class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSear
 
 class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -105,7 +102,6 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -121,7 +117,6 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.LogEntryQueryInspector(self._query_terms, runtime=self._runtime)
 
     log_entry_query_inspector = property(fget=get_log_entry_query_inspector)
@@ -151,7 +146,6 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
 
 class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
     """The search interface for governing log searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'logging.Log'
         self._runtime = runtime
@@ -173,7 +167,6 @@ class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = log_ids
 
     @utilities.arguments_not_none
@@ -213,7 +206,6 @@ class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
 
 class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -231,7 +223,6 @@ class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -247,7 +238,6 @@ class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.LogQueryInspector(self._query_terms, runtime=self._runtime)
 
     log_query_inspector = property(fget=get_log_query_inspector)

@@ -22,7 +22,6 @@ from dlkit.abstract_osid.osid import errors
 
 class GradeSystemSearch(abc_grading_searches.GradeSystemSearch, osid_searches.OsidSearch):
     """The interface for governing grade system searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.GradeSystem'
         self._runtime = runtime
@@ -44,7 +43,6 @@ class GradeSystemSearch(abc_grading_searches.GradeSystemSearch, osid_searches.Os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = grade_system_ids
 
     @utilities.arguments_not_none
@@ -87,7 +85,6 @@ class GradeSystemSearch(abc_grading_searches.GradeSystemSearch, osid_searches.Os
 
 class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -105,7 +102,6 @@ class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -121,7 +117,6 @@ class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.GradeSystemQueryInspector(self._query_terms, runtime=self._runtime)
 
     grade_system_query_inspector = property(fget=get_grade_system_query_inspector)
@@ -151,7 +146,6 @@ class GradeSystemSearchResults(abc_grading_searches.GradeSystemSearchResults, os
 
 class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.OsidSearch):
     """``GradeEntrySearch`` defines the interface for specifying package search options."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.GradeEntry'
         self._runtime = runtime
@@ -173,7 +167,6 @@ class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.Osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = grade_entry_ids
 
     @utilities.arguments_not_none
@@ -216,7 +209,6 @@ class GradeEntrySearch(abc_grading_searches.GradeEntrySearch, osid_searches.Osid
 
 class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -234,7 +226,6 @@ class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -250,7 +241,6 @@ class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.GradeEntryQueryInspector(self._query_terms, runtime=self._runtime)
 
     grade_entry_query_inspector = property(fget=get_grade_entry_query_inspector)
@@ -280,7 +270,6 @@ class GradeEntrySearchResults(abc_grading_searches.GradeEntrySearchResults, osid
 
 class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_searches.OsidSearch):
     """``GradebookColumnSearch`` defines the interface for specifying grading search options."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.GradebookColumn'
         self._runtime = runtime
@@ -303,7 +292,6 @@ class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = gradebook_column_ids
 
     @utilities.arguments_not_none
@@ -347,7 +335,6 @@ class GradebookColumnSearch(abc_grading_searches.GradebookColumnSearch, osid_sea
 
 class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -366,7 +353,6 @@ class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchRes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -382,7 +368,6 @@ class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchRes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.GradebookColumnQueryInspector(self._query_terms, runtime=self._runtime)
 
     gradebook_column_query_inspector = property(fget=get_gradebook_column_query_inspector)
@@ -413,7 +398,6 @@ class GradebookColumnSearchResults(abc_grading_searches.GradebookColumnSearchRes
 
 class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSearch):
     """The interface for governing gradebook searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'grading.Gradebook'
         self._runtime = runtime
@@ -435,7 +419,6 @@ class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = gradebook_ids
 
     @utilities.arguments_not_none
@@ -478,7 +461,6 @@ class GradebookSearch(abc_grading_searches.GradebookSearch, osid_searches.OsidSe
 
 class GradebookSearchResults(abc_grading_searches.GradebookSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -496,7 +478,6 @@ class GradebookSearchResults(abc_grading_searches.GradebookSearchResults, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -512,7 +493,6 @@ class GradebookSearchResults(abc_grading_searches.GradebookSearchResults, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.GradebookQueryInspector(self._query_terms, runtime=self._runtime)
 
     gradebook_query_inspector = property(fget=get_gradebook_query_inspector)

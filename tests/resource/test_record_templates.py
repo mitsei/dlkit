@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 
 
 @pytest.mark.usefixtures("resource_record_class_fixture", "resource_record_test_fixture")

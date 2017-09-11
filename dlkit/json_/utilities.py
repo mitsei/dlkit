@@ -91,7 +91,7 @@ class ListFiller(object):
     def __iter__(self):
         return MyIterator(self._data)
 
-    def count(self):
+    def count(self, *args):
         try:
             return self._data.available()
         except AttributeError:
@@ -242,7 +242,7 @@ def query_is_match(query, contents):
         if key == '_id' and isinstance(value, ObjectId):
             value = str(value)
 
-        if isinstance(value, dict) and list(value.keys())[0] == '$in':
+        if isinstance(value, dict) and list(value.keys())[0] in ['$in', '$nin']:
             value_key = list(value.keys())[0]
 
             mod_value = value[value_key]
@@ -258,8 +258,13 @@ def query_is_match(query, contents):
                         haystack = contents[key.split('.')[0]][key.split('.')[1]]
                     else:
                         haystack = contents[key]
-                    if regex.match(haystack):
-                        num_matches += 1
+                    regex_key = list(value.keys())[0]
+                    if regex_key == '$in':
+                        if regex.search(haystack):
+                            num_matches += 1
+                    elif regex_key == '$nin':
+                        if regex.search(haystack) is None:
+                            num_matches += 1
                     matches_already_calculated = True
 
             if not matches_already_calculated:

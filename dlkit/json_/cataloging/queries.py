@@ -26,7 +26,6 @@ class CatalogQuery(abc_cataloging_queries.CatalogQuery, osid_queries.OsidCatalog
     the same method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('CATALOG_RECORD_TYPES', runtime)
@@ -83,7 +82,6 @@ class CatalogQuery(abc_cataloging_queries.CatalogQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('id')
 
     id_terms = property(fdel=clear_id_terms)
@@ -107,7 +105,6 @@ class CatalogQuery(abc_cataloging_queries.CatalogQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorCatalogId')
 
     ancestor_catalog_id_terms = property(fdel=clear_ancestor_catalog_id_terms)
@@ -155,7 +152,6 @@ class CatalogQuery(abc_cataloging_queries.CatalogQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorCatalog')
 
     ancestor_catalog_terms = property(fdel=clear_ancestor_catalog_terms)
@@ -179,7 +175,6 @@ class CatalogQuery(abc_cataloging_queries.CatalogQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantCatalogId')
 
     descendant_catalog_id_terms = property(fdel=clear_descendant_catalog_id_terms)
@@ -227,7 +222,6 @@ class CatalogQuery(abc_cataloging_queries.CatalogQuery, osid_queries.OsidCatalog
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantCatalog')
 
     descendant_catalog_terms = property(fdel=clear_descendant_catalog_terms)

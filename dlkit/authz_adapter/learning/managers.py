@@ -87,6 +87,11 @@ class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfi
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_activity_lookup()
 
+    def supports_activity_query(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_activity_query()
+
     def supports_activity_admin(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
@@ -116,6 +121,11 @@ class LearningProfile(osid_managers.OsidProfile, learning_managers.LearningProfi
         # Implemented from azosid template for -
         # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_proficiency_admin()
+
+    def supports_proficiency_objective_bank_assignment(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_proficiency_objective_bank_assignment()
 
     def supports_objective_bank_lookup(self):
         # Implemented from azosid template for -
@@ -275,7 +285,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveAdminSession')(
             provider_session=self._provider_manager.get_objective_admin_session(),
             authz_session=self._get_authz_session(),
@@ -296,7 +306,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveHierarchySession')(
             provider_session=self._provider_manager.get_objective_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -317,7 +327,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveHierarchyDesignSession')(
             provider_session=self._provider_manager.get_objective_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -338,7 +348,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_sequencing_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveSequencingSession')(
             provider_session=self._provider_manager.get_objective_sequencing_session(),
             authz_session=self._get_authz_session(),
@@ -359,7 +369,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_objective_bank_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveObjectiveBankSession')(
             provider_session=self._provider_manager.get_objective_objective_bank_session(),
             authz_session=self._get_authz_session(),
@@ -370,7 +380,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_objective_bank_assignment_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveObjectiveBankAssignmentSession')(
             provider_session=self._provider_manager.get_objective_objective_bank_assignment_session(),
             authz_session=self._get_authz_session(),
@@ -381,7 +391,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_requisite_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveRequisiteSession')(
             provider_session=self._provider_manager.get_objective_requisite_session(),
             authz_session=self._get_authz_session(),
@@ -402,7 +412,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_requisite_assignment_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveRequisiteAssignmentSession')(
             provider_session=self._provider_manager.get_objective_requisite_assignment_session(),
             authz_session=self._get_authz_session(),
@@ -454,9 +464,42 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
             hierarchy_session=self._get_hierarchy_session(),
             query_session=query_session)
 
-    def get_activity_admin_session(self):
+    def get_activity_query_session(self):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_activity_query_session()
+            query_session.use_federated_objective_bank_view()
+        except Unimplemented:
+            query_session = None
+        return getattr(sessions, 'ActivityQuerySession')(
+            provider_session=self._provider_manager.get_activity_query_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
+
+    activity_query_session = property(fget=get_activity_query_session)
+
+    @raise_null_argument
+    def get_activity_query_session_for_objective_bank(self, objective_bank_id):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_activity_query_session_for_objective_bank(objective_bank_id)
+            query_session.use_federated_objective_bank_view()
+        except Unimplemented:
+            query_session = None
+        return getattr(sessions, 'ActivityQuerySession')(
+            provider_session=self._provider_manager.get_activity_query_session_for_objective_bank(objective_bank_id),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            hierarchy_session=self._get_hierarchy_session(),
+            query_session=query_session)
+
+    def get_activity_admin_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ActivityAdminSession')(
             provider_session=self._provider_manager.get_activity_admin_session(),
             authz_session=self._get_authz_session(),
@@ -477,7 +520,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_activity_objective_bank_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ActivityObjectiveBankSession')(
             provider_session=self._provider_manager.get_activity_objective_bank_session(),
             authz_session=self._get_authz_session(),
@@ -488,7 +531,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_activity_objective_bank_assignment_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ActivityObjectiveBankAssignmentSession')(
             provider_session=self._provider_manager.get_activity_objective_bank_assignment_session(),
             authz_session=self._get_authz_session(),
@@ -565,7 +608,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_proficiency_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ProficiencyAdminSession')(
             provider_session=self._provider_manager.get_proficiency_admin_session(),
             authz_session=self._get_authz_session(),
@@ -584,9 +627,20 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager)
 
+    def get_proficiency_objective_bank_assignment_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'ProficiencyObjectiveBankAssignmentSession')(
+            provider_session=self._provider_manager.get_proficiency_objective_bank_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    proficiency_objective_bank_assignment_session = property(fget=get_proficiency_objective_bank_assignment_session)
+
     def get_objective_bank_lookup_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankLookupSession')(
             provider_session=self._provider_manager.get_objective_bank_lookup_session(),
             authz_session=self._get_authz_session(),
@@ -597,7 +651,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_bank_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankAdminSession')(
             provider_session=self._provider_manager.get_objective_bank_admin_session(),
             authz_session=self._get_authz_session(),
@@ -608,7 +662,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_bank_hierarchy_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankHierarchySession')(
             provider_session=self._provider_manager.get_objective_bank_hierarchy_session(),
             authz_session=self._get_authz_session(),
@@ -619,7 +673,7 @@ class LearningManager(osid_managers.OsidManager, LearningProfile, learning_manag
 
     def get_objective_bank_hierarchy_design_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankHierarchyDesignSession')(
             provider_session=self._provider_manager.get_objective_bank_hierarchy_design_session(),
             authz_session=self._get_authz_session(),
@@ -718,7 +772,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveAdminSession')(
             provider_session=self._provider_manager.get_objective_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -740,7 +794,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveHierarchySession')(
             provider_session=self._provider_manager.get_objective_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -762,7 +816,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveHierarchyDesignSession')(
             provider_session=self._provider_manager.get_objective_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),
@@ -784,7 +838,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_sequencing_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveSequencingSession')(
             provider_session=self._provider_manager.get_objective_sequencing_session(proxy),
             authz_session=self._get_authz_session(),
@@ -806,7 +860,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_objective_bank_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveObjectiveBankSession')(
             provider_session=self._provider_manager.get_objective_objective_bank_session(proxy),
             authz_session=self._get_authz_session(),
@@ -817,7 +871,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_objective_bank_assignment_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveObjectiveBankAssignmentSession')(
             provider_session=self._provider_manager.get_objective_objective_bank_assignment_session(proxy),
             authz_session=self._get_authz_session(),
@@ -828,7 +882,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_requisite_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveRequisiteSession')(
             provider_session=self._provider_manager.get_objective_requisite_session(proxy),
             authz_session=self._get_authz_session(),
@@ -850,7 +904,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_requisite_assignment_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveRequisiteAssignmentSession')(
             provider_session=self._provider_manager.get_objective_requisite_assignment_session(proxy),
             authz_session=self._get_authz_session(),
@@ -904,9 +958,43 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
             query_session=query_session)
 
     @raise_null_argument
-    def get_activity_admin_session(self, proxy):
+    def get_activity_query_session(self, proxy):
         # Implemented from azosid template for -
         # osid.resource.ResourceManager.get_resource_lookup_session_template
+        try:
+            query_session = self._provider_manager.get_activity_query_session(proxy)
+            query_session.use_federated_objective_bank_view()
+        except Unimplemented:
+            query_session = None
+        return getattr(sessions, 'ActivityQuerySession')(
+            provider_session=self._provider_manager.get_activity_query_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
+
+    @raise_null_argument
+    def get_activity_query_session_for_objective_bank(self, objective_bank_id, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
+        try:
+            query_session = self._provider_manager.get_activity_query_session_for_objective_bank(objective_bank_id, proxy)
+            query_session.use_federated_objective_bank_view()
+        except Unimplemented:
+            query_session = None
+        return getattr(sessions, 'ActivityQuerySession')(
+            provider_session=self._provider_manager.get_activity_query_session_for_objective_bank(objective_bank_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            proxy=proxy,
+            hierarchy_session=self._get_hierarchy_session(proxy),
+            query_session=query_session)
+
+    @raise_null_argument
+    def get_activity_admin_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ActivityAdminSession')(
             provider_session=self._provider_manager.get_activity_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -928,7 +1016,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_activity_objective_bank_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ActivityObjectiveBankSession')(
             provider_session=self._provider_manager.get_activity_objective_bank_session(proxy),
             authz_session=self._get_authz_session(),
@@ -939,7 +1027,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_activity_objective_bank_assignment_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ActivityObjectiveBankAssignmentSession')(
             provider_session=self._provider_manager.get_activity_objective_bank_assignment_session(proxy),
             authz_session=self._get_authz_session(),
@@ -1018,7 +1106,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_proficiency_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ProficiencyAdminSession')(
             provider_session=self._provider_manager.get_proficiency_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -1038,9 +1126,20 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
             proxy=proxy)
 
     @raise_null_argument
+    def get_proficiency_objective_bank_assignment_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'ProficiencyObjectiveBankAssignmentSession')(
+            provider_session=self._provider_manager.get_proficiency_objective_bank_assignment_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
     def get_objective_bank_lookup_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankLookupSession')(
             provider_session=self._provider_manager.get_objective_bank_lookup_session(proxy),
             authz_session=self._get_authz_session(),
@@ -1051,7 +1150,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_bank_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankAdminSession')(
             provider_session=self._provider_manager.get_objective_bank_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -1062,7 +1161,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_bank_hierarchy_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankHierarchySession')(
             provider_session=self._provider_manager.get_objective_bank_hierarchy_session(proxy),
             authz_session=self._get_authz_session(),
@@ -1073,7 +1172,7 @@ class LearningProxyManager(osid_managers.OsidProxyManager, LearningProfile, lear
     @raise_null_argument
     def get_objective_bank_hierarchy_design_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'ObjectiveBankHierarchyDesignSession')(
             provider_session=self._provider_manager.get_objective_bank_hierarchy_design_session(proxy),
             authz_session=self._get_authz_session(),

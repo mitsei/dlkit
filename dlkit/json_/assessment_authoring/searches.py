@@ -22,7 +22,6 @@ from dlkit.abstract_osid.osid import errors
 
 class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearch, osid_searches.OsidSearch):
     """The search interface for governing assessment part searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.authoring.AssessmentPart'
         self._runtime = runtime
@@ -44,7 +43,6 @@ class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = bank_ids
 
     @utilities.arguments_not_none
@@ -89,7 +87,6 @@ class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearc
 
 class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPartSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -108,7 +105,6 @@ class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -124,7 +120,6 @@ class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPa
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.AssessmentPartQueryInspector(self._query_terms, runtime=self._runtime)
 
     assessment_part_query_inspector = property(fget=get_assessment_part_query_inspector)
@@ -156,7 +151,6 @@ class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPa
 
 class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, osid_searches.OsidSearch):
     """The search interface for governing sequence rule searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'assessment.authoring.SequenceRule'
         self._runtime = runtime
@@ -178,7 +172,6 @@ class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = bank_ids
 
     @utilities.arguments_not_none
@@ -223,7 +216,6 @@ class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, o
 
 class SequenceRuleSearchResults(abc_assessment_authoring_searches.SequenceRuleSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -242,7 +234,6 @@ class SequenceRuleSearchResults(abc_assessment_authoring_searches.SequenceRuleSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -258,7 +249,6 @@ class SequenceRuleSearchResults(abc_assessment_authoring_searches.SequenceRuleSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.SequenceRuleQueryInspector(self._query_terms, runtime=self._runtime)
 
     sequence_rule_query_inspector = property(fget=get_sequence_rule_query_inspector)

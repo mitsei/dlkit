@@ -22,7 +22,6 @@ from dlkit.abstract_osid.relationship import searches as abc_relationship_search
 
 class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_searches.OsidSearch):
     """The search interface for governing relationship searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'relationship.Relationship'
         self._runtime = runtime
@@ -44,7 +43,6 @@ class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_sear
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = relationship_ids
 
     @utilities.arguments_not_none
@@ -88,7 +86,6 @@ class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_sear
 
 class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -107,7 +104,6 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -123,7 +119,6 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.RelationshipQueryInspector(self._query_terms, runtime=self._runtime)
 
     relationship_query_inspector = property(fget=get_relationship_query_inspector)
@@ -156,7 +151,6 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
 
 class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSearch):
     """The search interface for governing family searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'relationship.Family'
         self._runtime = runtime
@@ -178,7 +172,6 @@ class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = family_ids
 
     @utilities.arguments_not_none
@@ -221,7 +214,6 @@ class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSea
 
 class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search and is used as a vehicle to perform a search within a previous result set."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -239,7 +231,6 @@ class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -255,7 +246,6 @@ class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.FamilyQueryInspector(self._query_terms, runtime=self._runtime)
 
     family_query_inspector = property(fget=get_family_query_inspector)

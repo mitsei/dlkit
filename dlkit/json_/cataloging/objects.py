@@ -35,7 +35,6 @@ class Catalog(abc_cataloging_objects.Catalog, osid_objects.OsidCatalog):
     into the record indicated by the type.
 
     """
-    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'cataloging.Catalog'
 
     def __init__(self, **kwargs):
@@ -75,7 +74,6 @@ class CatalogForm(abc_cataloging_objects.CatalogForm, osid_objects.OsidCatalogFo
     constraints.
 
     """
-    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'cataloging.Catalog'
 
     def __init__(self, **kwargs):
@@ -108,8 +106,7 @@ class CatalogForm(abc_cataloging_objects.CatalogForm, osid_objects.OsidCatalogFo
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
-        return self._get_record(catalog_record_type)
+        raise errors.Unimplemented()
 
 
 class CatalogList(abc_cataloging_objects.CatalogList, osid_objects.OsidList):
@@ -137,7 +134,7 @@ class CatalogList(abc_cataloging_objects.CatalogList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -162,7 +159,7 @@ class CatalogList(abc_cataloging_objects.CatalogList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(CatalogList, number=n)
 
 
@@ -174,7 +171,6 @@ class CatalogNode(abc_cataloging_objects.CatalogNode, osid_objects.OsidNode):
     ``CatalogHierarchySession``.
 
     """
-    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -200,7 +196,6 @@ class CatalogNode(abc_cataloging_objects.CatalogNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('CATALOGING', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_catalog_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -216,7 +211,6 @@ class CatalogNode(abc_cataloging_objects.CatalogNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_catalog_nodes = []
         for node in self._my_map['parentNodes']:
             parent_catalog_nodes.append(CatalogNode(
@@ -236,7 +230,6 @@ class CatalogNode(abc_cataloging_objects.CatalogNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_catalog_nodes = []
         for node in self._my_map['childNodes']:
             parent_catalog_nodes.append(CatalogNode(
@@ -274,7 +267,7 @@ class CatalogNodeList(abc_cataloging_objects.CatalogNodeList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -299,5 +292,5 @@ class CatalogNodeList(abc_cataloging_objects.CatalogNodeList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(CatalogNodeList, number=n)

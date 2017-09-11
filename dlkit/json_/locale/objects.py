@@ -239,5 +239,5 @@ class LocaleList(abc_locale_objects.LocaleList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(LocaleList, number=n)

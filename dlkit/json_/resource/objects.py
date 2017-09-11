@@ -10,23 +10,14 @@
 #     Inheritance defined in specification
 
 
-import base64
-import gridfs
 import importlib
-
-
-from decimal import Decimal
 
 
 from . import default_mdata
 from .. import utilities
-from ..id.objects import IdList
 from ..osid import objects as osid_objects
 from ..osid.metadata import Metadata
 from ..primitives import Id
-from ..primitives import Id, DateTime, Duration, DataInputStream
-from ..primitives import Id, DateTime, Duration, DisplayText
-from ..utilities import JSONClientValidated
 from ..utilities import get_provider_manager
 from ..utilities import get_registry
 from ..utilities import update_display_text_defaults
@@ -50,7 +41,6 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
     one of the group sessions available in this OSID.
 
     """
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'resource.Resource'
 
     def __init__(self, **kwargs):
@@ -67,7 +57,7 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
+        # Implemented from template for osid.resource.Resource.is_group_template
         return bool(self._my_map['group'])
 
     def is_demographic(self):
@@ -81,8 +71,7 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
-        return bool(self._my_map['demographic'])
+        return self._demographic
 
     def has_avatar(self):
         """Tests if this resource has an avatar.
@@ -92,7 +81,7 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.has_id_attribute
+        # Implemented from template for osid.resource.Resource.has_avatar_template
         return bool(self._my_map['avatarId'])
 
     def get_avatar_id(self):
@@ -103,9 +92,9 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['avatarId']):
-            raise errors.IllegalState('avatar not set')
+            raise errors.IllegalState('this Resource has no avatar')
         else:
             return Id(self._my_map['avatarId'])
 
@@ -120,7 +109,7 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['avatarId']):
             raise errors.IllegalState('this Resource has no avatar')
         mgr = self._get_provider_manager('REPOSITORY')
@@ -154,8 +143,8 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(resource_record_type)
+
     def get_object_map(self):
         obj_map = dict(self._my_map)
         if 'agentIds' in obj_map:
@@ -178,7 +167,6 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
     if it is possible to convert a resource to a group and vice-versa.
 
     """
-    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'resource.Resource'
 
     def __init__(self, **kwargs):
@@ -208,7 +196,7 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['group'])
         metadata.update({'existing_boolean_values': self._my_map['group']})
         return Metadata(**metadata)
@@ -226,11 +214,11 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_group_template
         if self.get_group_metadata().is_read_only():
-            raise errors.NoAccess('group is read only')
+            raise errors.NoAccess()
         if not self._is_valid_boolean(group):
-            raise errors.InvalidArgument('group is not a valid boolean')
+            raise errors.InvalidArgument()
         self._my_map['group'] = group
 
     def clear_group(self):
@@ -241,10 +229,10 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_group_template
         if (self.get_group_metadata().is_read_only() or
                 self.get_group_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear group')
+            raise errors.NoAccess()
         self._my_map['group'] = self._group_default
 
     group = property(fset=set_group, fdel=clear_group)
@@ -256,7 +244,7 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['avatar'])
         metadata.update({'existing_id_values': self._my_map['avatarId']})
         return Metadata(**metadata)
@@ -273,11 +261,11 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_avatar_metadata().is_read_only():
-            raise errors.NoAccess('asset_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(asset_id):
-            raise errors.InvalidArgument('asset_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['avatarId'] = str(asset_id)
 
     def clear_avatar(self):
@@ -288,10 +276,10 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_avatar_metadata().is_read_only() or
                 self.get_avatar_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear avatar')
+            raise errors.NoAccess()
         self._my_map['avatarId'] = self._avatar_default
 
     avatar = property(fset=set_avatar, fdel=clear_avatar)
@@ -311,7 +299,6 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(resource_record_type)
 
 
@@ -340,7 +327,7 @@ class ResourceList(abc_resource_objects.ResourceList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -365,7 +352,7 @@ class ResourceList(abc_resource_objects.ResourceList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(ResourceList, number=n)
 
 
@@ -440,7 +427,7 @@ class ResourceNodeList(abc_resource_objects.ResourceNodeList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -465,13 +452,12 @@ class ResourceNodeList(abc_resource_objects.ResourceNodeList, osid_objects.OsidL
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(ResourceNodeList, number=n)
 
 
 class Bin(abc_resource_objects.Bin, osid_objects.OsidCatalog):
     """An inventory defines a collection of resources."""
-    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'resource.Bin'
 
     def __init__(self, **kwargs):
@@ -508,7 +494,6 @@ class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
     provide display hints or data constraints.
 
     """
-    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'resource.Bin'
 
     def __init__(self, **kwargs):
@@ -540,8 +525,7 @@ class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
-        return self._get_record(bin_record_type)
+        raise errors.Unimplemented()
 
 
 class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
@@ -567,7 +551,7 @@ class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -591,7 +575,7 @@ class BinList(abc_resource_objects.BinList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(BinList, number=n)
 
 
@@ -603,7 +587,6 @@ class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
     ``BinHierarchySession``.
 
     """
-    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -628,7 +611,6 @@ class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('RESOURCE', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_bin_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -643,7 +625,6 @@ class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_bin_nodes = []
         for node in self._my_map['parentNodes']:
             parent_bin_nodes.append(BinNode(
@@ -662,7 +643,6 @@ class BinNode(abc_resource_objects.BinNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_bin_nodes = []
         for node in self._my_map['childNodes']:
             parent_bin_nodes.append(BinNode(
@@ -700,7 +680,7 @@ class BinNodeList(abc_resource_objects.BinNodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -725,5 +705,5 @@ class BinNodeList(abc_resource_objects.BinNodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(BinNodeList, number=n)

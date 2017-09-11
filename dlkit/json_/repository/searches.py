@@ -22,7 +22,6 @@ from dlkit.abstract_osid.repository import searches as abc_repository_searches
 
 class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch):
     """The search interface for governing asset searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'repository.Asset'
         self._runtime = runtime
@@ -44,7 +43,6 @@ class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = asset_ids
 
     @utilities.arguments_not_none
@@ -85,7 +83,6 @@ class AssetSearch(abc_repository_searches.AssetSearch, osid_searches.OsidSearch)
 
 class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -103,7 +100,6 @@ class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_search
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -119,7 +115,6 @@ class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_search
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.AssetQueryInspector(self._query_terms, runtime=self._runtime)
 
     asset_query_inspector = property(fget=get_asset_query_inspector)
@@ -148,7 +143,6 @@ class AssetSearchResults(abc_repository_searches.AssetSearchResults, osid_search
 
 class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches.OsidSearch):
     """The interface for governing composition searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'repository.Composition'
         self._runtime = runtime
@@ -170,7 +164,6 @@ class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = composition_ids
 
     @utilities.arguments_not_none
@@ -213,7 +206,6 @@ class CompositionSearch(abc_repository_searches.CompositionSearch, osid_searches
 
 class CompositionSearchResults(abc_repository_searches.CompositionSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -231,7 +223,6 @@ class CompositionSearchResults(abc_repository_searches.CompositionSearchResults,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -247,7 +238,6 @@ class CompositionSearchResults(abc_repository_searches.CompositionSearchResults,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.CompositionQueryInspector(self._query_terms, runtime=self._runtime)
 
     composition_query_inspector = property(fget=get_composition_query_inspector)
@@ -277,7 +267,6 @@ class CompositionSearchResults(abc_repository_searches.CompositionSearchResults,
 
 class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.OsidSearch):
     """The interface for governing repository searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'repository.Repository'
         self._runtime = runtime
@@ -299,7 +288,6 @@ class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = repository_ids
 
     @utilities.arguments_not_none
@@ -342,7 +330,6 @@ class RepositorySearch(abc_repository_searches.RepositorySearch, osid_searches.O
 
 class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -360,7 +347,6 @@ class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -376,7 +362,6 @@ class RepositorySearchResults(abc_repository_searches.RepositorySearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.RepositoryQueryInspector(self._query_terms, runtime=self._runtime)
 
     repository_query_inspector = property(fget=get_repository_query_inspector)

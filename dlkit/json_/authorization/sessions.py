@@ -16,6 +16,7 @@ from bson.objectid import ObjectId
 from . import objects
 from . import queries
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession
 from ..primitives import DateTime
@@ -185,7 +186,7 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     vault_id = property(fget=get_vault_id)
@@ -200,7 +201,7 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     vault = property(fget=get_vault)
@@ -222,7 +223,7 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
         return True
 
     @utilities.arguments_not_none
-    def is_authorized(self):
+    def is_authorized(self, agent_id, function_id, qualifier_id):
         """Determines if the given agent is authorized.
 
         An agent is authorized if an active authorization exists whose
@@ -381,7 +382,6 @@ class AuthorizationSession(abc_authorization_sessions.AuthorizationSession, osid
 
 class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupSession, osid_sessions.OsidSession):
     """This session defines methods to search and retrieve ``Authorization`` mappings."""
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Vault
@@ -404,7 +404,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     vault_id = property(fget=get_vault_id)
@@ -419,7 +419,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     vault = property(fget=get_vault)
@@ -438,7 +438,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -452,7 +453,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_authorization_view(self):
@@ -465,7 +467,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_vault_view(self):
@@ -477,7 +480,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_vault_view(self):
@@ -488,7 +492,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def use_effective_authorization_view(self):
@@ -497,7 +502,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_effective_relationship_view
         self._use_effective_view()
 
     def use_any_effective_authorization_view(self):
@@ -506,7 +512,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_any_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_any_effective_relationship_view
         self._use_any_effective_view()
 
     def use_implicit_authorization_view(self):
@@ -556,7 +563,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
@@ -589,7 +597,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
@@ -628,7 +637,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
@@ -657,7 +667,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AuthorizationList([])
 
@@ -680,7 +691,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AuthorizationList([])
 
@@ -699,7 +711,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_on_date
         authorization_list = []
         for authorization in self.get_authorizations():
             if overlap(from_, to, authorization.start_date, authorization.end_date):
@@ -814,7 +827,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_subjugated_objects_for_object
+        # Implemented from template for
+        # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
@@ -864,7 +878,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_peers
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
@@ -872,7 +887,7 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         result = collection.find(
             dict({'sourceId': str(resource_id),
                   'destinationId': str(function_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.AuthorizationList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -1011,7 +1026,8 @@ class AuthorizationLookupSession(abc_authorization_sessions.AuthorizationLookupS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
@@ -1040,7 +1056,6 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         returned
 
     """
-    # Built from: templates/osid_session.GenericRelationshipQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Vault
@@ -1063,7 +1078,7 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     vault_id = property(fget=get_vault_id)
@@ -1078,7 +1093,7 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     vault = property(fget=get_vault)
@@ -1097,7 +1112,8 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1111,7 +1127,8 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_vault_view(self):
@@ -1122,7 +1139,8 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def use_implicit_authorization_view(self):
@@ -1158,7 +1176,8 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.AuthorizationQuery(runtime=self._runtime)
 
     authorization_query = property(fget=get_authorization_query)
@@ -1180,7 +1199,8 @@ class AuthorizationQuerySession(abc_authorization_sessions.AuthorizationQuerySes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in authorization_query._query_terms:
@@ -1245,7 +1265,6 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Vault
@@ -1269,7 +1288,7 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     vault_id = property(fget=get_vault_id)
@@ -1284,7 +1303,7 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     vault = property(fget=get_vault)
@@ -1303,7 +1322,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1328,7 +1348,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1550,7 +1571,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1573,7 +1595,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
                                          runtime=self._runtime)
@@ -1608,7 +1631,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
                                          runtime=self._runtime)
@@ -1647,7 +1671,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1666,7 +1691,8 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.delete_resource_template
         collection = JSONClientValidated('authorization',
                                          collection='Authorization',
                                          runtime=self._runtime)
@@ -1693,7 +1719,6 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1719,8 +1744,390 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=authorization_id, equivalent_id=alias_id)
+
+
+class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``Authorization`` to ``Vault`` mappings.
+
+    An ``Authorization`` may appear in multiple ``Vaults``. Each
+    ``Vault`` may have its own authorizations governing who is allowed
+    to look at it.
+
+    This lookup session defines several views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'authorization.AuthorizationVaultSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def use_comparative_vault_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_vault_view(self):
+        """A complete view of the ``Authorization`` and ``Vault`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def can_lookup_authorization_vault_mappings(self):
+        """Tests if this user can perform lookups of authorization/vault mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def get_authorization_ids_by_vault(self, vault_id):
+        """Gets the list of ``Authorization``  ``Ids`` associated with a ``Vault``.
+
+        arg:    vault_id (osid.id.Id): ``Id`` of a ``Vault``
+        return: (osid.id.IdList) - list of related authorization ``Ids``
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for authorization in self.get_authorizations_by_vault(vault_id):
+            id_list.append(authorization.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_authorizations_by_vault(self, vault_id):
+        """Gets the list of ``Authorizations`` associated with a ``Vault``.
+
+        arg:    vault_id (osid.id.Id): ``Id`` of a ``Vault``
+        return: (osid.authorization.AuthorizationList) - list of related
+                authorization
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_authorization_lookup_session_for_vault(vault_ids, proxy=self._proxy)
+        lookup_session.use_isolated_vault_view()
+        return lookup_session.get_authorizations()
+
+    @utilities.arguments_not_none
+    def get_authorizations_ids_by_vault(self, vault_ids):
+        """Gets the list of ``Authorization Ids`` corresponding to a list of ``Vault`` objects.
+
+        arg:    vault_ids (osid.id.IdList): list of vault ``Ids``
+        return: (osid.id.IdList) - list of authorization ``Ids``
+        raise:  NullArgument - ``vault_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for authorization in self.get_authorizations_by_vault(vault_ids):
+            id_list.append(authorization.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_authorizations_by_vault(self, vault_ids):
+        """Gets the list of ``Authorizations`` corresponding to a list of ``Vault``.
+
+        arg:    vault_ids (osid.id.IdList): list of vault ``Ids``
+        return: (osid.authorization.AuthorizationList) - list of
+                authorizations
+        raise:  NullArgument - ``vault_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_authorization_lookup_session_for_vault(vault_ids, proxy=self._proxy)
+        lookup_session.use_isolated_vault_view()
+        return lookup_session.get_authorizations()
+
+    @utilities.arguments_not_none
+    def get_vault_ids_by_authorization(self, authorization_id):
+        """Gets the list of ``Vault``  ``Ids`` mapped to an ``Authorization``.
+
+        arg:    authorization_id (osid.id.Id): ``Id`` of an
+                ``Authorization``
+        return: (osid.id.IdList) - list of vault ``Ids``
+        raise:  NotFound - ``authorization_id`` is not found
+        raise:  NullArgument - ``authorization_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_authorization_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_vault_view()
+        authorization = lookup_session.get_authorization(authorization_id)
+        id_list = []
+        for idstr in authorization._my_map['assignedVaultIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_vault_by_authorization(self, authorization_id):
+        """Gets the list of ``Vault`` objects mapped to an ``Authorization``.
+
+        arg:    authorization_id (osid.id.Id): ``Id`` of an
+                ``Authorization``
+        return: (osid.authorization.VaultList) - list of vault
+        raise:  NotFound - ``authorization_id`` is not found
+        raise:  NullArgument - ``authorization_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        raise errors.Unimplemented()
+
+
+class AuthorizationVaultAssignmentSession(abc_authorization_sessions.AuthorizationVaultAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign ``Authorizations`` to ``Vault``.
+
+    An ``Authorization`` may map to multiple ``Vault`` objects and
+    removing the last reference to a ``Authorization`` is the equivalent
+    of deleting it. Each ``Vault`` may have its own authorizations
+    governing who is allowed to operate on it.
+
+    Moving or adding a reference of a ``Authorization`` to another
+    ``Vault`` is not a copy operation (eg: does not change its ``Id`` ).
+
+    """
+    _session_namespace = 'authorization.AuthorizationVaultAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Vault'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_authorizations(self):
+        """Tests if this user can alter authorization/vault mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_authorizations_to_vault(self, vault_id):
+        """Tests if this user can alter authorization/vault mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``vault_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if vault_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_vault_ids(self, vault_id):
+        """Gets a list of vault including and under the given vault node in which any authorization can be assigned.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        return: (osid.id.IdList) - list of assignable vault ``Ids``
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_vault_lookup_session(proxy=self._proxy)
+        vaults = lookup_session.get_vaults()
+        id_list = []
+        for vault in vaults:
+            id_list.append(vault.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_vault_ids_for_authorization(self, vault_id, authorization_id):
+        """Gets a list of vault including and under the given vault node in which a specific authorization can be assigned.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        return: (osid.id.IdList) - list of assignable vault ``Ids``
+        raise:  NullArgument - ``vault_id`` or ``authorization_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_vault_ids(vault_id)
+
+    @utilities.arguments_not_none
+    def assign_authorization_to_vault(self, authorization_id, vault_id):
+        """Adds an existing ``Authorization`` to a ``Vault``.
+
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        raise:  AlreadyExists - ``authorization_id`` is already assigned
+                to ``vault_id``
+        raise:  NotFound - ``authorization_id`` or ``vault_id`` not
+                found
+        raise:  NullArgument - ``authorization_id`` or ``vault_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_vault_lookup_session(proxy=self._proxy)
+        lookup_session.get_vault(vault_id)  # to raise NotFound
+        self._assign_object_to_catalog(authorization_id, vault_id)
+
+    @utilities.arguments_not_none
+    def unassign_authorization_from_vault(self, authorization_id, vault_id):
+        """Removes an ``Authorization`` from a ``Vault``.
+
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        arg:    vault_id (osid.id.Id): the ``Id`` of the ``Vault``
+        raise:  NotFound - ``authorization_id`` or ``vault_id`` not
+                found or ``authorization_id`` not assigned to
+                ``vault_id``
+        raise:  NullArgument - ``authorization_id`` or ``vault_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('AUTHORIZATION', local=True)
+        lookup_session = mgr.get_vault_lookup_session(proxy=self._proxy)
+        lookup_session.get_vault(vault_id)  # to raise NotFound
+        self._unassign_object_from_catalog(authorization_id, vault_id)
+
+    @utilities.arguments_not_none
+    def reassign_authorization_to_vault(self, authorization_id, from_vault_id, to_vault_id):
+        """Moves an ``Authorization`` from one ``Vault`` to another.
+
+        Mappings to other ``Vaults`` are unaffected.
+
+        arg:    authorization_id (osid.id.Id): the ``Id`` of the
+                ``Authorization``
+        arg:    from_vault_id (osid.id.Id): the ``Id`` of the current
+                ``Vault``
+        arg:    to_vault_id (osid.id.Id): the ``Id`` of the destination
+                ``Vault``
+        raise:  NotFound - ``authorization_id, from_vault_id,`` or
+                ``to_vault_id`` not found or ``authorization_id`` not
+                mapped to ``from_vault_id``
+        raise:  NullArgument - ``authorization_id, from_vault_id,`` or
+                ``to_vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
+        self.assign_authorization_to_vault(authorization_id, to_vault_id)
+        try:
+            self.unassign_authorization_from_vault(authorization_id, from_vault_id)
+        except:  # something went wrong, roll back assignment to to_vault_id
+            self.unassign_authorization_from_vault(authorization_id, to_vault_id)
+            raise
 
 
 class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_sessions.OsidSession):
@@ -1748,7 +2155,6 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
     ``Vault``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'authorization.VaultLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1774,7 +2180,8 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.can_lookup_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -1790,7 +2197,8 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1805,7 +2213,8 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -1828,7 +2237,8 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bin
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=vault_id)
         collection = JSONClientValidated('authorization',
@@ -1838,8 +2248,7 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         if vault_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Vault, cat_name='Vault')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(vault_id,
-                                                                       'authorization').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(vault_id, 'authorization').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Vault.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(vault_id, 'authorization', 'Vault')
@@ -1869,7 +2278,8 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_ids_template
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_Vault() instead of direct to database
         if self._catalog_session is not None:
@@ -1978,7 +2388,8 @@ class VaultLookupSession(abc_authorization_sessions.VaultLookupSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -2001,7 +2412,6 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
     types. The query record is accessed via the ``VaultQuery``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogQuerySession.init_template
     _session_namespace = 'authorization.VaultQuerySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -2026,7 +2436,8 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogQuerySession.can_search_catalogs
+        # Implemented from template for
+        # osid.resource.BinQuerySession.can_search_bins_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2038,7 +2449,8 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogQuerySession.get_catalog_query
+        # Implemented from template for
+        # osid.resource.BinQuerySession.get_bin_query_template
         return queries.VaultQuery(runtime=self._runtime)
 
     vault_query = property(fget=get_vault_query)
@@ -2058,7 +2470,8 @@ class VaultQuerySession(abc_authorization_sessions.VaultQuerySession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogQuerySession.get_catalogs_by_query
+        # Implemented from template for
+        # osid.resource.BinQuerySession.get_bins_by_query_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_query(vault_query)
         query_terms = dict(vault_query._query_terms)
@@ -2102,7 +2515,6 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'authorization.VaultAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -2127,7 +2539,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2135,7 +2548,7 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         return True
 
     @utilities.arguments_not_none
-    def can_create_vault_with_record_types(self):
+    def can_create_vault_with_record_types(self, vault_record_types):
         """Tests if this user can create a single ``Vault`` using the desired record types.
 
         While ``AuthorizationManager.getVaultRecordTypes()`` can be used
@@ -2152,7 +2565,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bin_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2176,7 +2590,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_create_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=vault_record_types)
         for arg in vault_record_types:
@@ -2215,7 +2630,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.create_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=vault_form)
         collection = JSONClientValidated('authorization',
@@ -2256,7 +2672,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_update_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2279,7 +2696,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_update_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=vault_id)
         collection = JSONClientValidated('authorization',
@@ -2311,7 +2729,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.update_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=vault_form)
         collection = JSONClientValidated('authorization',
@@ -2349,7 +2768,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_delete_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2369,7 +2789,8 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.delete_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.delete_catalog(catalog_id=vault_id)
         collection = JSONClientValidated('authorization',
@@ -2399,7 +2820,6 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2423,7 +2843,632 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=vault_id, alias_id=alias_id)
         self._alias_id(primary_id=vault_id, equivalent_id=alias_id)
+
+
+class VaultHierarchySession(abc_authorization_sessions.VaultHierarchySession, osid_sessions.OsidSession):
+    """This session defines methods for traversing a hierarchy of ``Vault`` objects.
+
+    Each node in the hierarchy is a unique ``Vault``. The hierarchy may
+    be traversed recursively to establish the tree structure through
+    ``get_parent_vaults()`` and ``getChildVaults()``. To relate these
+    ``Ids`` to another OSID, ``get_vault_nodes()`` can be used for
+    retrievals that can be used for bulk lookups in other OSIDs. Any
+    ``Vault`` available in the Authorization OSID is known to this
+    hierarchy but does not appear in the hierarchy traversal until added
+    as a root node or a child of another node.
+
+    A user may not be authorized to traverse the entire hierarchy. Parts
+    of the hierarchy may be made invisible through omission from the
+    returns of ``get_parent_vaults()`` or ``get_child_vaults()`` in lieu
+    of a ``PermissionDenied`` error that may disrupt the traversal
+    through authorized pathways.
+
+    This session defines views that offer differing behaviors when
+    retrieving multiple objects.
+
+      * comparative view: vault elements may be silently omitted or re-
+        ordered
+      * plenary view: provides a complete set or is an error condition
+
+    """
+    _session_namespace = 'authorization.VaultHierarchySession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._forms = dict()
+        self._kwargs = kwargs
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_hierarchy_session()
+        else:
+            hierarchy_mgr = self._get_provider_manager('HIERARCHY')
+            self._hierarchy_session = hierarchy_mgr.get_hierarchy_traversal_session_for_hierarchy(
+                Id(authority='AUTHORIZATION',
+                   namespace='CATALOG',
+                   identifier='VAULT'),
+                proxy=self._proxy)
+
+    def get_vault_hierarchy_id(self):
+        """Gets the hierarchy ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the hierarchy ``Id`` associated with this
+                session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy_id()
+        return self._hierarchy_session.get_hierarchy_id()
+
+    vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
+
+    def get_vault_hierarchy(self):
+        """Gets the hierarchy associated with this session.
+
+        return: (osid.hierarchy.Hierarchy) - the hierarchy associated
+                with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy()
+        return self._hierarchy_session.get_hierarchy()
+
+    vault_hierarchy = property(fget=get_vault_hierarchy)
+
+    def can_access_vault_hierarchy(self):
+        """Tests if this user can perform hierarchy queries.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may opt not to offer lookup
+        operations.
+
+        return: (boolean) - ``false`` if hierarchy traversal methods are
+                not authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if self._catalog_session is not None:
+            return self._catalog_session.can_access_catalog_hierarchy()
+        return True
+
+    def use_comparative_vault_view(self):
+        """The returns from the vault methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_vault_view(self):
+        """A complete view of the ``Hierarchy`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def get_root_vault_ids(self):
+        """Gets the root vault ``Ids`` in this hierarchy.
+
+        return: (osid.id.IdList) - the root vault ``Ids``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_root_catalog_ids()
+        return self._hierarchy_session.get_roots()
+
+    root_vault_ids = property(fget=get_root_vault_ids)
+
+    def get_root_vaults(self):
+        """Gets the root vaults in this vault hierarchy.
+
+        return: (osid.authorization.VaultList) - the root vaults
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_root_catalogs()
+        return VaultLookupSession(
+            self._proxy,
+            self._runtime).get_vaults_by_ids(list(self.get_root_vault_ids()))
+
+    root_vaults = property(fget=get_root_vaults)
+
+    @utilities.arguments_not_none
+    def has_parent_vaults(self, vault_id):
+        """Tests if the ``Vault`` has any parents.
+
+        arg:    vault_id (osid.id.Id): a vault ``Id``
+        return: (boolean) - ``true`` if the vault has parents, ``false``
+                otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_parent_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.has_parent_catalogs(catalog_id=vault_id)
+        return self._hierarchy_session.has_parents(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def is_parent_of_vault(self, id_, vault_id):
+        """Tests if an ``Id`` is a direct parent of a vault.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if this ``id`` is a parent of
+                ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``id`` or ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_parent_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_parent(id_=vault_id, parent_id=id_)
+
+    @utilities.arguments_not_none
+    def get_parent_vault_ids(self, vault_id):
+        """Gets the parent ``Ids`` of the given vault.
+
+        arg:    vault_id (osid.id.Id): a vault ``Id``
+        return: (osid.id.IdList) - the parent ``Ids`` of the vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_parent_catalog_ids(catalog_id=vault_id)
+        return self._hierarchy_session.get_parents(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def get_parent_vaults(self, vault_id):
+        """Gets the parents of the given vault.
+
+        arg:    vault_id (osid.id.Id): a vault ``Id``
+        return: (osid.authorization.VaultList) - the parents of the
+                vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_parent_catalogs(catalog_id=vault_id)
+        return VaultLookupSession(
+            self._proxy,
+            self._runtime).get_vaults_by_ids(
+                list(self.get_parent_vault_ids(vault_id)))
+
+    @utilities.arguments_not_none
+    def is_ancestor_of_vault(self, id_, vault_id):
+        """Tests if an ``Id`` is an ancestor of a vault.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if this ``id`` is an ancestor of
+                ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` or ``id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=vault_id)
+
+    @utilities.arguments_not_none
+    def has_child_vaults(self, vault_id):
+        """Tests if a vault has any children.
+
+        arg:    vault_id (osid.id.Id): a ``vault_id``
+        return: (boolean) - ``true`` if the ``vault_id`` has children,
+                ``false`` otherwise
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_child_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.has_child_catalogs(catalog_id=vault_id)
+        return self._hierarchy_session.has_children(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def is_child_of_vault(self, id_, vault_id):
+        """Tests if a vault is a direct child of another.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if the ``id`` is a child of
+                ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_child_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_child(id_=vault_id, child_id=id_)
+
+    @utilities.arguments_not_none
+    def get_child_vault_ids(self, vault_id):
+        """Gets the child ``Ids`` of the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        return: (osid.id.IdList) - the children of the vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bin_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_child_catalog_ids(catalog_id=vault_id)
+        return self._hierarchy_session.get_children(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def get_child_vaults(self, vault_id):
+        """Gets the children of the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        return: (osid.authorization.VaultList) - the children of the
+                vault
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bins
+        if self._catalog_session is not None:
+            return self._catalog_session.get_child_catalogs(catalog_id=vault_id)
+        return VaultLookupSession(
+            self._proxy,
+            self._runtime).get_vaults_by_ids(
+                list(self.get_child_vault_ids(vault_id)))
+
+    @utilities.arguments_not_none
+    def is_descendant_of_vault(self, id_, vault_id):
+        """Tests if an ``Id`` is a descendant of a vault.
+
+        arg:    id (osid.id.Id): an ``Id``
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        return: (boolean) - ``true`` if the ``id`` is a descendant of
+                the ``vault_id,``  ``false`` otherwise
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+        *implementation notes*: If ``id`` is not found return ``false``.
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
+        if self._catalog_session is not None:
+            return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=vault_id)
+        return self._hierarchy_session.is_descendant(id_=id_, descendant_id=vault_id)
+
+    @utilities.arguments_not_none
+    def get_vault_node_ids(self, vault_id, ancestor_levels, descendant_levels, include_siblings):
+        """Gets a portion of the hierarchy for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        arg:    ancestor_levels (cardinal): the maximum number of
+                ancestor levels to include. A value of 0 returns no
+                parents in the node.
+        arg:    descendant_levels (cardinal): the maximum number of
+                descendant levels to include. A value of 0 returns no
+                children in the node.
+        arg:    include_siblings (boolean): ``true`` to include the
+                siblings of the given node, ``false`` to omit the
+                siblings
+        return: (osid.hierarchy.Node) - a vault node
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_node_ids
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_node_ids(
+                catalog_id=vault_id,
+                ancestor_levels=ancestor_levels,
+                descendant_levels=descendant_levels,
+                include_siblings=include_siblings)
+        return self._hierarchy_session.get_nodes(
+            id_=vault_id,
+            ancestor_levels=ancestor_levels,
+            descendant_levels=descendant_levels,
+            include_siblings=include_siblings)
+
+    @utilities.arguments_not_none
+    def get_vault_nodes(self, vault_id, ancestor_levels, descendant_levels, include_siblings):
+        """Gets a portion of the hierarchy for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` to query
+        arg:    ancestor_levels (cardinal): the maximum number of
+                ancestor levels to include. A value of 0 returns no
+                parents in the node.
+        arg:    descendant_levels (cardinal): the maximum number of
+                descendant levels to include. A value of 0 returns no
+                children in the node.
+        arg:    include_siblings (boolean): ``true`` to include the
+                siblings of the given node, ``false`` to omit the
+                siblings
+        return: (osid.authorization.VaultNode) - a vault node
+        raise:  NotFound - ``vault_id`` is not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_nodes
+        return objects.VaultNode(self.get_vault_node_ids(
+            vault_id=vault_id,
+            ancestor_levels=ancestor_levels,
+            descendant_levels=descendant_levels,
+            include_siblings=include_siblings)._my_map, runtime=self._runtime, proxy=self._proxy)
+
+
+class VaultHierarchyDesignSession(abc_authorization_sessions.VaultHierarchyDesignSession, osid_sessions.OsidSession):
+    """This session defines methods for managing a hierarchy of ``Vault`` objects.
+
+    Each node in the hierarchy is a unique ``Vault``.
+
+    """
+    _session_namespace = 'authorization.VaultHierarchyDesignSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
+        OsidSession.__init__(self)
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._forms = dict()
+        self._kwargs = kwargs
+        if self._cataloging_manager is not None:
+            self._catalog_session = self._cataloging_manager.get_catalog_hierarchy_design_session()
+        else:
+            hierarchy_mgr = self._get_provider_manager('HIERARCHY')
+            self._hierarchy_session = hierarchy_mgr.get_hierarchy_design_session_for_hierarchy(
+                Id(authority='AUTHORIZATION',
+                   namespace='CATALOG',
+                   identifier='VAULT'),
+                proxy=self._proxy)
+
+    def get_vault_hierarchy_id(self):
+        """Gets the hierarchy ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the hierarchy ``Id`` associated with this
+                session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy_id()
+        return self._hierarchy_session.get_hierarchy_id()
+
+    vault_hierarchy_id = property(fget=get_vault_hierarchy_id)
+
+    def get_vault_hierarchy(self):
+        """Gets the hierarchy associated with this session.
+
+        return: (osid.hierarchy.Hierarchy) - the hierarchy associated
+                with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
+        if self._catalog_session is not None:
+            return self._catalog_session.get_catalog_hierarchy()
+        return self._hierarchy_session.get_hierarchy()
+
+    vault_hierarchy = property(fget=get_vault_hierarchy)
+
+    def can_modify_vault_hierarchy(self):
+        """Tests if this user can change the hierarchy.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known performing any update
+        will result in a ``PermissionDenied``. This is intended as a
+        hint to an application that may opt not to offer these
+        operations to an unauthorized user.
+
+        return: (boolean) - ``false`` if changing this hierarchy is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if self._catalog_session is not None:
+            return self._catalog_session.can_modify_catalog_hierarchy()
+        return True
+
+    @utilities.arguments_not_none
+    def add_root_vault(self, vault_id):
+        """Adds a root vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        raise:  AlreadyExists - ``vault_id`` is already in hierarchy
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.add_root_catalog(catalog_id=vault_id)
+        return self._hierarchy_session.add_root(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def remove_root_vault(self, vault_id):
+        """Removes a root vault from this hierarchy.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        raise:  NotFound - ``vault_id`` not a parent of ``child_id``
+        raise:  NullArgument - ``vault_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_root_catalog(catalog_id=vault_id)
+        return self._hierarchy_session.remove_root(id_=vault_id)
+
+    @utilities.arguments_not_none
+    def add_child_vault(self, vault_id, child_id):
+        """Adds a child to a vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        arg:    child_id (osid.id.Id): the ``Id`` of the new child
+        raise:  AlreadyExists - ``vault_id`` is already a parent of
+                ``child_id``
+        raise:  NotFound - ``vault_id`` or ``child_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.add_child_catalog(catalog_id=vault_id, child_id=child_id)
+        return self._hierarchy_session.add_child(id_=vault_id, child_id=child_id)
+
+    @utilities.arguments_not_none
+    def remove_child_vault(self, vault_id, child_id):
+        """Removes a child from a vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        arg:    child_id (osid.id.Id): the ``Id`` of the child
+        raise:  NotFound - ``vault_id`` not parent of ``child_id``
+        raise:  NullArgument - ``vault_id`` or ``child_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_child_catalog(catalog_id=vault_id, child_id=child_id)
+        return self._hierarchy_session.remove_child(id_=vault_id, child_id=child_id)
+
+    @utilities.arguments_not_none
+    def remove_child_vaults(self, vault_id):
+        """Removes all children from a vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of a vault
+        raise:  NotFound - ``vault_id`` is not in hierarchy
+        raise:  NullArgument - ``vault_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
+        if self._catalog_session is not None:
+            return self._catalog_session.remove_child_catalogs(catalog_id=vault_id)
+        return self._hierarchy_session.remove_children(id_=vault_id)

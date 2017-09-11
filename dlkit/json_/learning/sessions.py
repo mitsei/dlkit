@@ -50,7 +50,6 @@ PLENARY = 1
 
 class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``Objective`` s."""
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -73,7 +72,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -88,7 +87,7 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -107,7 +106,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -121,7 +121,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_objective_view(self):
@@ -134,7 +135,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_objective_bank_view(self):
@@ -147,7 +149,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_objective_bank_view(self):
@@ -158,7 +161,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -180,7 +184,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Objective',
@@ -213,7 +218,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Objective',
@@ -251,7 +257,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Objective',
@@ -279,7 +286,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.ObjectiveList([])
 
@@ -301,7 +309,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.ObjectiveList([])
 
@@ -318,7 +327,8 @@ class ObjectiveLookupSession(abc_learning_sessions.ObjectiveLookupSession, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Objective',
@@ -351,7 +361,6 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
     ``ObjectiveQuery``.
 
     """
-    # Built from: templates/osid_session.GenericObjectQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -374,7 +383,7 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -389,7 +398,7 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -408,7 +417,8 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -423,7 +433,8 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_objective_bank_view(self):
@@ -434,7 +445,8 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def get_objective_query(self):
@@ -444,7 +456,8 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.ObjectiveQuery(runtime=self._runtime)
 
     objective_query = property(fget=get_objective_query)
@@ -464,7 +477,8 @@ class ObjectiveQuerySession(abc_learning_sessions.ObjectiveQuerySession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in objective_query._query_terms:
@@ -527,7 +541,6 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -551,7 +564,7 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -566,7 +579,7 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -585,7 +598,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -609,7 +623,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -631,7 +646,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_create
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_create_template
         for arg in objective_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
@@ -670,7 +686,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Objective',
                                          runtime=self._runtime)
@@ -709,7 +726,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -731,7 +749,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('learning',
                                          collection='Objective',
                                          runtime=self._runtime)
@@ -764,7 +783,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Objective',
                                          runtime=self._runtime)
@@ -803,7 +823,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -822,7 +843,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRequisiteObjectAdminSession.delete_requisite_object
+        # Implemented from template for
+        # osid.learning.ObjectiveAdminSession.delete_objective_template
 
         if not isinstance(objective_id, ABCId):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -851,7 +873,6 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -877,7 +898,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=objective_id, equivalent_id=alias_id)
 
 
@@ -981,7 +1003,8 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_objective_view(self):
@@ -994,7 +1017,8 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def get_root_objective_ids(self):
@@ -1019,7 +1043,8 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchySession.get_root_objects
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchySession.get_root_subjects_template
         root_ids = self._hierarchy_session.get_roots()
         collection = JSONClientValidated('learning',
                                          collection='Objective',
@@ -1180,7 +1205,8 @@ class ObjectiveHierarchySession(abc_learning_sessions.ObjectiveHierarchySession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchySession.get_child_objects
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchySession.get_child_subjects_template
         if self._hierarchy_session.has_children(objective_id):
             child_ids = self._hierarchy_session.get_children(objective_id)
             collection = JSONClientValidated('learning',
@@ -1330,7 +1356,8 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchyDesignSession.can_modify_object_hierarchy
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchyDesignSession.can_modify_subject_hierarchy_template
         return True
 
     @utilities.arguments_not_none
@@ -1346,7 +1373,8 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchyDesignSession.add_root_object
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchyDesignSession.add_root_subject_template
         return self._hierarchy_session.add_root(id_=objective_id)
 
     @utilities.arguments_not_none
@@ -1361,7 +1389,8 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchyDesignSession.remove_root_object
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchyDesignSession.remove_root_subject_template
         return self._hierarchy_session.remove_root(id_=objective_id)
 
     @utilities.arguments_not_none
@@ -1380,7 +1409,8 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchyDesignSession.add_child_object
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchyDesignSession.add_child_subject_template
         return self._hierarchy_session.add_child(id_=objective_id, child_id=child_id)
 
     @utilities.arguments_not_none
@@ -1397,7 +1427,8 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchyDesignSession.remove_child_object
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchyDesignSession.remove_child_subject_template
         return self._hierarchy_session.remove_child(id_=objective_id, child_id=child_id)
 
     @utilities.arguments_not_none
@@ -1412,7 +1443,8 @@ class ObjectiveHierarchyDesignSession(abc_learning_sessions.ObjectiveHierarchyDe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectHierarchyDesignSession.remove_child_objects
+        # Implemented from template for
+        # osid.ontology.SubjectHierarchyDesignSession.remove_child_subjects_template
         return self._hierarchy_session.remove_children(id_=objective_id)
 
 
@@ -1554,7 +1586,6 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         condition
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogSession.init_template
     _session_namespace = 'learning.ObjectiveObjectiveBankSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1576,7 +1607,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.can_lookup_object_catalog_mappings
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1590,7 +1622,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -1605,7 +1638,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -1624,7 +1658,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         id_list = []
         for objective in self.get_objectives_by_objective_bank(objective_bank_id):
             id_list.append(objective.get_id())
@@ -1645,7 +1680,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_lookup_session_for_objective_bank(objective_bank_id, proxy=self._proxy)
         lookup_session.use_isolated_objective_bank_view()
@@ -1664,7 +1700,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         id_list = []
         for objective in self.get_objectives_by_objective_banks(objective_bank_ids):
             id_list.append(objective.get_id())
@@ -1683,7 +1720,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
         objective_list = []
         for objective_bank_id in objective_bank_ids:
             objective_list += list(
@@ -1703,7 +1741,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_catalog_ids_by_object
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_lookup_session(proxy=self._proxy)
         lookup_session.use_federated_objective_bank_view()
@@ -1727,7 +1766,8 @@ class ObjectiveObjectiveBankSession(abc_learning_sessions.ObjectiveObjectiveBank
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_catalogs_by_object
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
         return lookup_session.get_objective_banks_by_ids(
@@ -1747,7 +1787,6 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
     ``Id`` ).
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.init_template
     _session_namespace = 'learning.ObjectiveObjectiveBankAssignmentSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -1770,7 +1809,8 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1793,7 +1833,8 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if objective_bank_id.get_identifier() == '000000000000000000000000':
@@ -1801,7 +1842,7 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         return True
 
     @utilities.arguments_not_none
-    def get_assignable_objective_bank_ids(self):
+    def get_assignable_objective_bank_ids(self, objective_bank_id):
         """Gets a list of objective banks including and under the given objective bank node in which any objective can be assigned.
 
         arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
@@ -1813,7 +1854,8 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
@@ -1839,7 +1881,8 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids_for_object
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
         return self.get_assignable_objective_bank_ids(objective_bank_id)
 
@@ -1862,7 +1905,8 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.assign_object_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
         lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
@@ -1886,7 +1930,8 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.unassign_object_from_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
         lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
@@ -1914,7 +1959,8 @@ class ObjectiveObjectiveBankAssignmentSession(abc_learning_sessions.ObjectiveObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.reassign_object_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
         self.assign_objective_to_objective_bank(objective_id, to_objective_bank_id)
         try:
             self.unassign_objective_from_objective_bank(objective_id, from_objective_bank_id)
@@ -1972,7 +2018,7 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -1987,7 +2033,7 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -2006,7 +2052,7 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        return True
 
     def use_comparative_objective_view(self):
         """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
@@ -2017,7 +2063,8 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_objective_view(self):
@@ -2030,7 +2077,8 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_objective_bank_view(self):
@@ -2043,7 +2091,8 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_objective_bank_view(self):
@@ -2054,7 +2103,8 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -2077,7 +2127,8 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_requisite_objects
+        # Implemented from template for
+        # osid.learning.ObjectiveRequisiteSession.get_requisite_objectives_template
         # NOTE: This implementation currently ignores plenary view
         requisite_type = Type(**Relationship().get_type_data('OBJECTIVE.REQUISITE'))
         relm = self._get_provider_manager('RELATIONSHIP')
@@ -2135,7 +2186,8 @@ class ObjectiveRequisiteSession(abc_learning_sessions.ObjectiveRequisiteSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_dependent_objects
+        # Implemented from template for
+        # osid.learning.ObjectiveRequisiteSession.get_dependent_objectives_template
         # NOTE: This implementation currently ignores plenary view
         requisite_type = Type(**Relationship().get_type_data('OBJECTIVE.REQUISITE'))
         relm = self._get_provider_manager('RELATIONSHIP')
@@ -2229,7 +2281,7 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -2244,7 +2296,7 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -2284,7 +2336,6 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipAdminSession.assign_object_requisite
         requisite_type = Type(**Relationship().get_type_data('OBJECTIVE.REQUISITE'))
 
         ras = self._get_provider_manager(
@@ -2314,7 +2365,6 @@ class ObjectiveRequisiteAssignmentSession(abc_learning_sessions.ObjectiveRequisi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipAdminSession.unassign_object_requisite
         requisite_type = Type(**Relationship().get_type_data('OBJECTIVE.REQUISITE'))
         rls = self._get_provider_manager(
             'RELATIONSHIP').get_relationship_lookup_session_for_family(
@@ -2401,7 +2451,6 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
     cast of the ``Activity``.
 
     """
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -2424,7 +2473,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -2439,7 +2488,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -2458,7 +2507,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2472,7 +2522,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_activity_view(self):
@@ -2485,7 +2536,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_objective_bank_view(self):
@@ -2498,7 +2550,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_objective_bank_view(self):
@@ -2509,7 +2562,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -2531,7 +2585,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Activity',
@@ -2564,7 +2619,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Activity',
@@ -2602,7 +2658,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Activity',
@@ -2630,7 +2687,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.ActivityList([])
 
@@ -2652,7 +2710,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.ActivityList([])
 
@@ -2676,7 +2735,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_subjugated_objects_for_object
+        # Implemented from template for
+        # osid.learning.ActivityLookupSession.get_activities_for_objective_template
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Activity',
@@ -2708,16 +2768,7 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_subjugated_objects_for_objects
-        # NOTE: This implementation currently ignores plenary view
-        collection = JSONClientValidated('learning',
-                                         collection='Activity',
-                                         runtime=self._runtime)
-        id_str_list = [str(id_) for id_ in objective_ids]
-        result = collection.find(
-            dict({'objectiveId': {'$in': id_str_list}},
-                 **self._view_filter()))
-        return objects.ActivityList(result, runtime=self._runtime)
+        raise errors.Unimplemented()
 
     @utilities.arguments_not_none
     def get_activities_by_asset(self, asset_id):
@@ -2776,7 +2827,8 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Activity',
@@ -2785,6 +2837,173 @@ class ActivityLookupSession(abc_learning_sessions.ActivityLookupSession, osid_se
         return objects.ActivityList(result, runtime=self._runtime, proxy=self._proxy)
 
     activities = property(fget=get_activities)
+
+
+class ActivityQuerySession(abc_learning_sessions.ActivityQuerySession, osid_sessions.OsidSession):
+    """This session provides methods for searching ``Activity`` objects.
+
+    The search query is constructed using the ``ActivityQuery``. The
+    activity record ``Type`` also specifies the record for the activity
+    query.
+
+    This session defines views that offer differing behaviors for
+    searching.
+
+      * federated objective bank view: searches include activities in
+        objective banks of which this objective bank is a ancestor in
+        the objective bank hierarchy
+      * isolated objective bank view: searches are restricted to
+        activities in this objective bank
+
+
+    Activities may have a query record indicated by their respective
+    record types. The query record is accessed via the
+    ``ActivityQuery``.
+
+    """
+    def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
+        OsidSession.__init__(self)
+        self._catalog_class = objects.ObjectiveBank
+        self._catalog_name = 'ObjectiveBank'
+        OsidSession._init_object(
+            self,
+            catalog_id,
+            proxy,
+            runtime,
+            db_name='learning',
+            cat_name='ObjectiveBank',
+            cat_class=objects.ObjectiveBank)
+        self._kwargs = kwargs
+
+    def get_objective_bank_id(self):
+        """Gets the ``ObjectiveBank``  ``Id`` associated with this session.
+
+        return: (osid.id.Id) - the ``ObjectiveBank Id`` associated with
+                this session
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
+        return self._catalog_id
+
+    objective_bank_id = property(fget=get_objective_bank_id)
+
+    def get_objective_bank(self):
+        """Gets the ``ObjectiveBank`` associated with this session.
+
+        return: (osid.learning.ObjectiveBank) - the ``ObjectiveBank``
+                associated with this session
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
+        return self._catalog
+
+    objective_bank = property(fget=get_objective_bank)
+
+    def can_search_activities(self):
+        """Tests if this user can perform ``Activity`` searches.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known all methods in this
+        session will result in a ``PermissionDenied``. This is intended
+        as a hint to an application that may opt not to offer search
+        operations to unauthorized users.
+
+        return: (boolean) - ``false`` if search methods are not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    def use_federated_objective_bank_view(self):
+        """Federates the view for methods in this session.
+
+        A federated view will include activities in objective banks
+        which are children of this objective bank in the objective bank
+        hierarchy.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
+        self._use_federated_catalog_view()
+
+    def use_isolated_objective_bank_view(self):
+        """Isolates the view for methods in this session.
+
+        An isolated view restricts searches to this objective bank only.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
+        self._use_isolated_catalog_view()
+
+    def get_activity_query(self):
+        """Gets an activity query.
+
+        return: (osid.learning.ActivityQuery) - the activity query
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
+        return queries.ActivityQuery(runtime=self._runtime)
+
+    activity_query = property(fget=get_activity_query)
+
+    @utilities.arguments_not_none
+    def get_activities_by_query(self, activity_query):
+        """Gets a list of ``Activities`` matching the given activity query.
+
+        arg:    activity_query (osid.learning.ActivityQuery): the
+                activity query
+        return: (osid.learning.ActivityList) - the returned
+                ``ActivityList``
+        raise:  NullArgument - ``activity_query`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        raise:  Unsupported - ``activity_query`` is not of this service
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
+        and_list = list()
+        or_list = list()
+        for term in activity_query._query_terms:
+            if '$in' in activity_query._query_terms[term] and '$nin' in activity_query._query_terms[term]:
+                and_list.append(
+                    {'$or': [{term: {'$in': activity_query._query_terms[term]['$in']}},
+                             {term: {'$nin': activity_query._query_terms[term]['$nin']}}]})
+            else:
+                and_list.append({term: activity_query._query_terms[term]})
+        for term in activity_query._keyword_terms:
+            or_list.append({term: activity_query._keyword_terms[term]})
+        if or_list:
+            and_list.append({'$or': or_list})
+        view_filter = self._view_filter()
+        if view_filter:
+            and_list.append(view_filter)
+        if and_list:
+            query_terms = {'$and': and_list}
+            collection = JSONClientValidated('learning',
+                                             collection='Activity',
+                                             runtime=self._runtime)
+            result = collection.find(query_terms).sort('_id', DESCENDING)
+        else:
+            result = []
+        return objects.ActivityList(result, runtime=self._runtime, proxy=self._proxy)
 
 
 class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sessions.OsidSession):
@@ -2822,7 +3041,6 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -2846,7 +3064,7 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -2861,7 +3079,7 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -2880,7 +3098,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2904,7 +3123,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2930,7 +3150,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_subjugated_object_form_for_create
+        # Implemented from template for
+        # osid.learning.ActivityAdminSession.get_activity_form_for_create_template
 
         if not isinstance(objective_id, ABCId):
             raise errors.InvalidArgument('argument is not a valid OSID Id')
@@ -2976,7 +3197,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Activity',
                                          runtime=self._runtime)
@@ -3015,7 +3237,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3036,7 +3259,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('learning',
                                          collection='Activity',
                                          runtime=self._runtime)
@@ -3069,7 +3293,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Activity',
                                          runtime=self._runtime)
@@ -3108,7 +3333,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3127,7 +3353,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.delete_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Activity',
                                          runtime=self._runtime)
@@ -3154,7 +3381,6 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3179,7 +3405,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=activity_id, equivalent_id=alias_id)
 
 
@@ -3197,7 +3424,6 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         condition
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogSession.init_template
     _session_namespace = 'learning.ActivityObjectiveBankSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -3219,7 +3445,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.can_lookup_object_catalog_mappings
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3233,7 +3460,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -3248,7 +3476,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -3267,7 +3496,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         id_list = []
         for activity in self.get_activities_by_objective_bank(objective_bank_id):
             id_list.append(activity.get_id())
@@ -3288,7 +3518,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_activity_lookup_session_for_objective_bank(objective_bank_id, proxy=self._proxy)
         lookup_session.use_isolated_objective_bank_view()
@@ -3307,7 +3538,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         id_list = []
         for activity in self.get_activities_by_objective_banks(objective_bank_ids):
             id_list.append(activity.get_id())
@@ -3326,7 +3558,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
         activity_list = []
         for objective_bank_id in objective_bank_ids:
             activity_list += list(
@@ -3346,7 +3579,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_catalog_ids_by_object
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_activity_lookup_session(proxy=self._proxy)
         lookup_session.use_federated_objective_bank_view()
@@ -3370,7 +3604,8 @@ class ActivityObjectiveBankSession(abc_learning_sessions.ActivityObjectiveBankSe
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_catalogs_by_object
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
         return lookup_session.get_objective_banks_by_ids(
@@ -3390,7 +3625,6 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
     ``Id`` ).
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.init_template
     _session_namespace = 'learning.ActivityObjectiveBankAssignmentSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -3413,7 +3647,8 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3436,7 +3671,8 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if objective_bank_id.get_identifier() == '000000000000000000000000':
@@ -3444,7 +3680,7 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         return True
 
     @utilities.arguments_not_none
-    def get_assignable_objective_bank_ids(self):
+    def get_assignable_objective_bank_ids(self, objective_bank_id):
         """Gets a list of objective banks including and under the given objective bank node in which any activity can be assigned.
 
         arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
@@ -3456,7 +3692,8 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
@@ -3481,7 +3718,8 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids_for_object
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
         return self.get_assignable_objective_bank_ids(objective_bank_id)
 
@@ -3503,7 +3741,8 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.assign_object_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
         lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
@@ -3526,7 +3765,8 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.unassign_object_from_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('LEARNING', local=True)
         lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
         lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
@@ -3553,7 +3793,8 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.reassign_object_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
         self.assign_activity_to_objective_bank(activity_id, to_objective_bank_id)
         try:
             self.unassign_activity_from_objective_bank(activity_id, from_objective_bank_id)
@@ -3564,7 +3805,6 @@ class ActivityObjectiveBankAssignmentSession(abc_learning_sessions.ActivityObjec
 
 class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, osid_sessions.OsidSession):
     """This session defines methods for retrieving proficiencies."""
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -3587,7 +3827,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -3601,7 +3841,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -3620,7 +3860,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3634,7 +3875,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_proficiency_view(self):
@@ -3647,7 +3889,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_objective_bank_view(self):
@@ -3660,7 +3903,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_objective_bank_view(self):
@@ -3672,7 +3916,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def use_effective_proficiency_view(self):
@@ -3681,7 +3926,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_effective_relationship_view
         self._use_effective_view()
 
     def use_any_effective_proficiency_view(self):
@@ -3690,7 +3936,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_any_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_any_effective_relationship_view
         self._use_any_effective_view()
 
     @utilities.arguments_not_none
@@ -3709,7 +3956,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -3734,7 +3982,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -3768,7 +4017,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -3792,7 +4042,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.ProficiencyList([])
 
@@ -3810,7 +4061,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.ProficiencyList([])
 
@@ -3829,7 +4081,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_on_date
         proficiency_list = []
         for proficiency in self.get_proficiencies():
             if overlap(from_, to, proficiency.start_date, proficiency.end_date):
@@ -3869,14 +4122,15 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_destination
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_destination
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
                                          runtime=self._runtime)
         result = collection.find(
             dict({'objectiveId': str(objective_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -3896,7 +4150,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_destination_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_destination_on_date
         proficiency_list = []
         for proficiency in self.get_proficiencies_for_objective():
             if overlap(from_, to, proficiency.start_date, proficiency.end_date):
@@ -3919,7 +4174,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_destination
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_destination
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -3927,7 +4183,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         result = collection.find(
             dict({'objectiveId': str(objective_id),
                   'genusTypeId': str(proficiency_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -3964,14 +4220,15 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_destination
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_destination
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
                                          runtime=self._runtime)
         result = collection.find(
             dict({'objectiveId': str(objective_ids)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -3987,7 +4244,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -4014,7 +4272,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source_on_date
         proficiency_list = []
         for proficiency in self.get_proficiencies_for_resource(resource_id):
             if overlap(from_, to, proficiency.start_date, proficiency.end_date):
@@ -4037,7 +4296,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_source
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -4045,7 +4305,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         result = collection.find(
             dict({'resourceId': str(resource_id),
                   'genusTypeId': str(proficiency_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4067,7 +4327,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_source_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_source_on_date
         proficiency_list = []
         for proficiency in self.get_proficiencies_by_genus_type_for_resource():
             if overlap(from_, to, proficiency.start_date, proficiency.end_date):
@@ -4087,7 +4348,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -4112,7 +4374,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_peers
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -4120,7 +4383,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         result = collection.find(
             dict({'resourceId': str(objective_id),
                   'objectiveId': str(resource_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4160,7 +4423,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_by_genus_type_for_peers
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_by_genus_type_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -4169,7 +4433,7 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
             dict({'resourceId': str(objective_id),
                   'objectiveId': str(resource_id),
                   'genusTypeId': str(proficiency_genus_type)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.ProficiencyList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -4204,7 +4468,8 @@ class ProficiencyLookupSession(abc_learning_sessions.ProficiencyLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
@@ -4235,7 +4500,6 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
     ``ProficiencyQuery``.
 
     """
-    # Built from: templates/osid_session.GenericRelationshipQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -4258,7 +4522,7 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -4272,7 +4536,7 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -4291,7 +4555,8 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4306,7 +4571,8 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_objective_bank_view(self):
@@ -4317,7 +4583,8 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def get_proficiency_query(self):
@@ -4327,7 +4594,8 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.ProficiencyQuery(runtime=self._runtime)
 
     proficiency_query = property(fget=get_proficiency_query)
@@ -4348,7 +4616,8 @@ class ProficiencyQuerySession(abc_learning_sessions.ProficiencyQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in proficiency_query._query_terms:
@@ -4413,7 +4682,6 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.ObjectiveBank
@@ -4437,7 +4705,7 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     objective_bank_id = property(fget=get_objective_bank_id)
@@ -4451,7 +4719,7 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     objective_bank = property(fget=get_objective_bank)
@@ -4470,7 +4738,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4494,7 +4763,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4522,7 +4792,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipAdminSession.get_relationship_form_for_create
+        # Implemented from template for
+        # osid.relationship.RelationshipAdminSession.get_relationship_form_for_create
         # These really need to be in module imports:
         from dlkit.abstract_osid.id.primitives import Id as ABCId
         from dlkit.abstract_osid.type.primitives import Type as ABCType
@@ -4576,7 +4847,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
                                          runtime=self._runtime)
@@ -4615,7 +4887,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4634,7 +4907,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
                                          runtime=self._runtime)
@@ -4667,7 +4941,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
                                          runtime=self._runtime)
@@ -4706,7 +4981,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4724,7 +5000,8 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.delete_resource_template
         collection = JSONClientValidated('learning',
                                          collection='Proficiency',
                                          runtime=self._runtime)
@@ -4761,7 +5038,6 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4787,8 +5063,205 @@ class ProficiencyAdminSession(abc_learning_sessions.ProficiencyAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=proficiency_id, equivalent_id=alias_id)
+
+
+class ProficiencyObjectiveBankAssignmentSession(abc_learning_sessions.ProficiencyObjectiveBankAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign ``Proficiencies`` to ``ObjectiveBank`` objects.
+
+    A ``Proficiency`` may appear in multiple ``ObjectiveBank`` objects
+    and removing the last reference to a ``Proficiency`` is the
+    equivalent of deleting it. Each ``ObjectiveBank`` may have its own
+    authorizations governing who is allowed to operate on it.
+
+    Adding a reference of a ``Proficiency`` to another ``ObjectiveBank``
+    is not a copy operation (eg: does not change its ``Id`` ).
+
+    """
+    _session_namespace = 'learning.ProficiencyObjectiveBankAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'ObjectiveBank'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_proficiencies(self):
+        """Tests if this user can alter proficiency/objective bank mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_proficiencies_to_objective_bank(self, objective_bank_id):
+        """Tests if this user can alter proficiency/objective bank mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``objective_bank_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if objective_bank_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_objective_bank_ids(self, objective_bank_id):
+        """Gets a list of objective banks including and under the given objective bank proficiency in which any proficiency can be assigned.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        return: (osid.id.IdList) - list of assignable objectiveBank
+                ``Ids``
+        raise:  NullArgument - ``objective_bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('LEARNING', local=True)
+        lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
+        objective_banks = lookup_session.get_objective_banks()
+        id_list = []
+        for objective_bank in objective_banks:
+            id_list.append(objective_bank.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_objective_bank_ids_for_proficiency(self, objective_bank_id, proficiency_id):
+        """Gets a list of objective banks including and under the given objective bank proficiency in which a specific proficiency can be assigned.
+
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        return: (osid.id.IdList) - list of assignable objectiveBank
+                ``Ids``
+        raise:  NullArgument - ``objective_bank_id`` or
+                ``proficiency_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_objective_bank_ids(objective_bank_id)
+
+    @utilities.arguments_not_none
+    def assign_proficiency_to_objective_bank(self, proficiency_id, objective_bank_id):
+        """Adds an existing ``Proficiency`` to a ``ObjectiveBank``.
+
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        raise:  AlreadyExists - ``proficiency_id`` is already mapped to
+                ``objective_bank_id``
+        raise:  NotFound - ``proficiency_id`` or ``objective_bank_id``
+                not found
+        raise:  NullArgument - ``proficiency_id`` or
+                ``objective_bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('LEARNING', local=True)
+        lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
+        lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
+        self._assign_object_to_catalog(proficiency_id, objective_bank_id)
+
+    @utilities.arguments_not_none
+    def unassign_proficiency_from_objective_bank(self, proficiency_id, objective_bank_id):
+        """Removes a ``Proficiency`` from a ``ObjectiveBank``.
+
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        arg:    objective_bank_id (osid.id.Id): the ``Id`` of the
+                ``ObjectiveBank``
+        raise:  NotFound - ``proficiency_id`` or ``objective_bank_id``
+                not found or ``proficiency_id`` not mapped to
+                ``objective_bank_id``
+        raise:  NullArgument - ``proficiency_id`` or
+                ``objective_bank_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('LEARNING', local=True)
+        lookup_session = mgr.get_objective_bank_lookup_session(proxy=self._proxy)
+        lookup_session.get_objective_bank(objective_bank_id)  # to raise NotFound
+        self._unassign_object_from_catalog(proficiency_id, objective_bank_id)
+
+    @utilities.arguments_not_none
+    def reassign_proficiency_to_objective_bank(self, proficiency_id, from_objective_bank_id, to_objective_bank_id):
+        """Moves a ``Proficiency`` from one ``ObjectiveBank`` to another.
+
+        Mappings to other ``ObjectiveBanks`` are unaffected.
+
+        arg:    proficiency_id (osid.id.Id): the ``Id`` of the
+                ``Proficiency``
+        arg:    from_objective_bank_id (osid.id.Id): the ``Id`` of the
+                current ``ObjectiveBank``
+        arg:    to_objective_bank_id (osid.id.Id): the ``Id`` of the
+                destination ``ObjectiveBank``
+        raise:  NotFound - ``proficiency_id, from_objective_bank_id,``
+                or ``to_objective_bank_id`` not found or
+                ``proficiency_id`` not mapped to
+                ``from_objective_bank_id``
+        raise:  NullArgument - ``proficiency_id,
+                from_objective_bank_id,`` or ``to_objective_bank_id`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.reassign_resource_to_bin
+        self.assign_proficiency_to_objective_bank(proficiency_id, to_objective_bank_id)
+        try:
+            self.unassign_proficiency_from_objective_bank(proficiency_id, from_objective_bank_id)
+        except:  # something went wrong, roll back assignment to to_objective_bank_id
+            self.unassign_proficiency_from_objective_bank(proficiency_id, to_objective_bank_id)
+            raise
 
 
 class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSession, osid_sessions.OsidSession):
@@ -4816,7 +5289,6 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
     cast of the ``ObjectiveBank``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'learning.ObjectiveBankLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4842,7 +5314,8 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.can_lookup_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -4858,7 +5331,8 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -4873,7 +5347,8 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -4898,7 +5373,8 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bin
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=objective_bank_id)
         collection = JSONClientValidated('learning',
@@ -4908,8 +5384,7 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         if objective_bank_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.ObjectiveBank, cat_name='ObjectiveBank')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(objective_bank_id,
-                                                                       'learning').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(objective_bank_id, 'learning').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated ObjectiveBank.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(objective_bank_id, 'learning', 'ObjectiveBank')
@@ -4939,7 +5414,8 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_ids_template
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_ObjectiveBank() instead of direct to database
         if self._catalog_session is not None:
@@ -4973,7 +5449,8 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_genus_type_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_genus_type(catalog_genus_type=objective_bank_genus_type)
@@ -5062,7 +5539,8 @@ class ObjectiveBankLookupSession(abc_learning_sessions.ObjectiveBankLookupSessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -5110,7 +5588,6 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'learning.ObjectiveBankAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -5135,7 +5612,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5143,7 +5621,7 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         return True
 
     @utilities.arguments_not_none
-    def can_create_objective_bank_with_record_types(self):
+    def can_create_objective_bank_with_record_types(self, objective_bank_record_types):
         """Tests if this user can create a single ``ObjectiveBank`` using the desired record types.
 
         While ``LearningManager.getObjectiveBankRecordTypes()`` can be
@@ -5162,7 +5640,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bin_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5188,7 +5667,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_create_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=objective_bank_record_types)
         for arg in objective_bank_record_types:
@@ -5228,7 +5708,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.create_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=objective_bank_form)
         collection = JSONClientValidated('learning',
@@ -5269,7 +5750,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_update_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5294,7 +5776,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_update_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=objective_bank_id)
         collection = JSONClientValidated('learning',
@@ -5326,7 +5809,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.update_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=objective_bank_form)
         collection = JSONClientValidated('learning',
@@ -5364,7 +5848,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_delete_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5384,7 +5869,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.delete_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.delete_catalog(catalog_id=objective_bank_id)
         collection = JSONClientValidated('learning',
@@ -5414,7 +5900,6 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -5440,7 +5925,8 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=objective_bank_id, alias_id=alias_id)
         self._alias_id(primary_id=objective_bank_id, equivalent_id=alias_id)
@@ -5473,10 +5959,11 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
       * plenary view: provides a complete set or is an error condition
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchySession.init_template
     _session_namespace = 'learning.ObjectiveBankHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -5499,7 +5986,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -5516,7 +6004,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -5537,7 +6026,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.can_access_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5553,7 +6043,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -5568,7 +6059,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -5582,7 +6074,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -5599,7 +6092,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return ObjectiveBankLookupSession(
@@ -5623,7 +6117,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=objective_bank_id)
         return self._hierarchy_session.has_parents(id_=objective_bank_id)
@@ -5646,7 +6141,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_parent_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_parent_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_parent(id_=objective_bank_id, parent_id=id_)
@@ -5666,7 +6162,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalog_ids(catalog_id=objective_bank_id)
         return self._hierarchy_session.get_parents(id_=objective_bank_id)
@@ -5686,7 +6183,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalogs(catalog_id=objective_bank_id)
         return ObjectiveBankLookupSession(
@@ -5712,7 +6210,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_ancestor_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=objective_bank_id)
@@ -5732,7 +6231,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=objective_bank_id)
         return self._hierarchy_session.has_children(id_=objective_bank_id)
@@ -5755,7 +6255,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_child_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_child_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_child(id_=objective_bank_id, child_id=id_)
@@ -5773,7 +6274,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=objective_bank_id)
         return self._hierarchy_session.get_children(id_=objective_bank_id)
@@ -5792,7 +6294,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=objective_bank_id)
         return ObjectiveBankLookupSession(
@@ -5818,7 +6321,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_descendant_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=objective_bank_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=objective_bank_id)
@@ -5845,7 +6349,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_node_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=objective_bank_id,
@@ -5881,7 +6386,8 @@ class ObjectiveBankHierarchySession(abc_learning_sessions.ObjectiveBankHierarchy
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_nodes
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_nodes
         return objects.ObjectiveBankNode(self.get_objective_bank_node_ids(
             objective_bank_id=objective_bank_id,
             ancestor_levels=ancestor_levels,
@@ -5895,10 +6401,11 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
     Each node in the hierarchy is a unique ``ObjectiveBank``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.init_template
     _session_namespace = 'learning.ObjectiveBankHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -5921,7 +6428,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -5938,7 +6446,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -5959,7 +6468,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.can_modify_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5981,7 +6491,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=objective_bank_id)
         return self._hierarchy_session.add_root(id_=objective_bank_id)
@@ -5999,7 +6510,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=objective_bank_id)
         return self._hierarchy_session.remove_root(id_=objective_bank_id)
@@ -6022,7 +6534,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=objective_bank_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=objective_bank_id, child_id=child_id)
@@ -6043,7 +6556,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=objective_bank_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=objective_bank_id, child_id=child_id)
@@ -6061,7 +6575,8 @@ class ObjectiveBankHierarchyDesignSession(abc_learning_sessions.ObjectiveBankHie
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=objective_bank_id)
         return self._hierarchy_session.remove_children(id_=objective_bank_id)

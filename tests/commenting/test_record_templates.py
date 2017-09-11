@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 
 
 @pytest.mark.usefixtures("comment_record_class_fixture", "comment_record_test_fixture")

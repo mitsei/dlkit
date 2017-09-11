@@ -32,7 +32,8 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_hierarchy_traversal' in profile.SUPPORTS
 
     def supports_hierarchy_design(self):
@@ -43,7 +44,8 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_hierarchy_design' in profile.SUPPORTS
 
     def supports_hierarchy_lookup(self):
@@ -54,7 +56,8 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_hierarchy_lookup' in profile.SUPPORTS
 
     def supports_hierarchy_admin(self):
@@ -65,7 +68,8 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_hierarchy_admin' in profile.SUPPORTS
 
     def get_hierarchy_record_types(self):
@@ -76,7 +80,8 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('HIERARCHY_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -93,7 +98,8 @@ class HierarchyProfile(osid_managers.OsidProfile, hierarchy_managers.HierarchyPr
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('HIERARCHY_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -129,7 +135,7 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         osid_managers.OsidManager.__init__(self)
 
     @utilities.remove_null_proxy_kwarg
-    def get_hierarchy_traversal_session(self, **kwargs):
+    def get_hierarchy_traversal_session(self):
         """Gets the ``OsidSession`` associated with the hierarchy traversal service.
 
         return: (osid.hierarchy.HierarchyTraversalSession) - a
@@ -141,18 +147,16 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         ``supports_hierarchy_traversal()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_hierarchy_traversal():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.HierarchyTraversalSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.HierarchyTraversalSession(runtime=self._runtime)
 
     hierarchy_traversal_session = property(fget=get_hierarchy_traversal_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id, **kwargs):
+    def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id):
         """Gets the ``OsidSession`` associated with the hierarchy traversal service for the given hierarchy.
 
         arg:    hierarchy_id (osid.id.Id): the ``Id`` of the hierarchy
@@ -168,22 +172,16 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_hierarchy_traversal():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.HierarchyTraversalSession(
-                hierarchy_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.HierarchyTraversalSession(hierarchy_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_hierarchy_design_session(self, **kwargs):
+    def get_hierarchy_design_session(self):
         """Gets the ``OsidSession`` associated with the hierarchy design service.
 
         return: (osid.hierarchy.HierarchyDesignSession) - a
@@ -195,18 +193,16 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         ``supports_hierarchy_design()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_hierarchy_design():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.HierarchyDesignSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.HierarchyDesignSession(runtime=self._runtime)
 
     hierarchy_design_session = property(fget=get_hierarchy_design_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id, **kwargs):
+    def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id):
         """Gets the ``OsidSession`` associated with the topology design service using for the given hierarchy.
 
         arg:    hierarchy_id (osid.id.Id): the ``Id`` of the graph
@@ -222,22 +218,16 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_hierarchy_design():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.HierarchyDesignSession(
-                hierarchy_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.HierarchyDesignSession(hierarchy_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_hierarchy_lookup_session(self, **kwargs):
+    def get_hierarchy_lookup_session(self):
         """Gets the ``OsidSession`` associated with the hierarchy lookup service.
 
         return: (osid.hierarchy.HierarchyLookupSession) - a
@@ -249,17 +239,15 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         ``supports_hierarchy_lookup()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_hierarchy_lookup():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.HierarchyLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.HierarchyLookupSession(runtime=self._runtime)
 
     hierarchy_lookup_session = property(fget=get_hierarchy_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_hierarchy_admin_session(self, **kwargs):
+    def get_hierarchy_admin_session(self):
         """Gets the hierarchy administrative session.
 
         return: (osid.hierarchy.HierarchyAdminSession) - a
@@ -271,17 +259,15 @@ class HierarchyManager(osid_managers.OsidManager, HierarchyProfile, hierarchy_ma
         ``supports_hierarchy_admin()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_hierarchy_admin():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.HierarchyAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.HierarchyAdminSession(runtime=self._runtime)
 
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 
 
-class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, HierarchyManager, hierarchy_managers.HierarchyProxyManager):
+class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, hierarchy_managers.HierarchyProxyManager):
     """The hierarchy manager provides access sessions to traverse and manage hierrachies of ``Ids``.
 
     Methods in this manager accept a ``Proxy`` to pass information from
@@ -304,6 +290,137 @@ class HierarchyProxyManager(osid_managers.OsidProxyManager, HierarchyProfile, Hi
         changes in hierarchies
 
     """
-    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
+    @utilities.arguments_not_none
+    def get_hierarchy_traversal_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the hierarchy traversal service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.hierarchy.HierarchyTraversalSession) - a
+                ``HierarchyTraversalSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_hierarchy_traversal()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_hierarchy_traversal()`` is ``true``.*
+
+        """
+        if not self.supports_hierarchy_traversal():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.HierarchyTraversalSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_hierarchy_traversal_session_for_hierarchy(self, hierarchy_id, proxy):
+        """Gets the ``OsidSession`` associated with the hierarchy traversal service for the given hierarchy.
+
+        arg:    hierarchy_id (osid.id.Id): the ``Id`` of the hierarchy
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.hierarchy.HierarchyTraversalSession) - a
+                ``HierarchyTraversalSession``
+        raise:  NotFound - ``hierarchyid`` not found
+        raise:  NullArgument - ``hierarchy_id`` or ``proxy`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_hierarchy_traversal()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_hierarchy_traversal()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_hierarchy_traversal():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.HierarchyTraversalSession(hierarchy_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_hierarchy_design_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the hierarchy design service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.hierarchy.HierarchyDesignSession) - a
+                ``HierarchyDesignSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_hierarchy_design()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_hierarchy_design()`` is ``true``.*
+
+        """
+        if not self.supports_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.HierarchyDesignSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_hierarchy_design_session_for_hierarchy(self, hierarchy_id, proxy):
+        """Gets the ``OsidSession`` associated with the topology design service using for the given hierarchy.
+
+        arg:    hierarchy_id (osid.id.Id): the ``Id`` of the hierarchy
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.hierarchy.HierarchyDesignSession) - a
+                ``HierarchyDesignSession``
+        raise:  NotFound - ``hierarchy_id`` is not found
+        raise:  NullArgument - ``hierarchy_id`` or ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_hierarchy_design()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_hierarchy_design()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_hierarchy_design():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.HierarchyDesignSession(hierarchy_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_hierarchy_lookup_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the hierarchy lookup service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.hierarchy.HierarchyLookupSession) - a
+                ``HierarchyLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_hierarchy_lookup()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_hierarchy_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_hierarchy_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.HierarchyLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_hierarchy_admin_session(self, proxy):
+        """Gets the hierarchy administrative session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.hierarchy.HierarchyAdminSession) - a
+                ``HierarchyAdminSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_hierarchy_admin()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_hierarchy_admin()`` is ``true``.*
+
+        """
+        if not self.supports_hierarchy_admin():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.HierarchyAdminSession(proxy=proxy, runtime=self._runtime)

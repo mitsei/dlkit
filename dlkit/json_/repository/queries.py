@@ -27,7 +27,6 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
     identified by the ``Asset Type``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'repository.Asset'
         self._runtime = runtime
@@ -75,7 +74,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('title')
 
     title_terms = property(fdel=clear_title_terms)
@@ -108,7 +107,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('publicDomain')
 
     public_domain_terms = property(fdel=clear_public_domain_terms)
@@ -152,7 +151,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('copyright')
 
     copyright_terms = property(fdel=clear_copyright_terms)
@@ -197,7 +196,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('copyrightRegistration')
 
     copyright_registration_terms = property(fdel=clear_copyright_registration_terms)
@@ -218,7 +217,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('distributeVerbatim')
 
     distribute_verbatim_terms = property(fdel=clear_distribute_verbatim_terms)
@@ -239,7 +238,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('distributeAlterations')
 
     distribute_alterations_terms = property(fdel=clear_distribute_alterations_terms)
@@ -261,7 +260,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('distributeCompositions')
 
     distribute_compositions_terms = property(fdel=clear_distribute_compositions_terms)
@@ -277,7 +276,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('sourceId', str(source_id), match)
 
     def clear_source_id_terms(self):
@@ -286,7 +285,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('sourceId')
 
     source_id_terms = property(fdel=clear_source_id_terms)
@@ -333,7 +332,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('source')
 
     source_terms = property(fdel=clear_source_terms)
@@ -352,7 +351,6 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_date_time
         self._match_minimum_date_time('createdDate', start, match)
         self._match_maximum_date_time('createdDate', end, match)
 
@@ -374,7 +372,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('createdDate')
 
     created_date_terms = property(fdel=clear_created_date_terms)
@@ -395,7 +393,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('published')
 
     published_terms = property(fdel=clear_published_terms)
@@ -414,7 +412,6 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_date_time
         self._match_minimum_date_time('publishedDate', start, match)
         self._match_maximum_date_time('publishedDate', end, match)
 
@@ -436,7 +433,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('publishedDate')
 
     published_date_terms = property(fdel=clear_published_date_terms)
@@ -480,7 +477,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('principalCreditString')
 
     principal_credit_string_terms = property(fdel=clear_principal_credit_string_terms)
@@ -534,7 +531,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('locationId', str(location_id), match)
 
     def clear_location_id_terms(self):
@@ -543,7 +540,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('locationId')
 
     location_id_terms = property(fdel=clear_location_id_terms)
@@ -668,7 +665,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('assetContentId', str(asset_content_id), match)
 
     def clear_asset_content_id_terms(self):
@@ -677,7 +674,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('assetContentId')
 
     asset_content_id_terms = property(fdel=clear_asset_content_id_terms)
@@ -741,7 +738,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('compositionId', str(composition_id), match)
 
     def clear_composition_id_terms(self):
@@ -750,7 +747,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('compositionId')
 
     composition_id_terms = property(fdel=clear_composition_id_terms)
@@ -800,7 +797,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('composition')
 
     composition_terms = property(fdel=clear_composition_terms)
@@ -816,7 +813,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedRepositoryIds', str(repository_id), match)
 
     def clear_repository_id_terms(self):
@@ -825,7 +822,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedRepositoryIds')
 
     repository_id_terms = property(fdel=clear_repository_id_terms)
@@ -862,7 +859,7 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('repository')
 
     repository_terms = property(fdel=clear_repository_terms)
@@ -893,7 +890,6 @@ class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.O
     same method produce a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'repository.AssetContent'
         self._runtime = runtime
@@ -939,7 +935,7 @@ class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('accessibilityType')
 
     accessibility_type_terms = property(fdel=clear_accessibility_type_terms)
@@ -1011,7 +1007,7 @@ class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('data')
 
     data_terms = property(fdel=clear_data_terms)
@@ -1056,7 +1052,7 @@ class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('url')
 
     url_terms = property(fdel=clear_url_terms)
@@ -1089,7 +1085,6 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
     the same method produces a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'repository.Composition'
         self._runtime = runtime
@@ -1324,7 +1319,7 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedRepositoryIds', str(repository_id), match)
 
     def clear_repository_id_terms(self):
@@ -1333,7 +1328,7 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedRepositoryIds')
 
     repository_id_terms = property(fdel=clear_repository_id_terms)
@@ -1370,7 +1365,7 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('repository')
 
     repository_terms = property(fdel=clear_repository_terms)
@@ -1403,7 +1398,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
     the same method produce a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('REPOSITORY_RECORD_TYPES', runtime)
@@ -1446,7 +1440,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('assetId')
 
     asset_id_terms = property(fdel=clear_asset_id_terms)
@@ -1493,7 +1486,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('asset')
 
     asset_terms = property(fdel=clear_asset_terms)
@@ -1517,7 +1509,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('compositionId')
 
     composition_id_terms = property(fdel=clear_composition_id_terms)
@@ -1567,7 +1558,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('composition')
 
     composition_terms = property(fdel=clear_composition_terms)
@@ -1591,7 +1581,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorRepositoryId')
 
     ancestor_repository_id_terms = property(fdel=clear_ancestor_repository_id_terms)
@@ -1639,7 +1628,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorRepository')
 
     ancestor_repository_terms = property(fdel=clear_ancestor_repository_terms)
@@ -1663,7 +1651,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantRepositoryId')
 
     descendant_repository_id_terms = property(fdel=clear_descendant_repository_id_terms)
@@ -1711,7 +1698,6 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantRepository')
 
     descendant_repository_terms = property(fdel=clear_descendant_repository_terms)

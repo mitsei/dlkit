@@ -201,7 +201,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
                                          collection=pkg_name + 'Ids',
                                          runtime=self._runtime)
         try:
-            result = collection.find_one({'aliasIds': {'$$in': [str(id_)]}})
+            result = collection.find_one({'aliasIds': {'$in': [str(id_)]}})
         except errors.NotFound:
             return id_
         else:
@@ -219,7 +219,7 @@ class OsidSession(abc_osid_sessions.OsidSession):
                                          collection=pkg_name + 'Ids',
                                          runtime=self._runtime)
         try:
-            result = collection.find_one({'aliasIds': {'$$in': [str(equivalent_id)]}})
+            result = collection.find_one({'aliasIds': {'$in': [str(equivalent_id)]}})
         except errors.NotFound:
             pass
         else:
@@ -327,8 +327,8 @@ class OsidSession(abc_osid_sessions.OsidSession):
         if self._is_phantom_root_federated():
             return {}
         idstr_list = self._get_catalog_idstrs()
-        return {'assigned' + self._catalog_name + 'Ids': {'$$in': idstr_list}}
-        # return {'assigned' + utilities.format_catalog(self._catalog_name) + 'Ids': {'$$in': idstr_list}}
+        return {'assigned' + self._catalog_name + 'Ids': {'$in': idstr_list}}
+        # return {'assigned' + utilities.format_catalog(self._catalog_name) + 'Ids': {'$in': idstr_list}}
 
     def _assign_object_to_catalog(self, obj_id, cat_id):
         pkg_name = obj_id.get_identifier_namespace().split('.')[0]
@@ -519,5 +519,4 @@ class OsidSession(abc_osid_sessions.OsidSession):
         transaction-at-a-time rule.
 
         """
-        if not supports_transactions:
-            raise errors.Unsupported('transactions ore not supported for this session')
+        raise errors.Unimplemented()

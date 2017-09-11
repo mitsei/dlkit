@@ -196,6 +196,39 @@ def authz_adapter_class_fixture(request):
     request.addfinalizer(class_tear_down)
 
 
+@pytest.fixture(scope="function")
+def authz_adapter_test_fixture(request):
+    request.cls.assessment_offered_id_lists = []
+    count = 0
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.bank_list[0].get_assessment_form_for_create([])
+        create_form.display_name = 'Assessment for AssessmentOffered Tests'
+        create_form.description = 'Assessment for authz adapter tests for AssessmentOffered'
+        request.cls.assessment = request.cls.bank_list[0].create_assessment(create_form)
+        for bank_ in request.cls.bank_list:
+            request.cls.assessment_offered_id_lists.append([])
+            for color in ['Red', 'Blue', 'Red']:
+                create_form = bank_.get_assessment_offered_form_for_create(request.cls.assessment.ident, [])
+                create_form.display_name = color + ' ' + str(count) + ' AssessmentOfferd'
+                create_form.description = color + ' assessment_offered for authz adapter tests from AssessmentOfferd number ' + str(count)
+                if color == 'Blue':
+                    create_form.genus_type = BLUE_TYPE
+                assessment_offered = bank_.create_assessment_offered(create_form)
+                if count == 2 and color == 'Blue':
+                    request.cls.assessment_mgr.assign_assessment_offered_to_bank(
+                        assessment_offered.ident,
+                        request.cls.bank_id_list[7])
+                request.cls.assessment_offered_id_lists[count].append(assessment_offered.ident)
+            count += 1
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for index, bank_ in enumerate(request.cls.bank_list):
+                for assessment_offered_id in request.cls.assessment_offered_id_lists[index]:
+                    bank_.delete_assessment_offered(assessment_offered_id)
+            request.cls.bank_list[0].delete_assessment(request.cls.assessment.ident)
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("authz_adapter_class_fixture", "authz_adapter_test_fixture")

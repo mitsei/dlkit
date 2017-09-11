@@ -4,7 +4,7 @@
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.type.objects import TypeList as abc_type_list
 from dlkit.primordium.id.primitives import Id
@@ -21,7 +21,7 @@ DEFAULT_TYPE = Type(**{'identifier': 'DEFAULT', 'namespace': 'DEFAULT', 'authori
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def commenting_profile_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.mgr = Runtime().get_service_manager(
@@ -49,6 +49,14 @@ class TestCommentingProfile(object):
     def test_supports_comment_admin(self):
         """Tests supports_comment_admin"""
         assert isinstance(self.mgr.supports_comment_admin(), bool)
+
+    def test_supports_comment_book(self):
+        """Tests supports_comment_book"""
+        assert isinstance(self.mgr.supports_comment_book(), bool)
+
+    def test_supports_comment_book_assignment(self):
+        """Tests supports_comment_book_assignment"""
+        assert isinstance(self.mgr.supports_comment_book_assignment(), bool)
 
     def test_supports_book_lookup(self):
         """Tests supports_book_lookup"""
@@ -89,7 +97,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def commenting_manager_class_fixture(request):
     # Implemented from resource.ResourceManager
     request.cls.service_config = request.param
@@ -164,6 +172,18 @@ class TestCommentingManager(object):
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_comment_admin_session_for_book()
 
+    def test_get_comment_book_session(self):
+        """Tests get_comment_book_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book():
+            self.svc_mgr.get_comment_book_session()
+
+    def test_get_comment_book_assignment_session(self):
+        """Tests get_comment_book_assignment_session"""
+        # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book_assignment():
+            self.svc_mgr.get_comment_book_assignment_session()
+
     def test_get_book_lookup_session(self):
         """Tests get_book_lookup_session"""
         # From tests_templates/resource.py::ResourceManager::get_resource_admin_session_template
@@ -201,7 +221,7 @@ class NotificationReceiver(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def commenting_proxy_manager_class_fixture(request):
     # Implemented from resource.ResourceProxyManager
     request.cls.service_config = request.param
@@ -283,6 +303,22 @@ class TestCommentingProxyManager(object):
             self.svc_mgr.get_comment_admin_session_for_book(self.catalog_id, PROXY)
         with pytest.raises(errors.NullArgument):
             self.svc_mgr.get_comment_admin_session_for_book()
+
+    def test_get_comment_book_session(self):
+        """Tests get_comment_book_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book():
+            self.svc_mgr.get_comment_book_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_comment_book_session()
+
+    def test_get_comment_book_assignment_session(self):
+        """Tests get_comment_book_assignment_session"""
+        # From tests_templates/resource.py::ResourceProxyManager::get_resource_admin_session_template
+        if self.svc_mgr.supports_comment_book_assignment():
+            self.svc_mgr.get_comment_book_assignment_session(PROXY)
+        with pytest.raises(errors.NullArgument):
+            self.svc_mgr.get_comment_book_assignment_session()
 
     def test_get_book_lookup_session(self):
         """Tests get_book_lookup_session"""

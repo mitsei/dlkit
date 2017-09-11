@@ -196,6 +196,39 @@ def authz_adapter_class_fixture(request):
     request.addfinalizer(class_tear_down)
 
 
+@pytest.fixture(scope="function")
+def authz_adapter_test_fixture(request):
+    request.cls.activity_id_lists = []
+    count = 0
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.objective_bank_list[0].get_objective_form_for_create([])
+        create_form.display_name = 'Objective for Activity Tests'
+        create_form.description = 'Objective for authz adapter tests for Activity'
+        request.cls.objective = request.cls.objective_bank_list[0].create_objective(create_form)
+        for objective_bank_ in request.cls.objective_bank_list:
+            request.cls.activity_id_lists.append([])
+            for color in ['Red', 'Blue', 'Red']:
+                create_form = objective_bank_.get_activity_form_for_create(request.cls.objective.ident, [])
+                create_form.display_name = color + ' ' + str(count) + ' Activity'
+                create_form.description = color + ' activity for authz adapter tests from ObjectiveBank number ' + str(count)
+                if color == 'Blue':
+                    create_form.genus_type = BLUE_TYPE
+                activity = objective_bank_.create_activity(create_form)
+                if count == 2 and color == 'Blue':
+                    request.cls.learning_mgr.assign_activity_to_objective_bank(
+                        activity.ident,
+                        request.cls.objective_bank_id_list[7])
+                request.cls.activity_id_lists[count].append(activity.ident)
+            count += 1
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for index, objective_bank_ in enumerate(request.cls.objective_bank_list):
+                for activity_id in request.cls.activity_id_lists[index]:
+                    objective_bank_.delete_activity(activity_id)
+            request.cls.objective_bank_list[0].delete_objective(request.cls.objective.ident)
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("authz_adapter_class_fixture", "authz_adapter_test_fixture")

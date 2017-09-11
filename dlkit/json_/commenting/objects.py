@@ -10,23 +10,15 @@
 #     Inheritance defined in specification
 
 
-import base64
-import gridfs
 import importlib
-
-
-from decimal import Decimal
 
 
 from . import default_mdata
 from .. import utilities
-from ..id.objects import IdList
 from ..osid import objects as osid_objects
 from ..osid.metadata import Metadata
+from ..primitives import DisplayText
 from ..primitives import Id
-from ..primitives import Id, DateTime, Duration, DataInputStream
-from ..primitives import Id, DateTime, Duration, DisplayText
-from ..utilities import JSONClientValidated
 from ..utilities import get_provider_manager
 from ..utilities import get_registry
 from ..utilities import update_display_text_defaults
@@ -37,7 +29,6 @@ from dlkit.primordium.id.primitives import Id
 
 class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
     """A ``Comment`` represents a comment and/or rating related to a reference object in a book."""
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'commenting.Comment'
 
     def __init__(self, **kwargs):
@@ -51,7 +42,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.relationship.Relationship.get_source_id
         return Id(self._my_map['referenceId'])
 
     reference_id = property(fget=get_reference_id)
@@ -63,7 +54,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.relationship.Relationship.get_source_id
         return Id(self._my_map['commentorId'])
 
     commentor_id = property(fget=get_commentor_id)
@@ -87,16 +78,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
-        if not bool(self._my_map['commentingAgentId']):
-            raise errors.IllegalState('this Comment has no commenting_agent')
-        mgr = self._get_provider_manager('ID')
-        if not mgr.supports_id_lookup():
-            raise errors.OperationFailed('Id does not support Id lookup')
-        lookup_session = mgr.get_id_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_no_catalog_view()
-        osid_object = lookup_session.get_id(self.get_commenting_agent_id())
-        return osid_object
+        return self.get_commentor_id()
 
     commenting_agent_id = property(fget=get_commenting_agent_id)
 
@@ -108,16 +90,24 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
-        if not bool(self._my_map['commentingAgentId']):
+        if not self.has_commentor():
             raise errors.IllegalState('this Comment has no commenting_agent')
-        mgr = self._get_provider_manager('AUTHENTICATION')
+        try:
+            from ..authentication import managers
+        except ImportError:
+            raise errors.OperationFailed('failed to import authentication.managers')
+        try:
+            mgr = managers.AuthenticationManager()
+        except:
+            raise errors.OperationFailed('failed to instantiate AuthenticationManager')
         if not mgr.supports_agent_lookup():
             raise errors.OperationFailed('Authentication does not support Agent lookup')
-        lookup_session = mgr.get_agent_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_agency_view()
-        osid_object = lookup_session.get_agent(self.get_commenting_agent_id())
-        return osid_object
+        try:
+            osid_object = mgr.get_agent_lookup_session().get_agent(self.get_commenting_agent_id())
+        except:
+            raise errors.OperationFailed()
+        else:
+            return osid_object
 
     commenting_agent = property(fget=get_commenting_agent)
 
@@ -128,8 +118,8 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_display_text_attribute
-        return DisplayText(display_text_map=self._my_map['text'])
+        # Implemented from template for osid.repository.Asset.get_title_template
+        return DisplayText(self._my_map['text'])
 
     text = property(fget=get_text)
 
@@ -141,7 +131,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.has_id_attribute
+        # Implemented from template for osid.resource.Resource.has_avatar_template
         return bool(self._my_map['ratingId'])
 
     def get_rating_id(self):
@@ -152,9 +142,9 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['ratingId']):
-            raise errors.IllegalState('rating not set')
+            raise errors.IllegalState('this Comment has no rating')
         else:
             return Id(self._my_map['ratingId'])
 
@@ -169,7 +159,7 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['ratingId']):
             raise errors.IllegalState('this Comment has no rating')
         mgr = self._get_provider_manager('GRADING')
@@ -203,8 +193,17 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(comment_record_type)
+
+    def has_commentor(self):
+        return bool(self._my_map['commentorId'])
+
+    def get_object_map(self):
+        obj_map = dict(self._my_map)
+        obj_map['commentingAgentId'] = str(self.get_commenting_agent_id())
+        return osid_objects.OsidObject.get_object_map(self, obj_map)
+
+    object_map = property(fget=get_object_map)
 
 
 class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelationshipForm):
@@ -217,7 +216,6 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
     constraints.
 
     """
-    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'commenting.Comment'
 
     def __init__(self, **kwargs):
@@ -250,7 +248,7 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['text'])
         metadata.update({'existing_string_values': self._my_map['text']})
         return Metadata(**metadata)
@@ -268,7 +266,7 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_display_text_attribute
+        # Implemented from template for osid.repository.AssetForm.set_title_template
         self._my_map['text'] = self._get_display_text(text, self.get_text_metadata())
 
     def clear_text(self):
@@ -279,10 +277,10 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_display_text_attribute
+        # Implemented from template for osid.repository.AssetForm.clear_title_template
         if (self.get_text_metadata().is_read_only() or
                 self.get_text_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear text')
+            raise errors.NoAccess()
         self._my_map['text'] = dict(self._text_default)
 
     text = property(fset=set_text, fdel=clear_text)
@@ -294,7 +292,7 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['rating'])
         metadata.update({'existing_id_values': self._my_map['ratingId']})
         return Metadata(**metadata)
@@ -312,11 +310,11 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_rating_metadata().is_read_only():
-            raise errors.NoAccess('grade_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(grade_id):
-            raise errors.InvalidArgument('grade_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['ratingId'] = str(grade_id)
 
     def clear_rating(self):
@@ -327,10 +325,10 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_rating_metadata().is_read_only() or
                 self.get_rating_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear rating')
+            raise errors.NoAccess()
         self._my_map['ratingId'] = self._rating_default
 
     rating = property(fset=set_rating, fdel=clear_rating)
@@ -350,7 +348,6 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(comment_record_type)
 
 
@@ -379,7 +376,7 @@ class CommentList(abc_commenting_objects.CommentList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -407,7 +404,7 @@ class CommentList(abc_commenting_objects.CommentList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(CommentList, number=n)
 
 
@@ -418,7 +415,6 @@ class Book(abc_commenting_objects.Book, osid_objects.OsidCatalog):
     any persisted references should use the ``Id``.
 
     """
-    # Built from: templates/osid_catalog.GenericCatalog.init_template
     _namespace = 'commenting.Book'
 
     def __init__(self, **kwargs):
@@ -457,7 +453,6 @@ class BookForm(abc_commenting_objects.BookForm, osid_objects.OsidCatalogForm):
     constraints.
 
     """
-    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'commenting.Book'
 
     def __init__(self, **kwargs):
@@ -489,8 +484,7 @@ class BookForm(abc_commenting_objects.BookForm, osid_objects.OsidCatalogForm):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
-        return self._get_record(book_record_type)
+        raise errors.Unimplemented()
 
 
 class BookList(abc_commenting_objects.BookList, osid_objects.OsidList):
@@ -516,7 +510,7 @@ class BookList(abc_commenting_objects.BookList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -543,7 +537,7 @@ class BookList(abc_commenting_objects.BookList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(BookList, number=n)
 
 
@@ -555,7 +549,6 @@ class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
     ``BookHierarchySession``.
 
     """
-    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -581,7 +574,6 @@ class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('COMMENTING', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_book_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -597,7 +589,6 @@ class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_book_nodes = []
         for node in self._my_map['parentNodes']:
             parent_book_nodes.append(BookNode(
@@ -617,7 +608,6 @@ class BookNode(abc_commenting_objects.BookNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_book_nodes = []
         for node in self._my_map['childNodes']:
             parent_book_nodes.append(BookNode(
@@ -655,7 +645,7 @@ class BookNodeList(abc_commenting_objects.BookNodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -683,5 +673,5 @@ class BookNodeList(abc_commenting_objects.BookNodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(BookNodeList, number=n)

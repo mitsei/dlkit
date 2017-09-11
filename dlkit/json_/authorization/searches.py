@@ -22,7 +22,6 @@ from dlkit.abstract_osid.osid import errors
 
 class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_searches.OsidSearch):
     """``AuthorizationSearch`` defines the interface for specifying authorization search options."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'authorization.Authorization'
         self._runtime = runtime
@@ -45,7 +44,6 @@ class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = authorization_ids
 
     @utilities.arguments_not_none
@@ -89,7 +87,6 @@ class AuthorizationSearch(abc_authorization_searches.AuthorizationSearch, osid_s
 
 class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -108,7 +105,6 @@ class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -124,7 +120,6 @@ class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchR
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.AuthorizationQueryInspector(self._query_terms, runtime=self._runtime)
 
     authorization_query_inspector = property(fget=get_authorization_query_inspector)
@@ -155,7 +150,6 @@ class AuthorizationSearchResults(abc_authorization_searches.AuthorizationSearchR
 
 class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSearch):
     """The interface for governing vault searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'authorization.Vault'
         self._runtime = runtime
@@ -177,7 +171,6 @@ class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSear
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = vault_ids
 
     @utilities.arguments_not_none
@@ -219,7 +212,6 @@ class VaultSearch(abc_authorization_searches.VaultSearch, osid_searches.OsidSear
 
 class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -237,7 +229,6 @@ class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -253,7 +244,6 @@ class VaultSearchResults(abc_authorization_searches.VaultSearchResults, osid_sea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.VaultQueryInspector(self._query_terms, runtime=self._runtime)
 
     vault_query_inspector = property(fget=get_vault_query_inspector)

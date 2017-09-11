@@ -10,12 +10,7 @@
 #     Inheritance defined in specification
 
 
-import base64
-import gridfs
 import importlib
-
-
-from decimal import Decimal
 
 
 from . import default_mdata
@@ -26,10 +21,7 @@ from ..osid import markers as osid_markers
 from ..osid import objects as osid_objects
 from ..osid.metadata import Metadata
 from ..primitives import Id
-from ..primitives import Id, DateTime, Duration, DataInputStream
-from ..primitives import Id, DateTime, Duration, DisplayText
 from ..primitives import Type
-from ..utilities import JSONClientValidated
 from ..utilities import get_registry
 from ..utilities import update_display_text_defaults
 from dlkit.abstract_osid.assessment_authoring import objects as abc_assessment_authoring_objects
@@ -51,7 +43,6 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
     rules.
 
     """
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'assessment_authoring.AssessmentPart'
 
     def __init__(self, **kwargs):
@@ -65,7 +56,9 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentId']):
+            raise errors.IllegalState('assessment empty')
         return Id(self._my_map['assessmentId'])
 
     assessment_id = property(fget=get_assessment_id)
@@ -78,16 +71,15 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.learning.Activity.get_objective
         if not bool(self._my_map['assessmentId']):
-            raise errors.IllegalState('this AssessmentPart has no assessment')
+            raise errors.IllegalState('assessment empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
             raise errors.OperationFailed('Assessment does not support Assessment lookup')
         lookup_session = mgr.get_assessment_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_bank_view()
-        osid_object = lookup_session.get_assessment(self.get_assessment_id())
-        return osid_object
+        return lookup_session.get_assessment(self.get_assessment_id())
 
     assessment = property(fget=get_assessment)
 
@@ -156,10 +148,7 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_cardinal_attribute
-        if not self.has_weight():
-            raise errors.IllegalState('weight not set')
-        return int(self._my_map['weight'])
+        raise errors.Unimplemented()
 
     weight = property(fget=get_weight)
 
@@ -231,8 +220,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(assessment_part_record_type)
+
     def get_child_ids(self):
         """Gets the child ``Ids`` of this assessment part."""
         return IdList(self._my_map['childIds'])
@@ -408,7 +397,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['weight'])
         metadata.update({'existing_cardinal_values': self._my_map['weight']})
         return Metadata(**metadata)
@@ -446,7 +435,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['allocated_time'])
         metadata.update({'existing_duration_values': self._my_map['allocatedTime']})
         return Metadata(**metadata)
@@ -463,15 +452,13 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_duration_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.set_duration_template
         if self.get_allocated_time_metadata().is_read_only():
-            raise errors.NoAccess('time is read only')
-        if not isinstance(time, Duration):
-            raise errors.InvalidArgument('time is not a Duration')
+            raise errors.NoAccess()
         if not self._is_valid_duration(
                 time,
                 self.get_allocated_time_metadata()):
-            raise errors.InvalidArgument('time is not a valid Duration')
+            raise errors.InvalidArgument()
         map = dict()
         map['days'] = time.days
         map['seconds'] = time.seconds
@@ -486,10 +473,10 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_duration_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_duration_template
         if (self.get_allocated_time_metadata().is_read_only() or
                 self.get_allocated_time_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear allocated_time')
+            raise errors.NoAccess()
         self._my_map['allocatedTime'] = self._allocated_time_default
 
     allocated_time = property(fset=set_allocated_time, fdel=clear_allocated_time)
@@ -512,8 +499,8 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(assessment_part_record_type)
+
     def set_items_sequential(self, sequential):
         if not self._supports_simple_sequencing:
             raise AttributeError('This Assessment Part does not support simple child sequencing')
@@ -620,7 +607,7 @@ class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -645,13 +632,12 @@ class AssessmentPartList(abc_assessment_authoring_objects.AssessmentPartList, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(AssessmentPartList, number=n)
 
 
 class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.OsidRule):
     """A ``SequenceRule`` defines the ordering of ``AssessmentParts``."""
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'assessment_authoring.SequenceRule'
 
     def __init__(self, **kwargs):
@@ -665,7 +651,9 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentPartId']):
+            raise errors.IllegalState('assessment_part empty')
         return Id(self._my_map['assessmentPartId'])
 
     assessment_part_id = property(fget=get_assessment_part_id)
@@ -679,16 +667,15 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.learning.Activity.get_objective
         if not bool(self._my_map['assessmentPartId']):
-            raise errors.IllegalState('this SequenceRule has no assessment_part')
-        mgr = self._get_provider_manager('ASSESSMENT.AUTHORING')
+            raise errors.IllegalState('assessment_part empty')
+        mgr = self._get_provider_manager('ASSESSMENT_AUTHORING')
         if not mgr.supports_assessment_part_lookup():
-            raise errors.OperationFailed('Assessment.Authoring does not support AssessmentPart lookup')
+            raise errors.OperationFailed('Assessment_Authoring does not support AssessmentPart lookup')
         lookup_session = mgr.get_assessment_part_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_bank_view()
-        osid_object = lookup_session.get_assessment_part(self.get_assessment_part_id())
-        return osid_object
+        return lookup_session.get_assessment_part(self.get_assessment_part_id())
 
     assessment_part = property(fget=get_assessment_part)
 
@@ -699,7 +686,7 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.relationship.Relationship.get_source_id
         return Id(self._my_map['nextAssessmentPartId'])
 
     next_assessment_part_id = property(fget=get_next_assessment_part_id)
@@ -724,10 +711,7 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_cardinal_attribute
-        if not self.has_minimum_score():
-            raise errors.IllegalState('minimum_score not set')
-        return int(self._my_map['minimumScore'])
+        raise errors.Unimplemented()
 
     minimum_score = property(fget=get_minimum_score)
 
@@ -738,10 +722,7 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_cardinal_attribute
-        if not self.has_maximum_score():
-            raise errors.IllegalState('maximum_score not set')
-        return int(self._my_map['maximumScore'])
+        raise errors.Unimplemented()
 
     maximum_score = property(fget=get_maximum_score)
 
@@ -753,7 +734,7 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
+        # Implemented from template for osid.resource.Resource.is_group_template
         return bool(self._my_map['cumulative'])
 
     def get_applied_assessment_part_ids(self):
@@ -767,7 +748,7 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_list_attribute_different_package
+        # Implemented from template for osid.learning.Activity.get_asset_ids_template
         return IdList(self._my_map['appliedAssessmentPartIds'])
 
     applied_assessment_part_ids = property(fget=get_applied_assessment_part_ids)
@@ -811,7 +792,6 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(sequence_rule_record_type)
 
 
@@ -856,7 +836,7 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['minimum_score'])
         metadata.update({'existing_cardinal_values': self._my_map['minimumScore']})
         return Metadata(**metadata)
@@ -884,7 +864,7 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['maximum_score'])
         metadata.update({'existing_cardinal_values': self._my_map['maximumScore']})
         return Metadata(**metadata)
@@ -912,7 +892,7 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['cumulative'])
         metadata.update({'existing_boolean_values': self._my_map['cumulative']})
         return Metadata(**metadata)
@@ -931,11 +911,11 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_group_template
         if self.get_cumulative_metadata().is_read_only():
-            raise errors.NoAccess('cumulative is read only')
+            raise errors.NoAccess()
         if not self._is_valid_boolean(cumulative):
-            raise errors.InvalidArgument('cumulative is not a valid boolean')
+            raise errors.InvalidArgument()
         self._my_map['cumulative'] = cumulative
 
     cumulative = property(fset=set_cumulative)
@@ -983,7 +963,6 @@ class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(sequence_rule_record)
 
 
@@ -1012,7 +991,7 @@ class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -1037,5 +1016,5 @@ class SequenceRuleList(abc_assessment_authoring_objects.SequenceRuleList, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(SequenceRuleList, number=n)

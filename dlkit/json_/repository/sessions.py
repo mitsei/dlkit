@@ -82,7 +82,6 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
     ``Asset``.
 
     """
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -105,7 +104,7 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -120,7 +119,7 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -139,7 +138,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -153,7 +153,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_asset_view(self):
@@ -166,7 +167,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_repository_view(self):
@@ -178,7 +180,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_repository_view(self):
@@ -189,7 +192,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -211,7 +215,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Asset',
@@ -244,7 +249,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Asset',
@@ -281,7 +287,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Asset',
@@ -308,7 +315,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AssetList([])
 
@@ -329,7 +337,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AssetList([])
 
@@ -365,7 +374,8 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Asset',
@@ -374,6 +384,7 @@ class AssetLookupSession(abc_repository_sessions.AssetLookupSession, osid_sessio
         return objects.AssetList(result, runtime=self._runtime, proxy=self._proxy)
 
     assets = property(fget=get_assets)
+
     # def get_asset_content(self, asset_content_id):
     #     collection = JSONClientValidated('repository',
     #                                      collection='Asset',
@@ -760,7 +771,6 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
     types. The query record is accessed via the ``AssetQuery``.
 
     """
-    # Built from: templates/osid_session.GenericObjectQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -783,7 +793,7 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -798,7 +808,7 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -817,7 +827,8 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -831,7 +842,8 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_repository_view(self):
@@ -842,7 +854,8 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def get_asset_query(self):
@@ -852,7 +865,8 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.AssetQuery(runtime=self._runtime)
 
     asset_query = property(fget=get_asset_query)
@@ -871,7 +885,8 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in asset_query._query_terms:
@@ -897,6 +912,7 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
         else:
             result = []
         return objects.AssetList(result, runtime=self._runtime, proxy=self._proxy)
+
     def get_asset_content_query(self):
         return queries.AssetContentQuery(runtime=self._runtime)
 
@@ -1006,7 +1022,8 @@ class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQueryS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectSearchSession.get_object_search
+        # Implemented from template for
+        # osid.resource.ResourceSearchSession.get_resource_search_template
         return searches.AssetSearch(runtime=self._runtime)
 
     asset_search = property(fget=get_asset_search)
@@ -1045,7 +1062,8 @@ class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQueryS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectSearchSession.get_objects_by_search
+        # Implemented from template for
+        # osid.resource.ResourceSearchSession.get_resources_by_search_template
         # Copied from osid.resource.ResourceQuerySession.get_resources_by_query_template
         and_list = list()
         or_list = list()
@@ -1169,7 +1187,6 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
       Asset newAsset = session.createAsset(form);
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -1193,7 +1210,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -1208,7 +1225,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -1227,7 +1244,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1251,7 +1269,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1273,7 +1292,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_create
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_create_template
         for arg in asset_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
@@ -1312,7 +1332,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('repository',
                                          collection='Asset',
                                          runtime=self._runtime)
@@ -1351,7 +1372,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1372,7 +1394,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('repository',
                                          collection='Asset',
                                          runtime=self._runtime)
@@ -1405,7 +1428,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('repository',
                                          collection='Asset',
                                          runtime=self._runtime)
@@ -1444,7 +1468,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1462,7 +1487,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.delete_resource_template
         collection = JSONClientValidated('repository',
                                          collection='Asset',
                                          runtime=self._runtime)
@@ -1489,7 +1515,6 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1513,7 +1538,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=asset_id, equivalent_id=alias_id)
 
     def can_create_asset_content(self):
@@ -1530,7 +1556,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1555,7 +1582,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1579,7 +1607,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_subjugated_object_form_for_create
+        # Implemented from template for
+        # osid.learning.ActivityAdminSession.get_activity_form_for_create_template
 
         if not isinstance(asset_id, ABCId):
             raise errors.InvalidArgument('argument is not a valid OSID Id')
@@ -1626,7 +1655,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.create_dependent_object
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.create_asset_content_template
         from dlkit.abstract_osid.repository.objects import AssetContentForm as ABCAssetContentForm
         collection = JSONClientValidated('repository',
                                          collection='Asset',
@@ -1671,7 +1701,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1693,7 +1724,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.get_dependent_object_form_for_update
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.get_asset_content_form_for_update_template
         from dlkit.abstract_osid.id.primitives import Id as ABCId
         from .objects import AssetContentForm
         collection = JSONClientValidated('repository',
@@ -1730,7 +1762,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.update_dependent_object
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.update_asset_content_template
         from dlkit.abstract_osid.repository.objects import AssetContentForm as ABCAssetContentForm
         collection = JSONClientValidated('repository',
                                          collection='Asset',
@@ -1788,7 +1821,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1806,7 +1840,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.delete_dependent_object
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.delete_asset_content_template
         from dlkit.abstract_osid.id.primitives import Id as ABCId
         from .objects import AssetContent
         collection = JSONClientValidated('repository',
@@ -1830,6 +1865,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             runtime=self._runtime,
             proxy=self._proxy)._delete()
         collection.save(asset)
+
     def _get_asset_id_with_enclosure(self, enclosure_id):
         """Create an Asset with an enclosed foreign object.
 
@@ -1891,7 +1927,6 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
     ``AssetLookupSession``.
 
     """
-    # Built from: templates/osid_session.GenericObjectNotificationSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -1942,7 +1977,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -1957,7 +1992,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -1987,7 +2022,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_repository_view(self):
@@ -1999,7 +2035,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def register_for_new_assets(self):
@@ -2013,7 +2050,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_new_objects
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_new_resources
         MONGO_LISTENER.receivers[self._ns][self._receiver]['i'] = True
 
     @utilities.arguments_not_none
@@ -2031,7 +2069,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_changed_object
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
@@ -2048,7 +2087,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_changed_objects
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_changed_resources
         MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = True
 
     @utilities.arguments_not_none
@@ -2066,7 +2106,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_changed_object
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
@@ -2087,7 +2128,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_changed_object
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
@@ -2104,7 +2146,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_deleted_objects
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_deleted_resources
         MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = True
 
     @utilities.arguments_not_none
@@ -2122,7 +2165,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_changed_object
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_changed_resource
         if not MONGO_LISTENER.receivers[self._ns][self._receiver]['u']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['u'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['u'], list):
@@ -2143,7 +2187,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.register_for_deleted_object
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.register_for_deleted_resource
         if not MONGO_LISTENER.receivers[self._ns][self._receiver]['d']:
             MONGO_LISTENER.receivers[self._ns][self._receiver]['d'] = []
         if isinstance(MONGO_LISTENER.receivers[self._ns][self._receiver]['d'], list):
@@ -2158,7 +2203,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.reliable_object_notifications
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.reliable_resource_notifications
         MONGO_LISTENER.receivers[self._ns][self._receiver]['reliable'] = True
 
     def unreliable_asset_notifications(self):
@@ -2170,7 +2216,8 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.unreliable_object_notifications
+        # Implemented from template for
+        # osid.resource.ResourceNotificationSession.unreliable_resource_notifications
         MONGO_LISTENER.receivers[self._ns][self._receiver]['reliable'] = False
 
     @utilities.arguments_not_none
@@ -2184,11 +2231,7 @@ class AssetNotificationSession(abc_repository_sessions.AssetNotificationSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectNotificationSession.acknowledge_object_notification
-        try:
-            del MONGO_LISTENER.notifications[notification_id]
-        except KeyError:
-            pass
+        raise errors.Unimplemented()
 
 
 class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osid_sessions.OsidSession):
@@ -2205,7 +2248,6 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         condition
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogSession.init_template
     _session_namespace = 'repository.AssetRepositorySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -2227,7 +2269,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.can_lookup_object_catalog_mappings
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2241,7 +2284,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -2256,7 +2300,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -2274,7 +2319,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         id_list = []
         for asset in self.get_assets_by_repository(repository_id):
             id_list.append(asset.get_id())
@@ -2293,7 +2339,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_asset_lookup_session_for_repository(repository_id, proxy=self._proxy)
         lookup_session.use_isolated_repository_view()
@@ -2312,7 +2359,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         id_list = []
         for asset in self.get_assets_by_repositories(repository_ids):
             id_list.append(asset.get_id())
@@ -2331,7 +2379,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
         asset_list = []
         for repository_id in repository_ids:
             asset_list += list(
@@ -2351,7 +2400,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_catalog_ids_by_object
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_asset_lookup_session(proxy=self._proxy)
         lookup_session.use_federated_repository_view()
@@ -2374,7 +2424,8 @@ class AssetRepositorySession(abc_repository_sessions.AssetRepositorySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_catalogs_by_object
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
         return lookup_session.get_repositories_by_ids(
@@ -2394,7 +2445,6 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
     ``Id`` ).
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.init_template
     _session_namespace = 'repository.AssetRepositoryAssignmentSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -2417,7 +2467,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2440,7 +2491,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if repository_id.get_identifier() == '000000000000000000000000':
@@ -2448,7 +2500,7 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         return True
 
     @utilities.arguments_not_none
-    def get_assignable_repository_ids(self):
+    def get_assignable_repository_ids(self, repository_id):
         """Gets a list of repositories including and under the given repository node in which any asset can be assigned.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the
@@ -2459,7 +2511,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
@@ -2483,7 +2536,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids_for_object
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
         return self.get_assignable_repository_ids(repository_id)
 
@@ -2504,7 +2558,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.assign_object_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
         lookup_session.get_repository(repository_id)  # to raise NotFound
@@ -2526,7 +2581,8 @@ class AssetRepositoryAssignmentSession(abc_repository_sessions.AssetRepositoryAs
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.unassign_object_from_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
         lookup_session.get_repository(repository_id)  # to raise NotFound
@@ -2559,7 +2615,6 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
     and one should be selected before invoking any lookup methods.
 
     """
-    # Built from: templates/osid_session.GenericObjectContainableSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -2582,7 +2637,7 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -2597,7 +2652,7 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -2616,7 +2671,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableSession.can_access_object_containables
+        # Implemented from template for
+        # osid.repository.AssetCompositionSession.can_access_asset_compositions
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2630,7 +2686,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_asset_composition_view(self):
@@ -2643,7 +2700,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_repository_view(self):
@@ -2655,7 +2713,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_repository_view(self):
@@ -2666,7 +2725,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -2683,7 +2743,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableSession.get_containable_objects
+        # Implemented from template for
+        # osid.repository.AssetCompositionSession.get_composition_assets
         collection = JSONClientValidated('repository',
                                          collection='Composition',
                                          runtime=self._runtime)
@@ -2714,7 +2775,8 @@ class AssetCompositionSession(abc_repository_sessions.AssetCompositionSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableSession.get_containables_by_object
+        # Implemented from template for
+        # osid.repository.AssetCompositionSession.get_compositions_by_asset
         collection = JSONClientValidated('repository',
                                          collection='Composition',
                                          runtime=self._runtime)
@@ -2733,7 +2795,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
     hierarchy.
 
     """
-    # Built from: templates/osid_session.GenericObjectContainableDesignSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -2756,7 +2817,7 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -2771,7 +2832,7 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -2790,7 +2851,8 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableDesignSession.can_compose_objects
+        # Implemented from template for
+        # osid.repository.AssetCompositionDesignSession.can_compose_assets_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2812,7 +2874,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableDesignSession.add_object_to_containable
         # The asset found check may want to be run through _get_provider_manager
         # so as to ensure access control:
         from dlkit.abstract_osid.id.primitives import Id as ABCId
@@ -2861,7 +2922,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableDesignSession.move_object_ahead
         if (not isinstance(composition_id, ABCId) and
                 composition_id.get_identifier_namespace() != 'repository.Composition'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -2887,7 +2947,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableDesignSession.move_object_behind
         if (not isinstance(composition_id, ABCId) and
                 composition_id.get_identifier_namespace() != 'repository.Composition'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -2912,7 +2971,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableDesignSession.order_objects
         if (not isinstance(composition_id, ABCId) and
                 composition_id.get_identifier_namespace() != 'repository.Composition'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -2935,7 +2993,6 @@ class AssetCompositionDesignSession(abc_repository_sessions.AssetCompositionDesi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectContainableDesignSession.remove_object_from_containable
         if (not isinstance(composition_id, ABCId) and
                 composition_id.get_identifier_namespace() != 'repository.Composition'):
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
@@ -2998,7 +3055,6 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
     cast of the ``Composition``.
 
     """
-    # Built from: templates/osid_session.GenericContainableObjectLookupSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -3033,7 +3089,7 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -3048,7 +3104,7 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -3067,7 +3123,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3081,7 +3138,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_composition_view(self):
@@ -3094,7 +3152,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_repository_view(self):
@@ -3106,7 +3165,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_repository_view(self):
@@ -3117,7 +3177,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def use_active_composition_view(self):
@@ -3126,7 +3187,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_active_containable_view
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_active_composition_view_template
         self._status_view = ACTIVE
 
     def use_any_status_composition_view(self):
@@ -3135,7 +3197,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_any_status_containable_view
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_any_status_composition_view_template
         self._status_view = ANY_STATUS
 
     def use_sequestered_composition_view(self):
@@ -3144,7 +3207,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_sequestered_containable_view
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_sequestered_composition_view_template
         self._sequestered_view = SEQUESTERED
 
     def use_unsequestered_composition_view(self):
@@ -3153,7 +3217,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_unsequestered_containable_view
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_unsequestered_composition_view_template
         self._sequestered_view = UNSEQUESTERED
 
     @utilities.arguments_not_none
@@ -3170,7 +3235,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Composition',
@@ -3195,7 +3261,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Composition',
@@ -3229,7 +3296,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Composition',
@@ -3253,7 +3321,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.CompositionList([])
 
@@ -3271,7 +3340,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.CompositionList([])
 
@@ -3308,7 +3378,8 @@ class CompositionLookupSession(abc_repository_sessions.CompositionLookupSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('repository',
                                          collection='Composition',
@@ -3343,7 +3414,6 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
     ``CompositionQuery``.
 
     """
-    # Built from: templates/osid_session.GenericContainableObjectQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -3378,7 +3448,7 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -3393,7 +3463,7 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -3412,7 +3482,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3426,7 +3497,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_repository_view(self):
@@ -3437,7 +3509,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def use_sequestered_composition_view(self):
@@ -3446,7 +3519,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_sequestered_containable_view
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_sequestered_composition_view_template
         self._sequestered_view = SEQUESTERED
 
     def use_unsequestered_composition_view(self):
@@ -3455,7 +3529,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericContainableObjectLookupSession.use_unsequestered_containable_view
+        # Implemented from template for
+        # osid.repository.CompositionLookupSession.use_unsequestered_composition_view_template
         self._sequestered_view = UNSEQUESTERED
 
     def get_composition_query(self):
@@ -3466,7 +3541,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.CompositionQuery(runtime=self._runtime)
 
     composition_query = property(fget=get_composition_query)
@@ -3487,7 +3563,8 @@ class CompositionQuerySession(abc_repository_sessions.CompositionQuerySession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in composition_query._query_terms:
@@ -3554,7 +3631,8 @@ class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectSearchSession.get_object_search
+        # Implemented from template for
+        # osid.resource.ResourceSearchSession.get_resource_search_template
         return searches.CompositionSearch(runtime=self._runtime)
 
     composition_search = property(fget=get_composition_search)
@@ -3593,7 +3671,8 @@ class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession,
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectSearchSession.get_objects_by_search
+        # Implemented from template for
+        # osid.resource.ResourceSearchSession.get_resources_by_search_template
         # Copied from osid.resource.ResourceQuerySession.get_resources_by_query_template
         and_list = list()
         or_list = list()
@@ -3677,7 +3756,6 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Repository
@@ -3701,7 +3779,7 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     repository_id = property(fget=get_repository_id)
@@ -3716,7 +3794,7 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     repository = property(fget=get_repository)
@@ -3735,7 +3813,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3759,7 +3838,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3781,7 +3861,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_create
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_create_template
         for arg in composition_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
@@ -3820,7 +3901,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('repository',
                                          collection='Composition',
                                          runtime=self._runtime)
@@ -3859,7 +3941,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3881,7 +3964,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('repository',
                                          collection='Composition',
                                          runtime=self._runtime)
@@ -3914,7 +3998,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('repository',
                                          collection='Composition',
                                          runtime=self._runtime)
@@ -3953,7 +4038,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3971,7 +4057,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.delete_resource_template
         collection = JSONClientValidated('repository',
                                          collection='Composition',
                                          runtime=self._runtime)
@@ -4053,7 +4140,6 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4080,8 +4166,10 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=composition_id, equivalent_id=alias_id)
+
     # This is out of spec, but used by the EdX / LORE record extensions...
     @utilities.arguments_not_none
     def duplicate_composition(self, composition_id):
@@ -4123,7 +4211,6 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         condition
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogSession.init_template
     _session_namespace = 'repository.CompositionRepositorySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4140,7 +4227,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -4155,7 +4243,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -4174,7 +4263,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.can_lookup_object_catalog_mappings
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4192,7 +4282,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         id_list = []
         for composition in self.get_compositions_by_repository(repository_id):
             id_list.append(composition.get_id())
@@ -4212,7 +4303,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_composition_lookup_session_for_repository(repository_id, proxy=self._proxy)
         lookup_session.use_isolated_repository_view()
@@ -4231,7 +4323,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_object_ids_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
         id_list = []
         for composition in self.get_compositions_by_repositories(repository_ids):
             id_list.append(composition.get_id())
@@ -4250,7 +4343,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_objects_by_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
         composition_list = []
         for repository_id in repository_ids:
             composition_list += list(
@@ -4294,7 +4388,8 @@ class CompositionRepositorySession(abc_repository_sessions.CompositionRepository
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogSession.get_catalogs_by_object
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
         return lookup_session.get_repositories_by_ids(
@@ -4314,7 +4409,6 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
     ``Id`` ).
 
     """
-    # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.init_template
     _session_namespace = 'repository.CompositionRepositoryAssignmentSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4337,7 +4431,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4360,7 +4455,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.can_assign_objects_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if repository_id.get_identifier() == '000000000000000000000000':
@@ -4368,7 +4464,7 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         return True
 
     @utilities.arguments_not_none
-    def get_assignable_repository_ids(self):
+    def get_assignable_repository_ids(self, repository_id):
         """Gets a list of repositories including and under the given repository node in which any composition can be assigned.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the
@@ -4379,7 +4475,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
         # This will likely be overridden by an authorization adapter
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
@@ -4404,7 +4501,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.get_assignable_catalog_ids_for_object
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
         # This will likely be overridden by an authorization adapter
         return self.get_assignable_repository_ids(repository_id)
 
@@ -4427,7 +4525,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.assign_object_to_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
         lookup_session.get_repository(repository_id)  # to raise NotFound
@@ -4451,7 +4550,8 @@ class CompositionRepositoryAssignmentSession(abc_repository_sessions.Composition
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectCatalogAssignmentSession.unassign_object_from_catalog
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
         mgr = self._get_provider_manager('REPOSITORY', local=True)
         lookup_session = mgr.get_repository_lookup_session(proxy=self._proxy)
         lookup_session.get_repository(repository_id)  # to raise NotFound
@@ -4483,7 +4583,6 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
     cast of the ``Repository``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'repository.RepositoryLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4509,7 +4608,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.can_lookup_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -4525,7 +4625,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -4540,7 +4641,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -4564,7 +4666,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bin
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=repository_id)
         collection = JSONClientValidated('repository',
@@ -4574,8 +4677,7 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         if repository_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Repository, cat_name='Repository')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(repository_id,
-                                                                       'repository').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(repository_id, 'repository').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Repository.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(repository_id, 'repository', 'Repository')
@@ -4605,7 +4707,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_ids_template
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_Repository() instead of direct to database
         if self._catalog_session is not None:
@@ -4639,7 +4742,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_genus_type_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_genus_type(catalog_genus_type=repository_genus_type)
@@ -4727,7 +4831,8 @@ class RepositoryLookupSession(abc_repository_sessions.RepositoryLookupSession, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -4751,7 +4856,6 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
     ``RepositoryQuery``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogQuerySession.init_template
     _session_namespace = 'repository.RepositoryQuerySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4776,7 +4880,8 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogQuerySession.can_search_catalogs
+        # Implemented from template for
+        # osid.resource.BinQuerySession.can_search_bins_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -4788,7 +4893,8 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogQuerySession.get_catalog_query
+        # Implemented from template for
+        # osid.resource.BinQuerySession.get_bin_query_template
         return queries.RepositoryQuery(runtime=self._runtime)
 
     repository_query = property(fget=get_repository_query)
@@ -4809,7 +4915,8 @@ class RepositoryQuerySession(abc_repository_sessions.RepositoryQuerySession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogQuerySession.get_catalogs_by_query
+        # Implemented from template for
+        # osid.resource.BinQuerySession.get_bins_by_query_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_query(repository_query)
         query_terms = dict(repository_query._query_terms)
@@ -4851,7 +4958,6 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
     internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'repository.RepositoryAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -4876,7 +4982,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -4884,7 +4991,7 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         return True
 
     @utilities.arguments_not_none
-    def can_create_repository_with_record_types(self):
+    def can_create_repository_with_record_types(self, repository_record_types):
         """Tests if this user can create a single ``Repository`` using the desired record types.
 
         While ``RepositoryManager.getRepositoryRecordTypes()`` can be
@@ -4902,7 +5009,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bin_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -4926,7 +5034,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_create_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=repository_record_types)
         for arg in repository_record_types:
@@ -4965,7 +5074,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.create_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=repository_form)
         collection = JSONClientValidated('repository',
@@ -5006,7 +5116,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_update_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5030,7 +5141,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_update_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=repository_id)
         collection = JSONClientValidated('repository',
@@ -5062,7 +5174,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.update_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=repository_form)
         collection = JSONClientValidated('repository',
@@ -5100,7 +5213,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_delete_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5120,7 +5234,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.delete_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.delete_catalog(catalog_id=repository_id)
         collection = JSONClientValidated('repository',
@@ -5150,7 +5265,6 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -5177,7 +5291,8 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=repository_id, alias_id=alias_id)
         self._alias_id(primary_id=repository_id, equivalent_id=alias_id)
@@ -5209,10 +5324,11 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
       * plenary view: provides a complete set or is an error condition
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchySession.init_template
     _session_namespace = 'repository.RepositoryHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -5235,7 +5351,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -5252,7 +5369,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -5273,7 +5391,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.can_access_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5289,7 +5408,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -5304,7 +5424,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -5318,7 +5439,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -5339,7 +5461,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return RepositoryLookupSession(
@@ -5362,7 +5485,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=repository_id)
         return self._hierarchy_session.has_parents(id_=repository_id)
@@ -5383,7 +5507,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_parent_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_parent_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=repository_id)
         return self._hierarchy_session.is_parent(id_=repository_id, parent_id=id_)
@@ -5401,7 +5526,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalog_ids(catalog_id=repository_id)
         return self._hierarchy_session.get_parents(id_=repository_id)
@@ -5420,7 +5546,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalogs(catalog_id=repository_id)
         return RepositoryLookupSession(
@@ -5444,7 +5571,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_ancestor_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=repository_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=repository_id)
@@ -5463,7 +5591,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=repository_id)
         return self._hierarchy_session.has_children(id_=repository_id)
@@ -5484,7 +5613,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_child_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_child_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=repository_id)
         return self._hierarchy_session.is_child(id_=repository_id, child_id=id_)
@@ -5502,7 +5632,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=repository_id)
         return self._hierarchy_session.get_children(id_=repository_id)
@@ -5521,7 +5652,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=repository_id)
         return RepositoryLookupSession(
@@ -5545,7 +5677,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_descendant_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=repository_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=repository_id)
@@ -5572,7 +5705,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_node_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=repository_id,
@@ -5608,7 +5742,8 @@ class RepositoryHierarchySession(abc_repository_sessions.RepositoryHierarchySess
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_nodes
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_nodes
         return objects.RepositoryNode(self.get_repository_node_ids(
             repository_id=repository_id,
             ancestor_levels=ancestor_levels,
@@ -5622,10 +5757,11 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
     Each node in the hierarchy is a unique ``Repository``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.init_template
     _session_namespace = 'repository.RepositoryHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -5648,7 +5784,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -5665,7 +5802,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -5686,7 +5824,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.can_modify_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -5707,7 +5846,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=repository_id)
         return self._hierarchy_session.add_root(id_=repository_id)
@@ -5724,7 +5864,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=repository_id)
         return self._hierarchy_session.remove_root(id_=repository_id)
@@ -5745,7 +5886,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=repository_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=repository_id, child_id=child_id)
@@ -5765,7 +5907,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=repository_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=repository_id, child_id=child_id)
@@ -5782,7 +5925,8 @@ class RepositoryHierarchyDesignSession(abc_repository_sessions.RepositoryHierarc
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalogs(catalog_id=repository_id)
         return self._hierarchy_session.remove_children(id_=repository_id)

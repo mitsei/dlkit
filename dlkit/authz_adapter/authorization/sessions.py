@@ -798,7 +798,7 @@ class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSes
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_authorizations_by_vault(vault_id)
+        return self._provider_session.get_authorizations_by_vault(vault_ids)
 
     @raise_null_argument
     def get_authorizations_ids_by_vault(self, vault_ids):
@@ -806,7 +806,7 @@ class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSes
         # osid.resource.ResourceBinSession.get_resource_ids_by_bin
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_authorizations_ids_by_vault(vault_id)
+        return self._provider_session.get_authorizations_ids_by_vault(vault_ids)
 
     @raise_null_argument
     def get_authorizations_by_vault(self, vault_ids):
@@ -814,7 +814,7 @@ class AuthorizationVaultSession(abc_authorization_sessions.AuthorizationVaultSes
         # osid.resource.ResourceBinSession.get_resources_by_bin_template
         if not self._can('lookup'):
             raise PermissionDenied()
-        return self._provider_session.get_authorizations_by_vault(vault_id)
+        return self._provider_session.get_authorizations_by_vault(vault_ids)
 
     @raise_null_argument
     def get_vault_ids_by_authorization(self, authorization_id):

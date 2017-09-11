@@ -32,7 +32,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_authorization' in profile.SUPPORTS
 
     def supports_authorization_lookup(self):
@@ -46,7 +47,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_authorization_lookup' in profile.SUPPORTS
 
     def supports_authorization_query(self):
@@ -57,7 +59,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_authorization_query' in profile.SUPPORTS
 
     def supports_authorization_admin(self):
@@ -68,8 +71,33 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_authorization_admin' in profile.SUPPORTS
+
+    def supports_authorization_vault(self):
+        """Tests if an authorization to vault lookup session is available.
+
+        return: (boolean) - ``true`` if authorization vault lookup
+                session is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_authorization_vault' in profile.SUPPORTS
+
+    def supports_authorization_vault_assignment(self):
+        """Tests if an authorization to vault assignment session is available.
+
+        return: (boolean) - ``true`` if authorization vault assignment
+                is supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_authorization_vault_assignment' in profile.SUPPORTS
 
     def supports_vault_lookup(self):
         """Tests if a vault lookup service is supported.
@@ -82,7 +110,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_vault_lookup' in profile.SUPPORTS
 
     def supports_vault_query(self):
@@ -93,7 +122,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_vault_query' in profile.SUPPORTS
 
     def supports_vault_admin(self):
@@ -104,8 +134,33 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_vault_admin' in profile.SUPPORTS
+
+    def supports_vault_hierarchy(self):
+        """Tests if a vault hierarchy traversal is supported.
+
+        return: (boolean) - ``true`` if a vault hierarchy traversal is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_vault_hierarchy' in profile.SUPPORTS
+
+    def supports_vault_hierarchy_design(self):
+        """Tests if vault hierarchy design is supported.
+
+        return: (boolean) - ``true`` if a function hierarchy design is
+                supported, ``false`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return 'supports_vault_hierarchy_design' in profile.SUPPORTS
 
     def get_authorization_record_types(self):
         """Gets the supported ``Authorization`` record types.
@@ -115,7 +170,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('AUTHORIZATION_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -132,7 +188,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('AUTHORIZATION_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -149,7 +206,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('FUNCTION_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -166,7 +224,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('FUNCTION_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -183,7 +242,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('QUALIFIER_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -200,7 +260,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('QUALIFIER_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -217,7 +278,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('VAULT_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -234,7 +296,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('VAULT_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -251,7 +314,8 @@ class AuthorizationProfile(osid_managers.OsidProfile, authorization_managers.Aut
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('AUTHORIZATION_CONDITION_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -334,7 +398,7 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         osid_managers.OsidManager.__init__(self)
 
     @utilities.remove_null_proxy_kwarg
-    def get_authorization_session(self, **kwargs):
+    def get_authorization_session(self):
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.
 
         return: (osid.authorization.AuthorizationSession) - an
@@ -346,18 +410,16 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_authorization()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_authorization():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AuthorizationSession(runtime=self._runtime)
 
     authorization_session = property(fget=get_authorization_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_authorization_session_for_vault(self, vault_id, **kwargs):
+    def get_authorization_session_for_vault(self, vault_id):
         """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks for the given vault.
 
         arg:    vault_id (osid.id.Id): the ``Id`` of the vault
@@ -373,22 +435,16 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_authorization():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationSession(
-                vault_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AuthorizationSession(vault_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_authorization_lookup_session(self, **kwargs):
+    def get_authorization_lookup_session(self):
         """Gets the ``OsidSession`` associated with the authorization lookup service.
 
         return: (osid.authorization.AuthorizationLookupSession) - an
@@ -400,18 +456,16 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_authorization_lookup()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_authorization_lookup():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AuthorizationLookupSession(runtime=self._runtime)
 
     authorization_lookup_session = property(fget=get_authorization_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_authorization_lookup_session_for_vault(self, vault_id, **kwargs):
+    def get_authorization_lookup_session_for_vault(self, vault_id):
         """Gets the ``OsidSession`` associated with the authorization lookup service for the given vault.
 
         arg:    vault_id (osid.id.Id): the ``Id`` of the vault
@@ -427,22 +481,16 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_authorization_lookup():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationLookupSession(
-                vault_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AuthorizationLookupSession(vault_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_authorization_query_session(self, **kwargs):
+    def get_authorization_query_session(self):
         """Gets the ``OsidSession`` associated with the authorization query service.
 
         return: (osid.authorization.AuthorizationQuerySession) - an
@@ -454,18 +502,16 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_authorization_query()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_authorization_query():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AuthorizationQuerySession(runtime=self._runtime)
 
     authorization_query_session = property(fget=get_authorization_query_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_authorization_query_session_for_vault(self, vault_id, **kwargs):
+    def get_authorization_query_session_for_vault(self, vault_id):
         """Gets the ``OsidSession`` associated with the authorization query service for the given vault.
 
         arg:    vault_id (osid.id.Id): the ``Id`` of the vault
@@ -481,22 +527,16 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_authorization_query():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationQuerySession(
-                vault_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AuthorizationQuerySession(vault_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_authorization_admin_session(self, **kwargs):
+    def get_authorization_admin_session(self):
         """Gets the ``OsidSession`` associated with the authorization administration service.
 
         return: (osid.authorization.AuthorizationAdminSession) - an
@@ -508,18 +548,16 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_authorization_admin()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_authorization_admin():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AuthorizationAdminSession(runtime=self._runtime)
 
     authorization_admin_session = property(fget=get_authorization_admin_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_authorization_admin_session_for_vault(self, vault_id, **kwargs):
+    def get_authorization_admin_session_for_vault(self, vault_id):
         """Gets the ``OsidSession`` associated with the authorization admin service for the given vault.
 
         arg:    vault_id (osid.id.Id): the ``Id`` of the vault
@@ -535,22 +573,57 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_authorization_admin():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AuthorizationAdminSession(
-                vault_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AuthorizationAdminSession(vault_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_vault_lookup_session(self, **kwargs):
+    def get_authorization_vault_session(self):
+        """Gets the session for retrieving authorization to vault mappings.
+
+        return: (osid.authorization.AuthorizationVaultSession) - an
+                ``AuthorizationVaultSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_vault()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultSession(runtime=self._runtime)
+
+    authorization_vault_session = property(fget=get_authorization_vault_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_authorization_vault_assignment_session(self):
+        """Gets the session for assigning authorizations to vault mappings.
+
+        return: (osid.authorization.AuthorizationVaultAssignmentSession)
+                - a ``AuthorizationVaultAssignmentSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_authorization_vault_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultAssignmentSession(runtime=self._runtime)
+
+    authorization_vault_assignment_session = property(fget=get_authorization_vault_assignment_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_vault_lookup_session(self):
         """Gets the OsidSession associated with the vault lookup service.
 
         return: (osid.authorization.VaultLookupSession) - a
@@ -561,17 +634,15 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_vault_lookup()`` is true.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_vault_lookup():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.VaultLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.VaultLookupSession(runtime=self._runtime)
 
     vault_lookup_session = property(fget=get_vault_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_vault_query_session(self, **kwargs):
+    def get_vault_query_session(self):
         """Gets the OsidSession associated with the vault query service.
 
         return: (osid.authorization.VaultQuerySession) - a
@@ -582,17 +653,15 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_vault_query()`` is true.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_vault_query():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.VaultQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.VaultQuerySession(runtime=self._runtime)
 
     vault_query_session = property(fget=get_vault_query_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_vault_admin_session(self, **kwargs):
+    def get_vault_admin_session(self):
         """Gets the OsidSession associated with the vault administration service.
 
         return: (osid.authorization.VaultAdminSession) - a
@@ -603,14 +672,51 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
         ``supports_vault_admin()`` is true.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_vault_admin():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.VaultAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.VaultAdminSession(runtime=self._runtime)
 
     vault_admin_session = property(fget=get_vault_admin_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_vault_hierarchy_session(self):
+        """Gets the session traversing vault hierarchies.
+
+        return: (osid.authorization.VaultHierarchySession) - a
+                ``VaultHierarchySession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy() is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchySession(runtime=self._runtime)
+
+    vault_hierarchy_session = property(fget=get_vault_hierarchy_session)
+
+    @utilities.remove_null_proxy_kwarg
+    def get_vault_hierarchy_design_session(self):
+        """Gets the session designing vault hierarchies.
+
+        return: (osid.authorization.VaultHierarchyDesignSession) - a
+                ``VaultHierarchyDesignSession``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy_design() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy_design()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchyDesignSession(runtime=self._runtime)
+
+    vault_hierarchy_design_session = property(fget=get_vault_hierarchy_design_session)
 
     def get_authorization_batch_manager(self):
         """Gets an ``AuthorizationBatchManager``.
@@ -645,7 +751,7 @@ class AuthorizationManager(osid_managers.OsidManager, AuthorizationProfile, auth
     authorization_rules_manager = property(fget=get_authorization_rules_manager)
 
 
-class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationProfile, AuthorizationManager, authorization_managers.AuthorizationProxyManager):
+class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationProfile, authorization_managers.AuthorizationProxyManager):
     """The authorization manager provides access to authorization sessions and provides interoperability tests for various aspects of this service.
 
     Methods in this manager support the passing of a ``Proxy`` object.
@@ -713,6 +819,360 @@ class AuthorizationProxyManager(osid_managers.OsidProxyManager, AuthorizationPro
         ``Vault`` hierarchy
 
     """
-    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
+    @utilities.arguments_not_none
+    def get_authorization_session(self, proxy):
+        """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationSession) - an
+                authorization session for this service
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization()`` is ``true``.*
+
+        """
+        if not self.supports_authorization():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_session_for_vault(self, vault_id, proxy):
+        """Gets an ``AuthorizationSession`` which is responsible for performing authorization checks for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the vault
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationSession) - ``an
+                _authorization_session``
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``proxy`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_authorization()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_authorization():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AuthorizationSession(vault_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_lookup_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the authorization lookup service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationLookupSession) - an
+                ``AuthorizationLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_lookup()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_lookup_session_for_vault(self, vault_id, proxy):
+        """Gets the ``OsidSession`` associated with the authorization lookup service for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the vault
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationLookupSession) - ``an
+                _authorization_lookup_session``
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``proxy`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_authorization_lookup()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_lookup()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_authorization_lookup():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AuthorizationLookupSession(vault_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_query_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the authorization query service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationQuerySession) - an
+                ``AuthorizationQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_query()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_query_session_for_vault(self, vault_id, proxy):
+        """Gets the ``OsidSession`` associated with the authorization query service for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the vault
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationQuerySession) - ``an
+                _authorization_query_session``
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``proxy`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_authorization_query()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_query()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_authorization_query():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AuthorizationQuerySession(vault_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_admin_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the authorization administration service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationAdminSession) - an
+                ``AuthorizationAdminSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_admin()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_admin()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_admin():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_admin_session_for_vault(self, vault_id, proxy):
+        """Gets the ``OsidSession`` associated with the authorization admin service for the given vault.
+
+        arg:    vault_id (osid.id.Id): the ``Id`` of the vault
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationAdminSession) - ``an
+                _authorization_admin_session``
+        raise:  NotFound - ``vault_id`` not found
+        raise:  NullArgument - ``vault_id`` or ``proxy`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_authorization_admin()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_admin()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_authorization_admin():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AuthorizationAdminSession(vault_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_vault_session(self, proxy):
+        """Gets the session for retrieving authorization to vault mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationVaultSession) - an
+                ``AuthorizationVaultSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_vault()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_authorization_vault_assignment_session(self, proxy):
+        """Gets the session for assigning authorization to vault mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.AuthorizationVaultAssignmentSession)
+                - a ``AuthorizationVaultAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_authorization_vault_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_vault_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_authorization_vault_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AuthorizationVaultAssignmentSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_vault_lookup_session(self, proxy):
+        """Gets the OsidSession associated with the vault lookup service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.VaultLookupSession) - a
+                ``VaultLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_lookup() is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_lookup()`` is true.*
+
+        """
+        if not self.supports_vault_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_vault_query_session(self, proxy):
+        """Gets the OsidSession associated with the vault query service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.VaultQuerySession) - a
+                ``VaultQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_query() is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_query()`` is true.*
+
+        """
+        if not self.supports_vault_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_vault_admin_session(self, proxy):
+        """Gets the OsidSession associated with the vault administration service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.VaultAdminSession) - a
+                ``VaultAdminSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_admin() is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_admin()`` is true.*
+
+        """
+        if not self.supports_vault_admin():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_vault_hierarchy_session(self, proxy):
+        """Gets the session traversing vault hierarchies.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.VaultHierarchySession) - a
+                ``VaultHierarchySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy() is false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_vault_hierarchy_design_session(self, proxy):
+        """Gets the session designing vault hierarchies.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.authorization.VaultHierarchyDesignSession) - a
+                ``VaultHierarchySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_vault_hierarchy_design() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_vault_hierarchy_design()`` is true.*
+
+        """
+        if not self.supports_vault_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.VaultHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
+
+    def get_authorization_batch_proxy_manager(self):
+        """Gets an ``AuthorizationBatchProxyManager``.
+
+        return:
+                (osid.authorization.batch.AuthorizationBatchProxyManager
+                ) - an ``AuthorizationBatchProxyManager``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_batch() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_batch()`` is true.*
+
+        """
+        raise errors.Unimplemented()
+
+    authorization_batch_proxy_manager = property(fget=get_authorization_batch_proxy_manager)
+
+    def get_authorization_rules_proxy_manager(self):
+        """Gets an ``AuthorizationRulesProxyManager``.
+
+        return:
+                (osid.authorization.rules.AuthorizationRulesProxyManager
+                ) - an ``AuthorizationRulesProxyManager``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_authorization_rules() is
+                false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_authorization_rules()`` is true.*
+
+        """
+        raise errors.Unimplemented()
+
+    authorization_rules_proxy_manager = property(fget=get_authorization_rules_proxy_manager)

@@ -32,7 +32,8 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_catalog_lookup' in profile.SUPPORTS
 
     def supports_catalog_query(self):
@@ -43,7 +44,8 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_catalog_query' in profile.SUPPORTS
 
     def supports_catalog_admin(self):
@@ -54,7 +56,8 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_catalog_admin' in profile.SUPPORTS
 
     def supports_catalog_hierarchy(self):
@@ -65,7 +68,8 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_catalog_hierarchy' in profile.SUPPORTS
 
     def supports_catalog_hierarchy_design(self):
@@ -77,7 +81,8 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         providers.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_catalog_hierarchy_design' in profile.SUPPORTS
 
     def get_catalog_record_types(self):
@@ -88,7 +93,8 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('CATALOG_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -105,7 +111,8 @@ class CatalogingProfile(osid_managers.OsidProfile, cataloging_managers.Catalogin
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('CATALOG_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -146,7 +153,7 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         osid_managers.OsidManager.__init__(self)
 
     @utilities.remove_null_proxy_kwarg
-    def get_catalog_lookup_session(self, **kwargs):
+    def get_catalog_lookup_session(self):
         """Gets the catalog lookup session.
 
         return: (osid.cataloging.CatalogLookupSession) - a
@@ -158,17 +165,15 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         ``supports_catalog_lookup()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_catalog_lookup():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CatalogLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CatalogLookupSession(runtime=self._runtime)
 
     catalog_lookup_session = property(fget=get_catalog_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_catalog_query_session(self, **kwargs):
+    def get_catalog_query_session(self):
         """Gets the catalog query session.
 
         return: (osid.cataloging.CatalogQuerySession) - a
@@ -180,17 +185,15 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         ``supports_catalog_query()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_catalog_query():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CatalogQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CatalogQuerySession(runtime=self._runtime)
 
     catalog_query_session = property(fget=get_catalog_query_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_catalog_admin_session(self, **kwargs):
+    def get_catalog_admin_session(self):
         """Gets the catalog administrative session for creating, updating and deleting catalogs.
 
         return: (osid.cataloging.CatalogAdminSession) - a
@@ -202,17 +205,15 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         ``supports_catalog_admin()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_catalog_admin():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CatalogAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CatalogAdminSession(runtime=self._runtime)
 
     catalog_admin_session = property(fget=get_catalog_admin_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_catalog_hierarchy_session(self, **kwargs):
+    def get_catalog_hierarchy_session(self):
         """Gets the catalog hierarchy traversal session.
 
         return: (osid.cataloging.CatalogHierarchySession) - a
@@ -224,17 +225,15 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         ``supports_catalog_hierarchy()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_catalog_hierarchy():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CatalogHierarchySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CatalogHierarchySession(runtime=self._runtime)
 
     catalog_hierarchy_session = property(fget=get_catalog_hierarchy_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_catalog_hierarchy_design_session(self, **kwargs):
+    def get_catalog_hierarchy_design_session(self):
         """Gets the catalog hierarchy design session.
 
         return: (osid.cataloging.CatalogHierarchyDesignSession) - a
@@ -246,11 +245,9 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
         ``supports_catalog_hierarchy_design()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_catalog_hierarchy_design():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CatalogHierarchyDesignSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CatalogHierarchyDesignSession(runtime=self._runtime)
 
     catalog_hierarchy_design_session = property(fget=get_catalog_hierarchy_design_session)
@@ -272,7 +269,7 @@ class CatalogingManager(osid_managers.OsidManager, CatalogingProfile, cataloging
     cataloging_rules_manager = property(fget=get_cataloging_rules_manager)
 
 
-class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, CatalogingManager, cataloging_managers.CatalogingProxyManager):
+class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, cataloging_managers.CatalogingProxyManager):
     """The cataloging manager provides access to cataloging sessions and provides interoperability tests for various aspects of this service.
 
     Methods in this manager support the passing of a ``Proxy`` for the
@@ -300,6 +297,121 @@ class CatalogingProxyManager(osid_managers.OsidProxyManager, CatalogingProfile, 
     supported search types supported by this service.
 
     """
-    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
+
+    @utilities.arguments_not_none
+    def get_catalog_lookup_session(self, proxy):
+        """Gets the catalog lookup session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.cataloging.CatalogLookupSession) - a
+                ``CatalogLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_catalog_lookup()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_catalog_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_catalog_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CatalogLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_catalog_query_session(self, proxy):
+        """Gets the catalog query session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.cataloging.CatalogQuerySession) - a
+                ``CatalogQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_catalog_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_catalog_query()`` is ``true``.*
+
+        """
+        if not self.supports_catalog_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CatalogQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_catalog_admin_session(self, proxy):
+        """Gets the catalog administrative session for creating, updating and deleting catalogs.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.cataloging.CatalogAdminSession) - a
+                ``CatalogAdminSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_catalog_admin()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_catalog_admin()`` is ``true``.*
+
+        """
+        if not self.supports_catalog_admin():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CatalogAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_catalog_hierarchy_session(self, proxy):
+        """Gets the catalog hierarchy traversal session.
+
+        arg:    proxy (osid.proxy.Proxy): proxy
+        return: (osid.cataloging.CatalogHierarchySession) - a
+                ``CatalogHierarchySession``
+        raise:  NullArgument - ``proxy`` is null
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_catalog_hierarchy()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_catalog_hierarchy()`` is ``true``.*
+
+        """
+        if not self.supports_catalog_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CatalogHierarchySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_catalog_hierarchy_design_session(self, proxy):
+        """Gets the catalog hierarchy design session.
+
+        arg:    proxy (osid.proxy.Proxy): proxy
+        return: (osid.cataloging.CatalogHierarchyDesignSession) - a
+                ``CatalogHierarchyDesignSession``
+        raise:  NullArgument - ``proxy`` is null
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_catalog_hierarchy_design()``
+                is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_catalog_hierarchy_design()`` is ``true``.*
+
+        """
+        if not self.supports_catalog_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CatalogHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
+
+    def get_cataloging_rules_proxy_manager(self):
+        """Gets the cataloging rules proxy manager.
+
+        return: (osid.cataloging.rules.CatalogingRulesProxyManager) - a
+                ``CatalogingRulesManager``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_cataloging_rules()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_cataloging_rules()`` is ``true``.*
+
+        """
+        raise errors.Unimplemented()
+
+    cataloging_rules_proxy_manager = property(fget=get_cataloging_rules_proxy_manager)

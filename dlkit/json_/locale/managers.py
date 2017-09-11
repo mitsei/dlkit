@@ -48,7 +48,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     source_language_types = property(fget=get_source_language_types)
@@ -74,7 +75,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     numeric_format_types = property(fget=get_numeric_format_types)
@@ -198,7 +200,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     source_unit_types = property(fget=get_source_unit_types)
@@ -225,7 +228,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     source_currency_types = property(fget=get_source_currency_types)
@@ -252,7 +256,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     source_calendar_types = property(fget=get_source_calendar_types)
@@ -278,7 +283,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     source_time_types = property(fget=get_source_time_types)
@@ -330,7 +336,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     source_coordinate_types = property(fget=get_source_coordinate_types)
@@ -358,7 +365,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('SOURCE_SPATIAL_UNIT_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -389,7 +397,8 @@ class LocaleProfile(osid_managers.OsidProfile, locale_managers.LocaleProfile):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     source_format_types = property(fget=get_source_format_types)
@@ -429,7 +438,7 @@ class LocaleManager(osid_managers.OsidManager, LocaleProfile, locale_managers.Lo
         osid_managers.OsidManager.__init__(self)
 
 
-class LocaleProxyManager(osid_managers.OsidProxyManager, LocaleProfile, LocaleManager, locale_managers.LocaleProxyManager):
+class LocaleProxyManager(osid_managers.OsidProxyManager, LocaleProfile, locale_managers.LocaleProxyManager):
     """The locale manager provides access to locale sessions and provides interoperability tests for various aspects of this service.
 
     Methods in this manager support the passing of a ``Proxy`` for
@@ -461,6 +470,5 @@ class LocaleProxyManager(osid_managers.OsidProxyManager, LocaleProfile, LocaleMa
         time systems
 
     """
-    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)

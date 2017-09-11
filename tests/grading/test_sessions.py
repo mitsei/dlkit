@@ -5,7 +5,7 @@ import datetime
 import pytest
 
 
-from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging
+from ..utilities.general import is_never_authz, is_no_authz, uses_cataloging, uses_filesystem_only
 from dlkit.abstract_osid.grading import objects as ABCObjects
 from dlkit.abstract_osid.grading import queries as ABCQueries
 from dlkit.abstract_osid.grading.objects import Grade
@@ -18,6 +18,7 @@ from dlkit.abstract_osid.osid.objects import OsidForm
 from dlkit.abstract_osid.osid.objects import OsidList
 from dlkit.abstract_osid.osid.objects import OsidNode
 from dlkit.json_.grading.objects import GradebookColumnSummary
+from dlkit.json_.id.objects import IdList
 from dlkit.primordium.calendaring.primitives import DateTime
 from dlkit.primordium.id.primitives import Id
 from dlkit.primordium.type.primitives import Type
@@ -39,7 +40,7 @@ AGENT_ID = Id(**{'identifier': 'jane_doe', 'namespace': 'osid.agent.Agent', 'aut
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def grade_system_lookup_session_class_fixture(request):
     # Implemented from init template for ResourceLookupSession
     request.cls.service_config = request.param
@@ -223,7 +224,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def grade_system_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -320,7 +321,7 @@ class TestGradeSystemQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def grade_system_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -648,18 +649,292 @@ class TestGradeSystemAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
-def grade_entry_lookup_session_class_fixture(request):
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
+def grade_system_gradebook_session_class_fixture(request):
+    # From test_templates/resource.py::ResourceBinSession::init_template
     request.cls.service_config = request.param
-    request.cls.grade_entry_list = list()
-    request.cls.grade_entry_ids = list()
-    request.cls.gradebook_column_list = list()
-    request.cls.gradebook_column_ids = list()
+    request.cls.grade_system_list = list()
+    request.cls.grade_system_ids = list()
     request.cls.svc_mgr = Runtime().get_service_manager(
         'GRADING',
         proxy=PROXY,
         implementation=request.cls.service_config)
     request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradeSystemGradebookSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook for Assignment'
+        create_form.description = 'Test Gradebook for GradeSystemGradebookSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_grade_system_form_for_create([])
+            create_form.display_name = 'Test GradeSystem ' + str(num)
+            create_form.description = 'Test GradeSystem for GradeSystemGradebookSession tests'
+            obj = request.cls.catalog.create_grade_system(create_form)
+            request.cls.grade_system_list.append(obj)
+            request.cls.grade_system_ids.append(obj.ident)
+        request.cls.svc_mgr.assign_grade_system_to_gradebook(
+            request.cls.grade_system_ids[1], request.cls.assigned_catalog.ident)
+        request.cls.svc_mgr.assign_grade_system_to_gradebook(
+            request.cls.grade_system_ids[2], request.cls.assigned_catalog.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.unassign_grade_system_from_gradebook(
+                request.cls.grade_system_ids[1], request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.unassign_grade_system_from_gradebook(
+                request.cls.grade_system_ids[2], request.cls.assigned_catalog.ident)
+            for obj in request.cls.catalog.get_grade_systems():
+                request.cls.catalog.delete_grade_system(obj.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def grade_system_gradebook_session_test_fixture(request):
+    # From test_templates/resource.py::ResourceBinSession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("grade_system_gradebook_session_class_fixture", "grade_system_gradebook_session_test_fixture")
+class TestGradeSystemGradebookSession(object):
+    """Tests for GradeSystemGradebookSession"""
+    def test_use_comparative_gradebook_view(self):
+        """Tests use_comparative_gradebook_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
+        self.svc_mgr.use_comparative_gradebook_view()
+
+    def test_use_plenary_gradebook_view(self):
+        """Tests use_plenary_gradebook_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
+        self.svc_mgr.use_plenary_gradebook_view()
+
+    def test_can_lookup_grade_system_gradebook_mappings(self):
+        """Tests can_lookup_grade_system_gradebook_mappings"""
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_grade_system_gradebook_mappings()
+        assert isinstance(result, bool)
+
+    def test_get_grade_system_ids_by_gradebook(self):
+        """Tests get_grade_system_ids_by_gradebook"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
+        if not is_never_authz(self.service_config):
+            objects = self.svc_mgr.get_grade_system_ids_by_gradebook(self.assigned_catalog.ident)
+            assert objects.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_grade_system_ids_by_gradebook(self.fake_id)
+
+    def test_get_grade_systems_by_gradebook(self):
+        """Tests get_grade_systems_by_gradebook"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.session.get_grade_systems_by_gradebook(self.assigned_catalog.ident)
+            assert isinstance(results, ABCObjects.GradeSystemList)
+            assert results.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_grade_systems_by_gradebook(self.fake_id)
+
+    def test_get_grade_system_ids_by_gradebooks(self):
+        """Tests get_grade_system_ids_by_gradebooks"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+            object_ids = self.session.get_grade_system_ids_by_gradebooks(catalog_ids)
+            assert isinstance(object_ids, IdList)
+            # Currently our impl does not remove duplicate objectIds
+            assert object_ids.available() == 5
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_grade_system_ids_by_gradebooks([self.fake_id])
+
+    def test_get_grade_systems_by_gradebooks(self):
+        """Tests get_grade_systems_by_gradebooks"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+            results = self.session.get_grade_systems_by_gradebooks(catalog_ids)
+            assert isinstance(results, ABCObjects.GradeSystemList)
+            # Currently our impl does not remove duplicate objects
+            assert results.available() == 5
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_grade_systems_by_gradebooks([self.fake_id])
+
+    def test_get_gradebook_ids_by_grade_system(self):
+        """Tests get_gradebook_ids_by_grade_system"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
+        if not is_never_authz(self.service_config):
+            cats = self.svc_mgr.get_gradebook_ids_by_grade_system(self.grade_system_ids[1])
+            assert cats.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_gradebook_ids_by_grade_system(self.fake_id)
+
+    def test_get_gradebooks_by_grade_system(self):
+        """Tests get_gradebooks_by_grade_system"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
+        if not is_never_authz(self.service_config):
+            cats = self.svc_mgr.get_gradebooks_by_grade_system(self.grade_system_ids[1])
+            assert cats.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_gradebooks_by_grade_system(self.fake_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
+def grade_system_gradebook_assignment_session_class_fixture(request):
+    # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+    request.cls.service_config = request.param
+    request.cls.grade_system_list = list()
+    request.cls.grade_system_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradeSystemGradebookAssignmentSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook for Assignment'
+        create_form.description = 'Test Gradebook for GradeSystemGradebookAssignmentSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_grade_system_form_for_create([])
+            create_form.display_name = 'Test GradeSystem ' + str(num)
+            create_form.description = 'Test GradeSystem for GradeSystemGradebookAssignmentSession tests'
+            obj = request.cls.catalog.create_grade_system(create_form)
+            request.cls.grade_system_list.append(obj)
+            request.cls.grade_system_ids.append(obj.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for obj in request.cls.catalog.get_grade_systems():
+                request.cls.catalog.delete_grade_system(obj.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def grade_system_gradebook_assignment_session_test_fixture(request):
+    # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("grade_system_gradebook_assignment_session_class_fixture", "grade_system_gradebook_assignment_session_test_fixture")
+class TestGradeSystemGradebookAssignmentSession(object):
+    """Tests for GradeSystemGradebookAssignmentSession"""
+    def test_can_assign_grade_system(self):
+        """Tests can_assign_grade_system"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_grade_system()
+        assert isinstance(result, bool)
+
+    def test_can_assign_grade_systems_to_gradebook(self):
+        """Tests can_assign_grade_systems_to_gradebook"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_grade_systems_to_gradebook(self.assigned_catalog.ident)
+        assert isinstance(result, bool)
+
+    def test_get_assignable_gradebook_ids(self):
+        """Tests get_assignable_gradebook_ids"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_gradebook_ids(self.catalog.ident)
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_gradebook_ids(self.fake_id)
+
+    def test_get_assignable_gradebook_ids_for_grade_system(self):
+        """Tests get_assignable_gradebook_ids_for_grade_system"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_resource_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_gradebook_ids_for_grade_system(self.catalog.ident, self.grade_system_ids[0])
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_gradebook_ids_for_grade_system(self.fake_id, self.fake_id)
+
+    def test_assign_grade_system_to_gradebook(self):
+        """Tests assign_grade_system_to_gradebook"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_grade_systems()
+            assert results.available() == 0
+            self.session.assign_grade_system_to_gradebook(self.grade_system_ids[1], self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_grade_systems()
+            assert results.available() == 1
+            self.session.unassign_grade_system_from_gradebook(
+                self.grade_system_ids[1],
+                self.assigned_catalog.ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.assign_grade_system_to_gradebook(self.fake_id, self.fake_id)
+
+    def test_unassign_grade_system_from_gradebook(self):
+        """Tests unassign_grade_system_from_gradebook"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_grade_systems()
+            assert results.available() == 0
+            self.session.assign_grade_system_to_gradebook(
+                self.grade_system_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_grade_systems()
+            assert results.available() == 1
+            self.session.unassign_grade_system_from_gradebook(
+                self.grade_system_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_grade_systems()
+            assert results.available() == 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.unassign_grade_system_from_gradebook(self.fake_id, self.fake_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
+def grade_entry_lookup_session_class_fixture(request):
+    request.cls.service_config = request.param
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
+
+
+@pytest.fixture(scope="function")
+def grade_entry_lookup_session_test_fixture(request):
+    request.cls.grade_entry_list = list()
+    request.cls.grade_entry_ids = list()
+    request.cls.gradebook_column_list = list()
+    request.cls.gradebook_column_ids = list()
+
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test Gradebook'
@@ -691,7 +966,9 @@ def grade_entry_lookup_session_class_fixture(request):
     else:
         request.cls.catalog = request.cls.svc_mgr.get_grade_entry_lookup_session(proxy=PROXY)
 
-    def class_tear_down():
+    request.cls.session = request.cls.catalog
+
+    def test_tear_down():
         if not is_never_authz(request.cls.service_config):
             for catalog in request.cls.svc_mgr.get_gradebooks():
                 for obj in catalog.get_grade_entries():
@@ -702,12 +979,7 @@ def grade_entry_lookup_session_class_fixture(request):
                     catalog.delete_grade_system(obj.ident)
                 request.cls.svc_mgr.delete_gradebook(catalog.ident)
 
-    request.addfinalizer(class_tear_down)
-
-
-@pytest.fixture(scope="function")
-def grade_entry_lookup_session_test_fixture(request):
-    request.cls.session = request.cls.catalog
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("grade_entry_lookup_session_class_fixture", "grade_entry_lookup_session_test_fixture")
@@ -770,67 +1042,115 @@ class TestGradeEntryLookupSession(object):
     def test_get_grade_entry(self):
         """Tests get_grade_entry"""
         # From test_templates/resource.py ResourceLookupSession.get_resource_template
-        if not is_never_authz(self.service_config):
-            self.catalog.use_isolated_gradebook_view()
-            obj = self.catalog.get_grade_entry(self.grade_entry_list[0].ident)
-            assert obj.ident == self.grade_entry_list[0].ident
-            self.catalog.use_federated_gradebook_view()
-            obj = self.catalog.get_grade_entry(self.grade_entry_list[0].ident)
-            assert obj.ident == self.grade_entry_list[0].ident
+        if self.svc_mgr.supports_grade_entry_query():
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_gradebook_view()
+                obj = self.catalog.get_grade_entry(self.grade_entry_list[0].ident)
+                assert obj.ident == self.grade_entry_list[0].ident
+                self.catalog.use_federated_gradebook_view()
+                obj = self.catalog.get_grade_entry(self.grade_entry_list[0].ident)
+                assert obj.ident == self.grade_entry_list[0].ident
+            else:
+                with pytest.raises(errors.NotFound):
+                    self.catalog.get_grade_entry(self.fake_id)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_grade_entry(self.fake_id)
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_gradebook_view()
+                obj = self.catalog.get_grade_entry(self.grade_entry_list[0].ident)
+                assert obj.ident == self.grade_entry_list[0].ident
+                self.catalog.use_federated_gradebook_view()
+                obj = self.catalog.get_grade_entry(self.grade_entry_list[0].ident)
+                assert obj.ident == self.grade_entry_list[0].ident
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_grade_entry(self.fake_id)
 
     def test_get_grade_entries_by_ids(self):
         """Tests get_grade_entries_by_ids"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_grade_entry_query():
             objects = self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
             assert isinstance(objects, GradeEntryList)
             self.catalog.use_federated_gradebook_view()
             objects = self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
-            assert objects.available() > 0
             assert isinstance(objects, GradeEntryList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
+                assert isinstance(objects, GradeEntryList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
+                assert objects.available() > 0
+                assert isinstance(objects, GradeEntryList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_grade_entries_by_ids(self.grade_entry_ids)
 
     def test_get_grade_entries_by_genus_type(self):
         """Tests get_grade_entries_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_grade_entry_query():
             objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
             assert isinstance(objects, GradeEntryList)
             self.catalog.use_federated_gradebook_view()
             objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() > 0
             assert isinstance(objects, GradeEntryList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, GradeEntryList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() > 0
+                assert isinstance(objects, GradeEntryList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_grade_entries_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_grade_entries_by_parent_genus_type(self):
         """Tests get_grade_entries_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, GradeEntryList)
-            self.catalog.use_federated_gradebook_view()
-            objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, GradeEntryList)
+        if self.svc_mgr.supports_grade_entry_query():
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, GradeEntryList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, GradeEntryList)
+            else:
+                with pytest.raises(errors.Unimplemented):
+                    # because the never_authz "tries harder" and runs the actual query...
+                    #    whereas above the method itself in JSON returns an empty list
+                    self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, GradeEntryList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, GradeEntryList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_grade_entries_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_grade_entries_by_record_type(self):
         """Tests get_grade_entries_by_record_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_grade_entry_query():
             objects = self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
             assert isinstance(objects, GradeEntryList)
             self.catalog.use_federated_gradebook_view()
@@ -838,8 +1158,16 @@ class TestGradeEntryLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, GradeEntryList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
+                assert isinstance(objects, GradeEntryList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, GradeEntryList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_grade_entries_by_record_type(DEFAULT_TYPE)
 
     def test_get_grade_entries_on_date(self):
         """Tests get_grade_entries_on_date"""
@@ -929,16 +1257,28 @@ class TestGradeEntryLookupSession(object):
         """Tests get_grade_entries"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.grading.objects import GradeEntryList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_grade_entry_query():
             objects = self.catalog.get_grade_entries()
             assert isinstance(objects, GradeEntryList)
             self.catalog.use_federated_gradebook_view()
             objects = self.catalog.get_grade_entries()
-            assert objects.available() > 0
             assert isinstance(objects, GradeEntryList)
+
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_grade_entries()
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_grade_entries()
+                assert isinstance(objects, GradeEntryList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_grade_entries()
+                assert objects.available() > 0
+                assert isinstance(objects, GradeEntryList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_grade_entries()
 
     def test_get_grade_entry_with_alias(self):
         if not is_never_authz(self.service_config):
@@ -949,7 +1289,7 @@ class TestGradeEntryLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def grade_entry_query_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.grade_entry_list = list()
@@ -1058,7 +1398,7 @@ class TestGradeEntryQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def grade_entry_admin_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.grade_entry_list = list()
@@ -1296,18 +1636,23 @@ class TestGradeEntryAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def gradebook_column_lookup_session_class_fixture(request):
     request.cls.service_config = request.param
-    request.cls.grade_entry_list = list()
-    request.cls.grade_entry_ids = list()
-    request.cls.gradebook_column_list = list()
-    request.cls.gradebook_column_ids = list()
     request.cls.svc_mgr = Runtime().get_service_manager(
         'GRADING',
         proxy=PROXY,
         implementation=request.cls.service_config)
-    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    request.cls.fake_id = Id('resource.Resource%3A000000000000000000000000%40DLKIT.MIT.EDU')
+
+
+@pytest.fixture(scope="function")
+def gradebook_column_lookup_session_test_fixture(request):
+    request.cls.grade_entry_list = list()
+    request.cls.grade_entry_ids = list()
+    request.cls.gradebook_column_list = list()
+    request.cls.gradebook_column_ids = list()
+
     if not is_never_authz(request.cls.service_config):
         create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
         create_form.display_name = 'Test Gradebook'
@@ -1340,7 +1685,9 @@ def gradebook_column_lookup_session_class_fixture(request):
     else:
         request.cls.catalog = request.cls.svc_mgr.get_gradebook_column_lookup_session(proxy=PROXY)
 
-    def class_tear_down():
+    request.cls.session = request.cls.catalog
+
+    def test_tear_down():
         if not is_never_authz(request.cls.service_config):
             for catalog in request.cls.svc_mgr.get_gradebooks():
                 for obj in catalog.get_grade_entries():
@@ -1351,12 +1698,7 @@ def gradebook_column_lookup_session_class_fixture(request):
                     catalog.delete_grade_system(obj.ident)
                 request.cls.svc_mgr.delete_gradebook(catalog.ident)
 
-    request.addfinalizer(class_tear_down)
-
-
-@pytest.fixture(scope="function")
-def gradebook_column_lookup_session_test_fixture(request):
-    request.cls.session = request.cls.catalog
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("gradebook_column_lookup_session_class_fixture", "gradebook_column_lookup_session_test_fixture")
@@ -1377,8 +1719,8 @@ class TestGradebookColumnLookupSession(object):
 
     def test_can_lookup_gradebook_columns(self):
         """Tests can_lookup_gradebook_columns"""
-        # From test_templates/resource.py::BinLookupSession::can_lookup_bins_template
-        assert isinstance(self.session.can_lookup_gradebook_columns(), bool)
+        # From test_templates/resource.py ResourceLookupSession.can_lookup_resources_template
+        assert isinstance(self.catalog.can_lookup_gradebook_columns(), bool)
 
     def test_use_comparative_gradebook_column_view(self):
         """Tests use_comparative_gradebook_column_view"""
@@ -1403,67 +1745,115 @@ class TestGradebookColumnLookupSession(object):
     def test_get_gradebook_column(self):
         """Tests get_gradebook_column"""
         # From test_templates/resource.py ResourceLookupSession.get_resource_template
-        if not is_never_authz(self.service_config):
-            self.catalog.use_isolated_gradebook_view()
-            obj = self.catalog.get_gradebook_column(self.gradebook_column_list[0].ident)
-            assert obj.ident == self.gradebook_column_list[0].ident
-            self.catalog.use_federated_gradebook_view()
-            obj = self.catalog.get_gradebook_column(self.gradebook_column_list[0].ident)
-            assert obj.ident == self.gradebook_column_list[0].ident
+        if self.svc_mgr.supports_gradebook_column_query():
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_gradebook_view()
+                obj = self.catalog.get_gradebook_column(self.gradebook_column_list[0].ident)
+                assert obj.ident == self.gradebook_column_list[0].ident
+                self.catalog.use_federated_gradebook_view()
+                obj = self.catalog.get_gradebook_column(self.gradebook_column_list[0].ident)
+                assert obj.ident == self.gradebook_column_list[0].ident
+            else:
+                with pytest.raises(errors.NotFound):
+                    self.catalog.get_gradebook_column(self.fake_id)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_gradebook_column(self.fake_id)
+            if not is_never_authz(self.service_config):
+                self.catalog.use_isolated_gradebook_view()
+                obj = self.catalog.get_gradebook_column(self.gradebook_column_list[0].ident)
+                assert obj.ident == self.gradebook_column_list[0].ident
+                self.catalog.use_federated_gradebook_view()
+                obj = self.catalog.get_gradebook_column(self.gradebook_column_list[0].ident)
+                assert obj.ident == self.gradebook_column_list[0].ident
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_gradebook_column(self.fake_id)
 
     def test_get_gradebook_columns_by_ids(self):
         """Tests get_gradebook_columns_by_ids"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_ids_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_gradebook_column_query():
             objects = self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
             assert isinstance(objects, GradebookColumnList)
             self.catalog.use_federated_gradebook_view()
             objects = self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
-            assert objects.available() > 0
             assert isinstance(objects, GradebookColumnList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
+                assert isinstance(objects, GradebookColumnList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
+                assert objects.available() > 0
+                assert isinstance(objects, GradebookColumnList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_gradebook_columns_by_ids(self.gradebook_column_ids)
 
     def test_get_gradebook_columns_by_genus_type(self):
         """Tests get_gradebook_columns_by_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_gradebook_column_query():
             objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
             assert isinstance(objects, GradebookColumnList)
             self.catalog.use_federated_gradebook_view()
             objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() > 0
             assert isinstance(objects, GradebookColumnList)
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, GradebookColumnList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() > 0
+                assert isinstance(objects, GradebookColumnList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_gradebook_columns_by_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_gradebook_columns_by_parent_genus_type(self):
         """Tests get_gradebook_columns_by_parent_genus_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_parent_genus_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
-        if not is_never_authz(self.service_config):
-            objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert isinstance(objects, GradebookColumnList)
-            self.catalog.use_federated_gradebook_view()
-            objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
-            assert objects.available() == 0
-            assert isinstance(objects, GradebookColumnList)
+        if self.svc_mgr.supports_gradebook_column_query():
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, GradebookColumnList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, GradebookColumnList)
+            else:
+                with pytest.raises(errors.Unimplemented):
+                    # because the never_authz "tries harder" and runs the actual query...
+                    #    whereas above the method itself in JSON returns an empty list
+                    self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert isinstance(objects, GradebookColumnList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, GradebookColumnList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_gradebook_columns_by_parent_genus_type(DEFAULT_GENUS_TYPE)
 
     def test_get_gradebook_columns_by_record_type(self):
         """Tests get_gradebook_columns_by_record_type"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_by_record_type_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_gradebook_column_query():
             objects = self.catalog.get_gradebook_columns_by_record_type(DEFAULT_TYPE)
             assert isinstance(objects, GradebookColumnList)
             self.catalog.use_federated_gradebook_view()
@@ -1471,23 +1861,43 @@ class TestGradebookColumnLookupSession(object):
             assert objects.available() == 0
             assert isinstance(objects, GradebookColumnList)
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_gradebook_columns_by_record_type(DEFAULT_TYPE)
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_gradebook_columns_by_record_type(DEFAULT_TYPE)
+                assert isinstance(objects, GradebookColumnList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_gradebook_columns_by_record_type(DEFAULT_TYPE)
+                assert objects.available() == 0
+                assert isinstance(objects, GradebookColumnList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_gradebook_columns_by_record_type(DEFAULT_TYPE)
 
     def test_get_gradebook_columns(self):
         """Tests get_gradebook_columns"""
         # From test_templates/resource.py ResourceLookupSession.get_resources_template
         from dlkit.abstract_osid.grading.objects import GradebookColumnList
-        if not is_never_authz(self.service_config):
+        if self.svc_mgr.supports_gradebook_column_query():
             objects = self.catalog.get_gradebook_columns()
             assert isinstance(objects, GradebookColumnList)
             self.catalog.use_federated_gradebook_view()
             objects = self.catalog.get_gradebook_columns()
-            assert objects.available() > 0
             assert isinstance(objects, GradebookColumnList)
+
+            if not is_never_authz(self.service_config):
+                assert objects.available() > 0
+            else:
+                assert objects.available() == 0
         else:
-            with pytest.raises(errors.PermissionDenied):
-                self.catalog.get_gradebook_columns()
+            if not is_never_authz(self.service_config):
+                objects = self.catalog.get_gradebook_columns()
+                assert isinstance(objects, GradebookColumnList)
+                self.catalog.use_federated_gradebook_view()
+                objects = self.catalog.get_gradebook_columns()
+                assert objects.available() > 0
+                assert isinstance(objects, GradebookColumnList)
+            else:
+                with pytest.raises(errors.PermissionDenied):
+                    self.catalog.get_gradebook_columns()
 
     def test_get_gradebook_column_with_alias(self):
         if not is_never_authz(self.service_config):
@@ -1510,7 +1920,7 @@ class TestGradebookColumnLookupSession(object):
             assert isinstance(self.catalog.get_gradebook_column_summary(self.gradebook_column_ids[0]),
                               GradebookColumnSummary)
         else:
-            with pytest.raises(errors.PermissionDenied):
+            with pytest.raises(errors.NotFound):
                 self.catalog.get_gradebook_column_summary(self.fake_id)
 
 
@@ -1519,7 +1929,7 @@ class FakeQuery:
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def gradebook_column_query_session_class_fixture(request):
     # From test_templates/resource.py::ResourceQuerySession::init_template
     request.cls.service_config = request.param
@@ -1616,7 +2026,7 @@ class TestGradebookColumnQuerySession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def gradebook_column_admin_session_class_fixture(request):
     # From test_templates/resource.py::ResourceAdminSession::init_template
     request.cls.service_config = request.param
@@ -1842,7 +2252,276 @@ class TestGradebookColumnAdminSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
+def gradebook_column_gradebook_session_class_fixture(request):
+    # From test_templates/resource.py::ResourceBinSession::init_template
+    request.cls.service_config = request.param
+    request.cls.gradebook_column_list = list()
+    request.cls.gradebook_column_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradebookColumnGradebookSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook for Assignment'
+        create_form.description = 'Test Gradebook for GradebookColumnGradebookSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_gradebook_column_form_for_create([])
+            create_form.display_name = 'Test GradebookColumn ' + str(num)
+            create_form.description = 'Test GradebookColumn for GradebookColumnGradebookSession tests'
+            obj = request.cls.catalog.create_gradebook_column(create_form)
+            request.cls.gradebook_column_list.append(obj)
+            request.cls.gradebook_column_ids.append(obj.ident)
+        request.cls.svc_mgr.assign_gradebook_column_to_gradebook(
+            request.cls.gradebook_column_ids[1], request.cls.assigned_catalog.ident)
+        request.cls.svc_mgr.assign_gradebook_column_to_gradebook(
+            request.cls.gradebook_column_ids[2], request.cls.assigned_catalog.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.svc_mgr.unassign_gradebook_column_from_gradebook(
+                request.cls.gradebook_column_ids[1], request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.unassign_gradebook_column_from_gradebook(
+                request.cls.gradebook_column_ids[2], request.cls.assigned_catalog.ident)
+            for obj in request.cls.catalog.get_gradebook_columns():
+                request.cls.catalog.delete_gradebook_column(obj.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def gradebook_column_gradebook_session_test_fixture(request):
+    # From test_templates/resource.py::ResourceBinSession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("gradebook_column_gradebook_session_class_fixture", "gradebook_column_gradebook_session_test_fixture")
+class TestGradebookColumnGradebookSession(object):
+    """Tests for GradebookColumnGradebookSession"""
+    def test_use_comparative_gradebook_view(self):
+        """Tests use_comparative_gradebook_view"""
+        # From test_templates/resource.py::BinLookupSession::use_comparative_bin_view_template
+        self.svc_mgr.use_comparative_gradebook_view()
+
+    def test_use_plenary_gradebook_view(self):
+        """Tests use_plenary_gradebook_view"""
+        # From test_templates/resource.py::BinLookupSession::use_plenary_bin_view_template
+        self.svc_mgr.use_plenary_gradebook_view()
+
+    def test_can_lookup_gradebook_column_gradebook_mappings(self):
+        """Tests can_lookup_gradebook_column_gradebook_mappings"""
+        # From test_templates/resource.py::ResourceBinSession::can_lookup_resource_bin_mappings
+        result = self.session.can_lookup_gradebook_column_gradebook_mappings()
+        assert isinstance(result, bool)
+
+    def test_get_gradebook_column_ids_by_gradebook(self):
+        """Tests get_gradebook_column_ids_by_gradebook"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bin_template
+        if not is_never_authz(self.service_config):
+            objects = self.svc_mgr.get_gradebook_column_ids_by_gradebook(self.assigned_catalog.ident)
+            assert objects.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_gradebook_column_ids_by_gradebook(self.fake_id)
+
+    def test_get_gradebook_columns_by_gradebook(self):
+        """Tests get_gradebook_columns_by_gradebook"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.session.get_gradebook_columns_by_gradebook(self.assigned_catalog.ident)
+            assert isinstance(results, ABCObjects.GradebookColumnList)
+            assert results.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_gradebook_columns_by_gradebook(self.fake_id)
+
+    def test_get_gradebook_column_ids_by_gradebooks(self):
+        """Tests get_gradebook_column_ids_by_gradebooks"""
+        # From test_templates/resource.py::ResourceBinSession::get_resource_ids_by_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+            object_ids = self.session.get_gradebook_column_ids_by_gradebooks(catalog_ids)
+            assert isinstance(object_ids, IdList)
+            # Currently our impl does not remove duplicate objectIds
+            assert object_ids.available() == 5
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_gradebook_column_ids_by_gradebooks([self.fake_id])
+
+    def test_get_gradebook_columns_by_gradebooks(self):
+        """Tests get_gradebook_columns_by_gradebooks"""
+        # From test_templates/resource.py::ResourceBinSession::get_resources_by_bins_template
+        if not is_never_authz(self.service_config):
+            catalog_ids = [self.catalog.ident, self.assigned_catalog.ident]
+            results = self.session.get_gradebook_columns_by_gradebooks(catalog_ids)
+            assert isinstance(results, ABCObjects.GradebookColumnList)
+            # Currently our impl does not remove duplicate objects
+            assert results.available() == 5
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_gradebook_columns_by_gradebooks([self.fake_id])
+
+    def test_get_gradebook_ids_by_gradebook_column(self):
+        """Tests get_gradebook_ids_by_gradebook_column"""
+        # From test_templates/resource.py::ResourceBinSession::get_bin_ids_by_resource_template
+        if not is_never_authz(self.service_config):
+            cats = self.svc_mgr.get_gradebook_ids_by_gradebook_column(self.gradebook_column_ids[1])
+            assert cats.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_gradebook_ids_by_gradebook_column(self.fake_id)
+
+    def test_get_gradebooks_by_gradebook_column(self):
+        """Tests get_gradebooks_by_gradebook_column"""
+        # From test_templates/resource.py::ResourceBinSession::get_bins_by_resource_template
+        if not is_never_authz(self.service_config):
+            cats = self.svc_mgr.get_gradebooks_by_gradebook_column(self.gradebook_column_ids[1])
+            assert cats.available() == 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.svc_mgr.get_gradebooks_by_gradebook_column(self.fake_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
+def gradebook_column_gradebook_assignment_session_class_fixture(request):
+    # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+    request.cls.service_config = request.param
+    request.cls.gradebook_column_list = list()
+    request.cls.gradebook_column_ids = list()
+    request.cls.svc_mgr = Runtime().get_service_manager(
+        'GRADING',
+        proxy=PROXY,
+        implementation=request.cls.service_config)
+    request.cls.fake_id = Id('resource.Resource%3Afake%40DLKIT.MIT.EDU')
+    if not is_never_authz(request.cls.service_config):
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook'
+        create_form.description = 'Test Gradebook for GradebookColumnGradebookAssignmentSession tests'
+        request.cls.catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        create_form = request.cls.svc_mgr.get_gradebook_form_for_create([])
+        create_form.display_name = 'Test Gradebook for Assignment'
+        create_form.description = 'Test Gradebook for GradebookColumnGradebookAssignmentSession tests assignment'
+        request.cls.assigned_catalog = request.cls.svc_mgr.create_gradebook(create_form)
+        for num in [0, 1, 2]:
+            create_form = request.cls.catalog.get_gradebook_column_form_for_create([])
+            create_form.display_name = 'Test GradebookColumn ' + str(num)
+            create_form.description = 'Test GradebookColumn for GradebookColumnGradebookAssignmentSession tests'
+            obj = request.cls.catalog.create_gradebook_column(create_form)
+            request.cls.gradebook_column_list.append(obj)
+            request.cls.gradebook_column_ids.append(obj.ident)
+
+    def class_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for obj in request.cls.catalog.get_gradebook_columns():
+                request.cls.catalog.delete_gradebook_column(obj.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.assigned_catalog.ident)
+            request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def gradebook_column_gradebook_assignment_session_test_fixture(request):
+    # From test_templates/resource.py::ResourceBinAssignmentSession::init_template
+    request.cls.session = request.cls.svc_mgr
+
+
+@pytest.mark.usefixtures("gradebook_column_gradebook_assignment_session_class_fixture", "gradebook_column_gradebook_assignment_session_test_fixture")
+class TestGradebookColumnGradebookAssignmentSession(object):
+    """Tests for GradebookColumnGradebookAssignmentSession"""
+    def test_can_assign_gradebook_columns(self):
+        """Tests can_assign_gradebook_columns"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_template
+        result = self.session.can_assign_gradebook_columns()
+        assert isinstance(result, bool)
+
+    def test_can_assign_gradebook_columns_to_gradebook(self):
+        """Tests can_assign_gradebook_columns_to_gradebook"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::can_assign_resources_to_bin_template
+        result = self.session.can_assign_gradebook_columns_to_gradebook(self.assigned_catalog.ident)
+        assert isinstance(result, bool)
+
+    def test_get_assignable_gradebook_ids(self):
+        """Tests get_assignable_gradebook_ids"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_gradebook_ids(self.catalog.ident)
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_gradebook_ids(self.fake_id)
+
+    def test_get_assignable_gradebook_ids_for_gradebook_column(self):
+        """Tests get_assignable_gradebook_ids_for_gradebook_column"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::get_assignable_bin_ids_for_resource_template
+        # Note that our implementation just returns all catalogIds, which does not follow
+        #   the OSID spec (should return only the catalogIds below the given one in the hierarchy.
+        if not is_never_authz(self.service_config):
+            results = self.session.get_assignable_gradebook_ids_for_gradebook_column(self.catalog.ident, self.gradebook_column_ids[0])
+            assert isinstance(results, IdList)
+
+            # Because we're not deleting all banks from all tests, we might
+            #   have some crufty banks here...but there should be at least 2.
+            assert results.available() >= 2
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.get_assignable_gradebook_ids_for_gradebook_column(self.fake_id, self.fake_id)
+
+    def test_assign_gradebook_column_to_gradebook(self):
+        """Tests assign_gradebook_column_to_gradebook"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::assign_resource_to_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_gradebook_columns()
+            assert results.available() == 0
+            self.session.assign_gradebook_column_to_gradebook(self.gradebook_column_ids[1], self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_gradebook_columns()
+            assert results.available() == 1
+            self.session.unassign_gradebook_column_from_gradebook(
+                self.gradebook_column_ids[1],
+                self.assigned_catalog.ident)
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.assign_gradebook_column_to_gradebook(self.fake_id, self.fake_id)
+
+    def test_unassign_gradebook_column_from_gradebook(self):
+        """Tests unassign_gradebook_column_from_gradebook"""
+        # From test_templates/resource.py::ResourceBinAssignmentSession::unassign_resource_from_bin_template
+        if not is_never_authz(self.service_config):
+            results = self.assigned_catalog.get_gradebook_columns()
+            assert results.available() == 0
+            self.session.assign_gradebook_column_to_gradebook(
+                self.gradebook_column_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_gradebook_columns()
+            assert results.available() == 1
+            self.session.unassign_gradebook_column_from_gradebook(
+                self.gradebook_column_ids[1],
+                self.assigned_catalog.ident)
+            results = self.assigned_catalog.get_gradebook_columns()
+            assert results.available() == 0
+        else:
+            with pytest.raises(errors.PermissionDenied):
+                self.session.unassign_gradebook_column_from_gradebook(self.fake_id, self.fake_id)
+
+
+@pytest.fixture(scope="class",
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def gradebook_lookup_session_class_fixture(request):
     # From test_templates/resource.py::BinLookupSession::init_template
     request.cls.service_config = request.param
@@ -1911,9 +2590,10 @@ class TestGradebookLookupSession(object):
             catalogs = self.svc_mgr.get_gradebooks_by_ids(self.catalog_ids)
             assert catalogs.available() == 2
             assert isinstance(catalogs, ABCObjects.GradebookList)
-            reversed_catalog_ids = [str(cat_id) for cat_id in self.catalog_ids][::-1]
+            catalog_id_strs = [str(cat_id) for cat_id in self.catalog_ids]
             for index, catalog in enumerate(catalogs):
-                assert str(catalog.ident) == reversed_catalog_ids[index]
+                assert str(catalog.ident) in catalog_id_strs
+                catalog_id_strs.remove(str(catalog.ident))
         else:
             with pytest.raises(errors.PermissionDenied):
                 self.svc_mgr.get_gradebooks_by_ids([self.fake_id])
@@ -1972,7 +2652,7 @@ class TestGradebookLookupSession(object):
 
 
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def gradebook_admin_session_class_fixture(request):
     # From test_templates/resource.py::BinAdminSession::init_template
     request.cls.service_config = request.param
@@ -2122,7 +2802,7 @@ class TestGradebookAdminSession(object):
 
 # Override this because spec doesn't have a method ``remove_child_gradebooks``
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def gradebook_hierarchy_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(
@@ -2403,7 +3083,7 @@ class TestGradebookHierarchySession(object):
 
 # Override this because spec doesn't have a method ``remove_child_gradebooks``
 @pytest.fixture(scope="class",
-                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING'])
+                params=['TEST_SERVICE', 'TEST_SERVICE_ALWAYS_AUTHZ', 'TEST_SERVICE_NEVER_AUTHZ', 'TEST_SERVICE_CATALOGING', 'TEST_SERVICE_FILESYSTEM'])
 def gradebook_hierarchy_design_session_class_fixture(request):
     request.cls.service_config = request.param
     request.cls.svc_mgr = Runtime().get_service_manager(

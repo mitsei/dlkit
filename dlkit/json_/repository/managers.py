@@ -32,7 +32,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_lookup' in profile.SUPPORTS
 
     def supports_asset_query(self):
@@ -43,7 +44,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_query' in profile.SUPPORTS
 
     def supports_asset_search(self):
@@ -54,7 +56,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_search' in profile.SUPPORTS
 
     def supports_asset_admin(self):
@@ -65,7 +68,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_admin' in profile.SUPPORTS
 
     def supports_asset_notification(self):
@@ -79,7 +83,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_notification' in profile.SUPPORTS
 
     def supports_asset_repository(self):
@@ -90,7 +95,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_repository' in profile.SUPPORTS
 
     def supports_asset_repository_assignment(self):
@@ -101,7 +107,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_repository_assignment' in profile.SUPPORTS
 
     def supports_asset_composition(self):
@@ -112,7 +119,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_composition' in profile.SUPPORTS
 
     def supports_asset_composition_design(self):
@@ -123,7 +131,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_asset_composition_design' in profile.SUPPORTS
 
     def supports_composition_lookup(self):
@@ -134,7 +143,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_composition_lookup' in profile.SUPPORTS
 
     def supports_composition_query(self):
@@ -145,7 +155,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_composition_query' in profile.SUPPORTS
 
     def supports_composition_search(self):
@@ -156,7 +167,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_composition_search' in profile.SUPPORTS
 
     def supports_composition_admin(self):
@@ -167,7 +179,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_composition_admin' in profile.SUPPORTS
 
     def supports_composition_repository(self):
@@ -178,7 +191,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_composition_repository' in profile.SUPPORTS
 
     def supports_composition_repository_assignment(self):
@@ -189,7 +203,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_composition_repository_assignment' in profile.SUPPORTS
 
     def supports_repository_lookup(self):
@@ -200,7 +215,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_repository_lookup' in profile.SUPPORTS
 
     def supports_repository_query(self):
@@ -211,7 +227,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_repository_query' in profile.SUPPORTS
 
     def supports_repository_admin(self):
@@ -222,7 +239,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_repository_admin' in profile.SUPPORTS
 
     def supports_repository_hierarchy(self):
@@ -233,7 +251,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_repository_hierarchy' in profile.SUPPORTS
 
     def supports_repository_hierarchy_design(self):
@@ -244,7 +263,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from template for
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return 'supports_repository_hierarchy_design' in profile.SUPPORTS
 
     def get_asset_record_types(self):
@@ -255,7 +275,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('ASSET_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -272,7 +293,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('ASSET_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -289,7 +311,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('ASSET_CONTENT_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -306,7 +329,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('COMPOSITION_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -323,7 +347,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('COMPOSITION_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -340,7 +365,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('REPOSITORY_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -357,7 +383,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('REPOSITORY_SEARCH_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -374,7 +401,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('SPATIAL_UNIT_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -391,7 +419,8 @@ class RepositoryProfile(osid_managers.OsidProfile, repository_managers.Repositor
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     coordinate_types = property(fget=get_coordinate_types)
@@ -460,7 +489,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         osid_managers.OsidManager.__init__(self)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_lookup_session(self, **kwargs):
+    def get_asset_lookup_session(self):
         """Gets the ``OsidSession`` associated with the asset lookup service.
 
         return: (osid.repository.AssetLookupSession) - the new
@@ -471,18 +500,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_lookup()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_asset_lookup():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetLookupSession(runtime=self._runtime)
 
     asset_lookup_session = property(fget=get_asset_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_asset_lookup_session_for_repository(self, repository_id, **kwargs):
+    def get_asset_lookup_session_for_repository(self, repository_id):
         """Gets the ``OsidSession`` associated with the asset lookup service for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -498,22 +525,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_asset_lookup():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AssetLookupSession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AssetLookupSession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_query_session(self, **kwargs):
+    def get_asset_query_session(self):
         """Gets an asset query session.
 
         return: (osid.repository.AssetQuerySession) - an
@@ -524,18 +545,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_query()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_asset_query():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetQuerySession(runtime=self._runtime)
 
     asset_query_session = property(fget=get_asset_query_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_asset_query_session_for_repository(self, repository_id, **kwargs):
+    def get_asset_query_session_for_repository(self, repository_id):
         """Gets an asset query session for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -551,22 +570,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_asset_query():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AssetQuerySession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AssetQuerySession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_search_session(self, **kwargs):
+    def get_asset_search_session(self):
         """Gets an asset search session.
 
         return: (osid.repository.AssetSearchSession) - an
@@ -577,18 +590,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_search()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_asset_search():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetSearchSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetSearchSession(runtime=self._runtime)
 
     asset_search_session = property(fget=get_asset_search_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_asset_search_session_for_repository(self, repository_id, **kwargs):
+    def get_asset_search_session_for_repository(self, repository_id):
         """Gets an asset search session for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -604,22 +615,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_asset_search():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AssetSearchSession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AssetSearchSession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_admin_session(self, **kwargs):
+    def get_asset_admin_session(self):
         """Gets an asset administration session for creating, updating and deleting assets.
 
         return: (osid.repository.AssetAdminSession) - an
@@ -630,18 +635,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_admin()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_asset_admin():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetAdminSession(runtime=self._runtime)
 
     asset_admin_session = property(fget=get_asset_admin_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_asset_admin_session_for_repository(self, repository_id, **kwargs):
+    def get_asset_admin_session_for_repository(self, repository_id):
         """Gets an asset administration session for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -657,23 +660,17 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_asset_admin():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AssetAdminSession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.AssetAdminSession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_asset_notification_session(self, asset_receiver, **kwargs):
+    def get_asset_notification_session(self, asset_receiver):
         """Gets the notification session for notifications pertaining to asset changes.
 
         arg:    asset_receiver (osid.repository.AssetReceiver): the
@@ -688,20 +685,14 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_notification()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_notification_session
         if not self.supports_asset_notification():
             raise errors.Unimplemented()
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AssetNotificationSession(
-                proxy=kwargs['proxy'],
-                runtime=self._runtime,
-                receiver=asset_receiver)
         return sessions.AssetNotificationSession(runtime=self._runtime, receiver=asset_receiver)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_asset_notification_session_for_repository(self, asset_receiver, repository_id, **kwargs):
+    def get_asset_notification_session_for_repository(self, asset_receiver, repository_id):
         """Gets the asset notification session for the given repository.
 
         arg:    asset_receiver (osid.repository.AssetReceiver): the
@@ -720,26 +711,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_notification_session_for_catalog
         if not self.supports_asset_notification():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.AssetNotificationSession(
-                catalog_id=repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime,
-                receiver=asset_receiver)
-        return sessions.AssetNotificationSession(
-            catalog_id=repository_id,
-            runtime=self._runtime,
-            receiver=asset_receiver)
+        return sessions.AssetNotificationSession(repository_id, runtime=self._runtime, receiver=asset_receiver)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_repository_session(self, **kwargs):
+    def get_asset_repository_session(self):
         """Gets the session for retrieving asset to repository mappings.
 
         return: (osid.repository.AssetRepositorySession) - an
@@ -751,17 +732,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_repository()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_asset_repository():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetRepositorySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetRepositorySession(runtime=self._runtime)
 
     asset_repository_session = property(fget=get_asset_repository_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_repository_assignment_session(self, **kwargs):
+    def get_asset_repository_assignment_session(self):
         """Gets the session for assigning asset to repository mappings.
 
         return: (osid.repository.AssetRepositoryAssignmentSession) - an
@@ -773,17 +752,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_repository_assignment()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_asset_repository_assignment():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetRepositoryAssignmentSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetRepositoryAssignmentSession(runtime=self._runtime)
 
     asset_repository_assignment_session = property(fget=get_asset_repository_assignment_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_composition_session(self, **kwargs):
+    def get_asset_composition_session(self):
         """Gets the session for retrieving asset compositions.
 
         return: (osid.repository.AssetCompositionSession) - an
@@ -795,17 +772,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_composition()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_asset_composition():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetCompositionSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetCompositionSession(runtime=self._runtime)
 
     asset_composition_session = property(fget=get_asset_composition_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_asset_composition_design_session(self, **kwargs):
+    def get_asset_composition_design_session(self):
         """Gets the session for creating asset compositions.
 
         return: (osid.repository.AssetCompositionDesignSession) - an
@@ -817,17 +792,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_asset_composition_design()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_asset_composition_design():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.AssetCompositionDesignSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.AssetCompositionDesignSession(runtime=self._runtime)
 
     asset_composition_design_session = property(fget=get_asset_composition_design_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_composition_lookup_session(self, **kwargs):
+    def get_composition_lookup_session(self):
         """Gets the ``OsidSession`` associated with the composition lookup service.
 
         return: (osid.repository.CompositionLookupSession) - the new
@@ -839,18 +812,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_composition_lookup()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_composition_lookup():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CompositionLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CompositionLookupSession(runtime=self._runtime)
 
     composition_lookup_session = property(fget=get_composition_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_composition_lookup_session_for_repository(self, repository_id, **kwargs):
+    def get_composition_lookup_session_for_repository(self, repository_id):
         """Gets the ``OsidSession`` associated with the composition lookup service for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -866,22 +837,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_composition_lookup():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.CompositionLookupSession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.CompositionLookupSession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_composition_query_session(self, **kwargs):
+    def get_composition_query_session(self):
         """Gets a composition query session.
 
         return: (osid.repository.CompositionQuerySession) - a
@@ -893,18 +858,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_composition_query()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session
         if not self.supports_composition_query():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CompositionQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CompositionQuerySession(runtime=self._runtime)
 
     composition_query_session = property(fget=get_composition_query_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_composition_query_session_for_repository(self, repository_id, **kwargs):
+    def get_composition_query_session_for_repository(self, repository_id):
         """Gets a composition query session for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -920,22 +883,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_lookup_session_for_catalog
         if not self.supports_composition_query():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.CompositionQuerySession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.CompositionQuerySession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_composition_search_session(self, **kwargs):
+    def get_composition_search_session(self):
         """Gets a composition search session.
 
         return: (osid.repository.CompositionSearchSession) - a
@@ -947,18 +904,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_composition_search()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_composition_search():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CompositionSearchSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CompositionSearchSession(runtime=self._runtime)
 
     composition_search_session = property(fget=get_composition_search_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_composition_search_session_for_repository(self, repository_id, **kwargs):
+    def get_composition_search_session_for_repository(self, repository_id):
         """Gets a composition search session for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -974,22 +929,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_composition_search():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.CompositionSearchSession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.CompositionSearchSession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_composition_admin_session(self, **kwargs):
+    def get_composition_admin_session(self):
         """Gets a composition administration session for creating, updating and deleting compositions.
 
         return: (osid.repository.CompositionAdminSession) - a
@@ -1001,18 +950,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_composition_admin()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_composition_admin():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CompositionAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CompositionAdminSession(runtime=self._runtime)
 
     composition_admin_session = property(fget=get_composition_admin_session)
 
     @utilities.remove_null_proxy_kwarg
     @utilities.arguments_not_none
-    def get_composition_admin_session_for_repository(self, repository_id, **kwargs):
+    def get_composition_admin_session_for_repository(self, repository_id):
         """Gets a composiiton administrative session for the given repository.
 
         arg:    repository_id (osid.id.Id): the ``Id`` of the repository
@@ -1028,22 +975,16 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_visible_federation()`` are ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
         if not self.supports_composition_admin():
             raise errors.Unimplemented()
         ##
         # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
         ##
         # pylint: disable=no-member
-        if 'proxy' in kwargs:
-            return sessions.CompositionAdminSession(
-                repository_id,
-                proxy=kwargs['proxy'],
-                runtime=self._runtime)
         return sessions.CompositionAdminSession(repository_id, runtime=self._runtime)
 
     @utilities.remove_null_proxy_kwarg
-    def get_composition_repository_session(self, **kwargs):
+    def get_composition_repository_session(self):
         """Gets the session for retrieving composition to repository mappings.
 
         return: (osid.repository.CompositionRepositorySession) - a
@@ -1055,17 +996,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_composition_repository()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_composition_repository():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CompositionRepositorySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CompositionRepositorySession(runtime=self._runtime)
 
     composition_repository_session = property(fget=get_composition_repository_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_composition_repository_assignment_session(self, **kwargs):
+    def get_composition_repository_assignment_session(self):
         """Gets the session for assigning composition to repository mappings.
 
         return: (osid.repository.CompositionRepositoryAssignmentSession)
@@ -1078,17 +1017,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_composition_repository_assignment()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_composition_repository_assignment():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.CompositionRepositoryAssignmentSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.CompositionRepositoryAssignmentSession(runtime=self._runtime)
 
     composition_repository_assignment_session = property(fget=get_composition_repository_assignment_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_repository_lookup_session(self, **kwargs):
+    def get_repository_lookup_session(self):
         """Gets the repository lookup session.
 
         return: (osid.repository.RepositoryLookupSession) - a
@@ -1100,17 +1037,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_repository_lookup()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_repository_lookup():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.RepositoryLookupSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.RepositoryLookupSession(runtime=self._runtime)
 
     repository_lookup_session = property(fget=get_repository_lookup_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_repository_query_session(self, **kwargs):
+    def get_repository_query_session(self):
         """Gets the repository query session.
 
         return: (osid.repository.RepositoryQuerySession) - a
@@ -1122,17 +1057,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_repository_query()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_repository_query():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.RepositoryQuerySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.RepositoryQuerySession(runtime=self._runtime)
 
     repository_query_session = property(fget=get_repository_query_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_repository_admin_session(self, **kwargs):
+    def get_repository_admin_session(self):
         """Gets the repository administrative session for creating, updating and deleteing repositories.
 
         return: (osid.repository.RepositoryAdminSession) - a
@@ -1144,17 +1077,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_repository_admin()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_repository_admin():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.RepositoryAdminSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.RepositoryAdminSession(runtime=self._runtime)
 
     repository_admin_session = property(fget=get_repository_admin_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_repository_hierarchy_session(self, **kwargs):
+    def get_repository_hierarchy_session(self):
         """Gets the repository hierarchy traversal session.
 
         return: (osid.repository.RepositoryHierarchySession) - ``a
@@ -1166,17 +1097,15 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_repository_hierarchy()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_repository_hierarchy():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.RepositoryHierarchySession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.RepositoryHierarchySession(runtime=self._runtime)
 
     repository_hierarchy_session = property(fget=get_repository_hierarchy_session)
 
     @utilities.remove_null_proxy_kwarg
-    def get_repository_hierarchy_design_session(self, **kwargs):
+    def get_repository_hierarchy_design_session(self):
         """Gets the repository hierarchy design session.
 
         return: (osid.repository.RepositoryHierarchyDesignSession) - a
@@ -1188,11 +1117,9 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         ``supports_repository_hierarchy_design()`` is ``true``.*
 
         """
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
         if not self.supports_repository_hierarchy_design():
             raise errors.Unimplemented()
-        if 'proxy' in kwargs:
-            return sessions.RepositoryHierarchyDesignSession(proxy=kwargs['proxy'], runtime=self._runtime)
+        # pylint: disable=no-member
         return sessions.RepositoryHierarchyDesignSession(runtime=self._runtime)
 
     repository_hierarchy_design_session = property(fget=get_repository_hierarchy_design_session)
@@ -1228,6 +1155,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         raise errors.Unimplemented()
 
     repository_rules_manager = property(fget=get_repository_rules_manager)
+
     @utilities.arguments_not_none
     def get_asset_composition_session_for_repository(self, repository_id):
         # This impl is temporary until Tom adds missing methods to RepositoryProxyManager in spec
@@ -1262,7 +1190,7 @@ class RepositoryManager(osid_managers.OsidManager, RepositoryProfile, repository
         return sessions.AssetContentLookupSession(repository_id, runtime=self._runtime)  # pylint: disable=no-member
 
 
-class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, RepositoryManager, repository_managers.RepositoryProxyManager):
+class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, repository_managers.RepositoryProxyManager):
     """The repository manager provides access to asset lookup and creation session and provides interoperability tests for various aspects of this service.
 
     Methods in this manager support the passing of a ``Proxy`` for the
@@ -1323,10 +1251,685 @@ class RepositoryProxyManager(osid_managers.OsidProxyManager, RepositoryProfile, 
         repository hierarchies
 
     """
-    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)
 
+    @utilities.arguments_not_none
+    def get_asset_lookup_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the asset lookup service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetLookupSession) - an
+                ``AssetLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_lookup()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_asset_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_lookup_session_for_repository(self, repository_id, proxy):
+        """Gets the ``OsidSession`` associated with the asset lookup service for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetLookupSession) - an
+                ``AssetLookupSession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_asset_lookup()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_lookup()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_asset_lookup():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AssetLookupSession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_query_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the asset query service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetQuerySession) - an
+                ``AssetQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_query()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_query()`` is ``true``.*
+
+        """
+        if not self.supports_asset_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_query_session_for_repository(self, repository_id, proxy):
+        """Gets the ``OsidSession`` associated with the asset query service for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetQuerySession) - an
+                ``AssetQuerySession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_asset_query()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_query()`` and ``supports_visible_federation()``
+        are ``true``.*
+
+        """
+        if not self.supports_asset_query():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AssetQuerySession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_search_session(self, proxy):
+        """Gets an asset search session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetSearchSession) - an
+                ``AssetSearchSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_search()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_search()`` is ``true``.*
+
+        """
+        if not self.supports_asset_search():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetSearchSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_search_session_for_repository(self, repository_id, proxy):
+        """Gets an asset search session for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetSearchSession) - an
+                ``AssetSearchSession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_asset_search()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_search()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_asset_search():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AssetSearchSession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_admin_session(self, proxy):
+        """Gets an asset administration session for creating, updating and deleting assets.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetAdminSession) - an
+                ``AssetAdminSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_admin()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_admin()`` is ``true``.*
+
+        """
+        if not self.supports_asset_admin():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_admin_session_for_repository(self, repository_id, proxy):
+        """Gets an asset administration session for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetAdminSession) - an
+                ``AssetAdminSession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_admin()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_admin()`` and ``supports_visible_federation()``
+        are ``true``.*
+
+        """
+        if not self.supports_asset_admin():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AssetAdminSession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_notification_session(self, asset_receiver, proxy):
+        """Gets the notification session for notifications pertaining to asset changes.
+
+        arg:    asset_receiver (osid.repository.AssetReceiver): the
+                notification callback
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetNotificationSession) - an
+                ``AssetNotificationSession``
+        raise:  NullArgument - ``asset_receiver`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_notification()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_notification()`` is ``true``.*
+
+        """
+        if not self.supports_asset_notification():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetNotificationSession(proxy=proxy, runtime=self._runtime, receiver=asset_receiver)
+
+    @utilities.arguments_not_none
+    def get_asset_notification_session_for_repository(self, asset_receiver, repository_id, proxy):
+        """Gets the asset notification session for the given repository.
+
+        arg:    asset_receiver (osid.repository.AssetReceiver): the
+                notification callback
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetNotificationSession) - an
+                ``AssetNotificationSession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``asset_receiver, repository_id`` or
+                ``proxy`` is ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_asset_notification()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_notfication()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_asset_notification():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.AssetNotificationSession(catalog_id=repository_id, proxy=proxy, runtime=self._runtime, receiver=asset_receiver)
+
+    @utilities.arguments_not_none
+    def get_asset_repository_session(self, proxy):
+        """Gets the session for retrieving asset to repository mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetRepositorySession) - an
+                ``AssetRepositorySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_repository()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_repository()`` is ``true``.*
+
+        """
+        if not self.supports_asset_repository():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetRepositorySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_repository_assignment_session(self, proxy):
+        """Gets the session for assigning asset to repository mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetRepositoryAssignmentSession) - an
+                ``AssetRepositoryAsignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_asset_repository_assignment()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_repository_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_asset_repository_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetRepositoryAssignmentSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_composition_session(self, proxy):
+        """Gets the session for retrieving asset compositions.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetCompositionSession) - an
+                ``AssetCompositionSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_composition()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_composition()`` is ``true``.*
+
+        """
+        if not self.supports_asset_composition():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetCompositionSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_asset_composition_design_session(self, proxy):
+        """Gets the session for creating asset compositions.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.AssetCompositionDesignSession) - an
+                ``AssetCompositionDesignSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_asset_composition_design()``
+                is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_asset_composition_design()`` is ``true``.*
+
+        """
+        if not self.supports_asset_composition_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.AssetCompositionDesignSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_lookup_session(self, proxy):
+        """Gets the ``OsidSession`` associated with the composition lookup service.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionLookupSession) - the new
+                ``CompositionLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_composition_lookup()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_composition_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CompositionLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_lookup_session_for_repository(self, repository_id, proxy):
+        """Gets the ``OsidSession`` associated with the composition lookup service for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionLookupSession) - the new
+                ``CompositionLookupSession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_composition_lookup()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_lookup()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_composition_lookup():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.CompositionLookupSession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_query_session(self, proxy):
+        """Gets a composition query session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionSearchSession) - a
+                ``CompositionQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_composition_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_query()`` is ``true``.*
+
+        """
+        if not self.supports_composition_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CompositionQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_query_session_for_repository(self, repository_id, proxy):
+        """Gets a composition query session for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionQuerySession) - a
+                ``CompositionQuerySession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_composition_query()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_query()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_composition_query():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.CompositionQuerySession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_search_session(self, proxy):
+        """Gets a composition search session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionSearchSession) - a
+                ``CompositionSearchSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_composition_search()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_search()`` is ``true``.*
+
+        """
+        if not self.supports_composition_search():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CompositionSearchSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_search_session_for_repository(self, repository_id, proxy):
+        """Gets a composition search session for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionSearchSession) - a
+                ``CompositionSearchSession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - ``unable to complete request``
+        raise:  Unimplemented - ``supports_composition_search()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_search()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_composition_search():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.CompositionSearchSession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_admin_session(self, proxy):
+        """Gets a composition administration session for creating, updating and deleting compositions.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionAdminSession) - a
+                ``CompositionAdminSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_composition_admin()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_admin()`` is ``true``.*
+
+        """
+        if not self.supports_composition_admin():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CompositionAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_admin_session_for_repository(self, repository_id, proxy):
+        """Gets a composiiton administrative session for the given repository.
+
+        arg:    repository_id (osid.id.Id): the ``Id`` of the repository
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionAdminSession) - a
+                ``CompositionAdminSession``
+        raise:  NotFound - ``repository_id`` not found
+        raise:  NullArgument - ``repository_id`` or ``proxy`` is
+                ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_composition_admin()`` or
+                ``supports_visible_federation()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_admin()`` and
+        ``supports_visible_federation()`` are ``true``.*
+
+        """
+        if not self.supports_composition_admin():
+            raise errors.Unimplemented()
+        ##
+        # Also include check to see if the catalog Id is found otherwise raise errors.NotFound
+        ##
+        # pylint: disable=no-member
+        return sessions.CompositionAdminSession(repository_id, proxy, self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_repository_session(self, proxy):
+        """Gets the session for retrieving composition to repository mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionRepositorySession) - a
+                ``CompositionRepositorySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_composition_repository()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_repository()`` is ``true``.*
+
+        """
+        if not self.supports_composition_repository():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CompositionRepositorySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_composition_repository_assignment_session(self, proxy):
+        """Gets the session for assigning composition to repository mappings.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.CompositionRepositoryAssignmentSession)
+                - a ``CompositionRepositoryAssignmentSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_composition_repository_assignment()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_composition_repository_assignment()`` is ``true``.*
+
+        """
+        if not self.supports_composition_repository_assignment():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.CompositionRepositoryAssignmentSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_repository_lookup_session(self, proxy):
+        """Gets the repository lookup session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.RepositoryLookupSession) - a
+                ``RepositoryLookupSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_repository_lookup()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_repository_lookup()`` is ``true``.*
+
+        """
+        if not self.supports_repository_lookup():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.RepositoryLookupSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_repository_query_session(self, proxy):
+        """Gets the repository query session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.RepositoryQuerySession) - a
+                ``RepositoryQuerySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_repository_query()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_repository_query()`` is ``true``.*
+
+        """
+        if not self.supports_repository_query():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.RepositoryQuerySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_repository_admin_session(self, proxy):
+        """Gets the repository administrative session for creating, updating and deleteing repositories.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.RepositoryAdminSession) - a
+                ``RepositoryAdminSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_repository_admin()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_repository_admin()`` is ``true``.*
+
+        """
+        if not self.supports_repository_admin():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.RepositoryAdminSession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_repository_hierarchy_session(self, proxy):
+        """Gets the repository hierarchy traversal session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.RepositoryHierarchySession) - ``a
+                RepositoryHierarchySession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_repository_hierarchy()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_repository_hierarchy()`` is ``true``.*
+
+        """
+        if not self.supports_repository_hierarchy():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.RepositoryHierarchySession(proxy=proxy, runtime=self._runtime)
+
+    @utilities.arguments_not_none
+    def get_repository_hierarchy_design_session(self, proxy):
+        """Gets the repository hierarchy design session.
+
+        arg:    proxy (osid.proxy.Proxy): a proxy
+        return: (osid.repository.RepositoryHierarchyDesignSession) - a
+                ``RepostoryHierarchyDesignSession``
+        raise:  NullArgument - ``proxy`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented -
+                ``supports_repository_hierarchy_design()`` is ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_repository_hierarchy_design()`` is ``true``.*
+
+        """
+        if not self.supports_repository_hierarchy_design():
+            raise errors.Unimplemented()
+        # pylint: disable=no-member
+        return sessions.RepositoryHierarchyDesignSession(proxy=proxy, runtime=self._runtime)
+
+    def get_repository_batch_proxy_manager(self):
+        """Gets a ``RepositoryBatchProxyManager``.
+
+        return: (osid.repository.batch.RepositoryBatchProxyManager) - a
+                ``RepostoryBatchProxyManager``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_repository_batch()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_repository_batch()`` is ``true``.*
+
+        """
+        raise errors.Unimplemented()
+
+    repository_batch_proxy_manager = property(fget=get_repository_batch_proxy_manager)
+
+    def get_repository_rules_proxy_manager(self):
+        """Gets a ``RepositoryRulesProxyManager``.
+
+        return: (osid.repository.rules.RepositoryRulesProxyManager) - a
+                ``RepostoryRulesProxyManager``
+        raise:  OperationFailed - unable to complete request
+        raise:  Unimplemented - ``supports_repository_rules()`` is
+                ``false``
+        *compliance: optional -- This method must be implemented if
+        ``supports_repository_rules()`` is ``true``.*
+
+        """
+        raise errors.Unimplemented()
+
+    repository_rules_proxy_manager = property(fget=get_repository_rules_proxy_manager)
 
     @utilities.arguments_not_none
     def get_asset_composition_session_for_repository(self, repository_id, proxy):

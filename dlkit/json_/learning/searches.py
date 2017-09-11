@@ -22,7 +22,6 @@ from dlkit.abstract_osid.osid import errors
 
 class ObjectiveSearch(abc_learning_searches.ObjectiveSearch, osid_searches.OsidSearch):
     """``ObjectiveSearch`` defines the interface for specifying objective search options."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'learning.Objective'
         self._runtime = runtime
@@ -44,7 +43,6 @@ class ObjectiveSearch(abc_learning_searches.ObjectiveSearch, osid_searches.OsidS
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = objective_ids
 
     @utilities.arguments_not_none
@@ -87,7 +85,6 @@ class ObjectiveSearch(abc_learning_searches.ObjectiveSearch, osid_searches.OsidS
 
 class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -105,7 +102,6 @@ class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -121,7 +117,6 @@ class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.ObjectiveQueryInspector(self._query_terms, runtime=self._runtime)
 
     objective_query_inspector = property(fget=get_objective_query_inspector)
@@ -151,7 +146,6 @@ class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_
 
 class ActivitySearch(abc_learning_searches.ActivitySearch, osid_searches.OsidSearch):
     """``ActivitySearch`` defines the interface for specifying activity search options."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'learning.Activity'
         self._runtime = runtime
@@ -173,7 +167,6 @@ class ActivitySearch(abc_learning_searches.ActivitySearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = activity_ids
 
     @utilities.arguments_not_none
@@ -216,7 +209,6 @@ class ActivitySearch(abc_learning_searches.ActivitySearch, osid_searches.OsidSea
 
 class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -234,7 +226,6 @@ class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -250,7 +241,6 @@ class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.ActivityQueryInspector(self._query_terms, runtime=self._runtime)
 
     activity_query_inspector = property(fget=get_activity_query_inspector)
@@ -280,7 +270,6 @@ class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_se
 
 class ProficiencySearch(abc_learning_searches.ProficiencySearch, osid_searches.OsidSearch):
     """The search interface for governing proficiency searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'learning.Proficiency'
         self._runtime = runtime
@@ -302,7 +291,6 @@ class ProficiencySearch(abc_learning_searches.ProficiencySearch, osid_searches.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = proficiency_ids
 
     @utilities.arguments_not_none
@@ -345,7 +333,6 @@ class ProficiencySearch(abc_learning_searches.ProficiencySearch, osid_searches.O
 
 class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -363,7 +350,6 @@ class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -379,7 +365,6 @@ class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.ProficiencyQueryInspector(self._query_terms, runtime=self._runtime)
 
     proficiency_query_inspector = property(fget=get_proficiency_query_inspector)
@@ -409,7 +394,6 @@ class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, o
 
 class ObjectiveBankSearch(abc_learning_searches.ObjectiveBankSearch, osid_searches.OsidSearch):
     """The interface for governing objective bank searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'learning.ObjectiveBank'
         self._runtime = runtime
@@ -432,7 +416,6 @@ class ObjectiveBankSearch(abc_learning_searches.ObjectiveBankSearch, osid_search
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = objective_bank_ids
 
     @utilities.arguments_not_none
@@ -475,7 +458,6 @@ class ObjectiveBankSearch(abc_learning_searches.ObjectiveBankSearch, osid_search
 
 class ObjectiveBankSearchResults(abc_learning_searches.ObjectiveBankSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -494,7 +476,6 @@ class ObjectiveBankSearchResults(abc_learning_searches.ObjectiveBankSearchResult
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -510,7 +491,6 @@ class ObjectiveBankSearchResults(abc_learning_searches.ObjectiveBankSearchResult
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.ObjectiveBankQueryInspector(self._query_terms, runtime=self._runtime)
 
     objective_bank_query_inspector = property(fget=get_objective_bank_query_inspector)

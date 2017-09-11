@@ -194,3 +194,327 @@ def authz_adapter_class_fixture(request):
                 request.cls.vault_admin_session.delete_vault(vault.ident)
 
     request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def authz_adapter_test_fixture(request):
+    request.cls.comment_id_lists = []
+    count = 0
+    if not is_never_authz(request.cls.service_config):
+        resource_id = Id(authority='TEST', namespace='resource.Resource', identifier='TEST')
+        for book_ in request.cls.book_list:
+            request.cls.comment_id_lists.append([])
+            for color in ['Red', 'Blue', 'Red']:
+                create_form = book_.get_comment_form_for_create(resource_id, [])
+                create_form.display_name = color + ' ' + str(count) + ' Comment'
+                create_form.description = color + ' comment for authz adapter tests from Book number ' + str(count)
+                if color == 'Blue':
+                    create_form.genus_type = BLUE_TYPE
+                comment = book_.create_comment(create_form)
+                if count == 2 and color == 'Blue':
+                    request.cls.commenting_mgr.assign_comment_to_book(
+                        comment.ident,
+                        request.cls.book_id_list[7])
+                request.cls.comment_id_lists[count].append(comment.ident)
+            count += 1
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for index, book_ in enumerate(request.cls.book_list):
+                for comment_id in request.cls.comment_id_lists[index]:
+                    book_.delete_comment(comment_id)
+
+    request.addfinalizer(test_tear_down)
+
+
+@pytest.mark.usefixtures("authz_adapter_class_fixture", "authz_adapter_test_fixture")
+class TestCommentAuthzAdapter(object):
+
+    def test_lookup_book_0_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[0])
+            book.use_isolated_book_view()
+            book.use_plenary_comment_view()
+            # with pytest.raises(errors.NotFound):
+            #     comments = book.get_comments()
+            # with pytest.raises(errors.NotFound):
+            #     comments = book.get_comments_by_genus_type(BLUE_TYPE)
+            # for comment_id in self.comment_id_lists[0]:
+            #     with pytest.raises(errors.NotFound):
+            #         comment = book.get_comment(comment_id)
+            # with pytest.raises(errors.NotFound):
+            #     comments = book.get_comments_by_ids(self.comment_id_lists[0])
+
+    def test_lookup_book_0_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[0])
+            book.use_federated_book_view()
+            book.use_plenary_comment_view()
+            assert book.can_lookup_comments()
+            assert book.get_comments().available() == 1
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+            assert book.get_comments_by_genus_type(BLUE_TYPE).next().ident == self.comment_id_lists[2][1]
+            book.get_comment(self.comment_id_lists[2][1])
+            for comment_num in [0, 2]:
+                with pytest.raises(errors.NotFound):  # Is this right?  Perhaps PermissionDenied
+                    comment = book.get_comment(self.comment_id_lists[2][comment_num])
+
+    def test_lookup_book_0_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[0])
+            book.use_federated_book_view()
+            book.use_comparative_comment_view()
+            # print "START"
+            assert book.get_comments().available() == 13
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 5
+            for comment in book.get_comments():
+                book.get_comment(comment.ident)
+            comment_ids = [comment.ident for comment in book.get_comments()]
+            book.get_comments_by_ids(comment_ids)
+            for comment_id in self.comment_id_lists[0]:
+                with pytest.raises(errors.NotFound):
+                    comment = book.get_comment(comment_id)
+            comment = book.get_comment(self.comment_id_lists[2][1])
+            for comment_num in [0, 2]:
+                with pytest.raises(errors.NotFound):
+                    comment = book.get_comment(self.comment_id_lists[2][comment_num])
+            for comment_id in self.comment_id_lists[1]:
+                    comment = book.get_comment(comment_id)
+            for comment_id in self.comment_id_lists[3]:
+                    comment = book.get_comment(comment_id)
+            for comment_id in self.comment_id_lists[4]:
+                    comment = book.get_comment(comment_id)
+            for comment_id in self.comment_id_lists[5]:
+                    comment = book.get_comment(comment_id)
+
+    def test_lookup_book_0_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[0])
+            book.use_isolated_book_view()
+            book.use_comparative_comment_view()
+            assert book.get_comments().available() == 0
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 0
+
+    def test_lookup_book_1_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[1])
+            book.use_isolated_book_view()
+            book.use_plenary_comment_view()
+            assert book.get_comments().available() == 3
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_book_1_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[1])
+            book.use_federated_book_view()
+            book.use_plenary_comment_view()
+            assert book.get_comments().available() == 9
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 3
+
+    def test_lookup_book_1_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[1])
+            book.use_federated_book_view()
+            book.use_comparative_comment_view()
+            assert book.get_comments().available() == 9
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 3
+
+    def test_lookup_book_1_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[1])
+            book.use_isolated_book_view()
+            book.use_comparative_comment_view()
+            assert book.get_comments().available() == 3
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_book_2_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[2])
+            book.use_isolated_book_view()
+            book.use_plenary_comment_view()
+            assert book.get_comments().available() == 1
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     comments = book.get_comments()
+            # with pytest.raises(errors.PermissionDenied):
+            #     comments = book.get_comments_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_book_2_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[2])
+            book.use_federated_book_view()
+            book.use_plenary_comment_view()
+            assert book.get_comments().available() == 1
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     comments = book.get_comments()
+            # with pytest.raises(errors.PermissionDenied):
+            #     comments = book.get_comments_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_book_2_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[2])
+            book.use_federated_book_view()
+            book.use_comparative_comment_view()
+            assert book.get_comments().available() == 4
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 2
+            # self.assertEqual(book.get_comments().available(), 3)
+            # self.assertEqual(book.get_comments_by_genus_type(BLUE_TYPE).available(), 1)
+
+    def test_lookup_book_2_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[2])
+            book.use_isolated_book_view()
+            book.use_comparative_comment_view()
+            assert book.get_comments().available() == 1
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     comments = book.get_comments()
+            # with pytest.raises(errors.PermissionDenied):
+            #     comments = book.get_comments_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_book_3_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[3])
+            book.use_isolated_book_view()
+            book.use_plenary_comment_view()
+            assert book.get_comments().available() == 3
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_book_3_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[3])
+            book.use_federated_book_view()
+            book.use_plenary_comment_view()
+            assert book.get_comments().available() == 3
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_book_3_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[3])
+            book.use_federated_book_view()
+            book.use_comparative_comment_view()
+            assert book.get_comments().available() == 3
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_book_3_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[3])
+            book.use_isolated_book_view()
+            book.use_comparative_comment_view()
+            assert book.get_comments().available() == 3
+            assert book.get_comments_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_query_book_0_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[0])
+            book.use_isolated_book_view()
+            with pytest.raises(errors.PermissionDenied):
+                query = book.get_comment_query()
+
+    def test_query_book_0_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[0])
+            book.use_federated_book_view()
+            query = book.get_comment_query()
+            query.match_display_name('red')
+            assert book.get_comments_by_query(query).available() == 8
+            query.clear_display_name_terms()
+            query.match_display_name('blue')
+            assert book.get_comments_by_query(query).available() == 5
+
+    def test_query_book_1_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[1])
+            book.use_isolated_book_view()
+            query = book.get_comment_query()
+            query.match_display_name('red')
+            assert book.get_comments_by_query(query).available() == 2
+
+    def test_query_book_1_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_commenting_mgr = Runtime().get_service_manager(
+                'COMMENTING',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            book = janes_commenting_mgr.get_book(self.book_id_list[1])
+            book.use_federated_book_view()
+            query = book.get_comment_query()
+            query.match_display_name('red')
+            assert book.get_comments_by_query(query).available() == 6

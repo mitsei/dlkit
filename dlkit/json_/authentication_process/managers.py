@@ -32,7 +32,8 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('AUTHENTICATION_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -49,7 +50,8 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('AUTHENTICATION_INPUT_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -66,7 +68,8 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from template for
+        # osid.resource.ResourceProfile.get_resource_record_types_template
         record_type_maps = get_registry('CHALLENGE_RECORD_TYPES', self._runtime)
         record_types = []
         for record_type_map in record_type_maps:
@@ -83,7 +86,8 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     credential_types = property(fget=get_credential_types)
@@ -96,7 +100,8 @@ class AuthenticationProcessProfile(osid_managers.OsidProfile, authentication_pro
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from template for
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return TypeList([])
 
     trust_types = property(fget=get_trust_types)
@@ -123,7 +128,7 @@ class AuthenticationProcessManager(osid_managers.OsidManager, AuthenticationProc
         osid_managers.OsidManager.__init__(self)
 
 
-class AuthenticationProcessProxyManager(osid_managers.OsidProxyManager, AuthenticationProcessProfile, AuthenticationProcessManager, authentication_process_managers.AuthenticationProcessProxyManager):
+class AuthenticationProcessProxyManager(osid_managers.OsidProxyManager, AuthenticationProcessProfile, authentication_process_managers.AuthenticationProcessProxyManager):
     """The authentication process proxy manager provides access to authentication sessions and provides interoperability tests for various aspects of this service.
 
     Methods in this manager support the passing of a ``Proxy`` object.
@@ -141,6 +146,5 @@ class AuthenticationProcessProxyManager(osid_managers.OsidProxyManager, Authenti
         trust
 
     """
-    # Built from: templates/osid_managers.GenericProxyManager.init_template
     def __init__(self):
         osid_managers.OsidProxyManager.__init__(self)

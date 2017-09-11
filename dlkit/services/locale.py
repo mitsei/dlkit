@@ -43,7 +43,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_language_types(self):
         """Pass through to provider get_source_language_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_source_language_types()
 
     source_language_types = property(fget=get_source_language_types)
@@ -54,7 +55,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_numeric_format_types(self):
         """Pass through to provider get_numeric_format_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_numeric_format_types()
 
     numeric_format_types = property(fget=get_numeric_format_types)
@@ -105,7 +107,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_unit_types(self):
         """Pass through to provider get_source_unit_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_source_unit_types()
 
     source_unit_types = property(fget=get_source_unit_types)
@@ -116,7 +119,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_currency_types(self):
         """Pass through to provider get_source_currency_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_source_currency_types()
 
     source_currency_types = property(fget=get_source_currency_types)
@@ -127,7 +131,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_calendar_types(self):
         """Pass through to provider get_source_calendar_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_source_calendar_types()
 
     source_calendar_types = property(fget=get_source_calendar_types)
@@ -138,7 +143,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_time_types(self):
         """Pass through to provider get_source_time_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_source_time_types()
 
     source_time_types = property(fget=get_source_time_types)
@@ -157,7 +163,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_coordinate_types(self):
         """Pass through to provider get_source_coordinate_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_source_coordinate_types()
 
     source_coordinate_types = property(fget=get_source_coordinate_types)
@@ -168,7 +175,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_spatial_unit_record_types(self):
         """Pass through to provider get_source_spatial_unit_record_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.get_resource_record_types
         return self._provider_manager.get_source_spatial_unit_record_types()
 
     source_spatial_unit_record_types = property(fget=get_source_spatial_unit_record_types)
@@ -179,7 +187,8 @@ class LocaleProfile(osid.OsidProfile, locale_managers.LocaleProfile):
 
     def get_source_format_types(self):
         """Pass through to provider get_source_format_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_type_list
+        # Implemented from kitosid template for -
+        # osid.repository.RepositoryProfile.get_coordinate_types
         return self._provider_manager.get_source_format_types()
 
     source_format_types = property(fget=get_source_format_types)
@@ -244,9 +253,14 @@ class LocaleManager(osid.OsidManager, osid.OsidSession, LocaleProfile, locale_ma
             return self._provider_sessions[agent_key][session_name]
         else:
             manager = self._get_sub_package_provider_manager(sub_package)
-            session = self._instantiate_session('get_' + session_name + '_for_bank',
-                                                proxy=self._proxy,
-                                                manager=manager)
+            try:
+                session = self._instantiate_session('get_' + session_name + '_for_bank',
+                                                    proxy=self._proxy,
+                                                    manager=manager)
+            except AttributeError:
+                session = self._instantiate_session('get_' + session_name,
+                                                    proxy=self._proxy,
+                                                    manager=manager)
             self._set_bank_view(session)
             if self._session_management != DISABLED:
                 self._provider_sessions[agent_key][session_name] = session
@@ -254,7 +268,11 @@ class LocaleManager(osid.OsidManager, osid.OsidSession, LocaleProfile, locale_ma
 
     def _instantiate_session(self, method_name, proxy=None, *args, **kwargs):
         """Instantiates a provider session"""
-        session_class = getattr(self._provider_manager, method_name)
+        if 'manager' in kwargs:
+            session_class = getattr(kwargs['manager'], method_name)
+            del kwargs['manager']
+        else:
+            session_class = getattr(self._provider_manager, method_name)
         if proxy is None:
             try:
                 return session_class(bank_id=self._catalog_id, *args, **kwargs)
@@ -301,6 +319,6 @@ class LocaleManager(osid.OsidManager, osid.OsidSession, LocaleProfile, locale_ma
         self.close_sessions()
 
 
-class LocaleProxyManager(osid.OsidProxyManager, LocaleProfile, LocaleManager, locale_managers.LocaleProxyManager):
+class LocaleProxyManager(osid.OsidProxyManager, LocaleProfile, locale_managers.LocaleProxyManager):
     """LocaleProxyManager convenience adapter including related Session methods."""
     pass

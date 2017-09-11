@@ -39,7 +39,6 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
       AgentList agentList = session.getAgentsByQuery(query);
 
     """
-    # Built from: templates/osid_query.GenericObjectQuery.init_template
     def __init__(self, runtime):
         self._namespace = 'authentication.Agent'
         self._runtime = runtime
@@ -61,7 +60,7 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('resourceId', str(agency_id), match)
 
     def clear_resource_id_terms(self):
@@ -70,7 +69,7 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('resourceId')
 
     resource_id_terms = property(fdel=clear_resource_id_terms)
@@ -133,7 +132,7 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedAgencyIds', str(agency_id), match)
 
     def clear_agency_id_terms(self):
@@ -142,7 +141,7 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedAgencyIds')
 
     agency_id_terms = property(fdel=clear_agency_id_terms)
@@ -178,7 +177,7 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('agency')
 
     agency_terms = property(fdel=clear_agency_terms)

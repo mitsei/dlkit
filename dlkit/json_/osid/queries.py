@@ -101,9 +101,9 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     def _add_match(self, match_key, match_value, match=True):
         """Adds a match key/value"""
         if match:
-            inin = '$$in'
+            inin = '$in'
         else:
-            inin = '$$nin'
+            inin = '$nin'
         if match_key in self._query_terms:
             if inin in self._query_terms[match_key]:
                 self._query_terms[match_key][inin].append(match_value)
@@ -122,9 +122,9 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     def _match_minimum_decimal(self, match_key, decimal_value, match=True):
         """Matches a minimum decimal value"""
         if match:
-            gtelt = '$$gte'
+            gtelt = '$gte'
         else:
-            gtelt = '$$lt'
+            gtelt = '$lt'
         if match_key in self._query_terms:
             self._query_terms[match_key][gtelt] = decimal_value
         else:
@@ -134,9 +134,9 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     def _match_maximum_decimal(self, match_key, decimal_value, match=True):
         """Matches a minimum decimal value"""
         if match:
-            ltegt = '$$lte'
+            ltegt = '$lte'
         else:
-            ltegt = '$$gt'
+            ltegt = '$gt'
         if match_key in self._query_terms:
             self._query_terms[match_key][ltegt] = decimal_value
         else:
@@ -146,9 +146,9 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     def _match_minimum_date_time(self, match_key, date_time_value, match=True):
         """Matches a minimum date time value"""
         if match:
-            gtelt = '$$gte'
+            gtelt = '$gte'
         else:
-            gtelt = '$$lt'
+            gtelt = '$lt'
         if match_key in self._query_terms:
             self._query_terms[match_key][gtelt] = date_time_value
         else:
@@ -158,9 +158,9 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     def _match_maximum_date_time(self, match_key, date_time_value, match=True):
         """Matches a maximum date time value"""
         if match:
-            gtelt = '$$lte'
+            gtelt = '$lte'
         else:
-            gtelt = '$$gt'
+            gtelt = '$gt'
         if match_key in self._query_terms:
             self._query_terms[match_key][gtelt] = date_time_value
         else:
@@ -176,11 +176,11 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     def _clear_minimum_terms(self, match_key):
         """clears minimum match_key term values"""
         try:  # clear match = True case
-            del self._query_terms[match_key]['$$gte']
+            del self._query_terms[match_key]['$gte']
         except KeyError:
             pass
         try:  # clear match = False case
-            del self._query_terms[match_key]['$$lt']
+            del self._query_terms[match_key]['$lt']
         except KeyError:
             pass
         try:
@@ -192,11 +192,11 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     def _clear_maximum_terms(self, match_key):
         """clears maximum match_key term values"""
         try:  # clear match = True case
-            del self._query_terms[match_key]['$$lte']
+            del self._query_terms[match_key]['$lte']
         except KeyError:
             pass
         try:  # clear match = False case
-            del self._query_terms[match_key]['$$gt']
+            del self._query_terms[match_key]['$gt']
         except KeyError:
             pass
         try:
@@ -1013,7 +1013,7 @@ class OsidObjectQuery(abc_osid_queries.OsidObjectQuery, OsidIdentifiableQuery, O
     display_name_terms = property(fdel=clear_display_name_terms)
 
     @utilities.arguments_not_none
-    def match_description(self, description, string_match_type=DEFAULT_STRING_MATCH_TYPE, match):
+    def match_description(self, description, string_match_type=DEFAULT_STRING_MATCH_TYPE, match=True):
         """Adds a description name to match.
 
         Multiple description matches can be added to perform a boolean

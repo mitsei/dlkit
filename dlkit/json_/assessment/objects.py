@@ -10,8 +10,6 @@
 #     Inheritance defined in specification
 
 
-import base64
-import gridfs
 import importlib
 import json
 
@@ -37,8 +35,6 @@ from ..primitives import DateTime
 from ..primitives import DateTime, DisplayText
 from ..primitives import Duration
 from ..primitives import Id
-from ..primitives import Id, DateTime, Duration, DataInputStream
-from ..primitives import Id, DateTime, Duration, DisplayText
 from ..primitives import Type
 from ..utilities import JSONClientValidated
 from ..utilities import get_provider_manager
@@ -104,8 +100,8 @@ class Question(abc_assessment_objects.Question, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(question_record_type)
+
     # Overide osid.Identifiable.get_id() method to cast this question id as its item id:
     def get_id(self):
         return self._item_id
@@ -159,7 +155,6 @@ class Question(abc_assessment_objects.Question, osid_objects.OsidObject):
 
 class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``Questions``."""
-    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'assessment.Question'
 
     def __init__(self, **kwargs):
@@ -194,7 +189,6 @@ class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectF
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(question_record_type)
 
 
@@ -223,7 +217,7 @@ class QuestionList(abc_assessment_objects.QuestionList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -248,7 +242,7 @@ class QuestionList(abc_assessment_objects.QuestionList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(QuestionList, number=n)
 
 
@@ -259,7 +253,6 @@ class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
     any persisted references should use the ``Id``.
 
     """
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'assessment.Answer'
 
     def __init__(self, **kwargs):
@@ -287,8 +280,8 @@ class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(answer_record_type)
+
     def get_object_map(self):
         obj_map = dict(self._my_map)
         del obj_map['itemId']
@@ -299,7 +292,6 @@ class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
 
 class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm):
     """This is the form for creating and updating ``Answers``."""
-    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'assessment.Answer'
 
     def __init__(self, **kwargs):
@@ -334,7 +326,6 @@ class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm)
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(answer_record_type)
 
 
@@ -363,7 +354,7 @@ class AnswerList(abc_assessment_objects.AnswerList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -388,7 +379,7 @@ class AnswerList(abc_assessment_objects.AnswerList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(AnswerList, number=n)
 
 
@@ -401,7 +392,6 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
     An ``Item`` is composed of a ``Question`` and an ``Answer``.
 
     """
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'assessment.Item'
 
     def __init__(self, **kwargs):
@@ -415,7 +405,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_list_attribute_different_package
+        # Implemented from template for osid.learning.Activity.get_asset_ids_template
         return IdList(self._my_map['learningObjectiveIds'])
 
     learning_objective_ids = property(fget=get_learning_objective_ids)
@@ -428,7 +418,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_list_objects_different_package
+        # Implemented from template for osid.learning.Activity.get_assets_template
         if not bool(self._my_map['learningObjectiveIds']):
             raise errors.IllegalState('no learningObjectiveIds')
         mgr = self._get_provider_manager('LEARNING')
@@ -478,7 +468,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_list_attribute_same_package
+        # Implemented from template for osid.repository.Asset.get_asset_content_ids_template
         id_list = []
         for answer in self.get_answers():
             id_list.append(answer.get_id())
@@ -494,7 +484,7 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_aggregated_objects
+        # Implemented from template for osid.repository.Asset.get_asset_contents_template
         return AnswerList(
             self._my_map['answers'],
             runtime=self._runtime,
@@ -527,8 +517,8 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(item_record_type)
+
     def get_configuration(self):
         config = dict()
         try:
@@ -669,7 +659,6 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
     constraints.
 
     """
-    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'assessment.Item'
 
     def __init__(self, **kwargs):
@@ -699,7 +688,7 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_list_attribute_metadata
+        # Implemented from template for osid.learning.ActivityForm.get_assets_metadata_template
         metadata = dict(self._mdata['learning_objectives'])
         metadata.update({'existing_learning_objectives_values': self._my_map['learningObjectiveIds']})
         return Metadata(**metadata)
@@ -717,7 +706,7 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_list_attribute
+        # Implemented from template for osid.learning.ActivityForm.set_assets_template
         if not isinstance(objective_ids, list):
             raise errors.InvalidArgument()
         if self.get_learning_objectives_metadata().is_read_only():
@@ -725,7 +714,7 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
         idstr_list = []
         for object_id in objective_ids:
             if not self._is_valid_id(object_id):
-                raise errors.InvalidArgument('{0} is not a valid ID'.format(object_id))
+                raise errors.InvalidArgument()
             idstr_list.append(str(object_id))
         self._my_map['learningObjectiveIds'] = idstr_list
 
@@ -737,10 +726,10 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_list_attribute
+        # Implemented from template for osid.learning.ActivityForm.clear_assets_template
         if (self.get_learning_objectives_metadata().is_read_only() or
                 self.get_learning_objectives_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear learning_objectives')
+            raise errors.NoAccess()
         self._my_map['learningObjectiveIds'] = self._learning_objectives_default
 
     learning_objectives = property(fset=set_learning_objectives, fdel=clear_learning_objectives)
@@ -759,7 +748,6 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(item_record_type)
 
 
@@ -786,7 +774,7 @@ class ItemList(abc_assessment_objects.ItemList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -810,7 +798,7 @@ class ItemList(abc_assessment_objects.ItemList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(ItemList, number=n)
 
 
@@ -825,7 +813,6 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
     this ``Assessment``.
 
     """
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'assessment.Assessment'
 
     def __init__(self, **kwargs):
@@ -839,9 +826,9 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['levelId']):
-            raise errors.IllegalState('level not set')
+            raise errors.IllegalState('this Assessment has no level')
         else:
             return Id(self._my_map['levelId'])
 
@@ -855,7 +842,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['levelId']):
             raise errors.IllegalState('this Assessment has no level')
         mgr = self._get_provider_manager('GRADING')
@@ -876,7 +863,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.has_id_attribute
+        # Implemented from template for osid.resource.Resource.has_avatar_template
         return bool(self._my_map['rubricId'])
 
     def get_rubric_id(self):
@@ -887,9 +874,9 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['rubricId']):
-            raise errors.IllegalState('rubric not set')
+            raise errors.IllegalState('this Assessment has no rubric')
         else:
             return Id(self._my_map['rubricId'])
 
@@ -904,7 +891,7 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['rubricId']):
             raise errors.IllegalState('this Assessment has no rubric')
         mgr = self._get_provider_manager('ASSESSMENT')
@@ -938,8 +925,8 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(assessment_record_type)
+
     def has_children(self):
         """This method can be overwritten by a record extension."""
         return self._supports_simple_sequencing() and self._my_map['childIds']
@@ -1051,7 +1038,7 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['level'])
         metadata.update({'existing_id_values': self._my_map['levelId']})
         return Metadata(**metadata)
@@ -1069,11 +1056,11 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_level_metadata().is_read_only():
-            raise errors.NoAccess('grade_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(grade_id):
-            raise errors.InvalidArgument('grade_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['levelId'] = str(grade_id)
 
     def clear_level(self):
@@ -1084,10 +1071,10 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_level_metadata().is_read_only() or
                 self.get_level_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear level')
+            raise errors.NoAccess()
         self._my_map['levelId'] = self._level_default
 
     level = property(fset=set_level, fdel=clear_level)
@@ -1099,7 +1086,7 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['rubric'])
         metadata.update({'existing_id_values': self._my_map['rubricId']})
         return Metadata(**metadata)
@@ -1117,11 +1104,11 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_rubric_metadata().is_read_only():
-            raise errors.NoAccess('assessment_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(assessment_id):
-            raise errors.InvalidArgument('assessment_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['rubricId'] = str(assessment_id)
 
     def clear_rubric(self):
@@ -1132,10 +1119,10 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_rubric_metadata().is_read_only() or
                 self.get_rubric_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear rubric')
+            raise errors.NoAccess()
         self._my_map['rubricId'] = self._rubric_default
 
     rubric = property(fset=set_rubric, fdel=clear_rubric)
@@ -1155,8 +1142,8 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(assessment_record_type)
+
     def _supports_simple_sequencing(self):
         return bool(str(SIMPLE_SEQUENCE_RECORD_TYPE) in self._my_map['recordTypeIds'])
 
@@ -1192,7 +1179,7 @@ class AssessmentList(abc_assessment_objects.AssessmentList, osid_objects.OsidLis
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -1217,7 +1204,7 @@ class AssessmentList(abc_assessment_objects.AssessmentList, osid_objects.OsidLis
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(AssessmentList, number=n)
 
 
@@ -1228,7 +1215,6 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
     ``Id`` and any persisted references should use the ``Id``.
 
     """
-    # Built from: templates/osid_object.GenericObject.init_template
     _namespace = 'assessment.AssessmentOffered'
 
     def __init__(self, **kwargs):
@@ -1242,7 +1228,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentId']):
+            raise errors.IllegalState('assessment empty')
         return Id(self._my_map['assessmentId'])
 
     assessment_id = property(fget=get_assessment_id)
@@ -1255,16 +1243,15 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.learning.Activity.get_objective
         if not bool(self._my_map['assessmentId']):
-            raise errors.IllegalState('this AssessmentOffered has no assessment')
+            raise errors.IllegalState('assessment empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_lookup():
             raise errors.OperationFailed('Assessment does not support Assessment lookup')
         lookup_session = mgr.get_assessment_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_bank_view()
-        osid_object = lookup_session.get_assessment(self.get_assessment_id())
-        return osid_object
+        return lookup_session.get_assessment(self.get_assessment_id())
 
     assessment = property(fget=get_assessment)
 
@@ -1275,9 +1262,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['levelId']):
-            raise errors.IllegalState('level not set')
+            raise errors.IllegalState('this AssessmentOffered has no level')
         else:
             return Id(self._my_map['levelId'])
 
@@ -1291,7 +1278,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['levelId']):
             raise errors.IllegalState('this AssessmentOffered has no level')
         mgr = self._get_provider_manager('GRADING')
@@ -1337,12 +1324,11 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.has_date_time_attribute
+        # Implemented from template for osid.repository.AssetContent.has_url_template
         try:
             return bool(self._my_map['startTime'])
         except KeyError:
-            pass
-        return False
+            return False
 
     def get_start_time(self):
         """Gets the start time for this assessment.
@@ -1352,9 +1338,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_date_time_attribute
-        if not self.has_start_time():
-            raise errors.IllegalState('start_time not set')
+        # Implemented from template for osid.assessment.AssessmentOffered.get_start_time_template
+        if not bool(self._my_map['startTime']):
+            raise errors.IllegalState()
         dt = self._my_map['startTime']
         return DateTime(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second, dt.microsecond)
 
@@ -1368,12 +1354,11 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.has_simple_attribute
+        # Implemented from template for osid.repository.AssetContent.has_url_template
         try:
             return bool(self._my_map['deadline'])
         except KeyError:
-            pass
-        return False
+            return False
 
     def get_deadline(self):
         """Gets the end time for this assessment.
@@ -1383,9 +1368,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_date_time_attribute
-        if not self.has_deadline():
-            raise errors.IllegalState('deadline not set')
+        # Implemented from template for osid.assessment.AssessmentOffered.get_start_time_template
+        if not bool(self._my_map['deadline']):
+            raise errors.IllegalState()
         dt = self._my_map['deadline']
         return DateTime(dt.year, dt.month, dt.day, dt.hour, dt.minute, dt.second, dt.microsecond)
 
@@ -1399,12 +1384,11 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.has_date_time_attribute
+        # Implemented from template for osid.repository.AssetContent.has_url_template
         try:
             return bool(self._my_map['duration'])
         except KeyError:
-            pass
-        return False
+            return False
 
     def get_duration(self):
         """Gets the duration for this assessment.
@@ -1414,9 +1398,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_duration_attribute
-        if not self.has_duration():
-            raise errors.IllegalState('duration not set')
+        # Implemented from template for osid.assessment.AssessmentOffered.get_duration_template
+        if not bool(self._my_map['duration']):
+            raise errors.IllegalState()
         return Duration(**self._my_map['duration'])
 
     duration = property(fget=get_duration)
@@ -1429,7 +1413,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
+        # Implemented from template for osid.resource.Resource.is_group_template
         return bool(self._my_map['scored'])
 
     def get_score_system_id(self):
@@ -1440,9 +1424,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['scoreSystemId']):
-            raise errors.IllegalState('score_system not set')
+            raise errors.IllegalState('this AssessmentOffered has no score_system')
         else:
             return Id(self._my_map['scoreSystemId'])
 
@@ -1457,7 +1441,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['scoreSystemId']):
             raise errors.IllegalState('this AssessmentOffered has no score_system')
         mgr = self._get_provider_manager('GRADING')
@@ -1478,7 +1462,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
+        # Implemented from template for osid.resource.Resource.is_group_template
         return bool(self._my_map['graded'])
 
     def get_grade_system_id(self):
@@ -1489,9 +1473,9 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['gradeSystemId']):
-            raise errors.IllegalState('grade_system not set')
+            raise errors.IllegalState('this AssessmentOffered has no grade_system')
         else:
             return Id(self._my_map['gradeSystemId'])
 
@@ -1506,7 +1490,7 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['gradeSystemId']):
             raise errors.IllegalState('this AssessmentOffered has no grade_system')
         mgr = self._get_provider_manager('GRADING')
@@ -1527,7 +1511,8 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.resource.Resource.has_avatar_template
+        return bool(self._my_map['rubricId'])
 
     def get_rubric_id(self):
         """Gets the ``Id`` of the rubric.
@@ -1537,7 +1522,11 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
+        if not bool(self._my_map['rubricId']):
+            raise errors.IllegalState('this AssessmentOffered has no rubric')
+        else:
+            return Id(self._my_map['rubricId'])
 
     rubric_id = property(fget=get_rubric_id)
 
@@ -1551,7 +1540,16 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.resource.Resource.get_avatar_template
+        if not bool(self._my_map['rubricId']):
+            raise errors.IllegalState('this AssessmentOffered has no rubric')
+        mgr = self._get_provider_manager('ASSESSMENT')
+        if not mgr.supports_assessment_offered_lookup():
+            raise errors.OperationFailed('Assessment does not support AssessmentOffered lookup')
+        lookup_session = mgr.get_assessment_offered_lookup_session(proxy=getattr(self, "_proxy", None))
+        lookup_session.use_federated_bank_view()
+        osid_object = lookup_session.get_assessment_offered(self.get_rubric_id())
+        return osid_object
 
     rubric = property(fget=get_rubric)
 
@@ -1579,8 +1577,8 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(assessment_taken_record_type)
+
     def get_display_name(self):
         # Overrides osid.objects.OsidObject.get_display_name to default to Assessment's
         # display_name if none has been authored for this AssessmentOffered
@@ -1649,7 +1647,6 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
     constraints.
 
     """
-    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'assessment.AssessmentOffered'
 
     def __init__(self, **kwargs):
@@ -1692,7 +1689,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['level'])
         metadata.update({'existing_id_values': self._my_map['levelId']})
         return Metadata(**metadata)
@@ -1709,11 +1706,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_level_metadata().is_read_only():
-            raise errors.NoAccess('grade_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(grade_id):
-            raise errors.InvalidArgument('grade_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['levelId'] = str(grade_id)
 
     def clear_level(self):
@@ -1724,10 +1721,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_level_metadata().is_read_only() or
                 self.get_level_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear level')
+            raise errors.NoAccess()
         self._my_map['levelId'] = self._level_default
 
     level = property(fset=set_level, fdel=clear_level)
@@ -1739,7 +1736,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['items_sequential'])
         metadata.update({'existing_boolean_values': self._my_map['itemsSequential']})
         return Metadata(**metadata)
@@ -1758,11 +1755,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_group_template
         if self.get_items_sequential_metadata().is_read_only():
-            raise errors.NoAccess('sequential is read only')
+            raise errors.NoAccess()
         if not self._is_valid_boolean(sequential):
-            raise errors.InvalidArgument('sequential is not a valid boolean')
+            raise errors.InvalidArgument()
         self._my_map['itemsSequential'] = sequential
 
     def clear_items_sequential(self):
@@ -1773,10 +1770,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_group_template
         if (self.get_items_sequential_metadata().is_read_only() or
                 self.get_items_sequential_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear items_sequential')
+            raise errors.NoAccess()
         self._my_map['itemsSequential'] = self._items_sequential_default
 
     items_sequential = property(fset=set_items_sequential, fdel=clear_items_sequential)
@@ -1788,7 +1785,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['items_shuffled'])
         metadata.update({'existing_boolean_values': self._my_map['itemsShuffled']})
         return Metadata(**metadata)
@@ -1809,11 +1806,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_simple_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_group_template
         if self.get_items_shuffled_metadata().is_read_only():
-            raise errors.NoAccess('shuffle is read only')
+            raise errors.NoAccess()
         if not self._is_valid_boolean(shuffle):
-            raise errors.InvalidArgument('shuffle is not a valid boolean')
+            raise errors.InvalidArgument()
         self._my_map['itemsShuffled'] = shuffle
 
     def clear_items_shuffled(self):
@@ -1824,10 +1821,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_simple_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_group_template
         if (self.get_items_shuffled_metadata().is_read_only() or
                 self.get_items_shuffled_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear items_shuffled')
+            raise errors.NoAccess()
         self._my_map['itemsShuffled'] = self._items_shuffled_default
 
     items_shuffled = property(fset=set_items_shuffled, fdel=clear_items_shuffled)
@@ -1839,7 +1836,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['start_time'])
         metadata.update({'existing_date_time_values': self._my_map['startTime']})
         return Metadata(**metadata)
@@ -1856,15 +1853,13 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_date_time_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.set_start_time_template
         if self.get_start_time_metadata().is_read_only():
-            raise errors.NoAccess('start is read only')
-        if not isinstance(start, DateTime):
-            raise errors.InvalidArgument('start is not a DateTime')
+            raise errors.NoAccess()
         if not self._is_valid_date_time(
                 start,
                 self.get_start_time_metadata()):
-            raise errors.InvalidArgument('start is not a valid DateTime')
+            raise errors.InvalidArgument()
         self._my_map['startTime'] = start
 
     def clear_start_time(self):
@@ -1875,10 +1870,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_date_time_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_start_time_metadata().is_read_only() or
                 self.get_start_time_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear start_time')
+            raise errors.NoAccess()
         self._my_map['startTime'] = self._start_time_default
 
     start_time = property(fset=set_start_time, fdel=clear_start_time)
@@ -1890,7 +1885,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['deadline'])
         metadata.update({'existing_date_time_values': self._my_map['deadline']})
         return Metadata(**metadata)
@@ -1907,15 +1902,13 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_date_time_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.set_start_time_template
         if self.get_deadline_metadata().is_read_only():
-            raise errors.NoAccess('end is read only')
-        if not isinstance(end, DateTime):
-            raise errors.InvalidArgument('end is not a DateTime')
+            raise errors.NoAccess()
         if not self._is_valid_timestamp(
                 end,
                 self.get_deadline_metadata()):
-            raise errors.InvalidArgument('end is not a valid DateTime')
+            raise errors.InvalidArgument()
         self._my_map['deadline'] = end
 
     def clear_deadline(self):
@@ -1926,10 +1919,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_date_time_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_start_time_template
         if (self.get_deadline_metadata().is_read_only() or
                 self.get_deadline_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear deadline')
+            raise errors.NoAccess()
         self._my_map['deadline'] = self._deadline_default
 
     deadline = property(fset=set_deadline, fdel=clear_deadline)
@@ -1941,7 +1934,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_simple_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['duration'])
         metadata.update({'existing_duration_values': self._my_map['duration']})
         return Metadata(**metadata)
@@ -1959,15 +1952,13 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_duration_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.set_duration_template
         if self.get_duration_metadata().is_read_only():
-            raise errors.NoAccess('duration is read only')
-        if not isinstance(duration, Duration):
-            raise errors.InvalidArgument('duration is not a Duration')
+            raise errors.NoAccess()
         if not self._is_valid_duration(
                 duration,
                 self.get_duration_metadata()):
-            raise errors.InvalidArgument('duration is not a valid Duration')
+            raise errors.InvalidArgument()
         map = dict()
         map['days'] = duration.days
         map['seconds'] = duration.seconds
@@ -1982,10 +1973,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_duration_attribute
+        # Implemented from template for osid.assessment.AssessmentOfferedForm.clear_duration_template
         if (self.get_duration_metadata().is_read_only() or
                 self.get_duration_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear duration')
+            raise errors.NoAccess()
         self._my_map['duration'] = self._duration_default
 
     duration = property(fset=set_duration, fdel=clear_duration)
@@ -1997,7 +1988,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['score_system'])
         metadata.update({'existing_id_values': self._my_map['scoreSystemId']})
         return Metadata(**metadata)
@@ -2014,11 +2005,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_score_system_metadata().is_read_only():
-            raise errors.NoAccess('grade_system_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(grade_system_id):
-            raise errors.InvalidArgument('grade_system_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['scoreSystemId'] = str(grade_system_id)
 
     def clear_score_system(self):
@@ -2029,10 +2020,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_score_system_metadata().is_read_only() or
                 self.get_score_system_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear score_system')
+            raise errors.NoAccess()
         self._my_map['scoreSystemId'] = self._score_system_default
 
     score_system = property(fset=set_score_system, fdel=clear_score_system)
@@ -2044,7 +2035,7 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['grade_system'])
         metadata.update({'existing_id_values': self._my_map['gradeSystemId']})
         return Metadata(**metadata)
@@ -2061,11 +2052,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_grade_system_metadata().is_read_only():
-            raise errors.NoAccess('grade_system_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(grade_system_id):
-            raise errors.InvalidArgument('grade_system_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['gradeSystemId'] = str(grade_system_id)
 
     def clear_grade_system(self):
@@ -2076,10 +2067,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_grade_system_metadata().is_read_only() or
                 self.get_grade_system_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear grade_system')
+            raise errors.NoAccess()
         self._my_map['gradeSystemId'] = self._grade_system_default
 
     grade_system = property(fset=set_grade_system, fdel=clear_grade_system)
@@ -2101,7 +2092,6 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(assessment_offered_record_type)
 
 
@@ -2131,7 +2121,7 @@ class AssessmentOfferedList(abc_assessment_objects.AssessmentOfferedList, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -2156,7 +2146,7 @@ class AssessmentOfferedList(abc_assessment_objects.AssessmentOfferedList, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(AssessmentOfferedList, number=n)
 
 
@@ -2176,7 +2166,9 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentOfferedId']):
+            raise errors.IllegalState('assessment_offered empty')
         return Id(self._my_map['assessmentOfferedId'])
 
     assessment_offered_id = property(fget=get_assessment_offered_id)
@@ -2190,16 +2182,15 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.learning.Activity.get_objective
         if not bool(self._my_map['assessmentOfferedId']):
-            raise errors.IllegalState('this AssessmentTaken has no assessment_offered')
+            raise errors.IllegalState('assessment_offered empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_offered_lookup():
             raise errors.OperationFailed('Assessment does not support AssessmentOffered lookup')
         lookup_session = mgr.get_assessment_offered_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_bank_view()
-        osid_object = lookup_session.get_assessment_offered(self.get_assessment_offered_id())
-        return osid_object
+        return lookup_session.get_assessment_offered(self.get_assessment_offered_id())
 
     assessment_offered = property(fget=get_assessment_offered)
 
@@ -2225,16 +2216,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
-        if not bool(self._my_map['takerId']):
-            raise errors.IllegalState('this AssessmentTaken has no taker')
-        mgr = self._get_provider_manager('RESOURCE')
-        if not mgr.supports_resource_lookup():
-            raise errors.OperationFailed('Resource does not support Resource lookup')
-        lookup_session = mgr.get_resource_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_bin_view()
-        osid_object = lookup_session.get_resource(self.get_taker_id())
-        return osid_object
+        raise errors.Unimplemented()
 
     taker = property(fget=get_taker)
 
@@ -2257,16 +2239,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
-        if not bool(self._my_map['takingAgentId']):
-            raise errors.IllegalState('this AssessmentTaken has no taking_agent')
-        mgr = self._get_provider_manager('AUTHENTICATION')
-        if not mgr.supports_agent_lookup():
-            raise errors.OperationFailed('Authentication does not support Agent lookup')
-        lookup_session = mgr.get_agent_lookup_session(proxy=getattr(self, "_proxy", None))
-        lookup_session.use_federated_agency_view()
-        osid_object = lookup_session.get_agent(self.get_taking_agent_id())
-        return osid_object
+        raise errors.Unimplemented()
 
     taking_agent = property(fget=get_taking_agent)
 
@@ -2381,6 +2354,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for osid.assessment.AssessmentTaken.get_completion_template
         return int(self._my_map['completion'])
 
     completion = property(fget=get_completion)
@@ -2393,7 +2367,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
+        # Implemented from template for osid.resource.Resource.is_group_template
         return bool(self._my_map['scored'])
 
     def get_score_system_id(self):
@@ -2404,7 +2378,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['scoreSystemId']):
             raise errors.IllegalState('this AssessmentTaken has no score_system')
         mgr = self._get_provider_manager('ID')
@@ -2426,7 +2400,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['scoreSystemId']):
             raise errors.IllegalState('this AssessmentTaken has no score_system')
         mgr = self._get_provider_manager('GRADING')
@@ -2447,10 +2421,8 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_decimal_attribute
-        if not self.has_score():
-            raise errors.IllegalState('score not set')
-        return Decimal(str(self._my_map['score']))
+        # Implemented from template for osid.assessment.AssessmentTaken.get_score_template
+        return Decimal(self._my_map['score'])
 
     score = property(fget=get_score)
 
@@ -2462,7 +2434,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.is_attribute_boolean
+        # Implemented from template for osid.resource.Resource.is_group_template
         return bool(self._my_map['graded'])
 
     def get_grade_id(self):
@@ -2473,9 +2445,9 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
         if not bool(self._my_map['gradeId']):
-            raise errors.IllegalState('grade not set')
+            raise errors.IllegalState('this AssessmentTaken has no grade')
         else:
             return Id(self._my_map['gradeId'])
 
@@ -2490,7 +2462,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.resource.Resource.get_avatar_template
         if not bool(self._my_map['gradeId']):
             raise errors.IllegalState('this AssessmentTaken has no grade')
         mgr = self._get_provider_manager('GRADING')
@@ -2510,8 +2482,8 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_display_text_attribute
-        return DisplayText(display_text_map=self._my_map['feedback'])
+        # Implemented from template for osid.repository.Asset.get_title_template
+        return DisplayText(self._my_map['feedback'])
 
     feedback = property(fget=get_feedback)
 
@@ -2523,7 +2495,8 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.resource.Resource.has_avatar_template
+        return bool(self._my_map['rubricId'])
 
     def get_rubric_id(self):
         """Gets the ``Id`` of the rubric.
@@ -2533,7 +2506,11 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.resource.Resource.get_avatar_id_template
+        if not bool(self._my_map['rubricId']):
+            raise errors.IllegalState('this AssessmentTaken has no rubric')
+        else:
+            return Id(self._my_map['rubricId'])
 
     rubric_id = property(fget=get_rubric_id)
 
@@ -2546,7 +2523,16 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        raise errors.Unimplemented()
+        # Implemented from template for osid.resource.Resource.get_avatar_template
+        if not bool(self._my_map['rubricId']):
+            raise errors.IllegalState('this AssessmentTaken has no rubric')
+        mgr = self._get_provider_manager('ASSESSMENT')
+        if not mgr.supports_assessment_taken_lookup():
+            raise errors.OperationFailed('Assessment does not support AssessmentTaken lookup')
+        lookup_session = mgr.get_assessment_taken_lookup_session(proxy=getattr(self, "_proxy", None))
+        lookup_session.use_federated_bank_view()
+        osid_object = lookup_session.get_assessment_taken(self.get_rubric_id())
+        return osid_object
 
     rubric = property(fget=get_rubric)
 
@@ -2573,8 +2559,8 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(assessment_taken_record_type)
+
     def get_display_name(self):
         # Overrides osid.objects.OsidObject.get_display_name to default to AssessmentOffered's
         # display_name if none has been authored for this AssessmentTaken
@@ -2739,7 +2725,6 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
     constraints.
 
     """
-    # Built from: templates/osid_form.GenericObjectForm.init_template
     _namespace = 'assessment.AssessmentTaken'
 
     def __init__(self, **kwargs):
@@ -2772,7 +2757,7 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_id_attribute_metadata
+        # Implemented from template for osid.resource.ResourceForm.get_group_metadata_template
         metadata = dict(self._mdata['taker'])
         metadata.update({'existing_id_values': self._my_map['takerId']})
         return Metadata(**metadata)
@@ -2789,11 +2774,11 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.set_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.set_avatar_template
         if self.get_taker_metadata().is_read_only():
-            raise errors.NoAccess('resource_id is read only')
+            raise errors.NoAccess()
         if not self._is_valid_id(resource_id):
-            raise errors.InvalidArgument('resource_id is not a valid ID')
+            raise errors.InvalidArgument()
         self._my_map['takerId'] = str(resource_id)
 
     def clear_taker(self):
@@ -2804,10 +2789,10 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.clear_id_attribute
+        # Implemented from template for osid.resource.ResourceForm.clear_avatar_template
         if (self.get_taker_metadata().is_read_only() or
                 self.get_taker_metadata().is_required()):
-            raise errors.NoAccess('Sorry you cannot clear taker')
+            raise errors.NoAccess()
         self._my_map['takerId'] = self._taker_default
 
     taker = property(fset=set_taker, fdel=clear_taker)
@@ -2829,7 +2814,6 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericObjectForm.get_object_form_record
         return self._get_record(assessment_taken_record_type)
 
 
@@ -2859,7 +2843,7 @@ class AssessmentTakenList(abc_assessment_objects.AssessmentTakenList, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -2884,7 +2868,7 @@ class AssessmentTakenList(abc_assessment_objects.AssessmentTakenList, osid_objec
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(AssessmentTakenList, number=n)
 
 
@@ -2935,13 +2919,17 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
             if '?' in identifier:
                 # it is a magic ID, by our convention
                 magic_params = json.loads(identifier.split('?')[1])
-                choice_ids = [c['id'] for c in choices]
-                if (isinstance(magic_params, list) and
-                        list(set(choice_ids)) == list(set(magic_params))):
-                    ordered_choices = []
-                    for ordered_id in magic_params:
-                        ordered_choices.append(grab_choice(choices, ordered_id))
-                    return ordered_choices
+                try:
+                    choice_ids = [c['id'] for c in choices]
+                except TypeError:
+                    pass
+                else:
+                    if (isinstance(magic_params, list) and
+                            list(set(choice_ids)) == list(set(magic_params))):
+                        ordered_choices = []
+                        for ordered_id in magic_params:
+                            ordered_choices.append(grab_choice(choices, ordered_id))
+                        return ordered_choices
             return choices
 
         if obj_map is None:
@@ -3043,7 +3031,9 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_initialized_id_attribute
+        # Implemented from template for osid.learning.Activity.get_objective_id
+        if not bool(self._my_map['assessmentTakenId']):
+            raise errors.IllegalState('assessment_taken empty')
         return Id(self._my_map['assessmentTakenId'])
 
     assessment_taken_id = property(fget=get_assessment_taken_id)
@@ -3056,16 +3046,15 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_id_attribute_object
+        # Implemented from template for osid.learning.Activity.get_objective
         if not bool(self._my_map['assessmentTakenId']):
-            raise errors.IllegalState('this AssessmentSection has no assessment_taken')
+            raise errors.IllegalState('assessment_taken empty')
         mgr = self._get_provider_manager('ASSESSMENT')
         if not mgr.supports_assessment_taken_lookup():
             raise errors.OperationFailed('Assessment does not support AssessmentTaken lookup')
         lookup_session = mgr.get_assessment_taken_lookup_session(proxy=getattr(self, "_proxy", None))
         lookup_session.use_federated_bank_view()
-        osid_object = lookup_session.get_assessment_taken(self.get_assessment_taken_id())
-        return osid_object
+        return lookup_session.get_assessment_taken(self.get_assessment_taken_id())
 
     assessment_taken = property(fget=get_assessment_taken)
 
@@ -3136,7 +3125,6 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_object.GenericObject.get_object_record
         return self._get_record(assessment_section_record_type)
 
 
@@ -3166,7 +3154,7 @@ class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -3191,13 +3179,16 @@ class AssessmentSectionList(abc_assessment_objects.AssessmentSectionList, osid_o
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(AssessmentSectionList, number=n)
 
 
 class Bank(abc_assessment_objects.Bank, osid_objects.OsidCatalog):
     """A bank defines a collection of assessments and items."""
+    _namespace = 'assessment.Bank'
 
+    def __init__(self, **kwargs):
+        osid_objects.OsidCatalog.__init__(self, object_name='BANK', **kwargs)
 
     @utilities.arguments_not_none
     def get_bank_record(self, bank_record_type):
@@ -3231,7 +3222,6 @@ class BankForm(abc_assessment_objects.BankForm, osid_objects.OsidCatalogForm):
     constraints.
 
     """
-    # Built from: templates/osid_form.GenericCatalogForm.init_template
     _namespace = 'assessment.Bank'
 
     def __init__(self, **kwargs):
@@ -3263,7 +3253,8 @@ class BankForm(abc_assessment_objects.BankForm, osid_objects.OsidCatalogForm):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_form.GenericCatalogForm.get_catalog_form_record
+        # this should be templated from Resource, but
+        # would have to update pattern mappers
         return self._get_record(bank_record_type)
 
 
@@ -3290,7 +3281,7 @@ class BankList(abc_assessment_objects.BankList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -3314,7 +3305,7 @@ class BankList(abc_assessment_objects.BankList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(BankList, number=n)
 
 
@@ -3326,7 +3317,6 @@ class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
     ``BankHierarchySession``.
 
     """
-    # Built from: templates/osid_catalog.GenericCatalogNode.init_template
     def __init__(self, node_map, runtime=None, proxy=None, lookup_session=None):
         osid_objects.OsidNode.__init__(self, node_map)
         self._lookup_session = lookup_session
@@ -3352,7 +3342,6 @@ class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_catalog
         if self._lookup_session is None:
             mgr = get_provider_manager('ASSESSMENT', runtime=self._runtime, proxy=self._proxy)
             self._lookup_session = mgr.get_bank_lookup_session(proxy=getattr(self, "_proxy", None))
@@ -3368,7 +3357,6 @@ class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_parent_catalog_nodes
         parent_bank_nodes = []
         for node in self._my_map['parentNodes']:
             parent_bank_nodes.append(BankNode(
@@ -3388,7 +3376,6 @@ class BankNode(abc_assessment_objects.BankNode, osid_objects.OsidNode):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_catalog.GenericCatalogNode.get_child_catalog_nodes
         parent_bank_nodes = []
         for node in self._my_map['childNodes']:
             parent_bank_nodes.append(BankNode(
@@ -3426,7 +3413,7 @@ class BankNodeList(abc_assessment_objects.BankNodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -3451,7 +3438,7 @@ class BankNodeList(abc_assessment_objects.BankNodeList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(BankNodeList, number=n)
 
 
@@ -3480,7 +3467,7 @@ class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
+        # Implemented from template for osid.resource.ResourceList.get_next_resource
         return next(self)
 
     def next(self):
@@ -3505,5 +3492,5 @@ class ResponseList(abc_assessment_objects.ResponseList, osid_objects.OsidList):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
+        # Implemented from template for osid.resource.ResourceList.get_next_resources
         return self._get_next_n(ResponseList, number=n)

@@ -67,7 +67,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('relatedAuthorizationId', str(id_), match)
 
     def clear_related_authorization_id_terms(self):
@@ -76,7 +76,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('relatedAuthorizationId')
 
     related_authorization_id_terms = property(fdel=clear_related_authorization_id_terms)
@@ -128,7 +128,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('resourceId', str(resource_id), match)
 
     def clear_resource_id_terms(self):
@@ -137,7 +137,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('resourceId')
 
     resource_id_terms = property(fdel=clear_resource_id_terms)
@@ -200,7 +200,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_id_attribute
+        # Implemented from template for osid.resource.ResourceQuery.match_avatar_id
         self._add_match('trustId', str(trust_id), match)
 
     @utilities.arguments_not_none
@@ -221,7 +221,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('trustId')
 
     trust_id_terms = property(fdel=clear_trust_id_terms)
@@ -245,7 +245,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('agentId')
 
     agent_id_terms = property(fdel=clear_agent_id_terms)
@@ -315,7 +315,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('functionId')
 
     function_id_terms = property(fdel=clear_function_id_terms)
@@ -352,7 +352,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('function')
 
     function_terms = property(fdel=clear_function_terms)
@@ -376,7 +376,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_id_attribute_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_avatar_id
         self._clear_terms('qualifierId')
 
     qualifier_id_terms = property(fdel=clear_qualifier_id_terms)
@@ -413,7 +413,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('qualifier')
 
     qualifier_terms = property(fdel=clear_qualifier_terms)
@@ -429,7 +429,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.match_catalog_id
+        # Implemented from template for osid.resource.ResourceQuery.match_bin_id
         self._add_match('assignedVaultIds', str(vault_id), match)
 
     def clear_vault_id_terms(self):
@@ -438,7 +438,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_catalog_id_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_bin_id_terms
         self._clear_terms('assignedVaultIds')
 
     vault_id_terms = property(fdel=clear_vault_id_terms)
@@ -474,7 +474,7 @@ class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_quer
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericObjectQuery.clear_simple_terms
+        # Implemented from template for osid.resource.ResourceQuery.clear_group_terms
         self._clear_terms('vault')
 
     vault_terms = property(fdel=clear_vault_terms)
@@ -507,7 +507,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
     the same method produce a nested ``OR``.
 
     """
-    # Built from: templates/osid_query.GenericCatalogQuery.init_template
     def __init__(self, runtime):
         self._runtime = runtime
         record_type_data_sets = get_registry('VAULT_RECORD_TYPES', runtime)
@@ -550,7 +549,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('functionId')
 
     function_id_terms = property(fdel=clear_function_id_terms)
@@ -599,7 +597,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('function')
 
     function_terms = property(fdel=clear_function_terms)
@@ -623,7 +620,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('qualifierId')
 
     qualifier_id_terms = property(fdel=clear_qualifier_id_terms)
@@ -673,7 +669,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('qualifier')
 
     qualifier_terms = property(fdel=clear_qualifier_terms)
@@ -697,7 +692,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('authorizationId')
 
     authorization_id_terms = property(fdel=clear_authorization_id_terms)
@@ -747,7 +741,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('authorization')
 
     authorization_terms = property(fdel=clear_authorization_terms)
@@ -771,7 +764,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorVaultId')
 
     ancestor_vault_id_terms = property(fdel=clear_ancestor_vault_id_terms)
@@ -819,7 +811,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('ancestorVault')
 
     ancestor_vault_terms = property(fdel=clear_ancestor_vault_terms)
@@ -843,7 +834,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantVaultId')
 
     descendant_vault_id_terms = property(fdel=clear_descendant_vault_id_terms)
@@ -891,7 +881,6 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_query.GenericCatalogQuery.clear_simple_terms
         self._clear_terms('descendantVault')
 
     descendant_vault_terms = property(fdel=clear_descendant_vault_terms)

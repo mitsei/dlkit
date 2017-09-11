@@ -66,6 +66,16 @@ class AssessmentAuthoringProfile(osid_managers.OsidProfile, assessment_authoring
         # osid.assessment_authoring.AssessmentAuthoringProfile.supports_assessment_part_admin
         return self._provider_manager.supports_assessment_part_admin()
 
+    def supports_assessment_part_bank(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_assessment_part_bank()
+
+    def supports_assessment_part_bank_assignment(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
+        return self._provider_manager.supports_assessment_part_bank_assignment()
+
     def supports_assessment_part_item(self):
         # Implemented from azosid template for -
         # osid.assessment_authoring.AssessmentAuthoringProfile.supports_assessment_part_item
@@ -222,7 +232,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
 
     def get_assessment_part_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssessmentPartAdminSession')(
             provider_session=self._provider_manager.get_assessment_part_admin_session(),
             authz_session=self._get_authz_session(),
@@ -240,6 +250,28 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager)
+
+    def get_assessment_part_bank_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AssessmentPartBankSession')(
+            provider_session=self._provider_manager.get_assessment_part_bank_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    assessment_part_bank_session = property(fget=get_assessment_part_bank_session)
+
+    def get_assessment_part_bank_assignment_session(self):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AssessmentPartBankAssignmentSession')(
+            provider_session=self._provider_manager.get_assessment_part_bank_assignment_session(),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager)
+
+    assessment_part_bank_assignment_session = property(fget=get_assessment_part_bank_assignment_session)
 
     def get_sequence_rule_lookup_session(self):
         # Implemented from azosid template for -
@@ -276,7 +308,7 @@ class AssessmentAuthoringManager(osid_managers.OsidManager, AssessmentAuthoringP
 
     def get_sequence_rule_admin_session(self):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'SequenceRuleAdminSession')(
             provider_session=self._provider_manager.get_sequence_rule_admin_session(),
             authz_session=self._get_authz_session(),
@@ -412,7 +444,7 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
     @raise_null_argument
     def get_assessment_part_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'AssessmentPartAdminSession')(
             provider_session=self._provider_manager.get_assessment_part_admin_session(proxy),
             authz_session=self._get_authz_session(),
@@ -426,6 +458,28 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
         # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_template
         return getattr(sessions, 'AssessmentPartAdminSession')(
             provider_session=self._provider_manager.get_assessment_part_admin_session_for_bank(bank_id, proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_assessment_part_bank_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AssessmentPartBankSession')(
+            provider_session=self._provider_manager.get_assessment_part_bank_session(proxy),
+            authz_session=self._get_authz_session(),
+            override_lookup_session=self._get_override_lookup_session(),
+            provider_manager=self._provider_manager,
+            proxy=proxy)
+
+    @raise_null_argument
+    def get_assessment_part_bank_assignment_session(self, proxy):
+        # Implemented from azosid template for -
+        # osid.resource.ResourceManager.get_resource_admin_session_template
+        return getattr(sessions, 'AssessmentPartBankAssignmentSession')(
+            provider_session=self._provider_manager.get_assessment_part_bank_assignment_session(proxy),
             authz_session=self._get_authz_session(),
             override_lookup_session=self._get_override_lookup_session(),
             provider_manager=self._provider_manager,
@@ -468,7 +522,7 @@ class AssessmentAuthoringProxyManager(osid_managers.OsidProxyManager, Assessment
     @raise_null_argument
     def get_sequence_rule_admin_session(self, proxy):
         # Implemented from azosid template for -
-        # osid.resource.ResourceManager.get_resource_lookup_session_template
+        # osid.resource.ResourceManager.get_resource_admin_session_template
         return getattr(sessions, 'SequenceRuleAdminSession')(
             provider_session=self._provider_manager.get_sequence_rule_admin_session(proxy),
             authz_session=self._get_authz_session(),

@@ -16,6 +16,7 @@ from bson.objectid import ObjectId
 from . import objects
 from . import queries
 from .. import utilities
+from ..id.objects import IdList
 from ..osid import sessions as osid_sessions
 from ..osid.sessions import OsidSession
 from ..primitives import DateTime
@@ -68,7 +69,6 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
     through a cast of the object.
 
     """
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -91,7 +91,7 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -106,7 +106,7 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -125,7 +125,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -139,7 +140,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_grade_system_view(self):
@@ -152,7 +154,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_gradebook_view(self):
@@ -164,7 +167,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_gradebook_view(self):
@@ -175,7 +179,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -198,7 +203,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
@@ -246,7 +252,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
@@ -284,7 +291,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
@@ -312,7 +320,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.GradeSystemList([])
 
@@ -334,7 +343,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.GradeSystemList([])
 
@@ -352,7 +362,8 @@ class GradeSystemLookupSession(abc_grading_sessions.GradeSystemLookupSession, os
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
@@ -383,7 +394,6 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
     ``GradeSystemQuery``.
 
     """
-    # Built from: templates/osid_session.GenericObjectQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -406,7 +416,7 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -421,7 +431,7 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -440,7 +450,8 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -454,7 +465,8 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_gradebook_view(self):
@@ -465,7 +477,8 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def get_grade_system_query(self):
@@ -475,7 +488,8 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.GradeSystemQuery(runtime=self._runtime)
 
     grade_system_query = property(fget=get_grade_system_query)
@@ -496,7 +510,8 @@ class GradeSystemQuerySession(abc_grading_sessions.GradeSystemQuerySession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in grade_system_query._query_terms:
@@ -560,7 +575,6 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -584,7 +598,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -599,7 +613,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -618,7 +632,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -642,7 +657,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -664,7 +680,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_create
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_create_template
         for arg in grade_system_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
@@ -703,7 +720,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
                                          runtime=self._runtime)
@@ -742,7 +760,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -764,7 +783,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
                                          runtime=self._runtime)
@@ -797,7 +817,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
                                          runtime=self._runtime)
@@ -836,7 +857,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -885,7 +907,6 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -911,7 +932,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=grade_system_id, equivalent_id=alias_id)
 
     @utilities.arguments_not_none
@@ -932,6 +954,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -957,6 +981,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -982,7 +1008,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_subjugated_object_form_for_create
+        # Implemented from template for
+        # osid.learning.ActivityAdminSession.get_activity_form_for_create_template
 
         if not isinstance(grade_system_id, ABCId):
             raise errors.InvalidArgument('argument is not a valid OSID Id')
@@ -1028,7 +1055,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.create_dependent_object
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.create_asset_content_template
         from dlkit.abstract_osid.grading.objects import GradeForm as ABCGradeForm
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
@@ -1095,7 +1123,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.get_dependent_object_form_for_update
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.get_asset_content_form_for_update_template
         from dlkit.abstract_osid.id.primitives import Id as ABCId
         from .objects import GradeForm
         collection = JSONClientValidated('grading',
@@ -1133,7 +1162,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.update_dependent_object
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.update_asset_content_template
         from dlkit.abstract_osid.grading.objects import GradeForm as ABCGradeForm
         collection = JSONClientValidated('grading',
                                          collection='GradeSystem',
@@ -1195,6 +1225,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1212,7 +1244,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericDependentObjectAdminSession.delete_dependent_object
+        # Implemented from template for
+        # osid.repository.AssetAdminSession.delete_asset_content_template
         from dlkit.abstract_osid.id.primitives import Id as ABCId
         from .objects import Grade
         collection = JSONClientValidated('grading',
@@ -1251,7 +1284,6 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1276,6 +1308,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
 
         """
         raise errors.Unimplemented()
+
     def _has_columns(self, grade_system_id):
         grading_manager = self._get_provider_manager('GRADING')
         gcqs = grading_manager.get_gradebook_column_query_session(proxy=self._proxy)
@@ -1286,9 +1319,371 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         return columns.available() > 0
 
 
+class GradeSystemGradebookSession(abc_grading_sessions.GradeSystemGradebookSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``GradeSystem`` to ``Gradebook`` mappings.
+
+    A ``GradeSystem`` may appear in multiple ``Gradebooks``. Each
+    ``Gradebook`` may have its own authorizations governing who is
+    allowed to look at it.
+
+    This lookup session defines two views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'grading.GradeSystemGradebookSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def use_comparative_gradebook_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_gradebook_view(self):
+        """A complete view of the ``GradebookColumn`` and ``Gradebook`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def can_lookup_grade_system_gradebook_mappings(self):
+        """Tests if this user can perform lookups of gradebook/grade system mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def get_grade_system_ids_by_gradebook(self, gradebook_id):
+        """Gets the list of ``GradeSystem``  ``Ids`` associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.id.IdList) - list of related grade system ``Ids``
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for grade_system in self.get_grade_systems_by_gradebook(gradebook_id):
+            id_list.append(grade_system.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_grade_systems_by_gradebook(self, gradebook_id):
+        """Gets the list of grade systems associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.grading.GradeSystemList) - list of related grade
+                systems
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_grade_system_lookup_session_for_gradebook(gradebook_id, proxy=self._proxy)
+        lookup_session.use_isolated_gradebook_view()
+        return lookup_session.get_grade_systems()
+
+    @utilities.arguments_not_none
+    def get_grade_system_ids_by_gradebooks(self, gradebook_ids):
+        """Gets the list of ``GradeSystem Ids`` corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.id.IdList) - list of grade systems ``Ids``
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        id_list = []
+        for grade_system in self.get_grade_systems_by_gradebooks(gradebook_ids):
+            id_list.append(grade_system.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_grade_systems_by_gradebooks(self, gradebook_ids):
+        """Gets the list of grade systems corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.grading.GradeSystemList) - list of grade systems
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        grade_system_list = []
+        for gradebook_id in gradebook_ids:
+            grade_system_list += list(
+                self.get_grade_systems_by_gradebook(gradebook_id))
+        return objects.GradeSystemList(grade_system_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_ids_by_grade_system(self, grade_system_id):
+        """Gets the list of ``Gradebook``  ``Ids`` mapped to a ``GradeSystem``.
+
+        arg:    grade_system_id (osid.id.Id): ``Id`` of a
+                ``GradeSystem``
+        return: (osid.id.IdList) - list of gradebook ``Ids``
+        raise:  NotFound - ``grade_system_id`` is not found
+        raise:  NullArgument - ``grade_system_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_grade_system_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_gradebook_view()
+        grade_system = lookup_session.get_grade_system(grade_system_id)
+        id_list = []
+        for idstr in grade_system._my_map['assignedGradebookIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebooks_by_grade_system(self, grade_system_id):
+        """Gets the list of ``Gradebooks`` mapped to a ``GradeSystem``.
+
+        arg:    grade_system_id (osid.id.Id): ``Id`` of a
+                ``GradeSystem``
+        return: (osid.grading.GradebookList) - list of gradebooks
+        raise:  NotFound - ``grade_system_id`` is not found
+        raise:  NullArgument - ``grade_system_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        return lookup_session.get_gradebooks_by_ids(
+            self.get_gradebook_ids_by_grade_system(grade_system_id))
+
+
+class GradeSystemGradebookAssignmentSession(abc_grading_sessions.GradeSystemGradebookAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign grade systems to ``Gradebooks``.
+
+    A ``GradeSystem`` may map to multiple ``Gradebooks`` and removing
+    the last reference to a ``GradeSystem`` is the equivalent of
+    deleting it. Each ``Gradebook`` may have its own authorizations
+    governing who is allowed to operate on it.
+
+    Moving or adding a reference of a ``GradeSystem`` to another
+    ``Gradebook`` is not a copy operation (eg: does not change its
+    ``Id`` ).
+
+    """
+    _session_namespace = 'grading.GradeSystemGradebookAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Gradebook'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_grade_system(self):
+        """Tests if this user can alter grade system/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_grade_systems_to_gradebook(self, gradebook_id):
+        """Tests if this user can alter grade system/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if gradebook_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids(self, gradebook_id):
+        """Gets a list of gradebooks including and under the given gradebook node in which any grade system can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        gradebooks = lookup_session.get_gradebooks()
+        id_list = []
+        for gradebook in gradebooks:
+            id_list.append(gradebook.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids_for_grade_system(self, gradebook_id, grade_system_id):
+        """Gets a list of gradebooks including and under the given gradebook node in which a specific grade system can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        arg:    grade_system_id (osid.id.Id): the ``Id`` of the
+                ``GradeSystem``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` or ``grade_system_id``
+                is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_gradebook_ids(gradebook_id)
+
+    @utilities.arguments_not_none
+    def assign_grade_system_to_gradebook(self, grade_system_id, gradebook_id):
+        """Adds an existing ``GradeSystem`` to a ``Gradebook``.
+
+        arg:    grade_system_id (osid.id.Id): the ``Id`` of the
+                ``GradeSystem``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  AlreadyExists - ``grade_system_id`` is already assigned
+                to ``gradebook_id``
+        raise:  NotFound - ``grade_system_id`` or ``gradebook_id`` not
+                found
+        raise:  NullArgument - ``grade_system_id`` or ``gradebook_id``
+                is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._assign_object_to_catalog(grade_system_id, gradebook_id)
+
+    @utilities.arguments_not_none
+    def unassign_grade_system_from_gradebook(self, grade_system_id, gradebook_id):
+        """Removes a ``GradeSystem`` from a ``Gradebook``.
+
+        arg:    grade_system_id (osid.id.Id): the ``Id`` of the
+                ``GradeSystem``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  NotFound - ``grade_system_id`` or ``gradebook_id`` not
+                found or ``grade_system_id`` not assigned to
+                ``gradebook_id``
+        raise:  NullArgument - ``grade_system_id`` or ``gradebook_id``
+                is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._unassign_object_from_catalog(grade_system_id, gradebook_id)
+
+
 class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``GradeEntrie`` s."""
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -1311,7 +1706,7 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -1326,7 +1721,7 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -1345,7 +1740,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1359,7 +1755,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_grade_entry_view(self):
@@ -1372,7 +1769,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_gradebook_view(self):
@@ -1384,7 +1782,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_gradebook_view(self):
@@ -1395,7 +1794,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def use_effective_grade_entry_view(self):
@@ -1404,7 +1804,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_effective_relationship_view
         self._use_effective_view()
 
     def use_any_effective_grade_entry_view(self):
@@ -1413,7 +1814,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.use_any_effective_relationship_view
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.use_any_effective_relationship_view
         self._use_any_effective_view()
 
     @utilities.arguments_not_none
@@ -1430,7 +1832,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
@@ -1455,7 +1858,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
@@ -1489,7 +1893,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
@@ -1513,7 +1918,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.GradeEntryList([])
 
@@ -1531,7 +1937,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.GradeEntryList([])
 
@@ -1550,7 +1957,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_on_date
         grade_entry_list = []
         for grade_entry in self.get_grade_entries():
             if overlap(from_, to, grade_entry.start_date, grade_entry.end_date):
@@ -1571,7 +1979,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
@@ -1599,7 +2008,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_source_on_date
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_source_on_date
         grade_entry_list = []
         for grade_entry in self.get_grade_entries_for_gradebook_column(gradebook_column_id):
             if overlap(from_, to, grade_entry.start_date, grade_entry.end_date):
@@ -1655,7 +2065,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericRelationshipLookupSession.get_relationships_for_peers
+        # Implemented from template for
+        # osid.relationship.RelationshipLookupSession.get_relationships_for_peers
         # NOTE: This implementation currently ignores plenary and effective views
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
@@ -1663,7 +2074,7 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         result = collection.find(
             dict({'gradebookColumnId': str(gradebook_column_id),
                   'keyResourceId': str(resource_id)},
-                 **self._view_filter())).sort('_sort_id', ASCENDING)
+                 **self._view_filter())).sort('_id', ASCENDING)
         return objects.GradeEntryList(result, runtime=self._runtime)
 
     @utilities.arguments_not_none
@@ -1711,7 +2122,8 @@ class GradeEntryLookupSession(abc_grading_sessions.GradeEntryLookupSession, osid
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
@@ -1744,7 +2156,6 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
     ``GradeEntryQuery``.
 
     """
-    # Built from: templates/osid_session.GenericRelationshipQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -1767,7 +2178,7 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -1782,7 +2193,7 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -1801,7 +2212,8 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -1815,7 +2227,8 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_gradebook_view(self):
@@ -1826,7 +2239,8 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def get_grade_entry_query(self):
@@ -1836,7 +2250,8 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.GradeEntryQuery(runtime=self._runtime)
 
     grade_entry_query = property(fget=get_grade_entry_query)
@@ -1857,7 +2272,8 @@ class GradeEntryQuerySession(abc_grading_sessions.GradeEntryQuerySession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in grade_entry_query._query_terms:
@@ -1920,7 +2336,6 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -1944,7 +2359,7 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -1959,7 +2374,7 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -1978,7 +2393,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2002,7 +2418,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_create_object_with_record_types
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_create_resource_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2081,7 +2498,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
                                          runtime=self._runtime)
@@ -2182,7 +2600,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_update_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_update_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2240,7 +2659,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.update_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.update_resource_template
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
                                          runtime=self._runtime)
@@ -2279,7 +2699,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_delete_objects
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.can_delete_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2298,7 +2719,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.delete_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.delete_resource_template
         collection = JSONClientValidated('grading',
                                          collection='GradeEntry',
                                          runtime=self._runtime)
@@ -2325,7 +2747,6 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2351,13 +2772,13 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=grade_entry_id, equivalent_id=alias_id)
 
 
 class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSession, osid_sessions.OsidSession):
     """This session provides methods for retrieving ``GradebookColumns``."""
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -2380,7 +2801,7 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -2395,7 +2816,7 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -2414,11 +2835,10 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
-        if self._catalog_session is not None:
-            return self._catalog_session.can_lookup_catalogs()
         return True
 
     def use_comparative_gradebook_column_view(self):
@@ -2430,7 +2850,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_gradebook_column_view(self):
@@ -2443,7 +2864,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_gradebook_view(self):
@@ -2455,7 +2877,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_gradebook_view(self):
@@ -2466,7 +2889,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -2489,7 +2913,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradebookColumn',
@@ -2520,7 +2945,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradebookColumn',
@@ -2560,7 +2986,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradebookColumn',
@@ -2590,7 +3017,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.GradebookColumnList([])
 
@@ -2614,7 +3042,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.GradebookColumnList([])
 
@@ -2633,7 +3062,8 @@ class GradebookColumnLookupSession(abc_grading_sessions.GradebookColumnLookupSes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('grading',
                                          collection='GradebookColumn',
@@ -2697,7 +3127,6 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
     ``GradebookColumnQuery``.
 
     """
-    # Built from: templates/osid_session.GenericObjectQuerySession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -2720,7 +3149,7 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -2735,7 +3164,7 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -2754,7 +3183,8 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.can_search_objects
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.can_search_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -2768,7 +3198,8 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_gradebook_view(self):
@@ -2779,7 +3210,8 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     def get_gradebook_column_query(self):
@@ -2790,7 +3222,8 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_object_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resource_query_template
         return queries.GradebookColumnQuery(runtime=self._runtime)
 
     gradebook_column_query = property(fget=get_gradebook_column_query)
@@ -2812,7 +3245,8 @@ class GradebookColumnQuerySession(abc_grading_sessions.GradebookColumnQuerySessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectQuerySession.get_objects_by_query
+        # Implemented from template for
+        # osid.resource.ResourceQuerySession.get_resources_by_query
         and_list = list()
         or_list = list()
         for term in gradebook_column_query._query_terms:
@@ -2876,7 +3310,6 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericObjectAdminSession.init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Gradebook
@@ -2900,7 +3333,7 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     gradebook_id = property(fget=get_gradebook_id)
@@ -2915,7 +3348,7 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     gradebook = property(fget=get_gradebook)
@@ -2934,7 +3367,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2942,7 +3376,7 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         return True
 
     @utilities.arguments_not_none
-    def can_create_gradebook_column_with_record_types(self):
+    def can_create_gradebook_column_with_record_types(self, gradebook_column_record_types):
         """Tests if this user can create a single ``GradebookColumn`` using the desired record types.
 
         While ``GradingManager.getGradebookColumnRecordTypes()`` can be
@@ -2961,7 +3395,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bin_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -2987,7 +3422,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_create
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_create_template
         for arg in gradebook_column_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
@@ -3029,7 +3465,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.create_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.create_resource_template
         collection = JSONClientValidated('grading',
                                          collection='GradebookColumn',
                                          runtime=self._runtime)
@@ -3068,7 +3505,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_update_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -3093,7 +3531,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.get_object_form_for_update
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.get_resource_form_for_update_template
         collection = JSONClientValidated('grading',
                                          collection='GradebookColumn',
                                          runtime=self._runtime)
@@ -3230,7 +3669,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_delete_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -3287,7 +3727,6 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3313,14 +3752,381 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.alias_object
+        # Implemented from template for
+        # osid.resource.ResourceAdminSession.alias_resources_template
         self._alias_id(primary_id=gradebook_column_id, equivalent_id=alias_id)
+
     def _has_entries(self, gradebook_column_id):
         grading_manager = self._get_provider_manager('GRADING')
         gels = grading_manager.get_grade_entry_lookup_session(proxy=getattr(self, "_proxy", None))
         gels.use_federated_gradebook_view()
         entries = gels.get_grade_entries_for_gradebook_column(gradebook_column_id)
         return entries.available() > 0
+
+
+class GradebookColumnGradebookSession(abc_grading_sessions.GradebookColumnGradebookSession, osid_sessions.OsidSession):
+    """This session provides methods to retrieve ``GradebookColumn`` to ``Gradebook`` mappings.
+
+    A ``GradebookColumn`` may appear in multiple ``Gradebooks``. Each
+    ``Gradebook`` may have its own authorizations governing who is
+    allowed to look at it.
+
+    This lookup session defines two views:
+
+      * comparative view: elements may be silently omitted or re-ordered
+      * plenary view: provides a complete result set or is an error
+        condition
+
+    """
+    _session_namespace = 'grading.GradebookColumnGradebookSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_view = COMPARATIVE
+        self._kwargs = kwargs
+
+    def use_comparative_gradebook_view(self):
+        """The returns from the lookup methods may omit or translate elements based on this session, such as authorization, and not result in an error.
+
+        This view is used when greater interoperability is desired at
+        the expense of precision.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
+        self._catalog_view = COMPARATIVE
+        if self._catalog_session is not None:
+            self._catalog_session.use_comparative_catalog_view()
+
+    def use_plenary_gradebook_view(self):
+        """A complete view of the ``GradebookColumn`` and ``Gradebook`` returns is desired.
+
+        Methods will return what is requested or result in an error.
+        This view is used when greater precision is desired at the
+        expense of interoperability.
+
+        *compliance: mandatory -- This method is must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
+        self._catalog_view = PLENARY
+        if self._catalog_session is not None:
+            self._catalog_session.use_plenary_catalog_view()
+
+    def can_lookup_gradebook_column_gradebook_mappings(self):
+        """Tests if this user can perform lookups of gradebook/column mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known lookup methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        lookup operations to unauthorized users.
+
+        return: (boolean) - ``false`` if looking up mappings is not
+                authorized, ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.can_lookup_resource_bin_mappings
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def get_gradebook_column_ids_by_gradebook(self, gradebook_id):
+        """Gets the list of ``GradebookColumn``  ``Ids`` associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.id.IdList) - list of related gradebook column
+                ``Ids``
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bin
+        id_list = []
+        for gradebook_column in self.get_gradebook_columns_by_gradebook(gradebook_id):
+            id_list.append(gradebook_column.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_columns_by_gradebook(self, gradebook_id):
+        """Gets the list of gradebook columns associated with a ``Gradebook``.
+
+        arg:    gradebook_id (osid.id.Id): ``Id`` of the ``Gradebook``
+        return: (osid.grading.GradebookColumnList) - list of related
+                gradebook columns
+        raise:  NotFound - ``gradebook_id`` is not found
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_column_lookup_session_for_gradebook(gradebook_id, proxy=self._proxy)
+        lookup_session.use_isolated_gradebook_view()
+        return lookup_session.get_gradebook_columns()
+
+    @utilities.arguments_not_none
+    def get_gradebook_column_ids_by_gradebooks(self, gradebook_ids):
+        """Gets the list of ``GradebookColumn Ids`` corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.id.IdList) - list of gradebook column ``Ids``
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resource_ids_by_bins
+        id_list = []
+        for gradebook_column in self.get_gradebook_columns_by_gradebooks(gradebook_ids):
+            id_list.append(gradebook_column.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_columns_by_gradebooks(self, gradebook_ids):
+        """Gets the list of gradebook columns corresponding to a list of ``Gradebooks``.
+
+        arg:    gradebook_ids (osid.id.IdList): list of gradebook
+                ``Ids``
+        return: (osid.grading.GradebookColumnList) - list of gradebook
+                columns
+        raise:  NullArgument - ``gradebook_ids`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_resources_by_bins
+        gradebook_column_list = []
+        for gradebook_id in gradebook_ids:
+            gradebook_column_list += list(
+                self.get_gradebook_columns_by_gradebook(gradebook_id))
+        return objects.GradebookColumnList(gradebook_column_list)
+
+    @utilities.arguments_not_none
+    def get_gradebook_ids_by_gradebook_column(self, gradebook_column_id):
+        """Gets the list of ``Gradebook``  ``Ids`` mapped to a ``GradebookColumn``.
+
+        arg:    gradebook_column_id (osid.id.Id): ``Id`` of a
+                ``GradebookColumn``
+        return: (osid.id.IdList) - list of gradebook ``Ids``
+        raise:  NotFound - ``gradebook_column_id`` is not found
+        raise:  NullArgument - ``gradebook_column_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bin_ids_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_column_lookup_session(proxy=self._proxy)
+        lookup_session.use_federated_gradebook_view()
+        gradebook_column = lookup_session.get_gradebook_column(gradebook_column_id)
+        id_list = []
+        for idstr in gradebook_column._my_map['assignedGradebookIds']:
+            id_list.append(Id(idstr))
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_gradebooks_by_gradebook_column(self, gradebook_column_id):
+        """Gets the list of ``Gradebooks`` mapped to a ``GradebookColumn``.
+
+        arg:    gradebook_column_id (osid.id.Id): ``Id`` of a
+                ``GradebookColumn``
+        return: (osid.grading.GradebookList) - list of gradebooks
+        raise:  NotFound - ``gradebook_column_id`` is not found
+        raise:  NullArgument - ``gradebook_column_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinSession.get_bins_by_resource
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        return lookup_session.get_gradebooks_by_ids(
+            self.get_gradebook_ids_by_gradebook_column(gradebook_column_id))
+
+
+class GradebookColumnGradebookAssignmentSession(abc_grading_sessions.GradebookColumnGradebookAssignmentSession, osid_sessions.OsidSession):
+    """This session provides methods to re-assign gradebook columns to ``Gradebooks``.
+
+    A ``GradebookColumn`` may map to multiple ``Gradebooks`` and
+    removing the last reference to a ``GradebookColumn`` is the
+    equivalent of deleting it. Each ``Gradebook`` may have its own
+    authorizations governing who is allowed to operate on it.
+
+    Moving or adding a reference of a ``GradebookColumn`` to another
+    ``Gradebook`` is not a copy operation (eg: does not change its
+    ``Id`` ).
+
+    """
+    _session_namespace = 'grading.GradebookColumnGradebookAssignmentSession'
+
+    def __init__(self, proxy=None, runtime=None, **kwargs):
+        OsidSession._init_catalog(self, proxy, runtime)
+        self._catalog_name = 'Gradebook'
+        self._forms = dict()
+        self._kwargs = kwargs
+
+    def can_assign_gradebook_columns(self):
+        """Tests if this user can alter gradebook column/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        return True
+
+    @utilities.arguments_not_none
+    def can_assign_gradebook_columns_to_gradebook(self, gradebook_id):
+        """Tests if this user can alter gradebook column/gradebook mappings.
+
+        A return of true does not guarantee successful authorization. A
+        return of false indicates that it is known mapping methods in
+        this session will result in a ``PermissionDenied``. This is
+        intended as a hint to an application that may opt not to offer
+        assignment operations to unauthorized users.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (boolean) - ``false`` if mapping is not authorized,
+                ``true`` otherwise
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.can_assign_resources_to_bin
+        # NOTE: It is expected that real authentication hints will be
+        # handled in a service adapter above the pay grade of this impl.
+        if gradebook_id.get_identifier() == '000000000000000000000000':
+            return False
+        return True
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids(self, gradebook_id):
+        """Gets a list of gradebook ``Ids`` including and under the given gradebook node in which any gradebook column can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids
+        # This will likely be overridden by an authorization adapter
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        gradebooks = lookup_session.get_gradebooks()
+        id_list = []
+        for gradebook in gradebooks:
+            id_list.append(gradebook.get_id())
+        return IdList(id_list)
+
+    @utilities.arguments_not_none
+    def get_assignable_gradebook_ids_for_gradebook_column(self, gradebook_id, gradebook_column_id):
+        """Gets a list of gradebooks including and under the given gradebook node in which a specific gradebook column can be assigned.
+
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        arg:    gradebook_column_id (osid.id.Id): the ``Id`` of the
+                ``GradebokColumn``
+        return: (osid.id.IdList) - list of assignable gradebook ``Ids``
+        raise:  NullArgument - ``gradebook_id`` or
+                ``gradebook_column_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.get_assignable_bin_ids_for_resource
+        # This will likely be overridden by an authorization adapter
+        return self.get_assignable_gradebook_ids(gradebook_id)
+
+    @utilities.arguments_not_none
+    def assign_gradebook_column_to_gradebook(self, gradebook_column_id, gradebook_id):
+        """Adds an existing ``GradebookColumn`` to a ``Gradebook``.
+
+        arg:    gradebook_column_id (osid.id.Id): the ``Id`` of the
+                ``GradebookColumn``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  AlreadyExists - ``gradebook_column_id`` is already
+                assigned to ``gradebook_id``
+        raise:  NotFound - ``gradebook_column_id`` or ``gradebook_id``
+                not found
+        raise:  NullArgument - ``gradebook_column_id`` or
+                ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.assign_resource_to_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._assign_object_to_catalog(gradebook_column_id, gradebook_id)
+
+    @utilities.arguments_not_none
+    def unassign_gradebook_column_from_gradebook(self, gradebook_column_id, gradebook_id):
+        """Removes a ``GradebookColumn`` from a ``Gradebook``.
+
+        arg:    gradebook_column_id (osid.id.Id): the ``Id`` of the
+                ``GradebookColumn``
+        arg:    gradebook_id (osid.id.Id): the ``Id`` of the
+                ``Gradebook``
+        raise:  NotFound - ``gradebook_column_id`` or ``gradebook_id``
+                not found or ``gradebook_column_id`` not assigned to
+                ``gradebook_id``
+        raise:  NullArgument - ``gradebook_column_id`` or
+                ``gradebook_id`` is ``null``
+        raise:  OperationFailed - unable to complete request
+        raise:  PermissionDenied - authorization failure
+        *compliance: mandatory -- This method must be implemented.*
+
+        """
+        # Implemented from template for
+        # osid.resource.ResourceBinAssignmentSession.unassign_resource_from_bin
+        mgr = self._get_provider_manager('GRADING', local=True)
+        lookup_session = mgr.get_gradebook_lookup_session(proxy=self._proxy)
+        lookup_session.get_gradebook(gradebook_id)  # to raise NotFound
+        self._unassign_object_from_catalog(gradebook_column_id, gradebook_id)
 
 
 class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_sessions.OsidSession):
@@ -3348,7 +4154,6 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
     cast of the ``Gradebook``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogLookupSession.init_template
     _session_namespace = 'grading.GradebookLookupSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -3374,7 +4179,8 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.can_lookup_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -3390,7 +4196,8 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -3405,7 +4212,8 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -3429,7 +4237,8 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bin
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog(catalog_id=gradebook_id)
         collection = JSONClientValidated('grading',
@@ -3439,8 +4248,7 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         if gradebook_id.get_identifier() == PHANTOM_ROOT_IDENTIFIER:
             return self._get_phantom_root_catalog(cat_class=objects.Gradebook, cat_name='Gradebook')
         try:
-            result = collection.find_one({'_id': ObjectId(self._get_id(gradebook_id,
-                                                                       'grading').get_identifier())})
+            result = collection.find_one({'_id': ObjectId(self._get_id(gradebook_id, 'grading').get_identifier())})
         except errors.NotFound:
             # Try creating an orchestrated Gradebook.  Let it raise errors.NotFound()
             result = self._create_orchestrated_cat(gradebook_id, 'grading', 'Gradebook')
@@ -3470,7 +4278,8 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_ids_template
         # NOTE: This implementation currently ignores plenary view
         # Also, this should be implemented to use get_Gradebook() instead of direct to database
         if self._catalog_session is not None:
@@ -3503,7 +4312,8 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_by_genus_type_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs_by_genus_type(catalog_genus_type=gradebook_genus_type)
@@ -3586,7 +4396,8 @@ class GradebookLookupSession(abc_grading_sessions.GradebookLookupSession, osid_s
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
+        # Implemented from template for
+        # osid.resource.BinLookupSession.get_bins_template
         # NOTE: This implementation currently ignores plenary view
         if self._catalog_session is not None:
             return self._catalog_session.get_catalogs()
@@ -3631,7 +4442,6 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
     external ``Id`` to an internally assigned Id.
 
     """
-    # Built from: templates/osid_session.GenericCatalogAdminSession.init_template
     _session_namespace = 'grading.GradebookAdminSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
@@ -3656,7 +4466,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -3664,7 +4475,7 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         return True
 
     @utilities.arguments_not_none
-    def can_create_gradebook_with_record_types(self):
+    def can_create_gradebook_with_record_types(self, gradebook_record_types):
         """Tests if this user can create a single ``Gradebook`` using the desired record types.
 
         While ``GradingManager.getGradebookRecordTypes()`` can be used
@@ -3681,7 +4492,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_create_bin_with_record_types
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -3705,7 +4517,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_create_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_create(catalog_record_types=gradebook_record_types)
         for arg in gradebook_record_types:
@@ -3744,7 +4557,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.create_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.create_catalog(catalog_form=gradebook_form)
         collection = JSONClientValidated('grading',
@@ -3785,7 +4599,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_update_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -3809,7 +4624,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
+        # Implemented from template for
+        # osid.resource.BinAdminSession.get_bin_form_for_update_template
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_form_for_update(catalog_id=gradebook_id)
         collection = JSONClientValidated('grading',
@@ -3841,7 +4657,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.update_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.update_catalog(catalog_form=gradebook_form)
         collection = JSONClientValidated('grading',
@@ -3879,7 +4696,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
+        # Implemented from template for
+        # osid.resource.BinAdminSession.can_delete_bins
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -3899,7 +4717,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.delete_catalog
+        # Implemented from template for
+        # osid.resource.BinAdminSession.delete_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.delete_catalog(catalog_id=gradebook_id)
         collection = JSONClientValidated('grading',
@@ -3929,7 +4748,6 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -3954,7 +4772,8 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
+        # Implemented from template for
+        # osid.resource.BinLookupSession.alias_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.alias_catalog(catalog_id=gradebook_id, alias_id=alias_id)
         self._alias_id(primary_id=gradebook_id, equivalent_id=alias_id)
@@ -3986,10 +4805,11 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
       * plenary view: provides a complete set or is an error condition
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchySession.init_template
     _session_namespace = 'grading.GradebookHierarchySession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -4012,7 +4832,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -4029,7 +4850,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -4050,7 +4872,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.can_access_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.can_access_bin_hierarchy
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -4066,7 +4889,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_comparative_bin_view
         self._catalog_view = COMPARATIVE
         if self._catalog_session is not None:
             self._catalog_session.use_comparative_catalog_view()
@@ -4081,7 +4905,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
+        # Implemented from template for
+        # osid.resource.BinLookupSession.use_plenary_bin_view
         self._catalog_view = PLENARY
         if self._catalog_session is not None:
             self._catalog_session.use_plenary_catalog_view()
@@ -4095,7 +4920,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalog_ids()
         return self._hierarchy_session.get_roots()
@@ -4111,7 +4937,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_root_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_root_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_root_catalogs()
         return GradebookLookupSession(
@@ -4134,7 +4961,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_parent_catalogs(catalog_id=gradebook_id)
         return self._hierarchy_session.has_parents(id_=gradebook_id)
@@ -4155,7 +4983,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_parent_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_parent_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_parent_of_catalog(id_=id_, catalog_id=gradebook_id)
         return self._hierarchy_session.is_parent(id_=gradebook_id, parent_id=id_)
@@ -4173,7 +5002,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalog_ids(catalog_id=gradebook_id)
         return self._hierarchy_session.get_parents(id_=gradebook_id)
@@ -4192,7 +5022,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_parent_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_parent_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_parent_catalogs(catalog_id=gradebook_id)
         return GradebookLookupSession(
@@ -4216,7 +5047,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_ancestor_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_ancestor_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_ancestor_of_catalog(id_=id_, catalog_id=gradebook_id)
         return self._hierarchy_session.is_ancestor(id_=id_, ancestor_id=gradebook_id)
@@ -4235,7 +5067,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.has_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.has_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.has_child_catalogs(catalog_id=gradebook_id)
         return self._hierarchy_session.has_children(id_=gradebook_id)
@@ -4256,7 +5089,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *implementation notes*: If ``id`` not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_child_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_child_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_child_of_catalog(id_=id_, catalog_id=gradebook_id)
         return self._hierarchy_session.is_child(id_=gradebook_id, child_id=id_)
@@ -4274,7 +5108,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalog_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bin_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalog_ids(catalog_id=gradebook_id)
         return self._hierarchy_session.get_children(id_=gradebook_id)
@@ -4293,7 +5128,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_child_catalogs
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_child_bins
         if self._catalog_session is not None:
             return self._catalog_session.get_child_catalogs(catalog_id=gradebook_id)
         return GradebookLookupSession(
@@ -4317,7 +5153,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *implementation notes*: If ``id`` is not found return ``false``.
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.is_descendant_of_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.is_descendant_of_bin
         if self._catalog_session is not None:
             return self._catalog_session.is_descendant_of_catalog(id_=id_, catalog_id=gradebook_id)
         return self._hierarchy_session.is_descendant(id_=id_, descendant_id=gradebook_id)
@@ -4344,7 +5181,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_node_ids
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_node_ids
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_node_ids(
                 catalog_id=gradebook_id,
@@ -4379,7 +5217,8 @@ class GradebookHierarchySession(abc_grading_sessions.GradebookHierarchySession, 
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_nodes
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_nodes
         return objects.GradebookNode(self.get_gradebook_node_ids(
             gradebook_id=gradebook_id,
             ancestor_levels=ancestor_levels,
@@ -4393,10 +5232,11 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
     Each node in the hierarchy is a unique ``Gradebook``.
 
     """
-    # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.init_template
     _session_namespace = 'grading.GradebookHierarchyDesignSession'
 
     def __init__(self, proxy=None, runtime=None, **kwargs):
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.init_template
         OsidSession.__init__(self)
         OsidSession._init_catalog(self, proxy, runtime)
         self._forms = dict()
@@ -4419,7 +5259,8 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy_id
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy_id
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy_id()
         return self._hierarchy_session.get_hierarchy_id()
@@ -4436,7 +5277,8 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchySession.get_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchySession.get_bin_hierarchy
         if self._catalog_session is not None:
             return self._catalog_session.get_catalog_hierarchy()
         return self._hierarchy_session.get_hierarchy()
@@ -4457,7 +5299,8 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.can_modify_catalog_hierarchy
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.can_modify_bin_hierarchy_template
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         if self._catalog_session is not None:
@@ -4477,7 +5320,8 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_root_catalog(catalog_id=gradebook_id)
         return self._hierarchy_session.add_root(id_=gradebook_id)
@@ -4494,7 +5338,8 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_root_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_root_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_root_catalog(catalog_id=gradebook_id)
         return self._hierarchy_session.remove_root(id_=gradebook_id)
@@ -4515,7 +5360,8 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.add_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.add_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.add_child_catalog(catalog_id=gradebook_id, child_id=child_id)
         return self._hierarchy_session.add_child(id_=gradebook_id, child_id=child_id)
@@ -4534,7 +5380,8 @@ class GradebookHierarchyDesignSession(abc_grading_sessions.GradebookHierarchyDes
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericCatalogHierarchyDesignSession.remove_child_catalog
+        # Implemented from template for
+        # osid.resource.BinHierarchyDesignSession.remove_child_bin_template
         if self._catalog_session is not None:
             return self._catalog_session.remove_child_catalog(catalog_id=gradebook_id, child_id=child_id)
         return self._hierarchy_session.remove_child(id_=gradebook_id, child_id=child_id)

@@ -22,7 +22,6 @@ from dlkit.abstract_osid.resource import searches as abc_resource_searches
 
 class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSearch):
     """The search interface for governing resource searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'resource.Resource'
         self._runtime = runtime
@@ -44,7 +43,6 @@ class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = resource_ids
 
     @utilities.arguments_not_none
@@ -86,7 +84,6 @@ class ResourceSearch(abc_resource_searches.ResourceSearch, osid_searches.OsidSea
 
 class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -104,7 +101,6 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -120,7 +116,6 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.ResourceQueryInspector(self._query_terms, runtime=self._runtime)
 
     resource_query_inspector = property(fget=get_resource_query_inspector)
@@ -150,7 +145,6 @@ class ResourceSearchResults(abc_resource_searches.ResourceSearchResults, osid_se
 
 class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
     """The interface for governing bin searches."""
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'resource.Bin'
         self._runtime = runtime
@@ -172,7 +166,6 @@ class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = bin_ids
 
     @utilities.arguments_not_none
@@ -212,7 +205,6 @@ class BinSearch(abc_resource_searches.BinSearch, osid_searches.OsidSearch):
 
 class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -230,7 +222,6 @@ class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -246,7 +237,6 @@ class BinSearchResults(abc_resource_searches.BinSearchResults, osid_searches.Osi
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.BinQueryInspector(self._query_terms, runtime=self._runtime)
 
     bin_query_inspector = property(fget=get_bin_query_inspector)

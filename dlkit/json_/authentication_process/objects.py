@@ -10,15 +10,11 @@
 #     Inheritance defined in specification
 
 
-from decimal import Decimal
-
-
 from .. import utilities
 from ..authentication.objects import Agent
 from ..id.objects import IdList
 from ..osid import objects as osid_objects
 from ..primitives import Id
-from ..primitives import Id, DateTime, Duration, DisplayText
 from ..utilities import get_registry
 from dlkit.abstract_osid.authentication_process import objects as abc_authentication_process_objects
 from dlkit.abstract_osid.osid import errors
@@ -135,7 +131,7 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_obj
             return True
 
     @utilities.arguments_not_none
-    def get_credential(self):
+    def get_credential(self, credential_type):
         """Gets the credential represented by the given ``Type`` for transport to a remote service.
 
         arg:    credential_type (osid.type.Type): the credential format
@@ -156,7 +152,7 @@ class Authentication(abc_authentication_process_objects.Authentication, osid_obj
             raise errors.IllegalState()
 
     @utilities.arguments_not_none
-    def get_authentication_record(self):
+    def get_authentication_record(self, authentication_record_type):
         """Gets the authentication record corresponding to the given authentication record ``Type``.
 
         This method is used to retrieve an object implementing the

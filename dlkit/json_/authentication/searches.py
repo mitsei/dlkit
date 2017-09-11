@@ -31,7 +31,6 @@ class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSea
     results.getAgents();
 
     """
-    # Built from: templates/osid_search.GenericObjectSearch.init_template
     def __init__(self, runtime):
         self._namespace = 'authentication.Agent'
         self._runtime = runtime
@@ -53,7 +52,6 @@ class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSea
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearch.search_among_objects
         self._id_list = agent_ids
 
     @utilities.arguments_not_none
@@ -104,7 +102,6 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
     results.getAgents();
 
     """
-    # Built from: templates/osid_search.GenericObjectSearchResults.init_template
     def __init__(self, results, query_terms, runtime):
         # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
         # self._results = [r for r in results]
@@ -122,7 +119,6 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_objects
         if self.retrieved:
             raise errors.IllegalState('List has already been retrieved.')
         self.retrieved = True
@@ -138,7 +134,6 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_search.GenericObjectSearchResults.get_object_query_inspector
         return queries.AgentQueryInspector(self._query_terms, runtime=self._runtime)
 
     agent_query_inspector = property(fget=get_agent_query_inspector)

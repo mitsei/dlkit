@@ -194,3 +194,338 @@ def authz_adapter_class_fixture(request):
                 request.cls.vault_admin_session.delete_vault(vault.ident)
 
     request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def authz_adapter_test_fixture(request):
+    request.cls.authorization_id_lists = []
+    count = 0
+    if not is_never_authz(request.cls.service_config):
+        agent_id = Id(authority='TEST', namespace='authentication.Agent', identifier='A_USER')
+        for vault_ in request.cls.vault_list:
+            request.cls.authorization_id_lists.append([])
+            for color in ['Red', 'Blue', 'Another Red']:
+                # Note that the json authorization service seems picky about ids.  Need to review.
+                func_namespace = 'resource.Resource'
+                func_authority = 'TEST'
+                if color == 'Red':
+                    func_identifier = 'lookup'
+                elif color == 'Blue':
+                    func_identifier = 'query'
+                else:
+                    func_identifier = 'admin'
+                function_id = Id(authority=func_authority, namespace=func_namespace, identifier=func_identifier)
+                qualifier_id = Id(authority='TEST', namespace='authorization.Qualifier', identifier='TEST' + str(count) + color)
+                create_form = vault_.get_authorization_form_for_create_for_agent(agent_id, function_id, qualifier_id, [])
+                create_form.display_name = color + ' ' + str(count) + ' Authorization'
+                create_form.description = color + ' authorization for authz adapter tests from Vault number ' + str(count)
+                if color == 'Blue':
+                    create_form.genus_type = BLUE_TYPE
+                authorization = vault_.create_authorization(create_form)
+                if count == 2 and color == 'Blue':
+                    request.cls.authorization_mgr.assign_authorization_to_vault(
+                        authorization.ident,
+                        request.cls.vault_id_list[7])
+                request.cls.authorization_id_lists[count].append(authorization.ident)
+            count += 1
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            for index, vault_ in enumerate(request.cls.vault_list):
+                for authorization_id in request.cls.authorization_id_lists[index]:
+                    vault_.delete_authorization(authorization_id)
+
+    request.addfinalizer(test_tear_down)
+
+
+@pytest.mark.usefixtures("authz_adapter_class_fixture", "authz_adapter_test_fixture")
+class TestAuthorizationAuthzAdapter(object):
+
+    def test_lookup_vault_0_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[0])
+            vault.use_isolated_vault_view()
+            vault.use_plenary_authorization_view()
+            # with pytest.raises(errors.NotFound):
+            #     authorizations = vault.get_authorizations()
+            # with pytest.raises(errors.NotFound):
+            #     authorizations = vault.get_authorizations_by_genus_type(BLUE_TYPE)
+            # for authorization_id in self.authorization_id_lists[0]:
+            #     with pytest.raises(errors.NotFound):
+            #         authorization = vault.get_authorization(authorization_id)
+            # with pytest.raises(errors.NotFound):
+            #     authorizations = vault.get_authorizations_by_ids(self.authorization_id_lists[0])
+
+    def test_lookup_vault_0_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[0])
+            vault.use_federated_vault_view()
+            vault.use_plenary_authorization_view()
+            assert vault.can_lookup_authorizations()
+            assert vault.get_authorizations().available() == 1
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).next().ident == self.authorization_id_lists[2][1]
+            vault.get_authorization(self.authorization_id_lists[2][1])
+            for authorization_num in [0, 2]:
+                with pytest.raises(errors.NotFound):  # Is this right?  Perhaps PermissionDenied
+                    authorization = vault.get_authorization(self.authorization_id_lists[2][authorization_num])
+
+    def test_lookup_vault_0_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[0])
+            vault.use_federated_vault_view()
+            vault.use_comparative_authorization_view()
+            # print "START"
+            assert vault.get_authorizations().available() == 13
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 5
+            for authorization in vault.get_authorizations():
+                vault.get_authorization(authorization.ident)
+            authorization_ids = [authorization.ident for authorization in vault.get_authorizations()]
+            vault.get_authorizations_by_ids(authorization_ids)
+            for authorization_id in self.authorization_id_lists[0]:
+                with pytest.raises(errors.NotFound):
+                    authorization = vault.get_authorization(authorization_id)
+            authorization = vault.get_authorization(self.authorization_id_lists[2][1])
+            for authorization_num in [0, 2]:
+                with pytest.raises(errors.NotFound):
+                    authorization = vault.get_authorization(self.authorization_id_lists[2][authorization_num])
+            for authorization_id in self.authorization_id_lists[1]:
+                    authorization = vault.get_authorization(authorization_id)
+            for authorization_id in self.authorization_id_lists[3]:
+                    authorization = vault.get_authorization(authorization_id)
+            for authorization_id in self.authorization_id_lists[4]:
+                    authorization = vault.get_authorization(authorization_id)
+            for authorization_id in self.authorization_id_lists[5]:
+                    authorization = vault.get_authorization(authorization_id)
+
+    def test_lookup_vault_0_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[0])
+            vault.use_isolated_vault_view()
+            vault.use_comparative_authorization_view()
+            assert vault.get_authorizations().available() == 0
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 0
+
+    def test_lookup_vault_1_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[1])
+            vault.use_isolated_vault_view()
+            vault.use_plenary_authorization_view()
+            assert vault.get_authorizations().available() == 3
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_vault_1_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[1])
+            vault.use_federated_vault_view()
+            vault.use_plenary_authorization_view()
+            assert vault.get_authorizations().available() == 9
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 3
+
+    def test_lookup_vault_1_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[1])
+            vault.use_federated_vault_view()
+            vault.use_comparative_authorization_view()
+            assert vault.get_authorizations().available() == 9
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 3
+
+    def test_lookup_vault_1_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[1])
+            vault.use_isolated_vault_view()
+            vault.use_comparative_authorization_view()
+            assert vault.get_authorizations().available() == 3
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_vault_2_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[2])
+            vault.use_isolated_vault_view()
+            vault.use_plenary_authorization_view()
+            assert vault.get_authorizations().available() == 1
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     authorizations = vault.get_authorizations()
+            # with pytest.raises(errors.PermissionDenied):
+            #     authorizations = vault.get_authorizations_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_vault_2_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[2])
+            vault.use_federated_vault_view()
+            vault.use_plenary_authorization_view()
+            assert vault.get_authorizations().available() == 1
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     authorizations = vault.get_authorizations()
+            # with pytest.raises(errors.PermissionDenied):
+            #     authorizations = vault.get_authorizations_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_vault_2_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[2])
+            vault.use_federated_vault_view()
+            vault.use_comparative_authorization_view()
+            assert vault.get_authorizations().available() == 4
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 2
+            # self.assertEqual(vault.get_authorizations().available(), 3)
+            # self.assertEqual(vault.get_authorizations_by_genus_type(BLUE_TYPE).available(), 1)
+
+    def test_lookup_vault_2_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[2])
+            vault.use_isolated_vault_view()
+            vault.use_comparative_authorization_view()
+            assert vault.get_authorizations().available() == 1
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+            # with pytest.raises(errors.PermissionDenied):
+            #     authorizations = vault.get_authorizations()
+            # with pytest.raises(errors.PermissionDenied):
+            #     authorizations = vault.get_authorizations_by_genus_type(BLUE_TYPE)
+
+    def test_lookup_vault_3_plenary_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[3])
+            vault.use_isolated_vault_view()
+            vault.use_plenary_authorization_view()
+            assert vault.get_authorizations().available() == 3
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_vault_3_plenary_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[3])
+            vault.use_federated_vault_view()
+            vault.use_plenary_authorization_view()
+            assert vault.get_authorizations().available() == 3
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_vault_3_comparative_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[3])
+            vault.use_federated_vault_view()
+            vault.use_comparative_authorization_view()
+            assert vault.get_authorizations().available() == 3
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_lookup_vault_3_comparative_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[3])
+            vault.use_isolated_vault_view()
+            vault.use_comparative_authorization_view()
+            assert vault.get_authorizations().available() == 3
+            assert vault.get_authorizations_by_genus_type(BLUE_TYPE).available() == 1
+
+    def test_query_vault_0_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[0])
+            vault.use_isolated_vault_view()
+            with pytest.raises(errors.PermissionDenied):
+                query = vault.get_authorization_query()
+
+    def test_query_vault_0_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[0])
+            vault.use_federated_vault_view()
+            query = vault.get_authorization_query()
+            query.match_display_name('red')
+            assert vault.get_authorizations_by_query(query).available() == 8
+            query.clear_display_name_terms()
+            query.match_display_name('blue')
+            assert vault.get_authorizations_by_query(query).available() == 5
+
+    def test_query_vault_1_isolated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[1])
+            vault.use_isolated_vault_view()
+            query = vault.get_authorization_query()
+            query.match_display_name('red')
+            assert vault.get_authorizations_by_query(query).available() == 2
+
+    def test_query_vault_1_federated(self):
+        if not is_never_authz(self.service_config):
+            janes_authorization_mgr = Runtime().get_service_manager(
+                'AUTHORIZATION',
+                proxy=JANE_PROXY,
+                implementation='TEST_SERVICE_JSON_AUTHZ')
+            vault = janes_authorization_mgr.get_vault(self.vault_id_list[1])
+            vault.use_federated_vault_view()
+            query = vault.get_authorization_query()
+            query.match_display_name('red')
+            assert vault.get_authorizations_by_query(query).available() == 6

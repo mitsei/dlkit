@@ -40,34 +40,40 @@ class HierarchyProfile(osid.OsidProfile, hierarchy_managers.HierarchyProfile):
 
     def supports_hierarchy_traversal(self):
         """Pass through to provider supports_hierarchy_traversal"""
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_hierarchy_traversal()
 
     def supports_hierarchy_design(self):
         """Pass through to provider supports_hierarchy_design"""
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_hierarchy_design()
 
     def supports_hierarchy_lookup(self):
         """Pass through to provider supports_hierarchy_lookup"""
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_hierarchy_lookup()
 
     def supports_hierarchy_admin(self):
         """Pass through to provider supports_hierarchy_admin"""
-        # Built from: templates/osid_managers.GenericProfile.supports_object_lookup
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.supports_resource_lookup
         return self._provider_manager.supports_hierarchy_admin()
 
     def get_hierarchy_record_types(self):
         """Pass through to provider get_hierarchy_record_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.get_resource_record_types
         return self._provider_manager.get_hierarchy_record_types()
 
     hierarchy_record_types = property(fget=get_hierarchy_record_types)
 
     def get_hierarchy_search_record_types(self):
         """Pass through to provider get_hierarchy_search_record_types"""
-        # Built from: templates/osid_managers.GenericProfile.get_object_record_types
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceProfile.get_resource_record_types
         return self._provider_manager.get_hierarchy_search_record_types()
 
     hierarchy_search_record_types = property(fget=get_hierarchy_search_record_types)
@@ -132,9 +138,14 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
             return self._provider_sessions[agent_key][session_name]
         else:
             manager = self._get_sub_package_provider_manager(sub_package)
-            session = self._instantiate_session('get_' + session_name + '_for_bank',
-                                                proxy=self._proxy,
-                                                manager=manager)
+            try:
+                session = self._instantiate_session('get_' + session_name + '_for_bank',
+                                                    proxy=self._proxy,
+                                                    manager=manager)
+            except AttributeError:
+                session = self._instantiate_session('get_' + session_name,
+                                                    proxy=self._proxy,
+                                                    manager=manager)
             self._set_bank_view(session)
             if self._session_management != DISABLED:
                 self._provider_sessions[agent_key][session_name] = session
@@ -142,7 +153,11 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def _instantiate_session(self, method_name, proxy=None, *args, **kwargs):
         """Instantiates a provider session"""
-        session_class = getattr(self._provider_manager, method_name)
+        if 'manager' in kwargs:
+            session_class = getattr(kwargs['manager'], method_name)
+            del kwargs['manager']
+        else:
+            session_class = getattr(self._provider_manager, method_name)
         if proxy is None:
             try:
                 return session_class(bank_id=self._catalog_id, *args, **kwargs)
@@ -190,61 +205,49 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def get_hierarchy_traversal_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_traversal_session"""
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_traversal_session(*args, **kwargs)
 
     hierarchy_traversal_session = property(fget=get_hierarchy_traversal_session)
 
     def get_hierarchy_traversal_session_for_hierarchy(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_traversal_session_for_hierarchy"""
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_manager_template
         return self._provider_manager.get_hierarchy_traversal_session_for_hierarchy(*args, **kwargs)
 
     def get_hierarchy_design_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_design_session"""
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_design_session(*args, **kwargs)
 
     hierarchy_design_session = property(fget=get_hierarchy_design_session)
 
     def get_hierarchy_design_session_for_hierarchy(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_design_session_for_hierarchy"""
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session_for_catalog
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_for_bin_manager_template
         return self._provider_manager.get_hierarchy_design_session_for_hierarchy(*args, **kwargs)
 
     def get_hierarchy_lookup_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_lookup_session"""
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_lookup_session(*args, **kwargs)
 
     hierarchy_lookup_session = property(fget=get_hierarchy_lookup_session)
 
     def get_hierarchy_admin_session(self, *args, **kwargs):
         """Pass through to provider get_hierarchy_admin_session"""
-        # Built from: templates/osid_managers.GenericManager.get_object_admin_session
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceManager.get_resource_lookup_session_manager_template
         return self._provider_manager.get_hierarchy_admin_session(*args, **kwargs)
 
     hierarchy_admin_session = property(fget=get_hierarchy_admin_session)
 ##
 # The following methods are from osid.hierarchy.HierarchyTraversalSession
-
-    def get_hierarchy_id(self):
-        """Pass through to provider HierarchyTraversalSession.get_hierarchy_id"""
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
-        return self._get_provider_session('hierarchy_traversal_session').get_hierarchy_id()
-
-    hierarchy_id = property(fget=get_hierarchy_id)
-
-    def get_hierarchy(self):
-        """Pass through to provider HierarchyTraversalSession.get_hierarchy"""
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
-        return Hierarchy(
-            self._provider_manager,
-            self._get_provider_session('hierarchy_traversal_session').get_hierarchy(*args, **kwargs),
-            self._runtime,
-            self._proxy)
-
-    hierarchy = property(fget=get_hierarchy)
 
     def can_access_hierarchy(self):
         """Pass through to provider unimplemented"""
@@ -296,7 +299,8 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def can_modify_hierarchy(self):
         """Pass through to provider HierarchyDesignSession.can_modify_hierarchy"""
-        # Built from: templates/osid_session.GenericObjectHierarchyDesignSession.can_modify_object_hierarchy
+        # Implemented from kitosid template for -
+        # osid.ontology.SubjectHierarchyDesignSession.can_modify_subject_hierarchy
         return self._get_provider_session('hierarchy_design_session').can_modify_hierarchy()
 
     def add_root(self, *args, **kwargs):
@@ -323,12 +327,12 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def can_lookup_hierarchies(self):
         """Pass through to provider HierarchyLookupSession.can_lookup_hierarchies"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.can_lookup_catalogs
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.can_lookup_bins_template
         return self._get_provider_session('hierarchy_lookup_session').can_lookup_hierarchies()
 
     def use_comparative_hierarchy_view(self):
         """Pass through to provider HierarchyLookupSession.use_comparative_hierarchy_view"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_comparative_catalog_view
         self._hierarchy_view = COMPARATIVE
         # self._get_provider_session('hierarchy_lookup_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
@@ -339,7 +343,6 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def use_plenary_hierarchy_view(self):
         """Pass through to provider HierarchyLookupSession.use_plenary_hierarchy_view"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.use_plenary_catalog_view
         self._hierarchy_view = PLENARY
         # self._get_provider_session('hierarchy_lookup_session') # To make sure the session is tracked
         for session in self._get_provider_sessions():
@@ -350,7 +353,8 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def get_hierarchies_by_ids(self, *args, **kwargs):
         """Pass through to provider HierarchyLookupSession.get_hierarchies_by_ids"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_ids
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.get_bins_by_ids
         catalogs = self._get_provider_session('hierarchy_lookup_session').get_hierarchies_by_ids(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -359,7 +363,8 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def get_hierarchies_by_genus_type(self, *args, **kwargs):
         """Pass through to provider HierarchyLookupSession.get_hierarchies_by_genus_type"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_genus_type
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.get_bins_by_genus_type
         catalogs = self._get_provider_session('hierarchy_lookup_session').get_hierarchies_by_genus_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -368,7 +373,8 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def get_hierarchies_by_parent_genus_type(self, *args, **kwargs):
         """Pass through to provider HierarchyLookupSession.get_hierarchies_by_parent_genus_type"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_parent_genus_type
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.get_bins_by_parent_genus_type
         catalogs = self._get_provider_session('hierarchy_lookup_session').get_hierarchies_by_parent_genus_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -377,7 +383,8 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def get_hierarchies_by_record_type(self, *args, **kwargs):
         """Pass through to provider HierarchyLookupSession.get_hierarchies_by_record_type"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_record_type
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.get_bins_by_record_type
         catalogs = self._get_provider_session('hierarchy_lookup_session').get_hierarchies_by_record_type(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -386,7 +393,8 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def get_hierarchies_by_provider(self, *args, **kwargs):
         """Pass through to provider HierarchyLookupSession.get_hierarchies_by_provider"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs_by_provider
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.get_bins_by_provider
         catalogs = self._get_provider_session('hierarchy_lookup_session').get_hierarchies_by_provider(*args, **kwargs)
         cat_list = []
         for cat in catalogs:
@@ -395,7 +403,8 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def get_hierarchies(self):
         """Pass through to provider HierarchyLookupSession.get_hierarchies"""
-        # Built from: templates/osid_session.GenericCatalogLookupSession.get_catalogs
+        # Implemented from kitosid template for -
+        # osid.resource.BinLookupSession.get_bins_template
         catalogs = self._get_provider_session('hierarchy_lookup_session').get_hierarchies()
         cat_list = []
         for cat in catalogs:
@@ -408,22 +417,26 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def can_create_hierarchies(self):
         """Pass through to provider HierarchyAdminSession.can_create_hierarchies"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalogs
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.can_create_bins
         return self._get_provider_session('hierarchy_admin_session').can_create_hierarchies()
 
     def can_create_hierarchy_with_record_types(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.can_create_hierarchy_with_record_types"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_create_catalog_with_record_types
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.can_create_bin_with_record_types
         return self._get_provider_session('hierarchy_admin_session').can_create_hierarchy_with_record_types(*args, **kwargs)
 
     def get_hierarchy_form_for_create(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.get_hierarchy_form_for_create"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_create
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.get_bin_form_for_create
         return self._get_provider_session('hierarchy_admin_session').get_hierarchy_form_for_create(*args, **kwargs)
 
     def create_hierarchy(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.create_hierarchy"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.create_catalog
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.create_bin
         return Hierarchy(
             self._provider_manager,
             self._get_provider_session('hierarchy_admin_session').create_hierarchy(*args, **kwargs),
@@ -432,26 +445,50 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def can_update_hierarchies(self):
         """Pass through to provider HierarchyAdminSession.can_update_hierarchies"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_update_catalogs
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.can_update_bins
         return self._get_provider_session('hierarchy_admin_session').can_update_hierarchies()
 
     def get_hierarchy_form_for_update(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.get_hierarchy_form_for_update"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.get_catalog_form_for_update
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.get_bin_form_for_update
         return self._get_provider_session('hierarchy_admin_session').get_hierarchy_form_for_update(*args, **kwargs)
+
+    def get_hierarchy_form(self, *args, **kwargs):
+        """Pass through to provider HierarchyAdminSession.get_hierarchy_form_for_update"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.get_bin_form_for_update_template
+        # This method might be a bit sketchy. Time will tell.
+        if isinstance(args[-1], list) or 'hierarchy_record_types' in kwargs:
+            return self.get_hierarchy_form_for_create(*args, **kwargs)
+        else:
+            return self.get_hierarchy_form_for_update(*args, **kwargs)
 
     def update_hierarchy(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.update_hierarchy"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.update_catalog
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.update_bin
+        # OSID spec does not require returning updated catalog
         return Hierarchy(
             self._provider_manager,
             self._get_provider_session('hierarchy_admin_session').update_hierarchy(*args, **kwargs),
             self._runtime,
             self._proxy)
 
+    def save_hierarchy(self, hierarchy_form, *args, **kwargs):
+        """Pass through to provider HierarchyAdminSession.update_hierarchy"""
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.update_bin
+        if hierarchy_form.is_for_update():
+            return self.update_hierarchy(hierarchy_form, *args, **kwargs)
+        else:
+            return self.create_hierarchy(hierarchy_form, *args, **kwargs)
+
     def can_delete_hierarchies(self):
         """Pass through to provider HierarchyAdminSession.can_delete_hierarchies"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.can_delete_catalogs
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.can_delete_bins
         return self._get_provider_session('hierarchy_admin_session').can_delete_hierarchies()
 
     def delete_hierarchy(self, *args, **kwargs):
@@ -460,23 +497,47 @@ class HierarchyManager(osid.OsidManager, osid.OsidSession, HierarchyProfile, hie
 
     def can_manage_hierarchy_aliases(self):
         """Pass through to provider HierarchyAdminSession.can_manage_hierarchy_aliases"""
-        # Built from: templates/osid_session.GenericObjectAdminSession.can_manage_object_aliases
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceAdminSession.can_manage_resource_aliases_template
         return self._get_provider_session('hierarchy_admin_session').can_manage_hierarchy_aliases()
 
     def alias_hierarchy(self, *args, **kwargs):
         """Pass through to provider HierarchyAdminSession.alias_hierarchy"""
-        # Built from: templates/osid_session.GenericCatalogAdminSession.alias_catalog
+        # Implemented from kitosid template for -
+        # osid.resource.BinAdminSession.alias_bin
         self._get_provider_session('hierarchy_admin_session').alias_hierarchy(*args, **kwargs)
 
 
-class HierarchyProxyManager(osid.OsidProxyManager, HierarchyProfile, HierarchyManager, hierarchy_managers.HierarchyProxyManager):
+class HierarchyProxyManager(osid.OsidProxyManager, HierarchyProfile, hierarchy_managers.HierarchyProxyManager):
     """HierarchyProxyManager convenience adapter including related Session methods."""
-    pass
+
+    def get_hierarchy_traversal_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_hierarchy_traversal_session_for_hierarchy(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_hierarchy_design_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_hierarchy_design_session_for_hierarchy(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_hierarchy_lookup_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
+
+    def get_hierarchy_admin_session(self, *args, **kwargs):
+        """Pass through to provider unimplemented"""
+        raise Unimplemented('Unimplemented in dlkit.services - args=' + str(args) + ', kwargs=' + str(kwargs))
 
 
 class Hierarchy(abc_hierarchy_objects.Hierarchy, osid.OsidSession, osid.OsidCatalog):
     """Hierarchy convenience adapter including related Session methods."""
-    # Built from: templates/osid_catalog.GenericCatalog.init_template
     # WILL THIS EVER BE CALLED DIRECTLY - OUTSIDE OF A MANAGER?
     def __init__(self, provider_manager, catalog, runtime, proxy, **kwargs):
         self._provider_manager = provider_manager
@@ -625,17 +686,40 @@ class HierarchyList(abc_hierarchy_objects.HierarchyList, osid.OsidList):
 
     def get_next_hierarchy(self):
         """Gets next object"""
-        # Built from: templates/osid_list.GenericObjectList.get_next_object
-        return next(self)
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceList.get_next_resource
+        try:
+            next_item = next(self)
+        except StopIteration:
+            raise IllegalState('no more elements available in this list')
+        else:
+            return next_item
 
     def next(self):
         """next method for enumerator"""
-        return self._get_next_object(Hierarchy)
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceList.get_next_resource
+        next_item = osid.OsidList.next(self)
+        return next_item
 
     __next__ = next
 
     next_hierarchy = property(fget=get_next_hierarchy)
 
     def get_next_hierarchies(self, n):
-        # Built from: templates/osid_list.GenericObjectList.get_next_objects
-        return self._get_next_n(HierarchyList, number=n)
+        """gets next n objects from list"""
+        # Implemented from kitosid template for -
+        # osid.resource.ResourceList.get_next_resources
+        if n > self.available():
+            # !!! This is not quite as specified (see method docs) !!!
+            raise IllegalState('not enough elements available in this list')
+        else:
+            next_list = []
+            i = 0
+            while i < n:
+                try:
+                    next_list.append(next(self))
+                except StopIteration:
+                    break
+                i += 1
+            return next_list

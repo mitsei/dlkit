@@ -27,7 +27,7 @@ from ..osid import markers as osid_markers
 from ..primitives import DisplayText
 from ..primitives import Id
 from ..primitives import Type
-from ..utilities import OsidListList, is_string
+from ..utilities import OsidListList, is_string, ListFiller
 from ..utilities import get_locale_with_proxy
 from ..utilities import is_string
 from ..utilities import update_display_text_defaults
@@ -1373,6 +1373,7 @@ class OsidTemporalForm(abc_osid_objects.OsidTemporalForm, OsidForm):
         self._my_map['endDate'] = self._mdata['end_date']['default_date_time_values'][0]
 
     end_date = property(fset=set_end_date, fdel=clear_end_date)
+
     # This should go in a utility module:
     def _get_date_map(self, date):
         return {
@@ -2346,7 +2347,7 @@ class OsidList(abc_osid_objects.OsidList):
             iter_object = itertools.chain(*iter_object)
         elif isinstance(iter_object, dict) or isinstance(iter_object, list):
             self._count = len(iter_object)
-        elif isinstance(iter_object, Cursor):
+        elif isinstance(iter_object, (Cursor, ListFiller)):
             self._count = iter_object.count(True)
         else:
             self._count = None
@@ -2465,7 +2466,7 @@ class OsidList(abc_osid_objects.OsidList):
             return 0  # Don't know what to do here
 
     @utilities.arguments_not_none
-    def skip(self):
+    def skip(self, n):
         """Skip the specified number of elements in the list.
 
         If the number skipped is greater than the number of elements in
@@ -2480,7 +2481,7 @@ class OsidList(abc_osid_objects.OsidList):
             self._iter_object.skip(n)
         except AttributeError:
             for i in range(0, n):
-                next(self)
+                self.next()
 
 
 class OsidNode(abc_osid_objects.OsidNode, osid_markers.Identifiable, osid_markers.Containable):
@@ -2587,6 +2588,7 @@ class OsidNode(abc_osid_objects.OsidNode, osid_markers.Identifiable, osid_marker
         return IdList(id_list)
 
     child_ids = property(fget=get_child_ids)
+
     def get_node_map(self):
         node_map = dict(self._my_map)
         node_map['parentNodes'] = []

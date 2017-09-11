@@ -65,7 +65,6 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
     ``Agent``.
 
     """
-    # From: templates/osid_session.py::GenericObjectLookupSession::init_template
     def __init__(self, catalog_id=None, proxy=None, runtime=None, **kwargs):
         OsidSession.__init__(self)
         self._catalog_class = objects.Agency
@@ -88,7 +87,7 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog_id
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin_id
         return self._catalog_id
 
     agency_id = property(fget=get_agency_id)
@@ -103,7 +102,7 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_catalog
+        # Implemented from template for osid.resource.ResourceLookupSession.get_bin
         return self._catalog
 
     agency = property(fget=get_agency)
@@ -122,7 +121,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.can_lookup_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.can_lookup_resources
         # NOTE: It is expected that real authentication hints will be
         # handled in a service adapter above the pay grade of this impl.
         return True
@@ -136,7 +136,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_comparative_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_comparative_resource_view
         self._use_comparative_object_view()
 
     def use_plenary_agent_view(self):
@@ -149,7 +150,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_plenary_object_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_plenary_resource_view
         self._use_plenary_object_view()
 
     def use_federated_agency_view(self):
@@ -161,7 +163,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_federated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_federated_bin_view
         self._use_federated_catalog_view()
 
     def use_isolated_agency_view(self):
@@ -172,7 +175,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method is must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.use_isolated_catalog_view
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.use_isolated_bin_view
         self._use_isolated_catalog_view()
 
     @utilities.arguments_not_none
@@ -193,7 +197,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_object
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resource
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authentication',
                                          collection='Agent',
@@ -225,7 +230,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_ids
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_ids
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authentication',
                                          collection='Agent',
@@ -262,7 +268,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_genus_type
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authentication',
                                          collection='Agent',
@@ -289,7 +296,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_parent_genus_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_parent_genus_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AgentList([])
 
@@ -310,7 +318,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects_by_record_type
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources_by_record_type
         # STILL NEED TO IMPLEMENT!!!
         return objects.AgentList([])
 
@@ -327,7 +336,8 @@ class AgentLookupSession(abc_authentication_sessions.AgentLookupSession, osid_se
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        # Built from: templates/osid_session.GenericObjectLookupSession.get_objects
+        # Implemented from template for
+        # osid.resource.ResourceLookupSession.get_resources
         # NOTE: This implementation currently ignores plenary view
         collection = JSONClientValidated('authentication',
                                          collection='Agent',
