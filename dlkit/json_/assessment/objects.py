@@ -2919,13 +2919,17 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
             if '?' in identifier:
                 # it is a magic ID, by our convention
                 magic_params = json.loads(identifier.split('?')[1])
-                choice_ids = [c['id'] for c in choices]
-                if (isinstance(magic_params, list) and
-                        list(set(choice_ids)) == list(set(magic_params))):
-                    ordered_choices = []
-                    for ordered_id in magic_params:
-                        ordered_choices.append(grab_choice(choices, ordered_id))
-                    return ordered_choices
+                try:
+                    choice_ids = [c['id'] for c in choices]
+                except TypeError:
+                    pass
+                else:
+                    if (isinstance(magic_params, list) and
+                            list(set(choice_ids)) == list(set(magic_params))):
+                        ordered_choices = []
+                        for ordered_id in magic_params:
+                            ordered_choices.append(grab_choice(choices, ordered_id))
+                        return ordered_choices
             return choices
 
         if obj_map is None:
