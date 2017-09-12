@@ -16,6 +16,6 @@ before_install:
 - pip install coveralls tox-travis
 install:
 - pip install -r test_requirements.txt
-script: tox -x
+script: tox -- -x
 after_success:
 - coveralls
