@@ -12,6 +12,7 @@ python-memcached==1.58
 pytest
 pytest-pep8
 # pytest-pylint
+coverage==4.3.4
 pytest-cov
 envoy==0.0.3
 rsa==3.4.2
