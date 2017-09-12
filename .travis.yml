@@ -13,9 +13,9 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_e1503200bd19_key -iv $encrypted_e1503200bd19_iv
   -in keyfile.pem.enc -out keyfile.pem -d
 - pip install --upgrade pytest
-- pip install coveralls
+- pip install coveralls tox-travis
 install:
 - pip install -r test_requirements.txt
-script: python -m pytest -x
+script: tox
 after_success:
 - coveralls

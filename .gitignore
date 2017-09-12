@@ -9,3 +9,4 @@ dlkit.egg-info/
 *.bak
 .DS_Store
 __init__.py
+.tox
