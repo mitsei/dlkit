@@ -16,6 +16,15 @@ from dlkit.runtime import RUNTIME, PROXY_SESSION
 from .utilities.testing import DLKitTestCase, TEST_REPOSITORY_GENUS
 
 
+def simple_matcher(r1, r2):
+    # https://github.com/kevin1024/vcrpy/blob/master/docs/advanced.rst
+    return r1.uri == r2.uri and r1.method == r2.method
+
+
+aws_test_recorder = vcr.VCR()
+aws_test_recorder.register_matcher('simple', simple_matcher)
+
+
 class AWSAdapterTests(DLKitTestCase):
     def _get_aws_manager(self, manager_type):
         condition = PROXY_SESSION.get_proxy_condition()
@@ -94,7 +103,10 @@ class AWSAdapterTests(DLKitTestCase):
             raise ex
         return True
 
-    @vcr.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/setUp.yaml', record_mode='new_episodes')
+    @aws_test_recorder.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/setUp.yaml',
+                                    record_mode='new_episodes',
+                                    match_on=['simple'],
+                                    filter_headers=['authorization'])
     def setUp(self):
         super(AWSAdapterTests, self).setUp()
 
@@ -109,7 +121,10 @@ class AWSAdapterTests(DLKitTestCase):
         """
         super(AWSAdapterTests, self).tearDown()
 
-    @vcr.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_repository_assets_put_into_s3.yaml', record_mode='new_episodes')
+    @aws_test_recorder.use_cassette('tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_repository_assets_put_into_s3.yaml',
+                                    record_mode='new_episodes',
+                                    match_on=['simple'],
+                                    filter_headers=['authorization'])
     def test_repository_assets_put_into_s3(self):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
         self.assertTrue(self.s3_file_exists(expected_filekey))
@@ -119,8 +134,11 @@ class AWSAdapterTests(DLKitTestCase):
         url = asset_content.get_url()
         self.is_cloudfront_url(url)
 
-    @vcr.use_cassette(
-        'tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_s3_files_deleted_when_asset_content_deleted.yaml', record_mode='new_episodes')
+    @aws_test_recorder.use_cassette(
+        'tests/fixtures/vcr_cassettes/aws/AWSAdapterTests/test_s3_files_deleted_when_asset_content_deleted.yaml',
+        record_mode='new_episodes',
+        match_on=['simple'],
+        filter_headers=['authorization'])
     def test_s3_files_deleted_when_asset_content_deleted(self):
         expected_filekey = self._repo.ident.identifier + '/' + self.test_file1.name.split('/')[-1]
         # self.assertTrue(self.s3_file_exists(expected_filekey))

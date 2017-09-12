@@ -7,34 +7,34 @@ interactions:
       - 0
       - null
     headers:
-      Authorization:
-      - !!binary |
-        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROmlLZndOLzRENmRJalRDY2ZLODY0VVlxZjFpMD0=
       Content-Length: ['21']
       Content-MD5:
       - !!binary |
         N2lRVERpeUNBQi9xUEJaZi9XQzVsUT09
-      Date:
-      - !!binary |
-        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMCBHTVQ=
       Expect:
       - !!binary |
         MTAwLWNvbnRpbnVl
       User-Agent:
       - !!binary |
-        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+        Qm90bzMvMS40LjcgUHl0aG9uLzMuNi4xIERhcndpbi8xNi43LjAgQm90b2NvcmUvMS43Ljg=
+      X-Amz-Content-SHA256:
+      - !!binary |
+        VU5TSUdORUQtUEFZTE9BRA==
+      X-Amz-Date:
+      - !!binary |
+        MjAxNzA5MTJUMTcyMDQ1Wg==
     method: PUT
-    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+    uri: https://s3.amazonaws.com/mitodl-repository-test/58efd696eb761d78b82c545d/test_file_1.txt
   response:
     body: {string: ''}
     headers:
       Content-Length: ['0']
-      Date: ['Thu, 13 Jul 2017 16:03:31 GMT']
+      Date: ['Tue, 12 Sep 2017 17:20:46 GMT']
       ETag: ['"ee24130e2c82001fea3c165ffd60b995"']
       Server: [AmazonS3]
-      x-amz-expiration: ['expiry-date="Fri, 21 Jul 2017 00:00:00 GMT", rule-id="Periodic
+      x-amz-expiration: ['expiry-date="Wed, 20 Sep 2017 00:00:00 GMT", rule-id="Periodic
           cleaning up of test items"']
-      x-amz-id-2: [Voe4hq1lRVJi5cW3Gql3jPEBvxk81Rc3+4nlrKRVs6mM99dTpSWg+Iob7uhpXfTZqEGrhjQHfyw=]
-      x-amz-request-id: [472A7F369092E1E4]
+      x-amz-id-2: [w7WABXtG2j/lvvnRSkYnofvySP82D7xppBpE14DklTsUdRWUj1ZsnK2Po1NtflEeeiJ37V5UN5k=]
+      x-amz-request-id: [0860D6FF199F26F6]
     status: {code: 200, message: OK}
 version: 1
