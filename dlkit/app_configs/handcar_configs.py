@@ -5,12 +5,12 @@ MC3_HANDCAR_APP_KEY = None
 
 try:
     from django.conf import settings
-    MC3_HOST = settings.MC3_HOST
-    MC3_HANDCAR_APP_KEY = settings.MC3_HANDCAR_APP_KEY
+    MC3_HOST = getattr(settings, 'MC3_HOST', '')
+    MC3_HANDCAR_APP_KEY = getattr(settings, 'MC3_HANDCAR_APP_KEY', None)
 except ImportError:
     try:
         from dlkit.handcar import settings
-        MC3_HOST = settings.HOST
+        MC3_HOST = getattr(settings, 'HOST', '')
         # Keep the app_key None, since there are none in the
         # settings file.
     except ImportError:
