@@ -18,7 +18,10 @@ except ImportError:
             MC3_HANDCAR_APP_KEY = os.environ['MC3_HANDCAR_APP_KEY']
 else:
     from django.core.exceptions import ImproperlyConfigured
-    settings.configure()
+    try:
+        settings.configure()
+    except RuntimeError:
+        pass  # already configured
     try:
         MC3_HOST = getattr(settings, 'MC3_HOST', '')
         MC3_HANDCAR_APP_KEY = getattr(settings, 'MC3_HANDCAR_APP_KEY', None)
