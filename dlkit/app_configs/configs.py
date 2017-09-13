@@ -82,6 +82,7 @@ except ImportError:
         MONGO_HOST_URI = os.environ['MONGO_HOST_URI']
 else:
     from django.core.exceptions import ImproperlyConfigured
+    settings.configure()
     try:
         HANDCAR_IMPL = getattr(settings, 'HANDCAR_IMPL', '')
         CLOUDFRONT_PUBLIC_KEY = getattr(settings, 'CLOUDFRONT_PUBLIC_KEY', '')
