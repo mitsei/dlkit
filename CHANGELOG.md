@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.13] - 2017-09-13
+### Fixed
+- Consider cases where `django` settings already configured.
+
 ## [0.5.12] - 2017-09-13
 ### Fixed
 - Better handling and configuration of `django` settings, to not rely on
@@ -214,6 +218,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.13]: https://github.com/mitsei/dlkit/compare/0.5.12...0.5.13
 [0.5.12]: https://github.com/mitsei/dlkit/compare/0.5.11...0.5.12
 [0.5.11]: https://github.com/mitsei/dlkit/compare/0.5.10...0.5.11
 [0.5.10]: https://github.com/mitsei/dlkit/compare/0.5.9...0.5.10
