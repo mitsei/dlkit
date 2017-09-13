@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.11] - 2017-09-13
+### Added
+- Use `tox` for testing.
+
+### Fixed
+- Better handcar config management when `django` is in the environment.
+
 ## [0.5.10] - 2017-09-11
 ### Fixed
 - For getting section results, account for non-magic-multiple-choice
@@ -202,6 +209,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.11]: https://github.com/mitsei/dlkit/compare/0.5.10...0.5.11
 [0.5.10]: https://github.com/mitsei/dlkit/compare/0.5.9...0.5.10
 [0.5.9]: https://github.com/mitsei/dlkit/compare/0.5.8...0.5.9
 [0.5.8]: https://github.com/mitsei/dlkit/compare/0.5.7...0.5.8
