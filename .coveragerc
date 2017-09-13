@@ -7,3 +7,4 @@ omit =
     tests/authz_impls/*
     */record_templates.py
     */settings.py
+    */.tox/*

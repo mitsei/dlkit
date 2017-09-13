@@ -2,17 +2,18 @@ interactions:
 - request:
     body: null
     headers:
-      Authorization:
-      - !!binary |
-        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROjluUlp5MkhHQnVWMkZjVEZOQUhjYzVvT2JUYz0=
-      Date:
-      - !!binary |
-        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMSBHTVQ=
       User-Agent:
       - !!binary |
-        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+        Qm90bzMvMS40LjcgUHl0aG9uLzMuNi4xIERhcndpbi8xNi43LjAgQm90b2NvcmUvMS43Ljg=
+      X-Amz-Content-SHA256:
+      - !!binary |
+        ZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3
+        ODUyYjg1NQ==
+      X-Amz-Date:
+      - !!binary |
+        MjAxNzA5MTJUMTcyMDQ1Wg==
     method: GET
-    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+    uri: https://s3.amazonaws.com/mitodl-repository-test/58efd696eb761d78b82c545d/test_file_1.txt
   response:
     body: {string: 'This is test file 1.
 
@@ -21,13 +22,13 @@ interactions:
       Accept-Ranges: [bytes]
       Content-Length: ['21']
       Content-Type: [binary/octet-stream]
-      Date: ['Thu, 13 Jul 2017 16:03:32 GMT']
+      Date: ['Tue, 12 Sep 2017 17:20:46 GMT']
       ETag: ['"ee24130e2c82001fea3c165ffd60b995"']
-      Last-Modified: ['Thu, 13 Jul 2017 16:03:31 GMT']
+      Last-Modified: ['Tue, 12 Sep 2017 17:20:46 GMT']
       Server: [AmazonS3]
-      x-amz-expiration: ['expiry-date="Fri, 21 Jul 2017 00:00:00 GMT", rule-id="Periodic
+      x-amz-expiration: ['expiry-date="Wed, 20 Sep 2017 00:00:00 GMT", rule-id="Periodic
           cleaning up of test items"']
-      x-amz-id-2: [Ya7Y3IJaYJcI0iLS8nH+T4I1FRxG1K/30rWtuM+F2ub2b+rXvexz4cPcCs9iqyFlfGaoiDNhI7U=]
-      x-amz-request-id: [4D2B9602857476BB]
+      x-amz-id-2: [+DfCB8x3mjD7kiQgJRTYxe0uFPGxyRl9rjvqTU2U5SDkrH7pYD4v4a4u750A3b7DtCJegu0rR3Y=]
+      x-amz-request-id: [C744A0C1996CB02B]
     status: {code: 200, message: OK}
 version: 1

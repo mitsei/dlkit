@@ -2,49 +2,51 @@ interactions:
 - request:
     body: null
     headers:
-      Authorization:
-      - !!binary |
-        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROlQySzZhbllBaTVGUmxtYUprWEo0RG1KUXc1ND0=
       Content-Length: ['0']
-      Date:
-      - !!binary |
-        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMyBHTVQ=
       User-Agent:
       - !!binary |
-        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+        Qm90bzMvMS40LjcgUHl0aG9uLzMuNi4xIERhcndpbi8xNi43LjAgQm90b2NvcmUvMS43Ljg=
+      X-Amz-Content-SHA256:
+      - !!binary |
+        ZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3
+        ODUyYjg1NQ==
+      X-Amz-Date:
+      - !!binary |
+        MjAxNzA5MTJUMTcyMDQ3Wg==
     method: DELETE
-    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+    uri: https://s3.amazonaws.com/mitodl-repository-test/58efd696eb761d78b82c545d/test_file_1.txt
   response:
     body: {string: ''}
     headers:
-      Date: ['Thu, 13 Jul 2017 16:03:34 GMT']
+      Date: ['Tue, 12 Sep 2017 17:20:48 GMT']
       Server: [AmazonS3]
-      x-amz-id-2: [XD2eNX/A95o1anEQYYTQyZ4APKWAXLmpA2eD3NkqD6ktpd+UOkZUThW0+G+mLlBabLJ/2jpRmUo=]
-      x-amz-request-id: [C28360CE0217D204]
+      x-amz-id-2: [3xGshw2DRO7ZBpHeiRLv8dIcgQaXmVaeAUZGcA8ZbcVQJRXJzWqHvu5coHevUljfCaqqc0JWBf8=]
+      x-amz-request-id: [C4E023A5CD78DC81]
     status: {code: 204, message: No Content}
 - request:
     body: null
     headers:
-      Authorization:
-      - !!binary |
-        QVdTIEFLSUFJVDNEWFJLVklTQUdJTTdROmdXVXRBN0pLaW4xSENraE9FVm4wcVdoUU56VT0=
-      Date:
-      - !!binary |
-        VGh1LCAxMyBKdWwgMjAxNyAxNjowMzozMyBHTVQ=
       User-Agent:
       - !!binary |
-        Qm90bzMvMS40LjQgUHl0aG9uLzMuNi4xIERhcndpbi8xNi42LjAgQm90b2NvcmUvMS41LjU1
+        Qm90bzMvMS40LjcgUHl0aG9uLzMuNi4xIERhcndpbi8xNi43LjAgQm90b2NvcmUvMS43Ljg=
+      X-Amz-Content-SHA256:
+      - !!binary |
+        ZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3
+        ODUyYjg1NQ==
+      X-Amz-Date:
+      - !!binary |
+        MjAxNzA5MTJUMTcyMDQ3Wg==
     method: GET
-    uri: https://mitodl-repository-test.s3.amazonaws.com/58efd696eb761d78b82c545d/test_file_1.txt
+    uri: https://s3.amazonaws.com/mitodl-repository-test/58efd696eb761d78b82c545d/test_file_1.txt
   response:
     body: {string: '<?xml version="1.0" encoding="UTF-8"?>
 
-        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>58efd696eb761d78b82c545d/test_file_1.txt</Key><RequestId>6BB0632CC1AAB7A3</RequestId><HostId>YJsbvcxMCIquEITKjh7paoj0+S2XoMLnL790X3wOLHE5p3E3/LU+kAabTMQyIuCYSs7XUH1sTj8=</HostId></Error>'}
+        <Error><Code>NoSuchKey</Code><Message>The specified key does not exist.</Message><Key>58efd696eb761d78b82c545d/test_file_1.txt</Key><RequestId>5A75B31ABAB6F11A</RequestId><HostId>2IDiLqjHyKEIpTrnkGvCnvWoEpz4uLUGixqUQrXEEXY+lb7sL0hZbgjbV1IdsfS6Q+REONVxxCI=</HostId></Error>'}
     headers:
       Content-Type: [application/xml]
-      Date: ['Thu, 13 Jul 2017 16:03:33 GMT']
+      Date: ['Tue, 12 Sep 2017 17:20:47 GMT']
       Server: [AmazonS3]
-      x-amz-id-2: [YJsbvcxMCIquEITKjh7paoj0+S2XoMLnL790X3wOLHE5p3E3/LU+kAabTMQyIuCYSs7XUH1sTj8=]
-      x-amz-request-id: [6BB0632CC1AAB7A3]
+      x-amz-id-2: [2IDiLqjHyKEIpTrnkGvCnvWoEpz4uLUGixqUQrXEEXY+lb7sL0hZbgjbV1IdsfS6Q+REONVxxCI=]
+      x-amz-request-id: [5A75B31ABAB6F11A]
     status: {code: 404, message: Not Found}
 version: 1
