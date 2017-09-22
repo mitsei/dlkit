@@ -1,0 +1,416 @@
+syntax = "proto3";
+
+package dlkit.proto.installation;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+import "google/protobuf/timestamp.proto";
+
+message Package {
+  string copyright = 1;
+  dlkit.primordium.id.primitives.Id creator = 2;
+  dlkit.primordium.id.primitives.IdList dependencies = 3;
+  dlkit.proto.osid.OsidCatalog depot = 4;
+  google.protobuf.Timestamp release_date = 5;
+  bool requires_license_acknowledgement = 6;
+  string url = 7;
+  Version version = 8;
+}
+
+message PackageQuery {
+
+}
+
+message PackageForm {
+
+}
+
+message PackageSearch {
+
+}
+
+message PackageSearchResults {
+
+}
+
+message PackageList {
+  repeated Package = 1;
+}
+
+message InstallationContent {
+  DataInputStream data = 1;
+  dlkit.proto.osid.OsidCatalog depot = 2;
+  dlkit.primordium.id.primitives.Id package = 3;
+}
+
+message InstallationContentQuery {
+
+}
+
+message InstallationContentForm {
+
+}
+
+message InstallationContentList {
+  repeated InstallationContent = 1;
+}
+
+message Depot {
+
+}
+
+message DepotQuery {
+
+}
+
+message DepotForm {
+
+}
+
+message DepotSearch {
+
+}
+
+message DepotSearchResults {
+
+}
+
+message DepotList {
+  repeated Depot = 1;
+}
+
+message DepotNode {
+
+}
+
+message DepotNodeList {
+  repeated DepotNode = 1;
+}
+
+message Installation {
+  dlkit.primordium.id.primitives.Id package = 1;
+  dlkit.primordium.id.primitives.Id site = 2;
+}
+
+message InstallationQuery {
+
+}
+
+message InstallationSearch {
+
+}
+
+message InstallationSearchResults {
+
+}
+
+message InstallationList {
+  repeated Installation = 1;
+}
+
+message Site {
+
+}
+
+message SiteQuery {
+
+}
+
+message SiteList {
+  repeated Site = 1;
+}
+
+service InstallationLookupSession {
+  rpc GetSiteId() returns (Id) {}
+  rpc GetSite() returns (Site) {}
+  rpc CanLookupInstallations() returns (boolean) {}
+  rpc UseComparativeInstallationView() returns () {}
+  rpc UsePlenaryInstallationView() returns () {}
+  rpc UseNormalizedVersionView() returns () {}
+  rpc UseDenormalizedVersionView() returns () {}
+  rpc GetInstallation(dlkit.primordium.id.primitives.Id) returns (Installation) {}
+  rpc GetInstallationsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Installation) {}
+  rpc GetInstallationsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Installation) {}
+  rpc GetInstallationsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Installation) {}
+  rpc GetInstallationsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Installation) {}
+  rpc GetInstallationsByPackage(dlkit.primordium.id.primitives.Id) returns (stream Installation) {}
+  rpc GetInstallations() returns (stream Installation) {}
+}
+
+service InstallationQuerySession {
+  rpc GetSiteId() returns (Id) {}
+  rpc GetSite() returns (Site) {}
+  rpc CanSearchInstallations() returns (boolean) {}
+  rpc UseNormalizedVersionView() returns () {}
+  rpc UseDenormalizedVersionView() returns () {}
+  rpc UseNormalizedDependencyView() returns () {}
+  rpc UseDenormalizedDependencyView() returns () {}
+  rpc GetInstallationQuery() returns (InstallationQuery) {}
+  rpc GetInstallationsByQuery(osid.installation.InstallationQuery) returns (stream Installation) {}
+}
+
+service InstallationSearchSession {
+  rpc GetInstallationSearch() returns (InstallationSearch) {}
+  rpc GetInstallationSearchOrder() returns (InstallationSearchOrder) {}
+  rpc GetInstallationsBySearch(osid.installation.InstallationQuery, osid.installation.InstallationSearch) returns (InstallationSearchResults) {}
+  rpc GetInstallationsQueryFromInspector(osid.installation.InstallationQueryInspector) returns (InstallationQuery) {}
+}
+
+service InstallationManagementSession {
+  rpc GetSiteId() returns (Id) {}
+  rpc GetSite() returns (Site) {}
+  rpc CanManageInstallations() returns (boolean) {}
+  rpc InstallPackage(dlkit.primordium.id.primitives.Id) returns (Installation) {}
+  rpc RemoveInstallation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveInstallations() returns () {}
+}
+
+service InstallationUpdateSession {
+  rpc GetSiteId() returns (Id) {}
+  rpc GetSite() returns (Site) {}
+  rpc CanGetInstallationUpdates() returns (boolean) {}
+  rpc IsInstallationCurrent() returns (boolean) {}
+  rpc GetInstallationsToUpdate() returns (stream Installation) {}
+  rpc GetCurrentPackages() returns (stream Package) {}
+  rpc GetCurrentPackagesForInstallation(dlkit.primordium.id.primitives.Id) returns (stream Package) {}
+  rpc IsInstallationObsolete() returns (boolean) {}
+  rpc GetObsoleteInstallations() returns (stream Installation) {}
+  rpc UpdateInstallation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc SynchronizeInstallations() returns () {}
+}
+
+service InstallationNotificationSession {
+  rpc GetSiteId() returns (Id) {}
+  rpc GetSite() returns (Site) {}
+  rpc CanRegisterForInstallationNotifications() returns (boolean) {}
+  rpc RegisterForNewInstallations() returns () {}
+  rpc RegisterForDeletedInstallations() returns () {}
+  rpc RegisterForDeletedInstallation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableInstallationNotifications() returns () {}
+  rpc UnreliableInstallationNotifications() returns () {}
+  rpc AcknowledgeInstallationNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SiteLookupSession {
+  rpc CanLookupSites() returns (boolean) {}
+  rpc UseComparativeSiteView() returns () {}
+  rpc UsePlenarySiteView() returns () {}
+  rpc GetSite(dlkit.primordium.id.primitives.Id) returns (Site) {}
+  rpc GetSites() returns (stream Site) {}
+}
+
+service PackageLookupSession {
+  rpc GetDepotId() returns (Id) {}
+  rpc GetDepot() returns (Depot) {}
+  rpc CanLookupPackages() returns (boolean) {}
+  rpc UseComparativePackageView() returns () {}
+  rpc UsePlenaryPackageView() returns () {}
+  rpc UseFederatedDepotView() returns () {}
+  rpc UseIsolatedDepotView() returns () {}
+  rpc UseNormalizedVersionView() returns () {}
+  rpc UseDenormalizedVersionView() returns () {}
+  rpc GetPackage(dlkit.primordium.id.primitives.Id) returns (Package) {}
+  rpc GetPackagesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Package) {}
+  rpc GetPackagesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Package) {}
+  rpc GetPackagesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Package) {}
+  rpc GetPackagesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Package) {}
+  rpc GetPackagesByProvider(dlkit.primordium.id.primitives.Id) returns (stream Package) {}
+  rpc GetDependentPackages(dlkit.primordium.id.primitives.Id) returns (stream Package) {}
+  rpc GetPackageVersions(dlkit.primordium.id.primitives.Id) returns (stream Package) {}
+  rpc GetPackages() returns (stream Package) {}
+}
+
+service PackageQuerySession {
+  rpc GetDepotId() returns (Id) {}
+  rpc GetDepot() returns (Depot) {}
+  rpc CanSearchPackages() returns (boolean) {}
+  rpc UseFederatedDepotView() returns () {}
+  rpc UseIsolatedDepotView() returns () {}
+  rpc UseNormalizedVersionView() returns () {}
+  rpc UseDenormalizedVersionView() returns () {}
+  rpc UseNormalizedDependencyView() returns () {}
+  rpc UseDenormalizedDependencyView() returns () {}
+  rpc GetPackageQuery() returns (PackageQuery) {}
+  rpc GetPackagesByQuery(osid.installation.PackageQuery) returns (stream Package) {}
+}
+
+service PackageSearchSession {
+  rpc GetPackageSearch() returns (PackageSearch) {}
+  rpc GetPackageSearchOrder() returns (PackageSearchOrder) {}
+  rpc GetPackagesBySearch(osid.installation.PackageQuery, osid.installation.PackageSearch) returns (PackageSearchResults) {}
+  rpc GetPackageQueryFromInspector(osid.installation.PackageQueryInspector) returns (PackageQuery) {}
+}
+
+service PackageAdminSession {
+  rpc GetDepotId() returns (Id) {}
+  rpc GetDepot() returns (Depot) {}
+  rpc CanCreatePackages() returns (boolean) {}
+  rpc CanCreatePackageWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetPackageFormForCreate(osid.type.Type[]) returns (PackageForm) {}
+  rpc CreatePackage(osid.installation.PackageForm) returns (Package) {}
+  rpc CanUpdatePackages() returns (boolean) {}
+  rpc CanUpdatePackage(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetPackageFormForUpdate(dlkit.primordium.id.primitives.Id) returns (PackageForm) {}
+  rpc UpdatePackage(osid.installation.PackageForm) returns () {}
+  rpc CanDeletePackages() returns (boolean) {}
+  rpc CanDeletePackage(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc DeletePackage(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManagePackageAliases() returns (boolean) {}
+  rpc AliasPackage(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanCreateInstallationContent() returns (boolean) {}
+  rpc CanCreateInstallationContentWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetInstallationContentFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (InstallationContentForm) {}
+  rpc CreateInstallationContent(osid.installation.InstallationContentForm) returns (InstallationContent) {}
+  rpc CanUpdateInstallationContents() returns (boolean) {}
+  rpc GetInstallationContentFormForUpdate(dlkit.primordium.id.primitives.Id) returns (InstallationContentForm) {}
+  rpc UpdateInstallationContent(osid.installation.InstallationContentForm) returns () {}
+  rpc CanDeleteInstallationContents() returns (boolean) {}
+  rpc DeleteInstallationContent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManagePackageVersions() returns (boolean) {}
+  rpc AddPackageVersion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemovePackageVersion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service PackageNotificationSession {
+  rpc GetDepotId() returns (Id) {}
+  rpc GetDepot() returns (Depot) {}
+  rpc CanRegisterForPackageNotifications() returns (boolean) {}
+  rpc UseFederatedDepotView() returns () {}
+  rpc UseIsolatedDepotView() returns () {}
+  rpc RegisterForNewPackages() returns () {}
+  rpc RegisterForChangedPackages() returns () {}
+  rpc RegisterForChangedPackage(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedPackages() returns () {}
+  rpc RegisterForDeletedPackage(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliablePackageNotifications() returns () {}
+  rpc UnreliablePackageNotifications() returns () {}
+  rpc AcknowledgePackageNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service PackageDepotSession {
+  rpc CanLookupPackageDepotMappings() returns (boolean) {}
+  rpc UseComparativeDepotView() returns () {}
+  rpc UsePlenaryDepotView() returns () {}
+  rpc UseNormalizedVersionView() returns () {}
+  rpc UseDenormalizedVersionView() returns () {}
+  rpc UseNormalizedDependencyView() returns () {}
+  rpc UseDenormalizedDependencyView() returns () {}
+  rpc GetPackageIdsByDepot(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetPackagesByDepot(dlkit.primordium.id.primitives.Id) returns (stream Package) {}
+  rpc GetPackageIdsByDepots(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetPackagesByDepots(dlkit.primordium.id.primitives.IdList) returns (stream Package) {}
+  rpc GetDepotIdsByPackage(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetDepotsByPackage(dlkit.primordium.id.primitives.Id) returns (stream Depot) {}
+}
+
+service PackageDepotAssignmentSession {
+  rpc CanAssignPackages() returns (boolean) {}
+  rpc CanAssignPackagesToDepot(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableDepotIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableDepotIdsForPackage(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignPackageToDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignPackageFromDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service PackageSmartDepotSession {
+  rpc GetDepotId() returns (Id) {}
+  rpc GetDepot() returns (Depot) {}
+  rpc CanManageSmartDepot() returns (boolean) {}
+  rpc GetPackageQuery() returns (PackageQuery) {}
+  rpc GetPackageSearchOrder() returns (PackageSearchOrder) {}
+  rpc ApplyPackageQuery(osid.installation.PackageQuery) returns () {}
+  rpc InspectPackageQuery() returns (PackageQueryInspector) {}
+  rpc ApplyPackageSequencing(osid.installation.PackageSearchOrder) returns () {}
+  rpc GetPackageQueryFromInspector(osid.installation.PackageQueryInspector) returns (PackageQuery) {}
+}
+
+service DepotLookupSession {
+  rpc CanLookupDepots() returns (boolean) {}
+  rpc UseComparativeDepotView() returns () {}
+  rpc UsePlenaryDepotView() returns () {}
+  rpc GetDepot(dlkit.primordium.id.primitives.Id) returns (Depot) {}
+  rpc GetDepotsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Depot) {}
+  rpc GetDepotsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Depot) {}
+  rpc GetDepotsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Depot) {}
+  rpc GetDepotsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Depot) {}
+  rpc GetDepotsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Depot) {}
+  rpc GetDepots() returns (stream Depot) {}
+}
+
+service DepotQuerySession {
+  rpc CanSearchDepots() returns (boolean) {}
+  rpc GetDepotQuery() returns (DepotQuery) {}
+  rpc GetDepotsByQuery(osid.installation.DepotQuery) returns (stream Depot) {}
+}
+
+service DepotSearchSession {
+  rpc GetDepotSearch() returns (DepotSearch) {}
+  rpc GetDepotSearchOrder() returns (DepotSearchOrder) {}
+  rpc GetDepotsBySearch(osid.installation.DepotQuery, osid.installation.DepotSearch) returns (DepotSearchResults) {}
+  rpc GetDepotQueryFromInspector(osid.installation.DepotQueryInspector) returns (DepotQuery) {}
+}
+
+service DepotAdminSession {
+  rpc CanCreateDepots() returns (boolean) {}
+  rpc CanCreateDepotWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetDepotFormForCreate(osid.type.Type[]) returns (DepotForm) {}
+  rpc CreateDepot(osid.installation.DepotForm) returns (Depot) {}
+  rpc CanUpdateDepots() returns (boolean) {}
+  rpc CanUpdateDepot(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetDepotFormForUpdate(dlkit.primordium.id.primitives.Id) returns (DepotForm) {}
+  rpc UpdateDepot(osid.installation.DepotForm) returns () {}
+  rpc CanDeleteDepots() returns (boolean) {}
+  rpc CanDeleteDepot(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc DeleteDepot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageDepotAliases() returns (boolean) {}
+  rpc AliasDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service DepotNotificationSession {
+  rpc CanRegisterForDepotNotifications() returns (boolean) {}
+  rpc RegisterForNewDepots() returns () {}
+  rpc RegisterForNewDepotAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewDepotDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedDepots() returns () {}
+  rpc RegisterForChangedDepot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedDepots() returns () {}
+  rpc RegisterForDeletedDepot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedDepotAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedDepotDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableDepotNotifications() returns () {}
+  rpc UnreliableDepotNotifications() returns () {}
+  rpc AcknowledgeDepotNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service DepotHierarchySession {
+  rpc GetDepotHierarchyId() returns (Id) {}
+  rpc GetDepotHierarchy() returns (Hierarchy) {}
+  rpc CanAccessDepotHierarchy() returns (boolean) {}
+  rpc UseComparativeDepotView() returns () {}
+  rpc UsePlenaryDepotView() returns () {}
+  rpc GetRootDepotIds() returns (stream Id) {}
+  rpc GetRootDepots() returns (stream Depot) {}
+  rpc HasParentDepots(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentDepotIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentDepots(dlkit.primordium.id.primitives.Id) returns (stream Depot) {}
+  rpc IsAncestorOfDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildDepots(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildDepotIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildDepots(dlkit.primordium.id.primitives.Id) returns (stream Depot) {}
+  rpc IsDescendantOfDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetDepotNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetDepotNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (DepotNode) {}
+}
+
+service DepotHierarchyDesignSession {
+  rpc GetDepotHierarchyId() returns (Id) {}
+  rpc GetDepotHierarchy() returns (Hierarchy) {}
+  rpc CanModifyDepotHierarchy() returns (boolean) {}
+  rpc AddRootDepot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootDepot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildDepot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildDepots(dlkit.primordium.id.primitives.Id) returns () {}
+}

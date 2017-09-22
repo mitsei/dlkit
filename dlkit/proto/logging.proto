@@ -1,0 +1,275 @@
+syntax = "proto3";
+
+package dlkit.proto.logging;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+import "google/protobuf/timestamp.proto";
+
+message LogEntry {
+  dlkit.primordium.id.primitives.Id agent = 1;
+  dlkit.proto.osid.OsidCatalog log = 2;
+  Type priority = 3;
+  google.protobuf.Timestamp timestamp = 4;
+}
+
+message LogEntryQuery {
+
+}
+
+message LogEntryForm {
+
+}
+
+message LogEntrySearch {
+
+}
+
+message LogEntrySearchResults {
+
+}
+
+message LogEntryList {
+  repeated LogEntry = 1;
+}
+
+message Log {
+
+}
+
+message LogQuery {
+
+}
+
+message LogForm {
+
+}
+
+message LogSearch {
+
+}
+
+message LogSearchResults {
+
+}
+
+message LogList {
+  repeated Log = 1;
+}
+
+message LogNode {
+
+}
+
+message LogNodeList {
+  repeated LogNode = 1;
+}
+
+service LoggingSession {
+  rpc GetLogId() returns (Id) {}
+  rpc GetLog() returns (Log) {}
+  rpc CanLog() returns (boolean) {}
+  rpc Log(object, dlkit.primordium.type.primitives.Type) returns () {}
+  rpc LogAtPriority(dlkit.primordium.type.primitives.Type, object, dlkit.primordium.type.primitives.Type) returns () {}
+  rpc GetLogEntryForm() returns (LogEntryForm) {}
+  rpc CreateLogEntry(osid.logging.LogEntryForm) returns () {}
+}
+
+service LogEntryLookupSession {
+  rpc GetLogId() returns (Id) {}
+  rpc GetLog() returns (Log) {}
+  rpc CanReadLog() returns (boolean) {}
+  rpc UseComparativeLogEntryView() returns () {}
+  rpc UsePlenaryLogEntryView() returns () {}
+  rpc UseFederatedLogView() returns () {}
+  rpc UseIsolatedLogView() returns () {}
+  rpc GetLogEntry(dlkit.primordium.id.primitives.Id) returns (LogEntry) {}
+  rpc GetLogEntriesByIds(dlkit.primordium.id.primitives.IdList) returns (stream LogEntry) {}
+  rpc GetLogEntriesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream LogEntry) {}
+  rpc GetLogEntriesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream LogEntry) {}
+  rpc GetLogEntriesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream LogEntry) {}
+  rpc GetLogEntriesByPriorityType(dlkit.primordium.type.primitives.Type) returns (stream LogEntry) {}
+  rpc GetLogEntriesByDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream LogEntry) {}
+  rpc GetLogEntriesByPriorityTypeAndDate(dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream LogEntry) {}
+  rpc GetLogEntriesForResource(dlkit.primordium.id.primitives.Id) returns (stream LogEntry) {}
+  rpc GetLogEntriesByDateForResource(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream LogEntry) {}
+  rpc GetLogEntriesByPriorityTypeAndDateForResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream LogEntry) {}
+  rpc GetLogEntries() returns (stream LogEntry) {}
+}
+
+service LogEntryQuerySession {
+  rpc GetLogId() returns (Id) {}
+  rpc GetLog() returns (Log) {}
+  rpc CanSearchLogEntries() returns (boolean) {}
+  rpc UseFederatedLogView() returns () {}
+  rpc UseIsolatedLogView() returns () {}
+  rpc GetLogEntryQuery() returns (LogEntryQuery) {}
+  rpc GetLogEntriesByQuery(osid.logging.LogEntryQuery) returns (stream LogEntry) {}
+}
+
+service LogEntrySearchSession {
+  rpc GetLogEntrySearch() returns (LogEntrySearch) {}
+  rpc GetLogEntrySearchOrder() returns (LogEntrySearchOrder) {}
+  rpc GetLogEntriesBySearch(osid.logging.LogEntryQuery, osid.logging.LogEntrySearch) returns (LogEntrySearchResults) {}
+  rpc GetLogEntryQueryFromInspector(osid.logging.LogQueryInspector) returns (LogEntryQuery) {}
+}
+
+service LogEntryAdminSession {
+  rpc GetLogId() returns (Id) {}
+  rpc GetLog() returns (Log) {}
+  rpc CanCreateLogEntries() returns (boolean) {}
+  rpc CanCreateLogEntryWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetLogEntryFormForCreate(osid.type.Type[]) returns (LogEntryForm) {}
+  rpc CreateLogEntry(osid.logging.LogEntryForm) returns (LogEntry) {}
+  rpc CanUpdateLogEntries() returns (boolean) {}
+  rpc GetLogEntryFormForUpdate(dlkit.primordium.id.primitives.Id) returns (LogEntryForm) {}
+  rpc UpdateLogEntry(osid.logging.LogEntryForm) returns () {}
+  rpc CanDeleteLogEntries() returns (boolean) {}
+  rpc DeleteLogEntry(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageLogEntryAliases() returns (boolean) {}
+  rpc AliasLogEntry(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LogEntryNotificationSession {
+  rpc GetLogId() returns (Id) {}
+  rpc GetLog() returns (Log) {}
+  rpc CanRegisterForLogEntryNotifications() returns (boolean) {}
+  rpc UseFederatedLogView() returns () {}
+  rpc UseIsolatedLogView() returns () {}
+  rpc ReliableLogEntryNotifications() returns () {}
+  rpc UnreliableLogEntryNotifications() returns () {}
+  rpc AcknowledgeLogEntryNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewLogEntries() returns () {}
+  rpc RegisterForNewLogEntriesAtPriority(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForNewLogEntriesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedLogEntries() returns () {}
+  rpc RegisterForChangedEntriesAtPriority(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedEntriesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedLogEntry(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedLogEntries() returns () {}
+  rpc RegisterForDeletedLogEntriesAtPriority(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForDeletedLogEntriesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedLogEntry(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LogEntryLogSession {
+  rpc UseComparativeLogView() returns () {}
+  rpc UsePlenaryLogView() returns () {}
+  rpc CanLookupLogEntryLogMappings() returns (boolean) {}
+  rpc GetLogEntryIdsByLog(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetLogEntriesByLog(dlkit.primordium.id.primitives.Id) returns (stream LogEntry) {}
+  rpc GetLogEntryIdsByLog(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetLogEntrieByLog(dlkit.primordium.id.primitives.IdList) returns (stream LogEntry) {}
+  rpc GetLogIdsByLogEntry(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetLogByLogEntry(dlkit.primordium.id.primitives.Id) returns (stream Log) {}
+}
+
+service LogEntryLogAssignmentSession {
+  rpc CanAssignLogEntries() returns (boolean) {}
+  rpc CanAssignLogEntriesToLog(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableLogIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableLogIdsForLogEntry(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignLogEntryToLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignLogEntryFromLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignLogEntryToLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LogEntrySmartLogSession {
+  rpc GetLogId() returns (Id) {}
+  rpc GetLog() returns (Log) {}
+  rpc CanManageSmartLog() returns (boolean) {}
+  rpc GetLogEntryQuery() returns (LogEntryQuery) {}
+  rpc GetLogEntrySearchOrder() returns (LogEntrySearchOrder) {}
+  rpc ApplyLogEntryQuery(osid.logging.LogEntryQuery) returns () {}
+  rpc InspectLogEntryQuery() returns (LogEntryQueryInspector) {}
+  rpc ApplyLogEntrySequencing(osid.logging.LogEntrySearchOrder) returns () {}
+  rpc GetLogEntryQueryFromInspector(osid.logging.LogEntryQueryInspector) returns (LogEntryQuery) {}
+}
+
+service LogLookupSession {
+  rpc CanLookupLogs() returns (boolean) {}
+  rpc UseComparativeLogView() returns () {}
+  rpc UsePlenaryLogView() returns () {}
+  rpc GetLog(dlkit.primordium.id.primitives.Id) returns (Log) {}
+  rpc GetLogsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Log) {}
+  rpc GetLogsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Log) {}
+  rpc GetLogsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Log) {}
+  rpc GetLogsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Log) {}
+  rpc GetLogsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Log) {}
+  rpc GetLogs() returns (stream Log) {}
+}
+
+service LogQuerySession {
+  rpc CanSearchLogs() returns (boolean) {}
+  rpc GetLogQuery() returns (LogQuery) {}
+  rpc GetLogsByQuery(osid.logging.LogQuery) returns (stream Log) {}
+}
+
+service LogSearchSession {
+  rpc GetLogSearch() returns (LogSearch) {}
+  rpc GetLogSearchOrder() returns (LogSearchOrder) {}
+  rpc GetLogsBySearch(osid.logging.LogQuery, osid.logging.LogSearch) returns (LogSearchResults) {}
+  rpc GetLogQueryFromInspector(osid.logging.LogQueryInspector) returns (LogQuery) {}
+}
+
+service LogAdminSession {
+  rpc CanCreateLogs() returns (boolean) {}
+  rpc CanCreateLogWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetLogFormForCreate(osid.type.Type[]) returns (LogForm) {}
+  rpc CreateLog(osid.logging.LogForm) returns (Log) {}
+  rpc CanUpdateLogs() returns (boolean) {}
+  rpc GetLogFormForUpdate(dlkit.primordium.id.primitives.Id) returns (LogForm) {}
+  rpc UpdateLog(osid.logging.LogForm) returns () {}
+  rpc CanDeleteLogs() returns (boolean) {}
+  rpc DeleteLog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageLogAliases() returns (boolean) {}
+  rpc AliasLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LogNotificationSession {
+  rpc CanRegisterForLogNotifications() returns (boolean) {}
+  rpc ReliableLogNotifications() returns () {}
+  rpc UnreliableLogNotifications() returns () {}
+  rpc AcknowledgeLogNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewLogs() returns () {}
+  rpc RegisterForChangedLogs() returns () {}
+  rpc RegisterForChangedLog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedLogs() returns () {}
+  rpc RegisterForDeletedLog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedLogHierarchy() returns () {}
+  rpc RegisterForChangedLogHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedLogHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LogHierarchySession {
+  rpc GetLogHierarchyId() returns (Id) {}
+  rpc GetLogHierarchy() returns (Hierarchy) {}
+  rpc CanAccessLogHierarchy() returns (boolean) {}
+  rpc UseComparativeLogView() returns () {}
+  rpc UsePlenaryLogView() returns () {}
+  rpc GetRootLogIds() returns (stream Id) {}
+  rpc GetRootLogs() returns (stream Log) {}
+  rpc HasParentLogs(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentLogIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentLogs(dlkit.primordium.id.primitives.Id) returns (stream Log) {}
+  rpc IsAncestorOfLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildLogs(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildLogIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildLogs(dlkit.primordium.id.primitives.Id) returns (stream Log) {}
+  rpc IsDescendantOfLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetLogNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetLogNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (LogNode) {}
+}
+
+service LogHierarchyDesignSession {
+  rpc GetLogHierarchyId() returns (Id) {}
+  rpc GetLogHierarchy() returns (Hierarchy) {}
+  rpc CanModifyLogHierarchy() returns (boolean) {}
+  rpc AddRootLog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootLog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildLog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildLogs(dlkit.primordium.id.primitives.Id) returns () {}
+}

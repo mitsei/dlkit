@@ -1,0 +1,387 @@
+syntax = "proto3";
+
+package dlkit.proto.configuration;
+
+import "osid/objects.proto";
+import "dlkit/primordium/id/primitives.proto";
+import "google/protobuf/timestamp.proto";
+import "dlkit/primordium/calendaring/primitives.proto";
+
+message Parameter {
+  dlkit.proto.osid.OsidCatalog configuration = 1;
+  Type value_coordinate_type = 2;
+  Type value_heading_type = 3;
+  Type value_object_type = 4;
+  Type value_spatial_unit_record_type = 5;
+  Syntax value_syntax = 6;
+  Type value_version_scheme = 7;
+  bool values_shuffled = 8;
+}
+
+message ParameterQuery {
+
+}
+
+message ParameterForm {
+
+}
+
+message ParameterSearch {
+
+}
+
+message ParameterSearchResults {
+
+}
+
+message ParameterList {
+  repeated Parameter = 1;
+}
+
+message Value {
+  bool boolean_value = 1;
+  byte[] bytes_value = 2;
+  sint32 cardinal_value = 3;
+  dlkit.proto.osid.OsidCatalog configuration = 4;
+  Coordinate coordinate_value = 5;
+  Currency currency_value = 6;
+  google.protobuf.Timestamp date_time_value = 7;
+  float decimal_value = 8;
+  Distance distance_value = 9;
+  Duration duration_value = 10;
+  dlkit.primordium.id.primitives.Id id_value = 11;
+  integer integer_value = 12;
+  dlkit.primordium.id.primitives.Id parameter = 13;
+  sint32 priority = 14;
+  SpatialUnit spatial_unit_value = 15;
+  Speed speed_value = 16;
+  string string_value = 17;
+  Time time_value = 18;
+  Type type_value = 19;
+  Version version_value = 20;
+}
+
+message ValueQuery {
+
+}
+
+message ValueForm {
+
+}
+
+message ValueSearch {
+
+}
+
+message ValueSearchResults {
+
+}
+
+message ValueList {
+  repeated Value = 1;
+}
+
+message Configuration {
+
+}
+
+message ConfigurationQuery {
+
+}
+
+message ConfigurationForm {
+
+}
+
+message ConfigurationSearch {
+
+}
+
+message ConfigurationSearchResults {
+
+}
+
+message ConfigurationList {
+  repeated Configuration = 1;
+}
+
+message ConfigurationNode {
+
+}
+
+message ConfigurationNodeList {
+  repeated ConfigurationNode = 1;
+}
+
+service ValueRetrievalSession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanLookupValues() returns (boolean) {}
+  rpc UseComparativeValueView() returns () {}
+  rpc UsePlenaryValueView() returns () {}
+  rpc UseFederatedConfigurationView() returns () {}
+  rpc UseIsolatedConfigurationView() returns () {}
+  rpc UseConditionalView() returns () {}
+  rpc UseUnconditionalView() returns () {}
+  rpc GetValueByParameter(dlkit.primordium.id.primitives.Id) returns (Value) {}
+  rpc GetValuesByParameter(dlkit.primordium.id.primitives.Id) returns (stream Value) {}
+  rpc GetValuesByParameters(dlkit.primordium.id.primitives.IdList) returns (stream Value) {}
+  rpc GetValueCondition(dlkit.primordium.id.primitives.Id) returns (ValueCondition) {}
+  rpc GetValueByParameterOnCondition(dlkit.primordium.id.primitives.Id, osid.configuration.ValueCondition) returns (Value) {}
+  rpc GetValuesByParameterOnCondition(dlkit.primordium.id.primitives.Id, osid.configuration.ValueCondition) returns (stream Value) {}
+  rpc GetValuesByParametersOnCondition(dlkit.primordium.id.primitives.IdList, osid.configuration.ValueCondition) returns (stream Value) {}
+}
+
+service ValueLookupSession {
+  rpc UseActiveValueView() returns () {}
+  rpc UseAnyStatusValueView() returns () {}
+  rpc GetValue(dlkit.primordium.id.primitives.Id) returns (Value) {}
+  rpc GetValuesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Value) {}
+  rpc GetValuesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Value) {}
+  rpc GetValuesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Value) {}
+  rpc GetValuesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Value) {}
+  rpc GetValues() returns (stream Value) {}
+  rpc GetValuesOnCondition(osid.configuration.ValueCondition) returns (stream Value) {}
+}
+
+service ValueQuerySession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanSearchValues() returns (boolean) {}
+  rpc UseFederatedConfigurationView() returns () {}
+  rpc UseIsolatedConfigurationView() returns () {}
+  rpc GetValueQuery() returns (ValueQuery) {}
+  rpc GetValuesByQuery(osid.configuration.ValueQuery) returns (stream Value) {}
+}
+
+service ValueSearchSession {
+  rpc GetValueSearch() returns (ValueSearch) {}
+  rpc GetValueSearchOrder() returns (ValueSearchOrder) {}
+  rpc GetValuesBySearch(osid.configuration.ValueQuery, osid.configuration.ValueSearch) returns (ValueSearchResults) {}
+  rpc GetValueQueryFromInspector(osid.configuration.ValueQueryInspector) returns (ValueQuery) {}
+}
+
+service ValueAdminSession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc SupportValueConditions() returns (boolean) {}
+  rpc CanCreateValues() returns (boolean) {}
+  rpc CanCreateValueWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetValueFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (ValueForm) {}
+  rpc CreateValue(osid.configuration.ValueForm) returns (Value) {}
+  rpc CanUpdateValues() returns (boolean) {}
+  rpc GetValueFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ValueForm) {}
+  rpc UpdateValue(osid.configuration.ValueForm) returns () {}
+  rpc CanDeleteValues() returns (boolean) {}
+  rpc DeleteValue(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageValueAliases() returns (boolean) {}
+  rpc AliasValue(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ValueNotificationSession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanRegisterForValueNotifications() returns (boolean) {}
+  rpc UseFederatedConfigurationView() returns () {}
+  rpc UseIsolatedConfigurationView() returns () {}
+  rpc ReliableValueNotifications() returns () {}
+  rpc UnreliableValueNotifications() returns () {}
+  rpc AcknowledgeValueNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewValues() returns () {}
+  rpc RegisterForNewValuesForParameter(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedValues() returns () {}
+  rpc RegisterForChangedValuesForParameter(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedValue(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedValues() returns () {}
+  rpc RegisterForDeletedValuesForParameter(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedValue(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ParameterLookupSession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanLookupParameters() returns (boolean) {}
+  rpc UseComparativeParameterView() returns () {}
+  rpc UsePlenaryParameterView() returns () {}
+  rpc UseFederatedConfigurationView() returns () {}
+  rpc UseIsolatedConfigurationView() returns () {}
+  rpc UseActiveParameterView() returns () {}
+  rpc UseAnyStatusParameterView() returns () {}
+  rpc GetParameter(dlkit.primordium.id.primitives.Id) returns (Parameter) {}
+  rpc GetParametersByIds(dlkit.primordium.id.primitives.IdList) returns (stream Parameter) {}
+  rpc GetParametersByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Parameter) {}
+  rpc GetParametersByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Parameter) {}
+  rpc GetParametersByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Parameter) {}
+  rpc GetParameters() returns (stream Parameter) {}
+}
+
+service ParameterQuerySession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanSearchParameters() returns (boolean) {}
+  rpc UseFederatedConfigurationView() returns () {}
+  rpc UseIsolatedConfigurationView() returns () {}
+  rpc GetParameterQuery() returns (ParameterQuery) {}
+  rpc GetParametersByQuery(osid.configuration.ParameterQuery) returns (stream Parameter) {}
+}
+
+service ParameterSearchSession {
+  rpc GetParameterSearch() returns (ParameterSearch) {}
+  rpc GetParameterSearchOrder() returns (ParameterSearchOrder) {}
+  rpc GetParametersBySearch(osid.configuration.ParameterQuery, osid.configuration.ParameterSearch) returns (ParameterSearchResults) {}
+  rpc GetParameterQueryFromInspector(osid.configuration.ParameterQueryInspector) returns (ParameterQuery) {}
+}
+
+service ParameterAdminSession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanCreateParameters() returns (boolean) {}
+  rpc CanCreateParameterWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetParameterFormForCreate(osid.type.Type[]) returns (ParameterForm) {}
+  rpc CreateParameter(osid.configuration.ParameterForm) returns (Parameter) {}
+  rpc CanUpdateParameters() returns (boolean) {}
+  rpc GetParameterFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ParameterForm) {}
+  rpc UpdateParameter(osid.configuration.ParameterForm) returns () {}
+  rpc CanDeleteParameters() returns (boolean) {}
+  rpc DeleteParameter(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageParameterAliases() returns (boolean) {}
+  rpc AliasParameter(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ParameterNotificationSession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanRegisterForParameterNotifications() returns (boolean) {}
+  rpc UseFederatedConfigurationView() returns () {}
+  rpc UseIsolatedConfigurationView() returns () {}
+  rpc ReliableParameterNotifications() returns () {}
+  rpc UnreliableParameterNotifications() returns () {}
+  rpc AcknowledgeParameterNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewParameters() returns () {}
+  rpc RegisterForChangedParameters() returns () {}
+  rpc RegisterForChangedParameter(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedParameters() returns () {}
+  rpc RegisterForDeletedParameter(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ParameterConfigurationSession {
+  rpc CanLookupParameterConfigurations() returns (boolean) {}
+  rpc UseComparativeParameterView() returns () {}
+  rpc UsePlenaryParameterView() returns () {}
+  rpc GetParameterIdsByConfiguration(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParametersByConfiguration(dlkit.primordium.id.primitives.Id) returns (stream Parameter) {}
+  rpc GetParameterIdsByConfigurations(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetParametersByConfigurations(dlkit.primordium.id.primitives.IdList) returns (stream Parameter) {}
+  rpc GetConfigurationIdsByParameter(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetConfigurationsByParameter(dlkit.primordium.id.primitives.Id) returns (stream Configuration) {}
+}
+
+service ParameterConfigurationAssignmentSession {
+  rpc CanAssignParameterConfigurations() returns (boolean) {}
+  rpc CanAssignParametersToConfiguration(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableConfigurationIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableConfigurationIdsForParameter(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignParameterToConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignParameterFromConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignParameterToConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ParameterSmartConfigurationSession {
+  rpc GetConfigurationId() returns (Id) {}
+  rpc GetConfiguration() returns (Configuration) {}
+  rpc CanManageSmartConfigurations() returns (boolean) {}
+  rpc GetParameterQuery() returns (ParameterQuery) {}
+  rpc GetParameterSearchOrder() returns (ParameterSearchOrder) {}
+  rpc ApplyParameterQuery(osid.configuration.ParameterQuery) returns () {}
+  rpc InspecParameterQuery() returns (ParameterQueryInspector) {}
+  rpc ApplyParameterSequencing(osid.configuration.ParameterSearchOrder) returns () {}
+  rpc GetParameterQueryFromInspector(osid.configuration.ParameterQueryInspector) returns (ParameterQuery) {}
+}
+
+service ConfigurationLookupSession {
+  rpc CanLookupConfigurations() returns (boolean) {}
+  rpc UseComparativeConfigurationView() returns () {}
+  rpc UsePlenaryConfigurationView() returns () {}
+  rpc GetConfiguration(dlkit.primordium.id.primitives.Id) returns (Configuration) {}
+  rpc GetConfigurationsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Configuration) {}
+  rpc GetConfigurationsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Configuration) {}
+  rpc GetConfigurationsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Configuration) {}
+  rpc GetConfigurationsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Configuration) {}
+  rpc GetConfigurationsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Configuration) {}
+  rpc GetConfigurations() returns (stream Configuration) {}
+}
+
+service ConfigurationQuerySession {
+  rpc CanSearchConfigurations() returns (boolean) {}
+  rpc GetConfigurationQuery() returns (ConfigurationQuery) {}
+  rpc GetConfigurationsByQuery(osid.configuration.ConfigurationQuery) returns (stream Configuration) {}
+}
+
+service ConfigurationSearchSession {
+  rpc GetConfigurationSearch() returns (ConfigurationSearch) {}
+  rpc GetConfigurationSearchOrder() returns (ConfigurationSearchOrder) {}
+  rpc GetConfigurationsBySearch(osid.configuration.ConfigurationQuery, osid.configuration.ConfigurationSearch) returns (ConfigurationSearchResults) {}
+  rpc GetConfigurationQueryFromInspector(osid.configuration.ConfigurationQueryInspector) returns (ConfigurationQuery) {}
+}
+
+service ConfigurationAdminSession {
+  rpc CanCreateConfigurations() returns (boolean) {}
+  rpc CanCreateConfigurationWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetConfigurationFormForCreate(osid.type.Type[]) returns (ConfigurationForm) {}
+  rpc CreateConfiguration(osid.configuration.ConfigurationForm) returns (Configuration) {}
+  rpc CanUpdateConfigurations() returns (boolean) {}
+  rpc GetConfigurationFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ConfigurationForm) {}
+  rpc UpdateConfiguration(osid.configuration.ConfigurationForm) returns () {}
+  rpc CanDeleteConfigurations() returns (boolean) {}
+  rpc DeleteConfiguration(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageConfigurationAliases() returns (boolean) {}
+  rpc AliasConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ConfigurationNotificationSession {
+  rpc CanRegisterForConfigurationNotifications() returns (boolean) {}
+  rpc ReliableConfigurationNotifications() returns () {}
+  rpc UnreliableConfigurationNotifications() returns () {}
+  rpc AcknowledgeConfigurationNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewConfigurations() returns () {}
+  rpc RegisterForChangedConfigurations() returns () {}
+  rpc RegisterForChangedConfiguration(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedConfigurations() returns () {}
+  rpc RegisterForDeletedConfiguration(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedConfigurationHierarchy() returns () {}
+  rpc RegisterForChangedConfigurationHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedConfigurationHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ConfigurationHierarchySession {
+  rpc GetConfigurationHierarchyId() returns (Id) {}
+  rpc GetConfigurationHierarchy() returns (Hierarchy) {}
+  rpc CanAccessConfigurationHierarchy() returns (boolean) {}
+  rpc UseComparativeConfigurationView() returns () {}
+  rpc UsePlenaryConfigurationView() returns () {}
+  rpc GetRootConfigurationIds() returns (stream Id) {}
+  rpc GetRootConfigurations() returns (stream Configuration) {}
+  rpc HasParentConfigurations(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentConfigurationIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentConfigurations(dlkit.primordium.id.primitives.Id) returns (stream Configuration) {}
+  rpc IsAncestorOfConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildConfigurations(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildConfigurationIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildConfigurations(dlkit.primordium.id.primitives.Id) returns (stream Configuration) {}
+  rpc IsDescendantOfConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetConfigurationNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetConfigurationNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (ConfigurationNode) {}
+}
+
+service ConfigurationHierarchyDesignSession {
+  rpc GetConfigurationHierarchyId() returns (Id) {}
+  rpc GetConfigurationHierarchy() returns (Hierarchy) {}
+  rpc CanModifyConfigurationHierarchy() returns (boolean) {}
+  rpc AddRootConfiguration(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootConfiguration(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildConfiguration(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildConfigurations(dlkit.primordium.id.primitives.Id) returns () {}
+}

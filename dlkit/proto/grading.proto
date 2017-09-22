@@ -1,0 +1,536 @@
+syntax = "proto3";
+
+package dlkit.proto.grading;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+
+message Grade {
+  dlkit.primordium.id.primitives.Id grade_system = 1;
+  dlkit.proto.osid.OsidCatalog gradebook = 2;
+  float input_score_end_range = 3;
+  float input_score_start_range = 4;
+  float output_score = 5;
+}
+
+message GradeQuery {
+
+}
+
+message GradeForm {
+
+}
+
+message GradeList {
+  repeated Grade = 1;
+}
+
+message GradeSystem {
+  bool based_on_grades = 1;
+  dlkit.proto.osid.OsidCatalog gradebook = 2;
+  float highest_numeric_score = 3;
+  float lowest_numeric_score = 4;
+  float numeric_score_increment = 5;
+}
+
+message GradeSystemQuery {
+
+}
+
+message GradeSystemForm {
+
+}
+
+message GradeSystemSearch {
+
+}
+
+message GradeSystemSearchResults {
+
+}
+
+message GradeSystemList {
+  repeated GradeSystem = 1;
+}
+
+message GradeEntry {
+  dlkit.primordium.id.primitives.Id grade = 1;
+  dlkit.proto.osid.OsidCatalog gradebook = 2;
+  dlkit.primordium.id.primitives.Id gradebook_column = 3;
+  bool ignored_for_calculations = 4;
+  dlkit.primordium.id.primitives.Id resource = 5;
+  float score = 6;
+}
+
+message GradeEntryQuery {
+
+}
+
+message GradeEntryForm {
+
+}
+
+message GradeEntrySearch {
+
+}
+
+message GradeEntrySearchResults {
+
+}
+
+message GradeEntryList {
+  repeated GradeEntry = 1;
+}
+
+message GradebookColumn {
+  dlkit.primordium.id.primitives.Id grade_system = 1;
+  dlkit.proto.osid.OsidCatalog gradebook = 2;
+}
+
+message GradebookColumnQuery {
+
+}
+
+message GradebookColumnForm {
+
+}
+
+message GradebookColumnSearch {
+
+}
+
+message GradebookColumnSearchResults {
+
+}
+
+message GradebookColumnList {
+  repeated GradebookColumn = 1;
+}
+
+message GradebookColumnSummary {
+  dlkit.primordium.id.primitives.Id gradebook_column = 1;
+}
+
+message GradebookColumnSummaryQuery {
+
+}
+
+message Gradebook {
+
+}
+
+message GradebookQuery {
+
+}
+
+message GradebookForm {
+
+}
+
+message GradebookSearch {
+
+}
+
+message GradebookSearchResults {
+
+}
+
+message GradebookList {
+  repeated Gradebook = 1;
+}
+
+message GradebookNode {
+
+}
+
+message GradebookNodeList {
+  repeated GradebookNode = 1;
+}
+
+service GradeSystemLookupSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanLookupGradeSystems() returns (boolean) {}
+  rpc UseComparativeGradeSystemView() returns () {}
+  rpc UsePlenaryGradeSystemView() returns () {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc GetGradeSystem(dlkit.primordium.id.primitives.Id) returns (GradeSystem) {}
+  rpc GetGradeSystemByGrade(dlkit.primordium.id.primitives.Id) returns (GradeSystem) {}
+  rpc GetGradeSystemsByIds(dlkit.primordium.id.primitives.IdList) returns (stream GradeSystem) {}
+  rpc GetGradeSystemsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream GradeSystem) {}
+  rpc GetGradeSystemsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream GradeSystem) {}
+  rpc GetGradeSystemsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream GradeSystem) {}
+  rpc GetGradeSystems() returns (stream GradeSystem) {}
+}
+
+service GradeSystemQuerySession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanSearchGradeSystems() returns (boolean) {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc GetGradeSystemQuery() returns (GradeSystemQuery) {}
+  rpc GetGradeSystemsByQuery(osid.grading.GradeSystemQuery) returns (stream GradeSystem) {}
+}
+
+service GradeSystemSearchSession {
+  rpc GetGradeSystemSearch() returns (GradeSystemSearch) {}
+  rpc GetGradeSystemSearchOrder() returns (GradeSystemSearchOrder) {}
+  rpc GetGradeSystemsBySearch(osid.grading.GradeSystemQuery, osid.grading.GradeSystemSearch) returns (GradeSystemSearchResults) {}
+  rpc GetGradeSystemQueryFromInspector(osid.grading.GradeSystemQueryInspector) returns (GradeSystemQuery) {}
+}
+
+service GradeSystemAdminSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanCreateGradeSystems() returns (boolean) {}
+  rpc CanCreateGradeSystemWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetGradeSystemFormForCreate(osid.type.Type[]) returns (GradeSystemForm) {}
+  rpc CreateGradeSystem(osid.grading.GradeSystemForm) returns (GradeSystem) {}
+  rpc CanUpdateGradeSystems() returns (boolean) {}
+  rpc GetGradeSystemFormForUpdate(dlkit.primordium.id.primitives.Id) returns (GradeSystemForm) {}
+  rpc UpdateGradeSystem(osid.grading.GradeSystemForm) returns () {}
+  rpc CanDeleteGradeSystems() returns (boolean) {}
+  rpc DeleteGradeSystem(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageGradeSystemAliases() returns (boolean) {}
+  rpc AliasGradeSystem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanCreateGrades(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc CanCreateGradeWithRecordTypes(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (boolean) {}
+  rpc GetGradeFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (GradeForm) {}
+  rpc CreateGrade(osid.grading.GradeForm) returns (Grade) {}
+  rpc CanUpdateGrades(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetGradeFormForUpdate(dlkit.primordium.id.primitives.Id) returns (GradeForm) {}
+  rpc UpdateGrade(osid.grading.GradeForm) returns () {}
+  rpc CanDeleteGrades(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc DeleteGrade(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageGradeAliases() returns (boolean) {}
+  rpc AliasGrade(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradeSystemNotificationSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanRegisterForGradeSystemNotifications() returns (boolean) {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc RegisterForNewGradeSystems() returns () {}
+  rpc RegisterForChangedGradeSystems() returns () {}
+  rpc RegisterForChangedGradeSystem(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradeSystems() returns () {}
+  rpc RegisterForDeletedGradeSystem(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableGradeSystemNotifications() returns () {}
+  rpc UnreliableGradeSystemNotifications() returns () {}
+  rpc AcknowledgeGradeSystemNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradeSystemGradebookSession {
+  rpc UseComparativeGradebookView() returns () {}
+  rpc UsePlenaryGradebookView() returns () {}
+  rpc CanLookupGradeSystemGradebookMappings() returns (boolean) {}
+  rpc GetGradeSystemIdsByGradebook(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetGradeSystemsByGradebook(dlkit.primordium.id.primitives.Id) returns (stream GradeSystem) {}
+  rpc GetGradeSystemIdsByGradebooks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetGradeSystemsByGradebooks(dlkit.primordium.id.primitives.IdList) returns (stream GradeSystem) {}
+  rpc GetGradebookIdsByGradeSystem(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetGradebooksByGradeSystem(dlkit.primordium.id.primitives.Id) returns (stream Gradebook) {}
+}
+
+service GradeSystemGradebookAssignmentSession {
+  rpc CanAssignGradeSystem() returns (boolean) {}
+  rpc CanAssignGradeSystemsToGradebook(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableGradebookIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableGradebookIdsForGradeSystem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignGradeSystemToGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignGradeSystemFromGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradeSystemSmartGradebookSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanManageSmartGradebooks() returns (boolean) {}
+  rpc GetGradeSystemQuery() returns (GradeSystemQuery) {}
+  rpc GetGradeSystemSearchOrder() returns (GradeSystemSearchOrder) {}
+  rpc ApplyGradeSystemQuery(osid.grading.GradeSystemQuery) returns () {}
+  rpc InspectGradeSystemQuery() returns (GradeSystemQueryInspector) {}
+  rpc ApplyGradeSystemSequencing(osid.grading.GradeSystemSearchOrder) returns () {}
+  rpc GetGradeSystemQueryFromInspector(osid.grading.GradeSystemQueryInspector) returns (GradeSystemQuery) {}
+}
+
+service GradeEntryLookupSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanLookupGradeEntries() returns (boolean) {}
+  rpc UseComparativeGradeEntryView() returns () {}
+  rpc UsePlenaryGradeEntryView() returns () {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc UseEffectiveGradeEntryView() returns () {}
+  rpc UseAnyEffectiveGradeEntryView() returns () {}
+  rpc GetGradeEntry(dlkit.primordium.id.primitives.Id) returns (GradeEntry) {}
+  rpc GetGradeEntriesByIds(dlkit.primordium.id.primitives.IdList) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesForGradebookColumn(dlkit.primordium.id.primitives.Id) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesForGradebookColumnOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesForResource(dlkit.primordium.id.primitives.Id) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesForResourceOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesForGradebookColumnAndResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesForGradebookColumnAndResourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream GradeEntry) {}
+  rpc GetGradeEntriesByGrader(dlkit.primordium.id.primitives.Id) returns (stream GradeEntry) {}
+  rpc GetGradeEntries() returns (stream GradeEntry) {}
+}
+
+service GradeEntryQuerySession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanSearchGradeEntries() returns (boolean) {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc GetGradeEntryQuery() returns (GradeEntryQuery) {}
+  rpc GetGradeEntriesByQuery(osid.grading.GradeEntryQuery) returns (stream GradeEntry) {}
+}
+
+service GradeEntrySearchSession {
+  rpc GetGradeEntrySearch() returns (GradeEntrySearch) {}
+  rpc GetGradeEntrySearchOrder() returns (GradeEntrySearchOrder) {}
+  rpc GetGradeEntriesBySearch(osid.grading.GradeEntryQuery, osid.grading.GradeEntrySearch) returns (GradeEntrySearchResults) {}
+  rpc GetGradeEntryQueryFromInspector(osid.grading.GradeEntryQueryInspector) returns (GradeEntryQuery) {}
+}
+
+service GradeEntryAdminSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanCreateGradeEntries() returns (boolean) {}
+  rpc CanCreateGradeEntryWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetGradeEntryFormForCreate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (GradeEntryForm) {}
+  rpc CreateGradeEntry(osid.grading.GradeEntryForm) returns (GradeEntry) {}
+  rpc CanOverridecalculatedGradeEntries() returns (boolean) {}
+  rpc GetGradeEntryFormForOverride(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (GradeEntryForm) {}
+  rpc OverrideCalculatedGradeEntry(osid.grading.GradeEntryForm) returns (GradeEntry) {}
+  rpc CanUpdateGradeEntries() returns (boolean) {}
+  rpc GetGradeEntryFormForUpdate(dlkit.primordium.id.primitives.Id) returns (GradeEntryForm) {}
+  rpc UpdateGradeEntry(osid.grading.GradeEntryForm) returns () {}
+  rpc CanDeleteGradeEntries() returns (boolean) {}
+  rpc DeleteGradeEntry(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageGradeEntryAliases() returns (boolean) {}
+  rpc AliasGradeEntry(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradeEntryNotificationSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanRegisterForGradeEntryNotifications() returns (boolean) {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc RegisterForNewGradeEntries() returns () {}
+  rpc RegisterForNewGradeEntriesForGradebookColumn(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewGradeEntriesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewGradeEntriesByGrader(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedGradeEntries() returns () {}
+  rpc RegisterForChangedGradeEntriesForGradebookColumn(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedGradeEntriesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedGradeEntriesByGrader(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedGradeEntry(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradeEntries() returns () {}
+  rpc RegisterForDeletedGradeEntriesForGradebookColumn(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradeEntriesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradeEntriesByGrader(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradeEntry(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableGradeEntryNotifications() returns () {}
+  rpc UnreliableGradeEntryNotifications() returns () {}
+  rpc AcknowledgeGradeEntryNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradebookColumnLookupSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanLookupGradebookColumns() returns (boolean) {}
+  rpc UseComparativeGradebookColumnView() returns () {}
+  rpc UsePlenaryGradebookColumnView() returns () {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc GetGradebookColumn(dlkit.primordium.id.primitives.Id) returns (GradebookColumn) {}
+  rpc GetGradebookColumnsByIds(dlkit.primordium.id.primitives.IdList) returns (stream GradebookColumn) {}
+  rpc GetGradebookColumnsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream GradebookColumn) {}
+  rpc GetGradebookColumnsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream GradebookColumn) {}
+  rpc GetGradebookColumnsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream GradebookColumn) {}
+  rpc GetGradebookColumns() returns (stream GradebookColumn) {}
+  rpc SupportsSummary() returns (boolean) {}
+  rpc GetGradebookColumnSummary(dlkit.primordium.id.primitives.Id) returns (GradebookColumnSummary) {}
+}
+
+service GradebookColumnQuerySession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanSearchGradebookColumns() returns (boolean) {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc GetGradebookColumnQuery() returns (GradebookColumnQuery) {}
+  rpc GetGradebookColumnsByQuery(osid.grading.GradebookColumnQuery) returns (stream GradebookColumn) {}
+}
+
+service GradebookColumnSearchSession {
+  rpc GetGradebookColumnSearch() returns (GradebookColumnSearch) {}
+  rpc GetGradebookColumnSearchOrder() returns (GradebookColumnSearchOrder) {}
+  rpc GetGradebookColumnsBySearch(osid.grading.GradebookColumnQuery, osid.grading.GradebookColumnSearch) returns (GradebookColumnSearchResults) {}
+  rpc GetGradebookColumnQueryFromInspector(osid.grading.GradebookColumnQueryInspector) returns (GradebookColumnQuery) {}
+}
+
+service GradebookColumnAdminSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanCreateGradebookColumns() returns (boolean) {}
+  rpc CanCreateGradebookColumnWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetGradebookColumnFormForCreate(osid.type.Type[]) returns (GradebookColumnForm) {}
+  rpc CreateGradebookColumn(osid.grading.GradebookColumnForm) returns (GradebookColumn) {}
+  rpc CanUpdateGradebookColumns() returns (boolean) {}
+  rpc GetGradebookColumnFormForUpdate(dlkit.primordium.id.primitives.Id) returns (GradebookColumnForm) {}
+  rpc UpdateGradebookColumn(osid.grading.GradebookColumnForm) returns () {}
+  rpc SequenceGradebookColumns(dlkit.primordium.id.primitives.IdList) returns () {}
+  rpc MoveGradebookColumn(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CopyGradebookColumnEntries(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanDeleteGradebookColumns() returns (boolean) {}
+  rpc DeleteGradebookColumn(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageGradebookColumnAliases() returns (boolean) {}
+  rpc AliasGradebookColumn(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradebookColumnNotificationSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanRegisterForGradebookColumnNotifications() returns (boolean) {}
+  rpc UseFederatedGradebookView() returns () {}
+  rpc UseIsolatedGradebookView() returns () {}
+  rpc RegisterForNewGradebookColumns() returns () {}
+  rpc RegisterForChangedGradebookColumns() returns () {}
+  rpc RegisterForChangedGradebookColumn(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradebookColumns() returns () {}
+  rpc RegisterForDeletedGradebookColumn(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableGradebookColumnNotifications() returns () {}
+  rpc UnreliableGradebookColumnNotifications() returns () {}
+  rpc AcknowledgeGradebookColumnNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradebookColumnGradebookSession {
+  rpc UseComparativeGradebookView() returns () {}
+  rpc UsePlenaryGradebookView() returns () {}
+  rpc CanLookupGradebookColumnGradebookMappings() returns (boolean) {}
+  rpc GetGradebookColumnIdsByGradebook(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetGradebookColumnsByGradebook(dlkit.primordium.id.primitives.Id) returns (stream GradebookColumn) {}
+  rpc GetGradebookColumnIdsByGradebooks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetGradebookColumnsByGradebooks(dlkit.primordium.id.primitives.IdList) returns (stream GradebookColumn) {}
+  rpc GetGradebookIdsByGradebookColumn(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetGradebooksByGradebookColumn(dlkit.primordium.id.primitives.Id) returns (stream Gradebook) {}
+}
+
+service GradebookColumnGradebookAssignmentSession {
+  rpc CanAssignGradebookColumns() returns (boolean) {}
+  rpc CanAssignGradebookColumnsToGradebook(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableGradebookIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableGradebookIdsForGradebookColumn(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignGradebookColumnToGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignGradebookColumnFromGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradebookColumnSmartGradebookSession {
+  rpc GetGradebookId() returns (Id) {}
+  rpc GetGradebook() returns (Gradebook) {}
+  rpc CanManageSmartGradebooks() returns (boolean) {}
+  rpc GetGradebookColumnQuery() returns (GradebookColumnQuery) {}
+  rpc GetGradebookColumnSearchOrder() returns (GradebookColumnSearchOrder) {}
+  rpc ApplyGradebookColumnQuery(osid.grading.GradebookColumnQuery) returns () {}
+  rpc InspectGradebookColumnQuery() returns (GradebookColumnQueryInspector) {}
+  rpc ApplyGradebookColumnSequencing(osid.grading.GradebookColumnSearchOrder) returns () {}
+  rpc GetGradebookColumnQueryFromInspector(osid.grading.GradebookColumnQuery) returns (GradebookColumnQuery) {}
+}
+
+service GradebookLookupSession {
+  rpc CanLookupGradebooks() returns (boolean) {}
+  rpc UseComparativeGradebookView() returns () {}
+  rpc UsePlenaryGradebookView() returns () {}
+  rpc GetGradebook(dlkit.primordium.id.primitives.Id) returns (Gradebook) {}
+  rpc GetGradebooksByIds(dlkit.primordium.id.primitives.IdList) returns (stream Gradebook) {}
+  rpc GetGradebooksByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Gradebook) {}
+  rpc GetGradebooksByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Gradebook) {}
+  rpc GetGradebooksByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Gradebook) {}
+  rpc GetGradebooksByProvider(dlkit.primordium.id.primitives.Id) returns (stream Gradebook) {}
+  rpc GetGradebooks() returns (stream Gradebook) {}
+}
+
+service GradebookQuerySession {
+  rpc CanSearchGradebooks() returns (boolean) {}
+  rpc GetGradebookQuery() returns (GradebookQuery) {}
+  rpc GetGradebooksByQuery(osid.grading.GradebookQuery) returns (stream Gradebook) {}
+}
+
+service GradebookSearchSession {
+  rpc GetGradebookSearch() returns (GradebookSearch) {}
+  rpc GetGradebookSearchOrder() returns (GradebookSearchOrder) {}
+  rpc GetGradebooksBySearch(osid.grading.GradebookQuery, osid.grading.GradebookSearch) returns (GradebookSearchResults) {}
+  rpc GetGradebookQueryFromInspector(osid.grading.GradebookQueryInspector) returns (GradebookQuery) {}
+}
+
+service GradebookAdminSession {
+  rpc CanCreateGradebooks() returns (boolean) {}
+  rpc CanCreateGradebookWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetGradebookFormForCreate(osid.type.Type[]) returns (GradebookForm) {}
+  rpc CreateGradebook(osid.grading.GradebookForm) returns (Gradebook) {}
+  rpc CanUpdateGradebooks() returns (boolean) {}
+  rpc GetGradebookFormForUpdate(dlkit.primordium.id.primitives.Id) returns (GradebookForm) {}
+  rpc UpdateGradebook(osid.grading.GradebookForm) returns () {}
+  rpc CanDeleteGradebooks() returns (boolean) {}
+  rpc DeleteGradebook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageGradebookAliases() returns (boolean) {}
+  rpc AliasGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradebookNotificationSession {
+  rpc CanRegisterForGradebookNotifications() returns (boolean) {}
+  rpc RegisterForNewGradebooks() returns () {}
+  rpc RegisterForNewGradebookAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewGradebookDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedGradebooks() returns () {}
+  rpc RegisterForChangedGradebook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradebooks() returns () {}
+  rpc RegisterForDeletedGradebook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradebookAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedGradebookDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableGradebookNotifications() returns () {}
+  rpc UnreliableGradebookNotifications() returns () {}
+  rpc AcknowledgeGradebookNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service GradebookHierarchySession {
+  rpc GetGradebookHierarchyId() returns (Id) {}
+  rpc GetGradebookHierarchy() returns (Hierarchy) {}
+  rpc CanAccessGradebookHierarchy() returns (boolean) {}
+  rpc UseComparativeGradebookView() returns () {}
+  rpc UsePlenaryGradebookView() returns () {}
+  rpc GetRootGradebookIds() returns (stream Id) {}
+  rpc GetRootGradebooks() returns (stream Gradebook) {}
+  rpc HasParentGradebooks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentGradebookIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentGradebooks(dlkit.primordium.id.primitives.Id) returns (stream Gradebook) {}
+  rpc IsAncestorOfGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildGradebooks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildGradebookIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildGradebooks(dlkit.primordium.id.primitives.Id) returns (stream Gradebook) {}
+  rpc IsDescendantOfGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetGradebookNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetGradebookNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (GradebookNode) {}
+}
+
+service GradebookHierarchyDesignSession {
+  rpc GetGradebookHierarchyId() returns (Id) {}
+  rpc GetGradebookHierarchy() returns (Hierarchy) {}
+  rpc CanModifyGradebookHierarchy() returns (boolean) {}
+  rpc AddRootGradebook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootGradebook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildGradebook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}

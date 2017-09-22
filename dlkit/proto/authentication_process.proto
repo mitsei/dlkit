@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package dlkit.proto.authentication_process;
+
+import "dlkit/primordium/id/primitives.proto";
+
+message Authentication {
+  dlkit.primordium.id.primitives.Id agent = 1;
+}
+
+message Challenge {
+
+}
+
+message Trust {
+
+}
+
+message TrustList {
+  repeated Trust = 1;
+}
+
+service AuthenticationAcquisitionSession {
+  rpc GetAuthentication() returns (Authentication) {}
+}
+
+service AuthenticationValidationSession {
+  rpc GetAuthenticationInput() returns (AuthenticationInput) {}
+  rpc Authenticate(osid.authentication.process.AuthenticationInput) returns (Authentication) {}
+  rpc GetChallengeData(osid.authentication.process.AuthenticationInput) returns (Challenge) {}
+}
+
+service TrustLookupSession {
+  rpc GetAgencyId() returns (Id) {}
+  rpc GetAgency() returns (Agency) {}
+  rpc CanLookupTrusts() returns (boolean) {}
+  rpc UseComparativeTrustView() returns () {}
+  rpc UsePlenaryTrustView() returns () {}
+  rpc UseFederatedAgencyView() returns () {}
+  rpc UseIsolatedAgencyView() returns () {}
+  rpc GetTrust(dlkit.primordium.id.primitives.Id) returns (Trust) {}
+  rpc GetTrustsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Trust) {}
+  rpc GetTrustsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Trust) {}
+  rpc GetTrustsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Trust) {}
+  rpc GetTrustsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Trust) {}
+  rpc GetCircleOfTrust(dlkit.primordium.id.primitives.Id) returns (stream Trust) {}
+  rpc GetTrusts() returns (stream Trust) {}
+}
+
+service CircleOfTrustSession {
+  rpc GetAgencyId() returns (Id) {}
+  rpc GetAgency() returns (Agency) {}
+  rpc CanLookupTrustCircles() returns (boolean) {}
+  rpc UseFederatedAgencyView() returns () {}
+  rpc UseIsolatedAgencyView() returns () {}
+  rpc GetTrust(dlkit.primordium.id.primitives.Id) returns (Trust) {}
+  rpc IsInCircle(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+}

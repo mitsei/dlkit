@@ -1,0 +1,9 @@
+syntax "proto3";
+
+package dlkit.primordium.id.primitives
+
+message Id {
+  string namespace = 1;
+  string identifier = 2;
+  string authority = 3;
+}

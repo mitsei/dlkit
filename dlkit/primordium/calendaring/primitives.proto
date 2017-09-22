@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package dlkit.primordium.calendaring.primitives;
+
+message Duration {
+
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package dlkit.proto.proxy;
+
+
+
+service ProxySession {
+  rpc GetProxyCondition() returns (ProxyCondition) {}
+  rpc GetProxy(osid.proxy.ProxyCondition) returns (Proxy) {}
+}

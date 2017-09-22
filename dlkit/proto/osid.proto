@@ -1,0 +1,254 @@
+syntax = "proto3";
+
+package dlkit.proto.osid;
+
+import "osid/objects.proto";
+import "dlkit/primordium/id/primitives.proto";
+import "google/protobuf/timestamp.proto";
+
+message OsidObject {
+
+}
+
+message OsidRelationship {
+  dlkit.proto.osid.OsidCatalog no_catalog = 1;
+}
+
+message OsidCatalog {
+  dlkit.proto.osid.OsidCatalog no_catalog = 1;
+}
+
+message OsidRule {
+  dlkit.proto.osid.OsidCatalog no_catalog = 1;
+  dlkit.primordium.id.primitives.Id rule = 2;
+}
+
+message OsidEnabler {
+  dlkit.primordium.id.primitives.Id cyclic_event = 1;
+  dlkit.primordium.id.primitives.Id demographic = 2;
+  dlkit.primordium.id.primitives.Id event = 3;
+  dlkit.proto.osid.OsidCatalog no_catalog = 4;
+  dlkit.primordium.id.primitives.Id schedule = 5;
+}
+
+message OsidConstrainer {
+  dlkit.proto.osid.OsidCatalog no_catalog = 1;
+}
+
+message OsidProcessor {
+  dlkit.proto.osid.OsidCatalog no_catalog = 1;
+}
+
+message OsidGovernator {
+  dlkit.proto.osid.OsidCatalog no_catalog = 1;
+}
+
+message OsidCompendium {
+  google.protobuf.Timestamp end_date = 1;
+  bool extrapolated = 2;
+  bool interpolated = 3;
+  dlkit.proto.osid.OsidCatalog no_catalog = 4;
+  google.protobuf.Timestamp start_date = 5;
+}
+
+message OsidCapsule {
+
+}
+
+message OsidQuery {
+
+}
+
+message OsidIdentifiableQuery {
+
+}
+
+message OsidExtensibleQuery {
+
+}
+
+message OsidBrowsableQuery {
+
+}
+
+message OsidTemporalQuery {
+
+}
+
+message OsidSubjugateableQuery {
+
+}
+
+message OsidAggregateableQuery {
+
+}
+
+message OsidContainableQuery {
+
+}
+
+message OsidSourceableQuery {
+
+}
+
+message OsidFederateableQuery {
+
+}
+
+message OsidOperableQuery {
+
+}
+
+message OsidObjectQuery {
+
+}
+
+message OsidRelationshipQuery {
+
+}
+
+message OsidCatalogQuery {
+
+}
+
+message OsidRuleQuery {
+
+}
+
+message OsidEnablerQuery {
+
+}
+
+message OsidConstrainerQuery {
+
+}
+
+message OsidProcessorQuery {
+
+}
+
+message OsidGovernatorQuery {
+
+}
+
+message OsidCompendiumQuery {
+
+}
+
+message OsidCapsuleQuery {
+
+}
+
+message OsidForm {
+
+}
+
+message OsidIdentifiableForm {
+
+}
+
+message OsidExtensibleForm {
+
+}
+
+message OsidBrowsableForm {
+
+}
+
+message OsidTemporalForm {
+
+}
+
+message OsidSubjugateableForm {
+
+}
+
+message OsidAggregateableForm {
+
+}
+
+message OsidContainableForm {
+
+}
+
+message OsidSourceableForm {
+
+}
+
+message OsidFederateableForm {
+
+}
+
+message OsidOperableForm {
+
+}
+
+message OsidObjectForm {
+
+}
+
+message OsidRelationshipForm {
+
+}
+
+message OsidCatalogForm {
+
+}
+
+message OsidRuleForm {
+
+}
+
+message OsidEnablerForm {
+
+}
+
+message OsidConstrainerForm {
+
+}
+
+message OsidProcessorForm {
+
+}
+
+message OsidGovernatorForm {
+
+}
+
+message OsidCompendiumForm {
+
+}
+
+message OsidCapsuleForm {
+
+}
+
+message OsidSearch {
+
+}
+
+message OsidSearchResults {
+
+}
+
+message OsidList {
+  repeated Osid = 1;
+}
+
+message OsidNode {
+
+}
+
+service OsidSession {
+  rpc GetLocale() returns (Locale) {}
+  rpc IsAuthenticated() returns (boolean) {}
+  rpc GetAuthenticatedAgentId() returns (Id) {}
+  rpc GetAuthenticatedAgent() returns (Agent) {}
+  rpc GetEffectiveAgentId() returns (Id) {}
+  rpc GetEffectiveAgent() returns (Agent) {}
+  rpc GetDate() returns (timestamp) {}
+  rpc GetClockRate() returns (decimal) {}
+  rpc GetFormatType() returns (Type) {}
+  rpc SupportsTransactions() returns (boolean) {}
+  rpc StartTransaction() returns (Transaction) {}
+}

@@ -1,0 +1,70 @@
+syntax = "proto3";
+
+package dlkit.proto.transport;
+
+
+
+message Endpoint {
+
+}
+
+message EndpointList {
+  repeated Endpoint = 1;
+}
+
+message Request {
+
+}
+
+message Response {
+
+}
+
+message DataInputStream {
+
+}
+
+message DataOutputStream {
+
+}
+
+service OutboundStreamSession {
+  rpc GetEndpointId() returns (Id) {}
+  rpc GetEndpoint() returns (Endpoint) {}
+  rpc SendData() returns (DataOutputStream) {}
+  rpc HasDataAvailable() returns (boolean) {}
+  rpc ReceiveData() returns (DataInputStream) {}
+}
+
+service InboundStreamSession {
+  rpc GetEndpointId() returns (Id) {}
+  rpc GetEndpoint() returns (Endpoint) {}
+  rpc RegisterCallback(osid.transport.StreamReceiver) returns () {}
+}
+
+service OutboundMessageSession {
+  rpc GetEndpointId() returns (Id) {}
+  rpc GetEndpoint() returns (Endpoint) {}
+  rpc GetRequest() returns (Request) {}
+  rpc MakeRequest(osid.transport.Request, osid.transport.Response) returns () {}
+  rpc SendRequest(osid.transport.Request, osid.transport.MessageReceiver) returns () {}
+}
+
+service InboundMessageSession {
+  rpc GetEndpointId() returns (Id) {}
+  rpc GetEndpoint() returns (Endpoint) {}
+  rpc RegisterCallback(osid.transport.MessageReceiver) returns () {}
+}
+
+service EndpointLookupSession {
+  rpc CanLookupEndpoints() returns (boolean) {}
+  rpc UseComparativeEndpointView() returns () {}
+  rpc UsePlenaryEndpointView() returns () {}
+  rpc GetEndpoint(dlkit.primordium.id.primitives.Id) returns (Endpoint) {}
+  rpc GetEndpointsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Endpoint) {}
+  rpc GetEndpointsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Endpoint) {}
+  rpc GetEndpointsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Endpoint) {}
+  rpc GetEndpointsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Endpoint) {}
+  rpc GetEndpointsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Endpoint) {}
+  rpc GetEndpoints() returns (stream Endpoint) {}
+}

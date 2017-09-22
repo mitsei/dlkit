@@ -1,0 +1,290 @@
+syntax = "proto3";
+
+package dlkit.proto.commenting;
+
+import "osid/objects.proto";
+import "dlkit/primordium/id/primitives.proto";
+
+message Comment {
+  dlkit.proto.osid.OsidCatalog book = 1;
+  Resource commentor = 2;
+  dlkit.primordium.id.primitives.Id rating = 3;
+  dlkit.primordium.id.primitives.Id reference = 4;
+  string text = 5;
+}
+
+message CommentQuery {
+
+}
+
+message CommentForm {
+
+}
+
+message CommentSearch {
+
+}
+
+message CommentSearchResults {
+
+}
+
+message CommentList {
+  repeated Comment = 1;
+}
+
+message Book {
+
+}
+
+message BookQuery {
+
+}
+
+message BookForm {
+
+}
+
+message BookSearch {
+
+}
+
+message BookSearchResults {
+
+}
+
+message BookList {
+  repeated Book = 1;
+}
+
+message BookNode {
+
+}
+
+message BookNodeList {
+  repeated BookNode = 1;
+}
+
+service CommentLookupSession {
+  rpc GetBookId() returns (Id) {}
+  rpc GetBook() returns (Book) {}
+  rpc CanLookupComments() returns (boolean) {}
+  rpc UseComparativeCommentView() returns () {}
+  rpc UsePlenaryCommentView() returns () {}
+  rpc UseFederatedBookView() returns () {}
+  rpc UseIsolatedBookView() returns () {}
+  rpc UseEffectiveCommentView() returns () {}
+  rpc UseAnyEffectiveCommentView() returns () {}
+  rpc GetComment(dlkit.primordium.id.primitives.Id) returns (Comment) {}
+  rpc GetCommentsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Comment) {}
+  rpc GetCommentsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Comment) {}
+  rpc GetCommentsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Comment) {}
+  rpc GetCommentsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Comment) {}
+  rpc GetCommentsOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetCommentsByGenusTypeOnDate(dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetCommentsForCommentor(dlkit.primordium.id.primitives.Id) returns (stream Comment) {}
+  rpc GetCommentsForCommentorOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetCommentsByGenusTypeForCommentor(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Comment) {}
+  rpc GetCommentsByGenusTypeForCommentorOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetCommentsForReference(dlkit.primordium.id.primitives.Id) returns (stream Comment) {}
+  rpc GetCommentsForReferenceOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetCommentsByGenusTypeForReference(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Comment) {}
+  rpc GetCommentsByGenusTypeForReferenceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetCommentsForCommentorAndReference(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Comment) {}
+  rpc GetCommentsForCommentorAndReferenceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetCommentsByGenusTypeForCommentorAndReference(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Comment) {}
+  rpc GetCommentsByGenusTypeForCommentorAndReferenceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Comment) {}
+  rpc GetComments() returns (stream Comment) {}
+}
+
+service RatingLookupSession {
+  rpc GetBookId() returns (Id) {}
+  rpc GetBook() returns (Book) {}
+  rpc CanLookupRatings() returns (boolean) {}
+  rpc UseComparativeCommentView() returns () {}
+  rpc UsePlenaryCommentView() returns () {}
+  rpc UseFederatedBookView() returns () {}
+  rpc UseIsolatedBookView() returns () {}
+  rpc GetCumulativeRating() returns (Grade) {}
+  rpc GetCumulativeRatingForReference(dlkit.primordium.id.primitives.Id) returns (Grade) {}
+  rpc GetCumulativeRatingForCommentor(dlkit.primordium.id.primitives.Id) returns (Grade) {}
+  rpc GetTopReferences(sint32) returns (stream Id) {}
+  rpc GetReferences(dlkit.primordium.id.primitives.Id) returns (Grade) {}
+}
+
+service CommentQuerySession {
+  rpc GetBookId() returns (Id) {}
+  rpc GetBook() returns (Book) {}
+  rpc CanSearchComments() returns (boolean) {}
+  rpc UseFederatedBookView() returns () {}
+  rpc UseIsolatedBookView() returns () {}
+  rpc GetCommentQuery() returns (CommentQuery) {}
+  rpc GetCommentsByQuery(osid.commenting.CommentQuery) returns (stream Comment) {}
+}
+
+service CommentSearchSession {
+  rpc GetCommentSearch() returns (CommentSearch) {}
+  rpc GetCommentSearchOrder() returns (CommentSearchOrder) {}
+  rpc GetCommentsBySearch(osid.commenting.CommentQuery, osid.commenting.CommentSearch) returns (CommentSearchResults) {}
+  rpc GetCommentQueryFromInspector(osid.commenting.CommentQueryInspector) returns (CommentQuery) {}
+}
+
+service CommentAdminSession {
+  rpc GetBookId() returns (Id) {}
+  rpc GetBook() returns (Book) {}
+  rpc CanCreateComments() returns (boolean) {}
+  rpc CanCreateCommentWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetCommentFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (CommentForm) {}
+  rpc CreateComment(osid.commenting.CommentForm) returns (Comment) {}
+  rpc CanUpdateComments() returns (boolean) {}
+  rpc GetCommentFormForUpdate(dlkit.primordium.id.primitives.Id) returns (CommentForm) {}
+  rpc UpdateComment(osid.commenting.CommentForm) returns () {}
+  rpc CanDeleteComments() returns (boolean) {}
+  rpc DeleteComment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageCommentAliases() returns (boolean) {}
+  rpc AliasComment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CommentNotificationSession {
+  rpc GetBookId() returns (Id) {}
+  rpc GetBook() returns (Book) {}
+  rpc CanRegisterForCommentNotifications() returns (boolean) {}
+  rpc UseFederatedBookView() returns () {}
+  rpc UseIsolatedBookView() returns () {}
+  rpc ReliableCommentNotifications() returns () {}
+  rpc UnreliableCommentNotifications() returns () {}
+  rpc AcknowledgeCommentNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewComments() returns () {}
+  rpc RegisterForNewCommentsForCommentor(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewCommentsForReference(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedComments() returns () {}
+  rpc RegisterForChangedCommentsForCommentor(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCommentsForReference(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedComment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedComments() returns () {}
+  rpc RegisterForDeletedCommentsForCommentor(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCommentsForReference(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedComment(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CommentBookSession {
+  rpc CanLookupCommentBookMappings() returns (boolean) {}
+  rpc UseComparativeBookView() returns () {}
+  rpc UsePlenaryBookView() returns () {}
+  rpc GetCommentIdsByBook(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCommentsByBook(dlkit.primordium.id.primitives.Id) returns (stream Comment) {}
+  rpc GetCommentIdsByBooks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetCommentsByBooks(dlkit.primordium.id.primitives.IdList) returns (stream Comment) {}
+  rpc GetBookIdsByComment(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBooksByComment(dlkit.primordium.id.primitives.Id) returns (stream Book) {}
+}
+
+service CommentBookAssignmentSession {
+  rpc CanAssignComments() returns (boolean) {}
+  rpc CanAssignCommentsToBook(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBookIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBookIdsForComment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignCommentToBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignCommentFromBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignCommentToBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CommentSmartBookSession {
+  rpc GetBookId() returns (Id) {}
+  rpc GetBook() returns (Book) {}
+  rpc CanManageSmartBooks() returns (boolean) {}
+  rpc GetCommentQuery() returns (CommentQuery) {}
+  rpc GetCommentSearchOrder() returns (CommentSearchOrder) {}
+  rpc ApplyCommentQuery(osid.commenting.CommentQuery) returns () {}
+  rpc InspectCommentQuery() returns (CommentQueryInspector) {}
+  rpc ApplyCommentSequencing(osid.commenting.CommentSearchOrder) returns () {}
+  rpc GetCommentQueryFromInspector(osid.commenting.CommentQueryInspector) returns (CommentQuery) {}
+}
+
+service BookLookupSession {
+  rpc CanLookupBooks() returns (boolean) {}
+  rpc UseComparativeBookView() returns () {}
+  rpc UsePlenaryBookView() returns () {}
+  rpc GetBook(dlkit.primordium.id.primitives.Id) returns (Book) {}
+  rpc GetBooksByIds(dlkit.primordium.id.primitives.IdList) returns (stream Book) {}
+  rpc GetBooksByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Book) {}
+  rpc GetBooksByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Book) {}
+  rpc GetBooksByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Book) {}
+  rpc GetBooksByProvider(dlkit.primordium.id.primitives.Id) returns (stream Book) {}
+  rpc GetBooks() returns (stream Book) {}
+}
+
+service BookQuerySession {
+  rpc CanSearchBooks() returns (boolean) {}
+  rpc GetBookQuery() returns (BookQuery) {}
+  rpc GetBooksByQuery(osid.commenting.BookQuery) returns (stream Book) {}
+}
+
+service BookSearchSession {
+  rpc GetBookSearch() returns (BookSearch) {}
+  rpc GetBookSearchOrder() returns (BookSearchOrder) {}
+  rpc GetBooksBySearch(osid.commenting.BookQuery, osid.commenting.BookSearch) returns (BookSearchResults) {}
+  rpc GetBookQueryFromInspector(osid.commenting.BookQueryInspector) returns (BookQuery) {}
+}
+
+service BookAdminSession {
+  rpc CanCreateBooks() returns (boolean) {}
+  rpc CanCreateBookWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetBookFormForCreate(osid.type.Type[]) returns (BookForm) {}
+  rpc CreateBook(osid.commenting.BookForm) returns (Book) {}
+  rpc CanUpdateBooks() returns (boolean) {}
+  rpc GetBookFormForUpdate(dlkit.primordium.id.primitives.Id) returns (BookForm) {}
+  rpc UpdateBook(osid.commenting.BookForm) returns () {}
+  rpc CanDeleteBooks() returns (boolean) {}
+  rpc DeleteBook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageBookAliases() returns (boolean) {}
+  rpc AliasBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service BookNotificationSession {
+  rpc CanRegisterForBookNotifications() returns (boolean) {}
+  rpc ReliableBookNotifications() returns () {}
+  rpc UnreliableBookNotifications() returns () {}
+  rpc AcknowledgeBookNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewBooks() returns () {}
+  rpc RegisterForChangedBooks() returns () {}
+  rpc RegisterForChangedBook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedBooks() returns () {}
+  rpc RegisterForDeletedBook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedBookHierarchy() returns () {}
+  rpc RegisterForChangedBookHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedBookHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service BookHierarchySession {
+  rpc GetBookHierarchyId() returns (Id) {}
+  rpc GetBookHierarchy() returns (Hierarchy) {}
+  rpc CanAccessBookHierarchy() returns (boolean) {}
+  rpc UseComparativeBookView() returns () {}
+  rpc UsePlenaryBookView() returns () {}
+  rpc GetRootBookIds() returns (stream Id) {}
+  rpc GetRootBooks() returns (stream Book) {}
+  rpc HasParentBooks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentBookIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentBooks(dlkit.primordium.id.primitives.Id) returns (stream Book) {}
+  rpc IsAncestorOfBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildBooks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildBookIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildBooks(dlkit.primordium.id.primitives.Id) returns (stream Book) {}
+  rpc IsDescendantOfBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetBookNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetBookNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (BookNode) {}
+}
+
+service BookHierarchyDesignSession {
+  rpc GetBookHierarchyId() returns (Id) {}
+  rpc GetBookHierarchy() returns (Hierarchy) {}
+  rpc CanModifyBookHierarchy() returns (boolean) {}
+  rpc AddRootBook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootBook(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildBook(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildBooks(dlkit.primordium.id.primitives.Id) returns () {}
+}

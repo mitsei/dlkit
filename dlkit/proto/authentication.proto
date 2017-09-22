@@ -1,0 +1,250 @@
+syntax = "proto3";
+
+package dlkit.proto.authentication;
+
+import "osid/objects.proto";
+
+message Agent {
+  dlkit.proto.osid.OsidCatalog agency = 1;
+}
+
+message AgentQuery {
+
+}
+
+message AgentForm {
+
+}
+
+message AgentSearch {
+
+}
+
+message AgentSearchResults {
+
+}
+
+message AgentList {
+  repeated Agent = 1;
+}
+
+message Agency {
+
+}
+
+message AgencyQuery {
+
+}
+
+message AgencyForm {
+
+}
+
+message AgencySearch {
+
+}
+
+message AgencySearchResults {
+
+}
+
+message AgencyList {
+  repeated Agency = 1;
+}
+
+message AgencyNode {
+
+}
+
+message AgencyNodeList {
+  repeated AgencyNode = 1;
+}
+
+service AgentLookupSession {
+  rpc GetAgencyId() returns (Id) {}
+  rpc GetAgency() returns (Agency) {}
+  rpc CanLookupAgents() returns (boolean) {}
+  rpc UseComparativeAgentView() returns () {}
+  rpc UsePlenaryAgentView() returns () {}
+  rpc UseFederatedAgencyView() returns () {}
+  rpc UseIsolatedAgencyView() returns () {}
+  rpc GetAgent(dlkit.primordium.id.primitives.Id) returns (Agent) {}
+  rpc GetAgentsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Agent) {}
+  rpc GetAgentsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Agent) {}
+  rpc GetAgentsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Agent) {}
+  rpc GetAgentsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Agent) {}
+  rpc GetAgents() returns (stream Agent) {}
+}
+
+service AgentQuerySession {
+  rpc GetAgencyId() returns (Id) {}
+  rpc GetAgency() returns (Agency) {}
+  rpc CanSearchAgents() returns (boolean) {}
+  rpc UseFederatedAgencyView() returns () {}
+  rpc UseIsolatedAgencyView() returns () {}
+  rpc GetAgentQuery() returns (AgentQuery) {}
+  rpc GetAgentsByQuery(osid.authentication.AgentQuery) returns (stream Agent) {}
+}
+
+service AgentSearchSession {
+  rpc GetAgentSearch() returns (AgentSearch) {}
+  rpc GetAgentSearchOrder() returns (AgentSearchOrder) {}
+  rpc GetAgentsBySearch(osid.authentication.AgentQuery, osid.authentication.AgentSearch) returns (AgentSearchResults) {}
+  rpc GetAgentQueryFromInspector(osid.authentication.AgentQueryInspector) returns (AgentQuery) {}
+}
+
+service AgentAdminSession {
+  rpc GetAgencyId() returns (Id) {}
+  rpc GetAgency() returns (Agency) {}
+  rpc CanCreateAgents() returns (boolean) {}
+  rpc CanCreateAgentWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAgentFormForCreate(osid.type.Type[]) returns (AgentForm) {}
+  rpc CreateAgent(osid.authentication.AgentForm) returns (Agent) {}
+  rpc CanUpdateAgents() returns (boolean) {}
+  rpc CanUpdateAgent(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAgentFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AgentForm) {}
+  rpc UpdateAgent(osid.authentication.AgentForm) returns () {}
+  rpc CanDeleteAgents() returns (boolean) {}
+  rpc CanDeleteAgent(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc DeleteAgent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAgentAliases() returns (boolean) {}
+  rpc AliasAgent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AgentNotificationSession {
+  rpc GetAgencyId() returns (Id) {}
+  rpc GetAgency() returns (Agency) {}
+  rpc CanRegisterForAgentNotifications() returns (boolean) {}
+  rpc UseFederatedAgencyView() returns () {}
+  rpc UseIsolatedAgencyView() returns () {}
+  rpc ReliableAgentNotifications() returns () {}
+  rpc UnreliableAgentNotifications() returns () {}
+  rpc AcknowledgeAgentNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAgents() returns () {}
+  rpc RegisterForChangedAgents() returns () {}
+  rpc RegisterForChangedAgent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAgents() returns () {}
+  rpc RegisterForDeletedAgent(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AgentAgencySession {
+  rpc CanLookupAgentAgencyMappings() returns (boolean) {}
+  rpc UseComparativeAgencyView() returns () {}
+  rpc UsePlenaryAgencyView() returns () {}
+  rpc GetAgentIdsByAgency(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAgentsByAgency(dlkit.primordium.id.primitives.Id) returns (stream Agent) {}
+  rpc GetAgentIdsByAgencies(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetAgentsByAgencies(dlkit.primordium.id.primitives.IdList) returns (stream Agent) {}
+  rpc GetAgencyIdsByAgent(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAgenciesByAgent(dlkit.primordium.id.primitives.Id) returns (stream Agency) {}
+}
+
+service AgentAgencyAssignmentSession {
+  rpc CanAssignAgents() returns (boolean) {}
+  rpc CanAssignAgentsToAgency(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableAgencyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableAgencyIdsForAgent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignAgentToAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignAgentFromAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignAgentToAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AgentSmartAgencySession {
+  rpc GetAgencyId() returns (Id) {}
+  rpc GetAgency() returns (Agency) {}
+  rpc CanManageSmartAgencies() returns (boolean) {}
+  rpc GetAgentQuery() returns (AgentQuery) {}
+  rpc GetAgentSearchOrder() returns (AgentSearchOrder) {}
+  rpc ApplyAgentQuery(osid.authentication.AgentQuery) returns () {}
+  rpc InspectAgentQuery() returns (AgentQueryInspector) {}
+  rpc ApplyAgentSequencing(osid.authentication.AgentSearchOrder) returns () {}
+  rpc GetAgentQueryFromInspector(osid.authentication.AgentQueryInspector) returns (AgentQuery) {}
+}
+
+service AgencyLookupSession {
+  rpc CanLookupAgencies() returns (boolean) {}
+  rpc UseComparativeAgencyView() returns () {}
+  rpc UsePlenaryAgencyView() returns () {}
+  rpc GetAgency(dlkit.primordium.id.primitives.Id) returns (Agency) {}
+  rpc GetAgenciesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Agency) {}
+  rpc GetAgenciesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Agency) {}
+  rpc GetAgenciesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Agency) {}
+  rpc GetAgenciesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Agency) {}
+  rpc GetAgenciesByProvider(dlkit.primordium.id.primitives.Id) returns (stream Agency) {}
+  rpc GetAgencies() returns (stream Agency) {}
+}
+
+service AgencyQuerySession {
+  rpc CanSearchAgencies() returns (boolean) {}
+  rpc GetAgencyQuery() returns (AgencyQuery) {}
+  rpc GetAgenciesByQuery(osid.authentication.AgencyQuery) returns (stream Agency) {}
+}
+
+service AgencySearchSession {
+  rpc GetAgencySearch() returns (AgencySearch) {}
+  rpc GetAgencySearchOrder() returns (AgencySearchOrder) {}
+  rpc GetAgenciesBySearch(osid.authentication.AgencyQuery, osid.authentication.AgencySearch) returns (AgencySearchResults) {}
+  rpc GetAgencyQueryFromInspector(osid.authentication.AgencyQueryInspector) returns (AgencyQuery) {}
+}
+
+service AgencyAdminSession {
+  rpc CanCreateAgencies() returns (boolean) {}
+  rpc CanCreateAgencyWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAgencyFormForCreate(osid.type.Type[]) returns (AgencyForm) {}
+  rpc CreateAgency(osid.authentication.AgencyForm) returns (Agency) {}
+  rpc CanUpdateAgencies() returns (boolean) {}
+  rpc GetAgencyFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AgencyForm) {}
+  rpc UpdateAgency(osid.authentication.AgencyForm) returns () {}
+  rpc CanDeleteAgencies() returns (boolean) {}
+  rpc DeleteAgency(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAgencyAliases() returns (boolean) {}
+  rpc AliasAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AgencyNotificationSession {
+  rpc CanRegisterForAgencyNotifications() returns (boolean) {}
+  rpc ReliableAgencyNotifications() returns () {}
+  rpc UnreliableAgencyNotifications() returns () {}
+  rpc AcknowledgeAgencyNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAgencies() returns () {}
+  rpc RegisterForChangedAgencies() returns () {}
+  rpc RegisterForChangedAgency(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAgencies() returns () {}
+  rpc RegisterForDeletedAgency(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAgencyHierarchy() returns () {}
+  rpc RegisterForChangedAgencyHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAgencyHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AgencyHierarchySession {
+  rpc GetAgencyHierarchyId() returns (Id) {}
+  rpc GetAgencyHierarchy() returns (Hierarchy) {}
+  rpc CanAccessAgencyHierarchy() returns (boolean) {}
+  rpc UseComparativeAgencyView() returns () {}
+  rpc UsePlenaryAgencyView() returns () {}
+  rpc GetRootAgencyIds() returns (stream Id) {}
+  rpc GetRootAgencies() returns (stream Agency) {}
+  rpc HasParentAgencies(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentAgencyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentAgencies(dlkit.primordium.id.primitives.Id) returns (stream Agency) {}
+  rpc IsAncestorOfAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildAgencies(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildAgencyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildAgencies(dlkit.primordium.id.primitives.Id) returns (stream Agency) {}
+  rpc IsDescendantOfAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAgencyNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetAgencyNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (AgencyNode) {}
+}
+
+service AgencyHierarchyDesignSession {
+  rpc GetAgencyHierarchyId() returns (Id) {}
+  rpc GetAgencyHierarchy() returns (Hierarchy) {}
+  rpc CanModifyAgencyHierarchy() returns (boolean) {}
+  rpc AddRootAgency(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootAgency(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildAgency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildAgencies(dlkit.primordium.id.primitives.Id) returns () {}
+}

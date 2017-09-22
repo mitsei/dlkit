@@ -1,0 +1,809 @@
+syntax = "proto3";
+
+package dlkit.proto.assessment;
+
+import "osid/objects.proto";
+import "dlkit/primordium/id/primitives.proto";
+import "google/protobuf/timestamp.proto";
+import "dlkit/primordium/calendaring/primitives.proto";
+
+message Question {
+  dlkit.proto.osid.OsidCatalog bank = 1;
+  dlkit.primordium.id.primitives.Id item = 2;
+}
+
+message QuestionQuery {
+
+}
+
+message QuestionForm {
+
+}
+
+message QuestionList {
+  repeated Question = 1;
+}
+
+message Answer {
+  dlkit.proto.osid.OsidCatalog bank = 1;
+  dlkit.primordium.id.primitives.Id item = 2;
+}
+
+message AnswerQuery {
+
+}
+
+message AnswerForm {
+
+}
+
+message AnswerList {
+  repeated Answer = 1;
+}
+
+message Item {
+  dlkit.proto.osid.OsidCatalog bank = 1;
+  dlkit.primordium.id.primitives.IdList learning_objectives = 2;
+}
+
+message ItemQuery {
+
+}
+
+message ItemForm {
+
+}
+
+message ItemSearch {
+
+}
+
+message ItemSearchResults {
+
+}
+
+message ItemList {
+  repeated Item = 1;
+}
+
+message Assessment {
+  dlkit.proto.osid.OsidCatalog bank = 1;
+  dlkit.primordium.id.primitives.Id level = 2;
+  dlkit.primordium.id.primitives.Id rubric = 3;
+}
+
+message AssessmentQuery {
+
+}
+
+message AssessmentForm {
+
+}
+
+message AssessmentSearch {
+
+}
+
+message AssessmentSearchResults {
+
+}
+
+message AssessmentList {
+  repeated Assessment = 1;
+}
+
+message AssessmentOffered {
+  dlkit.primordium.id.primitives.Id assessment = 1;
+  dlkit.proto.osid.OsidCatalog bank = 2;
+  timestamp deadline = 3;
+  Duration duration = 4;
+  dlkit.primordium.id.primitives.Id grade_system = 5;
+  bool items_sequential = 6;
+  bool items_shuffled = 7;
+  dlkit.primordium.id.primitives.Id level = 8;
+  dlkit.primordium.id.primitives.Id score_system = 9;
+  google.protobuf.Timestamp start_time = 10;
+}
+
+message AssessmentOfferedQuery {
+
+}
+
+message AssessmentOfferedForm {
+
+}
+
+message AssessmentOfferedSearch {
+
+}
+
+message AssessmentOfferedSearchResults {
+
+}
+
+message AssessmentOfferedList {
+  repeated AssessmentOffered = 1;
+}
+
+message AssessmentTaken {
+  google.protobuf.Timestamp actual_start_time = 1;
+  dlkit.primordium.id.primitives.Id assessment_offered = 2;
+  dlkit.proto.osid.OsidCatalog bank = 3;
+  google.protobuf.Timestamp completion_time = 4;
+  dlkit.primordium.id.primitives.Id grade = 5;
+  float score = 6;
+  dlkit.primordium.id.primitives.Id taker = 7;
+}
+
+message AssessmentTakenQuery {
+
+}
+
+message AssessmentTakenForm {
+
+}
+
+message AssessmentTakenSearch {
+
+}
+
+message AssessmentTakenSearchResults {
+
+}
+
+message AssessmentTakenList {
+  repeated AssessmentTaken = 1;
+}
+
+message AssessmentSection {
+  dlkit.primordium.id.primitives.Id assessment_taken = 1;
+}
+
+message AssessmentSectionList {
+  repeated AssessmentSection = 1;
+}
+
+message Bank {
+
+}
+
+message BankQuery {
+
+}
+
+message BankForm {
+
+}
+
+message BankSearch {
+
+}
+
+message BankSearchResults {
+
+}
+
+message BankList {
+  repeated Bank = 1;
+}
+
+message BankNode {
+
+}
+
+message BankNodeList {
+  repeated BankNode = 1;
+}
+
+message ResponseList {
+  repeated Response = 1;
+}
+
+service MyAssessmentTakenSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanGetMyTakenAssessments() returns (boolean) {}
+  rpc GetAssessmentsStartedDuring(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsStarted() returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsInProgressDuring(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsInProgress() returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsCompleted() returns (stream AssessmentTaken) {}
+}
+
+service AssessmentSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanTakeAssessments() returns (boolean) {}
+  rpc HasAssessmentBegun(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsAssessmentOver(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc RequiresSynchronousSections(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetFirstAssessmentSection(dlkit.primordium.id.primitives.Id) returns (AssessmentSection) {}
+  rpc HasNextAssessmentSection(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetNextAssessmentSection(dlkit.primordium.id.primitives.Id) returns (AssessmentSection) {}
+  rpc HasPreviousAssessmentSection(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetPreviousAssessmentSection(dlkit.primordium.id.primitives.Id) returns (AssessmentSection) {}
+  rpc GetAssessmentSection(dlkit.primordium.id.primitives.Id) returns (AssessmentSection) {}
+  rpc GetAssessmentSections(dlkit.primordium.id.primitives.Id) returns (stream AssessmentSection) {}
+  rpc IsAssessmentSectionComplete(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetIncompleteAssessmentSections(dlkit.primordium.id.primitives.Id) returns (stream AssessmentSection) {}
+  rpc HasAssessmentSectionBegun(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsAssessmentSectionOver(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc RequiresSynchronousResponses(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetFirstQuestion(dlkit.primordium.id.primitives.Id) returns (Question) {}
+  rpc HasNextQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetNextQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (Question) {}
+  rpc HasPreviousQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetPreviousQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (Question) {}
+  rpc GetQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (Question) {}
+  rpc GetQuestions(dlkit.primordium.id.primitives.Id) returns (stream Question) {}
+  rpc GetResponseForm(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (AnswerForm) {}
+  rpc SubmitResponse(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.assessment.AnswerForm) returns () {}
+  rpc SkipItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc IsQuestionAnswered(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetUnansweredQuestions(dlkit.primordium.id.primitives.Id) returns (stream Question) {}
+  rpc HasUnansweredQuestions(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetFirstUnansweredQuestion(dlkit.primordium.id.primitives.Id) returns (Question) {}
+  rpc HasNextUnansweredQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetNextUnansweredQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (Question) {}
+  rpc HasPreviousUnansweredQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetPreviousUnansweredQuestion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (Question) {}
+  rpc GetResponse(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (Response) {}
+  rpc GetResponses(dlkit.primordium.id.primitives.Id) returns (stream Response) {}
+  rpc ClearResponse(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc FinishAssessmentSection(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc IsAnswerAvailable(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAnswers(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Answer) {}
+  rpc FinishAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentResultsSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanAccessAssessmentResults() returns (boolean) {}
+  rpc GetItems(dlkit.primordium.id.primitives.Id) returns (stream Item) {}
+  rpc GetResponses(dlkit.primordium.id.primitives.Id) returns (stream Response) {}
+  rpc AreResultsAvailable(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetGradeEntries(dlkit.primordium.id.primitives.Id) returns (stream GradeEntry) {}
+}
+
+service ItemLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupItems() returns (boolean) {}
+  rpc UseComparativeItemView() returns () {}
+  rpc UsePlenaryItemView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetItem(dlkit.primordium.id.primitives.Id) returns (Item) {}
+  rpc GetItemsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Item) {}
+  rpc GetItemsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Item) {}
+  rpc GetItemsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Item) {}
+  rpc GetItemsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Item) {}
+  rpc GetItemsByQuestion(dlkit.primordium.id.primitives.Id) returns (stream Item) {}
+  rpc GetItemsByAnswer(dlkit.primordium.id.primitives.Id) returns (stream Item) {}
+  rpc GetItemsByLearningObjective(dlkit.primordium.id.primitives.Id) returns (stream Item) {}
+  rpc GetItemsByLearningObjectives(dlkit.primordium.id.primitives.IdList) returns (stream Item) {}
+  rpc GetItems() returns (stream Item) {}
+}
+
+service ItemQuerySession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanSearchItems() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetItemQuery() returns (ItemQuery) {}
+  rpc GetItemsByQuery(osid.assessment.ItemQuery) returns (stream Item) {}
+}
+
+service ItemSearchSession {
+  rpc GetItemSearch() returns (ItemSearch) {}
+  rpc GetItemSearchOrder() returns (ItemSearchOrder) {}
+  rpc GetItemsBySearch(osid.assessment.ItemQuery, osid.assessment.ItemSearch) returns (ItemSearchResults) {}
+  rpc GetItemQueryFromInspector(osid.assessment.ItemQueryInspector) returns (ItemQuery) {}
+}
+
+service ItemAdminSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanCreateItems() returns (boolean) {}
+  rpc CanCreateItemWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetItemFormForCreate(osid.type.Type[]) returns (ItemForm) {}
+  rpc CreateItem(osid.assessment.ItemForm) returns (Item) {}
+  rpc CanUpdateItems() returns (boolean) {}
+  rpc GetItemFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ItemForm) {}
+  rpc UpdateItem(osid.assessment.ItemForm) returns () {}
+  rpc CanDeleteItems() returns (boolean) {}
+  rpc DeleteItem(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageItemAliases() returns (boolean) {}
+  rpc AliasItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanCreateQuestions() returns (boolean) {}
+  rpc CanCreateQuestionWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetQuestionFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (QuestionForm) {}
+  rpc CreateQuestion(osid.assessment.QuestionForm) returns (Question) {}
+  rpc CanUpdateQuestions() returns (boolean) {}
+  rpc GetQuestionFormForUpdate(dlkit.primordium.id.primitives.Id) returns (QuestionForm) {}
+  rpc UpdateQuestion(osid.assessment.QuestionForm) returns () {}
+  rpc CanDeleteQuestions() returns (boolean) {}
+  rpc DeleteQuestion(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanCreateAnswers() returns (boolean) {}
+  rpc CanCreateAnswersWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAnswerFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AnswerForm) {}
+  rpc CreateAnswer(osid.assessment.AnswerForm) returns (Answer) {}
+  rpc CanUpdateAnswers() returns (boolean) {}
+  rpc GetAnswerFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AnswerForm) {}
+  rpc UpdateAnswer(osid.assessment.AnswerForm) returns () {}
+  rpc CanDeleteAnswers() returns (boolean) {}
+  rpc DeleteAnswer(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ItemNotificationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanRegisterForItemNotifications() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc ReliableItemNotifications() returns () {}
+  rpc UnreliableItemNotifications() returns () {}
+  rpc AcknowledgeItemNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewItems() returns () {}
+  rpc RegisterForChangedItems() returns () {}
+  rpc RegisterForChangedItem(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedItems() returns () {}
+  rpc RegisterForDeletedItem(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ItemBankSession {
+  rpc CanLookupItemBankMappings() returns (boolean) {}
+  rpc UseComparativeBankView() returns () {}
+  rpc UsePlenaryBankView() returns () {}
+  rpc GetItemIdsByBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetItemsByBank(dlkit.primordium.id.primitives.Id) returns (stream Item) {}
+  rpc GetItemIdsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetItemsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Item) {}
+  rpc GetBankIdsByItem(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBanksByItem(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+}
+
+service ItemBankAssignmentSession {
+  rpc CanAssignItems() returns (boolean) {}
+  rpc CanAssignItemsToBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBankIdsForItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignItemToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignItemFromBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignItemToBilling(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ItemSmartBankSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanManageSmartBanks() returns (boolean) {}
+  rpc GetItemQuery() returns (ItemQuery) {}
+  rpc GetItemSearchOrder() returns (ItemSearchOrder) {}
+  rpc ApplyItemQuery(osid.assessment.ItemQuery) returns () {}
+  rpc InspectItemQuery() returns (ItemQueryInspector) {}
+  rpc ApplyItemSequencing(osid.assessment.ItemSearchOrder) returns () {}
+  rpc GetItemQueryFromInspector(osid.assessment.ItemQueryInspector) returns (ItemQuery) {}
+}
+
+service AssessmentLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupAssessments() returns (boolean) {}
+  rpc UseComparativeAssessmentView() returns () {}
+  rpc UsePlenaryAssessmentView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetAssessment(dlkit.primordium.id.primitives.Id) returns (Assessment) {}
+  rpc GetAssessmentsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Assessment) {}
+  rpc GetAssessmentsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Assessment) {}
+  rpc GetAssessmentsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Assessment) {}
+  rpc GetAssessmentsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Assessment) {}
+  rpc GetAssessments() returns (stream Assessment) {}
+}
+
+service AssessmentQuerySession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanSearchAssessments() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetAssessmentQuery() returns (AssessmentQuery) {}
+  rpc GetAssessmentsByQuery(osid.assessment.AssessmentQuery) returns (stream Assessment) {}
+}
+
+service AssessmentSearchSession {
+  rpc GetAssessmentSearch() returns (AssessmentSearch) {}
+  rpc GetAssessmentSearchOrder() returns (AssessmentSearchOrder) {}
+  rpc GetAssessmentsBySearch(osid.assessment.AssessmentQuery, osid.assessment.AssessmentSearch) returns (AssessmentSearchResults) {}
+  rpc GetAssessmentQueryFromInspector(osid.assessment.AssessmentQueryInspector) returns (AssessmentQuery) {}
+}
+
+service AssessmentAdminSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanCreateAssessments() returns (boolean) {}
+  rpc CanCreateAssessmentWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAssessmentFormForCreate(osid.type.Type[]) returns (AssessmentForm) {}
+  rpc CreateAssessment(osid.assessment.AssessmentForm) returns (Assessment) {}
+  rpc CanUpdateAssessments() returns (boolean) {}
+  rpc GetAssessmentFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AssessmentForm) {}
+  rpc UpdateAssessment(osid.assessment.AssessmentForm) returns () {}
+  rpc CanDeleteAssessments() returns (boolean) {}
+  rpc DeleteAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAssessmentAliases() returns (boolean) {}
+  rpc AliasAssessment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentNotificationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanRegisterForAssessmentNotifications() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc ReliableAssessmentNotifications() returns () {}
+  rpc UnreliableAssessmentNotifications() returns () {}
+  rpc AcknowledgeAssessmentNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAssessments() returns () {}
+  rpc RegisterForChangedAssessments() returns () {}
+  rpc RegisterForChangedAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessments() returns () {}
+  rpc RegisterForDeletedAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentBankSession {
+  rpc CanLookupAssessmentBankMappings() returns (boolean) {}
+  rpc UseComparativeBankView() returns () {}
+  rpc UsePlenaryBankView() returns () {}
+  rpc GetAssessmentIdsByBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssessmentsByBank(dlkit.primordium.id.primitives.Id) returns (stream Assessment) {}
+  rpc GetAssessmentIdsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetAssessmentsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Assessment) {}
+  rpc GetBankIdsByAssessment(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBanksByAssessment(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+}
+
+service AssessmentBankAssignmentSession {
+  rpc CanAssignAssessments() returns (boolean) {}
+  rpc CanAssignAssessmentsToBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBankIdsForAssessment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignAssessmentToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignAssessmentFromBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignAssessmentToBilling(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentSmartBankSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanManageSmartBanks() returns (boolean) {}
+  rpc GetAssessmentQuery() returns (AssessmentQuery) {}
+  rpc GetAssessmentSearchOrder() returns (AssessmentSearchOrder) {}
+  rpc ApplyAssessmentQuery(osid.assessment.AssessmentQuery) returns () {}
+  rpc InspectAssessmentQuery() returns (AssessmentQueryInspector) {}
+  rpc ApplyAssessmentSequencing(osid.assessment.AssessmentSearchOrder) returns () {}
+  rpc GetAssessmentQueryFromInspector(osid.assessment.AssessmentQueryInspector) returns (AssessmentQuery) {}
+}
+
+service AssessmentBasicAuthoringSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanAuthorAssessments() returns (boolean) {}
+  rpc GetItems(dlkit.primordium.id.primitives.Id) returns (stream Item) {}
+  rpc AddItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc OrderItems(dlkit.primordium.id.primitives.IdList, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentOfferedLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupAssessmentsOffered() returns (boolean) {}
+  rpc UseComparativeAssessmentOfferedView() returns () {}
+  rpc UsePlenaryAssessmentOfferedView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetAssessmentOffered(dlkit.primordium.id.primitives.Id) returns (AssessmentOffered) {}
+  rpc GetAssessmentsOfferedByIds(dlkit.primordium.id.primitives.IdList) returns (stream AssessmentOffered) {}
+  rpc GetAssessmentsOfferedByGenusType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentOffered) {}
+  rpc GetAssessmentsOfferedByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentOffered) {}
+  rpc GetAssessmentsOfferedByRecordType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentOffered) {}
+  rpc GetAssessmentsOfferedByDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentOffered) {}
+  rpc GetAssessmentsOfferedForAssessment(dlkit.primordium.id.primitives.Id) returns (stream AssessmentOffered) {}
+  rpc GetAssessmentsOffered() returns (stream AssessmentOffered) {}
+}
+
+service AssessmentOfferedQuerySession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanSearchAssessmentsOffered() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetAssessmentOfferedQuery() returns (AssessmentOfferedQuery) {}
+  rpc GetAssessmentsOfferedByQuery(osid.assessment.AssessmentOfferedQuery) returns (stream AssessmentOffered) {}
+}
+
+service AssessmentOfferedSearchSession {
+  rpc GetAssessmentOfferedSearch() returns (AssessmentOfferedSearch) {}
+  rpc GetAssessmentOfferedSearchOrder() returns (AssessmentOfferedSearchOrder) {}
+  rpc GetAssessmentsOfferedBySearch(osid.assessment.AssessmentOfferedQuery, osid.assessment.AssessmentOfferedSearch) returns (AssessmentOfferedSearchResults) {}
+  rpc GetAssessmentOfferedQueryFromInspector(osid.assessment.AssessmentOfferedQueryInspector) returns (AssessmentOfferedQuery) {}
+}
+
+service AssessmentOfferedAdminSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanCreateAssessmentsOffered() returns (boolean) {}
+  rpc CanCreateAssessmentOfferedWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAssessmentOfferedFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AssessmentOfferedForm) {}
+  rpc CreateAssessmentOffered(osid.assessment.AssessmentOfferedForm) returns (AssessmentOffered) {}
+  rpc CanUpdateAssessmentsOffered() returns (boolean) {}
+  rpc GetAssessmentOfferedFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AssessmentOfferedForm) {}
+  rpc UpdateAssessmentOffered(osid.assessment.AssessmentOfferedForm) returns () {}
+  rpc CanDeleteAssessmentsOffered() returns (boolean) {}
+  rpc DeleteAssessmentOffered(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAssessmentOfferedAliases() returns (boolean) {}
+  rpc AliasAssessmentOffered(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentOfferedNotificationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanRegisterForAssessmentOfferedNotifications() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc ReliableAssessmentOfferedNotifications() returns () {}
+  rpc UnreliableAssessmentOfferedNotifications() returns () {}
+  rpc AcknowledgeAssessmentOfferedNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAssessmentsOffered() returns () {}
+  rpc RegisterForNewAssessmentsOfferedForAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAssessmentsOffered() returns () {}
+  rpc RegisterForChangedAssessmentsOfferedForAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAssessmentOffered(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessmentsOffered() returns () {}
+  rpc RegisterForDeletedAssessmentsOfferedForAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessmentOffered(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentOfferedBankSession {
+  rpc CanLookupAssessmentOfferedBankMappings() returns (boolean) {}
+  rpc UseComparativeBankView() returns () {}
+  rpc UsePlenaryBankView() returns () {}
+  rpc GetAssessmentOfferedIdsByBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssessmentsOfferedByBank(dlkit.primordium.id.primitives.Id) returns (stream AssessmentOffered) {}
+  rpc GetAssessmentOfferedIdsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetAssessmentsOfferedByBanks(dlkit.primordium.id.primitives.IdList) returns (stream AssessmentOffered) {}
+  rpc GetBankIdsByAssessmentOffered(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBanksByAssessmentOffered(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+}
+
+service AssessmentOfferedBankAssignmentSession {
+  rpc CanAssignAssessmentsOffered() returns (boolean) {}
+  rpc CanAssignAssessmentsOfferedToBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBankIdsForAssessmentOffered(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignAssessmentOfferedToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignAssessmentOfferedFromBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignAssessmentOfferedToBilling(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentOfferedSmartBankSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanManageSmartBanks() returns (boolean) {}
+  rpc GetAssessmentOfferedQuery() returns (AssessmentOfferedQuery) {}
+  rpc GetAssessmentOfferedSearchOrder() returns (AssessmentOfferedSearchOrder) {}
+  rpc ApplyAssessmentOfferedQuery(osid.assessment.AssessmentOfferedQuery) returns () {}
+  rpc InspectAssessmentOfferedQuery() returns (AssessmentOfferedQueryInspector) {}
+  rpc ApplyAssessmentOfferedSequencing(osid.assessment.AssessmentOfferedSearchOrder) returns () {}
+  rpc GetAssessmentOfferedQueryFromInspector(osid.assessment.AssessmentOfferedQueryInspector) returns (AssessmentOfferedQuery) {}
+}
+
+service AssessmentTakenLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupAssessmentsTaken() returns (boolean) {}
+  rpc UseComparativeAssessmentTakenView() returns () {}
+  rpc UsePlenaryAssessmentTakenView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetAssessmentTaken(dlkit.primordium.id.primitives.Id) returns (AssessmentTaken) {}
+  rpc GetAssessmentsTakenByIds(dlkit.primordium.id.primitives.IdList) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByGenusType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByRecordType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenForTaker(dlkit.primordium.id.primitives.Id) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByDateForTaker(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenForAssessment(dlkit.primordium.id.primitives.Id) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByDateForAssessment(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenForTakerAndAssessment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByDateForTakerAndAssessment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenForAssessmentOffered(dlkit.primordium.id.primitives.Id) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByDateForAssessmentOffered(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenForTakerAndAssessmentOffered(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTakenByDateForTakerAndAssessmentOffered(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentsTaken() returns (stream AssessmentTaken) {}
+}
+
+service AssessmentTakenQuerySession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanSearchAssessmentsTaken() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetAssessmentTakenQuery() returns (AssessmentTakenQuery) {}
+  rpc GetAssessmentsTakenByQuery(osid.assessment.AssessmentTakenQuery) returns (stream AssessmentTaken) {}
+}
+
+service AssessmentTakenSearchSession {
+  rpc GetAssessmentTakenSearch() returns (AssessmentTakenSearch) {}
+  rpc GetAssessmentTakenSearchOrder() returns (AssessmentTakenSearchOrder) {}
+  rpc GetAssessmentsTakenBySearch(osid.assessment.AssessmentTakenQuery, osid.assessment.AssessmentTakenSearch) returns (AssessmentTakenSearchResults) {}
+  rpc GetAssessmentTakenQueryFromInspector(osid.assessment.AssessmentTakenQueryInspector) returns (AssessmentTakenQuery) {}
+}
+
+service AssessmentTakenAdminSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanCreateAssessmentsTaken() returns (boolean) {}
+  rpc CanCreateAssessmentTakenWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAssessmentTakenFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AssessmentTakenForm) {}
+  rpc CreateAssessmentTaken(osid.assessment.AssessmentTakenForm) returns (AssessmentTaken) {}
+  rpc CanUpdateAssessmentsTaken() returns (boolean) {}
+  rpc GetAssessmentTakenFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AssessmentTakenForm) {}
+  rpc UpdateAssessmentTaken(osid.assessment.AssessmentTakenForm) returns () {}
+  rpc CanDeleteAssessmentsTaken() returns (boolean) {}
+  rpc DeleteAssessmentTaken(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAssessmentTakenAliases() returns (boolean) {}
+  rpc AliasAssessmentTaken(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentTakenNotificationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanRegisterForAssessmentTakenNotifications() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc ReliableAssessmentTakenNotifications() returns () {}
+  rpc UnreliableAssessmentTakenNotifications() returns () {}
+  rpc AcknowledgeAssessmentTakenNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAssessmentsTaken() returns () {}
+  rpc RegisterForNewAssessmentsTakenForTaker(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAssessmentsTakenForAssessmentOffered(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAssessmentsTakenForAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAssessmentsTaken() returns () {}
+  rpc RegisterForChangedAssessmentsTakenForTaker(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAssessmentsTakenForAssessmentOffered(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAssessmentsTakenForAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAssessmentTaken(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessmentsTaken() returns () {}
+  rpc RegisterForDeletedAssessmentsTakenForTaker(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessmentsTakenForAssessmentOffered(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessmentsTakenForAssessment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessmentTaken(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentTakenBankSession {
+  rpc CanLookupAssessmentTakenBankMappings() returns (boolean) {}
+  rpc UseComparativeBankView() returns () {}
+  rpc UsePlenaryBankView() returns () {}
+  rpc GetAssessmentTakenIdsByBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssessmentsTakenByBank(dlkit.primordium.id.primitives.Id) returns (stream AssessmentTaken) {}
+  rpc GetAssessmentTakenIdsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetAssessmentsTakenByBanks(dlkit.primordium.id.primitives.IdList) returns (stream AssessmentTaken) {}
+  rpc GetBankIdsByAssessmentTaken(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBanksByAssessmentTaken(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+}
+
+service AssessmentTakenBankAssignmentSession {
+  rpc CanAssignAssessmentsTaken() returns (boolean) {}
+  rpc CanAssignAssessmentsTakenToBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBankIdsForAssessmentTaken(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignAssessmentTakenToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignAssessmentTakenFromBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignAssessmentTakenToBilling(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentTakenSmartBankSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanManageSmartBanks() returns (boolean) {}
+  rpc GetAssessmentTakenQuery() returns (AssessmentTakenQuery) {}
+  rpc GetAssessmentTakenSearchOrder() returns (AssessmentTakenSearchOrder) {}
+  rpc ApplyAssessmentTakenQuery(osid.assessment.AssessmentTakenQuery) returns () {}
+  rpc InspectAssessmentTakenQuery() returns (AssessmentTakenQueryInspector) {}
+  rpc ApplyAssessmentTakenSequencing(osid.assessment.AssessmentTakenSearchOrder) returns () {}
+  rpc GetAssessmentTakenQueryFromInspector(osid.assessment.AssessmentTakenQueryInspector) returns (AssessmentTakenQuery) {}
+}
+
+service BankLookupSession {
+  rpc CanLookupBanks() returns (boolean) {}
+  rpc UseComparativeBankView() returns () {}
+  rpc UsePlenaryBankView() returns () {}
+  rpc GetBank(dlkit.primordium.id.primitives.Id) returns (Bank) {}
+  rpc GetBanksByIds(dlkit.primordium.id.primitives.IdList) returns (stream Bank) {}
+  rpc GetBanksByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Bank) {}
+  rpc GetBanksByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Bank) {}
+  rpc GetBanksByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Bank) {}
+  rpc GetBanksByProvider(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+  rpc GetBanks() returns (stream Bank) {}
+}
+
+service BankQuerySession {
+  rpc CanSearchBanks() returns (boolean) {}
+  rpc GetBankQuery() returns (BankQuery) {}
+  rpc GetBanksByQuery(osid.assessment.BankQuery) returns (stream Bank) {}
+}
+
+service BankSearchSession {
+  rpc GetBankSearch() returns (BankSearch) {}
+  rpc GetBankSearchOrder() returns (BankSearchOrder) {}
+  rpc GetBanksBySearch(osid.assessment.BankQuery, osid.assessment.BankSearch) returns (BankSearchResults) {}
+  rpc GetBankQueryFromInspector(osid.assessment.BankQueryInspector) returns (BankQuery) {}
+}
+
+service BankAdminSession {
+  rpc CanCreateBanks() returns (boolean) {}
+  rpc CanCreateBankWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetBankFormForCreate(osid.type.Type[]) returns (BankForm) {}
+  rpc CreateBank(osid.assessment.BankForm) returns (Bank) {}
+  rpc CanUpdateBanks() returns (boolean) {}
+  rpc GetBankFormForUpdate(dlkit.primordium.id.primitives.Id) returns (BankForm) {}
+  rpc UpdateBank(osid.assessment.BankForm) returns () {}
+  rpc CanDeleteBanks() returns (boolean) {}
+  rpc DeleteBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageBankAliases() returns (boolean) {}
+  rpc AliasBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service BankNotificationSession {
+  rpc CanRegisterForBankNotifications() returns (boolean) {}
+  rpc ReliableBankNotifications() returns () {}
+  rpc UnreliableBankNotifications() returns () {}
+  rpc AcknowledgeBankNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewBanks() returns () {}
+  rpc RegisterForChangedBanks() returns () {}
+  rpc RegisterForChangedBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedBanks() returns () {}
+  rpc RegisterForDeletedBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedBankHierarchy() returns () {}
+  rpc RegisterForChangedBankHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedBankHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service BankHierarchySession {
+  rpc GetBankHierarchyId() returns (Id) {}
+  rpc GetBankHierarchy() returns (Hierarchy) {}
+  rpc CanAccessBankHierarchy() returns (boolean) {}
+  rpc UseComparativeBankView() returns () {}
+  rpc UsePlenaryBankView() returns () {}
+  rpc GetRootBankIds() returns (stream Id) {}
+  rpc GetRootBanks() returns (stream Bank) {}
+  rpc HasParentBanks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentBanks(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+  rpc IsAncestorOfBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildBanks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildBanks(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+  rpc IsDescendantOfBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetBankNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetBankNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (BankNode) {}
+}
+
+service BankHierarchyDesignSession {
+  rpc GetBankHierarchyId() returns (Id) {}
+  rpc GetBankHierarchy() returns (Hierarchy) {}
+  rpc CanModifyBankHierarchy() returns (boolean) {}
+  rpc AddRootBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildBanks(dlkit.primordium.id.primitives.Id) returns () {}
+}

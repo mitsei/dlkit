@@ -1,0 +1,582 @@
+syntax = "proto3";
+
+package dlkit.proto.authorization;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+
+message Authorization {
+  dlkit.primordium.id.primitives.Id function = 1;
+  dlkit.primordium.id.primitives.Id qualifier = 2;
+  dlkit.proto.osid.OsidCatalog vault = 3;
+}
+
+message AuthorizationQuery {
+
+}
+
+message AuthorizationForm {
+
+}
+
+message AuthorizationSearch {
+
+}
+
+message AuthorizationSearchResults {
+
+}
+
+message AuthorizationList {
+  repeated Authorization = 1;
+}
+
+message Function {
+  dlkit.primordium.id.primitives.Id qualifier_hierarchy = 1;
+  dlkit.proto.osid.OsidCatalog vault = 2;
+}
+
+message FunctionQuery {
+
+}
+
+message FunctionForm {
+
+}
+
+message FunctionSearch {
+
+}
+
+message FunctionSearchResults {
+
+}
+
+message FunctionList {
+  repeated Function = 1;
+}
+
+message Qualifier {
+  dlkit.proto.osid.OsidCatalog vault = 1;
+}
+
+message QualifierQuery {
+
+}
+
+message QualifierForm {
+
+}
+
+message QualifierSearch {
+
+}
+
+message QualifierSearchResults {
+
+}
+
+message QualifierList {
+  repeated Qualifier = 1;
+}
+
+message QualifierNode {
+
+}
+
+message QualifierNodeList {
+  repeated QualifierNode = 1;
+}
+
+message Vault {
+
+}
+
+message VaultQuery {
+
+}
+
+message VaultForm {
+
+}
+
+message VaultSearch {
+
+}
+
+message VaultSearchResults {
+
+}
+
+message VaultList {
+  repeated Vault = 1;
+}
+
+message VaultNode {
+
+}
+
+message VaultNodeList {
+  repeated VaultNode = 1;
+}
+
+service AuthorizationSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanAccessAuthorizations() returns (boolean) {}
+  rpc IsAuthorized(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAuthorizationCondition(dlkit.primordium.id.primitives.Id) returns (AuthorizationCondition) {}
+  rpc IsAuthorizedOnCondition(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.authorization.AuthorizationCondition) returns (boolean) {}
+}
+
+service AuthorizationLookupSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanLookupAuthorizations() returns (boolean) {}
+  rpc UseComparativeAuthorizationView() returns () {}
+  rpc UsePlenaryAuthorizationView() returns () {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc UseEffectiveAuthorizationView() returns () {}
+  rpc UseAnyEffectiveAuthorizationView() returns () {}
+  rpc UseImplicitAuthorizationView() returns () {}
+  rpc UseExplicitAuthorizationView() returns () {}
+  rpc GetAuthorization(dlkit.primordium.id.primitives.Id) returns (Authorization) {}
+  rpc GetAuthorizationsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Authorization) {}
+  rpc GetAuthorizationsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Authorization) {}
+  rpc GetAuthorizationsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Authorization) {}
+  rpc GetAuthorizationsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Authorization) {}
+  rpc GetAuthorizationsOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Authorization) {}
+  rpc GetAuthorizationsForResource(dlkit.primordium.id.primitives.Id) returns (stream Authorization) {}
+  rpc GetAuthorizationsForResourceOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Authorization) {}
+  rpc GetAuthorizationsForAgent(dlkit.primordium.id.primitives.Id) returns (stream Authorization) {}
+  rpc GetAuthorizationsForAgentOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Authorization) {}
+  rpc GetAuthorizationsForFunction(dlkit.primordium.id.primitives.Id) returns (stream Authorization) {}
+  rpc GetAuthorizationsForFunctionOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Authorization) {}
+  rpc GetAuthorizationsForResourceAndFunction(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Authorization) {}
+  rpc GetAuthorizationsForResourceAndFunctionOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Authorization) {}
+  rpc GetAuthorizationsForAgentAndFunction(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Authorization) {}
+  rpc GetAuthorizationsForAgentAndFunctionOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Authorization) {}
+  rpc GetAuthorizationsByQualifier(dlkit.primordium.id.primitives.Id) returns (stream Authorization) {}
+  rpc GetExplicitAuthorization(dlkit.primordium.id.primitives.Id) returns (Authorization) {}
+  rpc GetAuthorizations() returns (stream Authorization) {}
+}
+
+service AuthorizationQuerySession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanSearchAuthorizations() returns (boolean) {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc UseImplicitAuthorizationView() returns () {}
+  rpc UseExplicitAuthorizationView() returns () {}
+  rpc GetAuthorizationQuery() returns (AuthorizationQuery) {}
+  rpc GetAuthorizationsByQuery(osid.authorization.AuthorizationQuery) returns (stream Authorization) {}
+}
+
+service AuthorizationSearchSession {
+  rpc GetAuthorizationSearch() returns (AuthorizationSearch) {}
+  rpc GetAuthorizationSearchOrder() returns (AuthorizationSearchOrder) {}
+  rpc GetAuthorizationsBySearch(osid.authorization.AuthorizationQuery, osid.authorization.AuthorizationSearch) returns (AuthorizationSearchResults) {}
+  rpc GetAuthorizationQueryFromInspector(osid.authorization.AuthorizationQueryInspector) returns (AuthorizationQuery) {}
+}
+
+service AuthorizationAdminSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanCreateAuthorizations() returns (boolean) {}
+  rpc CanCreateAuthorizationWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAuthorizationFormForCreateForAgent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AuthorizationForm) {}
+  rpc GetAuthorizationFormForCreateForResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AuthorizationForm) {}
+  rpc GetAuthorizationFormForCreateForResourceAndTrust(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AuthorizationForm) {}
+  rpc CreateAuthorization(osid.authorization.AuthorizationForm) returns (Authorization) {}
+  rpc CanUpdateAuthorizations() returns (boolean) {}
+  rpc GetAuthorizationFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AuthorizationForm) {}
+  rpc UpdateAuthorization(osid.authorization.AuthorizationForm) returns () {}
+  rpc CanDeleteAuthorizations() returns (boolean) {}
+  rpc DeleteAuthorization(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAuthorizationAliases() returns (boolean) {}
+  rpc AliasAuthorization(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AuthorizationNotificationSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanRegisterForAuthorizationNotifications() returns (boolean) {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc ReliableAuthorizationNotifications() returns () {}
+  rpc UnreliableAuthorizationNotifications() returns () {}
+  rpc AcknowledgeAuthorizationNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UseImplicitAuthorizationView() returns () {}
+  rpc UseExplicitAuthorizationView() returns () {}
+  rpc RegisterForNewAuthorizations() returns () {}
+  rpc RegisterForNewAuthorizationsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAuthorizationsForFunction(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAuthorizations() returns () {}
+  rpc RegisterForChangedAuthorizationsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAuthorizationsForFunction(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedAuthorization(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAuthorizations() returns () {}
+  rpc RegisterForDeletedAuthorizationsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAuthorizationsForFunction(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAuthorization(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AuthorizationVaultSession {
+  rpc UseComparativeVaultView() returns () {}
+  rpc UsePlenaryVaultView() returns () {}
+  rpc CanLookupAuthorizationVaultMappings() returns (boolean) {}
+  rpc GetAuthorizationIdsByVault(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAuthorizationsByVault(dlkit.primordium.id.primitives.Id) returns (stream Authorization) {}
+  rpc GetAuthorizationsIdsByVault(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetAuthorizationsByVault(dlkit.primordium.id.primitives.IdList) returns (stream Authorization) {}
+  rpc GetVaultIdsByAuthorization(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetVaultByAuthorization(dlkit.primordium.id.primitives.Id) returns (stream Vault) {}
+}
+
+service AuthorizationVaultAssignmentSession {
+  rpc CanAssignAuthorizations() returns (boolean) {}
+  rpc CanAssignAuthorizationsToVault(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableVaultIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableVaultIdsForAuthorization(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignAuthorizationToVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignAuthorizationFromVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignAuthorizationToVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AuthorizationSmartVaultSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanManageSmartVault() returns (boolean) {}
+  rpc GetAuthorizationQuery() returns (AuthorizationQuery) {}
+  rpc GetAuthorizationSearchOrder() returns (AuthorizationSearchOrder) {}
+  rpc ApplyAuthorizationQuery(osid.authorization.AuthorizationQuery) returns () {}
+  rpc InspectAuthorizationQuery() returns (AuthorizationQueryInspector) {}
+  rpc ApplyAuthorizationSequencing(osid.authorization.AuthorizationSearchOrder) returns () {}
+  rpc GetAuthorizationQueryFromInspector(osid.authorization.AuthorizationQueryInspector) returns (AuthorizationQuery) {}
+}
+
+service FunctionLookupSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanLookupFunctions() returns (boolean) {}
+  rpc UseComparativeFunctionView() returns () {}
+  rpc UsePlenaryFunctionView() returns () {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc UseActiveFunctionView() returns () {}
+  rpc UseAnyStatusFunctionView() returns () {}
+  rpc GetFunction(dlkit.primordium.id.primitives.Id) returns (Function) {}
+  rpc GetFunctionsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Function) {}
+  rpc GetFunctionsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Function) {}
+  rpc GetFunctionsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Function) {}
+  rpc GetFunctionsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Function) {}
+  rpc GetFunctions() returns (stream Function) {}
+}
+
+service FunctionQuerySession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanSearchFunctions() returns (boolean) {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc GetFunctionQuery() returns (FunctionQuery) {}
+  rpc GetFunctionsByQuery(osid.authorization.FunctionQuery) returns (stream Function) {}
+}
+
+service FunctionSearchSession {
+  rpc GetFunctionSearch() returns (FunctionSearch) {}
+  rpc GetFunctionSearchOrder() returns (FunctionSearchOrder) {}
+  rpc GetFunctionsBySearch(osid.authorization.FunctionQuery, osid.authorization.FunctionSearch) returns (FunctionSearchResults) {}
+  rpc GetFunctionQueryFromInspector(osid.authorization.FunctionQueryInspector) returns (FunctionQuery) {}
+}
+
+service FunctionAdminSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanCreateFunctions() returns (boolean) {}
+  rpc CanCreateFunctionWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetFunctionFormForCreate(osid.type.Type[]) returns (FunctionForm) {}
+  rpc CreateFunction(osid.authorization.FunctionForm) returns (Function) {}
+  rpc CanUpdateFunctions() returns (boolean) {}
+  rpc GetFunctionFormForUpdate(dlkit.primordium.id.primitives.Id) returns (FunctionForm) {}
+  rpc UpdateFunction(osid.authorization.FunctionForm) returns () {}
+  rpc CanDeleteFunctions() returns (boolean) {}
+  rpc DeleteFunction(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageFunctionAliases() returns (boolean) {}
+  rpc AliasFunction(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service FunctionNotificationSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanRegisterForFunctionNotifications() returns (boolean) {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc ReliableFunctionNotifications() returns () {}
+  rpc UnreliableFunctionNotifications() returns () {}
+  rpc AcknowledgeFunctionNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewFunctions() returns () {}
+  rpc RegisterForChangedFunctions() returns () {}
+  rpc RegisterForChangedFunction(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedFunctions() returns () {}
+  rpc RegisterForDeletedFunction(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service FunctionVaultSession {
+  rpc CanLookupFunctionVaultMappings() returns (boolean) {}
+  rpc UseComparativeVaultView() returns () {}
+  rpc UsePlenaryVaultView() returns () {}
+  rpc GetFunctionIdsByVault(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetFunctionsByVault(dlkit.primordium.id.primitives.Id) returns (stream Function) {}
+  rpc GetFunctionIdsByVaults(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetFunctionsByVaults(dlkit.primordium.id.primitives.IdList) returns (stream Function) {}
+  rpc GetVaultIdsByFunction(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetVaultsByFunction(dlkit.primordium.id.primitives.Id) returns (stream Vault) {}
+}
+
+service FunctionVaultAssignmentSession {
+  rpc CanAssignFunctions() returns (boolean) {}
+  rpc CanAssignFunctionsToVault(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableVaultIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableVaultIdsForFunction(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignFunctionToVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignFunctionFromVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignFunctionToVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service FunctionSmartVaultSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanManageSmartVaults() returns (boolean) {}
+  rpc GetFunctionQuery() returns (FunctionQuery) {}
+  rpc GetFunctionSearchOrder() returns (FunctionSearchOrder) {}
+  rpc ApplyFunctionQuery(osid.authorization.FunctionQuery) returns () {}
+  rpc InspectFunctionQuery() returns (FunctionQueryInspector) {}
+  rpc ApplyFunctionSequencing(osid.authorization.FunctionSearchOrder) returns () {}
+  rpc GetFunctionQueryFromInspector(osid.authorization.FunctionQueryInspector) returns (FunctionQuery) {}
+}
+
+service QualifierLookupSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanLookupQualifiers() returns (boolean) {}
+  rpc UseComparativeQualifierView() returns () {}
+  rpc UsePlenaryQualifierView() returns () {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc GetQualifier(dlkit.primordium.id.primitives.Id) returns (Qualifier) {}
+  rpc GetQualifiersByIds(dlkit.primordium.id.primitives.IdList) returns (stream Qualifier) {}
+  rpc GetQualifiersByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Qualifier) {}
+  rpc GetQualifiersByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Qualifier) {}
+  rpc GetQualifiersByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Qualifier) {}
+  rpc GetQualifiers() returns (stream Qualifier) {}
+}
+
+service QualifierQuerySession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanSearchQualifiers() returns (boolean) {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc GetQualifierQuery() returns (QualifierQuery) {}
+  rpc GetQualifiersByQuery(osid.authorization.QualifierQuery) returns (stream Qualifier) {}
+}
+
+service QualifierSearchSession {
+  rpc GetQualifierSearch() returns (QualifierSearch) {}
+  rpc GetQualifierSearchOrder() returns (QualifierSearchOrder) {}
+  rpc GetQualifiersBySearch(osid.authorization.QualifierQuery, osid.authorization.QualifierSearch) returns (QualifierSearchResults) {}
+  rpc GetQualifierQueryFromInspector(osid.authorization.QualifierQueryInspector) returns (QualifierQuery) {}
+}
+
+service QualifierAdminSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanCreateQualifiers() returns (boolean) {}
+  rpc CanCreateQualifierWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetQualifierFormForCreate(osid.type.Type[]) returns (QualifierForm) {}
+  rpc CreateQualifier(osid.authorization.QualifierForm) returns (Qualifier) {}
+  rpc CanUpdateQualifiers() returns (boolean) {}
+  rpc GetQualifierFormForUpdate(dlkit.primordium.id.primitives.Id) returns (QualifierForm) {}
+  rpc UpdateQualifier(osid.authorization.QualifierForm) returns () {}
+  rpc CanDeleteQualifiers() returns (boolean) {}
+  rpc DeleteQualifier(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageQualifierAliases() returns (boolean) {}
+  rpc AliasQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service QualifierNotificationSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanRegisterForQualifierNotifications() returns (boolean) {}
+  rpc UseFederatedVaultView() returns () {}
+  rpc UseIsolatedVaultView() returns () {}
+  rpc ReliableQualifierNotifications() returns () {}
+  rpc UnreliableQualifierNotifications() returns () {}
+  rpc AcknowledgeQualifierNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewQualifiers() returns () {}
+  rpc RegisterForChangedQualifiers() returns () {}
+  rpc RegisterForChangedQualifier(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedQualifiers() returns () {}
+  rpc RegisterForDeletedQualifier(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedQualifierHierarchy() returns () {}
+  rpc RegisterForChangedQualifierHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedQualifierHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service QualifierHierarchySession {
+  rpc GetQualifierHierarchyId() returns (Id) {}
+  rpc GetQualifierHierarchy() returns (Hierarchy) {}
+  rpc CanAccessQualifierHierarchy() returns (boolean) {}
+  rpc UseComparativeQualifierView() returns () {}
+  rpc UsePlenaryQualifierView() returns () {}
+  rpc GetRootQualifierIds() returns (stream Id) {}
+  rpc GetRootQualifiers() returns (stream Qualifier) {}
+  rpc HasParentQualifiers(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentQualifierIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentQualifiers(dlkit.primordium.id.primitives.Id) returns (stream Qualifier) {}
+  rpc IsAncestorOfQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildQualifiers(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildQualifierIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildQualifiers(dlkit.primordium.id.primitives.Id) returns (stream Qualifier) {}
+  rpc IsDescendantOfQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetQualifierNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetQualifierNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (QualifierNode) {}
+}
+
+service QualifierHierarchyDesignSession {
+  rpc GetQualifierHierarchyId() returns (Id) {}
+  rpc GetQualifierHierarchy() returns (Hierarchy) {}
+  rpc CanModifyQualifierHierarchy() returns (boolean) {}
+  rpc AddRootQualifier(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootQualifier(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildQualifiers(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service QualifierVaultSession {
+  rpc CanLookupQualifierVaultMappings() returns (boolean) {}
+  rpc UseComparativeVaultView() returns () {}
+  rpc UsePlenaryVaultView() returns () {}
+  rpc GetQualifierIdsByVault(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetQualifiersByVault(dlkit.primordium.id.primitives.Id) returns (stream Qualifier) {}
+  rpc GetQualifierIdsByVaults(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetQualifiersByVaults(dlkit.primordium.id.primitives.IdList) returns (stream Qualifier) {}
+  rpc GetVaultIdsByQualifier(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetVaultsByQualifier(dlkit.primordium.id.primitives.Id) returns (stream Vault) {}
+}
+
+service QualifierVaultAssignmentSession {
+  rpc CanAssignQualifiers() returns (boolean) {}
+  rpc CanAssignQualifiersToVault(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableVaultIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableVaultIdsForQualifier(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignQualifierToVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignQualifierFromVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignQualifierToVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service QualifierSmartVaultSession {
+  rpc GetVaultId() returns (Id) {}
+  rpc GetVault() returns (Vault) {}
+  rpc CanManageSmartVaults() returns (boolean) {}
+  rpc GetQualifierQuery() returns (QualifierQuery) {}
+  rpc GetQualifierSearchOrder() returns (QualifierSearchOrder) {}
+  rpc ApplyQualifierQuery(osid.authorization.QualifierQuery) returns () {}
+  rpc InspectQualifierQuery() returns (QualifierQueryInspector) {}
+  rpc ApplyQualifierSequencing(osid.authorization.QualifierSearchOrder) returns () {}
+  rpc GetQualifierQueryFromInspector(osid.authorization.QualifierQueryInspector) returns (QualifierQuery) {}
+}
+
+service VaultLookupSession {
+  rpc CanLookupVaults() returns (boolean) {}
+  rpc UseComparativeVaultView() returns () {}
+  rpc UsePlenaryVaultView() returns () {}
+  rpc GetVault(dlkit.primordium.id.primitives.Id) returns (Vault) {}
+  rpc GetVaultsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Vault) {}
+  rpc GetVaultsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Vault) {}
+  rpc GetVaultsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Vault) {}
+  rpc GetVaultsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Vault) {}
+  rpc GetVaultsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Vault) {}
+  rpc GetVaults() returns (stream Vault) {}
+}
+
+service VaultQuerySession {
+  rpc CanSearchVaults() returns (boolean) {}
+  rpc GetVaultQuery() returns (VaultQuery) {}
+  rpc GetVaultsByQuery(osid.authorization.VaultQuery) returns (stream Vault) {}
+}
+
+service VaultSearchSession {
+  rpc GetVaultSearch() returns (VaultSearch) {}
+  rpc GetVaultSearchOrder() returns (VaultSearchOrder) {}
+  rpc GetVaultsBySearch(osid.authorization.VaultQuery, osid.authorization.VaultSearch) returns (VaultSearchResults) {}
+  rpc GetVaultQueryFromInspector(osid.authorization.VaultQueryInspector) returns (VaultQuery) {}
+}
+
+service VaultAdminSession {
+  rpc CanCreateVaults() returns (boolean) {}
+  rpc CanCreateVaultWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetVaultFormForCreate(osid.type.Type[]) returns (VaultForm) {}
+  rpc CreateVault(osid.authorization.VaultForm) returns (Vault) {}
+  rpc CanUpdateVaults() returns (boolean) {}
+  rpc GetVaultFormForUpdate(dlkit.primordium.id.primitives.Id) returns (VaultForm) {}
+  rpc UpdateVault(osid.authorization.VaultForm) returns () {}
+  rpc CanDeleteVaults() returns (boolean) {}
+  rpc DeleteVault(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageVaultAliases() returns (boolean) {}
+  rpc AliasVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service VaultNotificationSession {
+  rpc CanRegisterForVaultNotifications() returns (boolean) {}
+  rpc ReliableVaultNotifications() returns () {}
+  rpc UnreliableVaultNotifications() returns () {}
+  rpc AcknowledgeVaultNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewVaults() returns () {}
+  rpc RegisterForChangedVaults() returns () {}
+  rpc RegisterForChangedVault(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedVaults() returns () {}
+  rpc RegisterForDeletedVault(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedVaultHierarchy() returns () {}
+  rpc RegisterForChangedVaultHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedVaultHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service VaultHierarchySession {
+  rpc GetVaultHierarchyId() returns (Id) {}
+  rpc GetVaultHierarchy() returns (Hierarchy) {}
+  rpc CanAccessVaultHierarchy() returns (boolean) {}
+  rpc UseComparativeVaultView() returns () {}
+  rpc UsePlenaryVaultView() returns () {}
+  rpc GetRootVaultIds() returns (stream Id) {}
+  rpc GetRootVaults() returns (stream Vault) {}
+  rpc HasParentVaults(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentVaultIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentVaults(dlkit.primordium.id.primitives.Id) returns (stream Vault) {}
+  rpc IsAncestorOfVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildVaults(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildVaultIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildVaults(dlkit.primordium.id.primitives.Id) returns (stream Vault) {}
+  rpc IsDescendantOfVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetVaultNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetVaultNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (VaultNode) {}
+}
+
+service VaultHierarchyDesignSession {
+  rpc GetVaultHierarchyId() returns (Id) {}
+  rpc GetVaultHierarchy() returns (Hierarchy) {}
+  rpc CanModifyVaultHierarchy() returns (boolean) {}
+  rpc AddRootVault(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootVault(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildVault(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildVaults(dlkit.primordium.id.primitives.Id) returns () {}
+}

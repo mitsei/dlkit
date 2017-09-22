@@ -1,0 +1,1282 @@
+syntax = "proto3";
+
+package dlkit.proto.calendaring;
+
+import "osid/objects.proto";
+import "dlkit/primordium/id/primitives.proto";
+import "google/protobuf/timestamp.proto";
+import "dlkit/primordium/calendaring/primitives.proto";
+
+message Event {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  dlkit.primordium.id.primitives.Id location = 2;
+  string location_description = 3;
+  dlkit.primordium.id.primitives.IdList sponsors = 4;
+}
+
+message EventQuery {
+
+}
+
+message EventForm {
+
+}
+
+message EventSearch {
+
+}
+
+message EventSearchResults {
+
+}
+
+message EventList {
+  repeated Event = 1;
+}
+
+message RecurringEvent {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  dlkit.primordium.id.primitives.IdList sponsors = 2;
+}
+
+message RecurringEventQuery {
+
+}
+
+message RecurringEventForm {
+
+}
+
+message RecurringEventSearch {
+
+}
+
+message RecurringEventSearchResults {
+
+}
+
+message RecurringEventList {
+  repeated RecurringEvent = 1;
+}
+
+message SupersedingEvent {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  google.protobuf.Timestamp superseded_date = 2;
+  dlkit.primordium.id.primitives.Id superseded_event = 3;
+  integer superseded_event_position = 4;
+  dlkit.primordium.id.primitives.Id superseding_event = 5;
+}
+
+message SupersedingEventQuery {
+
+}
+
+message SupersedingEventForm {
+
+}
+
+message SupersedingEventSearch {
+
+}
+
+message SupersedingEventSearchResults {
+
+}
+
+message SupersedingEventList {
+  repeated SupersedingEvent = 1;
+}
+
+message OffsetEvent {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  dlkit.primordium.id.primitives.Id end_reference_event = 2;
+  Duration fixed_duration = 3;
+  Duration fixed_end_offset = 4;
+  Duration fixed_start_offset = 5;
+  google.protobuf.Timestamp fixed_start_time = 6;
+  dlkit.primordium.id.primitives.Id location = 7;
+  string location_description = 8;
+  sint32 relative_end_weekday = 9;
+  sint32 relative_start_weekday = 10;
+  integer relative_weekday_end_offset = 11;
+  integer relative_weekday_start_offset = 12;
+  dlkit.primordium.id.primitives.IdList sponsors = 13;
+  dlkit.primordium.id.primitives.Id start_reference_event = 14;
+}
+
+message OffsetEventQuery {
+
+}
+
+message OffsetEventForm {
+
+}
+
+message OffsetEventSearch {
+
+}
+
+message OffsetEventSearchResults {
+
+}
+
+message OffsetEventList {
+  repeated OffsetEvent = 1;
+}
+
+message Schedule {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  cardinal[] limit = 2;
+  dlkit.primordium.id.primitives.Id location = 3;
+  string location_description = 4;
+  google.protobuf.Timestamp schedule_end = 5;
+  dlkit.primordium.id.primitives.Id schedule_slot = 6;
+  google.protobuf.Timestamp schedule_start = 7;
+  dlkit.primordium.id.primitives.Id time_period = 8;
+}
+
+message ScheduleQuery {
+
+}
+
+message ScheduleForm {
+
+}
+
+message ScheduleSearch {
+
+}
+
+message ScheduleSearchResults {
+
+}
+
+message ScheduleList {
+  repeated Schedule = 1;
+}
+
+message ScheduleSlot {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  Duration duration = 2;
+  Duration fixed_interval = 3;
+  integer week_of_month = 4;
+  Time weekday_time = 5;
+  cardinal[] weekdays = 6;
+  integer weekly_interval = 7;
+}
+
+message ScheduleSlotQuery {
+
+}
+
+message ScheduleSlotForm {
+
+}
+
+message ScheduleSlotSearch {
+
+}
+
+message ScheduleSlotSearchResults {
+
+}
+
+message ScheduleSlotList {
+  repeated ScheduleSlot = 1;
+}
+
+message TimePeriod {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  google.protobuf.Timestamp end = 2;
+  google.protobuf.Timestamp start = 3;
+}
+
+message TimePeriodQuery {
+
+}
+
+message TimePeriodForm {
+
+}
+
+message TimePeriodSearch {
+
+}
+
+message TimePeriodSearchResults {
+
+}
+
+message TimePeriodList {
+  repeated TimePeriod = 1;
+}
+
+message Commitment {
+  dlkit.proto.osid.OsidCatalog calendar = 1;
+  dlkit.primordium.id.primitives.Id event = 2;
+  dlkit.primordium.id.primitives.Id resource = 3;
+}
+
+message CommitmentQuery {
+
+}
+
+message CommitmentForm {
+
+}
+
+message CommitmentSearch {
+
+}
+
+message CommitmentSearchResults {
+
+}
+
+message CommitmentList {
+  repeated Commitment = 1;
+}
+
+message Calendar {
+
+}
+
+message CalendarQuery {
+
+}
+
+message CalendarForm {
+
+}
+
+message CalendarSearch {
+
+}
+
+message CalendarSearchResults {
+
+}
+
+message CalendarList {
+  repeated Calendar = 1;
+}
+
+message CalendarNode {
+
+}
+
+message CalendarNodeList {
+  repeated CalendarNode = 1;
+}
+
+message MeetingTime {
+
+}
+
+message MeetingTimeList {
+  repeated MeetingTime = 1;
+}
+
+message TimeList {
+  repeated Time = 1;
+}
+
+message DateTimeList {
+  repeated DateTime = 1;
+}
+
+message DurationList {
+  repeated Duration = 1;
+}
+
+message DateTimeInterval {
+
+}
+
+message DateTimeIntervalList {
+  repeated DateTimeInterval = 1;
+}
+
+service EventLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupEvents() returns (boolean) {}
+  rpc UseComparativeEventView() returns () {}
+  rpc UsePlenaryEventView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseEffectiveEventView() returns () {}
+  rpc UseAnyEffectiveEventView() returns () {}
+  rpc UseNormalizedEventView() returns () {}
+  rpc UseDenormalizedEventView() returns () {}
+  rpc UseSequesteredEventView() returns () {}
+  rpc UseUnsequesteredEventView() returns () {}
+  rpc GetEvent(dlkit.primordium.id.primitives.Id) returns (Event) {}
+  rpc GetEventsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Event) {}
+  rpc GetEventsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Event) {}
+  rpc GetEventsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Event) {}
+  rpc GetEventsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Event) {}
+  rpc GetEventsOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc GetEventsInDateRange(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc GetUpcomingEvents(sint32) returns (stream Event) {}
+  rpc GetEventsByLocation(dlkit.primordium.id.primitives.Id) returns (stream Event) {}
+  rpc GetEventsByLocationOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc GetEventsByLocationInDateRange(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc GetEventsBySponsor(dlkit.primordium.id.primitives.Id) returns (stream Event) {}
+  rpc GetEventsBySponsorOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc GetEventsBySponsorInDateRange(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc GetEvents() returns (stream Event) {}
+}
+
+service EventQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchEvents() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseNormalizedEventView() returns () {}
+  rpc UseDenormalizedEventView() returns () {}
+  rpc UseSequesteredEventView() returns () {}
+  rpc UseUnsequesteredEventView() returns () {}
+  rpc GetEventQuery() returns (EventQuery) {}
+  rpc GetEventsByQuery(osid.calendaring.EventQuery) returns (stream Event) {}
+}
+
+service EventSearchSession {
+  rpc GetEventSearch() returns (EventSearch) {}
+  rpc GetEventSearchOrder() returns (EventSearchOrder) {}
+  rpc GetEventsBySearch(osid.calendaring.EventQuery, osid.calendaring.EventSearch) returns (EventSearchResults) {}
+  rpc GetEventQueryFromInspector(osid.calendaring.EventQueryInspector) returns (EventQuery) {}
+}
+
+service EventAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateEvents() returns (boolean) {}
+  rpc CanCreateEventWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetEventFormForCreate(osid.type.Type[]) returns (EventForm) {}
+  rpc CreateEvent(osid.calendaring.EventForm) returns (Event) {}
+  rpc CanUpdateEvents() returns (boolean) {}
+  rpc GetEventFormForUpdate(dlkit.primordium.id.primitives.Id) returns (EventForm) {}
+  rpc UpdateEvent(osid.calendaring.EventForm) returns () {}
+  rpc CanDeleteEvents() returns (boolean) {}
+  rpc DeleteEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageEventAliases() returns (boolean) {}
+  rpc AliasEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service EventNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForEventNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseNormalizedEventView() returns () {}
+  rpc UseDenormalizedEventView() returns () {}
+  rpc ReliableEventNotifications() returns () {}
+  rpc UnreliableEventNotifications() returns () {}
+  rpc AcknowledgeEventNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewEvents() returns () {}
+  rpc RegisterForChangedEvents() returns () {}
+  rpc RegisterForChangedEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedEvents() returns () {}
+  rpc RegisterForDeletedEvent(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service EventCalendarSession {
+  rpc CanLookupEventCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc UseNormalizedEventView() returns () {}
+  rpc UseDenormalizedEventView() returns () {}
+  rpc GetEventIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetEventsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Event) {}
+  rpc GetEventIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetEventsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Event) {}
+  rpc GetCalendarIdsByEvent(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsByEvent(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service EventCalendarAssignmentSession {
+  rpc CanAssignEvents() returns (boolean) {}
+  rpc CanAssignEventsToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignEventFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service EventSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetEventQuery() returns (EventQuery) {}
+  rpc GetEventSearchOrder() returns (EventSearchOrder) {}
+  rpc ApplyEventQuery(osid.calendaring.EventQuery) returns () {}
+  rpc InspectEventQuery() returns (EventQueryInspector) {}
+  rpc ApplyEventSequencing(osid.calendaring.EventSearchOrder) returns () {}
+  rpc GetEventQueryFromInspector(osid.calendaring.EventQueryInspector) returns (EventQuery) {}
+}
+
+service RecurringEventLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupRecurringEvents() returns (boolean) {}
+  rpc UseComparativeRecurringEventView() returns () {}
+  rpc UsePlenaryRecurringEventView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseActiveRecurringEventView() returns () {}
+  rpc UseAnyStatusRecurringEventView() returns () {}
+  rpc UseSequesteredRecurringEventView() returns () {}
+  rpc UseUnsequesteredRecurringEventView() returns () {}
+  rpc GetRecurringEvent(dlkit.primordium.id.primitives.Id) returns (RecurringEvent) {}
+  rpc GetRecurringEventsByIds(dlkit.primordium.id.primitives.IdList) returns (stream RecurringEvent) {}
+  rpc GetRecurringEventsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream RecurringEvent) {}
+  rpc GetRecurringEventsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream RecurringEvent) {}
+  rpc GetRecurringEventsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream RecurringEvent) {}
+  rpc GetRecurringEventsByScheduleSlot(dlkit.primordium.id.primitives.Id) returns (stream RecurringEvent) {}
+  rpc GetRecurringEvents() returns (stream RecurringEvent) {}
+}
+
+service RecurringEventUnravellingSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanUnravelRecurringEvents() returns (boolean) {}
+  rpc UseComparativeRecurringEventView() returns () {}
+  rpc UsePlenaryRecurringEventView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetRecurringEventByEvent(dlkit.primordium.id.primitives.Id) returns (RecurringEvent) {}
+  rpc GetRecurringEventsByEvents(dlkit.primordium.id.primitives.IdList) returns (stream RecurringEvent) {}
+  rpc ExpandRecurringEvent(dlkit.primordium.id.primitives.Id) returns (stream Event) {}
+  rpc ExpandRecurringEventInDateRange(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc ExpandRecurringEvents(dlkit.primordium.id.primitives.IdList) returns (stream Event) {}
+  rpc ExpandRecurringEventsInDateRange(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Event) {}
+  rpc GetRecurringEventsByDate(google.protobuf.Timestamp) returns (stream RecurringEvent) {}
+  rpc GetRecurringEventsInDateRange(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream RecurringEvent) {}
+  rpc GetNumberOfEvents(dlkit.primordium.id.primitives.Id) returns (cardinal) {}
+  rpc GetNumberOfEventsInDateRange(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (cardinal) {}
+}
+
+service RecurringEventQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchRecurringEvents() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetRecurringEventQuery() returns (RecurringEventQuery) {}
+  rpc GetRecurringEventsByQuery(osid.calendaring.RecurringEventQuery) returns (stream RecurringEvent) {}
+}
+
+service RecurringEventSearchSession {
+  rpc GetRecurringEventSearch() returns (RecurringEventSearch) {}
+  rpc GetRecurringEventSearchOrder() returns (RecurringEventSearchOrder) {}
+  rpc GetRecurringEventsBySearch(osid.calendaring.RecurringEventQuery, osid.calendaring.RecurringEventSearch) returns (RecurringEventSearchResults) {}
+  rpc GetRecurringEventQueryFromInspector(osid.calendaring.RecurringEventQueryInspector) returns (RecurringEventQuery) {}
+}
+
+service RecurringEventAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateRecurringEvents() returns (boolean) {}
+  rpc CanCreateRecurringEventWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetRecurringEventFormForCreate(osid.type.Type[]) returns (RecurringEventForm) {}
+  rpc CreateRecurringEvent(osid.calendaring.RecurringEventForm) returns (RecurringEvent) {}
+  rpc CanUpdateRecurringEvents() returns (boolean) {}
+  rpc GetRecurringEventFormForUpdate(dlkit.primordium.id.primitives.Id) returns (RecurringEventForm) {}
+  rpc UpdateRecurringEvent(osid.calendaring.RecurringEventForm) returns () {}
+  rpc CanDeleteRecurringEvents() returns (boolean) {}
+  rpc DeleteRecurringEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageRecurringEventAliases() returns (boolean) {}
+  rpc AliasRecurringEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanScheduleRecurringEvents() returns (boolean) {}
+  rpc AddSchedule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (Id) {}
+  rpc RemoveSchedule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddSpecificDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, osid.locale.DisplayText) returns () {}
+  rpc AddSpecificDateWithLocation(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ClearSpecificDates(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns () {}
+  rpc AddEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddBlackout(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns () {}
+  rpc ClearBlackout(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns () {}
+}
+
+service RecurringEventNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForRecurringEventNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc ReliableRecurringEventNotifications() returns () {}
+  rpc UnreliableRecurringEventNotifications() returns () {}
+  rpc AcknowledgeRecurringEventNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRecurringEvents() returns () {}
+  rpc RegisterForChangedRecurringEvents() returns () {}
+  rpc RegisterForChangedRecurringEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRecurringEvents() returns () {}
+  rpc RegisterForDeletedRecurringEvent(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RecurringEventCalendarSession {
+  rpc CanLookupRecurringEventCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetRecurringEventIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetRecurringEventsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream RecurringEvent) {}
+  rpc GetRecurringEventIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetRecurringEventsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream RecurringEvent) {}
+  rpc GetCalendarIdsByRecurringEvent(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsByRecurringEvent(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service RecurringEventCalendarAssignmentSession {
+  rpc CanAssignRecurringEvents() returns (boolean) {}
+  rpc CanAssignRecurringEventsToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForRecurringEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignRecurringEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignRecurringEventFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignRecurringEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RecurringEventSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetRecurringEventQuery() returns (RecurringEventQuery) {}
+  rpc GetRecurringEventSearchOrder() returns (RecurringEventSearchOrder) {}
+  rpc ApplyRecurringEventQuery(osid.calendaring.RecurringEventQuery) returns () {}
+  rpc InspectRecurringEventQuery() returns (RecurringEventQueryInspector) {}
+  rpc ApplyRecurringEventSequencing(osid.calendaring.RecurringEventSearchOrder) returns () {}
+  rpc GetRecurringEventQueryFromInspector(osid.calendaring.RecurringEventQueryInspector) returns (RecurringEventQuery) {}
+}
+
+service SupersedingEventLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupSupersedingEvents() returns (boolean) {}
+  rpc UseComparativeSupersedingEventView() returns () {}
+  rpc UsePlenarySupersedingEventView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseActiveSupersedingEventView() returns () {}
+  rpc UseAnyStatusSupersedingEventView() returns () {}
+  rpc GetSupersedingEvent(dlkit.primordium.id.primitives.Id) returns (SupersedingEvent) {}
+  rpc GetSupersedingEventsByIds(dlkit.primordium.id.primitives.IdList) returns (stream SupersedingEvent) {}
+  rpc GetSupersedingEventsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream SupersedingEvent) {}
+  rpc GetSupersedingEventsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream SupersedingEvent) {}
+  rpc GetSupersedingEventsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream SupersedingEvent) {}
+  rpc GetSupersedingEventsBySupersededEvent(dlkit.primordium.id.primitives.Id) returns (stream SupersedingEvent) {}
+  rpc GetSupersedingEvents() returns (stream SupersedingEvent) {}
+}
+
+service SupersedingEventQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchSupersedingEvents() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetSupersedingEventQuery() returns (SupersedingEventQuery) {}
+  rpc GetSupersedingEventsByQuery(osid.calendaring.SupersedingEventQuery) returns (stream SupersedingEvent) {}
+}
+
+service SupersedingEventSearchSession {
+  rpc GetSupersedingEventSearch() returns (SupersedingEventSearch) {}
+  rpc GetSupersedingEventSearchOrder() returns (SupersedingEventSearchOrder) {}
+  rpc GetSupersedingEventsBySearch(osid.calendaring.SupersedingEventQuery, osid.calendaring.SupersedingEventSearch) returns (SupersedingEventSearchResults) {}
+  rpc GetSupersedingEventQueryFromInspector(osid.calendaring.SupersedingEventQueryInspector) returns (SupersedingEventQuery) {}
+}
+
+service SupersedingEventAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateSupersedingEvents() returns (boolean) {}
+  rpc CanCreateSupersedingEventWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetSupersedingEventFormForCreate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (SupersedingEventForm) {}
+  rpc CreateSupersedingEvent(osid.calendaring.SupersedingEventForm) returns (SupersedingEvent) {}
+  rpc CanUpdateSupersedingEvents() returns (boolean) {}
+  rpc GetSupersedingEventFormForUpdate(dlkit.primordium.id.primitives.Id) returns (SupersedingEventForm) {}
+  rpc UpdateSupersedingEvent(osid.calendaring.SupersedingEventForm) returns () {}
+  rpc CanDeleteSupersedingEvents() returns (boolean) {}
+  rpc DeleteSupersedingEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageSupersedingEventAliases() returns (boolean) {}
+  rpc AliasSupersedingEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SupersedingEventNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForSupersedingEventNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc ReliableSupersedingEventNotifications() returns () {}
+  rpc UnreliableSupersedingEventNotifications() returns () {}
+  rpc AcknowledgeSupersedingEventNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewSupersedingEvents() returns () {}
+  rpc RegisterForChangedSupersedingEvents() returns () {}
+  rpc RegisterForChangedSupersedingEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedSupersedingEvents() returns () {}
+  rpc RegisterForDeletedSupersedingEvent(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SupersedingEventCalendarSession {
+  rpc CanLookupSupersedingEventCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetSupersedingEventIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetSupersedingEventsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream SupersedingEvent) {}
+  rpc GetSupersedingEventIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetSupersedingEventsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream SupersedingEvent) {}
+  rpc GetSupersedingIdsByRecurringEvent(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsBySupersedingEvent(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service SupersedingEventCalendarAssignmentSession {
+  rpc CanAssignSupersedingEvents() returns (boolean) {}
+  rpc CanAssignSupersedingEventsToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForSupersedingEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignSupersedingEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignSupersedingEventFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignSupersedingEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SupersedingEventSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetSupersedingEventQuery() returns (SupersedingEventQuery) {}
+  rpc GetSupersedingEventSearchOrder() returns (SupersedingEventSearchOrder) {}
+  rpc ApplySupersedingEventQuery(osid.calendaring.SupersedingEventQuery) returns () {}
+  rpc InspectSupersedingEventQuery() returns (SupersedingEventQueryInspector) {}
+  rpc ApplySupersedingEventSequencing(osid.calendaring.SupersedingEventSearchOrder) returns () {}
+  rpc GetSupersedingEventQueryFromInspector(osid.calendaring.SupersedingEventQueryInspector) returns (SupersedingEventQuery) {}
+}
+
+service OffsetEventLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupOffsetEvents() returns (boolean) {}
+  rpc UseComparativeOffsetEventView() returns () {}
+  rpc UsePlenaryOffsetEventView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseActiveOffsetEventView() returns () {}
+  rpc UseAnyStatusOffsetEventView() returns () {}
+  rpc GetOffsetEvent(dlkit.primordium.id.primitives.Id) returns (OffsetEvent) {}
+  rpc GetOffsetEventsByIds(dlkit.primordium.id.primitives.IdList) returns (stream OffsetEvent) {}
+  rpc GetOffsetEventsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream OffsetEvent) {}
+  rpc GetOffsetEventsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream OffsetEvent) {}
+  rpc GetOffsetEventsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream OffsetEvent) {}
+  rpc GetOffsetEventsByEvent(dlkit.primordium.id.primitives.Id) returns (stream OffsetEvent) {}
+  rpc GetOffsetEvents() returns (stream OffsetEvent) {}
+}
+
+service OffsetEventQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchOffsetEvents() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetOffsetEventQuery() returns (OffsetEventQuery) {}
+  rpc GetOffsetEventsByQuery(osid.calendaring.OffsetEventQuery) returns (stream OffsetEvent) {}
+}
+
+service OffsetEventSearchSession {
+  rpc GetOffsetEventSearch() returns (OffsetEventSearch) {}
+  rpc GetOffsetEventSearchOrder() returns (OffsetEventSearchOrder) {}
+  rpc GetOffsetEventsBySearch(osid.calendaring.OffsetEventQuery, osid.calendaring.OffsetEventSearch) returns (OffsetEventSearchResults) {}
+  rpc GetOffsetEventQueryFromInspector(osid.calendaring.OffsetEventQueryInspector) returns (OffsetEventQuery) {}
+}
+
+service OffsetEventAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateOffsetEvents() returns (boolean) {}
+  rpc CanCreateOffsetEventWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetOffsetEventFormForCreate(osid.type.Type[]) returns (OffsetEventForm) {}
+  rpc CreateOffsetEvent(osid.calendaring.OffsetEventForm) returns (OffsetEvent) {}
+  rpc CanUpdateOffsetEvents() returns (boolean) {}
+  rpc GetOffsetEventFormForUpdate(dlkit.primordium.id.primitives.Id) returns (OffsetEventForm) {}
+  rpc UpdateOffsetEvent(osid.calendaring.OffsetEventForm) returns () {}
+  rpc CanDeleteOffsetEvents() returns (boolean) {}
+  rpc DeleteOffsetEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageOffsetEventAliases() returns (boolean) {}
+  rpc AliasOffsetEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service OffsetEventNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForOffsetEventNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc ReliableOffsetEventNotifications() returns () {}
+  rpc UnreliableOffsetEventNotifications() returns () {}
+  rpc AcknowledgeOffsetEventNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewOffsetEvents() returns () {}
+  rpc RegisterForChangedOffsetEvents() returns () {}
+  rpc RegisterForChangedOffsetEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedOffsetEvents() returns () {}
+  rpc RegisterForDeletedOffsetEvent(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service OffsetEventCalendarSession {
+  rpc CanLookupEventCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetOffsetEventIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetOffsetEventsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream OffsetEvent) {}
+  rpc GetOffsetEventIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetOffsetEventsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream OffsetEvent) {}
+  rpc GetCalendarIdsByOffsetEvent(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsByOffsetEvent(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service OffsetEventCalendarAssignmentSession {
+  rpc CanAssignOffsetEvents() returns (boolean) {}
+  rpc CanAssignOffsetEventsToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForOffsetEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignOffsetEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignOffsetEventFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignOffsetEventToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service OffsetEventSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetOffsetEventQuery() returns (OffsetEventQuery) {}
+  rpc GetOffsetEventSearchOrder() returns (OffsetEventSearchOrder) {}
+  rpc ApplyOffsetEventQuery(osid.calendaring.OffsetEventQuery) returns () {}
+  rpc InspectOffsetEventQuery() returns (OffsetEventQueryInspector) {}
+  rpc ApplyOffsetEventSequencing(osid.calendaring.OffsetEventSearchOrder) returns () {}
+  rpc GetOffsetEventQueryFromInspector(osid.calendaring.OffsetEventQueryInspector) returns (OffsetEventQuery) {}
+}
+
+service ScheduleLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupSchedules() returns (boolean) {}
+  rpc UseComparativeScheduleView() returns () {}
+  rpc UsePlenaryScheduleView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetSchedule(dlkit.primordium.id.primitives.Id) returns (Schedule) {}
+  rpc GetSchedulesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Schedule) {}
+  rpc GetSchedulesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Schedule) {}
+  rpc GetSchedulesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Schedule) {}
+  rpc GetSchedulesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Schedule) {}
+  rpc GetSchedulesByScheduleSlot(dlkit.primordium.id.primitives.Id) returns (stream Schedule) {}
+  rpc GetSchedulesByLocation(dlkit.primordium.id.primitives.Id) returns (stream Schedule) {}
+  rpc GetSchedulesByDate(google.protobuf.Timestamp) returns (stream Schedule) {}
+  rpc GetSchedulesByDateRange(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Schedule) {}
+  rpc GetSchedules() returns (stream Schedule) {}
+}
+
+service ScheduleQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchSchedules() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetScheduleQuery() returns (ScheduleQuery) {}
+  rpc GetSchedulesByQuery(osid.calendaring.ScheduleQuery) returns (stream Schedule) {}
+}
+
+service ScheduleSearchSession {
+  rpc GetScheduleSearch() returns (ScheduleSearch) {}
+  rpc GetScheduleSearchOrder() returns (ScheduleSearchOrder) {}
+  rpc GetSchedulesBySearch(osid.calendaring.ScheduleQuery, osid.calendaring.ScheduleSearch) returns (ScheduleSearchResults) {}
+  rpc GetScheduleQueryFromInspector(osid.calendaring.ScheduleQueryInspector) returns (ScheduleQuery) {}
+}
+
+service ScheduleAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateSchedules() returns (boolean) {}
+  rpc CanCreateScheduleWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetScheduleFormForCreate(osid.type.Type[]) returns (ScheduleForm) {}
+  rpc CreateSchedule(osid.calendaring.ScheduleForm) returns (Schedule) {}
+  rpc CanUpdateSchedules() returns (boolean) {}
+  rpc GetScheduleFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ScheduleForm) {}
+  rpc UpdateSchedule(osid.calendaring.ScheduleForm) returns () {}
+  rpc CanDeleteSchedules() returns (boolean) {}
+  rpc DeleteSchedule(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageScheduleAliases() returns (boolean) {}
+  rpc AliasSchedule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ScheduleNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForScheduleNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc ReliableScheduleNotifications() returns () {}
+  rpc UnreliableScheduleNotifications() returns () {}
+  rpc AcknowledgeScheduleNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewSchedules() returns () {}
+  rpc RegisterForChangedSchedules() returns () {}
+  rpc RegisterForChangedSchedule(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedSchedules() returns () {}
+  rpc RegisterForDeletedSchedule(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ScheduleCalendarSession {
+  rpc CanLookupScheduleCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetScheduleIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetSchedulesByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Schedule) {}
+  rpc GetScheduleIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetSchedulesByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Schedule) {}
+  rpc GetCalendarIdsBySchedule(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsBySchedule(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service ScheduleCalendarAssignmentSession {
+  rpc CanAssignSchedules() returns (boolean) {}
+  rpc CanAssignSchedulesToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForSchedule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignScheduleToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignScheduleFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignScheduleToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ScheduleSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetScheduleQuery() returns (ScheduleQuery) {}
+  rpc GetScheduleSearchOrder() returns (ScheduleSearchOrder) {}
+  rpc ApplyScheduleQuery(osid.calendaring.ScheduleQuery) returns () {}
+  rpc InspectScheduleQuery() returns (ScheduleQueryInspector) {}
+  rpc ApplyScheduleSequencing(osid.calendaring.ScheduleSearchOrder) returns () {}
+  rpc GetScheduleQueryFromInspector(osid.calendaring.ScheduleQueryInspector) returns (ScheduleQuery) {}
+}
+
+service ScheduleSlotLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupScheduleSlots() returns (boolean) {}
+  rpc UseComparativeScheduleSlotView() returns () {}
+  rpc UsePlenaryScheduleSlotView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseSequesteredScheduleSlotView() returns () {}
+  rpc UseUnsequesteredScheduleSlotView() returns () {}
+  rpc GetScheduleSlot(dlkit.primordium.id.primitives.Id) returns (ScheduleSlot) {}
+  rpc GetScheduleSlotsByIds(dlkit.primordium.id.primitives.IdList) returns (stream ScheduleSlot) {}
+  rpc GetScheduleSlotsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream ScheduleSlot) {}
+  rpc GetScheduleSlotsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream ScheduleSlot) {}
+  rpc GetScheduleSlotsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream ScheduleSlot) {}
+  rpc GetScheduleSlotsByWeekdays(cardinal[]) returns (stream ScheduleSlot) {}
+  rpc GetScheduleSlotsByTime(osid.calendaring.Time) returns (stream ScheduleSlot) {}
+  rpc GetScheduleSlots() returns (stream ScheduleSlot) {}
+}
+
+service ScheduleSlotQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchScheduleSlots() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseSequesteredScheduleSlotView() returns () {}
+  rpc UseUnsequesteredScheduleSlotView() returns () {}
+  rpc GetScheduleSlotQuery() returns (ScheduleSlotQuery) {}
+  rpc GetScheduleSlotsByQuery(osid.calendaring.ScheduleSlotQuery) returns (stream ScheduleSlot) {}
+}
+
+service ScheduleSlotSearchSession {
+  rpc GetScheduleSlotSearch() returns (ScheduleSlotSearch) {}
+  rpc GetScheduleSlotSearchOrder() returns (ScheduleSlotSearchOrder) {}
+  rpc GetScheduleSlotsBySearch(osid.calendaring.ScheduleSlotQuery, osid.calendaring.ScheduleSlotSearch) returns (ScheduleSearchResults) {}
+  rpc GetScheduleSlotQueryFromInspector(osid.calendaring.ScheduleSlotQueryInspector) returns (ScheduleSlotQuery) {}
+}
+
+service ScheduleSlotAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateScheduleSlots() returns (boolean) {}
+  rpc CanCreateScheduleSlotWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetScheduleSlotFormForCreate(osid.type.Type[]) returns (ScheduleSlotForm) {}
+  rpc CreateScheduleSlot(osid.calendaring.ScheduleSlotForm) returns (ScheduleSlot) {}
+  rpc CanUpdateScheduleSlots() returns (boolean) {}
+  rpc GetScheduleSlotFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ScheduleSlotForm) {}
+  rpc UpdateScheduleSlot(osid.calendaring.ScheduleSlotForm) returns () {}
+  rpc CanDeleteScheduleSlots() returns (boolean) {}
+  rpc DeleteScheduleSlot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageScheduleSlotAliases() returns (boolean) {}
+  rpc AliasScheduleSlot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ScheduleSlotNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForScheduleSlotNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc ReliableScheduleSlotNotifications() returns () {}
+  rpc UnreliableScheduleSlotNotifications() returns () {}
+  rpc AcknowledgeScheduleSlotNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewScheduleSlots() returns () {}
+  rpc RegisterForChangedScheduleSlots() returns () {}
+  rpc RegisterForChangedScheduleSlot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedScheduleSlots() returns () {}
+  rpc RegisterForDeletedScheduleSlot(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ScheduleSlotCalendarSession {
+  rpc CanLookupScheduleSlotCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetScheduleSlotIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetScheduleSlotsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream ScheduleSlot) {}
+  rpc GetScheduleSlotIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetScheduleSlotsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream ScheduleSlot) {}
+  rpc GetCalendarIdsByScheduleSlot(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsByScheduleSlot(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service ScheduleSlotCalendarAssignmentSession {
+  rpc CanAssignScheduleSlots() returns (boolean) {}
+  rpc CanAssignScheduleSlotsToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForScheduleSlot(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignScheduleSlotToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignScheduleSlotFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignScheduleSlotToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ScheduleSlotSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetScheduleSlotQuery() returns (ScheduleSlotQuery) {}
+  rpc GetScheduleSlotSearchOrder() returns (ScheduleSlotSearchOrder) {}
+  rpc ApplyScheduleSlotQuery(osid.calendaring.ScheduleSlotQuery) returns () {}
+  rpc InspectScheduleSlotQuery() returns (ScheduleSlotQueryInspector) {}
+  rpc ApplyScheduleSlotSequencing(osid.calendaring.ScheduleSlotSearchOrder) returns () {}
+  rpc GetScheduleSlotQueryFromInspector(osid.calendaring.ScheduleSlotQueryInspector) returns (ScheduleSlotQuery) {}
+}
+
+service CommitmentLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupCommitments() returns (boolean) {}
+  rpc UseComparativeCommitmentView() returns () {}
+  rpc UsePlenaryCommitmentView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc UseEffectiveCommitmentView() returns () {}
+  rpc UseAnyEffectiveCommitmentView() returns () {}
+  rpc GetCommitment(dlkit.primordium.id.primitives.Id) returns (Commitment) {}
+  rpc GetCommitmentsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Commitment) {}
+  rpc GetCommitmentsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Commitment) {}
+  rpc GetCommitmentsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Commitment) {}
+  rpc GetCommitmentsOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusTypeOnDate(dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitmentsForEvent(dlkit.primordium.id.primitives.Id) returns (stream Commitment) {}
+  rpc GetCommitmentsForEventOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusTypeForEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusTypeForEventOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitmentsForResource(dlkit.primordium.id.primitives.Id) returns (stream Commitment) {}
+  rpc GetCommitmentsForResourceOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusTypeForResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusTypeForResourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitmentsForEventAndResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Commitment) {}
+  rpc GetCommitmentsForEventAndResourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusTypeForEventAndResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Commitment) {}
+  rpc GetCommitmentsByGenusTypeForEventAndResourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Commitment) {}
+  rpc GetCommitments() returns (stream Commitment) {}
+}
+
+service CommitmentQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchCommitments() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetCommitmentQuery() returns (CommitmentQuery) {}
+  rpc GetCommitmentsByQuery(osid.calendaring.CommitmentQuery) returns (stream Commitment) {}
+}
+
+service CommitmentSearchSession {
+  rpc GetCommitmentSearch() returns (CommitmentSearch) {}
+  rpc GetCommitmentSearchOrder() returns (CommitmentSearchOrder) {}
+  rpc GetCommitmentsBySearch(osid.calendaring.CommitmentQuery, osid.calendaring.CommitmentSearch) returns (CommitmentSearchResults) {}
+  rpc GetCommitmentQueryFromInspector(osid.calendaring.CommitmentQueryInspector) returns (CommitmentQuery) {}
+}
+
+service CommitmentAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateCommitments() returns (boolean) {}
+  rpc CanCreateCommitmentWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetCommitmentFormForCreate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (CommitmentForm) {}
+  rpc CreateCommitment(osid.calendaring.CommitmentForm) returns (Commitment) {}
+  rpc CanUpdateCommitments() returns (boolean) {}
+  rpc GetCommitmentFormForUpdate(dlkit.primordium.id.primitives.Id) returns (CommitmentForm) {}
+  rpc UpdateCommitment(osid.calendaring.CommitmentForm) returns () {}
+  rpc CanDeleteCommitments() returns (boolean) {}
+  rpc DeleteCommitment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageCommitmentAliases() returns (boolean) {}
+  rpc AliasCommitment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CommitmentNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForCommitmentNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc ReliableCommitmentNotifications() returns () {}
+  rpc UnreliableCommitmentNotifications() returns () {}
+  rpc AcknowledgeCommitmentNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewCommitments() returns () {}
+  rpc RegisterForNewCommitmentsByGenusType(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewCommitmentsForEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewCommitmentsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCommitments() returns () {}
+  rpc RegisterForChangedCommitmentsByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedCommitmentsForEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCommitmentsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCommitment(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCommitments() returns () {}
+  rpc RegisterForDeletedCommitmentsByGenusType(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCommitmentsForEvent(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCommitmentsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCommitment(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CommitmentCalendarSession {
+  rpc CanLookupCommitmentCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetCommitmentIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCommitmentsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Commitment) {}
+  rpc GetCommitmentIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetCommitmentsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Commitment) {}
+  rpc GetCalendarIdsByCommitment(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsByCommitment(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service CommitmentCalendarAssignmentSession {
+  rpc CanAssignCommitments() returns (boolean) {}
+  rpc CanAssignCommitmentsToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForCommitment(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignCommitmentToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignCommitmentFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignCommitmentToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CommitmentSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetCommitmentQuery() returns (CommitmentQuery) {}
+  rpc GetCommitmentSearchOrder() returns (CommitmentSearchOrder) {}
+  rpc ApplyCommitmentQuery(osid.calendaring.CommitmentQuery) returns () {}
+  rpc InspectCommitmentQuery() returns (CommitmentQueryInspector) {}
+  rpc ApplyCommitmentSequencing(osid.calendaring.CommitmentSearchOrder) returns () {}
+  rpc GetCommitmentQueryFromInspector(osid.calendaring.CommitmentQueryInspector) returns (CommitmentQuery) {}
+}
+
+service TimePeriodLookupSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanLookupTimePeriods() returns (boolean) {}
+  rpc UseComparativeTimePeriodView() returns () {}
+  rpc UsePlenaryTimePeriodView() returns () {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetTimePeriod(dlkit.primordium.id.primitives.Id) returns (TimePeriod) {}
+  rpc GetTimePeriodsByIds(dlkit.primordium.id.primitives.IdList) returns (stream TimePeriod) {}
+  rpc GetTimePeriodsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream TimePeriod) {}
+  rpc GetTimePeriodsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream TimePeriod) {}
+  rpc GetTimePeriodsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream TimePeriod) {}
+  rpc GetTimePeriodsByDate(google.protobuf.Timestamp) returns (stream TimePeriod) {}
+  rpc GetTimePeriodsInDateRange(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream TimePeriod) {}
+  rpc GetTimePeriods() returns (stream TimePeriod) {}
+}
+
+service TimePeriodQuerySession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanSearchTimePeriods() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc GetTimePeriodQuery() returns (TimePeriodQuery) {}
+  rpc GetTimePeriodsByQuery(osid.calendaring.TimePeriodQuery) returns (stream TimePeriod) {}
+}
+
+service TimePeriodSearchSession {
+  rpc GetTimePeriodSearch() returns (TimePeriodSearch) {}
+  rpc GetTimePeriodSearchOrder() returns (TimePeriodSearchOrder) {}
+  rpc GetTimePeriodsBySearch(osid.calendaring.TimePeriodQuery, osid.calendaring.TimePeriodSearch) returns (TimePeriodSearchResults) {}
+  rpc GetTimePeriodQueryFromInspector(osid.calendaring.TimePeriodQueryInspector) returns (TimePeriodQuery) {}
+}
+
+service TimePeriodAdminSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanCreateTimePeriods() returns (boolean) {}
+  rpc CanCreateTimePeriodWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetTimePeriodFormForCreate(osid.type.Type[]) returns (TimePeriodForm) {}
+  rpc CreateTimePeriod(osid.calendaring.TimePeriodForm) returns (TimePeriod) {}
+  rpc CanUpdateTimePeriods() returns (boolean) {}
+  rpc GetTimePeriodFormForUpdate(dlkit.primordium.id.primitives.Id) returns (TimePeriodForm) {}
+  rpc UpdateTimePeriod(osid.calendaring.TimePeriodForm) returns () {}
+  rpc CanDeleteTimePeriods() returns (boolean) {}
+  rpc DeleteTimePeriod(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageTimePeriodAliases() returns (boolean) {}
+  rpc AliasTimePeriod(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddExceptionEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveExceptionEvent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service TimePeriodNotificationSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanRegisterForTimePeriodNotifications() returns (boolean) {}
+  rpc UseFederatedCalendarView() returns () {}
+  rpc UseIsolatedCalendarView() returns () {}
+  rpc ReliableTimePeriodNotifications() returns () {}
+  rpc UnreliableTimePeriodNotifications() returns () {}
+  rpc AcknowledgeTimePeriodNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewTimePeriods() returns () {}
+  rpc RegisterForChangedTimePeriods() returns () {}
+  rpc RegisterForChangedTimePeriod(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedTimePeriods() returns () {}
+  rpc RegisterForDeletedTimePeriod(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service TimePeriodCalendarSession {
+  rpc CanLookupTimePeriodCalendarMappings() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetTimePeriodIdsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetTimePeriodsByCalendar(dlkit.primordium.id.primitives.Id) returns (stream TimePeriod) {}
+  rpc GetTimePeriodIdsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetTimePeriodsByCalendars(dlkit.primordium.id.primitives.IdList) returns (stream TimePeriod) {}
+  rpc GetCalendarIdsByTimePeriod(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCalendarsByTimePeriod(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+}
+
+service TimePeriodCalendarAssignmentSession {
+  rpc CanAssignTimePeriods() returns (boolean) {}
+  rpc CanAssignTimePeriodsToCalendar(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableCalendarIdsForTimePeriod(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignTimePeriodToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignTimePeriodFromCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignTimePeriodToCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service TimePeriodSmartCalendarSession {
+  rpc GetCalendarId() returns (Id) {}
+  rpc GetCalendar() returns (Calendar) {}
+  rpc CanManageSmartCalendars() returns (boolean) {}
+  rpc GetTimePeriodQuery() returns (TimePeriodQuery) {}
+  rpc GetTimePeriodSearchOrder() returns (TimePeriodSearchOrder) {}
+  rpc ApplyTimePeriodQuery(osid.calendaring.TimePeriodQuery) returns () {}
+  rpc InspectTimePeriodQuery() returns (TimePeriodQueryInspector) {}
+  rpc ApplyTimePeriodSequencing(osid.calendaring.TimePeriodSearchOrder) returns () {}
+  rpc GetTimePeriodQueryFromInspector(osid.calendaring.TimePeriodQueryInspector) returns (TimePeriodQuery) {}
+}
+
+service CalendarLookupSession {
+  rpc CanLookupCalendars() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetCalendar(dlkit.primordium.id.primitives.Id) returns (Calendar) {}
+  rpc GetCalendarsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Calendar) {}
+  rpc GetCalendarsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Calendar) {}
+  rpc GetCalendarsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Calendar) {}
+  rpc GetCalendarsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Calendar) {}
+  rpc GetCalendarsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+  rpc GetCalendars() returns (stream Calendar) {}
+}
+
+service CalendarQuerySession {
+  rpc CanSearchCalendars() returns (boolean) {}
+  rpc GetCalendarQuery() returns (CalendarQuery) {}
+  rpc GetCalendarsByQuery(osid.calendaring.CalendarQuery) returns (stream Calendar) {}
+}
+
+service CalendarSearchSession {
+  rpc CanSearchCalendars() returns (boolean) {}
+  rpc GetCalendarSearch() returns (CalendarSearch) {}
+  rpc GetCalendarSearchOrder() returns (CalendarSearchOrder) {}
+  rpc GetCalendarsBySearch(osid.calendaring.CalendarQuery, osid.calendaring.CalendarSearch) returns (CalendarSearchResults) {}
+  rpc GetCalendarQueryFromInspector(osid.calendaring.CalendarQueryInspector) returns (CalendarQuery) {}
+}
+
+service CalendarAdminSession {
+  rpc CanCreateCalendars() returns (boolean) {}
+  rpc CanCreateCalendarWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetCalendarFormForCreate(osid.type.Type[]) returns (CalendarForm) {}
+  rpc CreateCalendar(osid.calendaring.CalendarForm) returns (CalendarForm) {}
+  rpc CanUpdateCalendars() returns (boolean) {}
+  rpc GetCalendarFormForUpdate(dlkit.primordium.id.primitives.Id) returns (CalendarForm) {}
+  rpc UpdateCalendar(osid.calendaring.CalendarForm) returns () {}
+  rpc CanDeleteCalendars() returns (boolean) {}
+  rpc DeleteCalendar(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageCalendarAliases() returns (boolean) {}
+  rpc AliasCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CalendarNotificationSession {
+  rpc CanRegisterForCalendarNotifications() returns (boolean) {}
+  rpc ReliableCalendarNotifications() returns () {}
+  rpc UnreliableCalendarNotifications() returns () {}
+  rpc AcknowledgeCalendarNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewCalendars() returns () {}
+  rpc RegisterForChangedCalendars() returns () {}
+  rpc RegisterForChangedCalendar(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCalendars() returns () {}
+  rpc RegisterForDeletedCalendar(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCalendarHierarchy() returns () {}
+  rpc RegisterForChangedCalendarHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCalendarHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CalendarHierarchySession {
+  rpc GetCalendarHierarchyId() returns (Id) {}
+  rpc GetCalendarHierarchy() returns (Hierarchy) {}
+  rpc CanAccessCalendarHierarchy() returns (boolean) {}
+  rpc UseComparativeCalendarView() returns () {}
+  rpc UsePlenaryCalendarView() returns () {}
+  rpc GetRootCalendarIds() returns (stream Id) {}
+  rpc GetRootCalendars() returns (stream Calendar) {}
+  rpc HasParentCalendars(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentCalendars(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+  rpc IsAncestorOfCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildCalendars(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildCalendarIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildCalendars(dlkit.primordium.id.primitives.Id) returns (stream Calendar) {}
+  rpc IsDescendantOfCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetCalendarNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetCalendarNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (CalendarNode) {}
+}
+
+service CalendarHierarchyDesignSession {
+  rpc GetCalendarHierarchyId() returns (Id) {}
+  rpc GetCalendarHierarchy() returns (Hierarchy) {}
+  rpc CanModifyCalendarHierarchy() returns (boolean) {}
+  rpc AddRootCalendar(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootCalendar(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildCalendar(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildCalendars(dlkit.primordium.id.primitives.Id) returns () {}
+}

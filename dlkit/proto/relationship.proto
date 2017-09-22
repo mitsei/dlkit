@@ -1,0 +1,275 @@
+syntax = "proto3";
+
+package dlkit.proto.relationship;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+
+message Relationship {
+  dlkit.primordium.id.primitives.Id destination = 1;
+  dlkit.proto.osid.OsidCatalog family = 2;
+  dlkit.primordium.id.primitives.Id source = 3;
+}
+
+message RelationshipQuery {
+
+}
+
+message RelationshipForm {
+
+}
+
+message RelationshipSearch {
+
+}
+
+message RelationshipSearchResults {
+
+}
+
+message RelationshipList {
+  repeated Relationship = 1;
+}
+
+message Family {
+
+}
+
+message FamilyQuery {
+
+}
+
+message FamilyForm {
+
+}
+
+message FamilySearch {
+
+}
+
+message FamilySearchResults {
+
+}
+
+message FamilyList {
+  repeated Family = 1;
+}
+
+message FamilyNode {
+
+}
+
+message FamilyNodeList {
+  repeated FamilyNode = 1;
+}
+
+service RelationshipLookupSession {
+  rpc GetFamilyId() returns (Id) {}
+  rpc GetFamily() returns (Family) {}
+  rpc CanLookupRelationships() returns (boolean) {}
+  rpc UseComparativeRelationshipView() returns () {}
+  rpc UsePlenaryRelationshipView() returns () {}
+  rpc UseFederatedFamilyView() returns () {}
+  rpc UseIsolatedFamilyView() returns () {}
+  rpc UseEffectiveRelationshipView() returns () {}
+  rpc UseAnyEffectiveRelationshipView() returns () {}
+  rpc GetRelationship(dlkit.primordium.id.primitives.Id) returns (Relationship) {}
+  rpc GetRelationshipsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Relationship) {}
+  rpc GetRelationshipsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Relationship) {}
+  rpc GetRelationshipsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Relationship) {}
+  rpc GetRelationshipsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Relationship) {}
+  rpc GetRelationshipsOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relationship) {}
+  rpc GetRelationshipsForSource(dlkit.primordium.id.primitives.Id) returns (stream Relationship) {}
+  rpc GetRelationshipsForSourceOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relationship) {}
+  rpc GetRelationshipsByGenusTypeForSource(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Relationship) {}
+  rpc GetRelationshipsByGenusTypeForSourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relationship) {}
+  rpc GetRelationshipsForDestination(dlkit.primordium.id.primitives.Id) returns (stream Relationship) {}
+  rpc GetRelationshipsForDestinationOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relationship) {}
+  rpc GetRelationshipsByGenusTypeForDestination(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Relationship) {}
+  rpc GetRelationshipsByGenusTypeForDestinationOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relationship) {}
+  rpc GetRelationshipsForPeers(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Relationship) {}
+  rpc GetRelationshipsForPeersOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relationship) {}
+  rpc GetRelationshipsByGenusTypeForPeers(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Relationship) {}
+  rpc GetRelationshipsByGenusTypeForPeersOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relationship) {}
+  rpc GetRelationships() returns (stream Relationship) {}
+}
+
+service RelationshipQuerySession {
+  rpc GetFamilyId() returns (Id) {}
+  rpc GetFamily() returns (Family) {}
+  rpc UseFederatedFamilyView() returns () {}
+  rpc UseIsolatedFamilyView() returns () {}
+  rpc CanSearchRelationships() returns (boolean) {}
+  rpc GetRelationshipQuery() returns (RelationshipQuery) {}
+  rpc GetRelationshipsByQuery(osid.relationship.RelationshipQuery) returns (stream Relationship) {}
+}
+
+service RelationshipSearchSession {
+  rpc GetRelationshipSearch() returns (RelationshipSearch) {}
+  rpc GetRelationshipSearchOrder() returns (RelationshipSearchOrder) {}
+  rpc GetRelationshipsBySearch(osid.relationship.RelationshipQuery, osid.relationship.RelationshipSearch) returns (RelationshipSearchResults) {}
+  rpc GetRelationshipQueryFromInspector(osid.relationship.RelationshipQueryInspector) returns (RelationshipQuery) {}
+}
+
+service RelationshipAdminSession {
+  rpc GetFamilyId() returns (Id) {}
+  rpc GetFamily() returns (Family) {}
+  rpc CanCreateRelationships() returns (boolean) {}
+  rpc CanCreateRelationshipWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetRelationshipFormForCreate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (RelationshipForm) {}
+  rpc CreateRelationship(osid.relationship.RelationshipForm) returns (Relationship) {}
+  rpc CanUpdateRelationships() returns (boolean) {}
+  rpc GetRelationshipFormForUpdate(dlkit.primordium.id.primitives.Id) returns (RelationshipForm) {}
+  rpc UpdateRelationship(osid.relationship.RelationshipForm) returns () {}
+  rpc CanDeleteRelationships() returns (boolean) {}
+  rpc DeleteRelationship(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageRelationshipAliases() returns (boolean) {}
+  rpc AliasRelationship(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RelationshipNotificationSession {
+  rpc GetFamilyId() returns (Id) {}
+  rpc GetFamily() returns (Family) {}
+  rpc CanRegisterForRelationshipNotifications() returns (boolean) {}
+  rpc UseFederatedFamilyView() returns () {}
+  rpc UseIsolatedFamilyView() returns () {}
+  rpc ReliableRelationshipNotifications() returns () {}
+  rpc UnreliableRelationshipNotifications() returns () {}
+  rpc AcknowledgeRelationshipNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRelationships() returns () {}
+  rpc RegisterForNewRelationshipsForSource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRelationshipsForDestination(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRelationshipsByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedRelationships() returns () {}
+  rpc RegisterForChangedRelationshipsForSource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedRelationshipsForDestination(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedRelationshipsByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedRelationship(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRelationships() returns () {}
+  rpc RegisterForDeletedRelationshipsForSource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRelationshipsForDestination(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRelationshipsByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForDeletedRelationship(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RelationshipFamilySession {
+  rpc CanLookupRelationshipFamilyMappings() returns (boolean) {}
+  rpc UseComparativeFamilyView() returns () {}
+  rpc UsePlenaryFamilyView() returns () {}
+  rpc GetRelationshipIdsByFamily(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetRelationshipsByFamily(dlkit.primordium.id.primitives.Id) returns (stream Relationship) {}
+  rpc GetRelationshipIdsByFamilies(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetRelationshipsByFamilies(dlkit.primordium.id.primitives.IdList) returns (stream Relationship) {}
+  rpc GetFamilyIdsByRelationship(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetFamiliesByRelationship(dlkit.primordium.id.primitives.Id) returns (stream Family) {}
+}
+
+service RelationshipFamilyAssignmentSession {
+  rpc CanAssignRelationships() returns (boolean) {}
+  rpc CanAssignRelationshipsToFamily(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableFamilyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableFamilyIdsForRelationship(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignRelationshipToFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignRelationshipFromFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignRelationshipToFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RelationshipSmartFamilySession {
+  rpc GetFamilyId() returns (Id) {}
+  rpc GetFamily() returns (Family) {}
+  rpc CanManageSmartFamilies() returns (boolean) {}
+  rpc GetRelationshipQuery() returns (RelationshipQuery) {}
+  rpc GetRelationshipSearchOrder() returns (RelationshipSearchOrder) {}
+  rpc ApplyRelationshipQuery(osid.relationship.RelationshipQuery) returns () {}
+  rpc InspectRelationshipQuery() returns (RelationshipQueryInspector) {}
+  rpc ApplyRelationshipSequencing(osid.relationship.RelationshipSearchOrder) returns () {}
+  rpc GetRelationshipQueryFromInspector(osid.relationship.RelationshipQueryInspector) returns (RelationshipQuery) {}
+}
+
+service FamilyLookupSession {
+  rpc CanLookupFamilies() returns (boolean) {}
+  rpc UseComparativeFamilyView() returns () {}
+  rpc UsePlenaryFamilyView() returns () {}
+  rpc GetFamily(dlkit.primordium.id.primitives.Id) returns (Family) {}
+  rpc GetFamiliesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Family) {}
+  rpc GetFamiliesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Family) {}
+  rpc GetFamiliesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Family) {}
+  rpc GetFamiliesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Family) {}
+  rpc GetFamiliesByProvider(dlkit.primordium.id.primitives.Id) returns (stream Family) {}
+  rpc GetFamilies() returns (stream Family) {}
+}
+
+service FamilyQuerySession {
+  rpc CanSearchFamilies() returns (boolean) {}
+  rpc GetFamilyQuery() returns (FamilyQuery) {}
+  rpc GetFamiliesByQuery(osid.relationship.FamilyQuery) returns (stream Family) {}
+}
+
+service FamilySearchSession {
+  rpc GetFamilySearch() returns (FamilySearch) {}
+  rpc GetFamilySearchOrder() returns (FamilySearchOrder) {}
+  rpc GetFamiliesBySearch(osid.relationship.FamilyQuery, osid.relationship.FamilySearch) returns (FamilySearchResults) {}
+  rpc GetFamilyQueryFromInspector(osid.relationship.FamilyQueryInspector) returns (FamilyQuery) {}
+}
+
+service FamilyAdminSession {
+  rpc CanCreateFamilies() returns (boolean) {}
+  rpc CanCreateFamilyWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetFamilyFormForCreate(osid.type.Type[]) returns (FamilyForm) {}
+  rpc CreateFamily(osid.relationship.FamilyForm) returns (Family) {}
+  rpc CanUpdateFamilies() returns (boolean) {}
+  rpc GetFamilyFormForUpdate(dlkit.primordium.id.primitives.Id) returns (FamilyForm) {}
+  rpc UpdateFamily(osid.relationship.FamilyForm) returns () {}
+  rpc CanDeleteFamilies() returns (boolean) {}
+  rpc DeleteFamily(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageFamilyAliases() returns (boolean) {}
+  rpc AliasFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service FamilyNotificationSession {
+  rpc CanRegisterForFamilyNotifications() returns (boolean) {}
+  rpc ReliableFamilyNotifications() returns () {}
+  rpc UnreliableFamilyNotifications() returns () {}
+  rpc AcknowledgeFamilyNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewFamilies() returns () {}
+  rpc RegisterForChangedFamilies() returns () {}
+  rpc RegisterForChangedFamily(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedFamilies() returns () {}
+  rpc RegisterForDeletedFamily(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedFamilyHierarchy() returns () {}
+  rpc RegisterForChangedFamilyHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedFamilyHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service FamilyHierarchySession {
+  rpc GetFamilyHierarchyId() returns (Id) {}
+  rpc GetFamilyHierarchy() returns (Hierarchy) {}
+  rpc CanAccessFamilyHierarchy() returns (boolean) {}
+  rpc UseComparativeFamilyView() returns () {}
+  rpc UsePlenaryFamilyView() returns () {}
+  rpc GetRootFamilyIds() returns (stream Id) {}
+  rpc GetRootFamilies() returns (stream Family) {}
+  rpc HasParentFamilies(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentFamilyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentFamilies(dlkit.primordium.id.primitives.Id) returns (stream Family) {}
+  rpc IsAncestorOfFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildFamilies(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildFamilyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildFamilies(dlkit.primordium.id.primitives.Id) returns (stream Family) {}
+  rpc IsDescendantOfFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetFamilyNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetFamilyNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (FamilyNode) {}
+}
+
+service FamilyHierarchyDesignSession {
+  rpc GetFamilyHierarchyId() returns (Id) {}
+  rpc GetFamilyHierarchy() returns (Hierarchy) {}
+  rpc CanModifyFamilyHierarchy() returns (boolean) {}
+  rpc AddRootFamily(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootFamily(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildFamily(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildFamilies(dlkit.primordium.id.primitives.Id) returns () {}
+}

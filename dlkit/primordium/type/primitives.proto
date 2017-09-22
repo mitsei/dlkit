@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package dlkit.primordium.type.primitives;
+
+import "dlkit.primordium.locale.primitives.proto";
+
+message Type {
+  string authority = 1;
+  DisplayText description = 2;
+  DisplayText display_label = 3;
+  DisplayText display_name = 4;
+  string domain = 5;
+  string identifier = 6;
+}

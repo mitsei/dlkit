@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package dlkit.proto.id;
+
+
+
+message IdForm {
+
+}
+
+message IdList {
+  repeated Id = 1;
+}
+
+service IdLookupSession {
+  rpc CanLookupIds() returns (boolean) {}
+  rpc GetId(dlkit.primordium.id.primitives.Id) returns (Id) {}
+  rpc GetIdsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetIdsByAuthority(string) returns (stream Id) {}
+  rpc GetIdsByAuthorityAndNamespace(string, string) returns (stream Id) {}
+  rpc GetIds() returns (stream Id) {}
+  rpc IsEquivalent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetIdAliases(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetIdAliasesByAuthority(dlkit.primordium.id.primitives.Id, string) returns (stream Id) {}
+  rpc GetIdAliasesByAuthorityAndNamespace(dlkit.primordium.id.primitives.Id, string, string) returns (stream Id) {}
+}
+
+service IdIssueSession {
+  rpc CanIssueIds() returns (boolean) {}
+  rpc IssueId() returns (Id) {}
+}
+
+service IdAdminSession {
+  rpc CanCreateIds() returns (boolean) {}
+  rpc GetIdFormForCreate() returns (IdForm) {}
+  rpc CreateId(osid.id.IdForm) returns (Id) {}
+  rpc CanAliasIds() returns (boolean) {}
+  rpc AliasId(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveAlias(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}

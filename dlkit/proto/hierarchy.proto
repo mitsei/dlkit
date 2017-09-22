@@ -1,0 +1,140 @@
+syntax = "proto3";
+
+package dlkit.proto.hierarchy;
+
+
+
+message Hierarchy {
+
+}
+
+message HierarchyQuery {
+
+}
+
+message HierarchyForm {
+
+}
+
+message HierarchySearch {
+
+}
+
+message HierarchySearchResults {
+
+}
+
+message HierarchyList {
+  repeated Hierarchy = 1;
+}
+
+message Node {
+
+}
+
+message NodeList {
+  repeated Node = 1;
+}
+
+service HierarchyTraversalSession {
+  rpc GetHierarchyId() returns (Id) {}
+  rpc GetHierarchy() returns (Hierarchy) {}
+  rpc CanAccessHierarchy() returns (boolean) {}
+  rpc GetRoots() returns (stream Id) {}
+  rpc HasParents(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParents(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc IsAncestor(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildren(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChild(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildren(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc IsDescendant(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+}
+
+service HierarchyDesignSession {
+  rpc GetHierarchyId() returns (Id) {}
+  rpc GetHierarchy() returns (Hierarchy) {}
+  rpc CanModifyHierarchy() returns (boolean) {}
+  rpc AddRoot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChild(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRoot(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChild(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildren(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service HierarchySequencingSession {
+  rpc GetHierarchyId() returns (Id) {}
+  rpc GetHierarchy() returns (Hierarchy) {}
+  rpc CanSequenceHierarchy() returns (boolean) {}
+  rpc MoveNodeAhead(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveNodeBehind(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc SequenceNodes(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.IdList) returns () {}
+}
+
+service HierarchyStructureNotificationSession {
+  rpc GetHierarchyId() returns (Id) {}
+  rpc GetHierarchy() returns (Hierarchy) {}
+  rpc CanRegisterForHierarchyStructureNotifications() returns (boolean) {}
+  rpc ReliableHierarchyStructureNotifications() returns () {}
+  rpc UnreliableHierarchyStructureNotifications() returns () {}
+  rpc AcknowledgeHierarchyStructureNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewHierarchyNodes() returns () {}
+  rpc RegisterForDeletedHierarchyNodes() returns () {}
+  rpc RegisterForDeletedHierarchyNode(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedHierarchy() returns () {}
+  rpc RegisterForChangedHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service HierarchyLookupSession {
+  rpc CanLookupHierarchies() returns (boolean) {}
+  rpc UseComparativeHierarchyView() returns () {}
+  rpc UsePlenaryHierarchyView() returns () {}
+  rpc GetHierarchy(dlkit.primordium.id.primitives.Id) returns (Hierarchy) {}
+  rpc GetHierarchiesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Hierarchy) {}
+  rpc GetHierarchiesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Hierarchy) {}
+  rpc GetHierarchiesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Hierarchy) {}
+  rpc GetHierarchiesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Hierarchy) {}
+  rpc GetHierarchiesByProvider(dlkit.primordium.id.primitives.Id) returns (stream Hierarchy) {}
+  rpc GetHierarchies() returns (stream Hierarchy) {}
+}
+
+service HierarchyQuerySession {
+  rpc CanSearchHierarchies() returns (boolean) {}
+  rpc GetHierarchyQuery() returns (HierarchyQuery) {}
+  rpc GetHierarchiesByQuery(osid.hierarchy.HierarchyQuery) returns (stream Hierarchy) {}
+}
+
+service HierarchySearchSession {
+  rpc GetHierarchySearch() returns (HierarchySearch) {}
+  rpc GetHierarchySearchOrder() returns (HierarchySearchOrder) {}
+  rpc GetHierarchiesBySearch(osid.hierarchy.HierarchyQuery, osid.hierarchy.HierarchySearch) returns (HierarchySearchResults) {}
+  rpc GetHierarchyQueryFromInspector(osid.hierarchy.HierarchyQueryInspector) returns (HierarchyQuery) {}
+}
+
+service HierarchyAdminSession {
+  rpc CanCreateHierarchies() returns (boolean) {}
+  rpc CanCreateHierarchyWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetHierarchyFormForCreate(osid.type.Type[]) returns (HierarchyForm) {}
+  rpc CreateHierarchy(osid.hierarchy.HierarchyForm) returns (Hierarchy) {}
+  rpc CanUpdateHierarchies() returns (boolean) {}
+  rpc GetHierarchyFormForUpdate(dlkit.primordium.id.primitives.Id) returns (HierarchyForm) {}
+  rpc UpdateHierarchy(osid.hierarchy.HierarchyForm) returns () {}
+  rpc CanDeleteHierarchies() returns (boolean) {}
+  rpc DeleteHierarchy(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageHierarchyAliases() returns (boolean) {}
+  rpc AliasHierarchy(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service HierarchyNotificationSession {
+  rpc CanRegisterForHierarchyNotifications() returns (boolean) {}
+  rpc ReliableHierarchyNotifications() returns () {}
+  rpc UnreliableHierarchyNotifications() returns () {}
+  rpc AcknowledgeHierarchyNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewHierarchies() returns () {}
+  rpc RegisterForChangedHierarchies() returns () {}
+  rpc RegisterForChangedHierarchy(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedHierarchies() returns () {}
+  rpc RegisterForDeletedHierarchy(dlkit.primordium.id.primitives.Id) returns () {}
+}

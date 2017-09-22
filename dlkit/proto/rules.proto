@@ -1,0 +1,259 @@
+syntax = "proto3";
+
+package dlkit.proto.rules;
+
+
+
+message Rule {
+
+}
+
+message RuleQuery {
+
+}
+
+message RuleForm {
+
+}
+
+message RuleSearch {
+
+}
+
+message RuleSearchResults {
+
+}
+
+message RuleList {
+  repeated Rule = 1;
+}
+
+message Engine {
+
+}
+
+message EngineQuery {
+
+}
+
+message EngineForm {
+
+}
+
+message EngineSearch {
+
+}
+
+message EngineSearchResults {
+
+}
+
+message EngineList {
+  repeated Engine = 1;
+}
+
+message EngineNode {
+
+}
+
+message EngineNodeList {
+  repeated EngineNode = 1;
+}
+
+service RulesSession {
+  rpc GetEngineId() returns (Id) {}
+  rpc GetEngine() returns (Engine) {}
+  rpc CanEvaluateRules() returns (boolean) {}
+  rpc GetConditionForRule(dlkit.primordium.id.primitives.Id) returns (Condition) {}
+  rpc EvaluateRule(dlkit.primordium.id.primitives.Id, osid.rules.Condition) returns (boolean) {}
+  rpc ExecuteRule(dlkit.primordium.id.primitives.Id, osid.rules.Condition) returns (Result) {}
+}
+
+service RuleLookupSession {
+  rpc GetEngineId() returns (Id) {}
+  rpc GetEngine() returns (Engine) {}
+  rpc CanLookupRules() returns (boolean) {}
+  rpc UseComparativeRuleView() returns () {}
+  rpc UsePlenaryRuleView() returns () {}
+  rpc UseFederatedEngineView() returns () {}
+  rpc UseIsolatedEngineView() returns () {}
+  rpc UseActiveRuleView() returns () {}
+  rpc UseAnyStatusRuleView() returns () {}
+  rpc GetRule(dlkit.primordium.id.primitives.Id) returns (Rule) {}
+  rpc GetRulesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Rule) {}
+  rpc GetRulesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Rule) {}
+  rpc GetRulesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Rule) {}
+  rpc GetRulesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Rule) {}
+  rpc GetRules() returns (stream Rule) {}
+}
+
+service RuleQuerySession {
+  rpc GetEngineId() returns (Id) {}
+  rpc GetEngine() returns (Engine) {}
+  rpc UseFederatedEngineView() returns () {}
+  rpc UseIsolatedEngineView() returns () {}
+  rpc CanSearchRules() returns (boolean) {}
+  rpc GetRuleQuery() returns (RuleQuery) {}
+  rpc GetRulesByQuery(osid.rules.RuleQuery) returns (stream Rule) {}
+}
+
+service RuleSearchSession {
+  rpc GetRuleSearch() returns (RuleSearch) {}
+  rpc GetRuleSearchOrder() returns (RuleSearchOrder) {}
+  rpc GetRulesBySearch(osid.rules.RuleQuery, osid.rules.RuleSearch) returns (RuleSearchResults) {}
+  rpc GetRuleQueryFromInspector(osid.rules.RuleQueryInspector) returns (RuleQuery) {}
+}
+
+service RuleAdminSession {
+  rpc GetEngineId() returns (Id) {}
+  rpc GetEngine() returns (Engine) {}
+  rpc CanCreateRules() returns (boolean) {}
+  rpc CanCreateRuleWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetRuleFormForCreate(osid.type.Type[]) returns (RuleForm) {}
+  rpc CreateRule(osid.rules.RuleForm) returns (Rule) {}
+  rpc CanUpdateRules() returns (boolean) {}
+  rpc GetRuleFormForUpdate(dlkit.primordium.id.primitives.Id) returns (RuleForm) {}
+  rpc UpdateRule(osid.rules.RuleForm) returns () {}
+  rpc CanDeleteRules() returns (boolean) {}
+  rpc DeleteRule(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageRuleAliases() returns (boolean) {}
+  rpc AliasRule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RuleNotificationSession {
+  rpc GetEngineId() returns (Id) {}
+  rpc GetEngine() returns (Engine) {}
+  rpc CanRegisterForRuleNotifications() returns (boolean) {}
+  rpc UseFederatedEngineView() returns () {}
+  rpc UseIsolatedEngineView() returns () {}
+  rpc ReliableRuleNotifications() returns () {}
+  rpc UnreliableRuleNotifications() returns () {}
+  rpc AcknowledgeRuleNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRules() returns () {}
+  rpc RegisterForChangedRules() returns () {}
+  rpc RegisterForChangedRule(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRules() returns () {}
+  rpc RegisterForDeletedRule(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RuleEngineSession {
+  rpc CanLookupRuleEngineMappings() returns (boolean) {}
+  rpc UseComparativeRuleView() returns () {}
+  rpc UsePlenaryRuleView() returns () {}
+  rpc GetRuleIdsByEngine(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetRulesByEngine(dlkit.primordium.id.primitives.Id) returns (stream Rule) {}
+  rpc GetRuleIdsByEngines(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetRulesByEngines(dlkit.primordium.id.primitives.IdList) returns (stream Rule) {}
+  rpc GetEngineIdsByRule(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetEnginesByRule(dlkit.primordium.id.primitives.Id) returns (stream Engine) {}
+}
+
+service RuleEngineAssignmentSession {
+  rpc CanAssignRules() returns (boolean) {}
+  rpc CanAssignRulesToEngine(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableEngineIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableEngineIdsForRule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignRuleToEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignRuleFromEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignRuleToEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RuleSmartEngineSession {
+  rpc GetEngineId() returns (Id) {}
+  rpc GetEngine() returns (Engine) {}
+  rpc CanManageSmartEngines() returns (boolean) {}
+  rpc GetRuleQuery() returns (RuleQuery) {}
+  rpc GetRuleSearchOrder() returns (RuleSearchOrder) {}
+  rpc ApplyRuleQuery(osid.rules.RuleQuery) returns () {}
+  rpc InspectRuleQuery() returns (RuleQueryInspector) {}
+  rpc ApplyRuleSequencing(osid.rules.RuleSearchOrder) returns () {}
+  rpc GetRuleQueryFromInspector(osid.rules.RuleQueryInspector) returns (RuleQuery) {}
+}
+
+service EngineLookupSession {
+  rpc CanLookupEngines() returns (boolean) {}
+  rpc UseComparativeEngineView() returns () {}
+  rpc UsePlenaryEngineView() returns () {}
+  rpc GetEngine(dlkit.primordium.id.primitives.Id) returns (Engine) {}
+  rpc GetEnginesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Engine) {}
+  rpc GetEnginesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Engine) {}
+  rpc GetEnginesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Engine) {}
+  rpc GetEnginesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Engine) {}
+  rpc GetEnginesByProvider(dlkit.primordium.id.primitives.Id) returns (stream Engine) {}
+  rpc GetEngines() returns (stream Engine) {}
+}
+
+service EngineQuerySession {
+  rpc CanSearchEngines() returns (boolean) {}
+  rpc GetEngineQuery() returns (EngineQuery) {}
+  rpc GetEnginesByQuery(osid.rules.EngineQuery) returns (stream Engine) {}
+}
+
+service EngineSearchSession {
+  rpc GetEngineSearch() returns (EngineSearch) {}
+  rpc GetEngineSearchOrder() returns (EngineSearchOrder) {}
+  rpc GetEnginesBySearch(osid.rules.EngineQuery, osid.rules.EngineSearch) returns (EngineSearchResults) {}
+  rpc GetEngineQueryFromInspector(osid.rules.EngineQueryInspector) returns (EngineQuery) {}
+}
+
+service EngineAdminSession {
+  rpc CanCreateEngines() returns (boolean) {}
+  rpc CanCreateEngineWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetEngineFormForCreate(osid.type.Type[]) returns (EngineForm) {}
+  rpc CreateEngine(osid.rules.EngineForm) returns (Engine) {}
+  rpc CanUpdateEngines() returns (boolean) {}
+  rpc GetEngineFormForUpdate(dlkit.primordium.id.primitives.Id) returns (EngineForm) {}
+  rpc UpdateEngine(osid.rules.EngineForm) returns () {}
+  rpc CanDeleteEngines() returns (boolean) {}
+  rpc DeleteEngine(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageEngineAliases() returns (boolean) {}
+  rpc AliasEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service EngineNotificationSession {
+  rpc CanRegisterForEngineNotifications() returns (boolean) {}
+  rpc ReliableEngineNotifications() returns () {}
+  rpc UnreliableEngineNotifications() returns () {}
+  rpc AcknowledgeEngineNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewEngines() returns () {}
+  rpc RegisterForChangedEngines() returns () {}
+  rpc RegisterForChangedEngine(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedEngines() returns () {}
+  rpc RegisterForDeletedEngine(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedEngineHierarchy() returns () {}
+  rpc RegisterForChangedEngineHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedEngineHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service EngineHierarchySession {
+  rpc GetEngineHierarchyId() returns (Id) {}
+  rpc GetEngineHierarchy() returns (Hierarchy) {}
+  rpc CanAccessEngineHierarchy() returns (boolean) {}
+  rpc UseComparativeEngineView() returns () {}
+  rpc UsePlenaryEngineView() returns () {}
+  rpc GetRootEngineIds() returns (stream Id) {}
+  rpc GetRootEngines() returns (stream Engine) {}
+  rpc HasParentEngines(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentEngineIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentEngines(dlkit.primordium.id.primitives.Id) returns (stream Engine) {}
+  rpc IsAncestorOfEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildEngines(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildEngineIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildEngines(dlkit.primordium.id.primitives.Id) returns (stream Engine) {}
+  rpc IsDescendantOfEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetEngineNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetEngineNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (EngineNode) {}
+}
+
+service EngineHierarchyDesignSession {
+  rpc GetEngineHierarchyId() returns (Id) {}
+  rpc GetEngineHierarchy() returns (Hierarchy) {}
+  rpc CanModifyEngineHierarchy() returns (boolean) {}
+  rpc AddRootEngine(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootEngine(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildEngine(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildEngines(dlkit.primordium.id.primitives.Id) returns () {}
+}

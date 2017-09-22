@@ -1,0 +1,157 @@
+syntax = "proto3";
+
+package dlkit.proto.cataloging;
+
+
+
+message Catalog {
+
+}
+
+message CatalogQuery {
+
+}
+
+message CatalogForm {
+
+}
+
+message CatalogSearch {
+
+}
+
+message CatalogSearchResults {
+
+}
+
+message CatalogList {
+  repeated Catalog = 1;
+}
+
+message CatalogNode {
+
+}
+
+message CatalogNodeList {
+  repeated CatalogNode = 1;
+}
+
+service CatalogSession {
+  rpc CanLookupMappings() returns (boolean) {}
+  rpc UseComparativeCatalogView() returns () {}
+  rpc UsePlenaryCatalogView() returns () {}
+  rpc UseFederatedCatalogView() returns () {}
+  rpc UseIsolatedCatalogView() returns () {}
+  rpc GetIdsByCatalog(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetIdsByCatalogs(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetCatalogIdsById(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCatalogsById(dlkit.primordium.id.primitives.Id) returns (stream Catalog) {}
+}
+
+service CatalogAssignmentSession {
+  rpc CanAssignCatalogs() returns (boolean) {}
+  rpc AssignIdToCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignIdFromCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignIdToCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CatalogEntryNotificationSession {
+  rpc GetCatalogId() returns (Id) {}
+  rpc GetCatalog() returns (Catalog) {}
+  rpc CanRegisterForCatalogEntryNotifications() returns (boolean) {}
+  rpc UseFederatedCatalogView() returns () {}
+  rpc UseIsolatedCatalogView() returns () {}
+  rpc ReliableCatalogEntryNotifications() returns () {}
+  rpc UnreliableCatalogEntryNotifications() returns () {}
+  rpc AcknowledgeCatalogEntryNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewCatalogEntries() returns () {}
+  rpc RegisterForDeletedCatalogEntries() returns () {}
+}
+
+service CatalogLookupSession {
+  rpc CanLookupCatalogs() returns (boolean) {}
+  rpc UseComparativeCatalogView() returns () {}
+  rpc UsePlenaryCatalogView() returns () {}
+  rpc GetCatalog(dlkit.primordium.id.primitives.Id) returns (Catalog) {}
+  rpc GetCatalogsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Catalog) {}
+  rpc GetCatalogsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Catalog) {}
+  rpc GetCatalogsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Catalog) {}
+  rpc GetCatalogsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Catalog) {}
+  rpc GetCatalogsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Catalog) {}
+  rpc GetCatalogs() returns (stream Catalog) {}
+}
+
+service CatalogQuerySession {
+  rpc CanSearchCatalogs() returns (boolean) {}
+  rpc GetCatalogQuery() returns (CatalogQuery) {}
+  rpc GetCatalogsByQuery(osid.cataloging.CatalogQuery) returns (stream Catalog) {}
+}
+
+service CatalogSearchSession {
+  rpc GetCatalogSearch() returns (CatalogSearch) {}
+  rpc GetCatalogSearchOrder() returns (CatalogSearchOrder) {}
+  rpc GetCatalogsBySearch(osid.cataloging.CatalogQuery, osid.cataloging.CatalogSearch) returns (CatalogSearchResults) {}
+  rpc GetCatalogQueryFromInspector(osid.cataloging.CatalogQueryInspector) returns (CatalogQuery) {}
+}
+
+service CatalogAdminSession {
+  rpc CanCreateCatalogs() returns (boolean) {}
+  rpc CanCreateCatalogWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetCatalogFormForCreate(osid.type.Type[]) returns (CatalogForm) {}
+  rpc CreateCatalog(osid.cataloging.CatalogForm) returns (Catalog) {}
+  rpc CanUpdateCatalogs() returns (boolean) {}
+  rpc GetCatalogFormForUpdate(dlkit.primordium.id.primitives.Id) returns (CatalogForm) {}
+  rpc UpdateCatalog(osid.cataloging.CatalogForm) returns () {}
+  rpc CanDeleteCatalogs() returns (boolean) {}
+  rpc DeleteCatalog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageCatalogAliases() returns (boolean) {}
+  rpc AliasCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CatalogNotificationSession {
+  rpc CanRegisterForCatalogNotifications() returns (boolean) {}
+  rpc ReliableCatalogNotifications() returns () {}
+  rpc UnreliableCatalogNotifications() returns () {}
+  rpc AcknowledgeCatalogNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewCatalogs() returns () {}
+  rpc RegisterForChangedCatalogs() returns () {}
+  rpc RegisterForChangedCatalog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCatalogs() returns () {}
+  rpc RegisterForDeletedCatalog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCatalogHierarchy() returns () {}
+  rpc RegisterForChangedCatalogHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedCatalogHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CatalogHierarchySession {
+  rpc GetCatalogHierarchyId() returns (Id) {}
+  rpc GetCatalogHierarchy() returns (Hierarchy) {}
+  rpc CanAccessCatalogHierarchy() returns (boolean) {}
+  rpc UseComparativeCatalogView() returns () {}
+  rpc UsePlenaryCatalogView() returns () {}
+  rpc GetRootCatalogIds() returns (stream Id) {}
+  rpc GetRootCatalogs() returns (stream Catalog) {}
+  rpc HasParentCatalogs(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentCatalogIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentCatalogs(dlkit.primordium.id.primitives.Id) returns (stream Catalog) {}
+  rpc IsAncestorOfCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildCatalogs(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildCatalogIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildCatalogs(dlkit.primordium.id.primitives.Id) returns (stream Catalog) {}
+  rpc IsDescendantOfCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetCatalogNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetCatalogNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (CatalogNode) {}
+}
+
+service CatalogHierarchyDesignSession {
+  rpc GetCatalogHierarchyId() returns (Id) {}
+  rpc GetCatalogHierarchy() returns (Hierarchy) {}
+  rpc CanModifyCatalogHierarchy() returns (boolean) {}
+  rpc AddRootCatalog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootCatalog(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildCatalog(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildCatalogs(dlkit.primordium.id.primitives.Id) returns () {}
+}

@@ -1,0 +1,406 @@
+syntax = "proto3";
+
+package dlkit.proto.mapping;
+
+import "osid/objects.proto";
+
+message Location {
+  dlkit.proto.osid.OsidCatalog map = 1;
+  SpatialUnit spatial_unit = 2;
+}
+
+message LocationQuery {
+
+}
+
+message LocationForm {
+
+}
+
+message LocationSearch {
+
+}
+
+message LocationSearchResults {
+
+}
+
+message LocationList {
+  repeated Location = 1;
+}
+
+message LocationNode {
+
+}
+
+message LocationNodeList {
+  repeated LocationNode = 1;
+}
+
+message Map {
+
+}
+
+message MapQuery {
+
+}
+
+message MapForm {
+
+}
+
+message MapSearch {
+
+}
+
+message MapSearchResults {
+
+}
+
+message MapList {
+  repeated Map = 1;
+}
+
+message MapNode {
+
+}
+
+message MapNodeList {
+  repeated MapNode = 1;
+}
+
+message ResourceLocation {
+
+}
+
+message ResourceLocationList {
+  repeated ResourceLocation = 1;
+}
+
+message CoordinateList {
+  repeated Coordinate = 1;
+}
+
+message SpatialUnitList {
+  repeated SpatialUnit = 1;
+}
+
+service LocationLookupSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanLookupLocations() returns (boolean) {}
+  rpc UseComparativeLocationView() returns () {}
+  rpc UsePlenaryLocationView() returns () {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc GetLocation(dlkit.primordium.id.primitives.Id) returns (Location) {}
+  rpc GetLocationsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Location) {}
+  rpc GetLocationsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Location) {}
+  rpc GetLocationsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Location) {}
+  rpc GetLocationsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Location) {}
+  rpc GetLocations() returns (stream Location) {}
+}
+
+service LocationQuerySession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanSearchLocations() returns (boolean) {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc GetLocationQuery() returns (LocationQuery) {}
+  rpc GetLocationsByQuery(osid.mapping.LocationQuery) returns (stream Location) {}
+}
+
+service LocationSearchSession {
+  rpc GetLocationSearch() returns (LocationSearch) {}
+  rpc GetLocationSearchOrder() returns (LocationSearchOrder) {}
+  rpc GetLocationsBySearch(osid.mapping.LocationQuery, osid.mapping.LocationSearch) returns (LocationSearchResults) {}
+  rpc GetLocationQueryFromInspector(osid.mapping.LocationQueryInspector) returns (LocationQuery) {}
+}
+
+service LocationAdminSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanCreateLocations() returns (boolean) {}
+  rpc CanCreateLocationWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetLocationFormForCreate(osid.type.Type[]) returns (LocationForm) {}
+  rpc CreateLocation(osid.mapping.LocationForm) returns (Location) {}
+  rpc CanUpdateLocations() returns (boolean) {}
+  rpc GetLocationFormForUpdate(dlkit.primordium.id.primitives.Id) returns (LocationForm) {}
+  rpc UpdateLocation(osid.mapping.LocationForm) returns () {}
+  rpc CanDeleteLocations() returns (boolean) {}
+  rpc DeleteLocation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageLocationAliases() returns (boolean) {}
+  rpc AliasLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LocationNotificationSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanRegisterForLocationNotifications() returns (boolean) {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc ReliableLocationNotifications() returns () {}
+  rpc UnreliableLocationNotifications() returns () {}
+  rpc AcknowledgeLocationNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewLocations() returns () {}
+  rpc RegisterForChangedLocations() returns () {}
+  rpc RegisterForChangedLocation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedLocations() returns () {}
+  rpc RegisterForDeletedLocation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedLocationHierarchy() returns () {}
+  rpc RegisterForChangedLocationHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedLocationHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LocationHierarchySession {
+  rpc GetLocationHierarchyId() returns (Id) {}
+  rpc GetLocationHierarchy() returns (Hierarchy) {}
+  rpc CanAccessLocationHierarchy() returns (boolean) {}
+  rpc UseComparativeLocationView() returns () {}
+  rpc UsePlenaryLocationView() returns () {}
+  rpc GetRootLocationIds() returns (stream Id) {}
+  rpc GetRootLocations() returns (stream Location) {}
+  rpc HasParentLocations(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentLocationIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentLocations(dlkit.primordium.id.primitives.Id) returns (stream Location) {}
+  rpc IsAncestorOfLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildLocations(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildLocationIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildLocations(dlkit.primordium.id.primitives.Id) returns (stream Location) {}
+  rpc IsDescendantOfLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetLocationNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetLocationNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (LocationNode) {}
+}
+
+service LocationHierarchyDesignSession {
+  rpc GetLocationHierarchyId() returns (Id) {}
+  rpc GetLocationHierarchy() returns (Hierarchy) {}
+  rpc CanModifyLocationHierarchy() returns (boolean) {}
+  rpc AddRootLocation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LocationMapSession {
+  rpc CanLookupLocationMapLocations() returns (boolean) {}
+  rpc UseComparativeLocationMapView() returns () {}
+  rpc UsePlenaryLocationMapView() returns () {}
+  rpc GetLocationIdsByMap(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetLocationsByMap(dlkit.primordium.id.primitives.Id) returns (stream Location) {}
+  rpc GetLocationIdsByMaps(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetLocationsByMaps(dlkit.primordium.id.primitives.IdList) returns (stream Location) {}
+  rpc GetMapIdsByLocation(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetMapsByLocation(dlkit.primordium.id.primitives.Id) returns (stream Map) {}
+}
+
+service LocationMapAssignmentSession {
+  rpc CanAssignLocations() returns (boolean) {}
+  rpc CanAssignLocationsToMap(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableMapIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableMapIdsForLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignLocationToMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignLocationFromMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignLocationToMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service LocationSmartMapSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanManageSmartMaps() returns (boolean) {}
+  rpc GetLocationQuery() returns (LocationQuery) {}
+  rpc GetLocationSearchOrder() returns (LocationSearchOrder) {}
+  rpc ApplyLocationQuery(osid.mapping.LocationQuery) returns () {}
+  rpc InspecLocationQuery() returns (LocationQueryInspector) {}
+  rpc ApplyLocationSequencing(osid.mapping.LocationSearchOrder) returns () {}
+  rpc GetLocationQueryFromInspector(osid.mapping.LocationQueryInspector) returns (LocationQuery) {}
+}
+
+service LocationAdjacencySession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanLookupLocationAdjacencies() returns (boolean) {}
+  rpc UseComparativeLocationView() returns () {}
+  rpc UsePlenaryLocationView() returns () {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc GetAdjacentLocations(dlkit.primordium.id.primitives.Id, sint32) returns (stream Location) {}
+  rpc IsAdjacent(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+}
+
+service LocationSpatialSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanLookupLocations() returns (boolean) {}
+  rpc UseComparativeLocationView() returns () {}
+  rpc UsePlenaryLocationView() returns () {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc GetLocationByCoordinate(osid.mapping.Coordinate) returns (Location) {}
+  rpc GetLocationsByCoordinates(osid.mapping.CoordinateList) returns (stream Location) {}
+  rpc GetLocationsInSpatialUnit(osid.mapping.SpatialUnit) returns (stream Location) {}
+  rpc GetLocationsOverlappingSpatialUnit(osid.mapping.SpatialUnit) returns (stream Location) {}
+}
+
+service ResourceLocationSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanAccessResourceLocations() returns (boolean) {}
+  rpc UseComparativeResourceLocationView() returns () {}
+  rpc UsePlenaryResourceLocationView() returns () {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc GetResourceLocation(dlkit.primordium.id.primitives.Id) returns (ResourceLocation) {}
+  rpc GetResourceLocations(dlkit.primordium.id.primitives.IdList) returns (stream ResourceLocation) {}
+  rpc GetResourcesAtLocation(dlkit.primordium.id.primitives.Id) returns (stream ResourceLocation) {}
+  rpc GetResourcesAtLocationByGenusType(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream ResourceLocation) {}
+  rpc GetResourcesAtSpatialUnit(osid.mapping.SpatialUnit) returns (stream ResourceLocation) {}
+  rpc GetResourcesAtSpatialUnitByGenusType(osid.mapping.SpatialUnit, dlkit.primordium.type.primitives.Type) returns (stream ResourceLocation) {}
+}
+
+service ResourceLocationUpdateSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanUpdateResourceLocations() returns (boolean) {}
+  rpc UpdateResourceLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UpdateResourceCoordinate(dlkit.primordium.id.primitives.Id, osid.mapping.Coordinate) returns () {}
+}
+
+service ResourceLocationNotificationSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanRegisterForResourceLocationNotifications() returns (boolean) {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc ReliableResourceLocationNotifications() returns () {}
+  rpc UnreliableResourceLocationNotifications() returns () {}
+  rpc AcknowledgeResourceLocationNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForEnteredLocations() returns () {}
+  rpc RegisterForEnteredLocation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForEnteredLocationsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForEnteredLocationsForResourcesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForExitedLocations() returns () {}
+  rpc RegisterForExitedLocation(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForExitedLocationsForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForExitedLocationsForResourcesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+}
+
+service ResourcePositionNotificationSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanRegisterForResourcePathNotifications() returns (boolean) {}
+  rpc UseFederatedMapView() returns () {}
+  rpc UseIsolatedMapView() returns () {}
+  rpc RegisterForMovedResources() returns () {}
+  rpc RegisterForMovedResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForMovedResourcesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForEnteredSpatialUnit(osid.mapping.SpatialUnit) returns () {}
+  rpc RegisterForEnteredSpatialUnitForResource(dlkit.primordium.id.primitives.Id, osid.mapping.SpatialUnit) returns () {}
+  rpc RegisterForEnteredSpatialUnitForResourceByGenusType(dlkit.primordium.id.primitives.Id, osid.mapping.SpatialUnit) returns () {}
+  rpc RegisterForExitedSpatialUnit(osid.mapping.SpatialUnit) returns () {}
+  rpc RegisterForExitedSpatialUnitForResource(dlkit.primordium.id.primitives.Id, osid.mapping.SpatialUnit) returns () {}
+  rpc RegisterForExitedSpatialUnitForResourcesByGenusType(dlkit.primordium.type.primitives.Type, osid.mapping.SpatialUnit) returns () {}
+  rpc ReliableResourcePositionNotifications() returns () {}
+  rpc UnreliableResourcePositionNotifications() returns () {}
+  rpc AcknowledgeResourcePositionNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service MyLocationSession {
+  rpc GetMapId() returns (Id) {}
+  rpc GetMap() returns (Map) {}
+  rpc CanAccessMyLocation() returns (boolean) {}
+  rpc AtDesignatedLocation() returns (boolean) {}
+  rpc GetMyLocation() returns (Location) {}
+  rpc GetMyCoordinate() returns (Coordinate) {}
+  rpc GetNearestLocationsToMe() returns (stream Location) {}
+  rpc GetNearestLocationToMeByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Location) {}
+}
+
+service MapLookupSession {
+  rpc CanLookupMaps() returns (boolean) {}
+  rpc UseComparativeMapView() returns () {}
+  rpc UsePlenaryMapView() returns () {}
+  rpc GetMap(dlkit.primordium.id.primitives.Id) returns (Map) {}
+  rpc GetMapsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Map) {}
+  rpc GetMapsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Map) {}
+  rpc GetMapsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Map) {}
+  rpc GetMapsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Map) {}
+  rpc GetMapsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Map) {}
+  rpc GetMaps() returns (stream Map) {}
+}
+
+service MapQuerySession {
+  rpc CanSearchMaps() returns (boolean) {}
+  rpc GetMapQuery() returns (MapQuery) {}
+  rpc GetMapsByQuery(osid.mapping.MapQuery) returns (stream Map) {}
+}
+
+service MapSearchSession {
+  rpc GetMapSearch() returns (MapSearch) {}
+  rpc GetMapSearchOrder() returns (MapSearchOrder) {}
+  rpc GetMapsBySearch(osid.mapping.MapQuery, osid.mapping.MapSearch) returns (MapSearchResults) {}
+  rpc GetMapQueryFromInspector(osid.mapping.MapQueryInspector) returns (MapQuery) {}
+}
+
+service MapAdminSession {
+  rpc CanCreateMaps() returns (boolean) {}
+  rpc CanCreateMapWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetMapFormForCreate(osid.type.Type[]) returns (MapForm) {}
+  rpc CreateMap(osid.mapping.MapForm) returns (Map) {}
+  rpc CanUpdateMaps() returns (boolean) {}
+  rpc GetMapFormForUpdate(dlkit.primordium.id.primitives.Id) returns (MapForm) {}
+  rpc UpdateMap(osid.mapping.MapForm) returns () {}
+  rpc CanDeleteMaps() returns (boolean) {}
+  rpc DeleteMap(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageMapAliases() returns (boolean) {}
+  rpc AliasMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service MapNotificationSession {
+  rpc CanRegisterForMapNotifications() returns (boolean) {}
+  rpc ReliableMapNotifications() returns () {}
+  rpc UnreliableMapNotifications() returns () {}
+  rpc AcknowledgeMapNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewMaps() returns () {}
+  rpc RegisterForChangedMaps() returns () {}
+  rpc RegisterForChangedMap(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedMaps() returns () {}
+  rpc RegisterForDeletedMap(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedMapHierarchy() returns () {}
+  rpc RegisterForChangedMapHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedMapHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service MapHierarchySession {
+  rpc GetMapHierarchyId() returns (Id) {}
+  rpc GetMapHierarchy() returns (Hierarchy) {}
+  rpc CanAccessMapHierarchy() returns (boolean) {}
+  rpc UseComparativeMapView() returns () {}
+  rpc UsePlenaryMapView() returns () {}
+  rpc GetRootMapIds() returns (stream Id) {}
+  rpc GetRootMaps() returns (stream Map) {}
+  rpc HasParentMaps(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentMapIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentMaps(dlkit.primordium.id.primitives.Id) returns (stream Map) {}
+  rpc IsAncestorOfMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildMaps(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildMapIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildMaps(dlkit.primordium.id.primitives.Id) returns (stream Map) {}
+  rpc IsDescendantOfMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetMapNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetMapNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (MapNode) {}
+}
+
+service MapHierarchyDesignSession {
+  rpc GetMapHierarchyId() returns (Id) {}
+  rpc GetMapHierarchy() returns (Hierarchy) {}
+  rpc CanModifyMapHierarchy() returns (boolean) {}
+  rpc AddRootMap(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootMap(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildMap(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildMaps(dlkit.primordium.id.primitives.Id) returns () {}
+}

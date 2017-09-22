@@ -1,0 +1,454 @@
+syntax = "proto3";
+
+package dlkit.proto.ontology;
+
+import "osid/objects.proto";
+import "dlkit/primordium/id/primitives.proto";
+
+message Subject {
+  dlkit.proto.osid.OsidCatalog ontology = 1;
+}
+
+message SubjectQuery {
+
+}
+
+message SubjectForm {
+
+}
+
+message SubjectSearch {
+
+}
+
+message SubjectSearchResults {
+
+}
+
+message SubjectList {
+  repeated Subject = 1;
+}
+
+message SubjectNode {
+
+}
+
+message SubjectNodeList {
+  repeated SubjectNode = 1;
+}
+
+message Relevancy {
+  dlkit.primordium.id.primitives.Id id_ = 1;
+  UNKNOWN mapped = 2;
+  dlkit.proto.osid.OsidCatalog ontology = 3;
+  dlkit.primordium.id.primitives.Id subject = 4;
+}
+
+message RelevancyQuery {
+
+}
+
+message RelevancyForm {
+
+}
+
+message RelevancySearch {
+
+}
+
+message RelevancySearchResults {
+
+}
+
+message RelevancyList {
+  repeated Relevancy = 1;
+}
+
+message Ontology {
+
+}
+
+message OntologyQuery {
+
+}
+
+message OntologyForm {
+
+}
+
+message OntologySearch {
+
+}
+
+message OntologySearchResults {
+
+}
+
+message OntologyList {
+  repeated Ontology = 1;
+}
+
+message OntologyNode {
+
+}
+
+message OntologyNodeList {
+  repeated OntologyNode = 1;
+}
+
+service SubjectLookupSession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanLookupSubjects() returns (boolean) {}
+  rpc UseComparativeSubjectView() returns () {}
+  rpc UsePlenarySubjectView() returns () {}
+  rpc UseFederatedOntologyView() returns () {}
+  rpc UseIsolatedOntologyView() returns () {}
+  rpc GetSubject(dlkit.primordium.id.primitives.Id) returns (Subject) {}
+  rpc GetSubjectsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Subject) {}
+  rpc GetSubjectsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Subject) {}
+  rpc GetSubjectsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Subject) {}
+  rpc GetSubjectsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Subject) {}
+  rpc GetSubjects() returns (stream Subject) {}
+}
+
+service SubjectQuerySession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanSearchSubjects() returns (boolean) {}
+  rpc UseFederatedOntologyView() returns () {}
+  rpc UseIsolatedOntologyView() returns () {}
+  rpc GetSubjectQuery() returns (SubjectQuery) {}
+  rpc GetSubjectsByQuery(osid.ontology.SubjectQuery) returns (stream Subject) {}
+}
+
+service SubjectSearchSession {
+  rpc GetSubjectSearch() returns (SubjectSearch) {}
+  rpc GetSubjectSearchOrder() returns (SubjectSearchOrder) {}
+  rpc GetSubjectsBySearch(osid.ontology.SubjectQuery, osid.ontology.SubjectSearch) returns (SubjectSearchResults) {}
+  rpc GetSubjectQueryFromInspector(osid.ontology.SubjectQueryInspector) returns (SubjectQuery) {}
+}
+
+service SubjectAdminSession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanCreateSubjects() returns (boolean) {}
+  rpc CanCreateSubjectWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetSubjectFormForCreate(osid.type.Type[]) returns (SubjectForm) {}
+  rpc CreateSubject(osid.ontology.SubjectForm) returns (Subject) {}
+  rpc CanUpdateSubjects() returns (boolean) {}
+  rpc GetSubjectFormForUpdate(dlkit.primordium.id.primitives.Id) returns (SubjectForm) {}
+  rpc UpdateSubject(osid.ontology.SubjectForm) returns () {}
+  rpc CanDeleteSubjects() returns (boolean) {}
+  rpc DeleteSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageSubjectAliases() returns (boolean) {}
+  rpc AliasSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SubjectNotificationSession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanRegisterForSubjectNotifications() returns (boolean) {}
+  rpc UseFederatedOntologyView() returns () {}
+  rpc UseIsolatedOntologyView() returns () {}
+  rpc ReliableSubjectNotifications() returns () {}
+  rpc UnreliableSubjectNotifications() returns () {}
+  rpc AcknowledgeSubjectNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewSubjects() returns () {}
+  rpc RegisterForChangedSubjects() returns () {}
+  rpc RegisterForChangedSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedSubjects() returns () {}
+  rpc RegisterForDeletedSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedSubjectHierarchy() returns () {}
+  rpc RegisterForChangedSubjectHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedSubjectHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SubjectHierarchySession {
+  rpc GetSubjectHierarchyId() returns (Id) {}
+  rpc GetSubjectHierarchy() returns (Hierarchy) {}
+  rpc CanAccessSubjectHierarchy() returns (boolean) {}
+  rpc UseComparativeSubjectView() returns () {}
+  rpc UsePlenarySubjectView() returns () {}
+  rpc GetRootSubjectIds() returns (stream Id) {}
+  rpc GetRootSubjects() returns (stream Subject) {}
+  rpc HasParentSubjects(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentSubjectIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentSubjects(dlkit.primordium.id.primitives.Id) returns (stream Subject) {}
+  rpc IsAncestorOfSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildSubjects(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildSubjectIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildSubjects(dlkit.primordium.id.primitives.Id) returns (stream Subject) {}
+  rpc IsDescendantOfSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetSubjectNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetSubjectNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (SubjectNode) {}
+}
+
+service SubjectHierarchyDesignSession {
+  rpc GetSubjectHierarchyId() returns (Id) {}
+  rpc GetSubjectHierarchy() returns (Hierarchy) {}
+  rpc CanModifySubjectHierarchy() returns (boolean) {}
+  rpc AddRootSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildSubjects(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SubjectOntologySession {
+  rpc CanLookupSubjectOntologyMappings() returns (boolean) {}
+  rpc UseComparativeOntologyView() returns () {}
+  rpc UsePlenaryOntologyView() returns () {}
+  rpc GetSubjectIdsByOntology(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetSubjectsByOntology(dlkit.primordium.id.primitives.Id) returns (stream Subject) {}
+  rpc GetSubjectIdsByOntologies(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetSubjectsByOntologies(dlkit.primordium.id.primitives.IdList) returns (stream Subject) {}
+  rpc GetOntologyIdsBySubject(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetOntologiesBySubject(dlkit.primordium.id.primitives.Id) returns (stream Ontology) {}
+}
+
+service SubjectOntologyAssignmentSession {
+  rpc CanAssignSubjects() returns (boolean) {}
+  rpc CanAssignSubjectsToOntology(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableOntologyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableOntologyIdsForSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignSubjectToOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignSubjectFromOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignSubjectToOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SubjectSmartOntologySession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanManageSmartOntologies() returns (boolean) {}
+  rpc GetSubjectQuery() returns (SubjectQuery) {}
+  rpc GetSubjectSearchOrder() returns (SubjectSearchOrder) {}
+  rpc ApplySubjectQuery(osid.ontology.SubjectQuery) returns () {}
+  rpc InspectSubjectQuery() returns (SubjectQueryInspector) {}
+  rpc ApplySubjectSequencing(osid.ontology.SubjectSearchOrder) returns () {}
+  rpc GetSubjectQueryFromInspector(osid.ontology.SubjectQueryInspector) returns (SubjectQuery) {}
+}
+
+service RelevancyLookupSession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanLookupRelevancies() returns (boolean) {}
+  rpc UseComparativeRelevancyView() returns () {}
+  rpc UsePlenaryRelevancyView() returns () {}
+  rpc UseFederatedOntologyView() returns () {}
+  rpc UseIsolatedOntologyView() returns () {}
+  rpc UseEffectiveRelevancyView() returns () {}
+  rpc UseAnyEffectiveRelevancyView() returns () {}
+  rpc GetRelevancy(dlkit.primordium.id.primitives.Id) returns (Relevancy) {}
+  rpc GetRelevanciesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Relevancy) {}
+  rpc GetRelevanciesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Relevancy) {}
+  rpc GetRelevanciesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Relevancy) {}
+  rpc GetRelevanciesOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusTypeOnDate(dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevanciesForSubject(dlkit.primordium.id.primitives.Id) returns (stream Relevancy) {}
+  rpc GetRelevanciesForSubjectOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusTypeForSubject(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusTypeForSubjectOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevanciesForSubjects(dlkit.primordium.id.primitives.IdList) returns (stream Relevancy) {}
+  rpc GetRelevanciesForMappedId(dlkit.primordium.id.primitives.Id) returns (stream Relevancy) {}
+  rpc GetRelevanciesForMappedIdOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusTypeForMappedId(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusTypeForMappedIdOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevanciesForMappedIds(dlkit.primordium.id.primitives.IdList) returns (stream Relevancy) {}
+  rpc GetRelevanciesForSubjectAndMappedId(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Relevancy) {}
+  rpc GetRelevanciesForSubjectAndMappedIdOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusTypeForSubjectAndMappedId(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Relevancy) {}
+  rpc GetRelevanciesByGenusTypeForSubjectAndMappedIdOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Relevancy) {}
+  rpc GetRelevancies() returns (stream Relevancy) {}
+}
+
+service RelevancyQuerySession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanSearchRelevancies() returns (boolean) {}
+  rpc UseFederatedOntologyView() returns () {}
+  rpc UseIsolatedOntologyView() returns () {}
+  rpc GetRelevancyQuery() returns (RelevancyQuery) {}
+  rpc GetRelevanciesByQuery(osid.ontology.RelevancyQuery) returns (stream Relevancy) {}
+}
+
+service RelevancySearchSession {
+  rpc GetRelevancySearch() returns (RelevancySearch) {}
+  rpc GetRelevancySearchOrder() returns (RelevancySearchOrder) {}
+  rpc GetRelevanciesBySearch(osid.ontology.RelevancyQuery, osid.ontology.RelevancySearch) returns (RelevancySearchResults) {}
+  rpc GetRelevancyQueryFromInspector(osid.ontology.RelevancyQueryInspector) returns (RelevancyQuery) {}
+}
+
+service RelevancyAdminSession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanCreateRelevancies() returns (boolean) {}
+  rpc CanCreateRelevancyWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetRelevancyFormForCreate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (RelevancyForm) {}
+  rpc CreateRelevancy(osid.ontology.RelevancyForm) returns (Relevancy) {}
+  rpc CanUpdateRelevancies() returns (boolean) {}
+  rpc GetRelevancyFormForUpdate(dlkit.primordium.id.primitives.Id) returns (RelevancyForm) {}
+  rpc UpdateRelevancy(osid.ontology.RelevancyForm) returns () {}
+  rpc CanDeleteRelevancies() returns (boolean) {}
+  rpc DeleteRelevancy(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageRelevancyAliases() returns (boolean) {}
+  rpc AliasRelevancy(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RelevancyNotificationSession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanRegisterForRelevancyNotifications() returns (boolean) {}
+  rpc UseFederatedOntologyView() returns () {}
+  rpc UseIsolatedOntologyView() returns () {}
+  rpc ReliableRelevancyNotifications() returns () {}
+  rpc UnreliableRelevancyNotifications() returns () {}
+  rpc AcknowledgeRelevancyNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRelevancies() returns () {}
+  rpc RegisterForNewRelevanciesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForNewRelevanciesForSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRelevanciesForId(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedRelevancies() returns () {}
+  rpc RegisterForChangedRelevanciesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedRelevanciesForSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedRelevanciesForId(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedRelevancy(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRelevancies() returns () {}
+  rpc RegisterForDeletedRelevanciesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForDeletedRelevanciesForSubject(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRelevanciesForId(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRelevancy(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RelevancyOntologySession {
+  rpc CanLookupRelevancyOntologyMappings() returns (boolean) {}
+  rpc UseComparativeOntologyView() returns () {}
+  rpc UsePlenaryOntologyView() returns () {}
+  rpc GetRelevancyIdsByOntology(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetRelevanciesByOntology(dlkit.primordium.id.primitives.Id) returns (stream Relevancy) {}
+  rpc GetRelevancyIdsByOntologies(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetRelevanciesByOntologies(dlkit.primordium.id.primitives.IdList) returns (stream Relevancy) {}
+  rpc GetOntologyIdsByRelevancy(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetOntologiesByRelevancy(dlkit.primordium.id.primitives.Id) returns (stream Ontology) {}
+}
+
+service RelevancyOntologyAssignmentSession {
+  rpc CanAssignRelevancies() returns (boolean) {}
+  rpc CanAssignRelevanciesToOntology(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableOntologyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableOntologyIdsForRelevancy(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignRelevancyToOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignRelevancyFromOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignRelevancyToOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RelevancySmartOntologySession {
+  rpc GetOntologyId() returns (Id) {}
+  rpc GetOntology() returns (Ontology) {}
+  rpc CanManageSmartOntologies() returns (boolean) {}
+  rpc GetRelevancyQuery() returns (RelevancyQuery) {}
+  rpc GetRelevancySearchOrder() returns (RelevancySearchOrder) {}
+  rpc ApplyRelevancyQuery(osid.ontology.RelevancyQuery) returns () {}
+  rpc InspectRelevancyQuery() returns (RelevancyQueryInspector) {}
+  rpc ApplyRelevancySequencing(osid.ontology.RelevancySearchOrder) returns () {}
+  rpc GetRelevancyQueryFromInspector(osid.ontology.RelevancyQueryInspector) returns (RelevancyQuery) {}
+}
+
+service OntologyLookupSession {
+  rpc CanLookupOntologies() returns (boolean) {}
+  rpc UseComparativeOntologyView() returns () {}
+  rpc UsePlenaryOntologyView() returns () {}
+  rpc GetOntology(dlkit.primordium.id.primitives.Id) returns (Ontology) {}
+  rpc GetOntologiesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Ontology) {}
+  rpc GetOntologiesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Ontology) {}
+  rpc GetOntologiesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Ontology) {}
+  rpc GetOntologiesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Ontology) {}
+  rpc GetOntologiesByProvider(dlkit.primordium.id.primitives.Id) returns (stream Ontology) {}
+  rpc GetOntologies() returns (stream Ontology) {}
+}
+
+service OntologyQuerySession {
+  rpc CanSearchOntologies() returns (boolean) {}
+  rpc GetOntologyQuery() returns (OntologyQuery) {}
+  rpc GetOntologiesByQuery(osid.ontology.OntologyQuery) returns (stream Ontology) {}
+}
+
+service OntologySearchSession {
+  rpc GetOntologySearch() returns (OntologySearch) {}
+  rpc GetOntologySearchOrder() returns (OntologySearchOrder) {}
+  rpc GetOntologiesBySearch(osid.ontology.OntologyQuery, osid.ontology.OntologySearch) returns (OntologySearchResults) {}
+  rpc GetOntologyQueryFromInspector(osid.ontology.OntologyQueryInspector) returns (OntologyQuery) {}
+}
+
+service OntologyAdminSession {
+  rpc CanCreateOntologies() returns (boolean) {}
+  rpc CanCreateOntologyWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetOntologyFormForCreate(osid.type.Type[]) returns (OntologyForm) {}
+  rpc CreateOntology(osid.ontology.OntologyForm) returns (OntologyForm) {}
+  rpc CanUpdateOntologies() returns (boolean) {}
+  rpc GetOntologyFormForUpdate(dlkit.primordium.id.primitives.Id) returns (OntologyForm) {}
+  rpc UpdateOntology(osid.ontology.OntologyForm) returns () {}
+  rpc CanDeleteOntologies() returns (boolean) {}
+  rpc DeleteOntology(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageOntologyAliases() returns (boolean) {}
+  rpc AliasOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service OntologyNotificationSession {
+  rpc CanRegisterForOntologyNotifications() returns (boolean) {}
+  rpc ReliableOntologyNotifications() returns () {}
+  rpc UnreliableOntologyNotifications() returns () {}
+  rpc AcknowledgeOntologyNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewOntologies() returns () {}
+  rpc RegisterForChangedOntologies() returns () {}
+  rpc RegisterForChangedOntology(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedOntologies() returns () {}
+  rpc RegisterForDeletedOntology(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedOntologyHierarchy() returns () {}
+  rpc RegisterForChangedOntologyHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedOntologyHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service OntologyHierarchySession {
+  rpc GetOntologyHierarchyId() returns (Id) {}
+  rpc GetOntologyHierarchy() returns (Hierarchy) {}
+  rpc CanAccessOntologyHierarchy() returns (boolean) {}
+  rpc UseComparativeOntologyView() returns () {}
+  rpc UsePlenaryOntologyView() returns () {}
+  rpc GetRootOntologyIds() returns (stream Id) {}
+  rpc GetRootOntologies() returns (stream Ontology) {}
+  rpc HasParentOntologies(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentOntologyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentOntologies(dlkit.primordium.id.primitives.Id) returns (stream Ontology) {}
+  rpc IsAncestorOfOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildOntologies(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildOntologyIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildOntologies(dlkit.primordium.id.primitives.Id) returns (stream Ontology) {}
+  rpc IsDescendantOfOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetOntologyNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetOntologyNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (OntologyNode) {}
+}
+
+service OntologyHierarchyDesignSession {
+  rpc GetOntologyHierarchyId() returns (Id) {}
+  rpc GetOntologyHierarchy() returns (Hierarchy) {}
+  rpc CanModifyOntologyHierarchy() returns (boolean) {}
+  rpc AddRootOntology(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootOntology(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildOntologies(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service OntologyAssignmentSession {
+  rpc CanAssignOntologies() returns (boolean) {}
+  rpc AssignOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignOntology(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc GetOntology(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc GetIds(dlkit.primordium.id.primitives.Id) returns () {}
+}

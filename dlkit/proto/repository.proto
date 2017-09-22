@@ -1,0 +1,501 @@
+syntax = "proto3";
+
+package dlkit.proto.repository;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+import "google/protobuf/timestamp.proto";
+
+message Asset {
+  dlkit.primordium.id.primitives.Id composition = 1;
+  string copyright = 2;
+  string copyright_registration = 3;
+  google.protobuf.Timestamp created_date = 4;
+  bool distribute_alterations = 5;
+  bool distribute_compositions = 6;
+  bool distribute_verbatim = 7;
+  string principal_credit_string = 8;
+  dlkit.primordium.id.primitives.IdList provider_links = 9;
+  bool public_domain = 10;
+  bool published = 11;
+  google.protobuf.Timestamp published_date = 12;
+  dlkit.proto.osid.OsidCatalog repository = 13;
+  dlkit.primordium.id.primitives.Id source = 14;
+  string title = 15;
+}
+
+message AssetQuery {
+
+}
+
+message AssetForm {
+
+}
+
+message AssetSearch {
+
+}
+
+message AssetSearchResults {
+
+}
+
+message AssetList {
+  repeated Asset = 1;
+}
+
+message AssetContent {
+  Type accessibility_type = 1;
+  dlkit.primordium.id.primitives.Id asset = 2;
+  DataInputStream data = 3;
+  dlkit.proto.osid.OsidCatalog repository = 4;
+  string url = 5;
+}
+
+message AssetContentQuery {
+
+}
+
+message AssetContentForm {
+
+}
+
+message AssetContentList {
+  repeated AssetContent = 1;
+}
+
+message Composition {
+  dlkit.primordium.id.primitives.IdList children = 1;
+  dlkit.proto.osid.OsidCatalog repository = 2;
+}
+
+message CompositionQuery {
+
+}
+
+message CompositionForm {
+
+}
+
+message CompositionSearch {
+
+}
+
+message CompositionSearchResults {
+
+}
+
+message CompositionList {
+  repeated Composition = 1;
+}
+
+message Repository {
+
+}
+
+message RepositoryQuery {
+
+}
+
+message RepositoryForm {
+
+}
+
+message RepositorySearch {
+
+}
+
+message RepositorySearchResults {
+
+}
+
+message RepositoryList {
+  repeated Repository = 1;
+}
+
+message RepositoryNode {
+
+}
+
+message RepositoryNodeList {
+  repeated RepositoryNode = 1;
+}
+
+service AssetLookupSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanLookupAssets() returns (boolean) {}
+  rpc UseComparativeAssetView() returns () {}
+  rpc UsePlenaryAssetView() returns () {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc GetAsset(dlkit.primordium.id.primitives.Id) returns (Asset) {}
+  rpc GetAssetsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Asset) {}
+  rpc GetAssetsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Asset) {}
+  rpc GetAssetsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Asset) {}
+  rpc GetAssetsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Asset) {}
+  rpc GetAssetsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Asset) {}
+  rpc GetAssets() returns (stream Asset) {}
+}
+
+service AssetQuerySession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanSearchAssets() returns (boolean) {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc GetAssetQuery() returns (AssetQuery) {}
+  rpc GetAssetsByQuery(osid.repository.AssetQuery) returns (stream Asset) {}
+}
+
+service AssetSearchSession {
+  rpc GetAssetSearch() returns (AssetSearch) {}
+  rpc GetAssetSearchOrder() returns (AssetSearchOrder) {}
+  rpc GetAssetsBySearch(osid.repository.AssetQuery, osid.repository.AssetSearch) returns (AssetSearchResults) {}
+  rpc GetAssetQueryFromInspector(osid.repository.AssetQueryInspector) returns (AssetQuery) {}
+}
+
+service AssetAdminSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanCreateAssets() returns (boolean) {}
+  rpc CanCreateAssetWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAssetFormForCreate(osid.type.Type[]) returns (AssetForm) {}
+  rpc CreateAsset(osid.repository.AssetForm) returns (Asset) {}
+  rpc CanUpdateAssets() returns (boolean) {}
+  rpc GetAssetFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AssetForm) {}
+  rpc UpdateAsset(osid.repository.AssetForm) returns () {}
+  rpc CanDeleteAssets() returns (boolean) {}
+  rpc DeleteAsset(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAssetAliases() returns (boolean) {}
+  rpc AliasAsset(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanCreateAssetContent() returns (boolean) {}
+  rpc CanCreateAssetContentWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAssetContentFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AssetContentForm) {}
+  rpc CreateAssetContent(osid.repository.AssetContentForm) returns (AssetContent) {}
+  rpc CanUpdateAssetContents() returns (boolean) {}
+  rpc GetAssetContentFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AssetContentForm) {}
+  rpc UpdateAssetContent(osid.repository.AssetContentForm) returns () {}
+  rpc CanDeleteAssetContents() returns (boolean) {}
+  rpc DeleteAssetContent(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssetNotificationSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanRegisterForAssetNotifications() returns (boolean) {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc RegisterForNewAssets() returns () {}
+  rpc RegisterForNewAssetsByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedAssets() returns () {}
+  rpc RegisterForChangedAssetsByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedAsset(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssets() returns () {}
+  rpc RegisterForDeletedAssetsByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForDeletedAsset(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableAssetNotifications() returns () {}
+  rpc UnreliableAssetNotifications() returns () {}
+  rpc AcknowledgeAssetNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssetRepositorySession {
+  rpc CanLookupAssetRepositoryMappings() returns (boolean) {}
+  rpc UseComparativeRepositoryView() returns () {}
+  rpc UsePlenaryRepositoryView() returns () {}
+  rpc GetAssetIdsByRepository(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssetsByRepository(dlkit.primordium.id.primitives.Id) returns (stream Asset) {}
+  rpc GetAssetIdsByRepositories(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetAssetsByRepositories(dlkit.primordium.id.primitives.IdList) returns (stream Asset) {}
+  rpc GetRepositoryIdsByAsset(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetRepositoriesByAsset(dlkit.primordium.id.primitives.Id) returns (stream Repository) {}
+}
+
+service AssetRepositoryAssignmentSession {
+  rpc CanAssignAssets() returns (boolean) {}
+  rpc CanAssignAssetsToRepository(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableRepositoryIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableRepositoryIdsForAsset(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignAssetToRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignAssetFromRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssetSmartRepositorySession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanManageSmartRepository() returns (boolean) {}
+  rpc GetAssetQuery() returns (AssetQuery) {}
+  rpc GetAssetSearchOrder() returns (AssetSearchOrder) {}
+  rpc ApplyAssetQuery(osid.repository.AssetQuery) returns () {}
+  rpc InspectAssetQuery() returns (AssetQueryInspector) {}
+  rpc ApplyAssetSequencing(osid.repository.AssetSearchOrder) returns () {}
+  rpc GetAssetQueryFromInspector(osid.repository.AssetQueryInspector) returns (AssetQuery) {}
+}
+
+service AssetTemporalSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanLookupTemporalCoverage() returns (boolean) {}
+  rpc UseComparativeAssetView() returns () {}
+  rpc UsePlenaryAssetView() returns () {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc GetTemporalCoverage(dlkit.primordium.id.primitives.Id) returns (stream DateTimeInterval) {}
+  rpc GetAssetIdsByTemporalCoverage(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Id) {}
+  rpc GetAssetsByTemporalCoverage(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Repository) {}
+}
+
+service AssetTemporalAssignmentSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanAssignTemporalCoverage() returns (boolean) {}
+  rpc AddTemporalCoverage(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns () {}
+  rpc RemoveTemporalCoverage(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns () {}
+}
+
+service AssetSpatialSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanLookupSpatialCoverage() returns (boolean) {}
+  rpc UseComparativeAssetView() returns () {}
+  rpc UsePlenaryAssetView() returns () {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc GetAssetLocationIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssetLocations(dlkit.primordium.id.primitives.Id) returns (stream Location) {}
+  rpc GetAssetSpatialCoverage(dlkit.primordium.id.primitives.Id) returns (stream SpatialUnit) {}
+  rpc GetAssetIdsByLocation(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssetsByLocation(dlkit.primordium.id.primitives.Id) returns (stream Asset) {}
+  rpc GetAssetIdsBySpatialCoverage(osid.mapping.SpatialUnit) returns (stream Id) {}
+  rpc GetAssetsBySpatialCoverage(osid.mapping.SpatialUnit) returns (stream Asset) {}
+}
+
+service AssetSpatialAssignmentSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanAssignSpatialCoverage() returns (boolean) {}
+  rpc AddAssetLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddAssetSpatialCoverage(dlkit.primordium.id.primitives.Id, osid.mapping.SpatialUnit) returns () {}
+  rpc RemoveAssetLocation(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveAssetSpatialCoverage(dlkit.primordium.id.primitives.Id, osid.mapping.SpatialUnit) returns () {}
+}
+
+service AssetCompositionSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanAccessAssetCompositions() returns (boolean) {}
+  rpc UseComparativeAssetCompositionView() returns () {}
+  rpc UsePlenaryAssetCompositionView() returns () {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc GetCompositionAssets(dlkit.primordium.id.primitives.Id) returns (stream Asset) {}
+  rpc GetCompositionsByAsset(dlkit.primordium.id.primitives.Id) returns (stream Composition) {}
+}
+
+service AssetCompositionDesignSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanComposeAssets() returns (boolean) {}
+  rpc AddAsset(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveAssetAhead(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveAssetBehind(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc OrderAssets(dlkit.primordium.id.primitives.IdList, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveAsset(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CompositionLookupSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanLookupCompositions() returns (boolean) {}
+  rpc UseComparativeCompositionView() returns () {}
+  rpc UsePlenaryCompositionView() returns () {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc UseActiveCompositionView() returns () {}
+  rpc UseAnyStatusCompositionView() returns () {}
+  rpc UseSequesteredCompositionView() returns () {}
+  rpc UseUnsequesteredCompositionView() returns () {}
+  rpc GetComposition(dlkit.primordium.id.primitives.Id) returns (Composition) {}
+  rpc GetCompositionsByIds(dlkit.primordium.id.primitives.IdList) returns (stream Composition) {}
+  rpc GetCompositionsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Composition) {}
+  rpc GetCompositionsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Composition) {}
+  rpc GetCompositionsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Composition) {}
+  rpc GetCompositionsByProvider(dlkit.primordium.id.primitives.Id) returns (stream Composition) {}
+  rpc GetCompositions() returns (stream Composition) {}
+}
+
+service CompositionQuerySession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanSearchCompositions() returns (boolean) {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc UseSequesteredCompositionView() returns () {}
+  rpc UseUnsequesteredCompositionView() returns () {}
+  rpc GetCompositionQuery() returns (CompositionQuery) {}
+  rpc GetCompositionsByQuery(osid.repository.CompositionQuery) returns (stream Composition) {}
+}
+
+service CompositionSearchSession {
+  rpc GetCompositionSearch() returns (CompositionSearch) {}
+  rpc GetCompositionSearchOrder() returns (CompositionSearchOrder) {}
+  rpc GetCompositionsBySearch(osid.repository.CompositionQuery, osid.repository.CompositionSearch) returns (CompositionSearchResults) {}
+  rpc GetCompositionQueryFromInspector(osid.repository.CompositionQueryInspector) returns (CompositionQuery) {}
+}
+
+service CompositionAdminSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanCreateCompositions() returns (boolean) {}
+  rpc CanCreateCompositionWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetCompositionFormForCreate(osid.type.Type[]) returns (CompositionForm) {}
+  rpc CreateComposition(osid.repository.CompositionForm) returns (Composition) {}
+  rpc CanUpdateCompositions() returns (boolean) {}
+  rpc GetCompositionFormForUpdate(dlkit.primordium.id.primitives.Id) returns (CompositionForm) {}
+  rpc UpdateComposition(osid.repository.CompositionForm) returns () {}
+  rpc CanDeleteCompositions() returns (boolean) {}
+  rpc DeleteComposition(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc DeleteCompositionNode(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddCompositionChild(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveCompositionChild(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageCompositionAliases() returns (boolean) {}
+  rpc AliasComposition(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CompositionNotificationSession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanRegisterForCompositionNotifications() returns (boolean) {}
+  rpc UseFederatedRepositoryView() returns () {}
+  rpc UseIsolatedRepositoryView() returns () {}
+  rpc RegisterForNewCompositions() returns () {}
+  rpc RegisterForChangedCompositions() returns () {}
+  rpc RegisterForChangedComposition(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedCompositions() returns () {}
+  rpc RegisterForDeletedComposition(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableCompositionNotifications() returns () {}
+  rpc UnreliableCompositionNotifications() returns () {}
+  rpc AcknowledgeCompositionNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CompositionRepositorySession {
+  rpc UseComparativeCompositionRepositoryView() returns () {}
+  rpc UsePlenaryCompositionRepositoryView() returns () {}
+  rpc CanLookupCompositionRepositoryMappings() returns (boolean) {}
+  rpc GetCompositionIdsByRepository(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetCompositionsByRepository(dlkit.primordium.id.primitives.Id) returns (stream Composition) {}
+  rpc GetCompositionIdsByRepositories(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetCompositionsByRepositories(dlkit.primordium.id.primitives.IdList) returns (stream Composition) {}
+  rpc GetRepositoryIdsByComposition(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetRepositoriesByComposition(dlkit.primordium.id.primitives.Id) returns (stream Repository) {}
+}
+
+service CompositionRepositoryAssignmentSession {
+  rpc CanAssignCompositions() returns (boolean) {}
+  rpc CanAssignCompositionsToRepository(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableRepositoryIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableRepositoryIdsForComposition(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignCompositionToRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignCompositionFromRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service CompositionSmartRepositorySession {
+  rpc GetRepositoryId() returns (Id) {}
+  rpc GetRepository() returns (Repository) {}
+  rpc CanManageSmartRepository() returns (boolean) {}
+  rpc GetCompositionQuery() returns (CompositionQuery) {}
+  rpc GetCompositionSearchOrder() returns (CompositionSearchOrder) {}
+  rpc ApplyCompositionQuery(osid.repository.CompositionQuery) returns () {}
+  rpc InspectCompositionQuery() returns (CompositionQueryInspector) {}
+  rpc ApplyCompositionSequencing(osid.repository.CompositionSearchOrder) returns () {}
+  rpc GetCompositionQueryFromInspector(osid.repository.CompositionQueryInspector) returns (CompositionQuery) {}
+}
+
+service RepositoryLookupSession {
+  rpc CanLookupRepositories() returns (boolean) {}
+  rpc UseComparativeRepositoryView() returns () {}
+  rpc UsePlenaryRepositoryView() returns () {}
+  rpc GetRepository(dlkit.primordium.id.primitives.Id) returns (Repository) {}
+  rpc GetRepositoriesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Repository) {}
+  rpc GetRepositoriesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Repository) {}
+  rpc GetRepositoriesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Repository) {}
+  rpc GetRepositoriesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Repository) {}
+  rpc GetRepositoriesByProvider(dlkit.primordium.id.primitives.Id) returns (stream Repository) {}
+  rpc GetRepositories() returns (stream Repository) {}
+}
+
+service RepositoryQuerySession {
+  rpc CanSearchRepositories() returns (boolean) {}
+  rpc GetRepositoryQuery() returns (RepositoryQuery) {}
+  rpc GetRepositoriesByQuery(osid.repository.RepositoryQuery) returns (stream Repository) {}
+}
+
+service RepositorySearchSession {
+  rpc GetRepositorySearch() returns (RepositorySearch) {}
+  rpc GetRepositorySearchOrder() returns (RepositorySearchOrder) {}
+  rpc GetRepositoriesBySearch(osid.repository.RepositoryQuery, osid.repository.RepositorySearch) returns (RepositorySearchResults) {}
+  rpc GetRepositoryQueryFromInspector(osid.repository.RepositoryQueryInspector) returns (RepositoryQuery) {}
+}
+
+service RepositoryAdminSession {
+  rpc CanCreateRepositories() returns (boolean) {}
+  rpc CanCreateRepositoryWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetRepositoryFormForCreate(osid.type.Type[]) returns (RepositoryForm) {}
+  rpc CreateRepository(osid.repository.RepositoryForm) returns (Repository) {}
+  rpc CanUpdateRepositories() returns (boolean) {}
+  rpc GetRepositoryFormForUpdate(dlkit.primordium.id.primitives.Id) returns (RepositoryForm) {}
+  rpc UpdateRepository(osid.repository.RepositoryForm) returns () {}
+  rpc CanDeleteRepositories() returns (boolean) {}
+  rpc DeleteRepository(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageRepositoryAliases() returns (boolean) {}
+  rpc AliasRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RepositoryNotificationSession {
+  rpc CanRegisterForRepositoryNotifications() returns (boolean) {}
+  rpc RegisterForNewRepositories() returns () {}
+  rpc RegisterForNewRepositoryAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewRepositoryDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedRepositories() returns () {}
+  rpc RegisterForChangedRepository(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRepositories() returns () {}
+  rpc RegisterForDeletedRepository(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRepositoryAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedRepositoryDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReliableRepositoryNotifications() returns () {}
+  rpc UnreliableRepositoryNotifications() returns () {}
+  rpc AcknowledgeRepositoryNotification(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service RepositoryHierarchySession {
+  rpc GetRepositoryHierarchyId() returns (Id) {}
+  rpc GetRepositoryHierarchy() returns (Hierarchy) {}
+  rpc CanAccessRepositoryHierarchy() returns (boolean) {}
+  rpc UseComparativeRepositoryView() returns () {}
+  rpc UsePlenaryRepositoryView() returns () {}
+  rpc GetRootRepositoryIds() returns (stream Id) {}
+  rpc GetRootRepositories() returns (stream Repository) {}
+  rpc HasParentRepositories(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentRepositoryIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentRepositories(dlkit.primordium.id.primitives.Id) returns (stream Repository) {}
+  rpc IsAncestorOfRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildRepositories(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildRepositoryIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildRepositories(dlkit.primordium.id.primitives.Id) returns (stream Repository) {}
+  rpc IsDescendantOfRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetRepositoryNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetRepositoryNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (RepositoryNode) {}
+}
+
+service RepositoryHierarchyDesignSession {
+  rpc GetRepositoryHierarchyId() returns (Id) {}
+  rpc GetRepositoryHierarchy() returns (Hierarchy) {}
+  rpc CanModifyRepositoryHierarchy() returns (boolean) {}
+  rpc AddRootRepository(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootRepository(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildRepository(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildRepositories(dlkit.primordium.id.primitives.Id) returns () {}
+}

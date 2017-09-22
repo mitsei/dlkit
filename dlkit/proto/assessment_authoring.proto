@@ -1,0 +1,466 @@
+syntax = "proto3";
+
+package dlkit.proto.assessment_authoring;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+import "dlkit/primordium/calendaring/primitives.proto";
+
+message AssessmentPart {
+  Duration allocated_time = 1;
+  dlkit.primordium.id.primitives.Id assessment = 2;
+  dlkit.primordium.id.primitives.Id assessment_part = 3;
+  dlkit.proto.osid.OsidCatalog bank = 4;
+  sint32 weight = 5;
+}
+
+message AssessmentPartQuery {
+
+}
+
+message AssessmentPartForm {
+
+}
+
+message AssessmentPartSearch {
+
+}
+
+message AssessmentPartSearchResults {
+
+}
+
+message AssessmentPartList {
+  repeated AssessmentPart = 1;
+}
+
+message SequenceRule {
+  dlkit.primordium.id.primitives.Id assessment_part = 1;
+  dlkit.proto.osid.OsidCatalog bank = 2;
+  bool cumulative = 3;
+  sint32 maximum_score = 4;
+  sint32 minimum_score = 5;
+  dlkit.primordium.id.primitives.Id next_assessment_part = 6;
+}
+
+message SequenceRuleQuery {
+
+}
+
+message SequenceRuleForm {
+
+}
+
+message SequenceRuleSearch {
+
+}
+
+message SequenceRuleSearchResults {
+
+}
+
+message SequenceRuleList {
+  repeated SequenceRule = 1;
+}
+
+message SequenceRuleEnabler {
+  dlkit.proto.osid.OsidCatalog bank = 1;
+}
+
+message SequenceRuleEnablerQuery {
+
+}
+
+message SequenceRuleEnablerForm {
+
+}
+
+message SequenceRuleEnablerFormRecord {
+
+}
+
+message SequenceRuleEnablerSearch {
+
+}
+
+message SequenceRuleEnablerSearchResults {
+
+}
+
+message SequenceRuleEnablerList {
+  repeated SequenceRuleEnabler = 1;
+}
+
+service AssessmentPartLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupAssessmentParts() returns (boolean) {}
+  rpc UseComparativeAssessmentPartView() returns () {}
+  rpc UsePlenaryAssessmentPartView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc UseActiveAssessmentPartView() returns () {}
+  rpc UseAnyStatusAssessmentPartView() returns () {}
+  rpc UseSequesteredAssessmentPartView() returns () {}
+  rpc UseUnsequesteredAssessmentPartView() returns () {}
+  rpc GetAssessmentPart(dlkit.primordium.id.primitives.Id) returns (AssessmentPart) {}
+  rpc GetAssessmentPartsByIds(dlkit.primordium.id.primitives.IdList) returns (stream AssessmentPart) {}
+  rpc GetAssessmentPartsByGenusType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentPart) {}
+  rpc GetAssessmentPartsByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentPart) {}
+  rpc GetAssessmentPartsByRecordType(dlkit.primordium.type.primitives.Type) returns (stream AssessmentPart) {}
+  rpc GetAssessmentPartsForAssessment(dlkit.primordium.id.primitives.Id) returns (stream AssessmentPart) {}
+  rpc GetAssessmentParts() returns (stream AssessmentPart) {}
+}
+
+service AssessmentPartQuerySession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanSearchAssessmentParts() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc UseSequesteredAssessmentPartView() returns () {}
+  rpc UseUnsequesteredAssessmentPartView() returns () {}
+  rpc GetAssessmentPartQuery() returns (AssessmentPartQuery) {}
+  rpc GetAssessmentPartsByQuery(osid.assessment.authoring.AssessmentPartQuery) returns (stream AssessmentPart) {}
+}
+
+service AssessmentPartSearchSession {
+  rpc GetAssessmentPartSearch() returns (AssessmentPartSearch) {}
+  rpc GetAssessmentPartSearchOrder() returns (AssessmentPartSearchOrder) {}
+  rpc GetAssessmentPartsBySearch(osid.assessment.authoring.AssessmentPartQuery, osid.assessment.authoring.AssessmentPartSearch) returns (AssessmentPartSearchResults) {}
+  rpc GetAssessmentPartQueryFromInspector(osid.assessment.authoring.AssessmentPartQueryInspector) returns (AssessmentPartQuery) {}
+}
+
+service AssessmentPartAdminSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanCreateAssessmentParts() returns (boolean) {}
+  rpc CanCreateAssessmentPartWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetAssessmentPartFormForCreateForAssessment(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AssessmentPartForm) {}
+  rpc CreateAssessmentPartForAssessment(osid.assessment.authoring.AssessmentPartForm) returns (AssessmentPart) {}
+  rpc GetAssessmentPartFormForCreateForAssessmentPart(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (AssessmentPartForm) {}
+  rpc CreateAssessmentPartForAssessmentPart(osid.assessment.authoring.AssessmentPartForm) returns (AssessmentPart) {}
+  rpc CanUpdateAssessmentParts() returns (boolean) {}
+  rpc GetAssessmentPartFormForUpdate(dlkit.primordium.id.primitives.Id) returns (AssessmentPartForm) {}
+  rpc UpdateAssessmentPart(dlkit.primordium.id.primitives.Id, osid.assessment.authoring.AssessmentPartForm) returns () {}
+  rpc CanDeleteAssessmentParts() returns (boolean) {}
+  rpc DeleteAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageAssessmentPartAliases() returns (boolean) {}
+  rpc AliasAssessmentPart(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentPartNotificationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanRegisterForAssessmentPartNotifications() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc ReliableAssessmentPartNotifications() returns () {}
+  rpc UnreliableAssessmentPartNotifications() returns () {}
+  rpc AcknowledgeAssessmentPartNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewAssessmentParts() returns () {}
+  rpc RegisterForChangedAssessmentParts() returns () {}
+  rpc RegisterForChangedAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedAssessmentParts() returns () {}
+  rpc RegisterForDeletedAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentPartBankSession {
+  rpc CanLookupAssessmentPartBankMappings() returns (boolean) {}
+  rpc UseComparativeAssessmentPartBankView() returns () {}
+  rpc UsePlenaryAssessmentPartBankView() returns () {}
+  rpc GetAssessmentPartIdsByBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssessmentPartsByBank(dlkit.primordium.id.primitives.Id) returns (stream AssessmentPart) {}
+  rpc GetAssessmentPartIdsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetAssessmentPartsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream AssessmentPart) {}
+  rpc GetBankIdsByAssessmentPart(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBanksByAssessmentPart(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+}
+
+service AssessmentPartBankAssignmentSession {
+  rpc CanAssignAssessmentParts() returns (boolean) {}
+  rpc CanAssignAssessmentPartsToBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBankIdsForAssessmentPart(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignAssessmentPartToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignAssessmentPartFromBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignAssessmentPartToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service AssessmentPartSmartBankSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanManageSmartBanks() returns (boolean) {}
+  rpc GetAssessmentPartQuery() returns (AssessmentPartQuery) {}
+  rpc GetAssessmentPartSearchOrder() returns (AssessmentPartSearchOrder) {}
+  rpc ApplyAssessmentPartQuery(osid.assessment.authoring.AssessmentPartQuery) returns () {}
+  rpc InspectAssessmentPartQuery() returns (AssessmentPartQueryInspector) {}
+  rpc ApplyAssessmentPartSequencing(osid.assessment.authoring.AssessmentPartSearchOrder) returns () {}
+  rpc GetAssessmentPartQueryFromInspector(osid.assessment.authoring.AssessmentPartQueryInspector) returns (AssessmentPartQuery) {}
+}
+
+service AssessmentPartItemSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanAccessAssessmentPartItems() returns (boolean) {}
+  rpc UseComparativeAsseessmentPartItemView() returns () {}
+  rpc UsePlenaryAssessmentPartItemView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetAssessmentPartItems(dlkit.primordium.id.primitives.Id) returns (stream Item) {}
+  rpc GetAssessmentPartsByItem(dlkit.primordium.id.primitives.Id) returns (stream AssessmentPart) {}
+}
+
+service AssessmentPartItemDesignSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanDesignAssessmentParts() returns (boolean) {}
+  rpc AddItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveItemAhead(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveItemBehind(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc OrderItems(dlkit.primordium.id.primitives.IdList, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveItem(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SequenceRuleLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupSequenceRules() returns (boolean) {}
+  rpc UseComparativeSequenceRuleView() returns () {}
+  rpc UsePlenarySequenceRuleView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc UseActiveSequenceRuleView() returns () {}
+  rpc UseAnyStatusSequenceRuleView() returns () {}
+  rpc GetSequenceRule(dlkit.primordium.id.primitives.Id) returns (SequenceRule) {}
+  rpc GetSequenceRulesByIds(dlkit.primordium.id.primitives.IdList) returns (stream SequenceRule) {}
+  rpc GetSequenceRulesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream SequenceRule) {}
+  rpc GetSequenceRulesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream SequenceRule) {}
+  rpc GetSequenceRulesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream SequenceRule) {}
+  rpc GetSequenceRulesForAssessmentPart(dlkit.primordium.id.primitives.Id) returns (stream SequenceRule) {}
+  rpc GetSequenceRulesForNextAssessmentPart(dlkit.primordium.id.primitives.Id) returns (stream SequenceRule) {}
+  rpc GetSequenceRulesForAssessmentParts(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream SequenceRule) {}
+  rpc GetSequenceRulesForAssessment(dlkit.primordium.id.primitives.Id) returns (stream SequenceRule) {}
+  rpc GetSequenceRules() returns (stream SequenceRule) {}
+}
+
+service SequenceRuleQuerySession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanSearchSequenceRules() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetSequenceRuleQuery() returns (SequenceRuleQuery) {}
+  rpc GetSequenceRulesByQuery(osid.assessment.authoring.SequenceRuleQuery) returns (stream SequenceRule) {}
+}
+
+service SequenceRuleSearchSession {
+  rpc GetSequenceRuleSearch() returns (SequenceRuleSearch) {}
+  rpc GetSequenceRuleSearchOrder() returns (SequenceRuleSearchOrder) {}
+  rpc GetSequenceRulesBySearch(osid.assessment.authoring.SequenceRuleQuery, osid.assessment.authoring.SequenceRuleSearch) returns (SequenceRuleSearchResults) {}
+  rpc GetSequenceRuleQueryFromInspector(osid.assessment.authoring.SequenceRuleQueryInspector) returns (SequenceRuleQuery) {}
+}
+
+service SequenceRuleAdminSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanCreateSequenceRule() returns (boolean) {}
+  rpc CanCreateSequenceRuleWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetSequenceRuleFormForCreate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (SequenceRuleForm) {}
+  rpc CreateSequenceRule(osid.assessment.authoring.SequenceRuleForm) returns (SequenceRule) {}
+  rpc CanUpdateSequenceRules() returns (boolean) {}
+  rpc GetSequenceRuleFormForUpdate(dlkit.primordium.id.primitives.Id) returns (SequenceRuleForm) {}
+  rpc UpdateSequenceRule(osid.assessment.authoring.SequenceRuleForm) returns () {}
+  rpc CanDeleteSequenceRules() returns (boolean) {}
+  rpc DeleteSequenceRule(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageSequenceRuleAliases() returns (boolean) {}
+  rpc AliasSequenceRule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanSequenceSequenceRules() returns (boolean) {}
+  rpc MoveSequenceRuleAhead(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveSequenceRuleBehind(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc OrderSequenceRules(dlkit.primordium.id.primitives.IdList, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SequenceRuleNotificationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanRegisterForSequenceRuleNotifications() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc ReliableSequenceRuleNotifications() returns () {}
+  rpc UnreliableSequenceRuleNotifications() returns () {}
+  rpc AcknowledgeSequenceRuleNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewSequenceRules() returns () {}
+  rpc RegisterForNewSequenceRulesForAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewSequenceRulesForNextAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedSequenceRules() returns () {}
+  rpc RegisterForChangedSequenceRulesForAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedSequenceRulesForNextAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedSequenceRule(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedSequenceRules() returns () {}
+  rpc RegisterForDeletedSequenceRulesForAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedSequenceRulesForNextAssessmentPart(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedSequenceRule(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SequenceRuleBankSession {
+  rpc CanLookupSequenceRuleBankMappings() returns (boolean) {}
+  rpc UseComparativeSequenceRuleBankView() returns () {}
+  rpc UsePlenarySequenceRuleBankView() returns () {}
+  rpc GetSequenceRuleIdsByBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetSequenceRulesByBank(dlkit.primordium.id.primitives.Id) returns (stream SequenceRule) {}
+  rpc GetSequenceRuleIdsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetSequenceRulesByBanks(dlkit.primordium.id.primitives.IdList) returns (stream SequenceRule) {}
+  rpc GetBankIdsBySequenceRule(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBanksBySequenceRule(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+}
+
+service SequenceRuleBankAssignmentSession {
+  rpc CanAssignSequenceRules() returns (boolean) {}
+  rpc CanAssignSequenceRulesToBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBankIdsForSequenceRule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignSequenceRuleToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignSequenceRuleFromBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignSequenceRuleToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SequenceRuleSmartBankSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanManageSmartBanks() returns (boolean) {}
+  rpc GetSequenceRuleQuery() returns (SequenceRuleQuery) {}
+  rpc GetSequenceRuleSearchOrder() returns (SequenceRuleSearchOrder) {}
+  rpc ApplySequenceRuleQuery(osid.assessment.authoring.SequenceRuleQuery) returns () {}
+  rpc InspectSequenceRuleQuery() returns (SequenceRuleQueryInspector) {}
+  rpc ApplySequenceRuleSequencing(osid.assessment.authoring.SequenceRuleSearchOrder) returns () {}
+  rpc GetSequenceRuleQueryFromInspector(osid.assessment.authoring.SequenceRuleQueryInspector) returns (SequenceRuleQuery) {}
+}
+
+service SequenceRuleEnablerLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupSequenceRuleEnablers() returns (boolean) {}
+  rpc UseComparativeSequenceRuleEnablerView() returns () {}
+  rpc UsePlenarySequenceRuleEnablerView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc UseActiveSequenceRuleEnablerView() returns () {}
+  rpc UseAnyStatusSequenceRuleEnablerView() returns () {}
+  rpc GetSequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns (SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablersByIds(dlkit.primordium.id.primitives.IdList) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablersByGenusType(dlkit.primordium.type.primitives.Type) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablersByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablersByRecordType(dlkit.primordium.type.primitives.Type) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablersOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablersOnDateWithAgent(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablers() returns (stream SequenceRuleEnabler) {}
+}
+
+service SequenceRuleEnablerQuerySession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanSearchSequenceRuleEnablers() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetSequenceRuleEnablerQuery() returns (SequenceRuleEnablerQuery) {}
+  rpc GetSequenceRuleEnablersByQuery(osid.assessment.authoring.SequenceRuleEnablerQuery) returns (stream SequenceRuleEnabler) {}
+}
+
+service SequenceRuleEnablerSearchSession {
+  rpc GetSequenceRuleEnablerSearch() returns (SequenceRuleEnablerSearch) {}
+  rpc GetSequenceRuleEnablerSearchOrder() returns (SequenceRuleEnablerSearchOrder) {}
+  rpc GetSequenceRuleEnablersBySearch(osid.assessment.authoring.SequenceRuleEnablerQuery, osid.assessment.authoring.SequenceRuleEnablerSearch) returns (SequenceRuleEnablerSearchResults) {}
+  rpc GetSequenceRuleEnablerQueryFromInspector(osid.assessment.authoring.SequenceRuleEnablerQueryInspector) returns (SequenceRuleEnablerQuery) {}
+}
+
+service SequenceRuleEnablerAdminSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanCreateSequenceRuleEnabler() returns (boolean) {}
+  rpc CanCreateSequenceRuleEnablerWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetSequenceRuleEnablerFormForCreate(osid.type.Type[]) returns (SequenceRuleEnablerForm) {}
+  rpc CreateSequenceRuleEnabler(osid.assessment.authoring.SequenceRuleEnablerForm) returns (SequenceRuleEnabler) {}
+  rpc CanUpdateSequenceRuleEnablers() returns (boolean) {}
+  rpc GetSequenceRuleEnablerFormForUpdate(dlkit.primordium.id.primitives.Id) returns (SequenceRuleEnablerForm) {}
+  rpc UpdateSequenceRuleEnabler(osid.assessment.authoring.SequenceRuleEnablerForm) returns () {}
+  rpc CanDeleteSequenceRuleEnablers() returns (boolean) {}
+  rpc DeleteSequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageSequenceRuleEnablerAliases() returns (boolean) {}
+  rpc AliasSequenceRuleEnabler(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SequenceRuleEnablerNotificationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanRegisterForSequenceRuleEnablerNotifications() returns (boolean) {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc ReliableSequenceRuleEnablerNotifications() returns () {}
+  rpc UnreliableSequenceRuleEnablerNotifications() returns () {}
+  rpc AcknowledgeSequenceRuleEnablerNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewSequenceRuleEnablers() returns () {}
+  rpc RegisterForChangedSequenceRuleEnablers() returns () {}
+  rpc RegisterForChangedSequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedSequenceRuleEnablers() returns () {}
+  rpc RegisterForDeletedSequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SequenceRuleEnablerBankSession {
+  rpc CanLookupSequenceRuleEnablerBankMappings() returns (boolean) {}
+  rpc UseComparativeSequenceRuleEnablerBankView() returns () {}
+  rpc UsePlenarySequenceRuleEnablerBankView() returns () {}
+  rpc GetSequenceRuleEnablerIdsByBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetSequenceRuleEnablersByBank(dlkit.primordium.id.primitives.Id) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleEnablerIdsByBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetSequenceRuleEnablersByBanks(dlkit.primordium.id.primitives.IdList) returns (stream SequenceRuleEnabler) {}
+  rpc GetBankIdsBySequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetBanksBySequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns (stream Bank) {}
+}
+
+service SequenceRuleEnablerBankAssignmentSession {
+  rpc CanAssignSequenceRuleEnablers() returns (boolean) {}
+  rpc CanAssignSequenceRuleEnablersToBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableBankIdsForSequenceRuleEnabler(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignSequenceRuleEnablerToBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignSequenceRuleEnablerFromBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service SequenceRuleEnablerSmartBankSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanManageSmartBanks() returns (boolean) {}
+  rpc GetSequenceRuleEnablerQuery() returns (SequenceRuleEnablerQuery) {}
+  rpc GetSequenceRuleEnablerSearchOrder() returns (SequenceRuleEnablerSearchOrder) {}
+  rpc ApplySequenceRuleEnablerQuery(osid.assessment.authoring.SequenceRuleEnablerQuery) returns () {}
+  rpc InspectSequenceRuleEnablerQuery() returns (SequenceRuleEnablerQueryInspector) {}
+  rpc ApplySequenceRuleEnablerSequencing(osid.assessment.authoring.SequenceRuleEnablerSearchOrder) returns () {}
+  rpc GetSequenceRuleEnablerQueryFromInspector(osid.assessment.authoring.SequenceRuleEnablerQueryInspector) returns (SequenceRuleEnablerQuery) {}
+}
+
+service SequenceRuleEnablerRuleLookupSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanLookupSequenceRuleEnablerRules() returns (boolean) {}
+  rpc UseComparativeSequenceRuleEnablerRuleView() returns () {}
+  rpc UsePlenarySequenceRuleEnablerRuleView() returns () {}
+  rpc UseFederatedBankView() returns () {}
+  rpc UseIsolatedBankView() returns () {}
+  rpc GetSequenceRuleEnablerIdsForSequenceRule(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetSequenceRuleEnablersForSequenceRule(dlkit.primordium.id.primitives.Id) returns (stream SequenceRuleEnabler) {}
+  rpc GetSequenceRuleIdsForSequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetSequenceRulesForSequenceRuleEnabler(dlkit.primordium.id.primitives.Id) returns (stream SequenceRule) {}
+}
+
+service SequenceRuleEnablerRuleApplicationSession {
+  rpc GetBankId() returns (Id) {}
+  rpc GetBank() returns (Bank) {}
+  rpc CanAssignSequenceRuleEnablers() returns (boolean) {}
+  rpc AssignSequenceRuleEnablerToSequenceRule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignSequenceRuleEnablerFromSequenceRule(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanSequenceSequenceRuleEnablers() returns (boolean) {}
+  rpc MoveSequenceRuleEnablerAhead(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveSequenceRuleEnablerBehind(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc OrderSequenceRuleEnablers(dlkit.primordium.id.primitives.IdList, dlkit.primordium.id.primitives.Id) returns () {}
+}

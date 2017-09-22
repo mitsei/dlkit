@@ -1,0 +1,645 @@
+syntax = "proto3";
+
+package dlkit.proto.learning;
+
+import "dlkit/primordium/id/primitives.proto";
+import "osid/objects.proto";
+
+message Objective {
+  dlkit.primordium.id.primitives.Id assessment = 1;
+  dlkit.primordium.id.primitives.Id cognitive_process = 2;
+  dlkit.primordium.id.primitives.Id knowledge_category = 3;
+  dlkit.proto.osid.OsidCatalog objective_bank = 4;
+}
+
+message ObjectiveQuery {
+
+}
+
+message ObjectiveForm {
+
+}
+
+message ObjectiveSearch {
+
+}
+
+message ObjectiveSearchResults {
+
+}
+
+message ObjectiveList {
+  repeated Objective = 1;
+}
+
+message ObjectiveNode {
+
+}
+
+message ObjectiveNodeList {
+  repeated ObjectiveNode = 1;
+}
+
+message Activity {
+  dlkit.primordium.id.primitives.IdList assessments = 1;
+  dlkit.primordium.id.primitives.IdList assets = 2;
+  dlkit.primordium.id.primitives.IdList courses = 3;
+  dlkit.primordium.id.primitives.Id objective = 4;
+  dlkit.proto.osid.OsidCatalog objective_bank = 5;
+}
+
+message ActivityQuery {
+
+}
+
+message ActivityForm {
+
+}
+
+message ActivitySearch {
+
+}
+
+message ActivitySearchResults {
+
+}
+
+message ActivityList {
+  repeated Activity = 1;
+}
+
+message Proficiency {
+  float completion = 1;
+  dlkit.primordium.id.primitives.Id level = 2;
+  dlkit.primordium.id.primitives.Id objective = 3;
+  dlkit.proto.osid.OsidCatalog objective_bank = 4;
+  dlkit.primordium.id.primitives.Id resource = 5;
+}
+
+message ProficiencyQuery {
+
+}
+
+message ProficiencyForm {
+
+}
+
+message ProficiencySearch {
+
+}
+
+message ProficiencySearchResults {
+
+}
+
+message ProficiencyList {
+  repeated Proficiency = 1;
+}
+
+message ObjectiveBank {
+
+}
+
+message ObjectiveBankQuery {
+
+}
+
+message ObjectiveBankForm {
+
+}
+
+message ObjectiveBankSearch {
+
+}
+
+message ObjectiveBankSearchResults {
+
+}
+
+message ObjectiveBankList {
+  repeated ObjectiveBank = 1;
+}
+
+message ObjectiveBankNode {
+
+}
+
+message ObjectiveBankNodeList {
+  repeated ObjectiveBankNode = 1;
+}
+
+service ObjectiveLookupSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanLookupObjectives() returns (boolean) {}
+  rpc UseComparativeObjectiveView() returns () {}
+  rpc UsePlenaryObjectiveView() returns () {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc GetObjective(dlkit.primordium.id.primitives.Id) returns (Objective) {}
+  rpc GetObjectivesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Objective) {}
+  rpc GetObjectivesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Objective) {}
+  rpc GetObjectivesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Objective) {}
+  rpc GetObjectivesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Objective) {}
+  rpc GetObjectives() returns (stream Objective) {}
+}
+
+service ObjectiveQuerySession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanSearchObjectives() returns (boolean) {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc GetObjectiveQuery() returns (ObjectiveQuery) {}
+  rpc GetObjectivesByQuery(osid.learning.ObjectiveQuery) returns (stream Objective) {}
+}
+
+service ObjectiveSearchSession {
+  rpc GetObjectiveSearch() returns (ObjectiveSearch) {}
+  rpc GetObjectiveSearchOrder() returns (ObjectiveSearchOrder) {}
+  rpc GetObjectivesBySearch(osid.learning.ObjectiveQuery, osid.learning.ObjectiveSearch) returns (ObjectiveSearchResults) {}
+  rpc GetObjectiveQueryFromInspector(osid.learning.ObjectiveQueryInspector) returns (ObjectiveQuery) {}
+}
+
+service ObjectiveAdminSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanCreateObjectives() returns (boolean) {}
+  rpc CanCreateObjectiveWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetObjectiveFormForCreate(osid.type.Type[]) returns (ObjectiveForm) {}
+  rpc CreateObjective(osid.learning.ObjectiveForm) returns (Objective) {}
+  rpc CanUpdateObjectives() returns (boolean) {}
+  rpc GetObjectiveFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ObjectiveForm) {}
+  rpc UpdateObjective(osid.learning.ObjectiveForm) returns () {}
+  rpc CanDeleteObjectives() returns (boolean) {}
+  rpc DeleteObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageObjectiveAliases() returns (boolean) {}
+  rpc AliasObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ObjectiveNotificationSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanRegisterForObjectiveNotifications() returns (boolean) {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc ReliableObjectiveNotifications() returns () {}
+  rpc UnreliableObjectiveNotifications() returns () {}
+  rpc AcknowledgeObjectiveNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewObjectives() returns () {}
+  rpc RegisterForChangedObjectives() returns () {}
+  rpc RegisterForChangedObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedObjectives() returns () {}
+  rpc RegisterForDeletedObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedObjectiveHierarchy() returns () {}
+  rpc RegisterForChangedObjectiveHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedObjectiveHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ObjectiveHierarchySession {
+  rpc GetObjectiveHierarchyId() returns (Id) {}
+  rpc GetObjectiveHierarchy() returns (Hierarchy) {}
+  rpc CanAccessObjectiveHierarchy() returns (boolean) {}
+  rpc UseComparativeObjectiveView() returns () {}
+  rpc UsePlenaryObjectiveView() returns () {}
+  rpc GetRootObjectiveIds() returns (stream Id) {}
+  rpc GetRootObjectives() returns (stream Objective) {}
+  rpc HasParentObjectives(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentObjectiveIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentObjectives(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc IsAncestorOfObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildObjectives(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildObjectiveIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildObjectives(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc IsDescendantOfObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetObjectiveNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetObjectiveNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (ObjectiveNode) {}
+}
+
+service ObjectiveHierarchyDesignSession {
+  rpc GetObjectiveHierarchyId() returns (Id) {}
+  rpc GetObjectiveHierarchy() returns (Hierarchy) {}
+  rpc CanModifyObjectiveHierarchy() returns (boolean) {}
+  rpc AddRootObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildObjectives(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ObjectiveSequencingSession {
+  rpc GetObjectiveHierarchyId() returns (Id) {}
+  rpc GetObjectiveHierarchy() returns (Hierarchy) {}
+  rpc CanSequenceObjectives() returns (boolean) {}
+  rpc MoveObjectiveAhead(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc MoveObjectiveBehind(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc SequenceObjectives(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.IdList) returns () {}
+}
+
+service ObjectiveObjectiveBankSession {
+  rpc CanLookupObjectiveObjectiveBankMappings() returns (boolean) {}
+  rpc UseComparativeObjectiveBankView() returns () {}
+  rpc UsePlenaryObjectiveBankView() returns () {}
+  rpc GetObjectiveIdsByObjectiveBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetObjectivesByObjectiveBank(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc GetObjectiveIdsByObjectiveBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetObjectivesByObjectiveBanks(dlkit.primordium.id.primitives.IdList) returns (stream Objective) {}
+  rpc GetObjectiveBankIdsByObjective(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetObjectiveBanksByObjective(dlkit.primordium.id.primitives.Id) returns (stream ObjectiveBank) {}
+}
+
+service ObjectiveObjectiveBankAssignmentSession {
+  rpc CanAssignObjectives() returns (boolean) {}
+  rpc CanAssignObjectivesToObjectiveBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableObjectiveBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableObjectiveBankIdsForObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignObjectiveToObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignObjectiveFromObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignProficiencyToObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ObjectiveSmartObjectiveBankSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanManageSmartObjectiveBanks() returns (boolean) {}
+  rpc GetObjectiveQuery() returns (ObjectiveQuery) {}
+  rpc GetObjectiveSearchOrder() returns (ObjectiveSearchOrder) {}
+  rpc ApplyObjectiveQuery(osid.learning.ObjectiveQuery) returns () {}
+  rpc InspectObjectiveQuery() returns (ObjectiveQueryInspector) {}
+  rpc ApplyObjectiveSequencing(osid.learning.ObjectiveSearchOrder) returns () {}
+  rpc GetObjectiveQueryFromInspector(osid.learning.ObjectiveQueryInspector) returns (ObjectiveQuery) {}
+}
+
+service ObjectiveRequisiteSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanLookupObjectivePrerequisites() returns (boolean) {}
+  rpc UseComparativeObjectiveView() returns () {}
+  rpc UsePlenaryObjectiveView() returns () {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc GetRequisiteObjectives(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc GetAllRequisiteObjectives(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc GetDependentObjectives(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc IsObjectiveRequired(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetEquivalentObjectives(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+}
+
+service ObjectiveRequisiteAssignmentSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanAssignRequisites() returns (boolean) {}
+  rpc AssignObjectiveRequisite(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignObjectiveRequisite(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AssignEquivalentObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignEquivalentObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ActivityLookupSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanLookupActivities() returns (boolean) {}
+  rpc UseComparativeActivityView() returns () {}
+  rpc UsePlenaryActivityView() returns () {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc GetActivity(dlkit.primordium.id.primitives.Id) returns (Activity) {}
+  rpc GetActivitiesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Activity) {}
+  rpc GetActivitiesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Activity) {}
+  rpc GetActivitiesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Activity) {}
+  rpc GetActivitiesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Activity) {}
+  rpc GetActivitiesForObjective(dlkit.primordium.id.primitives.Id) returns (stream Activity) {}
+  rpc GetActivitiesForObjectives(dlkit.primordium.id.primitives.IdList) returns (stream Activity) {}
+  rpc GetActivitiesByAsset(dlkit.primordium.id.primitives.Id) returns (stream Activity) {}
+  rpc GetActivitiesByAssets(dlkit.primordium.id.primitives.IdList) returns (stream Activity) {}
+  rpc GetActivities() returns (stream Activity) {}
+}
+
+service ActivityQuerySession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanSearchActivities() returns (boolean) {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc GetActivityQuery() returns (ActivityQuery) {}
+  rpc GetActivitiesByQuery(osid.learning.ActivityQuery) returns (stream Activity) {}
+}
+
+service ActivitySearchSession {
+  rpc GetActivitySearch() returns (ActivitySearch) {}
+  rpc GetActivitySearchOrder() returns (ActivitySearchOrder) {}
+  rpc GetActivitiesBySearch(osid.learning.ActivityQuery, osid.learning.ActivitySearch) returns (ActivitySearchResults) {}
+  rpc GetActivityQueryFromInspector(osid.learning.ActivityQueryInspector) returns (ActivityQuery) {}
+}
+
+service ActivityAdminSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanCreateActivities() returns (boolean) {}
+  rpc CanCreateActivityWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetActivityFormForCreate(dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (ActivityForm) {}
+  rpc CreateActivity(osid.learning.ActivityForm) returns (Activity) {}
+  rpc CanUpdateActivities() returns (boolean) {}
+  rpc GetActivityFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ActivityForm) {}
+  rpc UpdateActivity(osid.learning.ActivityForm) returns () {}
+  rpc CanDeleteActivities() returns (boolean) {}
+  rpc DeleteActivity(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageActivityAliases() returns (boolean) {}
+  rpc AliasActivity(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ActivityNotificationSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanRegisterForActivityNotifications() returns (boolean) {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc ReliableActivityNotifications() returns () {}
+  rpc UnreliableActivityNotifications() returns () {}
+  rpc AcknowledgeActivityNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewActivities() returns () {}
+  rpc RegisterForNewActivitiesForObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedActivities() returns () {}
+  rpc RegisterForChangedActivitiesForObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedActivity(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedActivities() returns () {}
+  rpc RegisterForDeletedActivitiesForObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedActivity(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ActivityObjectiveBankSession {
+  rpc CanLookupActivityObjectiveBankMappings() returns (boolean) {}
+  rpc UseComparativeObjectiveBankView() returns () {}
+  rpc UsePlenaryObjectiveBankView() returns () {}
+  rpc GetActivityIdsByObjectiveBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetActivitiesByObjectiveBank(dlkit.primordium.id.primitives.Id) returns (stream Activity) {}
+  rpc GetActivityIdsByObjectiveBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetActivitiesByObjectiveBanks(dlkit.primordium.id.primitives.IdList) returns (stream Activity) {}
+  rpc GetObjectiveBankIdsByActivity(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetObjectiveBanksByActivity(dlkit.primordium.id.primitives.Id) returns (stream ObjectiveBank) {}
+}
+
+service ActivityObjectiveBankAssignmentSession {
+  rpc CanAssignActivities() returns (boolean) {}
+  rpc CanAssignActivitiesToObjectiveBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableObjectiveBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableObjectiveBankIdsForActivity(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignActivityToObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignActivityFromObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignActivityToObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ActivitySmartObjectiveBankSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanManageSmartObjectiveBanks() returns (boolean) {}
+  rpc GetActivityQuery() returns (ActivityQuery) {}
+  rpc GetActivitySearchOrder() returns (ActivitySearchOrder) {}
+  rpc ApplyActivityQuery(osid.learning.ActivityQuery) returns () {}
+  rpc InspectActivityQuery() returns (ActivityQueryInspector) {}
+  rpc ApplyActivitySequencing(osid.learning.ActivitySearchOrder) returns () {}
+  rpc GetActivityQueryFromInspector(osid.learning.ActivityQueryInspector) returns (ActivityQuery) {}
+}
+
+service ProficiencyLookupSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanLookupProficiencies() returns (boolean) {}
+  rpc UseComparativeProficiencyView() returns () {}
+  rpc UsePlenaryProficiencyView() returns () {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc UseEffectiveProficiencyView() returns () {}
+  rpc UseAnyEffectiveProficiencyView() returns () {}
+  rpc GetProficiency(dlkit.primordium.id.primitives.Id) returns (Proficiency) {}
+  rpc GetProficienciesByIds(dlkit.primordium.id.primitives.IdList) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusType(dlkit.primordium.type.primitives.Type) returns (stream Proficiency) {}
+  rpc GetProficienciesByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream Proficiency) {}
+  rpc GetProficienciesByRecordType(dlkit.primordium.type.primitives.Type) returns (stream Proficiency) {}
+  rpc GetProficienciesOnDate(google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusTypeOnDate(dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficienciesForObjective(dlkit.primordium.id.primitives.Id) returns (stream Proficiency) {}
+  rpc GetProficienciesForObjectiveOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusTypeForObjective(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusTypeForObjectiveOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficienciesForObjectives(dlkit.primordium.id.primitives.IdList) returns (stream Proficiency) {}
+  rpc GetProficienciesForResource(dlkit.primordium.id.primitives.Id) returns (stream Proficiency) {}
+  rpc GetProficienciesForResourceOnDate(dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusTypeForResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusTypeForResourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficienciesForResources(dlkit.primordium.id.primitives.IdList) returns (stream Proficiency) {}
+  rpc GetProficienciesForObjectiveAndResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Proficiency) {}
+  rpc GetProficienciesForObjectiveAndResourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusTypeForObjectiveAndResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type) returns (stream Proficiency) {}
+  rpc GetProficienciesByGenusTypeForObjectiveAndResourceOnDate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.type.primitives.Type, google.protobuf.Timestamp, google.protobuf.Timestamp) returns (stream Proficiency) {}
+  rpc GetProficiencies() returns (stream Proficiency) {}
+}
+
+service ProficiencyQuerySession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanSearchProficiencies() returns (boolean) {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc GetProficiencyQuery() returns (ProficiencyQuery) {}
+  rpc GetProficienciesByQuery(osid.learning.ProficiencyQuery) returns (stream Proficiency) {}
+}
+
+service ProficiencySearchSession {
+  rpc GetProficiencySearch() returns (ProficiencySearch) {}
+  rpc GetProficiencySearchOrder() returns (ProficiencySearchOrder) {}
+  rpc GetProficienciesBySearch(osid.learning.ProficiencyQuery, osid.learning.ProficiencySearch) returns (ProficiencySearchResults) {}
+  rpc GetProficiencyQueryFromInspector(osid.learning.ProficiencyQueryInspector) returns (ProficiencyQuery) {}
+}
+
+service ProficiencyAdminSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanCreateProficiencies() returns (boolean) {}
+  rpc CanCreateProficiencyWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetProficiencyFormForCreate(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, osid.type.Type[]) returns (ProficiencyForm) {}
+  rpc CreateProficiency(osid.learning.ProficiencyForm) returns (Proficiency) {}
+  rpc CanUpdateProficiencies() returns (boolean) {}
+  rpc GetProficiencyFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ProficiencyForm) {}
+  rpc UpdateProficiency(osid.learning.ProficiencyForm) returns () {}
+  rpc CanDeleteProficiencies() returns (boolean) {}
+  rpc DeleteProficiency(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc DeleteProficiencies() returns () {}
+  rpc CanManageProficiencyAliases() returns (boolean) {}
+  rpc AliasProficiency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ProficiencyNotificationSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanRegisterForProficiencyNotifications() returns (boolean) {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc ReliableProficiencyNotifications() returns () {}
+  rpc UnreliableProficiencyNotifications() returns () {}
+  rpc AcknowledgeProficiencyNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewProficiencies() returns () {}
+  rpc RegisterForNewProficienciesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForNewProficienciesForObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewProficienciesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedProficiencies() returns () {}
+  rpc RegisterForChangedProficienciesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForChangedProficienciesForObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedProficienciesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedProficiency(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedProficiencies() returns () {}
+  rpc RegisterForDeletedProficienciesByGenusType(dlkit.primordium.type.primitives.Type) returns () {}
+  rpc RegisterForDeletedProficienciesForObjective(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedProficienciesForResource(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedProficiency(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ProficiencyObjectiveBankSession {
+  rpc CanLookupProficiencyObjectiveBankMappings() returns (boolean) {}
+  rpc UseComparativeProficiencyObjectiveBankView() returns () {}
+  rpc UsePlenaryProficiencyObjectiveBankView() returns () {}
+  rpc GetProficiencyIdsByObjectiveBank(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetProficienciesByObjectiveBank(dlkit.primordium.id.primitives.Id) returns (stream Proficiency) {}
+  rpc GetProficiencyIdsByObjectiveBanks(dlkit.primordium.id.primitives.IdList) returns (stream Id) {}
+  rpc GetProficienciesByObjectiveBanks(dlkit.primordium.id.primitives.IdList) returns (stream Proficiency) {}
+  rpc GetObjectiveBankIdsByProficiency(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetObjectiveBanksByProficiency(dlkit.primordium.id.primitives.Id) returns (stream ObjectiveBank) {}
+}
+
+service ProficiencyObjectiveBankAssignmentSession {
+  rpc CanAssignProficiencies() returns (boolean) {}
+  rpc CanAssignProficienciesToObjectiveBank(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetAssignableObjectiveBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetAssignableObjectiveBankIdsForProficiency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc AssignProficiencyToObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc UnassignProficiencyFromObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc ReassignProficiencyToObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ProficiencySmartObjectiveBankSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanManageSmartObjectiveBanks() returns (boolean) {}
+  rpc GetProficiencyQuery() returns (ProficiencyQuery) {}
+  rpc GetProficiencySearchOrder() returns (ProficiencySearchOrder) {}
+  rpc ApplyProficiencyQuery(osid.learning.ProficiencyQuery) returns () {}
+  rpc InspectProficiencyQuery() returns (ProficiencyQueryInspector) {}
+  rpc ApplyProficiencySequencing(osid.learning.ProficiencySearchOrder) returns () {}
+  rpc GetProficiencyQueryFromInspector(osid.learning.ProficiencyQueryInspector) returns (ProficiencyQuery) {}
+}
+
+service MyLearningPathSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanLookupLearningPaths() returns (boolean) {}
+  rpc UseComparativeProficiencyView() returns () {}
+  rpc UsePlenaryProficiencyView() returns () {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc FindPath(dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc FindPathAtProficiency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc GetObjectivesByCompletion(dlkit.primordium.id.primitives.Id, sint32) returns (stream Objective) {}
+}
+
+service LearningPathSession {
+  rpc GetObjectiveBankId() returns (Id) {}
+  rpc GetObjectiveBank() returns (ObjectiveBank) {}
+  rpc CanLookupLearningPaths() returns (boolean) {}
+  rpc UseComparativeProficiencyView() returns () {}
+  rpc UsePlenaryProficiencyView() returns () {}
+  rpc UseFederatedObjectiveBankView() returns () {}
+  rpc UseIsolatedObjectiveBankView() returns () {}
+  rpc FindPathForResource(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc FindPathForResourceAtProficiency(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (stream Objective) {}
+  rpc GetObjectivesForResourceByCompletion(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id, sint32) returns (stream Objective) {}
+}
+
+service ObjectiveBankLookupSession {
+  rpc CanLookupObjectiveBanks() returns (boolean) {}
+  rpc UseComparativeObjectiveBankView() returns () {}
+  rpc UsePlenaryObjectiveBankView() returns () {}
+  rpc GetObjectiveBank(dlkit.primordium.id.primitives.Id) returns (ObjectiveBank) {}
+  rpc GetObjectiveBanksByIds(dlkit.primordium.id.primitives.IdList) returns (stream ObjectiveBank) {}
+  rpc GetObjectiveBanksByGenusType(dlkit.primordium.type.primitives.Type) returns (stream ObjectiveBank) {}
+  rpc GetObjectiveBanksByParentGenusType(dlkit.primordium.type.primitives.Type) returns (stream ObjectiveBank) {}
+  rpc GetObjectiveBanksByRecordType(dlkit.primordium.type.primitives.Type) returns (stream ObjectiveBank) {}
+  rpc GetObjectiveBanksByProvider(dlkit.primordium.id.primitives.Id) returns (stream ObjectiveBank) {}
+  rpc GetObjectiveBanks() returns (stream ObjectiveBank) {}
+}
+
+service ObjectiveBankQuerySession {
+  rpc CanSearchObjectiveBanks() returns (boolean) {}
+  rpc GetObjectiveBankQuery() returns (ObjectiveBankQuery) {}
+  rpc GetObjectiveBanksByQuery(osid.learning.ObjectiveBankQuery) returns (stream ObjectiveBank) {}
+}
+
+service ObjectiveBankSearchSession {
+  rpc GetObjectiveBankSearch() returns (ObjectiveBankSearch) {}
+  rpc GetObjectiveBankSearchOrder() returns (ObjectiveBankSearchOrder) {}
+  rpc GetObjectiveBanksBySearch(osid.learning.ObjectiveBankQuery, osid.learning.ObjectiveBankSearch) returns (ObjectiveBankSearchResults) {}
+  rpc GetObjectiveBankQueryFromInspector(osid.learning.ObjectiveBankQueryInspector) returns (ObjectiveBankQuery) {}
+}
+
+service ObjectiveBankAdminSession {
+  rpc CanCreateObjectiveBanks() returns (boolean) {}
+  rpc CanCreateObjectiveBankWithRecordTypes(osid.type.Type[]) returns (boolean) {}
+  rpc GetObjectiveBankFormForCreate(osid.type.Type[]) returns (ObjectiveBankForm) {}
+  rpc CreateObjectiveBank(osid.learning.ObjectiveBankForm) returns (ObjectiveBank) {}
+  rpc CanUpdateObjectiveBanks() returns (boolean) {}
+  rpc GetObjectiveBankFormForUpdate(dlkit.primordium.id.primitives.Id) returns (ObjectiveBankForm) {}
+  rpc UpdateObjectiveBank(osid.learning.ObjectiveBankForm) returns () {}
+  rpc CanDeleteObjectiveBanks() returns (boolean) {}
+  rpc DeleteObjectiveBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc CanManageObjectiveBankAliases() returns (boolean) {}
+  rpc AliasObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ObjectiveBankNotificationSession {
+  rpc CanRegisterForObjectiveBankNotifications() returns (boolean) {}
+  rpc ReliableObjectiveBankNotifications() returns () {}
+  rpc UnreliableObjectiveBankNotifications() returns () {}
+  rpc AcknowledgeObjectiveBankNotification(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForNewObjectiveBanks() returns () {}
+  rpc RegisterForChangedObjectiveBanks() returns () {}
+  rpc RegisterForChangedObjectiveBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForDeletedObjectiveBanks() returns () {}
+  rpc RegisterForDeletedObjectiveBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedObjectiveBankHierarchy() returns () {}
+  rpc RegisterForChangedObjectiveBankHierarchyForAncestors(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RegisterForChangedObjectiveBankHierarchyForDescendants(dlkit.primordium.id.primitives.Id) returns () {}
+}
+
+service ObjectiveBankHierarchySession {
+  rpc GetObjectiveBankHierarchyId() returns (Id) {}
+  rpc GetObjectiveBankHierarchy() returns (Hierarchy) {}
+  rpc CanAccessObjectiveBankHierarchy() returns (boolean) {}
+  rpc UseComparativeObjectiveBankView() returns () {}
+  rpc UsePlenaryObjectiveBankView() returns () {}
+  rpc GetRootObjectiveBankIds() returns (stream Id) {}
+  rpc GetRootObjectiveBanks() returns (stream ObjectiveBank) {}
+  rpc HasParentObjectiveBanks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsParentOfObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetParentObjectiveBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetParentObjectiveBanks(dlkit.primordium.id.primitives.Id) returns (stream ObjectiveBank) {}
+  rpc IsAncestorOfObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc HasChildObjectiveBanks(dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc IsChildOfObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetChildObjectiveBankIds(dlkit.primordium.id.primitives.Id) returns (stream Id) {}
+  rpc GetChildObjectiveBanks(dlkit.primordium.id.primitives.Id) returns (stream ObjectiveBank) {}
+  rpc IsDescendantOfObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns (boolean) {}
+  rpc GetObjectiveBankNodeIds(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (Node) {}
+  rpc GetObjectiveBankNodes(dlkit.primordium.id.primitives.Id, sint32, sint32, bool) returns (ObjectiveBankNode) {}
+}
+
+service ObjectiveBankHierarchyDesignSession {
+  rpc GetObjectiveBankHierarchyId() returns (Id) {}
+  rpc GetObjectiveBankHierarchy() returns (Hierarchy) {}
+  rpc CanModifyObjectiveBankHierarchy() returns (boolean) {}
+  rpc AddRootObjectiveBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveRootObjectiveBank(dlkit.primordium.id.primitives.Id) returns () {}
+  rpc AddChildObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildObjectiveBank(dlkit.primordium.id.primitives.Id, dlkit.primordium.id.primitives.Id) returns () {}
+  rpc RemoveChildObjectiveBanks(dlkit.primordium.id.primitives.Id) returns () {}
+}
