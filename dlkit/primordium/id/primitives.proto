@@ -1,6 +1,6 @@
-syntax "proto3";
+syntax = "proto3";
 
-package dlkit.primordium.id.primitives
+package dlkit.primordium.id.primitives;
 
 message Id {
   string namespace = 1;

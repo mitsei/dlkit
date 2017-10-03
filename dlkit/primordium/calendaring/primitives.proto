@@ -2,6 +2,16 @@ syntax = "proto3";
 
 package dlkit.primordium.calendaring.primitives;
 
+// Move this to `unimplemented_primitives`?
+message DateTimeInterval {
+
+}
+
 message Duration {
+
+}
+
+// Move this to `unimplemented_primitives`?
+message Time {
 
 }

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package dlkit.primordium.mapping.unimplemented_primitives;
+
+message Distance {
+
+}
+
+message Location {
+
+}
+
+message Speed {
+
+}

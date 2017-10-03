@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package dlkit.primordium.mapping.coordinate_primitives;
+
+message Coordinate {
+  repeated float values = 1;
+  float uncertainty_minus = 2;
+  float uncertainty_plus = 3;
+}

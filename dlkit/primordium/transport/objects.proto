@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package dlkit.primordium.transport.objects;
+
+message DataInputStream {
+  bytes data = 1;
+}

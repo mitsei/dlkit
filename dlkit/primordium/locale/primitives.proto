@@ -2,11 +2,11 @@ syntax = "proto3";
 
 package dlkit.primordium.locale.primitives;
 
-import "dlkit.primordium.type.primitives.proto";
+import "dlkit/primordium/type/primitives.proto";
 
 message DisplayText {
   string text = 1;
-  Type format_type_id = 2;
-  Type language_type_id = 3;
-  Type script_type_id = 4;
+  dlkit.primordium.type.primitives.Type format_type_id = 2;
+  dlkit.primordium.type.primitives.Type language_type_id = 3;
+  dlkit.primordium.type.primitives.Type script_type_id = 4;
 }

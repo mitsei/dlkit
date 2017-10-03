@@ -2,8 +2,6 @@ syntax = "proto3";
 
 package dlkit.primordium.type.primitives;
 
-import "dlkit.primordium.locale.primitives.proto";
-
 message Type {
   string authority = 1;
   DisplayText description = 2;
@@ -11,4 +9,13 @@ message Type {
   DisplayText display_name = 4;
   string domain = 5;
   string identifier = 6;
+}
+
+// This is not DRY -- ``should be in dlkit/primordium/locale/primitives.proto``.
+//   But, we need to avoid a recursive import...so define DisplayText again here.
+message DisplayText {
+  string text = 1;
+  Type format_type_id = 2;
+  Type language_type_id = 3;
+  Type script_type_id = 4;
 }
