@@ -9,6 +9,7 @@ message Type {
   DisplayText display_name = 4;
   string domain = 5;
   string identifier = 6;
+  string namespace = 7;
 }
 
 // This is not DRY -- ``should be in dlkit/primordium/locale/primitives.proto``.
