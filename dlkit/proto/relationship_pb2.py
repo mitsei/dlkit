@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/relationship.proto',
   package='dlkit.proto.relationship',
   syntax='proto3',
-  serialized_pb=_b('\n\x1e\x64lkit/proto/relationship.proto\x12\x18\x64lkit.proto.relationship\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x01\n\x0cRelationship\x12\x37\n\x0b\x64\x65stination\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12-\n\x06\x66\x61mily\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x32\n\x06source\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11RelationshipQuery\"\x1c\n\x1aRelationshipQueryInspector\"\x12\n\x10RelationshipForm\"\x19\n\x17RelationshipSearchOrder\"\x14\n\x12RelationshipSearch\"\x1b\n\x19RelationshipSearchResults\"Q\n\x10RelationshipList\x12=\n\rrelationships\x18\x01 \x03(\x0b\x32&.dlkit.proto.relationship.Relationship\"\xc0\x02\n\x06\x46\x61mily\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x46\x61milyQuery\"\x16\n\x14\x46\x61milyQueryInspector\"\x0c\n\nFamilyForm\"\x13\n\x11\x46\x61milySearchOrder\"\x0e\n\x0c\x46\x61milySearch\"\x15\n\x13\x46\x61milySearchResults\"@\n\nFamilyList\x12\x32\n\x08\x66\x61milies\x18\x01 \x03(\x0b\x32 .dlkit.proto.relationship.Family\"\x0c\n\nFamilyNode\"L\n\x0e\x46\x61milyNodeList\x12:\n\x0c\x66\x61mily_nodes\x18\x01 \x03(\x0b\x32$.dlkit.proto.relationship.FamilyNode\"B\n\x10GetFamilyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetFamilyIdRequest\"B\n\x0eGetFamilyReply\x12\x30\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32 .dlkit.proto.relationship.Family\"\x12\n\x10GetFamilyRequest\"?\n\x1b\x43\x61nLookupRelationshipsReply\x12 \n\x18\x63\x61n_lookup_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nLookupRelationshipsRequest\"%\n#UseComparativeRelationshipViewReply\"\'\n%UseComparativeRelationshipViewRequest\"!\n\x1fUsePlenaryRelationshipViewReply\"#\n!UsePlenaryRelationshipViewRequest\"\x1d\n\x1bUseFederatedFamilyViewReply\"\x1f\n\x1dUseFederatedFamilyViewRequest\"\x1c\n\x1aUseIsolatedFamilyViewReply\"\x1e\n\x1cUseIsolatedFamilyViewRequest\"#\n!UseEffectiveRelationshipViewReply\"%\n#UseEffectiveRelationshipViewRequest\"&\n$UseAnyEffectiveRelationshipViewReply\"(\n&UseAnyEffectiveRelationshipViewRequest\"T\n\x14GetRelationshipReply\x12<\n\x0crelationship\x18\x01 \x01(\x0b\x32&.dlkit.proto.relationship.Relationship\"U\n\x16GetRelationshipRequest\x12;\n\x0frelationship_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n\x1cGetRelationshipsByIdsRequest\x12<\n\x10relationship_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"m\n\"GetRelationshipsByGenusTypeRequest\x12G\n\x17relationship_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n(GetRelationshipsByParentGenusTypeRequest\x12G\n\x17relationship_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"o\n#GetRelationshipsByRecordTypeRequest\x12H\n\x18relationship_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n\x1dGetRelationshipsOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Y\n GetRelationshipsForSourceRequest\x12\x35\n\tsource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb2\x01\n&GetRelationshipsForSourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\tsource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xad\x01\n+GetRelationshipsByGenusTypeForSourceRequest\x12G\n\x17relationship_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x86\x02\n1GetRelationshipsByGenusTypeForSourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12G\n\x17relationship_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"c\n%GetRelationshipsForDestinationRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xbc\x01\n+GetRelationshipsForDestinationOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb7\x01\n0GetRelationshipsByGenusTypeForDestinationRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12G\n\x17relationship_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x90\x02\n6GetRelationshipsByGenusTypeForDestinationOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12G\n\x17relationship_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x94\x01\n\x1fGetRelationshipsForPeersRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tsource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xed\x01\n%GetRelationshipsForPeersOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xe8\x01\n*GetRelationshipsByGenusTypeForPeersRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12G\n\x17relationship_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xc1\x02\n0GetRelationshipsByGenusTypeForPeersOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12G\n\x17relationship_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x19\n\x17GetRelationshipsRequest\"?\n\x1b\x43\x61nSearchRelationshipsReply\x12 \n\x18\x63\x61n_search_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nSearchRelationshipsRequest\"d\n\x19GetRelationshipQueryReply\x12G\n\x12relationship_query\x18\x01 \x01(\x0b\x32+.dlkit.proto.relationship.RelationshipQuery\"\x1d\n\x1bGetRelationshipQueryRequest\"i\n\x1eGetRelationshipsByQueryRequest\x12G\n\x12relationship_query\x18\x01 \x01(\x0b\x32+.dlkit.proto.relationship.RelationshipQuery\"?\n\x1b\x43\x61nCreateRelationshipsReply\x12 \n\x18\x63\x61n_create_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nCreateRelationshipsRequest\"^\n)CanCreateRelationshipWithRecordTypesReply\x12\x31\n)can_create_relationship_with_record_types\x18\x01 \x01(\x08\"x\n+CanCreateRelationshipWithRecordTypesRequest\x12I\n\x19relationship_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n!GetRelationshipFormForCreateReply\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"\xe3\x01\n#GetRelationshipFormForCreateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12I\n\x19relationship_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x17\x43reateRelationshipReply\x12<\n\x0crelationship\x18\x01 \x01(\x0b\x32&.dlkit.proto.relationship.Relationship\"b\n\x19\x43reateRelationshipRequest\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"?\n\x1b\x43\x61nUpdateRelationshipsReply\x12 \n\x18\x63\x61n_update_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateRelationshipsRequest\"j\n!GetRelationshipFormForUpdateReply\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"b\n#GetRelationshipFormForUpdateRequest\x12;\n\x0frelationship_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17UpdateRelationshipReply\"b\n\x19UpdateRelationshipRequest\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"?\n\x1b\x43\x61nDeleteRelationshipsReply\x12 \n\x18\x63\x61n_delete_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteRelationshipsRequest\"\x19\n\x17\x44\x65leteRelationshipReply\"X\n\x19\x44\x65leteRelationshipRequest\x12;\n\x0frelationship_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n!CanManageRelationshipAliasesReply\x12\'\n\x1f\x63\x61n_manage_relationship_aliases\x18\x01 \x01(\x08\"%\n#CanManageRelationshipAliasesRequest\"\x18\n\x16\x41liasRelationshipReply\"\x8d\x01\n\x18\x41liasRelationshipRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0frelationship_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"5\n\x16\x43\x61nLookupFamiliesReply\x12\x1b\n\x13\x63\x61n_lookup_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nLookupFamiliesRequest\"\x1f\n\x1dUseComparativeFamilyViewReply\"!\n\x1fUseComparativeFamilyViewRequest\"\x1b\n\x19UsePlenaryFamilyViewReply\"\x1d\n\x1bUsePlenaryFamilyViewRequest\"Q\n\x17GetFamiliesByIdsRequest\x12\x36\n\nfamily_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x1dGetFamiliesByGenusTypeRequest\x12\x41\n\x11\x66\x61mily_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"h\n#GetFamiliesByParentGenusTypeRequest\x12\x41\n\x11\x66\x61mily_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"d\n\x1eGetFamiliesByRecordTypeRequest\x12\x42\n\x12\x66\x61mily_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"W\n\x1cGetFamiliesByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetFamiliesRequest\"5\n\x16\x43\x61nCreateFamiliesReply\x12\x1b\n\x13\x63\x61n_create_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nCreateFamiliesRequest\"R\n#CanCreateFamilyWithRecordTypesReply\x12+\n#can_create_family_with_record_types\x18\x01 \x01(\x08\"l\n%CanCreateFamilyWithRecordTypesRequest\x12\x43\n\x13\x66\x61mily_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"X\n\x1bGetFamilyFormForCreateReply\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"d\n\x1dGetFamilyFormForCreateRequest\x12\x43\n\x13\x66\x61mily_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"E\n\x11\x43reateFamilyReply\x12\x30\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32 .dlkit.proto.relationship.Family\"P\n\x13\x43reateFamilyRequest\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"5\n\x16\x43\x61nUpdateFamiliesReply\x12\x1b\n\x13\x63\x61n_update_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nUpdateFamiliesRequest\"X\n\x1bGetFamilyFormForUpdateReply\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"V\n\x1dGetFamilyFormForUpdateRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11UpdateFamilyReply\"P\n\x13UpdateFamilyRequest\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"5\n\x16\x43\x61nDeleteFamiliesReply\x12\x1b\n\x13\x63\x61n_delete_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nDeleteFamiliesRequest\"\x13\n\x11\x44\x65leteFamilyReply\"L\n\x13\x44\x65leteFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1b\x43\x61nManageFamilyAliasesReply\x12!\n\x19\x63\x61n_manage_family_aliases\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nManageFamilyAliasesRequest\"\x12\n\x10\x41liasFamilyReply\"\x81\x01\n\x12\x41liasFamilyRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tfamily_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x19GetFamilyHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1bGetFamilyHierarchyIdRequest\"N\n\x17GetFamilyHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1b\n\x19GetFamilyHierarchyRequest\"D\n\x1d\x43\x61nAccessFamilyHierarchyReply\x12#\n\x1b\x63\x61n_access_family_hierarchy\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nAccessFamilyHierarchyRequest\"\x19\n\x17GetRootFamilyIdsRequest\"\x18\n\x16GetRootFamiliesRequest\"5\n\x16HasParentFamiliesReply\x12\x1b\n\x13has_parent_families\x18\x01 \x01(\x08\"Q\n\x18HasParentFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsParentOfFamilyReply\x12\x1b\n\x13is_parent_of_family\x18\x01 \x01(\x08\"\x81\x01\n\x17IsParentOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x19GetParentFamilyIdsRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x18GetParentFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsAncestorOfFamilyReply\x12\x1d\n\x15is_ancestor_of_family\x18\x01 \x01(\x08\"\x83\x01\n\x19IsAncestorOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15HasChildFamiliesReply\x12\x1a\n\x12has_child_families\x18\x01 \x01(\x08\"P\n\x17HasChildFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsChildOfFamilyReply\x12\x1a\n\x12is_child_of_family\x18\x01 \x01(\x08\"\x80\x01\n\x16IsChildOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x18GetChildFamilyIdsRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x17GetChildFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19IsDescendantOfFamilyReply\x12\x1f\n\x17is_descendant_of_family\x18\x01 \x01(\x08\"\x85\x01\n\x1bIsDescendantOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x15GetFamilyNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9e\x01\n\x17GetFamilyNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x35\n\tfamily_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"P\n\x13GetFamilyNodesReply\x12\x39\n\x0b\x66\x61mily_node\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyNode\"\x9c\x01\n\x15GetFamilyNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x35\n\tfamily_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"D\n\x1d\x43\x61nModifyFamilyHierarchyReply\x12#\n\x1b\x63\x61n_modify_family_hierarchy\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nModifyFamilyHierarchyRequest\"\x14\n\x12\x41\x64\x64RootFamilyReply\"M\n\x14\x41\x64\x64RootFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveRootFamilyReply\"P\n\x17RemoveRootFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13\x41\x64\x64\x43hildFamilyReply\"\x84\x01\n\x15\x41\x64\x64\x43hildFamilyRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tfamily_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveChildFamilyReply\"\x87\x01\n\x18RemoveChildFamilyRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tfamily_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveChildFamiliesReply\"S\n\x1aRemoveChildFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xda\x1f\n\x19RelationshipLookupSession\x12i\n\x0bGetFamilyId\x12,.dlkit.proto.relationship.GetFamilyIdRequest\x1a*.dlkit.proto.relationship.GetFamilyIdReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12\x8a\x01\n\x16\x43\x61nLookupRelationships\x12\x37.dlkit.proto.relationship.CanLookupRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanLookupRelationshipsReply\"\x00\x12\xa2\x01\n\x1eUseComparativeRelationshipView\x12?.dlkit.proto.relationship.UseComparativeRelationshipViewRequest\x1a=.dlkit.proto.relationship.UseComparativeRelationshipViewReply\"\x00\x12\x96\x01\n\x1aUsePlenaryRelationshipView\x12;.dlkit.proto.relationship.UsePlenaryRelationshipViewRequest\x1a\x39.dlkit.proto.relationship.UsePlenaryRelationshipViewReply\"\x00\x12\x8a\x01\n\x16UseFederatedFamilyView\x12\x37.dlkit.proto.relationship.UseFederatedFamilyViewRequest\x1a\x35.dlkit.proto.relationship.UseFederatedFamilyViewReply\"\x00\x12\x87\x01\n\x15UseIsolatedFamilyView\x12\x36.dlkit.proto.relationship.UseIsolatedFamilyViewRequest\x1a\x34.dlkit.proto.relationship.UseIsolatedFamilyViewReply\"\x00\x12\x9c\x01\n\x1cUseEffectiveRelationshipView\x12=.dlkit.proto.relationship.UseEffectiveRelationshipViewRequest\x1a;.dlkit.proto.relationship.UseEffectiveRelationshipViewReply\"\x00\x12\xa5\x01\n\x1fUseAnyEffectiveRelationshipView\x12@.dlkit.proto.relationship.UseAnyEffectiveRelationshipViewRequest\x1a>.dlkit.proto.relationship.UseAnyEffectiveRelationshipViewReply\"\x00\x12u\n\x0fGetRelationship\x12\x30.dlkit.proto.relationship.GetRelationshipRequest\x1a..dlkit.proto.relationship.GetRelationshipReply\"\x00\x12{\n\x15GetRelationshipsByIds\x12\x36.dlkit.proto.relationship.GetRelationshipsByIdsRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x87\x01\n\x1bGetRelationshipsByGenusType\x12<.dlkit.proto.relationship.GetRelationshipsByGenusTypeRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x93\x01\n!GetRelationshipsByParentGenusType\x12\x42.dlkit.proto.relationship.GetRelationshipsByParentGenusTypeRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x89\x01\n\x1cGetRelationshipsByRecordType\x12=.dlkit.proto.relationship.GetRelationshipsByRecordTypeRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12}\n\x16GetRelationshipsOnDate\x12\x37.dlkit.proto.relationship.GetRelationshipsOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x83\x01\n\x19GetRelationshipsForSource\x12:.dlkit.proto.relationship.GetRelationshipsForSourceRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x8f\x01\n\x1fGetRelationshipsForSourceOnDate\x12@.dlkit.proto.relationship.GetRelationshipsForSourceOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x99\x01\n$GetRelationshipsByGenusTypeForSource\x12\x45.dlkit.proto.relationship.GetRelationshipsByGenusTypeForSourceRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xa5\x01\n*GetRelationshipsByGenusTypeForSourceOnDate\x12K.dlkit.proto.relationship.GetRelationshipsByGenusTypeForSourceOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x8d\x01\n\x1eGetRelationshipsForDestination\x12?.dlkit.proto.relationship.GetRelationshipsForDestinationRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x99\x01\n$GetRelationshipsForDestinationOnDate\x12\x45.dlkit.proto.relationship.GetRelationshipsForDestinationOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xa3\x01\n)GetRelationshipsByGenusTypeForDestination\x12J.dlkit.proto.relationship.GetRelationshipsByGenusTypeForDestinationRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xaf\x01\n/GetRelationshipsByGenusTypeForDestinationOnDate\x12P.dlkit.proto.relationship.GetRelationshipsByGenusTypeForDestinationOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x81\x01\n\x18GetRelationshipsForPeers\x12\x39.dlkit.proto.relationship.GetRelationshipsForPeersRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x8d\x01\n\x1eGetRelationshipsForPeersOnDate\x12?.dlkit.proto.relationship.GetRelationshipsForPeersOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x97\x01\n#GetRelationshipsByGenusTypeForPeers\x12\x44.dlkit.proto.relationship.GetRelationshipsByGenusTypeForPeersRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xa3\x01\n)GetRelationshipsByGenusTypeForPeersOnDate\x12J.dlkit.proto.relationship.GetRelationshipsByGenusTypeForPeersOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12q\n\x10GetRelationships\x12\x31.dlkit.proto.relationship.GetRelationshipsRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x32\x96\x07\n\x18RelationshipQuerySession\x12i\n\x0bGetFamilyId\x12,.dlkit.proto.relationship.GetFamilyIdRequest\x1a*.dlkit.proto.relationship.GetFamilyIdReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12\x8a\x01\n\x16UseFederatedFamilyView\x12\x37.dlkit.proto.relationship.UseFederatedFamilyViewRequest\x1a\x35.dlkit.proto.relationship.UseFederatedFamilyViewReply\"\x00\x12\x87\x01\n\x15UseIsolatedFamilyView\x12\x36.dlkit.proto.relationship.UseIsolatedFamilyViewRequest\x1a\x34.dlkit.proto.relationship.UseIsolatedFamilyViewReply\"\x00\x12\x8a\x01\n\x16\x43\x61nSearchRelationships\x12\x37.dlkit.proto.relationship.CanSearchRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanSearchRelationshipsReply\"\x00\x12\x84\x01\n\x14GetRelationshipQuery\x12\x35.dlkit.proto.relationship.GetRelationshipQueryRequest\x1a\x33.dlkit.proto.relationship.GetRelationshipQueryReply\"\x00\x12\x7f\n\x17GetRelationshipsByQuery\x12\x38.dlkit.proto.relationship.GetRelationshipsByQueryRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x32\xa2\x0e\n\x18RelationshipAdminSession\x12i\n\x0bGetFamilyId\x12,.dlkit.proto.relationship.GetFamilyIdRequest\x1a*.dlkit.proto.relationship.GetFamilyIdReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12\x8a\x01\n\x16\x43\x61nCreateRelationships\x12\x37.dlkit.proto.relationship.CanCreateRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanCreateRelationshipsReply\"\x00\x12\xb4\x01\n$CanCreateRelationshipWithRecordTypes\x12\x45.dlkit.proto.relationship.CanCreateRelationshipWithRecordTypesRequest\x1a\x43.dlkit.proto.relationship.CanCreateRelationshipWithRecordTypesReply\"\x00\x12\x9c\x01\n\x1cGetRelationshipFormForCreate\x12=.dlkit.proto.relationship.GetRelationshipFormForCreateRequest\x1a;.dlkit.proto.relationship.GetRelationshipFormForCreateReply\"\x00\x12~\n\x12\x43reateRelationship\x12\x33.dlkit.proto.relationship.CreateRelationshipRequest\x1a\x31.dlkit.proto.relationship.CreateRelationshipReply\"\x00\x12\x8a\x01\n\x16\x43\x61nUpdateRelationships\x12\x37.dlkit.proto.relationship.CanUpdateRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanUpdateRelationshipsReply\"\x00\x12\x9c\x01\n\x1cGetRelationshipFormForUpdate\x12=.dlkit.proto.relationship.GetRelationshipFormForUpdateRequest\x1a;.dlkit.proto.relationship.GetRelationshipFormForUpdateReply\"\x00\x12~\n\x12UpdateRelationship\x12\x33.dlkit.proto.relationship.UpdateRelationshipRequest\x1a\x31.dlkit.proto.relationship.UpdateRelationshipReply\"\x00\x12\x8a\x01\n\x16\x43\x61nDeleteRelationships\x12\x37.dlkit.proto.relationship.CanDeleteRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanDeleteRelationshipsReply\"\x00\x12~\n\x12\x44\x65leteRelationship\x12\x33.dlkit.proto.relationship.DeleteRelationshipRequest\x1a\x31.dlkit.proto.relationship.DeleteRelationshipReply\"\x00\x12\x9c\x01\n\x1c\x43\x61nManageRelationshipAliases\x12=.dlkit.proto.relationship.CanManageRelationshipAliasesRequest\x1a;.dlkit.proto.relationship.CanManageRelationshipAliasesReply\"\x00\x12{\n\x11\x41liasRelationship\x12\x32.dlkit.proto.relationship.AliasRelationshipRequest\x1a\x30.dlkit.proto.relationship.AliasRelationshipReply\"\x00\x32\xd2\t\n\x13\x46\x61milyLookupSession\x12{\n\x11\x43\x61nLookupFamilies\x12\x32.dlkit.proto.relationship.CanLookupFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanLookupFamiliesReply\"\x00\x12\x90\x01\n\x18UseComparativeFamilyView\x12\x39.dlkit.proto.relationship.UseComparativeFamilyViewRequest\x1a\x37.dlkit.proto.relationship.UseComparativeFamilyViewReply\"\x00\x12\x84\x01\n\x14UsePlenaryFamilyView\x12\x35.dlkit.proto.relationship.UsePlenaryFamilyViewRequest\x1a\x33.dlkit.proto.relationship.UsePlenaryFamilyViewReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12k\n\x10GetFamiliesByIds\x12\x31.dlkit.proto.relationship.GetFamiliesByIdsRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12w\n\x16GetFamiliesByGenusType\x12\x37.dlkit.proto.relationship.GetFamiliesByGenusTypeRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12\x83\x01\n\x1cGetFamiliesByParentGenusType\x12=.dlkit.proto.relationship.GetFamiliesByParentGenusTypeRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12y\n\x17GetFamiliesByRecordType\x12\x38.dlkit.proto.relationship.GetFamiliesByRecordTypeRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12u\n\x15GetFamiliesByProvider\x12\x36.dlkit.proto.relationship.GetFamiliesByProviderRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12\x61\n\x0bGetFamilies\x12,.dlkit.proto.relationship.GetFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x32\x8c\x0b\n\x12\x46\x61milyAdminSession\x12{\n\x11\x43\x61nCreateFamilies\x12\x32.dlkit.proto.relationship.CanCreateFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanCreateFamiliesReply\"\x00\x12\xa2\x01\n\x1e\x43\x61nCreateFamilyWithRecordTypes\x12?.dlkit.proto.relationship.CanCreateFamilyWithRecordTypesRequest\x1a=.dlkit.proto.relationship.CanCreateFamilyWithRecordTypesReply\"\x00\x12\x8a\x01\n\x16GetFamilyFormForCreate\x12\x37.dlkit.proto.relationship.GetFamilyFormForCreateRequest\x1a\x35.dlkit.proto.relationship.GetFamilyFormForCreateReply\"\x00\x12l\n\x0c\x43reateFamily\x12-.dlkit.proto.relationship.CreateFamilyRequest\x1a+.dlkit.proto.relationship.CreateFamilyReply\"\x00\x12{\n\x11\x43\x61nUpdateFamilies\x12\x32.dlkit.proto.relationship.CanUpdateFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanUpdateFamiliesReply\"\x00\x12\x8a\x01\n\x16GetFamilyFormForUpdate\x12\x37.dlkit.proto.relationship.GetFamilyFormForUpdateRequest\x1a\x35.dlkit.proto.relationship.GetFamilyFormForUpdateReply\"\x00\x12l\n\x0cUpdateFamily\x12-.dlkit.proto.relationship.UpdateFamilyRequest\x1a+.dlkit.proto.relationship.UpdateFamilyReply\"\x00\x12{\n\x11\x43\x61nDeleteFamilies\x12\x32.dlkit.proto.relationship.CanDeleteFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanDeleteFamiliesReply\"\x00\x12l\n\x0c\x44\x65leteFamily\x12-.dlkit.proto.relationship.DeleteFamilyRequest\x1a+.dlkit.proto.relationship.DeleteFamilyReply\"\x00\x12\x8a\x01\n\x16\x43\x61nManageFamilyAliases\x12\x37.dlkit.proto.relationship.CanManageFamilyAliasesRequest\x1a\x35.dlkit.proto.relationship.CanManageFamilyAliasesReply\"\x00\x12i\n\x0b\x41liasFamily\x12,.dlkit.proto.relationship.AliasFamilyRequest\x1a*.dlkit.proto.relationship.AliasFamilyReply\"\x00\x32\xc3\x12\n\x16\x46\x61milyHierarchySession\x12\x84\x01\n\x14GetFamilyHierarchyId\x12\x35.dlkit.proto.relationship.GetFamilyHierarchyIdRequest\x1a\x33.dlkit.proto.relationship.GetFamilyHierarchyIdReply\"\x00\x12~\n\x12GetFamilyHierarchy\x12\x33.dlkit.proto.relationship.GetFamilyHierarchyRequest\x1a\x31.dlkit.proto.relationship.GetFamilyHierarchyReply\"\x00\x12\x90\x01\n\x18\x43\x61nAccessFamilyHierarchy\x12\x39.dlkit.proto.relationship.CanAccessFamilyHierarchyRequest\x1a\x37.dlkit.proto.relationship.CanAccessFamilyHierarchyReply\"\x00\x12\x90\x01\n\x18UseComparativeFamilyView\x12\x39.dlkit.proto.relationship.UseComparativeFamilyViewRequest\x1a\x37.dlkit.proto.relationship.UseComparativeFamilyViewReply\"\x00\x12\x84\x01\n\x14UsePlenaryFamilyView\x12\x35.dlkit.proto.relationship.UsePlenaryFamilyViewRequest\x1a\x33.dlkit.proto.relationship.UsePlenaryFamilyViewReply\"\x00\x12m\n\x10GetRootFamilyIds\x12\x31.dlkit.proto.relationship.GetRootFamilyIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12i\n\x0fGetRootFamilies\x12\x30.dlkit.proto.relationship.GetRootFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12{\n\x11HasParentFamilies\x12\x32.dlkit.proto.relationship.HasParentFamiliesRequest\x1a\x30.dlkit.proto.relationship.HasParentFamiliesReply\"\x00\x12x\n\x10IsParentOfFamily\x12\x31.dlkit.proto.relationship.IsParentOfFamilyRequest\x1a/.dlkit.proto.relationship.IsParentOfFamilyReply\"\x00\x12q\n\x12GetParentFamilyIds\x12\x33.dlkit.proto.relationship.GetParentFamilyIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12m\n\x11GetParentFamilies\x12\x32.dlkit.proto.relationship.GetParentFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12~\n\x12IsAncestorOfFamily\x12\x33.dlkit.proto.relationship.IsAncestorOfFamilyRequest\x1a\x31.dlkit.proto.relationship.IsAncestorOfFamilyReply\"\x00\x12x\n\x10HasChildFamilies\x12\x31.dlkit.proto.relationship.HasChildFamiliesRequest\x1a/.dlkit.proto.relationship.HasChildFamiliesReply\"\x00\x12u\n\x0fIsChildOfFamily\x12\x30.dlkit.proto.relationship.IsChildOfFamilyRequest\x1a..dlkit.proto.relationship.IsChildOfFamilyReply\"\x00\x12o\n\x11GetChildFamilyIds\x12\x32.dlkit.proto.relationship.GetChildFamilyIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12k\n\x10GetChildFamilies\x12\x31.dlkit.proto.relationship.GetChildFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12\x84\x01\n\x14IsDescendantOfFamily\x12\x35.dlkit.proto.relationship.IsDescendantOfFamilyRequest\x1a\x33.dlkit.proto.relationship.IsDescendantOfFamilyReply\"\x00\x12x\n\x10GetFamilyNodeIds\x12\x31.dlkit.proto.relationship.GetFamilyNodeIdsRequest\x1a/.dlkit.proto.relationship.GetFamilyNodeIdsReply\"\x00\x12r\n\x0eGetFamilyNodes\x12/.dlkit.proto.relationship.GetFamilyNodesRequest\x1a-.dlkit.proto.relationship.GetFamilyNodesReply\"\x00\x32\x98\x08\n\x1c\x46\x61milyHierarchyDesignSession\x12\x84\x01\n\x14GetFamilyHierarchyId\x12\x35.dlkit.proto.relationship.GetFamilyHierarchyIdRequest\x1a\x33.dlkit.proto.relationship.GetFamilyHierarchyIdReply\"\x00\x12~\n\x12GetFamilyHierarchy\x12\x33.dlkit.proto.relationship.GetFamilyHierarchyRequest\x1a\x31.dlkit.proto.relationship.GetFamilyHierarchyReply\"\x00\x12\x90\x01\n\x18\x43\x61nModifyFamilyHierarchy\x12\x39.dlkit.proto.relationship.CanModifyFamilyHierarchyRequest\x1a\x37.dlkit.proto.relationship.CanModifyFamilyHierarchyReply\"\x00\x12o\n\rAddRootFamily\x12..dlkit.proto.relationship.AddRootFamilyRequest\x1a,.dlkit.proto.relationship.AddRootFamilyReply\"\x00\x12x\n\x10RemoveRootFamily\x12\x31.dlkit.proto.relationship.RemoveRootFamilyRequest\x1a/.dlkit.proto.relationship.RemoveRootFamilyReply\"\x00\x12r\n\x0e\x41\x64\x64\x43hildFamily\x12/.dlkit.proto.relationship.AddChildFamilyRequest\x1a-.dlkit.proto.relationship.AddChildFamilyReply\"\x00\x12{\n\x11RemoveChildFamily\x12\x32.dlkit.proto.relationship.RemoveChildFamilyRequest\x1a\x30.dlkit.proto.relationship.RemoveChildFamilyReply\"\x00\x12\x81\x01\n\x13RemoveChildFamilies\x12\x34.dlkit.proto.relationship.RemoveChildFamiliesRequest\x1a\x32.dlkit.proto.relationship.RemoveChildFamiliesReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1e\x64lkit/proto/relationship.proto\x12\x18\x64lkit.proto.relationship\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x01\n\x0cRelationship\x12\x37\n\x0b\x64\x65stination\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12-\n\x06\x66\x61mily\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x32\n\x06source\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11RelationshipQuery\"\x1c\n\x1aRelationshipQueryInspector\"\x12\n\x10RelationshipForm\"\x19\n\x17RelationshipSearchOrder\"\x14\n\x12RelationshipSearch\"\x1b\n\x19RelationshipSearchResults\"Q\n\x10RelationshipList\x12=\n\rrelationships\x18\x01 \x03(\x0b\x32&.dlkit.proto.relationship.Relationship\"\xc5\x02\n\x06\x46\x61mily\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x46\x61milyQuery\"\x16\n\x14\x46\x61milyQueryInspector\"\x0c\n\nFamilyForm\"\x13\n\x11\x46\x61milySearchOrder\"\x0e\n\x0c\x46\x61milySearch\"\x15\n\x13\x46\x61milySearchResults\"@\n\nFamilyList\x12\x32\n\x08\x66\x61milies\x18\x01 \x03(\x0b\x32 .dlkit.proto.relationship.Family\"\x0c\n\nFamilyNode\"L\n\x0e\x46\x61milyNodeList\x12:\n\x0c\x66\x61mily_nodes\x18\x01 \x03(\x0b\x32$.dlkit.proto.relationship.FamilyNode\"B\n\x10GetFamilyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetFamilyIdRequest\"B\n\x0eGetFamilyReply\x12\x30\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32 .dlkit.proto.relationship.Family\"\x12\n\x10GetFamilyRequest\"?\n\x1b\x43\x61nLookupRelationshipsReply\x12 \n\x18\x63\x61n_lookup_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nLookupRelationshipsRequest\"%\n#UseComparativeRelationshipViewReply\"\'\n%UseComparativeRelationshipViewRequest\"!\n\x1fUsePlenaryRelationshipViewReply\"#\n!UsePlenaryRelationshipViewRequest\"\x1d\n\x1bUseFederatedFamilyViewReply\"\x1f\n\x1dUseFederatedFamilyViewRequest\"\x1c\n\x1aUseIsolatedFamilyViewReply\"\x1e\n\x1cUseIsolatedFamilyViewRequest\"#\n!UseEffectiveRelationshipViewReply\"%\n#UseEffectiveRelationshipViewRequest\"&\n$UseAnyEffectiveRelationshipViewReply\"(\n&UseAnyEffectiveRelationshipViewRequest\"T\n\x14GetRelationshipReply\x12<\n\x0crelationship\x18\x01 \x01(\x0b\x32&.dlkit.proto.relationship.Relationship\"U\n\x16GetRelationshipRequest\x12;\n\x0frelationship_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n\x1cGetRelationshipsByIdsRequest\x12<\n\x10relationship_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"m\n\"GetRelationshipsByGenusTypeRequest\x12G\n\x17relationship_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n(GetRelationshipsByParentGenusTypeRequest\x12G\n\x17relationship_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"o\n#GetRelationshipsByRecordTypeRequest\x12H\n\x18relationship_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n\x1dGetRelationshipsOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Y\n GetRelationshipsForSourceRequest\x12\x35\n\tsource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb2\x01\n&GetRelationshipsForSourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\tsource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xad\x01\n+GetRelationshipsByGenusTypeForSourceRequest\x12G\n\x17relationship_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x86\x02\n1GetRelationshipsByGenusTypeForSourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12G\n\x17relationship_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"c\n%GetRelationshipsForDestinationRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xbc\x01\n+GetRelationshipsForDestinationOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb7\x01\n0GetRelationshipsByGenusTypeForDestinationRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12G\n\x17relationship_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x90\x02\n6GetRelationshipsByGenusTypeForDestinationOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12G\n\x17relationship_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x94\x01\n\x1fGetRelationshipsForPeersRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tsource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xed\x01\n%GetRelationshipsForPeersOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xe8\x01\n*GetRelationshipsByGenusTypeForPeersRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12G\n\x17relationship_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xc1\x02\n0GetRelationshipsByGenusTypeForPeersOnDateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12G\n\x17relationship_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x19\n\x17GetRelationshipsRequest\"?\n\x1b\x43\x61nSearchRelationshipsReply\x12 \n\x18\x63\x61n_search_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nSearchRelationshipsRequest\"d\n\x19GetRelationshipQueryReply\x12G\n\x12relationship_query\x18\x01 \x01(\x0b\x32+.dlkit.proto.relationship.RelationshipQuery\"\x1d\n\x1bGetRelationshipQueryRequest\"i\n\x1eGetRelationshipsByQueryRequest\x12G\n\x12relationship_query\x18\x01 \x01(\x0b\x32+.dlkit.proto.relationship.RelationshipQuery\"?\n\x1b\x43\x61nCreateRelationshipsReply\x12 \n\x18\x63\x61n_create_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nCreateRelationshipsRequest\"^\n)CanCreateRelationshipWithRecordTypesReply\x12\x31\n)can_create_relationship_with_record_types\x18\x01 \x01(\x08\"x\n+CanCreateRelationshipWithRecordTypesRequest\x12I\n\x19relationship_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n!GetRelationshipFormForCreateReply\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"\xe3\x01\n#GetRelationshipFormForCreateRequest\x12:\n\x0e\x64\x65stination_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12I\n\x19relationship_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x35\n\tsource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x17\x43reateRelationshipReply\x12<\n\x0crelationship\x18\x01 \x01(\x0b\x32&.dlkit.proto.relationship.Relationship\"b\n\x19\x43reateRelationshipRequest\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"?\n\x1b\x43\x61nUpdateRelationshipsReply\x12 \n\x18\x63\x61n_update_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateRelationshipsRequest\"j\n!GetRelationshipFormForUpdateReply\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"b\n#GetRelationshipFormForUpdateRequest\x12;\n\x0frelationship_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17UpdateRelationshipReply\"b\n\x19UpdateRelationshipRequest\x12\x45\n\x11relationship_form\x18\x01 \x01(\x0b\x32*.dlkit.proto.relationship.RelationshipForm\"?\n\x1b\x43\x61nDeleteRelationshipsReply\x12 \n\x18\x63\x61n_delete_relationships\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteRelationshipsRequest\"\x19\n\x17\x44\x65leteRelationshipReply\"X\n\x19\x44\x65leteRelationshipRequest\x12;\n\x0frelationship_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n!CanManageRelationshipAliasesReply\x12\'\n\x1f\x63\x61n_manage_relationship_aliases\x18\x01 \x01(\x08\"%\n#CanManageRelationshipAliasesRequest\"\x18\n\x16\x41liasRelationshipReply\"\x8d\x01\n\x18\x41liasRelationshipRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0frelationship_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"5\n\x16\x43\x61nLookupFamiliesReply\x12\x1b\n\x13\x63\x61n_lookup_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nLookupFamiliesRequest\"\x1f\n\x1dUseComparativeFamilyViewReply\"!\n\x1fUseComparativeFamilyViewRequest\"\x1b\n\x19UsePlenaryFamilyViewReply\"\x1d\n\x1bUsePlenaryFamilyViewRequest\"Q\n\x17GetFamiliesByIdsRequest\x12\x36\n\nfamily_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x1dGetFamiliesByGenusTypeRequest\x12\x41\n\x11\x66\x61mily_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"h\n#GetFamiliesByParentGenusTypeRequest\x12\x41\n\x11\x66\x61mily_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"d\n\x1eGetFamiliesByRecordTypeRequest\x12\x42\n\x12\x66\x61mily_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"W\n\x1cGetFamiliesByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetFamiliesRequest\"5\n\x16\x43\x61nCreateFamiliesReply\x12\x1b\n\x13\x63\x61n_create_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nCreateFamiliesRequest\"R\n#CanCreateFamilyWithRecordTypesReply\x12+\n#can_create_family_with_record_types\x18\x01 \x01(\x08\"l\n%CanCreateFamilyWithRecordTypesRequest\x12\x43\n\x13\x66\x61mily_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"X\n\x1bGetFamilyFormForCreateReply\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"d\n\x1dGetFamilyFormForCreateRequest\x12\x43\n\x13\x66\x61mily_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"E\n\x11\x43reateFamilyReply\x12\x30\n\x06\x66\x61mily\x18\x01 \x01(\x0b\x32 .dlkit.proto.relationship.Family\"P\n\x13\x43reateFamilyRequest\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"5\n\x16\x43\x61nUpdateFamiliesReply\x12\x1b\n\x13\x63\x61n_update_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nUpdateFamiliesRequest\"X\n\x1bGetFamilyFormForUpdateReply\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"V\n\x1dGetFamilyFormForUpdateRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11UpdateFamilyReply\"P\n\x13UpdateFamilyRequest\x12\x39\n\x0b\x66\x61mily_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyForm\"5\n\x16\x43\x61nDeleteFamiliesReply\x12\x1b\n\x13\x63\x61n_delete_families\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nDeleteFamiliesRequest\"\x13\n\x11\x44\x65leteFamilyReply\"L\n\x13\x44\x65leteFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1b\x43\x61nManageFamilyAliasesReply\x12!\n\x19\x63\x61n_manage_family_aliases\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nManageFamilyAliasesRequest\"\x12\n\x10\x41liasFamilyReply\"\x81\x01\n\x12\x41liasFamilyRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tfamily_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x19GetFamilyHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1bGetFamilyHierarchyIdRequest\"N\n\x17GetFamilyHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1b\n\x19GetFamilyHierarchyRequest\"D\n\x1d\x43\x61nAccessFamilyHierarchyReply\x12#\n\x1b\x63\x61n_access_family_hierarchy\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nAccessFamilyHierarchyRequest\"\x19\n\x17GetRootFamilyIdsRequest\"\x18\n\x16GetRootFamiliesRequest\"5\n\x16HasParentFamiliesReply\x12\x1b\n\x13has_parent_families\x18\x01 \x01(\x08\"Q\n\x18HasParentFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsParentOfFamilyReply\x12\x1b\n\x13is_parent_of_family\x18\x01 \x01(\x08\"\x81\x01\n\x17IsParentOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x19GetParentFamilyIdsRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x18GetParentFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsAncestorOfFamilyReply\x12\x1d\n\x15is_ancestor_of_family\x18\x01 \x01(\x08\"\x83\x01\n\x19IsAncestorOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15HasChildFamiliesReply\x12\x1a\n\x12has_child_families\x18\x01 \x01(\x08\"P\n\x17HasChildFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsChildOfFamilyReply\x12\x1a\n\x12is_child_of_family\x18\x01 \x01(\x08\"\x80\x01\n\x16IsChildOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x18GetChildFamilyIdsRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x17GetChildFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19IsDescendantOfFamilyReply\x12\x1f\n\x17is_descendant_of_family\x18\x01 \x01(\x08\"\x85\x01\n\x1bIsDescendantOfFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x15GetFamilyNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9e\x01\n\x17GetFamilyNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x35\n\tfamily_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"P\n\x13GetFamilyNodesReply\x12\x39\n\x0b\x66\x61mily_node\x18\x01 \x01(\x0b\x32$.dlkit.proto.relationship.FamilyNode\"\x9c\x01\n\x15GetFamilyNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x35\n\tfamily_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"D\n\x1d\x43\x61nModifyFamilyHierarchyReply\x12#\n\x1b\x63\x61n_modify_family_hierarchy\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nModifyFamilyHierarchyRequest\"\x14\n\x12\x41\x64\x64RootFamilyReply\"M\n\x14\x41\x64\x64RootFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveRootFamilyReply\"P\n\x17RemoveRootFamilyRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13\x41\x64\x64\x43hildFamilyReply\"\x84\x01\n\x15\x41\x64\x64\x43hildFamilyRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tfamily_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveChildFamilyReply\"\x87\x01\n\x18RemoveChildFamilyRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tfamily_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveChildFamiliesReply\"S\n\x1aRemoveChildFamiliesRequest\x12\x35\n\tfamily_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xda\x1f\n\x19RelationshipLookupSession\x12i\n\x0bGetFamilyId\x12,.dlkit.proto.relationship.GetFamilyIdRequest\x1a*.dlkit.proto.relationship.GetFamilyIdReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12\x8a\x01\n\x16\x43\x61nLookupRelationships\x12\x37.dlkit.proto.relationship.CanLookupRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanLookupRelationshipsReply\"\x00\x12\xa2\x01\n\x1eUseComparativeRelationshipView\x12?.dlkit.proto.relationship.UseComparativeRelationshipViewRequest\x1a=.dlkit.proto.relationship.UseComparativeRelationshipViewReply\"\x00\x12\x96\x01\n\x1aUsePlenaryRelationshipView\x12;.dlkit.proto.relationship.UsePlenaryRelationshipViewRequest\x1a\x39.dlkit.proto.relationship.UsePlenaryRelationshipViewReply\"\x00\x12\x8a\x01\n\x16UseFederatedFamilyView\x12\x37.dlkit.proto.relationship.UseFederatedFamilyViewRequest\x1a\x35.dlkit.proto.relationship.UseFederatedFamilyViewReply\"\x00\x12\x87\x01\n\x15UseIsolatedFamilyView\x12\x36.dlkit.proto.relationship.UseIsolatedFamilyViewRequest\x1a\x34.dlkit.proto.relationship.UseIsolatedFamilyViewReply\"\x00\x12\x9c\x01\n\x1cUseEffectiveRelationshipView\x12=.dlkit.proto.relationship.UseEffectiveRelationshipViewRequest\x1a;.dlkit.proto.relationship.UseEffectiveRelationshipViewReply\"\x00\x12\xa5\x01\n\x1fUseAnyEffectiveRelationshipView\x12@.dlkit.proto.relationship.UseAnyEffectiveRelationshipViewRequest\x1a>.dlkit.proto.relationship.UseAnyEffectiveRelationshipViewReply\"\x00\x12u\n\x0fGetRelationship\x12\x30.dlkit.proto.relationship.GetRelationshipRequest\x1a..dlkit.proto.relationship.GetRelationshipReply\"\x00\x12{\n\x15GetRelationshipsByIds\x12\x36.dlkit.proto.relationship.GetRelationshipsByIdsRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x87\x01\n\x1bGetRelationshipsByGenusType\x12<.dlkit.proto.relationship.GetRelationshipsByGenusTypeRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x93\x01\n!GetRelationshipsByParentGenusType\x12\x42.dlkit.proto.relationship.GetRelationshipsByParentGenusTypeRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x89\x01\n\x1cGetRelationshipsByRecordType\x12=.dlkit.proto.relationship.GetRelationshipsByRecordTypeRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12}\n\x16GetRelationshipsOnDate\x12\x37.dlkit.proto.relationship.GetRelationshipsOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x83\x01\n\x19GetRelationshipsForSource\x12:.dlkit.proto.relationship.GetRelationshipsForSourceRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x8f\x01\n\x1fGetRelationshipsForSourceOnDate\x12@.dlkit.proto.relationship.GetRelationshipsForSourceOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x99\x01\n$GetRelationshipsByGenusTypeForSource\x12\x45.dlkit.proto.relationship.GetRelationshipsByGenusTypeForSourceRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xa5\x01\n*GetRelationshipsByGenusTypeForSourceOnDate\x12K.dlkit.proto.relationship.GetRelationshipsByGenusTypeForSourceOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x8d\x01\n\x1eGetRelationshipsForDestination\x12?.dlkit.proto.relationship.GetRelationshipsForDestinationRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x99\x01\n$GetRelationshipsForDestinationOnDate\x12\x45.dlkit.proto.relationship.GetRelationshipsForDestinationOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xa3\x01\n)GetRelationshipsByGenusTypeForDestination\x12J.dlkit.proto.relationship.GetRelationshipsByGenusTypeForDestinationRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xaf\x01\n/GetRelationshipsByGenusTypeForDestinationOnDate\x12P.dlkit.proto.relationship.GetRelationshipsByGenusTypeForDestinationOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x81\x01\n\x18GetRelationshipsForPeers\x12\x39.dlkit.proto.relationship.GetRelationshipsForPeersRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x8d\x01\n\x1eGetRelationshipsForPeersOnDate\x12?.dlkit.proto.relationship.GetRelationshipsForPeersOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\x97\x01\n#GetRelationshipsByGenusTypeForPeers\x12\x44.dlkit.proto.relationship.GetRelationshipsByGenusTypeForPeersRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12\xa3\x01\n)GetRelationshipsByGenusTypeForPeersOnDate\x12J.dlkit.proto.relationship.GetRelationshipsByGenusTypeForPeersOnDateRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x12q\n\x10GetRelationships\x12\x31.dlkit.proto.relationship.GetRelationshipsRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x32\x96\x07\n\x18RelationshipQuerySession\x12i\n\x0bGetFamilyId\x12,.dlkit.proto.relationship.GetFamilyIdRequest\x1a*.dlkit.proto.relationship.GetFamilyIdReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12\x8a\x01\n\x16UseFederatedFamilyView\x12\x37.dlkit.proto.relationship.UseFederatedFamilyViewRequest\x1a\x35.dlkit.proto.relationship.UseFederatedFamilyViewReply\"\x00\x12\x87\x01\n\x15UseIsolatedFamilyView\x12\x36.dlkit.proto.relationship.UseIsolatedFamilyViewRequest\x1a\x34.dlkit.proto.relationship.UseIsolatedFamilyViewReply\"\x00\x12\x8a\x01\n\x16\x43\x61nSearchRelationships\x12\x37.dlkit.proto.relationship.CanSearchRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanSearchRelationshipsReply\"\x00\x12\x84\x01\n\x14GetRelationshipQuery\x12\x35.dlkit.proto.relationship.GetRelationshipQueryRequest\x1a\x33.dlkit.proto.relationship.GetRelationshipQueryReply\"\x00\x12\x7f\n\x17GetRelationshipsByQuery\x12\x38.dlkit.proto.relationship.GetRelationshipsByQueryRequest\x1a&.dlkit.proto.relationship.Relationship\"\x00\x30\x01\x32\xa2\x0e\n\x18RelationshipAdminSession\x12i\n\x0bGetFamilyId\x12,.dlkit.proto.relationship.GetFamilyIdRequest\x1a*.dlkit.proto.relationship.GetFamilyIdReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12\x8a\x01\n\x16\x43\x61nCreateRelationships\x12\x37.dlkit.proto.relationship.CanCreateRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanCreateRelationshipsReply\"\x00\x12\xb4\x01\n$CanCreateRelationshipWithRecordTypes\x12\x45.dlkit.proto.relationship.CanCreateRelationshipWithRecordTypesRequest\x1a\x43.dlkit.proto.relationship.CanCreateRelationshipWithRecordTypesReply\"\x00\x12\x9c\x01\n\x1cGetRelationshipFormForCreate\x12=.dlkit.proto.relationship.GetRelationshipFormForCreateRequest\x1a;.dlkit.proto.relationship.GetRelationshipFormForCreateReply\"\x00\x12~\n\x12\x43reateRelationship\x12\x33.dlkit.proto.relationship.CreateRelationshipRequest\x1a\x31.dlkit.proto.relationship.CreateRelationshipReply\"\x00\x12\x8a\x01\n\x16\x43\x61nUpdateRelationships\x12\x37.dlkit.proto.relationship.CanUpdateRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanUpdateRelationshipsReply\"\x00\x12\x9c\x01\n\x1cGetRelationshipFormForUpdate\x12=.dlkit.proto.relationship.GetRelationshipFormForUpdateRequest\x1a;.dlkit.proto.relationship.GetRelationshipFormForUpdateReply\"\x00\x12~\n\x12UpdateRelationship\x12\x33.dlkit.proto.relationship.UpdateRelationshipRequest\x1a\x31.dlkit.proto.relationship.UpdateRelationshipReply\"\x00\x12\x8a\x01\n\x16\x43\x61nDeleteRelationships\x12\x37.dlkit.proto.relationship.CanDeleteRelationshipsRequest\x1a\x35.dlkit.proto.relationship.CanDeleteRelationshipsReply\"\x00\x12~\n\x12\x44\x65leteRelationship\x12\x33.dlkit.proto.relationship.DeleteRelationshipRequest\x1a\x31.dlkit.proto.relationship.DeleteRelationshipReply\"\x00\x12\x9c\x01\n\x1c\x43\x61nManageRelationshipAliases\x12=.dlkit.proto.relationship.CanManageRelationshipAliasesRequest\x1a;.dlkit.proto.relationship.CanManageRelationshipAliasesReply\"\x00\x12{\n\x11\x41liasRelationship\x12\x32.dlkit.proto.relationship.AliasRelationshipRequest\x1a\x30.dlkit.proto.relationship.AliasRelationshipReply\"\x00\x32\xd2\t\n\x13\x46\x61milyLookupSession\x12{\n\x11\x43\x61nLookupFamilies\x12\x32.dlkit.proto.relationship.CanLookupFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanLookupFamiliesReply\"\x00\x12\x90\x01\n\x18UseComparativeFamilyView\x12\x39.dlkit.proto.relationship.UseComparativeFamilyViewRequest\x1a\x37.dlkit.proto.relationship.UseComparativeFamilyViewReply\"\x00\x12\x84\x01\n\x14UsePlenaryFamilyView\x12\x35.dlkit.proto.relationship.UsePlenaryFamilyViewRequest\x1a\x33.dlkit.proto.relationship.UsePlenaryFamilyViewReply\"\x00\x12\x63\n\tGetFamily\x12*.dlkit.proto.relationship.GetFamilyRequest\x1a(.dlkit.proto.relationship.GetFamilyReply\"\x00\x12k\n\x10GetFamiliesByIds\x12\x31.dlkit.proto.relationship.GetFamiliesByIdsRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12w\n\x16GetFamiliesByGenusType\x12\x37.dlkit.proto.relationship.GetFamiliesByGenusTypeRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12\x83\x01\n\x1cGetFamiliesByParentGenusType\x12=.dlkit.proto.relationship.GetFamiliesByParentGenusTypeRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12y\n\x17GetFamiliesByRecordType\x12\x38.dlkit.proto.relationship.GetFamiliesByRecordTypeRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12u\n\x15GetFamiliesByProvider\x12\x36.dlkit.proto.relationship.GetFamiliesByProviderRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12\x61\n\x0bGetFamilies\x12,.dlkit.proto.relationship.GetFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x32\x8c\x0b\n\x12\x46\x61milyAdminSession\x12{\n\x11\x43\x61nCreateFamilies\x12\x32.dlkit.proto.relationship.CanCreateFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanCreateFamiliesReply\"\x00\x12\xa2\x01\n\x1e\x43\x61nCreateFamilyWithRecordTypes\x12?.dlkit.proto.relationship.CanCreateFamilyWithRecordTypesRequest\x1a=.dlkit.proto.relationship.CanCreateFamilyWithRecordTypesReply\"\x00\x12\x8a\x01\n\x16GetFamilyFormForCreate\x12\x37.dlkit.proto.relationship.GetFamilyFormForCreateRequest\x1a\x35.dlkit.proto.relationship.GetFamilyFormForCreateReply\"\x00\x12l\n\x0c\x43reateFamily\x12-.dlkit.proto.relationship.CreateFamilyRequest\x1a+.dlkit.proto.relationship.CreateFamilyReply\"\x00\x12{\n\x11\x43\x61nUpdateFamilies\x12\x32.dlkit.proto.relationship.CanUpdateFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanUpdateFamiliesReply\"\x00\x12\x8a\x01\n\x16GetFamilyFormForUpdate\x12\x37.dlkit.proto.relationship.GetFamilyFormForUpdateRequest\x1a\x35.dlkit.proto.relationship.GetFamilyFormForUpdateReply\"\x00\x12l\n\x0cUpdateFamily\x12-.dlkit.proto.relationship.UpdateFamilyRequest\x1a+.dlkit.proto.relationship.UpdateFamilyReply\"\x00\x12{\n\x11\x43\x61nDeleteFamilies\x12\x32.dlkit.proto.relationship.CanDeleteFamiliesRequest\x1a\x30.dlkit.proto.relationship.CanDeleteFamiliesReply\"\x00\x12l\n\x0c\x44\x65leteFamily\x12-.dlkit.proto.relationship.DeleteFamilyRequest\x1a+.dlkit.proto.relationship.DeleteFamilyReply\"\x00\x12\x8a\x01\n\x16\x43\x61nManageFamilyAliases\x12\x37.dlkit.proto.relationship.CanManageFamilyAliasesRequest\x1a\x35.dlkit.proto.relationship.CanManageFamilyAliasesReply\"\x00\x12i\n\x0b\x41liasFamily\x12,.dlkit.proto.relationship.AliasFamilyRequest\x1a*.dlkit.proto.relationship.AliasFamilyReply\"\x00\x32\xc3\x12\n\x16\x46\x61milyHierarchySession\x12\x84\x01\n\x14GetFamilyHierarchyId\x12\x35.dlkit.proto.relationship.GetFamilyHierarchyIdRequest\x1a\x33.dlkit.proto.relationship.GetFamilyHierarchyIdReply\"\x00\x12~\n\x12GetFamilyHierarchy\x12\x33.dlkit.proto.relationship.GetFamilyHierarchyRequest\x1a\x31.dlkit.proto.relationship.GetFamilyHierarchyReply\"\x00\x12\x90\x01\n\x18\x43\x61nAccessFamilyHierarchy\x12\x39.dlkit.proto.relationship.CanAccessFamilyHierarchyRequest\x1a\x37.dlkit.proto.relationship.CanAccessFamilyHierarchyReply\"\x00\x12\x90\x01\n\x18UseComparativeFamilyView\x12\x39.dlkit.proto.relationship.UseComparativeFamilyViewRequest\x1a\x37.dlkit.proto.relationship.UseComparativeFamilyViewReply\"\x00\x12\x84\x01\n\x14UsePlenaryFamilyView\x12\x35.dlkit.proto.relationship.UsePlenaryFamilyViewRequest\x1a\x33.dlkit.proto.relationship.UsePlenaryFamilyViewReply\"\x00\x12m\n\x10GetRootFamilyIds\x12\x31.dlkit.proto.relationship.GetRootFamilyIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12i\n\x0fGetRootFamilies\x12\x30.dlkit.proto.relationship.GetRootFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12{\n\x11HasParentFamilies\x12\x32.dlkit.proto.relationship.HasParentFamiliesRequest\x1a\x30.dlkit.proto.relationship.HasParentFamiliesReply\"\x00\x12x\n\x10IsParentOfFamily\x12\x31.dlkit.proto.relationship.IsParentOfFamilyRequest\x1a/.dlkit.proto.relationship.IsParentOfFamilyReply\"\x00\x12q\n\x12GetParentFamilyIds\x12\x33.dlkit.proto.relationship.GetParentFamilyIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12m\n\x11GetParentFamilies\x12\x32.dlkit.proto.relationship.GetParentFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12~\n\x12IsAncestorOfFamily\x12\x33.dlkit.proto.relationship.IsAncestorOfFamilyRequest\x1a\x31.dlkit.proto.relationship.IsAncestorOfFamilyReply\"\x00\x12x\n\x10HasChildFamilies\x12\x31.dlkit.proto.relationship.HasChildFamiliesRequest\x1a/.dlkit.proto.relationship.HasChildFamiliesReply\"\x00\x12u\n\x0fIsChildOfFamily\x12\x30.dlkit.proto.relationship.IsChildOfFamilyRequest\x1a..dlkit.proto.relationship.IsChildOfFamilyReply\"\x00\x12o\n\x11GetChildFamilyIds\x12\x32.dlkit.proto.relationship.GetChildFamilyIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12k\n\x10GetChildFamilies\x12\x31.dlkit.proto.relationship.GetChildFamiliesRequest\x1a .dlkit.proto.relationship.Family\"\x00\x30\x01\x12\x84\x01\n\x14IsDescendantOfFamily\x12\x35.dlkit.proto.relationship.IsDescendantOfFamilyRequest\x1a\x33.dlkit.proto.relationship.IsDescendantOfFamilyReply\"\x00\x12x\n\x10GetFamilyNodeIds\x12\x31.dlkit.proto.relationship.GetFamilyNodeIdsRequest\x1a/.dlkit.proto.relationship.GetFamilyNodeIdsReply\"\x00\x12r\n\x0eGetFamilyNodes\x12/.dlkit.proto.relationship.GetFamilyNodesRequest\x1a-.dlkit.proto.relationship.GetFamilyNodesReply\"\x00\x32\x98\x08\n\x1c\x46\x61milyHierarchyDesignSession\x12\x84\x01\n\x14GetFamilyHierarchyId\x12\x35.dlkit.proto.relationship.GetFamilyHierarchyIdRequest\x1a\x33.dlkit.proto.relationship.GetFamilyHierarchyIdReply\"\x00\x12~\n\x12GetFamilyHierarchy\x12\x33.dlkit.proto.relationship.GetFamilyHierarchyRequest\x1a\x31.dlkit.proto.relationship.GetFamilyHierarchyReply\"\x00\x12\x90\x01\n\x18\x43\x61nModifyFamilyHierarchy\x12\x39.dlkit.proto.relationship.CanModifyFamilyHierarchyRequest\x1a\x37.dlkit.proto.relationship.CanModifyFamilyHierarchyReply\"\x00\x12o\n\rAddRootFamily\x12..dlkit.proto.relationship.AddRootFamilyRequest\x1a,.dlkit.proto.relationship.AddRootFamilyReply\"\x00\x12x\n\x10RemoveRootFamily\x12\x31.dlkit.proto.relationship.RemoveRootFamilyRequest\x1a/.dlkit.proto.relationship.RemoveRootFamilyReply\"\x00\x12r\n\x0e\x41\x64\x64\x43hildFamily\x12/.dlkit.proto.relationship.AddChildFamilyRequest\x1a-.dlkit.proto.relationship.AddChildFamilyReply\"\x00\x12{\n\x11RemoveChildFamily\x12\x32.dlkit.proto.relationship.RemoveChildFamilyRequest\x1a\x30.dlkit.proto.relationship.RemoveChildFamilyReply\"\x00\x12\x81\x01\n\x13RemoveChildFamilies\x12\x34.dlkit.proto.relationship.RemoveChildFamiliesRequest\x1a\x32.dlkit.proto.relationship.RemoveChildFamiliesReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -267,14 +267,14 @@ _FAMILY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.relationship.Family.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.relationship.Family.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.relationship.Family.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.relationship.Family.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -288,7 +288,7 @@ _FAMILY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.relationship.Family.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.relationship.Family.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -307,7 +307,7 @@ _FAMILY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=672,
-  serialized_end=992,
+  serialized_end=997,
 )
 
 
@@ -330,8 +330,8 @@ _FAMILYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=994,
-  serialized_end=1007,
+  serialized_start=999,
+  serialized_end=1012,
 )
 
 
@@ -354,8 +354,8 @@ _FAMILYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1009,
-  serialized_end=1031,
+  serialized_start=1014,
+  serialized_end=1036,
 )
 
 
@@ -378,8 +378,8 @@ _FAMILYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1033,
-  serialized_end=1045,
+  serialized_start=1038,
+  serialized_end=1050,
 )
 
 
@@ -402,8 +402,8 @@ _FAMILYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1047,
-  serialized_end=1066,
+  serialized_start=1052,
+  serialized_end=1071,
 )
 
 
@@ -426,8 +426,8 @@ _FAMILYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1068,
-  serialized_end=1082,
+  serialized_start=1073,
+  serialized_end=1087,
 )
 
 
@@ -450,8 +450,8 @@ _FAMILYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1084,
-  serialized_end=1105,
+  serialized_start=1089,
+  serialized_end=1110,
 )
 
 
@@ -481,8 +481,8 @@ _FAMILYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1107,
-  serialized_end=1171,
+  serialized_start=1112,
+  serialized_end=1176,
 )
 
 
@@ -505,8 +505,8 @@ _FAMILYNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1173,
-  serialized_end=1185,
+  serialized_start=1178,
+  serialized_end=1190,
 )
 
 
@@ -536,8 +536,8 @@ _FAMILYNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1187,
-  serialized_end=1263,
+  serialized_start=1192,
+  serialized_end=1268,
 )
 
 
@@ -567,8 +567,8 @@ _GETFAMILYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1265,
-  serialized_end=1331,
+  serialized_start=1270,
+  serialized_end=1336,
 )
 
 
@@ -591,8 +591,8 @@ _GETFAMILYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1333,
-  serialized_end=1353,
+  serialized_start=1338,
+  serialized_end=1358,
 )
 
 
@@ -622,8 +622,8 @@ _GETFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1355,
-  serialized_end=1421,
+  serialized_start=1360,
+  serialized_end=1426,
 )
 
 
@@ -646,8 +646,8 @@ _GETFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1423,
-  serialized_end=1441,
+  serialized_start=1428,
+  serialized_end=1446,
 )
 
 
@@ -677,8 +677,8 @@ _CANLOOKUPRELATIONSHIPSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1443,
-  serialized_end=1506,
+  serialized_start=1448,
+  serialized_end=1511,
 )
 
 
@@ -701,8 +701,8 @@ _CANLOOKUPRELATIONSHIPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1508,
-  serialized_end=1539,
+  serialized_start=1513,
+  serialized_end=1544,
 )
 
 
@@ -725,8 +725,8 @@ _USECOMPARATIVERELATIONSHIPVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1541,
-  serialized_end=1578,
+  serialized_start=1546,
+  serialized_end=1583,
 )
 
 
@@ -749,8 +749,8 @@ _USECOMPARATIVERELATIONSHIPVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1580,
-  serialized_end=1619,
+  serialized_start=1585,
+  serialized_end=1624,
 )
 
 
@@ -773,8 +773,8 @@ _USEPLENARYRELATIONSHIPVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1621,
-  serialized_end=1654,
+  serialized_start=1626,
+  serialized_end=1659,
 )
 
 
@@ -797,8 +797,8 @@ _USEPLENARYRELATIONSHIPVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1656,
-  serialized_end=1691,
+  serialized_start=1661,
+  serialized_end=1696,
 )
 
 
@@ -821,8 +821,8 @@ _USEFEDERATEDFAMILYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1693,
-  serialized_end=1722,
+  serialized_start=1698,
+  serialized_end=1727,
 )
 
 
@@ -845,8 +845,8 @@ _USEFEDERATEDFAMILYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1724,
-  serialized_end=1755,
+  serialized_start=1729,
+  serialized_end=1760,
 )
 
 
@@ -869,8 +869,8 @@ _USEISOLATEDFAMILYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1757,
-  serialized_end=1785,
+  serialized_start=1762,
+  serialized_end=1790,
 )
 
 
@@ -893,8 +893,8 @@ _USEISOLATEDFAMILYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1787,
-  serialized_end=1817,
+  serialized_start=1792,
+  serialized_end=1822,
 )
 
 
@@ -917,8 +917,8 @@ _USEEFFECTIVERELATIONSHIPVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1819,
-  serialized_end=1854,
+  serialized_start=1824,
+  serialized_end=1859,
 )
 
 
@@ -941,8 +941,8 @@ _USEEFFECTIVERELATIONSHIPVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1856,
-  serialized_end=1893,
+  serialized_start=1861,
+  serialized_end=1898,
 )
 
 
@@ -965,8 +965,8 @@ _USEANYEFFECTIVERELATIONSHIPVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1895,
-  serialized_end=1933,
+  serialized_start=1900,
+  serialized_end=1938,
 )
 
 
@@ -989,8 +989,8 @@ _USEANYEFFECTIVERELATIONSHIPVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1935,
-  serialized_end=1975,
+  serialized_start=1940,
+  serialized_end=1980,
 )
 
 
@@ -1020,8 +1020,8 @@ _GETRELATIONSHIPREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1977,
-  serialized_end=2061,
+  serialized_start=1982,
+  serialized_end=2066,
 )
 
 
@@ -1051,8 +1051,8 @@ _GETRELATIONSHIPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2063,
-  serialized_end=2148,
+  serialized_start=2068,
+  serialized_end=2153,
 )
 
 
@@ -1082,8 +1082,8 @@ _GETRELATIONSHIPSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2150,
-  serialized_end=2242,
+  serialized_start=2155,
+  serialized_end=2247,
 )
 
 
@@ -1113,8 +1113,8 @@ _GETRELATIONSHIPSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2244,
-  serialized_end=2353,
+  serialized_start=2249,
+  serialized_end=2358,
 )
 
 
@@ -1144,8 +1144,8 @@ _GETRELATIONSHIPSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2355,
-  serialized_end=2470,
+  serialized_start=2360,
+  serialized_end=2475,
 )
 
 
@@ -1175,8 +1175,8 @@ _GETRELATIONSHIPSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2472,
-  serialized_end=2583,
+  serialized_start=2477,
+  serialized_end=2588,
 )
 
 
@@ -1213,8 +1213,8 @@ _GETRELATIONSHIPSONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2585,
-  serialized_end=2699,
+  serialized_start=2590,
+  serialized_end=2704,
 )
 
 
@@ -1244,8 +1244,8 @@ _GETRELATIONSHIPSFORSOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2701,
-  serialized_end=2790,
+  serialized_start=2706,
+  serialized_end=2795,
 )
 
 
@@ -1289,8 +1289,8 @@ _GETRELATIONSHIPSFORSOURCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2793,
-  serialized_end=2971,
+  serialized_start=2798,
+  serialized_end=2976,
 )
 
 
@@ -1327,8 +1327,8 @@ _GETRELATIONSHIPSBYGENUSTYPEFORSOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2974,
-  serialized_end=3147,
+  serialized_start=2979,
+  serialized_end=3152,
 )
 
 
@@ -1379,8 +1379,8 @@ _GETRELATIONSHIPSBYGENUSTYPEFORSOURCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3150,
-  serialized_end=3412,
+  serialized_start=3155,
+  serialized_end=3417,
 )
 
 
@@ -1410,8 +1410,8 @@ _GETRELATIONSHIPSFORDESTINATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3414,
-  serialized_end=3513,
+  serialized_start=3419,
+  serialized_end=3518,
 )
 
 
@@ -1455,8 +1455,8 @@ _GETRELATIONSHIPSFORDESTINATIONONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3516,
-  serialized_end=3704,
+  serialized_start=3521,
+  serialized_end=3709,
 )
 
 
@@ -1493,8 +1493,8 @@ _GETRELATIONSHIPSBYGENUSTYPEFORDESTINATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3707,
-  serialized_end=3890,
+  serialized_start=3712,
+  serialized_end=3895,
 )
 
 
@@ -1545,8 +1545,8 @@ _GETRELATIONSHIPSBYGENUSTYPEFORDESTINATIONONDATEREQUEST = _descriptor.Descriptor
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3893,
-  serialized_end=4165,
+  serialized_start=3898,
+  serialized_end=4170,
 )
 
 
@@ -1583,8 +1583,8 @@ _GETRELATIONSHIPSFORPEERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4168,
-  serialized_end=4316,
+  serialized_start=4173,
+  serialized_end=4321,
 )
 
 
@@ -1635,8 +1635,8 @@ _GETRELATIONSHIPSFORPEERSONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4319,
-  serialized_end=4556,
+  serialized_start=4324,
+  serialized_end=4561,
 )
 
 
@@ -1680,8 +1680,8 @@ _GETRELATIONSHIPSBYGENUSTYPEFORPEERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4559,
-  serialized_end=4791,
+  serialized_start=4564,
+  serialized_end=4796,
 )
 
 
@@ -1739,8 +1739,8 @@ _GETRELATIONSHIPSBYGENUSTYPEFORPEERSONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4794,
-  serialized_end=5115,
+  serialized_start=4799,
+  serialized_end=5120,
 )
 
 
@@ -1763,8 +1763,8 @@ _GETRELATIONSHIPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5117,
-  serialized_end=5142,
+  serialized_start=5122,
+  serialized_end=5147,
 )
 
 
@@ -1794,8 +1794,8 @@ _CANSEARCHRELATIONSHIPSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5144,
-  serialized_end=5207,
+  serialized_start=5149,
+  serialized_end=5212,
 )
 
 
@@ -1818,8 +1818,8 @@ _CANSEARCHRELATIONSHIPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5209,
-  serialized_end=5240,
+  serialized_start=5214,
+  serialized_end=5245,
 )
 
 
@@ -1849,8 +1849,8 @@ _GETRELATIONSHIPQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5242,
-  serialized_end=5342,
+  serialized_start=5247,
+  serialized_end=5347,
 )
 
 
@@ -1873,8 +1873,8 @@ _GETRELATIONSHIPQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5344,
-  serialized_end=5373,
+  serialized_start=5349,
+  serialized_end=5378,
 )
 
 
@@ -1904,8 +1904,8 @@ _GETRELATIONSHIPSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5375,
-  serialized_end=5480,
+  serialized_start=5380,
+  serialized_end=5485,
 )
 
 
@@ -1935,8 +1935,8 @@ _CANCREATERELATIONSHIPSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5482,
-  serialized_end=5545,
+  serialized_start=5487,
+  serialized_end=5550,
 )
 
 
@@ -1959,8 +1959,8 @@ _CANCREATERELATIONSHIPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5547,
-  serialized_end=5578,
+  serialized_start=5552,
+  serialized_end=5583,
 )
 
 
@@ -1990,8 +1990,8 @@ _CANCREATERELATIONSHIPWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5580,
-  serialized_end=5674,
+  serialized_start=5585,
+  serialized_end=5679,
 )
 
 
@@ -2021,8 +2021,8 @@ _CANCREATERELATIONSHIPWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5676,
-  serialized_end=5796,
+  serialized_start=5681,
+  serialized_end=5801,
 )
 
 
@@ -2052,8 +2052,8 @@ _GETRELATIONSHIPFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5798,
-  serialized_end=5904,
+  serialized_start=5803,
+  serialized_end=5909,
 )
 
 
@@ -2097,8 +2097,8 @@ _GETRELATIONSHIPFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5907,
-  serialized_end=6134,
+  serialized_start=5912,
+  serialized_end=6139,
 )
 
 
@@ -2128,8 +2128,8 @@ _CREATERELATIONSHIPREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6136,
-  serialized_end=6223,
+  serialized_start=6141,
+  serialized_end=6228,
 )
 
 
@@ -2159,8 +2159,8 @@ _CREATERELATIONSHIPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6225,
-  serialized_end=6323,
+  serialized_start=6230,
+  serialized_end=6328,
 )
 
 
@@ -2190,8 +2190,8 @@ _CANUPDATERELATIONSHIPSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6325,
-  serialized_end=6388,
+  serialized_start=6330,
+  serialized_end=6393,
 )
 
 
@@ -2214,8 +2214,8 @@ _CANUPDATERELATIONSHIPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6390,
-  serialized_end=6421,
+  serialized_start=6395,
+  serialized_end=6426,
 )
 
 
@@ -2245,8 +2245,8 @@ _GETRELATIONSHIPFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6423,
-  serialized_end=6529,
+  serialized_start=6428,
+  serialized_end=6534,
 )
 
 
@@ -2276,8 +2276,8 @@ _GETRELATIONSHIPFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6531,
-  serialized_end=6629,
+  serialized_start=6536,
+  serialized_end=6634,
 )
 
 
@@ -2300,8 +2300,8 @@ _UPDATERELATIONSHIPREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6631,
-  serialized_end=6656,
+  serialized_start=6636,
+  serialized_end=6661,
 )
 
 
@@ -2331,8 +2331,8 @@ _UPDATERELATIONSHIPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6658,
-  serialized_end=6756,
+  serialized_start=6663,
+  serialized_end=6761,
 )
 
 
@@ -2362,8 +2362,8 @@ _CANDELETERELATIONSHIPSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6758,
-  serialized_end=6821,
+  serialized_start=6763,
+  serialized_end=6826,
 )
 
 
@@ -2386,8 +2386,8 @@ _CANDELETERELATIONSHIPSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6823,
-  serialized_end=6854,
+  serialized_start=6828,
+  serialized_end=6859,
 )
 
 
@@ -2410,8 +2410,8 @@ _DELETERELATIONSHIPREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6856,
-  serialized_end=6881,
+  serialized_start=6861,
+  serialized_end=6886,
 )
 
 
@@ -2441,8 +2441,8 @@ _DELETERELATIONSHIPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6883,
-  serialized_end=6971,
+  serialized_start=6888,
+  serialized_end=6976,
 )
 
 
@@ -2472,8 +2472,8 @@ _CANMANAGERELATIONSHIPALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6973,
-  serialized_end=7049,
+  serialized_start=6978,
+  serialized_end=7054,
 )
 
 
@@ -2496,8 +2496,8 @@ _CANMANAGERELATIONSHIPALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7051,
-  serialized_end=7088,
+  serialized_start=7056,
+  serialized_end=7093,
 )
 
 
@@ -2520,8 +2520,8 @@ _ALIASRELATIONSHIPREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7090,
-  serialized_end=7114,
+  serialized_start=7095,
+  serialized_end=7119,
 )
 
 
@@ -2558,8 +2558,8 @@ _ALIASRELATIONSHIPREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7117,
-  serialized_end=7258,
+  serialized_start=7122,
+  serialized_end=7263,
 )
 
 
@@ -2589,8 +2589,8 @@ _CANLOOKUPFAMILIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7260,
-  serialized_end=7313,
+  serialized_start=7265,
+  serialized_end=7318,
 )
 
 
@@ -2613,8 +2613,8 @@ _CANLOOKUPFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7315,
-  serialized_end=7341,
+  serialized_start=7320,
+  serialized_end=7346,
 )
 
 
@@ -2637,8 +2637,8 @@ _USECOMPARATIVEFAMILYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7343,
-  serialized_end=7374,
+  serialized_start=7348,
+  serialized_end=7379,
 )
 
 
@@ -2661,8 +2661,8 @@ _USECOMPARATIVEFAMILYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7376,
-  serialized_end=7409,
+  serialized_start=7381,
+  serialized_end=7414,
 )
 
 
@@ -2685,8 +2685,8 @@ _USEPLENARYFAMILYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7411,
-  serialized_end=7438,
+  serialized_start=7416,
+  serialized_end=7443,
 )
 
 
@@ -2709,8 +2709,8 @@ _USEPLENARYFAMILYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7440,
-  serialized_end=7469,
+  serialized_start=7445,
+  serialized_end=7474,
 )
 
 
@@ -2740,8 +2740,8 @@ _GETFAMILIESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7471,
-  serialized_end=7552,
+  serialized_start=7476,
+  serialized_end=7557,
 )
 
 
@@ -2771,8 +2771,8 @@ _GETFAMILIESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7554,
-  serialized_end=7652,
+  serialized_start=7559,
+  serialized_end=7657,
 )
 
 
@@ -2802,8 +2802,8 @@ _GETFAMILIESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7654,
-  serialized_end=7758,
+  serialized_start=7659,
+  serialized_end=7763,
 )
 
 
@@ -2833,8 +2833,8 @@ _GETFAMILIESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7760,
-  serialized_end=7860,
+  serialized_start=7765,
+  serialized_end=7865,
 )
 
 
@@ -2864,8 +2864,8 @@ _GETFAMILIESBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7862,
-  serialized_end=7949,
+  serialized_start=7867,
+  serialized_end=7954,
 )
 
 
@@ -2888,8 +2888,8 @@ _GETFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7951,
-  serialized_end=7971,
+  serialized_start=7956,
+  serialized_end=7976,
 )
 
 
@@ -2919,8 +2919,8 @@ _CANCREATEFAMILIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7973,
-  serialized_end=8026,
+  serialized_start=7978,
+  serialized_end=8031,
 )
 
 
@@ -2943,8 +2943,8 @@ _CANCREATEFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8028,
-  serialized_end=8054,
+  serialized_start=8033,
+  serialized_end=8059,
 )
 
 
@@ -2974,8 +2974,8 @@ _CANCREATEFAMILYWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8056,
-  serialized_end=8138,
+  serialized_start=8061,
+  serialized_end=8143,
 )
 
 
@@ -3005,8 +3005,8 @@ _CANCREATEFAMILYWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8140,
-  serialized_end=8248,
+  serialized_start=8145,
+  serialized_end=8253,
 )
 
 
@@ -3036,8 +3036,8 @@ _GETFAMILYFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8250,
-  serialized_end=8338,
+  serialized_start=8255,
+  serialized_end=8343,
 )
 
 
@@ -3067,8 +3067,8 @@ _GETFAMILYFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8340,
-  serialized_end=8440,
+  serialized_start=8345,
+  serialized_end=8445,
 )
 
 
@@ -3098,8 +3098,8 @@ _CREATEFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8442,
-  serialized_end=8511,
+  serialized_start=8447,
+  serialized_end=8516,
 )
 
 
@@ -3129,8 +3129,8 @@ _CREATEFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8513,
-  serialized_end=8593,
+  serialized_start=8518,
+  serialized_end=8598,
 )
 
 
@@ -3160,8 +3160,8 @@ _CANUPDATEFAMILIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8595,
-  serialized_end=8648,
+  serialized_start=8600,
+  serialized_end=8653,
 )
 
 
@@ -3184,8 +3184,8 @@ _CANUPDATEFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8650,
-  serialized_end=8676,
+  serialized_start=8655,
+  serialized_end=8681,
 )
 
 
@@ -3215,8 +3215,8 @@ _GETFAMILYFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8678,
-  serialized_end=8766,
+  serialized_start=8683,
+  serialized_end=8771,
 )
 
 
@@ -3246,8 +3246,8 @@ _GETFAMILYFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8768,
-  serialized_end=8854,
+  serialized_start=8773,
+  serialized_end=8859,
 )
 
 
@@ -3270,8 +3270,8 @@ _UPDATEFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8856,
-  serialized_end=8875,
+  serialized_start=8861,
+  serialized_end=8880,
 )
 
 
@@ -3301,8 +3301,8 @@ _UPDATEFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8877,
-  serialized_end=8957,
+  serialized_start=8882,
+  serialized_end=8962,
 )
 
 
@@ -3332,8 +3332,8 @@ _CANDELETEFAMILIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8959,
-  serialized_end=9012,
+  serialized_start=8964,
+  serialized_end=9017,
 )
 
 
@@ -3356,8 +3356,8 @@ _CANDELETEFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9014,
-  serialized_end=9040,
+  serialized_start=9019,
+  serialized_end=9045,
 )
 
 
@@ -3380,8 +3380,8 @@ _DELETEFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9042,
-  serialized_end=9061,
+  serialized_start=9047,
+  serialized_end=9066,
 )
 
 
@@ -3411,8 +3411,8 @@ _DELETEFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9063,
-  serialized_end=9139,
+  serialized_start=9068,
+  serialized_end=9144,
 )
 
 
@@ -3442,8 +3442,8 @@ _CANMANAGEFAMILYALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9141,
-  serialized_end=9205,
+  serialized_start=9146,
+  serialized_end=9210,
 )
 
 
@@ -3466,8 +3466,8 @@ _CANMANAGEFAMILYALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9207,
-  serialized_end=9238,
+  serialized_start=9212,
+  serialized_end=9243,
 )
 
 
@@ -3490,8 +3490,8 @@ _ALIASFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9240,
-  serialized_end=9258,
+  serialized_start=9245,
+  serialized_end=9263,
 )
 
 
@@ -3528,8 +3528,8 @@ _ALIASFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9261,
-  serialized_end=9390,
+  serialized_start=9266,
+  serialized_end=9395,
 )
 
 
@@ -3559,8 +3559,8 @@ _GETFAMILYHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9392,
-  serialized_end=9467,
+  serialized_start=9397,
+  serialized_end=9472,
 )
 
 
@@ -3583,8 +3583,8 @@ _GETFAMILYHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9469,
-  serialized_end=9498,
+  serialized_start=9474,
+  serialized_end=9503,
 )
 
 
@@ -3614,8 +3614,8 @@ _GETFAMILYHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9500,
-  serialized_end=9578,
+  serialized_start=9505,
+  serialized_end=9583,
 )
 
 
@@ -3638,8 +3638,8 @@ _GETFAMILYHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9580,
-  serialized_end=9607,
+  serialized_start=9585,
+  serialized_end=9612,
 )
 
 
@@ -3669,8 +3669,8 @@ _CANACCESSFAMILYHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9609,
-  serialized_end=9677,
+  serialized_start=9614,
+  serialized_end=9682,
 )
 
 
@@ -3693,8 +3693,8 @@ _CANACCESSFAMILYHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9679,
-  serialized_end=9712,
+  serialized_start=9684,
+  serialized_end=9717,
 )
 
 
@@ -3717,8 +3717,8 @@ _GETROOTFAMILYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9714,
-  serialized_end=9739,
+  serialized_start=9719,
+  serialized_end=9744,
 )
 
 
@@ -3741,8 +3741,8 @@ _GETROOTFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9741,
-  serialized_end=9765,
+  serialized_start=9746,
+  serialized_end=9770,
 )
 
 
@@ -3772,8 +3772,8 @@ _HASPARENTFAMILIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9767,
-  serialized_end=9820,
+  serialized_start=9772,
+  serialized_end=9825,
 )
 
 
@@ -3803,8 +3803,8 @@ _HASPARENTFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9822,
-  serialized_end=9903,
+  serialized_start=9827,
+  serialized_end=9908,
 )
 
 
@@ -3834,8 +3834,8 @@ _ISPARENTOFFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9905,
-  serialized_end=9957,
+  serialized_start=9910,
+  serialized_end=9962,
 )
 
 
@@ -3872,8 +3872,8 @@ _ISPARENTOFFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9960,
-  serialized_end=10089,
+  serialized_start=9965,
+  serialized_end=10094,
 )
 
 
@@ -3903,8 +3903,8 @@ _GETPARENTFAMILYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10091,
-  serialized_end=10173,
+  serialized_start=10096,
+  serialized_end=10178,
 )
 
 
@@ -3934,8 +3934,8 @@ _GETPARENTFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10175,
-  serialized_end=10256,
+  serialized_start=10180,
+  serialized_end=10261,
 )
 
 
@@ -3965,8 +3965,8 @@ _ISANCESTOROFFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10258,
-  serialized_end=10314,
+  serialized_start=10263,
+  serialized_end=10319,
 )
 
 
@@ -4003,8 +4003,8 @@ _ISANCESTOROFFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10317,
-  serialized_end=10448,
+  serialized_start=10322,
+  serialized_end=10453,
 )
 
 
@@ -4034,8 +4034,8 @@ _HASCHILDFAMILIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10450,
-  serialized_end=10501,
+  serialized_start=10455,
+  serialized_end=10506,
 )
 
 
@@ -4065,8 +4065,8 @@ _HASCHILDFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10503,
-  serialized_end=10583,
+  serialized_start=10508,
+  serialized_end=10588,
 )
 
 
@@ -4096,8 +4096,8 @@ _ISCHILDOFFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10585,
-  serialized_end=10635,
+  serialized_start=10590,
+  serialized_end=10640,
 )
 
 
@@ -4134,8 +4134,8 @@ _ISCHILDOFFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10638,
-  serialized_end=10766,
+  serialized_start=10643,
+  serialized_end=10771,
 )
 
 
@@ -4165,8 +4165,8 @@ _GETCHILDFAMILYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10768,
-  serialized_end=10849,
+  serialized_start=10773,
+  serialized_end=10854,
 )
 
 
@@ -4196,8 +4196,8 @@ _GETCHILDFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10851,
-  serialized_end=10931,
+  serialized_start=10856,
+  serialized_end=10936,
 )
 
 
@@ -4227,8 +4227,8 @@ _ISDESCENDANTOFFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10933,
-  serialized_end=10993,
+  serialized_start=10938,
+  serialized_end=10998,
 )
 
 
@@ -4265,8 +4265,8 @@ _ISDESCENDANTOFFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10996,
-  serialized_end=11129,
+  serialized_start=11001,
+  serialized_end=11134,
 )
 
 
@@ -4296,8 +4296,8 @@ _GETFAMILYNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11131,
-  serialized_end=11197,
+  serialized_start=11136,
+  serialized_end=11202,
 )
 
 
@@ -4348,8 +4348,8 @@ _GETFAMILYNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11200,
-  serialized_end=11358,
+  serialized_start=11205,
+  serialized_end=11363,
 )
 
 
@@ -4379,8 +4379,8 @@ _GETFAMILYNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11360,
-  serialized_end=11440,
+  serialized_start=11365,
+  serialized_end=11445,
 )
 
 
@@ -4431,8 +4431,8 @@ _GETFAMILYNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11443,
-  serialized_end=11599,
+  serialized_start=11448,
+  serialized_end=11604,
 )
 
 
@@ -4462,8 +4462,8 @@ _CANMODIFYFAMILYHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11601,
-  serialized_end=11669,
+  serialized_start=11606,
+  serialized_end=11674,
 )
 
 
@@ -4486,8 +4486,8 @@ _CANMODIFYFAMILYHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11671,
-  serialized_end=11704,
+  serialized_start=11676,
+  serialized_end=11709,
 )
 
 
@@ -4510,8 +4510,8 @@ _ADDROOTFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11706,
-  serialized_end=11726,
+  serialized_start=11711,
+  serialized_end=11731,
 )
 
 
@@ -4541,8 +4541,8 @@ _ADDROOTFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11728,
-  serialized_end=11805,
+  serialized_start=11733,
+  serialized_end=11810,
 )
 
 
@@ -4565,8 +4565,8 @@ _REMOVEROOTFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11807,
-  serialized_end=11830,
+  serialized_start=11812,
+  serialized_end=11835,
 )
 
 
@@ -4596,8 +4596,8 @@ _REMOVEROOTFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11832,
-  serialized_end=11912,
+  serialized_start=11837,
+  serialized_end=11917,
 )
 
 
@@ -4620,8 +4620,8 @@ _ADDCHILDFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11914,
-  serialized_end=11935,
+  serialized_start=11919,
+  serialized_end=11940,
 )
 
 
@@ -4658,8 +4658,8 @@ _ADDCHILDFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11938,
-  serialized_end=12070,
+  serialized_start=11943,
+  serialized_end=12075,
 )
 
 
@@ -4682,8 +4682,8 @@ _REMOVECHILDFAMILYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12072,
-  serialized_end=12096,
+  serialized_start=12077,
+  serialized_end=12101,
 )
 
 
@@ -4720,8 +4720,8 @@ _REMOVECHILDFAMILYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12099,
-  serialized_end=12234,
+  serialized_start=12104,
+  serialized_end=12239,
 )
 
 
@@ -4744,8 +4744,8 @@ _REMOVECHILDFAMILIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12236,
-  serialized_end=12262,
+  serialized_start=12241,
+  serialized_end=12267,
 )
 
 
@@ -4775,8 +4775,8 @@ _REMOVECHILDFAMILIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12264,
-  serialized_end=12347,
+  serialized_start=12269,
+  serialized_end=12352,
 )
 
 _RELATIONSHIP.fields_by_name['destination'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -4784,10 +4784,10 @@ _RELATIONSHIP.fields_by_name['family'].message_type = dlkit_dot_proto_dot_osid__
 _RELATIONSHIP.fields_by_name['source'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _RELATIONSHIPLIST.fields_by_name['relationships'].message_type = _RELATIONSHIP
 _FAMILY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_FAMILY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_FAMILY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_FAMILY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_FAMILY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _FAMILY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_FAMILY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_FAMILY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _FAMILYLIST.fields_by_name['families'].message_type = _FAMILY
 _FAMILYNODELIST.fields_by_name['family_nodes'].message_type = _FAMILYNODE
 _GETFAMILYIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -6158,8 +6158,8 @@ _RELATIONSHIPLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=12350,
-  serialized_end=16408,
+  serialized_start=12355,
+  serialized_end=16413,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetFamilyId',
@@ -6425,8 +6425,8 @@ _RELATIONSHIPQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=16411,
-  serialized_end=17329,
+  serialized_start=16416,
+  serialized_end=17334,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetFamilyId',
@@ -6503,8 +6503,8 @@ _RELATIONSHIPADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=17332,
-  serialized_end=19158,
+  serialized_start=17337,
+  serialized_end=19163,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetFamilyId',
@@ -6635,8 +6635,8 @@ _FAMILYLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=19161,
-  serialized_end=20395,
+  serialized_start=19166,
+  serialized_end=20400,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupFamilies',
@@ -6740,8 +6740,8 @@ _FAMILYADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=20398,
-  serialized_end=21818,
+  serialized_start=20403,
+  serialized_end=21823,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateFamilies',
@@ -6854,8 +6854,8 @@ _FAMILYHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=21821,
-  serialized_end=24192,
+  serialized_start=21826,
+  serialized_end=24197,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetFamilyHierarchyId',
@@ -7040,8 +7040,8 @@ _FAMILYHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=24195,
-  serialized_end=25243,
+  serialized_start=24200,
+  serialized_end=25248,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetFamilyHierarchyId',

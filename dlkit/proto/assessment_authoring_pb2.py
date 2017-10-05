@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/assessment_authoring.proto',
   package='dlkit.proto.assessment_authoring',
   syntax='proto3',
-  serialized_pb=_b('\n&dlkit/proto/assessment_authoring.proto\x12 dlkit.proto.assessment_authoring\x1a-dlkit/primordium/calendaring/primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1c\x64lkit/proto/assessment.proto\x1a\x16\x64lkit/proto/osid.proto\"\xc5\x04\n\x0e\x41ssessmentPart\x12I\n\x0e\x61llocated_time\x18\x01 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12\x36\n\nassessment\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0f\x61ssessment_part\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x0e\n\x06weight\x18\n \x01(\x11\"\x15\n\x13\x41ssessmentPartQuery\"\x1e\n\x1c\x41ssessmentPartQueryInspector\"\x14\n\x12\x41ssessmentPartForm\"\x1b\n\x19\x41ssessmentPartSearchOrder\"\x16\n\x14\x41ssessmentPartSearch\"\x1d\n\x1b\x41ssessmentPartSearchResults\"`\n\x12\x41ssessmentPartList\x12J\n\x10\x61ssessment_parts\x18\x01 \x03(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\xfc\x01\n\x0cSequenceRule\x12;\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x12\n\ncumulative\x18\x03 \x01(\x08\x12\x15\n\rmaximum_score\x18\x04 \x01(\x11\x12\x15\n\rminimum_score\x18\x05 \x01(\x11\x12@\n\x14next_assessment_part\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11SequenceRuleQuery\"\x1c\n\x1aSequenceRuleQueryInspector\"\x12\n\x10SequenceRuleForm\"\x19\n\x17SequenceRuleSearchOrder\"\x14\n\x12SequenceRuleSearch\"\x1b\n\x19SequenceRuleSearchResults\"Z\n\x10SequenceRuleList\x12\x46\n\x0esequence_rules\x18\x01 \x03(\x0b\x32..dlkit.proto.assessment_authoring.SequenceRule\"B\n\x13SequenceRuleEnabler\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x1a\n\x18SequenceRuleEnablerQuery\"#\n!SequenceRuleEnablerQueryInspector\"\x19\n\x17SequenceRuleEnablerForm\"\x1f\n\x1dSequenceRuleEnablerFormRecord\" \n\x1eSequenceRuleEnablerSearchOrder\"\x1b\n\x19SequenceRuleEnablerSearch\"\"\n SequenceRuleEnablerSearchResults\"p\n\x17SequenceRuleEnablerList\x12U\n\x16sequence_rule_enablers\x18\x01 \x03(\x0b\x32\x35.dlkit.proto.assessment_authoring.SequenceRuleEnabler\"@\n\x0eGetBankIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetBankIdRequest\":\n\x0cGetBankReply\x12*\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"\x10\n\x0eGetBankRequest\"D\n\x1d\x43\x61nLookupAssessmentPartsReply\x12#\n\x1b\x63\x61n_lookup_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nLookupAssessmentPartsRequest\"\'\n%UseComparativeAssessmentPartViewReply\")\n\'UseComparativeAssessmentPartViewRequest\"#\n!UsePlenaryAssessmentPartViewReply\"%\n#UsePlenaryAssessmentPartViewRequest\"\x1b\n\x19UseFederatedBankViewReply\"\x1d\n\x1bUseFederatedBankViewRequest\"\x1a\n\x18UseIsolatedBankViewReply\"\x1c\n\x1aUseIsolatedBankViewRequest\"\"\n UseActiveAssessmentPartViewReply\"$\n\"UseActiveAssessmentPartViewRequest\"%\n#UseAnyStatusAssessmentPartViewReply\"\'\n%UseAnyStatusAssessmentPartViewRequest\"\'\n%UseSequesteredAssessmentPartViewReply\")\n\'UseSequesteredAssessmentPartViewRequest\")\n\'UseUnsequesteredAssessmentPartViewReply\"+\n)UseUnsequesteredAssessmentPartViewRequest\"c\n\x16GetAssessmentPartReply\x12I\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"Z\n\x18GetAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n\x1eGetAssessmentPartsByIdsRequest\x12?\n\x13\x61ssessment_part_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"r\n$GetAssessmentPartsByGenusTypeRequest\x12J\n\x1a\x61ssessment_part_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n*GetAssessmentPartsByParentGenusTypeRequest\x12\x45\n\x15\x61ssessment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"t\n%GetAssessmentPartsByRecordTypeRequest\x12K\n\x1b\x61ssessment_part_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n&GetAssessmentPartsForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetAssessmentPartsRequest\"D\n\x1d\x43\x61nSearchAssessmentPartsReply\x12#\n\x1b\x63\x61n_search_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nSearchAssessmentPartsRequest\"s\n\x1bGetAssessmentPartQueryReply\x12T\n\x15\x61ssessment_part_query\x18\x01 \x01(\x0b\x32\x35.dlkit.proto.assessment_authoring.AssessmentPartQuery\"\x1f\n\x1dGetAssessmentPartQueryRequest\"x\n GetAssessmentPartsByQueryRequest\x12T\n\x15\x61ssessment_part_query\x18\x01 \x01(\x0b\x32\x35.dlkit.proto.assessment_authoring.AssessmentPartQuery\"D\n\x1d\x43\x61nCreateAssessmentPartsReply\x12#\n\x1b\x63\x61n_create_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nCreateAssessmentPartsRequest\"c\n+CanCreateAssessmentPartWithRecordTypesReply\x12\x34\n,can_create_assessment_part_with_record_types\x18\x01 \x01(\x08\"}\n-CanCreateAssessmentPartWithRecordTypesRequest\x12L\n\x1c\x61ssessment_part_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x86\x01\n0GetAssessmentPartFormForCreateForAssessmentReply\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"\xbd\x01\n2GetAssessmentPartFormForCreateForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12L\n\x1c\x61ssessment_part_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n&CreateAssessmentPartForAssessmentReply\x12I\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"~\n(CreateAssessmentPartForAssessmentRequest\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"\x8a\x01\n4GetAssessmentPartFormForCreateForAssessmentPartReply\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"\xc6\x01\n6GetAssessmentPartFormForCreateForAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12L\n\x1c\x61ssessment_part_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"w\n*CreateAssessmentPartForAssessmentPartReply\x12I\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x82\x01\n,CreateAssessmentPartForAssessmentPartRequest\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"D\n\x1d\x43\x61nUpdateAssessmentPartsReply\x12#\n\x1b\x63\x61n_update_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nUpdateAssessmentPartsRequest\"y\n#GetAssessmentPartFormForUpdateReply\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"g\n%GetAssessmentPartFormForUpdateRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19UpdateAssessmentPartReply\"\xb1\x01\n\x1bUpdateAssessmentPartRequest\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\x12>\n\x12\x61ssessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nDeleteAssessmentPartsReply\x12#\n\x1b\x63\x61n_delete_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nDeleteAssessmentPartsRequest\"\x1b\n\x19\x44\x65leteAssessmentPartReply\"]\n\x1b\x44\x65leteAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n#CanManageAssessmentPartAliasesReply\x12*\n\"can_manage_assessment_part_aliases\x18\x01 \x01(\x08\"\'\n%CanManageAssessmentPartAliasesRequest\"\x1a\n\x18\x41liasAssessmentPartReply\"\x92\x01\n\x1a\x41liasAssessmentPartRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12>\n\x12\x61ssessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n(CanLookupAssessmentPartBankMappingsReply\x12\x30\n(can_lookup_assessment_part_bank_mappings\x18\x01 \x01(\x08\",\n*CanLookupAssessmentPartBankMappingsRequest\"+\n)UseComparativeAssessmentPartBankViewReply\"-\n+UseComparativeAssessmentPartBankViewRequest\"\'\n%UsePlenaryAssessmentPartBankViewReply\")\n\'UsePlenaryAssessmentPartBankViewRequest\"X\n!GetAssessmentPartIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1fGetAssessmentPartsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\"GetAssessmentPartIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n GetAssessmentPartsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n!GetBankIdsByAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n\x1fGetBanksByAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nAssignAssessmentPartsReply\x12#\n\x1b\x63\x61n_assign_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nAssignAssessmentPartsRequest\"R\n#CanAssignAssessmentPartsToBankReply\x12+\n#can_assign_assessment_parts_to_bank\x18\x01 \x01(\x08\"\\\n%CanAssignAssessmentPartsToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssignableBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa3\x01\n,GetAssignableBankIdsForAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1f\x41ssignAssessmentPartToBankReply\"\x98\x01\n!AssignAssessmentPartToBankRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"%\n#UnassignAssessmentPartFromBankReply\"\x9c\x01\n%UnassignAssessmentPartFromBankRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"#\n!ReassignAssessmentPartToBankReply\"\xd8\x01\n#ReassignAssessmentPartToBankRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rfrom_biank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n!CanAccessAssessmentPartItemsReply\x12(\n can_access_assessment_part_items\x18\x01 \x01(\x08\"%\n#CanAccessAssessmentPartItemsRequest\",\n*UseComparativeAsseessmentPartItemViewReply\".\n,UseComparativeAsseessmentPartItemViewRequest\"\'\n%UsePlenaryAssessmentPartItemViewReply\")\n\'UsePlenaryAssessmentPartItemViewRequest\"_\n\x1dGetAssessmentPartItemsRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1fGetAssessmentPartsByItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nDesignAssessmentPartsReply\x12#\n\x1b\x63\x61n_design_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nDesignAssessmentPartsRequest\"\x0e\n\x0c\x41\x64\x64ItemReply\"\x85\x01\n\x0e\x41\x64\x64ItemRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12MoveItemAheadReply\"\xc5\x01\n\x14MoveItemAheadRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13MoveItemBehindReply\"\xc6\x01\n\x15MoveItemBehindRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fOrderItemsReply\"\x89\x01\n\x11OrderItemsRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08item_ids\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fRemoveItemReply\"\x88\x01\n\x11RemoveItemRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1b\x43\x61nLookupSequenceRulesReply\x12!\n\x19\x63\x61n_lookup_sequence_rules\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nLookupSequenceRulesRequest\"%\n#UseComparativeSequenceRuleViewReply\"\'\n%UseComparativeSequenceRuleViewRequest\"!\n\x1fUsePlenarySequenceRuleViewReply\"#\n!UsePlenarySequenceRuleViewRequest\" \n\x1eUseActiveSequenceRuleViewReply\"\"\n UseActiveSequenceRuleViewRequest\"#\n!UseAnyStatusSequenceRuleViewReply\"%\n#UseAnyStatusSequenceRuleViewRequest\"]\n\x14GetSequenceRuleReply\x12\x45\n\rsequence_rule\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment_authoring.SequenceRule\"V\n\x16GetSequenceRuleRequest\x12<\n\x10sequence_rule_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1cGetSequenceRulesByIdsRequest\x12=\n\x11sequence_rule_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"n\n\"GetSequenceRulesByGenusTypeRequest\x12H\n\x18sequence_rule_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"t\n(GetSequenceRulesByParentGenusTypeRequest\x12H\n\x18sequence_rule_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"p\n#GetSequenceRulesByRecordTypeRequest\x12I\n\x19sequence_rule_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n(GetSequenceRulesForAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"s\n,GetSequenceRulesForNextAssessmentPartRequest\x12\x43\n\x17next_assessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb0\x01\n)GetSequenceRulesForAssessmentPartsRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x43\n\x17next_assessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n$GetSequenceRulesForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17GetSequenceRulesRequest\">\n\x1a\x43\x61nCreateSequenceRuleReply\x12 \n\x18\x63\x61n_create_sequence_rule\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateSequenceRuleRequest\"_\n)CanCreateSequenceRuleWithRecordTypesReply\x12\x32\n*can_create_sequence_rule_with_record_types\x18\x01 \x01(\x08\"y\n+CanCreateSequenceRuleWithRecordTypesRequest\x12J\n\x1asequence_rule_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n!GetSequenceRuleFormForCreateReply\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"\xf6\x01\n#GetSequenceRuleFormForCreateRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x43\n\x17next_assessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12J\n\x1asequence_rule_record_types\x18\x03 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"`\n\x17\x43reateSequenceRuleReply\x12\x45\n\rsequence_rule\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment_authoring.SequenceRule\"k\n\x19\x43reateSequenceRuleRequest\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"@\n\x1b\x43\x61nUpdateSequenceRulesReply\x12!\n\x19\x63\x61n_update_sequence_rules\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateSequenceRulesRequest\"s\n!GetSequenceRuleFormForUpdateReply\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"c\n#GetSequenceRuleFormForUpdateRequest\x12<\n\x10sequence_rule_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17UpdateSequenceRuleReply\"k\n\x19UpdateSequenceRuleRequest\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"@\n\x1b\x43\x61nDeleteSequenceRulesReply\x12!\n\x19\x63\x61n_delete_sequence_rules\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteSequenceRulesRequest\"\x19\n\x17\x44\x65leteSequenceRuleReply\"Y\n\x19\x44\x65leteSequenceRuleRequest\x12<\n\x10sequence_rule_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n!CanManageSequenceRuleAliasesReply\x12(\n can_manage_sequence_rule_aliases\x18\x01 \x01(\x08\"%\n#CanManageSequenceRuleAliasesRequest\"\x18\n\x16\x41liasSequenceRuleReply\"\x8e\x01\n\x18\x41liasSequenceRuleRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10sequence_rule_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nSequenceSequenceRulesReply\x12#\n\x1b\x63\x61n_sequence_sequence_rules\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nSequenceSequenceRulesRequest\"\x1c\n\x1aMoveSequenceRuleAheadReply\"\xd6\x01\n\x1cMoveSequenceRuleAheadRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10sequence_rule_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1bMoveSequenceRuleBehindReply\"\xd7\x01\n\x1dMoveSequenceRuleBehindRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10sequence_rule_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17OrderSequenceRulesReply\"\x9a\x01\n\x19OrderSequenceRulesRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11sequence_rule_ids\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xd4\x16\n\x1b\x41ssessmentPartLookupSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nLookupAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanLookupAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanLookupAssessmentPartsReply\"\x00\x12\xb8\x01\n UseComparativeAssessmentPartView\x12I.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartViewRequest\x1aG.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartViewReply\"\x00\x12\xac\x01\n\x1cUsePlenaryAssessmentPartView\x12\x45.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartViewRequest\x1a\x43.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartViewReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12\xa9\x01\n\x1bUseActiveAssessmentPartView\x12\x44.dlkit.proto.assessment_authoring.UseActiveAssessmentPartViewRequest\x1a\x42.dlkit.proto.assessment_authoring.UseActiveAssessmentPartViewReply\"\x00\x12\xb2\x01\n\x1eUseAnyStatusAssessmentPartView\x12G.dlkit.proto.assessment_authoring.UseAnyStatusAssessmentPartViewRequest\x1a\x45.dlkit.proto.assessment_authoring.UseAnyStatusAssessmentPartViewReply\"\x00\x12\xb8\x01\n UseSequesteredAssessmentPartView\x12I.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewRequest\x1aG.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewReply\"\x00\x12\xbe\x01\n\"UseUnsequesteredAssessmentPartView\x12K.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewRequest\x1aI.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewReply\"\x00\x12\x8b\x01\n\x11GetAssessmentPart\x12:.dlkit.proto.assessment_authoring.GetAssessmentPartRequest\x1a\x38.dlkit.proto.assessment_authoring.GetAssessmentPartReply\"\x00\x12\x91\x01\n\x17GetAssessmentPartsByIds\x12@.dlkit.proto.assessment_authoring.GetAssessmentPartsByIdsRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x9d\x01\n\x1dGetAssessmentPartsByGenusType\x12\x46.dlkit.proto.assessment_authoring.GetAssessmentPartsByGenusTypeRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\xa9\x01\n#GetAssessmentPartsByParentGenusType\x12L.dlkit.proto.assessment_authoring.GetAssessmentPartsByParentGenusTypeRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x9f\x01\n\x1eGetAssessmentPartsByRecordType\x12G.dlkit.proto.assessment_authoring.GetAssessmentPartsByRecordTypeRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\xa1\x01\n\x1fGetAssessmentPartsForAssessment\x12H.dlkit.proto.assessment_authoring.GetAssessmentPartsForAssessmentRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x87\x01\n\x12GetAssessmentParts\x12;.dlkit.proto.assessment_authoring.GetAssessmentPartsRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x32\xff\n\n\x1a\x41ssessmentPartQuerySession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nSearchAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanSearchAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanSearchAssessmentPartsReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12\xb8\x01\n UseSequesteredAssessmentPartView\x12I.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewRequest\x1aG.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewReply\"\x00\x12\xbe\x01\n\"UseUnsequesteredAssessmentPartView\x12K.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewRequest\x1aI.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewReply\"\x00\x12\x9a\x01\n\x16GetAssessmentPartQuery\x12?.dlkit.proto.assessment_authoring.GetAssessmentPartQueryRequest\x1a=.dlkit.proto.assessment_authoring.GetAssessmentPartQueryReply\"\x00\x12\x95\x01\n\x19GetAssessmentPartsByQuery\x12\x42.dlkit.proto.assessment_authoring.GetAssessmentPartsByQueryRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x32\xae\x14\n\x1a\x41ssessmentPartAdminSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nCreateAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanCreateAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanCreateAssessmentPartsReply\"\x00\x12\xca\x01\n&CanCreateAssessmentPartWithRecordTypes\x12O.dlkit.proto.assessment_authoring.CanCreateAssessmentPartWithRecordTypesRequest\x1aM.dlkit.proto.assessment_authoring.CanCreateAssessmentPartWithRecordTypesReply\"\x00\x12\xd9\x01\n+GetAssessmentPartFormForCreateForAssessment\x12T.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentRequest\x1aR.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentReply\"\x00\x12\xbb\x01\n!CreateAssessmentPartForAssessment\x12J.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentRequest\x1aH.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentReply\"\x00\x12\xe5\x01\n/GetAssessmentPartFormForCreateForAssessmentPart\x12X.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentPartRequest\x1aV.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentPartReply\"\x00\x12\xc7\x01\n%CreateAssessmentPartForAssessmentPart\x12N.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentPartRequest\x1aL.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentPartReply\"\x00\x12\xa0\x01\n\x18\x43\x61nUpdateAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanUpdateAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanUpdateAssessmentPartsReply\"\x00\x12\xb2\x01\n\x1eGetAssessmentPartFormForUpdate\x12G.dlkit.proto.assessment_authoring.GetAssessmentPartFormForUpdateRequest\x1a\x45.dlkit.proto.assessment_authoring.GetAssessmentPartFormForUpdateReply\"\x00\x12\x94\x01\n\x14UpdateAssessmentPart\x12=.dlkit.proto.assessment_authoring.UpdateAssessmentPartRequest\x1a;.dlkit.proto.assessment_authoring.UpdateAssessmentPartReply\"\x00\x12\xa0\x01\n\x18\x43\x61nDeleteAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanDeleteAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanDeleteAssessmentPartsReply\"\x00\x12\x94\x01\n\x14\x44\x65leteAssessmentPart\x12=.dlkit.proto.assessment_authoring.DeleteAssessmentPartRequest\x1a;.dlkit.proto.assessment_authoring.DeleteAssessmentPartReply\"\x00\x12\xb2\x01\n\x1e\x43\x61nManageAssessmentPartAliases\x12G.dlkit.proto.assessment_authoring.CanManageAssessmentPartAliasesRequest\x1a\x45.dlkit.proto.assessment_authoring.CanManageAssessmentPartAliasesReply\"\x00\x12\x91\x01\n\x13\x41liasAssessmentPart\x12<.dlkit.proto.assessment_authoring.AliasAssessmentPartRequest\x1a:.dlkit.proto.assessment_authoring.AliasAssessmentPartReply\"\x00\x32\xb6\x0b\n\x19\x41ssessmentPartBankSession\x12\xc1\x01\n#CanLookupAssessmentPartBankMappings\x12L.dlkit.proto.assessment_authoring.CanLookupAssessmentPartBankMappingsRequest\x1aJ.dlkit.proto.assessment_authoring.CanLookupAssessmentPartBankMappingsReply\"\x00\x12\xc4\x01\n$UseComparativeAssessmentPartBankView\x12M.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartBankViewRequest\x1aK.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartBankViewReply\"\x00\x12\xb8\x01\n UsePlenaryAssessmentPartBankView\x12I.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartBankViewRequest\x1aG.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartBankViewReply\"\x00\x12\x89\x01\n\x1aGetAssessmentPartIdsByBank\x12\x43.dlkit.proto.assessment_authoring.GetAssessmentPartIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x93\x01\n\x18GetAssessmentPartsByBank\x12\x41.dlkit.proto.assessment_authoring.GetAssessmentPartsByBankRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x8b\x01\n\x1bGetAssessmentPartIdsByBanks\x12\x44.dlkit.proto.assessment_authoring.GetAssessmentPartIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x95\x01\n\x19GetAssessmentPartsByBanks\x12\x42.dlkit.proto.assessment_authoring.GetAssessmentPartsByBanksRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x89\x01\n\x1aGetBankIdsByAssessmentPart\x12\x43.dlkit.proto.assessment_authoring.GetBankIdsByAssessmentPartRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x7f\n\x18GetBanksByAssessmentPart\x12\x41.dlkit.proto.assessment_authoring.GetBanksByAssessmentPartRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xab\t\n#AssessmentPartBankAssignmentSession\x12\xa0\x01\n\x18\x43\x61nAssignAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsReply\"\x00\x12\xb2\x01\n\x1e\x43\x61nAssignAssessmentPartsToBank\x12G.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsToBankRequest\x1a\x45.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsToBankReply\"\x00\x12}\n\x14GetAssignableBankIds\x12=.dlkit.proto.assessment_authoring.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9f\x01\n%GetAssignableBankIdsForAssessmentPart\x12N.dlkit.proto.assessment_authoring.GetAssignableBankIdsForAssessmentPartRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\xa6\x01\n\x1a\x41ssignAssessmentPartToBank\x12\x43.dlkit.proto.assessment_authoring.AssignAssessmentPartToBankRequest\x1a\x41.dlkit.proto.assessment_authoring.AssignAssessmentPartToBankReply\"\x00\x12\xb2\x01\n\x1eUnassignAssessmentPartFromBank\x12G.dlkit.proto.assessment_authoring.UnassignAssessmentPartFromBankRequest\x1a\x45.dlkit.proto.assessment_authoring.UnassignAssessmentPartFromBankReply\"\x00\x12\xac\x01\n\x1cReassignAssessmentPartToBank\x12\x45.dlkit.proto.assessment_authoring.ReassignAssessmentPartToBankRequest\x1a\x43.dlkit.proto.assessment_authoring.ReassignAssessmentPartToBankReply\"\x00\x32\xf1\n\n\x19\x41ssessmentPartItemSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xac\x01\n\x1c\x43\x61nAccessAssessmentPartItems\x12\x45.dlkit.proto.assessment_authoring.CanAccessAssessmentPartItemsRequest\x1a\x43.dlkit.proto.assessment_authoring.CanAccessAssessmentPartItemsReply\"\x00\x12\xc7\x01\n%UseComparativeAsseessmentPartItemView\x12N.dlkit.proto.assessment_authoring.UseComparativeAsseessmentPartItemViewRequest\x1aL.dlkit.proto.assessment_authoring.UseComparativeAsseessmentPartItemViewReply\"\x00\x12\xb8\x01\n UsePlenaryAssessmentPartItemView\x12I.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartItemViewRequest\x1aG.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartItemViewReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12{\n\x16GetAssessmentPartItems\x12?.dlkit.proto.assessment_authoring.GetAssessmentPartItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12\x93\x01\n\x18GetAssessmentPartsByItem\x12\x41.dlkit.proto.assessment_authoring.GetAssessmentPartsByItemRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x32\x8d\x08\n\x1f\x41ssessmentPartItemDesignSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nDesignAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanDesignAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanDesignAssessmentPartsReply\"\x00\x12m\n\x07\x41\x64\x64Item\x12\x30.dlkit.proto.assessment_authoring.AddItemRequest\x1a..dlkit.proto.assessment_authoring.AddItemReply\"\x00\x12\x7f\n\rMoveItemAhead\x12\x36.dlkit.proto.assessment_authoring.MoveItemAheadRequest\x1a\x34.dlkit.proto.assessment_authoring.MoveItemAheadReply\"\x00\x12\x82\x01\n\x0eMoveItemBehind\x12\x37.dlkit.proto.assessment_authoring.MoveItemBehindRequest\x1a\x35.dlkit.proto.assessment_authoring.MoveItemBehindReply\"\x00\x12v\n\nOrderItems\x12\x33.dlkit.proto.assessment_authoring.OrderItemsRequest\x1a\x31.dlkit.proto.assessment_authoring.OrderItemsReply\"\x00\x12v\n\nRemoveItem\x12\x33.dlkit.proto.assessment_authoring.RemoveItemRequest\x1a\x31.dlkit.proto.assessment_authoring.RemoveItemReply\"\x00\x32\x8a\x17\n\x19SequenceRuleLookupSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\x9a\x01\n\x16\x43\x61nLookupSequenceRules\x12?.dlkit.proto.assessment_authoring.CanLookupSequenceRulesRequest\x1a=.dlkit.proto.assessment_authoring.CanLookupSequenceRulesReply\"\x00\x12\xb2\x01\n\x1eUseComparativeSequenceRuleView\x12G.dlkit.proto.assessment_authoring.UseComparativeSequenceRuleViewRequest\x1a\x45.dlkit.proto.assessment_authoring.UseComparativeSequenceRuleViewReply\"\x00\x12\xa6\x01\n\x1aUsePlenarySequenceRuleView\x12\x43.dlkit.proto.assessment_authoring.UsePlenarySequenceRuleViewRequest\x1a\x41.dlkit.proto.assessment_authoring.UsePlenarySequenceRuleViewReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12\xa3\x01\n\x19UseActiveSequenceRuleView\x12\x42.dlkit.proto.assessment_authoring.UseActiveSequenceRuleViewRequest\x1a@.dlkit.proto.assessment_authoring.UseActiveSequenceRuleViewReply\"\x00\x12\xac\x01\n\x1cUseAnyStatusSequenceRuleView\x12\x45.dlkit.proto.assessment_authoring.UseAnyStatusSequenceRuleViewRequest\x1a\x43.dlkit.proto.assessment_authoring.UseAnyStatusSequenceRuleViewReply\"\x00\x12\x85\x01\n\x0fGetSequenceRule\x12\x38.dlkit.proto.assessment_authoring.GetSequenceRuleRequest\x1a\x36.dlkit.proto.assessment_authoring.GetSequenceRuleReply\"\x00\x12\x8b\x01\n\x15GetSequenceRulesByIds\x12>.dlkit.proto.assessment_authoring.GetSequenceRulesByIdsRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x97\x01\n\x1bGetSequenceRulesByGenusType\x12\x44.dlkit.proto.assessment_authoring.GetSequenceRulesByGenusTypeRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xa3\x01\n!GetSequenceRulesByParentGenusType\x12J.dlkit.proto.assessment_authoring.GetSequenceRulesByParentGenusTypeRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x99\x01\n\x1cGetSequenceRulesByRecordType\x12\x45.dlkit.proto.assessment_authoring.GetSequenceRulesByRecordTypeRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xa3\x01\n!GetSequenceRulesForAssessmentPart\x12J.dlkit.proto.assessment_authoring.GetSequenceRulesForAssessmentPartRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xab\x01\n%GetSequenceRulesForNextAssessmentPart\x12N.dlkit.proto.assessment_authoring.GetSequenceRulesForNextAssessmentPartRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xa5\x01\n\"GetSequenceRulesForAssessmentParts\x12K.dlkit.proto.assessment_authoring.GetSequenceRulesForAssessmentPartsRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x9b\x01\n\x1dGetSequenceRulesForAssessment\x12\x46.dlkit.proto.assessment_authoring.GetSequenceRulesForAssessmentRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x81\x01\n\x10GetSequenceRules\x12\x39.dlkit.proto.assessment_authoring.GetSequenceRulesRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x32\xd2\x14\n\x18SequenceRuleAdminSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\x97\x01\n\x15\x43\x61nCreateSequenceRule\x12>.dlkit.proto.assessment_authoring.CanCreateSequenceRuleRequest\x1a<.dlkit.proto.assessment_authoring.CanCreateSequenceRuleReply\"\x00\x12\xc4\x01\n$CanCreateSequenceRuleWithRecordTypes\x12M.dlkit.proto.assessment_authoring.CanCreateSequenceRuleWithRecordTypesRequest\x1aK.dlkit.proto.assessment_authoring.CanCreateSequenceRuleWithRecordTypesReply\"\x00\x12\xac\x01\n\x1cGetSequenceRuleFormForCreate\x12\x45.dlkit.proto.assessment_authoring.GetSequenceRuleFormForCreateRequest\x1a\x43.dlkit.proto.assessment_authoring.GetSequenceRuleFormForCreateReply\"\x00\x12\x8e\x01\n\x12\x43reateSequenceRule\x12;.dlkit.proto.assessment_authoring.CreateSequenceRuleRequest\x1a\x39.dlkit.proto.assessment_authoring.CreateSequenceRuleReply\"\x00\x12\x9a\x01\n\x16\x43\x61nUpdateSequenceRules\x12?.dlkit.proto.assessment_authoring.CanUpdateSequenceRulesRequest\x1a=.dlkit.proto.assessment_authoring.CanUpdateSequenceRulesReply\"\x00\x12\xac\x01\n\x1cGetSequenceRuleFormForUpdate\x12\x45.dlkit.proto.assessment_authoring.GetSequenceRuleFormForUpdateRequest\x1a\x43.dlkit.proto.assessment_authoring.GetSequenceRuleFormForUpdateReply\"\x00\x12\x8e\x01\n\x12UpdateSequenceRule\x12;.dlkit.proto.assessment_authoring.UpdateSequenceRuleRequest\x1a\x39.dlkit.proto.assessment_authoring.UpdateSequenceRuleReply\"\x00\x12\x9a\x01\n\x16\x43\x61nDeleteSequenceRules\x12?.dlkit.proto.assessment_authoring.CanDeleteSequenceRulesRequest\x1a=.dlkit.proto.assessment_authoring.CanDeleteSequenceRulesReply\"\x00\x12\x8e\x01\n\x12\x44\x65leteSequenceRule\x12;.dlkit.proto.assessment_authoring.DeleteSequenceRuleRequest\x1a\x39.dlkit.proto.assessment_authoring.DeleteSequenceRuleReply\"\x00\x12\xac\x01\n\x1c\x43\x61nManageSequenceRuleAliases\x12\x45.dlkit.proto.assessment_authoring.CanManageSequenceRuleAliasesRequest\x1a\x43.dlkit.proto.assessment_authoring.CanManageSequenceRuleAliasesReply\"\x00\x12\x8b\x01\n\x11\x41liasSequenceRule\x12:.dlkit.proto.assessment_authoring.AliasSequenceRuleRequest\x1a\x38.dlkit.proto.assessment_authoring.AliasSequenceRuleReply\"\x00\x12\xa0\x01\n\x18\x43\x61nSequenceSequenceRules\x12\x41.dlkit.proto.assessment_authoring.CanSequenceSequenceRulesRequest\x1a?.dlkit.proto.assessment_authoring.CanSequenceSequenceRulesReply\"\x00\x12\x97\x01\n\x15MoveSequenceRuleAhead\x12>.dlkit.proto.assessment_authoring.MoveSequenceRuleAheadRequest\x1a<.dlkit.proto.assessment_authoring.MoveSequenceRuleAheadReply\"\x00\x12\x9a\x01\n\x16MoveSequenceRuleBehind\x12?.dlkit.proto.assessment_authoring.MoveSequenceRuleBehindRequest\x1a=.dlkit.proto.assessment_authoring.MoveSequenceRuleBehindReply\"\x00\x12\x8e\x01\n\x12OrderSequenceRules\x12;.dlkit.proto.assessment_authoring.OrderSequenceRulesRequest\x1a\x39.dlkit.proto.assessment_authoring.OrderSequenceRulesReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n&dlkit/proto/assessment_authoring.proto\x12 dlkit.proto.assessment_authoring\x1a-dlkit/primordium/calendaring/primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1c\x64lkit/proto/assessment.proto\x1a\x16\x64lkit/proto/osid.proto\"\xca\x04\n\x0e\x41ssessmentPart\x12I\n\x0e\x61llocated_time\x18\x01 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12\x36\n\nassessment\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0f\x61ssessment_part\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x0e\n\x06weight\x18\n \x01(\x11\"\x15\n\x13\x41ssessmentPartQuery\"\x1e\n\x1c\x41ssessmentPartQueryInspector\"\x14\n\x12\x41ssessmentPartForm\"\x1b\n\x19\x41ssessmentPartSearchOrder\"\x16\n\x14\x41ssessmentPartSearch\"\x1d\n\x1b\x41ssessmentPartSearchResults\"`\n\x12\x41ssessmentPartList\x12J\n\x10\x61ssessment_parts\x18\x01 \x03(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\xfc\x01\n\x0cSequenceRule\x12;\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x12\n\ncumulative\x18\x03 \x01(\x08\x12\x15\n\rmaximum_score\x18\x04 \x01(\x11\x12\x15\n\rminimum_score\x18\x05 \x01(\x11\x12@\n\x14next_assessment_part\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11SequenceRuleQuery\"\x1c\n\x1aSequenceRuleQueryInspector\"\x12\n\x10SequenceRuleForm\"\x19\n\x17SequenceRuleSearchOrder\"\x14\n\x12SequenceRuleSearch\"\x1b\n\x19SequenceRuleSearchResults\"Z\n\x10SequenceRuleList\x12\x46\n\x0esequence_rules\x18\x01 \x03(\x0b\x32..dlkit.proto.assessment_authoring.SequenceRule\"B\n\x13SequenceRuleEnabler\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x1a\n\x18SequenceRuleEnablerQuery\"#\n!SequenceRuleEnablerQueryInspector\"\x19\n\x17SequenceRuleEnablerForm\"\x1f\n\x1dSequenceRuleEnablerFormRecord\" \n\x1eSequenceRuleEnablerSearchOrder\"\x1b\n\x19SequenceRuleEnablerSearch\"\"\n SequenceRuleEnablerSearchResults\"p\n\x17SequenceRuleEnablerList\x12U\n\x16sequence_rule_enablers\x18\x01 \x03(\x0b\x32\x35.dlkit.proto.assessment_authoring.SequenceRuleEnabler\"@\n\x0eGetBankIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetBankIdRequest\":\n\x0cGetBankReply\x12*\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"\x10\n\x0eGetBankRequest\"D\n\x1d\x43\x61nLookupAssessmentPartsReply\x12#\n\x1b\x63\x61n_lookup_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nLookupAssessmentPartsRequest\"\'\n%UseComparativeAssessmentPartViewReply\")\n\'UseComparativeAssessmentPartViewRequest\"#\n!UsePlenaryAssessmentPartViewReply\"%\n#UsePlenaryAssessmentPartViewRequest\"\x1b\n\x19UseFederatedBankViewReply\"\x1d\n\x1bUseFederatedBankViewRequest\"\x1a\n\x18UseIsolatedBankViewReply\"\x1c\n\x1aUseIsolatedBankViewRequest\"\"\n UseActiveAssessmentPartViewReply\"$\n\"UseActiveAssessmentPartViewRequest\"%\n#UseAnyStatusAssessmentPartViewReply\"\'\n%UseAnyStatusAssessmentPartViewRequest\"\'\n%UseSequesteredAssessmentPartViewReply\")\n\'UseSequesteredAssessmentPartViewRequest\")\n\'UseUnsequesteredAssessmentPartViewReply\"+\n)UseUnsequesteredAssessmentPartViewRequest\"c\n\x16GetAssessmentPartReply\x12I\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"Z\n\x18GetAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n\x1eGetAssessmentPartsByIdsRequest\x12?\n\x13\x61ssessment_part_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"r\n$GetAssessmentPartsByGenusTypeRequest\x12J\n\x1a\x61ssessment_part_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n*GetAssessmentPartsByParentGenusTypeRequest\x12\x45\n\x15\x61ssessment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"t\n%GetAssessmentPartsByRecordTypeRequest\x12K\n\x1b\x61ssessment_part_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n&GetAssessmentPartsForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetAssessmentPartsRequest\"D\n\x1d\x43\x61nSearchAssessmentPartsReply\x12#\n\x1b\x63\x61n_search_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nSearchAssessmentPartsRequest\"s\n\x1bGetAssessmentPartQueryReply\x12T\n\x15\x61ssessment_part_query\x18\x01 \x01(\x0b\x32\x35.dlkit.proto.assessment_authoring.AssessmentPartQuery\"\x1f\n\x1dGetAssessmentPartQueryRequest\"x\n GetAssessmentPartsByQueryRequest\x12T\n\x15\x61ssessment_part_query\x18\x01 \x01(\x0b\x32\x35.dlkit.proto.assessment_authoring.AssessmentPartQuery\"D\n\x1d\x43\x61nCreateAssessmentPartsReply\x12#\n\x1b\x63\x61n_create_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nCreateAssessmentPartsRequest\"c\n+CanCreateAssessmentPartWithRecordTypesReply\x12\x34\n,can_create_assessment_part_with_record_types\x18\x01 \x01(\x08\"}\n-CanCreateAssessmentPartWithRecordTypesRequest\x12L\n\x1c\x61ssessment_part_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x86\x01\n0GetAssessmentPartFormForCreateForAssessmentReply\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"\xbd\x01\n2GetAssessmentPartFormForCreateForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12L\n\x1c\x61ssessment_part_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n&CreateAssessmentPartForAssessmentReply\x12I\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"~\n(CreateAssessmentPartForAssessmentRequest\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"\x8a\x01\n4GetAssessmentPartFormForCreateForAssessmentPartReply\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"\xc6\x01\n6GetAssessmentPartFormForCreateForAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12L\n\x1c\x61ssessment_part_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"w\n*CreateAssessmentPartForAssessmentPartReply\x12I\n\x0f\x61ssessment_part\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x82\x01\n,CreateAssessmentPartForAssessmentPartRequest\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"D\n\x1d\x43\x61nUpdateAssessmentPartsReply\x12#\n\x1b\x63\x61n_update_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nUpdateAssessmentPartsRequest\"y\n#GetAssessmentPartFormForUpdateReply\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\"g\n%GetAssessmentPartFormForUpdateRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19UpdateAssessmentPartReply\"\xb1\x01\n\x1bUpdateAssessmentPartRequest\x12R\n\x14\x61ssessment_part_form\x18\x01 \x01(\x0b\x32\x34.dlkit.proto.assessment_authoring.AssessmentPartForm\x12>\n\x12\x61ssessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nDeleteAssessmentPartsReply\x12#\n\x1b\x63\x61n_delete_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nDeleteAssessmentPartsRequest\"\x1b\n\x19\x44\x65leteAssessmentPartReply\"]\n\x1b\x44\x65leteAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n#CanManageAssessmentPartAliasesReply\x12*\n\"can_manage_assessment_part_aliases\x18\x01 \x01(\x08\"\'\n%CanManageAssessmentPartAliasesRequest\"\x1a\n\x18\x41liasAssessmentPartReply\"\x92\x01\n\x1a\x41liasAssessmentPartRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12>\n\x12\x61ssessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n(CanLookupAssessmentPartBankMappingsReply\x12\x30\n(can_lookup_assessment_part_bank_mappings\x18\x01 \x01(\x08\",\n*CanLookupAssessmentPartBankMappingsRequest\"+\n)UseComparativeAssessmentPartBankViewReply\"-\n+UseComparativeAssessmentPartBankViewRequest\"\'\n%UsePlenaryAssessmentPartBankViewReply\")\n\'UsePlenaryAssessmentPartBankViewRequest\"X\n!GetAssessmentPartIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1fGetAssessmentPartsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\"GetAssessmentPartIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n GetAssessmentPartsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n!GetBankIdsByAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n\x1fGetBanksByAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nAssignAssessmentPartsReply\x12#\n\x1b\x63\x61n_assign_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nAssignAssessmentPartsRequest\"R\n#CanAssignAssessmentPartsToBankReply\x12+\n#can_assign_assessment_parts_to_bank\x18\x01 \x01(\x08\"\\\n%CanAssignAssessmentPartsToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssignableBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa3\x01\n,GetAssignableBankIdsForAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1f\x41ssignAssessmentPartToBankReply\"\x98\x01\n!AssignAssessmentPartToBankRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"%\n#UnassignAssessmentPartFromBankReply\"\x9c\x01\n%UnassignAssessmentPartFromBankRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"#\n!ReassignAssessmentPartToBankReply\"\xd8\x01\n#ReassignAssessmentPartToBankRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rfrom_biank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n!CanAccessAssessmentPartItemsReply\x12(\n can_access_assessment_part_items\x18\x01 \x01(\x08\"%\n#CanAccessAssessmentPartItemsRequest\",\n*UseComparativeAsseessmentPartItemViewReply\".\n,UseComparativeAsseessmentPartItemViewRequest\"\'\n%UsePlenaryAssessmentPartItemViewReply\")\n\'UsePlenaryAssessmentPartItemViewRequest\"_\n\x1dGetAssessmentPartItemsRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1fGetAssessmentPartsByItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nDesignAssessmentPartsReply\x12#\n\x1b\x63\x61n_design_assessment_parts\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nDesignAssessmentPartsRequest\"\x0e\n\x0c\x41\x64\x64ItemReply\"\x85\x01\n\x0e\x41\x64\x64ItemRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12MoveItemAheadReply\"\xc5\x01\n\x14MoveItemAheadRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13MoveItemBehindReply\"\xc6\x01\n\x15MoveItemBehindRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fOrderItemsReply\"\x89\x01\n\x11OrderItemsRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08item_ids\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fRemoveItemReply\"\x88\x01\n\x11RemoveItemRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1b\x43\x61nLookupSequenceRulesReply\x12!\n\x19\x63\x61n_lookup_sequence_rules\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nLookupSequenceRulesRequest\"%\n#UseComparativeSequenceRuleViewReply\"\'\n%UseComparativeSequenceRuleViewRequest\"!\n\x1fUsePlenarySequenceRuleViewReply\"#\n!UsePlenarySequenceRuleViewRequest\" \n\x1eUseActiveSequenceRuleViewReply\"\"\n UseActiveSequenceRuleViewRequest\"#\n!UseAnyStatusSequenceRuleViewReply\"%\n#UseAnyStatusSequenceRuleViewRequest\"]\n\x14GetSequenceRuleReply\x12\x45\n\rsequence_rule\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment_authoring.SequenceRule\"V\n\x16GetSequenceRuleRequest\x12<\n\x10sequence_rule_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1cGetSequenceRulesByIdsRequest\x12=\n\x11sequence_rule_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"n\n\"GetSequenceRulesByGenusTypeRequest\x12H\n\x18sequence_rule_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"t\n(GetSequenceRulesByParentGenusTypeRequest\x12H\n\x18sequence_rule_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"p\n#GetSequenceRulesByRecordTypeRequest\x12I\n\x19sequence_rule_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n(GetSequenceRulesForAssessmentPartRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"s\n,GetSequenceRulesForNextAssessmentPartRequest\x12\x43\n\x17next_assessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb0\x01\n)GetSequenceRulesForAssessmentPartsRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x43\n\x17next_assessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n$GetSequenceRulesForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17GetSequenceRulesRequest\">\n\x1a\x43\x61nCreateSequenceRuleReply\x12 \n\x18\x63\x61n_create_sequence_rule\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateSequenceRuleRequest\"_\n)CanCreateSequenceRuleWithRecordTypesReply\x12\x32\n*can_create_sequence_rule_with_record_types\x18\x01 \x01(\x08\"y\n+CanCreateSequenceRuleWithRecordTypesRequest\x12J\n\x1asequence_rule_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n!GetSequenceRuleFormForCreateReply\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"\xf6\x01\n#GetSequenceRuleFormForCreateRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x43\n\x17next_assessment_part_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12J\n\x1asequence_rule_record_types\x18\x03 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"`\n\x17\x43reateSequenceRuleReply\x12\x45\n\rsequence_rule\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment_authoring.SequenceRule\"k\n\x19\x43reateSequenceRuleRequest\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"@\n\x1b\x43\x61nUpdateSequenceRulesReply\x12!\n\x19\x63\x61n_update_sequence_rules\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateSequenceRulesRequest\"s\n!GetSequenceRuleFormForUpdateReply\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"c\n#GetSequenceRuleFormForUpdateRequest\x12<\n\x10sequence_rule_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17UpdateSequenceRuleReply\"k\n\x19UpdateSequenceRuleRequest\x12N\n\x12sequence_rule_form\x18\x01 \x01(\x0b\x32\x32.dlkit.proto.assessment_authoring.SequenceRuleForm\"@\n\x1b\x43\x61nDeleteSequenceRulesReply\x12!\n\x19\x63\x61n_delete_sequence_rules\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteSequenceRulesRequest\"\x19\n\x17\x44\x65leteSequenceRuleReply\"Y\n\x19\x44\x65leteSequenceRuleRequest\x12<\n\x10sequence_rule_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n!CanManageSequenceRuleAliasesReply\x12(\n can_manage_sequence_rule_aliases\x18\x01 \x01(\x08\"%\n#CanManageSequenceRuleAliasesRequest\"\x18\n\x16\x41liasSequenceRuleReply\"\x8e\x01\n\x18\x41liasSequenceRuleRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10sequence_rule_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nSequenceSequenceRulesReply\x12#\n\x1b\x63\x61n_sequence_sequence_rules\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nSequenceSequenceRulesRequest\"\x1c\n\x1aMoveSequenceRuleAheadReply\"\xd6\x01\n\x1cMoveSequenceRuleAheadRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10sequence_rule_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1bMoveSequenceRuleBehindReply\"\xd7\x01\n\x1dMoveSequenceRuleBehindRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10sequence_rule_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17OrderSequenceRulesReply\"\x9a\x01\n\x19OrderSequenceRulesRequest\x12>\n\x12\x61ssessment_part_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11sequence_rule_ids\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xd4\x16\n\x1b\x41ssessmentPartLookupSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nLookupAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanLookupAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanLookupAssessmentPartsReply\"\x00\x12\xb8\x01\n UseComparativeAssessmentPartView\x12I.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartViewRequest\x1aG.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartViewReply\"\x00\x12\xac\x01\n\x1cUsePlenaryAssessmentPartView\x12\x45.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartViewRequest\x1a\x43.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartViewReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12\xa9\x01\n\x1bUseActiveAssessmentPartView\x12\x44.dlkit.proto.assessment_authoring.UseActiveAssessmentPartViewRequest\x1a\x42.dlkit.proto.assessment_authoring.UseActiveAssessmentPartViewReply\"\x00\x12\xb2\x01\n\x1eUseAnyStatusAssessmentPartView\x12G.dlkit.proto.assessment_authoring.UseAnyStatusAssessmentPartViewRequest\x1a\x45.dlkit.proto.assessment_authoring.UseAnyStatusAssessmentPartViewReply\"\x00\x12\xb8\x01\n UseSequesteredAssessmentPartView\x12I.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewRequest\x1aG.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewReply\"\x00\x12\xbe\x01\n\"UseUnsequesteredAssessmentPartView\x12K.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewRequest\x1aI.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewReply\"\x00\x12\x8b\x01\n\x11GetAssessmentPart\x12:.dlkit.proto.assessment_authoring.GetAssessmentPartRequest\x1a\x38.dlkit.proto.assessment_authoring.GetAssessmentPartReply\"\x00\x12\x91\x01\n\x17GetAssessmentPartsByIds\x12@.dlkit.proto.assessment_authoring.GetAssessmentPartsByIdsRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x9d\x01\n\x1dGetAssessmentPartsByGenusType\x12\x46.dlkit.proto.assessment_authoring.GetAssessmentPartsByGenusTypeRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\xa9\x01\n#GetAssessmentPartsByParentGenusType\x12L.dlkit.proto.assessment_authoring.GetAssessmentPartsByParentGenusTypeRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x9f\x01\n\x1eGetAssessmentPartsByRecordType\x12G.dlkit.proto.assessment_authoring.GetAssessmentPartsByRecordTypeRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\xa1\x01\n\x1fGetAssessmentPartsForAssessment\x12H.dlkit.proto.assessment_authoring.GetAssessmentPartsForAssessmentRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x87\x01\n\x12GetAssessmentParts\x12;.dlkit.proto.assessment_authoring.GetAssessmentPartsRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x32\xff\n\n\x1a\x41ssessmentPartQuerySession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nSearchAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanSearchAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanSearchAssessmentPartsReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12\xb8\x01\n UseSequesteredAssessmentPartView\x12I.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewRequest\x1aG.dlkit.proto.assessment_authoring.UseSequesteredAssessmentPartViewReply\"\x00\x12\xbe\x01\n\"UseUnsequesteredAssessmentPartView\x12K.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewRequest\x1aI.dlkit.proto.assessment_authoring.UseUnsequesteredAssessmentPartViewReply\"\x00\x12\x9a\x01\n\x16GetAssessmentPartQuery\x12?.dlkit.proto.assessment_authoring.GetAssessmentPartQueryRequest\x1a=.dlkit.proto.assessment_authoring.GetAssessmentPartQueryReply\"\x00\x12\x95\x01\n\x19GetAssessmentPartsByQuery\x12\x42.dlkit.proto.assessment_authoring.GetAssessmentPartsByQueryRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x32\xae\x14\n\x1a\x41ssessmentPartAdminSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nCreateAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanCreateAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanCreateAssessmentPartsReply\"\x00\x12\xca\x01\n&CanCreateAssessmentPartWithRecordTypes\x12O.dlkit.proto.assessment_authoring.CanCreateAssessmentPartWithRecordTypesRequest\x1aM.dlkit.proto.assessment_authoring.CanCreateAssessmentPartWithRecordTypesReply\"\x00\x12\xd9\x01\n+GetAssessmentPartFormForCreateForAssessment\x12T.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentRequest\x1aR.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentReply\"\x00\x12\xbb\x01\n!CreateAssessmentPartForAssessment\x12J.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentRequest\x1aH.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentReply\"\x00\x12\xe5\x01\n/GetAssessmentPartFormForCreateForAssessmentPart\x12X.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentPartRequest\x1aV.dlkit.proto.assessment_authoring.GetAssessmentPartFormForCreateForAssessmentPartReply\"\x00\x12\xc7\x01\n%CreateAssessmentPartForAssessmentPart\x12N.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentPartRequest\x1aL.dlkit.proto.assessment_authoring.CreateAssessmentPartForAssessmentPartReply\"\x00\x12\xa0\x01\n\x18\x43\x61nUpdateAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanUpdateAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanUpdateAssessmentPartsReply\"\x00\x12\xb2\x01\n\x1eGetAssessmentPartFormForUpdate\x12G.dlkit.proto.assessment_authoring.GetAssessmentPartFormForUpdateRequest\x1a\x45.dlkit.proto.assessment_authoring.GetAssessmentPartFormForUpdateReply\"\x00\x12\x94\x01\n\x14UpdateAssessmentPart\x12=.dlkit.proto.assessment_authoring.UpdateAssessmentPartRequest\x1a;.dlkit.proto.assessment_authoring.UpdateAssessmentPartReply\"\x00\x12\xa0\x01\n\x18\x43\x61nDeleteAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanDeleteAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanDeleteAssessmentPartsReply\"\x00\x12\x94\x01\n\x14\x44\x65leteAssessmentPart\x12=.dlkit.proto.assessment_authoring.DeleteAssessmentPartRequest\x1a;.dlkit.proto.assessment_authoring.DeleteAssessmentPartReply\"\x00\x12\xb2\x01\n\x1e\x43\x61nManageAssessmentPartAliases\x12G.dlkit.proto.assessment_authoring.CanManageAssessmentPartAliasesRequest\x1a\x45.dlkit.proto.assessment_authoring.CanManageAssessmentPartAliasesReply\"\x00\x12\x91\x01\n\x13\x41liasAssessmentPart\x12<.dlkit.proto.assessment_authoring.AliasAssessmentPartRequest\x1a:.dlkit.proto.assessment_authoring.AliasAssessmentPartReply\"\x00\x32\xb6\x0b\n\x19\x41ssessmentPartBankSession\x12\xc1\x01\n#CanLookupAssessmentPartBankMappings\x12L.dlkit.proto.assessment_authoring.CanLookupAssessmentPartBankMappingsRequest\x1aJ.dlkit.proto.assessment_authoring.CanLookupAssessmentPartBankMappingsReply\"\x00\x12\xc4\x01\n$UseComparativeAssessmentPartBankView\x12M.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartBankViewRequest\x1aK.dlkit.proto.assessment_authoring.UseComparativeAssessmentPartBankViewReply\"\x00\x12\xb8\x01\n UsePlenaryAssessmentPartBankView\x12I.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartBankViewRequest\x1aG.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartBankViewReply\"\x00\x12\x89\x01\n\x1aGetAssessmentPartIdsByBank\x12\x43.dlkit.proto.assessment_authoring.GetAssessmentPartIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x93\x01\n\x18GetAssessmentPartsByBank\x12\x41.dlkit.proto.assessment_authoring.GetAssessmentPartsByBankRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x8b\x01\n\x1bGetAssessmentPartIdsByBanks\x12\x44.dlkit.proto.assessment_authoring.GetAssessmentPartIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x95\x01\n\x19GetAssessmentPartsByBanks\x12\x42.dlkit.proto.assessment_authoring.GetAssessmentPartsByBanksRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x12\x89\x01\n\x1aGetBankIdsByAssessmentPart\x12\x43.dlkit.proto.assessment_authoring.GetBankIdsByAssessmentPartRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x7f\n\x18GetBanksByAssessmentPart\x12\x41.dlkit.proto.assessment_authoring.GetBanksByAssessmentPartRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xab\t\n#AssessmentPartBankAssignmentSession\x12\xa0\x01\n\x18\x43\x61nAssignAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsReply\"\x00\x12\xb2\x01\n\x1e\x43\x61nAssignAssessmentPartsToBank\x12G.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsToBankRequest\x1a\x45.dlkit.proto.assessment_authoring.CanAssignAssessmentPartsToBankReply\"\x00\x12}\n\x14GetAssignableBankIds\x12=.dlkit.proto.assessment_authoring.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9f\x01\n%GetAssignableBankIdsForAssessmentPart\x12N.dlkit.proto.assessment_authoring.GetAssignableBankIdsForAssessmentPartRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\xa6\x01\n\x1a\x41ssignAssessmentPartToBank\x12\x43.dlkit.proto.assessment_authoring.AssignAssessmentPartToBankRequest\x1a\x41.dlkit.proto.assessment_authoring.AssignAssessmentPartToBankReply\"\x00\x12\xb2\x01\n\x1eUnassignAssessmentPartFromBank\x12G.dlkit.proto.assessment_authoring.UnassignAssessmentPartFromBankRequest\x1a\x45.dlkit.proto.assessment_authoring.UnassignAssessmentPartFromBankReply\"\x00\x12\xac\x01\n\x1cReassignAssessmentPartToBank\x12\x45.dlkit.proto.assessment_authoring.ReassignAssessmentPartToBankRequest\x1a\x43.dlkit.proto.assessment_authoring.ReassignAssessmentPartToBankReply\"\x00\x32\xf1\n\n\x19\x41ssessmentPartItemSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xac\x01\n\x1c\x43\x61nAccessAssessmentPartItems\x12\x45.dlkit.proto.assessment_authoring.CanAccessAssessmentPartItemsRequest\x1a\x43.dlkit.proto.assessment_authoring.CanAccessAssessmentPartItemsReply\"\x00\x12\xc7\x01\n%UseComparativeAsseessmentPartItemView\x12N.dlkit.proto.assessment_authoring.UseComparativeAsseessmentPartItemViewRequest\x1aL.dlkit.proto.assessment_authoring.UseComparativeAsseessmentPartItemViewReply\"\x00\x12\xb8\x01\n UsePlenaryAssessmentPartItemView\x12I.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartItemViewRequest\x1aG.dlkit.proto.assessment_authoring.UsePlenaryAssessmentPartItemViewReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12{\n\x16GetAssessmentPartItems\x12?.dlkit.proto.assessment_authoring.GetAssessmentPartItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12\x93\x01\n\x18GetAssessmentPartsByItem\x12\x41.dlkit.proto.assessment_authoring.GetAssessmentPartsByItemRequest\x1a\x30.dlkit.proto.assessment_authoring.AssessmentPart\"\x00\x30\x01\x32\x8d\x08\n\x1f\x41ssessmentPartItemDesignSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\xa0\x01\n\x18\x43\x61nDesignAssessmentParts\x12\x41.dlkit.proto.assessment_authoring.CanDesignAssessmentPartsRequest\x1a?.dlkit.proto.assessment_authoring.CanDesignAssessmentPartsReply\"\x00\x12m\n\x07\x41\x64\x64Item\x12\x30.dlkit.proto.assessment_authoring.AddItemRequest\x1a..dlkit.proto.assessment_authoring.AddItemReply\"\x00\x12\x7f\n\rMoveItemAhead\x12\x36.dlkit.proto.assessment_authoring.MoveItemAheadRequest\x1a\x34.dlkit.proto.assessment_authoring.MoveItemAheadReply\"\x00\x12\x82\x01\n\x0eMoveItemBehind\x12\x37.dlkit.proto.assessment_authoring.MoveItemBehindRequest\x1a\x35.dlkit.proto.assessment_authoring.MoveItemBehindReply\"\x00\x12v\n\nOrderItems\x12\x33.dlkit.proto.assessment_authoring.OrderItemsRequest\x1a\x31.dlkit.proto.assessment_authoring.OrderItemsReply\"\x00\x12v\n\nRemoveItem\x12\x33.dlkit.proto.assessment_authoring.RemoveItemRequest\x1a\x31.dlkit.proto.assessment_authoring.RemoveItemReply\"\x00\x32\x8a\x17\n\x19SequenceRuleLookupSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\x9a\x01\n\x16\x43\x61nLookupSequenceRules\x12?.dlkit.proto.assessment_authoring.CanLookupSequenceRulesRequest\x1a=.dlkit.proto.assessment_authoring.CanLookupSequenceRulesReply\"\x00\x12\xb2\x01\n\x1eUseComparativeSequenceRuleView\x12G.dlkit.proto.assessment_authoring.UseComparativeSequenceRuleViewRequest\x1a\x45.dlkit.proto.assessment_authoring.UseComparativeSequenceRuleViewReply\"\x00\x12\xa6\x01\n\x1aUsePlenarySequenceRuleView\x12\x43.dlkit.proto.assessment_authoring.UsePlenarySequenceRuleViewRequest\x1a\x41.dlkit.proto.assessment_authoring.UsePlenarySequenceRuleViewReply\"\x00\x12\x94\x01\n\x14UseFederatedBankView\x12=.dlkit.proto.assessment_authoring.UseFederatedBankViewRequest\x1a;.dlkit.proto.assessment_authoring.UseFederatedBankViewReply\"\x00\x12\x91\x01\n\x13UseIsolatedBankView\x12<.dlkit.proto.assessment_authoring.UseIsolatedBankViewRequest\x1a:.dlkit.proto.assessment_authoring.UseIsolatedBankViewReply\"\x00\x12\xa3\x01\n\x19UseActiveSequenceRuleView\x12\x42.dlkit.proto.assessment_authoring.UseActiveSequenceRuleViewRequest\x1a@.dlkit.proto.assessment_authoring.UseActiveSequenceRuleViewReply\"\x00\x12\xac\x01\n\x1cUseAnyStatusSequenceRuleView\x12\x45.dlkit.proto.assessment_authoring.UseAnyStatusSequenceRuleViewRequest\x1a\x43.dlkit.proto.assessment_authoring.UseAnyStatusSequenceRuleViewReply\"\x00\x12\x85\x01\n\x0fGetSequenceRule\x12\x38.dlkit.proto.assessment_authoring.GetSequenceRuleRequest\x1a\x36.dlkit.proto.assessment_authoring.GetSequenceRuleReply\"\x00\x12\x8b\x01\n\x15GetSequenceRulesByIds\x12>.dlkit.proto.assessment_authoring.GetSequenceRulesByIdsRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x97\x01\n\x1bGetSequenceRulesByGenusType\x12\x44.dlkit.proto.assessment_authoring.GetSequenceRulesByGenusTypeRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xa3\x01\n!GetSequenceRulesByParentGenusType\x12J.dlkit.proto.assessment_authoring.GetSequenceRulesByParentGenusTypeRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x99\x01\n\x1cGetSequenceRulesByRecordType\x12\x45.dlkit.proto.assessment_authoring.GetSequenceRulesByRecordTypeRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xa3\x01\n!GetSequenceRulesForAssessmentPart\x12J.dlkit.proto.assessment_authoring.GetSequenceRulesForAssessmentPartRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xab\x01\n%GetSequenceRulesForNextAssessmentPart\x12N.dlkit.proto.assessment_authoring.GetSequenceRulesForNextAssessmentPartRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\xa5\x01\n\"GetSequenceRulesForAssessmentParts\x12K.dlkit.proto.assessment_authoring.GetSequenceRulesForAssessmentPartsRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x9b\x01\n\x1dGetSequenceRulesForAssessment\x12\x46.dlkit.proto.assessment_authoring.GetSequenceRulesForAssessmentRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x12\x81\x01\n\x10GetSequenceRules\x12\x39.dlkit.proto.assessment_authoring.GetSequenceRulesRequest\x1a..dlkit.proto.assessment_authoring.SequenceRule\"\x00\x30\x01\x32\xd2\x14\n\x18SequenceRuleAdminSession\x12s\n\tGetBankId\x12\x32.dlkit.proto.assessment_authoring.GetBankIdRequest\x1a\x30.dlkit.proto.assessment_authoring.GetBankIdReply\"\x00\x12m\n\x07GetBank\x12\x30.dlkit.proto.assessment_authoring.GetBankRequest\x1a..dlkit.proto.assessment_authoring.GetBankReply\"\x00\x12\x97\x01\n\x15\x43\x61nCreateSequenceRule\x12>.dlkit.proto.assessment_authoring.CanCreateSequenceRuleRequest\x1a<.dlkit.proto.assessment_authoring.CanCreateSequenceRuleReply\"\x00\x12\xc4\x01\n$CanCreateSequenceRuleWithRecordTypes\x12M.dlkit.proto.assessment_authoring.CanCreateSequenceRuleWithRecordTypesRequest\x1aK.dlkit.proto.assessment_authoring.CanCreateSequenceRuleWithRecordTypesReply\"\x00\x12\xac\x01\n\x1cGetSequenceRuleFormForCreate\x12\x45.dlkit.proto.assessment_authoring.GetSequenceRuleFormForCreateRequest\x1a\x43.dlkit.proto.assessment_authoring.GetSequenceRuleFormForCreateReply\"\x00\x12\x8e\x01\n\x12\x43reateSequenceRule\x12;.dlkit.proto.assessment_authoring.CreateSequenceRuleRequest\x1a\x39.dlkit.proto.assessment_authoring.CreateSequenceRuleReply\"\x00\x12\x9a\x01\n\x16\x43\x61nUpdateSequenceRules\x12?.dlkit.proto.assessment_authoring.CanUpdateSequenceRulesRequest\x1a=.dlkit.proto.assessment_authoring.CanUpdateSequenceRulesReply\"\x00\x12\xac\x01\n\x1cGetSequenceRuleFormForUpdate\x12\x45.dlkit.proto.assessment_authoring.GetSequenceRuleFormForUpdateRequest\x1a\x43.dlkit.proto.assessment_authoring.GetSequenceRuleFormForUpdateReply\"\x00\x12\x8e\x01\n\x12UpdateSequenceRule\x12;.dlkit.proto.assessment_authoring.UpdateSequenceRuleRequest\x1a\x39.dlkit.proto.assessment_authoring.UpdateSequenceRuleReply\"\x00\x12\x9a\x01\n\x16\x43\x61nDeleteSequenceRules\x12?.dlkit.proto.assessment_authoring.CanDeleteSequenceRulesRequest\x1a=.dlkit.proto.assessment_authoring.CanDeleteSequenceRulesReply\"\x00\x12\x8e\x01\n\x12\x44\x65leteSequenceRule\x12;.dlkit.proto.assessment_authoring.DeleteSequenceRuleRequest\x1a\x39.dlkit.proto.assessment_authoring.DeleteSequenceRuleReply\"\x00\x12\xac\x01\n\x1c\x43\x61nManageSequenceRuleAliases\x12\x45.dlkit.proto.assessment_authoring.CanManageSequenceRuleAliasesRequest\x1a\x43.dlkit.proto.assessment_authoring.CanManageSequenceRuleAliasesReply\"\x00\x12\x8b\x01\n\x11\x41liasSequenceRule\x12:.dlkit.proto.assessment_authoring.AliasSequenceRuleRequest\x1a\x38.dlkit.proto.assessment_authoring.AliasSequenceRuleReply\"\x00\x12\xa0\x01\n\x18\x43\x61nSequenceSequenceRules\x12\x41.dlkit.proto.assessment_authoring.CanSequenceSequenceRulesRequest\x1a?.dlkit.proto.assessment_authoring.CanSequenceSequenceRulesReply\"\x00\x12\x97\x01\n\x15MoveSequenceRuleAhead\x12>.dlkit.proto.assessment_authoring.MoveSequenceRuleAheadRequest\x1a<.dlkit.proto.assessment_authoring.MoveSequenceRuleAheadReply\"\x00\x12\x9a\x01\n\x16MoveSequenceRuleBehind\x12?.dlkit.proto.assessment_authoring.MoveSequenceRuleBehindRequest\x1a=.dlkit.proto.assessment_authoring.MoveSequenceRuleBehindReply\"\x00\x12\x8e\x01\n\x12OrderSequenceRules\x12;.dlkit.proto.assessment_authoring.OrderSequenceRulesRequest\x1a\x39.dlkit.proto.assessment_authoring.OrderSequenceRulesReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_assessment__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,])
 
@@ -75,14 +75,14 @@ _ASSESSMENTPART = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment_authoring.AssessmentPart.displayName', index=5,
+      name='display_name', full_name='dlkit.proto.assessment_authoring.AssessmentPart.display_name', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment_authoring.AssessmentPart.genusTypeId', index=6,
+      name='genus_type_id', full_name='dlkit.proto.assessment_authoring.AssessmentPart.genus_type_id', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -96,7 +96,7 @@ _ASSESSMENTPART = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment_authoring.AssessmentPart.recordTypeIds', index=8,
+      name='record_type_ids', full_name='dlkit.proto.assessment_authoring.AssessmentPart.record_type_ids', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -122,7 +122,7 @@ _ASSESSMENTPART = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=298,
-  serialized_end=879,
+  serialized_end=884,
 )
 
 
@@ -145,8 +145,8 @@ _ASSESSMENTPARTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=881,
-  serialized_end=902,
+  serialized_start=886,
+  serialized_end=907,
 )
 
 
@@ -169,8 +169,8 @@ _ASSESSMENTPARTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=904,
-  serialized_end=934,
+  serialized_start=909,
+  serialized_end=939,
 )
 
 
@@ -193,8 +193,8 @@ _ASSESSMENTPARTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=936,
-  serialized_end=956,
+  serialized_start=941,
+  serialized_end=961,
 )
 
 
@@ -217,8 +217,8 @@ _ASSESSMENTPARTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=958,
-  serialized_end=985,
+  serialized_start=963,
+  serialized_end=990,
 )
 
 
@@ -241,8 +241,8 @@ _ASSESSMENTPARTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=987,
-  serialized_end=1009,
+  serialized_start=992,
+  serialized_end=1014,
 )
 
 
@@ -265,8 +265,8 @@ _ASSESSMENTPARTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1011,
-  serialized_end=1040,
+  serialized_start=1016,
+  serialized_end=1045,
 )
 
 
@@ -296,8 +296,8 @@ _ASSESSMENTPARTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1042,
-  serialized_end=1138,
+  serialized_start=1047,
+  serialized_end=1143,
 )
 
 
@@ -362,8 +362,8 @@ _SEQUENCERULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1141,
-  serialized_end=1393,
+  serialized_start=1146,
+  serialized_end=1398,
 )
 
 
@@ -386,8 +386,8 @@ _SEQUENCERULEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1395,
-  serialized_end=1414,
+  serialized_start=1400,
+  serialized_end=1419,
 )
 
 
@@ -410,8 +410,8 @@ _SEQUENCERULEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1416,
-  serialized_end=1444,
+  serialized_start=1421,
+  serialized_end=1449,
 )
 
 
@@ -434,8 +434,8 @@ _SEQUENCERULEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1446,
-  serialized_end=1464,
+  serialized_start=1451,
+  serialized_end=1469,
 )
 
 
@@ -458,8 +458,8 @@ _SEQUENCERULESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1466,
-  serialized_end=1491,
+  serialized_start=1471,
+  serialized_end=1496,
 )
 
 
@@ -482,8 +482,8 @@ _SEQUENCERULESEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1493,
-  serialized_end=1513,
+  serialized_start=1498,
+  serialized_end=1518,
 )
 
 
@@ -506,8 +506,8 @@ _SEQUENCERULESEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1515,
-  serialized_end=1542,
+  serialized_start=1520,
+  serialized_end=1547,
 )
 
 
@@ -537,8 +537,8 @@ _SEQUENCERULELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1544,
-  serialized_end=1634,
+  serialized_start=1549,
+  serialized_end=1639,
 )
 
 
@@ -568,8 +568,8 @@ _SEQUENCERULEENABLER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1636,
-  serialized_end=1702,
+  serialized_start=1641,
+  serialized_end=1707,
 )
 
 
@@ -592,8 +592,8 @@ _SEQUENCERULEENABLERQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1704,
-  serialized_end=1730,
+  serialized_start=1709,
+  serialized_end=1735,
 )
 
 
@@ -616,8 +616,8 @@ _SEQUENCERULEENABLERQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1732,
-  serialized_end=1767,
+  serialized_start=1737,
+  serialized_end=1772,
 )
 
 
@@ -640,8 +640,8 @@ _SEQUENCERULEENABLERFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1769,
-  serialized_end=1794,
+  serialized_start=1774,
+  serialized_end=1799,
 )
 
 
@@ -664,8 +664,8 @@ _SEQUENCERULEENABLERFORMRECORD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1796,
-  serialized_end=1827,
+  serialized_start=1801,
+  serialized_end=1832,
 )
 
 
@@ -688,8 +688,8 @@ _SEQUENCERULEENABLERSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1829,
-  serialized_end=1861,
+  serialized_start=1834,
+  serialized_end=1866,
 )
 
 
@@ -712,8 +712,8 @@ _SEQUENCERULEENABLERSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1863,
-  serialized_end=1890,
+  serialized_start=1868,
+  serialized_end=1895,
 )
 
 
@@ -736,8 +736,8 @@ _SEQUENCERULEENABLERSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1892,
-  serialized_end=1926,
+  serialized_start=1897,
+  serialized_end=1931,
 )
 
 
@@ -767,8 +767,8 @@ _SEQUENCERULEENABLERLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1928,
-  serialized_end=2040,
+  serialized_start=1933,
+  serialized_end=2045,
 )
 
 
@@ -798,8 +798,8 @@ _GETBANKIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2042,
-  serialized_end=2106,
+  serialized_start=2047,
+  serialized_end=2111,
 )
 
 
@@ -822,8 +822,8 @@ _GETBANKIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2108,
-  serialized_end=2126,
+  serialized_start=2113,
+  serialized_end=2131,
 )
 
 
@@ -853,8 +853,8 @@ _GETBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2128,
-  serialized_end=2186,
+  serialized_start=2133,
+  serialized_end=2191,
 )
 
 
@@ -877,8 +877,8 @@ _GETBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2188,
-  serialized_end=2204,
+  serialized_start=2193,
+  serialized_end=2209,
 )
 
 
@@ -908,8 +908,8 @@ _CANLOOKUPASSESSMENTPARTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2206,
-  serialized_end=2274,
+  serialized_start=2211,
+  serialized_end=2279,
 )
 
 
@@ -932,8 +932,8 @@ _CANLOOKUPASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2276,
-  serialized_end=2309,
+  serialized_start=2281,
+  serialized_end=2314,
 )
 
 
@@ -956,8 +956,8 @@ _USECOMPARATIVEASSESSMENTPARTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2311,
-  serialized_end=2350,
+  serialized_start=2316,
+  serialized_end=2355,
 )
 
 
@@ -980,8 +980,8 @@ _USECOMPARATIVEASSESSMENTPARTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2352,
-  serialized_end=2393,
+  serialized_start=2357,
+  serialized_end=2398,
 )
 
 
@@ -1004,8 +1004,8 @@ _USEPLENARYASSESSMENTPARTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2395,
-  serialized_end=2430,
+  serialized_start=2400,
+  serialized_end=2435,
 )
 
 
@@ -1028,8 +1028,8 @@ _USEPLENARYASSESSMENTPARTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2432,
-  serialized_end=2469,
+  serialized_start=2437,
+  serialized_end=2474,
 )
 
 
@@ -1052,8 +1052,8 @@ _USEFEDERATEDBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2471,
-  serialized_end=2498,
+  serialized_start=2476,
+  serialized_end=2503,
 )
 
 
@@ -1076,8 +1076,8 @@ _USEFEDERATEDBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2500,
-  serialized_end=2529,
+  serialized_start=2505,
+  serialized_end=2534,
 )
 
 
@@ -1100,8 +1100,8 @@ _USEISOLATEDBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2531,
-  serialized_end=2557,
+  serialized_start=2536,
+  serialized_end=2562,
 )
 
 
@@ -1124,8 +1124,8 @@ _USEISOLATEDBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2559,
-  serialized_end=2587,
+  serialized_start=2564,
+  serialized_end=2592,
 )
 
 
@@ -1148,8 +1148,8 @@ _USEACTIVEASSESSMENTPARTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2589,
-  serialized_end=2623,
+  serialized_start=2594,
+  serialized_end=2628,
 )
 
 
@@ -1172,8 +1172,8 @@ _USEACTIVEASSESSMENTPARTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2625,
-  serialized_end=2661,
+  serialized_start=2630,
+  serialized_end=2666,
 )
 
 
@@ -1196,8 +1196,8 @@ _USEANYSTATUSASSESSMENTPARTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2663,
-  serialized_end=2700,
+  serialized_start=2668,
+  serialized_end=2705,
 )
 
 
@@ -1220,8 +1220,8 @@ _USEANYSTATUSASSESSMENTPARTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2702,
-  serialized_end=2741,
+  serialized_start=2707,
+  serialized_end=2746,
 )
 
 
@@ -1244,8 +1244,8 @@ _USESEQUESTEREDASSESSMENTPARTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2743,
-  serialized_end=2782,
+  serialized_start=2748,
+  serialized_end=2787,
 )
 
 
@@ -1268,8 +1268,8 @@ _USESEQUESTEREDASSESSMENTPARTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2784,
-  serialized_end=2825,
+  serialized_start=2789,
+  serialized_end=2830,
 )
 
 
@@ -1292,8 +1292,8 @@ _USEUNSEQUESTEREDASSESSMENTPARTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2827,
-  serialized_end=2868,
+  serialized_start=2832,
+  serialized_end=2873,
 )
 
 
@@ -1316,8 +1316,8 @@ _USEUNSEQUESTEREDASSESSMENTPARTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2870,
-  serialized_end=2913,
+  serialized_start=2875,
+  serialized_end=2918,
 )
 
 
@@ -1347,8 +1347,8 @@ _GETASSESSMENTPARTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2915,
-  serialized_end=3014,
+  serialized_start=2920,
+  serialized_end=3019,
 )
 
 
@@ -1378,8 +1378,8 @@ _GETASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3016,
-  serialized_end=3106,
+  serialized_start=3021,
+  serialized_end=3111,
 )
 
 
@@ -1409,8 +1409,8 @@ _GETASSESSMENTPARTSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3108,
-  serialized_end=3205,
+  serialized_start=3113,
+  serialized_end=3210,
 )
 
 
@@ -1440,8 +1440,8 @@ _GETASSESSMENTPARTSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3207,
-  serialized_end=3321,
+  serialized_start=3212,
+  serialized_end=3326,
 )
 
 
@@ -1471,8 +1471,8 @@ _GETASSESSMENTPARTSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3323,
-  serialized_end=3438,
+  serialized_start=3328,
+  serialized_end=3443,
 )
 
 
@@ -1502,8 +1502,8 @@ _GETASSESSMENTPARTSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3440,
-  serialized_end=3556,
+  serialized_start=3445,
+  serialized_end=3561,
 )
 
 
@@ -1533,8 +1533,8 @@ _GETASSESSMENTPARTSFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3558,
-  serialized_end=3657,
+  serialized_start=3563,
+  serialized_end=3662,
 )
 
 
@@ -1557,8 +1557,8 @@ _GETASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3659,
-  serialized_end=3686,
+  serialized_start=3664,
+  serialized_end=3691,
 )
 
 
@@ -1588,8 +1588,8 @@ _CANSEARCHASSESSMENTPARTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3688,
-  serialized_end=3756,
+  serialized_start=3693,
+  serialized_end=3761,
 )
 
 
@@ -1612,8 +1612,8 @@ _CANSEARCHASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3758,
-  serialized_end=3791,
+  serialized_start=3763,
+  serialized_end=3796,
 )
 
 
@@ -1643,8 +1643,8 @@ _GETASSESSMENTPARTQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3793,
-  serialized_end=3908,
+  serialized_start=3798,
+  serialized_end=3913,
 )
 
 
@@ -1667,8 +1667,8 @@ _GETASSESSMENTPARTQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3910,
-  serialized_end=3941,
+  serialized_start=3915,
+  serialized_end=3946,
 )
 
 
@@ -1698,8 +1698,8 @@ _GETASSESSMENTPARTSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3943,
-  serialized_end=4063,
+  serialized_start=3948,
+  serialized_end=4068,
 )
 
 
@@ -1729,8 +1729,8 @@ _CANCREATEASSESSMENTPARTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4065,
-  serialized_end=4133,
+  serialized_start=4070,
+  serialized_end=4138,
 )
 
 
@@ -1753,8 +1753,8 @@ _CANCREATEASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4135,
-  serialized_end=4168,
+  serialized_start=4140,
+  serialized_end=4173,
 )
 
 
@@ -1784,8 +1784,8 @@ _CANCREATEASSESSMENTPARTWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4170,
-  serialized_end=4269,
+  serialized_start=4175,
+  serialized_end=4274,
 )
 
 
@@ -1815,8 +1815,8 @@ _CANCREATEASSESSMENTPARTWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4271,
-  serialized_end=4396,
+  serialized_start=4276,
+  serialized_end=4401,
 )
 
 
@@ -1846,8 +1846,8 @@ _GETASSESSMENTPARTFORMFORCREATEFORASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4399,
-  serialized_end=4533,
+  serialized_start=4404,
+  serialized_end=4538,
 )
 
 
@@ -1884,8 +1884,8 @@ _GETASSESSMENTPARTFORMFORCREATEFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4536,
-  serialized_end=4725,
+  serialized_start=4541,
+  serialized_end=4730,
 )
 
 
@@ -1915,8 +1915,8 @@ _CREATEASSESSMENTPARTFORASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4727,
-  serialized_end=4842,
+  serialized_start=4732,
+  serialized_end=4847,
 )
 
 
@@ -1946,8 +1946,8 @@ _CREATEASSESSMENTPARTFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4844,
-  serialized_end=4970,
+  serialized_start=4849,
+  serialized_end=4975,
 )
 
 
@@ -1977,8 +1977,8 @@ _GETASSESSMENTPARTFORMFORCREATEFORASSESSMENTPARTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4973,
-  serialized_end=5111,
+  serialized_start=4978,
+  serialized_end=5116,
 )
 
 
@@ -2015,8 +2015,8 @@ _GETASSESSMENTPARTFORMFORCREATEFORASSESSMENTPARTREQUEST = _descriptor.Descriptor
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5114,
-  serialized_end=5312,
+  serialized_start=5119,
+  serialized_end=5317,
 )
 
 
@@ -2046,8 +2046,8 @@ _CREATEASSESSMENTPARTFORASSESSMENTPARTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5314,
-  serialized_end=5433,
+  serialized_start=5319,
+  serialized_end=5438,
 )
 
 
@@ -2077,8 +2077,8 @@ _CREATEASSESSMENTPARTFORASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5436,
-  serialized_end=5566,
+  serialized_start=5441,
+  serialized_end=5571,
 )
 
 
@@ -2108,8 +2108,8 @@ _CANUPDATEASSESSMENTPARTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5568,
-  serialized_end=5636,
+  serialized_start=5573,
+  serialized_end=5641,
 )
 
 
@@ -2132,8 +2132,8 @@ _CANUPDATEASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5638,
-  serialized_end=5671,
+  serialized_start=5643,
+  serialized_end=5676,
 )
 
 
@@ -2163,8 +2163,8 @@ _GETASSESSMENTPARTFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5673,
-  serialized_end=5794,
+  serialized_start=5678,
+  serialized_end=5799,
 )
 
 
@@ -2194,8 +2194,8 @@ _GETASSESSMENTPARTFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5796,
-  serialized_end=5899,
+  serialized_start=5801,
+  serialized_end=5904,
 )
 
 
@@ -2218,8 +2218,8 @@ _UPDATEASSESSMENTPARTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5901,
-  serialized_end=5928,
+  serialized_start=5906,
+  serialized_end=5933,
 )
 
 
@@ -2256,8 +2256,8 @@ _UPDATEASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5931,
-  serialized_end=6108,
+  serialized_start=5936,
+  serialized_end=6113,
 )
 
 
@@ -2287,8 +2287,8 @@ _CANDELETEASSESSMENTPARTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6110,
-  serialized_end=6178,
+  serialized_start=6115,
+  serialized_end=6183,
 )
 
 
@@ -2311,8 +2311,8 @@ _CANDELETEASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6180,
-  serialized_end=6213,
+  serialized_start=6185,
+  serialized_end=6218,
 )
 
 
@@ -2335,8 +2335,8 @@ _DELETEASSESSMENTPARTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6215,
-  serialized_end=6242,
+  serialized_start=6220,
+  serialized_end=6247,
 )
 
 
@@ -2366,8 +2366,8 @@ _DELETEASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6244,
-  serialized_end=6337,
+  serialized_start=6249,
+  serialized_end=6342,
 )
 
 
@@ -2397,8 +2397,8 @@ _CANMANAGEASSESSMENTPARTALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6339,
-  serialized_end=6420,
+  serialized_start=6344,
+  serialized_end=6425,
 )
 
 
@@ -2421,8 +2421,8 @@ _CANMANAGEASSESSMENTPARTALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6422,
-  serialized_end=6461,
+  serialized_start=6427,
+  serialized_end=6466,
 )
 
 
@@ -2445,8 +2445,8 @@ _ALIASASSESSMENTPARTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6463,
-  serialized_end=6489,
+  serialized_start=6468,
+  serialized_end=6494,
 )
 
 
@@ -2483,8 +2483,8 @@ _ALIASASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6492,
-  serialized_end=6638,
+  serialized_start=6497,
+  serialized_end=6643,
 )
 
 
@@ -2514,8 +2514,8 @@ _CANLOOKUPASSESSMENTPARTBANKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6640,
-  serialized_end=6732,
+  serialized_start=6645,
+  serialized_end=6737,
 )
 
 
@@ -2538,8 +2538,8 @@ _CANLOOKUPASSESSMENTPARTBANKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6734,
-  serialized_end=6778,
+  serialized_start=6739,
+  serialized_end=6783,
 )
 
 
@@ -2562,8 +2562,8 @@ _USECOMPARATIVEASSESSMENTPARTBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6780,
-  serialized_end=6823,
+  serialized_start=6785,
+  serialized_end=6828,
 )
 
 
@@ -2586,8 +2586,8 @@ _USECOMPARATIVEASSESSMENTPARTBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6825,
-  serialized_end=6870,
+  serialized_start=6830,
+  serialized_end=6875,
 )
 
 
@@ -2610,8 +2610,8 @@ _USEPLENARYASSESSMENTPARTBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6872,
-  serialized_end=6911,
+  serialized_start=6877,
+  serialized_end=6916,
 )
 
 
@@ -2634,8 +2634,8 @@ _USEPLENARYASSESSMENTPARTBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6913,
-  serialized_end=6954,
+  serialized_start=6918,
+  serialized_end=6959,
 )
 
 
@@ -2665,8 +2665,8 @@ _GETASSESSMENTPARTIDSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6956,
-  serialized_end=7044,
+  serialized_start=6961,
+  serialized_end=7049,
 )
 
 
@@ -2696,8 +2696,8 @@ _GETASSESSMENTPARTSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7046,
-  serialized_end=7132,
+  serialized_start=7051,
+  serialized_end=7137,
 )
 
 
@@ -2727,8 +2727,8 @@ _GETASSESSMENTPARTIDSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7134,
-  serialized_end=7224,
+  serialized_start=7139,
+  serialized_end=7229,
 )
 
 
@@ -2758,8 +2758,8 @@ _GETASSESSMENTPARTSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7226,
-  serialized_end=7314,
+  serialized_start=7231,
+  serialized_end=7319,
 )
 
 
@@ -2789,8 +2789,8 @@ _GETBANKIDSBYASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7316,
-  serialized_end=7415,
+  serialized_start=7321,
+  serialized_end=7420,
 )
 
 
@@ -2820,8 +2820,8 @@ _GETBANKSBYASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7417,
-  serialized_end=7514,
+  serialized_start=7422,
+  serialized_end=7519,
 )
 
 
@@ -2851,8 +2851,8 @@ _CANASSIGNASSESSMENTPARTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7516,
-  serialized_end=7584,
+  serialized_start=7521,
+  serialized_end=7589,
 )
 
 
@@ -2875,8 +2875,8 @@ _CANASSIGNASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7586,
-  serialized_end=7619,
+  serialized_start=7591,
+  serialized_end=7624,
 )
 
 
@@ -2906,8 +2906,8 @@ _CANASSIGNASSESSMENTPARTSTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7621,
-  serialized_end=7703,
+  serialized_start=7626,
+  serialized_end=7708,
 )
 
 
@@ -2937,8 +2937,8 @@ _CANASSIGNASSESSMENTPARTSTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7705,
-  serialized_end=7797,
+  serialized_start=7710,
+  serialized_end=7802,
 )
 
 
@@ -2968,8 +2968,8 @@ _GETASSIGNABLEBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7799,
-  serialized_end=7881,
+  serialized_start=7804,
+  serialized_end=7886,
 )
 
 
@@ -3006,8 +3006,8 @@ _GETASSIGNABLEBANKIDSFORASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7884,
-  serialized_end=8047,
+  serialized_start=7889,
+  serialized_end=8052,
 )
 
 
@@ -3030,8 +3030,8 @@ _ASSIGNASSESSMENTPARTTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8049,
-  serialized_end=8082,
+  serialized_start=8054,
+  serialized_end=8087,
 )
 
 
@@ -3068,8 +3068,8 @@ _ASSIGNASSESSMENTPARTTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8085,
-  serialized_end=8237,
+  serialized_start=8090,
+  serialized_end=8242,
 )
 
 
@@ -3092,8 +3092,8 @@ _UNASSIGNASSESSMENTPARTFROMBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8239,
-  serialized_end=8276,
+  serialized_start=8244,
+  serialized_end=8281,
 )
 
 
@@ -3130,8 +3130,8 @@ _UNASSIGNASSESSMENTPARTFROMBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8279,
-  serialized_end=8435,
+  serialized_start=8284,
+  serialized_end=8440,
 )
 
 
@@ -3154,8 +3154,8 @@ _REASSIGNASSESSMENTPARTTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8437,
-  serialized_end=8472,
+  serialized_start=8442,
+  serialized_end=8477,
 )
 
 
@@ -3199,8 +3199,8 @@ _REASSIGNASSESSMENTPARTTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8475,
-  serialized_end=8691,
+  serialized_start=8480,
+  serialized_end=8696,
 )
 
 
@@ -3230,8 +3230,8 @@ _CANACCESSASSESSMENTPARTITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8693,
-  serialized_end=8770,
+  serialized_start=8698,
+  serialized_end=8775,
 )
 
 
@@ -3254,8 +3254,8 @@ _CANACCESSASSESSMENTPARTITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8772,
-  serialized_end=8809,
+  serialized_start=8777,
+  serialized_end=8814,
 )
 
 
@@ -3278,8 +3278,8 @@ _USECOMPARATIVEASSEESSMENTPARTITEMVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8811,
-  serialized_end=8855,
+  serialized_start=8816,
+  serialized_end=8860,
 )
 
 
@@ -3302,8 +3302,8 @@ _USECOMPARATIVEASSEESSMENTPARTITEMVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8857,
-  serialized_end=8903,
+  serialized_start=8862,
+  serialized_end=8908,
 )
 
 
@@ -3326,8 +3326,8 @@ _USEPLENARYASSESSMENTPARTITEMVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8905,
-  serialized_end=8944,
+  serialized_start=8910,
+  serialized_end=8949,
 )
 
 
@@ -3350,8 +3350,8 @@ _USEPLENARYASSESSMENTPARTITEMVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8946,
-  serialized_end=8987,
+  serialized_start=8951,
+  serialized_end=8992,
 )
 
 
@@ -3381,8 +3381,8 @@ _GETASSESSMENTPARTITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8989,
-  serialized_end=9084,
+  serialized_start=8994,
+  serialized_end=9089,
 )
 
 
@@ -3412,8 +3412,8 @@ _GETASSESSMENTPARTSBYITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9086,
-  serialized_end=9172,
+  serialized_start=9091,
+  serialized_end=9177,
 )
 
 
@@ -3443,8 +3443,8 @@ _CANDESIGNASSESSMENTPARTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9174,
-  serialized_end=9242,
+  serialized_start=9179,
+  serialized_end=9247,
 )
 
 
@@ -3467,8 +3467,8 @@ _CANDESIGNASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9244,
-  serialized_end=9277,
+  serialized_start=9249,
+  serialized_end=9282,
 )
 
 
@@ -3491,8 +3491,8 @@ _ADDITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9279,
-  serialized_end=9293,
+  serialized_start=9284,
+  serialized_end=9298,
 )
 
 
@@ -3529,8 +3529,8 @@ _ADDITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9296,
-  serialized_end=9429,
+  serialized_start=9301,
+  serialized_end=9434,
 )
 
 
@@ -3553,8 +3553,8 @@ _MOVEITEMAHEADREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9431,
-  serialized_end=9451,
+  serialized_start=9436,
+  serialized_end=9456,
 )
 
 
@@ -3598,8 +3598,8 @@ _MOVEITEMAHEADREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9454,
-  serialized_end=9651,
+  serialized_start=9459,
+  serialized_end=9656,
 )
 
 
@@ -3622,8 +3622,8 @@ _MOVEITEMBEHINDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9653,
-  serialized_end=9674,
+  serialized_start=9658,
+  serialized_end=9679,
 )
 
 
@@ -3667,8 +3667,8 @@ _MOVEITEMBEHINDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9677,
-  serialized_end=9875,
+  serialized_start=9682,
+  serialized_end=9880,
 )
 
 
@@ -3691,8 +3691,8 @@ _ORDERITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9877,
-  serialized_end=9894,
+  serialized_start=9882,
+  serialized_end=9899,
 )
 
 
@@ -3729,8 +3729,8 @@ _ORDERITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9897,
-  serialized_end=10034,
+  serialized_start=9902,
+  serialized_end=10039,
 )
 
 
@@ -3753,8 +3753,8 @@ _REMOVEITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10036,
-  serialized_end=10053,
+  serialized_start=10041,
+  serialized_end=10058,
 )
 
 
@@ -3791,8 +3791,8 @@ _REMOVEITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10056,
-  serialized_end=10192,
+  serialized_start=10061,
+  serialized_end=10197,
 )
 
 
@@ -3822,8 +3822,8 @@ _CANLOOKUPSEQUENCERULESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10194,
-  serialized_end=10258,
+  serialized_start=10199,
+  serialized_end=10263,
 )
 
 
@@ -3846,8 +3846,8 @@ _CANLOOKUPSEQUENCERULESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10260,
-  serialized_end=10291,
+  serialized_start=10265,
+  serialized_end=10296,
 )
 
 
@@ -3870,8 +3870,8 @@ _USECOMPARATIVESEQUENCERULEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10293,
-  serialized_end=10330,
+  serialized_start=10298,
+  serialized_end=10335,
 )
 
 
@@ -3894,8 +3894,8 @@ _USECOMPARATIVESEQUENCERULEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10332,
-  serialized_end=10371,
+  serialized_start=10337,
+  serialized_end=10376,
 )
 
 
@@ -3918,8 +3918,8 @@ _USEPLENARYSEQUENCERULEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10373,
-  serialized_end=10406,
+  serialized_start=10378,
+  serialized_end=10411,
 )
 
 
@@ -3942,8 +3942,8 @@ _USEPLENARYSEQUENCERULEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10408,
-  serialized_end=10443,
+  serialized_start=10413,
+  serialized_end=10448,
 )
 
 
@@ -3966,8 +3966,8 @@ _USEACTIVESEQUENCERULEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10445,
-  serialized_end=10477,
+  serialized_start=10450,
+  serialized_end=10482,
 )
 
 
@@ -3990,8 +3990,8 @@ _USEACTIVESEQUENCERULEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10479,
-  serialized_end=10513,
+  serialized_start=10484,
+  serialized_end=10518,
 )
 
 
@@ -4014,8 +4014,8 @@ _USEANYSTATUSSEQUENCERULEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10515,
-  serialized_end=10550,
+  serialized_start=10520,
+  serialized_end=10555,
 )
 
 
@@ -4038,8 +4038,8 @@ _USEANYSTATUSSEQUENCERULEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10552,
-  serialized_end=10589,
+  serialized_start=10557,
+  serialized_end=10594,
 )
 
 
@@ -4069,8 +4069,8 @@ _GETSEQUENCERULEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10591,
-  serialized_end=10684,
+  serialized_start=10596,
+  serialized_end=10689,
 )
 
 
@@ -4100,8 +4100,8 @@ _GETSEQUENCERULEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10686,
-  serialized_end=10772,
+  serialized_start=10691,
+  serialized_end=10777,
 )
 
 
@@ -4131,8 +4131,8 @@ _GETSEQUENCERULESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10774,
-  serialized_end=10867,
+  serialized_start=10779,
+  serialized_end=10872,
 )
 
 
@@ -4162,8 +4162,8 @@ _GETSEQUENCERULESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10869,
-  serialized_end=10979,
+  serialized_start=10874,
+  serialized_end=10984,
 )
 
 
@@ -4193,8 +4193,8 @@ _GETSEQUENCERULESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10981,
-  serialized_end=11097,
+  serialized_start=10986,
+  serialized_end=11102,
 )
 
 
@@ -4224,8 +4224,8 @@ _GETSEQUENCERULESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11099,
-  serialized_end=11211,
+  serialized_start=11104,
+  serialized_end=11216,
 )
 
 
@@ -4255,8 +4255,8 @@ _GETSEQUENCERULESFORASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11213,
-  serialized_end=11319,
+  serialized_start=11218,
+  serialized_end=11324,
 )
 
 
@@ -4286,8 +4286,8 @@ _GETSEQUENCERULESFORNEXTASSESSMENTPARTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11321,
-  serialized_end=11436,
+  serialized_start=11326,
+  serialized_end=11441,
 )
 
 
@@ -4324,8 +4324,8 @@ _GETSEQUENCERULESFORASSESSMENTPARTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11439,
-  serialized_end=11615,
+  serialized_start=11444,
+  serialized_end=11620,
 )
 
 
@@ -4355,8 +4355,8 @@ _GETSEQUENCERULESFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11617,
-  serialized_end=11714,
+  serialized_start=11622,
+  serialized_end=11719,
 )
 
 
@@ -4379,8 +4379,8 @@ _GETSEQUENCERULESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11716,
-  serialized_end=11741,
+  serialized_start=11721,
+  serialized_end=11746,
 )
 
 
@@ -4410,8 +4410,8 @@ _CANCREATESEQUENCERULEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11743,
-  serialized_end=11805,
+  serialized_start=11748,
+  serialized_end=11810,
 )
 
 
@@ -4434,8 +4434,8 @@ _CANCREATESEQUENCERULEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11807,
-  serialized_end=11837,
+  serialized_start=11812,
+  serialized_end=11842,
 )
 
 
@@ -4465,8 +4465,8 @@ _CANCREATESEQUENCERULEWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11839,
-  serialized_end=11934,
+  serialized_start=11844,
+  serialized_end=11939,
 )
 
 
@@ -4496,8 +4496,8 @@ _CANCREATESEQUENCERULEWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11936,
-  serialized_end=12057,
+  serialized_start=11941,
+  serialized_end=12062,
 )
 
 
@@ -4527,8 +4527,8 @@ _GETSEQUENCERULEFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12059,
-  serialized_end=12174,
+  serialized_start=12064,
+  serialized_end=12179,
 )
 
 
@@ -4572,8 +4572,8 @@ _GETSEQUENCERULEFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12177,
-  serialized_end=12423,
+  serialized_start=12182,
+  serialized_end=12428,
 )
 
 
@@ -4603,8 +4603,8 @@ _CREATESEQUENCERULEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12425,
-  serialized_end=12521,
+  serialized_start=12430,
+  serialized_end=12526,
 )
 
 
@@ -4634,8 +4634,8 @@ _CREATESEQUENCERULEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12523,
-  serialized_end=12630,
+  serialized_start=12528,
+  serialized_end=12635,
 )
 
 
@@ -4665,8 +4665,8 @@ _CANUPDATESEQUENCERULESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12632,
-  serialized_end=12696,
+  serialized_start=12637,
+  serialized_end=12701,
 )
 
 
@@ -4689,8 +4689,8 @@ _CANUPDATESEQUENCERULESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12698,
-  serialized_end=12729,
+  serialized_start=12703,
+  serialized_end=12734,
 )
 
 
@@ -4720,8 +4720,8 @@ _GETSEQUENCERULEFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12731,
-  serialized_end=12846,
+  serialized_start=12736,
+  serialized_end=12851,
 )
 
 
@@ -4751,8 +4751,8 @@ _GETSEQUENCERULEFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12848,
-  serialized_end=12947,
+  serialized_start=12853,
+  serialized_end=12952,
 )
 
 
@@ -4775,8 +4775,8 @@ _UPDATESEQUENCERULEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12949,
-  serialized_end=12974,
+  serialized_start=12954,
+  serialized_end=12979,
 )
 
 
@@ -4806,8 +4806,8 @@ _UPDATESEQUENCERULEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12976,
-  serialized_end=13083,
+  serialized_start=12981,
+  serialized_end=13088,
 )
 
 
@@ -4837,8 +4837,8 @@ _CANDELETESEQUENCERULESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13085,
-  serialized_end=13149,
+  serialized_start=13090,
+  serialized_end=13154,
 )
 
 
@@ -4861,8 +4861,8 @@ _CANDELETESEQUENCERULESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13151,
-  serialized_end=13182,
+  serialized_start=13156,
+  serialized_end=13187,
 )
 
 
@@ -4885,8 +4885,8 @@ _DELETESEQUENCERULEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13184,
-  serialized_end=13209,
+  serialized_start=13189,
+  serialized_end=13214,
 )
 
 
@@ -4916,8 +4916,8 @@ _DELETESEQUENCERULEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13211,
-  serialized_end=13300,
+  serialized_start=13216,
+  serialized_end=13305,
 )
 
 
@@ -4947,8 +4947,8 @@ _CANMANAGESEQUENCERULEALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13302,
-  serialized_end=13379,
+  serialized_start=13307,
+  serialized_end=13384,
 )
 
 
@@ -4971,8 +4971,8 @@ _CANMANAGESEQUENCERULEALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13381,
-  serialized_end=13418,
+  serialized_start=13386,
+  serialized_end=13423,
 )
 
 
@@ -4995,8 +4995,8 @@ _ALIASSEQUENCERULEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13420,
-  serialized_end=13444,
+  serialized_start=13425,
+  serialized_end=13449,
 )
 
 
@@ -5033,8 +5033,8 @@ _ALIASSEQUENCERULEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13447,
-  serialized_end=13589,
+  serialized_start=13452,
+  serialized_end=13594,
 )
 
 
@@ -5064,8 +5064,8 @@ _CANSEQUENCESEQUENCERULESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13591,
-  serialized_end=13659,
+  serialized_start=13596,
+  serialized_end=13664,
 )
 
 
@@ -5088,8 +5088,8 @@ _CANSEQUENCESEQUENCERULESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13661,
-  serialized_end=13694,
+  serialized_start=13666,
+  serialized_end=13699,
 )
 
 
@@ -5112,8 +5112,8 @@ _MOVESEQUENCERULEAHEADREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13696,
-  serialized_end=13724,
+  serialized_start=13701,
+  serialized_end=13729,
 )
 
 
@@ -5157,8 +5157,8 @@ _MOVESEQUENCERULEAHEADREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13727,
-  serialized_end=13941,
+  serialized_start=13732,
+  serialized_end=13946,
 )
 
 
@@ -5181,8 +5181,8 @@ _MOVESEQUENCERULEBEHINDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13943,
-  serialized_end=13972,
+  serialized_start=13948,
+  serialized_end=13977,
 )
 
 
@@ -5226,8 +5226,8 @@ _MOVESEQUENCERULEBEHINDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13975,
-  serialized_end=14190,
+  serialized_start=13980,
+  serialized_end=14195,
 )
 
 
@@ -5250,8 +5250,8 @@ _ORDERSEQUENCERULESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14192,
-  serialized_end=14217,
+  serialized_start=14197,
+  serialized_end=14222,
 )
 
 
@@ -5288,8 +5288,8 @@ _ORDERSEQUENCERULESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14220,
-  serialized_end=14374,
+  serialized_start=14225,
+  serialized_end=14379,
 )
 
 _ASSESSMENTPART.fields_by_name['allocated_time'].message_type = dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2._DURATION
@@ -5297,10 +5297,10 @@ _ASSESSMENTPART.fields_by_name['assessment'].message_type = dlkit_dot_primordium
 _ASSESSMENTPART.fields_by_name['assessment_part'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTPART.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ASSESSMENTPART.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENTPART.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENTPART.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTPART.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ASSESSMENTPART.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTPART.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ASSESSMENTPART.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTPART.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTPARTLIST.fields_by_name['assessment_parts'].message_type = _ASSESSMENTPART
 _SEQUENCERULE.fields_by_name['assessment_part'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _SEQUENCERULE.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
@@ -6858,8 +6858,8 @@ _ASSESSMENTPARTLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=14377,
-  serialized_end=17277,
+  serialized_start=14382,
+  serialized_end=17282,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -7035,8 +7035,8 @@ _ASSESSMENTPARTQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=17280,
-  serialized_end=18687,
+  serialized_start=17285,
+  serialized_end=18692,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -7131,8 +7131,8 @@ _ASSESSMENTPARTADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=18690,
-  serialized_end=21296,
+  serialized_start=18695,
+  serialized_end=21301,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -7281,8 +7281,8 @@ _ASSESSMENTPARTBANKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=21299,
-  serialized_end=22761,
+  serialized_start=21304,
+  serialized_end=22766,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupAssessmentPartBankMappings',
@@ -7377,8 +7377,8 @@ _ASSESSMENTPARTBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=22764,
-  serialized_end=23959,
+  serialized_start=22769,
+  serialized_end=23964,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignAssessmentParts',
@@ -7455,8 +7455,8 @@ _ASSESSMENTPARTITEMSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=23962,
-  serialized_end=25355,
+  serialized_start=23967,
+  serialized_end=25360,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -7551,8 +7551,8 @@ _ASSESSMENTPARTITEMDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=25358,
-  serialized_end=26395,
+  serialized_start=25363,
+  serialized_end=26400,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -7638,8 +7638,8 @@ _SEQUENCERULELOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=26398,
-  serialized_end=29352,
+  serialized_start=26403,
+  serialized_end=29357,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -7824,8 +7824,8 @@ _SEQUENCERULEADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=29355,
-  serialized_end=31997,
+  serialized_start=29360,
+  serialized_end=32002,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',

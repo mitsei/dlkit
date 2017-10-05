@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/authentication.proto',
   package='dlkit.proto.authentication',
   syntax='proto3',
-  serialized_pb=_b('\n dlkit/proto/authentication.proto\x12\x1a\x64lkit.proto.authentication\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\"\xee\x02\n\x05\x41gent\x12-\n\x06\x61gency\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nAgentQuery\"\x15\n\x13\x41gentQueryInspector\"\x0b\n\tAgentForm\"\x12\n\x10\x41gentSearchOrder\"\r\n\x0b\x41gentSearch\"\x14\n\x12\x41gentSearchResults\">\n\tAgentList\x12\x31\n\x06\x61gents\x18\x01 \x03(\x0b\x32!.dlkit.proto.authentication.Agent\"\xc0\x02\n\x06\x41gency\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x41gencyQuery\"\x16\n\x14\x41gencyQueryInspector\"\x0c\n\nAgencyForm\"\x13\n\x11\x41gencySearchOrder\"\x0e\n\x0c\x41gencySearch\"\x15\n\x13\x41gencySearchResults\"B\n\nAgencyList\x12\x34\n\x08\x61gencies\x18\x01 \x03(\x0b\x32\".dlkit.proto.authentication.Agency\"\x0c\n\nAgencyNode\"N\n\x0e\x41gencyNodeList\x12<\n\x0c\x61gency_nodes\x18\x01 \x03(\x0b\x32&.dlkit.proto.authentication.AgencyNode\"B\n\x10GetAgencyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetAgencyIdRequest\"D\n\x0eGetAgencyReply\x12\x32\n\x06\x61gency\x18\x01 \x01(\x0b\x32\".dlkit.proto.authentication.Agency\"\x12\n\x10GetAgencyRequest\"1\n\x14\x43\x61nLookupAgentsReply\x12\x19\n\x11\x63\x61n_lookup_agents\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nLookupAgentsRequest\"\x1e\n\x1cUseComparativeAgentViewReply\" \n\x1eUseComparativeAgentViewRequest\"\x1a\n\x18UsePlenaryAgentViewReply\"\x1c\n\x1aUsePlenaryAgentViewRequest\"\x1d\n\x1bUseFederatedAgencyViewReply\"\x1f\n\x1dUseFederatedAgencyViewRequest\"\x1c\n\x1aUseIsolatedAgencyViewReply\"\x1e\n\x1cUseIsolatedAgencyViewRequest\"A\n\rGetAgentReply\x12\x30\n\x05\x61gent\x18\x01 \x01(\x0b\x32!.dlkit.proto.authentication.Agent\"G\n\x0fGetAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x15GetAgentsByIdsRequest\x12\x35\n\tagent_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1bGetAgentsByGenusTypeRequest\x12@\n\x10\x61gent_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n!GetAgentsByParentGenusTypeRequest\x12@\n\x10\x61gent_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1cGetAgentsByRecordTypeRequest\x12\x41\n\x11\x61gent_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x12\n\x10GetAgentsRequest2\xcd\x0c\n\x12\x41gentLookupSession\x12m\n\x0bGetAgencyId\x12..dlkit.proto.authentication.GetAgencyIdRequest\x1a,.dlkit.proto.authentication.GetAgencyIdReply\"\x00\x12g\n\tGetAgency\x12,.dlkit.proto.authentication.GetAgencyRequest\x1a*.dlkit.proto.authentication.GetAgencyReply\"\x00\x12y\n\x0f\x43\x61nLookupAgents\x12\x32.dlkit.proto.authentication.CanLookupAgentsRequest\x1a\x30.dlkit.proto.authentication.CanLookupAgentsReply\"\x00\x12\x91\x01\n\x17UseComparativeAgentView\x12:.dlkit.proto.authentication.UseComparativeAgentViewRequest\x1a\x38.dlkit.proto.authentication.UseComparativeAgentViewReply\"\x00\x12\x85\x01\n\x13UsePlenaryAgentView\x12\x36.dlkit.proto.authentication.UsePlenaryAgentViewRequest\x1a\x34.dlkit.proto.authentication.UsePlenaryAgentViewReply\"\x00\x12\x8e\x01\n\x16UseFederatedAgencyView\x12\x39.dlkit.proto.authentication.UseFederatedAgencyViewRequest\x1a\x37.dlkit.proto.authentication.UseFederatedAgencyViewReply\"\x00\x12\x8b\x01\n\x15UseIsolatedAgencyView\x12\x38.dlkit.proto.authentication.UseIsolatedAgencyViewRequest\x1a\x36.dlkit.proto.authentication.UseIsolatedAgencyViewReply\"\x00\x12\x64\n\x08GetAgent\x12+.dlkit.proto.authentication.GetAgentRequest\x1a).dlkit.proto.authentication.GetAgentReply\"\x00\x12j\n\x0eGetAgentsByIds\x12\x31.dlkit.proto.authentication.GetAgentsByIdsRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12v\n\x14GetAgentsByGenusType\x12\x37.dlkit.proto.authentication.GetAgentsByGenusTypeRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12\x82\x01\n\x1aGetAgentsByParentGenusType\x12=.dlkit.proto.authentication.GetAgentsByParentGenusTypeRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12x\n\x15GetAgentsByRecordType\x12\x38.dlkit.proto.authentication.GetAgentsByRecordTypeRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12`\n\tGetAgents\x12,.dlkit.proto.authentication.GetAgentsRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x62\x06proto3')
+  serialized_pb=_b('\n dlkit/proto/authentication.proto\x12\x1a\x64lkit.proto.authentication\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\"\xf3\x02\n\x05\x41gent\x12-\n\x06\x61gency\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nAgentQuery\"\x15\n\x13\x41gentQueryInspector\"\x0b\n\tAgentForm\"\x12\n\x10\x41gentSearchOrder\"\r\n\x0b\x41gentSearch\"\x14\n\x12\x41gentSearchResults\">\n\tAgentList\x12\x31\n\x06\x61gents\x18\x01 \x03(\x0b\x32!.dlkit.proto.authentication.Agent\"\xc5\x02\n\x06\x41gency\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x41gencyQuery\"\x16\n\x14\x41gencyQueryInspector\"\x0c\n\nAgencyForm\"\x13\n\x11\x41gencySearchOrder\"\x0e\n\x0c\x41gencySearch\"\x15\n\x13\x41gencySearchResults\"B\n\nAgencyList\x12\x34\n\x08\x61gencies\x18\x01 \x03(\x0b\x32\".dlkit.proto.authentication.Agency\"\x0c\n\nAgencyNode\"N\n\x0e\x41gencyNodeList\x12<\n\x0c\x61gency_nodes\x18\x01 \x03(\x0b\x32&.dlkit.proto.authentication.AgencyNode\"B\n\x10GetAgencyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetAgencyIdRequest\"D\n\x0eGetAgencyReply\x12\x32\n\x06\x61gency\x18\x01 \x01(\x0b\x32\".dlkit.proto.authentication.Agency\"\x12\n\x10GetAgencyRequest\"1\n\x14\x43\x61nLookupAgentsReply\x12\x19\n\x11\x63\x61n_lookup_agents\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nLookupAgentsRequest\"\x1e\n\x1cUseComparativeAgentViewReply\" \n\x1eUseComparativeAgentViewRequest\"\x1a\n\x18UsePlenaryAgentViewReply\"\x1c\n\x1aUsePlenaryAgentViewRequest\"\x1d\n\x1bUseFederatedAgencyViewReply\"\x1f\n\x1dUseFederatedAgencyViewRequest\"\x1c\n\x1aUseIsolatedAgencyViewReply\"\x1e\n\x1cUseIsolatedAgencyViewRequest\"A\n\rGetAgentReply\x12\x30\n\x05\x61gent\x18\x01 \x01(\x0b\x32!.dlkit.proto.authentication.Agent\"G\n\x0fGetAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x15GetAgentsByIdsRequest\x12\x35\n\tagent_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1bGetAgentsByGenusTypeRequest\x12@\n\x10\x61gent_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n!GetAgentsByParentGenusTypeRequest\x12@\n\x10\x61gent_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1cGetAgentsByRecordTypeRequest\x12\x41\n\x11\x61gent_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x12\n\x10GetAgentsRequest2\xcd\x0c\n\x12\x41gentLookupSession\x12m\n\x0bGetAgencyId\x12..dlkit.proto.authentication.GetAgencyIdRequest\x1a,.dlkit.proto.authentication.GetAgencyIdReply\"\x00\x12g\n\tGetAgency\x12,.dlkit.proto.authentication.GetAgencyRequest\x1a*.dlkit.proto.authentication.GetAgencyReply\"\x00\x12y\n\x0f\x43\x61nLookupAgents\x12\x32.dlkit.proto.authentication.CanLookupAgentsRequest\x1a\x30.dlkit.proto.authentication.CanLookupAgentsReply\"\x00\x12\x91\x01\n\x17UseComparativeAgentView\x12:.dlkit.proto.authentication.UseComparativeAgentViewRequest\x1a\x38.dlkit.proto.authentication.UseComparativeAgentViewReply\"\x00\x12\x85\x01\n\x13UsePlenaryAgentView\x12\x36.dlkit.proto.authentication.UsePlenaryAgentViewRequest\x1a\x34.dlkit.proto.authentication.UsePlenaryAgentViewReply\"\x00\x12\x8e\x01\n\x16UseFederatedAgencyView\x12\x39.dlkit.proto.authentication.UseFederatedAgencyViewRequest\x1a\x37.dlkit.proto.authentication.UseFederatedAgencyViewReply\"\x00\x12\x8b\x01\n\x15UseIsolatedAgencyView\x12\x38.dlkit.proto.authentication.UseIsolatedAgencyViewRequest\x1a\x36.dlkit.proto.authentication.UseIsolatedAgencyViewReply\"\x00\x12\x64\n\x08GetAgent\x12+.dlkit.proto.authentication.GetAgentRequest\x1a).dlkit.proto.authentication.GetAgentReply\"\x00\x12j\n\x0eGetAgentsByIds\x12\x31.dlkit.proto.authentication.GetAgentsByIdsRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12v\n\x14GetAgentsByGenusType\x12\x37.dlkit.proto.authentication.GetAgentsByGenusTypeRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12\x82\x01\n\x1aGetAgentsByParentGenusType\x12=.dlkit.proto.authentication.GetAgentsByParentGenusTypeRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12x\n\x15GetAgentsByRecordType\x12\x38.dlkit.proto.authentication.GetAgentsByRecordTypeRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x12`\n\tGetAgents\x12,.dlkit.proto.authentication.GetAgentsRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,])
 
@@ -52,14 +52,14 @@ _AGENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.authentication.Agent.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.authentication.Agent.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.authentication.Agent.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.authentication.Agent.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -73,7 +73,7 @@ _AGENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.authentication.Agent.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.authentication.Agent.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -92,7 +92,7 @@ _AGENT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=209,
-  serialized_end=575,
+  serialized_end=580,
 )
 
 
@@ -115,8 +115,8 @@ _AGENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=577,
-  serialized_end=589,
+  serialized_start=582,
+  serialized_end=594,
 )
 
 
@@ -139,8 +139,8 @@ _AGENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=591,
-  serialized_end=612,
+  serialized_start=596,
+  serialized_end=617,
 )
 
 
@@ -163,8 +163,8 @@ _AGENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=614,
-  serialized_end=625,
+  serialized_start=619,
+  serialized_end=630,
 )
 
 
@@ -187,8 +187,8 @@ _AGENTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=627,
-  serialized_end=645,
+  serialized_start=632,
+  serialized_end=650,
 )
 
 
@@ -211,8 +211,8 @@ _AGENTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=647,
-  serialized_end=660,
+  serialized_start=652,
+  serialized_end=665,
 )
 
 
@@ -235,8 +235,8 @@ _AGENTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=662,
-  serialized_end=682,
+  serialized_start=667,
+  serialized_end=687,
 )
 
 
@@ -266,8 +266,8 @@ _AGENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=684,
-  serialized_end=746,
+  serialized_start=689,
+  serialized_end=751,
 )
 
 
@@ -286,14 +286,14 @@ _AGENCY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.authentication.Agency.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.authentication.Agency.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.authentication.Agency.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.authentication.Agency.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -307,7 +307,7 @@ _AGENCY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.authentication.Agency.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.authentication.Agency.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -325,8 +325,8 @@ _AGENCY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=749,
-  serialized_end=1069,
+  serialized_start=754,
+  serialized_end=1079,
 )
 
 
@@ -349,8 +349,8 @@ _AGENCYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1071,
-  serialized_end=1084,
+  serialized_start=1081,
+  serialized_end=1094,
 )
 
 
@@ -373,8 +373,8 @@ _AGENCYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1086,
-  serialized_end=1108,
+  serialized_start=1096,
+  serialized_end=1118,
 )
 
 
@@ -397,8 +397,8 @@ _AGENCYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1110,
-  serialized_end=1122,
+  serialized_start=1120,
+  serialized_end=1132,
 )
 
 
@@ -421,8 +421,8 @@ _AGENCYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1124,
-  serialized_end=1143,
+  serialized_start=1134,
+  serialized_end=1153,
 )
 
 
@@ -445,8 +445,8 @@ _AGENCYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1145,
-  serialized_end=1159,
+  serialized_start=1155,
+  serialized_end=1169,
 )
 
 
@@ -469,8 +469,8 @@ _AGENCYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1161,
-  serialized_end=1182,
+  serialized_start=1171,
+  serialized_end=1192,
 )
 
 
@@ -500,8 +500,8 @@ _AGENCYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1184,
-  serialized_end=1250,
+  serialized_start=1194,
+  serialized_end=1260,
 )
 
 
@@ -524,8 +524,8 @@ _AGENCYNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1252,
-  serialized_end=1264,
+  serialized_start=1262,
+  serialized_end=1274,
 )
 
 
@@ -555,8 +555,8 @@ _AGENCYNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1266,
-  serialized_end=1344,
+  serialized_start=1276,
+  serialized_end=1354,
 )
 
 
@@ -586,8 +586,8 @@ _GETAGENCYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1346,
-  serialized_end=1412,
+  serialized_start=1356,
+  serialized_end=1422,
 )
 
 
@@ -610,8 +610,8 @@ _GETAGENCYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1414,
-  serialized_end=1434,
+  serialized_start=1424,
+  serialized_end=1444,
 )
 
 
@@ -641,8 +641,8 @@ _GETAGENCYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1436,
-  serialized_end=1504,
+  serialized_start=1446,
+  serialized_end=1514,
 )
 
 
@@ -665,8 +665,8 @@ _GETAGENCYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1506,
-  serialized_end=1524,
+  serialized_start=1516,
+  serialized_end=1534,
 )
 
 
@@ -696,8 +696,8 @@ _CANLOOKUPAGENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1526,
-  serialized_end=1575,
+  serialized_start=1536,
+  serialized_end=1585,
 )
 
 
@@ -720,8 +720,8 @@ _CANLOOKUPAGENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1577,
-  serialized_end=1601,
+  serialized_start=1587,
+  serialized_end=1611,
 )
 
 
@@ -744,8 +744,8 @@ _USECOMPARATIVEAGENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1603,
-  serialized_end=1633,
+  serialized_start=1613,
+  serialized_end=1643,
 )
 
 
@@ -768,8 +768,8 @@ _USECOMPARATIVEAGENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1635,
-  serialized_end=1667,
+  serialized_start=1645,
+  serialized_end=1677,
 )
 
 
@@ -792,8 +792,8 @@ _USEPLENARYAGENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1669,
-  serialized_end=1695,
+  serialized_start=1679,
+  serialized_end=1705,
 )
 
 
@@ -816,8 +816,8 @@ _USEPLENARYAGENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1697,
-  serialized_end=1725,
+  serialized_start=1707,
+  serialized_end=1735,
 )
 
 
@@ -840,8 +840,8 @@ _USEFEDERATEDAGENCYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1727,
-  serialized_end=1756,
+  serialized_start=1737,
+  serialized_end=1766,
 )
 
 
@@ -864,8 +864,8 @@ _USEFEDERATEDAGENCYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1758,
-  serialized_end=1789,
+  serialized_start=1768,
+  serialized_end=1799,
 )
 
 
@@ -888,8 +888,8 @@ _USEISOLATEDAGENCYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1791,
-  serialized_end=1819,
+  serialized_start=1801,
+  serialized_end=1829,
 )
 
 
@@ -912,8 +912,8 @@ _USEISOLATEDAGENCYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1821,
-  serialized_end=1851,
+  serialized_start=1831,
+  serialized_end=1861,
 )
 
 
@@ -943,8 +943,8 @@ _GETAGENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1853,
-  serialized_end=1918,
+  serialized_start=1863,
+  serialized_end=1928,
 )
 
 
@@ -974,8 +974,8 @@ _GETAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1920,
-  serialized_end=1991,
+  serialized_start=1930,
+  serialized_end=2001,
 )
 
 
@@ -1005,8 +1005,8 @@ _GETAGENTSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1993,
-  serialized_end=2071,
+  serialized_start=2003,
+  serialized_end=2081,
 )
 
 
@@ -1036,8 +1036,8 @@ _GETAGENTSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2073,
-  serialized_end=2168,
+  serialized_start=2083,
+  serialized_end=2178,
 )
 
 
@@ -1067,8 +1067,8 @@ _GETAGENTSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2170,
-  serialized_end=2271,
+  serialized_start=2180,
+  serialized_end=2281,
 )
 
 
@@ -1098,8 +1098,8 @@ _GETAGENTSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2273,
-  serialized_end=2370,
+  serialized_start=2283,
+  serialized_end=2380,
 )
 
 
@@ -1122,22 +1122,22 @@ _GETAGENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2372,
-  serialized_end=2390,
+  serialized_start=2382,
+  serialized_end=2400,
 )
 
 _AGENT.fields_by_name['agency'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _AGENT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_AGENT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_AGENT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_AGENT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_AGENT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _AGENT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_AGENT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_AGENT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _AGENTLIST.fields_by_name['agents'].message_type = _AGENT
 _AGENCY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_AGENCY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_AGENCY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_AGENCY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_AGENCY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _AGENCY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_AGENCY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_AGENCY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _AGENCYLIST.fields_by_name['agencies'].message_type = _AGENCY
 _AGENCYNODELIST.fields_by_name['agency_nodes'].message_type = _AGENCYNODE
 _GETAGENCYIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -1470,8 +1470,8 @@ _AGENTLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=2393,
-  serialized_end=4006,
+  serialized_start=2403,
+  serialized_end=4016,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetAgencyId',

@@ -15,11 +15,11 @@ message Resource {
   dlkit.primordium.id.primitives.Id avatar = 1;
   dlkit.proto.osid.OsidCatalog bin = 2;
   dlkit.primordium.locale.primitives.DisplayText description = 3;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 4;
-  dlkit.primordium.type.primitives.Type genusTypeId = 5;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 4;
+  dlkit.primordium.type.primitives.Type genus_type_id = 5;
   bool group = 6;
   dlkit.primordium.id.primitives.Id id = 7;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 8;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 8;
 }
 
 message ResourceQuery {
@@ -94,10 +94,10 @@ message ResourceRelationshipList {
 
 message Bin {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message BinQuery {

@@ -88,16 +88,16 @@ message Value {
   google.protobuf.Timestamp date_time_value = 7;
   float decimal_value = 8;
   dlkit.primordium.locale.primitives.DisplayText description = 9;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 10;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 10;
   dlkit.primordium.mapping.unimplemented_primitives.Distance distance_value = 11;
   dlkit.primordium.calendaring.primitives.Duration duration_value = 12;
-  dlkit.primordium.type.primitives.Type genusTypeId = 13;
+  dlkit.primordium.type.primitives.Type genus_type_id = 13;
   dlkit.primordium.id.primitives.Id id = 14;
   dlkit.primordium.id.primitives.Id id_value = 15;
   sint32 integer_value = 16;
   dlkit.primordium.id.primitives.Id parameter = 17;
   sint32 priority = 18;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 19;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 19;
   dlkit.primordium.mapping.spatial_units.SpatialUnit spatial_unit_value = 20;
   dlkit.primordium.mapping.unimplemented_primitives.Speed speed_value = 21;
   string string_value = 22;
@@ -140,10 +140,10 @@ message ValueCondition {
 
 message Configuration {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message ConfigurationQuery {

@@ -18,10 +18,10 @@ message Package {
   repeated dlkit.primordium.id.primitives.Id dependencies = 3;
   dlkit.proto.osid.OsidCatalog depot = 4;
   dlkit.primordium.locale.primitives.DisplayText description = 5;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 6;
-  dlkit.primordium.type.primitives.Type genusTypeId = 7;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 6;
+  dlkit.primordium.type.primitives.Type genus_type_id = 7;
   dlkit.primordium.id.primitives.Id id = 8;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 9;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 9;
   google.protobuf.Timestamp release_date = 10;
   bool requires_license_acknowledgement = 11;
   string url = 12;
@@ -60,11 +60,11 @@ message InstallationContent {
   dlkit.primordium.transport.objects.DataInputStream data = 1;
   dlkit.proto.osid.OsidCatalog depot = 2;
   dlkit.primordium.locale.primitives.DisplayText description = 3;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 4;
-  dlkit.primordium.type.primitives.Type genusTypeId = 5;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 4;
+  dlkit.primordium.type.primitives.Type genus_type_id = 5;
   dlkit.primordium.id.primitives.Id id = 6;
   dlkit.primordium.id.primitives.Id package = 7;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 8;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 8;
 }
 
 message InstallationContentQuery {
@@ -85,10 +85,10 @@ message InstallationContentList {
 
 message Depot {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message DepotQuery {
@@ -129,11 +129,11 @@ message DepotNodeList {
 
 message Installation {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
   dlkit.primordium.id.primitives.Id package = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
   dlkit.primordium.id.primitives.Id site = 7;
 }
 
@@ -163,10 +163,10 @@ message InstallationList {
 
 message Site {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message SiteQuery {

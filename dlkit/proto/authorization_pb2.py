@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/authorization.proto',
   package='dlkit.proto.authorization',
   syntax='proto3',
-  serialized_pb=_b('\n\x1f\x64lkit/proto/authorization.proto\x12\x19\x64lkit.proto.authorization\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x01\n\rAuthorization\x12\x34\n\x08\x66unction\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tqualifier\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12,\n\x05vault\x18\x03 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x14\n\x12\x41uthorizationQuery\"\x1d\n\x1b\x41uthorizationQueryInspector\"\x13\n\x11\x41uthorizationForm\"\x1a\n\x18\x41uthorizationSearchOrder\"\x15\n\x13\x41uthorizationSearch\"\x1c\n\x1a\x41uthorizationSearchResults\"U\n\x11\x41uthorizationList\x12@\n\x0e\x61uthorizations\x18\x01 \x03(\x0b\x32(.dlkit.proto.authorization.Authorization\"\x18\n\x16\x41uthorizationCondition\"y\n\x08\x46unction\x12?\n\x13qualifier_hierarchy\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12,\n\x05vault\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x0f\n\rFunctionQuery\"\x18\n\x16\x46unctionQueryInspector\"\x0e\n\x0c\x46unctionForm\"\x15\n\x13\x46unctionSearchOrder\"\x10\n\x0e\x46unctionSearch\"\x17\n\x15\x46unctionSearchResults\"F\n\x0c\x46unctionList\x12\x36\n\tfunctions\x18\x01 \x03(\x0b\x32#.dlkit.proto.authorization.Function\"\xf1\x02\n\tQualifier\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12,\n\x05vault\x18\x06 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x10\n\x0eQualifierQuery\"\x19\n\x17QualifierQueryInspector\"\x0f\n\rQualifierForm\"\x16\n\x14QualifierSearchOrder\"\x11\n\x0fQualifierSearch\"\x18\n\x16QualifierSearchResults\"I\n\rQualifierList\x12\x38\n\nqualifiers\x18\x01 \x03(\x0b\x32$.dlkit.proto.authorization.Qualifier\"\x0f\n\rQualifierNode\"V\n\x11QualifierNodeList\x12\x41\n\x0fqualifier_nodes\x18\x01 \x03(\x0b\x32(.dlkit.proto.authorization.QualifierNode\"\xbf\x02\n\x05Vault\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nVaultQuery\"\x15\n\x13VaultQueryInspector\"\x0b\n\tVaultForm\"\x12\n\x10VaultSearchOrder\"\r\n\x0bVaultSearch\"\x14\n\x12VaultSearchResults\"=\n\tVaultList\x12\x30\n\x06vaults\x18\x01 \x03(\x0b\x32 .dlkit.proto.authorization.Vault\"\x0b\n\tVaultNode\"J\n\rVaultNodeList\x12\x39\n\x0bvault_nodes\x18\x01 \x03(\x0b\x32$.dlkit.proto.authorization.VaultNode\"A\n\x0fGetVaultIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11GetVaultIdRequest\"@\n\rGetVaultReply\x12/\n\x05vault\x18\x01 \x01(\x0b\x32 .dlkit.proto.authorization.Vault\"\x11\n\x0fGetVaultRequest\"A\n\x1c\x43\x61nAccessAuthorizationsReply\x12!\n\x19\x63\x61n_access_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nAccessAuthorizationsRequest\"*\n\x11IsAuthorizedReply\x12\x15\n\ris_authorized\x18\x01 \x01(\x08\"\xbe\x01\n\x13IsAuthorizedRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"t\n\x1eGetAuthorizationConditionReply\x12R\n\x17\x61uthorization_condition\x18\x01 \x01(\x0b\x32\x31.dlkit.proto.authorization.AuthorizationCondition\"[\n GetAuthorizationConditionRequest\x12\x37\n\x0b\x66unction_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsAuthorizedOnConditionReply\x12\"\n\x1ais_authorized_on_condition\x18\x01 \x01(\x08\"\x8f\x02\n\x1eIsAuthorizedOnConditionRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\tcondition\x18\x02 \x01(\x0b\x32\x31.dlkit.proto.authorization.AuthorizationCondition\x12\x37\n\x0b\x66unction_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x1c\x43\x61nLookupAuthorizationsReply\x12!\n\x19\x63\x61n_lookup_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nLookupAuthorizationsRequest\"&\n$UseComparativeAuthorizationViewReply\"(\n&UseComparativeAuthorizationViewRequest\"\"\n UsePlenaryAuthorizationViewReply\"$\n\"UsePlenaryAuthorizationViewRequest\"\x1c\n\x1aUseFederatedVaultViewReply\"\x1e\n\x1cUseFederatedVaultViewRequest\"\x1b\n\x19UseIsolatedVaultViewReply\"\x1d\n\x1bUseIsolatedVaultViewRequest\"$\n\"UseEffectiveAuthorizationViewReply\"&\n$UseEffectiveAuthorizationViewRequest\"\'\n%UseAnyEffectiveAuthorizationViewReply\")\n\'UseAnyEffectiveAuthorizationViewRequest\"#\n!UseImplicitAuthorizationViewReply\"%\n#UseImplicitAuthorizationViewRequest\"#\n!UseExplicitAuthorizationViewReply\"%\n#UseExplicitAuthorizationViewRequest\"X\n\x15GetAuthorizationReply\x12?\n\rauthorization\x18\x01 \x01(\x0b\x32(.dlkit.proto.authorization.Authorization\"W\n\x17GetAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\x1dGetAuthorizationsByIdsRequest\x12=\n\x11\x61uthorization_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"o\n#GetAuthorizationsByGenusTypeRequest\x12H\n\x18\x61uthorization_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"u\n)GetAuthorizationsByParentGenusTypeRequest\x12H\n\x18\x61uthorization_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n$GetAuthorizationsByRecordTypeRequest\x12I\n\x19\x61uthorization_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n\x1eGetAuthorizationsOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"^\n#GetAuthorizationsForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb7\x01\n)GetAuthorizationsForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"X\n GetAuthorizationsForAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb1\x01\n&GetAuthorizationsForAgentOnDateRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"^\n#GetAuthorizationsForFunctionRequest\x12\x37\n\x0b\x66unction_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb7\x01\n)GetAuthorizationsForFunctionOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa2\x01\n.GetAuthorizationsForResourceAndFunctionRequest\x12\x37\n\x0b\x66unction_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xfb\x01\n4GetAuthorizationsForResourceAndFunctionOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x9c\x01\n+GetAuthorizationsForAgentAndFunctionRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xf5\x01\n1GetAuthorizationsForAgentAndFunctionOnDateRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0b\x66unction_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"_\n#GetAuthorizationsByQualifierRequest\x12\x38\n\x0cqualifier_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n\x1dGetExplicitAuthorizationReply\x12?\n\rauthorization\x18\x01 \x01(\x0b\x32(.dlkit.proto.authorization.Authorization\"_\n\x1fGetExplicitAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetAuthorizationsRequest\"A\n\x1c\x43\x61nSearchAuthorizationsReply\x12!\n\x19\x63\x61n_search_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nSearchAuthorizationsRequest\"h\n\x1aGetAuthorizationQueryReply\x12J\n\x13\x61uthorization_query\x18\x01 \x01(\x0b\x32-.dlkit.proto.authorization.AuthorizationQuery\"\x1e\n\x1cGetAuthorizationQueryRequest\"m\n\x1fGetAuthorizationsByQueryRequest\x12J\n\x13\x61uthorization_query\x18\x01 \x01(\x0b\x32-.dlkit.proto.authorization.AuthorizationQuery\"A\n\x1c\x43\x61nCreateAuthorizationsReply\x12!\n\x19\x63\x61n_create_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nCreateAuthorizationsRequest\"`\n*CanCreateAuthorizationWithRecordTypesReply\x12\x32\n*can_create_authorization_with_record_types\x18\x01 \x01(\x08\"z\n,CanCreateAuthorizationWithRecordTypesRequest\x12J\n\x1a\x61uthorization_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n*GetAuthorizationFormForCreateForAgentReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"\xa3\x02\n,GetAuthorizationFormForCreateForAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12J\n\x1a\x61uthorization_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0b\x66unction_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"y\n-GetAuthorizationFormForCreateForResourceReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"\xa9\x02\n/GetAuthorizationFormForCreateForResourceRequest\x12J\n\x1a\x61uthorization_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x81\x01\n5GetAuthorizationFormForCreateForResourceAndTrustReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"\xe7\x02\n7GetAuthorizationFormForCreateForResourceAndTrustRequest\x12J\n\x1a\x61uthorization_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08trust_id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x18\x43reateAuthorizationReply\x12?\n\rauthorization\x18\x01 \x01(\x0b\x32(.dlkit.proto.authorization.Authorization\"f\n\x1a\x43reateAuthorizationRequest\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"A\n\x1c\x43\x61nUpdateAuthorizationsReply\x12!\n\x19\x63\x61n_update_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nUpdateAuthorizationsRequest\"n\n\"GetAuthorizationFormForUpdateReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"d\n$GetAuthorizationFormForUpdateRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18UpdateAuthorizationReply\"f\n\x1aUpdateAuthorizationRequest\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"A\n\x1c\x43\x61nDeleteAuthorizationsReply\x12!\n\x19\x63\x61n_delete_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nDeleteAuthorizationsRequest\"\x1a\n\x18\x44\x65leteAuthorizationReply\"Z\n\x1a\x44\x65leteAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\"CanManageAuthorizationAliasesReply\x12(\n can_manage_authorization_aliases\x18\x01 \x01(\x08\"&\n$CanManageAuthorizationAliasesRequest\"\x19\n\x17\x41liasAuthorizationReply\"\x8f\x01\n\x19\x41liasAuthorizationRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10\x61uthorization_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUseComparativeVaultViewReply\" \n\x1eUseComparativeVaultViewRequest\"\x1a\n\x18UsePlenaryVaultViewReply\"\x1c\n\x1aUsePlenaryVaultViewRequest\"[\n(CanLookupAuthorizationVaultMappingsReply\x12/\n\'can_lookup_authorization_vault_mappings\x18\x01 \x01(\x08\",\n*CanLookupAuthorizationVaultMappingsRequest\"Y\n!GetAuthorizationIdsByVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1fGetAuthorizationsByVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\"GetAuthorizationsIdsByVaultRequest\x12\x35\n\tvault_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n!GetVaultIdsByAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\x1eGetVaultByAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x1c\x43\x61nAssignAuthorizationsReply\x12!\n\x19\x63\x61n_assign_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nAssignAuthorizationsRequest\"Q\n#CanAssignAuthorizationsToVaultReply\x12*\n\"can_assign_authorizations_to_vault\x18\x01 \x01(\x08\"]\n%CanAssignAuthorizationsToVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1cGetAssignableVaultIdsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa2\x01\n,GetAssignableVaultIdsForAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1f\x41ssignAuthorizationToVaultReply\"\x97\x01\n!AssignAuthorizationToVaultRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"%\n#UnassignAuthorizationFromVaultReply\"\x9b\x01\n%UnassignAuthorizationFromVaultRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"#\n!ReassignAuthorizationToVaultReply\"\xd7\x01\n#ReassignAuthorizationToVaultRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rfrom_vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bto_vault_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nLookupVaultsReply\x12\x19\n\x11\x63\x61n_lookup_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nLookupVaultsRequest\"N\n\x15GetVaultsByIdsRequest\x12\x35\n\tvault_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1bGetVaultsByGenusTypeRequest\x12@\n\x10vault_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n!GetVaultsByParentGenusTypeRequest\x12@\n\x10vault_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1cGetVaultsByRecordTypeRequest\x12\x41\n\x11vault_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"U\n\x1aGetVaultsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetVaultsRequest\"1\n\x14\x43\x61nSearchVaultsReply\x12\x19\n\x11\x63\x61n_search_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nSearchVaultsRequest\"P\n\x12GetVaultQueryReply\x12:\n\x0bvault_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.authorization.VaultQuery\"\x16\n\x14GetVaultQueryRequest\"U\n\x17GetVaultsByQueryRequest\x12:\n\x0bvault_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.authorization.VaultQuery\"1\n\x14\x43\x61nCreateVaultsReply\x12\x19\n\x11\x63\x61n_create_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nCreateVaultsRequest\"P\n\"CanCreateVaultWithRecordTypesReply\x12*\n\"can_create_vault_with_record_types\x18\x01 \x01(\x08\"j\n$CanCreateVaultWithRecordTypesRequest\x12\x42\n\x12vault_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"V\n\x1aGetVaultFormForCreateReply\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"b\n\x1cGetVaultFormForCreateRequest\x12\x42\n\x12vault_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"C\n\x10\x43reateVaultReply\x12/\n\x05vault\x18\x01 \x01(\x0b\x32 .dlkit.proto.authorization.Vault\"N\n\x12\x43reateVaultRequest\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"1\n\x14\x43\x61nUpdateVaultsReply\x12\x19\n\x11\x63\x61n_update_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nUpdateVaultsRequest\"V\n\x1aGetVaultFormForUpdateReply\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"T\n\x1cGetVaultFormForUpdateRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10UpdateVaultReply\"N\n\x12UpdateVaultRequest\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"1\n\x14\x43\x61nDeleteVaultsReply\x12\x19\n\x11\x63\x61n_delete_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nDeleteVaultsRequest\"\x12\n\x10\x44\x65leteVaultReply\"J\n\x12\x44\x65leteVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nManageVaultAliasesReply\x12 \n\x18\x63\x61n_manage_vault_aliases\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nManageVaultAliasesRequest\"\x11\n\x0f\x41liasVaultReply\"\x7f\n\x11\x41liasVaultRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x18GetVaultHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aGetVaultHierarchyIdRequest\"M\n\x16GetVaultHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1a\n\x18GetVaultHierarchyRequest\"B\n\x1c\x43\x61nAccessVaultHierarchyReply\x12\"\n\x1a\x63\x61n_access_vault_hierarchy\x18\x01 \x01(\x08\" \n\x1e\x43\x61nAccessVaultHierarchyRequest\"\x18\n\x16GetRootVaultIdsRequest\"\x16\n\x14GetRootVaultsRequest\"1\n\x14HasParentVaultsReply\x12\x19\n\x11has_parent_vaults\x18\x01 \x01(\x08\"N\n\x16HasParentVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsParentOfVaultReply\x12\x1a\n\x12is_parent_of_vault\x18\x01 \x01(\x08\"\x7f\n\x16IsParentOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x18GetParentVaultIdsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x16GetParentVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsAncestorOfVaultReply\x12\x1c\n\x14is_ancestor_of_vault\x18\x01 \x01(\x08\"\x81\x01\n\x18IsAncestorOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13HasChildVaultsReply\x12\x18\n\x10has_child_vaults\x18\x01 \x01(\x08\"M\n\x15HasChildVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"0\n\x13IsChildOfVaultReply\x12\x19\n\x11is_child_of_vault\x18\x01 \x01(\x08\"~\n\x15IsChildOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x17GetChildVaultIdsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x15GetChildVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsDescendantOfVaultReply\x12\x1e\n\x16is_descendant_of_vault\x18\x01 \x01(\x08\"\x83\x01\n\x1aIsDescendantOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x14GetVaultNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9c\x01\n\x16GetVaultNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x34\n\x08vault_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x12GetVaultNodesReply\x12\x38\n\nvault_node\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultNode\"\x9a\x01\n\x14GetVaultNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x34\n\x08vault_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nModifyVaultHierarchyReply\x12\"\n\x1a\x63\x61n_modify_vault_hierarchy\x18\x01 \x01(\x08\" \n\x1e\x43\x61nModifyVaultHierarchyRequest\"\x13\n\x11\x41\x64\x64RootVaultReply\"K\n\x13\x41\x64\x64RootVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveRootVaultReply\"N\n\x16RemoveRootVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12\x41\x64\x64\x43hildVaultReply\"\x82\x01\n\x14\x41\x64\x64\x43hildVaultRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveChildVaultReply\"\x85\x01\n\x17RemoveChildVaultRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveChildVaultsReply\"P\n\x18RemoveChildVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x90\x06\n\x14\x41uthorizationSession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nAccessAuthorizations\x12\x39.dlkit.proto.authorization.CanAccessAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanAccessAuthorizationsReply\"\x00\x12n\n\x0cIsAuthorized\x12..dlkit.proto.authorization.IsAuthorizedRequest\x1a,.dlkit.proto.authorization.IsAuthorizedReply\"\x00\x12\x95\x01\n\x19GetAuthorizationCondition\x12;.dlkit.proto.authorization.GetAuthorizationConditionRequest\x1a\x39.dlkit.proto.authorization.GetAuthorizationConditionReply\"\x00\x12\x8f\x01\n\x17IsAuthorizedOnCondition\x12\x39.dlkit.proto.authorization.IsAuthorizedOnConditionRequest\x1a\x37.dlkit.proto.authorization.IsAuthorizedOnConditionReply\"\x00\x32\xd9\"\n\x1a\x41uthorizationLookupSession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nLookupAuthorizations\x12\x39.dlkit.proto.authorization.CanLookupAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanLookupAuthorizationsReply\"\x00\x12\xa7\x01\n\x1fUseComparativeAuthorizationView\x12\x41.dlkit.proto.authorization.UseComparativeAuthorizationViewRequest\x1a?.dlkit.proto.authorization.UseComparativeAuthorizationViewReply\"\x00\x12\x9b\x01\n\x1bUsePlenaryAuthorizationView\x12=.dlkit.proto.authorization.UsePlenaryAuthorizationViewRequest\x1a;.dlkit.proto.authorization.UsePlenaryAuthorizationViewReply\"\x00\x12\x89\x01\n\x15UseFederatedVaultView\x12\x37.dlkit.proto.authorization.UseFederatedVaultViewRequest\x1a\x35.dlkit.proto.authorization.UseFederatedVaultViewReply\"\x00\x12\x86\x01\n\x14UseIsolatedVaultView\x12\x36.dlkit.proto.authorization.UseIsolatedVaultViewRequest\x1a\x34.dlkit.proto.authorization.UseIsolatedVaultViewReply\"\x00\x12\xa1\x01\n\x1dUseEffectiveAuthorizationView\x12?.dlkit.proto.authorization.UseEffectiveAuthorizationViewRequest\x1a=.dlkit.proto.authorization.UseEffectiveAuthorizationViewReply\"\x00\x12\xaa\x01\n UseAnyEffectiveAuthorizationView\x12\x42.dlkit.proto.authorization.UseAnyEffectiveAuthorizationViewRequest\x1a@.dlkit.proto.authorization.UseAnyEffectiveAuthorizationViewReply\"\x00\x12\x9e\x01\n\x1cUseImplicitAuthorizationView\x12>.dlkit.proto.authorization.UseImplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseImplicitAuthorizationViewReply\"\x00\x12\x9e\x01\n\x1cUseExplicitAuthorizationView\x12>.dlkit.proto.authorization.UseExplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseExplicitAuthorizationViewReply\"\x00\x12z\n\x10GetAuthorization\x12\x32.dlkit.proto.authorization.GetAuthorizationRequest\x1a\x30.dlkit.proto.authorization.GetAuthorizationReply\"\x00\x12\x80\x01\n\x16GetAuthorizationsByIds\x12\x38.dlkit.proto.authorization.GetAuthorizationsByIdsRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsByGenusType\x12>.dlkit.proto.authorization.GetAuthorizationsByGenusTypeRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x98\x01\n\"GetAuthorizationsByParentGenusType\x12\x44.dlkit.proto.authorization.GetAuthorizationsByParentGenusTypeRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8e\x01\n\x1dGetAuthorizationsByRecordType\x12?.dlkit.proto.authorization.GetAuthorizationsByRecordTypeRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x82\x01\n\x17GetAuthorizationsOnDate\x12\x39.dlkit.proto.authorization.GetAuthorizationsOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsForResource\x12>.dlkit.proto.authorization.GetAuthorizationsForResourceRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x98\x01\n\"GetAuthorizationsForResourceOnDate\x12\x44.dlkit.proto.authorization.GetAuthorizationsForResourceOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x86\x01\n\x19GetAuthorizationsForAgent\x12;.dlkit.proto.authorization.GetAuthorizationsForAgentRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x92\x01\n\x1fGetAuthorizationsForAgentOnDate\x12\x41.dlkit.proto.authorization.GetAuthorizationsForAgentOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsForFunction\x12>.dlkit.proto.authorization.GetAuthorizationsForFunctionRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x98\x01\n\"GetAuthorizationsForFunctionOnDate\x12\x44.dlkit.proto.authorization.GetAuthorizationsForFunctionOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\xa2\x01\n\'GetAuthorizationsForResourceAndFunction\x12I.dlkit.proto.authorization.GetAuthorizationsForResourceAndFunctionRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\xae\x01\n-GetAuthorizationsForResourceAndFunctionOnDate\x12O.dlkit.proto.authorization.GetAuthorizationsForResourceAndFunctionOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x9c\x01\n$GetAuthorizationsForAgentAndFunction\x12\x46.dlkit.proto.authorization.GetAuthorizationsForAgentAndFunctionRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\xa8\x01\n*GetAuthorizationsForAgentAndFunctionOnDate\x12L.dlkit.proto.authorization.GetAuthorizationsForAgentAndFunctionOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsByQualifier\x12>.dlkit.proto.authorization.GetAuthorizationsByQualifierRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x92\x01\n\x18GetExplicitAuthorization\x12:.dlkit.proto.authorization.GetExplicitAuthorizationRequest\x1a\x38.dlkit.proto.authorization.GetExplicitAuthorizationReply\"\x00\x12v\n\x11GetAuthorizations\x12\x33.dlkit.proto.authorization.GetAuthorizationsRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x32\xe5\t\n\x19\x41uthorizationQuerySession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nSearchAuthorizations\x12\x39.dlkit.proto.authorization.CanSearchAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanSearchAuthorizationsReply\"\x00\x12\x89\x01\n\x15UseFederatedVaultView\x12\x37.dlkit.proto.authorization.UseFederatedVaultViewRequest\x1a\x35.dlkit.proto.authorization.UseFederatedVaultViewReply\"\x00\x12\x86\x01\n\x14UseIsolatedVaultView\x12\x36.dlkit.proto.authorization.UseIsolatedVaultViewRequest\x1a\x34.dlkit.proto.authorization.UseIsolatedVaultViewReply\"\x00\x12\x9e\x01\n\x1cUseImplicitAuthorizationView\x12>.dlkit.proto.authorization.UseImplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseImplicitAuthorizationViewReply\"\x00\x12\x9e\x01\n\x1cUseExplicitAuthorizationView\x12>.dlkit.proto.authorization.UseExplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseExplicitAuthorizationViewReply\"\x00\x12\x89\x01\n\x15GetAuthorizationQuery\x12\x37.dlkit.proto.authorization.GetAuthorizationQueryRequest\x1a\x35.dlkit.proto.authorization.GetAuthorizationQueryReply\"\x00\x12\x84\x01\n\x18GetAuthorizationsByQuery\x12:.dlkit.proto.authorization.GetAuthorizationsByQueryRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x32\x96\x12\n\x19\x41uthorizationAdminSession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nCreateAuthorizations\x12\x39.dlkit.proto.authorization.CanCreateAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanCreateAuthorizationsReply\"\x00\x12\xb9\x01\n%CanCreateAuthorizationWithRecordTypes\x12G.dlkit.proto.authorization.CanCreateAuthorizationWithRecordTypesRequest\x1a\x45.dlkit.proto.authorization.CanCreateAuthorizationWithRecordTypesReply\"\x00\x12\xb9\x01\n%GetAuthorizationFormForCreateForAgent\x12G.dlkit.proto.authorization.GetAuthorizationFormForCreateForAgentRequest\x1a\x45.dlkit.proto.authorization.GetAuthorizationFormForCreateForAgentReply\"\x00\x12\xc2\x01\n(GetAuthorizationFormForCreateForResource\x12J.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceRequest\x1aH.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceReply\"\x00\x12\xda\x01\n0GetAuthorizationFormForCreateForResourceAndTrust\x12R.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceAndTrustRequest\x1aP.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceAndTrustReply\"\x00\x12\x83\x01\n\x13\x43reateAuthorization\x12\x35.dlkit.proto.authorization.CreateAuthorizationRequest\x1a\x33.dlkit.proto.authorization.CreateAuthorizationReply\"\x00\x12\x8f\x01\n\x17\x43\x61nUpdateAuthorizations\x12\x39.dlkit.proto.authorization.CanUpdateAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanUpdateAuthorizationsReply\"\x00\x12\xa1\x01\n\x1dGetAuthorizationFormForUpdate\x12?.dlkit.proto.authorization.GetAuthorizationFormForUpdateRequest\x1a=.dlkit.proto.authorization.GetAuthorizationFormForUpdateReply\"\x00\x12\x83\x01\n\x13UpdateAuthorization\x12\x35.dlkit.proto.authorization.UpdateAuthorizationRequest\x1a\x33.dlkit.proto.authorization.UpdateAuthorizationReply\"\x00\x12\x8f\x01\n\x17\x43\x61nDeleteAuthorizations\x12\x39.dlkit.proto.authorization.CanDeleteAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanDeleteAuthorizationsReply\"\x00\x12\x83\x01\n\x13\x44\x65leteAuthorization\x12\x35.dlkit.proto.authorization.DeleteAuthorizationRequest\x1a\x33.dlkit.proto.authorization.DeleteAuthorizationReply\"\x00\x12\xa1\x01\n\x1d\x43\x61nManageAuthorizationAliases\x12?.dlkit.proto.authorization.CanManageAuthorizationAliasesRequest\x1a=.dlkit.proto.authorization.CanManageAuthorizationAliasesReply\"\x00\x12\x80\x01\n\x12\x41liasAuthorization\x12\x34.dlkit.proto.authorization.AliasAuthorizationRequest\x1a\x32.dlkit.proto.authorization.AliasAuthorizationReply\"\x00\x32\xfd\x08\n\x19\x41uthorizationVaultSession\x12\x8f\x01\n\x17UseComparativeVaultView\x12\x39.dlkit.proto.authorization.UseComparativeVaultViewRequest\x1a\x37.dlkit.proto.authorization.UseComparativeVaultViewReply\"\x00\x12\x83\x01\n\x13UsePlenaryVaultView\x12\x35.dlkit.proto.authorization.UsePlenaryVaultViewRequest\x1a\x33.dlkit.proto.authorization.UsePlenaryVaultViewReply\"\x00\x12\xb3\x01\n#CanLookupAuthorizationVaultMappings\x12\x45.dlkit.proto.authorization.CanLookupAuthorizationVaultMappingsRequest\x1a\x43.dlkit.proto.authorization.CanLookupAuthorizationVaultMappingsReply\"\x00\x12\x82\x01\n\x1aGetAuthorizationIdsByVault\x12<.dlkit.proto.authorization.GetAuthorizationIdsByVaultRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x84\x01\n\x18GetAuthorizationsByVault\x12:.dlkit.proto.authorization.GetAuthorizationsByVaultRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x84\x01\n\x1bGetAuthorizationsIdsByVault\x12=.dlkit.proto.authorization.GetAuthorizationsIdsByVaultRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x1aGetVaultIdsByAuthorization\x12<.dlkit.proto.authorization.GetVaultIdsByAuthorizationRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12z\n\x17GetVaultByAuthorization\x12\x39.dlkit.proto.authorization.GetVaultByAuthorizationRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x32\xd6\x08\n#AuthorizationVaultAssignmentSession\x12\x8f\x01\n\x17\x43\x61nAssignAuthorizations\x12\x39.dlkit.proto.authorization.CanAssignAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanAssignAuthorizationsReply\"\x00\x12\xa4\x01\n\x1e\x43\x61nAssignAuthorizationsToVault\x12@.dlkit.proto.authorization.CanAssignAuthorizationsToVaultRequest\x1a>.dlkit.proto.authorization.CanAssignAuthorizationsToVaultReply\"\x00\x12x\n\x15GetAssignableVaultIds\x12\x37.dlkit.proto.authorization.GetAssignableVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x98\x01\n%GetAssignableVaultIdsForAuthorization\x12G.dlkit.proto.authorization.GetAssignableVaultIdsForAuthorizationRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x98\x01\n\x1a\x41ssignAuthorizationToVault\x12<.dlkit.proto.authorization.AssignAuthorizationToVaultRequest\x1a:.dlkit.proto.authorization.AssignAuthorizationToVaultReply\"\x00\x12\xa4\x01\n\x1eUnassignAuthorizationFromVault\x12@.dlkit.proto.authorization.UnassignAuthorizationFromVaultRequest\x1a>.dlkit.proto.authorization.UnassignAuthorizationFromVaultReply\"\x00\x12\x9e\x01\n\x1cReassignAuthorizationToVault\x12>.dlkit.proto.authorization.ReassignAuthorizationToVaultRequest\x1a<.dlkit.proto.authorization.ReassignAuthorizationToVaultReply\"\x00\x32\xb8\t\n\x12VaultLookupSession\x12w\n\x0f\x43\x61nLookupVaults\x12\x31.dlkit.proto.authorization.CanLookupVaultsRequest\x1a/.dlkit.proto.authorization.CanLookupVaultsReply\"\x00\x12\x8f\x01\n\x17UseComparativeVaultView\x12\x39.dlkit.proto.authorization.UseComparativeVaultViewRequest\x1a\x37.dlkit.proto.authorization.UseComparativeVaultViewReply\"\x00\x12\x83\x01\n\x13UsePlenaryVaultView\x12\x35.dlkit.proto.authorization.UsePlenaryVaultViewRequest\x1a\x33.dlkit.proto.authorization.UsePlenaryVaultViewReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12h\n\x0eGetVaultsByIds\x12\x30.dlkit.proto.authorization.GetVaultsByIdsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12t\n\x14GetVaultsByGenusType\x12\x36.dlkit.proto.authorization.GetVaultsByGenusTypeRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12\x80\x01\n\x1aGetVaultsByParentGenusType\x12<.dlkit.proto.authorization.GetVaultsByParentGenusTypeRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12v\n\x15GetVaultsByRecordType\x12\x37.dlkit.proto.authorization.GetVaultsByRecordTypeRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12r\n\x13GetVaultsByProvider\x12\x35.dlkit.proto.authorization.GetVaultsByProviderRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12^\n\tGetVaults\x12+.dlkit.proto.authorization.GetVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x32\xed\x02\n\x11VaultQuerySession\x12w\n\x0f\x43\x61nSearchVaults\x12\x31.dlkit.proto.authorization.CanSearchVaultsRequest\x1a/.dlkit.proto.authorization.CanSearchVaultsReply\"\x00\x12q\n\rGetVaultQuery\x12/.dlkit.proto.authorization.GetVaultQueryRequest\x1a-.dlkit.proto.authorization.GetVaultQueryReply\"\x00\x12l\n\x10GetVaultsByQuery\x12\x32.dlkit.proto.authorization.GetVaultsByQueryRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x32\xf7\n\n\x11VaultAdminSession\x12w\n\x0f\x43\x61nCreateVaults\x12\x31.dlkit.proto.authorization.CanCreateVaultsRequest\x1a/.dlkit.proto.authorization.CanCreateVaultsReply\"\x00\x12\xa1\x01\n\x1d\x43\x61nCreateVaultWithRecordTypes\x12?.dlkit.proto.authorization.CanCreateVaultWithRecordTypesRequest\x1a=.dlkit.proto.authorization.CanCreateVaultWithRecordTypesReply\"\x00\x12\x89\x01\n\x15GetVaultFormForCreate\x12\x37.dlkit.proto.authorization.GetVaultFormForCreateRequest\x1a\x35.dlkit.proto.authorization.GetVaultFormForCreateReply\"\x00\x12k\n\x0b\x43reateVault\x12-.dlkit.proto.authorization.CreateVaultRequest\x1a+.dlkit.proto.authorization.CreateVaultReply\"\x00\x12w\n\x0f\x43\x61nUpdateVaults\x12\x31.dlkit.proto.authorization.CanUpdateVaultsRequest\x1a/.dlkit.proto.authorization.CanUpdateVaultsReply\"\x00\x12\x89\x01\n\x15GetVaultFormForUpdate\x12\x37.dlkit.proto.authorization.GetVaultFormForUpdateRequest\x1a\x35.dlkit.proto.authorization.GetVaultFormForUpdateReply\"\x00\x12k\n\x0bUpdateVault\x12-.dlkit.proto.authorization.UpdateVaultRequest\x1a+.dlkit.proto.authorization.UpdateVaultReply\"\x00\x12w\n\x0f\x43\x61nDeleteVaults\x12\x31.dlkit.proto.authorization.CanDeleteVaultsRequest\x1a/.dlkit.proto.authorization.CanDeleteVaultsReply\"\x00\x12k\n\x0b\x44\x65leteVault\x12-.dlkit.proto.authorization.DeleteVaultRequest\x1a+.dlkit.proto.authorization.DeleteVaultReply\"\x00\x12\x89\x01\n\x15\x43\x61nManageVaultAliases\x12\x37.dlkit.proto.authorization.CanManageVaultAliasesRequest\x1a\x35.dlkit.proto.authorization.CanManageVaultAliasesReply\"\x00\x12h\n\nAliasVault\x12,.dlkit.proto.authorization.AliasVaultRequest\x1a*.dlkit.proto.authorization.AliasVaultReply\"\x00\x32\xa3\x12\n\x15VaultHierarchySession\x12\x83\x01\n\x13GetVaultHierarchyId\x12\x35.dlkit.proto.authorization.GetVaultHierarchyIdRequest\x1a\x33.dlkit.proto.authorization.GetVaultHierarchyIdReply\"\x00\x12}\n\x11GetVaultHierarchy\x12\x33.dlkit.proto.authorization.GetVaultHierarchyRequest\x1a\x31.dlkit.proto.authorization.GetVaultHierarchyReply\"\x00\x12\x8f\x01\n\x17\x43\x61nAccessVaultHierarchy\x12\x39.dlkit.proto.authorization.CanAccessVaultHierarchyRequest\x1a\x37.dlkit.proto.authorization.CanAccessVaultHierarchyReply\"\x00\x12\x8f\x01\n\x17UseComparativeVaultView\x12\x39.dlkit.proto.authorization.UseComparativeVaultViewRequest\x1a\x37.dlkit.proto.authorization.UseComparativeVaultViewReply\"\x00\x12\x83\x01\n\x13UsePlenaryVaultView\x12\x35.dlkit.proto.authorization.UsePlenaryVaultViewRequest\x1a\x33.dlkit.proto.authorization.UsePlenaryVaultViewReply\"\x00\x12l\n\x0fGetRootVaultIds\x12\x31.dlkit.proto.authorization.GetRootVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\rGetRootVaults\x12/.dlkit.proto.authorization.GetRootVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12w\n\x0fHasParentVaults\x12\x31.dlkit.proto.authorization.HasParentVaultsRequest\x1a/.dlkit.proto.authorization.HasParentVaultsReply\"\x00\x12w\n\x0fIsParentOfVault\x12\x31.dlkit.proto.authorization.IsParentOfVaultRequest\x1a/.dlkit.proto.authorization.IsParentOfVaultReply\"\x00\x12p\n\x11GetParentVaultIds\x12\x33.dlkit.proto.authorization.GetParentVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x0fGetParentVaults\x12\x31.dlkit.proto.authorization.GetParentVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12}\n\x11IsAncestorOfVault\x12\x33.dlkit.proto.authorization.IsAncestorOfVaultRequest\x1a\x31.dlkit.proto.authorization.IsAncestorOfVaultReply\"\x00\x12t\n\x0eHasChildVaults\x12\x30.dlkit.proto.authorization.HasChildVaultsRequest\x1a..dlkit.proto.authorization.HasChildVaultsReply\"\x00\x12t\n\x0eIsChildOfVault\x12\x30.dlkit.proto.authorization.IsChildOfVaultRequest\x1a..dlkit.proto.authorization.IsChildOfVaultReply\"\x00\x12n\n\x10GetChildVaultIds\x12\x32.dlkit.proto.authorization.GetChildVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x0eGetChildVaults\x12\x30.dlkit.proto.authorization.GetChildVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12\x83\x01\n\x13IsDescendantOfVault\x12\x35.dlkit.proto.authorization.IsDescendantOfVaultRequest\x1a\x33.dlkit.proto.authorization.IsDescendantOfVaultReply\"\x00\x12w\n\x0fGetVaultNodeIds\x12\x31.dlkit.proto.authorization.GetVaultNodeIdsRequest\x1a/.dlkit.proto.authorization.GetVaultNodeIdsReply\"\x00\x12q\n\rGetVaultNodes\x12/.dlkit.proto.authorization.GetVaultNodesRequest\x1a-.dlkit.proto.authorization.GetVaultNodesReply\"\x00\x32\x8b\x08\n\x1bVaultHierarchyDesignSession\x12\x83\x01\n\x13GetVaultHierarchyId\x12\x35.dlkit.proto.authorization.GetVaultHierarchyIdRequest\x1a\x33.dlkit.proto.authorization.GetVaultHierarchyIdReply\"\x00\x12}\n\x11GetVaultHierarchy\x12\x33.dlkit.proto.authorization.GetVaultHierarchyRequest\x1a\x31.dlkit.proto.authorization.GetVaultHierarchyReply\"\x00\x12\x8f\x01\n\x17\x43\x61nModifyVaultHierarchy\x12\x39.dlkit.proto.authorization.CanModifyVaultHierarchyRequest\x1a\x37.dlkit.proto.authorization.CanModifyVaultHierarchyReply\"\x00\x12n\n\x0c\x41\x64\x64RootVault\x12..dlkit.proto.authorization.AddRootVaultRequest\x1a,.dlkit.proto.authorization.AddRootVaultReply\"\x00\x12w\n\x0fRemoveRootVault\x12\x31.dlkit.proto.authorization.RemoveRootVaultRequest\x1a/.dlkit.proto.authorization.RemoveRootVaultReply\"\x00\x12q\n\rAddChildVault\x12/.dlkit.proto.authorization.AddChildVaultRequest\x1a-.dlkit.proto.authorization.AddChildVaultReply\"\x00\x12z\n\x10RemoveChildVault\x12\x32.dlkit.proto.authorization.RemoveChildVaultRequest\x1a\x30.dlkit.proto.authorization.RemoveChildVaultReply\"\x00\x12}\n\x11RemoveChildVaults\x12\x33.dlkit.proto.authorization.RemoveChildVaultsRequest\x1a\x31.dlkit.proto.authorization.RemoveChildVaultsReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1f\x64lkit/proto/authorization.proto\x12\x19\x64lkit.proto.authorization\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x01\n\rAuthorization\x12\x34\n\x08\x66unction\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tqualifier\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12,\n\x05vault\x18\x03 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x14\n\x12\x41uthorizationQuery\"\x1d\n\x1b\x41uthorizationQueryInspector\"\x13\n\x11\x41uthorizationForm\"\x1a\n\x18\x41uthorizationSearchOrder\"\x15\n\x13\x41uthorizationSearch\"\x1c\n\x1a\x41uthorizationSearchResults\"U\n\x11\x41uthorizationList\x12@\n\x0e\x61uthorizations\x18\x01 \x03(\x0b\x32(.dlkit.proto.authorization.Authorization\"\x18\n\x16\x41uthorizationCondition\"y\n\x08\x46unction\x12?\n\x13qualifier_hierarchy\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12,\n\x05vault\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x0f\n\rFunctionQuery\"\x18\n\x16\x46unctionQueryInspector\"\x0e\n\x0c\x46unctionForm\"\x15\n\x13\x46unctionSearchOrder\"\x10\n\x0e\x46unctionSearch\"\x17\n\x15\x46unctionSearchResults\"F\n\x0c\x46unctionList\x12\x36\n\tfunctions\x18\x01 \x03(\x0b\x32#.dlkit.proto.authorization.Function\"\xf6\x02\n\tQualifier\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12,\n\x05vault\x18\x06 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x10\n\x0eQualifierQuery\"\x19\n\x17QualifierQueryInspector\"\x0f\n\rQualifierForm\"\x16\n\x14QualifierSearchOrder\"\x11\n\x0fQualifierSearch\"\x18\n\x16QualifierSearchResults\"I\n\rQualifierList\x12\x38\n\nqualifiers\x18\x01 \x03(\x0b\x32$.dlkit.proto.authorization.Qualifier\"\x0f\n\rQualifierNode\"V\n\x11QualifierNodeList\x12\x41\n\x0fqualifier_nodes\x18\x01 \x03(\x0b\x32(.dlkit.proto.authorization.QualifierNode\"\xc4\x02\n\x05Vault\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nVaultQuery\"\x15\n\x13VaultQueryInspector\"\x0b\n\tVaultForm\"\x12\n\x10VaultSearchOrder\"\r\n\x0bVaultSearch\"\x14\n\x12VaultSearchResults\"=\n\tVaultList\x12\x30\n\x06vaults\x18\x01 \x03(\x0b\x32 .dlkit.proto.authorization.Vault\"\x0b\n\tVaultNode\"J\n\rVaultNodeList\x12\x39\n\x0bvault_nodes\x18\x01 \x03(\x0b\x32$.dlkit.proto.authorization.VaultNode\"A\n\x0fGetVaultIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11GetVaultIdRequest\"@\n\rGetVaultReply\x12/\n\x05vault\x18\x01 \x01(\x0b\x32 .dlkit.proto.authorization.Vault\"\x11\n\x0fGetVaultRequest\"A\n\x1c\x43\x61nAccessAuthorizationsReply\x12!\n\x19\x63\x61n_access_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nAccessAuthorizationsRequest\"*\n\x11IsAuthorizedReply\x12\x15\n\ris_authorized\x18\x01 \x01(\x08\"\xbe\x01\n\x13IsAuthorizedRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"t\n\x1eGetAuthorizationConditionReply\x12R\n\x17\x61uthorization_condition\x18\x01 \x01(\x0b\x32\x31.dlkit.proto.authorization.AuthorizationCondition\"[\n GetAuthorizationConditionRequest\x12\x37\n\x0b\x66unction_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsAuthorizedOnConditionReply\x12\"\n\x1ais_authorized_on_condition\x18\x01 \x01(\x08\"\x8f\x02\n\x1eIsAuthorizedOnConditionRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\tcondition\x18\x02 \x01(\x0b\x32\x31.dlkit.proto.authorization.AuthorizationCondition\x12\x37\n\x0b\x66unction_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x1c\x43\x61nLookupAuthorizationsReply\x12!\n\x19\x63\x61n_lookup_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nLookupAuthorizationsRequest\"&\n$UseComparativeAuthorizationViewReply\"(\n&UseComparativeAuthorizationViewRequest\"\"\n UsePlenaryAuthorizationViewReply\"$\n\"UsePlenaryAuthorizationViewRequest\"\x1c\n\x1aUseFederatedVaultViewReply\"\x1e\n\x1cUseFederatedVaultViewRequest\"\x1b\n\x19UseIsolatedVaultViewReply\"\x1d\n\x1bUseIsolatedVaultViewRequest\"$\n\"UseEffectiveAuthorizationViewReply\"&\n$UseEffectiveAuthorizationViewRequest\"\'\n%UseAnyEffectiveAuthorizationViewReply\")\n\'UseAnyEffectiveAuthorizationViewRequest\"#\n!UseImplicitAuthorizationViewReply\"%\n#UseImplicitAuthorizationViewRequest\"#\n!UseExplicitAuthorizationViewReply\"%\n#UseExplicitAuthorizationViewRequest\"X\n\x15GetAuthorizationReply\x12?\n\rauthorization\x18\x01 \x01(\x0b\x32(.dlkit.proto.authorization.Authorization\"W\n\x17GetAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\x1dGetAuthorizationsByIdsRequest\x12=\n\x11\x61uthorization_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"o\n#GetAuthorizationsByGenusTypeRequest\x12H\n\x18\x61uthorization_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"u\n)GetAuthorizationsByParentGenusTypeRequest\x12H\n\x18\x61uthorization_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n$GetAuthorizationsByRecordTypeRequest\x12I\n\x19\x61uthorization_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"s\n\x1eGetAuthorizationsOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"^\n#GetAuthorizationsForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb7\x01\n)GetAuthorizationsForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"X\n GetAuthorizationsForAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb1\x01\n&GetAuthorizationsForAgentOnDateRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"^\n#GetAuthorizationsForFunctionRequest\x12\x37\n\x0b\x66unction_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb7\x01\n)GetAuthorizationsForFunctionOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa2\x01\n.GetAuthorizationsForResourceAndFunctionRequest\x12\x37\n\x0b\x66unction_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xfb\x01\n4GetAuthorizationsForResourceAndFunctionOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x9c\x01\n+GetAuthorizationsForAgentAndFunctionRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xf5\x01\n1GetAuthorizationsForAgentAndFunctionOnDateRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0b\x66unction_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"_\n#GetAuthorizationsByQualifierRequest\x12\x38\n\x0cqualifier_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n\x1dGetExplicitAuthorizationReply\x12?\n\rauthorization\x18\x01 \x01(\x0b\x32(.dlkit.proto.authorization.Authorization\"_\n\x1fGetExplicitAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetAuthorizationsRequest\"A\n\x1c\x43\x61nSearchAuthorizationsReply\x12!\n\x19\x63\x61n_search_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nSearchAuthorizationsRequest\"h\n\x1aGetAuthorizationQueryReply\x12J\n\x13\x61uthorization_query\x18\x01 \x01(\x0b\x32-.dlkit.proto.authorization.AuthorizationQuery\"\x1e\n\x1cGetAuthorizationQueryRequest\"m\n\x1fGetAuthorizationsByQueryRequest\x12J\n\x13\x61uthorization_query\x18\x01 \x01(\x0b\x32-.dlkit.proto.authorization.AuthorizationQuery\"A\n\x1c\x43\x61nCreateAuthorizationsReply\x12!\n\x19\x63\x61n_create_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nCreateAuthorizationsRequest\"`\n*CanCreateAuthorizationWithRecordTypesReply\x12\x32\n*can_create_authorization_with_record_types\x18\x01 \x01(\x08\"z\n,CanCreateAuthorizationWithRecordTypesRequest\x12J\n\x1a\x61uthorization_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n*GetAuthorizationFormForCreateForAgentReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"\xa3\x02\n,GetAuthorizationFormForCreateForAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12J\n\x1a\x61uthorization_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0b\x66unction_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"y\n-GetAuthorizationFormForCreateForResourceReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"\xa9\x02\n/GetAuthorizationFormForCreateForResourceRequest\x12J\n\x1a\x61uthorization_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x81\x01\n5GetAuthorizationFormForCreateForResourceAndTrustReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"\xe7\x02\n7GetAuthorizationFormForCreateForResourceAndTrustRequest\x12J\n\x1a\x61uthorization_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0b\x66unction_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cqualifier_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08trust_id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x18\x43reateAuthorizationReply\x12?\n\rauthorization\x18\x01 \x01(\x0b\x32(.dlkit.proto.authorization.Authorization\"f\n\x1a\x43reateAuthorizationRequest\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"A\n\x1c\x43\x61nUpdateAuthorizationsReply\x12!\n\x19\x63\x61n_update_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nUpdateAuthorizationsRequest\"n\n\"GetAuthorizationFormForUpdateReply\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"d\n$GetAuthorizationFormForUpdateRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18UpdateAuthorizationReply\"f\n\x1aUpdateAuthorizationRequest\x12H\n\x12\x61uthorization_form\x18\x01 \x01(\x0b\x32,.dlkit.proto.authorization.AuthorizationForm\"A\n\x1c\x43\x61nDeleteAuthorizationsReply\x12!\n\x19\x63\x61n_delete_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nDeleteAuthorizationsRequest\"\x1a\n\x18\x44\x65leteAuthorizationReply\"Z\n\x1a\x44\x65leteAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\"CanManageAuthorizationAliasesReply\x12(\n can_manage_authorization_aliases\x18\x01 \x01(\x08\"&\n$CanManageAuthorizationAliasesRequest\"\x19\n\x17\x41liasAuthorizationReply\"\x8f\x01\n\x19\x41liasAuthorizationRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12<\n\x10\x61uthorization_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUseComparativeVaultViewReply\" \n\x1eUseComparativeVaultViewRequest\"\x1a\n\x18UsePlenaryVaultViewReply\"\x1c\n\x1aUsePlenaryVaultViewRequest\"[\n(CanLookupAuthorizationVaultMappingsReply\x12/\n\'can_lookup_authorization_vault_mappings\x18\x01 \x01(\x08\",\n*CanLookupAuthorizationVaultMappingsRequest\"Y\n!GetAuthorizationIdsByVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1fGetAuthorizationsByVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\"GetAuthorizationsIdsByVaultRequest\x12\x35\n\tvault_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n!GetVaultIdsByAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\x1eGetVaultByAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x1c\x43\x61nAssignAuthorizationsReply\x12!\n\x19\x63\x61n_assign_authorizations\x18\x01 \x01(\x08\" \n\x1e\x43\x61nAssignAuthorizationsRequest\"Q\n#CanAssignAuthorizationsToVaultReply\x12*\n\"can_assign_authorizations_to_vault\x18\x01 \x01(\x08\"]\n%CanAssignAuthorizationsToVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1cGetAssignableVaultIdsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa2\x01\n,GetAssignableVaultIdsForAuthorizationRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1f\x41ssignAuthorizationToVaultReply\"\x97\x01\n!AssignAuthorizationToVaultRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"%\n#UnassignAuthorizationFromVaultReply\"\x9b\x01\n%UnassignAuthorizationFromVaultRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"#\n!ReassignAuthorizationToVaultReply\"\xd7\x01\n#ReassignAuthorizationToVaultRequest\x12<\n\x10\x61uthorization_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rfrom_vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bto_vault_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nLookupVaultsReply\x12\x19\n\x11\x63\x61n_lookup_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nLookupVaultsRequest\"N\n\x15GetVaultsByIdsRequest\x12\x35\n\tvault_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1bGetVaultsByGenusTypeRequest\x12@\n\x10vault_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n!GetVaultsByParentGenusTypeRequest\x12@\n\x10vault_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1cGetVaultsByRecordTypeRequest\x12\x41\n\x11vault_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"U\n\x1aGetVaultsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetVaultsRequest\"1\n\x14\x43\x61nSearchVaultsReply\x12\x19\n\x11\x63\x61n_search_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nSearchVaultsRequest\"P\n\x12GetVaultQueryReply\x12:\n\x0bvault_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.authorization.VaultQuery\"\x16\n\x14GetVaultQueryRequest\"U\n\x17GetVaultsByQueryRequest\x12:\n\x0bvault_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.authorization.VaultQuery\"1\n\x14\x43\x61nCreateVaultsReply\x12\x19\n\x11\x63\x61n_create_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nCreateVaultsRequest\"P\n\"CanCreateVaultWithRecordTypesReply\x12*\n\"can_create_vault_with_record_types\x18\x01 \x01(\x08\"j\n$CanCreateVaultWithRecordTypesRequest\x12\x42\n\x12vault_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"V\n\x1aGetVaultFormForCreateReply\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"b\n\x1cGetVaultFormForCreateRequest\x12\x42\n\x12vault_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"C\n\x10\x43reateVaultReply\x12/\n\x05vault\x18\x01 \x01(\x0b\x32 .dlkit.proto.authorization.Vault\"N\n\x12\x43reateVaultRequest\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"1\n\x14\x43\x61nUpdateVaultsReply\x12\x19\n\x11\x63\x61n_update_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nUpdateVaultsRequest\"V\n\x1aGetVaultFormForUpdateReply\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"T\n\x1cGetVaultFormForUpdateRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10UpdateVaultReply\"N\n\x12UpdateVaultRequest\x12\x38\n\nvault_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultForm\"1\n\x14\x43\x61nDeleteVaultsReply\x12\x19\n\x11\x63\x61n_delete_vaults\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nDeleteVaultsRequest\"\x12\n\x10\x44\x65leteVaultReply\"J\n\x12\x44\x65leteVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nManageVaultAliasesReply\x12 \n\x18\x63\x61n_manage_vault_aliases\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nManageVaultAliasesRequest\"\x11\n\x0f\x41liasVaultReply\"\x7f\n\x11\x41liasVaultRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x18GetVaultHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aGetVaultHierarchyIdRequest\"M\n\x16GetVaultHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1a\n\x18GetVaultHierarchyRequest\"B\n\x1c\x43\x61nAccessVaultHierarchyReply\x12\"\n\x1a\x63\x61n_access_vault_hierarchy\x18\x01 \x01(\x08\" \n\x1e\x43\x61nAccessVaultHierarchyRequest\"\x18\n\x16GetRootVaultIdsRequest\"\x16\n\x14GetRootVaultsRequest\"1\n\x14HasParentVaultsReply\x12\x19\n\x11has_parent_vaults\x18\x01 \x01(\x08\"N\n\x16HasParentVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsParentOfVaultReply\x12\x1a\n\x12is_parent_of_vault\x18\x01 \x01(\x08\"\x7f\n\x16IsParentOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x18GetParentVaultIdsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x16GetParentVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsAncestorOfVaultReply\x12\x1c\n\x14is_ancestor_of_vault\x18\x01 \x01(\x08\"\x81\x01\n\x18IsAncestorOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13HasChildVaultsReply\x12\x18\n\x10has_child_vaults\x18\x01 \x01(\x08\"M\n\x15HasChildVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"0\n\x13IsChildOfVaultReply\x12\x19\n\x11is_child_of_vault\x18\x01 \x01(\x08\"~\n\x15IsChildOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x17GetChildVaultIdsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x15GetChildVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsDescendantOfVaultReply\x12\x1e\n\x16is_descendant_of_vault\x18\x01 \x01(\x08\"\x83\x01\n\x1aIsDescendantOfVaultRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x14GetVaultNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9c\x01\n\x16GetVaultNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x34\n\x08vault_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x12GetVaultNodesReply\x12\x38\n\nvault_node\x18\x01 \x01(\x0b\x32$.dlkit.proto.authorization.VaultNode\"\x9a\x01\n\x14GetVaultNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x34\n\x08vault_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nModifyVaultHierarchyReply\x12\"\n\x1a\x63\x61n_modify_vault_hierarchy\x18\x01 \x01(\x08\" \n\x1e\x43\x61nModifyVaultHierarchyRequest\"\x13\n\x11\x41\x64\x64RootVaultReply\"K\n\x13\x41\x64\x64RootVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveRootVaultReply\"N\n\x16RemoveRootVaultRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12\x41\x64\x64\x43hildVaultReply\"\x82\x01\n\x14\x41\x64\x64\x43hildVaultRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveChildVaultReply\"\x85\x01\n\x17RemoveChildVaultRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08vault_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveChildVaultsReply\"P\n\x18RemoveChildVaultsRequest\x12\x34\n\x08vault_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x90\x06\n\x14\x41uthorizationSession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nAccessAuthorizations\x12\x39.dlkit.proto.authorization.CanAccessAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanAccessAuthorizationsReply\"\x00\x12n\n\x0cIsAuthorized\x12..dlkit.proto.authorization.IsAuthorizedRequest\x1a,.dlkit.proto.authorization.IsAuthorizedReply\"\x00\x12\x95\x01\n\x19GetAuthorizationCondition\x12;.dlkit.proto.authorization.GetAuthorizationConditionRequest\x1a\x39.dlkit.proto.authorization.GetAuthorizationConditionReply\"\x00\x12\x8f\x01\n\x17IsAuthorizedOnCondition\x12\x39.dlkit.proto.authorization.IsAuthorizedOnConditionRequest\x1a\x37.dlkit.proto.authorization.IsAuthorizedOnConditionReply\"\x00\x32\xd9\"\n\x1a\x41uthorizationLookupSession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nLookupAuthorizations\x12\x39.dlkit.proto.authorization.CanLookupAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanLookupAuthorizationsReply\"\x00\x12\xa7\x01\n\x1fUseComparativeAuthorizationView\x12\x41.dlkit.proto.authorization.UseComparativeAuthorizationViewRequest\x1a?.dlkit.proto.authorization.UseComparativeAuthorizationViewReply\"\x00\x12\x9b\x01\n\x1bUsePlenaryAuthorizationView\x12=.dlkit.proto.authorization.UsePlenaryAuthorizationViewRequest\x1a;.dlkit.proto.authorization.UsePlenaryAuthorizationViewReply\"\x00\x12\x89\x01\n\x15UseFederatedVaultView\x12\x37.dlkit.proto.authorization.UseFederatedVaultViewRequest\x1a\x35.dlkit.proto.authorization.UseFederatedVaultViewReply\"\x00\x12\x86\x01\n\x14UseIsolatedVaultView\x12\x36.dlkit.proto.authorization.UseIsolatedVaultViewRequest\x1a\x34.dlkit.proto.authorization.UseIsolatedVaultViewReply\"\x00\x12\xa1\x01\n\x1dUseEffectiveAuthorizationView\x12?.dlkit.proto.authorization.UseEffectiveAuthorizationViewRequest\x1a=.dlkit.proto.authorization.UseEffectiveAuthorizationViewReply\"\x00\x12\xaa\x01\n UseAnyEffectiveAuthorizationView\x12\x42.dlkit.proto.authorization.UseAnyEffectiveAuthorizationViewRequest\x1a@.dlkit.proto.authorization.UseAnyEffectiveAuthorizationViewReply\"\x00\x12\x9e\x01\n\x1cUseImplicitAuthorizationView\x12>.dlkit.proto.authorization.UseImplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseImplicitAuthorizationViewReply\"\x00\x12\x9e\x01\n\x1cUseExplicitAuthorizationView\x12>.dlkit.proto.authorization.UseExplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseExplicitAuthorizationViewReply\"\x00\x12z\n\x10GetAuthorization\x12\x32.dlkit.proto.authorization.GetAuthorizationRequest\x1a\x30.dlkit.proto.authorization.GetAuthorizationReply\"\x00\x12\x80\x01\n\x16GetAuthorizationsByIds\x12\x38.dlkit.proto.authorization.GetAuthorizationsByIdsRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsByGenusType\x12>.dlkit.proto.authorization.GetAuthorizationsByGenusTypeRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x98\x01\n\"GetAuthorizationsByParentGenusType\x12\x44.dlkit.proto.authorization.GetAuthorizationsByParentGenusTypeRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8e\x01\n\x1dGetAuthorizationsByRecordType\x12?.dlkit.proto.authorization.GetAuthorizationsByRecordTypeRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x82\x01\n\x17GetAuthorizationsOnDate\x12\x39.dlkit.proto.authorization.GetAuthorizationsOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsForResource\x12>.dlkit.proto.authorization.GetAuthorizationsForResourceRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x98\x01\n\"GetAuthorizationsForResourceOnDate\x12\x44.dlkit.proto.authorization.GetAuthorizationsForResourceOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x86\x01\n\x19GetAuthorizationsForAgent\x12;.dlkit.proto.authorization.GetAuthorizationsForAgentRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x92\x01\n\x1fGetAuthorizationsForAgentOnDate\x12\x41.dlkit.proto.authorization.GetAuthorizationsForAgentOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsForFunction\x12>.dlkit.proto.authorization.GetAuthorizationsForFunctionRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x98\x01\n\"GetAuthorizationsForFunctionOnDate\x12\x44.dlkit.proto.authorization.GetAuthorizationsForFunctionOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\xa2\x01\n\'GetAuthorizationsForResourceAndFunction\x12I.dlkit.proto.authorization.GetAuthorizationsForResourceAndFunctionRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\xae\x01\n-GetAuthorizationsForResourceAndFunctionOnDate\x12O.dlkit.proto.authorization.GetAuthorizationsForResourceAndFunctionOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x9c\x01\n$GetAuthorizationsForAgentAndFunction\x12\x46.dlkit.proto.authorization.GetAuthorizationsForAgentAndFunctionRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\xa8\x01\n*GetAuthorizationsForAgentAndFunctionOnDate\x12L.dlkit.proto.authorization.GetAuthorizationsForAgentAndFunctionOnDateRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x8c\x01\n\x1cGetAuthorizationsByQualifier\x12>.dlkit.proto.authorization.GetAuthorizationsByQualifierRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x92\x01\n\x18GetExplicitAuthorization\x12:.dlkit.proto.authorization.GetExplicitAuthorizationRequest\x1a\x38.dlkit.proto.authorization.GetExplicitAuthorizationReply\"\x00\x12v\n\x11GetAuthorizations\x12\x33.dlkit.proto.authorization.GetAuthorizationsRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x32\xe5\t\n\x19\x41uthorizationQuerySession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nSearchAuthorizations\x12\x39.dlkit.proto.authorization.CanSearchAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanSearchAuthorizationsReply\"\x00\x12\x89\x01\n\x15UseFederatedVaultView\x12\x37.dlkit.proto.authorization.UseFederatedVaultViewRequest\x1a\x35.dlkit.proto.authorization.UseFederatedVaultViewReply\"\x00\x12\x86\x01\n\x14UseIsolatedVaultView\x12\x36.dlkit.proto.authorization.UseIsolatedVaultViewRequest\x1a\x34.dlkit.proto.authorization.UseIsolatedVaultViewReply\"\x00\x12\x9e\x01\n\x1cUseImplicitAuthorizationView\x12>.dlkit.proto.authorization.UseImplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseImplicitAuthorizationViewReply\"\x00\x12\x9e\x01\n\x1cUseExplicitAuthorizationView\x12>.dlkit.proto.authorization.UseExplicitAuthorizationViewRequest\x1a<.dlkit.proto.authorization.UseExplicitAuthorizationViewReply\"\x00\x12\x89\x01\n\x15GetAuthorizationQuery\x12\x37.dlkit.proto.authorization.GetAuthorizationQueryRequest\x1a\x35.dlkit.proto.authorization.GetAuthorizationQueryReply\"\x00\x12\x84\x01\n\x18GetAuthorizationsByQuery\x12:.dlkit.proto.authorization.GetAuthorizationsByQueryRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x32\x96\x12\n\x19\x41uthorizationAdminSession\x12h\n\nGetVaultId\x12,.dlkit.proto.authorization.GetVaultIdRequest\x1a*.dlkit.proto.authorization.GetVaultIdReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12\x8f\x01\n\x17\x43\x61nCreateAuthorizations\x12\x39.dlkit.proto.authorization.CanCreateAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanCreateAuthorizationsReply\"\x00\x12\xb9\x01\n%CanCreateAuthorizationWithRecordTypes\x12G.dlkit.proto.authorization.CanCreateAuthorizationWithRecordTypesRequest\x1a\x45.dlkit.proto.authorization.CanCreateAuthorizationWithRecordTypesReply\"\x00\x12\xb9\x01\n%GetAuthorizationFormForCreateForAgent\x12G.dlkit.proto.authorization.GetAuthorizationFormForCreateForAgentRequest\x1a\x45.dlkit.proto.authorization.GetAuthorizationFormForCreateForAgentReply\"\x00\x12\xc2\x01\n(GetAuthorizationFormForCreateForResource\x12J.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceRequest\x1aH.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceReply\"\x00\x12\xda\x01\n0GetAuthorizationFormForCreateForResourceAndTrust\x12R.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceAndTrustRequest\x1aP.dlkit.proto.authorization.GetAuthorizationFormForCreateForResourceAndTrustReply\"\x00\x12\x83\x01\n\x13\x43reateAuthorization\x12\x35.dlkit.proto.authorization.CreateAuthorizationRequest\x1a\x33.dlkit.proto.authorization.CreateAuthorizationReply\"\x00\x12\x8f\x01\n\x17\x43\x61nUpdateAuthorizations\x12\x39.dlkit.proto.authorization.CanUpdateAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanUpdateAuthorizationsReply\"\x00\x12\xa1\x01\n\x1dGetAuthorizationFormForUpdate\x12?.dlkit.proto.authorization.GetAuthorizationFormForUpdateRequest\x1a=.dlkit.proto.authorization.GetAuthorizationFormForUpdateReply\"\x00\x12\x83\x01\n\x13UpdateAuthorization\x12\x35.dlkit.proto.authorization.UpdateAuthorizationRequest\x1a\x33.dlkit.proto.authorization.UpdateAuthorizationReply\"\x00\x12\x8f\x01\n\x17\x43\x61nDeleteAuthorizations\x12\x39.dlkit.proto.authorization.CanDeleteAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanDeleteAuthorizationsReply\"\x00\x12\x83\x01\n\x13\x44\x65leteAuthorization\x12\x35.dlkit.proto.authorization.DeleteAuthorizationRequest\x1a\x33.dlkit.proto.authorization.DeleteAuthorizationReply\"\x00\x12\xa1\x01\n\x1d\x43\x61nManageAuthorizationAliases\x12?.dlkit.proto.authorization.CanManageAuthorizationAliasesRequest\x1a=.dlkit.proto.authorization.CanManageAuthorizationAliasesReply\"\x00\x12\x80\x01\n\x12\x41liasAuthorization\x12\x34.dlkit.proto.authorization.AliasAuthorizationRequest\x1a\x32.dlkit.proto.authorization.AliasAuthorizationReply\"\x00\x32\xfd\x08\n\x19\x41uthorizationVaultSession\x12\x8f\x01\n\x17UseComparativeVaultView\x12\x39.dlkit.proto.authorization.UseComparativeVaultViewRequest\x1a\x37.dlkit.proto.authorization.UseComparativeVaultViewReply\"\x00\x12\x83\x01\n\x13UsePlenaryVaultView\x12\x35.dlkit.proto.authorization.UsePlenaryVaultViewRequest\x1a\x33.dlkit.proto.authorization.UsePlenaryVaultViewReply\"\x00\x12\xb3\x01\n#CanLookupAuthorizationVaultMappings\x12\x45.dlkit.proto.authorization.CanLookupAuthorizationVaultMappingsRequest\x1a\x43.dlkit.proto.authorization.CanLookupAuthorizationVaultMappingsReply\"\x00\x12\x82\x01\n\x1aGetAuthorizationIdsByVault\x12<.dlkit.proto.authorization.GetAuthorizationIdsByVaultRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x84\x01\n\x18GetAuthorizationsByVault\x12:.dlkit.proto.authorization.GetAuthorizationsByVaultRequest\x1a(.dlkit.proto.authorization.Authorization\"\x00\x30\x01\x12\x84\x01\n\x1bGetAuthorizationsIdsByVault\x12=.dlkit.proto.authorization.GetAuthorizationsIdsByVaultRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x1aGetVaultIdsByAuthorization\x12<.dlkit.proto.authorization.GetVaultIdsByAuthorizationRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12z\n\x17GetVaultByAuthorization\x12\x39.dlkit.proto.authorization.GetVaultByAuthorizationRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x32\xd6\x08\n#AuthorizationVaultAssignmentSession\x12\x8f\x01\n\x17\x43\x61nAssignAuthorizations\x12\x39.dlkit.proto.authorization.CanAssignAuthorizationsRequest\x1a\x37.dlkit.proto.authorization.CanAssignAuthorizationsReply\"\x00\x12\xa4\x01\n\x1e\x43\x61nAssignAuthorizationsToVault\x12@.dlkit.proto.authorization.CanAssignAuthorizationsToVaultRequest\x1a>.dlkit.proto.authorization.CanAssignAuthorizationsToVaultReply\"\x00\x12x\n\x15GetAssignableVaultIds\x12\x37.dlkit.proto.authorization.GetAssignableVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x98\x01\n%GetAssignableVaultIdsForAuthorization\x12G.dlkit.proto.authorization.GetAssignableVaultIdsForAuthorizationRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x98\x01\n\x1a\x41ssignAuthorizationToVault\x12<.dlkit.proto.authorization.AssignAuthorizationToVaultRequest\x1a:.dlkit.proto.authorization.AssignAuthorizationToVaultReply\"\x00\x12\xa4\x01\n\x1eUnassignAuthorizationFromVault\x12@.dlkit.proto.authorization.UnassignAuthorizationFromVaultRequest\x1a>.dlkit.proto.authorization.UnassignAuthorizationFromVaultReply\"\x00\x12\x9e\x01\n\x1cReassignAuthorizationToVault\x12>.dlkit.proto.authorization.ReassignAuthorizationToVaultRequest\x1a<.dlkit.proto.authorization.ReassignAuthorizationToVaultReply\"\x00\x32\xb8\t\n\x12VaultLookupSession\x12w\n\x0f\x43\x61nLookupVaults\x12\x31.dlkit.proto.authorization.CanLookupVaultsRequest\x1a/.dlkit.proto.authorization.CanLookupVaultsReply\"\x00\x12\x8f\x01\n\x17UseComparativeVaultView\x12\x39.dlkit.proto.authorization.UseComparativeVaultViewRequest\x1a\x37.dlkit.proto.authorization.UseComparativeVaultViewReply\"\x00\x12\x83\x01\n\x13UsePlenaryVaultView\x12\x35.dlkit.proto.authorization.UsePlenaryVaultViewRequest\x1a\x33.dlkit.proto.authorization.UsePlenaryVaultViewReply\"\x00\x12\x62\n\x08GetVault\x12*.dlkit.proto.authorization.GetVaultRequest\x1a(.dlkit.proto.authorization.GetVaultReply\"\x00\x12h\n\x0eGetVaultsByIds\x12\x30.dlkit.proto.authorization.GetVaultsByIdsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12t\n\x14GetVaultsByGenusType\x12\x36.dlkit.proto.authorization.GetVaultsByGenusTypeRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12\x80\x01\n\x1aGetVaultsByParentGenusType\x12<.dlkit.proto.authorization.GetVaultsByParentGenusTypeRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12v\n\x15GetVaultsByRecordType\x12\x37.dlkit.proto.authorization.GetVaultsByRecordTypeRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12r\n\x13GetVaultsByProvider\x12\x35.dlkit.proto.authorization.GetVaultsByProviderRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12^\n\tGetVaults\x12+.dlkit.proto.authorization.GetVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x32\xed\x02\n\x11VaultQuerySession\x12w\n\x0f\x43\x61nSearchVaults\x12\x31.dlkit.proto.authorization.CanSearchVaultsRequest\x1a/.dlkit.proto.authorization.CanSearchVaultsReply\"\x00\x12q\n\rGetVaultQuery\x12/.dlkit.proto.authorization.GetVaultQueryRequest\x1a-.dlkit.proto.authorization.GetVaultQueryReply\"\x00\x12l\n\x10GetVaultsByQuery\x12\x32.dlkit.proto.authorization.GetVaultsByQueryRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x32\xf7\n\n\x11VaultAdminSession\x12w\n\x0f\x43\x61nCreateVaults\x12\x31.dlkit.proto.authorization.CanCreateVaultsRequest\x1a/.dlkit.proto.authorization.CanCreateVaultsReply\"\x00\x12\xa1\x01\n\x1d\x43\x61nCreateVaultWithRecordTypes\x12?.dlkit.proto.authorization.CanCreateVaultWithRecordTypesRequest\x1a=.dlkit.proto.authorization.CanCreateVaultWithRecordTypesReply\"\x00\x12\x89\x01\n\x15GetVaultFormForCreate\x12\x37.dlkit.proto.authorization.GetVaultFormForCreateRequest\x1a\x35.dlkit.proto.authorization.GetVaultFormForCreateReply\"\x00\x12k\n\x0b\x43reateVault\x12-.dlkit.proto.authorization.CreateVaultRequest\x1a+.dlkit.proto.authorization.CreateVaultReply\"\x00\x12w\n\x0f\x43\x61nUpdateVaults\x12\x31.dlkit.proto.authorization.CanUpdateVaultsRequest\x1a/.dlkit.proto.authorization.CanUpdateVaultsReply\"\x00\x12\x89\x01\n\x15GetVaultFormForUpdate\x12\x37.dlkit.proto.authorization.GetVaultFormForUpdateRequest\x1a\x35.dlkit.proto.authorization.GetVaultFormForUpdateReply\"\x00\x12k\n\x0bUpdateVault\x12-.dlkit.proto.authorization.UpdateVaultRequest\x1a+.dlkit.proto.authorization.UpdateVaultReply\"\x00\x12w\n\x0f\x43\x61nDeleteVaults\x12\x31.dlkit.proto.authorization.CanDeleteVaultsRequest\x1a/.dlkit.proto.authorization.CanDeleteVaultsReply\"\x00\x12k\n\x0b\x44\x65leteVault\x12-.dlkit.proto.authorization.DeleteVaultRequest\x1a+.dlkit.proto.authorization.DeleteVaultReply\"\x00\x12\x89\x01\n\x15\x43\x61nManageVaultAliases\x12\x37.dlkit.proto.authorization.CanManageVaultAliasesRequest\x1a\x35.dlkit.proto.authorization.CanManageVaultAliasesReply\"\x00\x12h\n\nAliasVault\x12,.dlkit.proto.authorization.AliasVaultRequest\x1a*.dlkit.proto.authorization.AliasVaultReply\"\x00\x32\xa3\x12\n\x15VaultHierarchySession\x12\x83\x01\n\x13GetVaultHierarchyId\x12\x35.dlkit.proto.authorization.GetVaultHierarchyIdRequest\x1a\x33.dlkit.proto.authorization.GetVaultHierarchyIdReply\"\x00\x12}\n\x11GetVaultHierarchy\x12\x33.dlkit.proto.authorization.GetVaultHierarchyRequest\x1a\x31.dlkit.proto.authorization.GetVaultHierarchyReply\"\x00\x12\x8f\x01\n\x17\x43\x61nAccessVaultHierarchy\x12\x39.dlkit.proto.authorization.CanAccessVaultHierarchyRequest\x1a\x37.dlkit.proto.authorization.CanAccessVaultHierarchyReply\"\x00\x12\x8f\x01\n\x17UseComparativeVaultView\x12\x39.dlkit.proto.authorization.UseComparativeVaultViewRequest\x1a\x37.dlkit.proto.authorization.UseComparativeVaultViewReply\"\x00\x12\x83\x01\n\x13UsePlenaryVaultView\x12\x35.dlkit.proto.authorization.UsePlenaryVaultViewRequest\x1a\x33.dlkit.proto.authorization.UsePlenaryVaultViewReply\"\x00\x12l\n\x0fGetRootVaultIds\x12\x31.dlkit.proto.authorization.GetRootVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\rGetRootVaults\x12/.dlkit.proto.authorization.GetRootVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12w\n\x0fHasParentVaults\x12\x31.dlkit.proto.authorization.HasParentVaultsRequest\x1a/.dlkit.proto.authorization.HasParentVaultsReply\"\x00\x12w\n\x0fIsParentOfVault\x12\x31.dlkit.proto.authorization.IsParentOfVaultRequest\x1a/.dlkit.proto.authorization.IsParentOfVaultReply\"\x00\x12p\n\x11GetParentVaultIds\x12\x33.dlkit.proto.authorization.GetParentVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x0fGetParentVaults\x12\x31.dlkit.proto.authorization.GetParentVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12}\n\x11IsAncestorOfVault\x12\x33.dlkit.proto.authorization.IsAncestorOfVaultRequest\x1a\x31.dlkit.proto.authorization.IsAncestorOfVaultReply\"\x00\x12t\n\x0eHasChildVaults\x12\x30.dlkit.proto.authorization.HasChildVaultsRequest\x1a..dlkit.proto.authorization.HasChildVaultsReply\"\x00\x12t\n\x0eIsChildOfVault\x12\x30.dlkit.proto.authorization.IsChildOfVaultRequest\x1a..dlkit.proto.authorization.IsChildOfVaultReply\"\x00\x12n\n\x10GetChildVaultIds\x12\x32.dlkit.proto.authorization.GetChildVaultIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x0eGetChildVaults\x12\x30.dlkit.proto.authorization.GetChildVaultsRequest\x1a .dlkit.proto.authorization.Vault\"\x00\x30\x01\x12\x83\x01\n\x13IsDescendantOfVault\x12\x35.dlkit.proto.authorization.IsDescendantOfVaultRequest\x1a\x33.dlkit.proto.authorization.IsDescendantOfVaultReply\"\x00\x12w\n\x0fGetVaultNodeIds\x12\x31.dlkit.proto.authorization.GetVaultNodeIdsRequest\x1a/.dlkit.proto.authorization.GetVaultNodeIdsReply\"\x00\x12q\n\rGetVaultNodes\x12/.dlkit.proto.authorization.GetVaultNodesRequest\x1a-.dlkit.proto.authorization.GetVaultNodesReply\"\x00\x32\x8b\x08\n\x1bVaultHierarchyDesignSession\x12\x83\x01\n\x13GetVaultHierarchyId\x12\x35.dlkit.proto.authorization.GetVaultHierarchyIdRequest\x1a\x33.dlkit.proto.authorization.GetVaultHierarchyIdReply\"\x00\x12}\n\x11GetVaultHierarchy\x12\x33.dlkit.proto.authorization.GetVaultHierarchyRequest\x1a\x31.dlkit.proto.authorization.GetVaultHierarchyReply\"\x00\x12\x8f\x01\n\x17\x43\x61nModifyVaultHierarchy\x12\x39.dlkit.proto.authorization.CanModifyVaultHierarchyRequest\x1a\x37.dlkit.proto.authorization.CanModifyVaultHierarchyReply\"\x00\x12n\n\x0c\x41\x64\x64RootVault\x12..dlkit.proto.authorization.AddRootVaultRequest\x1a,.dlkit.proto.authorization.AddRootVaultReply\"\x00\x12w\n\x0fRemoveRootVault\x12\x31.dlkit.proto.authorization.RemoveRootVaultRequest\x1a/.dlkit.proto.authorization.RemoveRootVaultReply\"\x00\x12q\n\rAddChildVault\x12/.dlkit.proto.authorization.AddChildVaultRequest\x1a-.dlkit.proto.authorization.AddChildVaultReply\"\x00\x12z\n\x10RemoveChildVault\x12\x32.dlkit.proto.authorization.RemoveChildVaultRequest\x1a\x30.dlkit.proto.authorization.RemoveChildVaultReply\"\x00\x12}\n\x11RemoveChildVaults\x12\x33.dlkit.proto.authorization.RemoveChildVaultsRequest\x1a\x31.dlkit.proto.authorization.RemoveChildVaultsReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -504,14 +504,14 @@ _QUALIFIER = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.authorization.Qualifier.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.authorization.Qualifier.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.authorization.Qualifier.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.authorization.Qualifier.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -525,7 +525,7 @@ _QUALIFIER = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.authorization.Qualifier.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.authorization.Qualifier.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -551,7 +551,7 @@ _QUALIFIER = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1030,
-  serialized_end=1399,
+  serialized_end=1404,
 )
 
 
@@ -574,8 +574,8 @@ _QUALIFIERQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1401,
-  serialized_end=1417,
+  serialized_start=1406,
+  serialized_end=1422,
 )
 
 
@@ -598,8 +598,8 @@ _QUALIFIERQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1419,
-  serialized_end=1444,
+  serialized_start=1424,
+  serialized_end=1449,
 )
 
 
@@ -622,8 +622,8 @@ _QUALIFIERFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1446,
-  serialized_end=1461,
+  serialized_start=1451,
+  serialized_end=1466,
 )
 
 
@@ -646,8 +646,8 @@ _QUALIFIERSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1463,
-  serialized_end=1485,
+  serialized_start=1468,
+  serialized_end=1490,
 )
 
 
@@ -670,8 +670,8 @@ _QUALIFIERSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1487,
-  serialized_end=1504,
+  serialized_start=1492,
+  serialized_end=1509,
 )
 
 
@@ -694,8 +694,8 @@ _QUALIFIERSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1506,
-  serialized_end=1530,
+  serialized_start=1511,
+  serialized_end=1535,
 )
 
 
@@ -725,8 +725,8 @@ _QUALIFIERLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1532,
-  serialized_end=1605,
+  serialized_start=1537,
+  serialized_end=1610,
 )
 
 
@@ -749,8 +749,8 @@ _QUALIFIERNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1607,
-  serialized_end=1622,
+  serialized_start=1612,
+  serialized_end=1627,
 )
 
 
@@ -780,8 +780,8 @@ _QUALIFIERNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1624,
-  serialized_end=1710,
+  serialized_start=1629,
+  serialized_end=1715,
 )
 
 
@@ -800,14 +800,14 @@ _VAULT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.authorization.Vault.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.authorization.Vault.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.authorization.Vault.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.authorization.Vault.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -821,7 +821,7 @@ _VAULT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.authorization.Vault.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.authorization.Vault.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -839,8 +839,8 @@ _VAULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1713,
-  serialized_end=2032,
+  serialized_start=1718,
+  serialized_end=2042,
 )
 
 
@@ -863,8 +863,8 @@ _VAULTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2034,
-  serialized_end=2046,
+  serialized_start=2044,
+  serialized_end=2056,
 )
 
 
@@ -887,8 +887,8 @@ _VAULTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2048,
-  serialized_end=2069,
+  serialized_start=2058,
+  serialized_end=2079,
 )
 
 
@@ -911,8 +911,8 @@ _VAULTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2071,
-  serialized_end=2082,
+  serialized_start=2081,
+  serialized_end=2092,
 )
 
 
@@ -935,8 +935,8 @@ _VAULTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2084,
-  serialized_end=2102,
+  serialized_start=2094,
+  serialized_end=2112,
 )
 
 
@@ -959,8 +959,8 @@ _VAULTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2104,
-  serialized_end=2117,
+  serialized_start=2114,
+  serialized_end=2127,
 )
 
 
@@ -983,8 +983,8 @@ _VAULTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2119,
-  serialized_end=2139,
+  serialized_start=2129,
+  serialized_end=2149,
 )
 
 
@@ -1014,8 +1014,8 @@ _VAULTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2141,
-  serialized_end=2202,
+  serialized_start=2151,
+  serialized_end=2212,
 )
 
 
@@ -1038,8 +1038,8 @@ _VAULTNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2204,
-  serialized_end=2215,
+  serialized_start=2214,
+  serialized_end=2225,
 )
 
 
@@ -1069,8 +1069,8 @@ _VAULTNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2217,
-  serialized_end=2291,
+  serialized_start=2227,
+  serialized_end=2301,
 )
 
 
@@ -1100,8 +1100,8 @@ _GETVAULTIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2293,
-  serialized_end=2358,
+  serialized_start=2303,
+  serialized_end=2368,
 )
 
 
@@ -1124,8 +1124,8 @@ _GETVAULTIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2360,
-  serialized_end=2379,
+  serialized_start=2370,
+  serialized_end=2389,
 )
 
 
@@ -1155,8 +1155,8 @@ _GETVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2381,
-  serialized_end=2445,
+  serialized_start=2391,
+  serialized_end=2455,
 )
 
 
@@ -1179,8 +1179,8 @@ _GETVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2447,
-  serialized_end=2464,
+  serialized_start=2457,
+  serialized_end=2474,
 )
 
 
@@ -1210,8 +1210,8 @@ _CANACCESSAUTHORIZATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2466,
-  serialized_end=2531,
+  serialized_start=2476,
+  serialized_end=2541,
 )
 
 
@@ -1234,8 +1234,8 @@ _CANACCESSAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2533,
-  serialized_end=2565,
+  serialized_start=2543,
+  serialized_end=2575,
 )
 
 
@@ -1265,8 +1265,8 @@ _ISAUTHORIZEDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2567,
-  serialized_end=2609,
+  serialized_start=2577,
+  serialized_end=2619,
 )
 
 
@@ -1310,8 +1310,8 @@ _ISAUTHORIZEDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2612,
-  serialized_end=2802,
+  serialized_start=2622,
+  serialized_end=2812,
 )
 
 
@@ -1341,8 +1341,8 @@ _GETAUTHORIZATIONCONDITIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2804,
-  serialized_end=2920,
+  serialized_start=2814,
+  serialized_end=2930,
 )
 
 
@@ -1372,8 +1372,8 @@ _GETAUTHORIZATIONCONDITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2922,
-  serialized_end=3013,
+  serialized_start=2932,
+  serialized_end=3023,
 )
 
 
@@ -1403,8 +1403,8 @@ _ISAUTHORIZEDONCONDITIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3015,
-  serialized_end=3081,
+  serialized_start=3025,
+  serialized_end=3091,
 )
 
 
@@ -1455,8 +1455,8 @@ _ISAUTHORIZEDONCONDITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3084,
-  serialized_end=3355,
+  serialized_start=3094,
+  serialized_end=3365,
 )
 
 
@@ -1486,8 +1486,8 @@ _CANLOOKUPAUTHORIZATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3357,
-  serialized_end=3422,
+  serialized_start=3367,
+  serialized_end=3432,
 )
 
 
@@ -1510,8 +1510,8 @@ _CANLOOKUPAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3424,
-  serialized_end=3456,
+  serialized_start=3434,
+  serialized_end=3466,
 )
 
 
@@ -1534,8 +1534,8 @@ _USECOMPARATIVEAUTHORIZATIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3458,
-  serialized_end=3496,
+  serialized_start=3468,
+  serialized_end=3506,
 )
 
 
@@ -1558,8 +1558,8 @@ _USECOMPARATIVEAUTHORIZATIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3498,
-  serialized_end=3538,
+  serialized_start=3508,
+  serialized_end=3548,
 )
 
 
@@ -1582,8 +1582,8 @@ _USEPLENARYAUTHORIZATIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3540,
-  serialized_end=3574,
+  serialized_start=3550,
+  serialized_end=3584,
 )
 
 
@@ -1606,8 +1606,8 @@ _USEPLENARYAUTHORIZATIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3576,
-  serialized_end=3612,
+  serialized_start=3586,
+  serialized_end=3622,
 )
 
 
@@ -1630,8 +1630,8 @@ _USEFEDERATEDVAULTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3614,
-  serialized_end=3642,
+  serialized_start=3624,
+  serialized_end=3652,
 )
 
 
@@ -1654,8 +1654,8 @@ _USEFEDERATEDVAULTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3644,
-  serialized_end=3674,
+  serialized_start=3654,
+  serialized_end=3684,
 )
 
 
@@ -1678,8 +1678,8 @@ _USEISOLATEDVAULTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3676,
-  serialized_end=3703,
+  serialized_start=3686,
+  serialized_end=3713,
 )
 
 
@@ -1702,8 +1702,8 @@ _USEISOLATEDVAULTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3705,
-  serialized_end=3734,
+  serialized_start=3715,
+  serialized_end=3744,
 )
 
 
@@ -1726,8 +1726,8 @@ _USEEFFECTIVEAUTHORIZATIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3736,
-  serialized_end=3772,
+  serialized_start=3746,
+  serialized_end=3782,
 )
 
 
@@ -1750,8 +1750,8 @@ _USEEFFECTIVEAUTHORIZATIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3774,
-  serialized_end=3812,
+  serialized_start=3784,
+  serialized_end=3822,
 )
 
 
@@ -1774,8 +1774,8 @@ _USEANYEFFECTIVEAUTHORIZATIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3814,
-  serialized_end=3853,
+  serialized_start=3824,
+  serialized_end=3863,
 )
 
 
@@ -1798,8 +1798,8 @@ _USEANYEFFECTIVEAUTHORIZATIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3855,
-  serialized_end=3896,
+  serialized_start=3865,
+  serialized_end=3906,
 )
 
 
@@ -1822,8 +1822,8 @@ _USEIMPLICITAUTHORIZATIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3898,
-  serialized_end=3933,
+  serialized_start=3908,
+  serialized_end=3943,
 )
 
 
@@ -1846,8 +1846,8 @@ _USEIMPLICITAUTHORIZATIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3935,
-  serialized_end=3972,
+  serialized_start=3945,
+  serialized_end=3982,
 )
 
 
@@ -1870,8 +1870,8 @@ _USEEXPLICITAUTHORIZATIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3974,
-  serialized_end=4009,
+  serialized_start=3984,
+  serialized_end=4019,
 )
 
 
@@ -1894,8 +1894,8 @@ _USEEXPLICITAUTHORIZATIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4011,
-  serialized_end=4048,
+  serialized_start=4021,
+  serialized_end=4058,
 )
 
 
@@ -1925,8 +1925,8 @@ _GETAUTHORIZATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4050,
-  serialized_end=4138,
+  serialized_start=4060,
+  serialized_end=4148,
 )
 
 
@@ -1956,8 +1956,8 @@ _GETAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4140,
-  serialized_end=4227,
+  serialized_start=4150,
+  serialized_end=4237,
 )
 
 
@@ -1987,8 +1987,8 @@ _GETAUTHORIZATIONSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4229,
-  serialized_end=4323,
+  serialized_start=4239,
+  serialized_end=4333,
 )
 
 
@@ -2018,8 +2018,8 @@ _GETAUTHORIZATIONSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4325,
-  serialized_end=4436,
+  serialized_start=4335,
+  serialized_end=4446,
 )
 
 
@@ -2049,8 +2049,8 @@ _GETAUTHORIZATIONSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4438,
-  serialized_end=4555,
+  serialized_start=4448,
+  serialized_end=4565,
 )
 
 
@@ -2080,8 +2080,8 @@ _GETAUTHORIZATIONSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4557,
-  serialized_end=4670,
+  serialized_start=4567,
+  serialized_end=4680,
 )
 
 
@@ -2118,8 +2118,8 @@ _GETAUTHORIZATIONSONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4672,
-  serialized_end=4787,
+  serialized_start=4682,
+  serialized_end=4797,
 )
 
 
@@ -2149,8 +2149,8 @@ _GETAUTHORIZATIONSFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4789,
-  serialized_end=4883,
+  serialized_start=4799,
+  serialized_end=4893,
 )
 
 
@@ -2194,8 +2194,8 @@ _GETAUTHORIZATIONSFORRESOURCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4886,
-  serialized_end=5069,
+  serialized_start=4896,
+  serialized_end=5079,
 )
 
 
@@ -2225,8 +2225,8 @@ _GETAUTHORIZATIONSFORAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5071,
-  serialized_end=5159,
+  serialized_start=5081,
+  serialized_end=5169,
 )
 
 
@@ -2270,8 +2270,8 @@ _GETAUTHORIZATIONSFORAGENTONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5162,
-  serialized_end=5339,
+  serialized_start=5172,
+  serialized_end=5349,
 )
 
 
@@ -2301,8 +2301,8 @@ _GETAUTHORIZATIONSFORFUNCTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5341,
-  serialized_end=5435,
+  serialized_start=5351,
+  serialized_end=5445,
 )
 
 
@@ -2346,8 +2346,8 @@ _GETAUTHORIZATIONSFORFUNCTIONONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5438,
-  serialized_end=5621,
+  serialized_start=5448,
+  serialized_end=5631,
 )
 
 
@@ -2384,8 +2384,8 @@ _GETAUTHORIZATIONSFORRESOURCEANDFUNCTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5624,
-  serialized_end=5786,
+  serialized_start=5634,
+  serialized_end=5796,
 )
 
 
@@ -2436,8 +2436,8 @@ _GETAUTHORIZATIONSFORRESOURCEANDFUNCTIONONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5789,
-  serialized_end=6040,
+  serialized_start=5799,
+  serialized_end=6050,
 )
 
 
@@ -2474,8 +2474,8 @@ _GETAUTHORIZATIONSFORAGENTANDFUNCTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6043,
-  serialized_end=6199,
+  serialized_start=6053,
+  serialized_end=6209,
 )
 
 
@@ -2526,8 +2526,8 @@ _GETAUTHORIZATIONSFORAGENTANDFUNCTIONONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6202,
-  serialized_end=6447,
+  serialized_start=6212,
+  serialized_end=6457,
 )
 
 
@@ -2557,8 +2557,8 @@ _GETAUTHORIZATIONSBYQUALIFIERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6449,
-  serialized_end=6544,
+  serialized_start=6459,
+  serialized_end=6554,
 )
 
 
@@ -2588,8 +2588,8 @@ _GETEXPLICITAUTHORIZATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6546,
-  serialized_end=6642,
+  serialized_start=6556,
+  serialized_end=6652,
 )
 
 
@@ -2619,8 +2619,8 @@ _GETEXPLICITAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6644,
-  serialized_end=6739,
+  serialized_start=6654,
+  serialized_end=6749,
 )
 
 
@@ -2643,8 +2643,8 @@ _GETAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6741,
-  serialized_end=6767,
+  serialized_start=6751,
+  serialized_end=6777,
 )
 
 
@@ -2674,8 +2674,8 @@ _CANSEARCHAUTHORIZATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6769,
-  serialized_end=6834,
+  serialized_start=6779,
+  serialized_end=6844,
 )
 
 
@@ -2698,8 +2698,8 @@ _CANSEARCHAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6836,
-  serialized_end=6868,
+  serialized_start=6846,
+  serialized_end=6878,
 )
 
 
@@ -2729,8 +2729,8 @@ _GETAUTHORIZATIONQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6870,
-  serialized_end=6974,
+  serialized_start=6880,
+  serialized_end=6984,
 )
 
 
@@ -2753,8 +2753,8 @@ _GETAUTHORIZATIONQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6976,
-  serialized_end=7006,
+  serialized_start=6986,
+  serialized_end=7016,
 )
 
 
@@ -2784,8 +2784,8 @@ _GETAUTHORIZATIONSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7008,
-  serialized_end=7117,
+  serialized_start=7018,
+  serialized_end=7127,
 )
 
 
@@ -2815,8 +2815,8 @@ _CANCREATEAUTHORIZATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7119,
-  serialized_end=7184,
+  serialized_start=7129,
+  serialized_end=7194,
 )
 
 
@@ -2839,8 +2839,8 @@ _CANCREATEAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7186,
-  serialized_end=7218,
+  serialized_start=7196,
+  serialized_end=7228,
 )
 
 
@@ -2870,8 +2870,8 @@ _CANCREATEAUTHORIZATIONWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7220,
-  serialized_end=7316,
+  serialized_start=7230,
+  serialized_end=7326,
 )
 
 
@@ -2901,8 +2901,8 @@ _CANCREATEAUTHORIZATIONWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7318,
-  serialized_end=7440,
+  serialized_start=7328,
+  serialized_end=7450,
 )
 
 
@@ -2932,8 +2932,8 @@ _GETAUTHORIZATIONFORMFORCREATEFORAGENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7442,
-  serialized_end=7560,
+  serialized_start=7452,
+  serialized_end=7570,
 )
 
 
@@ -2984,8 +2984,8 @@ _GETAUTHORIZATIONFORMFORCREATEFORAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7563,
-  serialized_end=7854,
+  serialized_start=7573,
+  serialized_end=7864,
 )
 
 
@@ -3015,8 +3015,8 @@ _GETAUTHORIZATIONFORMFORCREATEFORRESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7856,
-  serialized_end=7977,
+  serialized_start=7866,
+  serialized_end=7987,
 )
 
 
@@ -3067,8 +3067,8 @@ _GETAUTHORIZATIONFORMFORCREATEFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7980,
-  serialized_end=8277,
+  serialized_start=7990,
+  serialized_end=8287,
 )
 
 
@@ -3098,8 +3098,8 @@ _GETAUTHORIZATIONFORMFORCREATEFORRESOURCEANDTRUSTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8280,
-  serialized_end=8409,
+  serialized_start=8290,
+  serialized_end=8419,
 )
 
 
@@ -3157,8 +3157,8 @@ _GETAUTHORIZATIONFORMFORCREATEFORRESOURCEANDTRUSTREQUEST = _descriptor.Descripto
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8412,
-  serialized_end=8771,
+  serialized_start=8422,
+  serialized_end=8781,
 )
 
 
@@ -3188,8 +3188,8 @@ _CREATEAUTHORIZATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8773,
-  serialized_end=8864,
+  serialized_start=8783,
+  serialized_end=8874,
 )
 
 
@@ -3219,8 +3219,8 @@ _CREATEAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8866,
-  serialized_end=8968,
+  serialized_start=8876,
+  serialized_end=8978,
 )
 
 
@@ -3250,8 +3250,8 @@ _CANUPDATEAUTHORIZATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8970,
-  serialized_end=9035,
+  serialized_start=8980,
+  serialized_end=9045,
 )
 
 
@@ -3274,8 +3274,8 @@ _CANUPDATEAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9037,
-  serialized_end=9069,
+  serialized_start=9047,
+  serialized_end=9079,
 )
 
 
@@ -3305,8 +3305,8 @@ _GETAUTHORIZATIONFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9071,
-  serialized_end=9181,
+  serialized_start=9081,
+  serialized_end=9191,
 )
 
 
@@ -3336,8 +3336,8 @@ _GETAUTHORIZATIONFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9183,
-  serialized_end=9283,
+  serialized_start=9193,
+  serialized_end=9293,
 )
 
 
@@ -3360,8 +3360,8 @@ _UPDATEAUTHORIZATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9285,
-  serialized_end=9311,
+  serialized_start=9295,
+  serialized_end=9321,
 )
 
 
@@ -3391,8 +3391,8 @@ _UPDATEAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9313,
-  serialized_end=9415,
+  serialized_start=9323,
+  serialized_end=9425,
 )
 
 
@@ -3422,8 +3422,8 @@ _CANDELETEAUTHORIZATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9417,
-  serialized_end=9482,
+  serialized_start=9427,
+  serialized_end=9492,
 )
 
 
@@ -3446,8 +3446,8 @@ _CANDELETEAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9484,
-  serialized_end=9516,
+  serialized_start=9494,
+  serialized_end=9526,
 )
 
 
@@ -3470,8 +3470,8 @@ _DELETEAUTHORIZATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9518,
-  serialized_end=9544,
+  serialized_start=9528,
+  serialized_end=9554,
 )
 
 
@@ -3501,8 +3501,8 @@ _DELETEAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9546,
-  serialized_end=9636,
+  serialized_start=9556,
+  serialized_end=9646,
 )
 
 
@@ -3532,8 +3532,8 @@ _CANMANAGEAUTHORIZATIONALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9638,
-  serialized_end=9716,
+  serialized_start=9648,
+  serialized_end=9726,
 )
 
 
@@ -3556,8 +3556,8 @@ _CANMANAGEAUTHORIZATIONALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9718,
-  serialized_end=9756,
+  serialized_start=9728,
+  serialized_end=9766,
 )
 
 
@@ -3580,8 +3580,8 @@ _ALIASAUTHORIZATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9758,
-  serialized_end=9783,
+  serialized_start=9768,
+  serialized_end=9793,
 )
 
 
@@ -3618,8 +3618,8 @@ _ALIASAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9786,
-  serialized_end=9929,
+  serialized_start=9796,
+  serialized_end=9939,
 )
 
 
@@ -3642,8 +3642,8 @@ _USECOMPARATIVEVAULTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9931,
-  serialized_end=9961,
+  serialized_start=9941,
+  serialized_end=9971,
 )
 
 
@@ -3666,8 +3666,8 @@ _USECOMPARATIVEVAULTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9963,
-  serialized_end=9995,
+  serialized_start=9973,
+  serialized_end=10005,
 )
 
 
@@ -3690,8 +3690,8 @@ _USEPLENARYVAULTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9997,
-  serialized_end=10023,
+  serialized_start=10007,
+  serialized_end=10033,
 )
 
 
@@ -3714,8 +3714,8 @@ _USEPLENARYVAULTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10025,
-  serialized_end=10053,
+  serialized_start=10035,
+  serialized_end=10063,
 )
 
 
@@ -3745,8 +3745,8 @@ _CANLOOKUPAUTHORIZATIONVAULTMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10055,
-  serialized_end=10146,
+  serialized_start=10065,
+  serialized_end=10156,
 )
 
 
@@ -3769,8 +3769,8 @@ _CANLOOKUPAUTHORIZATIONVAULTMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10148,
-  serialized_end=10192,
+  serialized_start=10158,
+  serialized_end=10202,
 )
 
 
@@ -3800,8 +3800,8 @@ _GETAUTHORIZATIONIDSBYVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10194,
-  serialized_end=10283,
+  serialized_start=10204,
+  serialized_end=10293,
 )
 
 
@@ -3831,8 +3831,8 @@ _GETAUTHORIZATIONSBYVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10285,
-  serialized_end=10372,
+  serialized_start=10295,
+  serialized_end=10382,
 )
 
 
@@ -3862,8 +3862,8 @@ _GETAUTHORIZATIONSIDSBYVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10374,
-  serialized_end=10465,
+  serialized_start=10384,
+  serialized_end=10475,
 )
 
 
@@ -3893,8 +3893,8 @@ _GETVAULTIDSBYAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10467,
-  serialized_end=10564,
+  serialized_start=10477,
+  serialized_end=10574,
 )
 
 
@@ -3924,8 +3924,8 @@ _GETVAULTBYAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10566,
-  serialized_end=10660,
+  serialized_start=10576,
+  serialized_end=10670,
 )
 
 
@@ -3955,8 +3955,8 @@ _CANASSIGNAUTHORIZATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10662,
-  serialized_end=10727,
+  serialized_start=10672,
+  serialized_end=10737,
 )
 
 
@@ -3979,8 +3979,8 @@ _CANASSIGNAUTHORIZATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10729,
-  serialized_end=10761,
+  serialized_start=10739,
+  serialized_end=10771,
 )
 
 
@@ -4010,8 +4010,8 @@ _CANASSIGNAUTHORIZATIONSTOVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10763,
-  serialized_end=10844,
+  serialized_start=10773,
+  serialized_end=10854,
 )
 
 
@@ -4041,8 +4041,8 @@ _CANASSIGNAUTHORIZATIONSTOVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10846,
-  serialized_end=10939,
+  serialized_start=10856,
+  serialized_end=10949,
 )
 
 
@@ -4072,8 +4072,8 @@ _GETASSIGNABLEVAULTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10941,
-  serialized_end=11025,
+  serialized_start=10951,
+  serialized_end=11035,
 )
 
 
@@ -4110,8 +4110,8 @@ _GETASSIGNABLEVAULTIDSFORAUTHORIZATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11028,
-  serialized_end=11190,
+  serialized_start=11038,
+  serialized_end=11200,
 )
 
 
@@ -4134,8 +4134,8 @@ _ASSIGNAUTHORIZATIONTOVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11192,
-  serialized_end=11225,
+  serialized_start=11202,
+  serialized_end=11235,
 )
 
 
@@ -4172,8 +4172,8 @@ _ASSIGNAUTHORIZATIONTOVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11228,
-  serialized_end=11379,
+  serialized_start=11238,
+  serialized_end=11389,
 )
 
 
@@ -4196,8 +4196,8 @@ _UNASSIGNAUTHORIZATIONFROMVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11381,
-  serialized_end=11418,
+  serialized_start=11391,
+  serialized_end=11428,
 )
 
 
@@ -4234,8 +4234,8 @@ _UNASSIGNAUTHORIZATIONFROMVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11421,
-  serialized_end=11576,
+  serialized_start=11431,
+  serialized_end=11586,
 )
 
 
@@ -4258,8 +4258,8 @@ _REASSIGNAUTHORIZATIONTOVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11578,
-  serialized_end=11613,
+  serialized_start=11588,
+  serialized_end=11623,
 )
 
 
@@ -4303,8 +4303,8 @@ _REASSIGNAUTHORIZATIONTOVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11616,
-  serialized_end=11831,
+  serialized_start=11626,
+  serialized_end=11841,
 )
 
 
@@ -4334,8 +4334,8 @@ _CANLOOKUPVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11833,
-  serialized_end=11882,
+  serialized_start=11843,
+  serialized_end=11892,
 )
 
 
@@ -4358,8 +4358,8 @@ _CANLOOKUPVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11884,
-  serialized_end=11908,
+  serialized_start=11894,
+  serialized_end=11918,
 )
 
 
@@ -4389,8 +4389,8 @@ _GETVAULTSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11910,
-  serialized_end=11988,
+  serialized_start=11920,
+  serialized_end=11998,
 )
 
 
@@ -4420,8 +4420,8 @@ _GETVAULTSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11990,
-  serialized_end=12085,
+  serialized_start=12000,
+  serialized_end=12095,
 )
 
 
@@ -4451,8 +4451,8 @@ _GETVAULTSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12087,
-  serialized_end=12188,
+  serialized_start=12097,
+  serialized_end=12198,
 )
 
 
@@ -4482,8 +4482,8 @@ _GETVAULTSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12190,
-  serialized_end=12287,
+  serialized_start=12200,
+  serialized_end=12297,
 )
 
 
@@ -4513,8 +4513,8 @@ _GETVAULTSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12289,
-  serialized_end=12374,
+  serialized_start=12299,
+  serialized_end=12384,
 )
 
 
@@ -4537,8 +4537,8 @@ _GETVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12376,
-  serialized_end=12394,
+  serialized_start=12386,
+  serialized_end=12404,
 )
 
 
@@ -4568,8 +4568,8 @@ _CANSEARCHVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12396,
-  serialized_end=12445,
+  serialized_start=12406,
+  serialized_end=12455,
 )
 
 
@@ -4592,8 +4592,8 @@ _CANSEARCHVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12447,
-  serialized_end=12471,
+  serialized_start=12457,
+  serialized_end=12481,
 )
 
 
@@ -4623,8 +4623,8 @@ _GETVAULTQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12473,
-  serialized_end=12553,
+  serialized_start=12483,
+  serialized_end=12563,
 )
 
 
@@ -4647,8 +4647,8 @@ _GETVAULTQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12555,
-  serialized_end=12577,
+  serialized_start=12565,
+  serialized_end=12587,
 )
 
 
@@ -4678,8 +4678,8 @@ _GETVAULTSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12579,
-  serialized_end=12664,
+  serialized_start=12589,
+  serialized_end=12674,
 )
 
 
@@ -4709,8 +4709,8 @@ _CANCREATEVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12666,
-  serialized_end=12715,
+  serialized_start=12676,
+  serialized_end=12725,
 )
 
 
@@ -4733,8 +4733,8 @@ _CANCREATEVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12717,
-  serialized_end=12741,
+  serialized_start=12727,
+  serialized_end=12751,
 )
 
 
@@ -4764,8 +4764,8 @@ _CANCREATEVAULTWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12743,
-  serialized_end=12823,
+  serialized_start=12753,
+  serialized_end=12833,
 )
 
 
@@ -4795,8 +4795,8 @@ _CANCREATEVAULTWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12825,
-  serialized_end=12931,
+  serialized_start=12835,
+  serialized_end=12941,
 )
 
 
@@ -4826,8 +4826,8 @@ _GETVAULTFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12933,
-  serialized_end=13019,
+  serialized_start=12943,
+  serialized_end=13029,
 )
 
 
@@ -4857,8 +4857,8 @@ _GETVAULTFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13021,
-  serialized_end=13119,
+  serialized_start=13031,
+  serialized_end=13129,
 )
 
 
@@ -4888,8 +4888,8 @@ _CREATEVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13121,
-  serialized_end=13188,
+  serialized_start=13131,
+  serialized_end=13198,
 )
 
 
@@ -4919,8 +4919,8 @@ _CREATEVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13190,
-  serialized_end=13268,
+  serialized_start=13200,
+  serialized_end=13278,
 )
 
 
@@ -4950,8 +4950,8 @@ _CANUPDATEVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13270,
-  serialized_end=13319,
+  serialized_start=13280,
+  serialized_end=13329,
 )
 
 
@@ -4974,8 +4974,8 @@ _CANUPDATEVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13321,
-  serialized_end=13345,
+  serialized_start=13331,
+  serialized_end=13355,
 )
 
 
@@ -5005,8 +5005,8 @@ _GETVAULTFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13347,
-  serialized_end=13433,
+  serialized_start=13357,
+  serialized_end=13443,
 )
 
 
@@ -5036,8 +5036,8 @@ _GETVAULTFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13435,
-  serialized_end=13519,
+  serialized_start=13445,
+  serialized_end=13529,
 )
 
 
@@ -5060,8 +5060,8 @@ _UPDATEVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13521,
-  serialized_end=13539,
+  serialized_start=13531,
+  serialized_end=13549,
 )
 
 
@@ -5091,8 +5091,8 @@ _UPDATEVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13541,
-  serialized_end=13619,
+  serialized_start=13551,
+  serialized_end=13629,
 )
 
 
@@ -5122,8 +5122,8 @@ _CANDELETEVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13621,
-  serialized_end=13670,
+  serialized_start=13631,
+  serialized_end=13680,
 )
 
 
@@ -5146,8 +5146,8 @@ _CANDELETEVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13672,
-  serialized_end=13696,
+  serialized_start=13682,
+  serialized_end=13706,
 )
 
 
@@ -5170,8 +5170,8 @@ _DELETEVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13698,
-  serialized_end=13716,
+  serialized_start=13708,
+  serialized_end=13726,
 )
 
 
@@ -5201,8 +5201,8 @@ _DELETEVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13718,
-  serialized_end=13792,
+  serialized_start=13728,
+  serialized_end=13802,
 )
 
 
@@ -5232,8 +5232,8 @@ _CANMANAGEVAULTALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13794,
-  serialized_end=13856,
+  serialized_start=13804,
+  serialized_end=13866,
 )
 
 
@@ -5256,8 +5256,8 @@ _CANMANAGEVAULTALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13858,
-  serialized_end=13888,
+  serialized_start=13868,
+  serialized_end=13898,
 )
 
 
@@ -5280,8 +5280,8 @@ _ALIASVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13890,
-  serialized_end=13907,
+  serialized_start=13900,
+  serialized_end=13917,
 )
 
 
@@ -5318,8 +5318,8 @@ _ALIASVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13909,
-  serialized_end=14036,
+  serialized_start=13919,
+  serialized_end=14046,
 )
 
 
@@ -5349,8 +5349,8 @@ _GETVAULTHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14038,
-  serialized_end=14112,
+  serialized_start=14048,
+  serialized_end=14122,
 )
 
 
@@ -5373,8 +5373,8 @@ _GETVAULTHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14114,
-  serialized_end=14142,
+  serialized_start=14124,
+  serialized_end=14152,
 )
 
 
@@ -5404,8 +5404,8 @@ _GETVAULTHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14144,
-  serialized_end=14221,
+  serialized_start=14154,
+  serialized_end=14231,
 )
 
 
@@ -5428,8 +5428,8 @@ _GETVAULTHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14223,
-  serialized_end=14249,
+  serialized_start=14233,
+  serialized_end=14259,
 )
 
 
@@ -5459,8 +5459,8 @@ _CANACCESSVAULTHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14251,
-  serialized_end=14317,
+  serialized_start=14261,
+  serialized_end=14327,
 )
 
 
@@ -5483,8 +5483,8 @@ _CANACCESSVAULTHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14319,
-  serialized_end=14351,
+  serialized_start=14329,
+  serialized_end=14361,
 )
 
 
@@ -5507,8 +5507,8 @@ _GETROOTVAULTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14353,
-  serialized_end=14377,
+  serialized_start=14363,
+  serialized_end=14387,
 )
 
 
@@ -5531,8 +5531,8 @@ _GETROOTVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14379,
-  serialized_end=14401,
+  serialized_start=14389,
+  serialized_end=14411,
 )
 
 
@@ -5562,8 +5562,8 @@ _HASPARENTVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14403,
-  serialized_end=14452,
+  serialized_start=14413,
+  serialized_end=14462,
 )
 
 
@@ -5593,8 +5593,8 @@ _HASPARENTVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14454,
-  serialized_end=14532,
+  serialized_start=14464,
+  serialized_end=14542,
 )
 
 
@@ -5624,8 +5624,8 @@ _ISPARENTOFVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14534,
-  serialized_end=14584,
+  serialized_start=14544,
+  serialized_end=14594,
 )
 
 
@@ -5662,8 +5662,8 @@ _ISPARENTOFVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14586,
-  serialized_end=14713,
+  serialized_start=14596,
+  serialized_end=14723,
 )
 
 
@@ -5693,8 +5693,8 @@ _GETPARENTVAULTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14715,
-  serialized_end=14795,
+  serialized_start=14725,
+  serialized_end=14805,
 )
 
 
@@ -5724,8 +5724,8 @@ _GETPARENTVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14797,
-  serialized_end=14875,
+  serialized_start=14807,
+  serialized_end=14885,
 )
 
 
@@ -5755,8 +5755,8 @@ _ISANCESTOROFVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14877,
-  serialized_end=14931,
+  serialized_start=14887,
+  serialized_end=14941,
 )
 
 
@@ -5793,8 +5793,8 @@ _ISANCESTOROFVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14934,
-  serialized_end=15063,
+  serialized_start=14944,
+  serialized_end=15073,
 )
 
 
@@ -5824,8 +5824,8 @@ _HASCHILDVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15065,
-  serialized_end=15112,
+  serialized_start=15075,
+  serialized_end=15122,
 )
 
 
@@ -5855,8 +5855,8 @@ _HASCHILDVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15114,
-  serialized_end=15191,
+  serialized_start=15124,
+  serialized_end=15201,
 )
 
 
@@ -5886,8 +5886,8 @@ _ISCHILDOFVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15193,
-  serialized_end=15241,
+  serialized_start=15203,
+  serialized_end=15251,
 )
 
 
@@ -5924,8 +5924,8 @@ _ISCHILDOFVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15243,
-  serialized_end=15369,
+  serialized_start=15253,
+  serialized_end=15379,
 )
 
 
@@ -5955,8 +5955,8 @@ _GETCHILDVAULTIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15371,
-  serialized_end=15450,
+  serialized_start=15381,
+  serialized_end=15460,
 )
 
 
@@ -5986,8 +5986,8 @@ _GETCHILDVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15452,
-  serialized_end=15529,
+  serialized_start=15462,
+  serialized_end=15539,
 )
 
 
@@ -6017,8 +6017,8 @@ _ISDESCENDANTOFVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15531,
-  serialized_end=15589,
+  serialized_start=15541,
+  serialized_end=15599,
 )
 
 
@@ -6055,8 +6055,8 @@ _ISDESCENDANTOFVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15592,
-  serialized_end=15723,
+  serialized_start=15602,
+  serialized_end=15733,
 )
 
 
@@ -6086,8 +6086,8 @@ _GETVAULTNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15725,
-  serialized_end=15790,
+  serialized_start=15735,
+  serialized_end=15800,
 )
 
 
@@ -6138,8 +6138,8 @@ _GETVAULTNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15793,
-  serialized_end=15949,
+  serialized_start=15803,
+  serialized_end=15959,
 )
 
 
@@ -6169,8 +6169,8 @@ _GETVAULTNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15951,
-  serialized_end=16029,
+  serialized_start=15961,
+  serialized_end=16039,
 )
 
 
@@ -6221,8 +6221,8 @@ _GETVAULTNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16032,
-  serialized_end=16186,
+  serialized_start=16042,
+  serialized_end=16196,
 )
 
 
@@ -6252,8 +6252,8 @@ _CANMODIFYVAULTHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16188,
-  serialized_end=16254,
+  serialized_start=16198,
+  serialized_end=16264,
 )
 
 
@@ -6276,8 +6276,8 @@ _CANMODIFYVAULTHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16256,
-  serialized_end=16288,
+  serialized_start=16266,
+  serialized_end=16298,
 )
 
 
@@ -6300,8 +6300,8 @@ _ADDROOTVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16290,
-  serialized_end=16309,
+  serialized_start=16300,
+  serialized_end=16319,
 )
 
 
@@ -6331,8 +6331,8 @@ _ADDROOTVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16311,
-  serialized_end=16386,
+  serialized_start=16321,
+  serialized_end=16396,
 )
 
 
@@ -6355,8 +6355,8 @@ _REMOVEROOTVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16388,
-  serialized_end=16410,
+  serialized_start=16398,
+  serialized_end=16420,
 )
 
 
@@ -6386,8 +6386,8 @@ _REMOVEROOTVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16412,
-  serialized_end=16490,
+  serialized_start=16422,
+  serialized_end=16500,
 )
 
 
@@ -6410,8 +6410,8 @@ _ADDCHILDVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16492,
-  serialized_end=16512,
+  serialized_start=16502,
+  serialized_end=16522,
 )
 
 
@@ -6448,8 +6448,8 @@ _ADDCHILDVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16515,
-  serialized_end=16645,
+  serialized_start=16525,
+  serialized_end=16655,
 )
 
 
@@ -6472,8 +6472,8 @@ _REMOVECHILDVAULTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16647,
-  serialized_end=16670,
+  serialized_start=16657,
+  serialized_end=16680,
 )
 
 
@@ -6510,8 +6510,8 @@ _REMOVECHILDVAULTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16673,
-  serialized_end=16806,
+  serialized_start=16683,
+  serialized_end=16816,
 )
 
 
@@ -6534,8 +6534,8 @@ _REMOVECHILDVAULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16808,
-  serialized_end=16832,
+  serialized_start=16818,
+  serialized_end=16842,
 )
 
 
@@ -6565,8 +6565,8 @@ _REMOVECHILDVAULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16834,
-  serialized_end=16914,
+  serialized_start=16844,
+  serialized_end=16924,
 )
 
 _AUTHORIZATION.fields_by_name['function'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -6577,18 +6577,18 @@ _FUNCTION.fields_by_name['qualifier_hierarchy'].message_type = dlkit_dot_primord
 _FUNCTION.fields_by_name['vault'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _FUNCTIONLIST.fields_by_name['functions'].message_type = _FUNCTION
 _QUALIFIER.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_QUALIFIER.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_QUALIFIER.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_QUALIFIER.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_QUALIFIER.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _QUALIFIER.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_QUALIFIER.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_QUALIFIER.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _QUALIFIER.fields_by_name['vault'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _QUALIFIERLIST.fields_by_name['qualifiers'].message_type = _QUALIFIER
 _QUALIFIERNODELIST.fields_by_name['qualifier_nodes'].message_type = _QUALIFIERNODE
 _VAULT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_VAULT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_VAULT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_VAULT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_VAULT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _VAULT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_VAULT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_VAULT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _VAULTLIST.fields_by_name['vaults'].message_type = _VAULT
 _VAULTNODELIST.fields_by_name['vault_nodes'].message_type = _VAULTNODE
 _GETVAULTIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -8471,8 +8471,8 @@ _AUTHORIZATIONSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=16917,
-  serialized_end=17701,
+  serialized_start=16927,
+  serialized_end=17711,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVaultId',
@@ -8540,8 +8540,8 @@ _AUTHORIZATIONLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=17704,
-  serialized_end=22145,
+  serialized_start=17714,
+  serialized_end=22155,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVaultId',
@@ -8825,8 +8825,8 @@ _AUTHORIZATIONQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=22148,
-  serialized_end=23401,
+  serialized_start=22158,
+  serialized_end=23411,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVaultId',
@@ -8921,8 +8921,8 @@ _AUTHORIZATIONADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=23404,
-  serialized_end=25730,
+  serialized_start=23414,
+  serialized_end=25740,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVaultId',
@@ -9071,8 +9071,8 @@ _AUTHORIZATIONVAULTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=25733,
-  serialized_end=26882,
+  serialized_start=25743,
+  serialized_end=26892,
   methods=[
   _descriptor.MethodDescriptor(
     name='UseComparativeVaultView',
@@ -9158,8 +9158,8 @@ _AUTHORIZATIONVAULTASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=26885,
-  serialized_end=27995,
+  serialized_start=26895,
+  serialized_end=28005,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignAuthorizations',
@@ -9236,8 +9236,8 @@ _VAULTLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=27998,
-  serialized_end=29206,
+  serialized_start=28008,
+  serialized_end=29216,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupVaults',
@@ -9341,8 +9341,8 @@ _VAULTQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=29209,
-  serialized_end=29574,
+  serialized_start=29219,
+  serialized_end=29584,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanSearchVaults',
@@ -9383,8 +9383,8 @@ _VAULTADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=29577,
-  serialized_end=30976,
+  serialized_start=29587,
+  serialized_end=30986,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateVaults',
@@ -9497,8 +9497,8 @@ _VAULTHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=9,
   options=None,
-  serialized_start=30979,
-  serialized_end=33318,
+  serialized_start=30989,
+  serialized_end=33328,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVaultHierarchyId',
@@ -9683,8 +9683,8 @@ _VAULTHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=10,
   options=None,
-  serialized_start=33321,
-  serialized_end=34356,
+  serialized_start=33331,
+  serialized_end=34366,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetVaultHierarchyId',

@@ -12,11 +12,11 @@ import "dlkit/proto/osid.proto";
 
 message Subject {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
   dlkit.proto.osid.OsidCatalog ontology = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
 }
 
 message SubjectQuery {
@@ -92,10 +92,10 @@ message RelevancyList {
 
 message Ontology {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message OntologyQuery {

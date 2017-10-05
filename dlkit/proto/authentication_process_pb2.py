@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/authentication_process.proto',
   package='dlkit.proto.authentication_process',
   syntax='proto3',
-  serialized_pb=_b('\n(dlkit/proto/authentication_process.proto\x12\"dlkit.proto.authentication_process\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\"\xfb\x02\n\x0e\x41uthentication\x12\x31\n\x05\x61gent\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x15\n\x13\x41uthenticationInput\"\xc3\x02\n\tChallenge\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\xbf\x02\n\x05Trust\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"F\n\tTrustList\x12\x39\n\x06trusts\x18\x01 \x03(\x0b\x32).dlkit.proto.authentication_process.Trustb\x06proto3')
+  serialized_pb=_b('\n(dlkit/proto/authentication_process.proto\x12\"dlkit.proto.authentication_process\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\"\x80\x03\n\x0e\x41uthentication\x12\x31\n\x05\x61gent\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x15\n\x13\x41uthenticationInput\"\xc8\x02\n\tChallenge\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\xc4\x02\n\x05Trust\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"F\n\tTrustList\x12\x39\n\x06trusts\x18\x01 \x03(\x0b\x32).dlkit.proto.authentication_process.Trustb\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,])
 
@@ -51,14 +51,14 @@ _AUTHENTICATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.authentication_process.Authentication.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.authentication_process.Authentication.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.authentication_process.Authentication.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.authentication_process.Authentication.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -72,7 +72,7 @@ _AUTHENTICATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.authentication_process.Authentication.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.authentication_process.Authentication.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -91,7 +91,7 @@ _AUTHENTICATION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=201,
-  serialized_end=580,
+  serialized_end=585,
 )
 
 
@@ -114,8 +114,8 @@ _AUTHENTICATIONINPUT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=582,
-  serialized_end=603,
+  serialized_start=587,
+  serialized_end=608,
 )
 
 
@@ -134,14 +134,14 @@ _CHALLENGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.authentication_process.Challenge.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.authentication_process.Challenge.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.authentication_process.Challenge.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.authentication_process.Challenge.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -155,7 +155,7 @@ _CHALLENGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.authentication_process.Challenge.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.authentication_process.Challenge.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -173,8 +173,8 @@ _CHALLENGE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=606,
-  serialized_end=929,
+  serialized_start=611,
+  serialized_end=939,
 )
 
 
@@ -193,14 +193,14 @@ _TRUST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.authentication_process.Trust.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.authentication_process.Trust.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.authentication_process.Trust.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.authentication_process.Trust.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -214,7 +214,7 @@ _TRUST = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.authentication_process.Trust.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.authentication_process.Trust.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -232,8 +232,8 @@ _TRUST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=932,
-  serialized_end=1251,
+  serialized_start=942,
+  serialized_end=1266,
 )
 
 
@@ -263,26 +263,26 @@ _TRUSTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1253,
-  serialized_end=1323,
+  serialized_start=1268,
+  serialized_end=1338,
 )
 
 _AUTHENTICATION.fields_by_name['agent'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _AUTHENTICATION.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_AUTHENTICATION.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_AUTHENTICATION.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_AUTHENTICATION.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_AUTHENTICATION.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _AUTHENTICATION.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_AUTHENTICATION.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_AUTHENTICATION.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CHALLENGE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CHALLENGE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CHALLENGE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CHALLENGE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_CHALLENGE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CHALLENGE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_CHALLENGE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CHALLENGE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _TRUST.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_TRUST.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_TRUST.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_TRUST.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_TRUST.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _TRUST.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_TRUST.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_TRUST.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _TRUSTLIST.fields_by_name['trusts'].message_type = _TRUST
 DESCRIPTOR.message_types_by_name['Authentication'] = _AUTHENTICATION
 DESCRIPTOR.message_types_by_name['AuthenticationInput'] = _AUTHENTICATIONINPUT

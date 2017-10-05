@@ -30,7 +30,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/configuration.proto',
   package='dlkit.proto.configuration',
   syntax='proto3',
-  serialized_pb=_b('\n\x1f\x64lkit/proto/configuration.proto\x12\x19\x64lkit.proto.configuration\x1a-dlkit/primordium/calendaring/primitives.proto\x1a:dlkit/primordium/financials/unimplemented_primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a.dlkit/primordium/installation/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a\x34\x64lkit/primordium/mapping/coordinate_primitives.proto\x1a,dlkit/primordium/mapping/spatial_units.proto\x1a\x37\x64lkit/primordium/mapping/unimplemented_primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x98\x06\n\tParameter\x12\x34\n\rconfiguration\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x45\n\x15value_coordinate_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x42\n\x12value_heading_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x41\n\x11value_object_type\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12N\n\x1evalue_spatial_unit_record_type\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x41\n\x0cvalue_syntax\x18\x06 \x01(\x0e\x32+.dlkit.proto.configuration.Parameter.Syntax\x12\x44\n\x14value_version_scheme\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x17\n\x0fvalues_shuffled\x18\x08 \x01(\x08\"\x94\x02\n\x06Syntax\x12\x08\n\x04NONE\x10\x00\x12\x0b\n\x07\x42OOLEAN\x10\x01\x12\x08\n\x04\x42YTE\x10\x02\x12\x0c\n\x08\x43\x41RDINAL\x10\x03\x12\x0e\n\nCOORDINATE\x10\x04\x12\x0c\n\x08\x43URRENCY\x10\x05\x12\x0c\n\x08\x44\x41TETIME\x10\x06\x12\x0b\n\x07\x44\x45\x43IMAL\x10\x07\x12\x0f\n\x0b\x44ISPLAYTEXT\x10\x08\x12\x0c\n\x08\x44ISTANCE\x10\t\x12\x0c\n\x08\x44URATION\x10\n\x12\x0b\n\x07HEADING\x10\x0b\x12\x06\n\x02ID\x10\x0c\x12\x0b\n\x07INTEGER\x10\r\x12\n\n\x06OBJECT\x10\x0e\x12\x0f\n\x0bSPATIALUNIT\x10\x0f\x12\t\n\x05SPEED\x10\x10\x12\n\n\x06STRING\x10\x11\x12\x08\n\x04TIME\x10\x12\x12\x08\n\x04TYPE\x10\x13\x12\x0b\n\x07VERSION\x10\x14\"\x10\n\x0eParameterQuery\"\x19\n\x17ParameterQueryInspector\"\x0f\n\rParameterForm\"\x16\n\x14ParameterSearchOrder\"\x11\n\x0fParameterSearch\"\x18\n\x16ParameterSearchResults\"I\n\rParameterList\x12\x38\n\nparameters\x18\x01 \x03(\x0b\x32$.dlkit.proto.configuration.Parameter\"\xe8\n\n\x05Value\x12\x15\n\rboolean_value\x18\x01 \x01(\x08\x12\x13\n\x0b\x62ytes_value\x18\x02 \x03(\x0c\x12\x16\n\x0e\x63\x61rdinal_value\x18\x03 \x01(\x11\x12\x34\n\rconfiguration\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12T\n\x10\x63oordinate_value\x18\x05 \x01(\x0b\x32:.dlkit.primordium.mapping.coordinate_primitives.Coordinate\x12V\n\x0e\x63urrency_value\x18\x06 \x01(\x0b\x32>.dlkit.primordium.financials.unimplemented_primitives.Currency\x12\x33\n\x0f\x64\x61te_time_value\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x15\n\rdecimal_value\x18\x08 \x01(\x02\x12\x44\n\x0b\x64\x65scription\x18\t \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\n \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12S\n\x0e\x64istance_value\x18\x0b \x01(\x0b\x32;.dlkit.primordium.mapping.unimplemented_primitives.Distance\x12I\n\x0e\x64uration_value\x18\x0c \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12;\n\x0bgenusTypeId\x18\r \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x0e \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08id_value\x18\x0f \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x15\n\rinteger_value\x18\x10 \x01(\x11\x12\x35\n\tparameter\x18\x11 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x10\n\x08priority\x18\x12 \x01(\x11\x12=\n\rrecordTypeIds\x18\x13 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12O\n\x12spatial_unit_value\x18\x14 \x01(\x0b\x32\x33.dlkit.primordium.mapping.spatial_units.SpatialUnit\x12M\n\x0bspeed_value\x18\x15 \x01(\x0b\x32\x38.dlkit.primordium.mapping.unimplemented_primitives.Speed\x12\x14\n\x0cstring_value\x18\x16 \x01(\t\x12\x41\n\ntime_value\x18\x17 \x01(\x0b\x32-.dlkit.primordium.calendaring.primitives.Time\x12:\n\ntype_value\x18\x18 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12H\n\rversion_value\x18\x19 \x01(\x0b\x32\x31.dlkit.primordium.installation.primitives.Version\"\x0c\n\nValueQuery\"\x15\n\x13ValueQueryInspector\"\x0b\n\tValueForm\"\x12\n\x10ValueSearchOrder\"\r\n\x0bValueSearch\"\x14\n\x12ValueSearchResults\"=\n\tValueList\x12\x30\n\x06values\x18\x01 \x03(\x0b\x32 .dlkit.proto.configuration.Value\"\x10\n\x0eValueCondition\"\xc7\x02\n\rConfiguration\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x14\n\x12\x43onfigurationQuery\"\x1d\n\x1b\x43onfigurationQueryInspector\"\x13\n\x11\x43onfigurationForm\"\x1a\n\x18\x43onfigurationSearchOrder\"\x15\n\x13\x43onfigurationSearch\"\x1c\n\x1a\x43onfigurationSearchResults\"U\n\x11\x43onfigurationList\x12@\n\x0e\x63onfigurations\x18\x01 \x03(\x0b\x32(.dlkit.proto.configuration.Configuration\"\x13\n\x11\x43onfigurationNode\"b\n\x15\x43onfigurationNodeList\x12I\n\x13\x63onfiguration_nodes\x18\x01 \x03(\x0b\x32,.dlkit.proto.configuration.ConfigurationNodeb\x06proto3')
+  serialized_pb=_b('\n\x1f\x64lkit/proto/configuration.proto\x12\x19\x64lkit.proto.configuration\x1a-dlkit/primordium/calendaring/primitives.proto\x1a:dlkit/primordium/financials/unimplemented_primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a.dlkit/primordium/installation/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a\x34\x64lkit/primordium/mapping/coordinate_primitives.proto\x1a,dlkit/primordium/mapping/spatial_units.proto\x1a\x37\x64lkit/primordium/mapping/unimplemented_primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x98\x06\n\tParameter\x12\x34\n\rconfiguration\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x45\n\x15value_coordinate_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x42\n\x12value_heading_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x41\n\x11value_object_type\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12N\n\x1evalue_spatial_unit_record_type\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x41\n\x0cvalue_syntax\x18\x06 \x01(\x0e\x32+.dlkit.proto.configuration.Parameter.Syntax\x12\x44\n\x14value_version_scheme\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x17\n\x0fvalues_shuffled\x18\x08 \x01(\x08\"\x94\x02\n\x06Syntax\x12\x08\n\x04NONE\x10\x00\x12\x0b\n\x07\x42OOLEAN\x10\x01\x12\x08\n\x04\x42YTE\x10\x02\x12\x0c\n\x08\x43\x41RDINAL\x10\x03\x12\x0e\n\nCOORDINATE\x10\x04\x12\x0c\n\x08\x43URRENCY\x10\x05\x12\x0c\n\x08\x44\x41TETIME\x10\x06\x12\x0b\n\x07\x44\x45\x43IMAL\x10\x07\x12\x0f\n\x0b\x44ISPLAYTEXT\x10\x08\x12\x0c\n\x08\x44ISTANCE\x10\t\x12\x0c\n\x08\x44URATION\x10\n\x12\x0b\n\x07HEADING\x10\x0b\x12\x06\n\x02ID\x10\x0c\x12\x0b\n\x07INTEGER\x10\r\x12\n\n\x06OBJECT\x10\x0e\x12\x0f\n\x0bSPATIALUNIT\x10\x0f\x12\t\n\x05SPEED\x10\x10\x12\n\n\x06STRING\x10\x11\x12\x08\n\x04TIME\x10\x12\x12\x08\n\x04TYPE\x10\x13\x12\x0b\n\x07VERSION\x10\x14\"\x10\n\x0eParameterQuery\"\x19\n\x17ParameterQueryInspector\"\x0f\n\rParameterForm\"\x16\n\x14ParameterSearchOrder\"\x11\n\x0fParameterSearch\"\x18\n\x16ParameterSearchResults\"I\n\rParameterList\x12\x38\n\nparameters\x18\x01 \x03(\x0b\x32$.dlkit.proto.configuration.Parameter\"\xed\n\n\x05Value\x12\x15\n\rboolean_value\x18\x01 \x01(\x08\x12\x13\n\x0b\x62ytes_value\x18\x02 \x03(\x0c\x12\x16\n\x0e\x63\x61rdinal_value\x18\x03 \x01(\x11\x12\x34\n\rconfiguration\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12T\n\x10\x63oordinate_value\x18\x05 \x01(\x0b\x32:.dlkit.primordium.mapping.coordinate_primitives.Coordinate\x12V\n\x0e\x63urrency_value\x18\x06 \x01(\x0b\x32>.dlkit.primordium.financials.unimplemented_primitives.Currency\x12\x33\n\x0f\x64\x61te_time_value\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x15\n\rdecimal_value\x18\x08 \x01(\x02\x12\x44\n\x0b\x64\x65scription\x18\t \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\n \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12S\n\x0e\x64istance_value\x18\x0b \x01(\x0b\x32;.dlkit.primordium.mapping.unimplemented_primitives.Distance\x12I\n\x0e\x64uration_value\x18\x0c \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12=\n\rgenus_type_id\x18\r \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x0e \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08id_value\x18\x0f \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x15\n\rinteger_value\x18\x10 \x01(\x11\x12\x35\n\tparameter\x18\x11 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x10\n\x08priority\x18\x12 \x01(\x11\x12?\n\x0frecord_type_ids\x18\x13 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12O\n\x12spatial_unit_value\x18\x14 \x01(\x0b\x32\x33.dlkit.primordium.mapping.spatial_units.SpatialUnit\x12M\n\x0bspeed_value\x18\x15 \x01(\x0b\x32\x38.dlkit.primordium.mapping.unimplemented_primitives.Speed\x12\x14\n\x0cstring_value\x18\x16 \x01(\t\x12\x41\n\ntime_value\x18\x17 \x01(\x0b\x32-.dlkit.primordium.calendaring.primitives.Time\x12:\n\ntype_value\x18\x18 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12H\n\rversion_value\x18\x19 \x01(\x0b\x32\x31.dlkit.primordium.installation.primitives.Version\"\x0c\n\nValueQuery\"\x15\n\x13ValueQueryInspector\"\x0b\n\tValueForm\"\x12\n\x10ValueSearchOrder\"\r\n\x0bValueSearch\"\x14\n\x12ValueSearchResults\"=\n\tValueList\x12\x30\n\x06values\x18\x01 \x03(\x0b\x32 .dlkit.proto.configuration.Value\"\x10\n\x0eValueCondition\"\xcc\x02\n\rConfiguration\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x14\n\x12\x43onfigurationQuery\"\x1d\n\x1b\x43onfigurationQueryInspector\"\x13\n\x11\x43onfigurationForm\"\x1a\n\x18\x43onfigurationSearchOrder\"\x15\n\x13\x43onfigurationSearch\"\x1c\n\x1a\x43onfigurationSearchResults\"U\n\x11\x43onfigurationList\x12@\n\x0e\x63onfigurations\x18\x01 \x03(\x0b\x32(.dlkit.proto.configuration.Configuration\"\x13\n\x11\x43onfigurationNode\"b\n\x15\x43onfigurationNodeList\x12I\n\x13\x63onfiguration_nodes\x18\x01 \x03(\x0b\x32,.dlkit.proto.configuration.ConfigurationNodeb\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_financials_dot_unimplemented__primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_installation_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_mapping_dot_coordinate__primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_mapping_dot_spatial__units__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_mapping_dot_unimplemented__primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -462,7 +462,7 @@ _VALUE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.configuration.Value.displayName', index=9,
+      name='display_name', full_name='dlkit.proto.configuration.Value.display_name', index=9,
       number=10, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -483,7 +483,7 @@ _VALUE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.configuration.Value.genusTypeId', index=12,
+      name='genus_type_id', full_name='dlkit.proto.configuration.Value.genus_type_id', index=12,
       number=13, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -525,7 +525,7 @@ _VALUE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.configuration.Value.recordTypeIds', index=18,
+      name='record_type_ids', full_name='dlkit.proto.configuration.Value.record_type_ids', index=18,
       number=19, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -586,7 +586,7 @@ _VALUE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=1553,
-  serialized_end=2937,
+  serialized_end=2942,
 )
 
 
@@ -609,8 +609,8 @@ _VALUEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2939,
-  serialized_end=2951,
+  serialized_start=2944,
+  serialized_end=2956,
 )
 
 
@@ -633,8 +633,8 @@ _VALUEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2953,
-  serialized_end=2974,
+  serialized_start=2958,
+  serialized_end=2979,
 )
 
 
@@ -657,8 +657,8 @@ _VALUEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2976,
-  serialized_end=2987,
+  serialized_start=2981,
+  serialized_end=2992,
 )
 
 
@@ -681,8 +681,8 @@ _VALUESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2989,
-  serialized_end=3007,
+  serialized_start=2994,
+  serialized_end=3012,
 )
 
 
@@ -705,8 +705,8 @@ _VALUESEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3009,
-  serialized_end=3022,
+  serialized_start=3014,
+  serialized_end=3027,
 )
 
 
@@ -729,8 +729,8 @@ _VALUESEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3024,
-  serialized_end=3044,
+  serialized_start=3029,
+  serialized_end=3049,
 )
 
 
@@ -760,8 +760,8 @@ _VALUELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3046,
-  serialized_end=3107,
+  serialized_start=3051,
+  serialized_end=3112,
 )
 
 
@@ -784,8 +784,8 @@ _VALUECONDITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3109,
-  serialized_end=3125,
+  serialized_start=3114,
+  serialized_end=3130,
 )
 
 
@@ -804,14 +804,14 @@ _CONFIGURATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.configuration.Configuration.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.configuration.Configuration.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.configuration.Configuration.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.configuration.Configuration.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -825,7 +825,7 @@ _CONFIGURATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.configuration.Configuration.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.configuration.Configuration.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -843,8 +843,8 @@ _CONFIGURATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3128,
-  serialized_end=3455,
+  serialized_start=3133,
+  serialized_end=3465,
 )
 
 
@@ -867,8 +867,8 @@ _CONFIGURATIONQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3457,
-  serialized_end=3477,
+  serialized_start=3467,
+  serialized_end=3487,
 )
 
 
@@ -891,8 +891,8 @@ _CONFIGURATIONQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3479,
-  serialized_end=3508,
+  serialized_start=3489,
+  serialized_end=3518,
 )
 
 
@@ -915,8 +915,8 @@ _CONFIGURATIONFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3510,
-  serialized_end=3529,
+  serialized_start=3520,
+  serialized_end=3539,
 )
 
 
@@ -939,8 +939,8 @@ _CONFIGURATIONSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3531,
-  serialized_end=3557,
+  serialized_start=3541,
+  serialized_end=3567,
 )
 
 
@@ -963,8 +963,8 @@ _CONFIGURATIONSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3559,
-  serialized_end=3580,
+  serialized_start=3569,
+  serialized_end=3590,
 )
 
 
@@ -987,8 +987,8 @@ _CONFIGURATIONSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3582,
-  serialized_end=3610,
+  serialized_start=3592,
+  serialized_end=3620,
 )
 
 
@@ -1018,8 +1018,8 @@ _CONFIGURATIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3612,
-  serialized_end=3697,
+  serialized_start=3622,
+  serialized_end=3707,
 )
 
 
@@ -1042,8 +1042,8 @@ _CONFIGURATIONNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3699,
-  serialized_end=3718,
+  serialized_start=3709,
+  serialized_end=3728,
 )
 
 
@@ -1073,8 +1073,8 @@ _CONFIGURATIONNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3720,
-  serialized_end=3818,
+  serialized_start=3730,
+  serialized_end=3828,
 )
 
 _PARAMETER.fields_by_name['configuration'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
@@ -1091,14 +1091,14 @@ _VALUE.fields_by_name['coordinate_value'].message_type = dlkit_dot_primordium_do
 _VALUE.fields_by_name['currency_value'].message_type = dlkit_dot_primordium_dot_financials_dot_unimplemented__primitives__pb2._CURRENCY
 _VALUE.fields_by_name['date_time_value'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _VALUE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_VALUE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_VALUE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
 _VALUE.fields_by_name['distance_value'].message_type = dlkit_dot_primordium_dot_mapping_dot_unimplemented__primitives__pb2._DISTANCE
 _VALUE.fields_by_name['duration_value'].message_type = dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2._DURATION
-_VALUE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_VALUE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _VALUE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _VALUE.fields_by_name['id_value'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _VALUE.fields_by_name['parameter'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_VALUE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_VALUE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _VALUE.fields_by_name['spatial_unit_value'].message_type = dlkit_dot_primordium_dot_mapping_dot_spatial__units__pb2._SPATIALUNIT
 _VALUE.fields_by_name['speed_value'].message_type = dlkit_dot_primordium_dot_mapping_dot_unimplemented__primitives__pb2._SPEED
 _VALUE.fields_by_name['time_value'].message_type = dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2._TIME
@@ -1106,10 +1106,10 @@ _VALUE.fields_by_name['type_value'].message_type = dlkit_dot_primordium_dot_type
 _VALUE.fields_by_name['version_value'].message_type = dlkit_dot_primordium_dot_installation_dot_primitives__pb2._VERSION
 _VALUELIST.fields_by_name['values'].message_type = _VALUE
 _CONFIGURATION.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CONFIGURATION.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CONFIGURATION.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CONFIGURATION.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_CONFIGURATION.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CONFIGURATION.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_CONFIGURATION.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CONFIGURATION.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CONFIGURATIONLIST.fields_by_name['configurations'].message_type = _CONFIGURATION
 _CONFIGURATIONNODELIST.fields_by_name['configuration_nodes'].message_type = _CONFIGURATIONNODE
 DESCRIPTOR.message_types_by_name['Parameter'] = _PARAMETER

@@ -27,7 +27,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/assessment.proto',
   package='dlkit.proto.assessment',
   syntax='proto3',
-  serialized_pb=_b('\n\x1c\x64lkit/proto/assessment.proto\x12\x16\x64lkit.proto.assessment\x1a-dlkit/primordium/calendaring/primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x19\x64lkit/proto/grading.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa1\x03\n\x08Question\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\x04item\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rQuestionQuery\"\x18\n\x16QuestionQueryInspector\"\x0e\n\x0cQuestionForm\"\x15\n\x13QuestionSearchOrder\"C\n\x0cQuestionList\x12\x33\n\tquestions\x18\x01 \x03(\x0b\x32 .dlkit.proto.assessment.Question\"\x9f\x03\n\x06\x41nswer\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\x04item\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x41nswerQuery\"\x16\n\x14\x41nswerQueryInspector\"\x0c\n\nAnswerForm\"\x13\n\x11\x41nswerSearchOrder\"=\n\nAnswerList\x12/\n\x07\x61nswers\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.assessment.Answer\"\x91\x04\n\x04Item\x12/\n\x07\x61nswers\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.assessment.Answer\x12+\n\x04\x62\x61nk\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13learning_objectives\x18\x07 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x08question\x18\x08 \x01(\x0b\x32 .dlkit.proto.assessment.Question\x12=\n\rrecordTypeIds\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tItemQuery\"\x14\n\x12ItemQueryInspector\"\n\n\x08ItemForm\"\x11\n\x0fItemSearchOrder\"\x0c\n\nItemSearch\"\x13\n\x11ItemSearchResults\"7\n\x08ItemList\x12+\n\x05items\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.assessment.Item\"\xd8\x03\n\nAssessment\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\x05level\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x32\n\x06rubric\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0f\x41ssessmentQuery\"\x1a\n\x18\x41ssessmentQueryInspector\"\x10\n\x0e\x41ssessmentForm\"\x17\n\x15\x41ssessmentSearchOrder\"\x12\n\x10\x41ssessmentSearch\"\x19\n\x17\x41ssessmentSearchResults\"I\n\x0e\x41ssessmentList\x12\x37\n\x0b\x61ssessments\x18\x01 \x03(\x0b\x32\".dlkit.proto.assessment.Assessment\"\xac\x06\n\x11\x41ssessmentOffered\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12,\n\x08\x64\x65\x61\x64line\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x44\n\x0b\x64\x65scription\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x43\n\x08\x64uration\x18\x06 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12;\n\x0bgenusTypeId\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cgrade_system\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\x02id\x18\t \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10items_sequential\x18\n \x01(\x08\x12\x16\n\x0eitems_shuffled\x18\x0b \x01(\x08\x12\x31\n\x05level\x18\x0c \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\r \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cscore_system\x18\x0e \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\nstart_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x18\n\x16\x41ssessmentOfferedQuery\"!\n\x1f\x41ssessmentOfferedQueryInspector\"\x17\n\x15\x41ssessmentOfferedForm\"\x1e\n\x1c\x41ssessmentOfferedSearchOrder\"\x19\n\x17\x41ssessmentOfferedSearch\" \n\x1e\x41ssessmentOfferedSearchResults\"_\n\x15\x41ssessmentOfferedList\x12\x46\n\x13\x61ssessments_offered\x18\x01 \x03(\x0b\x32).dlkit.proto.assessment.AssessmentOffered\"\x97\x05\n\x0f\x41ssessmentTaken\x12\x35\n\x11\x61\x63tual_start_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12>\n\x12\x61ssessment_offered\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x03 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x33\n\x0f\x63ompletion_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x44\n\x0b\x64\x65scription\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\x05grade\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\x02id\x18\t \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\r\n\x05score\x18\x0b \x01(\x02\x12\x31\n\x05taker\x18\x0c \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14\x41ssessmentTakenQuery\"\x1f\n\x1d\x41ssessmentTakenQueryInspector\"\x15\n\x13\x41ssessmentTakenForm\"\x1c\n\x1a\x41ssessmentTakenSearchOrder\"\x17\n\x15\x41ssessmentTakenSearch\"\x1e\n\x1c\x41ssessmentTakenSearchResults\"Y\n\x13\x41ssessmentTakenList\x12\x42\n\x11\x61ssessments_taken\x18\x01 \x03(\x0b\x32\'.dlkit.proto.assessment.AssessmentTaken\"\x89\x03\n\x11\x41ssessmentSection\x12<\n\x10\x61ssessment_taken\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x15\x41ssessmentSectionList\x12\x46\n\x13\x61ssessment_sections\x18\x01 \x03(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"\xbe\x02\n\x04\x42\x61nk\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tBankQuery\"\x14\n\x12\x42\x61nkQueryInspector\"\n\n\x08\x42\x61nkForm\"\x11\n\x0f\x42\x61nkSearchOrder\"\x0c\n\nBankSearch\"\x13\n\x11\x42\x61nkSearchResults\"7\n\x08\x42\x61nkList\x12+\n\x05\x62\x61nks\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"\n\n\x08\x42\x61nkNode\"D\n\x0c\x42\x61nkNodeList\x12\x34\n\nbank_nodes\x18\x01 \x03(\x0b\x32 .dlkit.proto.assessment.BankNode\"\n\n\x08Response\"C\n\x0cResponseList\x12\x33\n\tresponses\x18\x01 \x03(\x0b\x32 .dlkit.proto.assessment.Response\"@\n\x0eGetBankIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetBankIdRequest\":\n\x0cGetBankReply\x12*\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"\x10\n\x0eGetBankRequest\"7\n\x17\x43\x61nTakeAssessmentsReply\x12\x1c\n\x14\x63\x61n_take_assessments\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nTakeAssessmentsRequest\"7\n\x17HasAssessmentBegunReply\x12\x1c\n\x14has_assessment_begun\x18\x01 \x01(\x08\"\\\n\x19HasAssessmentBegunRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15IsAssessmentOverReply\x12\x1a\n\x12is_assessment_over\x18\x01 \x01(\x08\"Z\n\x17IsAssessmentOverRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n RequiresSynchronousSectionsReply\x12%\n\x1drequires_synchronous_sections\x18\x01 \x01(\x08\"e\n\"RequiresSynchronousSectionsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1eGetFirstAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"c\n GetFirstAssessmentSectionRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1dHasNextAssessmentSectionReply\x12#\n\x1bhas_next_assessment_section\x18\x01 \x01(\x08\"d\n\x1fHasNextAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n\x1dGetNextAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"d\n\x1fGetNextAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n!HasPreviousAssessmentSectionReply\x12\'\n\x1fhas_previous_assessment_section\x18\x01 \x01(\x08\"h\n#HasPreviousAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"j\n!GetPreviousAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"h\n#GetPreviousAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x19GetAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"`\n\x1bGetAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1cGetAssessmentSectionsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n IsAssessmentSectionCompleteReply\x12&\n\x1eis_assessment_section_complete\x18\x01 \x01(\x08\"g\n\"IsAssessmentSectionCompleteRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"i\n&GetIncompleteAssessmentSectionsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1eHasAssessmentSectionBegunReply\x12$\n\x1chas_assessment_section_begun\x18\x01 \x01(\x08\"e\n HasAssessmentSectionBegunRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsAssessmentSectionOverReply\x12\"\n\x1ais_assessment_section_over\x18\x01 \x01(\x08\"c\n\x1eIsAssessmentSectionOverRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n!RequiresSynchronousResponsesReply\x12&\n\x1erequires_synchronous_responses\x18\x01 \x01(\x08\"h\n#RequiresSynchronousResponsesRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x15GetFirstQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\\\n\x17GetFirstQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14HasNextQuestionReply\x12\x19\n\x11has_next_question\x18\x01 \x01(\x08\"\x90\x01\n\x16HasNextQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x14GetNextQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x90\x01\n\x16GetNextQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18HasPreviousQuestionReply\x12\x1d\n\x15has_previous_question\x18\x01 \x01(\x08\"\x94\x01\n\x1aHasPreviousQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x18GetPreviousQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x94\x01\n\x1aGetPreviousQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x10GetQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x8c\x01\n\x12GetQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x13GetQuestionsRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x14GetResponseFormReply\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"\x90\x01\n\x16GetResponseFormRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13SubmitResponseReply\"\xc8\x01\n\x15SubmitResponseRequest\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\x12\x41\n\x15\x61ssessment_section_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rSkipItemReply\"\x89\x01\n\x0fSkipItemRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17IsQuestionAnsweredReply\x12\x1c\n\x14is_question_answered\x18\x01 \x01(\x08\"\x93\x01\n\x19IsQuestionAnsweredRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x1dGetUnansweredQuestionsRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x1bHasUnansweredQuestionsReply\x12 \n\x18has_unanswered_questions\x18\x01 \x01(\x08\"b\n\x1dHasUnansweredQuestionsRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1fGetFirstUnansweredQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"f\n!GetFirstUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1eHasNextUnansweredQuestionReply\x12$\n\x1chas_next_unanswered_question\x18\x01 \x01(\x08\"\x9a\x01\n HasNextUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1eGetNextUnansweredQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x9a\x01\n GetNextUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\"HasPreviousUnansweredQuestionReply\x12(\n has_previous_unanswered_question\x18\x01 \x01(\x08\"\x9e\x01\n$HasPreviousUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\"GetPreviousUnansweredQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x9e\x01\n$GetPreviousUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x10GetResponseReply\x12\x32\n\x08response\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Response\"\x8c\x01\n\x12GetResponseRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x13GetResponsesRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12\x43learResponseReply\"\x8e\x01\n\x14\x43learResponseRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1c\x46inishAssessmentSectionReply\"c\n\x1e\x46inishAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"5\n\x16IsAnswerAvailableReply\x12\x1b\n\x13is_answer_available\x18\x01 \x01(\x08\"\x92\x01\n\x18IsAnswerAvailableRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x8b\x01\n\x11GetAnswersRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15\x46inishAssessmentReply\"Z\n\x17\x46inishAssessmentRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nAccessAssessmentResultsReply\x12%\n\x1d\x63\x61n_access_assessment_results\x18\x01 \x01(\x08\"#\n!CanAccessAssessmentResultsRequest\"R\n\x0fGetItemsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x41reResultsAvailableReply\x12\x1d\n\x15\x61re_results_available\x18\x01 \x01(\x08\"]\n\x1a\x41reResultsAvailableRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x16GetGradeEntriesRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nLookupItemsReply\x12\x18\n\x10\x63\x61n_lookup_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nLookupItemsRequest\"\x1d\n\x1bUseComparativeItemViewReply\"\x1f\n\x1dUseComparativeItemViewRequest\"\x19\n\x17UsePlenaryItemViewReply\"\x1b\n\x19UsePlenaryItemViewRequest\"\x1b\n\x19UseFederatedBankViewReply\"\x1d\n\x1bUseFederatedBankViewRequest\"\x1a\n\x18UseIsolatedBankViewReply\"\x1c\n\x1aUseIsolatedBankViewRequest\":\n\x0cGetItemReply\x12*\n\x04item\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Item\"E\n\x0eGetItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x14GetItemsByIdsRequest\x12\x34\n\x08item_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1aGetItemsByGenusTypeRequest\x12?\n\x0fitem_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetItemsByParentGenusTypeRequest\x12?\n\x0fitem_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1bGetItemsByRecordTypeRequest\x12@\n\x10item_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"T\n\x19GetItemsByQuestionRequest\x12\x37\n\x0bquestion_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x17GetItemsByAnswerRequest\x12\x35\n\tanswer_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\"GetItemsByLearningObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n#GetItemsByLearningObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nSearchItemsReply\x12\x18\n\x10\x63\x61n_search_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nSearchItemsRequest\"J\n\x11GetItemQueryReply\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\"\x15\n\x13GetItemQueryRequest\"O\n\x16GetItemsByQueryRequest\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\"M\n\x12GetItemSearchReply\x12\x37\n\x0bitem_search\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.ItemSearch\"\x16\n\x14GetItemSearchRequest\"]\n\x17GetItemSearchOrderReply\x12\x42\n\x11item_search_order\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.ItemSearchOrder\"\x1b\n\x19GetItemSearchOrderRequest\"_\n\x15GetItemsBySearchReply\x12\x46\n\x13item_search_results\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.ItemSearchResults\"\x89\x01\n\x17GetItemsBySearchRequest\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\x12\x37\n\x0bitem_search\x18\x02 \x01(\x0b\x32\".dlkit.proto.assessment.ItemSearch\"W\n\x1eGetItemQueryFromInspectorReply\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\"l\n GetItemQueryFromInspectorRequest\x12H\n\x14item_query_inspector\x18\x01 \x01(\x0b\x32*.dlkit.proto.assessment.ItemQueryInspector\"/\n\x13\x43\x61nCreateItemsReply\x12\x18\n\x10\x63\x61n_create_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nCreateItemsRequest\"N\n!CanCreateItemWithRecordTypesReply\x12)\n!can_create_item_with_record_types\x18\x01 \x01(\x08\"h\n#CanCreateItemWithRecordTypesRequest\x12\x41\n\x11item_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x19GetItemFormForCreateReply\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"`\n\x1bGetItemFormForCreateRequest\x12\x41\n\x11item_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"=\n\x0f\x43reateItemReply\x12*\n\x04item\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Item\"H\n\x11\x43reateItemRequest\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"/\n\x13\x43\x61nUpdateItemsReply\x12\x18\n\x10\x63\x61n_update_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nUpdateItemsRequest\"P\n\x19GetItemFormForUpdateReply\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"R\n\x1bGetItemFormForUpdateRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fUpdateItemReply\"H\n\x11UpdateItemRequest\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"/\n\x13\x43\x61nDeleteItemsReply\x12\x18\n\x10\x63\x61n_delete_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nDeleteItemsRequest\"\x11\n\x0f\x44\x65leteItemReply\"H\n\x11\x44\x65leteItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nManageItemAliasesReply\x12\x1f\n\x17\x63\x61n_manage_item_aliases\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nManageItemAliasesRequest\"\x10\n\x0e\x41liasItemReply\"}\n\x10\x41liasItemRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17\x43\x61nCreateQuestionsReply\x12\x1c\n\x14\x63\x61n_create_questions\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nCreateQuestionsRequest\"V\n%CanCreateQuestionWithRecordTypesReply\x12-\n%can_create_question_with_record_types\x18\x01 \x01(\x08\"p\n\'CanCreateQuestionWithRecordTypesRequest\x12\x45\n\x15question_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n\x1dGetQuestionFormForCreateReply\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"\x9d\x01\n\x1fGetQuestionFormForCreateRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x45\n\x15question_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"I\n\x13\x43reateQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"T\n\x15\x43reateQuestionRequest\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"7\n\x17\x43\x61nUpdateQuestionsReply\x12\x1c\n\x14\x63\x61n_update_questions\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nUpdateQuestionsRequest\"\\\n\x1dGetQuestionFormForUpdateReply\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"Z\n\x1fGetQuestionFormForUpdateRequest\x12\x37\n\x0bquestion_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateQuestionReply\"T\n\x15UpdateQuestionRequest\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"7\n\x17\x43\x61nDeleteQuestionsReply\x12\x1c\n\x14\x63\x61n_delete_questions\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nDeleteQuestionsRequest\"\x15\n\x13\x44\x65leteQuestionReply\"P\n\x15\x44\x65leteQuestionRequest\x12\x37\n\x0bquestion_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15\x43\x61nCreateAnswersReply\x12\x1a\n\x12\x63\x61n_create_answers\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nCreateAnswersRequest\"T\n$CanCreateAnswersWithRecordTypesReply\x12,\n$can_create_answers_with_record_types\x18\x01 \x01(\x08\"m\n&CanCreateAnswersWithRecordTypesRequest\x12\x43\n\x13\x61nswer_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"V\n\x1bGetAnswerFormForCreateReply\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"\x99\x01\n\x1dGetAnswerFormForCreateRequest\x12\x43\n\x13\x61nswer_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"C\n\x11\x43reateAnswerReply\x12.\n\x06\x61nswer\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.assessment.Answer\"N\n\x13\x43reateAnswerRequest\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"3\n\x15\x43\x61nUpdateAnswersReply\x12\x1a\n\x12\x63\x61n_update_answers\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nUpdateAnswersRequest\"V\n\x1bGetAnswerFormForUpdateReply\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"V\n\x1dGetAnswerFormForUpdateRequest\x12\x35\n\tanswer_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11UpdateAnswerReply\"N\n\x13UpdateAnswerRequest\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"3\n\x15\x43\x61nDeleteAnswersReply\x12\x1a\n\x12\x63\x61n_delete_answers\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nDeleteAnswersRequest\"\x13\n\x11\x44\x65leteAnswerReply\"L\n\x13\x44\x65leteAnswerRequest\x12\x35\n\tanswer_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanRegisterForItemNotificationsReply\x12+\n#can_register_for_item_notifications\x18\x01 \x01(\x08\"(\n&CanRegisterForItemNotificationsRequest\" \n\x1eReliableItemNotificationsReply\"\"\n ReliableItemNotificationsRequest\"\"\n UnreliableItemNotificationsReply\"$\n\"UnreliableItemNotificationsRequest\"\"\n AcknowledgeItemNotificationReply\"a\n\"AcknowledgeItemNotificationRequest\x12;\n\x0fnotification_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RegisterForNewItemsReply\"\x1c\n\x1aRegisterForNewItemsRequest\"\x1e\n\x1cRegisterForChangedItemsReply\" \n\x1eRegisterForChangedItemsRequest\"\x1d\n\x1bRegisterForChangedItemReply\"T\n\x1dRegisterForChangedItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cRegisterForDeletedItemsReply\" \n\x1eRegisterForDeletedItemsRequest\"\x1d\n\x1bRegisterForDeletedItemReply\"T\n\x1dRegisterForDeletedItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"G\n\x1e\x43\x61nLookupItemBankMappingsReply\x12%\n\x1d\x63\x61n_lookup_item_bank_mappings\x18\x01 \x01(\x08\"\"\n CanLookupItemBankMappingsRequest\"\x1d\n\x1bUseComparativeBankViewReply\"\x1f\n\x1dUseComparativeBankViewRequest\"\x19\n\x17UsePlenaryBankViewReply\"\x1b\n\x19UsePlenaryBankViewRequest\"N\n\x17GetItemIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetItemsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x18GetItemIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x16GetItemsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x17GetBankIdsByItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetBanksByItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nAssignItemsReply\x12\x18\n\x10\x63\x61n_assign_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nAssignItemsRequest\"=\n\x19\x43\x61nAssignItemsToBankReply\x12 \n\x18\x63\x61n_assign_items_to_bank\x18\x01 \x01(\x08\"R\n\x1b\x43\x61nAssignItemsToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssignableBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x8e\x01\n\"GetAssignableBankIdsForItemRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15\x41ssignItemToBankReply\"\x83\x01\n\x17\x41ssignItemToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19UnassignItemFromBankReply\"\x87\x01\n\x1bUnassignItemFromBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aReassignItemToBillingReply\"\xc5\x01\n\x1cReassignItemToBillingRequest\x12\x38\n\x0c\x66rom_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nLookupAssessmentsReply\x12\x1e\n\x16\x63\x61n_lookup_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nLookupAssessmentsRequest\"#\n!UseComparativeAssessmentViewReply\"%\n#UseComparativeAssessmentViewRequest\"\x1f\n\x1dUsePlenaryAssessmentViewReply\"!\n\x1fUsePlenaryAssessmentViewRequest\"L\n\x12GetAssessmentReply\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.Assessment\"Q\n\x14GetAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1aGetAssessmentsByIdsRequest\x12:\n\x0e\x61ssessment_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"i\n GetAssessmentsByGenusTypeRequest\x12\x45\n\x15\x61ssessment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"o\n&GetAssessmentsByParentGenusTypeRequest\x12\x45\n\x15\x61ssessment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"k\n!GetAssessmentsByRecordTypeRequest\x12\x46\n\x16\x61ssessment_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x17\n\x15GetAssessmentsRequest\";\n\x19\x43\x61nSearchAssessmentsReply\x12\x1e\n\x16\x63\x61n_search_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nSearchAssessmentsRequest\"\\\n\x17GetAssessmentQueryReply\x12\x41\n\x10\x61ssessment_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentQuery\"\x1b\n\x19GetAssessmentQueryRequest\"a\n\x1cGetAssessmentsByQueryRequest\x12\x41\n\x10\x61ssessment_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentQuery\";\n\x19\x43\x61nCreateAssessmentsReply\x12\x1e\n\x16\x63\x61n_create_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nCreateAssessmentsRequest\"Z\n\'CanCreateAssessmentWithRecordTypesReply\x12/\n\'can_create_assessment_with_record_types\x18\x01 \x01(\x08\"t\n)CanCreateAssessmentWithRecordTypesRequest\x12G\n\x17\x61ssessment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"b\n\x1fGetAssessmentFormForCreateReply\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\"l\n!GetAssessmentFormForCreateRequest\x12G\n\x17\x61ssessment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"O\n\x15\x43reateAssessmentReply\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.Assessment\"Z\n\x17\x43reateAssessmentRequest\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\";\n\x19\x43\x61nUpdateAssessmentsReply\x12\x1e\n\x16\x63\x61n_update_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nUpdateAssessmentsRequest\"b\n\x1fGetAssessmentFormForUpdateReply\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\"^\n!GetAssessmentFormForUpdateRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15UpdateAssessmentReply\"Z\n\x17UpdateAssessmentRequest\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\";\n\x19\x43\x61nDeleteAssessmentsReply\x12\x1e\n\x16\x63\x61n_delete_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nDeleteAssessmentsRequest\"\x17\n\x15\x44\x65leteAssessmentReply\"T\n\x17\x44\x65leteAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nManageAssessmentAliasesReply\x12%\n\x1d\x63\x61n_manage_assessment_aliases\x18\x01 \x01(\x08\"#\n!CanManageAssessmentAliasesRequest\"\x16\n\x14\x41liasAssessmentReply\"\x89\x01\n\x16\x41liasAssessmentRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rassessment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanLookupAssessmentBankMappingsReply\x12+\n#can_lookup_assessment_bank_mappings\x18\x01 \x01(\x08\"(\n&CanLookupAssessmentBankMappingsRequest\"T\n\x1dGetAssessmentIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssessmentsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1eGetAssessmentIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1cGetAssessmentsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1dGetBankIdsByAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1bGetBanksByAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nAssignAssessmentsReply\x12\x1e\n\x16\x63\x61n_assign_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nAssignAssessmentsRequest\"I\n\x1f\x43\x61nAssignAssessmentsToBankReply\x12&\n\x1e\x63\x61n_assign_assessments_to_bank\x18\x01 \x01(\x08\"X\n!CanAssignAssessmentsToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x9a\x01\n(GetAssignableBankIdsForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1b\x41ssignAssessmentToBankReply\"\x8f\x01\n\x1d\x41ssignAssessmentToBankRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fUnassignAssessmentFromBankReply\"\x93\x01\n!UnassignAssessmentFromBankRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n ReassignAssessmentToBillingReply\"\xd1\x01\n\"ReassignAssessmentToBillingRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nAuthorAssessmentsReply\x12\x1e\n\x16\x63\x61n_author_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nAuthorAssessmentsRequest\"\x0e\n\x0c\x41\x64\x64ItemReply\"\x80\x01\n\x0e\x41\x64\x64ItemRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fRemoveItemReply\"\x83\x01\n\x11RemoveItemRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rMoveItemReply\"\xc1\x01\n\x0fMoveItemRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12>\n\x12preceeding_item_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fOrderItemsReply\"\x84\x01\n\x11OrderItemsRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08item_ids\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanLookupAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_lookup_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanLookupAssessmentsOfferedRequest\"*\n(UseComparativeAssessmentOfferedViewReply\",\n*UseComparativeAssessmentOfferedViewRequest\"&\n$UsePlenaryAssessmentOfferedViewReply\"(\n&UsePlenaryAssessmentOfferedViewRequest\"b\n\x19GetAssessmentOfferedReply\x12\x45\n\x12\x61ssessment_offered\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentOffered\"`\n\x1bGetAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n!GetAssessmentsOfferedByIdsRequest\x12\x42\n\x16\x61ssessment_offered_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"x\n\'GetAssessmentsOfferedByGenusTypeRequest\x12M\n\x1d\x61ssessment_offered_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"~\n-GetAssessmentsOfferedByParentGenusTypeRequest\x12M\n\x1d\x61ssessment_offered_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n(GetAssessmentsOfferedByRecordTypeRequest\x12\x46\n\x16\x61ssessment_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"x\n\"GetAssessmentsOfferedByDateRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12)\n\x05start\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"f\n)GetAssessmentsOfferedForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cGetAssessmentsOfferedRequest\"J\n CanSearchAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_search_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanSearchAssessmentsOfferedRequest\"r\n\x1eGetAssessmentOfferedQueryReply\x12P\n\x18\x61ssessment_offered_query\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment.AssessmentOfferedQuery\"\"\n GetAssessmentOfferedQueryRequest\"w\n#GetAssessmentsOfferedByQueryRequest\x12P\n\x18\x61ssessment_offered_query\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment.AssessmentOfferedQuery\"J\n CanCreateAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_create_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanCreateAssessmentsOfferedRequest\"i\n.CanCreateAssessmentOfferedWithRecordTypesReply\x12\x37\n/can_create_assessment_offered_with_record_types\x18\x01 \x01(\x08\"\x83\x01\n0CanCreateAssessmentOfferedWithRecordTypesRequest\x12O\n\x1f\x61ssessment_offered_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"x\n&GetAssessmentOfferedFormForCreateReply\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"\xb6\x01\n(GetAssessmentOfferedFormForCreateRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12O\n\x1f\x61ssessment_offered_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n\x1c\x43reateAssessmentOfferedReply\x12\x45\n\x12\x61ssessment_offered\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentOffered\"p\n\x1e\x43reateAssessmentOfferedRequest\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"J\n CanUpdateAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_update_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanUpdateAssessmentsOfferedRequest\"x\n&GetAssessmentOfferedFormForUpdateReply\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"m\n(GetAssessmentOfferedFormForUpdateRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUpdateAssessmentOfferedReply\"p\n\x1eUpdateAssessmentOfferedRequest\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"J\n CanDeleteAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_delete_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanDeleteAssessmentsOfferedRequest\"\x1e\n\x1c\x44\x65leteAssessmentOfferedReply\"c\n\x1e\x44\x65leteAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n&CanManageAssessmentOfferedAliasesReply\x12-\n%can_manage_assessment_offered_aliases\x18\x01 \x01(\x08\"*\n(CanManageAssessmentOfferedAliasesRequest\"\x1d\n\x1b\x41liasAssessmentOfferedReply\"\x98\x01\n\x1d\x41liasAssessmentOfferedRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x15\x61ssessment_offered_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n+CanLookupAssessmentOfferedBankMappingsReply\x12\x33\n+can_lookup_assessment_offered_bank_mappings\x18\x01 \x01(\x08\"/\n-CanLookupAssessmentOfferedBankMappingsRequest\"[\n$GetAssessmentOfferedIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\"GetAssessmentsOfferedByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n%GetAssessmentOfferedIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n#GetAssessmentsOfferedByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"i\n$GetBankIdsByAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\"GetBanksByAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanAssignAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_assign_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanAssignAssessmentsOfferedRequest\"X\n&CanAssignAssessmentsOfferedToBankReply\x12.\n&can_assign_assessments_offered_to_bank\x18\x01 \x01(\x08\"_\n(CanAssignAssessmentsOfferedToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa9\x01\n/GetAssignableBankIdsForAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"AssignAssessmentOfferedToBankReply\"\x9e\x01\n$AssignAssessmentOfferedToBankRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n&UnassignAssessmentOfferedFromBankReply\"\xa2\x01\n(UnassignAssessmentOfferedFromBankRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\")\n\'ReassignAssessmentOfferedToBillingReply\"\xe0\x01\n)ReassignAssessmentOfferedToBillingRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nLookupAssessmentsTakenReply\x12$\n\x1c\x63\x61n_lookup_assessments_taken\x18\x01 \x01(\x08\"\"\n CanLookupAssessmentsTakenRequest\"(\n&UseComparativeAssessmentTakenViewReply\"*\n(UseComparativeAssessmentTakenViewRequest\"$\n\"UsePlenaryAssessmentTakenViewReply\"&\n$UsePlenaryAssessmentTakenViewRequest\"\\\n\x17GetAssessmentTakenReply\x12\x41\n\x10\x61ssessment_taken\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentTaken\"\\\n\x19GetAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1fGetAssessmentsTakenByIdsRequest\x12@\n\x14\x61ssessment_taken_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"t\n%GetAssessmentsTakenByGenusTypeRequest\x12K\n\x1b\x61ssessment_taken_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"z\n+GetAssessmentsTakenByParentGenusTypeRequest\x12K\n\x1b\x61ssessment_taken_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n&GetAssessmentsTakenByRecordTypeRequest\x12L\n\x1c\x61ssessment_taken_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"u\n GetAssessmentsTakenByDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"]\n\"GetAssessmentsTakenForTakerRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb6\x01\n(GetAssessmentsTakenByDateForTakerRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"d\n\'GetAssessmentsTakenForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xbd\x01\n-GetAssessmentsTakenByDateForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa5\x01\n/GetAssessmentsTakenForTakerAndAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xfe\x01\n5GetAssessmentsTakenByDateForTakerAndAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"s\n.GetAssessmentsTakenForAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xcc\x01\n4GetAssessmentsTakenByDateForAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb4\x01\n6GetAssessmentsTakenForTakerAndAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x8d\x02\n<GetAssessmentsTakenByDateForTakerAndAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x1c\n\x1aGetAssessmentsTakenRequest\"F\n\x1e\x43\x61nSearchAssessmentsTakenReply\x12$\n\x1c\x63\x61n_search_assessments_taken\x18\x01 \x01(\x08\"\"\n CanSearchAssessmentsTakenRequest\"l\n\x1cGetAssessmentTakenQueryReply\x12L\n\x16\x61ssessment_taken_query\x18\x01 \x01(\x0b\x32,.dlkit.proto.assessment.AssessmentTakenQuery\" \n\x1eGetAssessmentTakenQueryRequest\"q\n!GetAssessmentsTakenByQueryRequest\x12L\n\x16\x61ssessment_taken_query\x18\x01 \x01(\x0b\x32,.dlkit.proto.assessment.AssessmentTakenQuery\"F\n\x1e\x43\x61nCreateAssessmentsTakenReply\x12$\n\x1c\x63\x61n_create_assessments_taken\x18\x01 \x01(\x08\"\"\n CanCreateAssessmentsTakenRequest\"e\n,CanCreateAssessmentTakenWithRecordTypesReply\x12\x35\n-can_create_assessment_taken_with_record_types\x18\x01 \x01(\x08\"\x7f\n.CanCreateAssessmentTakenWithRecordTypesRequest\x12M\n\x1d\x61ssessment_taken_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n$GetAssessmentTakenFormForCreateReply\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"\xba\x01\n&GetAssessmentTakenFormForCreateRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12M\n\x1d\x61ssessment_taken_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1a\x43reateAssessmentTakenReply\x12\x41\n\x10\x61ssessment_taken\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentTaken\"j\n\x1c\x43reateAssessmentTakenRequest\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"F\n\x1e\x43\x61nUpdateAssessmentsTakenReply\x12$\n\x1c\x63\x61n_update_assessments_taken\x18\x01 \x01(\x08\"\"\n CanUpdateAssessmentsTakenRequest\"r\n$GetAssessmentTakenFormForUpdateReply\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"i\n&GetAssessmentTakenFormForUpdateRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUpdateAssessmentTakenReply\"j\n\x1cUpdateAssessmentTakenRequest\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"F\n\x1e\x43\x61nDeleteAssessmentsTakenReply\x12$\n\x1c\x63\x61n_delete_assessments_taken\x18\x01 \x01(\x08\"\"\n CanDeleteAssessmentsTakenRequest\"\x1c\n\x1a\x44\x65leteAssessmentTakenReply\"_\n\x1c\x44\x65leteAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanManageAssessmentTakenAliasesReply\x12+\n#can_manage_assessment_taken_aliases\x18\x01 \x01(\x08\"(\n&CanManageAssessmentTakenAliasesRequest\"\x1b\n\x19\x41liasAssessmentTakenReply\"\x94\x01\n\x1b\x41liasAssessmentTakenRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13\x61ssessment_taken_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n)CanLookupAssessmentTakenBankMappingsReply\x12\x31\n)can_lookup_assessment_taken_bank_mappings\x18\x01 \x01(\x08\"-\n+CanLookupAssessmentTakenBankMappingsRequest\"Y\n\"GetAssessmentTakenIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n GetAssessmentsTakenByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n#GetAssessmentTakenIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n!GetAssessmentsTakenByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n\"GetBankIdsByAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n GetBanksByAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nAssignAssessmentsTakenReply\x12$\n\x1c\x63\x61n_assign_assessments_taken\x18\x01 \x01(\x08\"\"\n CanAssignAssessmentsTakenRequest\"T\n$CanAssignAssessmentsTakenToBankReply\x12,\n$can_assign_assessments_taken_to_bank\x18\x01 \x01(\x08\"]\n&CanAssignAssessmentsTakenToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa5\x01\n-GetAssignableBankIdsForAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n AssignAssessmentTakenToBankReply\"\x9a\x01\n\"AssignAssessmentTakenToBankRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"&\n$UnassignAssessmentTakenFromBankReply\"\x9e\x01\n&UnassignAssessmentTakenFromBankRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%ReassignAssessmentTakenToBillingReply\"\xdc\x01\n\'ReassignAssessmentTakenToBillingRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nLookupBanksReply\x12\x18\n\x10\x63\x61n_lookup_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nLookupBanksRequest\"L\n\x14GetBanksByIdsRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1aGetBanksByGenusTypeRequest\x12?\n\x0f\x62\x61nk_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetBanksByParentGenusTypeRequest\x12?\n\x0f\x62\x61nk_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1bGetBanksByRecordTypeRequest\x12@\n\x10\x62\x61nk_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"T\n\x19GetBanksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetBanksRequest\"/\n\x13\x43\x61nSearchBanksReply\x12\x18\n\x10\x63\x61n_search_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nSearchBanksRequest\"J\n\x11GetBankQueryReply\x12\x35\n\nbank_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.BankQuery\"\x15\n\x13GetBankQueryRequest\"O\n\x16GetBanksByQueryRequest\x12\x35\n\nbank_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.BankQuery\"/\n\x13\x43\x61nCreateBanksReply\x12\x18\n\x10\x63\x61n_create_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nCreateBanksRequest\"N\n!CanCreateBankWithRecordTypesReply\x12)\n!can_create_bank_with_record_types\x18\x01 \x01(\x08\"h\n#CanCreateBankWithRecordTypesRequest\x12\x41\n\x11\x62\x61nk_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x19GetBankFormForCreateReply\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"`\n\x1bGetBankFormForCreateRequest\x12\x41\n\x11\x62\x61nk_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"=\n\x0f\x43reateBankReply\x12*\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"H\n\x11\x43reateBankRequest\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"/\n\x13\x43\x61nUpdateBanksReply\x12\x18\n\x10\x63\x61n_update_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nUpdateBanksRequest\"P\n\x19GetBankFormForUpdateReply\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"R\n\x1bGetBankFormForUpdateRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fUpdateBankReply\"H\n\x11UpdateBankRequest\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"/\n\x13\x43\x61nDeleteBanksReply\x12\x18\n\x10\x63\x61n_delete_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nDeleteBanksRequest\"\x11\n\x0f\x44\x65leteBankReply\"H\n\x11\x44\x65leteBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nManageBankAliasesReply\x12\x1f\n\x17\x63\x61n_manage_bank_aliases\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nManageBankAliasesRequest\"\x10\n\x0e\x41liasBankReply\"}\n\x10\x41liasBankRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x17GetBankHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetBankHierarchyIdRequest\"L\n\x15GetBankHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x19\n\x17GetBankHierarchyRequest\"@\n\x1b\x43\x61nAccessBankHierarchyReply\x12!\n\x19\x63\x61n_access_bank_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nAccessBankHierarchyRequest\"\x17\n\x15GetRootBankIdsRequest\"\x15\n\x13GetRootBanksRequest\"/\n\x13HasParentBanksReply\x12\x18\n\x10has_parent_banks\x18\x01 \x01(\x08\"L\n\x15HasParentBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"0\n\x13IsParentOfBankReply\x12\x19\n\x11is_parent_of_bank\x18\x01 \x01(\x08\"}\n\x15IsParentOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x17GetParentBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetParentBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsAncestorOfBankReply\x12\x1b\n\x13is_ancestor_of_bank\x18\x01 \x01(\x08\"\x7f\n\x17IsAncestorOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12HasChildBanksReply\x12\x17\n\x0fhas_child_banks\x18\x01 \x01(\x08\"K\n\x14HasChildBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsChildOfBankReply\x12\x18\n\x10is_child_of_bank\x18\x01 \x01(\x08\"|\n\x14IsChildOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x16GetChildBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x14GetChildBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsDescendantOfBankReply\x12\x1d\n\x15is_descendant_of_bank\x18\x01 \x01(\x08\"\x81\x01\n\x19IsDescendantOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x13GetBankNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9a\x01\n\x15GetBankNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"H\n\x11GetBankNodesReply\x12\x33\n\tbank_node\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankNode\"\x98\x01\n\x13GetBankNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"@\n\x1b\x43\x61nModifyBankHierarchyReply\x12!\n\x19\x63\x61n_modify_bank_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nModifyBankHierarchyRequest\"\x12\n\x10\x41\x64\x64RootBankReply\"I\n\x12\x41\x64\x64RootBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveRootBankReply\"L\n\x15RemoveRootBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11\x41\x64\x64\x43hildBankReply\"\x80\x01\n\x13\x41\x64\x64\x43hildBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildBankReply\"\x83\x01\n\x16RemoveChildBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveChildBanksReply\"N\n\x17RemoveChildBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x85+\n\x11\x41ssessmentSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12z\n\x12\x43\x61nTakeAssessments\x12\x31.dlkit.proto.assessment.CanTakeAssessmentsRequest\x1a/.dlkit.proto.assessment.CanTakeAssessmentsReply\"\x00\x12z\n\x12HasAssessmentBegun\x12\x31.dlkit.proto.assessment.HasAssessmentBegunRequest\x1a/.dlkit.proto.assessment.HasAssessmentBegunReply\"\x00\x12t\n\x10IsAssessmentOver\x12/.dlkit.proto.assessment.IsAssessmentOverRequest\x1a-.dlkit.proto.assessment.IsAssessmentOverReply\"\x00\x12\x95\x01\n\x1bRequiresSynchronousSections\x12:.dlkit.proto.assessment.RequiresSynchronousSectionsRequest\x1a\x38.dlkit.proto.assessment.RequiresSynchronousSectionsReply\"\x00\x12\x8f\x01\n\x19GetFirstAssessmentSection\x12\x38.dlkit.proto.assessment.GetFirstAssessmentSectionRequest\x1a\x36.dlkit.proto.assessment.GetFirstAssessmentSectionReply\"\x00\x12\x8c\x01\n\x18HasNextAssessmentSection\x12\x37.dlkit.proto.assessment.HasNextAssessmentSectionRequest\x1a\x35.dlkit.proto.assessment.HasNextAssessmentSectionReply\"\x00\x12\x8c\x01\n\x18GetNextAssessmentSection\x12\x37.dlkit.proto.assessment.GetNextAssessmentSectionRequest\x1a\x35.dlkit.proto.assessment.GetNextAssessmentSectionReply\"\x00\x12\x98\x01\n\x1cHasPreviousAssessmentSection\x12;.dlkit.proto.assessment.HasPreviousAssessmentSectionRequest\x1a\x39.dlkit.proto.assessment.HasPreviousAssessmentSectionReply\"\x00\x12\x98\x01\n\x1cGetPreviousAssessmentSection\x12;.dlkit.proto.assessment.GetPreviousAssessmentSectionRequest\x1a\x39.dlkit.proto.assessment.GetPreviousAssessmentSectionReply\"\x00\x12\x80\x01\n\x14GetAssessmentSection\x12\x33.dlkit.proto.assessment.GetAssessmentSectionRequest\x1a\x31.dlkit.proto.assessment.GetAssessmentSectionReply\"\x00\x12|\n\x15GetAssessmentSections\x12\x34.dlkit.proto.assessment.GetAssessmentSectionsRequest\x1a).dlkit.proto.assessment.AssessmentSection\"\x00\x30\x01\x12\x95\x01\n\x1bIsAssessmentSectionComplete\x12:.dlkit.proto.assessment.IsAssessmentSectionCompleteRequest\x1a\x38.dlkit.proto.assessment.IsAssessmentSectionCompleteReply\"\x00\x12\x90\x01\n\x1fGetIncompleteAssessmentSections\x12>.dlkit.proto.assessment.GetIncompleteAssessmentSectionsRequest\x1a).dlkit.proto.assessment.AssessmentSection\"\x00\x30\x01\x12\x8f\x01\n\x19HasAssessmentSectionBegun\x12\x38.dlkit.proto.assessment.HasAssessmentSectionBegunRequest\x1a\x36.dlkit.proto.assessment.HasAssessmentSectionBegunReply\"\x00\x12\x89\x01\n\x17IsAssessmentSectionOver\x12\x36.dlkit.proto.assessment.IsAssessmentSectionOverRequest\x1a\x34.dlkit.proto.assessment.IsAssessmentSectionOverReply\"\x00\x12\x98\x01\n\x1cRequiresSynchronousResponses\x12;.dlkit.proto.assessment.RequiresSynchronousResponsesRequest\x1a\x39.dlkit.proto.assessment.RequiresSynchronousResponsesReply\"\x00\x12t\n\x10GetFirstQuestion\x12/.dlkit.proto.assessment.GetFirstQuestionRequest\x1a-.dlkit.proto.assessment.GetFirstQuestionReply\"\x00\x12q\n\x0fHasNextQuestion\x12..dlkit.proto.assessment.HasNextQuestionRequest\x1a,.dlkit.proto.assessment.HasNextQuestionReply\"\x00\x12q\n\x0fGetNextQuestion\x12..dlkit.proto.assessment.GetNextQuestionRequest\x1a,.dlkit.proto.assessment.GetNextQuestionReply\"\x00\x12}\n\x13HasPreviousQuestion\x12\x32.dlkit.proto.assessment.HasPreviousQuestionRequest\x1a\x30.dlkit.proto.assessment.HasPreviousQuestionReply\"\x00\x12}\n\x13GetPreviousQuestion\x12\x32.dlkit.proto.assessment.GetPreviousQuestionRequest\x1a\x30.dlkit.proto.assessment.GetPreviousQuestionReply\"\x00\x12\x65\n\x0bGetQuestion\x12*.dlkit.proto.assessment.GetQuestionRequest\x1a(.dlkit.proto.assessment.GetQuestionReply\"\x00\x12\x61\n\x0cGetQuestions\x12+.dlkit.proto.assessment.GetQuestionsRequest\x1a .dlkit.proto.assessment.Question\"\x00\x30\x01\x12q\n\x0fGetResponseForm\x12..dlkit.proto.assessment.GetResponseFormRequest\x1a,.dlkit.proto.assessment.GetResponseFormReply\"\x00\x12n\n\x0eSubmitResponse\x12-.dlkit.proto.assessment.SubmitResponseRequest\x1a+.dlkit.proto.assessment.SubmitResponseReply\"\x00\x12\\\n\x08SkipItem\x12\'.dlkit.proto.assessment.SkipItemRequest\x1a%.dlkit.proto.assessment.SkipItemReply\"\x00\x12z\n\x12IsQuestionAnswered\x12\x31.dlkit.proto.assessment.IsQuestionAnsweredRequest\x1a/.dlkit.proto.assessment.IsQuestionAnsweredReply\"\x00\x12u\n\x16GetUnansweredQuestions\x12\x35.dlkit.proto.assessment.GetUnansweredQuestionsRequest\x1a .dlkit.proto.assessment.Question\"\x00\x30\x01\x12\x86\x01\n\x16HasUnansweredQuestions\x12\x35.dlkit.proto.assessment.HasUnansweredQuestionsRequest\x1a\x33.dlkit.proto.assessment.HasUnansweredQuestionsReply\"\x00\x12\x92\x01\n\x1aGetFirstUnansweredQuestion\x12\x39.dlkit.proto.assessment.GetFirstUnansweredQuestionRequest\x1a\x37.dlkit.proto.assessment.GetFirstUnansweredQuestionReply\"\x00\x12\x8f\x01\n\x19HasNextUnansweredQuestion\x12\x38.dlkit.proto.assessment.HasNextUnansweredQuestionRequest\x1a\x36.dlkit.proto.assessment.HasNextUnansweredQuestionReply\"\x00\x12\x8f\x01\n\x19GetNextUnansweredQuestion\x12\x38.dlkit.proto.assessment.GetNextUnansweredQuestionRequest\x1a\x36.dlkit.proto.assessment.GetNextUnansweredQuestionReply\"\x00\x12\x9b\x01\n\x1dHasPreviousUnansweredQuestion\x12<.dlkit.proto.assessment.HasPreviousUnansweredQuestionRequest\x1a:.dlkit.proto.assessment.HasPreviousUnansweredQuestionReply\"\x00\x12\x9b\x01\n\x1dGetPreviousUnansweredQuestion\x12<.dlkit.proto.assessment.GetPreviousUnansweredQuestionRequest\x1a:.dlkit.proto.assessment.GetPreviousUnansweredQuestionReply\"\x00\x12\x65\n\x0bGetResponse\x12*.dlkit.proto.assessment.GetResponseRequest\x1a(.dlkit.proto.assessment.GetResponseReply\"\x00\x12\x61\n\x0cGetResponses\x12+.dlkit.proto.assessment.GetResponsesRequest\x1a .dlkit.proto.assessment.Response\"\x00\x30\x01\x12k\n\rClearResponse\x12,.dlkit.proto.assessment.ClearResponseRequest\x1a*.dlkit.proto.assessment.ClearResponseReply\"\x00\x12\x89\x01\n\x17\x46inishAssessmentSection\x12\x36.dlkit.proto.assessment.FinishAssessmentSectionRequest\x1a\x34.dlkit.proto.assessment.FinishAssessmentSectionReply\"\x00\x12w\n\x11IsAnswerAvailable\x12\x30.dlkit.proto.assessment.IsAnswerAvailableRequest\x1a..dlkit.proto.assessment.IsAnswerAvailableReply\"\x00\x12[\n\nGetAnswers\x12).dlkit.proto.assessment.GetAnswersRequest\x1a\x1e.dlkit.proto.assessment.Answer\"\x00\x30\x01\x12t\n\x10\x46inishAssessment\x12/.dlkit.proto.assessment.FinishAssessmentRequest\x1a-.dlkit.proto.assessment.FinishAssessmentReply\"\x00\x32\x8c\x06\n\x18\x41ssessmentResultsSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x92\x01\n\x1a\x43\x61nAccessAssessmentResults\x12\x39.dlkit.proto.assessment.CanAccessAssessmentResultsRequest\x1a\x37.dlkit.proto.assessment.CanAccessAssessmentResultsReply\"\x00\x12U\n\x08GetItems\x12\'.dlkit.proto.assessment.GetItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12\x61\n\x0cGetResponses\x12+.dlkit.proto.assessment.GetResponsesRequest\x1a .dlkit.proto.assessment.Response\"\x00\x30\x01\x12}\n\x13\x41reResultsAvailable\x12\x32.dlkit.proto.assessment.AreResultsAvailableRequest\x1a\x30.dlkit.proto.assessment.AreResultsAvailableReply\"\x00\x12\x66\n\x0fGetGradeEntries\x12..dlkit.proto.assessment.GetGradeEntriesRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x32\xfc\x0e\n\x11ItemLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12n\n\x0e\x43\x61nLookupItems\x12-.dlkit.proto.assessment.CanLookupItemsRequest\x1a+.dlkit.proto.assessment.CanLookupItemsReply\"\x00\x12\x86\x01\n\x16UseComparativeItemView\x12\x35.dlkit.proto.assessment.UseComparativeItemViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeItemViewReply\"\x00\x12z\n\x12UsePlenaryItemView\x12\x31.dlkit.proto.assessment.UsePlenaryItemViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryItemViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12Y\n\x07GetItem\x12&.dlkit.proto.assessment.GetItemRequest\x1a$.dlkit.proto.assessment.GetItemReply\"\x00\x12_\n\rGetItemsByIds\x12,.dlkit.proto.assessment.GetItemsByIdsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12k\n\x13GetItemsByGenusType\x12\x32.dlkit.proto.assessment.GetItemsByGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12w\n\x19GetItemsByParentGenusType\x12\x38.dlkit.proto.assessment.GetItemsByParentGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12m\n\x14GetItemsByRecordType\x12\x33.dlkit.proto.assessment.GetItemsByRecordTypeRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12i\n\x12GetItemsByQuestion\x12\x31.dlkit.proto.assessment.GetItemsByQuestionRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12\x65\n\x10GetItemsByAnswer\x12/.dlkit.proto.assessment.GetItemsByAnswerRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12{\n\x1bGetItemsByLearningObjective\x12:.dlkit.proto.assessment.GetItemsByLearningObjectiveRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12}\n\x1cGetItemsByLearningObjectives\x12;.dlkit.proto.assessment.GetItemsByLearningObjectivesRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12U\n\x08GetItems\x12\'.dlkit.proto.assessment.GetItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x32\x8f\x06\n\x10ItemQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12n\n\x0e\x43\x61nSearchItems\x12-.dlkit.proto.assessment.CanSearchItemsRequest\x1a+.dlkit.proto.assessment.CanSearchItemsReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12h\n\x0cGetItemQuery\x12+.dlkit.proto.assessment.GetItemQueryRequest\x1a).dlkit.proto.assessment.GetItemQueryReply\"\x00\x12\x63\n\x0fGetItemsByQuery\x12..dlkit.proto.assessment.GetItemsByQueryRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x32\x84\x04\n\x11ItemSearchSession\x12k\n\rGetItemSearch\x12,.dlkit.proto.assessment.GetItemSearchRequest\x1a*.dlkit.proto.assessment.GetItemSearchReply\"\x00\x12z\n\x12GetItemSearchOrder\x12\x31.dlkit.proto.assessment.GetItemSearchOrderRequest\x1a/.dlkit.proto.assessment.GetItemSearchOrderReply\"\x00\x12t\n\x10GetItemsBySearch\x12/.dlkit.proto.assessment.GetItemsBySearchRequest\x1a-.dlkit.proto.assessment.GetItemsBySearchReply\"\x00\x12\x8f\x01\n\x19GetItemQueryFromInspector\x12\x38.dlkit.proto.assessment.GetItemQueryFromInspectorRequest\x1a\x36.dlkit.proto.assessment.GetItemQueryFromInspectorReply\"\x00\x32\xae\x1d\n\x10ItemAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12n\n\x0e\x43\x61nCreateItems\x12-.dlkit.proto.assessment.CanCreateItemsRequest\x1a+.dlkit.proto.assessment.CanCreateItemsReply\"\x00\x12\x98\x01\n\x1c\x43\x61nCreateItemWithRecordTypes\x12;.dlkit.proto.assessment.CanCreateItemWithRecordTypesRequest\x1a\x39.dlkit.proto.assessment.CanCreateItemWithRecordTypesReply\"\x00\x12\x80\x01\n\x14GetItemFormForCreate\x12\x33.dlkit.proto.assessment.GetItemFormForCreateRequest\x1a\x31.dlkit.proto.assessment.GetItemFormForCreateReply\"\x00\x12\x62\n\nCreateItem\x12).dlkit.proto.assessment.CreateItemRequest\x1a\'.dlkit.proto.assessment.CreateItemReply\"\x00\x12n\n\x0e\x43\x61nUpdateItems\x12-.dlkit.proto.assessment.CanUpdateItemsRequest\x1a+.dlkit.proto.assessment.CanUpdateItemsReply\"\x00\x12\x80\x01\n\x14GetItemFormForUpdate\x12\x33.dlkit.proto.assessment.GetItemFormForUpdateRequest\x1a\x31.dlkit.proto.assessment.GetItemFormForUpdateReply\"\x00\x12\x62\n\nUpdateItem\x12).dlkit.proto.assessment.UpdateItemRequest\x1a\'.dlkit.proto.assessment.UpdateItemReply\"\x00\x12n\n\x0e\x43\x61nDeleteItems\x12-.dlkit.proto.assessment.CanDeleteItemsRequest\x1a+.dlkit.proto.assessment.CanDeleteItemsReply\"\x00\x12\x62\n\nDeleteItem\x12).dlkit.proto.assessment.DeleteItemRequest\x1a\'.dlkit.proto.assessment.DeleteItemReply\"\x00\x12\x80\x01\n\x14\x43\x61nManageItemAliases\x12\x33.dlkit.proto.assessment.CanManageItemAliasesRequest\x1a\x31.dlkit.proto.assessment.CanManageItemAliasesReply\"\x00\x12_\n\tAliasItem\x12(.dlkit.proto.assessment.AliasItemRequest\x1a&.dlkit.proto.assessment.AliasItemReply\"\x00\x12z\n\x12\x43\x61nCreateQuestions\x12\x31.dlkit.proto.assessment.CanCreateQuestionsRequest\x1a/.dlkit.proto.assessment.CanCreateQuestionsReply\"\x00\x12\xa4\x01\n CanCreateQuestionWithRecordTypes\x12?.dlkit.proto.assessment.CanCreateQuestionWithRecordTypesRequest\x1a=.dlkit.proto.assessment.CanCreateQuestionWithRecordTypesReply\"\x00\x12\x8c\x01\n\x18GetQuestionFormForCreate\x12\x37.dlkit.proto.assessment.GetQuestionFormForCreateRequest\x1a\x35.dlkit.proto.assessment.GetQuestionFormForCreateReply\"\x00\x12n\n\x0e\x43reateQuestion\x12-.dlkit.proto.assessment.CreateQuestionRequest\x1a+.dlkit.proto.assessment.CreateQuestionReply\"\x00\x12z\n\x12\x43\x61nUpdateQuestions\x12\x31.dlkit.proto.assessment.CanUpdateQuestionsRequest\x1a/.dlkit.proto.assessment.CanUpdateQuestionsReply\"\x00\x12\x8c\x01\n\x18GetQuestionFormForUpdate\x12\x37.dlkit.proto.assessment.GetQuestionFormForUpdateRequest\x1a\x35.dlkit.proto.assessment.GetQuestionFormForUpdateReply\"\x00\x12n\n\x0eUpdateQuestion\x12-.dlkit.proto.assessment.UpdateQuestionRequest\x1a+.dlkit.proto.assessment.UpdateQuestionReply\"\x00\x12z\n\x12\x43\x61nDeleteQuestions\x12\x31.dlkit.proto.assessment.CanDeleteQuestionsRequest\x1a/.dlkit.proto.assessment.CanDeleteQuestionsReply\"\x00\x12n\n\x0e\x44\x65leteQuestion\x12-.dlkit.proto.assessment.DeleteQuestionRequest\x1a+.dlkit.proto.assessment.DeleteQuestionReply\"\x00\x12t\n\x10\x43\x61nCreateAnswers\x12/.dlkit.proto.assessment.CanCreateAnswersRequest\x1a-.dlkit.proto.assessment.CanCreateAnswersReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nCreateAnswersWithRecordTypes\x12>.dlkit.proto.assessment.CanCreateAnswersWithRecordTypesRequest\x1a<.dlkit.proto.assessment.CanCreateAnswersWithRecordTypesReply\"\x00\x12\x86\x01\n\x16GetAnswerFormForCreate\x12\x35.dlkit.proto.assessment.GetAnswerFormForCreateRequest\x1a\x33.dlkit.proto.assessment.GetAnswerFormForCreateReply\"\x00\x12h\n\x0c\x43reateAnswer\x12+.dlkit.proto.assessment.CreateAnswerRequest\x1a).dlkit.proto.assessment.CreateAnswerReply\"\x00\x12t\n\x10\x43\x61nUpdateAnswers\x12/.dlkit.proto.assessment.CanUpdateAnswersRequest\x1a-.dlkit.proto.assessment.CanUpdateAnswersReply\"\x00\x12\x86\x01\n\x16GetAnswerFormForUpdate\x12\x35.dlkit.proto.assessment.GetAnswerFormForUpdateRequest\x1a\x33.dlkit.proto.assessment.GetAnswerFormForUpdateReply\"\x00\x12h\n\x0cUpdateAnswer\x12+.dlkit.proto.assessment.UpdateAnswerRequest\x1a).dlkit.proto.assessment.UpdateAnswerReply\"\x00\x12t\n\x10\x43\x61nDeleteAnswers\x12/.dlkit.proto.assessment.CanDeleteAnswersRequest\x1a-.dlkit.proto.assessment.CanDeleteAnswersReply\"\x00\x12h\n\x0c\x44\x65leteAnswer\x12+.dlkit.proto.assessment.DeleteAnswerRequest\x1a).dlkit.proto.assessment.DeleteAnswerReply\"\x00\x32\xe6\r\n\x17ItemNotificationSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nRegisterForItemNotifications\x12>.dlkit.proto.assessment.CanRegisterForItemNotificationsRequest\x1a<.dlkit.proto.assessment.CanRegisterForItemNotificationsReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x8f\x01\n\x19ReliableItemNotifications\x12\x38.dlkit.proto.assessment.ReliableItemNotificationsRequest\x1a\x36.dlkit.proto.assessment.ReliableItemNotificationsReply\"\x00\x12\x95\x01\n\x1bUnreliableItemNotifications\x12:.dlkit.proto.assessment.UnreliableItemNotificationsRequest\x1a\x38.dlkit.proto.assessment.UnreliableItemNotificationsReply\"\x00\x12\x95\x01\n\x1b\x41\x63knowledgeItemNotification\x12:.dlkit.proto.assessment.AcknowledgeItemNotificationRequest\x1a\x38.dlkit.proto.assessment.AcknowledgeItemNotificationReply\"\x00\x12}\n\x13RegisterForNewItems\x12\x32.dlkit.proto.assessment.RegisterForNewItemsRequest\x1a\x30.dlkit.proto.assessment.RegisterForNewItemsReply\"\x00\x12\x89\x01\n\x17RegisterForChangedItems\x12\x36.dlkit.proto.assessment.RegisterForChangedItemsRequest\x1a\x34.dlkit.proto.assessment.RegisterForChangedItemsReply\"\x00\x12\x86\x01\n\x16RegisterForChangedItem\x12\x35.dlkit.proto.assessment.RegisterForChangedItemRequest\x1a\x33.dlkit.proto.assessment.RegisterForChangedItemReply\"\x00\x12\x89\x01\n\x17RegisterForDeletedItems\x12\x36.dlkit.proto.assessment.RegisterForDeletedItemsRequest\x1a\x34.dlkit.proto.assessment.RegisterForDeletedItemsReply\"\x00\x12\x86\x01\n\x16RegisterForDeletedItem\x12\x35.dlkit.proto.assessment.RegisterForDeletedItemRequest\x1a\x33.dlkit.proto.assessment.RegisterForDeletedItemReply\"\x00\x32\x9c\x08\n\x0fItemBankSession\x12\x8f\x01\n\x19\x43\x61nLookupItemBankMappings\x12\x38.dlkit.proto.assessment.CanLookupItemBankMappingsRequest\x1a\x36.dlkit.proto.assessment.CanLookupItemBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12k\n\x10GetItemIdsByBank\x12/.dlkit.proto.assessment.GetItemIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetItemsByBank\x12-.dlkit.proto.assessment.GetItemsByBankRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12m\n\x11GetItemIdsByBanks\x12\x30.dlkit.proto.assessment.GetItemIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x63\n\x0fGetItemsByBanks\x12..dlkit.proto.assessment.GetItemsByBanksRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12k\n\x10GetBankIdsByItem\x12/.dlkit.proto.assessment.GetBankIdsByItemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetBanksByItem\x12-.dlkit.proto.assessment.GetBanksByItemRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\x86\x07\n\x19ItemBankAssignmentSession\x12n\n\x0e\x43\x61nAssignItems\x12-.dlkit.proto.assessment.CanAssignItemsRequest\x1a+.dlkit.proto.assessment.CanAssignItemsReply\"\x00\x12\x80\x01\n\x14\x43\x61nAssignItemsToBank\x12\x33.dlkit.proto.assessment.CanAssignItemsToBankRequest\x1a\x31.dlkit.proto.assessment.CanAssignItemsToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x81\x01\n\x1bGetAssignableBankIdsForItem\x12:.dlkit.proto.assessment.GetAssignableBankIdsForItemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12t\n\x10\x41ssignItemToBank\x12/.dlkit.proto.assessment.AssignItemToBankRequest\x1a-.dlkit.proto.assessment.AssignItemToBankReply\"\x00\x12\x80\x01\n\x14UnassignItemFromBank\x12\x33.dlkit.proto.assessment.UnassignItemFromBankRequest\x1a\x31.dlkit.proto.assessment.UnassignItemFromBankReply\"\x00\x12\x83\x01\n\x15ReassignItemToBilling\x12\x34.dlkit.proto.assessment.ReassignItemToBillingRequest\x1a\x32.dlkit.proto.assessment.ReassignItemToBillingReply\"\x00\x32\xd9\x0c\n\x17\x41ssessmentLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nLookupAssessments\x12\x33.dlkit.proto.assessment.CanLookupAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanLookupAssessmentsReply\"\x00\x12\x98\x01\n\x1cUseComparativeAssessmentView\x12;.dlkit.proto.assessment.UseComparativeAssessmentViewRequest\x1a\x39.dlkit.proto.assessment.UseComparativeAssessmentViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryAssessmentView\x12\x37.dlkit.proto.assessment.UsePlenaryAssessmentViewRequest\x1a\x35.dlkit.proto.assessment.UsePlenaryAssessmentViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12k\n\rGetAssessment\x12,.dlkit.proto.assessment.GetAssessmentRequest\x1a*.dlkit.proto.assessment.GetAssessmentReply\"\x00\x12q\n\x13GetAssessmentsByIds\x12\x32.dlkit.proto.assessment.GetAssessmentsByIdsRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12}\n\x19GetAssessmentsByGenusType\x12\x38.dlkit.proto.assessment.GetAssessmentsByGenusTypeRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12\x89\x01\n\x1fGetAssessmentsByParentGenusType\x12>.dlkit.proto.assessment.GetAssessmentsByParentGenusTypeRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12\x7f\n\x1aGetAssessmentsByRecordType\x12\x39.dlkit.proto.assessment.GetAssessmentsByRecordTypeRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12g\n\x0eGetAssessments\x12-.dlkit.proto.assessment.GetAssessmentsRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x32\xcc\x06\n\x16\x41ssessmentQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nSearchAssessments\x12\x33.dlkit.proto.assessment.CanSearchAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanSearchAssessmentsReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12z\n\x12GetAssessmentQuery\x12\x31.dlkit.proto.assessment.GetAssessmentQueryRequest\x1a/.dlkit.proto.assessment.GetAssessmentQueryReply\"\x00\x12u\n\x15GetAssessmentsByQuery\x12\x34.dlkit.proto.assessment.GetAssessmentsByQueryRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x32\x9e\r\n\x16\x41ssessmentAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nCreateAssessments\x12\x33.dlkit.proto.assessment.CanCreateAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanCreateAssessmentsReply\"\x00\x12\xaa\x01\n\"CanCreateAssessmentWithRecordTypes\x12\x41.dlkit.proto.assessment.CanCreateAssessmentWithRecordTypesRequest\x1a?.dlkit.proto.assessment.CanCreateAssessmentWithRecordTypesReply\"\x00\x12\x92\x01\n\x1aGetAssessmentFormForCreate\x12\x39.dlkit.proto.assessment.GetAssessmentFormForCreateRequest\x1a\x37.dlkit.proto.assessment.GetAssessmentFormForCreateReply\"\x00\x12t\n\x10\x43reateAssessment\x12/.dlkit.proto.assessment.CreateAssessmentRequest\x1a-.dlkit.proto.assessment.CreateAssessmentReply\"\x00\x12\x80\x01\n\x14\x43\x61nUpdateAssessments\x12\x33.dlkit.proto.assessment.CanUpdateAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanUpdateAssessmentsReply\"\x00\x12\x92\x01\n\x1aGetAssessmentFormForUpdate\x12\x39.dlkit.proto.assessment.GetAssessmentFormForUpdateRequest\x1a\x37.dlkit.proto.assessment.GetAssessmentFormForUpdateReply\"\x00\x12t\n\x10UpdateAssessment\x12/.dlkit.proto.assessment.UpdateAssessmentRequest\x1a-.dlkit.proto.assessment.UpdateAssessmentReply\"\x00\x12\x80\x01\n\x14\x43\x61nDeleteAssessments\x12\x33.dlkit.proto.assessment.CanDeleteAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanDeleteAssessmentsReply\"\x00\x12t\n\x10\x44\x65leteAssessment\x12/.dlkit.proto.assessment.DeleteAssessmentRequest\x1a-.dlkit.proto.assessment.DeleteAssessmentReply\"\x00\x12\x92\x01\n\x1a\x43\x61nManageAssessmentAliases\x12\x39.dlkit.proto.assessment.CanManageAssessmentAliasesRequest\x1a\x37.dlkit.proto.assessment.CanManageAssessmentAliasesReply\"\x00\x12q\n\x0f\x41liasAssessment\x12..dlkit.proto.assessment.AliasAssessmentRequest\x1a,.dlkit.proto.assessment.AliasAssessmentReply\"\x00\x32\x88\t\n\x15\x41ssessmentBankSession\x12\xa1\x01\n\x1f\x43\x61nLookupAssessmentBankMappings\x12>.dlkit.proto.assessment.CanLookupAssessmentBankMappingsRequest\x1a<.dlkit.proto.assessment.CanLookupAssessmentBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12w\n\x16GetAssessmentIdsByBank\x12\x35.dlkit.proto.assessment.GetAssessmentIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12s\n\x14GetAssessmentsByBank\x12\x33.dlkit.proto.assessment.GetAssessmentsByBankRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12y\n\x17GetAssessmentIdsByBanks\x12\x36.dlkit.proto.assessment.GetAssessmentIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12u\n\x15GetAssessmentsByBanks\x12\x34.dlkit.proto.assessment.GetAssessmentsByBanksRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12w\n\x16GetBankIdsByAssessment\x12\x35.dlkit.proto.assessment.GetBankIdsByAssessmentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12m\n\x14GetBanksByAssessment\x12\x33.dlkit.proto.assessment.GetBanksByAssessmentRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xf4\x07\n\x1f\x41ssessmentBankAssignmentSession\x12\x80\x01\n\x14\x43\x61nAssignAssessments\x12\x33.dlkit.proto.assessment.CanAssignAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanAssignAssessmentsReply\"\x00\x12\x92\x01\n\x1a\x43\x61nAssignAssessmentsToBank\x12\x39.dlkit.proto.assessment.CanAssignAssessmentsToBankRequest\x1a\x37.dlkit.proto.assessment.CanAssignAssessmentsToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x8d\x01\n!GetAssignableBankIdsForAssessment\x12@.dlkit.proto.assessment.GetAssignableBankIdsForAssessmentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x86\x01\n\x16\x41ssignAssessmentToBank\x12\x35.dlkit.proto.assessment.AssignAssessmentToBankRequest\x1a\x33.dlkit.proto.assessment.AssignAssessmentToBankReply\"\x00\x12\x92\x01\n\x1aUnassignAssessmentFromBank\x12\x39.dlkit.proto.assessment.UnassignAssessmentFromBankRequest\x1a\x37.dlkit.proto.assessment.UnassignAssessmentFromBankReply\"\x00\x12\x95\x01\n\x1bReassignAssessmentToBilling\x12:.dlkit.proto.assessment.ReassignAssessmentToBillingRequest\x1a\x38.dlkit.proto.assessment.ReassignAssessmentToBillingReply\"\x00\x32\xb8\x06\n\x1f\x41ssessmentBasicAuthoringSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nAuthorAssessments\x12\x33.dlkit.proto.assessment.CanAuthorAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanAuthorAssessmentsReply\"\x00\x12U\n\x08GetItems\x12\'.dlkit.proto.assessment.GetItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12Y\n\x07\x41\x64\x64Item\x12&.dlkit.proto.assessment.AddItemRequest\x1a$.dlkit.proto.assessment.AddItemReply\"\x00\x12\x62\n\nRemoveItem\x12).dlkit.proto.assessment.RemoveItemRequest\x1a\'.dlkit.proto.assessment.RemoveItemReply\"\x00\x12\\\n\x08MoveItem\x12\'.dlkit.proto.assessment.MoveItemRequest\x1a%.dlkit.proto.assessment.MoveItemReply\"\x00\x12\x62\n\nOrderItems\x12).dlkit.proto.assessment.OrderItemsRequest\x1a\'.dlkit.proto.assessment.OrderItemsReply\"\x00\x32\xc5\x10\n\x1e\x41ssessmentOfferedLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x95\x01\n\x1b\x43\x61nLookupAssessmentsOffered\x12:.dlkit.proto.assessment.CanLookupAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanLookupAssessmentsOfferedReply\"\x00\x12\xad\x01\n#UseComparativeAssessmentOfferedView\x12\x42.dlkit.proto.assessment.UseComparativeAssessmentOfferedViewRequest\x1a@.dlkit.proto.assessment.UseComparativeAssessmentOfferedViewReply\"\x00\x12\xa1\x01\n\x1fUsePlenaryAssessmentOfferedView\x12>.dlkit.proto.assessment.UsePlenaryAssessmentOfferedViewRequest\x1a<.dlkit.proto.assessment.UsePlenaryAssessmentOfferedViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x80\x01\n\x14GetAssessmentOffered\x12\x33.dlkit.proto.assessment.GetAssessmentOfferedRequest\x1a\x31.dlkit.proto.assessment.GetAssessmentOfferedReply\"\x00\x12\x86\x01\n\x1aGetAssessmentsOfferedByIds\x12\x39.dlkit.proto.assessment.GetAssessmentsOfferedByIdsRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x92\x01\n GetAssessmentsOfferedByGenusType\x12?.dlkit.proto.assessment.GetAssessmentsOfferedByGenusTypeRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x9e\x01\n&GetAssessmentsOfferedByParentGenusType\x12\x45.dlkit.proto.assessment.GetAssessmentsOfferedByParentGenusTypeRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x94\x01\n!GetAssessmentsOfferedByRecordType\x12@.dlkit.proto.assessment.GetAssessmentsOfferedByRecordTypeRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x88\x01\n\x1bGetAssessmentsOfferedByDate\x12:.dlkit.proto.assessment.GetAssessmentsOfferedByDateRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x96\x01\n\"GetAssessmentsOfferedForAssessment\x12\x41.dlkit.proto.assessment.GetAssessmentsOfferedForAssessmentRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12|\n\x15GetAssessmentsOffered\x12\x34.dlkit.proto.assessment.GetAssessmentsOfferedRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x32\x94\x07\n\x1d\x41ssessmentOfferedQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x95\x01\n\x1b\x43\x61nSearchAssessmentsOffered\x12:.dlkit.proto.assessment.CanSearchAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanSearchAssessmentsOfferedReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x8f\x01\n\x19GetAssessmentOfferedQuery\x12\x38.dlkit.proto.assessment.GetAssessmentOfferedQueryRequest\x1a\x36.dlkit.proto.assessment.GetAssessmentOfferedQueryReply\"\x00\x12\x8a\x01\n\x1cGetAssessmentsOfferedByQuery\x12;.dlkit.proto.assessment.GetAssessmentsOfferedByQueryRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x32\x90\x0f\n\x1d\x41ssessmentOfferedAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x95\x01\n\x1b\x43\x61nCreateAssessmentsOffered\x12:.dlkit.proto.assessment.CanCreateAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanCreateAssessmentsOfferedReply\"\x00\x12\xbf\x01\n)CanCreateAssessmentOfferedWithRecordTypes\x12H.dlkit.proto.assessment.CanCreateAssessmentOfferedWithRecordTypesRequest\x1a\x46.dlkit.proto.assessment.CanCreateAssessmentOfferedWithRecordTypesReply\"\x00\x12\xa7\x01\n!GetAssessmentOfferedFormForCreate\x12@.dlkit.proto.assessment.GetAssessmentOfferedFormForCreateRequest\x1a>.dlkit.proto.assessment.GetAssessmentOfferedFormForCreateReply\"\x00\x12\x89\x01\n\x17\x43reateAssessmentOffered\x12\x36.dlkit.proto.assessment.CreateAssessmentOfferedRequest\x1a\x34.dlkit.proto.assessment.CreateAssessmentOfferedReply\"\x00\x12\x95\x01\n\x1b\x43\x61nUpdateAssessmentsOffered\x12:.dlkit.proto.assessment.CanUpdateAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanUpdateAssessmentsOfferedReply\"\x00\x12\xa7\x01\n!GetAssessmentOfferedFormForUpdate\x12@.dlkit.proto.assessment.GetAssessmentOfferedFormForUpdateRequest\x1a>.dlkit.proto.assessment.GetAssessmentOfferedFormForUpdateReply\"\x00\x12\x89\x01\n\x17UpdateAssessmentOffered\x12\x36.dlkit.proto.assessment.UpdateAssessmentOfferedRequest\x1a\x34.dlkit.proto.assessment.UpdateAssessmentOfferedReply\"\x00\x12\x95\x01\n\x1b\x43\x61nDeleteAssessmentsOffered\x12:.dlkit.proto.assessment.CanDeleteAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanDeleteAssessmentsOfferedReply\"\x00\x12\x89\x01\n\x17\x44\x65leteAssessmentOffered\x12\x36.dlkit.proto.assessment.DeleteAssessmentOfferedRequest\x1a\x34.dlkit.proto.assessment.DeleteAssessmentOfferedReply\"\x00\x12\xa7\x01\n!CanManageAssessmentOfferedAliases\x12@.dlkit.proto.assessment.CanManageAssessmentOfferedAliasesRequest\x1a>.dlkit.proto.assessment.CanManageAssessmentOfferedAliasesReply\"\x00\x12\x86\x01\n\x16\x41liasAssessmentOffered\x12\x35.dlkit.proto.assessment.AliasAssessmentOfferedRequest\x1a\x33.dlkit.proto.assessment.AliasAssessmentOfferedReply\"\x00\x32\x8b\n\n\x1c\x41ssessmentOfferedBankSession\x12\xb6\x01\n&CanLookupAssessmentOfferedBankMappings\x12\x45.dlkit.proto.assessment.CanLookupAssessmentOfferedBankMappingsRequest\x1a\x43.dlkit.proto.assessment.CanLookupAssessmentOfferedBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12\x85\x01\n\x1dGetAssessmentOfferedIdsByBank\x12<.dlkit.proto.assessment.GetAssessmentOfferedIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x88\x01\n\x1bGetAssessmentsOfferedByBank\x12:.dlkit.proto.assessment.GetAssessmentsOfferedByBankRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x87\x01\n\x1eGetAssessmentOfferedIdsByBanks\x12=.dlkit.proto.assessment.GetAssessmentOfferedIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x8a\x01\n\x1cGetAssessmentsOfferedByBanks\x12;.dlkit.proto.assessment.GetAssessmentsOfferedByBanksRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x85\x01\n\x1dGetBankIdsByAssessmentOffered\x12<.dlkit.proto.assessment.GetBankIdsByAssessmentOfferedRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12{\n\x1bGetBanksByAssessmentOffered\x12:.dlkit.proto.assessment.GetBanksByAssessmentOfferedRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xf2\x08\n&AssessmentOfferedBankAssignmentSession\x12\x95\x01\n\x1b\x43\x61nAssignAssessmentsOffered\x12:.dlkit.proto.assessment.CanAssignAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanAssignAssessmentsOfferedReply\"\x00\x12\xa7\x01\n!CanAssignAssessmentsOfferedToBank\x12@.dlkit.proto.assessment.CanAssignAssessmentsOfferedToBankRequest\x1a>.dlkit.proto.assessment.CanAssignAssessmentsOfferedToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n(GetAssignableBankIdsForAssessmentOffered\x12G.dlkit.proto.assessment.GetAssignableBankIdsForAssessmentOfferedRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n\x1d\x41ssignAssessmentOfferedToBank\x12<.dlkit.proto.assessment.AssignAssessmentOfferedToBankRequest\x1a:.dlkit.proto.assessment.AssignAssessmentOfferedToBankReply\"\x00\x12\xa7\x01\n!UnassignAssessmentOfferedFromBank\x12@.dlkit.proto.assessment.UnassignAssessmentOfferedFromBankRequest\x1a>.dlkit.proto.assessment.UnassignAssessmentOfferedFromBankReply\"\x00\x12\xaa\x01\n\"ReassignAssessmentOfferedToBilling\x12\x41.dlkit.proto.assessment.ReassignAssessmentOfferedToBillingRequest\x1a?.dlkit.proto.assessment.ReassignAssessmentOfferedToBillingReply\"\x00\x32\xcb\x1b\n\x1c\x41ssessmentTakenLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x8f\x01\n\x19\x43\x61nLookupAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanLookupAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanLookupAssessmentsTakenReply\"\x00\x12\xa7\x01\n!UseComparativeAssessmentTakenView\x12@.dlkit.proto.assessment.UseComparativeAssessmentTakenViewRequest\x1a>.dlkit.proto.assessment.UseComparativeAssessmentTakenViewReply\"\x00\x12\x9b\x01\n\x1dUsePlenaryAssessmentTakenView\x12<.dlkit.proto.assessment.UsePlenaryAssessmentTakenViewRequest\x1a:.dlkit.proto.assessment.UsePlenaryAssessmentTakenViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12z\n\x12GetAssessmentTaken\x12\x31.dlkit.proto.assessment.GetAssessmentTakenRequest\x1a/.dlkit.proto.assessment.GetAssessmentTakenReply\"\x00\x12\x80\x01\n\x18GetAssessmentsTakenByIds\x12\x37.dlkit.proto.assessment.GetAssessmentsTakenByIdsRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x8c\x01\n\x1eGetAssessmentsTakenByGenusType\x12=.dlkit.proto.assessment.GetAssessmentsTakenByGenusTypeRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x98\x01\n$GetAssessmentsTakenByParentGenusType\x12\x43.dlkit.proto.assessment.GetAssessmentsTakenByParentGenusTypeRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x8e\x01\n\x1fGetAssessmentsTakenByRecordType\x12>.dlkit.proto.assessment.GetAssessmentsTakenByRecordTypeRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x82\x01\n\x19GetAssessmentsTakenByDate\x12\x38.dlkit.proto.assessment.GetAssessmentsTakenByDateRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x86\x01\n\x1bGetAssessmentsTakenForTaker\x12:.dlkit.proto.assessment.GetAssessmentsTakenForTakerRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x92\x01\n!GetAssessmentsTakenByDateForTaker\x12@.dlkit.proto.assessment.GetAssessmentsTakenByDateForTakerRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x90\x01\n GetAssessmentsTakenForAssessment\x12?.dlkit.proto.assessment.GetAssessmentsTakenForAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x9c\x01\n&GetAssessmentsTakenByDateForAssessment\x12\x45.dlkit.proto.assessment.GetAssessmentsTakenByDateForAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xa0\x01\n(GetAssessmentsTakenForTakerAndAssessment\x12G.dlkit.proto.assessment.GetAssessmentsTakenForTakerAndAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xac\x01\n.GetAssessmentsTakenByDateForTakerAndAssessment\x12M.dlkit.proto.assessment.GetAssessmentsTakenByDateForTakerAndAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x9e\x01\n\'GetAssessmentsTakenForAssessmentOffered\x12\x46.dlkit.proto.assessment.GetAssessmentsTakenForAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xaa\x01\n-GetAssessmentsTakenByDateForAssessmentOffered\x12L.dlkit.proto.assessment.GetAssessmentsTakenByDateForAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xae\x01\n/GetAssessmentsTakenForTakerAndAssessmentOffered\x12N.dlkit.proto.assessment.GetAssessmentsTakenForTakerAndAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xba\x01\n5GetAssessmentsTakenByDateForTakerAndAssessmentOffered\x12T.dlkit.proto.assessment.GetAssessmentsTakenByDateForTakerAndAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12v\n\x13GetAssessmentsTaken\x12\x32.dlkit.proto.assessment.GetAssessmentsTakenRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x32\x80\x07\n\x1b\x41ssessmentTakenQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x8f\x01\n\x19\x43\x61nSearchAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanSearchAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanSearchAssessmentsTakenReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x89\x01\n\x17GetAssessmentTakenQuery\x12\x36.dlkit.proto.assessment.GetAssessmentTakenQueryRequest\x1a\x34.dlkit.proto.assessment.GetAssessmentTakenQueryReply\"\x00\x12\x84\x01\n\x1aGetAssessmentsTakenByQuery\x12\x39.dlkit.proto.assessment.GetAssessmentsTakenByQueryRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x32\xcc\x0e\n\x1b\x41ssessmentTakenAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x8f\x01\n\x19\x43\x61nCreateAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanCreateAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanCreateAssessmentsTakenReply\"\x00\x12\xb9\x01\n\'CanCreateAssessmentTakenWithRecordTypes\x12\x46.dlkit.proto.assessment.CanCreateAssessmentTakenWithRecordTypesRequest\x1a\x44.dlkit.proto.assessment.CanCreateAssessmentTakenWithRecordTypesReply\"\x00\x12\xa1\x01\n\x1fGetAssessmentTakenFormForCreate\x12>.dlkit.proto.assessment.GetAssessmentTakenFormForCreateRequest\x1a<.dlkit.proto.assessment.GetAssessmentTakenFormForCreateReply\"\x00\x12\x83\x01\n\x15\x43reateAssessmentTaken\x12\x34.dlkit.proto.assessment.CreateAssessmentTakenRequest\x1a\x32.dlkit.proto.assessment.CreateAssessmentTakenReply\"\x00\x12\x8f\x01\n\x19\x43\x61nUpdateAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanUpdateAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanUpdateAssessmentsTakenReply\"\x00\x12\xa1\x01\n\x1fGetAssessmentTakenFormForUpdate\x12>.dlkit.proto.assessment.GetAssessmentTakenFormForUpdateRequest\x1a<.dlkit.proto.assessment.GetAssessmentTakenFormForUpdateReply\"\x00\x12\x83\x01\n\x15UpdateAssessmentTaken\x12\x34.dlkit.proto.assessment.UpdateAssessmentTakenRequest\x1a\x32.dlkit.proto.assessment.UpdateAssessmentTakenReply\"\x00\x12\x8f\x01\n\x19\x43\x61nDeleteAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanDeleteAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanDeleteAssessmentsTakenReply\"\x00\x12\x83\x01\n\x15\x44\x65leteAssessmentTaken\x12\x34.dlkit.proto.assessment.DeleteAssessmentTakenRequest\x1a\x32.dlkit.proto.assessment.DeleteAssessmentTakenReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nManageAssessmentTakenAliases\x12>.dlkit.proto.assessment.CanManageAssessmentTakenAliasesRequest\x1a<.dlkit.proto.assessment.CanManageAssessmentTakenAliasesReply\"\x00\x12\x80\x01\n\x14\x41liasAssessmentTaken\x12\x33.dlkit.proto.assessment.AliasAssessmentTakenRequest\x1a\x31.dlkit.proto.assessment.AliasAssessmentTakenReply\"\x00\x32\xe7\t\n\x1a\x41ssessmentTakenBankSession\x12\xb0\x01\n$CanLookupAssessmentTakenBankMappings\x12\x43.dlkit.proto.assessment.CanLookupAssessmentTakenBankMappingsRequest\x1a\x41.dlkit.proto.assessment.CanLookupAssessmentTakenBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12\x81\x01\n\x1bGetAssessmentTakenIdsByBank\x12:.dlkit.proto.assessment.GetAssessmentTakenIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x19GetAssessmentsTakenByBank\x12\x38.dlkit.proto.assessment.GetAssessmentsTakenByBankRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x83\x01\n\x1cGetAssessmentTakenIdsByBanks\x12;.dlkit.proto.assessment.GetAssessmentTakenIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x84\x01\n\x1aGetAssessmentsTakenByBanks\x12\x39.dlkit.proto.assessment.GetAssessmentsTakenByBanksRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x81\x01\n\x1bGetBankIdsByAssessmentTaken\x12:.dlkit.proto.assessment.GetBankIdsByAssessmentTakenRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12w\n\x19GetBanksByAssessmentTaken\x12\x38.dlkit.proto.assessment.GetBanksByAssessmentTakenRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xce\x08\n$AssessmentTakenBankAssignmentSession\x12\x8f\x01\n\x19\x43\x61nAssignAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanAssignAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanAssignAssessmentsTakenReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nAssignAssessmentsTakenToBank\x12>.dlkit.proto.assessment.CanAssignAssessmentsTakenToBankRequest\x1a<.dlkit.proto.assessment.CanAssignAssessmentsTakenToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x97\x01\n&GetAssignableBankIdsForAssessmentTaken\x12\x45.dlkit.proto.assessment.GetAssignableBankIdsForAssessmentTakenRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x95\x01\n\x1b\x41ssignAssessmentTakenToBank\x12:.dlkit.proto.assessment.AssignAssessmentTakenToBankRequest\x1a\x38.dlkit.proto.assessment.AssignAssessmentTakenToBankReply\"\x00\x12\xa1\x01\n\x1fUnassignAssessmentTakenFromBank\x12>.dlkit.proto.assessment.UnassignAssessmentTakenFromBankRequest\x1a<.dlkit.proto.assessment.UnassignAssessmentTakenFromBankReply\"\x00\x12\xa4\x01\n ReassignAssessmentTakenToBilling\x12?.dlkit.proto.assessment.ReassignAssessmentTakenToBillingRequest\x1a=.dlkit.proto.assessment.ReassignAssessmentTakenToBillingReply\"\x00\x32\xdb\x08\n\x11\x42\x61nkLookupSession\x12n\n\x0e\x43\x61nLookupBanks\x12-.dlkit.proto.assessment.CanLookupBanksRequest\x1a+.dlkit.proto.assessment.CanLookupBanksReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12_\n\rGetBanksByIds\x12,.dlkit.proto.assessment.GetBanksByIdsRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12k\n\x13GetBanksByGenusType\x12\x32.dlkit.proto.assessment.GetBanksByGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12w\n\x19GetBanksByParentGenusType\x12\x38.dlkit.proto.assessment.GetBanksByParentGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12m\n\x14GetBanksByRecordType\x12\x33.dlkit.proto.assessment.GetBanksByRecordTypeRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12i\n\x12GetBanksByProvider\x12\x31.dlkit.proto.assessment.GetBanksByProviderRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12U\n\x08GetBanks\x12\'.dlkit.proto.assessment.GetBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xd1\x02\n\x10\x42\x61nkQuerySession\x12n\n\x0e\x43\x61nSearchBanks\x12-.dlkit.proto.assessment.CanSearchBanksRequest\x1a+.dlkit.proto.assessment.CanSearchBanksReply\"\x00\x12h\n\x0cGetBankQuery\x12+.dlkit.proto.assessment.GetBankQueryRequest\x1a).dlkit.proto.assessment.GetBankQueryReply\"\x00\x12\x63\n\x0fGetBanksByQuery\x12..dlkit.proto.assessment.GetBanksByQueryRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\x93\n\n\x10\x42\x61nkAdminSession\x12n\n\x0e\x43\x61nCreateBanks\x12-.dlkit.proto.assessment.CanCreateBanksRequest\x1a+.dlkit.proto.assessment.CanCreateBanksReply\"\x00\x12\x98\x01\n\x1c\x43\x61nCreateBankWithRecordTypes\x12;.dlkit.proto.assessment.CanCreateBankWithRecordTypesRequest\x1a\x39.dlkit.proto.assessment.CanCreateBankWithRecordTypesReply\"\x00\x12\x80\x01\n\x14GetBankFormForCreate\x12\x33.dlkit.proto.assessment.GetBankFormForCreateRequest\x1a\x31.dlkit.proto.assessment.GetBankFormForCreateReply\"\x00\x12\x62\n\nCreateBank\x12).dlkit.proto.assessment.CreateBankRequest\x1a\'.dlkit.proto.assessment.CreateBankReply\"\x00\x12n\n\x0e\x43\x61nUpdateBanks\x12-.dlkit.proto.assessment.CanUpdateBanksRequest\x1a+.dlkit.proto.assessment.CanUpdateBanksReply\"\x00\x12\x80\x01\n\x14GetBankFormForUpdate\x12\x33.dlkit.proto.assessment.GetBankFormForUpdateRequest\x1a\x31.dlkit.proto.assessment.GetBankFormForUpdateReply\"\x00\x12\x62\n\nUpdateBank\x12).dlkit.proto.assessment.UpdateBankRequest\x1a\'.dlkit.proto.assessment.UpdateBankReply\"\x00\x12n\n\x0e\x43\x61nDeleteBanks\x12-.dlkit.proto.assessment.CanDeleteBanksRequest\x1a+.dlkit.proto.assessment.CanDeleteBanksReply\"\x00\x12\x62\n\nDeleteBank\x12).dlkit.proto.assessment.DeleteBankRequest\x1a\'.dlkit.proto.assessment.DeleteBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nManageBankAliases\x12\x33.dlkit.proto.assessment.CanManageBankAliasesRequest\x1a\x31.dlkit.proto.assessment.CanManageBankAliasesReply\"\x00\x12_\n\tAliasBank\x12(.dlkit.proto.assessment.AliasBankRequest\x1a&.dlkit.proto.assessment.AliasBankReply\"\x00\x32\x80\x11\n\x14\x42\x61nkHierarchySession\x12z\n\x12GetBankHierarchyId\x12\x31.dlkit.proto.assessment.GetBankHierarchyIdRequest\x1a/.dlkit.proto.assessment.GetBankHierarchyIdReply\"\x00\x12t\n\x10GetBankHierarchy\x12/.dlkit.proto.assessment.GetBankHierarchyRequest\x1a-.dlkit.proto.assessment.GetBankHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nAccessBankHierarchy\x12\x35.dlkit.proto.assessment.CanAccessBankHierarchyRequest\x1a\x33.dlkit.proto.assessment.CanAccessBankHierarchyReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12g\n\x0eGetRootBankIds\x12-.dlkit.proto.assessment.GetRootBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12]\n\x0cGetRootBanks\x12+.dlkit.proto.assessment.GetRootBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12n\n\x0eHasParentBanks\x12-.dlkit.proto.assessment.HasParentBanksRequest\x1a+.dlkit.proto.assessment.HasParentBanksReply\"\x00\x12n\n\x0eIsParentOfBank\x12-.dlkit.proto.assessment.IsParentOfBankRequest\x1a+.dlkit.proto.assessment.IsParentOfBankReply\"\x00\x12k\n\x10GetParentBankIds\x12/.dlkit.proto.assessment.GetParentBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetParentBanks\x12-.dlkit.proto.assessment.GetParentBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12t\n\x10IsAncestorOfBank\x12/.dlkit.proto.assessment.IsAncestorOfBankRequest\x1a-.dlkit.proto.assessment.IsAncestorOfBankReply\"\x00\x12k\n\rHasChildBanks\x12,.dlkit.proto.assessment.HasChildBanksRequest\x1a*.dlkit.proto.assessment.HasChildBanksReply\"\x00\x12k\n\rIsChildOfBank\x12,.dlkit.proto.assessment.IsChildOfBankRequest\x1a*.dlkit.proto.assessment.IsChildOfBankReply\"\x00\x12i\n\x0fGetChildBankIds\x12..dlkit.proto.assessment.GetChildBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12_\n\rGetChildBanks\x12,.dlkit.proto.assessment.GetChildBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12z\n\x12IsDescendantOfBank\x12\x31.dlkit.proto.assessment.IsDescendantOfBankRequest\x1a/.dlkit.proto.assessment.IsDescendantOfBankReply\"\x00\x12n\n\x0eGetBankNodeIds\x12-.dlkit.proto.assessment.GetBankNodeIdsRequest\x1a+.dlkit.proto.assessment.GetBankNodeIdsReply\"\x00\x12h\n\x0cGetBankNodes\x12+.dlkit.proto.assessment.GetBankNodesRequest\x1a).dlkit.proto.assessment.GetBankNodesReply\"\x00\x32\xc1\x07\n\x1a\x42\x61nkHierarchyDesignSession\x12z\n\x12GetBankHierarchyId\x12\x31.dlkit.proto.assessment.GetBankHierarchyIdRequest\x1a/.dlkit.proto.assessment.GetBankHierarchyIdReply\"\x00\x12t\n\x10GetBankHierarchy\x12/.dlkit.proto.assessment.GetBankHierarchyRequest\x1a-.dlkit.proto.assessment.GetBankHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nModifyBankHierarchy\x12\x35.dlkit.proto.assessment.CanModifyBankHierarchyRequest\x1a\x33.dlkit.proto.assessment.CanModifyBankHierarchyReply\"\x00\x12\x65\n\x0b\x41\x64\x64RootBank\x12*.dlkit.proto.assessment.AddRootBankRequest\x1a(.dlkit.proto.assessment.AddRootBankReply\"\x00\x12n\n\x0eRemoveRootBank\x12-.dlkit.proto.assessment.RemoveRootBankRequest\x1a+.dlkit.proto.assessment.RemoveRootBankReply\"\x00\x12h\n\x0c\x41\x64\x64\x43hildBank\x12+.dlkit.proto.assessment.AddChildBankRequest\x1a).dlkit.proto.assessment.AddChildBankReply\"\x00\x12q\n\x0fRemoveChildBank\x12..dlkit.proto.assessment.RemoveChildBankRequest\x1a,.dlkit.proto.assessment.RemoveChildBankReply\"\x00\x12t\n\x10RemoveChildBanks\x12/.dlkit.proto.assessment.RemoveChildBanksRequest\x1a-.dlkit.proto.assessment.RemoveChildBanksReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1c\x64lkit/proto/assessment.proto\x12\x16\x64lkit.proto.assessment\x1a-dlkit/primordium/calendaring/primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x19\x64lkit/proto/grading.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa6\x03\n\x08Question\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\x04item\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rQuestionQuery\"\x18\n\x16QuestionQueryInspector\"\x0e\n\x0cQuestionForm\"\x15\n\x13QuestionSearchOrder\"C\n\x0cQuestionList\x12\x33\n\tquestions\x18\x01 \x03(\x0b\x32 .dlkit.proto.assessment.Question\"\xa4\x03\n\x06\x41nswer\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\x04item\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x41nswerQuery\"\x16\n\x14\x41nswerQueryInspector\"\x0c\n\nAnswerForm\"\x13\n\x11\x41nswerSearchOrder\"=\n\nAnswerList\x12/\n\x07\x61nswers\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.assessment.Answer\"\x96\x04\n\x04Item\x12/\n\x07\x61nswers\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.assessment.Answer\x12+\n\x04\x62\x61nk\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13learning_objectives\x18\x07 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x08question\x18\x08 \x01(\x0b\x32 .dlkit.proto.assessment.Question\x12?\n\x0frecord_type_ids\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tItemQuery\"\x14\n\x12ItemQueryInspector\"\n\n\x08ItemForm\"\x11\n\x0fItemSearchOrder\"\x0c\n\nItemSearch\"\x13\n\x11ItemSearchResults\"7\n\x08ItemList\x12+\n\x05items\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.assessment.Item\"\xdd\x03\n\nAssessment\x12+\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\x05level\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x32\n\x06rubric\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0f\x41ssessmentQuery\"\x1a\n\x18\x41ssessmentQueryInspector\"\x10\n\x0e\x41ssessmentForm\"\x17\n\x15\x41ssessmentSearchOrder\"\x12\n\x10\x41ssessmentSearch\"\x19\n\x17\x41ssessmentSearchResults\"I\n\x0e\x41ssessmentList\x12\x37\n\x0b\x61ssessments\x18\x01 \x03(\x0b\x32\".dlkit.proto.assessment.Assessment\"\xb1\x06\n\x11\x41ssessmentOffered\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12,\n\x08\x64\x65\x61\x64line\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x44\n\x0b\x64\x65scription\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x43\n\x08\x64uration\x18\x06 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12=\n\rgenus_type_id\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cgrade_system\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\x02id\x18\t \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10items_sequential\x18\n \x01(\x08\x12\x16\n\x0eitems_shuffled\x18\x0b \x01(\x08\x12\x31\n\x05level\x18\x0c \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\r \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cscore_system\x18\x0e \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\nstart_time\x18\x0f \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x18\n\x16\x41ssessmentOfferedQuery\"!\n\x1f\x41ssessmentOfferedQueryInspector\"\x17\n\x15\x41ssessmentOfferedForm\"\x1e\n\x1c\x41ssessmentOfferedSearchOrder\"\x19\n\x17\x41ssessmentOfferedSearch\" \n\x1e\x41ssessmentOfferedSearchResults\"_\n\x15\x41ssessmentOfferedList\x12\x46\n\x13\x61ssessments_offered\x18\x01 \x03(\x0b\x32).dlkit.proto.assessment.AssessmentOffered\"\x9c\x05\n\x0f\x41ssessmentTaken\x12\x35\n\x11\x61\x63tual_start_time\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12>\n\x12\x61ssessment_offered\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12+\n\x04\x62\x61nk\x18\x03 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x33\n\x0f\x63ompletion_time\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x44\n\x0b\x64\x65scription\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\x05grade\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\x02id\x18\t \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\r\n\x05score\x18\x0b \x01(\x02\x12\x31\n\x05taker\x18\x0c \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14\x41ssessmentTakenQuery\"\x1f\n\x1d\x41ssessmentTakenQueryInspector\"\x15\n\x13\x41ssessmentTakenForm\"\x1c\n\x1a\x41ssessmentTakenSearchOrder\"\x17\n\x15\x41ssessmentTakenSearch\"\x1e\n\x1c\x41ssessmentTakenSearchResults\"Y\n\x13\x41ssessmentTakenList\x12\x42\n\x11\x61ssessments_taken\x18\x01 \x03(\x0b\x32\'.dlkit.proto.assessment.AssessmentTaken\"\x8e\x03\n\x11\x41ssessmentSection\x12<\n\x10\x61ssessment_taken\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x15\x41ssessmentSectionList\x12\x46\n\x13\x61ssessment_sections\x18\x01 \x03(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"\xc3\x02\n\x04\x42\x61nk\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tBankQuery\"\x14\n\x12\x42\x61nkQueryInspector\"\n\n\x08\x42\x61nkForm\"\x11\n\x0f\x42\x61nkSearchOrder\"\x0c\n\nBankSearch\"\x13\n\x11\x42\x61nkSearchResults\"7\n\x08\x42\x61nkList\x12+\n\x05\x62\x61nks\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"\n\n\x08\x42\x61nkNode\"D\n\x0c\x42\x61nkNodeList\x12\x34\n\nbank_nodes\x18\x01 \x03(\x0b\x32 .dlkit.proto.assessment.BankNode\"\n\n\x08Response\"C\n\x0cResponseList\x12\x33\n\tresponses\x18\x01 \x03(\x0b\x32 .dlkit.proto.assessment.Response\"@\n\x0eGetBankIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetBankIdRequest\":\n\x0cGetBankReply\x12*\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"\x10\n\x0eGetBankRequest\"7\n\x17\x43\x61nTakeAssessmentsReply\x12\x1c\n\x14\x63\x61n_take_assessments\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nTakeAssessmentsRequest\"7\n\x17HasAssessmentBegunReply\x12\x1c\n\x14has_assessment_begun\x18\x01 \x01(\x08\"\\\n\x19HasAssessmentBegunRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15IsAssessmentOverReply\x12\x1a\n\x12is_assessment_over\x18\x01 \x01(\x08\"Z\n\x17IsAssessmentOverRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n RequiresSynchronousSectionsReply\x12%\n\x1drequires_synchronous_sections\x18\x01 \x01(\x08\"e\n\"RequiresSynchronousSectionsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1eGetFirstAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"c\n GetFirstAssessmentSectionRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1dHasNextAssessmentSectionReply\x12#\n\x1bhas_next_assessment_section\x18\x01 \x01(\x08\"d\n\x1fHasNextAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n\x1dGetNextAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"d\n\x1fGetNextAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n!HasPreviousAssessmentSectionReply\x12\'\n\x1fhas_previous_assessment_section\x18\x01 \x01(\x08\"h\n#HasPreviousAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"j\n!GetPreviousAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"h\n#GetPreviousAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x19GetAssessmentSectionReply\x12\x45\n\x12\x61ssessment_section\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentSection\"`\n\x1bGetAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1cGetAssessmentSectionsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n IsAssessmentSectionCompleteReply\x12&\n\x1eis_assessment_section_complete\x18\x01 \x01(\x08\"g\n\"IsAssessmentSectionCompleteRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"i\n&GetIncompleteAssessmentSectionsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1eHasAssessmentSectionBegunReply\x12$\n\x1chas_assessment_section_begun\x18\x01 \x01(\x08\"e\n HasAssessmentSectionBegunRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsAssessmentSectionOverReply\x12\"\n\x1ais_assessment_section_over\x18\x01 \x01(\x08\"c\n\x1eIsAssessmentSectionOverRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n!RequiresSynchronousResponsesReply\x12&\n\x1erequires_synchronous_responses\x18\x01 \x01(\x08\"h\n#RequiresSynchronousResponsesRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x15GetFirstQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\\\n\x17GetFirstQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14HasNextQuestionReply\x12\x19\n\x11has_next_question\x18\x01 \x01(\x08\"\x90\x01\n\x16HasNextQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x14GetNextQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x90\x01\n\x16GetNextQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18HasPreviousQuestionReply\x12\x1d\n\x15has_previous_question\x18\x01 \x01(\x08\"\x94\x01\n\x1aHasPreviousQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x18GetPreviousQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x94\x01\n\x1aGetPreviousQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x10GetQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x8c\x01\n\x12GetQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x13GetQuestionsRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x14GetResponseFormReply\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"\x90\x01\n\x16GetResponseFormRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13SubmitResponseReply\"\xc8\x01\n\x15SubmitResponseRequest\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\x12\x41\n\x15\x61ssessment_section_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rSkipItemReply\"\x89\x01\n\x0fSkipItemRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17IsQuestionAnsweredReply\x12\x1c\n\x14is_question_answered\x18\x01 \x01(\x08\"\x93\x01\n\x19IsQuestionAnsweredRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x1dGetUnansweredQuestionsRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x1bHasUnansweredQuestionsReply\x12 \n\x18has_unanswered_questions\x18\x01 \x01(\x08\"b\n\x1dHasUnansweredQuestionsRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1fGetFirstUnansweredQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"f\n!GetFirstUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1eHasNextUnansweredQuestionReply\x12$\n\x1chas_next_unanswered_question\x18\x01 \x01(\x08\"\x9a\x01\n HasNextUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1eGetNextUnansweredQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x9a\x01\n GetNextUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\"HasPreviousUnansweredQuestionReply\x12(\n has_previous_unanswered_question\x18\x01 \x01(\x08\"\x9e\x01\n$HasPreviousUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\"GetPreviousUnansweredQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"\x9e\x01\n$GetPreviousUnansweredQuestionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x10GetResponseReply\x12\x32\n\x08response\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Response\"\x8c\x01\n\x12GetResponseRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x13GetResponsesRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12\x43learResponseReply\"\x8e\x01\n\x14\x43learResponseRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1c\x46inishAssessmentSectionReply\"c\n\x1e\x46inishAssessmentSectionRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"5\n\x16IsAnswerAvailableReply\x12\x1b\n\x13is_answer_available\x18\x01 \x01(\x08\"\x92\x01\n\x18IsAnswerAvailableRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x8b\x01\n\x11GetAnswersRequest\x12\x41\n\x15\x61ssessment_section_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15\x46inishAssessmentReply\"Z\n\x17\x46inishAssessmentRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nAccessAssessmentResultsReply\x12%\n\x1d\x63\x61n_access_assessment_results\x18\x01 \x01(\x08\"#\n!CanAccessAssessmentResultsRequest\"R\n\x0fGetItemsRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x41reResultsAvailableReply\x12\x1d\n\x15\x61re_results_available\x18\x01 \x01(\x08\"]\n\x1a\x41reResultsAvailableRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x16GetGradeEntriesRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nLookupItemsReply\x12\x18\n\x10\x63\x61n_lookup_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nLookupItemsRequest\"\x1d\n\x1bUseComparativeItemViewReply\"\x1f\n\x1dUseComparativeItemViewRequest\"\x19\n\x17UsePlenaryItemViewReply\"\x1b\n\x19UsePlenaryItemViewRequest\"\x1b\n\x19UseFederatedBankViewReply\"\x1d\n\x1bUseFederatedBankViewRequest\"\x1a\n\x18UseIsolatedBankViewReply\"\x1c\n\x1aUseIsolatedBankViewRequest\":\n\x0cGetItemReply\x12*\n\x04item\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Item\"E\n\x0eGetItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x14GetItemsByIdsRequest\x12\x34\n\x08item_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1aGetItemsByGenusTypeRequest\x12?\n\x0fitem_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetItemsByParentGenusTypeRequest\x12?\n\x0fitem_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1bGetItemsByRecordTypeRequest\x12@\n\x10item_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"T\n\x19GetItemsByQuestionRequest\x12\x37\n\x0bquestion_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x17GetItemsByAnswerRequest\x12\x35\n\tanswer_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\"GetItemsByLearningObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n#GetItemsByLearningObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nSearchItemsReply\x12\x18\n\x10\x63\x61n_search_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nSearchItemsRequest\"J\n\x11GetItemQueryReply\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\"\x15\n\x13GetItemQueryRequest\"O\n\x16GetItemsByQueryRequest\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\"M\n\x12GetItemSearchReply\x12\x37\n\x0bitem_search\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.ItemSearch\"\x16\n\x14GetItemSearchRequest\"]\n\x17GetItemSearchOrderReply\x12\x42\n\x11item_search_order\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.ItemSearchOrder\"\x1b\n\x19GetItemSearchOrderRequest\"_\n\x15GetItemsBySearchReply\x12\x46\n\x13item_search_results\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.ItemSearchResults\"\x89\x01\n\x17GetItemsBySearchRequest\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\x12\x37\n\x0bitem_search\x18\x02 \x01(\x0b\x32\".dlkit.proto.assessment.ItemSearch\"W\n\x1eGetItemQueryFromInspectorReply\x12\x35\n\nitem_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.ItemQuery\"l\n GetItemQueryFromInspectorRequest\x12H\n\x14item_query_inspector\x18\x01 \x01(\x0b\x32*.dlkit.proto.assessment.ItemQueryInspector\"/\n\x13\x43\x61nCreateItemsReply\x12\x18\n\x10\x63\x61n_create_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nCreateItemsRequest\"N\n!CanCreateItemWithRecordTypesReply\x12)\n!can_create_item_with_record_types\x18\x01 \x01(\x08\"h\n#CanCreateItemWithRecordTypesRequest\x12\x41\n\x11item_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x19GetItemFormForCreateReply\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"`\n\x1bGetItemFormForCreateRequest\x12\x41\n\x11item_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"=\n\x0f\x43reateItemReply\x12*\n\x04item\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Item\"H\n\x11\x43reateItemRequest\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"/\n\x13\x43\x61nUpdateItemsReply\x12\x18\n\x10\x63\x61n_update_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nUpdateItemsRequest\"P\n\x19GetItemFormForUpdateReply\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"R\n\x1bGetItemFormForUpdateRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fUpdateItemReply\"H\n\x11UpdateItemRequest\x12\x33\n\titem_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.ItemForm\"/\n\x13\x43\x61nDeleteItemsReply\x12\x18\n\x10\x63\x61n_delete_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nDeleteItemsRequest\"\x11\n\x0f\x44\x65leteItemReply\"H\n\x11\x44\x65leteItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nManageItemAliasesReply\x12\x1f\n\x17\x63\x61n_manage_item_aliases\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nManageItemAliasesRequest\"\x10\n\x0e\x41liasItemReply\"}\n\x10\x41liasItemRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17\x43\x61nCreateQuestionsReply\x12\x1c\n\x14\x63\x61n_create_questions\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nCreateQuestionsRequest\"V\n%CanCreateQuestionWithRecordTypesReply\x12-\n%can_create_question_with_record_types\x18\x01 \x01(\x08\"p\n\'CanCreateQuestionWithRecordTypesRequest\x12\x45\n\x15question_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n\x1dGetQuestionFormForCreateReply\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"\x9d\x01\n\x1fGetQuestionFormForCreateRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x45\n\x15question_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"I\n\x13\x43reateQuestionReply\x12\x32\n\x08question\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.Question\"T\n\x15\x43reateQuestionRequest\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"7\n\x17\x43\x61nUpdateQuestionsReply\x12\x1c\n\x14\x63\x61n_update_questions\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nUpdateQuestionsRequest\"\\\n\x1dGetQuestionFormForUpdateReply\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"Z\n\x1fGetQuestionFormForUpdateRequest\x12\x37\n\x0bquestion_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateQuestionReply\"T\n\x15UpdateQuestionRequest\x12;\n\rquestion_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.assessment.QuestionForm\"7\n\x17\x43\x61nDeleteQuestionsReply\x12\x1c\n\x14\x63\x61n_delete_questions\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nDeleteQuestionsRequest\"\x15\n\x13\x44\x65leteQuestionReply\"P\n\x15\x44\x65leteQuestionRequest\x12\x37\n\x0bquestion_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15\x43\x61nCreateAnswersReply\x12\x1a\n\x12\x63\x61n_create_answers\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nCreateAnswersRequest\"T\n$CanCreateAnswersWithRecordTypesReply\x12,\n$can_create_answers_with_record_types\x18\x01 \x01(\x08\"m\n&CanCreateAnswersWithRecordTypesRequest\x12\x43\n\x13\x61nswer_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"V\n\x1bGetAnswerFormForCreateReply\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"\x99\x01\n\x1dGetAnswerFormForCreateRequest\x12\x43\n\x13\x61nswer_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"C\n\x11\x43reateAnswerReply\x12.\n\x06\x61nswer\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.assessment.Answer\"N\n\x13\x43reateAnswerRequest\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"3\n\x15\x43\x61nUpdateAnswersReply\x12\x1a\n\x12\x63\x61n_update_answers\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nUpdateAnswersRequest\"V\n\x1bGetAnswerFormForUpdateReply\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"V\n\x1dGetAnswerFormForUpdateRequest\x12\x35\n\tanswer_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11UpdateAnswerReply\"N\n\x13UpdateAnswerRequest\x12\x37\n\x0b\x61nswer_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.AnswerForm\"3\n\x15\x43\x61nDeleteAnswersReply\x12\x1a\n\x12\x63\x61n_delete_answers\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nDeleteAnswersRequest\"\x13\n\x11\x44\x65leteAnswerReply\"L\n\x13\x44\x65leteAnswerRequest\x12\x35\n\tanswer_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanRegisterForItemNotificationsReply\x12+\n#can_register_for_item_notifications\x18\x01 \x01(\x08\"(\n&CanRegisterForItemNotificationsRequest\" \n\x1eReliableItemNotificationsReply\"\"\n ReliableItemNotificationsRequest\"\"\n UnreliableItemNotificationsReply\"$\n\"UnreliableItemNotificationsRequest\"\"\n AcknowledgeItemNotificationReply\"a\n\"AcknowledgeItemNotificationRequest\x12;\n\x0fnotification_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RegisterForNewItemsReply\"\x1c\n\x1aRegisterForNewItemsRequest\"\x1e\n\x1cRegisterForChangedItemsReply\" \n\x1eRegisterForChangedItemsRequest\"\x1d\n\x1bRegisterForChangedItemReply\"T\n\x1dRegisterForChangedItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cRegisterForDeletedItemsReply\" \n\x1eRegisterForDeletedItemsRequest\"\x1d\n\x1bRegisterForDeletedItemReply\"T\n\x1dRegisterForDeletedItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"G\n\x1e\x43\x61nLookupItemBankMappingsReply\x12%\n\x1d\x63\x61n_lookup_item_bank_mappings\x18\x01 \x01(\x08\"\"\n CanLookupItemBankMappingsRequest\"\x1d\n\x1bUseComparativeBankViewReply\"\x1f\n\x1dUseComparativeBankViewRequest\"\x19\n\x17UsePlenaryBankViewReply\"\x1b\n\x19UsePlenaryBankViewRequest\"N\n\x17GetItemIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetItemsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x18GetItemIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x16GetItemsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x17GetBankIdsByItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetBanksByItemRequest\x12\x33\n\x07item_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nAssignItemsReply\x12\x18\n\x10\x63\x61n_assign_items\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nAssignItemsRequest\"=\n\x19\x43\x61nAssignItemsToBankReply\x12 \n\x18\x63\x61n_assign_items_to_bank\x18\x01 \x01(\x08\"R\n\x1b\x43\x61nAssignItemsToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssignableBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x8e\x01\n\"GetAssignableBankIdsForItemRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15\x41ssignItemToBankReply\"\x83\x01\n\x17\x41ssignItemToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19UnassignItemFromBankReply\"\x87\x01\n\x1bUnassignItemFromBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aReassignItemToBillingReply\"\xc5\x01\n\x1cReassignItemToBillingRequest\x12\x38\n\x0c\x66rom_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nLookupAssessmentsReply\x12\x1e\n\x16\x63\x61n_lookup_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nLookupAssessmentsRequest\"#\n!UseComparativeAssessmentViewReply\"%\n#UseComparativeAssessmentViewRequest\"\x1f\n\x1dUsePlenaryAssessmentViewReply\"!\n\x1fUsePlenaryAssessmentViewRequest\"L\n\x12GetAssessmentReply\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.Assessment\"Q\n\x14GetAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1aGetAssessmentsByIdsRequest\x12:\n\x0e\x61ssessment_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"i\n GetAssessmentsByGenusTypeRequest\x12\x45\n\x15\x61ssessment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"o\n&GetAssessmentsByParentGenusTypeRequest\x12\x45\n\x15\x61ssessment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"k\n!GetAssessmentsByRecordTypeRequest\x12\x46\n\x16\x61ssessment_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x17\n\x15GetAssessmentsRequest\";\n\x19\x43\x61nSearchAssessmentsReply\x12\x1e\n\x16\x63\x61n_search_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nSearchAssessmentsRequest\"\\\n\x17GetAssessmentQueryReply\x12\x41\n\x10\x61ssessment_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentQuery\"\x1b\n\x19GetAssessmentQueryRequest\"a\n\x1cGetAssessmentsByQueryRequest\x12\x41\n\x10\x61ssessment_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentQuery\";\n\x19\x43\x61nCreateAssessmentsReply\x12\x1e\n\x16\x63\x61n_create_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nCreateAssessmentsRequest\"Z\n\'CanCreateAssessmentWithRecordTypesReply\x12/\n\'can_create_assessment_with_record_types\x18\x01 \x01(\x08\"t\n)CanCreateAssessmentWithRecordTypesRequest\x12G\n\x17\x61ssessment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"b\n\x1fGetAssessmentFormForCreateReply\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\"l\n!GetAssessmentFormForCreateRequest\x12G\n\x17\x61ssessment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"O\n\x15\x43reateAssessmentReply\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.proto.assessment.Assessment\"Z\n\x17\x43reateAssessmentRequest\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\";\n\x19\x43\x61nUpdateAssessmentsReply\x12\x1e\n\x16\x63\x61n_update_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nUpdateAssessmentsRequest\"b\n\x1fGetAssessmentFormForUpdateReply\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\"^\n!GetAssessmentFormForUpdateRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15UpdateAssessmentReply\"Z\n\x17UpdateAssessmentRequest\x12?\n\x0f\x61ssessment_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.assessment.AssessmentForm\";\n\x19\x43\x61nDeleteAssessmentsReply\x12\x1e\n\x16\x63\x61n_delete_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nDeleteAssessmentsRequest\"\x17\n\x15\x44\x65leteAssessmentReply\"T\n\x17\x44\x65leteAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nManageAssessmentAliasesReply\x12%\n\x1d\x63\x61n_manage_assessment_aliases\x18\x01 \x01(\x08\"#\n!CanManageAssessmentAliasesRequest\"\x16\n\x14\x41liasAssessmentReply\"\x89\x01\n\x16\x41liasAssessmentRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rassessment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanLookupAssessmentBankMappingsReply\x12+\n#can_lookup_assessment_bank_mappings\x18\x01 \x01(\x08\"(\n&CanLookupAssessmentBankMappingsRequest\"T\n\x1dGetAssessmentIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssessmentsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1eGetAssessmentIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1cGetAssessmentsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1dGetBankIdsByAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1bGetBanksByAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nAssignAssessmentsReply\x12\x1e\n\x16\x63\x61n_assign_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nAssignAssessmentsRequest\"I\n\x1f\x43\x61nAssignAssessmentsToBankReply\x12&\n\x1e\x63\x61n_assign_assessments_to_bank\x18\x01 \x01(\x08\"X\n!CanAssignAssessmentsToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x9a\x01\n(GetAssignableBankIdsForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1b\x41ssignAssessmentToBankReply\"\x8f\x01\n\x1d\x41ssignAssessmentToBankRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fUnassignAssessmentFromBankReply\"\x93\x01\n!UnassignAssessmentFromBankRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n ReassignAssessmentToBillingReply\"\xd1\x01\n\"ReassignAssessmentToBillingRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nAuthorAssessmentsReply\x12\x1e\n\x16\x63\x61n_author_assessments\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nAuthorAssessmentsRequest\"\x0e\n\x0c\x41\x64\x64ItemReply\"\x80\x01\n\x0e\x41\x64\x64ItemRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fRemoveItemReply\"\x83\x01\n\x11RemoveItemRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rMoveItemReply\"\xc1\x01\n\x0fMoveItemRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07item_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12>\n\x12preceeding_item_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fOrderItemsReply\"\x84\x01\n\x11OrderItemsRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08item_ids\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanLookupAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_lookup_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanLookupAssessmentsOfferedRequest\"*\n(UseComparativeAssessmentOfferedViewReply\",\n*UseComparativeAssessmentOfferedViewRequest\"&\n$UsePlenaryAssessmentOfferedViewReply\"(\n&UsePlenaryAssessmentOfferedViewRequest\"b\n\x19GetAssessmentOfferedReply\x12\x45\n\x12\x61ssessment_offered\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentOffered\"`\n\x1bGetAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n!GetAssessmentsOfferedByIdsRequest\x12\x42\n\x16\x61ssessment_offered_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"x\n\'GetAssessmentsOfferedByGenusTypeRequest\x12M\n\x1d\x61ssessment_offered_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"~\n-GetAssessmentsOfferedByParentGenusTypeRequest\x12M\n\x1d\x61ssessment_offered_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n(GetAssessmentsOfferedByRecordTypeRequest\x12\x46\n\x16\x61ssessment_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"x\n\"GetAssessmentsOfferedByDateRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12)\n\x05start\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"f\n)GetAssessmentsOfferedForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cGetAssessmentsOfferedRequest\"J\n CanSearchAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_search_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanSearchAssessmentsOfferedRequest\"r\n\x1eGetAssessmentOfferedQueryReply\x12P\n\x18\x61ssessment_offered_query\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment.AssessmentOfferedQuery\"\"\n GetAssessmentOfferedQueryRequest\"w\n#GetAssessmentsOfferedByQueryRequest\x12P\n\x18\x61ssessment_offered_query\x18\x01 \x01(\x0b\x32..dlkit.proto.assessment.AssessmentOfferedQuery\"J\n CanCreateAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_create_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanCreateAssessmentsOfferedRequest\"i\n.CanCreateAssessmentOfferedWithRecordTypesReply\x12\x37\n/can_create_assessment_offered_with_record_types\x18\x01 \x01(\x08\"\x83\x01\n0CanCreateAssessmentOfferedWithRecordTypesRequest\x12O\n\x1f\x61ssessment_offered_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"x\n&GetAssessmentOfferedFormForCreateReply\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"\xb6\x01\n(GetAssessmentOfferedFormForCreateRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12O\n\x1f\x61ssessment_offered_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n\x1c\x43reateAssessmentOfferedReply\x12\x45\n\x12\x61ssessment_offered\x18\x01 \x01(\x0b\x32).dlkit.proto.assessment.AssessmentOffered\"p\n\x1e\x43reateAssessmentOfferedRequest\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"J\n CanUpdateAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_update_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanUpdateAssessmentsOfferedRequest\"x\n&GetAssessmentOfferedFormForUpdateReply\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"m\n(GetAssessmentOfferedFormForUpdateRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUpdateAssessmentOfferedReply\"p\n\x1eUpdateAssessmentOfferedRequest\x12N\n\x17\x61ssessment_offered_form\x18\x01 \x01(\x0b\x32-.dlkit.proto.assessment.AssessmentOfferedForm\"J\n CanDeleteAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_delete_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanDeleteAssessmentsOfferedRequest\"\x1e\n\x1c\x44\x65leteAssessmentOfferedReply\"c\n\x1e\x44\x65leteAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n&CanManageAssessmentOfferedAliasesReply\x12-\n%can_manage_assessment_offered_aliases\x18\x01 \x01(\x08\"*\n(CanManageAssessmentOfferedAliasesRequest\"\x1d\n\x1b\x41liasAssessmentOfferedReply\"\x98\x01\n\x1d\x41liasAssessmentOfferedRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x15\x61ssessment_offered_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n+CanLookupAssessmentOfferedBankMappingsReply\x12\x33\n+can_lookup_assessment_offered_bank_mappings\x18\x01 \x01(\x08\"/\n-CanLookupAssessmentOfferedBankMappingsRequest\"[\n$GetAssessmentOfferedIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\"GetAssessmentsOfferedByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n%GetAssessmentOfferedIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n#GetAssessmentsOfferedByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"i\n$GetBankIdsByAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\"GetBanksByAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanAssignAssessmentsOfferedReply\x12&\n\x1e\x63\x61n_assign_assessments_offered\x18\x01 \x01(\x08\"$\n\"CanAssignAssessmentsOfferedRequest\"X\n&CanAssignAssessmentsOfferedToBankReply\x12.\n&can_assign_assessments_offered_to_bank\x18\x01 \x01(\x08\"_\n(CanAssignAssessmentsOfferedToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa9\x01\n/GetAssignableBankIdsForAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"AssignAssessmentOfferedToBankReply\"\x9e\x01\n$AssignAssessmentOfferedToBankRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n&UnassignAssessmentOfferedFromBankReply\"\xa2\x01\n(UnassignAssessmentOfferedFromBankRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\")\n\'ReassignAssessmentOfferedToBillingReply\"\xe0\x01\n)ReassignAssessmentOfferedToBillingRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nLookupAssessmentsTakenReply\x12$\n\x1c\x63\x61n_lookup_assessments_taken\x18\x01 \x01(\x08\"\"\n CanLookupAssessmentsTakenRequest\"(\n&UseComparativeAssessmentTakenViewReply\"*\n(UseComparativeAssessmentTakenViewRequest\"$\n\"UsePlenaryAssessmentTakenViewReply\"&\n$UsePlenaryAssessmentTakenViewRequest\"\\\n\x17GetAssessmentTakenReply\x12\x41\n\x10\x61ssessment_taken\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentTaken\"\\\n\x19GetAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1fGetAssessmentsTakenByIdsRequest\x12@\n\x14\x61ssessment_taken_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"t\n%GetAssessmentsTakenByGenusTypeRequest\x12K\n\x1b\x61ssessment_taken_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"z\n+GetAssessmentsTakenByParentGenusTypeRequest\x12K\n\x1b\x61ssessment_taken_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n&GetAssessmentsTakenByRecordTypeRequest\x12L\n\x1c\x61ssessment_taken_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"u\n GetAssessmentsTakenByDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"]\n\"GetAssessmentsTakenForTakerRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb6\x01\n(GetAssessmentsTakenByDateForTakerRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"d\n\'GetAssessmentsTakenForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xbd\x01\n-GetAssessmentsTakenByDateForAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa5\x01\n/GetAssessmentsTakenForTakerAndAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xfe\x01\n5GetAssessmentsTakenByDateForTakerAndAssessmentRequest\x12\x39\n\rassessment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"s\n.GetAssessmentsTakenForAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xcc\x01\n4GetAssessmentsTakenByDateForAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb4\x01\n6GetAssessmentsTakenForTakerAndAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x8d\x02\n<GetAssessmentsTakenByDateForTakerAndAssessmentOfferedRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x1c\n\x1aGetAssessmentsTakenRequest\"F\n\x1e\x43\x61nSearchAssessmentsTakenReply\x12$\n\x1c\x63\x61n_search_assessments_taken\x18\x01 \x01(\x08\"\"\n CanSearchAssessmentsTakenRequest\"l\n\x1cGetAssessmentTakenQueryReply\x12L\n\x16\x61ssessment_taken_query\x18\x01 \x01(\x0b\x32,.dlkit.proto.assessment.AssessmentTakenQuery\" \n\x1eGetAssessmentTakenQueryRequest\"q\n!GetAssessmentsTakenByQueryRequest\x12L\n\x16\x61ssessment_taken_query\x18\x01 \x01(\x0b\x32,.dlkit.proto.assessment.AssessmentTakenQuery\"F\n\x1e\x43\x61nCreateAssessmentsTakenReply\x12$\n\x1c\x63\x61n_create_assessments_taken\x18\x01 \x01(\x08\"\"\n CanCreateAssessmentsTakenRequest\"e\n,CanCreateAssessmentTakenWithRecordTypesReply\x12\x35\n-can_create_assessment_taken_with_record_types\x18\x01 \x01(\x08\"\x7f\n.CanCreateAssessmentTakenWithRecordTypesRequest\x12M\n\x1d\x61ssessment_taken_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n$GetAssessmentTakenFormForCreateReply\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"\xba\x01\n&GetAssessmentTakenFormForCreateRequest\x12\x41\n\x15\x61ssessment_offered_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12M\n\x1d\x61ssessment_taken_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1a\x43reateAssessmentTakenReply\x12\x41\n\x10\x61ssessment_taken\x18\x01 \x01(\x0b\x32\'.dlkit.proto.assessment.AssessmentTaken\"j\n\x1c\x43reateAssessmentTakenRequest\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"F\n\x1e\x43\x61nUpdateAssessmentsTakenReply\x12$\n\x1c\x63\x61n_update_assessments_taken\x18\x01 \x01(\x08\"\"\n CanUpdateAssessmentsTakenRequest\"r\n$GetAssessmentTakenFormForUpdateReply\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"i\n&GetAssessmentTakenFormForUpdateRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUpdateAssessmentTakenReply\"j\n\x1cUpdateAssessmentTakenRequest\x12J\n\x15\x61ssessment_taken_form\x18\x01 \x01(\x0b\x32+.dlkit.proto.assessment.AssessmentTakenForm\"F\n\x1e\x43\x61nDeleteAssessmentsTakenReply\x12$\n\x1c\x63\x61n_delete_assessments_taken\x18\x01 \x01(\x08\"\"\n CanDeleteAssessmentsTakenRequest\"\x1c\n\x1a\x44\x65leteAssessmentTakenReply\"_\n\x1c\x44\x65leteAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanManageAssessmentTakenAliasesReply\x12+\n#can_manage_assessment_taken_aliases\x18\x01 \x01(\x08\"(\n&CanManageAssessmentTakenAliasesRequest\"\x1b\n\x19\x41liasAssessmentTakenReply\"\x94\x01\n\x1b\x41liasAssessmentTakenRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13\x61ssessment_taken_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n)CanLookupAssessmentTakenBankMappingsReply\x12\x31\n)can_lookup_assessment_taken_bank_mappings\x18\x01 \x01(\x08\"-\n+CanLookupAssessmentTakenBankMappingsRequest\"Y\n\"GetAssessmentTakenIdsByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n GetAssessmentsTakenByBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n#GetAssessmentTakenIdsByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n!GetAssessmentsTakenByBanksRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n\"GetBankIdsByAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n GetBanksByAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nAssignAssessmentsTakenReply\x12$\n\x1c\x63\x61n_assign_assessments_taken\x18\x01 \x01(\x08\"\"\n CanAssignAssessmentsTakenRequest\"T\n$CanAssignAssessmentsTakenToBankReply\x12,\n$can_assign_assessments_taken_to_bank\x18\x01 \x01(\x08\"]\n&CanAssignAssessmentsTakenToBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa5\x01\n-GetAssignableBankIdsForAssessmentTakenRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n AssignAssessmentTakenToBankReply\"\x9a\x01\n\"AssignAssessmentTakenToBankRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"&\n$UnassignAssessmentTakenFromBankReply\"\x9e\x01\n&UnassignAssessmentTakenFromBankRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%ReassignAssessmentTakenToBillingReply\"\xdc\x01\n\'ReassignAssessmentTakenToBillingRequest\x12?\n\x13\x61ssessment_taken_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nLookupBanksReply\x12\x18\n\x10\x63\x61n_lookup_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nLookupBanksRequest\"L\n\x14GetBanksByIdsRequest\x12\x34\n\x08\x62\x61nk_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1aGetBanksByGenusTypeRequest\x12?\n\x0f\x62\x61nk_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetBanksByParentGenusTypeRequest\x12?\n\x0f\x62\x61nk_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1bGetBanksByRecordTypeRequest\x12@\n\x10\x62\x61nk_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"T\n\x19GetBanksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetBanksRequest\"/\n\x13\x43\x61nSearchBanksReply\x12\x18\n\x10\x63\x61n_search_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nSearchBanksRequest\"J\n\x11GetBankQueryReply\x12\x35\n\nbank_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.BankQuery\"\x15\n\x13GetBankQueryRequest\"O\n\x16GetBanksByQueryRequest\x12\x35\n\nbank_query\x18\x01 \x01(\x0b\x32!.dlkit.proto.assessment.BankQuery\"/\n\x13\x43\x61nCreateBanksReply\x12\x18\n\x10\x63\x61n_create_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nCreateBanksRequest\"N\n!CanCreateBankWithRecordTypesReply\x12)\n!can_create_bank_with_record_types\x18\x01 \x01(\x08\"h\n#CanCreateBankWithRecordTypesRequest\x12\x41\n\x11\x62\x61nk_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x19GetBankFormForCreateReply\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"`\n\x1bGetBankFormForCreateRequest\x12\x41\n\x11\x62\x61nk_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"=\n\x0f\x43reateBankReply\x12*\n\x04\x62\x61nk\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.assessment.Bank\"H\n\x11\x43reateBankRequest\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"/\n\x13\x43\x61nUpdateBanksReply\x12\x18\n\x10\x63\x61n_update_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nUpdateBanksRequest\"P\n\x19GetBankFormForUpdateReply\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"R\n\x1bGetBankFormForUpdateRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fUpdateBankReply\"H\n\x11UpdateBankRequest\x12\x33\n\tbank_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankForm\"/\n\x13\x43\x61nDeleteBanksReply\x12\x18\n\x10\x63\x61n_delete_banks\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nDeleteBanksRequest\"\x11\n\x0f\x44\x65leteBankReply\"H\n\x11\x44\x65leteBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nManageBankAliasesReply\x12\x1f\n\x17\x63\x61n_manage_bank_aliases\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nManageBankAliasesRequest\"\x10\n\x0e\x41liasBankReply\"}\n\x10\x41liasBankRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x17GetBankHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetBankHierarchyIdRequest\"L\n\x15GetBankHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x19\n\x17GetBankHierarchyRequest\"@\n\x1b\x43\x61nAccessBankHierarchyReply\x12!\n\x19\x63\x61n_access_bank_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nAccessBankHierarchyRequest\"\x17\n\x15GetRootBankIdsRequest\"\x15\n\x13GetRootBanksRequest\"/\n\x13HasParentBanksReply\x12\x18\n\x10has_parent_banks\x18\x01 \x01(\x08\"L\n\x15HasParentBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"0\n\x13IsParentOfBankReply\x12\x19\n\x11is_parent_of_bank\x18\x01 \x01(\x08\"}\n\x15IsParentOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x17GetParentBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetParentBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsAncestorOfBankReply\x12\x1b\n\x13is_ancestor_of_bank\x18\x01 \x01(\x08\"\x7f\n\x17IsAncestorOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12HasChildBanksReply\x12\x17\n\x0fhas_child_banks\x18\x01 \x01(\x08\"K\n\x14HasChildBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsChildOfBankReply\x12\x18\n\x10is_child_of_bank\x18\x01 \x01(\x08\"|\n\x14IsChildOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x16GetChildBankIdsRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x14GetChildBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsDescendantOfBankReply\x12\x1d\n\x15is_descendant_of_bank\x18\x01 \x01(\x08\"\x81\x01\n\x19IsDescendantOfBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x13GetBankNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9a\x01\n\x15GetBankNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"H\n\x11GetBankNodesReply\x12\x33\n\tbank_node\x18\x01 \x01(\x0b\x32 .dlkit.proto.assessment.BankNode\"\x98\x01\n\x13GetBankNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62\x61nk_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"@\n\x1b\x43\x61nModifyBankHierarchyReply\x12!\n\x19\x63\x61n_modify_bank_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nModifyBankHierarchyRequest\"\x12\n\x10\x41\x64\x64RootBankReply\"I\n\x12\x41\x64\x64RootBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveRootBankReply\"L\n\x15RemoveRootBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11\x41\x64\x64\x43hildBankReply\"\x80\x01\n\x13\x41\x64\x64\x43hildBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildBankReply\"\x83\x01\n\x16RemoveChildBankRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveChildBanksReply\"N\n\x17RemoveChildBanksRequest\x12\x33\n\x07\x62\x61nk_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x85+\n\x11\x41ssessmentSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12z\n\x12\x43\x61nTakeAssessments\x12\x31.dlkit.proto.assessment.CanTakeAssessmentsRequest\x1a/.dlkit.proto.assessment.CanTakeAssessmentsReply\"\x00\x12z\n\x12HasAssessmentBegun\x12\x31.dlkit.proto.assessment.HasAssessmentBegunRequest\x1a/.dlkit.proto.assessment.HasAssessmentBegunReply\"\x00\x12t\n\x10IsAssessmentOver\x12/.dlkit.proto.assessment.IsAssessmentOverRequest\x1a-.dlkit.proto.assessment.IsAssessmentOverReply\"\x00\x12\x95\x01\n\x1bRequiresSynchronousSections\x12:.dlkit.proto.assessment.RequiresSynchronousSectionsRequest\x1a\x38.dlkit.proto.assessment.RequiresSynchronousSectionsReply\"\x00\x12\x8f\x01\n\x19GetFirstAssessmentSection\x12\x38.dlkit.proto.assessment.GetFirstAssessmentSectionRequest\x1a\x36.dlkit.proto.assessment.GetFirstAssessmentSectionReply\"\x00\x12\x8c\x01\n\x18HasNextAssessmentSection\x12\x37.dlkit.proto.assessment.HasNextAssessmentSectionRequest\x1a\x35.dlkit.proto.assessment.HasNextAssessmentSectionReply\"\x00\x12\x8c\x01\n\x18GetNextAssessmentSection\x12\x37.dlkit.proto.assessment.GetNextAssessmentSectionRequest\x1a\x35.dlkit.proto.assessment.GetNextAssessmentSectionReply\"\x00\x12\x98\x01\n\x1cHasPreviousAssessmentSection\x12;.dlkit.proto.assessment.HasPreviousAssessmentSectionRequest\x1a\x39.dlkit.proto.assessment.HasPreviousAssessmentSectionReply\"\x00\x12\x98\x01\n\x1cGetPreviousAssessmentSection\x12;.dlkit.proto.assessment.GetPreviousAssessmentSectionRequest\x1a\x39.dlkit.proto.assessment.GetPreviousAssessmentSectionReply\"\x00\x12\x80\x01\n\x14GetAssessmentSection\x12\x33.dlkit.proto.assessment.GetAssessmentSectionRequest\x1a\x31.dlkit.proto.assessment.GetAssessmentSectionReply\"\x00\x12|\n\x15GetAssessmentSections\x12\x34.dlkit.proto.assessment.GetAssessmentSectionsRequest\x1a).dlkit.proto.assessment.AssessmentSection\"\x00\x30\x01\x12\x95\x01\n\x1bIsAssessmentSectionComplete\x12:.dlkit.proto.assessment.IsAssessmentSectionCompleteRequest\x1a\x38.dlkit.proto.assessment.IsAssessmentSectionCompleteReply\"\x00\x12\x90\x01\n\x1fGetIncompleteAssessmentSections\x12>.dlkit.proto.assessment.GetIncompleteAssessmentSectionsRequest\x1a).dlkit.proto.assessment.AssessmentSection\"\x00\x30\x01\x12\x8f\x01\n\x19HasAssessmentSectionBegun\x12\x38.dlkit.proto.assessment.HasAssessmentSectionBegunRequest\x1a\x36.dlkit.proto.assessment.HasAssessmentSectionBegunReply\"\x00\x12\x89\x01\n\x17IsAssessmentSectionOver\x12\x36.dlkit.proto.assessment.IsAssessmentSectionOverRequest\x1a\x34.dlkit.proto.assessment.IsAssessmentSectionOverReply\"\x00\x12\x98\x01\n\x1cRequiresSynchronousResponses\x12;.dlkit.proto.assessment.RequiresSynchronousResponsesRequest\x1a\x39.dlkit.proto.assessment.RequiresSynchronousResponsesReply\"\x00\x12t\n\x10GetFirstQuestion\x12/.dlkit.proto.assessment.GetFirstQuestionRequest\x1a-.dlkit.proto.assessment.GetFirstQuestionReply\"\x00\x12q\n\x0fHasNextQuestion\x12..dlkit.proto.assessment.HasNextQuestionRequest\x1a,.dlkit.proto.assessment.HasNextQuestionReply\"\x00\x12q\n\x0fGetNextQuestion\x12..dlkit.proto.assessment.GetNextQuestionRequest\x1a,.dlkit.proto.assessment.GetNextQuestionReply\"\x00\x12}\n\x13HasPreviousQuestion\x12\x32.dlkit.proto.assessment.HasPreviousQuestionRequest\x1a\x30.dlkit.proto.assessment.HasPreviousQuestionReply\"\x00\x12}\n\x13GetPreviousQuestion\x12\x32.dlkit.proto.assessment.GetPreviousQuestionRequest\x1a\x30.dlkit.proto.assessment.GetPreviousQuestionReply\"\x00\x12\x65\n\x0bGetQuestion\x12*.dlkit.proto.assessment.GetQuestionRequest\x1a(.dlkit.proto.assessment.GetQuestionReply\"\x00\x12\x61\n\x0cGetQuestions\x12+.dlkit.proto.assessment.GetQuestionsRequest\x1a .dlkit.proto.assessment.Question\"\x00\x30\x01\x12q\n\x0fGetResponseForm\x12..dlkit.proto.assessment.GetResponseFormRequest\x1a,.dlkit.proto.assessment.GetResponseFormReply\"\x00\x12n\n\x0eSubmitResponse\x12-.dlkit.proto.assessment.SubmitResponseRequest\x1a+.dlkit.proto.assessment.SubmitResponseReply\"\x00\x12\\\n\x08SkipItem\x12\'.dlkit.proto.assessment.SkipItemRequest\x1a%.dlkit.proto.assessment.SkipItemReply\"\x00\x12z\n\x12IsQuestionAnswered\x12\x31.dlkit.proto.assessment.IsQuestionAnsweredRequest\x1a/.dlkit.proto.assessment.IsQuestionAnsweredReply\"\x00\x12u\n\x16GetUnansweredQuestions\x12\x35.dlkit.proto.assessment.GetUnansweredQuestionsRequest\x1a .dlkit.proto.assessment.Question\"\x00\x30\x01\x12\x86\x01\n\x16HasUnansweredQuestions\x12\x35.dlkit.proto.assessment.HasUnansweredQuestionsRequest\x1a\x33.dlkit.proto.assessment.HasUnansweredQuestionsReply\"\x00\x12\x92\x01\n\x1aGetFirstUnansweredQuestion\x12\x39.dlkit.proto.assessment.GetFirstUnansweredQuestionRequest\x1a\x37.dlkit.proto.assessment.GetFirstUnansweredQuestionReply\"\x00\x12\x8f\x01\n\x19HasNextUnansweredQuestion\x12\x38.dlkit.proto.assessment.HasNextUnansweredQuestionRequest\x1a\x36.dlkit.proto.assessment.HasNextUnansweredQuestionReply\"\x00\x12\x8f\x01\n\x19GetNextUnansweredQuestion\x12\x38.dlkit.proto.assessment.GetNextUnansweredQuestionRequest\x1a\x36.dlkit.proto.assessment.GetNextUnansweredQuestionReply\"\x00\x12\x9b\x01\n\x1dHasPreviousUnansweredQuestion\x12<.dlkit.proto.assessment.HasPreviousUnansweredQuestionRequest\x1a:.dlkit.proto.assessment.HasPreviousUnansweredQuestionReply\"\x00\x12\x9b\x01\n\x1dGetPreviousUnansweredQuestion\x12<.dlkit.proto.assessment.GetPreviousUnansweredQuestionRequest\x1a:.dlkit.proto.assessment.GetPreviousUnansweredQuestionReply\"\x00\x12\x65\n\x0bGetResponse\x12*.dlkit.proto.assessment.GetResponseRequest\x1a(.dlkit.proto.assessment.GetResponseReply\"\x00\x12\x61\n\x0cGetResponses\x12+.dlkit.proto.assessment.GetResponsesRequest\x1a .dlkit.proto.assessment.Response\"\x00\x30\x01\x12k\n\rClearResponse\x12,.dlkit.proto.assessment.ClearResponseRequest\x1a*.dlkit.proto.assessment.ClearResponseReply\"\x00\x12\x89\x01\n\x17\x46inishAssessmentSection\x12\x36.dlkit.proto.assessment.FinishAssessmentSectionRequest\x1a\x34.dlkit.proto.assessment.FinishAssessmentSectionReply\"\x00\x12w\n\x11IsAnswerAvailable\x12\x30.dlkit.proto.assessment.IsAnswerAvailableRequest\x1a..dlkit.proto.assessment.IsAnswerAvailableReply\"\x00\x12[\n\nGetAnswers\x12).dlkit.proto.assessment.GetAnswersRequest\x1a\x1e.dlkit.proto.assessment.Answer\"\x00\x30\x01\x12t\n\x10\x46inishAssessment\x12/.dlkit.proto.assessment.FinishAssessmentRequest\x1a-.dlkit.proto.assessment.FinishAssessmentReply\"\x00\x32\x8c\x06\n\x18\x41ssessmentResultsSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x92\x01\n\x1a\x43\x61nAccessAssessmentResults\x12\x39.dlkit.proto.assessment.CanAccessAssessmentResultsRequest\x1a\x37.dlkit.proto.assessment.CanAccessAssessmentResultsReply\"\x00\x12U\n\x08GetItems\x12\'.dlkit.proto.assessment.GetItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12\x61\n\x0cGetResponses\x12+.dlkit.proto.assessment.GetResponsesRequest\x1a .dlkit.proto.assessment.Response\"\x00\x30\x01\x12}\n\x13\x41reResultsAvailable\x12\x32.dlkit.proto.assessment.AreResultsAvailableRequest\x1a\x30.dlkit.proto.assessment.AreResultsAvailableReply\"\x00\x12\x66\n\x0fGetGradeEntries\x12..dlkit.proto.assessment.GetGradeEntriesRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x32\xfc\x0e\n\x11ItemLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12n\n\x0e\x43\x61nLookupItems\x12-.dlkit.proto.assessment.CanLookupItemsRequest\x1a+.dlkit.proto.assessment.CanLookupItemsReply\"\x00\x12\x86\x01\n\x16UseComparativeItemView\x12\x35.dlkit.proto.assessment.UseComparativeItemViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeItemViewReply\"\x00\x12z\n\x12UsePlenaryItemView\x12\x31.dlkit.proto.assessment.UsePlenaryItemViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryItemViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12Y\n\x07GetItem\x12&.dlkit.proto.assessment.GetItemRequest\x1a$.dlkit.proto.assessment.GetItemReply\"\x00\x12_\n\rGetItemsByIds\x12,.dlkit.proto.assessment.GetItemsByIdsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12k\n\x13GetItemsByGenusType\x12\x32.dlkit.proto.assessment.GetItemsByGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12w\n\x19GetItemsByParentGenusType\x12\x38.dlkit.proto.assessment.GetItemsByParentGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12m\n\x14GetItemsByRecordType\x12\x33.dlkit.proto.assessment.GetItemsByRecordTypeRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12i\n\x12GetItemsByQuestion\x12\x31.dlkit.proto.assessment.GetItemsByQuestionRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12\x65\n\x10GetItemsByAnswer\x12/.dlkit.proto.assessment.GetItemsByAnswerRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12{\n\x1bGetItemsByLearningObjective\x12:.dlkit.proto.assessment.GetItemsByLearningObjectiveRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12}\n\x1cGetItemsByLearningObjectives\x12;.dlkit.proto.assessment.GetItemsByLearningObjectivesRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12U\n\x08GetItems\x12\'.dlkit.proto.assessment.GetItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x32\x8f\x06\n\x10ItemQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12n\n\x0e\x43\x61nSearchItems\x12-.dlkit.proto.assessment.CanSearchItemsRequest\x1a+.dlkit.proto.assessment.CanSearchItemsReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12h\n\x0cGetItemQuery\x12+.dlkit.proto.assessment.GetItemQueryRequest\x1a).dlkit.proto.assessment.GetItemQueryReply\"\x00\x12\x63\n\x0fGetItemsByQuery\x12..dlkit.proto.assessment.GetItemsByQueryRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x32\x84\x04\n\x11ItemSearchSession\x12k\n\rGetItemSearch\x12,.dlkit.proto.assessment.GetItemSearchRequest\x1a*.dlkit.proto.assessment.GetItemSearchReply\"\x00\x12z\n\x12GetItemSearchOrder\x12\x31.dlkit.proto.assessment.GetItemSearchOrderRequest\x1a/.dlkit.proto.assessment.GetItemSearchOrderReply\"\x00\x12t\n\x10GetItemsBySearch\x12/.dlkit.proto.assessment.GetItemsBySearchRequest\x1a-.dlkit.proto.assessment.GetItemsBySearchReply\"\x00\x12\x8f\x01\n\x19GetItemQueryFromInspector\x12\x38.dlkit.proto.assessment.GetItemQueryFromInspectorRequest\x1a\x36.dlkit.proto.assessment.GetItemQueryFromInspectorReply\"\x00\x32\xae\x1d\n\x10ItemAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12n\n\x0e\x43\x61nCreateItems\x12-.dlkit.proto.assessment.CanCreateItemsRequest\x1a+.dlkit.proto.assessment.CanCreateItemsReply\"\x00\x12\x98\x01\n\x1c\x43\x61nCreateItemWithRecordTypes\x12;.dlkit.proto.assessment.CanCreateItemWithRecordTypesRequest\x1a\x39.dlkit.proto.assessment.CanCreateItemWithRecordTypesReply\"\x00\x12\x80\x01\n\x14GetItemFormForCreate\x12\x33.dlkit.proto.assessment.GetItemFormForCreateRequest\x1a\x31.dlkit.proto.assessment.GetItemFormForCreateReply\"\x00\x12\x62\n\nCreateItem\x12).dlkit.proto.assessment.CreateItemRequest\x1a\'.dlkit.proto.assessment.CreateItemReply\"\x00\x12n\n\x0e\x43\x61nUpdateItems\x12-.dlkit.proto.assessment.CanUpdateItemsRequest\x1a+.dlkit.proto.assessment.CanUpdateItemsReply\"\x00\x12\x80\x01\n\x14GetItemFormForUpdate\x12\x33.dlkit.proto.assessment.GetItemFormForUpdateRequest\x1a\x31.dlkit.proto.assessment.GetItemFormForUpdateReply\"\x00\x12\x62\n\nUpdateItem\x12).dlkit.proto.assessment.UpdateItemRequest\x1a\'.dlkit.proto.assessment.UpdateItemReply\"\x00\x12n\n\x0e\x43\x61nDeleteItems\x12-.dlkit.proto.assessment.CanDeleteItemsRequest\x1a+.dlkit.proto.assessment.CanDeleteItemsReply\"\x00\x12\x62\n\nDeleteItem\x12).dlkit.proto.assessment.DeleteItemRequest\x1a\'.dlkit.proto.assessment.DeleteItemReply\"\x00\x12\x80\x01\n\x14\x43\x61nManageItemAliases\x12\x33.dlkit.proto.assessment.CanManageItemAliasesRequest\x1a\x31.dlkit.proto.assessment.CanManageItemAliasesReply\"\x00\x12_\n\tAliasItem\x12(.dlkit.proto.assessment.AliasItemRequest\x1a&.dlkit.proto.assessment.AliasItemReply\"\x00\x12z\n\x12\x43\x61nCreateQuestions\x12\x31.dlkit.proto.assessment.CanCreateQuestionsRequest\x1a/.dlkit.proto.assessment.CanCreateQuestionsReply\"\x00\x12\xa4\x01\n CanCreateQuestionWithRecordTypes\x12?.dlkit.proto.assessment.CanCreateQuestionWithRecordTypesRequest\x1a=.dlkit.proto.assessment.CanCreateQuestionWithRecordTypesReply\"\x00\x12\x8c\x01\n\x18GetQuestionFormForCreate\x12\x37.dlkit.proto.assessment.GetQuestionFormForCreateRequest\x1a\x35.dlkit.proto.assessment.GetQuestionFormForCreateReply\"\x00\x12n\n\x0e\x43reateQuestion\x12-.dlkit.proto.assessment.CreateQuestionRequest\x1a+.dlkit.proto.assessment.CreateQuestionReply\"\x00\x12z\n\x12\x43\x61nUpdateQuestions\x12\x31.dlkit.proto.assessment.CanUpdateQuestionsRequest\x1a/.dlkit.proto.assessment.CanUpdateQuestionsReply\"\x00\x12\x8c\x01\n\x18GetQuestionFormForUpdate\x12\x37.dlkit.proto.assessment.GetQuestionFormForUpdateRequest\x1a\x35.dlkit.proto.assessment.GetQuestionFormForUpdateReply\"\x00\x12n\n\x0eUpdateQuestion\x12-.dlkit.proto.assessment.UpdateQuestionRequest\x1a+.dlkit.proto.assessment.UpdateQuestionReply\"\x00\x12z\n\x12\x43\x61nDeleteQuestions\x12\x31.dlkit.proto.assessment.CanDeleteQuestionsRequest\x1a/.dlkit.proto.assessment.CanDeleteQuestionsReply\"\x00\x12n\n\x0e\x44\x65leteQuestion\x12-.dlkit.proto.assessment.DeleteQuestionRequest\x1a+.dlkit.proto.assessment.DeleteQuestionReply\"\x00\x12t\n\x10\x43\x61nCreateAnswers\x12/.dlkit.proto.assessment.CanCreateAnswersRequest\x1a-.dlkit.proto.assessment.CanCreateAnswersReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nCreateAnswersWithRecordTypes\x12>.dlkit.proto.assessment.CanCreateAnswersWithRecordTypesRequest\x1a<.dlkit.proto.assessment.CanCreateAnswersWithRecordTypesReply\"\x00\x12\x86\x01\n\x16GetAnswerFormForCreate\x12\x35.dlkit.proto.assessment.GetAnswerFormForCreateRequest\x1a\x33.dlkit.proto.assessment.GetAnswerFormForCreateReply\"\x00\x12h\n\x0c\x43reateAnswer\x12+.dlkit.proto.assessment.CreateAnswerRequest\x1a).dlkit.proto.assessment.CreateAnswerReply\"\x00\x12t\n\x10\x43\x61nUpdateAnswers\x12/.dlkit.proto.assessment.CanUpdateAnswersRequest\x1a-.dlkit.proto.assessment.CanUpdateAnswersReply\"\x00\x12\x86\x01\n\x16GetAnswerFormForUpdate\x12\x35.dlkit.proto.assessment.GetAnswerFormForUpdateRequest\x1a\x33.dlkit.proto.assessment.GetAnswerFormForUpdateReply\"\x00\x12h\n\x0cUpdateAnswer\x12+.dlkit.proto.assessment.UpdateAnswerRequest\x1a).dlkit.proto.assessment.UpdateAnswerReply\"\x00\x12t\n\x10\x43\x61nDeleteAnswers\x12/.dlkit.proto.assessment.CanDeleteAnswersRequest\x1a-.dlkit.proto.assessment.CanDeleteAnswersReply\"\x00\x12h\n\x0c\x44\x65leteAnswer\x12+.dlkit.proto.assessment.DeleteAnswerRequest\x1a).dlkit.proto.assessment.DeleteAnswerReply\"\x00\x32\xe6\r\n\x17ItemNotificationSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nRegisterForItemNotifications\x12>.dlkit.proto.assessment.CanRegisterForItemNotificationsRequest\x1a<.dlkit.proto.assessment.CanRegisterForItemNotificationsReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x8f\x01\n\x19ReliableItemNotifications\x12\x38.dlkit.proto.assessment.ReliableItemNotificationsRequest\x1a\x36.dlkit.proto.assessment.ReliableItemNotificationsReply\"\x00\x12\x95\x01\n\x1bUnreliableItemNotifications\x12:.dlkit.proto.assessment.UnreliableItemNotificationsRequest\x1a\x38.dlkit.proto.assessment.UnreliableItemNotificationsReply\"\x00\x12\x95\x01\n\x1b\x41\x63knowledgeItemNotification\x12:.dlkit.proto.assessment.AcknowledgeItemNotificationRequest\x1a\x38.dlkit.proto.assessment.AcknowledgeItemNotificationReply\"\x00\x12}\n\x13RegisterForNewItems\x12\x32.dlkit.proto.assessment.RegisterForNewItemsRequest\x1a\x30.dlkit.proto.assessment.RegisterForNewItemsReply\"\x00\x12\x89\x01\n\x17RegisterForChangedItems\x12\x36.dlkit.proto.assessment.RegisterForChangedItemsRequest\x1a\x34.dlkit.proto.assessment.RegisterForChangedItemsReply\"\x00\x12\x86\x01\n\x16RegisterForChangedItem\x12\x35.dlkit.proto.assessment.RegisterForChangedItemRequest\x1a\x33.dlkit.proto.assessment.RegisterForChangedItemReply\"\x00\x12\x89\x01\n\x17RegisterForDeletedItems\x12\x36.dlkit.proto.assessment.RegisterForDeletedItemsRequest\x1a\x34.dlkit.proto.assessment.RegisterForDeletedItemsReply\"\x00\x12\x86\x01\n\x16RegisterForDeletedItem\x12\x35.dlkit.proto.assessment.RegisterForDeletedItemRequest\x1a\x33.dlkit.proto.assessment.RegisterForDeletedItemReply\"\x00\x32\x9c\x08\n\x0fItemBankSession\x12\x8f\x01\n\x19\x43\x61nLookupItemBankMappings\x12\x38.dlkit.proto.assessment.CanLookupItemBankMappingsRequest\x1a\x36.dlkit.proto.assessment.CanLookupItemBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12k\n\x10GetItemIdsByBank\x12/.dlkit.proto.assessment.GetItemIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetItemsByBank\x12-.dlkit.proto.assessment.GetItemsByBankRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12m\n\x11GetItemIdsByBanks\x12\x30.dlkit.proto.assessment.GetItemIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x63\n\x0fGetItemsByBanks\x12..dlkit.proto.assessment.GetItemsByBanksRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12k\n\x10GetBankIdsByItem\x12/.dlkit.proto.assessment.GetBankIdsByItemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetBanksByItem\x12-.dlkit.proto.assessment.GetBanksByItemRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\x86\x07\n\x19ItemBankAssignmentSession\x12n\n\x0e\x43\x61nAssignItems\x12-.dlkit.proto.assessment.CanAssignItemsRequest\x1a+.dlkit.proto.assessment.CanAssignItemsReply\"\x00\x12\x80\x01\n\x14\x43\x61nAssignItemsToBank\x12\x33.dlkit.proto.assessment.CanAssignItemsToBankRequest\x1a\x31.dlkit.proto.assessment.CanAssignItemsToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x81\x01\n\x1bGetAssignableBankIdsForItem\x12:.dlkit.proto.assessment.GetAssignableBankIdsForItemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12t\n\x10\x41ssignItemToBank\x12/.dlkit.proto.assessment.AssignItemToBankRequest\x1a-.dlkit.proto.assessment.AssignItemToBankReply\"\x00\x12\x80\x01\n\x14UnassignItemFromBank\x12\x33.dlkit.proto.assessment.UnassignItemFromBankRequest\x1a\x31.dlkit.proto.assessment.UnassignItemFromBankReply\"\x00\x12\x83\x01\n\x15ReassignItemToBilling\x12\x34.dlkit.proto.assessment.ReassignItemToBillingRequest\x1a\x32.dlkit.proto.assessment.ReassignItemToBillingReply\"\x00\x32\xd9\x0c\n\x17\x41ssessmentLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nLookupAssessments\x12\x33.dlkit.proto.assessment.CanLookupAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanLookupAssessmentsReply\"\x00\x12\x98\x01\n\x1cUseComparativeAssessmentView\x12;.dlkit.proto.assessment.UseComparativeAssessmentViewRequest\x1a\x39.dlkit.proto.assessment.UseComparativeAssessmentViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryAssessmentView\x12\x37.dlkit.proto.assessment.UsePlenaryAssessmentViewRequest\x1a\x35.dlkit.proto.assessment.UsePlenaryAssessmentViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12k\n\rGetAssessment\x12,.dlkit.proto.assessment.GetAssessmentRequest\x1a*.dlkit.proto.assessment.GetAssessmentReply\"\x00\x12q\n\x13GetAssessmentsByIds\x12\x32.dlkit.proto.assessment.GetAssessmentsByIdsRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12}\n\x19GetAssessmentsByGenusType\x12\x38.dlkit.proto.assessment.GetAssessmentsByGenusTypeRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12\x89\x01\n\x1fGetAssessmentsByParentGenusType\x12>.dlkit.proto.assessment.GetAssessmentsByParentGenusTypeRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12\x7f\n\x1aGetAssessmentsByRecordType\x12\x39.dlkit.proto.assessment.GetAssessmentsByRecordTypeRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12g\n\x0eGetAssessments\x12-.dlkit.proto.assessment.GetAssessmentsRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x32\xcc\x06\n\x16\x41ssessmentQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nSearchAssessments\x12\x33.dlkit.proto.assessment.CanSearchAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanSearchAssessmentsReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12z\n\x12GetAssessmentQuery\x12\x31.dlkit.proto.assessment.GetAssessmentQueryRequest\x1a/.dlkit.proto.assessment.GetAssessmentQueryReply\"\x00\x12u\n\x15GetAssessmentsByQuery\x12\x34.dlkit.proto.assessment.GetAssessmentsByQueryRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x32\x9e\r\n\x16\x41ssessmentAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nCreateAssessments\x12\x33.dlkit.proto.assessment.CanCreateAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanCreateAssessmentsReply\"\x00\x12\xaa\x01\n\"CanCreateAssessmentWithRecordTypes\x12\x41.dlkit.proto.assessment.CanCreateAssessmentWithRecordTypesRequest\x1a?.dlkit.proto.assessment.CanCreateAssessmentWithRecordTypesReply\"\x00\x12\x92\x01\n\x1aGetAssessmentFormForCreate\x12\x39.dlkit.proto.assessment.GetAssessmentFormForCreateRequest\x1a\x37.dlkit.proto.assessment.GetAssessmentFormForCreateReply\"\x00\x12t\n\x10\x43reateAssessment\x12/.dlkit.proto.assessment.CreateAssessmentRequest\x1a-.dlkit.proto.assessment.CreateAssessmentReply\"\x00\x12\x80\x01\n\x14\x43\x61nUpdateAssessments\x12\x33.dlkit.proto.assessment.CanUpdateAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanUpdateAssessmentsReply\"\x00\x12\x92\x01\n\x1aGetAssessmentFormForUpdate\x12\x39.dlkit.proto.assessment.GetAssessmentFormForUpdateRequest\x1a\x37.dlkit.proto.assessment.GetAssessmentFormForUpdateReply\"\x00\x12t\n\x10UpdateAssessment\x12/.dlkit.proto.assessment.UpdateAssessmentRequest\x1a-.dlkit.proto.assessment.UpdateAssessmentReply\"\x00\x12\x80\x01\n\x14\x43\x61nDeleteAssessments\x12\x33.dlkit.proto.assessment.CanDeleteAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanDeleteAssessmentsReply\"\x00\x12t\n\x10\x44\x65leteAssessment\x12/.dlkit.proto.assessment.DeleteAssessmentRequest\x1a-.dlkit.proto.assessment.DeleteAssessmentReply\"\x00\x12\x92\x01\n\x1a\x43\x61nManageAssessmentAliases\x12\x39.dlkit.proto.assessment.CanManageAssessmentAliasesRequest\x1a\x37.dlkit.proto.assessment.CanManageAssessmentAliasesReply\"\x00\x12q\n\x0f\x41liasAssessment\x12..dlkit.proto.assessment.AliasAssessmentRequest\x1a,.dlkit.proto.assessment.AliasAssessmentReply\"\x00\x32\x88\t\n\x15\x41ssessmentBankSession\x12\xa1\x01\n\x1f\x43\x61nLookupAssessmentBankMappings\x12>.dlkit.proto.assessment.CanLookupAssessmentBankMappingsRequest\x1a<.dlkit.proto.assessment.CanLookupAssessmentBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12w\n\x16GetAssessmentIdsByBank\x12\x35.dlkit.proto.assessment.GetAssessmentIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12s\n\x14GetAssessmentsByBank\x12\x33.dlkit.proto.assessment.GetAssessmentsByBankRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12y\n\x17GetAssessmentIdsByBanks\x12\x36.dlkit.proto.assessment.GetAssessmentIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12u\n\x15GetAssessmentsByBanks\x12\x34.dlkit.proto.assessment.GetAssessmentsByBanksRequest\x1a\".dlkit.proto.assessment.Assessment\"\x00\x30\x01\x12w\n\x16GetBankIdsByAssessment\x12\x35.dlkit.proto.assessment.GetBankIdsByAssessmentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12m\n\x14GetBanksByAssessment\x12\x33.dlkit.proto.assessment.GetBanksByAssessmentRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xf4\x07\n\x1f\x41ssessmentBankAssignmentSession\x12\x80\x01\n\x14\x43\x61nAssignAssessments\x12\x33.dlkit.proto.assessment.CanAssignAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanAssignAssessmentsReply\"\x00\x12\x92\x01\n\x1a\x43\x61nAssignAssessmentsToBank\x12\x39.dlkit.proto.assessment.CanAssignAssessmentsToBankRequest\x1a\x37.dlkit.proto.assessment.CanAssignAssessmentsToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x8d\x01\n!GetAssignableBankIdsForAssessment\x12@.dlkit.proto.assessment.GetAssignableBankIdsForAssessmentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x86\x01\n\x16\x41ssignAssessmentToBank\x12\x35.dlkit.proto.assessment.AssignAssessmentToBankRequest\x1a\x33.dlkit.proto.assessment.AssignAssessmentToBankReply\"\x00\x12\x92\x01\n\x1aUnassignAssessmentFromBank\x12\x39.dlkit.proto.assessment.UnassignAssessmentFromBankRequest\x1a\x37.dlkit.proto.assessment.UnassignAssessmentFromBankReply\"\x00\x12\x95\x01\n\x1bReassignAssessmentToBilling\x12:.dlkit.proto.assessment.ReassignAssessmentToBillingRequest\x1a\x38.dlkit.proto.assessment.ReassignAssessmentToBillingReply\"\x00\x32\xb8\x06\n\x1f\x41ssessmentBasicAuthoringSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nAuthorAssessments\x12\x33.dlkit.proto.assessment.CanAuthorAssessmentsRequest\x1a\x31.dlkit.proto.assessment.CanAuthorAssessmentsReply\"\x00\x12U\n\x08GetItems\x12\'.dlkit.proto.assessment.GetItemsRequest\x1a\x1c.dlkit.proto.assessment.Item\"\x00\x30\x01\x12Y\n\x07\x41\x64\x64Item\x12&.dlkit.proto.assessment.AddItemRequest\x1a$.dlkit.proto.assessment.AddItemReply\"\x00\x12\x62\n\nRemoveItem\x12).dlkit.proto.assessment.RemoveItemRequest\x1a\'.dlkit.proto.assessment.RemoveItemReply\"\x00\x12\\\n\x08MoveItem\x12\'.dlkit.proto.assessment.MoveItemRequest\x1a%.dlkit.proto.assessment.MoveItemReply\"\x00\x12\x62\n\nOrderItems\x12).dlkit.proto.assessment.OrderItemsRequest\x1a\'.dlkit.proto.assessment.OrderItemsReply\"\x00\x32\xc5\x10\n\x1e\x41ssessmentOfferedLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x95\x01\n\x1b\x43\x61nLookupAssessmentsOffered\x12:.dlkit.proto.assessment.CanLookupAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanLookupAssessmentsOfferedReply\"\x00\x12\xad\x01\n#UseComparativeAssessmentOfferedView\x12\x42.dlkit.proto.assessment.UseComparativeAssessmentOfferedViewRequest\x1a@.dlkit.proto.assessment.UseComparativeAssessmentOfferedViewReply\"\x00\x12\xa1\x01\n\x1fUsePlenaryAssessmentOfferedView\x12>.dlkit.proto.assessment.UsePlenaryAssessmentOfferedViewRequest\x1a<.dlkit.proto.assessment.UsePlenaryAssessmentOfferedViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x80\x01\n\x14GetAssessmentOffered\x12\x33.dlkit.proto.assessment.GetAssessmentOfferedRequest\x1a\x31.dlkit.proto.assessment.GetAssessmentOfferedReply\"\x00\x12\x86\x01\n\x1aGetAssessmentsOfferedByIds\x12\x39.dlkit.proto.assessment.GetAssessmentsOfferedByIdsRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x92\x01\n GetAssessmentsOfferedByGenusType\x12?.dlkit.proto.assessment.GetAssessmentsOfferedByGenusTypeRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x9e\x01\n&GetAssessmentsOfferedByParentGenusType\x12\x45.dlkit.proto.assessment.GetAssessmentsOfferedByParentGenusTypeRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x94\x01\n!GetAssessmentsOfferedByRecordType\x12@.dlkit.proto.assessment.GetAssessmentsOfferedByRecordTypeRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x88\x01\n\x1bGetAssessmentsOfferedByDate\x12:.dlkit.proto.assessment.GetAssessmentsOfferedByDateRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x96\x01\n\"GetAssessmentsOfferedForAssessment\x12\x41.dlkit.proto.assessment.GetAssessmentsOfferedForAssessmentRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12|\n\x15GetAssessmentsOffered\x12\x34.dlkit.proto.assessment.GetAssessmentsOfferedRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x32\x94\x07\n\x1d\x41ssessmentOfferedQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x95\x01\n\x1b\x43\x61nSearchAssessmentsOffered\x12:.dlkit.proto.assessment.CanSearchAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanSearchAssessmentsOfferedReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x8f\x01\n\x19GetAssessmentOfferedQuery\x12\x38.dlkit.proto.assessment.GetAssessmentOfferedQueryRequest\x1a\x36.dlkit.proto.assessment.GetAssessmentOfferedQueryReply\"\x00\x12\x8a\x01\n\x1cGetAssessmentsOfferedByQuery\x12;.dlkit.proto.assessment.GetAssessmentsOfferedByQueryRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x32\x90\x0f\n\x1d\x41ssessmentOfferedAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x95\x01\n\x1b\x43\x61nCreateAssessmentsOffered\x12:.dlkit.proto.assessment.CanCreateAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanCreateAssessmentsOfferedReply\"\x00\x12\xbf\x01\n)CanCreateAssessmentOfferedWithRecordTypes\x12H.dlkit.proto.assessment.CanCreateAssessmentOfferedWithRecordTypesRequest\x1a\x46.dlkit.proto.assessment.CanCreateAssessmentOfferedWithRecordTypesReply\"\x00\x12\xa7\x01\n!GetAssessmentOfferedFormForCreate\x12@.dlkit.proto.assessment.GetAssessmentOfferedFormForCreateRequest\x1a>.dlkit.proto.assessment.GetAssessmentOfferedFormForCreateReply\"\x00\x12\x89\x01\n\x17\x43reateAssessmentOffered\x12\x36.dlkit.proto.assessment.CreateAssessmentOfferedRequest\x1a\x34.dlkit.proto.assessment.CreateAssessmentOfferedReply\"\x00\x12\x95\x01\n\x1b\x43\x61nUpdateAssessmentsOffered\x12:.dlkit.proto.assessment.CanUpdateAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanUpdateAssessmentsOfferedReply\"\x00\x12\xa7\x01\n!GetAssessmentOfferedFormForUpdate\x12@.dlkit.proto.assessment.GetAssessmentOfferedFormForUpdateRequest\x1a>.dlkit.proto.assessment.GetAssessmentOfferedFormForUpdateReply\"\x00\x12\x89\x01\n\x17UpdateAssessmentOffered\x12\x36.dlkit.proto.assessment.UpdateAssessmentOfferedRequest\x1a\x34.dlkit.proto.assessment.UpdateAssessmentOfferedReply\"\x00\x12\x95\x01\n\x1b\x43\x61nDeleteAssessmentsOffered\x12:.dlkit.proto.assessment.CanDeleteAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanDeleteAssessmentsOfferedReply\"\x00\x12\x89\x01\n\x17\x44\x65leteAssessmentOffered\x12\x36.dlkit.proto.assessment.DeleteAssessmentOfferedRequest\x1a\x34.dlkit.proto.assessment.DeleteAssessmentOfferedReply\"\x00\x12\xa7\x01\n!CanManageAssessmentOfferedAliases\x12@.dlkit.proto.assessment.CanManageAssessmentOfferedAliasesRequest\x1a>.dlkit.proto.assessment.CanManageAssessmentOfferedAliasesReply\"\x00\x12\x86\x01\n\x16\x41liasAssessmentOffered\x12\x35.dlkit.proto.assessment.AliasAssessmentOfferedRequest\x1a\x33.dlkit.proto.assessment.AliasAssessmentOfferedReply\"\x00\x32\x8b\n\n\x1c\x41ssessmentOfferedBankSession\x12\xb6\x01\n&CanLookupAssessmentOfferedBankMappings\x12\x45.dlkit.proto.assessment.CanLookupAssessmentOfferedBankMappingsRequest\x1a\x43.dlkit.proto.assessment.CanLookupAssessmentOfferedBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12\x85\x01\n\x1dGetAssessmentOfferedIdsByBank\x12<.dlkit.proto.assessment.GetAssessmentOfferedIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x88\x01\n\x1bGetAssessmentsOfferedByBank\x12:.dlkit.proto.assessment.GetAssessmentsOfferedByBankRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x87\x01\n\x1eGetAssessmentOfferedIdsByBanks\x12=.dlkit.proto.assessment.GetAssessmentOfferedIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x8a\x01\n\x1cGetAssessmentsOfferedByBanks\x12;.dlkit.proto.assessment.GetAssessmentsOfferedByBanksRequest\x1a).dlkit.proto.assessment.AssessmentOffered\"\x00\x30\x01\x12\x85\x01\n\x1dGetBankIdsByAssessmentOffered\x12<.dlkit.proto.assessment.GetBankIdsByAssessmentOfferedRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12{\n\x1bGetBanksByAssessmentOffered\x12:.dlkit.proto.assessment.GetBanksByAssessmentOfferedRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xf2\x08\n&AssessmentOfferedBankAssignmentSession\x12\x95\x01\n\x1b\x43\x61nAssignAssessmentsOffered\x12:.dlkit.proto.assessment.CanAssignAssessmentsOfferedRequest\x1a\x38.dlkit.proto.assessment.CanAssignAssessmentsOfferedReply\"\x00\x12\xa7\x01\n!CanAssignAssessmentsOfferedToBank\x12@.dlkit.proto.assessment.CanAssignAssessmentsOfferedToBankRequest\x1a>.dlkit.proto.assessment.CanAssignAssessmentsOfferedToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n(GetAssignableBankIdsForAssessmentOffered\x12G.dlkit.proto.assessment.GetAssignableBankIdsForAssessmentOfferedRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n\x1d\x41ssignAssessmentOfferedToBank\x12<.dlkit.proto.assessment.AssignAssessmentOfferedToBankRequest\x1a:.dlkit.proto.assessment.AssignAssessmentOfferedToBankReply\"\x00\x12\xa7\x01\n!UnassignAssessmentOfferedFromBank\x12@.dlkit.proto.assessment.UnassignAssessmentOfferedFromBankRequest\x1a>.dlkit.proto.assessment.UnassignAssessmentOfferedFromBankReply\"\x00\x12\xaa\x01\n\"ReassignAssessmentOfferedToBilling\x12\x41.dlkit.proto.assessment.ReassignAssessmentOfferedToBillingRequest\x1a?.dlkit.proto.assessment.ReassignAssessmentOfferedToBillingReply\"\x00\x32\xcb\x1b\n\x1c\x41ssessmentTakenLookupSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x8f\x01\n\x19\x43\x61nLookupAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanLookupAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanLookupAssessmentsTakenReply\"\x00\x12\xa7\x01\n!UseComparativeAssessmentTakenView\x12@.dlkit.proto.assessment.UseComparativeAssessmentTakenViewRequest\x1a>.dlkit.proto.assessment.UseComparativeAssessmentTakenViewReply\"\x00\x12\x9b\x01\n\x1dUsePlenaryAssessmentTakenView\x12<.dlkit.proto.assessment.UsePlenaryAssessmentTakenViewRequest\x1a:.dlkit.proto.assessment.UsePlenaryAssessmentTakenViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12z\n\x12GetAssessmentTaken\x12\x31.dlkit.proto.assessment.GetAssessmentTakenRequest\x1a/.dlkit.proto.assessment.GetAssessmentTakenReply\"\x00\x12\x80\x01\n\x18GetAssessmentsTakenByIds\x12\x37.dlkit.proto.assessment.GetAssessmentsTakenByIdsRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x8c\x01\n\x1eGetAssessmentsTakenByGenusType\x12=.dlkit.proto.assessment.GetAssessmentsTakenByGenusTypeRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x98\x01\n$GetAssessmentsTakenByParentGenusType\x12\x43.dlkit.proto.assessment.GetAssessmentsTakenByParentGenusTypeRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x8e\x01\n\x1fGetAssessmentsTakenByRecordType\x12>.dlkit.proto.assessment.GetAssessmentsTakenByRecordTypeRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x82\x01\n\x19GetAssessmentsTakenByDate\x12\x38.dlkit.proto.assessment.GetAssessmentsTakenByDateRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x86\x01\n\x1bGetAssessmentsTakenForTaker\x12:.dlkit.proto.assessment.GetAssessmentsTakenForTakerRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x92\x01\n!GetAssessmentsTakenByDateForTaker\x12@.dlkit.proto.assessment.GetAssessmentsTakenByDateForTakerRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x90\x01\n GetAssessmentsTakenForAssessment\x12?.dlkit.proto.assessment.GetAssessmentsTakenForAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x9c\x01\n&GetAssessmentsTakenByDateForAssessment\x12\x45.dlkit.proto.assessment.GetAssessmentsTakenByDateForAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xa0\x01\n(GetAssessmentsTakenForTakerAndAssessment\x12G.dlkit.proto.assessment.GetAssessmentsTakenForTakerAndAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xac\x01\n.GetAssessmentsTakenByDateForTakerAndAssessment\x12M.dlkit.proto.assessment.GetAssessmentsTakenByDateForTakerAndAssessmentRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x9e\x01\n\'GetAssessmentsTakenForAssessmentOffered\x12\x46.dlkit.proto.assessment.GetAssessmentsTakenForAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xaa\x01\n-GetAssessmentsTakenByDateForAssessmentOffered\x12L.dlkit.proto.assessment.GetAssessmentsTakenByDateForAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xae\x01\n/GetAssessmentsTakenForTakerAndAssessmentOffered\x12N.dlkit.proto.assessment.GetAssessmentsTakenForTakerAndAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\xba\x01\n5GetAssessmentsTakenByDateForTakerAndAssessmentOffered\x12T.dlkit.proto.assessment.GetAssessmentsTakenByDateForTakerAndAssessmentOfferedRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12v\n\x13GetAssessmentsTaken\x12\x32.dlkit.proto.assessment.GetAssessmentsTakenRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x32\x80\x07\n\x1b\x41ssessmentTakenQuerySession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x8f\x01\n\x19\x43\x61nSearchAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanSearchAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanSearchAssessmentsTakenReply\"\x00\x12\x80\x01\n\x14UseFederatedBankView\x12\x33.dlkit.proto.assessment.UseFederatedBankViewRequest\x1a\x31.dlkit.proto.assessment.UseFederatedBankViewReply\"\x00\x12}\n\x13UseIsolatedBankView\x12\x32.dlkit.proto.assessment.UseIsolatedBankViewRequest\x1a\x30.dlkit.proto.assessment.UseIsolatedBankViewReply\"\x00\x12\x89\x01\n\x17GetAssessmentTakenQuery\x12\x36.dlkit.proto.assessment.GetAssessmentTakenQueryRequest\x1a\x34.dlkit.proto.assessment.GetAssessmentTakenQueryReply\"\x00\x12\x84\x01\n\x1aGetAssessmentsTakenByQuery\x12\x39.dlkit.proto.assessment.GetAssessmentsTakenByQueryRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x32\xcc\x0e\n\x1b\x41ssessmentTakenAdminSession\x12_\n\tGetBankId\x12(.dlkit.proto.assessment.GetBankIdRequest\x1a&.dlkit.proto.assessment.GetBankIdReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12\x8f\x01\n\x19\x43\x61nCreateAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanCreateAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanCreateAssessmentsTakenReply\"\x00\x12\xb9\x01\n\'CanCreateAssessmentTakenWithRecordTypes\x12\x46.dlkit.proto.assessment.CanCreateAssessmentTakenWithRecordTypesRequest\x1a\x44.dlkit.proto.assessment.CanCreateAssessmentTakenWithRecordTypesReply\"\x00\x12\xa1\x01\n\x1fGetAssessmentTakenFormForCreate\x12>.dlkit.proto.assessment.GetAssessmentTakenFormForCreateRequest\x1a<.dlkit.proto.assessment.GetAssessmentTakenFormForCreateReply\"\x00\x12\x83\x01\n\x15\x43reateAssessmentTaken\x12\x34.dlkit.proto.assessment.CreateAssessmentTakenRequest\x1a\x32.dlkit.proto.assessment.CreateAssessmentTakenReply\"\x00\x12\x8f\x01\n\x19\x43\x61nUpdateAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanUpdateAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanUpdateAssessmentsTakenReply\"\x00\x12\xa1\x01\n\x1fGetAssessmentTakenFormForUpdate\x12>.dlkit.proto.assessment.GetAssessmentTakenFormForUpdateRequest\x1a<.dlkit.proto.assessment.GetAssessmentTakenFormForUpdateReply\"\x00\x12\x83\x01\n\x15UpdateAssessmentTaken\x12\x34.dlkit.proto.assessment.UpdateAssessmentTakenRequest\x1a\x32.dlkit.proto.assessment.UpdateAssessmentTakenReply\"\x00\x12\x8f\x01\n\x19\x43\x61nDeleteAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanDeleteAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanDeleteAssessmentsTakenReply\"\x00\x12\x83\x01\n\x15\x44\x65leteAssessmentTaken\x12\x34.dlkit.proto.assessment.DeleteAssessmentTakenRequest\x1a\x32.dlkit.proto.assessment.DeleteAssessmentTakenReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nManageAssessmentTakenAliases\x12>.dlkit.proto.assessment.CanManageAssessmentTakenAliasesRequest\x1a<.dlkit.proto.assessment.CanManageAssessmentTakenAliasesReply\"\x00\x12\x80\x01\n\x14\x41liasAssessmentTaken\x12\x33.dlkit.proto.assessment.AliasAssessmentTakenRequest\x1a\x31.dlkit.proto.assessment.AliasAssessmentTakenReply\"\x00\x32\xe7\t\n\x1a\x41ssessmentTakenBankSession\x12\xb0\x01\n$CanLookupAssessmentTakenBankMappings\x12\x43.dlkit.proto.assessment.CanLookupAssessmentTakenBankMappingsRequest\x1a\x41.dlkit.proto.assessment.CanLookupAssessmentTakenBankMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12\x81\x01\n\x1bGetAssessmentTakenIdsByBank\x12:.dlkit.proto.assessment.GetAssessmentTakenIdsByBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x19GetAssessmentsTakenByBank\x12\x38.dlkit.proto.assessment.GetAssessmentsTakenByBankRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x83\x01\n\x1cGetAssessmentTakenIdsByBanks\x12;.dlkit.proto.assessment.GetAssessmentTakenIdsByBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x84\x01\n\x1aGetAssessmentsTakenByBanks\x12\x39.dlkit.proto.assessment.GetAssessmentsTakenByBanksRequest\x1a\'.dlkit.proto.assessment.AssessmentTaken\"\x00\x30\x01\x12\x81\x01\n\x1bGetBankIdsByAssessmentTaken\x12:.dlkit.proto.assessment.GetBankIdsByAssessmentTakenRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12w\n\x19GetBanksByAssessmentTaken\x12\x38.dlkit.proto.assessment.GetBanksByAssessmentTakenRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xce\x08\n$AssessmentTakenBankAssignmentSession\x12\x8f\x01\n\x19\x43\x61nAssignAssessmentsTaken\x12\x38.dlkit.proto.assessment.CanAssignAssessmentsTakenRequest\x1a\x36.dlkit.proto.assessment.CanAssignAssessmentsTakenReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nAssignAssessmentsTakenToBank\x12>.dlkit.proto.assessment.CanAssignAssessmentsTakenToBankRequest\x1a<.dlkit.proto.assessment.CanAssignAssessmentsTakenToBankReply\"\x00\x12s\n\x14GetAssignableBankIds\x12\x33.dlkit.proto.assessment.GetAssignableBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x97\x01\n&GetAssignableBankIdsForAssessmentTaken\x12\x45.dlkit.proto.assessment.GetAssignableBankIdsForAssessmentTakenRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x95\x01\n\x1b\x41ssignAssessmentTakenToBank\x12:.dlkit.proto.assessment.AssignAssessmentTakenToBankRequest\x1a\x38.dlkit.proto.assessment.AssignAssessmentTakenToBankReply\"\x00\x12\xa1\x01\n\x1fUnassignAssessmentTakenFromBank\x12>.dlkit.proto.assessment.UnassignAssessmentTakenFromBankRequest\x1a<.dlkit.proto.assessment.UnassignAssessmentTakenFromBankReply\"\x00\x12\xa4\x01\n ReassignAssessmentTakenToBilling\x12?.dlkit.proto.assessment.ReassignAssessmentTakenToBillingRequest\x1a=.dlkit.proto.assessment.ReassignAssessmentTakenToBillingReply\"\x00\x32\xdb\x08\n\x11\x42\x61nkLookupSession\x12n\n\x0e\x43\x61nLookupBanks\x12-.dlkit.proto.assessment.CanLookupBanksRequest\x1a+.dlkit.proto.assessment.CanLookupBanksReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12Y\n\x07GetBank\x12&.dlkit.proto.assessment.GetBankRequest\x1a$.dlkit.proto.assessment.GetBankReply\"\x00\x12_\n\rGetBanksByIds\x12,.dlkit.proto.assessment.GetBanksByIdsRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12k\n\x13GetBanksByGenusType\x12\x32.dlkit.proto.assessment.GetBanksByGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12w\n\x19GetBanksByParentGenusType\x12\x38.dlkit.proto.assessment.GetBanksByParentGenusTypeRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12m\n\x14GetBanksByRecordType\x12\x33.dlkit.proto.assessment.GetBanksByRecordTypeRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12i\n\x12GetBanksByProvider\x12\x31.dlkit.proto.assessment.GetBanksByProviderRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12U\n\x08GetBanks\x12\'.dlkit.proto.assessment.GetBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\xd1\x02\n\x10\x42\x61nkQuerySession\x12n\n\x0e\x43\x61nSearchBanks\x12-.dlkit.proto.assessment.CanSearchBanksRequest\x1a+.dlkit.proto.assessment.CanSearchBanksReply\"\x00\x12h\n\x0cGetBankQuery\x12+.dlkit.proto.assessment.GetBankQueryRequest\x1a).dlkit.proto.assessment.GetBankQueryReply\"\x00\x12\x63\n\x0fGetBanksByQuery\x12..dlkit.proto.assessment.GetBanksByQueryRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x32\x93\n\n\x10\x42\x61nkAdminSession\x12n\n\x0e\x43\x61nCreateBanks\x12-.dlkit.proto.assessment.CanCreateBanksRequest\x1a+.dlkit.proto.assessment.CanCreateBanksReply\"\x00\x12\x98\x01\n\x1c\x43\x61nCreateBankWithRecordTypes\x12;.dlkit.proto.assessment.CanCreateBankWithRecordTypesRequest\x1a\x39.dlkit.proto.assessment.CanCreateBankWithRecordTypesReply\"\x00\x12\x80\x01\n\x14GetBankFormForCreate\x12\x33.dlkit.proto.assessment.GetBankFormForCreateRequest\x1a\x31.dlkit.proto.assessment.GetBankFormForCreateReply\"\x00\x12\x62\n\nCreateBank\x12).dlkit.proto.assessment.CreateBankRequest\x1a\'.dlkit.proto.assessment.CreateBankReply\"\x00\x12n\n\x0e\x43\x61nUpdateBanks\x12-.dlkit.proto.assessment.CanUpdateBanksRequest\x1a+.dlkit.proto.assessment.CanUpdateBanksReply\"\x00\x12\x80\x01\n\x14GetBankFormForUpdate\x12\x33.dlkit.proto.assessment.GetBankFormForUpdateRequest\x1a\x31.dlkit.proto.assessment.GetBankFormForUpdateReply\"\x00\x12\x62\n\nUpdateBank\x12).dlkit.proto.assessment.UpdateBankRequest\x1a\'.dlkit.proto.assessment.UpdateBankReply\"\x00\x12n\n\x0e\x43\x61nDeleteBanks\x12-.dlkit.proto.assessment.CanDeleteBanksRequest\x1a+.dlkit.proto.assessment.CanDeleteBanksReply\"\x00\x12\x62\n\nDeleteBank\x12).dlkit.proto.assessment.DeleteBankRequest\x1a\'.dlkit.proto.assessment.DeleteBankReply\"\x00\x12\x80\x01\n\x14\x43\x61nManageBankAliases\x12\x33.dlkit.proto.assessment.CanManageBankAliasesRequest\x1a\x31.dlkit.proto.assessment.CanManageBankAliasesReply\"\x00\x12_\n\tAliasBank\x12(.dlkit.proto.assessment.AliasBankRequest\x1a&.dlkit.proto.assessment.AliasBankReply\"\x00\x32\x80\x11\n\x14\x42\x61nkHierarchySession\x12z\n\x12GetBankHierarchyId\x12\x31.dlkit.proto.assessment.GetBankHierarchyIdRequest\x1a/.dlkit.proto.assessment.GetBankHierarchyIdReply\"\x00\x12t\n\x10GetBankHierarchy\x12/.dlkit.proto.assessment.GetBankHierarchyRequest\x1a-.dlkit.proto.assessment.GetBankHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nAccessBankHierarchy\x12\x35.dlkit.proto.assessment.CanAccessBankHierarchyRequest\x1a\x33.dlkit.proto.assessment.CanAccessBankHierarchyReply\"\x00\x12\x86\x01\n\x16UseComparativeBankView\x12\x35.dlkit.proto.assessment.UseComparativeBankViewRequest\x1a\x33.dlkit.proto.assessment.UseComparativeBankViewReply\"\x00\x12z\n\x12UsePlenaryBankView\x12\x31.dlkit.proto.assessment.UsePlenaryBankViewRequest\x1a/.dlkit.proto.assessment.UsePlenaryBankViewReply\"\x00\x12g\n\x0eGetRootBankIds\x12-.dlkit.proto.assessment.GetRootBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12]\n\x0cGetRootBanks\x12+.dlkit.proto.assessment.GetRootBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12n\n\x0eHasParentBanks\x12-.dlkit.proto.assessment.HasParentBanksRequest\x1a+.dlkit.proto.assessment.HasParentBanksReply\"\x00\x12n\n\x0eIsParentOfBank\x12-.dlkit.proto.assessment.IsParentOfBankRequest\x1a+.dlkit.proto.assessment.IsParentOfBankReply\"\x00\x12k\n\x10GetParentBankIds\x12/.dlkit.proto.assessment.GetParentBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetParentBanks\x12-.dlkit.proto.assessment.GetParentBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12t\n\x10IsAncestorOfBank\x12/.dlkit.proto.assessment.IsAncestorOfBankRequest\x1a-.dlkit.proto.assessment.IsAncestorOfBankReply\"\x00\x12k\n\rHasChildBanks\x12,.dlkit.proto.assessment.HasChildBanksRequest\x1a*.dlkit.proto.assessment.HasChildBanksReply\"\x00\x12k\n\rIsChildOfBank\x12,.dlkit.proto.assessment.IsChildOfBankRequest\x1a*.dlkit.proto.assessment.IsChildOfBankReply\"\x00\x12i\n\x0fGetChildBankIds\x12..dlkit.proto.assessment.GetChildBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12_\n\rGetChildBanks\x12,.dlkit.proto.assessment.GetChildBanksRequest\x1a\x1c.dlkit.proto.assessment.Bank\"\x00\x30\x01\x12z\n\x12IsDescendantOfBank\x12\x31.dlkit.proto.assessment.IsDescendantOfBankRequest\x1a/.dlkit.proto.assessment.IsDescendantOfBankReply\"\x00\x12n\n\x0eGetBankNodeIds\x12-.dlkit.proto.assessment.GetBankNodeIdsRequest\x1a+.dlkit.proto.assessment.GetBankNodeIdsReply\"\x00\x12h\n\x0cGetBankNodes\x12+.dlkit.proto.assessment.GetBankNodesRequest\x1a).dlkit.proto.assessment.GetBankNodesReply\"\x00\x32\xc1\x07\n\x1a\x42\x61nkHierarchyDesignSession\x12z\n\x12GetBankHierarchyId\x12\x31.dlkit.proto.assessment.GetBankHierarchyIdRequest\x1a/.dlkit.proto.assessment.GetBankHierarchyIdReply\"\x00\x12t\n\x10GetBankHierarchy\x12/.dlkit.proto.assessment.GetBankHierarchyRequest\x1a-.dlkit.proto.assessment.GetBankHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nModifyBankHierarchy\x12\x35.dlkit.proto.assessment.CanModifyBankHierarchyRequest\x1a\x33.dlkit.proto.assessment.CanModifyBankHierarchyReply\"\x00\x12\x65\n\x0b\x41\x64\x64RootBank\x12*.dlkit.proto.assessment.AddRootBankRequest\x1a(.dlkit.proto.assessment.AddRootBankReply\"\x00\x12n\n\x0eRemoveRootBank\x12-.dlkit.proto.assessment.RemoveRootBankRequest\x1a+.dlkit.proto.assessment.RemoveRootBankReply\"\x00\x12h\n\x0c\x41\x64\x64\x43hildBank\x12+.dlkit.proto.assessment.AddChildBankRequest\x1a).dlkit.proto.assessment.AddChildBankReply\"\x00\x12q\n\x0fRemoveChildBank\x12..dlkit.proto.assessment.RemoveChildBankRequest\x1a,.dlkit.proto.assessment.RemoveChildBankReply\"\x00\x12t\n\x10RemoveChildBanks\x12/.dlkit.proto.assessment.RemoveChildBanksRequest\x1a-.dlkit.proto.assessment.RemoveChildBanksReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_grading__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -56,14 +56,14 @@ _QUESTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.Question.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.assessment.Question.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.Question.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.assessment.Question.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -84,7 +84,7 @@ _QUESTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.Question.recordTypeIds', index=6,
+      name='record_type_ids', full_name='dlkit.proto.assessment.Question.record_type_ids', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -103,7 +103,7 @@ _QUESTION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=337,
-  serialized_end=754,
+  serialized_end=759,
 )
 
 
@@ -126,8 +126,8 @@ _QUESTIONQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=756,
-  serialized_end=771,
+  serialized_start=761,
+  serialized_end=776,
 )
 
 
@@ -150,8 +150,8 @@ _QUESTIONQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=773,
-  serialized_end=797,
+  serialized_start=778,
+  serialized_end=802,
 )
 
 
@@ -174,8 +174,8 @@ _QUESTIONFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=799,
-  serialized_end=813,
+  serialized_start=804,
+  serialized_end=818,
 )
 
 
@@ -198,8 +198,8 @@ _QUESTIONSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=815,
-  serialized_end=836,
+  serialized_start=820,
+  serialized_end=841,
 )
 
 
@@ -229,8 +229,8 @@ _QUESTIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=838,
-  serialized_end=905,
+  serialized_start=843,
+  serialized_end=910,
 )
 
 
@@ -256,14 +256,14 @@ _ANSWER = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.Answer.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.assessment.Answer.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.Answer.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.assessment.Answer.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -284,7 +284,7 @@ _ANSWER = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.Answer.recordTypeIds', index=6,
+      name='record_type_ids', full_name='dlkit.proto.assessment.Answer.record_type_ids', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -302,8 +302,8 @@ _ANSWER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=908,
-  serialized_end=1323,
+  serialized_start=913,
+  serialized_end=1333,
 )
 
 
@@ -326,8 +326,8 @@ _ANSWERQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1325,
-  serialized_end=1338,
+  serialized_start=1335,
+  serialized_end=1348,
 )
 
 
@@ -350,8 +350,8 @@ _ANSWERQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1340,
-  serialized_end=1362,
+  serialized_start=1350,
+  serialized_end=1372,
 )
 
 
@@ -374,8 +374,8 @@ _ANSWERFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1364,
-  serialized_end=1376,
+  serialized_start=1374,
+  serialized_end=1386,
 )
 
 
@@ -398,8 +398,8 @@ _ANSWERSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1378,
-  serialized_end=1397,
+  serialized_start=1388,
+  serialized_end=1407,
 )
 
 
@@ -429,8 +429,8 @@ _ANSWERLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1399,
-  serialized_end=1460,
+  serialized_start=1409,
+  serialized_end=1470,
 )
 
 
@@ -463,14 +463,14 @@ _ITEM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.Item.displayName', index=3,
+      name='display_name', full_name='dlkit.proto.assessment.Item.display_name', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.Item.genusTypeId', index=4,
+      name='genus_type_id', full_name='dlkit.proto.assessment.Item.genus_type_id', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -498,7 +498,7 @@ _ITEM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.Item.recordTypeIds', index=8,
+      name='record_type_ids', full_name='dlkit.proto.assessment.Item.record_type_ids', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -516,8 +516,8 @@ _ITEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1463,
-  serialized_end=1992,
+  serialized_start=1473,
+  serialized_end=2007,
 )
 
 
@@ -540,8 +540,8 @@ _ITEMQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1994,
-  serialized_end=2005,
+  serialized_start=2009,
+  serialized_end=2020,
 )
 
 
@@ -564,8 +564,8 @@ _ITEMQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2007,
-  serialized_end=2027,
+  serialized_start=2022,
+  serialized_end=2042,
 )
 
 
@@ -588,8 +588,8 @@ _ITEMFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2029,
-  serialized_end=2039,
+  serialized_start=2044,
+  serialized_end=2054,
 )
 
 
@@ -612,8 +612,8 @@ _ITEMSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2041,
-  serialized_end=2058,
+  serialized_start=2056,
+  serialized_end=2073,
 )
 
 
@@ -636,8 +636,8 @@ _ITEMSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2060,
-  serialized_end=2072,
+  serialized_start=2075,
+  serialized_end=2087,
 )
 
 
@@ -660,8 +660,8 @@ _ITEMSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2074,
-  serialized_end=2093,
+  serialized_start=2089,
+  serialized_end=2108,
 )
 
 
@@ -691,8 +691,8 @@ _ITEMLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2095,
-  serialized_end=2150,
+  serialized_start=2110,
+  serialized_end=2165,
 )
 
 
@@ -718,14 +718,14 @@ _ASSESSMENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.Assessment.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.assessment.Assessment.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.Assessment.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.assessment.Assessment.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -746,7 +746,7 @@ _ASSESSMENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.Assessment.recordTypeIds', index=6,
+      name='record_type_ids', full_name='dlkit.proto.assessment.Assessment.record_type_ids', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -771,8 +771,8 @@ _ASSESSMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2153,
-  serialized_end=2625,
+  serialized_start=2168,
+  serialized_end=2645,
 )
 
 
@@ -795,8 +795,8 @@ _ASSESSMENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2627,
-  serialized_end=2644,
+  serialized_start=2647,
+  serialized_end=2664,
 )
 
 
@@ -819,8 +819,8 @@ _ASSESSMENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2646,
-  serialized_end=2672,
+  serialized_start=2666,
+  serialized_end=2692,
 )
 
 
@@ -843,8 +843,8 @@ _ASSESSMENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2674,
-  serialized_end=2690,
+  serialized_start=2694,
+  serialized_end=2710,
 )
 
 
@@ -867,8 +867,8 @@ _ASSESSMENTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2692,
-  serialized_end=2715,
+  serialized_start=2712,
+  serialized_end=2735,
 )
 
 
@@ -891,8 +891,8 @@ _ASSESSMENTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2717,
-  serialized_end=2735,
+  serialized_start=2737,
+  serialized_end=2755,
 )
 
 
@@ -915,8 +915,8 @@ _ASSESSMENTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2737,
-  serialized_end=2762,
+  serialized_start=2757,
+  serialized_end=2782,
 )
 
 
@@ -946,8 +946,8 @@ _ASSESSMENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2764,
-  serialized_end=2837,
+  serialized_start=2784,
+  serialized_end=2857,
 )
 
 
@@ -987,7 +987,7 @@ _ASSESSMENTOFFERED = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.AssessmentOffered.displayName', index=4,
+      name='display_name', full_name='dlkit.proto.assessment.AssessmentOffered.display_name', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1001,7 +1001,7 @@ _ASSESSMENTOFFERED = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.AssessmentOffered.genusTypeId', index=6,
+      name='genus_type_id', full_name='dlkit.proto.assessment.AssessmentOffered.genus_type_id', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1043,7 +1043,7 @@ _ASSESSMENTOFFERED = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.AssessmentOffered.recordTypeIds', index=12,
+      name='record_type_ids', full_name='dlkit.proto.assessment.AssessmentOffered.record_type_ids', index=12,
       number=13, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1075,8 +1075,8 @@ _ASSESSMENTOFFERED = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2840,
-  serialized_end=3652,
+  serialized_start=2860,
+  serialized_end=3677,
 )
 
 
@@ -1099,8 +1099,8 @@ _ASSESSMENTOFFEREDQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3654,
-  serialized_end=3678,
+  serialized_start=3679,
+  serialized_end=3703,
 )
 
 
@@ -1123,8 +1123,8 @@ _ASSESSMENTOFFEREDQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3680,
-  serialized_end=3713,
+  serialized_start=3705,
+  serialized_end=3738,
 )
 
 
@@ -1147,8 +1147,8 @@ _ASSESSMENTOFFEREDFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3715,
-  serialized_end=3738,
+  serialized_start=3740,
+  serialized_end=3763,
 )
 
 
@@ -1171,8 +1171,8 @@ _ASSESSMENTOFFEREDSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3740,
-  serialized_end=3770,
+  serialized_start=3765,
+  serialized_end=3795,
 )
 
 
@@ -1195,8 +1195,8 @@ _ASSESSMENTOFFEREDSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3772,
-  serialized_end=3797,
+  serialized_start=3797,
+  serialized_end=3822,
 )
 
 
@@ -1219,8 +1219,8 @@ _ASSESSMENTOFFEREDSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3799,
-  serialized_end=3831,
+  serialized_start=3824,
+  serialized_end=3856,
 )
 
 
@@ -1250,8 +1250,8 @@ _ASSESSMENTOFFEREDLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3833,
-  serialized_end=3928,
+  serialized_start=3858,
+  serialized_end=3953,
 )
 
 
@@ -1298,14 +1298,14 @@ _ASSESSMENTTAKEN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.AssessmentTaken.displayName', index=5,
+      name='display_name', full_name='dlkit.proto.assessment.AssessmentTaken.display_name', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.AssessmentTaken.genusTypeId', index=6,
+      name='genus_type_id', full_name='dlkit.proto.assessment.AssessmentTaken.genus_type_id', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1326,7 +1326,7 @@ _ASSESSMENTTAKEN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.AssessmentTaken.recordTypeIds', index=9,
+      name='record_type_ids', full_name='dlkit.proto.assessment.AssessmentTaken.record_type_ids', index=9,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1358,8 +1358,8 @@ _ASSESSMENTTAKEN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3931,
-  serialized_end=4594,
+  serialized_start=3956,
+  serialized_end=4624,
 )
 
 
@@ -1382,8 +1382,8 @@ _ASSESSMENTTAKENQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4596,
-  serialized_end=4618,
+  serialized_start=4626,
+  serialized_end=4648,
 )
 
 
@@ -1406,8 +1406,8 @@ _ASSESSMENTTAKENQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4620,
-  serialized_end=4651,
+  serialized_start=4650,
+  serialized_end=4681,
 )
 
 
@@ -1430,8 +1430,8 @@ _ASSESSMENTTAKENFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4653,
-  serialized_end=4674,
+  serialized_start=4683,
+  serialized_end=4704,
 )
 
 
@@ -1454,8 +1454,8 @@ _ASSESSMENTTAKENSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4676,
-  serialized_end=4704,
+  serialized_start=4706,
+  serialized_end=4734,
 )
 
 
@@ -1478,8 +1478,8 @@ _ASSESSMENTTAKENSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4706,
-  serialized_end=4729,
+  serialized_start=4736,
+  serialized_end=4759,
 )
 
 
@@ -1502,8 +1502,8 @@ _ASSESSMENTTAKENSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4731,
-  serialized_end=4761,
+  serialized_start=4761,
+  serialized_end=4791,
 )
 
 
@@ -1533,8 +1533,8 @@ _ASSESSMENTTAKENLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4763,
-  serialized_end=4852,
+  serialized_start=4793,
+  serialized_end=4882,
 )
 
 
@@ -1560,14 +1560,14 @@ _ASSESSMENTSECTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.AssessmentSection.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.assessment.AssessmentSection.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.AssessmentSection.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.assessment.AssessmentSection.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1581,7 +1581,7 @@ _ASSESSMENTSECTION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.AssessmentSection.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.assessment.AssessmentSection.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1599,8 +1599,8 @@ _ASSESSMENTSECTION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4855,
-  serialized_end=5248,
+  serialized_start=4885,
+  serialized_end=5283,
 )
 
 
@@ -1630,8 +1630,8 @@ _ASSESSMENTSECTIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5250,
-  serialized_end=5345,
+  serialized_start=5285,
+  serialized_end=5380,
 )
 
 
@@ -1650,14 +1650,14 @@ _BANK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.assessment.Bank.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.assessment.Bank.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.assessment.Bank.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.assessment.Bank.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1671,7 +1671,7 @@ _BANK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.assessment.Bank.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.assessment.Bank.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1689,8 +1689,8 @@ _BANK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5348,
-  serialized_end=5666,
+  serialized_start=5383,
+  serialized_end=5706,
 )
 
 
@@ -1713,8 +1713,8 @@ _BANKQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5668,
-  serialized_end=5679,
+  serialized_start=5708,
+  serialized_end=5719,
 )
 
 
@@ -1737,8 +1737,8 @@ _BANKQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5681,
-  serialized_end=5701,
+  serialized_start=5721,
+  serialized_end=5741,
 )
 
 
@@ -1761,8 +1761,8 @@ _BANKFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5703,
-  serialized_end=5713,
+  serialized_start=5743,
+  serialized_end=5753,
 )
 
 
@@ -1785,8 +1785,8 @@ _BANKSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5715,
-  serialized_end=5732,
+  serialized_start=5755,
+  serialized_end=5772,
 )
 
 
@@ -1809,8 +1809,8 @@ _BANKSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5734,
-  serialized_end=5746,
+  serialized_start=5774,
+  serialized_end=5786,
 )
 
 
@@ -1833,8 +1833,8 @@ _BANKSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5748,
-  serialized_end=5767,
+  serialized_start=5788,
+  serialized_end=5807,
 )
 
 
@@ -1864,8 +1864,8 @@ _BANKLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5769,
-  serialized_end=5824,
+  serialized_start=5809,
+  serialized_end=5864,
 )
 
 
@@ -1888,8 +1888,8 @@ _BANKNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5826,
-  serialized_end=5836,
+  serialized_start=5866,
+  serialized_end=5876,
 )
 
 
@@ -1919,8 +1919,8 @@ _BANKNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5838,
-  serialized_end=5906,
+  serialized_start=5878,
+  serialized_end=5946,
 )
 
 
@@ -1943,8 +1943,8 @@ _RESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5908,
-  serialized_end=5918,
+  serialized_start=5948,
+  serialized_end=5958,
 )
 
 
@@ -1974,8 +1974,8 @@ _RESPONSELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5920,
-  serialized_end=5987,
+  serialized_start=5960,
+  serialized_end=6027,
 )
 
 
@@ -2005,8 +2005,8 @@ _GETBANKIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5989,
-  serialized_end=6053,
+  serialized_start=6029,
+  serialized_end=6093,
 )
 
 
@@ -2029,8 +2029,8 @@ _GETBANKIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6055,
-  serialized_end=6073,
+  serialized_start=6095,
+  serialized_end=6113,
 )
 
 
@@ -2060,8 +2060,8 @@ _GETBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6075,
-  serialized_end=6133,
+  serialized_start=6115,
+  serialized_end=6173,
 )
 
 
@@ -2084,8 +2084,8 @@ _GETBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6135,
-  serialized_end=6151,
+  serialized_start=6175,
+  serialized_end=6191,
 )
 
 
@@ -2115,8 +2115,8 @@ _CANTAKEASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6153,
-  serialized_end=6208,
+  serialized_start=6193,
+  serialized_end=6248,
 )
 
 
@@ -2139,8 +2139,8 @@ _CANTAKEASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6210,
-  serialized_end=6237,
+  serialized_start=6250,
+  serialized_end=6277,
 )
 
 
@@ -2170,8 +2170,8 @@ _HASASSESSMENTBEGUNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6239,
-  serialized_end=6294,
+  serialized_start=6279,
+  serialized_end=6334,
 )
 
 
@@ -2201,8 +2201,8 @@ _HASASSESSMENTBEGUNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6296,
-  serialized_end=6388,
+  serialized_start=6336,
+  serialized_end=6428,
 )
 
 
@@ -2232,8 +2232,8 @@ _ISASSESSMENTOVERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6390,
-  serialized_end=6441,
+  serialized_start=6430,
+  serialized_end=6481,
 )
 
 
@@ -2263,8 +2263,8 @@ _ISASSESSMENTOVERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6443,
-  serialized_end=6533,
+  serialized_start=6483,
+  serialized_end=6573,
 )
 
 
@@ -2294,8 +2294,8 @@ _REQUIRESSYNCHRONOUSSECTIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6535,
-  serialized_end=6608,
+  serialized_start=6575,
+  serialized_end=6648,
 )
 
 
@@ -2325,8 +2325,8 @@ _REQUIRESSYNCHRONOUSSECTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6610,
-  serialized_end=6711,
+  serialized_start=6650,
+  serialized_end=6751,
 )
 
 
@@ -2356,8 +2356,8 @@ _GETFIRSTASSESSMENTSECTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6713,
-  serialized_end=6816,
+  serialized_start=6753,
+  serialized_end=6856,
 )
 
 
@@ -2387,8 +2387,8 @@ _GETFIRSTASSESSMENTSECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6818,
-  serialized_end=6917,
+  serialized_start=6858,
+  serialized_end=6957,
 )
 
 
@@ -2418,8 +2418,8 @@ _HASNEXTASSESSMENTSECTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6919,
-  serialized_end=6987,
+  serialized_start=6959,
+  serialized_end=7027,
 )
 
 
@@ -2449,8 +2449,8 @@ _HASNEXTASSESSMENTSECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6989,
-  serialized_end=7089,
+  serialized_start=7029,
+  serialized_end=7129,
 )
 
 
@@ -2480,8 +2480,8 @@ _GETNEXTASSESSMENTSECTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7091,
-  serialized_end=7193,
+  serialized_start=7131,
+  serialized_end=7233,
 )
 
 
@@ -2511,8 +2511,8 @@ _GETNEXTASSESSMENTSECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7195,
-  serialized_end=7295,
+  serialized_start=7235,
+  serialized_end=7335,
 )
 
 
@@ -2542,8 +2542,8 @@ _HASPREVIOUSASSESSMENTSECTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7297,
-  serialized_end=7373,
+  serialized_start=7337,
+  serialized_end=7413,
 )
 
 
@@ -2573,8 +2573,8 @@ _HASPREVIOUSASSESSMENTSECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7375,
-  serialized_end=7479,
+  serialized_start=7415,
+  serialized_end=7519,
 )
 
 
@@ -2604,8 +2604,8 @@ _GETPREVIOUSASSESSMENTSECTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7481,
-  serialized_end=7587,
+  serialized_start=7521,
+  serialized_end=7627,
 )
 
 
@@ -2635,8 +2635,8 @@ _GETPREVIOUSASSESSMENTSECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7589,
-  serialized_end=7693,
+  serialized_start=7629,
+  serialized_end=7733,
 )
 
 
@@ -2666,8 +2666,8 @@ _GETASSESSMENTSECTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7695,
-  serialized_end=7793,
+  serialized_start=7735,
+  serialized_end=7833,
 )
 
 
@@ -2697,8 +2697,8 @@ _GETASSESSMENTSECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7795,
-  serialized_end=7891,
+  serialized_start=7835,
+  serialized_end=7931,
 )
 
 
@@ -2728,8 +2728,8 @@ _GETASSESSMENTSECTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7893,
-  serialized_end=7988,
+  serialized_start=7933,
+  serialized_end=8028,
 )
 
 
@@ -2759,8 +2759,8 @@ _ISASSESSMENTSECTIONCOMPLETEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7990,
-  serialized_end=8064,
+  serialized_start=8030,
+  serialized_end=8104,
 )
 
 
@@ -2790,8 +2790,8 @@ _ISASSESSMENTSECTIONCOMPLETEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8066,
-  serialized_end=8169,
+  serialized_start=8106,
+  serialized_end=8209,
 )
 
 
@@ -2821,8 +2821,8 @@ _GETINCOMPLETEASSESSMENTSECTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8171,
-  serialized_end=8276,
+  serialized_start=8211,
+  serialized_end=8316,
 )
 
 
@@ -2852,8 +2852,8 @@ _HASASSESSMENTSECTIONBEGUNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8278,
-  serialized_end=8348,
+  serialized_start=8318,
+  serialized_end=8388,
 )
 
 
@@ -2883,8 +2883,8 @@ _HASASSESSMENTSECTIONBEGUNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8350,
-  serialized_end=8451,
+  serialized_start=8390,
+  serialized_end=8491,
 )
 
 
@@ -2914,8 +2914,8 @@ _ISASSESSMENTSECTIONOVERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8453,
-  serialized_end=8519,
+  serialized_start=8493,
+  serialized_end=8559,
 )
 
 
@@ -2945,8 +2945,8 @@ _ISASSESSMENTSECTIONOVERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8521,
-  serialized_end=8620,
+  serialized_start=8561,
+  serialized_end=8660,
 )
 
 
@@ -2976,8 +2976,8 @@ _REQUIRESSYNCHRONOUSRESPONSESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8622,
-  serialized_end=8697,
+  serialized_start=8662,
+  serialized_end=8737,
 )
 
 
@@ -3007,8 +3007,8 @@ _REQUIRESSYNCHRONOUSRESPONSESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8699,
-  serialized_end=8803,
+  serialized_start=8739,
+  serialized_end=8843,
 )
 
 
@@ -3038,8 +3038,8 @@ _GETFIRSTQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8805,
-  serialized_end=8880,
+  serialized_start=8845,
+  serialized_end=8920,
 )
 
 
@@ -3069,8 +3069,8 @@ _GETFIRSTQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8882,
-  serialized_end=8974,
+  serialized_start=8922,
+  serialized_end=9014,
 )
 
 
@@ -3100,8 +3100,8 @@ _HASNEXTQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8976,
-  serialized_end=9025,
+  serialized_start=9016,
+  serialized_end=9065,
 )
 
 
@@ -3138,8 +3138,8 @@ _HASNEXTQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9028,
-  serialized_end=9172,
+  serialized_start=9068,
+  serialized_end=9212,
 )
 
 
@@ -3169,8 +3169,8 @@ _GETNEXTQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9174,
-  serialized_end=9248,
+  serialized_start=9214,
+  serialized_end=9288,
 )
 
 
@@ -3207,8 +3207,8 @@ _GETNEXTQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9251,
-  serialized_end=9395,
+  serialized_start=9291,
+  serialized_end=9435,
 )
 
 
@@ -3238,8 +3238,8 @@ _HASPREVIOUSQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9397,
-  serialized_end=9454,
+  serialized_start=9437,
+  serialized_end=9494,
 )
 
 
@@ -3276,8 +3276,8 @@ _HASPREVIOUSQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9457,
-  serialized_end=9605,
+  serialized_start=9497,
+  serialized_end=9645,
 )
 
 
@@ -3307,8 +3307,8 @@ _GETPREVIOUSQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9607,
-  serialized_end=9685,
+  serialized_start=9647,
+  serialized_end=9725,
 )
 
 
@@ -3345,8 +3345,8 @@ _GETPREVIOUSQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9688,
-  serialized_end=9836,
+  serialized_start=9728,
+  serialized_end=9876,
 )
 
 
@@ -3376,8 +3376,8 @@ _GETQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9838,
-  serialized_end=9908,
+  serialized_start=9878,
+  serialized_end=9948,
 )
 
 
@@ -3414,8 +3414,8 @@ _GETQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9911,
-  serialized_end=10051,
+  serialized_start=9951,
+  serialized_end=10091,
 )
 
 
@@ -3445,8 +3445,8 @@ _GETQUESTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10053,
-  serialized_end=10141,
+  serialized_start=10093,
+  serialized_end=10181,
 )
 
 
@@ -3476,8 +3476,8 @@ _GETRESPONSEFORMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10143,
-  serialized_end=10222,
+  serialized_start=10183,
+  serialized_end=10262,
 )
 
 
@@ -3514,8 +3514,8 @@ _GETRESPONSEFORMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10225,
-  serialized_end=10369,
+  serialized_start=10265,
+  serialized_end=10409,
 )
 
 
@@ -3538,8 +3538,8 @@ _SUBMITRESPONSEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10371,
-  serialized_end=10392,
+  serialized_start=10411,
+  serialized_end=10432,
 )
 
 
@@ -3583,8 +3583,8 @@ _SUBMITRESPONSEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10395,
-  serialized_end=10595,
+  serialized_start=10435,
+  serialized_end=10635,
 )
 
 
@@ -3607,8 +3607,8 @@ _SKIPITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10597,
-  serialized_end=10612,
+  serialized_start=10637,
+  serialized_end=10652,
 )
 
 
@@ -3645,8 +3645,8 @@ _SKIPITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10615,
-  serialized_end=10752,
+  serialized_start=10655,
+  serialized_end=10792,
 )
 
 
@@ -3676,8 +3676,8 @@ _ISQUESTIONANSWEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10754,
-  serialized_end=10809,
+  serialized_start=10794,
+  serialized_end=10849,
 )
 
 
@@ -3714,8 +3714,8 @@ _ISQUESTIONANSWEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10812,
-  serialized_end=10959,
+  serialized_start=10852,
+  serialized_end=10999,
 )
 
 
@@ -3745,8 +3745,8 @@ _GETUNANSWEREDQUESTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10961,
-  serialized_end=11059,
+  serialized_start=11001,
+  serialized_end=11099,
 )
 
 
@@ -3776,8 +3776,8 @@ _HASUNANSWEREDQUESTIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11061,
-  serialized_end=11124,
+  serialized_start=11101,
+  serialized_end=11164,
 )
 
 
@@ -3807,8 +3807,8 @@ _HASUNANSWEREDQUESTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11126,
-  serialized_end=11224,
+  serialized_start=11166,
+  serialized_end=11264,
 )
 
 
@@ -3838,8 +3838,8 @@ _GETFIRSTUNANSWEREDQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11226,
-  serialized_end=11311,
+  serialized_start=11266,
+  serialized_end=11351,
 )
 
 
@@ -3869,8 +3869,8 @@ _GETFIRSTUNANSWEREDQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11313,
-  serialized_end=11415,
+  serialized_start=11353,
+  serialized_end=11455,
 )
 
 
@@ -3900,8 +3900,8 @@ _HASNEXTUNANSWEREDQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11417,
-  serialized_end=11487,
+  serialized_start=11457,
+  serialized_end=11527,
 )
 
 
@@ -3938,8 +3938,8 @@ _HASNEXTUNANSWEREDQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11490,
-  serialized_end=11644,
+  serialized_start=11530,
+  serialized_end=11684,
 )
 
 
@@ -3969,8 +3969,8 @@ _GETNEXTUNANSWEREDQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11646,
-  serialized_end=11730,
+  serialized_start=11686,
+  serialized_end=11770,
 )
 
 
@@ -4007,8 +4007,8 @@ _GETNEXTUNANSWEREDQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11733,
-  serialized_end=11887,
+  serialized_start=11773,
+  serialized_end=11927,
 )
 
 
@@ -4038,8 +4038,8 @@ _HASPREVIOUSUNANSWEREDQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11889,
-  serialized_end=11967,
+  serialized_start=11929,
+  serialized_end=12007,
 )
 
 
@@ -4076,8 +4076,8 @@ _HASPREVIOUSUNANSWEREDQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11970,
-  serialized_end=12128,
+  serialized_start=12010,
+  serialized_end=12168,
 )
 
 
@@ -4107,8 +4107,8 @@ _GETPREVIOUSUNANSWEREDQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12130,
-  serialized_end=12218,
+  serialized_start=12170,
+  serialized_end=12258,
 )
 
 
@@ -4145,8 +4145,8 @@ _GETPREVIOUSUNANSWEREDQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12221,
-  serialized_end=12379,
+  serialized_start=12261,
+  serialized_end=12419,
 )
 
 
@@ -4176,8 +4176,8 @@ _GETRESPONSEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12381,
-  serialized_end=12451,
+  serialized_start=12421,
+  serialized_end=12491,
 )
 
 
@@ -4214,8 +4214,8 @@ _GETRESPONSEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12454,
-  serialized_end=12594,
+  serialized_start=12494,
+  serialized_end=12634,
 )
 
 
@@ -4245,8 +4245,8 @@ _GETRESPONSESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12596,
-  serialized_end=12684,
+  serialized_start=12636,
+  serialized_end=12724,
 )
 
 
@@ -4269,8 +4269,8 @@ _CLEARRESPONSEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12686,
-  serialized_end=12706,
+  serialized_start=12726,
+  serialized_end=12746,
 )
 
 
@@ -4307,8 +4307,8 @@ _CLEARRESPONSEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12709,
-  serialized_end=12851,
+  serialized_start=12749,
+  serialized_end=12891,
 )
 
 
@@ -4331,8 +4331,8 @@ _FINISHASSESSMENTSECTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12853,
-  serialized_end=12883,
+  serialized_start=12893,
+  serialized_end=12923,
 )
 
 
@@ -4362,8 +4362,8 @@ _FINISHASSESSMENTSECTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12885,
-  serialized_end=12984,
+  serialized_start=12925,
+  serialized_end=13024,
 )
 
 
@@ -4393,8 +4393,8 @@ _ISANSWERAVAILABLEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12986,
-  serialized_end=13039,
+  serialized_start=13026,
+  serialized_end=13079,
 )
 
 
@@ -4431,8 +4431,8 @@ _ISANSWERAVAILABLEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13042,
-  serialized_end=13188,
+  serialized_start=13082,
+  serialized_end=13228,
 )
 
 
@@ -4469,8 +4469,8 @@ _GETANSWERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13191,
-  serialized_end=13330,
+  serialized_start=13231,
+  serialized_end=13370,
 )
 
 
@@ -4493,8 +4493,8 @@ _FINISHASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13332,
-  serialized_end=13355,
+  serialized_start=13372,
+  serialized_end=13395,
 )
 
 
@@ -4524,8 +4524,8 @@ _FINISHASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13357,
-  serialized_end=13447,
+  serialized_start=13397,
+  serialized_end=13487,
 )
 
 
@@ -4555,8 +4555,8 @@ _CANACCESSASSESSMENTRESULTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13449,
-  serialized_end=13521,
+  serialized_start=13489,
+  serialized_end=13561,
 )
 
 
@@ -4579,8 +4579,8 @@ _CANACCESSASSESSMENTRESULTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13523,
-  serialized_end=13558,
+  serialized_start=13563,
+  serialized_end=13598,
 )
 
 
@@ -4610,8 +4610,8 @@ _GETITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13560,
-  serialized_end=13642,
+  serialized_start=13600,
+  serialized_end=13682,
 )
 
 
@@ -4641,8 +4641,8 @@ _ARERESULTSAVAILABLEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13644,
-  serialized_end=13701,
+  serialized_start=13684,
+  serialized_end=13741,
 )
 
 
@@ -4672,8 +4672,8 @@ _ARERESULTSAVAILABLEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13703,
-  serialized_end=13796,
+  serialized_start=13743,
+  serialized_end=13836,
 )
 
 
@@ -4703,8 +4703,8 @@ _GETGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13798,
-  serialized_end=13887,
+  serialized_start=13838,
+  serialized_end=13927,
 )
 
 
@@ -4734,8 +4734,8 @@ _CANLOOKUPITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13889,
-  serialized_end=13936,
+  serialized_start=13929,
+  serialized_end=13976,
 )
 
 
@@ -4758,8 +4758,8 @@ _CANLOOKUPITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13938,
-  serialized_end=13961,
+  serialized_start=13978,
+  serialized_end=14001,
 )
 
 
@@ -4782,8 +4782,8 @@ _USECOMPARATIVEITEMVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13963,
-  serialized_end=13992,
+  serialized_start=14003,
+  serialized_end=14032,
 )
 
 
@@ -4806,8 +4806,8 @@ _USECOMPARATIVEITEMVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13994,
-  serialized_end=14025,
+  serialized_start=14034,
+  serialized_end=14065,
 )
 
 
@@ -4830,8 +4830,8 @@ _USEPLENARYITEMVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14027,
-  serialized_end=14052,
+  serialized_start=14067,
+  serialized_end=14092,
 )
 
 
@@ -4854,8 +4854,8 @@ _USEPLENARYITEMVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14054,
-  serialized_end=14081,
+  serialized_start=14094,
+  serialized_end=14121,
 )
 
 
@@ -4878,8 +4878,8 @@ _USEFEDERATEDBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14083,
-  serialized_end=14110,
+  serialized_start=14123,
+  serialized_end=14150,
 )
 
 
@@ -4902,8 +4902,8 @@ _USEFEDERATEDBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14112,
-  serialized_end=14141,
+  serialized_start=14152,
+  serialized_end=14181,
 )
 
 
@@ -4926,8 +4926,8 @@ _USEISOLATEDBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14143,
-  serialized_end=14169,
+  serialized_start=14183,
+  serialized_end=14209,
 )
 
 
@@ -4950,8 +4950,8 @@ _USEISOLATEDBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14171,
-  serialized_end=14199,
+  serialized_start=14211,
+  serialized_end=14239,
 )
 
 
@@ -4981,8 +4981,8 @@ _GETITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14201,
-  serialized_end=14259,
+  serialized_start=14241,
+  serialized_end=14299,
 )
 
 
@@ -5012,8 +5012,8 @@ _GETITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14261,
-  serialized_end=14330,
+  serialized_start=14301,
+  serialized_end=14370,
 )
 
 
@@ -5043,8 +5043,8 @@ _GETITEMSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14332,
-  serialized_end=14408,
+  serialized_start=14372,
+  serialized_end=14448,
 )
 
 
@@ -5074,8 +5074,8 @@ _GETITEMSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14410,
-  serialized_end=14503,
+  serialized_start=14450,
+  serialized_end=14543,
 )
 
 
@@ -5105,8 +5105,8 @@ _GETITEMSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14505,
-  serialized_end=14604,
+  serialized_start=14545,
+  serialized_end=14644,
 )
 
 
@@ -5136,8 +5136,8 @@ _GETITEMSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14606,
-  serialized_end=14701,
+  serialized_start=14646,
+  serialized_end=14741,
 )
 
 
@@ -5167,8 +5167,8 @@ _GETITEMSBYQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14703,
-  serialized_end=14787,
+  serialized_start=14743,
+  serialized_end=14827,
 )
 
 
@@ -5198,8 +5198,8 @@ _GETITEMSBYANSWERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14789,
-  serialized_end=14869,
+  serialized_start=14829,
+  serialized_end=14909,
 )
 
 
@@ -5229,8 +5229,8 @@ _GETITEMSBYLEARNINGOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14871,
-  serialized_end=14965,
+  serialized_start=14911,
+  serialized_end=15005,
 )
 
 
@@ -5260,8 +5260,8 @@ _GETITEMSBYLEARNINGOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14967,
-  serialized_end=15063,
+  serialized_start=15007,
+  serialized_end=15103,
 )
 
 
@@ -5291,8 +5291,8 @@ _CANSEARCHITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15065,
-  serialized_end=15112,
+  serialized_start=15105,
+  serialized_end=15152,
 )
 
 
@@ -5315,8 +5315,8 @@ _CANSEARCHITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15114,
-  serialized_end=15137,
+  serialized_start=15154,
+  serialized_end=15177,
 )
 
 
@@ -5346,8 +5346,8 @@ _GETITEMQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15139,
-  serialized_end=15213,
+  serialized_start=15179,
+  serialized_end=15253,
 )
 
 
@@ -5370,8 +5370,8 @@ _GETITEMQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15215,
-  serialized_end=15236,
+  serialized_start=15255,
+  serialized_end=15276,
 )
 
 
@@ -5401,8 +5401,8 @@ _GETITEMSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15238,
-  serialized_end=15317,
+  serialized_start=15278,
+  serialized_end=15357,
 )
 
 
@@ -5432,8 +5432,8 @@ _GETITEMSEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15319,
-  serialized_end=15396,
+  serialized_start=15359,
+  serialized_end=15436,
 )
 
 
@@ -5456,8 +5456,8 @@ _GETITEMSEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15398,
-  serialized_end=15420,
+  serialized_start=15438,
+  serialized_end=15460,
 )
 
 
@@ -5487,8 +5487,8 @@ _GETITEMSEARCHORDERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15422,
-  serialized_end=15515,
+  serialized_start=15462,
+  serialized_end=15555,
 )
 
 
@@ -5511,8 +5511,8 @@ _GETITEMSEARCHORDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15517,
-  serialized_end=15544,
+  serialized_start=15557,
+  serialized_end=15584,
 )
 
 
@@ -5542,8 +5542,8 @@ _GETITEMSBYSEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15546,
-  serialized_end=15641,
+  serialized_start=15586,
+  serialized_end=15681,
 )
 
 
@@ -5580,8 +5580,8 @@ _GETITEMSBYSEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15644,
-  serialized_end=15781,
+  serialized_start=15684,
+  serialized_end=15821,
 )
 
 
@@ -5611,8 +5611,8 @@ _GETITEMQUERYFROMINSPECTORREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15783,
-  serialized_end=15870,
+  serialized_start=15823,
+  serialized_end=15910,
 )
 
 
@@ -5642,8 +5642,8 @@ _GETITEMQUERYFROMINSPECTORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15872,
-  serialized_end=15980,
+  serialized_start=15912,
+  serialized_end=16020,
 )
 
 
@@ -5673,8 +5673,8 @@ _CANCREATEITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15982,
-  serialized_end=16029,
+  serialized_start=16022,
+  serialized_end=16069,
 )
 
 
@@ -5697,8 +5697,8 @@ _CANCREATEITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16031,
-  serialized_end=16054,
+  serialized_start=16071,
+  serialized_end=16094,
 )
 
 
@@ -5728,8 +5728,8 @@ _CANCREATEITEMWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16056,
-  serialized_end=16134,
+  serialized_start=16096,
+  serialized_end=16174,
 )
 
 
@@ -5759,8 +5759,8 @@ _CANCREATEITEMWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16136,
-  serialized_end=16240,
+  serialized_start=16176,
+  serialized_end=16280,
 )
 
 
@@ -5790,8 +5790,8 @@ _GETITEMFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16242,
-  serialized_end=16322,
+  serialized_start=16282,
+  serialized_end=16362,
 )
 
 
@@ -5821,8 +5821,8 @@ _GETITEMFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16324,
-  serialized_end=16420,
+  serialized_start=16364,
+  serialized_end=16460,
 )
 
 
@@ -5852,8 +5852,8 @@ _CREATEITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16422,
-  serialized_end=16483,
+  serialized_start=16462,
+  serialized_end=16523,
 )
 
 
@@ -5883,8 +5883,8 @@ _CREATEITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16485,
-  serialized_end=16557,
+  serialized_start=16525,
+  serialized_end=16597,
 )
 
 
@@ -5914,8 +5914,8 @@ _CANUPDATEITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16559,
-  serialized_end=16606,
+  serialized_start=16599,
+  serialized_end=16646,
 )
 
 
@@ -5938,8 +5938,8 @@ _CANUPDATEITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16608,
-  serialized_end=16631,
+  serialized_start=16648,
+  serialized_end=16671,
 )
 
 
@@ -5969,8 +5969,8 @@ _GETITEMFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16633,
-  serialized_end=16713,
+  serialized_start=16673,
+  serialized_end=16753,
 )
 
 
@@ -6000,8 +6000,8 @@ _GETITEMFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16715,
-  serialized_end=16797,
+  serialized_start=16755,
+  serialized_end=16837,
 )
 
 
@@ -6024,8 +6024,8 @@ _UPDATEITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16799,
-  serialized_end=16816,
+  serialized_start=16839,
+  serialized_end=16856,
 )
 
 
@@ -6055,8 +6055,8 @@ _UPDATEITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16818,
-  serialized_end=16890,
+  serialized_start=16858,
+  serialized_end=16930,
 )
 
 
@@ -6086,8 +6086,8 @@ _CANDELETEITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16892,
-  serialized_end=16939,
+  serialized_start=16932,
+  serialized_end=16979,
 )
 
 
@@ -6110,8 +6110,8 @@ _CANDELETEITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16941,
-  serialized_end=16964,
+  serialized_start=16981,
+  serialized_end=17004,
 )
 
 
@@ -6134,8 +6134,8 @@ _DELETEITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16966,
-  serialized_end=16983,
+  serialized_start=17006,
+  serialized_end=17023,
 )
 
 
@@ -6165,8 +6165,8 @@ _DELETEITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16985,
-  serialized_end=17057,
+  serialized_start=17025,
+  serialized_end=17097,
 )
 
 
@@ -6196,8 +6196,8 @@ _CANMANAGEITEMALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17059,
-  serialized_end=17119,
+  serialized_start=17099,
+  serialized_end=17159,
 )
 
 
@@ -6220,8 +6220,8 @@ _CANMANAGEITEMALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17121,
-  serialized_end=17150,
+  serialized_start=17161,
+  serialized_end=17190,
 )
 
 
@@ -6244,8 +6244,8 @@ _ALIASITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17152,
-  serialized_end=17168,
+  serialized_start=17192,
+  serialized_end=17208,
 )
 
 
@@ -6282,8 +6282,8 @@ _ALIASITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17170,
-  serialized_end=17295,
+  serialized_start=17210,
+  serialized_end=17335,
 )
 
 
@@ -6313,8 +6313,8 @@ _CANCREATEQUESTIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17297,
-  serialized_end=17352,
+  serialized_start=17337,
+  serialized_end=17392,
 )
 
 
@@ -6337,8 +6337,8 @@ _CANCREATEQUESTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17354,
-  serialized_end=17381,
+  serialized_start=17394,
+  serialized_end=17421,
 )
 
 
@@ -6368,8 +6368,8 @@ _CANCREATEQUESTIONWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17383,
-  serialized_end=17469,
+  serialized_start=17423,
+  serialized_end=17509,
 )
 
 
@@ -6399,8 +6399,8 @@ _CANCREATEQUESTIONWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17471,
-  serialized_end=17583,
+  serialized_start=17511,
+  serialized_end=17623,
 )
 
 
@@ -6430,8 +6430,8 @@ _GETQUESTIONFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17585,
-  serialized_end=17677,
+  serialized_start=17625,
+  serialized_end=17717,
 )
 
 
@@ -6468,8 +6468,8 @@ _GETQUESTIONFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17680,
-  serialized_end=17837,
+  serialized_start=17720,
+  serialized_end=17877,
 )
 
 
@@ -6499,8 +6499,8 @@ _CREATEQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17839,
-  serialized_end=17912,
+  serialized_start=17879,
+  serialized_end=17952,
 )
 
 
@@ -6530,8 +6530,8 @@ _CREATEQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17914,
-  serialized_end=17998,
+  serialized_start=17954,
+  serialized_end=18038,
 )
 
 
@@ -6561,8 +6561,8 @@ _CANUPDATEQUESTIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18000,
-  serialized_end=18055,
+  serialized_start=18040,
+  serialized_end=18095,
 )
 
 
@@ -6585,8 +6585,8 @@ _CANUPDATEQUESTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18057,
-  serialized_end=18084,
+  serialized_start=18097,
+  serialized_end=18124,
 )
 
 
@@ -6616,8 +6616,8 @@ _GETQUESTIONFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18086,
-  serialized_end=18178,
+  serialized_start=18126,
+  serialized_end=18218,
 )
 
 
@@ -6647,8 +6647,8 @@ _GETQUESTIONFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18180,
-  serialized_end=18270,
+  serialized_start=18220,
+  serialized_end=18310,
 )
 
 
@@ -6671,8 +6671,8 @@ _UPDATEQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18272,
-  serialized_end=18293,
+  serialized_start=18312,
+  serialized_end=18333,
 )
 
 
@@ -6702,8 +6702,8 @@ _UPDATEQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18295,
-  serialized_end=18379,
+  serialized_start=18335,
+  serialized_end=18419,
 )
 
 
@@ -6733,8 +6733,8 @@ _CANDELETEQUESTIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18381,
-  serialized_end=18436,
+  serialized_start=18421,
+  serialized_end=18476,
 )
 
 
@@ -6757,8 +6757,8 @@ _CANDELETEQUESTIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18438,
-  serialized_end=18465,
+  serialized_start=18478,
+  serialized_end=18505,
 )
 
 
@@ -6781,8 +6781,8 @@ _DELETEQUESTIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18467,
-  serialized_end=18488,
+  serialized_start=18507,
+  serialized_end=18528,
 )
 
 
@@ -6812,8 +6812,8 @@ _DELETEQUESTIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18490,
-  serialized_end=18570,
+  serialized_start=18530,
+  serialized_end=18610,
 )
 
 
@@ -6843,8 +6843,8 @@ _CANCREATEANSWERSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18572,
-  serialized_end=18623,
+  serialized_start=18612,
+  serialized_end=18663,
 )
 
 
@@ -6867,8 +6867,8 @@ _CANCREATEANSWERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18625,
-  serialized_end=18650,
+  serialized_start=18665,
+  serialized_end=18690,
 )
 
 
@@ -6898,8 +6898,8 @@ _CANCREATEANSWERSWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18652,
-  serialized_end=18736,
+  serialized_start=18692,
+  serialized_end=18776,
 )
 
 
@@ -6929,8 +6929,8 @@ _CANCREATEANSWERSWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18738,
-  serialized_end=18847,
+  serialized_start=18778,
+  serialized_end=18887,
 )
 
 
@@ -6960,8 +6960,8 @@ _GETANSWERFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18849,
-  serialized_end=18935,
+  serialized_start=18889,
+  serialized_end=18975,
 )
 
 
@@ -6998,8 +6998,8 @@ _GETANSWERFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18938,
-  serialized_end=19091,
+  serialized_start=18978,
+  serialized_end=19131,
 )
 
 
@@ -7029,8 +7029,8 @@ _CREATEANSWERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19093,
-  serialized_end=19160,
+  serialized_start=19133,
+  serialized_end=19200,
 )
 
 
@@ -7060,8 +7060,8 @@ _CREATEANSWERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19162,
-  serialized_end=19240,
+  serialized_start=19202,
+  serialized_end=19280,
 )
 
 
@@ -7091,8 +7091,8 @@ _CANUPDATEANSWERSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19242,
-  serialized_end=19293,
+  serialized_start=19282,
+  serialized_end=19333,
 )
 
 
@@ -7115,8 +7115,8 @@ _CANUPDATEANSWERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19295,
-  serialized_end=19320,
+  serialized_start=19335,
+  serialized_end=19360,
 )
 
 
@@ -7146,8 +7146,8 @@ _GETANSWERFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19322,
-  serialized_end=19408,
+  serialized_start=19362,
+  serialized_end=19448,
 )
 
 
@@ -7177,8 +7177,8 @@ _GETANSWERFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19410,
-  serialized_end=19496,
+  serialized_start=19450,
+  serialized_end=19536,
 )
 
 
@@ -7201,8 +7201,8 @@ _UPDATEANSWERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19498,
-  serialized_end=19517,
+  serialized_start=19538,
+  serialized_end=19557,
 )
 
 
@@ -7232,8 +7232,8 @@ _UPDATEANSWERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19519,
-  serialized_end=19597,
+  serialized_start=19559,
+  serialized_end=19637,
 )
 
 
@@ -7263,8 +7263,8 @@ _CANDELETEANSWERSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19599,
-  serialized_end=19650,
+  serialized_start=19639,
+  serialized_end=19690,
 )
 
 
@@ -7287,8 +7287,8 @@ _CANDELETEANSWERSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19652,
-  serialized_end=19677,
+  serialized_start=19692,
+  serialized_end=19717,
 )
 
 
@@ -7311,8 +7311,8 @@ _DELETEANSWERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19679,
-  serialized_end=19698,
+  serialized_start=19719,
+  serialized_end=19738,
 )
 
 
@@ -7342,8 +7342,8 @@ _DELETEANSWERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19700,
-  serialized_end=19776,
+  serialized_start=19740,
+  serialized_end=19816,
 )
 
 
@@ -7373,8 +7373,8 @@ _CANREGISTERFORITEMNOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19778,
-  serialized_end=19861,
+  serialized_start=19818,
+  serialized_end=19901,
 )
 
 
@@ -7397,8 +7397,8 @@ _CANREGISTERFORITEMNOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19863,
-  serialized_end=19903,
+  serialized_start=19903,
+  serialized_end=19943,
 )
 
 
@@ -7421,8 +7421,8 @@ _RELIABLEITEMNOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19905,
-  serialized_end=19937,
+  serialized_start=19945,
+  serialized_end=19977,
 )
 
 
@@ -7445,8 +7445,8 @@ _RELIABLEITEMNOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19939,
-  serialized_end=19973,
+  serialized_start=19979,
+  serialized_end=20013,
 )
 
 
@@ -7469,8 +7469,8 @@ _UNRELIABLEITEMNOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19975,
-  serialized_end=20009,
+  serialized_start=20015,
+  serialized_end=20049,
 )
 
 
@@ -7493,8 +7493,8 @@ _UNRELIABLEITEMNOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20011,
-  serialized_end=20047,
+  serialized_start=20051,
+  serialized_end=20087,
 )
 
 
@@ -7517,8 +7517,8 @@ _ACKNOWLEDGEITEMNOTIFICATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20049,
-  serialized_end=20083,
+  serialized_start=20089,
+  serialized_end=20123,
 )
 
 
@@ -7548,8 +7548,8 @@ _ACKNOWLEDGEITEMNOTIFICATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20085,
-  serialized_end=20182,
+  serialized_start=20125,
+  serialized_end=20222,
 )
 
 
@@ -7572,8 +7572,8 @@ _REGISTERFORNEWITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20184,
-  serialized_end=20210,
+  serialized_start=20224,
+  serialized_end=20250,
 )
 
 
@@ -7596,8 +7596,8 @@ _REGISTERFORNEWITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20212,
-  serialized_end=20240,
+  serialized_start=20252,
+  serialized_end=20280,
 )
 
 
@@ -7620,8 +7620,8 @@ _REGISTERFORCHANGEDITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20242,
-  serialized_end=20272,
+  serialized_start=20282,
+  serialized_end=20312,
 )
 
 
@@ -7644,8 +7644,8 @@ _REGISTERFORCHANGEDITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20274,
-  serialized_end=20306,
+  serialized_start=20314,
+  serialized_end=20346,
 )
 
 
@@ -7668,8 +7668,8 @@ _REGISTERFORCHANGEDITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20308,
-  serialized_end=20337,
+  serialized_start=20348,
+  serialized_end=20377,
 )
 
 
@@ -7699,8 +7699,8 @@ _REGISTERFORCHANGEDITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20339,
-  serialized_end=20423,
+  serialized_start=20379,
+  serialized_end=20463,
 )
 
 
@@ -7723,8 +7723,8 @@ _REGISTERFORDELETEDITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20425,
-  serialized_end=20455,
+  serialized_start=20465,
+  serialized_end=20495,
 )
 
 
@@ -7747,8 +7747,8 @@ _REGISTERFORDELETEDITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20457,
-  serialized_end=20489,
+  serialized_start=20497,
+  serialized_end=20529,
 )
 
 
@@ -7771,8 +7771,8 @@ _REGISTERFORDELETEDITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20491,
-  serialized_end=20520,
+  serialized_start=20531,
+  serialized_end=20560,
 )
 
 
@@ -7802,8 +7802,8 @@ _REGISTERFORDELETEDITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20522,
-  serialized_end=20606,
+  serialized_start=20562,
+  serialized_end=20646,
 )
 
 
@@ -7833,8 +7833,8 @@ _CANLOOKUPITEMBANKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20608,
-  serialized_end=20679,
+  serialized_start=20648,
+  serialized_end=20719,
 )
 
 
@@ -7857,8 +7857,8 @@ _CANLOOKUPITEMBANKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20681,
-  serialized_end=20715,
+  serialized_start=20721,
+  serialized_end=20755,
 )
 
 
@@ -7881,8 +7881,8 @@ _USECOMPARATIVEBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20717,
-  serialized_end=20746,
+  serialized_start=20757,
+  serialized_end=20786,
 )
 
 
@@ -7905,8 +7905,8 @@ _USECOMPARATIVEBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20748,
-  serialized_end=20779,
+  serialized_start=20788,
+  serialized_end=20819,
 )
 
 
@@ -7929,8 +7929,8 @@ _USEPLENARYBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20781,
-  serialized_end=20806,
+  serialized_start=20821,
+  serialized_end=20846,
 )
 
 
@@ -7953,8 +7953,8 @@ _USEPLENARYBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20808,
-  serialized_end=20835,
+  serialized_start=20848,
+  serialized_end=20875,
 )
 
 
@@ -7984,8 +7984,8 @@ _GETITEMIDSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20837,
-  serialized_end=20915,
+  serialized_start=20877,
+  serialized_end=20955,
 )
 
 
@@ -8015,8 +8015,8 @@ _GETITEMSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20917,
-  serialized_end=20993,
+  serialized_start=20957,
+  serialized_end=21033,
 )
 
 
@@ -8046,8 +8046,8 @@ _GETITEMIDSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20995,
-  serialized_end=21075,
+  serialized_start=21035,
+  serialized_end=21115,
 )
 
 
@@ -8077,8 +8077,8 @@ _GETITEMSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21077,
-  serialized_end=21155,
+  serialized_start=21117,
+  serialized_end=21195,
 )
 
 
@@ -8108,8 +8108,8 @@ _GETBANKIDSBYITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21157,
-  serialized_end=21235,
+  serialized_start=21197,
+  serialized_end=21275,
 )
 
 
@@ -8139,8 +8139,8 @@ _GETBANKSBYITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21237,
-  serialized_end=21313,
+  serialized_start=21277,
+  serialized_end=21353,
 )
 
 
@@ -8170,8 +8170,8 @@ _CANASSIGNITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21315,
-  serialized_end=21362,
+  serialized_start=21355,
+  serialized_end=21402,
 )
 
 
@@ -8194,8 +8194,8 @@ _CANASSIGNITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21364,
-  serialized_end=21387,
+  serialized_start=21404,
+  serialized_end=21427,
 )
 
 
@@ -8225,8 +8225,8 @@ _CANASSIGNITEMSTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21389,
-  serialized_end=21450,
+  serialized_start=21429,
+  serialized_end=21490,
 )
 
 
@@ -8256,8 +8256,8 @@ _CANASSIGNITEMSTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21452,
-  serialized_end=21534,
+  serialized_start=21492,
+  serialized_end=21574,
 )
 
 
@@ -8287,8 +8287,8 @@ _GETASSIGNABLEBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21536,
-  serialized_end=21618,
+  serialized_start=21576,
+  serialized_end=21658,
 )
 
 
@@ -8325,8 +8325,8 @@ _GETASSIGNABLEBANKIDSFORITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21621,
-  serialized_end=21763,
+  serialized_start=21661,
+  serialized_end=21803,
 )
 
 
@@ -8349,8 +8349,8 @@ _ASSIGNITEMTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21765,
-  serialized_end=21788,
+  serialized_start=21805,
+  serialized_end=21828,
 )
 
 
@@ -8387,8 +8387,8 @@ _ASSIGNITEMTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21791,
-  serialized_end=21922,
+  serialized_start=21831,
+  serialized_end=21962,
 )
 
 
@@ -8411,8 +8411,8 @@ _UNASSIGNITEMFROMBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21924,
-  serialized_end=21951,
+  serialized_start=21964,
+  serialized_end=21991,
 )
 
 
@@ -8449,8 +8449,8 @@ _UNASSIGNITEMFROMBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21954,
-  serialized_end=22089,
+  serialized_start=21994,
+  serialized_end=22129,
 )
 
 
@@ -8473,8 +8473,8 @@ _REASSIGNITEMTOBILLINGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22091,
-  serialized_end=22119,
+  serialized_start=22131,
+  serialized_end=22159,
 )
 
 
@@ -8518,8 +8518,8 @@ _REASSIGNITEMTOBILLINGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22122,
-  serialized_end=22319,
+  serialized_start=22162,
+  serialized_end=22359,
 )
 
 
@@ -8549,8 +8549,8 @@ _CANLOOKUPASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22321,
-  serialized_end=22380,
+  serialized_start=22361,
+  serialized_end=22420,
 )
 
 
@@ -8573,8 +8573,8 @@ _CANLOOKUPASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22382,
-  serialized_end=22411,
+  serialized_start=22422,
+  serialized_end=22451,
 )
 
 
@@ -8597,8 +8597,8 @@ _USECOMPARATIVEASSESSMENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22413,
-  serialized_end=22448,
+  serialized_start=22453,
+  serialized_end=22488,
 )
 
 
@@ -8621,8 +8621,8 @@ _USECOMPARATIVEASSESSMENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22450,
-  serialized_end=22487,
+  serialized_start=22490,
+  serialized_end=22527,
 )
 
 
@@ -8645,8 +8645,8 @@ _USEPLENARYASSESSMENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22489,
-  serialized_end=22520,
+  serialized_start=22529,
+  serialized_end=22560,
 )
 
 
@@ -8669,8 +8669,8 @@ _USEPLENARYASSESSMENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22522,
-  serialized_end=22555,
+  serialized_start=22562,
+  serialized_end=22595,
 )
 
 
@@ -8700,8 +8700,8 @@ _GETASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22557,
-  serialized_end=22633,
+  serialized_start=22597,
+  serialized_end=22673,
 )
 
 
@@ -8731,8 +8731,8 @@ _GETASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22635,
-  serialized_end=22716,
+  serialized_start=22675,
+  serialized_end=22756,
 )
 
 
@@ -8762,8 +8762,8 @@ _GETASSESSMENTSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22718,
-  serialized_end=22806,
+  serialized_start=22758,
+  serialized_end=22846,
 )
 
 
@@ -8793,8 +8793,8 @@ _GETASSESSMENTSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22808,
-  serialized_end=22913,
+  serialized_start=22848,
+  serialized_end=22953,
 )
 
 
@@ -8824,8 +8824,8 @@ _GETASSESSMENTSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22915,
-  serialized_end=23026,
+  serialized_start=22955,
+  serialized_end=23066,
 )
 
 
@@ -8855,8 +8855,8 @@ _GETASSESSMENTSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23028,
-  serialized_end=23135,
+  serialized_start=23068,
+  serialized_end=23175,
 )
 
 
@@ -8879,8 +8879,8 @@ _GETASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23137,
-  serialized_end=23160,
+  serialized_start=23177,
+  serialized_end=23200,
 )
 
 
@@ -8910,8 +8910,8 @@ _CANSEARCHASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23162,
-  serialized_end=23221,
+  serialized_start=23202,
+  serialized_end=23261,
 )
 
 
@@ -8934,8 +8934,8 @@ _CANSEARCHASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23223,
-  serialized_end=23252,
+  serialized_start=23263,
+  serialized_end=23292,
 )
 
 
@@ -8965,8 +8965,8 @@ _GETASSESSMENTQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23254,
-  serialized_end=23346,
+  serialized_start=23294,
+  serialized_end=23386,
 )
 
 
@@ -8989,8 +8989,8 @@ _GETASSESSMENTQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23348,
-  serialized_end=23375,
+  serialized_start=23388,
+  serialized_end=23415,
 )
 
 
@@ -9020,8 +9020,8 @@ _GETASSESSMENTSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23377,
-  serialized_end=23474,
+  serialized_start=23417,
+  serialized_end=23514,
 )
 
 
@@ -9051,8 +9051,8 @@ _CANCREATEASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23476,
-  serialized_end=23535,
+  serialized_start=23516,
+  serialized_end=23575,
 )
 
 
@@ -9075,8 +9075,8 @@ _CANCREATEASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23537,
-  serialized_end=23566,
+  serialized_start=23577,
+  serialized_end=23606,
 )
 
 
@@ -9106,8 +9106,8 @@ _CANCREATEASSESSMENTWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23568,
-  serialized_end=23658,
+  serialized_start=23608,
+  serialized_end=23698,
 )
 
 
@@ -9137,8 +9137,8 @@ _CANCREATEASSESSMENTWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23660,
-  serialized_end=23776,
+  serialized_start=23700,
+  serialized_end=23816,
 )
 
 
@@ -9168,8 +9168,8 @@ _GETASSESSMENTFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23778,
-  serialized_end=23876,
+  serialized_start=23818,
+  serialized_end=23916,
 )
 
 
@@ -9199,8 +9199,8 @@ _GETASSESSMENTFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23878,
-  serialized_end=23986,
+  serialized_start=23918,
+  serialized_end=24026,
 )
 
 
@@ -9230,8 +9230,8 @@ _CREATEASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23988,
-  serialized_end=24067,
+  serialized_start=24028,
+  serialized_end=24107,
 )
 
 
@@ -9261,8 +9261,8 @@ _CREATEASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24069,
-  serialized_end=24159,
+  serialized_start=24109,
+  serialized_end=24199,
 )
 
 
@@ -9292,8 +9292,8 @@ _CANUPDATEASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24161,
-  serialized_end=24220,
+  serialized_start=24201,
+  serialized_end=24260,
 )
 
 
@@ -9316,8 +9316,8 @@ _CANUPDATEASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24222,
-  serialized_end=24251,
+  serialized_start=24262,
+  serialized_end=24291,
 )
 
 
@@ -9347,8 +9347,8 @@ _GETASSESSMENTFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24253,
-  serialized_end=24351,
+  serialized_start=24293,
+  serialized_end=24391,
 )
 
 
@@ -9378,8 +9378,8 @@ _GETASSESSMENTFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24353,
-  serialized_end=24447,
+  serialized_start=24393,
+  serialized_end=24487,
 )
 
 
@@ -9402,8 +9402,8 @@ _UPDATEASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24449,
-  serialized_end=24472,
+  serialized_start=24489,
+  serialized_end=24512,
 )
 
 
@@ -9433,8 +9433,8 @@ _UPDATEASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24474,
-  serialized_end=24564,
+  serialized_start=24514,
+  serialized_end=24604,
 )
 
 
@@ -9464,8 +9464,8 @@ _CANDELETEASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24566,
-  serialized_end=24625,
+  serialized_start=24606,
+  serialized_end=24665,
 )
 
 
@@ -9488,8 +9488,8 @@ _CANDELETEASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24627,
-  serialized_end=24656,
+  serialized_start=24667,
+  serialized_end=24696,
 )
 
 
@@ -9512,8 +9512,8 @@ _DELETEASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24658,
-  serialized_end=24681,
+  serialized_start=24698,
+  serialized_end=24721,
 )
 
 
@@ -9543,8 +9543,8 @@ _DELETEASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24683,
-  serialized_end=24767,
+  serialized_start=24723,
+  serialized_end=24807,
 )
 
 
@@ -9574,8 +9574,8 @@ _CANMANAGEASSESSMENTALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24769,
-  serialized_end=24841,
+  serialized_start=24809,
+  serialized_end=24881,
 )
 
 
@@ -9598,8 +9598,8 @@ _CANMANAGEASSESSMENTALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24843,
-  serialized_end=24878,
+  serialized_start=24883,
+  serialized_end=24918,
 )
 
 
@@ -9622,8 +9622,8 @@ _ALIASASSESSMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24880,
-  serialized_end=24902,
+  serialized_start=24920,
+  serialized_end=24942,
 )
 
 
@@ -9660,8 +9660,8 @@ _ALIASASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24905,
-  serialized_end=25042,
+  serialized_start=24945,
+  serialized_end=25082,
 )
 
 
@@ -9691,8 +9691,8 @@ _CANLOOKUPASSESSMENTBANKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25044,
-  serialized_end=25127,
+  serialized_start=25084,
+  serialized_end=25167,
 )
 
 
@@ -9715,8 +9715,8 @@ _CANLOOKUPASSESSMENTBANKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25129,
-  serialized_end=25169,
+  serialized_start=25169,
+  serialized_end=25209,
 )
 
 
@@ -9746,8 +9746,8 @@ _GETASSESSMENTIDSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25171,
-  serialized_end=25255,
+  serialized_start=25211,
+  serialized_end=25295,
 )
 
 
@@ -9777,8 +9777,8 @@ _GETASSESSMENTSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25257,
-  serialized_end=25339,
+  serialized_start=25297,
+  serialized_end=25379,
 )
 
 
@@ -9808,8 +9808,8 @@ _GETASSESSMENTIDSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25341,
-  serialized_end=25427,
+  serialized_start=25381,
+  serialized_end=25467,
 )
 
 
@@ -9839,8 +9839,8 @@ _GETASSESSMENTSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25429,
-  serialized_end=25513,
+  serialized_start=25469,
+  serialized_end=25553,
 )
 
 
@@ -9870,8 +9870,8 @@ _GETBANKIDSBYASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25515,
-  serialized_end=25605,
+  serialized_start=25555,
+  serialized_end=25645,
 )
 
 
@@ -9901,8 +9901,8 @@ _GETBANKSBYASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25607,
-  serialized_end=25695,
+  serialized_start=25647,
+  serialized_end=25735,
 )
 
 
@@ -9932,8 +9932,8 @@ _CANASSIGNASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25697,
-  serialized_end=25756,
+  serialized_start=25737,
+  serialized_end=25796,
 )
 
 
@@ -9956,8 +9956,8 @@ _CANASSIGNASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25758,
-  serialized_end=25787,
+  serialized_start=25798,
+  serialized_end=25827,
 )
 
 
@@ -9987,8 +9987,8 @@ _CANASSIGNASSESSMENTSTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25789,
-  serialized_end=25862,
+  serialized_start=25829,
+  serialized_end=25902,
 )
 
 
@@ -10018,8 +10018,8 @@ _CANASSIGNASSESSMENTSTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25864,
-  serialized_end=25952,
+  serialized_start=25904,
+  serialized_end=25992,
 )
 
 
@@ -10056,8 +10056,8 @@ _GETASSIGNABLEBANKIDSFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25955,
-  serialized_end=26109,
+  serialized_start=25995,
+  serialized_end=26149,
 )
 
 
@@ -10080,8 +10080,8 @@ _ASSIGNASSESSMENTTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26111,
-  serialized_end=26140,
+  serialized_start=26151,
+  serialized_end=26180,
 )
 
 
@@ -10118,8 +10118,8 @@ _ASSIGNASSESSMENTTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26143,
-  serialized_end=26286,
+  serialized_start=26183,
+  serialized_end=26326,
 )
 
 
@@ -10142,8 +10142,8 @@ _UNASSIGNASSESSMENTFROMBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26288,
-  serialized_end=26321,
+  serialized_start=26328,
+  serialized_end=26361,
 )
 
 
@@ -10180,8 +10180,8 @@ _UNASSIGNASSESSMENTFROMBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26324,
-  serialized_end=26471,
+  serialized_start=26364,
+  serialized_end=26511,
 )
 
 
@@ -10204,8 +10204,8 @@ _REASSIGNASSESSMENTTOBILLINGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26473,
-  serialized_end=26507,
+  serialized_start=26513,
+  serialized_end=26547,
 )
 
 
@@ -10249,8 +10249,8 @@ _REASSIGNASSESSMENTTOBILLINGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26510,
-  serialized_end=26719,
+  serialized_start=26550,
+  serialized_end=26759,
 )
 
 
@@ -10280,8 +10280,8 @@ _CANAUTHORASSESSMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26721,
-  serialized_end=26780,
+  serialized_start=26761,
+  serialized_end=26820,
 )
 
 
@@ -10304,8 +10304,8 @@ _CANAUTHORASSESSMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26782,
-  serialized_end=26811,
+  serialized_start=26822,
+  serialized_end=26851,
 )
 
 
@@ -10328,8 +10328,8 @@ _ADDITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26813,
-  serialized_end=26827,
+  serialized_start=26853,
+  serialized_end=26867,
 )
 
 
@@ -10366,8 +10366,8 @@ _ADDITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26830,
-  serialized_end=26958,
+  serialized_start=26870,
+  serialized_end=26998,
 )
 
 
@@ -10390,8 +10390,8 @@ _REMOVEITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26960,
-  serialized_end=26977,
+  serialized_start=27000,
+  serialized_end=27017,
 )
 
 
@@ -10428,8 +10428,8 @@ _REMOVEITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26980,
-  serialized_end=27111,
+  serialized_start=27020,
+  serialized_end=27151,
 )
 
 
@@ -10452,8 +10452,8 @@ _MOVEITEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27113,
-  serialized_end=27128,
+  serialized_start=27153,
+  serialized_end=27168,
 )
 
 
@@ -10497,8 +10497,8 @@ _MOVEITEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27131,
-  serialized_end=27324,
+  serialized_start=27171,
+  serialized_end=27364,
 )
 
 
@@ -10521,8 +10521,8 @@ _ORDERITEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27326,
-  serialized_end=27343,
+  serialized_start=27366,
+  serialized_end=27383,
 )
 
 
@@ -10559,8 +10559,8 @@ _ORDERITEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27346,
-  serialized_end=27478,
+  serialized_start=27386,
+  serialized_end=27518,
 )
 
 
@@ -10590,8 +10590,8 @@ _CANLOOKUPASSESSMENTSOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27480,
-  serialized_end=27554,
+  serialized_start=27520,
+  serialized_end=27594,
 )
 
 
@@ -10614,8 +10614,8 @@ _CANLOOKUPASSESSMENTSOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27556,
-  serialized_end=27592,
+  serialized_start=27596,
+  serialized_end=27632,
 )
 
 
@@ -10638,8 +10638,8 @@ _USECOMPARATIVEASSESSMENTOFFEREDVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27594,
-  serialized_end=27636,
+  serialized_start=27634,
+  serialized_end=27676,
 )
 
 
@@ -10662,8 +10662,8 @@ _USECOMPARATIVEASSESSMENTOFFEREDVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27638,
-  serialized_end=27682,
+  serialized_start=27678,
+  serialized_end=27722,
 )
 
 
@@ -10686,8 +10686,8 @@ _USEPLENARYASSESSMENTOFFEREDVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27684,
-  serialized_end=27722,
+  serialized_start=27724,
+  serialized_end=27762,
 )
 
 
@@ -10710,8 +10710,8 @@ _USEPLENARYASSESSMENTOFFEREDVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27724,
-  serialized_end=27764,
+  serialized_start=27764,
+  serialized_end=27804,
 )
 
 
@@ -10741,8 +10741,8 @@ _GETASSESSMENTOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27766,
-  serialized_end=27864,
+  serialized_start=27806,
+  serialized_end=27904,
 )
 
 
@@ -10772,8 +10772,8 @@ _GETASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27866,
-  serialized_end=27962,
+  serialized_start=27906,
+  serialized_end=28002,
 )
 
 
@@ -10803,8 +10803,8 @@ _GETASSESSMENTSOFFEREDBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27964,
-  serialized_end=28067,
+  serialized_start=28004,
+  serialized_end=28107,
 )
 
 
@@ -10834,8 +10834,8 @@ _GETASSESSMENTSOFFEREDBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28069,
-  serialized_end=28189,
+  serialized_start=28109,
+  serialized_end=28229,
 )
 
 
@@ -10865,8 +10865,8 @@ _GETASSESSMENTSOFFEREDBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28191,
-  serialized_end=28317,
+  serialized_start=28231,
+  serialized_end=28357,
 )
 
 
@@ -10896,8 +10896,8 @@ _GETASSESSMENTSOFFEREDBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28319,
-  serialized_end=28433,
+  serialized_start=28359,
+  serialized_end=28473,
 )
 
 
@@ -10934,8 +10934,8 @@ _GETASSESSMENTSOFFEREDBYDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28435,
-  serialized_end=28555,
+  serialized_start=28475,
+  serialized_end=28595,
 )
 
 
@@ -10965,8 +10965,8 @@ _GETASSESSMENTSOFFEREDFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28557,
-  serialized_end=28659,
+  serialized_start=28597,
+  serialized_end=28699,
 )
 
 
@@ -10989,8 +10989,8 @@ _GETASSESSMENTSOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28661,
-  serialized_end=28691,
+  serialized_start=28701,
+  serialized_end=28731,
 )
 
 
@@ -11020,8 +11020,8 @@ _CANSEARCHASSESSMENTSOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28693,
-  serialized_end=28767,
+  serialized_start=28733,
+  serialized_end=28807,
 )
 
 
@@ -11044,8 +11044,8 @@ _CANSEARCHASSESSMENTSOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28769,
-  serialized_end=28805,
+  serialized_start=28809,
+  serialized_end=28845,
 )
 
 
@@ -11075,8 +11075,8 @@ _GETASSESSMENTOFFEREDQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28807,
-  serialized_end=28921,
+  serialized_start=28847,
+  serialized_end=28961,
 )
 
 
@@ -11099,8 +11099,8 @@ _GETASSESSMENTOFFEREDQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28923,
-  serialized_end=28957,
+  serialized_start=28963,
+  serialized_end=28997,
 )
 
 
@@ -11130,8 +11130,8 @@ _GETASSESSMENTSOFFEREDBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28959,
-  serialized_end=29078,
+  serialized_start=28999,
+  serialized_end=29118,
 )
 
 
@@ -11161,8 +11161,8 @@ _CANCREATEASSESSMENTSOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29080,
-  serialized_end=29154,
+  serialized_start=29120,
+  serialized_end=29194,
 )
 
 
@@ -11185,8 +11185,8 @@ _CANCREATEASSESSMENTSOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29156,
-  serialized_end=29192,
+  serialized_start=29196,
+  serialized_end=29232,
 )
 
 
@@ -11216,8 +11216,8 @@ _CANCREATEASSESSMENTOFFEREDWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29194,
-  serialized_end=29299,
+  serialized_start=29234,
+  serialized_end=29339,
 )
 
 
@@ -11247,8 +11247,8 @@ _CANCREATEASSESSMENTOFFEREDWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29302,
-  serialized_end=29433,
+  serialized_start=29342,
+  serialized_end=29473,
 )
 
 
@@ -11278,8 +11278,8 @@ _GETASSESSMENTOFFEREDFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29435,
-  serialized_end=29555,
+  serialized_start=29475,
+  serialized_end=29595,
 )
 
 
@@ -11316,8 +11316,8 @@ _GETASSESSMENTOFFEREDFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29558,
-  serialized_end=29740,
+  serialized_start=29598,
+  serialized_end=29780,
 )
 
 
@@ -11347,8 +11347,8 @@ _CREATEASSESSMENTOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29742,
-  serialized_end=29843,
+  serialized_start=29782,
+  serialized_end=29883,
 )
 
 
@@ -11378,8 +11378,8 @@ _CREATEASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29845,
-  serialized_end=29957,
+  serialized_start=29885,
+  serialized_end=29997,
 )
 
 
@@ -11409,8 +11409,8 @@ _CANUPDATEASSESSMENTSOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29959,
-  serialized_end=30033,
+  serialized_start=29999,
+  serialized_end=30073,
 )
 
 
@@ -11433,8 +11433,8 @@ _CANUPDATEASSESSMENTSOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30035,
-  serialized_end=30071,
+  serialized_start=30075,
+  serialized_end=30111,
 )
 
 
@@ -11464,8 +11464,8 @@ _GETASSESSMENTOFFEREDFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30073,
-  serialized_end=30193,
+  serialized_start=30113,
+  serialized_end=30233,
 )
 
 
@@ -11495,8 +11495,8 @@ _GETASSESSMENTOFFEREDFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30195,
-  serialized_end=30304,
+  serialized_start=30235,
+  serialized_end=30344,
 )
 
 
@@ -11519,8 +11519,8 @@ _UPDATEASSESSMENTOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30306,
-  serialized_end=30336,
+  serialized_start=30346,
+  serialized_end=30376,
 )
 
 
@@ -11550,8 +11550,8 @@ _UPDATEASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30338,
-  serialized_end=30450,
+  serialized_start=30378,
+  serialized_end=30490,
 )
 
 
@@ -11581,8 +11581,8 @@ _CANDELETEASSESSMENTSOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30452,
-  serialized_end=30526,
+  serialized_start=30492,
+  serialized_end=30566,
 )
 
 
@@ -11605,8 +11605,8 @@ _CANDELETEASSESSMENTSOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30528,
-  serialized_end=30564,
+  serialized_start=30568,
+  serialized_end=30604,
 )
 
 
@@ -11629,8 +11629,8 @@ _DELETEASSESSMENTOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30566,
-  serialized_end=30596,
+  serialized_start=30606,
+  serialized_end=30636,
 )
 
 
@@ -11660,8 +11660,8 @@ _DELETEASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30598,
-  serialized_end=30697,
+  serialized_start=30638,
+  serialized_end=30737,
 )
 
 
@@ -11691,8 +11691,8 @@ _CANMANAGEASSESSMENTOFFEREDALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30699,
-  serialized_end=30786,
+  serialized_start=30739,
+  serialized_end=30826,
 )
 
 
@@ -11715,8 +11715,8 @@ _CANMANAGEASSESSMENTOFFEREDALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30788,
-  serialized_end=30830,
+  serialized_start=30828,
+  serialized_end=30870,
 )
 
 
@@ -11739,8 +11739,8 @@ _ALIASASSESSMENTOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30832,
-  serialized_end=30861,
+  serialized_start=30872,
+  serialized_end=30901,
 )
 
 
@@ -11777,8 +11777,8 @@ _ALIASASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30864,
-  serialized_end=31016,
+  serialized_start=30904,
+  serialized_end=31056,
 )
 
 
@@ -11808,8 +11808,8 @@ _CANLOOKUPASSESSMENTOFFEREDBANKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31018,
-  serialized_end=31116,
+  serialized_start=31058,
+  serialized_end=31156,
 )
 
 
@@ -11832,8 +11832,8 @@ _CANLOOKUPASSESSMENTOFFEREDBANKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31118,
-  serialized_end=31165,
+  serialized_start=31158,
+  serialized_end=31205,
 )
 
 
@@ -11863,8 +11863,8 @@ _GETASSESSMENTOFFEREDIDSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31167,
-  serialized_end=31258,
+  serialized_start=31207,
+  serialized_end=31298,
 )
 
 
@@ -11894,8 +11894,8 @@ _GETASSESSMENTSOFFEREDBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31260,
-  serialized_end=31349,
+  serialized_start=31300,
+  serialized_end=31389,
 )
 
 
@@ -11925,8 +11925,8 @@ _GETASSESSMENTOFFEREDIDSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31351,
-  serialized_end=31444,
+  serialized_start=31391,
+  serialized_end=31484,
 )
 
 
@@ -11956,8 +11956,8 @@ _GETASSESSMENTSOFFEREDBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31446,
-  serialized_end=31537,
+  serialized_start=31486,
+  serialized_end=31577,
 )
 
 
@@ -11987,8 +11987,8 @@ _GETBANKIDSBYASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31539,
-  serialized_end=31644,
+  serialized_start=31579,
+  serialized_end=31684,
 )
 
 
@@ -12018,8 +12018,8 @@ _GETBANKSBYASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31646,
-  serialized_end=31749,
+  serialized_start=31686,
+  serialized_end=31789,
 )
 
 
@@ -12049,8 +12049,8 @@ _CANASSIGNASSESSMENTSOFFEREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31751,
-  serialized_end=31825,
+  serialized_start=31791,
+  serialized_end=31865,
 )
 
 
@@ -12073,8 +12073,8 @@ _CANASSIGNASSESSMENTSOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31827,
-  serialized_end=31863,
+  serialized_start=31867,
+  serialized_end=31903,
 )
 
 
@@ -12104,8 +12104,8 @@ _CANASSIGNASSESSMENTSOFFEREDTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31865,
-  serialized_end=31953,
+  serialized_start=31905,
+  serialized_end=31993,
 )
 
 
@@ -12135,8 +12135,8 @@ _CANASSIGNASSESSMENTSOFFEREDTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31955,
-  serialized_end=32050,
+  serialized_start=31995,
+  serialized_end=32090,
 )
 
 
@@ -12173,8 +12173,8 @@ _GETASSIGNABLEBANKIDSFORASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32053,
-  serialized_end=32222,
+  serialized_start=32093,
+  serialized_end=32262,
 )
 
 
@@ -12197,8 +12197,8 @@ _ASSIGNASSESSMENTOFFEREDTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32224,
-  serialized_end=32260,
+  serialized_start=32264,
+  serialized_end=32300,
 )
 
 
@@ -12235,8 +12235,8 @@ _ASSIGNASSESSMENTOFFEREDTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32263,
-  serialized_end=32421,
+  serialized_start=32303,
+  serialized_end=32461,
 )
 
 
@@ -12259,8 +12259,8 @@ _UNASSIGNASSESSMENTOFFEREDFROMBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32423,
-  serialized_end=32463,
+  serialized_start=32463,
+  serialized_end=32503,
 )
 
 
@@ -12297,8 +12297,8 @@ _UNASSIGNASSESSMENTOFFEREDFROMBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32466,
-  serialized_end=32628,
+  serialized_start=32506,
+  serialized_end=32668,
 )
 
 
@@ -12321,8 +12321,8 @@ _REASSIGNASSESSMENTOFFEREDTOBILLINGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32630,
-  serialized_end=32671,
+  serialized_start=32670,
+  serialized_end=32711,
 )
 
 
@@ -12366,8 +12366,8 @@ _REASSIGNASSESSMENTOFFEREDTOBILLINGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32674,
-  serialized_end=32898,
+  serialized_start=32714,
+  serialized_end=32938,
 )
 
 
@@ -12397,8 +12397,8 @@ _CANLOOKUPASSESSMENTSTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32900,
-  serialized_end=32970,
+  serialized_start=32940,
+  serialized_end=33010,
 )
 
 
@@ -12421,8 +12421,8 @@ _CANLOOKUPASSESSMENTSTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=32972,
-  serialized_end=33006,
+  serialized_start=33012,
+  serialized_end=33046,
 )
 
 
@@ -12445,8 +12445,8 @@ _USECOMPARATIVEASSESSMENTTAKENVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33008,
-  serialized_end=33048,
+  serialized_start=33048,
+  serialized_end=33088,
 )
 
 
@@ -12469,8 +12469,8 @@ _USECOMPARATIVEASSESSMENTTAKENVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33050,
-  serialized_end=33092,
+  serialized_start=33090,
+  serialized_end=33132,
 )
 
 
@@ -12493,8 +12493,8 @@ _USEPLENARYASSESSMENTTAKENVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33094,
-  serialized_end=33130,
+  serialized_start=33134,
+  serialized_end=33170,
 )
 
 
@@ -12517,8 +12517,8 @@ _USEPLENARYASSESSMENTTAKENVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33132,
-  serialized_end=33170,
+  serialized_start=33172,
+  serialized_end=33210,
 )
 
 
@@ -12548,8 +12548,8 @@ _GETASSESSMENTTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33172,
-  serialized_end=33264,
+  serialized_start=33212,
+  serialized_end=33304,
 )
 
 
@@ -12579,8 +12579,8 @@ _GETASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33266,
-  serialized_end=33358,
+  serialized_start=33306,
+  serialized_end=33398,
 )
 
 
@@ -12610,8 +12610,8 @@ _GETASSESSMENTSTAKENBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33360,
-  serialized_end=33459,
+  serialized_start=33400,
+  serialized_end=33499,
 )
 
 
@@ -12641,8 +12641,8 @@ _GETASSESSMENTSTAKENBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33461,
-  serialized_end=33577,
+  serialized_start=33501,
+  serialized_end=33617,
 )
 
 
@@ -12672,8 +12672,8 @@ _GETASSESSMENTSTAKENBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33579,
-  serialized_end=33701,
+  serialized_start=33619,
+  serialized_end=33741,
 )
 
 
@@ -12703,8 +12703,8 @@ _GETASSESSMENTSTAKENBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33703,
-  serialized_end=33821,
+  serialized_start=33743,
+  serialized_end=33861,
 )
 
 
@@ -12741,8 +12741,8 @@ _GETASSESSMENTSTAKENBYDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33823,
-  serialized_end=33940,
+  serialized_start=33863,
+  serialized_end=33980,
 )
 
 
@@ -12772,8 +12772,8 @@ _GETASSESSMENTSTAKENFORTAKERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=33942,
-  serialized_end=34035,
+  serialized_start=33982,
+  serialized_end=34075,
 )
 
 
@@ -12817,8 +12817,8 @@ _GETASSESSMENTSTAKENBYDATEFORTAKERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=34038,
-  serialized_end=34220,
+  serialized_start=34078,
+  serialized_end=34260,
 )
 
 
@@ -12848,8 +12848,8 @@ _GETASSESSMENTSTAKENFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=34222,
-  serialized_end=34322,
+  serialized_start=34262,
+  serialized_end=34362,
 )
 
 
@@ -12893,8 +12893,8 @@ _GETASSESSMENTSTAKENBYDATEFORASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=34325,
-  serialized_end=34514,
+  serialized_start=34365,
+  serialized_end=34554,
 )
 
 
@@ -12931,8 +12931,8 @@ _GETASSESSMENTSTAKENFORTAKERANDASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=34517,
-  serialized_end=34682,
+  serialized_start=34557,
+  serialized_end=34722,
 )
 
 
@@ -12983,8 +12983,8 @@ _GETASSESSMENTSTAKENBYDATEFORTAKERANDASSESSMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=34685,
-  serialized_end=34939,
+  serialized_start=34725,
+  serialized_end=34979,
 )
 
 
@@ -13014,8 +13014,8 @@ _GETASSESSMENTSTAKENFORASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=34941,
-  serialized_end=35056,
+  serialized_start=34981,
+  serialized_end=35096,
 )
 
 
@@ -13059,8 +13059,8 @@ _GETASSESSMENTSTAKENBYDATEFORASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35059,
-  serialized_end=35263,
+  serialized_start=35099,
+  serialized_end=35303,
 )
 
 
@@ -13097,8 +13097,8 @@ _GETASSESSMENTSTAKENFORTAKERANDASSESSMENTOFFEREDREQUEST = _descriptor.Descriptor
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35266,
-  serialized_end=35446,
+  serialized_start=35306,
+  serialized_end=35486,
 )
 
 
@@ -13149,8 +13149,8 @@ _GETASSESSMENTSTAKENBYDATEFORTAKERANDASSESSMENTOFFEREDREQUEST = _descriptor.Desc
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35449,
-  serialized_end=35718,
+  serialized_start=35489,
+  serialized_end=35758,
 )
 
 
@@ -13173,8 +13173,8 @@ _GETASSESSMENTSTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35720,
-  serialized_end=35748,
+  serialized_start=35760,
+  serialized_end=35788,
 )
 
 
@@ -13204,8 +13204,8 @@ _CANSEARCHASSESSMENTSTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35750,
-  serialized_end=35820,
+  serialized_start=35790,
+  serialized_end=35860,
 )
 
 
@@ -13228,8 +13228,8 @@ _CANSEARCHASSESSMENTSTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35822,
-  serialized_end=35856,
+  serialized_start=35862,
+  serialized_end=35896,
 )
 
 
@@ -13259,8 +13259,8 @@ _GETASSESSMENTTAKENQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35858,
-  serialized_end=35966,
+  serialized_start=35898,
+  serialized_end=36006,
 )
 
 
@@ -13283,8 +13283,8 @@ _GETASSESSMENTTAKENQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=35968,
-  serialized_end=36000,
+  serialized_start=36008,
+  serialized_end=36040,
 )
 
 
@@ -13314,8 +13314,8 @@ _GETASSESSMENTSTAKENBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36002,
-  serialized_end=36115,
+  serialized_start=36042,
+  serialized_end=36155,
 )
 
 
@@ -13345,8 +13345,8 @@ _CANCREATEASSESSMENTSTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36117,
-  serialized_end=36187,
+  serialized_start=36157,
+  serialized_end=36227,
 )
 
 
@@ -13369,8 +13369,8 @@ _CANCREATEASSESSMENTSTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36189,
-  serialized_end=36223,
+  serialized_start=36229,
+  serialized_end=36263,
 )
 
 
@@ -13400,8 +13400,8 @@ _CANCREATEASSESSMENTTAKENWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36225,
-  serialized_end=36326,
+  serialized_start=36265,
+  serialized_end=36366,
 )
 
 
@@ -13431,8 +13431,8 @@ _CANCREATEASSESSMENTTAKENWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36328,
-  serialized_end=36455,
+  serialized_start=36368,
+  serialized_end=36495,
 )
 
 
@@ -13462,8 +13462,8 @@ _GETASSESSMENTTAKENFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36457,
-  serialized_end=36571,
+  serialized_start=36497,
+  serialized_end=36611,
 )
 
 
@@ -13500,8 +13500,8 @@ _GETASSESSMENTTAKENFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36574,
-  serialized_end=36760,
+  serialized_start=36614,
+  serialized_end=36800,
 )
 
 
@@ -13531,8 +13531,8 @@ _CREATEASSESSMENTTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36762,
-  serialized_end=36857,
+  serialized_start=36802,
+  serialized_end=36897,
 )
 
 
@@ -13562,8 +13562,8 @@ _CREATEASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36859,
-  serialized_end=36965,
+  serialized_start=36899,
+  serialized_end=37005,
 )
 
 
@@ -13593,8 +13593,8 @@ _CANUPDATEASSESSMENTSTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=36967,
-  serialized_end=37037,
+  serialized_start=37007,
+  serialized_end=37077,
 )
 
 
@@ -13617,8 +13617,8 @@ _CANUPDATEASSESSMENTSTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37039,
-  serialized_end=37073,
+  serialized_start=37079,
+  serialized_end=37113,
 )
 
 
@@ -13648,8 +13648,8 @@ _GETASSESSMENTTAKENFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37075,
-  serialized_end=37189,
+  serialized_start=37115,
+  serialized_end=37229,
 )
 
 
@@ -13679,8 +13679,8 @@ _GETASSESSMENTTAKENFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37191,
-  serialized_end=37296,
+  serialized_start=37231,
+  serialized_end=37336,
 )
 
 
@@ -13703,8 +13703,8 @@ _UPDATEASSESSMENTTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37298,
-  serialized_end=37326,
+  serialized_start=37338,
+  serialized_end=37366,
 )
 
 
@@ -13734,8 +13734,8 @@ _UPDATEASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37328,
-  serialized_end=37434,
+  serialized_start=37368,
+  serialized_end=37474,
 )
 
 
@@ -13765,8 +13765,8 @@ _CANDELETEASSESSMENTSTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37436,
-  serialized_end=37506,
+  serialized_start=37476,
+  serialized_end=37546,
 )
 
 
@@ -13789,8 +13789,8 @@ _CANDELETEASSESSMENTSTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37508,
-  serialized_end=37542,
+  serialized_start=37548,
+  serialized_end=37582,
 )
 
 
@@ -13813,8 +13813,8 @@ _DELETEASSESSMENTTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37544,
-  serialized_end=37572,
+  serialized_start=37584,
+  serialized_end=37612,
 )
 
 
@@ -13844,8 +13844,8 @@ _DELETEASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37574,
-  serialized_end=37669,
+  serialized_start=37614,
+  serialized_end=37709,
 )
 
 
@@ -13875,8 +13875,8 @@ _CANMANAGEASSESSMENTTAKENALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37671,
-  serialized_end=37754,
+  serialized_start=37711,
+  serialized_end=37794,
 )
 
 
@@ -13899,8 +13899,8 @@ _CANMANAGEASSESSMENTTAKENALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37756,
-  serialized_end=37796,
+  serialized_start=37796,
+  serialized_end=37836,
 )
 
 
@@ -13923,8 +13923,8 @@ _ALIASASSESSMENTTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37798,
-  serialized_end=37825,
+  serialized_start=37838,
+  serialized_end=37865,
 )
 
 
@@ -13961,8 +13961,8 @@ _ALIASASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37828,
-  serialized_end=37976,
+  serialized_start=37868,
+  serialized_end=38016,
 )
 
 
@@ -13992,8 +13992,8 @@ _CANLOOKUPASSESSMENTTAKENBANKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=37978,
-  serialized_end=38072,
+  serialized_start=38018,
+  serialized_end=38112,
 )
 
 
@@ -14016,8 +14016,8 @@ _CANLOOKUPASSESSMENTTAKENBANKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38074,
-  serialized_end=38119,
+  serialized_start=38114,
+  serialized_end=38159,
 )
 
 
@@ -14047,8 +14047,8 @@ _GETASSESSMENTTAKENIDSBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38121,
-  serialized_end=38210,
+  serialized_start=38161,
+  serialized_end=38250,
 )
 
 
@@ -14078,8 +14078,8 @@ _GETASSESSMENTSTAKENBYBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38212,
-  serialized_end=38299,
+  serialized_start=38252,
+  serialized_end=38339,
 )
 
 
@@ -14109,8 +14109,8 @@ _GETASSESSMENTTAKENIDSBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38301,
-  serialized_end=38392,
+  serialized_start=38341,
+  serialized_end=38432,
 )
 
 
@@ -14140,8 +14140,8 @@ _GETASSESSMENTSTAKENBYBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38394,
-  serialized_end=38483,
+  serialized_start=38434,
+  serialized_end=38523,
 )
 
 
@@ -14171,8 +14171,8 @@ _GETBANKIDSBYASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38485,
-  serialized_end=38586,
+  serialized_start=38525,
+  serialized_end=38626,
 )
 
 
@@ -14202,8 +14202,8 @@ _GETBANKSBYASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38588,
-  serialized_end=38687,
+  serialized_start=38628,
+  serialized_end=38727,
 )
 
 
@@ -14233,8 +14233,8 @@ _CANASSIGNASSESSMENTSTAKENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38689,
-  serialized_end=38759,
+  serialized_start=38729,
+  serialized_end=38799,
 )
 
 
@@ -14257,8 +14257,8 @@ _CANASSIGNASSESSMENTSTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38761,
-  serialized_end=38795,
+  serialized_start=38801,
+  serialized_end=38835,
 )
 
 
@@ -14288,8 +14288,8 @@ _CANASSIGNASSESSMENTSTAKENTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38797,
-  serialized_end=38881,
+  serialized_start=38837,
+  serialized_end=38921,
 )
 
 
@@ -14319,8 +14319,8 @@ _CANASSIGNASSESSMENTSTAKENTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38883,
-  serialized_end=38976,
+  serialized_start=38923,
+  serialized_end=39016,
 )
 
 
@@ -14357,8 +14357,8 @@ _GETASSIGNABLEBANKIDSFORASSESSMENTTAKENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38979,
-  serialized_end=39144,
+  serialized_start=39019,
+  serialized_end=39184,
 )
 
 
@@ -14381,8 +14381,8 @@ _ASSIGNASSESSMENTTAKENTOBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39146,
-  serialized_end=39180,
+  serialized_start=39186,
+  serialized_end=39220,
 )
 
 
@@ -14419,8 +14419,8 @@ _ASSIGNASSESSMENTTAKENTOBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39183,
-  serialized_end=39337,
+  serialized_start=39223,
+  serialized_end=39377,
 )
 
 
@@ -14443,8 +14443,8 @@ _UNASSIGNASSESSMENTTAKENFROMBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39339,
-  serialized_end=39377,
+  serialized_start=39379,
+  serialized_end=39417,
 )
 
 
@@ -14481,8 +14481,8 @@ _UNASSIGNASSESSMENTTAKENFROMBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39380,
-  serialized_end=39538,
+  serialized_start=39420,
+  serialized_end=39578,
 )
 
 
@@ -14505,8 +14505,8 @@ _REASSIGNASSESSMENTTAKENTOBILLINGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39540,
-  serialized_end=39579,
+  serialized_start=39580,
+  serialized_end=39619,
 )
 
 
@@ -14550,8 +14550,8 @@ _REASSIGNASSESSMENTTAKENTOBILLINGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39582,
-  serialized_end=39802,
+  serialized_start=39622,
+  serialized_end=39842,
 )
 
 
@@ -14581,8 +14581,8 @@ _CANLOOKUPBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39804,
-  serialized_end=39851,
+  serialized_start=39844,
+  serialized_end=39891,
 )
 
 
@@ -14605,8 +14605,8 @@ _CANLOOKUPBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39853,
-  serialized_end=39876,
+  serialized_start=39893,
+  serialized_end=39916,
 )
 
 
@@ -14636,8 +14636,8 @@ _GETBANKSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39878,
-  serialized_end=39954,
+  serialized_start=39918,
+  serialized_end=39994,
 )
 
 
@@ -14667,8 +14667,8 @@ _GETBANKSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=39956,
-  serialized_end=40049,
+  serialized_start=39996,
+  serialized_end=40089,
 )
 
 
@@ -14698,8 +14698,8 @@ _GETBANKSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40051,
-  serialized_end=40150,
+  serialized_start=40091,
+  serialized_end=40190,
 )
 
 
@@ -14729,8 +14729,8 @@ _GETBANKSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40152,
-  serialized_end=40247,
+  serialized_start=40192,
+  serialized_end=40287,
 )
 
 
@@ -14760,8 +14760,8 @@ _GETBANKSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40249,
-  serialized_end=40333,
+  serialized_start=40289,
+  serialized_end=40373,
 )
 
 
@@ -14784,8 +14784,8 @@ _GETBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40335,
-  serialized_end=40352,
+  serialized_start=40375,
+  serialized_end=40392,
 )
 
 
@@ -14815,8 +14815,8 @@ _CANSEARCHBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40354,
-  serialized_end=40401,
+  serialized_start=40394,
+  serialized_end=40441,
 )
 
 
@@ -14839,8 +14839,8 @@ _CANSEARCHBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40403,
-  serialized_end=40426,
+  serialized_start=40443,
+  serialized_end=40466,
 )
 
 
@@ -14870,8 +14870,8 @@ _GETBANKQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40428,
-  serialized_end=40502,
+  serialized_start=40468,
+  serialized_end=40542,
 )
 
 
@@ -14894,8 +14894,8 @@ _GETBANKQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40504,
-  serialized_end=40525,
+  serialized_start=40544,
+  serialized_end=40565,
 )
 
 
@@ -14925,8 +14925,8 @@ _GETBANKSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40527,
-  serialized_end=40606,
+  serialized_start=40567,
+  serialized_end=40646,
 )
 
 
@@ -14956,8 +14956,8 @@ _CANCREATEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40608,
-  serialized_end=40655,
+  serialized_start=40648,
+  serialized_end=40695,
 )
 
 
@@ -14980,8 +14980,8 @@ _CANCREATEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40657,
-  serialized_end=40680,
+  serialized_start=40697,
+  serialized_end=40720,
 )
 
 
@@ -15011,8 +15011,8 @@ _CANCREATEBANKWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40682,
-  serialized_end=40760,
+  serialized_start=40722,
+  serialized_end=40800,
 )
 
 
@@ -15042,8 +15042,8 @@ _CANCREATEBANKWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40762,
-  serialized_end=40866,
+  serialized_start=40802,
+  serialized_end=40906,
 )
 
 
@@ -15073,8 +15073,8 @@ _GETBANKFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40868,
-  serialized_end=40948,
+  serialized_start=40908,
+  serialized_end=40988,
 )
 
 
@@ -15104,8 +15104,8 @@ _GETBANKFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=40950,
-  serialized_end=41046,
+  serialized_start=40990,
+  serialized_end=41086,
 )
 
 
@@ -15135,8 +15135,8 @@ _CREATEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41048,
-  serialized_end=41109,
+  serialized_start=41088,
+  serialized_end=41149,
 )
 
 
@@ -15166,8 +15166,8 @@ _CREATEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41111,
-  serialized_end=41183,
+  serialized_start=41151,
+  serialized_end=41223,
 )
 
 
@@ -15197,8 +15197,8 @@ _CANUPDATEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41185,
-  serialized_end=41232,
+  serialized_start=41225,
+  serialized_end=41272,
 )
 
 
@@ -15221,8 +15221,8 @@ _CANUPDATEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41234,
-  serialized_end=41257,
+  serialized_start=41274,
+  serialized_end=41297,
 )
 
 
@@ -15252,8 +15252,8 @@ _GETBANKFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41259,
-  serialized_end=41339,
+  serialized_start=41299,
+  serialized_end=41379,
 )
 
 
@@ -15283,8 +15283,8 @@ _GETBANKFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41341,
-  serialized_end=41423,
+  serialized_start=41381,
+  serialized_end=41463,
 )
 
 
@@ -15307,8 +15307,8 @@ _UPDATEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41425,
-  serialized_end=41442,
+  serialized_start=41465,
+  serialized_end=41482,
 )
 
 
@@ -15338,8 +15338,8 @@ _UPDATEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41444,
-  serialized_end=41516,
+  serialized_start=41484,
+  serialized_end=41556,
 )
 
 
@@ -15369,8 +15369,8 @@ _CANDELETEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41518,
-  serialized_end=41565,
+  serialized_start=41558,
+  serialized_end=41605,
 )
 
 
@@ -15393,8 +15393,8 @@ _CANDELETEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41567,
-  serialized_end=41590,
+  serialized_start=41607,
+  serialized_end=41630,
 )
 
 
@@ -15417,8 +15417,8 @@ _DELETEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41592,
-  serialized_end=41609,
+  serialized_start=41632,
+  serialized_end=41649,
 )
 
 
@@ -15448,8 +15448,8 @@ _DELETEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41611,
-  serialized_end=41683,
+  serialized_start=41651,
+  serialized_end=41723,
 )
 
 
@@ -15479,8 +15479,8 @@ _CANMANAGEBANKALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41685,
-  serialized_end=41745,
+  serialized_start=41725,
+  serialized_end=41785,
 )
 
 
@@ -15503,8 +15503,8 @@ _CANMANAGEBANKALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41747,
-  serialized_end=41776,
+  serialized_start=41787,
+  serialized_end=41816,
 )
 
 
@@ -15527,8 +15527,8 @@ _ALIASBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41778,
-  serialized_end=41794,
+  serialized_start=41818,
+  serialized_end=41834,
 )
 
 
@@ -15565,8 +15565,8 @@ _ALIASBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41796,
-  serialized_end=41921,
+  serialized_start=41836,
+  serialized_end=41961,
 )
 
 
@@ -15596,8 +15596,8 @@ _GETBANKHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41923,
-  serialized_end=41996,
+  serialized_start=41963,
+  serialized_end=42036,
 )
 
 
@@ -15620,8 +15620,8 @@ _GETBANKHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=41998,
-  serialized_end=42025,
+  serialized_start=42038,
+  serialized_end=42065,
 )
 
 
@@ -15651,8 +15651,8 @@ _GETBANKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42027,
-  serialized_end=42103,
+  serialized_start=42067,
+  serialized_end=42143,
 )
 
 
@@ -15675,8 +15675,8 @@ _GETBANKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42105,
-  serialized_end=42130,
+  serialized_start=42145,
+  serialized_end=42170,
 )
 
 
@@ -15706,8 +15706,8 @@ _CANACCESSBANKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42132,
-  serialized_end=42196,
+  serialized_start=42172,
+  serialized_end=42236,
 )
 
 
@@ -15730,8 +15730,8 @@ _CANACCESSBANKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42198,
-  serialized_end=42229,
+  serialized_start=42238,
+  serialized_end=42269,
 )
 
 
@@ -15754,8 +15754,8 @@ _GETROOTBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42231,
-  serialized_end=42254,
+  serialized_start=42271,
+  serialized_end=42294,
 )
 
 
@@ -15778,8 +15778,8 @@ _GETROOTBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42256,
-  serialized_end=42277,
+  serialized_start=42296,
+  serialized_end=42317,
 )
 
 
@@ -15809,8 +15809,8 @@ _HASPARENTBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42279,
-  serialized_end=42326,
+  serialized_start=42319,
+  serialized_end=42366,
 )
 
 
@@ -15840,8 +15840,8 @@ _HASPARENTBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42328,
-  serialized_end=42404,
+  serialized_start=42368,
+  serialized_end=42444,
 )
 
 
@@ -15871,8 +15871,8 @@ _ISPARENTOFBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42406,
-  serialized_end=42454,
+  serialized_start=42446,
+  serialized_end=42494,
 )
 
 
@@ -15909,8 +15909,8 @@ _ISPARENTOFBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42456,
-  serialized_end=42581,
+  serialized_start=42496,
+  serialized_end=42621,
 )
 
 
@@ -15940,8 +15940,8 @@ _GETPARENTBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42583,
-  serialized_end=42661,
+  serialized_start=42623,
+  serialized_end=42701,
 )
 
 
@@ -15971,8 +15971,8 @@ _GETPARENTBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42663,
-  serialized_end=42739,
+  serialized_start=42703,
+  serialized_end=42779,
 )
 
 
@@ -16002,8 +16002,8 @@ _ISANCESTOROFBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42741,
-  serialized_end=42793,
+  serialized_start=42781,
+  serialized_end=42833,
 )
 
 
@@ -16040,8 +16040,8 @@ _ISANCESTOROFBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42795,
-  serialized_end=42922,
+  serialized_start=42835,
+  serialized_end=42962,
 )
 
 
@@ -16071,8 +16071,8 @@ _HASCHILDBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42924,
-  serialized_end=42969,
+  serialized_start=42964,
+  serialized_end=43009,
 )
 
 
@@ -16102,8 +16102,8 @@ _HASCHILDBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=42971,
-  serialized_end=43046,
+  serialized_start=43011,
+  serialized_end=43086,
 )
 
 
@@ -16133,8 +16133,8 @@ _ISCHILDOFBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43048,
-  serialized_end=43094,
+  serialized_start=43088,
+  serialized_end=43134,
 )
 
 
@@ -16171,8 +16171,8 @@ _ISCHILDOFBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43096,
-  serialized_end=43220,
+  serialized_start=43136,
+  serialized_end=43260,
 )
 
 
@@ -16202,8 +16202,8 @@ _GETCHILDBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43222,
-  serialized_end=43299,
+  serialized_start=43262,
+  serialized_end=43339,
 )
 
 
@@ -16233,8 +16233,8 @@ _GETCHILDBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43301,
-  serialized_end=43376,
+  serialized_start=43341,
+  serialized_end=43416,
 )
 
 
@@ -16264,8 +16264,8 @@ _ISDESCENDANTOFBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43378,
-  serialized_end=43434,
+  serialized_start=43418,
+  serialized_end=43474,
 )
 
 
@@ -16302,8 +16302,8 @@ _ISDESCENDANTOFBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43437,
-  serialized_end=43566,
+  serialized_start=43477,
+  serialized_end=43606,
 )
 
 
@@ -16333,8 +16333,8 @@ _GETBANKNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43568,
-  serialized_end=43632,
+  serialized_start=43608,
+  serialized_end=43672,
 )
 
 
@@ -16385,8 +16385,8 @@ _GETBANKNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43635,
-  serialized_end=43789,
+  serialized_start=43675,
+  serialized_end=43829,
 )
 
 
@@ -16416,8 +16416,8 @@ _GETBANKNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43791,
-  serialized_end=43863,
+  serialized_start=43831,
+  serialized_end=43903,
 )
 
 
@@ -16468,8 +16468,8 @@ _GETBANKNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=43866,
-  serialized_end=44018,
+  serialized_start=43906,
+  serialized_end=44058,
 )
 
 
@@ -16499,8 +16499,8 @@ _CANMODIFYBANKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44020,
-  serialized_end=44084,
+  serialized_start=44060,
+  serialized_end=44124,
 )
 
 
@@ -16523,8 +16523,8 @@ _CANMODIFYBANKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44086,
-  serialized_end=44117,
+  serialized_start=44126,
+  serialized_end=44157,
 )
 
 
@@ -16547,8 +16547,8 @@ _ADDROOTBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44119,
-  serialized_end=44137,
+  serialized_start=44159,
+  serialized_end=44177,
 )
 
 
@@ -16578,8 +16578,8 @@ _ADDROOTBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44139,
-  serialized_end=44212,
+  serialized_start=44179,
+  serialized_end=44252,
 )
 
 
@@ -16602,8 +16602,8 @@ _REMOVEROOTBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44214,
-  serialized_end=44235,
+  serialized_start=44254,
+  serialized_end=44275,
 )
 
 
@@ -16633,8 +16633,8 @@ _REMOVEROOTBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44237,
-  serialized_end=44313,
+  serialized_start=44277,
+  serialized_end=44353,
 )
 
 
@@ -16657,8 +16657,8 @@ _ADDCHILDBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44315,
-  serialized_end=44334,
+  serialized_start=44355,
+  serialized_end=44374,
 )
 
 
@@ -16695,8 +16695,8 @@ _ADDCHILDBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44337,
-  serialized_end=44465,
+  serialized_start=44377,
+  serialized_end=44505,
 )
 
 
@@ -16719,8 +16719,8 @@ _REMOVECHILDBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44467,
-  serialized_end=44489,
+  serialized_start=44507,
+  serialized_end=44529,
 )
 
 
@@ -16757,8 +16757,8 @@ _REMOVECHILDBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44492,
-  serialized_end=44623,
+  serialized_start=44532,
+  serialized_end=44663,
 )
 
 
@@ -16781,8 +16781,8 @@ _REMOVECHILDBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44625,
-  serialized_end=44648,
+  serialized_start=44665,
+  serialized_end=44688,
 )
 
 
@@ -16812,56 +16812,56 @@ _REMOVECHILDBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=44650,
-  serialized_end=44728,
+  serialized_start=44690,
+  serialized_end=44768,
 )
 
 _QUESTION.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _QUESTION.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_QUESTION.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_QUESTION.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_QUESTION.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_QUESTION.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _QUESTION.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _QUESTION.fields_by_name['item'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_QUESTION.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_QUESTION.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _QUESTIONLIST.fields_by_name['questions'].message_type = _QUESTION
 _ANSWER.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ANSWER.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ANSWER.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ANSWER.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ANSWER.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ANSWER.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ANSWER.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ANSWER.fields_by_name['item'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ANSWER.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ANSWER.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ANSWERLIST.fields_by_name['answers'].message_type = _ANSWER
 _ITEM.fields_by_name['answers'].message_type = _ANSWER
 _ITEM.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ITEM.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ITEM.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ITEM.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ITEM.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ITEM.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ITEM.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ITEM.fields_by_name['learning_objectives'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ITEM.fields_by_name['question'].message_type = _QUESTION
-_ITEM.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ITEM.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ITEMLIST.fields_by_name['items'].message_type = _ITEM
 _ASSESSMENT.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ASSESSMENT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ASSESSMENT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENT.fields_by_name['level'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ASSESSMENT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENT.fields_by_name['rubric'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTLIST.fields_by_name['assessments'].message_type = _ASSESSMENT
 _ASSESSMENTOFFERED.fields_by_name['assessment'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTOFFERED.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ASSESSMENTOFFERED.fields_by_name['deadline'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _ASSESSMENTOFFERED.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENTOFFERED.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ASSESSMENTOFFERED.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
 _ASSESSMENTOFFERED.fields_by_name['duration'].message_type = dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2._DURATION
-_ASSESSMENTOFFERED.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTOFFERED.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTOFFERED.fields_by_name['grade_system'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTOFFERED.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTOFFERED.fields_by_name['level'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ASSESSMENTOFFERED.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTOFFERED.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTOFFERED.fields_by_name['score_system'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTOFFERED.fields_by_name['start_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _ASSESSMENTOFFEREDLIST.fields_by_name['assessments_offered'].message_type = _ASSESSMENTOFFERED
@@ -16870,25 +16870,25 @@ _ASSESSMENTTAKEN.fields_by_name['assessment_offered'].message_type = dlkit_dot_p
 _ASSESSMENTTAKEN.fields_by_name['bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ASSESSMENTTAKEN.fields_by_name['completion_time'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _ASSESSMENTTAKEN.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENTTAKEN.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENTTAKEN.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTTAKEN.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ASSESSMENTTAKEN.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTTAKEN.fields_by_name['grade'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTTAKEN.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ASSESSMENTTAKEN.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTTAKEN.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTTAKEN.fields_by_name['taker'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTTAKENLIST.fields_by_name['assessments_taken'].message_type = _ASSESSMENTTAKEN
 _ASSESSMENTSECTION.fields_by_name['assessment_taken'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSESSMENTSECTION.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENTSECTION.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSESSMENTSECTION.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTSECTION.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ASSESSMENTSECTION.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTSECTION.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ASSESSMENTSECTION.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSESSMENTSECTION.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSESSMENTSECTIONLIST.fields_by_name['assessment_sections'].message_type = _ASSESSMENTSECTION
 _BANK.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_BANK.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_BANK.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_BANK.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_BANK.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _BANK.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_BANK.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_BANK.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _BANKLIST.fields_by_name['banks'].message_type = _BANK
 _BANKNODELIST.fields_by_name['bank_nodes'].message_type = _BANKNODE
 _RESPONSELIST.fields_by_name['responses'].message_type = _RESPONSE
@@ -21654,8 +21654,8 @@ _ASSESSMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=44731,
-  serialized_end=50240,
+  serialized_start=44771,
+  serialized_end=50280,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -22056,8 +22056,8 @@ _ASSESSMENTRESULTSSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=50243,
-  serialized_end=51023,
+  serialized_start=50283,
+  serialized_end=51063,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -22134,8 +22134,8 @@ _ITEMLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=51026,
-  serialized_end=52942,
+  serialized_start=51066,
+  serialized_end=52982,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -22302,8 +22302,8 @@ _ITEMQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=52945,
-  serialized_end=53728,
+  serialized_start=52985,
+  serialized_end=53768,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -22380,8 +22380,8 @@ _ITEMSEARCHSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=53731,
-  serialized_end=54247,
+  serialized_start=53771,
+  serialized_end=54287,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetItemSearch',
@@ -22431,8 +22431,8 @@ _ITEMADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=54250,
-  serialized_end=58008,
+  serialized_start=54290,
+  serialized_end=58048,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -22725,8 +22725,8 @@ _ITEMNOTIFICATIONSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=58011,
-  serialized_end=59777,
+  serialized_start=58051,
+  serialized_end=59817,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -22857,8 +22857,8 @@ _ITEMBANKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=59780,
-  serialized_end=60832,
+  serialized_start=59820,
+  serialized_end=60872,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupItemBankMappings',
@@ -22953,8 +22953,8 @@ _ITEMBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=60835,
-  serialized_end=61737,
+  serialized_start=60875,
+  serialized_end=61777,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignItems',
@@ -23031,8 +23031,8 @@ _ASSESSMENTLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=9,
   options=None,
-  serialized_start=61740,
-  serialized_end=63365,
+  serialized_start=61780,
+  serialized_end=63405,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -23163,8 +23163,8 @@ _ASSESSMENTQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=10,
   options=None,
-  serialized_start=63368,
-  serialized_end=64212,
+  serialized_start=63408,
+  serialized_end=64252,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -23241,8 +23241,8 @@ _ASSESSMENTADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=11,
   options=None,
-  serialized_start=64215,
-  serialized_end=65909,
+  serialized_start=64255,
+  serialized_end=65949,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -23373,8 +23373,8 @@ _ASSESSMENTBANKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=12,
   options=None,
-  serialized_start=65912,
-  serialized_end=67072,
+  serialized_start=65952,
+  serialized_end=67112,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupAssessmentBankMappings',
@@ -23469,8 +23469,8 @@ _ASSESSMENTBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=13,
   options=None,
-  serialized_start=67075,
-  serialized_end=68087,
+  serialized_start=67115,
+  serialized_end=68127,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignAssessments',
@@ -23547,8 +23547,8 @@ _ASSESSMENTBASICAUTHORINGSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=14,
   options=None,
-  serialized_start=68090,
-  serialized_end=68914,
+  serialized_start=68130,
+  serialized_end=68954,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -23634,8 +23634,8 @@ _ASSESSMENTOFFEREDLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=15,
   options=None,
-  serialized_start=68917,
-  serialized_end=71034,
+  serialized_start=68957,
+  serialized_end=71074,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -23784,8 +23784,8 @@ _ASSESSMENTOFFEREDQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=16,
   options=None,
-  serialized_start=71037,
-  serialized_end=71953,
+  serialized_start=71077,
+  serialized_end=71993,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -23862,8 +23862,8 @@ _ASSESSMENTOFFEREDADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=17,
   options=None,
-  serialized_start=71956,
-  serialized_end=73892,
+  serialized_start=71996,
+  serialized_end=73932,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -23994,8 +23994,8 @@ _ASSESSMENTOFFEREDBANKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=18,
   options=None,
-  serialized_start=73895,
-  serialized_end=75186,
+  serialized_start=73935,
+  serialized_end=75226,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupAssessmentOfferedBankMappings',
@@ -24090,8 +24090,8 @@ _ASSESSMENTOFFEREDBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=19,
   options=None,
-  serialized_start=75189,
-  serialized_end=76327,
+  serialized_start=75229,
+  serialized_end=76367,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignAssessmentsOffered',
@@ -24168,8 +24168,8 @@ _ASSESSMENTTAKENLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=20,
   options=None,
-  serialized_start=76330,
-  serialized_end=79861,
+  serialized_start=76370,
+  serialized_end=79901,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -24399,8 +24399,8 @@ _ASSESSMENTTAKENQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=21,
   options=None,
-  serialized_start=79864,
-  serialized_end=80760,
+  serialized_start=79904,
+  serialized_end=80800,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -24477,8 +24477,8 @@ _ASSESSMENTTAKENADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=22,
   options=None,
-  serialized_start=80763,
-  serialized_end=82631,
+  serialized_start=80803,
+  serialized_end=82671,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankId',
@@ -24609,8 +24609,8 @@ _ASSESSMENTTAKENBANKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=23,
   options=None,
-  serialized_start=82634,
-  serialized_end=83889,
+  serialized_start=82674,
+  serialized_end=83929,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupAssessmentTakenBankMappings',
@@ -24705,8 +24705,8 @@ _ASSESSMENTTAKENBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=24,
   options=None,
-  serialized_start=83892,
-  serialized_end=84994,
+  serialized_start=83932,
+  serialized_end=85034,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignAssessmentsTaken',
@@ -24783,8 +24783,8 @@ _BANKLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=25,
   options=None,
-  serialized_start=84997,
-  serialized_end=86112,
+  serialized_start=85037,
+  serialized_end=86152,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupBanks',
@@ -24888,8 +24888,8 @@ _BANKQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=26,
   options=None,
-  serialized_start=86115,
-  serialized_end=86452,
+  serialized_start=86155,
+  serialized_end=86492,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanSearchBanks',
@@ -24930,8 +24930,8 @@ _BANKADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=27,
   options=None,
-  serialized_start=86455,
-  serialized_end=87754,
+  serialized_start=86495,
+  serialized_end=87794,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateBanks',
@@ -25044,8 +25044,8 @@ _BANKHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=28,
   options=None,
-  serialized_start=87757,
-  serialized_end=89933,
+  serialized_start=87797,
+  serialized_end=89973,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankHierarchyId',
@@ -25230,8 +25230,8 @@ _BANKHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=29,
   options=None,
-  serialized_start=89936,
-  serialized_end=90897,
+  serialized_start=89976,
+  serialized_end=90937,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBankHierarchyId',

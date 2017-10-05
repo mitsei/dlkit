@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/resource.proto',
   package='dlkit.proto.resource',
   syntax='proto3',
-  serialized_pb=_b('\n\x1a\x64lkit/proto/resource.proto\x12\x14\x64lkit.proto.resource\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a dlkit/proto/authentication.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\"\xb1\x03\n\x08Resource\x12\x32\n\x06\x61vatar\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12*\n\x03\x62in\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\r\n\x05group\x18\x06 \x01(\x08\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rResourceQuery\"\x18\n\x16ResourceQueryInspector\"\x0e\n\x0cResourceForm\"\x15\n\x13ResourceSearchOrder\"\x10\n\x0eResourceSearch\"\x17\n\x15ResourceSearchResults\"A\n\x0cResourceList\x12\x31\n\tresources\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.resource.Resource\"\x0e\n\x0cResourceNode\"N\n\x10ResourceNodeList\x12:\n\x0eresource_nodes\x18\x01 \x03(\x0b\x32\".dlkit.proto.resource.ResourceNode\"\xc1\x01\n\x14ResourceRelationship\x12*\n\x03\x62in\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12@\n\x14\x64\x65stination_resource\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0fsource_resource\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19ResourceRelationshipQuery\"$\n\"ResourceRelationshipQueryInspector\"\x1a\n\x18ResourceRelationshipForm\"!\n\x1fResourceRelationshipSearchOrder\"\x1c\n\x1aResourceRelationshipSearch\"#\n!ResourceRelationshipSearchResults\"f\n\x18ResourceRelationshipList\x12J\n\x16resource_relationships\x18\x01 \x03(\x0b\x32*.dlkit.proto.resource.ResourceRelationship\"\xbd\x02\n\x03\x42in\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\n\n\x08\x42inQuery\"\x13\n\x11\x42inQueryInspector\"\t\n\x07\x42inForm\"\x10\n\x0e\x42inSearchOrder\"\x0b\n\tBinSearch\"\x12\n\x10\x42inSearchResults\"2\n\x07\x42inList\x12\'\n\x04\x62ins\x18\x01 \x03(\x0b\x32\x19.dlkit.proto.resource.Bin\"\t\n\x07\x42inNode\"?\n\x0b\x42inNodeList\x12\x30\n\tbin_nodes\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.resource.BinNode\"?\n\rGetBinIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetBinIdRequest\"5\n\x0bGetBinReply\x12&\n\x03\x62in\x18\x01 \x01(\x0b\x32\x19.dlkit.proto.resource.Bin\"\x0f\n\rGetBinRequest\"7\n\x17\x43\x61nLookupResourcesReply\x12\x1c\n\x14\x63\x61n_lookup_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nLookupResourcesRequest\"!\n\x1fUseComparativeResourceViewReply\"#\n!UseComparativeResourceViewRequest\"\x1d\n\x1bUsePlenaryResourceViewReply\"\x1f\n\x1dUsePlenaryResourceViewRequest\"\x1a\n\x18UseFederatedBinViewReply\"\x1c\n\x1aUseFederatedBinViewRequest\"\x19\n\x17UseIsolatedBinViewReply\"\x1b\n\x19UseIsolatedBinViewRequest\"D\n\x10GetResourceReply\x12\x30\n\x08resource\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\"M\n\x12GetResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x18GetResourcesByIdsRequest\x12\x38\n\x0cresource_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n\x1eGetResourcesByGenusTypeRequest\x12\x43\n\x13resource_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"k\n$GetResourcesByParentGenusTypeRequest\x12\x43\n\x13resource_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"g\n\x1fGetResourcesByRecordTypeRequest\x12\x44\n\x14resource_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x15\n\x13GetResourcesRequest\"7\n\x17\x43\x61nSearchResourcesReply\x12\x1c\n\x14\x63\x61n_search_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nSearchResourcesRequest\"T\n\x15GetResourceQueryReply\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\"\x19\n\x17GetResourceQueryRequest\"Y\n\x1aGetResourcesByQueryRequest\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\"W\n\x16GetResourceSearchReply\x12=\n\x0fresource_search\x18\x01 \x01(\x0b\x32$.dlkit.proto.resource.ResourceSearch\"\x1a\n\x18GetResourceSearchRequest\"g\n\x1bGetResourceSearchOrderReply\x12H\n\x15resource_search_order\x18\x01 \x01(\x0b\x32).dlkit.proto.resource.ResourceSearchOrder\"\x1f\n\x1dGetResourceSearchOrderRequest\"i\n\x19GetResourcesBySearchReply\x12L\n\x17resource_search_results\x18\x01 \x01(\x0b\x32+.dlkit.proto.resource.ResourceSearchResults\"\x99\x01\n\x1bGetResourcesBySearchRequest\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\x12=\n\x0fresource_search\x18\x02 \x01(\x0b\x32$.dlkit.proto.resource.ResourceSearch\"a\n\"GetResourceQueryFromInspectorReply\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\"v\n$GetResourceQueryFromInspectorRequest\x12N\n\x18resource_query_inspector\x18\x01 \x01(\x0b\x32,.dlkit.proto.resource.ResourceQueryInspector\"7\n\x17\x43\x61nCreateResourcesReply\x12\x1c\n\x14\x63\x61n_create_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nCreateResourcesRequest\"V\n%CanCreateResourceWithRecordTypesReply\x12-\n%can_create_resource_with_record_types\x18\x01 \x01(\x08\"p\n\'CanCreateResourceWithRecordTypesRequest\x12\x45\n\x15resource_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1dGetResourceFormForCreateReply\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"h\n\x1fGetResourceFormForCreateRequest\x12\x45\n\x15resource_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"G\n\x13\x43reateResourceReply\x12\x30\n\x08resource\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\"R\n\x15\x43reateResourceRequest\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"7\n\x17\x43\x61nUpdateResourcesReply\x12\x1c\n\x14\x63\x61n_update_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nUpdateResourcesRequest\"Z\n\x1dGetResourceFormForUpdateReply\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"Z\n\x1fGetResourceFormForUpdateRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateResourceReply\"R\n\x15UpdateResourceRequest\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"7\n\x17\x43\x61nDeleteResourcesReply\x12\x1c\n\x14\x63\x61n_delete_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nDeleteResourcesRequest\"\x15\n\x13\x44\x65leteResourceReply\"P\n\x15\x44\x65leteResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nManageResourceAliasesReply\x12#\n\x1b\x63\x61n_manage_resource_aliases\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nManageResourceAliasesRequest\"\x14\n\x12\x41liasResourceReply\"\x85\x01\n\x14\x41liasResourceRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n(CanRegisterForResourceNotificationsReply\x12/\n\'can_register_for_resource_notifications\x18\x01 \x01(\x08\",\n*CanRegisterForResourceNotificationsRequest\"\x1e\n\x1cRegisterForNewResourcesReply\" \n\x1eRegisterForNewResourcesRequest\"\"\n RegisterForChangedResourcesReply\"$\n\"RegisterForChangedResourcesRequest\"!\n\x1fRegisterForChangedResourceReply\"\\\n!RegisterForChangedResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n RegisterForDeletedResourcesReply\"$\n\"RegisterForDeletedResourcesRequest\"!\n\x1fRegisterForDeletedResourceReply\"\\\n!RegisterForDeletedResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"ReliableResourceNotificationsReply\"&\n$ReliableResourceNotificationsRequest\"&\n$UnreliableResourceNotificationsReply\"(\n&UnreliableResourceNotificationsRequest\"&\n$AcknowledgeResourceNotificationReply\"e\n&AcknowledgeResourceNotificationRequest\x12;\n\x0fnotification_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUseComparativeBinViewReply\"\x1e\n\x1cUseComparativeBinViewRequest\"\x18\n\x16UsePlenaryBinViewReply\"\x1a\n\x18UsePlenaryBinViewRequest\"M\n!CanLookupResourceBinMappingsReply\x12(\n can_lookup_resource_bin_mappings\x18\x01 \x01(\x08\"%\n#CanLookupResourceBinMappingsRequest\"P\n\x1aGetResourceIdsByBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x18GetResourcesByBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetResourceIdsByBinsRequest\x12\x33\n\x07\x62in_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x19GetResourcesByBinsRequest\x12\x33\n\x07\x62in_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1aGetBinIdsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x18GetBinsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17\x43\x61nAssignResourcesReply\x12\x1c\n\x14\x63\x61n_assign_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nAssignResourcesRequest\"C\n\x1c\x43\x61nAssignResourcesToBinReply\x12#\n\x1b\x63\x61n_assign_resources_to_bin\x18\x01 \x01(\x08\"T\n\x1e\x43\x61nAssignResourcesToBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetAssignableBinIdsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x94\x01\n%GetAssignableBinIdsForResourceRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41ssignResourceToBinReply\"\x89\x01\n\x1a\x41ssignResourceToBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUnassignResourceFromBinReply\"\x8d\x01\n\x1eUnassignResourceFromBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n#CanLookupResourceAgentMappingsReply\x12*\n\"can_lookup_resource_agent_mappings\x18\x01 \x01(\x08\"\'\n%CanLookupResourceAgentMappingsRequest\"\x1e\n\x1cUseComparativeAgentViewReply\" \n\x1eUseComparativeAgentViewRequest\"\x1a\n\x18UsePlenaryAgentViewReply\"\x1c\n\x1aUsePlenaryAgentViewRequest\"K\n\x19GetResourceIdByAgentReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x1bGetResourceIdByAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x17GetResourceByAgentReply\x12\x30\n\x08resource\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\"Q\n\x19GetResourceByAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1cGetAgentIdsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1aGetAgentsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nAssignAgentsReply\x12\x19\n\x11\x63\x61n_assign_agents\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nAssignAgentsRequest\"G\n\x1e\x43\x61nAssignAgentsToResourceReply\x12%\n\x1d\x63\x61n_assign_agents_to_resource\x18\x01 \x01(\x08\"[\n CanAssignAgentsToResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1a\x41ssignAgentToResourceReply\"\x8d\x01\n\x1c\x41ssignAgentToResourceRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eUnassignAgentFromResourceReply\"\x91\x01\n UnassignAgentFromResourceRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12\x43\x61nLookupBinsReply\x12\x17\n\x0f\x63\x61n_lookup_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nLookupBinsRequest\"J\n\x13GetBinsByIdsRequest\x12\x33\n\x07\x62in_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x19GetBinsByGenusTypeRequest\x12>\n\x0e\x62in_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1fGetBinsByParentGenusTypeRequest\x12>\n\x0e\x62in_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\x1aGetBinsByRecordTypeRequest\x12?\n\x0f\x62in_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"S\n\x18GetBinsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eGetBinsRequest\"-\n\x12\x43\x61nSearchBinsReply\x12\x17\n\x0f\x63\x61n_search_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nSearchBinsRequest\"E\n\x10GetBinQueryReply\x12\x31\n\tbin_query\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.BinQuery\"\x14\n\x12GetBinQueryRequest\"J\n\x15GetBinsByQueryRequest\x12\x31\n\tbin_query\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.BinQuery\"-\n\x12\x43\x61nCreateBinsReply\x12\x17\n\x0f\x63\x61n_create_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nCreateBinsRequest\"L\n CanCreateBinWithRecordTypesReply\x12(\n can_create_bin_with_record_types\x18\x01 \x01(\x08\"f\n\"CanCreateBinWithRecordTypesRequest\x12@\n\x10\x62in_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"K\n\x18GetBinFormForCreateReply\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"^\n\x1aGetBinFormForCreateRequest\x12@\n\x10\x62in_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"8\n\x0e\x43reateBinReply\x12&\n\x03\x62in\x18\x01 \x01(\x0b\x32\x19.dlkit.proto.resource.Bin\"C\n\x10\x43reateBinRequest\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"-\n\x12\x43\x61nUpdateBinsReply\x12\x17\n\x0f\x63\x61n_update_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nUpdateBinsRequest\"K\n\x18GetBinFormForUpdateReply\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"P\n\x1aGetBinFormForUpdateRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eUpdateBinReply\"C\n\x10UpdateBinRequest\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"-\n\x12\x43\x61nDeleteBinsReply\x12\x17\n\x0f\x63\x61n_delete_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nDeleteBinsRequest\"\x10\n\x0e\x44\x65leteBinReply\"F\n\x10\x44\x65leteBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18\x43\x61nManageBinAliasesReply\x12\x1e\n\x16\x63\x61n_manage_bin_aliases\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nManageBinAliasesRequest\"\x0f\n\rAliasBinReply\"{\n\x0f\x41liasBinRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06\x62in_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x16GetBinHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetBinHierarchyIdRequest\"K\n\x14GetBinHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x18\n\x16GetBinHierarchyRequest\">\n\x1a\x43\x61nAccessBinHierarchyReply\x12 \n\x18\x63\x61n_access_bin_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nAccessBinHierarchyRequest\"\x16\n\x14GetRootBinIdsRequest\"\x14\n\x12GetRootBinsRequest\"-\n\x12HasParentBinsReply\x12\x17\n\x0fhas_parent_bins\x18\x01 \x01(\x08\"J\n\x14HasParentBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsParentOfBinReply\x12\x18\n\x10is_parent_of_bin\x18\x01 \x01(\x08\"{\n\x14IsParentOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x16GetParentBinIdsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x14GetParentBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsAncestorOfBinReply\x12\x1a\n\x12is_ancestor_of_bin\x18\x01 \x01(\x08\"}\n\x16IsAncestorOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n\x11HasChildBinsReply\x12\x16\n\x0ehas_child_bins\x18\x01 \x01(\x08\"I\n\x13HasChildBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\",\n\x11IsChildOfBinReply\x12\x17\n\x0fis_child_of_bin\x18\x01 \x01(\x08\"z\n\x13IsChildOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x15GetChildBinIdsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x13GetChildBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsDescendantOfBinReply\x12\x1c\n\x14is_descendant_of_bin\x18\x01 \x01(\x08\"\x7f\n\x18IsDescendantOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x12GetBinNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x98\x01\n\x14GetBinNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x32\n\x06\x62in_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"C\n\x10GetBinNodesReply\x12/\n\x08\x62in_node\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinNode\"\x96\x01\n\x12GetBinNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x32\n\x06\x62in_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\">\n\x1a\x43\x61nModifyBinHierarchyReply\x12 \n\x18\x63\x61n_modify_bin_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nModifyBinHierarchyRequest\"\x11\n\x0f\x41\x64\x64RootBinReply\"G\n\x11\x41\x64\x64RootBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12RemoveRootBinReply\"J\n\x14RemoveRootBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10\x41\x64\x64\x43hildBinReply\"~\n\x12\x41\x64\x64\x43hildBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveChildBinReply\"\x81\x01\n\x15RemoveChildBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildBinsReply\"L\n\x16RemoveChildBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xde\x0b\n\x15ResourceLookupSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12v\n\x12\x43\x61nLookupResources\x12/.dlkit.proto.resource.CanLookupResourcesRequest\x1a-.dlkit.proto.resource.CanLookupResourcesReply\"\x00\x12\x8e\x01\n\x1aUseComparativeResourceView\x12\x37.dlkit.proto.resource.UseComparativeResourceViewRequest\x1a\x35.dlkit.proto.resource.UseComparativeResourceViewReply\"\x00\x12\x82\x01\n\x16UsePlenaryResourceView\x12\x33.dlkit.proto.resource.UsePlenaryResourceViewRequest\x1a\x31.dlkit.proto.resource.UsePlenaryResourceViewReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12\x61\n\x0bGetResource\x12(.dlkit.proto.resource.GetResourceRequest\x1a&.dlkit.proto.resource.GetResourceReply\"\x00\x12g\n\x11GetResourcesByIds\x12..dlkit.proto.resource.GetResourcesByIdsRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12s\n\x17GetResourcesByGenusType\x12\x34.dlkit.proto.resource.GetResourcesByGenusTypeRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12\x7f\n\x1dGetResourcesByParentGenusType\x12:.dlkit.proto.resource.GetResourcesByParentGenusTypeRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12u\n\x18GetResourcesByRecordType\x12\x35.dlkit.proto.resource.GetResourcesByRecordTypeRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12]\n\x0cGetResources\x12).dlkit.proto.resource.GetResourcesRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x32\x8e\x06\n\x14ResourceQuerySession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12v\n\x12\x43\x61nSearchResources\x12/.dlkit.proto.resource.CanSearchResourcesRequest\x1a-.dlkit.proto.resource.CanSearchResourcesReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12p\n\x10GetResourceQuery\x12-.dlkit.proto.resource.GetResourceQueryRequest\x1a+.dlkit.proto.resource.GetResourceQueryReply\"\x00\x12k\n\x13GetResourcesByQuery\x12\x30.dlkit.proto.resource.GetResourcesByQueryRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x32\xa9\x04\n\x15ResourceSearchSession\x12s\n\x11GetResourceSearch\x12..dlkit.proto.resource.GetResourceSearchRequest\x1a,.dlkit.proto.resource.GetResourceSearchReply\"\x00\x12\x82\x01\n\x16GetResourceSearchOrder\x12\x33.dlkit.proto.resource.GetResourceSearchOrderRequest\x1a\x31.dlkit.proto.resource.GetResourceSearchOrderReply\"\x00\x12|\n\x14GetResourcesBySearch\x12\x31.dlkit.proto.resource.GetResourcesBySearchRequest\x1a/.dlkit.proto.resource.GetResourcesBySearchReply\"\x00\x12\x97\x01\n\x1dGetResourceQueryFromInspector\x12:.dlkit.proto.resource.GetResourceQueryFromInspectorRequest\x1a\x38.dlkit.proto.resource.GetResourceQueryFromInspectorReply\"\x00\x32\x9d\x0c\n\x14ResourceAdminSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12v\n\x12\x43\x61nCreateResources\x12/.dlkit.proto.resource.CanCreateResourcesRequest\x1a-.dlkit.proto.resource.CanCreateResourcesReply\"\x00\x12\xa0\x01\n CanCreateResourceWithRecordTypes\x12=.dlkit.proto.resource.CanCreateResourceWithRecordTypesRequest\x1a;.dlkit.proto.resource.CanCreateResourceWithRecordTypesReply\"\x00\x12\x88\x01\n\x18GetResourceFormForCreate\x12\x35.dlkit.proto.resource.GetResourceFormForCreateRequest\x1a\x33.dlkit.proto.resource.GetResourceFormForCreateReply\"\x00\x12j\n\x0e\x43reateResource\x12+.dlkit.proto.resource.CreateResourceRequest\x1a).dlkit.proto.resource.CreateResourceReply\"\x00\x12v\n\x12\x43\x61nUpdateResources\x12/.dlkit.proto.resource.CanUpdateResourcesRequest\x1a-.dlkit.proto.resource.CanUpdateResourcesReply\"\x00\x12\x88\x01\n\x18GetResourceFormForUpdate\x12\x35.dlkit.proto.resource.GetResourceFormForUpdateRequest\x1a\x33.dlkit.proto.resource.GetResourceFormForUpdateReply\"\x00\x12j\n\x0eUpdateResource\x12+.dlkit.proto.resource.UpdateResourceRequest\x1a).dlkit.proto.resource.UpdateResourceReply\"\x00\x12v\n\x12\x43\x61nDeleteResources\x12/.dlkit.proto.resource.CanDeleteResourcesRequest\x1a-.dlkit.proto.resource.CanDeleteResourcesReply\"\x00\x12j\n\x0e\x44\x65leteResource\x12+.dlkit.proto.resource.DeleteResourceRequest\x1a).dlkit.proto.resource.DeleteResourceReply\"\x00\x12\x88\x01\n\x18\x43\x61nManageResourceAliases\x12\x35.dlkit.proto.resource.CanManageResourceAliasesRequest\x1a\x33.dlkit.proto.resource.CanManageResourceAliasesReply\"\x00\x12g\n\rAliasResource\x12*.dlkit.proto.resource.AliasResourceRequest\x1a(.dlkit.proto.resource.AliasResourceReply\"\x00\x32\x96\x0e\n\x1bResourceNotificationSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12\xa9\x01\n#CanRegisterForResourceNotifications\x12@.dlkit.proto.resource.CanRegisterForResourceNotificationsRequest\x1a>.dlkit.proto.resource.CanRegisterForResourceNotificationsReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12\x85\x01\n\x17RegisterForNewResources\x12\x34.dlkit.proto.resource.RegisterForNewResourcesRequest\x1a\x32.dlkit.proto.resource.RegisterForNewResourcesReply\"\x00\x12\x91\x01\n\x1bRegisterForChangedResources\x12\x38.dlkit.proto.resource.RegisterForChangedResourcesRequest\x1a\x36.dlkit.proto.resource.RegisterForChangedResourcesReply\"\x00\x12\x8e\x01\n\x1aRegisterForChangedResource\x12\x37.dlkit.proto.resource.RegisterForChangedResourceRequest\x1a\x35.dlkit.proto.resource.RegisterForChangedResourceReply\"\x00\x12\x91\x01\n\x1bRegisterForDeletedResources\x12\x38.dlkit.proto.resource.RegisterForDeletedResourcesRequest\x1a\x36.dlkit.proto.resource.RegisterForDeletedResourcesReply\"\x00\x12\x8e\x01\n\x1aRegisterForDeletedResource\x12\x37.dlkit.proto.resource.RegisterForDeletedResourceRequest\x1a\x35.dlkit.proto.resource.RegisterForDeletedResourceReply\"\x00\x12\x97\x01\n\x1dReliableResourceNotifications\x12:.dlkit.proto.resource.ReliableResourceNotificationsRequest\x1a\x38.dlkit.proto.resource.ReliableResourceNotificationsReply\"\x00\x12\x9d\x01\n\x1fUnreliableResourceNotifications\x12<.dlkit.proto.resource.UnreliableResourceNotificationsRequest\x1a:.dlkit.proto.resource.UnreliableResourceNotificationsReply\"\x00\x12\x9d\x01\n\x1f\x41\x63knowledgeResourceNotification\x12<.dlkit.proto.resource.AcknowledgeResourceNotificationRequest\x1a:.dlkit.proto.resource.AcknowledgeResourceNotificationReply\"\x00\x32\xae\x08\n\x12ResourceBinSession\x12\x7f\n\x15UseComparativeBinView\x12\x32.dlkit.proto.resource.UseComparativeBinViewRequest\x1a\x30.dlkit.proto.resource.UseComparativeBinViewReply\"\x00\x12s\n\x11UsePlenaryBinView\x12..dlkit.proto.resource.UsePlenaryBinViewRequest\x1a,.dlkit.proto.resource.UsePlenaryBinViewReply\"\x00\x12\x94\x01\n\x1c\x43\x61nLookupResourceBinMappings\x12\x39.dlkit.proto.resource.CanLookupResourceBinMappingsRequest\x1a\x37.dlkit.proto.resource.CanLookupResourceBinMappingsReply\"\x00\x12o\n\x13GetResourceIdsByBin\x12\x30.dlkit.proto.resource.GetResourceIdsByBinRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12g\n\x11GetResourcesByBin\x12..dlkit.proto.resource.GetResourcesByBinRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12q\n\x14GetResourceIdsByBins\x12\x31.dlkit.proto.resource.GetResourceIdsByBinsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12i\n\x12GetResourcesByBins\x12/.dlkit.proto.resource.GetResourcesByBinsRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12o\n\x13GetBinIdsByResource\x12\x30.dlkit.proto.resource.GetBinIdsByResourceRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x62\n\x11GetBinsByResource\x12..dlkit.proto.resource.GetBinsByResourceRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x32\x9a\x06\n\x1cResourceBinAssignmentSession\x12v\n\x12\x43\x61nAssignResources\x12/.dlkit.proto.resource.CanAssignResourcesRequest\x1a-.dlkit.proto.resource.CanAssignResourcesReply\"\x00\x12\x85\x01\n\x17\x43\x61nAssignResourcesToBin\x12\x34.dlkit.proto.resource.CanAssignResourcesToBinRequest\x1a\x32.dlkit.proto.resource.CanAssignResourcesToBinReply\"\x00\x12o\n\x13GetAssignableBinIds\x12\x30.dlkit.proto.resource.GetAssignableBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x85\x01\n\x1eGetAssignableBinIdsForResource\x12;.dlkit.proto.resource.GetAssignableBinIdsForResourceRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12y\n\x13\x41ssignResourceToBin\x12\x30.dlkit.proto.resource.AssignResourceToBinRequest\x1a..dlkit.proto.resource.AssignResourceToBinReply\"\x00\x12\x85\x01\n\x17UnassignResourceFromBin\x12\x34.dlkit.proto.resource.UnassignResourceFromBinRequest\x1a\x32.dlkit.proto.resource.UnassignResourceFromBinReply\"\x00\x32\xb2\n\n\x14ResourceAgentSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12\x9a\x01\n\x1e\x43\x61nLookupResourceAgentMappings\x12;.dlkit.proto.resource.CanLookupResourceAgentMappingsRequest\x1a\x39.dlkit.proto.resource.CanLookupResourceAgentMappingsReply\"\x00\x12\x85\x01\n\x17UseComparativeAgentView\x12\x34.dlkit.proto.resource.UseComparativeAgentViewRequest\x1a\x32.dlkit.proto.resource.UseComparativeAgentViewReply\"\x00\x12y\n\x13UsePlenaryAgentView\x12\x30.dlkit.proto.resource.UsePlenaryAgentViewRequest\x1a..dlkit.proto.resource.UsePlenaryAgentViewReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12|\n\x14GetResourceIdByAgent\x12\x31.dlkit.proto.resource.GetResourceIdByAgentRequest\x1a/.dlkit.proto.resource.GetResourceIdByAgentReply\"\x00\x12v\n\x12GetResourceByAgent\x12/.dlkit.proto.resource.GetResourceByAgentRequest\x1a-.dlkit.proto.resource.GetResourceByAgentReply\"\x00\x12s\n\x15GetAgentIdsByResource\x12\x32.dlkit.proto.resource.GetAgentIdsByResourceRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12n\n\x13GetAgentsByResource\x12\x30.dlkit.proto.resource.GetAgentsByResourceRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x32\xda\x05\n\x1eResourceAgentAssignmentSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12m\n\x0f\x43\x61nAssignAgents\x12,.dlkit.proto.resource.CanAssignAgentsRequest\x1a*.dlkit.proto.resource.CanAssignAgentsReply\"\x00\x12\x8b\x01\n\x19\x43\x61nAssignAgentsToResource\x12\x36.dlkit.proto.resource.CanAssignAgentsToResourceRequest\x1a\x34.dlkit.proto.resource.CanAssignAgentsToResourceReply\"\x00\x12\x7f\n\x15\x41ssignAgentToResource\x12\x32.dlkit.proto.resource.AssignAgentToResourceRequest\x1a\x30.dlkit.proto.resource.AssignAgentToResourceReply\"\x00\x12\x8b\x01\n\x19UnassignAgentFromResource\x12\x36.dlkit.proto.resource.UnassignAgentFromResourceRequest\x1a\x34.dlkit.proto.resource.UnassignAgentFromResourceReply\"\x00\x32\x93\x08\n\x10\x42inLookupSession\x12g\n\rCanLookupBins\x12*.dlkit.proto.resource.CanLookupBinsRequest\x1a(.dlkit.proto.resource.CanLookupBinsReply\"\x00\x12\x7f\n\x15UseComparativeBinView\x12\x32.dlkit.proto.resource.UseComparativeBinViewRequest\x1a\x30.dlkit.proto.resource.UseComparativeBinViewReply\"\x00\x12s\n\x11UsePlenaryBinView\x12..dlkit.proto.resource.UsePlenaryBinViewRequest\x1a,.dlkit.proto.resource.UsePlenaryBinViewReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12X\n\x0cGetBinsByIds\x12).dlkit.proto.resource.GetBinsByIdsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12\x64\n\x12GetBinsByGenusType\x12/.dlkit.proto.resource.GetBinsByGenusTypeRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12p\n\x18GetBinsByParentGenusType\x12\x35.dlkit.proto.resource.GetBinsByParentGenusTypeRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12\x66\n\x13GetBinsByRecordType\x12\x30.dlkit.proto.resource.GetBinsByRecordTypeRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12\x62\n\x11GetBinsByProvider\x12..dlkit.proto.resource.GetBinsByProviderRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12N\n\x07GetBins\x12$.dlkit.proto.resource.GetBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x32\xbb\x02\n\x0f\x42inQuerySession\x12g\n\rCanSearchBins\x12*.dlkit.proto.resource.CanSearchBinsRequest\x1a(.dlkit.proto.resource.CanSearchBinsReply\"\x00\x12\x61\n\x0bGetBinQuery\x12(.dlkit.proto.resource.GetBinQueryRequest\x1a&.dlkit.proto.resource.GetBinQueryReply\"\x00\x12\\\n\x0eGetBinsByQuery\x12+.dlkit.proto.resource.GetBinsByQueryRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x32\xc2\t\n\x0f\x42inAdminSession\x12g\n\rCanCreateBins\x12*.dlkit.proto.resource.CanCreateBinsRequest\x1a(.dlkit.proto.resource.CanCreateBinsReply\"\x00\x12\x91\x01\n\x1b\x43\x61nCreateBinWithRecordTypes\x12\x38.dlkit.proto.resource.CanCreateBinWithRecordTypesRequest\x1a\x36.dlkit.proto.resource.CanCreateBinWithRecordTypesReply\"\x00\x12y\n\x13GetBinFormForCreate\x12\x30.dlkit.proto.resource.GetBinFormForCreateRequest\x1a..dlkit.proto.resource.GetBinFormForCreateReply\"\x00\x12[\n\tCreateBin\x12&.dlkit.proto.resource.CreateBinRequest\x1a$.dlkit.proto.resource.CreateBinReply\"\x00\x12g\n\rCanUpdateBins\x12*.dlkit.proto.resource.CanUpdateBinsRequest\x1a(.dlkit.proto.resource.CanUpdateBinsReply\"\x00\x12y\n\x13GetBinFormForUpdate\x12\x30.dlkit.proto.resource.GetBinFormForUpdateRequest\x1a..dlkit.proto.resource.GetBinFormForUpdateReply\"\x00\x12[\n\tUpdateBin\x12&.dlkit.proto.resource.UpdateBinRequest\x1a$.dlkit.proto.resource.UpdateBinReply\"\x00\x12g\n\rCanDeleteBins\x12*.dlkit.proto.resource.CanDeleteBinsRequest\x1a(.dlkit.proto.resource.CanDeleteBinsReply\"\x00\x12[\n\tDeleteBin\x12&.dlkit.proto.resource.DeleteBinRequest\x1a$.dlkit.proto.resource.DeleteBinReply\"\x00\x12y\n\x13\x43\x61nManageBinAliases\x12\x30.dlkit.proto.resource.CanManageBinAliasesRequest\x1a..dlkit.proto.resource.CanManageBinAliasesReply\"\x00\x12X\n\x08\x41liasBin\x12%.dlkit.proto.resource.AliasBinRequest\x1a#.dlkit.proto.resource.AliasBinReply\"\x00\x32\x81\x10\n\x13\x42inHierarchySession\x12s\n\x11GetBinHierarchyId\x12..dlkit.proto.resource.GetBinHierarchyIdRequest\x1a,.dlkit.proto.resource.GetBinHierarchyIdReply\"\x00\x12m\n\x0fGetBinHierarchy\x12,.dlkit.proto.resource.GetBinHierarchyRequest\x1a*.dlkit.proto.resource.GetBinHierarchyReply\"\x00\x12\x7f\n\x15\x43\x61nAccessBinHierarchy\x12\x32.dlkit.proto.resource.CanAccessBinHierarchyRequest\x1a\x30.dlkit.proto.resource.CanAccessBinHierarchyReply\"\x00\x12\x7f\n\x15UseComparativeBinView\x12\x32.dlkit.proto.resource.UseComparativeBinViewRequest\x1a\x30.dlkit.proto.resource.UseComparativeBinViewReply\"\x00\x12s\n\x11UsePlenaryBinView\x12..dlkit.proto.resource.UsePlenaryBinViewRequest\x1a,.dlkit.proto.resource.UsePlenaryBinViewReply\"\x00\x12\x63\n\rGetRootBinIds\x12*.dlkit.proto.resource.GetRootBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12V\n\x0bGetRootBins\x12(.dlkit.proto.resource.GetRootBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12g\n\rHasParentBins\x12*.dlkit.proto.resource.HasParentBinsRequest\x1a(.dlkit.proto.resource.HasParentBinsReply\"\x00\x12g\n\rIsParentOfBin\x12*.dlkit.proto.resource.IsParentOfBinRequest\x1a(.dlkit.proto.resource.IsParentOfBinReply\"\x00\x12g\n\x0fGetParentBinIds\x12,.dlkit.proto.resource.GetParentBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12Z\n\rGetParentBins\x12*.dlkit.proto.resource.GetParentBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12m\n\x0fIsAncestorOfBin\x12,.dlkit.proto.resource.IsAncestorOfBinRequest\x1a*.dlkit.proto.resource.IsAncestorOfBinReply\"\x00\x12\x64\n\x0cHasChildBins\x12).dlkit.proto.resource.HasChildBinsRequest\x1a\'.dlkit.proto.resource.HasChildBinsReply\"\x00\x12\x64\n\x0cIsChildOfBin\x12).dlkit.proto.resource.IsChildOfBinRequest\x1a\'.dlkit.proto.resource.IsChildOfBinReply\"\x00\x12\x65\n\x0eGetChildBinIds\x12+.dlkit.proto.resource.GetChildBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12X\n\x0cGetChildBins\x12).dlkit.proto.resource.GetChildBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12s\n\x11IsDescendantOfBin\x12..dlkit.proto.resource.IsDescendantOfBinRequest\x1a,.dlkit.proto.resource.IsDescendantOfBinReply\"\x00\x12g\n\rGetBinNodeIds\x12*.dlkit.proto.resource.GetBinNodeIdsRequest\x1a(.dlkit.proto.resource.GetBinNodeIdsReply\"\x00\x12\x61\n\x0bGetBinNodes\x12(.dlkit.proto.resource.GetBinNodesRequest\x1a&.dlkit.proto.resource.GetBinNodesReply\"\x00\x32\x87\x07\n\x19\x42inHierarchyDesignSession\x12s\n\x11GetBinHierarchyId\x12..dlkit.proto.resource.GetBinHierarchyIdRequest\x1a,.dlkit.proto.resource.GetBinHierarchyIdReply\"\x00\x12m\n\x0fGetBinHierarchy\x12,.dlkit.proto.resource.GetBinHierarchyRequest\x1a*.dlkit.proto.resource.GetBinHierarchyReply\"\x00\x12\x7f\n\x15\x43\x61nModifyBinHierarchy\x12\x32.dlkit.proto.resource.CanModifyBinHierarchyRequest\x1a\x30.dlkit.proto.resource.CanModifyBinHierarchyReply\"\x00\x12^\n\nAddRootBin\x12\'.dlkit.proto.resource.AddRootBinRequest\x1a%.dlkit.proto.resource.AddRootBinReply\"\x00\x12g\n\rRemoveRootBin\x12*.dlkit.proto.resource.RemoveRootBinRequest\x1a(.dlkit.proto.resource.RemoveRootBinReply\"\x00\x12\x61\n\x0b\x41\x64\x64\x43hildBin\x12(.dlkit.proto.resource.AddChildBinRequest\x1a&.dlkit.proto.resource.AddChildBinReply\"\x00\x12j\n\x0eRemoveChildBin\x12+.dlkit.proto.resource.RemoveChildBinRequest\x1a).dlkit.proto.resource.RemoveChildBinReply\"\x00\x12m\n\x0fRemoveChildBins\x12,.dlkit.proto.resource.RemoveChildBinsRequest\x1a*.dlkit.proto.resource.RemoveChildBinsReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1a\x64lkit/proto/resource.proto\x12\x14\x64lkit.proto.resource\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a dlkit/proto/authentication.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\"\xb6\x03\n\x08Resource\x12\x32\n\x06\x61vatar\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12*\n\x03\x62in\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\r\n\x05group\x18\x06 \x01(\x08\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rResourceQuery\"\x18\n\x16ResourceQueryInspector\"\x0e\n\x0cResourceForm\"\x15\n\x13ResourceSearchOrder\"\x10\n\x0eResourceSearch\"\x17\n\x15ResourceSearchResults\"A\n\x0cResourceList\x12\x31\n\tresources\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.resource.Resource\"\x0e\n\x0cResourceNode\"N\n\x10ResourceNodeList\x12:\n\x0eresource_nodes\x18\x01 \x03(\x0b\x32\".dlkit.proto.resource.ResourceNode\"\xc1\x01\n\x14ResourceRelationship\x12*\n\x03\x62in\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12@\n\x14\x64\x65stination_resource\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0fsource_resource\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19ResourceRelationshipQuery\"$\n\"ResourceRelationshipQueryInspector\"\x1a\n\x18ResourceRelationshipForm\"!\n\x1fResourceRelationshipSearchOrder\"\x1c\n\x1aResourceRelationshipSearch\"#\n!ResourceRelationshipSearchResults\"f\n\x18ResourceRelationshipList\x12J\n\x16resource_relationships\x18\x01 \x03(\x0b\x32*.dlkit.proto.resource.ResourceRelationship\"\xc2\x02\n\x03\x42in\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\n\n\x08\x42inQuery\"\x13\n\x11\x42inQueryInspector\"\t\n\x07\x42inForm\"\x10\n\x0e\x42inSearchOrder\"\x0b\n\tBinSearch\"\x12\n\x10\x42inSearchResults\"2\n\x07\x42inList\x12\'\n\x04\x62ins\x18\x01 \x03(\x0b\x32\x19.dlkit.proto.resource.Bin\"\t\n\x07\x42inNode\"?\n\x0b\x42inNodeList\x12\x30\n\tbin_nodes\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.resource.BinNode\"?\n\rGetBinIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetBinIdRequest\"5\n\x0bGetBinReply\x12&\n\x03\x62in\x18\x01 \x01(\x0b\x32\x19.dlkit.proto.resource.Bin\"\x0f\n\rGetBinRequest\"7\n\x17\x43\x61nLookupResourcesReply\x12\x1c\n\x14\x63\x61n_lookup_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nLookupResourcesRequest\"!\n\x1fUseComparativeResourceViewReply\"#\n!UseComparativeResourceViewRequest\"\x1d\n\x1bUsePlenaryResourceViewReply\"\x1f\n\x1dUsePlenaryResourceViewRequest\"\x1a\n\x18UseFederatedBinViewReply\"\x1c\n\x1aUseFederatedBinViewRequest\"\x19\n\x17UseIsolatedBinViewReply\"\x1b\n\x19UseIsolatedBinViewRequest\"D\n\x10GetResourceReply\x12\x30\n\x08resource\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\"M\n\x12GetResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x18GetResourcesByIdsRequest\x12\x38\n\x0cresource_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n\x1eGetResourcesByGenusTypeRequest\x12\x43\n\x13resource_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"k\n$GetResourcesByParentGenusTypeRequest\x12\x43\n\x13resource_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"g\n\x1fGetResourcesByRecordTypeRequest\x12\x44\n\x14resource_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x15\n\x13GetResourcesRequest\"7\n\x17\x43\x61nSearchResourcesReply\x12\x1c\n\x14\x63\x61n_search_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nSearchResourcesRequest\"T\n\x15GetResourceQueryReply\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\"\x19\n\x17GetResourceQueryRequest\"Y\n\x1aGetResourcesByQueryRequest\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\"W\n\x16GetResourceSearchReply\x12=\n\x0fresource_search\x18\x01 \x01(\x0b\x32$.dlkit.proto.resource.ResourceSearch\"\x1a\n\x18GetResourceSearchRequest\"g\n\x1bGetResourceSearchOrderReply\x12H\n\x15resource_search_order\x18\x01 \x01(\x0b\x32).dlkit.proto.resource.ResourceSearchOrder\"\x1f\n\x1dGetResourceSearchOrderRequest\"i\n\x19GetResourcesBySearchReply\x12L\n\x17resource_search_results\x18\x01 \x01(\x0b\x32+.dlkit.proto.resource.ResourceSearchResults\"\x99\x01\n\x1bGetResourcesBySearchRequest\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\x12=\n\x0fresource_search\x18\x02 \x01(\x0b\x32$.dlkit.proto.resource.ResourceSearch\"a\n\"GetResourceQueryFromInspectorReply\x12;\n\x0eresource_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.resource.ResourceQuery\"v\n$GetResourceQueryFromInspectorRequest\x12N\n\x18resource_query_inspector\x18\x01 \x01(\x0b\x32,.dlkit.proto.resource.ResourceQueryInspector\"7\n\x17\x43\x61nCreateResourcesReply\x12\x1c\n\x14\x63\x61n_create_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nCreateResourcesRequest\"V\n%CanCreateResourceWithRecordTypesReply\x12-\n%can_create_resource_with_record_types\x18\x01 \x01(\x08\"p\n\'CanCreateResourceWithRecordTypesRequest\x12\x45\n\x15resource_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1dGetResourceFormForCreateReply\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"h\n\x1fGetResourceFormForCreateRequest\x12\x45\n\x15resource_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"G\n\x13\x43reateResourceReply\x12\x30\n\x08resource\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\"R\n\x15\x43reateResourceRequest\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"7\n\x17\x43\x61nUpdateResourcesReply\x12\x1c\n\x14\x63\x61n_update_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nUpdateResourcesRequest\"Z\n\x1dGetResourceFormForUpdateReply\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"Z\n\x1fGetResourceFormForUpdateRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateResourceReply\"R\n\x15UpdateResourceRequest\x12\x39\n\rresource_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.resource.ResourceForm\"7\n\x17\x43\x61nDeleteResourcesReply\x12\x1c\n\x14\x63\x61n_delete_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nDeleteResourcesRequest\"\x15\n\x13\x44\x65leteResourceReply\"P\n\x15\x44\x65leteResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nManageResourceAliasesReply\x12#\n\x1b\x63\x61n_manage_resource_aliases\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nManageResourceAliasesRequest\"\x14\n\x12\x41liasResourceReply\"\x85\x01\n\x14\x41liasResourceRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n(CanRegisterForResourceNotificationsReply\x12/\n\'can_register_for_resource_notifications\x18\x01 \x01(\x08\",\n*CanRegisterForResourceNotificationsRequest\"\x1e\n\x1cRegisterForNewResourcesReply\" \n\x1eRegisterForNewResourcesRequest\"\"\n RegisterForChangedResourcesReply\"$\n\"RegisterForChangedResourcesRequest\"!\n\x1fRegisterForChangedResourceReply\"\\\n!RegisterForChangedResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n RegisterForDeletedResourcesReply\"$\n\"RegisterForDeletedResourcesRequest\"!\n\x1fRegisterForDeletedResourceReply\"\\\n!RegisterForDeletedResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"ReliableResourceNotificationsReply\"&\n$ReliableResourceNotificationsRequest\"&\n$UnreliableResourceNotificationsReply\"(\n&UnreliableResourceNotificationsRequest\"&\n$AcknowledgeResourceNotificationReply\"e\n&AcknowledgeResourceNotificationRequest\x12;\n\x0fnotification_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUseComparativeBinViewReply\"\x1e\n\x1cUseComparativeBinViewRequest\"\x18\n\x16UsePlenaryBinViewReply\"\x1a\n\x18UsePlenaryBinViewRequest\"M\n!CanLookupResourceBinMappingsReply\x12(\n can_lookup_resource_bin_mappings\x18\x01 \x01(\x08\"%\n#CanLookupResourceBinMappingsRequest\"P\n\x1aGetResourceIdsByBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x18GetResourcesByBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetResourceIdsByBinsRequest\x12\x33\n\x07\x62in_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x19GetResourcesByBinsRequest\x12\x33\n\x07\x62in_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1aGetBinIdsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x18GetBinsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17\x43\x61nAssignResourcesReply\x12\x1c\n\x14\x63\x61n_assign_resources\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nAssignResourcesRequest\"C\n\x1c\x43\x61nAssignResourcesToBinReply\x12#\n\x1b\x63\x61n_assign_resources_to_bin\x18\x01 \x01(\x08\"T\n\x1e\x43\x61nAssignResourcesToBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetAssignableBinIdsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x94\x01\n%GetAssignableBinIdsForResourceRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41ssignResourceToBinReply\"\x89\x01\n\x1a\x41ssignResourceToBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUnassignResourceFromBinReply\"\x8d\x01\n\x1eUnassignResourceFromBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n#CanLookupResourceAgentMappingsReply\x12*\n\"can_lookup_resource_agent_mappings\x18\x01 \x01(\x08\"\'\n%CanLookupResourceAgentMappingsRequest\"\x1e\n\x1cUseComparativeAgentViewReply\" \n\x1eUseComparativeAgentViewRequest\"\x1a\n\x18UsePlenaryAgentViewReply\"\x1c\n\x1aUsePlenaryAgentViewRequest\"K\n\x19GetResourceIdByAgentReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x1bGetResourceIdByAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x17GetResourceByAgentReply\x12\x30\n\x08resource\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\"Q\n\x19GetResourceByAgentRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1cGetAgentIdsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1aGetAgentsByResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nAssignAgentsReply\x12\x19\n\x11\x63\x61n_assign_agents\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nAssignAgentsRequest\"G\n\x1e\x43\x61nAssignAgentsToResourceReply\x12%\n\x1d\x63\x61n_assign_agents_to_resource\x18\x01 \x01(\x08\"[\n CanAssignAgentsToResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1a\x41ssignAgentToResourceReply\"\x8d\x01\n\x1c\x41ssignAgentToResourceRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eUnassignAgentFromResourceReply\"\x91\x01\n UnassignAgentFromResourceRequest\x12\x34\n\x08\x61gent_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12\x43\x61nLookupBinsReply\x12\x17\n\x0f\x63\x61n_lookup_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nLookupBinsRequest\"J\n\x13GetBinsByIdsRequest\x12\x33\n\x07\x62in_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x19GetBinsByGenusTypeRequest\x12>\n\x0e\x62in_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1fGetBinsByParentGenusTypeRequest\x12>\n\x0e\x62in_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\x1aGetBinsByRecordTypeRequest\x12?\n\x0f\x62in_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"S\n\x18GetBinsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eGetBinsRequest\"-\n\x12\x43\x61nSearchBinsReply\x12\x17\n\x0f\x63\x61n_search_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nSearchBinsRequest\"E\n\x10GetBinQueryReply\x12\x31\n\tbin_query\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.BinQuery\"\x14\n\x12GetBinQueryRequest\"J\n\x15GetBinsByQueryRequest\x12\x31\n\tbin_query\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.resource.BinQuery\"-\n\x12\x43\x61nCreateBinsReply\x12\x17\n\x0f\x63\x61n_create_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nCreateBinsRequest\"L\n CanCreateBinWithRecordTypesReply\x12(\n can_create_bin_with_record_types\x18\x01 \x01(\x08\"f\n\"CanCreateBinWithRecordTypesRequest\x12@\n\x10\x62in_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"K\n\x18GetBinFormForCreateReply\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"^\n\x1aGetBinFormForCreateRequest\x12@\n\x10\x62in_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"8\n\x0e\x43reateBinReply\x12&\n\x03\x62in\x18\x01 \x01(\x0b\x32\x19.dlkit.proto.resource.Bin\"C\n\x10\x43reateBinRequest\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"-\n\x12\x43\x61nUpdateBinsReply\x12\x17\n\x0f\x63\x61n_update_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nUpdateBinsRequest\"K\n\x18GetBinFormForUpdateReply\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"P\n\x1aGetBinFormForUpdateRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eUpdateBinReply\"C\n\x10UpdateBinRequest\x12/\n\x08\x62in_form\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinForm\"-\n\x12\x43\x61nDeleteBinsReply\x12\x17\n\x0f\x63\x61n_delete_bins\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nDeleteBinsRequest\"\x10\n\x0e\x44\x65leteBinReply\"F\n\x10\x44\x65leteBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18\x43\x61nManageBinAliasesReply\x12\x1e\n\x16\x63\x61n_manage_bin_aliases\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nManageBinAliasesRequest\"\x0f\n\rAliasBinReply\"{\n\x0f\x41liasBinRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06\x62in_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x16GetBinHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetBinHierarchyIdRequest\"K\n\x14GetBinHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x18\n\x16GetBinHierarchyRequest\">\n\x1a\x43\x61nAccessBinHierarchyReply\x12 \n\x18\x63\x61n_access_bin_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nAccessBinHierarchyRequest\"\x16\n\x14GetRootBinIdsRequest\"\x14\n\x12GetRootBinsRequest\"-\n\x12HasParentBinsReply\x12\x17\n\x0fhas_parent_bins\x18\x01 \x01(\x08\"J\n\x14HasParentBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsParentOfBinReply\x12\x18\n\x10is_parent_of_bin\x18\x01 \x01(\x08\"{\n\x14IsParentOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x16GetParentBinIdsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x14GetParentBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsAncestorOfBinReply\x12\x1a\n\x12is_ancestor_of_bin\x18\x01 \x01(\x08\"}\n\x16IsAncestorOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n\x11HasChildBinsReply\x12\x16\n\x0ehas_child_bins\x18\x01 \x01(\x08\"I\n\x13HasChildBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\",\n\x11IsChildOfBinReply\x12\x17\n\x0fis_child_of_bin\x18\x01 \x01(\x08\"z\n\x13IsChildOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x15GetChildBinIdsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x13GetChildBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsDescendantOfBinReply\x12\x1c\n\x14is_descendant_of_bin\x18\x01 \x01(\x08\"\x7f\n\x18IsDescendantOfBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x12GetBinNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x98\x01\n\x14GetBinNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x32\n\x06\x62in_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"C\n\x10GetBinNodesReply\x12/\n\x08\x62in_node\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.resource.BinNode\"\x96\x01\n\x12GetBinNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x32\n\x06\x62in_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\">\n\x1a\x43\x61nModifyBinHierarchyReply\x12 \n\x18\x63\x61n_modify_bin_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nModifyBinHierarchyRequest\"\x11\n\x0f\x41\x64\x64RootBinReply\"G\n\x11\x41\x64\x64RootBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12RemoveRootBinReply\"J\n\x14RemoveRootBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10\x41\x64\x64\x43hildBinReply\"~\n\x12\x41\x64\x64\x43hildBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveChildBinReply\"\x81\x01\n\x15RemoveChildBinRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildBinsReply\"L\n\x16RemoveChildBinsRequest\x12\x32\n\x06\x62in_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xde\x0b\n\x15ResourceLookupSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12v\n\x12\x43\x61nLookupResources\x12/.dlkit.proto.resource.CanLookupResourcesRequest\x1a-.dlkit.proto.resource.CanLookupResourcesReply\"\x00\x12\x8e\x01\n\x1aUseComparativeResourceView\x12\x37.dlkit.proto.resource.UseComparativeResourceViewRequest\x1a\x35.dlkit.proto.resource.UseComparativeResourceViewReply\"\x00\x12\x82\x01\n\x16UsePlenaryResourceView\x12\x33.dlkit.proto.resource.UsePlenaryResourceViewRequest\x1a\x31.dlkit.proto.resource.UsePlenaryResourceViewReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12\x61\n\x0bGetResource\x12(.dlkit.proto.resource.GetResourceRequest\x1a&.dlkit.proto.resource.GetResourceReply\"\x00\x12g\n\x11GetResourcesByIds\x12..dlkit.proto.resource.GetResourcesByIdsRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12s\n\x17GetResourcesByGenusType\x12\x34.dlkit.proto.resource.GetResourcesByGenusTypeRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12\x7f\n\x1dGetResourcesByParentGenusType\x12:.dlkit.proto.resource.GetResourcesByParentGenusTypeRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12u\n\x18GetResourcesByRecordType\x12\x35.dlkit.proto.resource.GetResourcesByRecordTypeRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12]\n\x0cGetResources\x12).dlkit.proto.resource.GetResourcesRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x32\x8e\x06\n\x14ResourceQuerySession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12v\n\x12\x43\x61nSearchResources\x12/.dlkit.proto.resource.CanSearchResourcesRequest\x1a-.dlkit.proto.resource.CanSearchResourcesReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12p\n\x10GetResourceQuery\x12-.dlkit.proto.resource.GetResourceQueryRequest\x1a+.dlkit.proto.resource.GetResourceQueryReply\"\x00\x12k\n\x13GetResourcesByQuery\x12\x30.dlkit.proto.resource.GetResourcesByQueryRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x32\xa9\x04\n\x15ResourceSearchSession\x12s\n\x11GetResourceSearch\x12..dlkit.proto.resource.GetResourceSearchRequest\x1a,.dlkit.proto.resource.GetResourceSearchReply\"\x00\x12\x82\x01\n\x16GetResourceSearchOrder\x12\x33.dlkit.proto.resource.GetResourceSearchOrderRequest\x1a\x31.dlkit.proto.resource.GetResourceSearchOrderReply\"\x00\x12|\n\x14GetResourcesBySearch\x12\x31.dlkit.proto.resource.GetResourcesBySearchRequest\x1a/.dlkit.proto.resource.GetResourcesBySearchReply\"\x00\x12\x97\x01\n\x1dGetResourceQueryFromInspector\x12:.dlkit.proto.resource.GetResourceQueryFromInspectorRequest\x1a\x38.dlkit.proto.resource.GetResourceQueryFromInspectorReply\"\x00\x32\x9d\x0c\n\x14ResourceAdminSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12v\n\x12\x43\x61nCreateResources\x12/.dlkit.proto.resource.CanCreateResourcesRequest\x1a-.dlkit.proto.resource.CanCreateResourcesReply\"\x00\x12\xa0\x01\n CanCreateResourceWithRecordTypes\x12=.dlkit.proto.resource.CanCreateResourceWithRecordTypesRequest\x1a;.dlkit.proto.resource.CanCreateResourceWithRecordTypesReply\"\x00\x12\x88\x01\n\x18GetResourceFormForCreate\x12\x35.dlkit.proto.resource.GetResourceFormForCreateRequest\x1a\x33.dlkit.proto.resource.GetResourceFormForCreateReply\"\x00\x12j\n\x0e\x43reateResource\x12+.dlkit.proto.resource.CreateResourceRequest\x1a).dlkit.proto.resource.CreateResourceReply\"\x00\x12v\n\x12\x43\x61nUpdateResources\x12/.dlkit.proto.resource.CanUpdateResourcesRequest\x1a-.dlkit.proto.resource.CanUpdateResourcesReply\"\x00\x12\x88\x01\n\x18GetResourceFormForUpdate\x12\x35.dlkit.proto.resource.GetResourceFormForUpdateRequest\x1a\x33.dlkit.proto.resource.GetResourceFormForUpdateReply\"\x00\x12j\n\x0eUpdateResource\x12+.dlkit.proto.resource.UpdateResourceRequest\x1a).dlkit.proto.resource.UpdateResourceReply\"\x00\x12v\n\x12\x43\x61nDeleteResources\x12/.dlkit.proto.resource.CanDeleteResourcesRequest\x1a-.dlkit.proto.resource.CanDeleteResourcesReply\"\x00\x12j\n\x0e\x44\x65leteResource\x12+.dlkit.proto.resource.DeleteResourceRequest\x1a).dlkit.proto.resource.DeleteResourceReply\"\x00\x12\x88\x01\n\x18\x43\x61nManageResourceAliases\x12\x35.dlkit.proto.resource.CanManageResourceAliasesRequest\x1a\x33.dlkit.proto.resource.CanManageResourceAliasesReply\"\x00\x12g\n\rAliasResource\x12*.dlkit.proto.resource.AliasResourceRequest\x1a(.dlkit.proto.resource.AliasResourceReply\"\x00\x32\x96\x0e\n\x1bResourceNotificationSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12\xa9\x01\n#CanRegisterForResourceNotifications\x12@.dlkit.proto.resource.CanRegisterForResourceNotificationsRequest\x1a>.dlkit.proto.resource.CanRegisterForResourceNotificationsReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12\x85\x01\n\x17RegisterForNewResources\x12\x34.dlkit.proto.resource.RegisterForNewResourcesRequest\x1a\x32.dlkit.proto.resource.RegisterForNewResourcesReply\"\x00\x12\x91\x01\n\x1bRegisterForChangedResources\x12\x38.dlkit.proto.resource.RegisterForChangedResourcesRequest\x1a\x36.dlkit.proto.resource.RegisterForChangedResourcesReply\"\x00\x12\x8e\x01\n\x1aRegisterForChangedResource\x12\x37.dlkit.proto.resource.RegisterForChangedResourceRequest\x1a\x35.dlkit.proto.resource.RegisterForChangedResourceReply\"\x00\x12\x91\x01\n\x1bRegisterForDeletedResources\x12\x38.dlkit.proto.resource.RegisterForDeletedResourcesRequest\x1a\x36.dlkit.proto.resource.RegisterForDeletedResourcesReply\"\x00\x12\x8e\x01\n\x1aRegisterForDeletedResource\x12\x37.dlkit.proto.resource.RegisterForDeletedResourceRequest\x1a\x35.dlkit.proto.resource.RegisterForDeletedResourceReply\"\x00\x12\x97\x01\n\x1dReliableResourceNotifications\x12:.dlkit.proto.resource.ReliableResourceNotificationsRequest\x1a\x38.dlkit.proto.resource.ReliableResourceNotificationsReply\"\x00\x12\x9d\x01\n\x1fUnreliableResourceNotifications\x12<.dlkit.proto.resource.UnreliableResourceNotificationsRequest\x1a:.dlkit.proto.resource.UnreliableResourceNotificationsReply\"\x00\x12\x9d\x01\n\x1f\x41\x63knowledgeResourceNotification\x12<.dlkit.proto.resource.AcknowledgeResourceNotificationRequest\x1a:.dlkit.proto.resource.AcknowledgeResourceNotificationReply\"\x00\x32\xae\x08\n\x12ResourceBinSession\x12\x7f\n\x15UseComparativeBinView\x12\x32.dlkit.proto.resource.UseComparativeBinViewRequest\x1a\x30.dlkit.proto.resource.UseComparativeBinViewReply\"\x00\x12s\n\x11UsePlenaryBinView\x12..dlkit.proto.resource.UsePlenaryBinViewRequest\x1a,.dlkit.proto.resource.UsePlenaryBinViewReply\"\x00\x12\x94\x01\n\x1c\x43\x61nLookupResourceBinMappings\x12\x39.dlkit.proto.resource.CanLookupResourceBinMappingsRequest\x1a\x37.dlkit.proto.resource.CanLookupResourceBinMappingsReply\"\x00\x12o\n\x13GetResourceIdsByBin\x12\x30.dlkit.proto.resource.GetResourceIdsByBinRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12g\n\x11GetResourcesByBin\x12..dlkit.proto.resource.GetResourcesByBinRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12q\n\x14GetResourceIdsByBins\x12\x31.dlkit.proto.resource.GetResourceIdsByBinsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12i\n\x12GetResourcesByBins\x12/.dlkit.proto.resource.GetResourcesByBinsRequest\x1a\x1e.dlkit.proto.resource.Resource\"\x00\x30\x01\x12o\n\x13GetBinIdsByResource\x12\x30.dlkit.proto.resource.GetBinIdsByResourceRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x62\n\x11GetBinsByResource\x12..dlkit.proto.resource.GetBinsByResourceRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x32\x9a\x06\n\x1cResourceBinAssignmentSession\x12v\n\x12\x43\x61nAssignResources\x12/.dlkit.proto.resource.CanAssignResourcesRequest\x1a-.dlkit.proto.resource.CanAssignResourcesReply\"\x00\x12\x85\x01\n\x17\x43\x61nAssignResourcesToBin\x12\x34.dlkit.proto.resource.CanAssignResourcesToBinRequest\x1a\x32.dlkit.proto.resource.CanAssignResourcesToBinReply\"\x00\x12o\n\x13GetAssignableBinIds\x12\x30.dlkit.proto.resource.GetAssignableBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x85\x01\n\x1eGetAssignableBinIdsForResource\x12;.dlkit.proto.resource.GetAssignableBinIdsForResourceRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12y\n\x13\x41ssignResourceToBin\x12\x30.dlkit.proto.resource.AssignResourceToBinRequest\x1a..dlkit.proto.resource.AssignResourceToBinReply\"\x00\x12\x85\x01\n\x17UnassignResourceFromBin\x12\x34.dlkit.proto.resource.UnassignResourceFromBinRequest\x1a\x32.dlkit.proto.resource.UnassignResourceFromBinReply\"\x00\x32\xb2\n\n\x14ResourceAgentSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12\x9a\x01\n\x1e\x43\x61nLookupResourceAgentMappings\x12;.dlkit.proto.resource.CanLookupResourceAgentMappingsRequest\x1a\x39.dlkit.proto.resource.CanLookupResourceAgentMappingsReply\"\x00\x12\x85\x01\n\x17UseComparativeAgentView\x12\x34.dlkit.proto.resource.UseComparativeAgentViewRequest\x1a\x32.dlkit.proto.resource.UseComparativeAgentViewReply\"\x00\x12y\n\x13UsePlenaryAgentView\x12\x30.dlkit.proto.resource.UsePlenaryAgentViewRequest\x1a..dlkit.proto.resource.UsePlenaryAgentViewReply\"\x00\x12y\n\x13UseFederatedBinView\x12\x30.dlkit.proto.resource.UseFederatedBinViewRequest\x1a..dlkit.proto.resource.UseFederatedBinViewReply\"\x00\x12v\n\x12UseIsolatedBinView\x12/.dlkit.proto.resource.UseIsolatedBinViewRequest\x1a-.dlkit.proto.resource.UseIsolatedBinViewReply\"\x00\x12|\n\x14GetResourceIdByAgent\x12\x31.dlkit.proto.resource.GetResourceIdByAgentRequest\x1a/.dlkit.proto.resource.GetResourceIdByAgentReply\"\x00\x12v\n\x12GetResourceByAgent\x12/.dlkit.proto.resource.GetResourceByAgentRequest\x1a-.dlkit.proto.resource.GetResourceByAgentReply\"\x00\x12s\n\x15GetAgentIdsByResource\x12\x32.dlkit.proto.resource.GetAgentIdsByResourceRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12n\n\x13GetAgentsByResource\x12\x30.dlkit.proto.resource.GetAgentsByResourceRequest\x1a!.dlkit.proto.authentication.Agent\"\x00\x30\x01\x32\xda\x05\n\x1eResourceAgentAssignmentSession\x12X\n\x08GetBinId\x12%.dlkit.proto.resource.GetBinIdRequest\x1a#.dlkit.proto.resource.GetBinIdReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12m\n\x0f\x43\x61nAssignAgents\x12,.dlkit.proto.resource.CanAssignAgentsRequest\x1a*.dlkit.proto.resource.CanAssignAgentsReply\"\x00\x12\x8b\x01\n\x19\x43\x61nAssignAgentsToResource\x12\x36.dlkit.proto.resource.CanAssignAgentsToResourceRequest\x1a\x34.dlkit.proto.resource.CanAssignAgentsToResourceReply\"\x00\x12\x7f\n\x15\x41ssignAgentToResource\x12\x32.dlkit.proto.resource.AssignAgentToResourceRequest\x1a\x30.dlkit.proto.resource.AssignAgentToResourceReply\"\x00\x12\x8b\x01\n\x19UnassignAgentFromResource\x12\x36.dlkit.proto.resource.UnassignAgentFromResourceRequest\x1a\x34.dlkit.proto.resource.UnassignAgentFromResourceReply\"\x00\x32\x93\x08\n\x10\x42inLookupSession\x12g\n\rCanLookupBins\x12*.dlkit.proto.resource.CanLookupBinsRequest\x1a(.dlkit.proto.resource.CanLookupBinsReply\"\x00\x12\x7f\n\x15UseComparativeBinView\x12\x32.dlkit.proto.resource.UseComparativeBinViewRequest\x1a\x30.dlkit.proto.resource.UseComparativeBinViewReply\"\x00\x12s\n\x11UsePlenaryBinView\x12..dlkit.proto.resource.UsePlenaryBinViewRequest\x1a,.dlkit.proto.resource.UsePlenaryBinViewReply\"\x00\x12R\n\x06GetBin\x12#.dlkit.proto.resource.GetBinRequest\x1a!.dlkit.proto.resource.GetBinReply\"\x00\x12X\n\x0cGetBinsByIds\x12).dlkit.proto.resource.GetBinsByIdsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12\x64\n\x12GetBinsByGenusType\x12/.dlkit.proto.resource.GetBinsByGenusTypeRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12p\n\x18GetBinsByParentGenusType\x12\x35.dlkit.proto.resource.GetBinsByParentGenusTypeRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12\x66\n\x13GetBinsByRecordType\x12\x30.dlkit.proto.resource.GetBinsByRecordTypeRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12\x62\n\x11GetBinsByProvider\x12..dlkit.proto.resource.GetBinsByProviderRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12N\n\x07GetBins\x12$.dlkit.proto.resource.GetBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x32\xbb\x02\n\x0f\x42inQuerySession\x12g\n\rCanSearchBins\x12*.dlkit.proto.resource.CanSearchBinsRequest\x1a(.dlkit.proto.resource.CanSearchBinsReply\"\x00\x12\x61\n\x0bGetBinQuery\x12(.dlkit.proto.resource.GetBinQueryRequest\x1a&.dlkit.proto.resource.GetBinQueryReply\"\x00\x12\\\n\x0eGetBinsByQuery\x12+.dlkit.proto.resource.GetBinsByQueryRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x32\xc2\t\n\x0f\x42inAdminSession\x12g\n\rCanCreateBins\x12*.dlkit.proto.resource.CanCreateBinsRequest\x1a(.dlkit.proto.resource.CanCreateBinsReply\"\x00\x12\x91\x01\n\x1b\x43\x61nCreateBinWithRecordTypes\x12\x38.dlkit.proto.resource.CanCreateBinWithRecordTypesRequest\x1a\x36.dlkit.proto.resource.CanCreateBinWithRecordTypesReply\"\x00\x12y\n\x13GetBinFormForCreate\x12\x30.dlkit.proto.resource.GetBinFormForCreateRequest\x1a..dlkit.proto.resource.GetBinFormForCreateReply\"\x00\x12[\n\tCreateBin\x12&.dlkit.proto.resource.CreateBinRequest\x1a$.dlkit.proto.resource.CreateBinReply\"\x00\x12g\n\rCanUpdateBins\x12*.dlkit.proto.resource.CanUpdateBinsRequest\x1a(.dlkit.proto.resource.CanUpdateBinsReply\"\x00\x12y\n\x13GetBinFormForUpdate\x12\x30.dlkit.proto.resource.GetBinFormForUpdateRequest\x1a..dlkit.proto.resource.GetBinFormForUpdateReply\"\x00\x12[\n\tUpdateBin\x12&.dlkit.proto.resource.UpdateBinRequest\x1a$.dlkit.proto.resource.UpdateBinReply\"\x00\x12g\n\rCanDeleteBins\x12*.dlkit.proto.resource.CanDeleteBinsRequest\x1a(.dlkit.proto.resource.CanDeleteBinsReply\"\x00\x12[\n\tDeleteBin\x12&.dlkit.proto.resource.DeleteBinRequest\x1a$.dlkit.proto.resource.DeleteBinReply\"\x00\x12y\n\x13\x43\x61nManageBinAliases\x12\x30.dlkit.proto.resource.CanManageBinAliasesRequest\x1a..dlkit.proto.resource.CanManageBinAliasesReply\"\x00\x12X\n\x08\x41liasBin\x12%.dlkit.proto.resource.AliasBinRequest\x1a#.dlkit.proto.resource.AliasBinReply\"\x00\x32\x81\x10\n\x13\x42inHierarchySession\x12s\n\x11GetBinHierarchyId\x12..dlkit.proto.resource.GetBinHierarchyIdRequest\x1a,.dlkit.proto.resource.GetBinHierarchyIdReply\"\x00\x12m\n\x0fGetBinHierarchy\x12,.dlkit.proto.resource.GetBinHierarchyRequest\x1a*.dlkit.proto.resource.GetBinHierarchyReply\"\x00\x12\x7f\n\x15\x43\x61nAccessBinHierarchy\x12\x32.dlkit.proto.resource.CanAccessBinHierarchyRequest\x1a\x30.dlkit.proto.resource.CanAccessBinHierarchyReply\"\x00\x12\x7f\n\x15UseComparativeBinView\x12\x32.dlkit.proto.resource.UseComparativeBinViewRequest\x1a\x30.dlkit.proto.resource.UseComparativeBinViewReply\"\x00\x12s\n\x11UsePlenaryBinView\x12..dlkit.proto.resource.UsePlenaryBinViewRequest\x1a,.dlkit.proto.resource.UsePlenaryBinViewReply\"\x00\x12\x63\n\rGetRootBinIds\x12*.dlkit.proto.resource.GetRootBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12V\n\x0bGetRootBins\x12(.dlkit.proto.resource.GetRootBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12g\n\rHasParentBins\x12*.dlkit.proto.resource.HasParentBinsRequest\x1a(.dlkit.proto.resource.HasParentBinsReply\"\x00\x12g\n\rIsParentOfBin\x12*.dlkit.proto.resource.IsParentOfBinRequest\x1a(.dlkit.proto.resource.IsParentOfBinReply\"\x00\x12g\n\x0fGetParentBinIds\x12,.dlkit.proto.resource.GetParentBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12Z\n\rGetParentBins\x12*.dlkit.proto.resource.GetParentBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12m\n\x0fIsAncestorOfBin\x12,.dlkit.proto.resource.IsAncestorOfBinRequest\x1a*.dlkit.proto.resource.IsAncestorOfBinReply\"\x00\x12\x64\n\x0cHasChildBins\x12).dlkit.proto.resource.HasChildBinsRequest\x1a\'.dlkit.proto.resource.HasChildBinsReply\"\x00\x12\x64\n\x0cIsChildOfBin\x12).dlkit.proto.resource.IsChildOfBinRequest\x1a\'.dlkit.proto.resource.IsChildOfBinReply\"\x00\x12\x65\n\x0eGetChildBinIds\x12+.dlkit.proto.resource.GetChildBinIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12X\n\x0cGetChildBins\x12).dlkit.proto.resource.GetChildBinsRequest\x1a\x19.dlkit.proto.resource.Bin\"\x00\x30\x01\x12s\n\x11IsDescendantOfBin\x12..dlkit.proto.resource.IsDescendantOfBinRequest\x1a,.dlkit.proto.resource.IsDescendantOfBinReply\"\x00\x12g\n\rGetBinNodeIds\x12*.dlkit.proto.resource.GetBinNodeIdsRequest\x1a(.dlkit.proto.resource.GetBinNodeIdsReply\"\x00\x12\x61\n\x0bGetBinNodes\x12(.dlkit.proto.resource.GetBinNodesRequest\x1a&.dlkit.proto.resource.GetBinNodesReply\"\x00\x32\x87\x07\n\x19\x42inHierarchyDesignSession\x12s\n\x11GetBinHierarchyId\x12..dlkit.proto.resource.GetBinHierarchyIdRequest\x1a,.dlkit.proto.resource.GetBinHierarchyIdReply\"\x00\x12m\n\x0fGetBinHierarchy\x12,.dlkit.proto.resource.GetBinHierarchyRequest\x1a*.dlkit.proto.resource.GetBinHierarchyReply\"\x00\x12\x7f\n\x15\x43\x61nModifyBinHierarchy\x12\x32.dlkit.proto.resource.CanModifyBinHierarchyRequest\x1a\x30.dlkit.proto.resource.CanModifyBinHierarchyReply\"\x00\x12^\n\nAddRootBin\x12\'.dlkit.proto.resource.AddRootBinRequest\x1a%.dlkit.proto.resource.AddRootBinReply\"\x00\x12g\n\rRemoveRootBin\x12*.dlkit.proto.resource.RemoveRootBinRequest\x1a(.dlkit.proto.resource.RemoveRootBinReply\"\x00\x12\x61\n\x0b\x41\x64\x64\x43hildBin\x12(.dlkit.proto.resource.AddChildBinRequest\x1a&.dlkit.proto.resource.AddChildBinReply\"\x00\x12j\n\x0eRemoveChildBin\x12+.dlkit.proto.resource.RemoveChildBinRequest\x1a).dlkit.proto.resource.RemoveChildBinReply\"\x00\x12m\n\x0fRemoveChildBins\x12,.dlkit.proto.resource.RemoveChildBinsRequest\x1a*.dlkit.proto.resource.RemoveChildBinsReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_authentication__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,])
 
@@ -61,14 +61,14 @@ _RESOURCE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.resource.Resource.displayName', index=3,
+      name='display_name', full_name='dlkit.proto.resource.Resource.display_name', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.resource.Resource.genusTypeId', index=4,
+      name='genus_type_id', full_name='dlkit.proto.resource.Resource.genus_type_id', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -89,7 +89,7 @@ _RESOURCE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.resource.Resource.recordTypeIds', index=7,
+      name='record_type_ids', full_name='dlkit.proto.resource.Resource.record_type_ids', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -108,7 +108,7 @@ _RESOURCE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=260,
-  serialized_end=693,
+  serialized_end=698,
 )
 
 
@@ -131,8 +131,8 @@ _RESOURCEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=695,
-  serialized_end=710,
+  serialized_start=700,
+  serialized_end=715,
 )
 
 
@@ -155,8 +155,8 @@ _RESOURCEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=712,
-  serialized_end=736,
+  serialized_start=717,
+  serialized_end=741,
 )
 
 
@@ -179,8 +179,8 @@ _RESOURCEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=738,
-  serialized_end=752,
+  serialized_start=743,
+  serialized_end=757,
 )
 
 
@@ -203,8 +203,8 @@ _RESOURCESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=754,
-  serialized_end=775,
+  serialized_start=759,
+  serialized_end=780,
 )
 
 
@@ -227,8 +227,8 @@ _RESOURCESEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=777,
-  serialized_end=793,
+  serialized_start=782,
+  serialized_end=798,
 )
 
 
@@ -251,8 +251,8 @@ _RESOURCESEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=795,
-  serialized_end=818,
+  serialized_start=800,
+  serialized_end=823,
 )
 
 
@@ -282,8 +282,8 @@ _RESOURCELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=820,
-  serialized_end=885,
+  serialized_start=825,
+  serialized_end=890,
 )
 
 
@@ -306,8 +306,8 @@ _RESOURCENODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=887,
-  serialized_end=901,
+  serialized_start=892,
+  serialized_end=906,
 )
 
 
@@ -337,8 +337,8 @@ _RESOURCENODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=903,
-  serialized_end=981,
+  serialized_start=908,
+  serialized_end=986,
 )
 
 
@@ -382,8 +382,8 @@ _RESOURCERELATIONSHIP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=984,
-  serialized_end=1177,
+  serialized_start=989,
+  serialized_end=1182,
 )
 
 
@@ -406,8 +406,8 @@ _RESOURCERELATIONSHIPQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1179,
-  serialized_end=1206,
+  serialized_start=1184,
+  serialized_end=1211,
 )
 
 
@@ -430,8 +430,8 @@ _RESOURCERELATIONSHIPQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1208,
-  serialized_end=1244,
+  serialized_start=1213,
+  serialized_end=1249,
 )
 
 
@@ -454,8 +454,8 @@ _RESOURCERELATIONSHIPFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1246,
-  serialized_end=1272,
+  serialized_start=1251,
+  serialized_end=1277,
 )
 
 
@@ -478,8 +478,8 @@ _RESOURCERELATIONSHIPSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1274,
-  serialized_end=1307,
+  serialized_start=1279,
+  serialized_end=1312,
 )
 
 
@@ -502,8 +502,8 @@ _RESOURCERELATIONSHIPSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1309,
-  serialized_end=1337,
+  serialized_start=1314,
+  serialized_end=1342,
 )
 
 
@@ -526,8 +526,8 @@ _RESOURCERELATIONSHIPSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1339,
-  serialized_end=1374,
+  serialized_start=1344,
+  serialized_end=1379,
 )
 
 
@@ -557,8 +557,8 @@ _RESOURCERELATIONSHIPLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1376,
-  serialized_end=1478,
+  serialized_start=1381,
+  serialized_end=1483,
 )
 
 
@@ -577,14 +577,14 @@ _BIN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.resource.Bin.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.resource.Bin.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.resource.Bin.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.resource.Bin.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -598,7 +598,7 @@ _BIN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.resource.Bin.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.resource.Bin.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -616,8 +616,8 @@ _BIN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1481,
-  serialized_end=1798,
+  serialized_start=1486,
+  serialized_end=1808,
 )
 
 
@@ -640,8 +640,8 @@ _BINQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1800,
-  serialized_end=1810,
+  serialized_start=1810,
+  serialized_end=1820,
 )
 
 
@@ -664,8 +664,8 @@ _BINQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1812,
-  serialized_end=1831,
+  serialized_start=1822,
+  serialized_end=1841,
 )
 
 
@@ -688,8 +688,8 @@ _BINFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1833,
-  serialized_end=1842,
+  serialized_start=1843,
+  serialized_end=1852,
 )
 
 
@@ -712,8 +712,8 @@ _BINSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1844,
-  serialized_end=1860,
+  serialized_start=1854,
+  serialized_end=1870,
 )
 
 
@@ -736,8 +736,8 @@ _BINSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1862,
-  serialized_end=1873,
+  serialized_start=1872,
+  serialized_end=1883,
 )
 
 
@@ -760,8 +760,8 @@ _BINSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1875,
-  serialized_end=1893,
+  serialized_start=1885,
+  serialized_end=1903,
 )
 
 
@@ -791,8 +791,8 @@ _BINLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1895,
-  serialized_end=1945,
+  serialized_start=1905,
+  serialized_end=1955,
 )
 
 
@@ -815,8 +815,8 @@ _BINNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1947,
-  serialized_end=1956,
+  serialized_start=1957,
+  serialized_end=1966,
 )
 
 
@@ -846,8 +846,8 @@ _BINNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1958,
-  serialized_end=2021,
+  serialized_start=1968,
+  serialized_end=2031,
 )
 
 
@@ -877,8 +877,8 @@ _GETBINIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2023,
-  serialized_end=2086,
+  serialized_start=2033,
+  serialized_end=2096,
 )
 
 
@@ -901,8 +901,8 @@ _GETBINIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2088,
-  serialized_end=2105,
+  serialized_start=2098,
+  serialized_end=2115,
 )
 
 
@@ -932,8 +932,8 @@ _GETBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2107,
-  serialized_end=2160,
+  serialized_start=2117,
+  serialized_end=2170,
 )
 
 
@@ -956,8 +956,8 @@ _GETBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2162,
-  serialized_end=2177,
+  serialized_start=2172,
+  serialized_end=2187,
 )
 
 
@@ -987,8 +987,8 @@ _CANLOOKUPRESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2179,
-  serialized_end=2234,
+  serialized_start=2189,
+  serialized_end=2244,
 )
 
 
@@ -1011,8 +1011,8 @@ _CANLOOKUPRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2236,
-  serialized_end=2263,
+  serialized_start=2246,
+  serialized_end=2273,
 )
 
 
@@ -1035,8 +1035,8 @@ _USECOMPARATIVERESOURCEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2265,
-  serialized_end=2298,
+  serialized_start=2275,
+  serialized_end=2308,
 )
 
 
@@ -1059,8 +1059,8 @@ _USECOMPARATIVERESOURCEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2300,
-  serialized_end=2335,
+  serialized_start=2310,
+  serialized_end=2345,
 )
 
 
@@ -1083,8 +1083,8 @@ _USEPLENARYRESOURCEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2337,
-  serialized_end=2366,
+  serialized_start=2347,
+  serialized_end=2376,
 )
 
 
@@ -1107,8 +1107,8 @@ _USEPLENARYRESOURCEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2368,
-  serialized_end=2399,
+  serialized_start=2378,
+  serialized_end=2409,
 )
 
 
@@ -1131,8 +1131,8 @@ _USEFEDERATEDBINVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2401,
-  serialized_end=2427,
+  serialized_start=2411,
+  serialized_end=2437,
 )
 
 
@@ -1155,8 +1155,8 @@ _USEFEDERATEDBINVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2429,
-  serialized_end=2457,
+  serialized_start=2439,
+  serialized_end=2467,
 )
 
 
@@ -1179,8 +1179,8 @@ _USEISOLATEDBINVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2459,
-  serialized_end=2484,
+  serialized_start=2469,
+  serialized_end=2494,
 )
 
 
@@ -1203,8 +1203,8 @@ _USEISOLATEDBINVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2486,
-  serialized_end=2513,
+  serialized_start=2496,
+  serialized_end=2523,
 )
 
 
@@ -1234,8 +1234,8 @@ _GETRESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2515,
-  serialized_end=2583,
+  serialized_start=2525,
+  serialized_end=2593,
 )
 
 
@@ -1265,8 +1265,8 @@ _GETRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2585,
-  serialized_end=2662,
+  serialized_start=2595,
+  serialized_end=2672,
 )
 
 
@@ -1296,8 +1296,8 @@ _GETRESOURCESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2664,
-  serialized_end=2748,
+  serialized_start=2674,
+  serialized_end=2758,
 )
 
 
@@ -1327,8 +1327,8 @@ _GETRESOURCESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2750,
-  serialized_end=2851,
+  serialized_start=2760,
+  serialized_end=2861,
 )
 
 
@@ -1358,8 +1358,8 @@ _GETRESOURCESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2853,
-  serialized_end=2960,
+  serialized_start=2863,
+  serialized_end=2970,
 )
 
 
@@ -1389,8 +1389,8 @@ _GETRESOURCESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2962,
-  serialized_end=3065,
+  serialized_start=2972,
+  serialized_end=3075,
 )
 
 
@@ -1413,8 +1413,8 @@ _GETRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3067,
-  serialized_end=3088,
+  serialized_start=3077,
+  serialized_end=3098,
 )
 
 
@@ -1444,8 +1444,8 @@ _CANSEARCHRESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3090,
-  serialized_end=3145,
+  serialized_start=3100,
+  serialized_end=3155,
 )
 
 
@@ -1468,8 +1468,8 @@ _CANSEARCHRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3147,
-  serialized_end=3174,
+  serialized_start=3157,
+  serialized_end=3184,
 )
 
 
@@ -1499,8 +1499,8 @@ _GETRESOURCEQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3176,
-  serialized_end=3260,
+  serialized_start=3186,
+  serialized_end=3270,
 )
 
 
@@ -1523,8 +1523,8 @@ _GETRESOURCEQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3262,
-  serialized_end=3287,
+  serialized_start=3272,
+  serialized_end=3297,
 )
 
 
@@ -1554,8 +1554,8 @@ _GETRESOURCESBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3289,
-  serialized_end=3378,
+  serialized_start=3299,
+  serialized_end=3388,
 )
 
 
@@ -1585,8 +1585,8 @@ _GETRESOURCESEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3380,
-  serialized_end=3467,
+  serialized_start=3390,
+  serialized_end=3477,
 )
 
 
@@ -1609,8 +1609,8 @@ _GETRESOURCESEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3469,
-  serialized_end=3495,
+  serialized_start=3479,
+  serialized_end=3505,
 )
 
 
@@ -1640,8 +1640,8 @@ _GETRESOURCESEARCHORDERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3497,
-  serialized_end=3600,
+  serialized_start=3507,
+  serialized_end=3610,
 )
 
 
@@ -1664,8 +1664,8 @@ _GETRESOURCESEARCHORDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3602,
-  serialized_end=3633,
+  serialized_start=3612,
+  serialized_end=3643,
 )
 
 
@@ -1695,8 +1695,8 @@ _GETRESOURCESBYSEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3635,
-  serialized_end=3740,
+  serialized_start=3645,
+  serialized_end=3750,
 )
 
 
@@ -1733,8 +1733,8 @@ _GETRESOURCESBYSEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3743,
-  serialized_end=3896,
+  serialized_start=3753,
+  serialized_end=3906,
 )
 
 
@@ -1764,8 +1764,8 @@ _GETRESOURCEQUERYFROMINSPECTORREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3898,
-  serialized_end=3995,
+  serialized_start=3908,
+  serialized_end=4005,
 )
 
 
@@ -1795,8 +1795,8 @@ _GETRESOURCEQUERYFROMINSPECTORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3997,
-  serialized_end=4115,
+  serialized_start=4007,
+  serialized_end=4125,
 )
 
 
@@ -1826,8 +1826,8 @@ _CANCREATERESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4117,
-  serialized_end=4172,
+  serialized_start=4127,
+  serialized_end=4182,
 )
 
 
@@ -1850,8 +1850,8 @@ _CANCREATERESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4174,
-  serialized_end=4201,
+  serialized_start=4184,
+  serialized_end=4211,
 )
 
 
@@ -1881,8 +1881,8 @@ _CANCREATERESOURCEWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4203,
-  serialized_end=4289,
+  serialized_start=4213,
+  serialized_end=4299,
 )
 
 
@@ -1912,8 +1912,8 @@ _CANCREATERESOURCEWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4291,
-  serialized_end=4403,
+  serialized_start=4301,
+  serialized_end=4413,
 )
 
 
@@ -1943,8 +1943,8 @@ _GETRESOURCEFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4405,
-  serialized_end=4495,
+  serialized_start=4415,
+  serialized_end=4505,
 )
 
 
@@ -1974,8 +1974,8 @@ _GETRESOURCEFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4497,
-  serialized_end=4601,
+  serialized_start=4507,
+  serialized_end=4611,
 )
 
 
@@ -2005,8 +2005,8 @@ _CREATERESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4603,
-  serialized_end=4674,
+  serialized_start=4613,
+  serialized_end=4684,
 )
 
 
@@ -2036,8 +2036,8 @@ _CREATERESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4676,
-  serialized_end=4758,
+  serialized_start=4686,
+  serialized_end=4768,
 )
 
 
@@ -2067,8 +2067,8 @@ _CANUPDATERESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4760,
-  serialized_end=4815,
+  serialized_start=4770,
+  serialized_end=4825,
 )
 
 
@@ -2091,8 +2091,8 @@ _CANUPDATERESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4817,
-  serialized_end=4844,
+  serialized_start=4827,
+  serialized_end=4854,
 )
 
 
@@ -2122,8 +2122,8 @@ _GETRESOURCEFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4846,
-  serialized_end=4936,
+  serialized_start=4856,
+  serialized_end=4946,
 )
 
 
@@ -2153,8 +2153,8 @@ _GETRESOURCEFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4938,
-  serialized_end=5028,
+  serialized_start=4948,
+  serialized_end=5038,
 )
 
 
@@ -2177,8 +2177,8 @@ _UPDATERESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5030,
-  serialized_end=5051,
+  serialized_start=5040,
+  serialized_end=5061,
 )
 
 
@@ -2208,8 +2208,8 @@ _UPDATERESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5053,
-  serialized_end=5135,
+  serialized_start=5063,
+  serialized_end=5145,
 )
 
 
@@ -2239,8 +2239,8 @@ _CANDELETERESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5137,
-  serialized_end=5192,
+  serialized_start=5147,
+  serialized_end=5202,
 )
 
 
@@ -2263,8 +2263,8 @@ _CANDELETERESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5194,
-  serialized_end=5221,
+  serialized_start=5204,
+  serialized_end=5231,
 )
 
 
@@ -2287,8 +2287,8 @@ _DELETERESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5223,
-  serialized_end=5244,
+  serialized_start=5233,
+  serialized_end=5254,
 )
 
 
@@ -2318,8 +2318,8 @@ _DELETERESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5246,
-  serialized_end=5326,
+  serialized_start=5256,
+  serialized_end=5336,
 )
 
 
@@ -2349,8 +2349,8 @@ _CANMANAGERESOURCEALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5328,
-  serialized_end=5396,
+  serialized_start=5338,
+  serialized_end=5406,
 )
 
 
@@ -2373,8 +2373,8 @@ _CANMANAGERESOURCEALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5398,
-  serialized_end=5431,
+  serialized_start=5408,
+  serialized_end=5441,
 )
 
 
@@ -2397,8 +2397,8 @@ _ALIASRESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5433,
-  serialized_end=5453,
+  serialized_start=5443,
+  serialized_end=5463,
 )
 
 
@@ -2435,8 +2435,8 @@ _ALIASRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5456,
-  serialized_end=5589,
+  serialized_start=5466,
+  serialized_end=5599,
 )
 
 
@@ -2466,8 +2466,8 @@ _CANREGISTERFORRESOURCENOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5591,
-  serialized_end=5682,
+  serialized_start=5601,
+  serialized_end=5692,
 )
 
 
@@ -2490,8 +2490,8 @@ _CANREGISTERFORRESOURCENOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5684,
-  serialized_end=5728,
+  serialized_start=5694,
+  serialized_end=5738,
 )
 
 
@@ -2514,8 +2514,8 @@ _REGISTERFORNEWRESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5730,
-  serialized_end=5760,
+  serialized_start=5740,
+  serialized_end=5770,
 )
 
 
@@ -2538,8 +2538,8 @@ _REGISTERFORNEWRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5762,
-  serialized_end=5794,
+  serialized_start=5772,
+  serialized_end=5804,
 )
 
 
@@ -2562,8 +2562,8 @@ _REGISTERFORCHANGEDRESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5796,
-  serialized_end=5830,
+  serialized_start=5806,
+  serialized_end=5840,
 )
 
 
@@ -2586,8 +2586,8 @@ _REGISTERFORCHANGEDRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5832,
-  serialized_end=5868,
+  serialized_start=5842,
+  serialized_end=5878,
 )
 
 
@@ -2610,8 +2610,8 @@ _REGISTERFORCHANGEDRESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5870,
-  serialized_end=5903,
+  serialized_start=5880,
+  serialized_end=5913,
 )
 
 
@@ -2641,8 +2641,8 @@ _REGISTERFORCHANGEDRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5905,
-  serialized_end=5997,
+  serialized_start=5915,
+  serialized_end=6007,
 )
 
 
@@ -2665,8 +2665,8 @@ _REGISTERFORDELETEDRESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5999,
-  serialized_end=6033,
+  serialized_start=6009,
+  serialized_end=6043,
 )
 
 
@@ -2689,8 +2689,8 @@ _REGISTERFORDELETEDRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6035,
-  serialized_end=6071,
+  serialized_start=6045,
+  serialized_end=6081,
 )
 
 
@@ -2713,8 +2713,8 @@ _REGISTERFORDELETEDRESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6073,
-  serialized_end=6106,
+  serialized_start=6083,
+  serialized_end=6116,
 )
 
 
@@ -2744,8 +2744,8 @@ _REGISTERFORDELETEDRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6108,
-  serialized_end=6200,
+  serialized_start=6118,
+  serialized_end=6210,
 )
 
 
@@ -2768,8 +2768,8 @@ _RELIABLERESOURCENOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6202,
-  serialized_end=6238,
+  serialized_start=6212,
+  serialized_end=6248,
 )
 
 
@@ -2792,8 +2792,8 @@ _RELIABLERESOURCENOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6240,
-  serialized_end=6278,
+  serialized_start=6250,
+  serialized_end=6288,
 )
 
 
@@ -2816,8 +2816,8 @@ _UNRELIABLERESOURCENOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6280,
-  serialized_end=6318,
+  serialized_start=6290,
+  serialized_end=6328,
 )
 
 
@@ -2840,8 +2840,8 @@ _UNRELIABLERESOURCENOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6320,
-  serialized_end=6360,
+  serialized_start=6330,
+  serialized_end=6370,
 )
 
 
@@ -2864,8 +2864,8 @@ _ACKNOWLEDGERESOURCENOTIFICATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6362,
-  serialized_end=6400,
+  serialized_start=6372,
+  serialized_end=6410,
 )
 
 
@@ -2895,8 +2895,8 @@ _ACKNOWLEDGERESOURCENOTIFICATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6402,
-  serialized_end=6503,
+  serialized_start=6412,
+  serialized_end=6513,
 )
 
 
@@ -2919,8 +2919,8 @@ _USECOMPARATIVEBINVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6505,
-  serialized_end=6533,
+  serialized_start=6515,
+  serialized_end=6543,
 )
 
 
@@ -2943,8 +2943,8 @@ _USECOMPARATIVEBINVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6535,
-  serialized_end=6565,
+  serialized_start=6545,
+  serialized_end=6575,
 )
 
 
@@ -2967,8 +2967,8 @@ _USEPLENARYBINVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6567,
-  serialized_end=6591,
+  serialized_start=6577,
+  serialized_end=6601,
 )
 
 
@@ -2991,8 +2991,8 @@ _USEPLENARYBINVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6593,
-  serialized_end=6619,
+  serialized_start=6603,
+  serialized_end=6629,
 )
 
 
@@ -3022,8 +3022,8 @@ _CANLOOKUPRESOURCEBINMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6621,
-  serialized_end=6698,
+  serialized_start=6631,
+  serialized_end=6708,
 )
 
 
@@ -3046,8 +3046,8 @@ _CANLOOKUPRESOURCEBINMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6700,
-  serialized_end=6737,
+  serialized_start=6710,
+  serialized_end=6747,
 )
 
 
@@ -3077,8 +3077,8 @@ _GETRESOURCEIDSBYBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6739,
-  serialized_end=6819,
+  serialized_start=6749,
+  serialized_end=6829,
 )
 
 
@@ -3108,8 +3108,8 @@ _GETRESOURCESBYBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6821,
-  serialized_end=6899,
+  serialized_start=6831,
+  serialized_end=6909,
 )
 
 
@@ -3139,8 +3139,8 @@ _GETRESOURCEIDSBYBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6901,
-  serialized_end=6983,
+  serialized_start=6911,
+  serialized_end=6993,
 )
 
 
@@ -3170,8 +3170,8 @@ _GETRESOURCESBYBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6985,
-  serialized_end=7065,
+  serialized_start=6995,
+  serialized_end=7075,
 )
 
 
@@ -3201,8 +3201,8 @@ _GETBINIDSBYRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7067,
-  serialized_end=7152,
+  serialized_start=7077,
+  serialized_end=7162,
 )
 
 
@@ -3232,8 +3232,8 @@ _GETBINSBYRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7154,
-  serialized_end=7237,
+  serialized_start=7164,
+  serialized_end=7247,
 )
 
 
@@ -3263,8 +3263,8 @@ _CANASSIGNRESOURCESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7239,
-  serialized_end=7294,
+  serialized_start=7249,
+  serialized_end=7304,
 )
 
 
@@ -3287,8 +3287,8 @@ _CANASSIGNRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7296,
-  serialized_end=7323,
+  serialized_start=7306,
+  serialized_end=7333,
 )
 
 
@@ -3318,8 +3318,8 @@ _CANASSIGNRESOURCESTOBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7325,
-  serialized_end=7392,
+  serialized_start=7335,
+  serialized_end=7402,
 )
 
 
@@ -3349,8 +3349,8 @@ _CANASSIGNRESOURCESTOBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7394,
-  serialized_end=7478,
+  serialized_start=7404,
+  serialized_end=7488,
 )
 
 
@@ -3380,8 +3380,8 @@ _GETASSIGNABLEBINIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7480,
-  serialized_end=7560,
+  serialized_start=7490,
+  serialized_end=7570,
 )
 
 
@@ -3418,8 +3418,8 @@ _GETASSIGNABLEBINIDSFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7563,
-  serialized_end=7711,
+  serialized_start=7573,
+  serialized_end=7721,
 )
 
 
@@ -3442,8 +3442,8 @@ _ASSIGNRESOURCETOBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7713,
-  serialized_end=7739,
+  serialized_start=7723,
+  serialized_end=7749,
 )
 
 
@@ -3480,8 +3480,8 @@ _ASSIGNRESOURCETOBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7742,
-  serialized_end=7879,
+  serialized_start=7752,
+  serialized_end=7889,
 )
 
 
@@ -3504,8 +3504,8 @@ _UNASSIGNRESOURCEFROMBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7881,
-  serialized_end=7911,
+  serialized_start=7891,
+  serialized_end=7921,
 )
 
 
@@ -3542,8 +3542,8 @@ _UNASSIGNRESOURCEFROMBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7914,
-  serialized_end=8055,
+  serialized_start=7924,
+  serialized_end=8065,
 )
 
 
@@ -3573,8 +3573,8 @@ _CANLOOKUPRESOURCEAGENTMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8057,
-  serialized_end=8138,
+  serialized_start=8067,
+  serialized_end=8148,
 )
 
 
@@ -3597,8 +3597,8 @@ _CANLOOKUPRESOURCEAGENTMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8140,
-  serialized_end=8179,
+  serialized_start=8150,
+  serialized_end=8189,
 )
 
 
@@ -3621,8 +3621,8 @@ _USECOMPARATIVEAGENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8181,
-  serialized_end=8211,
+  serialized_start=8191,
+  serialized_end=8221,
 )
 
 
@@ -3645,8 +3645,8 @@ _USECOMPARATIVEAGENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8213,
-  serialized_end=8245,
+  serialized_start=8223,
+  serialized_end=8255,
 )
 
 
@@ -3669,8 +3669,8 @@ _USEPLENARYAGENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8247,
-  serialized_end=8273,
+  serialized_start=8257,
+  serialized_end=8283,
 )
 
 
@@ -3693,8 +3693,8 @@ _USEPLENARYAGENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8275,
-  serialized_end=8303,
+  serialized_start=8285,
+  serialized_end=8313,
 )
 
 
@@ -3724,8 +3724,8 @@ _GETRESOURCEIDBYAGENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8305,
-  serialized_end=8380,
+  serialized_start=8315,
+  serialized_end=8390,
 )
 
 
@@ -3755,8 +3755,8 @@ _GETRESOURCEIDBYAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8382,
-  serialized_end=8465,
+  serialized_start=8392,
+  serialized_end=8475,
 )
 
 
@@ -3786,8 +3786,8 @@ _GETRESOURCEBYAGENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8467,
-  serialized_end=8542,
+  serialized_start=8477,
+  serialized_end=8552,
 )
 
 
@@ -3817,8 +3817,8 @@ _GETRESOURCEBYAGENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8544,
-  serialized_end=8625,
+  serialized_start=8554,
+  serialized_end=8635,
 )
 
 
@@ -3848,8 +3848,8 @@ _GETAGENTIDSBYRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8627,
-  serialized_end=8714,
+  serialized_start=8637,
+  serialized_end=8724,
 )
 
 
@@ -3879,8 +3879,8 @@ _GETAGENTSBYRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8716,
-  serialized_end=8801,
+  serialized_start=8726,
+  serialized_end=8811,
 )
 
 
@@ -3910,8 +3910,8 @@ _CANASSIGNAGENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8803,
-  serialized_end=8852,
+  serialized_start=8813,
+  serialized_end=8862,
 )
 
 
@@ -3934,8 +3934,8 @@ _CANASSIGNAGENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8854,
-  serialized_end=8878,
+  serialized_start=8864,
+  serialized_end=8888,
 )
 
 
@@ -3965,8 +3965,8 @@ _CANASSIGNAGENTSTORESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8880,
-  serialized_end=8951,
+  serialized_start=8890,
+  serialized_end=8961,
 )
 
 
@@ -3996,8 +3996,8 @@ _CANASSIGNAGENTSTORESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8953,
-  serialized_end=9044,
+  serialized_start=8963,
+  serialized_end=9054,
 )
 
 
@@ -4020,8 +4020,8 @@ _ASSIGNAGENTTORESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9046,
-  serialized_end=9074,
+  serialized_start=9056,
+  serialized_end=9084,
 )
 
 
@@ -4058,8 +4058,8 @@ _ASSIGNAGENTTORESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9077,
-  serialized_end=9218,
+  serialized_start=9087,
+  serialized_end=9228,
 )
 
 
@@ -4082,8 +4082,8 @@ _UNASSIGNAGENTFROMRESOURCEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9220,
-  serialized_end=9252,
+  serialized_start=9230,
+  serialized_end=9262,
 )
 
 
@@ -4120,8 +4120,8 @@ _UNASSIGNAGENTFROMRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9255,
-  serialized_end=9400,
+  serialized_start=9265,
+  serialized_end=9410,
 )
 
 
@@ -4151,8 +4151,8 @@ _CANLOOKUPBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9402,
-  serialized_end=9447,
+  serialized_start=9412,
+  serialized_end=9457,
 )
 
 
@@ -4175,8 +4175,8 @@ _CANLOOKUPBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9449,
-  serialized_end=9471,
+  serialized_start=9459,
+  serialized_end=9481,
 )
 
 
@@ -4206,8 +4206,8 @@ _GETBINSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9473,
-  serialized_end=9547,
+  serialized_start=9483,
+  serialized_end=9557,
 )
 
 
@@ -4237,8 +4237,8 @@ _GETBINSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9549,
-  serialized_end=9640,
+  serialized_start=9559,
+  serialized_end=9650,
 )
 
 
@@ -4268,8 +4268,8 @@ _GETBINSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9642,
-  serialized_end=9739,
+  serialized_start=9652,
+  serialized_end=9749,
 )
 
 
@@ -4299,8 +4299,8 @@ _GETBINSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9741,
-  serialized_end=9834,
+  serialized_start=9751,
+  serialized_end=9844,
 )
 
 
@@ -4330,8 +4330,8 @@ _GETBINSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9836,
-  serialized_end=9919,
+  serialized_start=9846,
+  serialized_end=9929,
 )
 
 
@@ -4354,8 +4354,8 @@ _GETBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9921,
-  serialized_end=9937,
+  serialized_start=9931,
+  serialized_end=9947,
 )
 
 
@@ -4385,8 +4385,8 @@ _CANSEARCHBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9939,
-  serialized_end=9984,
+  serialized_start=9949,
+  serialized_end=9994,
 )
 
 
@@ -4409,8 +4409,8 @@ _CANSEARCHBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9986,
-  serialized_end=10008,
+  serialized_start=9996,
+  serialized_end=10018,
 )
 
 
@@ -4440,8 +4440,8 @@ _GETBINQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10010,
-  serialized_end=10079,
+  serialized_start=10020,
+  serialized_end=10089,
 )
 
 
@@ -4464,8 +4464,8 @@ _GETBINQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10081,
-  serialized_end=10101,
+  serialized_start=10091,
+  serialized_end=10111,
 )
 
 
@@ -4495,8 +4495,8 @@ _GETBINSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10103,
-  serialized_end=10177,
+  serialized_start=10113,
+  serialized_end=10187,
 )
 
 
@@ -4526,8 +4526,8 @@ _CANCREATEBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10179,
-  serialized_end=10224,
+  serialized_start=10189,
+  serialized_end=10234,
 )
 
 
@@ -4550,8 +4550,8 @@ _CANCREATEBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10226,
-  serialized_end=10248,
+  serialized_start=10236,
+  serialized_end=10258,
 )
 
 
@@ -4581,8 +4581,8 @@ _CANCREATEBINWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10250,
-  serialized_end=10326,
+  serialized_start=10260,
+  serialized_end=10336,
 )
 
 
@@ -4612,8 +4612,8 @@ _CANCREATEBINWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10328,
-  serialized_end=10430,
+  serialized_start=10338,
+  serialized_end=10440,
 )
 
 
@@ -4643,8 +4643,8 @@ _GETBINFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10432,
-  serialized_end=10507,
+  serialized_start=10442,
+  serialized_end=10517,
 )
 
 
@@ -4674,8 +4674,8 @@ _GETBINFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10509,
-  serialized_end=10603,
+  serialized_start=10519,
+  serialized_end=10613,
 )
 
 
@@ -4705,8 +4705,8 @@ _CREATEBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10605,
-  serialized_end=10661,
+  serialized_start=10615,
+  serialized_end=10671,
 )
 
 
@@ -4736,8 +4736,8 @@ _CREATEBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10663,
-  serialized_end=10730,
+  serialized_start=10673,
+  serialized_end=10740,
 )
 
 
@@ -4767,8 +4767,8 @@ _CANUPDATEBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10732,
-  serialized_end=10777,
+  serialized_start=10742,
+  serialized_end=10787,
 )
 
 
@@ -4791,8 +4791,8 @@ _CANUPDATEBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10779,
-  serialized_end=10801,
+  serialized_start=10789,
+  serialized_end=10811,
 )
 
 
@@ -4822,8 +4822,8 @@ _GETBINFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10803,
-  serialized_end=10878,
+  serialized_start=10813,
+  serialized_end=10888,
 )
 
 
@@ -4853,8 +4853,8 @@ _GETBINFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10880,
-  serialized_end=10960,
+  serialized_start=10890,
+  serialized_end=10970,
 )
 
 
@@ -4877,8 +4877,8 @@ _UPDATEBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10962,
-  serialized_end=10978,
+  serialized_start=10972,
+  serialized_end=10988,
 )
 
 
@@ -4908,8 +4908,8 @@ _UPDATEBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10980,
-  serialized_end=11047,
+  serialized_start=10990,
+  serialized_end=11057,
 )
 
 
@@ -4939,8 +4939,8 @@ _CANDELETEBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11049,
-  serialized_end=11094,
+  serialized_start=11059,
+  serialized_end=11104,
 )
 
 
@@ -4963,8 +4963,8 @@ _CANDELETEBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11096,
-  serialized_end=11118,
+  serialized_start=11106,
+  serialized_end=11128,
 )
 
 
@@ -4987,8 +4987,8 @@ _DELETEBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11120,
-  serialized_end=11136,
+  serialized_start=11130,
+  serialized_end=11146,
 )
 
 
@@ -5018,8 +5018,8 @@ _DELETEBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11138,
-  serialized_end=11208,
+  serialized_start=11148,
+  serialized_end=11218,
 )
 
 
@@ -5049,8 +5049,8 @@ _CANMANAGEBINALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11210,
-  serialized_end=11268,
+  serialized_start=11220,
+  serialized_end=11278,
 )
 
 
@@ -5073,8 +5073,8 @@ _CANMANAGEBINALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11270,
-  serialized_end=11298,
+  serialized_start=11280,
+  serialized_end=11308,
 )
 
 
@@ -5097,8 +5097,8 @@ _ALIASBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11300,
-  serialized_end=11315,
+  serialized_start=11310,
+  serialized_end=11325,
 )
 
 
@@ -5135,8 +5135,8 @@ _ALIASBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11317,
-  serialized_end=11440,
+  serialized_start=11327,
+  serialized_end=11450,
 )
 
 
@@ -5166,8 +5166,8 @@ _GETBINHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11442,
-  serialized_end=11514,
+  serialized_start=11452,
+  serialized_end=11524,
 )
 
 
@@ -5190,8 +5190,8 @@ _GETBINHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11516,
-  serialized_end=11542,
+  serialized_start=11526,
+  serialized_end=11552,
 )
 
 
@@ -5221,8 +5221,8 @@ _GETBINHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11544,
-  serialized_end=11619,
+  serialized_start=11554,
+  serialized_end=11629,
 )
 
 
@@ -5245,8 +5245,8 @@ _GETBINHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11621,
-  serialized_end=11645,
+  serialized_start=11631,
+  serialized_end=11655,
 )
 
 
@@ -5276,8 +5276,8 @@ _CANACCESSBINHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11647,
-  serialized_end=11709,
+  serialized_start=11657,
+  serialized_end=11719,
 )
 
 
@@ -5300,8 +5300,8 @@ _CANACCESSBINHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11711,
-  serialized_end=11741,
+  serialized_start=11721,
+  serialized_end=11751,
 )
 
 
@@ -5324,8 +5324,8 @@ _GETROOTBINIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11743,
-  serialized_end=11765,
+  serialized_start=11753,
+  serialized_end=11775,
 )
 
 
@@ -5348,8 +5348,8 @@ _GETROOTBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11767,
-  serialized_end=11787,
+  serialized_start=11777,
+  serialized_end=11797,
 )
 
 
@@ -5379,8 +5379,8 @@ _HASPARENTBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11789,
-  serialized_end=11834,
+  serialized_start=11799,
+  serialized_end=11844,
 )
 
 
@@ -5410,8 +5410,8 @@ _HASPARENTBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11836,
-  serialized_end=11910,
+  serialized_start=11846,
+  serialized_end=11920,
 )
 
 
@@ -5441,8 +5441,8 @@ _ISPARENTOFBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11912,
-  serialized_end=11958,
+  serialized_start=11922,
+  serialized_end=11968,
 )
 
 
@@ -5479,8 +5479,8 @@ _ISPARENTOFBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11960,
-  serialized_end=12083,
+  serialized_start=11970,
+  serialized_end=12093,
 )
 
 
@@ -5510,8 +5510,8 @@ _GETPARENTBINIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12085,
-  serialized_end=12161,
+  serialized_start=12095,
+  serialized_end=12171,
 )
 
 
@@ -5541,8 +5541,8 @@ _GETPARENTBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12163,
-  serialized_end=12237,
+  serialized_start=12173,
+  serialized_end=12247,
 )
 
 
@@ -5572,8 +5572,8 @@ _ISANCESTOROFBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12239,
-  serialized_end=12289,
+  serialized_start=12249,
+  serialized_end=12299,
 )
 
 
@@ -5610,8 +5610,8 @@ _ISANCESTOROFBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12291,
-  serialized_end=12416,
+  serialized_start=12301,
+  serialized_end=12426,
 )
 
 
@@ -5641,8 +5641,8 @@ _HASCHILDBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12418,
-  serialized_end=12461,
+  serialized_start=12428,
+  serialized_end=12471,
 )
 
 
@@ -5672,8 +5672,8 @@ _HASCHILDBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12463,
-  serialized_end=12536,
+  serialized_start=12473,
+  serialized_end=12546,
 )
 
 
@@ -5703,8 +5703,8 @@ _ISCHILDOFBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12538,
-  serialized_end=12582,
+  serialized_start=12548,
+  serialized_end=12592,
 )
 
 
@@ -5741,8 +5741,8 @@ _ISCHILDOFBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12584,
-  serialized_end=12706,
+  serialized_start=12594,
+  serialized_end=12716,
 )
 
 
@@ -5772,8 +5772,8 @@ _GETCHILDBINIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12708,
-  serialized_end=12783,
+  serialized_start=12718,
+  serialized_end=12793,
 )
 
 
@@ -5803,8 +5803,8 @@ _GETCHILDBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12785,
-  serialized_end=12858,
+  serialized_start=12795,
+  serialized_end=12868,
 )
 
 
@@ -5834,8 +5834,8 @@ _ISDESCENDANTOFBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12860,
-  serialized_end=12914,
+  serialized_start=12870,
+  serialized_end=12924,
 )
 
 
@@ -5872,8 +5872,8 @@ _ISDESCENDANTOFBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12916,
-  serialized_end=13043,
+  serialized_start=12926,
+  serialized_end=13053,
 )
 
 
@@ -5903,8 +5903,8 @@ _GETBINNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13045,
-  serialized_end=13108,
+  serialized_start=13055,
+  serialized_end=13118,
 )
 
 
@@ -5955,8 +5955,8 @@ _GETBINNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13111,
-  serialized_end=13263,
+  serialized_start=13121,
+  serialized_end=13273,
 )
 
 
@@ -5986,8 +5986,8 @@ _GETBINNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13265,
-  serialized_end=13332,
+  serialized_start=13275,
+  serialized_end=13342,
 )
 
 
@@ -6038,8 +6038,8 @@ _GETBINNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13335,
-  serialized_end=13485,
+  serialized_start=13345,
+  serialized_end=13495,
 )
 
 
@@ -6069,8 +6069,8 @@ _CANMODIFYBINHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13487,
-  serialized_end=13549,
+  serialized_start=13497,
+  serialized_end=13559,
 )
 
 
@@ -6093,8 +6093,8 @@ _CANMODIFYBINHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13551,
-  serialized_end=13581,
+  serialized_start=13561,
+  serialized_end=13591,
 )
 
 
@@ -6117,8 +6117,8 @@ _ADDROOTBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13583,
-  serialized_end=13600,
+  serialized_start=13593,
+  serialized_end=13610,
 )
 
 
@@ -6148,8 +6148,8 @@ _ADDROOTBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13602,
-  serialized_end=13673,
+  serialized_start=13612,
+  serialized_end=13683,
 )
 
 
@@ -6172,8 +6172,8 @@ _REMOVEROOTBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13675,
-  serialized_end=13695,
+  serialized_start=13685,
+  serialized_end=13705,
 )
 
 
@@ -6203,8 +6203,8 @@ _REMOVEROOTBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13697,
-  serialized_end=13771,
+  serialized_start=13707,
+  serialized_end=13781,
 )
 
 
@@ -6227,8 +6227,8 @@ _ADDCHILDBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13773,
-  serialized_end=13791,
+  serialized_start=13783,
+  serialized_end=13801,
 )
 
 
@@ -6265,8 +6265,8 @@ _ADDCHILDBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13793,
-  serialized_end=13919,
+  serialized_start=13803,
+  serialized_end=13929,
 )
 
 
@@ -6289,8 +6289,8 @@ _REMOVECHILDBINREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13921,
-  serialized_end=13942,
+  serialized_start=13931,
+  serialized_end=13952,
 )
 
 
@@ -6327,8 +6327,8 @@ _REMOVECHILDBINREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13945,
-  serialized_end=14074,
+  serialized_start=13955,
+  serialized_end=14084,
 )
 
 
@@ -6351,8 +6351,8 @@ _REMOVECHILDBINSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14076,
-  serialized_end=14098,
+  serialized_start=14086,
+  serialized_end=14108,
 )
 
 
@@ -6382,17 +6382,17 @@ _REMOVECHILDBINSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14100,
-  serialized_end=14176,
+  serialized_start=14110,
+  serialized_end=14186,
 )
 
 _RESOURCE.fields_by_name['avatar'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _RESOURCE.fields_by_name['bin'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _RESOURCE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_RESOURCE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_RESOURCE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_RESOURCE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_RESOURCE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _RESOURCE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_RESOURCE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_RESOURCE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _RESOURCELIST.fields_by_name['resources'].message_type = _RESOURCE
 _RESOURCENODELIST.fields_by_name['resource_nodes'].message_type = _RESOURCENODE
 _RESOURCERELATIONSHIP.fields_by_name['bin'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
@@ -6400,10 +6400,10 @@ _RESOURCERELATIONSHIP.fields_by_name['destination_resource'].message_type = dlki
 _RESOURCERELATIONSHIP.fields_by_name['source_resource'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _RESOURCERELATIONSHIPLIST.fields_by_name['resource_relationships'].message_type = _RESOURCERELATIONSHIP
 _BIN.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_BIN.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_BIN.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_BIN.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_BIN.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _BIN.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_BIN.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_BIN.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _BINLIST.fields_by_name['bins'].message_type = _BIN
 _BINNODELIST.fields_by_name['bin_nodes'].message_type = _BINNODE
 _GETBINIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -8269,8 +8269,8 @@ _RESOURCELOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=14179,
-  serialized_end=15681,
+  serialized_start=14189,
+  serialized_end=15691,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinId',
@@ -8401,8 +8401,8 @@ _RESOURCEQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=15684,
-  serialized_end=16466,
+  serialized_start=15694,
+  serialized_end=16476,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinId',
@@ -8479,8 +8479,8 @@ _RESOURCESEARCHSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=16469,
-  serialized_end=17022,
+  serialized_start=16479,
+  serialized_end=17032,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetResourceSearch',
@@ -8530,8 +8530,8 @@ _RESOURCEADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=17025,
-  serialized_end=18590,
+  serialized_start=17035,
+  serialized_end=18600,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinId',
@@ -8662,8 +8662,8 @@ _RESOURCENOTIFICATIONSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=18593,
-  serialized_end=20407,
+  serialized_start=18603,
+  serialized_end=20417,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinId',
@@ -8794,8 +8794,8 @@ _RESOURCEBINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=20410,
-  serialized_end=21480,
+  serialized_start=20420,
+  serialized_end=21490,
   methods=[
   _descriptor.MethodDescriptor(
     name='UseComparativeBinView',
@@ -8890,8 +8890,8 @@ _RESOURCEBINASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=21483,
-  serialized_end=22277,
+  serialized_start=21493,
+  serialized_end=22287,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignResources',
@@ -8959,8 +8959,8 @@ _RESOURCEAGENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=22280,
-  serialized_end=23610,
+  serialized_start=22290,
+  serialized_end=23620,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinId',
@@ -9073,8 +9073,8 @@ _RESOURCEAGENTASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=23613,
-  serialized_end=24343,
+  serialized_start=23623,
+  serialized_end=24353,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinId',
@@ -9142,8 +9142,8 @@ _BINLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=9,
   options=None,
-  serialized_start=24346,
-  serialized_end=25389,
+  serialized_start=24356,
+  serialized_end=25399,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupBins',
@@ -9247,8 +9247,8 @@ _BINQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=10,
   options=None,
-  serialized_start=25392,
-  serialized_end=25707,
+  serialized_start=25402,
+  serialized_end=25717,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanSearchBins',
@@ -9289,8 +9289,8 @@ _BINADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=11,
   options=None,
-  serialized_start=25710,
-  serialized_end=26928,
+  serialized_start=25720,
+  serialized_end=26938,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateBins',
@@ -9403,8 +9403,8 @@ _BINHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=12,
   options=None,
-  serialized_start=26931,
-  serialized_end=28980,
+  serialized_start=26941,
+  serialized_end=28990,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinHierarchyId',
@@ -9589,8 +9589,8 @@ _BINHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=13,
   options=None,
-  serialized_start=28983,
-  serialized_end=29886,
+  serialized_start=28993,
+  serialized_end=29896,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBinHierarchyId',

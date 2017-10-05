@@ -16,11 +16,11 @@ import "google/protobuf/timestamp.proto";
 message Question {
   dlkit.proto.osid.OsidCatalog bank = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
-  dlkit.primordium.type.primitives.Type genusTypeId = 4;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
+  dlkit.primordium.type.primitives.Type genus_type_id = 4;
   dlkit.primordium.id.primitives.Id id = 5;
   dlkit.primordium.id.primitives.Id item = 6;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 7;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 7;
 }
 
 message QuestionQuery {
@@ -46,11 +46,11 @@ message QuestionList {
 message Answer {
   dlkit.proto.osid.OsidCatalog bank = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
-  dlkit.primordium.type.primitives.Type genusTypeId = 4;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
+  dlkit.primordium.type.primitives.Type genus_type_id = 4;
   dlkit.primordium.id.primitives.Id id = 5;
   dlkit.primordium.id.primitives.Id item = 6;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 7;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 7;
 }
 
 message AnswerQuery {
@@ -77,12 +77,12 @@ message Item {
   repeated Answer answers = 1;
   dlkit.proto.osid.OsidCatalog bank = 2;
   dlkit.primordium.locale.primitives.DisplayText description = 3;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 4;
-  dlkit.primordium.type.primitives.Type genusTypeId = 5;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 4;
+  dlkit.primordium.type.primitives.Type genus_type_id = 5;
   dlkit.primordium.id.primitives.Id id = 6;
   repeated dlkit.primordium.id.primitives.Id learning_objectives = 7;
   Question question = 8;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 9;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 9;
 }
 
 message ItemQuery {
@@ -116,11 +116,11 @@ message ItemList {
 message Assessment {
   dlkit.proto.osid.OsidCatalog bank = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
-  dlkit.primordium.type.primitives.Type genusTypeId = 4;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
+  dlkit.primordium.type.primitives.Type genus_type_id = 4;
   dlkit.primordium.id.primitives.Id id = 5;
   dlkit.primordium.id.primitives.Id level = 6;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 7;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 7;
   dlkit.primordium.id.primitives.Id rubric = 8;
 }
 
@@ -157,15 +157,15 @@ message AssessmentOffered {
   dlkit.proto.osid.OsidCatalog bank = 2;
   google.protobuf.Timestamp deadline = 3;
   dlkit.primordium.locale.primitives.DisplayText description = 4;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 5;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 5;
   dlkit.primordium.calendaring.primitives.Duration duration = 6;
-  dlkit.primordium.type.primitives.Type genusTypeId = 7;
+  dlkit.primordium.type.primitives.Type genus_type_id = 7;
   dlkit.primordium.id.primitives.Id grade_system = 8;
   dlkit.primordium.id.primitives.Id id = 9;
   bool items_sequential = 10;
   bool items_shuffled = 11;
   dlkit.primordium.id.primitives.Id level = 12;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 13;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 13;
   dlkit.primordium.id.primitives.Id score_system = 14;
   google.protobuf.Timestamp start_time = 15;
 }
@@ -204,11 +204,11 @@ message AssessmentTaken {
   dlkit.proto.osid.OsidCatalog bank = 3;
   google.protobuf.Timestamp completion_time = 4;
   dlkit.primordium.locale.primitives.DisplayText description = 5;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 6;
-  dlkit.primordium.type.primitives.Type genusTypeId = 7;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 6;
+  dlkit.primordium.type.primitives.Type genus_type_id = 7;
   dlkit.primordium.id.primitives.Id grade = 8;
   dlkit.primordium.id.primitives.Id id = 9;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 10;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 10;
   float score = 11;
   dlkit.primordium.id.primitives.Id taker = 12;
 }
@@ -244,10 +244,10 @@ message AssessmentTakenList {
 message AssessmentSection {
   dlkit.primordium.id.primitives.Id assessment_taken = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
-  dlkit.primordium.type.primitives.Type genusTypeId = 4;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
+  dlkit.primordium.type.primitives.Type genus_type_id = 4;
   dlkit.primordium.id.primitives.Id id = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
 }
 
 message AssessmentSectionList {
@@ -256,10 +256,10 @@ message AssessmentSectionList {
 
 message Bank {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message BankQuery {

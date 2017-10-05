@@ -16,8 +16,9 @@ class BinLookupSessionServicer(resource_pb2_grpc.BinLookupSessionServicer,
 
     def GetBins(self, request, context):
         for bin_ in self.get_bins():
+            print('returning a bin {0}'.format(str(bin_.ident)))
             yield resource_pb2.Bin(
-                displayName=locale_primitives.DisplayText(
+                display_name=locale_primitives.DisplayText(
                     text=bin_.display_name.text,
                     format_type_id=type_primitives.Type(
                         authority=bin_.display_name.format_type.authority,
@@ -58,12 +59,12 @@ class BinLookupSessionServicer(resource_pb2_grpc.BinLookupSessionServicer,
                     identifier=bin_.ident.identifier,
                     namespace=bin_.ident.namespace
                 ),
-                genusTypeId=type_primitives.Type(
+                genus_type_id=type_primitives.Type(
                     authority=bin_.genus_type.authority,
                     identifier=bin_.genus_type.identifier,
                     namespace=bin_.genus_type.namespace
                 ),
-                recordTypeIds=[type_primitives.Type(
+                record_type_ids=[type_primitives.Type(
                     authority=record_type.authority,
                     identifier=record_type.identifier,
                     namespace=record_type.namespace

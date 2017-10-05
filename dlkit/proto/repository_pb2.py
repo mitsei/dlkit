@@ -26,7 +26,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/repository.proto',
   package='dlkit.proto.repository',
   syntax='proto3',
-  serialized_pb=_b('\n\x1c\x64lkit/proto/repository.proto\x12\x16\x64lkit.proto.repository\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a(dlkit/primordium/transport/objects.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaa\x07\n\x05\x41sset\x12<\n\x0e\x61sset_contents\x18\x01 \x03(\x0b\x32$.dlkit.proto.repository.AssetContent\x12\x37\n\x0b\x63omposition\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x11\n\tcopyright\x18\x03 \x01(\t\x12\x1e\n\x16\x63opyright_registration\x18\x04 \x01(\t\x12\x30\n\x0c\x63reated_date\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x44\n\x0b\x64\x65scription\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x07 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x1e\n\x16\x64istribute_alterations\x18\x08 \x01(\x08\x12\x1f\n\x17\x64istribute_compositions\x18\t \x01(\x08\x12\x1b\n\x13\x64istribute_verbatim\x18\n \x01(\x08\x12;\n\x0bgenusTypeId\x18\x0b \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x0c \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1f\n\x17principal_credit_string\x18\r \x01(\t\x12:\n\x0eprovider_links\x18\x0e \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x15\n\rpublic_domain\x18\x0f \x01(\x08\x12\x11\n\tpublished\x18\x10 \x01(\x08\x12\x32\n\x0epublished_date\x18\x11 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12=\n\rrecordTypeIds\x18\x12 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\nrepository\x18\x13 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x32\n\x06source\x18\x14 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\r\n\x05title\x18\x15 \x01(\t\"\x0c\n\nAssetQuery\"\x15\n\x13\x41ssetQueryInspector\"\x0b\n\tAssetForm\"\x12\n\x10\x41ssetSearchOrder\"\r\n\x0b\x41ssetSearch\"\x14\n\x12\x41ssetSearchResults\":\n\tAssetList\x12-\n\x06\x61ssets\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.repository.Asset\"\xc0\x04\n\x0c\x41ssetContent\x12\x42\n\x12\x61\x63\x63\x65ssibility_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\x05\x61sset\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x33.dlkit.primordium.transport.objects.DataInputStream\x12\x44\n\x0b\x64\x65scription\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x06 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\nrepository\x18\t \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x0b\n\x03url\x18\n \x01(\t\"\x13\n\x11\x41ssetContentQuery\"\x1c\n\x1a\x41ssetContentQueryInspector\"\x12\n\x10\x41ssetContentForm\"P\n\x10\x41ssetContentList\x12<\n\x0e\x61sset_contents\x18\x01 \x03(\x0b\x32$.dlkit.proto.repository.AssetContent\"\xae\x03\n\x0b\x43omposition\x12\x34\n\x08\x63hildren\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\nrepository\x18\x07 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x12\n\x10\x43ompositionQuery\"\x1b\n\x19\x43ompositionQueryInspector\"\x11\n\x0f\x43ompositionForm\"\x18\n\x16\x43ompositionSearchOrder\"\x13\n\x11\x43ompositionSearch\"\x1a\n\x18\x43ompositionSearchResults\"L\n\x0f\x43ompositionList\x12\x39\n\x0c\x63ompositions\x18\x01 \x03(\x0b\x32#.dlkit.proto.repository.Composition\"\xc4\x02\n\nRepository\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x11\n\x0fRepositoryQuery\"\x1a\n\x18RepositoryQueryInspector\"\x10\n\x0eRepositoryForm\"\x17\n\x15RepositorySearchOrder\"\x12\n\x10RepositorySearch\"\x19\n\x17RepositorySearchResults\"J\n\x0eRepositoryList\x12\x38\n\x0crepositories\x18\x01 \x03(\x0b\x32\".dlkit.proto.repository.Repository\"\x10\n\x0eRepositoryNode\"V\n\x12RepositoryNodeList\x12@\n\x10repository_nodes\x18\x01 \x03(\x0b\x32&.dlkit.proto.repository.RepositoryNode\"F\n\x14GetRepositoryIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetRepositoryIdRequest\"L\n\x12GetRepositoryReply\x12\x36\n\nrepository\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.Repository\"\x16\n\x14GetRepositoryRequest\"1\n\x14\x43\x61nLookupAssetsReply\x12\x19\n\x11\x63\x61n_lookup_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nLookupAssetsRequest\"\x1e\n\x1cUseComparativeAssetViewReply\" \n\x1eUseComparativeAssetViewRequest\"\x1a\n\x18UsePlenaryAssetViewReply\"\x1c\n\x1aUsePlenaryAssetViewRequest\"!\n\x1fUseFederatedRepositoryViewReply\"#\n!UseFederatedRepositoryViewRequest\" \n\x1eUseIsolatedRepositoryViewReply\"\"\n UseIsolatedRepositoryViewRequest\"=\n\rGetAssetReply\x12,\n\x05\x61sset\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.repository.Asset\"G\n\x0fGetAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x15GetAssetsByIdsRequest\x12\x35\n\tasset_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1bGetAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n!GetAssetsByParentGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1cGetAssetsByRecordTypeRequest\x12\x41\n\x11\x61sset_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"U\n\x1aGetAssetsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetAssetsRequest\"1\n\x14\x43\x61nSearchAssetsReply\x12\x19\n\x11\x63\x61n_search_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nSearchAssetsRequest\"M\n\x12GetAssetQueryReply\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\"\x16\n\x14GetAssetQueryRequest\"R\n\x17GetAssetsByQueryRequest\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\"P\n\x13GetAssetSearchReply\x12\x39\n\x0c\x61sset_search\x18\x01 \x01(\x0b\x32#.dlkit.proto.repository.AssetSearch\"\x17\n\x15GetAssetSearchRequest\"`\n\x18GetAssetSearchOrderReply\x12\x44\n\x12\x61sset_search_order\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetSearchOrder\"\x1c\n\x1aGetAssetSearchOrderRequest\"b\n\x16GetAssetsBySearchReply\x12H\n\x14\x61sset_search_results\x18\x01 \x01(\x0b\x32*.dlkit.proto.repository.AssetSearchResults\"\x8e\x01\n\x18GetAssetsBySearchRequest\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\x12\x39\n\x0c\x61sset_search\x18\x02 \x01(\x0b\x32#.dlkit.proto.repository.AssetSearch\"Z\n\x1fGetAssetQueryFromInspectorReply\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\"o\n!GetAssetQueryFromInspectorRequest\x12J\n\x15\x61sset_query_inspector\x18\x01 \x01(\x0b\x32+.dlkit.proto.repository.AssetQueryInspector\"1\n\x14\x43\x61nCreateAssetsReply\x12\x19\n\x11\x63\x61n_create_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nCreateAssetsRequest\"P\n\"CanCreateAssetWithRecordTypesReply\x12*\n\"can_create_asset_with_record_types\x18\x01 \x01(\x08\"j\n$CanCreateAssetWithRecordTypesRequest\x12\x42\n\x12\x61sset_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"S\n\x1aGetAssetFormForCreateReply\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"b\n\x1cGetAssetFormForCreateRequest\x12\x42\n\x12\x61sset_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"@\n\x10\x43reateAssetReply\x12,\n\x05\x61sset\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.repository.Asset\"K\n\x12\x43reateAssetRequest\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"1\n\x14\x43\x61nUpdateAssetsReply\x12\x19\n\x11\x63\x61n_update_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nUpdateAssetsRequest\"S\n\x1aGetAssetFormForUpdateReply\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"T\n\x1cGetAssetFormForUpdateRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10UpdateAssetReply\"K\n\x12UpdateAssetRequest\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"1\n\x14\x43\x61nDeleteAssetsReply\x12\x19\n\x11\x63\x61n_delete_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nDeleteAssetsRequest\"\x12\n\x10\x44\x65leteAssetReply\"J\n\x12\x44\x65leteAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nManageAssetAliasesReply\x12 \n\x18\x63\x61n_manage_asset_aliases\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nManageAssetAliasesRequest\"\x11\n\x0f\x41liasAssetReply\"\x7f\n\x11\x41liasAssetRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x61sset_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nCreateAssetContentReply\x12 \n\x18\x63\x61n_create_asset_content\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateAssetContentRequest\"_\n)CanCreateAssetContentWithRecordTypesReply\x12\x32\n*can_create_asset_content_with_record_types\x18\x01 \x01(\x08\"y\n+CanCreateAssetContentWithRecordTypesRequest\x12J\n\x1a\x61sset_content_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n!GetAssetContentFormForCreateReply\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"\xa7\x01\n#GetAssetContentFormForCreateRequest\x12J\n\x1a\x61sset_content_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x34\n\x08\x61sset_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x17\x43reateAssetContentReply\x12;\n\rasset_content\x18\x01 \x01(\x0b\x32$.dlkit.proto.repository.AssetContent\"a\n\x19\x43reateAssetContentRequest\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"@\n\x1b\x43\x61nUpdateAssetContentsReply\x12!\n\x19\x63\x61n_update_asset_contents\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateAssetContentsRequest\"i\n!GetAssetContentFormForUpdateReply\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"c\n#GetAssetContentFormForUpdateRequest\x12<\n\x10\x61sset_content_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17UpdateAssetContentReply\"a\n\x19UpdateAssetContentRequest\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"@\n\x1b\x43\x61nDeleteAssetContentsReply\x12!\n\x19\x63\x61n_delete_asset_contents\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteAssetContentsRequest\"\x19\n\x17\x44\x65leteAssetContentReply\"Y\n\x19\x44\x65leteAssetContentRequest\x12<\n\x10\x61sset_content_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n%CanRegisterForAssetNotificationsReply\x12,\n$can_register_for_asset_notifications\x18\x01 \x01(\x08\")\n\'CanRegisterForAssetNotificationsRequest\"\x1b\n\x19RegisterForNewAssetsReply\"\x1d\n\x1bRegisterForNewAssetsRequest\"&\n$RegisterForNewAssetsByGenusTypeReply\"j\n&RegisterForNewAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1f\n\x1dRegisterForChangedAssetsReply\"!\n\x1fRegisterForChangedAssetsRequest\"*\n(RegisterForChangedAssetsByGenusTypeReply\"n\n*RegisterForChangedAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1e\n\x1cRegisterForChangedAssetReply\"V\n\x1eRegisterForChangedAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1f\n\x1dRegisterForDeletedAssetsReply\"!\n\x1fRegisterForDeletedAssetsRequest\"*\n(RegisterForDeletedAssetsByGenusTypeReply\"n\n*RegisterForDeletedAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1e\n\x1cRegisterForDeletedAssetReply\"V\n\x1eRegisterForDeletedAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fReliableAssetNotificationsReply\"#\n!ReliableAssetNotificationsRequest\"#\n!UnreliableAssetNotificationsReply\"%\n#UnreliableAssetNotificationsRequest\"#\n!AcknowledgeAssetNotificationReply\"b\n#AcknowledgeAssetNotificationRequest\x12;\n\x0fnotification_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n%CanLookupAssetRepositoryMappingsReply\x12,\n$can_lookup_asset_repository_mappings\x18\x01 \x01(\x08\")\n\'CanLookupAssetRepositoryMappingsRequest\"#\n!UseComparativeRepositoryViewReply\"%\n#UseComparativeRepositoryViewRequest\"\x1f\n\x1dUsePlenaryRepositoryViewReply\"!\n\x1fUsePlenaryRepositoryViewRequest\"[\n\x1eGetAssetIdsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1cGetAssetsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n GetAssetIdsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n\x1eGetAssetsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1eGetRepositoryIdsByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1dGetRepositoriesByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nAssignAssetsReply\x12\x19\n\x11\x63\x61n_assign_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nAssignAssetsRequest\"K\n CanAssignAssetsToRepositoryReply\x12\'\n\x1f\x63\x61n_assign_assets_to_repository\x18\x01 \x01(\x08\"_\n\"CanAssignAssetsToRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n!GetAssignableRepositoryIdsRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x9c\x01\n)GetAssignableRepositoryIdsForAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1c\x41ssignAssetToRepositoryReply\"\x91\x01\n\x1e\x41ssignAssetToRepositoryRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n UnassignAssetFromRepositoryReply\"\x95\x01\n\"UnassignAssetFromRepositoryRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nAccessAssetCompositionsReply\x12%\n\x1d\x63\x61n_access_asset_compositions\x18\x01 \x01(\x08\"#\n!CanAccessAssetCompositionsRequest\")\n\'UseComparativeAssetCompositionViewReply\"+\n)UseComparativeAssetCompositionViewRequest\"%\n#UsePlenaryAssetCompositionViewReply\"\'\n%UsePlenaryAssetCompositionViewRequest\"Y\n\x1bGetCompositionAssetsRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1dGetCompositionsByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15\x43\x61nComposeAssetsReply\x12\x1a\n\x12\x63\x61n_compose_assets\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nComposeAssetsRequest\"\x0f\n\rAddAssetReply\"\x83\x01\n\x0f\x41\x64\x64\x41ssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13MoveAssetAheadReply\"\xc3\x01\n\x15MoveAssetAheadRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14MoveAssetBehindReply\"\xc4\x01\n\x16MoveAssetBehindRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10OrderAssetsReply\"\x87\x01\n\x12OrderAssetsRequest\x12\x35\n\tasset_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10RemoveAssetReply\"\x86\x01\n\x12RemoveAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nLookupCompositionsReply\x12\x1f\n\x17\x63\x61n_lookup_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupCompositionsRequest\"$\n\"UseComparativeCompositionViewReply\"&\n$UseComparativeCompositionViewRequest\" \n\x1eUsePlenaryCompositionViewReply\"\"\n UsePlenaryCompositionViewRequest\"\x1f\n\x1dUseActiveCompositionViewReply\"!\n\x1fUseActiveCompositionViewRequest\"\"\n UseAnyStatusCompositionViewReply\"$\n\"UseAnyStatusCompositionViewRequest\"$\n\"UseSequesteredCompositionViewReply\"&\n$UseSequesteredCompositionViewRequest\"&\n$UseUnsequesteredCompositionViewReply\"(\n&UseUnsequesteredCompositionViewRequest\"O\n\x13GetCompositionReply\x12\x38\n\x0b\x63omposition\x18\x01 \x01(\x0b\x32#.dlkit.proto.repository.Composition\"S\n\x15GetCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1bGetCompositionsByIdsRequest\x12;\n\x0f\x63omposition_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"k\n!GetCompositionsByGenusTypeRequest\x12\x46\n\x16\x63omposition_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n\'GetCompositionsByParentGenusTypeRequest\x12\x46\n\x16\x63omposition_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n\"GetCompositionsByRecordTypeRequest\x12G\n\x17\x63omposition_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"[\n GetCompositionsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetCompositionsRequest\"=\n\x1a\x43\x61nSearchCompositionsReply\x12\x1f\n\x17\x63\x61n_search_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchCompositionsRequest\"_\n\x18GetCompositionQueryReply\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\"\x1c\n\x1aGetCompositionQueryRequest\"d\n\x1dGetCompositionsByQueryRequest\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\"b\n\x19GetCompositionSearchReply\x12\x45\n\x12\x63omposition_search\x18\x01 \x01(\x0b\x32).dlkit.proto.repository.CompositionSearch\"\x1d\n\x1bGetCompositionSearchRequest\"r\n\x1eGetCompositionSearchOrderReply\x12P\n\x18\x63omposition_search_order\x18\x01 \x01(\x0b\x32..dlkit.proto.repository.CompositionSearchOrder\"\"\n GetCompositionSearchOrderRequest\"t\n\x1cGetCompositionsBySearchReply\x12T\n\x1a\x63omposition_search_results\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.repository.CompositionSearchResults\"\xac\x01\n\x1eGetCompositionsBySearchRequest\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\x12\x45\n\x12\x63omposition_search\x18\x02 \x01(\x0b\x32).dlkit.proto.repository.CompositionSearch\"l\n%GetCompositionQueryFromInspectorReply\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\"\x81\x01\n\'GetCompositionQueryFromInspectorRequest\x12V\n\x1b\x63omposition_query_inspector\x18\x01 \x01(\x0b\x32\x31.dlkit.proto.repository.CompositionQueryInspector\"=\n\x1a\x43\x61nCreateCompositionsReply\x12\x1f\n\x17\x63\x61n_create_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateCompositionsRequest\"\\\n(CanCreateCompositionWithRecordTypesReply\x12\x30\n(can_create_composition_with_record_types\x18\x01 \x01(\x08\"v\n*CanCreateCompositionWithRecordTypesRequest\x12H\n\x18\x63omposition_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n GetCompositionFormForCreateReply\x12\x41\n\x10\x63omposition_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"n\n\"GetCompositionFormForCreateRequest\x12H\n\x18\x63omposition_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"R\n\x16\x43reateCompositionReply\x12\x38\n\x0b\x63omposition\x18\x01 \x01(\x0b\x32#.dlkit.proto.repository.Composition\"]\n\x18\x43reateCompositionRequest\x12\x41\n\x10\x63omposiiton_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"=\n\x1a\x43\x61nUpdateCompositionsReply\x12\x1f\n\x17\x63\x61n_update_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateCompositionsRequest\"e\n GetCompositionFormForUpdateReply\x12\x41\n\x10\x63omposition_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"`\n\"GetCompositionFormForUpdateRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16UpdateCompositionReply\"]\n\x18UpdateCompositionRequest\x12\x41\n\x10\x63omposiiton_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"=\n\x1a\x43\x61nDeleteCompositionsReply\x12\x1f\n\x17\x63\x61n_delete_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteCompositionsRequest\"\x18\n\x16\x44\x65leteCompositionReply\"V\n\x18\x44\x65leteCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1a\x44\x65leteCompositionNodeReply\"Z\n\x1c\x44\x65leteCompositionNodeRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41\x64\x64\x43ompositionChildReply\"\x9a\x01\n\x1a\x41\x64\x64\x43ompositionChildRequest\x12@\n\x14\x63hild_composition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1bRemoveCompositionChildReply\"\x9d\x01\n\x1dRemoveCompositionChildRequest\x12@\n\x14\x63hild_composition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanManageCompositionAliasesReply\x12&\n\x1e\x63\x61n_manage_composition_aliases\x18\x01 \x01(\x08\"$\n\"CanManageCompositionAliasesRequest\"\x17\n\x15\x41liasCompositionReply\"\x8b\x01\n\x17\x41liasCompositionRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n,UseComparativeCompositionRepositoryViewReply\"0\n.UseComparativeCompositionRepositoryViewRequest\"*\n(UsePlenaryCompositionRepositoryViewReply\",\n*UsePlenaryCompositionRepositoryViewRequest\"a\n+CanLookupCompositionRepositoryMappingsReply\x12\x32\n*can_lookup_composition_repository_mappings\x18\x01 \x01(\x08\"/\n-CanLookupCompositionRepositoryMappingsRequest\"a\n$GetCompositionIdsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\"GetCompositionsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n&GetCompositionIdsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n$GetCompositionsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n$GetRepositoryIdsByCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n#GetRepositoriesByCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nAssignCompositionsReply\x12\x1f\n\x17\x63\x61n_assign_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nAssignCompositionsRequest\"W\n&CanAssignCompositionsToRepositoryReply\x12-\n%can_assign_compositions_to_repository\x18\x01 \x01(\x08\"e\n(CanAssignCompositionsToRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa8\x01\n/GetAssignableRepositoryIdsForCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"AssignCompositionToRepositoryReply\"\x9d\x01\n$AssignCompositionToRepositoryRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n&UnassignCompositionFromRepositoryReply\"\xa1\x01\n(UnassignCompositionFromRepositoryRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nLookupRepositoriesReply\x12\x1f\n\x17\x63\x61n_lookup_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupRepositoriesRequest\"Y\n\x1bGetRepositoriesByIdsRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"j\n!GetRepositoriesByGenusTypeRequest\x12\x45\n\x15repository_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"p\n\'GetRepositoriesByParentGenusTypeRequest\x12\x45\n\x15repository_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"l\n\"GetRepositoriesByRecordTypeRequest\x12\x46\n\x16repository_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"[\n GetRepositoriesByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetRepositoriesRequest\"=\n\x1a\x43\x61nSearchRepositoriesReply\x12\x1f\n\x17\x63\x61n_search_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchRepositoriesRequest\"\\\n\x17GetRepositoryQueryReply\x12\x41\n\x10repository_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.RepositoryQuery\"\x1b\n\x19GetRepositoryQueryRequest\"b\n\x1dGetRepositoriesByQueryRequest\x12\x41\n\x10repository_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.RepositoryQuery\"=\n\x1a\x43\x61nCreateRepositoriesReply\x12\x1f\n\x17\x63\x61n_create_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateRepositoriesRequest\"Z\n\'CanCreateRepositoryWithRecordTypesReply\x12/\n\'can_create_repository_with_record_types\x18\x01 \x01(\x08\"t\n)CanCreateRepositoryWithRecordTypesRequest\x12G\n\x17repository_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"b\n\x1fGetRepositoryFormForCreateReply\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"l\n!GetRepositoryFormForCreateRequest\x12G\n\x17repository_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"O\n\x15\x43reateRepositoryReply\x12\x36\n\nrepository\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.Repository\"Z\n\x17\x43reateRepositoryRequest\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"=\n\x1a\x43\x61nUpdateRepositoriesReply\x12\x1f\n\x17\x63\x61n_update_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateRepositoriesRequest\"b\n\x1fGetRepositoryFormForUpdateReply\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"^\n!GetRepositoryFormForUpdateRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15UpdateRepositoryReply\"Z\n\x17UpdateRepositoryRequest\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"=\n\x1a\x43\x61nDeleteRepositoriesReply\x12\x1f\n\x17\x63\x61n_delete_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteRepositoriesRequest\"\x17\n\x15\x44\x65leteRepositoryReply\"T\n\x17\x44\x65leteRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nManageRepositoryAliasesReply\x12%\n\x1d\x63\x61n_manage_repository_aliases\x18\x01 \x01(\x08\"#\n!CanManageRepositoryAliasesRequest\"\x16\n\x14\x41liasRepositoryReply\"\x89\x01\n\x16\x41liasRepositoryRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x1dGetRepositoryHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fGetRepositoryHierarchyIdRequest\"R\n\x1bGetRepositoryHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1f\n\x1dGetRepositoryHierarchyRequest\"L\n!CanAccessRepositoryHierarchyReply\x12\'\n\x1f\x63\x61n_access_repository_hierarchy\x18\x01 \x01(\x08\"%\n#CanAccessRepositoryHierarchyRequest\"\x1d\n\x1bGetRootRepositoryIdsRequest\"\x1c\n\x1aGetRootRepositoriesRequest\"=\n\x1aHasParentRepositoriesReply\x12\x1f\n\x17has_parent_repositories\x18\x01 \x01(\x08\"Y\n\x1cHasParentRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19IsParentOfRepositoryReply\x12\x1f\n\x17is_parent_of_repository\x18\x01 \x01(\x08\"\x89\x01\n\x1bIsParentOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1dGetParentRepositoryIdsRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1cGetParentRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1bIsAncestorOfRepositoryReply\x12!\n\x19is_ancestor_of_repository\x18\x01 \x01(\x08\"\x8b\x01\n\x1dIsAncestorOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19HasChildRepositoriesReply\x12\x1e\n\x16has_child_repositories\x18\x01 \x01(\x08\"X\n\x1bHasChildRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsChildOfRepositoryReply\x12\x1e\n\x16is_child_of_repository\x18\x01 \x01(\x08\"\x88\x01\n\x1aIsChildOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1cGetChildRepositoryIdsRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1bGetChildRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1dIsDescendantOfRepositoryReply\x12#\n\x1bis_descendant_of_repository\x18\x01 \x01(\x08\"\x8d\x01\n\x1fIsDescendantOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x19GetRepositoryNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa6\x01\n\x1bGetRepositoryNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x39\n\rrepository_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x17GetRepositoryNodesReply\x12?\n\x0frepository_node\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryNode\"\xa4\x01\n\x19GetRepositoryNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x39\n\rrepository_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n!CanModifyRepositoryHierarchyReply\x12\'\n\x1f\x63\x61n_modify_repository_hierarchy\x18\x01 \x01(\x08\"%\n#CanModifyRepositoryHierarchyRequest\"\x18\n\x16\x41\x64\x64RootRepositoryReply\"U\n\x18\x41\x64\x64RootRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19RemoveRootRepositoryReply\"X\n\x1bRemoveRootRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17\x41\x64\x64\x43hildRepositoryReply\"\x8c\x01\n\x19\x41\x64\x64\x43hildRepositoryRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aRemoveChildRepositoryReply\"\x8f\x01\n\x1cRemoveChildRepositoryRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cRemoveChildRepositoriesReply\"[\n\x1eRemoveChildRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x81\r\n\x12\x41ssetLookupSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12q\n\x0f\x43\x61nLookupAssets\x12..dlkit.proto.repository.CanLookupAssetsRequest\x1a,.dlkit.proto.repository.CanLookupAssetsReply\"\x00\x12\x89\x01\n\x17UseComparativeAssetView\x12\x36.dlkit.proto.repository.UseComparativeAssetViewRequest\x1a\x34.dlkit.proto.repository.UseComparativeAssetViewReply\"\x00\x12}\n\x13UsePlenaryAssetView\x12\x32.dlkit.proto.repository.UsePlenaryAssetViewRequest\x1a\x30.dlkit.proto.repository.UsePlenaryAssetViewReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\\\n\x08GetAsset\x12\'.dlkit.proto.repository.GetAssetRequest\x1a%.dlkit.proto.repository.GetAssetReply\"\x00\x12\x62\n\x0eGetAssetsByIds\x12-.dlkit.proto.repository.GetAssetsByIdsRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12n\n\x14GetAssetsByGenusType\x12\x33.dlkit.proto.repository.GetAssetsByGenusTypeRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12z\n\x1aGetAssetsByParentGenusType\x12\x39.dlkit.proto.repository.GetAssetsByParentGenusTypeRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12p\n\x15GetAssetsByRecordType\x12\x34.dlkit.proto.repository.GetAssetsByRecordTypeRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12l\n\x13GetAssetsByProvider\x12\x32.dlkit.proto.repository.GetAssetsByProviderRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12X\n\tGetAssets\x12(.dlkit.proto.repository.GetAssetsRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x32\xe2\x06\n\x11\x41ssetQuerySession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12q\n\x0f\x43\x61nSearchAssets\x12..dlkit.proto.repository.CanSearchAssetsRequest\x1a,.dlkit.proto.repository.CanSearchAssetsReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12k\n\rGetAssetQuery\x12,.dlkit.proto.repository.GetAssetQueryRequest\x1a*.dlkit.proto.repository.GetAssetQueryReply\"\x00\x12\x66\n\x10GetAssetsByQuery\x12/.dlkit.proto.repository.GetAssetsByQueryRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x32\x91\x04\n\x12\x41ssetSearchSession\x12n\n\x0eGetAssetSearch\x12-.dlkit.proto.repository.GetAssetSearchRequest\x1a+.dlkit.proto.repository.GetAssetSearchReply\"\x00\x12}\n\x13GetAssetSearchOrder\x12\x32.dlkit.proto.repository.GetAssetSearchOrderRequest\x1a\x30.dlkit.proto.repository.GetAssetSearchOrderReply\"\x00\x12w\n\x11GetAssetsBySearch\x12\x30.dlkit.proto.repository.GetAssetsBySearchRequest\x1a..dlkit.proto.repository.GetAssetsBySearchReply\"\x00\x12\x92\x01\n\x1aGetAssetQueryFromInspector\x12\x39.dlkit.proto.repository.GetAssetQueryFromInspectorRequest\x1a\x37.dlkit.proto.repository.GetAssetQueryFromInspectorReply\"\x00\x32\x8a\x16\n\x11\x41ssetAdminSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12q\n\x0f\x43\x61nCreateAssets\x12..dlkit.proto.repository.CanCreateAssetsRequest\x1a,.dlkit.proto.repository.CanCreateAssetsReply\"\x00\x12\x9b\x01\n\x1d\x43\x61nCreateAssetWithRecordTypes\x12<.dlkit.proto.repository.CanCreateAssetWithRecordTypesRequest\x1a:.dlkit.proto.repository.CanCreateAssetWithRecordTypesReply\"\x00\x12\x83\x01\n\x15GetAssetFormForCreate\x12\x34.dlkit.proto.repository.GetAssetFormForCreateRequest\x1a\x32.dlkit.proto.repository.GetAssetFormForCreateReply\"\x00\x12\x65\n\x0b\x43reateAsset\x12*.dlkit.proto.repository.CreateAssetRequest\x1a(.dlkit.proto.repository.CreateAssetReply\"\x00\x12q\n\x0f\x43\x61nUpdateAssets\x12..dlkit.proto.repository.CanUpdateAssetsRequest\x1a,.dlkit.proto.repository.CanUpdateAssetsReply\"\x00\x12\x83\x01\n\x15GetAssetFormForUpdate\x12\x34.dlkit.proto.repository.GetAssetFormForUpdateRequest\x1a\x32.dlkit.proto.repository.GetAssetFormForUpdateReply\"\x00\x12\x65\n\x0bUpdateAsset\x12*.dlkit.proto.repository.UpdateAssetRequest\x1a(.dlkit.proto.repository.UpdateAssetReply\"\x00\x12q\n\x0f\x43\x61nDeleteAssets\x12..dlkit.proto.repository.CanDeleteAssetsRequest\x1a,.dlkit.proto.repository.CanDeleteAssetsReply\"\x00\x12\x65\n\x0b\x44\x65leteAsset\x12*.dlkit.proto.repository.DeleteAssetRequest\x1a(.dlkit.proto.repository.DeleteAssetReply\"\x00\x12\x83\x01\n\x15\x43\x61nManageAssetAliases\x12\x34.dlkit.proto.repository.CanManageAssetAliasesRequest\x1a\x32.dlkit.proto.repository.CanManageAssetAliasesReply\"\x00\x12\x62\n\nAliasAsset\x12).dlkit.proto.repository.AliasAssetRequest\x1a\'.dlkit.proto.repository.AliasAssetReply\"\x00\x12\x83\x01\n\x15\x43\x61nCreateAssetContent\x12\x34.dlkit.proto.repository.CanCreateAssetContentRequest\x1a\x32.dlkit.proto.repository.CanCreateAssetContentReply\"\x00\x12\xb0\x01\n$CanCreateAssetContentWithRecordTypes\x12\x43.dlkit.proto.repository.CanCreateAssetContentWithRecordTypesRequest\x1a\x41.dlkit.proto.repository.CanCreateAssetContentWithRecordTypesReply\"\x00\x12\x98\x01\n\x1cGetAssetContentFormForCreate\x12;.dlkit.proto.repository.GetAssetContentFormForCreateRequest\x1a\x39.dlkit.proto.repository.GetAssetContentFormForCreateReply\"\x00\x12z\n\x12\x43reateAssetContent\x12\x31.dlkit.proto.repository.CreateAssetContentRequest\x1a/.dlkit.proto.repository.CreateAssetContentReply\"\x00\x12\x86\x01\n\x16\x43\x61nUpdateAssetContents\x12\x35.dlkit.proto.repository.CanUpdateAssetContentsRequest\x1a\x33.dlkit.proto.repository.CanUpdateAssetContentsReply\"\x00\x12\x98\x01\n\x1cGetAssetContentFormForUpdate\x12;.dlkit.proto.repository.GetAssetContentFormForUpdateRequest\x1a\x39.dlkit.proto.repository.GetAssetContentFormForUpdateReply\"\x00\x12z\n\x12UpdateAssetContent\x12\x31.dlkit.proto.repository.UpdateAssetContentRequest\x1a/.dlkit.proto.repository.UpdateAssetContentReply\"\x00\x12\x86\x01\n\x16\x43\x61nDeleteAssetContents\x12\x35.dlkit.proto.repository.CanDeleteAssetContentsRequest\x1a\x33.dlkit.proto.repository.CanDeleteAssetContentsReply\"\x00\x12z\n\x12\x44\x65leteAssetContent\x12\x31.dlkit.proto.repository.DeleteAssetContentRequest\x1a/.dlkit.proto.repository.DeleteAssetContentReply\"\x00\x32\xd0\x12\n\x18\x41ssetNotificationSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\xa4\x01\n CanRegisterForAssetNotifications\x12?.dlkit.proto.repository.CanRegisterForAssetNotificationsRequest\x1a=.dlkit.proto.repository.CanRegisterForAssetNotificationsReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\x80\x01\n\x14RegisterForNewAssets\x12\x33.dlkit.proto.repository.RegisterForNewAssetsRequest\x1a\x31.dlkit.proto.repository.RegisterForNewAssetsReply\"\x00\x12\xa1\x01\n\x1fRegisterForNewAssetsByGenusType\x12>.dlkit.proto.repository.RegisterForNewAssetsByGenusTypeRequest\x1a<.dlkit.proto.repository.RegisterForNewAssetsByGenusTypeReply\"\x00\x12\x8c\x01\n\x18RegisterForChangedAssets\x12\x37.dlkit.proto.repository.RegisterForChangedAssetsRequest\x1a\x35.dlkit.proto.repository.RegisterForChangedAssetsReply\"\x00\x12\xad\x01\n#RegisterForChangedAssetsByGenusType\x12\x42.dlkit.proto.repository.RegisterForChangedAssetsByGenusTypeRequest\x1a@.dlkit.proto.repository.RegisterForChangedAssetsByGenusTypeReply\"\x00\x12\x89\x01\n\x17RegisterForChangedAsset\x12\x36.dlkit.proto.repository.RegisterForChangedAssetRequest\x1a\x34.dlkit.proto.repository.RegisterForChangedAssetReply\"\x00\x12\x8c\x01\n\x18RegisterForDeletedAssets\x12\x37.dlkit.proto.repository.RegisterForDeletedAssetsRequest\x1a\x35.dlkit.proto.repository.RegisterForDeletedAssetsReply\"\x00\x12\xad\x01\n#RegisterForDeletedAssetsByGenusType\x12\x42.dlkit.proto.repository.RegisterForDeletedAssetsByGenusTypeRequest\x1a@.dlkit.proto.repository.RegisterForDeletedAssetsByGenusTypeReply\"\x00\x12\x89\x01\n\x17RegisterForDeletedAsset\x12\x36.dlkit.proto.repository.RegisterForDeletedAssetRequest\x1a\x34.dlkit.proto.repository.RegisterForDeletedAssetReply\"\x00\x12\x92\x01\n\x1aReliableAssetNotifications\x12\x39.dlkit.proto.repository.ReliableAssetNotificationsRequest\x1a\x37.dlkit.proto.repository.ReliableAssetNotificationsReply\"\x00\x12\x98\x01\n\x1cUnreliableAssetNotifications\x12;.dlkit.proto.repository.UnreliableAssetNotificationsRequest\x1a\x39.dlkit.proto.repository.UnreliableAssetNotificationsReply\"\x00\x12\x98\x01\n\x1c\x41\x63knowledgeAssetNotification\x12;.dlkit.proto.repository.AcknowledgeAssetNotificationRequest\x1a\x39.dlkit.proto.repository.AcknowledgeAssetNotificationReply\"\x00\x32\xbf\t\n\x16\x41ssetRepositorySession\x12\xa4\x01\n CanLookupAssetRepositoryMappings\x12?.dlkit.proto.repository.CanLookupAssetRepositoryMappingsRequest\x1a=.dlkit.proto.repository.CanLookupAssetRepositoryMappingsReply\"\x00\x12\x98\x01\n\x1cUseComparativeRepositoryView\x12;.dlkit.proto.repository.UseComparativeRepositoryViewRequest\x1a\x39.dlkit.proto.repository.UseComparativeRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryRepositoryView\x12\x37.dlkit.proto.repository.UsePlenaryRepositoryViewRequest\x1a\x35.dlkit.proto.repository.UsePlenaryRepositoryViewReply\"\x00\x12y\n\x17GetAssetIdsByRepository\x12\x36.dlkit.proto.repository.GetAssetIdsByRepositoryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12p\n\x15GetAssetsByRepository\x12\x34.dlkit.proto.repository.GetAssetsByRepositoryRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12}\n\x19GetAssetIdsByRepositories\x12\x38.dlkit.proto.repository.GetAssetIdsByRepositoriesRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12t\n\x17GetAssetsByRepositories\x12\x36.dlkit.proto.repository.GetAssetsByRepositoriesRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12y\n\x17GetRepositoryIdsByAsset\x12\x36.dlkit.proto.repository.GetRepositoryIdsByAssetRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12w\n\x16GetRepositoriesByAsset\x12\x35.dlkit.proto.repository.GetRepositoriesByAssetRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\xe4\x06\n AssetRepositoryAssignmentSession\x12q\n\x0f\x43\x61nAssignAssets\x12..dlkit.proto.repository.CanAssignAssetsRequest\x1a,.dlkit.proto.repository.CanAssignAssetsReply\"\x00\x12\x95\x01\n\x1b\x43\x61nAssignAssetsToRepository\x12:.dlkit.proto.repository.CanAssignAssetsToRepositoryRequest\x1a\x38.dlkit.proto.repository.CanAssignAssetsToRepositoryReply\"\x00\x12\x7f\n\x1aGetAssignableRepositoryIds\x12\x39.dlkit.proto.repository.GetAssignableRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x8f\x01\n\"GetAssignableRepositoryIdsForAsset\x12\x41.dlkit.proto.repository.GetAssignableRepositoryIdsForAssetRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x89\x01\n\x17\x41ssignAssetToRepository\x12\x36.dlkit.proto.repository.AssignAssetToRepositoryRequest\x1a\x34.dlkit.proto.repository.AssignAssetToRepositoryReply\"\x00\x12\x95\x01\n\x1bUnassignAssetFromRepository\x12:.dlkit.proto.repository.UnassignAssetFromRepositoryRequest\x1a\x38.dlkit.proto.repository.UnassignAssetFromRepositoryReply\"\x00\x32\xed\t\n\x17\x41ssetCompositionSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x92\x01\n\x1a\x43\x61nAccessAssetCompositions\x12\x39.dlkit.proto.repository.CanAccessAssetCompositionsRequest\x1a\x37.dlkit.proto.repository.CanAccessAssetCompositionsReply\"\x00\x12\xaa\x01\n\"UseComparativeAssetCompositionView\x12\x41.dlkit.proto.repository.UseComparativeAssetCompositionViewRequest\x1a?.dlkit.proto.repository.UseComparativeAssetCompositionViewReply\"\x00\x12\x9e\x01\n\x1eUsePlenaryAssetCompositionView\x12=.dlkit.proto.repository.UsePlenaryAssetCompositionViewRequest\x1a;.dlkit.proto.repository.UsePlenaryAssetCompositionViewReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12n\n\x14GetCompositionAssets\x12\x33.dlkit.proto.repository.GetCompositionAssetsRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12x\n\x16GetCompositionsByAsset\x12\x35.dlkit.proto.repository.GetCompositionsByAssetRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x32\x84\x07\n\x1d\x41ssetCompositionDesignSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12t\n\x10\x43\x61nComposeAssets\x12/.dlkit.proto.repository.CanComposeAssetsRequest\x1a-.dlkit.proto.repository.CanComposeAssetsReply\"\x00\x12\\\n\x08\x41\x64\x64\x41sset\x12\'.dlkit.proto.repository.AddAssetRequest\x1a%.dlkit.proto.repository.AddAssetReply\"\x00\x12n\n\x0eMoveAssetAhead\x12-.dlkit.proto.repository.MoveAssetAheadRequest\x1a+.dlkit.proto.repository.MoveAssetAheadReply\"\x00\x12q\n\x0fMoveAssetBehind\x12..dlkit.proto.repository.MoveAssetBehindRequest\x1a,.dlkit.proto.repository.MoveAssetBehindReply\"\x00\x12\x65\n\x0bOrderAssets\x12*.dlkit.proto.repository.OrderAssetsRequest\x1a(.dlkit.proto.repository.OrderAssetsReply\"\x00\x12\x65\n\x0bRemoveAsset\x12*.dlkit.proto.repository.RemoveAssetRequest\x1a(.dlkit.proto.repository.RemoveAssetReply\"\x00\x32\xa9\x13\n\x18\x43ompositionLookupSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nLookupCompositions\x12\x34.dlkit.proto.repository.CanLookupCompositionsRequest\x1a\x32.dlkit.proto.repository.CanLookupCompositionsReply\"\x00\x12\x9b\x01\n\x1dUseComparativeCompositionView\x12<.dlkit.proto.repository.UseComparativeCompositionViewRequest\x1a:.dlkit.proto.repository.UseComparativeCompositionViewReply\"\x00\x12\x8f\x01\n\x19UsePlenaryCompositionView\x12\x38.dlkit.proto.repository.UsePlenaryCompositionViewRequest\x1a\x36.dlkit.proto.repository.UsePlenaryCompositionViewReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UseActiveCompositionView\x12\x37.dlkit.proto.repository.UseActiveCompositionViewRequest\x1a\x35.dlkit.proto.repository.UseActiveCompositionViewReply\"\x00\x12\x95\x01\n\x1bUseAnyStatusCompositionView\x12:.dlkit.proto.repository.UseAnyStatusCompositionViewRequest\x1a\x38.dlkit.proto.repository.UseAnyStatusCompositionViewReply\"\x00\x12\x9b\x01\n\x1dUseSequesteredCompositionView\x12<.dlkit.proto.repository.UseSequesteredCompositionViewRequest\x1a:.dlkit.proto.repository.UseSequesteredCompositionViewReply\"\x00\x12\xa1\x01\n\x1fUseUnsequesteredCompositionView\x12>.dlkit.proto.repository.UseUnsequesteredCompositionViewRequest\x1a<.dlkit.proto.repository.UseUnsequesteredCompositionViewReply\"\x00\x12n\n\x0eGetComposition\x12-.dlkit.proto.repository.GetCompositionRequest\x1a+.dlkit.proto.repository.GetCompositionReply\"\x00\x12t\n\x14GetCompositionsByIds\x12\x33.dlkit.proto.repository.GetCompositionsByIdsRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x80\x01\n\x1aGetCompositionsByGenusType\x12\x39.dlkit.proto.repository.GetCompositionsByGenusTypeRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x8c\x01\n GetCompositionsByParentGenusType\x12?.dlkit.proto.repository.GetCompositionsByParentGenusTypeRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x82\x01\n\x1bGetCompositionsByRecordType\x12:.dlkit.proto.repository.GetCompositionsByRecordTypeRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12~\n\x19GetCompositionsByProvider\x12\x38.dlkit.proto.repository.GetCompositionsByProviderRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12j\n\x0fGetCompositions\x12..dlkit.proto.repository.GetCompositionsRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x32\xe1\t\n\x17\x43ompositionQuerySession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nSearchCompositions\x12\x34.dlkit.proto.repository.CanSearchCompositionsRequest\x1a\x32.dlkit.proto.repository.CanSearchCompositionsReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\x9b\x01\n\x1dUseSequesteredCompositionView\x12<.dlkit.proto.repository.UseSequesteredCompositionViewRequest\x1a:.dlkit.proto.repository.UseSequesteredCompositionViewReply\"\x00\x12\xa1\x01\n\x1fUseUnsequesteredCompositionView\x12>.dlkit.proto.repository.UseUnsequesteredCompositionViewRequest\x1a<.dlkit.proto.repository.UseUnsequesteredCompositionViewReply\"\x00\x12}\n\x13GetCompositionQuery\x12\x32.dlkit.proto.repository.GetCompositionQueryRequest\x1a\x30.dlkit.proto.repository.GetCompositionQueryReply\"\x00\x12x\n\x16GetCompositionsByQuery\x12\x35.dlkit.proto.repository.GetCompositionsByQueryRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x32\xe2\x04\n\x18\x43ompositionSearchSession\x12\x80\x01\n\x14GetCompositionSearch\x12\x33.dlkit.proto.repository.GetCompositionSearchRequest\x1a\x31.dlkit.proto.repository.GetCompositionSearchReply\"\x00\x12\x8f\x01\n\x19GetCompositionSearchOrder\x12\x38.dlkit.proto.repository.GetCompositionSearchOrderRequest\x1a\x36.dlkit.proto.repository.GetCompositionSearchOrderReply\"\x00\x12\x89\x01\n\x17GetCompositionsBySearch\x12\x36.dlkit.proto.repository.GetCompositionsBySearchRequest\x1a\x34.dlkit.proto.repository.GetCompositionsBySearchReply\"\x00\x12\xa4\x01\n GetCompositionQueryFromInspector\x12?.dlkit.proto.repository.GetCompositionQueryFromInspectorRequest\x1a=.dlkit.proto.repository.GetCompositionQueryFromInspectorReply\"\x00\x32\xf2\x10\n\x17\x43ompositionAdminSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nCreateCompositions\x12\x34.dlkit.proto.repository.CanCreateCompositionsRequest\x1a\x32.dlkit.proto.repository.CanCreateCompositionsReply\"\x00\x12\xad\x01\n#CanCreateCompositionWithRecordTypes\x12\x42.dlkit.proto.repository.CanCreateCompositionWithRecordTypesRequest\x1a@.dlkit.proto.repository.CanCreateCompositionWithRecordTypesReply\"\x00\x12\x95\x01\n\x1bGetCompositionFormForCreate\x12:.dlkit.proto.repository.GetCompositionFormForCreateRequest\x1a\x38.dlkit.proto.repository.GetCompositionFormForCreateReply\"\x00\x12w\n\x11\x43reateComposition\x12\x30.dlkit.proto.repository.CreateCompositionRequest\x1a..dlkit.proto.repository.CreateCompositionReply\"\x00\x12\x83\x01\n\x15\x43\x61nUpdateCompositions\x12\x34.dlkit.proto.repository.CanUpdateCompositionsRequest\x1a\x32.dlkit.proto.repository.CanUpdateCompositionsReply\"\x00\x12\x95\x01\n\x1bGetCompositionFormForUpdate\x12:.dlkit.proto.repository.GetCompositionFormForUpdateRequest\x1a\x38.dlkit.proto.repository.GetCompositionFormForUpdateReply\"\x00\x12w\n\x11UpdateComposition\x12\x30.dlkit.proto.repository.UpdateCompositionRequest\x1a..dlkit.proto.repository.UpdateCompositionReply\"\x00\x12\x83\x01\n\x15\x43\x61nDeleteCompositions\x12\x34.dlkit.proto.repository.CanDeleteCompositionsRequest\x1a\x32.dlkit.proto.repository.CanDeleteCompositionsReply\"\x00\x12w\n\x11\x44\x65leteComposition\x12\x30.dlkit.proto.repository.DeleteCompositionRequest\x1a..dlkit.proto.repository.DeleteCompositionReply\"\x00\x12\x83\x01\n\x15\x44\x65leteCompositionNode\x12\x34.dlkit.proto.repository.DeleteCompositionNodeRequest\x1a\x32.dlkit.proto.repository.DeleteCompositionNodeReply\"\x00\x12}\n\x13\x41\x64\x64\x43ompositionChild\x12\x32.dlkit.proto.repository.AddCompositionChildRequest\x1a\x30.dlkit.proto.repository.AddCompositionChildReply\"\x00\x12\x86\x01\n\x16RemoveCompositionChild\x12\x35.dlkit.proto.repository.RemoveCompositionChildRequest\x1a\x33.dlkit.proto.repository.RemoveCompositionChildReply\"\x00\x12\x95\x01\n\x1b\x43\x61nManageCompositionAliases\x12:.dlkit.proto.repository.CanManageCompositionAliasesRequest\x1a\x38.dlkit.proto.repository.CanManageCompositionAliasesReply\"\x00\x12t\n\x10\x41liasComposition\x12/.dlkit.proto.repository.AliasCompositionRequest\x1a-.dlkit.proto.repository.AliasCompositionReply\"\x00\x32\xf3\n\n\x1c\x43ompositionRepositorySession\x12\xb9\x01\n\'UseComparativeCompositionRepositoryView\x12\x46.dlkit.proto.repository.UseComparativeCompositionRepositoryViewRequest\x1a\x44.dlkit.proto.repository.UseComparativeCompositionRepositoryViewReply\"\x00\x12\xad\x01\n#UsePlenaryCompositionRepositoryView\x12\x42.dlkit.proto.repository.UsePlenaryCompositionRepositoryViewRequest\x1a@.dlkit.proto.repository.UsePlenaryCompositionRepositoryViewReply\"\x00\x12\xb6\x01\n&CanLookupCompositionRepositoryMappings\x12\x45.dlkit.proto.repository.CanLookupCompositionRepositoryMappingsRequest\x1a\x43.dlkit.proto.repository.CanLookupCompositionRepositoryMappingsReply\"\x00\x12\x85\x01\n\x1dGetCompositionIdsByRepository\x12<.dlkit.proto.repository.GetCompositionIdsByRepositoryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x1bGetCompositionsByRepository\x12:.dlkit.proto.repository.GetCompositionsByRepositoryRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x89\x01\n\x1fGetCompositionIdsByRepositories\x12>.dlkit.proto.repository.GetCompositionIdsByRepositoriesRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x86\x01\n\x1dGetCompositionsByRepositories\x12<.dlkit.proto.repository.GetCompositionsByRepositoriesRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x85\x01\n\x1dGetRepositoryIdsByComposition\x12<.dlkit.proto.repository.GetRepositoryIdsByCompositionRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x83\x01\n\x1cGetRepositoriesByComposition\x12;.dlkit.proto.repository.GetRepositoriesByCompositionRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\xbf\x07\n&CompositionRepositoryAssignmentSession\x12\x83\x01\n\x15\x43\x61nAssignCompositions\x12\x34.dlkit.proto.repository.CanAssignCompositionsRequest\x1a\x32.dlkit.proto.repository.CanAssignCompositionsReply\"\x00\x12\xa7\x01\n!CanAssignCompositionsToRepository\x12@.dlkit.proto.repository.CanAssignCompositionsToRepositoryRequest\x1a>.dlkit.proto.repository.CanAssignCompositionsToRepositoryReply\"\x00\x12\x7f\n\x1aGetAssignableRepositoryIds\x12\x39.dlkit.proto.repository.GetAssignableRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n(GetAssignableRepositoryIdsForComposition\x12G.dlkit.proto.repository.GetAssignableRepositoryIdsForCompositionRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n\x1d\x41ssignCompositionToRepository\x12<.dlkit.proto.repository.AssignCompositionToRepositoryRequest\x1a:.dlkit.proto.repository.AssignCompositionToRepositoryReply\"\x00\x12\xa7\x01\n!UnassignCompositionFromRepository\x12@.dlkit.proto.repository.UnassignCompositionFromRepositoryRequest\x1a>.dlkit.proto.repository.UnassignCompositionFromRepositoryReply\"\x00\x32\xa8\n\n\x17RepositoryLookupSession\x12\x83\x01\n\x15\x43\x61nLookupRepositories\x12\x34.dlkit.proto.repository.CanLookupRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanLookupRepositoriesReply\"\x00\x12\x98\x01\n\x1cUseComparativeRepositoryView\x12;.dlkit.proto.repository.UseComparativeRepositoryViewRequest\x1a\x39.dlkit.proto.repository.UseComparativeRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryRepositoryView\x12\x37.dlkit.proto.repository.UsePlenaryRepositoryViewRequest\x1a\x35.dlkit.proto.repository.UsePlenaryRepositoryViewReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12s\n\x14GetRepositoriesByIds\x12\x33.dlkit.proto.repository.GetRepositoriesByIdsRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x7f\n\x1aGetRepositoriesByGenusType\x12\x39.dlkit.proto.repository.GetRepositoriesByGenusTypeRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x8b\x01\n GetRepositoriesByParentGenusType\x12?.dlkit.proto.repository.GetRepositoriesByParentGenusTypeRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x81\x01\n\x1bGetRepositoriesByRecordType\x12:.dlkit.proto.repository.GetRepositoriesByRecordTypeRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12}\n\x19GetRepositoriesByProvider\x12\x38.dlkit.proto.repository.GetRepositoriesByProviderRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12i\n\x0fGetRepositories\x12..dlkit.proto.repository.GetRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\x93\x03\n\x16RepositoryQuerySession\x12\x83\x01\n\x15\x43\x61nSearchRepositories\x12\x34.dlkit.proto.repository.CanSearchRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanSearchRepositoriesReply\"\x00\x12z\n\x12GetRepositoryQuery\x12\x31.dlkit.proto.repository.GetRepositoryQueryRequest\x1a/.dlkit.proto.repository.GetRepositoryQueryReply\"\x00\x12w\n\x16GetRepositoriesByQuery\x12\x35.dlkit.proto.repository.GetRepositoriesByQueryRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\xeb\x0b\n\x16RepositoryAdminSession\x12\x83\x01\n\x15\x43\x61nCreateRepositories\x12\x34.dlkit.proto.repository.CanCreateRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanCreateRepositoriesReply\"\x00\x12\xaa\x01\n\"CanCreateRepositoryWithRecordTypes\x12\x41.dlkit.proto.repository.CanCreateRepositoryWithRecordTypesRequest\x1a?.dlkit.proto.repository.CanCreateRepositoryWithRecordTypesReply\"\x00\x12\x92\x01\n\x1aGetRepositoryFormForCreate\x12\x39.dlkit.proto.repository.GetRepositoryFormForCreateRequest\x1a\x37.dlkit.proto.repository.GetRepositoryFormForCreateReply\"\x00\x12t\n\x10\x43reateRepository\x12/.dlkit.proto.repository.CreateRepositoryRequest\x1a-.dlkit.proto.repository.CreateRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nUpdateRepositories\x12\x34.dlkit.proto.repository.CanUpdateRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanUpdateRepositoriesReply\"\x00\x12\x92\x01\n\x1aGetRepositoryFormForUpdate\x12\x39.dlkit.proto.repository.GetRepositoryFormForUpdateRequest\x1a\x37.dlkit.proto.repository.GetRepositoryFormForUpdateReply\"\x00\x12t\n\x10UpdateRepository\x12/.dlkit.proto.repository.UpdateRepositoryRequest\x1a-.dlkit.proto.repository.UpdateRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nDeleteRepositories\x12\x34.dlkit.proto.repository.CanDeleteRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanDeleteRepositoriesReply\"\x00\x12t\n\x10\x44\x65leteRepository\x12/.dlkit.proto.repository.DeleteRepositoryRequest\x1a-.dlkit.proto.repository.DeleteRepositoryReply\"\x00\x12\x92\x01\n\x1a\x43\x61nManageRepositoryAliases\x12\x39.dlkit.proto.repository.CanManageRepositoryAliasesRequest\x1a\x37.dlkit.proto.repository.CanManageRepositoryAliasesReply\"\x00\x12q\n\x0f\x41liasRepository\x12..dlkit.proto.repository.AliasRepositoryRequest\x1a,.dlkit.proto.repository.AliasRepositoryReply\"\x00\x32\xdf\x13\n\x1aRepositoryHierarchySession\x12\x8c\x01\n\x18GetRepositoryHierarchyId\x12\x37.dlkit.proto.repository.GetRepositoryHierarchyIdRequest\x1a\x35.dlkit.proto.repository.GetRepositoryHierarchyIdReply\"\x00\x12\x86\x01\n\x16GetRepositoryHierarchy\x12\x35.dlkit.proto.repository.GetRepositoryHierarchyRequest\x1a\x33.dlkit.proto.repository.GetRepositoryHierarchyReply\"\x00\x12\x98\x01\n\x1c\x43\x61nAccessRepositoryHierarchy\x12;.dlkit.proto.repository.CanAccessRepositoryHierarchyRequest\x1a\x39.dlkit.proto.repository.CanAccessRepositoryHierarchyReply\"\x00\x12\x98\x01\n\x1cUseComparativeRepositoryView\x12;.dlkit.proto.repository.UseComparativeRepositoryViewRequest\x1a\x39.dlkit.proto.repository.UseComparativeRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryRepositoryView\x12\x37.dlkit.proto.repository.UsePlenaryRepositoryViewRequest\x1a\x35.dlkit.proto.repository.UsePlenaryRepositoryViewReply\"\x00\x12s\n\x14GetRootRepositoryIds\x12\x33.dlkit.proto.repository.GetRootRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12q\n\x13GetRootRepositories\x12\x32.dlkit.proto.repository.GetRootRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x83\x01\n\x15HasParentRepositories\x12\x34.dlkit.proto.repository.HasParentRepositoriesRequest\x1a\x32.dlkit.proto.repository.HasParentRepositoriesReply\"\x00\x12\x80\x01\n\x14IsParentOfRepository\x12\x33.dlkit.proto.repository.IsParentOfRepositoryRequest\x1a\x31.dlkit.proto.repository.IsParentOfRepositoryReply\"\x00\x12w\n\x16GetParentRepositoryIds\x12\x35.dlkit.proto.repository.GetParentRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12u\n\x15GetParentRepositories\x12\x34.dlkit.proto.repository.GetParentRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x86\x01\n\x16IsAncestorOfRepository\x12\x35.dlkit.proto.repository.IsAncestorOfRepositoryRequest\x1a\x33.dlkit.proto.repository.IsAncestorOfRepositoryReply\"\x00\x12\x80\x01\n\x14HasChildRepositories\x12\x33.dlkit.proto.repository.HasChildRepositoriesRequest\x1a\x31.dlkit.proto.repository.HasChildRepositoriesReply\"\x00\x12}\n\x13IsChildOfRepository\x12\x32.dlkit.proto.repository.IsChildOfRepositoryRequest\x1a\x30.dlkit.proto.repository.IsChildOfRepositoryReply\"\x00\x12u\n\x15GetChildRepositoryIds\x12\x34.dlkit.proto.repository.GetChildRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12s\n\x14GetChildRepositories\x12\x33.dlkit.proto.repository.GetChildRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x8c\x01\n\x18IsDescendantOfRepository\x12\x37.dlkit.proto.repository.IsDescendantOfRepositoryRequest\x1a\x35.dlkit.proto.repository.IsDescendantOfRepositoryReply\"\x00\x12\x80\x01\n\x14GetRepositoryNodeIds\x12\x33.dlkit.proto.repository.GetRepositoryNodeIdsRequest\x1a\x31.dlkit.proto.repository.GetRepositoryNodeIdsReply\"\x00\x12z\n\x12GetRepositoryNodes\x12\x31.dlkit.proto.repository.GetRepositoryNodesRequest\x1a/.dlkit.proto.repository.GetRepositoryNodesReply\"\x00\x32\xdf\x08\n RepositoryHierarchyDesignSession\x12\x8c\x01\n\x18GetRepositoryHierarchyId\x12\x37.dlkit.proto.repository.GetRepositoryHierarchyIdRequest\x1a\x35.dlkit.proto.repository.GetRepositoryHierarchyIdReply\"\x00\x12\x86\x01\n\x16GetRepositoryHierarchy\x12\x35.dlkit.proto.repository.GetRepositoryHierarchyRequest\x1a\x33.dlkit.proto.repository.GetRepositoryHierarchyReply\"\x00\x12\x98\x01\n\x1c\x43\x61nModifyRepositoryHierarchy\x12;.dlkit.proto.repository.CanModifyRepositoryHierarchyRequest\x1a\x39.dlkit.proto.repository.CanModifyRepositoryHierarchyReply\"\x00\x12w\n\x11\x41\x64\x64RootRepository\x12\x30.dlkit.proto.repository.AddRootRepositoryRequest\x1a..dlkit.proto.repository.AddRootRepositoryReply\"\x00\x12\x80\x01\n\x14RemoveRootRepository\x12\x33.dlkit.proto.repository.RemoveRootRepositoryRequest\x1a\x31.dlkit.proto.repository.RemoveRootRepositoryReply\"\x00\x12z\n\x12\x41\x64\x64\x43hildRepository\x12\x31.dlkit.proto.repository.AddChildRepositoryRequest\x1a/.dlkit.proto.repository.AddChildRepositoryReply\"\x00\x12\x83\x01\n\x15RemoveChildRepository\x12\x34.dlkit.proto.repository.RemoveChildRepositoryRequest\x1a\x32.dlkit.proto.repository.RemoveChildRepositoryReply\"\x00\x12\x89\x01\n\x17RemoveChildRepositories\x12\x36.dlkit.proto.repository.RemoveChildRepositoriesRequest\x1a\x34.dlkit.proto.repository.RemoveChildRepositoriesReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1c\x64lkit/proto/repository.proto\x12\x16\x64lkit.proto.repository\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a(dlkit/primordium/transport/objects.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xaf\x07\n\x05\x41sset\x12<\n\x0e\x61sset_contents\x18\x01 \x03(\x0b\x32$.dlkit.proto.repository.AssetContent\x12\x37\n\x0b\x63omposition\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x11\n\tcopyright\x18\x03 \x01(\t\x12\x1e\n\x16\x63opyright_registration\x18\x04 \x01(\t\x12\x30\n\x0c\x63reated_date\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x44\n\x0b\x64\x65scription\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x07 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x1e\n\x16\x64istribute_alterations\x18\x08 \x01(\x08\x12\x1f\n\x17\x64istribute_compositions\x18\t \x01(\x08\x12\x1b\n\x13\x64istribute_verbatim\x18\n \x01(\x08\x12=\n\rgenus_type_id\x18\x0b \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x0c \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1f\n\x17principal_credit_string\x18\r \x01(\t\x12:\n\x0eprovider_links\x18\x0e \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x15\n\rpublic_domain\x18\x0f \x01(\x08\x12\x11\n\tpublished\x18\x10 \x01(\x08\x12\x32\n\x0epublished_date\x18\x11 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12?\n\x0frecord_type_ids\x18\x12 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\nrepository\x18\x13 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x32\n\x06source\x18\x14 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\r\n\x05title\x18\x15 \x01(\t\"\x0c\n\nAssetQuery\"\x15\n\x13\x41ssetQueryInspector\"\x0b\n\tAssetForm\"\x12\n\x10\x41ssetSearchOrder\"\r\n\x0b\x41ssetSearch\"\x14\n\x12\x41ssetSearchResults\":\n\tAssetList\x12-\n\x06\x61ssets\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.repository.Asset\"\xc5\x04\n\x0c\x41ssetContent\x12\x42\n\x12\x61\x63\x63\x65ssibility_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\x05\x61sset\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x04\x64\x61ta\x18\x03 \x01(\x0b\x32\x33.dlkit.primordium.transport.objects.DataInputStream\x12\x44\n\x0b\x64\x65scription\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x06 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\nrepository\x18\t \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x0b\n\x03url\x18\n \x01(\t\"\x13\n\x11\x41ssetContentQuery\"\x1c\n\x1a\x41ssetContentQueryInspector\"\x12\n\x10\x41ssetContentForm\"P\n\x10\x41ssetContentList\x12<\n\x0e\x61sset_contents\x18\x01 \x03(\x0b\x32$.dlkit.proto.repository.AssetContent\"\xb3\x03\n\x0b\x43omposition\x12\x34\n\x08\x63hildren\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x31\n\nrepository\x18\x07 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x12\n\x10\x43ompositionQuery\"\x1b\n\x19\x43ompositionQueryInspector\"\x11\n\x0f\x43ompositionForm\"\x18\n\x16\x43ompositionSearchOrder\"\x13\n\x11\x43ompositionSearch\"\x1a\n\x18\x43ompositionSearchResults\"L\n\x0f\x43ompositionList\x12\x39\n\x0c\x63ompositions\x18\x01 \x03(\x0b\x32#.dlkit.proto.repository.Composition\"\xc9\x02\n\nRepository\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x11\n\x0fRepositoryQuery\"\x1a\n\x18RepositoryQueryInspector\"\x10\n\x0eRepositoryForm\"\x17\n\x15RepositorySearchOrder\"\x12\n\x10RepositorySearch\"\x19\n\x17RepositorySearchResults\"J\n\x0eRepositoryList\x12\x38\n\x0crepositories\x18\x01 \x03(\x0b\x32\".dlkit.proto.repository.Repository\"\x10\n\x0eRepositoryNode\"V\n\x12RepositoryNodeList\x12@\n\x10repository_nodes\x18\x01 \x03(\x0b\x32&.dlkit.proto.repository.RepositoryNode\"F\n\x14GetRepositoryIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetRepositoryIdRequest\"L\n\x12GetRepositoryReply\x12\x36\n\nrepository\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.Repository\"\x16\n\x14GetRepositoryRequest\"1\n\x14\x43\x61nLookupAssetsReply\x12\x19\n\x11\x63\x61n_lookup_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nLookupAssetsRequest\"\x1e\n\x1cUseComparativeAssetViewReply\" \n\x1eUseComparativeAssetViewRequest\"\x1a\n\x18UsePlenaryAssetViewReply\"\x1c\n\x1aUsePlenaryAssetViewRequest\"!\n\x1fUseFederatedRepositoryViewReply\"#\n!UseFederatedRepositoryViewRequest\" \n\x1eUseIsolatedRepositoryViewReply\"\"\n UseIsolatedRepositoryViewRequest\"=\n\rGetAssetReply\x12,\n\x05\x61sset\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.repository.Asset\"G\n\x0fGetAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x15GetAssetsByIdsRequest\x12\x35\n\tasset_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1bGetAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n!GetAssetsByParentGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1cGetAssetsByRecordTypeRequest\x12\x41\n\x11\x61sset_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"U\n\x1aGetAssetsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetAssetsRequest\"1\n\x14\x43\x61nSearchAssetsReply\x12\x19\n\x11\x63\x61n_search_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nSearchAssetsRequest\"M\n\x12GetAssetQueryReply\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\"\x16\n\x14GetAssetQueryRequest\"R\n\x17GetAssetsByQueryRequest\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\"P\n\x13GetAssetSearchReply\x12\x39\n\x0c\x61sset_search\x18\x01 \x01(\x0b\x32#.dlkit.proto.repository.AssetSearch\"\x17\n\x15GetAssetSearchRequest\"`\n\x18GetAssetSearchOrderReply\x12\x44\n\x12\x61sset_search_order\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetSearchOrder\"\x1c\n\x1aGetAssetSearchOrderRequest\"b\n\x16GetAssetsBySearchReply\x12H\n\x14\x61sset_search_results\x18\x01 \x01(\x0b\x32*.dlkit.proto.repository.AssetSearchResults\"\x8e\x01\n\x18GetAssetsBySearchRequest\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\x12\x39\n\x0c\x61sset_search\x18\x02 \x01(\x0b\x32#.dlkit.proto.repository.AssetSearch\"Z\n\x1fGetAssetQueryFromInspectorReply\x12\x37\n\x0b\x61sset_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.AssetQuery\"o\n!GetAssetQueryFromInspectorRequest\x12J\n\x15\x61sset_query_inspector\x18\x01 \x01(\x0b\x32+.dlkit.proto.repository.AssetQueryInspector\"1\n\x14\x43\x61nCreateAssetsReply\x12\x19\n\x11\x63\x61n_create_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nCreateAssetsRequest\"P\n\"CanCreateAssetWithRecordTypesReply\x12*\n\"can_create_asset_with_record_types\x18\x01 \x01(\x08\"j\n$CanCreateAssetWithRecordTypesRequest\x12\x42\n\x12\x61sset_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"S\n\x1aGetAssetFormForCreateReply\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"b\n\x1cGetAssetFormForCreateRequest\x12\x42\n\x12\x61sset_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"@\n\x10\x43reateAssetReply\x12,\n\x05\x61sset\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.repository.Asset\"K\n\x12\x43reateAssetRequest\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"1\n\x14\x43\x61nUpdateAssetsReply\x12\x19\n\x11\x63\x61n_update_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nUpdateAssetsRequest\"S\n\x1aGetAssetFormForUpdateReply\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"T\n\x1cGetAssetFormForUpdateRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10UpdateAssetReply\"K\n\x12UpdateAssetRequest\x12\x35\n\nasset_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.repository.AssetForm\"1\n\x14\x43\x61nDeleteAssetsReply\x12\x19\n\x11\x63\x61n_delete_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nDeleteAssetsRequest\"\x12\n\x10\x44\x65leteAssetReply\"J\n\x12\x44\x65leteAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nManageAssetAliasesReply\x12 \n\x18\x63\x61n_manage_asset_aliases\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nManageAssetAliasesRequest\"\x11\n\x0f\x41liasAssetReply\"\x7f\n\x11\x41liasAssetRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x61sset_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nCreateAssetContentReply\x12 \n\x18\x63\x61n_create_asset_content\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateAssetContentRequest\"_\n)CanCreateAssetContentWithRecordTypesReply\x12\x32\n*can_create_asset_content_with_record_types\x18\x01 \x01(\x08\"y\n+CanCreateAssetContentWithRecordTypesRequest\x12J\n\x1a\x61sset_content_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n!GetAssetContentFormForCreateReply\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"\xa7\x01\n#GetAssetContentFormForCreateRequest\x12J\n\x1a\x61sset_content_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x34\n\x08\x61sset_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x17\x43reateAssetContentReply\x12;\n\rasset_content\x18\x01 \x01(\x0b\x32$.dlkit.proto.repository.AssetContent\"a\n\x19\x43reateAssetContentRequest\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"@\n\x1b\x43\x61nUpdateAssetContentsReply\x12!\n\x19\x63\x61n_update_asset_contents\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateAssetContentsRequest\"i\n!GetAssetContentFormForUpdateReply\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"c\n#GetAssetContentFormForUpdateRequest\x12<\n\x10\x61sset_content_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17UpdateAssetContentReply\"a\n\x19UpdateAssetContentRequest\x12\x44\n\x12\x61sset_content_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.AssetContentForm\"@\n\x1b\x43\x61nDeleteAssetContentsReply\x12!\n\x19\x63\x61n_delete_asset_contents\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteAssetContentsRequest\"\x19\n\x17\x44\x65leteAssetContentReply\"Y\n\x19\x44\x65leteAssetContentRequest\x12<\n\x10\x61sset_content_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n%CanRegisterForAssetNotificationsReply\x12,\n$can_register_for_asset_notifications\x18\x01 \x01(\x08\")\n\'CanRegisterForAssetNotificationsRequest\"\x1b\n\x19RegisterForNewAssetsReply\"\x1d\n\x1bRegisterForNewAssetsRequest\"&\n$RegisterForNewAssetsByGenusTypeReply\"j\n&RegisterForNewAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1f\n\x1dRegisterForChangedAssetsReply\"!\n\x1fRegisterForChangedAssetsRequest\"*\n(RegisterForChangedAssetsByGenusTypeReply\"n\n*RegisterForChangedAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1e\n\x1cRegisterForChangedAssetReply\"V\n\x1eRegisterForChangedAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1f\n\x1dRegisterForDeletedAssetsReply\"!\n\x1fRegisterForDeletedAssetsRequest\"*\n(RegisterForDeletedAssetsByGenusTypeReply\"n\n*RegisterForDeletedAssetsByGenusTypeRequest\x12@\n\x10\x61sset_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1e\n\x1cRegisterForDeletedAssetReply\"V\n\x1eRegisterForDeletedAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fReliableAssetNotificationsReply\"#\n!ReliableAssetNotificationsRequest\"#\n!UnreliableAssetNotificationsReply\"%\n#UnreliableAssetNotificationsRequest\"#\n!AcknowledgeAssetNotificationReply\"b\n#AcknowledgeAssetNotificationRequest\x12;\n\x0fnotification_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n%CanLookupAssetRepositoryMappingsReply\x12,\n$can_lookup_asset_repository_mappings\x18\x01 \x01(\x08\")\n\'CanLookupAssetRepositoryMappingsRequest\"#\n!UseComparativeRepositoryViewReply\"%\n#UseComparativeRepositoryViewRequest\"\x1f\n\x1dUsePlenaryRepositoryViewReply\"!\n\x1fUsePlenaryRepositoryViewRequest\"[\n\x1eGetAssetIdsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1cGetAssetsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n GetAssetIdsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n\x1eGetAssetsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1eGetRepositoryIdsByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1dGetRepositoriesByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nAssignAssetsReply\x12\x19\n\x11\x63\x61n_assign_assets\x18\x01 \x01(\x08\"\x18\n\x16\x43\x61nAssignAssetsRequest\"K\n CanAssignAssetsToRepositoryReply\x12\'\n\x1f\x63\x61n_assign_assets_to_repository\x18\x01 \x01(\x08\"_\n\"CanAssignAssetsToRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n!GetAssignableRepositoryIdsRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x9c\x01\n)GetAssignableRepositoryIdsForAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1c\x41ssignAssetToRepositoryReply\"\x91\x01\n\x1e\x41ssignAssetToRepositoryRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n UnassignAssetFromRepositoryReply\"\x95\x01\n\"UnassignAssetFromRepositoryRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nAccessAssetCompositionsReply\x12%\n\x1d\x63\x61n_access_asset_compositions\x18\x01 \x01(\x08\"#\n!CanAccessAssetCompositionsRequest\")\n\'UseComparativeAssetCompositionViewReply\"+\n)UseComparativeAssetCompositionViewRequest\"%\n#UsePlenaryAssetCompositionViewReply\"\'\n%UsePlenaryAssetCompositionViewRequest\"Y\n\x1bGetCompositionAssetsRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1dGetCompositionsByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15\x43\x61nComposeAssetsReply\x12\x1a\n\x12\x63\x61n_compose_assets\x18\x01 \x01(\x08\"\x19\n\x17\x43\x61nComposeAssetsRequest\"\x0f\n\rAddAssetReply\"\x83\x01\n\x0f\x41\x64\x64\x41ssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13MoveAssetAheadReply\"\xc3\x01\n\x15MoveAssetAheadRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14MoveAssetBehindReply\"\xc4\x01\n\x16MoveAssetBehindRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10OrderAssetsReply\"\x87\x01\n\x12OrderAssetsRequest\x12\x35\n\tasset_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10RemoveAssetReply\"\x86\x01\n\x12RemoveAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nLookupCompositionsReply\x12\x1f\n\x17\x63\x61n_lookup_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupCompositionsRequest\"$\n\"UseComparativeCompositionViewReply\"&\n$UseComparativeCompositionViewRequest\" \n\x1eUsePlenaryCompositionViewReply\"\"\n UsePlenaryCompositionViewRequest\"\x1f\n\x1dUseActiveCompositionViewReply\"!\n\x1fUseActiveCompositionViewRequest\"\"\n UseAnyStatusCompositionViewReply\"$\n\"UseAnyStatusCompositionViewRequest\"$\n\"UseSequesteredCompositionViewReply\"&\n$UseSequesteredCompositionViewRequest\"&\n$UseUnsequesteredCompositionViewReply\"(\n&UseUnsequesteredCompositionViewRequest\"O\n\x13GetCompositionReply\x12\x38\n\x0b\x63omposition\x18\x01 \x01(\x0b\x32#.dlkit.proto.repository.Composition\"S\n\x15GetCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1bGetCompositionsByIdsRequest\x12;\n\x0f\x63omposition_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"k\n!GetCompositionsByGenusTypeRequest\x12\x46\n\x16\x63omposition_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n\'GetCompositionsByParentGenusTypeRequest\x12\x46\n\x16\x63omposition_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n\"GetCompositionsByRecordTypeRequest\x12G\n\x17\x63omposition_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"[\n GetCompositionsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetCompositionsRequest\"=\n\x1a\x43\x61nSearchCompositionsReply\x12\x1f\n\x17\x63\x61n_search_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchCompositionsRequest\"_\n\x18GetCompositionQueryReply\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\"\x1c\n\x1aGetCompositionQueryRequest\"d\n\x1dGetCompositionsByQueryRequest\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\"b\n\x19GetCompositionSearchReply\x12\x45\n\x12\x63omposition_search\x18\x01 \x01(\x0b\x32).dlkit.proto.repository.CompositionSearch\"\x1d\n\x1bGetCompositionSearchRequest\"r\n\x1eGetCompositionSearchOrderReply\x12P\n\x18\x63omposition_search_order\x18\x01 \x01(\x0b\x32..dlkit.proto.repository.CompositionSearchOrder\"\"\n GetCompositionSearchOrderRequest\"t\n\x1cGetCompositionsBySearchReply\x12T\n\x1a\x63omposition_search_results\x18\x01 \x01(\x0b\x32\x30.dlkit.proto.repository.CompositionSearchResults\"\xac\x01\n\x1eGetCompositionsBySearchRequest\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\x12\x45\n\x12\x63omposition_search\x18\x02 \x01(\x0b\x32).dlkit.proto.repository.CompositionSearch\"l\n%GetCompositionQueryFromInspectorReply\x12\x43\n\x11\x63omposition_query\x18\x01 \x01(\x0b\x32(.dlkit.proto.repository.CompositionQuery\"\x81\x01\n\'GetCompositionQueryFromInspectorRequest\x12V\n\x1b\x63omposition_query_inspector\x18\x01 \x01(\x0b\x32\x31.dlkit.proto.repository.CompositionQueryInspector\"=\n\x1a\x43\x61nCreateCompositionsReply\x12\x1f\n\x17\x63\x61n_create_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateCompositionsRequest\"\\\n(CanCreateCompositionWithRecordTypesReply\x12\x30\n(can_create_composition_with_record_types\x18\x01 \x01(\x08\"v\n*CanCreateCompositionWithRecordTypesRequest\x12H\n\x18\x63omposition_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n GetCompositionFormForCreateReply\x12\x41\n\x10\x63omposition_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"n\n\"GetCompositionFormForCreateRequest\x12H\n\x18\x63omposition_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"R\n\x16\x43reateCompositionReply\x12\x38\n\x0b\x63omposition\x18\x01 \x01(\x0b\x32#.dlkit.proto.repository.Composition\"]\n\x18\x43reateCompositionRequest\x12\x41\n\x10\x63omposiiton_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"=\n\x1a\x43\x61nUpdateCompositionsReply\x12\x1f\n\x17\x63\x61n_update_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateCompositionsRequest\"e\n GetCompositionFormForUpdateReply\x12\x41\n\x10\x63omposition_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"`\n\"GetCompositionFormForUpdateRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16UpdateCompositionReply\"]\n\x18UpdateCompositionRequest\x12\x41\n\x10\x63omposiiton_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.CompositionForm\"=\n\x1a\x43\x61nDeleteCompositionsReply\x12\x1f\n\x17\x63\x61n_delete_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteCompositionsRequest\"\x18\n\x16\x44\x65leteCompositionReply\"V\n\x18\x44\x65leteCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1a\x44\x65leteCompositionNodeReply\"Z\n\x1c\x44\x65leteCompositionNodeRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41\x64\x64\x43ompositionChildReply\"\x9a\x01\n\x1a\x41\x64\x64\x43ompositionChildRequest\x12@\n\x14\x63hild_composition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1d\n\x1bRemoveCompositionChildReply\"\x9d\x01\n\x1dRemoveCompositionChildRequest\x12@\n\x14\x63hild_composition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanManageCompositionAliasesReply\x12&\n\x1e\x63\x61n_manage_composition_aliases\x18\x01 \x01(\x08\"$\n\"CanManageCompositionAliasesRequest\"\x17\n\x15\x41liasCompositionReply\"\x8b\x01\n\x17\x41liasCompositionRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0e\x63omposition_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n,UseComparativeCompositionRepositoryViewReply\"0\n.UseComparativeCompositionRepositoryViewRequest\"*\n(UsePlenaryCompositionRepositoryViewReply\",\n*UsePlenaryCompositionRepositoryViewRequest\"a\n+CanLookupCompositionRepositoryMappingsReply\x12\x32\n*can_lookup_composition_repository_mappings\x18\x01 \x01(\x08\"/\n-CanLookupCompositionRepositoryMappingsRequest\"a\n$GetCompositionIdsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\"GetCompositionsByRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n&GetCompositionIdsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n$GetCompositionsByRepositoriesRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n$GetRepositoryIdsByCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n#GetRepositoriesByCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nAssignCompositionsReply\x12\x1f\n\x17\x63\x61n_assign_compositions\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nAssignCompositionsRequest\"W\n&CanAssignCompositionsToRepositoryReply\x12-\n%can_assign_compositions_to_repository\x18\x01 \x01(\x08\"e\n(CanAssignCompositionsToRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa8\x01\n/GetAssignableRepositoryIdsForCompositionRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"AssignCompositionToRepositoryReply\"\x9d\x01\n$AssignCompositionToRepositoryRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n&UnassignCompositionFromRepositoryReply\"\xa1\x01\n(UnassignCompositionFromRepositoryRequest\x12:\n\x0e\x63omposition_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nLookupRepositoriesReply\x12\x1f\n\x17\x63\x61n_lookup_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupRepositoriesRequest\"Y\n\x1bGetRepositoriesByIdsRequest\x12:\n\x0erepository_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"j\n!GetRepositoriesByGenusTypeRequest\x12\x45\n\x15repository_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"p\n\'GetRepositoriesByParentGenusTypeRequest\x12\x45\n\x15repository_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"l\n\"GetRepositoriesByRecordTypeRequest\x12\x46\n\x16repository_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"[\n GetRepositoriesByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetRepositoriesRequest\"=\n\x1a\x43\x61nSearchRepositoriesReply\x12\x1f\n\x17\x63\x61n_search_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchRepositoriesRequest\"\\\n\x17GetRepositoryQueryReply\x12\x41\n\x10repository_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.RepositoryQuery\"\x1b\n\x19GetRepositoryQueryRequest\"b\n\x1dGetRepositoriesByQueryRequest\x12\x41\n\x10repository_query\x18\x01 \x01(\x0b\x32\'.dlkit.proto.repository.RepositoryQuery\"=\n\x1a\x43\x61nCreateRepositoriesReply\x12\x1f\n\x17\x63\x61n_create_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateRepositoriesRequest\"Z\n\'CanCreateRepositoryWithRecordTypesReply\x12/\n\'can_create_repository_with_record_types\x18\x01 \x01(\x08\"t\n)CanCreateRepositoryWithRecordTypesRequest\x12G\n\x17repository_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"b\n\x1fGetRepositoryFormForCreateReply\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"l\n!GetRepositoryFormForCreateRequest\x12G\n\x17repository_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"O\n\x15\x43reateRepositoryReply\x12\x36\n\nrepository\x18\x01 \x01(\x0b\x32\".dlkit.proto.repository.Repository\"Z\n\x17\x43reateRepositoryRequest\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"=\n\x1a\x43\x61nUpdateRepositoriesReply\x12\x1f\n\x17\x63\x61n_update_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateRepositoriesRequest\"b\n\x1fGetRepositoryFormForUpdateReply\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"^\n!GetRepositoryFormForUpdateRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15UpdateRepositoryReply\"Z\n\x17UpdateRepositoryRequest\x12?\n\x0frepository_form\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryForm\"=\n\x1a\x43\x61nDeleteRepositoriesReply\x12\x1f\n\x17\x63\x61n_delete_repositories\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteRepositoriesRequest\"\x17\n\x15\x44\x65leteRepositoryReply\"T\n\x17\x44\x65leteRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x1f\x43\x61nManageRepositoryAliasesReply\x12%\n\x1d\x63\x61n_manage_repository_aliases\x18\x01 \x01(\x08\"#\n!CanManageRepositoryAliasesRequest\"\x16\n\x14\x41liasRepositoryReply\"\x89\x01\n\x16\x41liasRepositoryRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x1dGetRepositoryHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fGetRepositoryHierarchyIdRequest\"R\n\x1bGetRepositoryHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1f\n\x1dGetRepositoryHierarchyRequest\"L\n!CanAccessRepositoryHierarchyReply\x12\'\n\x1f\x63\x61n_access_repository_hierarchy\x18\x01 \x01(\x08\"%\n#CanAccessRepositoryHierarchyRequest\"\x1d\n\x1bGetRootRepositoryIdsRequest\"\x1c\n\x1aGetRootRepositoriesRequest\"=\n\x1aHasParentRepositoriesReply\x12\x1f\n\x17has_parent_repositories\x18\x01 \x01(\x08\"Y\n\x1cHasParentRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19IsParentOfRepositoryReply\x12\x1f\n\x17is_parent_of_repository\x18\x01 \x01(\x08\"\x89\x01\n\x1bIsParentOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1dGetParentRepositoryIdsRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1cGetParentRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1bIsAncestorOfRepositoryReply\x12!\n\x19is_ancestor_of_repository\x18\x01 \x01(\x08\"\x8b\x01\n\x1dIsAncestorOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19HasChildRepositoriesReply\x12\x1e\n\x16has_child_repositories\x18\x01 \x01(\x08\"X\n\x1bHasChildRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsChildOfRepositoryReply\x12\x1e\n\x16is_child_of_repository\x18\x01 \x01(\x08\"\x88\x01\n\x1aIsChildOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1cGetChildRepositoryIdsRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1bGetChildRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1dIsDescendantOfRepositoryReply\x12#\n\x1bis_descendant_of_repository\x18\x01 \x01(\x08\"\x8d\x01\n\x1fIsDescendantOfRepositoryRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x19GetRepositoryNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa6\x01\n\x1bGetRepositoryNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x39\n\rrepository_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x17GetRepositoryNodesReply\x12?\n\x0frepository_node\x18\x01 \x01(\x0b\x32&.dlkit.proto.repository.RepositoryNode\"\xa4\x01\n\x19GetRepositoryNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x39\n\rrepository_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n!CanModifyRepositoryHierarchyReply\x12\'\n\x1f\x63\x61n_modify_repository_hierarchy\x18\x01 \x01(\x08\"%\n#CanModifyRepositoryHierarchyRequest\"\x18\n\x16\x41\x64\x64RootRepositoryReply\"U\n\x18\x41\x64\x64RootRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19RemoveRootRepositoryReply\"X\n\x1bRemoveRootRepositoryRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17\x41\x64\x64\x43hildRepositoryReply\"\x8c\x01\n\x19\x41\x64\x64\x43hildRepositoryRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aRemoveChildRepositoryReply\"\x8f\x01\n\x1cRemoveChildRepositoryRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x39\n\rrepository_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cRemoveChildRepositoriesReply\"[\n\x1eRemoveChildRepositoriesRequest\x12\x39\n\rrepository_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x81\r\n\x12\x41ssetLookupSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12q\n\x0f\x43\x61nLookupAssets\x12..dlkit.proto.repository.CanLookupAssetsRequest\x1a,.dlkit.proto.repository.CanLookupAssetsReply\"\x00\x12\x89\x01\n\x17UseComparativeAssetView\x12\x36.dlkit.proto.repository.UseComparativeAssetViewRequest\x1a\x34.dlkit.proto.repository.UseComparativeAssetViewReply\"\x00\x12}\n\x13UsePlenaryAssetView\x12\x32.dlkit.proto.repository.UsePlenaryAssetViewRequest\x1a\x30.dlkit.proto.repository.UsePlenaryAssetViewReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\\\n\x08GetAsset\x12\'.dlkit.proto.repository.GetAssetRequest\x1a%.dlkit.proto.repository.GetAssetReply\"\x00\x12\x62\n\x0eGetAssetsByIds\x12-.dlkit.proto.repository.GetAssetsByIdsRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12n\n\x14GetAssetsByGenusType\x12\x33.dlkit.proto.repository.GetAssetsByGenusTypeRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12z\n\x1aGetAssetsByParentGenusType\x12\x39.dlkit.proto.repository.GetAssetsByParentGenusTypeRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12p\n\x15GetAssetsByRecordType\x12\x34.dlkit.proto.repository.GetAssetsByRecordTypeRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12l\n\x13GetAssetsByProvider\x12\x32.dlkit.proto.repository.GetAssetsByProviderRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12X\n\tGetAssets\x12(.dlkit.proto.repository.GetAssetsRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x32\xe2\x06\n\x11\x41ssetQuerySession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12q\n\x0f\x43\x61nSearchAssets\x12..dlkit.proto.repository.CanSearchAssetsRequest\x1a,.dlkit.proto.repository.CanSearchAssetsReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12k\n\rGetAssetQuery\x12,.dlkit.proto.repository.GetAssetQueryRequest\x1a*.dlkit.proto.repository.GetAssetQueryReply\"\x00\x12\x66\n\x10GetAssetsByQuery\x12/.dlkit.proto.repository.GetAssetsByQueryRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x32\x91\x04\n\x12\x41ssetSearchSession\x12n\n\x0eGetAssetSearch\x12-.dlkit.proto.repository.GetAssetSearchRequest\x1a+.dlkit.proto.repository.GetAssetSearchReply\"\x00\x12}\n\x13GetAssetSearchOrder\x12\x32.dlkit.proto.repository.GetAssetSearchOrderRequest\x1a\x30.dlkit.proto.repository.GetAssetSearchOrderReply\"\x00\x12w\n\x11GetAssetsBySearch\x12\x30.dlkit.proto.repository.GetAssetsBySearchRequest\x1a..dlkit.proto.repository.GetAssetsBySearchReply\"\x00\x12\x92\x01\n\x1aGetAssetQueryFromInspector\x12\x39.dlkit.proto.repository.GetAssetQueryFromInspectorRequest\x1a\x37.dlkit.proto.repository.GetAssetQueryFromInspectorReply\"\x00\x32\x8a\x16\n\x11\x41ssetAdminSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12q\n\x0f\x43\x61nCreateAssets\x12..dlkit.proto.repository.CanCreateAssetsRequest\x1a,.dlkit.proto.repository.CanCreateAssetsReply\"\x00\x12\x9b\x01\n\x1d\x43\x61nCreateAssetWithRecordTypes\x12<.dlkit.proto.repository.CanCreateAssetWithRecordTypesRequest\x1a:.dlkit.proto.repository.CanCreateAssetWithRecordTypesReply\"\x00\x12\x83\x01\n\x15GetAssetFormForCreate\x12\x34.dlkit.proto.repository.GetAssetFormForCreateRequest\x1a\x32.dlkit.proto.repository.GetAssetFormForCreateReply\"\x00\x12\x65\n\x0b\x43reateAsset\x12*.dlkit.proto.repository.CreateAssetRequest\x1a(.dlkit.proto.repository.CreateAssetReply\"\x00\x12q\n\x0f\x43\x61nUpdateAssets\x12..dlkit.proto.repository.CanUpdateAssetsRequest\x1a,.dlkit.proto.repository.CanUpdateAssetsReply\"\x00\x12\x83\x01\n\x15GetAssetFormForUpdate\x12\x34.dlkit.proto.repository.GetAssetFormForUpdateRequest\x1a\x32.dlkit.proto.repository.GetAssetFormForUpdateReply\"\x00\x12\x65\n\x0bUpdateAsset\x12*.dlkit.proto.repository.UpdateAssetRequest\x1a(.dlkit.proto.repository.UpdateAssetReply\"\x00\x12q\n\x0f\x43\x61nDeleteAssets\x12..dlkit.proto.repository.CanDeleteAssetsRequest\x1a,.dlkit.proto.repository.CanDeleteAssetsReply\"\x00\x12\x65\n\x0b\x44\x65leteAsset\x12*.dlkit.proto.repository.DeleteAssetRequest\x1a(.dlkit.proto.repository.DeleteAssetReply\"\x00\x12\x83\x01\n\x15\x43\x61nManageAssetAliases\x12\x34.dlkit.proto.repository.CanManageAssetAliasesRequest\x1a\x32.dlkit.proto.repository.CanManageAssetAliasesReply\"\x00\x12\x62\n\nAliasAsset\x12).dlkit.proto.repository.AliasAssetRequest\x1a\'.dlkit.proto.repository.AliasAssetReply\"\x00\x12\x83\x01\n\x15\x43\x61nCreateAssetContent\x12\x34.dlkit.proto.repository.CanCreateAssetContentRequest\x1a\x32.dlkit.proto.repository.CanCreateAssetContentReply\"\x00\x12\xb0\x01\n$CanCreateAssetContentWithRecordTypes\x12\x43.dlkit.proto.repository.CanCreateAssetContentWithRecordTypesRequest\x1a\x41.dlkit.proto.repository.CanCreateAssetContentWithRecordTypesReply\"\x00\x12\x98\x01\n\x1cGetAssetContentFormForCreate\x12;.dlkit.proto.repository.GetAssetContentFormForCreateRequest\x1a\x39.dlkit.proto.repository.GetAssetContentFormForCreateReply\"\x00\x12z\n\x12\x43reateAssetContent\x12\x31.dlkit.proto.repository.CreateAssetContentRequest\x1a/.dlkit.proto.repository.CreateAssetContentReply\"\x00\x12\x86\x01\n\x16\x43\x61nUpdateAssetContents\x12\x35.dlkit.proto.repository.CanUpdateAssetContentsRequest\x1a\x33.dlkit.proto.repository.CanUpdateAssetContentsReply\"\x00\x12\x98\x01\n\x1cGetAssetContentFormForUpdate\x12;.dlkit.proto.repository.GetAssetContentFormForUpdateRequest\x1a\x39.dlkit.proto.repository.GetAssetContentFormForUpdateReply\"\x00\x12z\n\x12UpdateAssetContent\x12\x31.dlkit.proto.repository.UpdateAssetContentRequest\x1a/.dlkit.proto.repository.UpdateAssetContentReply\"\x00\x12\x86\x01\n\x16\x43\x61nDeleteAssetContents\x12\x35.dlkit.proto.repository.CanDeleteAssetContentsRequest\x1a\x33.dlkit.proto.repository.CanDeleteAssetContentsReply\"\x00\x12z\n\x12\x44\x65leteAssetContent\x12\x31.dlkit.proto.repository.DeleteAssetContentRequest\x1a/.dlkit.proto.repository.DeleteAssetContentReply\"\x00\x32\xd0\x12\n\x18\x41ssetNotificationSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\xa4\x01\n CanRegisterForAssetNotifications\x12?.dlkit.proto.repository.CanRegisterForAssetNotificationsRequest\x1a=.dlkit.proto.repository.CanRegisterForAssetNotificationsReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\x80\x01\n\x14RegisterForNewAssets\x12\x33.dlkit.proto.repository.RegisterForNewAssetsRequest\x1a\x31.dlkit.proto.repository.RegisterForNewAssetsReply\"\x00\x12\xa1\x01\n\x1fRegisterForNewAssetsByGenusType\x12>.dlkit.proto.repository.RegisterForNewAssetsByGenusTypeRequest\x1a<.dlkit.proto.repository.RegisterForNewAssetsByGenusTypeReply\"\x00\x12\x8c\x01\n\x18RegisterForChangedAssets\x12\x37.dlkit.proto.repository.RegisterForChangedAssetsRequest\x1a\x35.dlkit.proto.repository.RegisterForChangedAssetsReply\"\x00\x12\xad\x01\n#RegisterForChangedAssetsByGenusType\x12\x42.dlkit.proto.repository.RegisterForChangedAssetsByGenusTypeRequest\x1a@.dlkit.proto.repository.RegisterForChangedAssetsByGenusTypeReply\"\x00\x12\x89\x01\n\x17RegisterForChangedAsset\x12\x36.dlkit.proto.repository.RegisterForChangedAssetRequest\x1a\x34.dlkit.proto.repository.RegisterForChangedAssetReply\"\x00\x12\x8c\x01\n\x18RegisterForDeletedAssets\x12\x37.dlkit.proto.repository.RegisterForDeletedAssetsRequest\x1a\x35.dlkit.proto.repository.RegisterForDeletedAssetsReply\"\x00\x12\xad\x01\n#RegisterForDeletedAssetsByGenusType\x12\x42.dlkit.proto.repository.RegisterForDeletedAssetsByGenusTypeRequest\x1a@.dlkit.proto.repository.RegisterForDeletedAssetsByGenusTypeReply\"\x00\x12\x89\x01\n\x17RegisterForDeletedAsset\x12\x36.dlkit.proto.repository.RegisterForDeletedAssetRequest\x1a\x34.dlkit.proto.repository.RegisterForDeletedAssetReply\"\x00\x12\x92\x01\n\x1aReliableAssetNotifications\x12\x39.dlkit.proto.repository.ReliableAssetNotificationsRequest\x1a\x37.dlkit.proto.repository.ReliableAssetNotificationsReply\"\x00\x12\x98\x01\n\x1cUnreliableAssetNotifications\x12;.dlkit.proto.repository.UnreliableAssetNotificationsRequest\x1a\x39.dlkit.proto.repository.UnreliableAssetNotificationsReply\"\x00\x12\x98\x01\n\x1c\x41\x63knowledgeAssetNotification\x12;.dlkit.proto.repository.AcknowledgeAssetNotificationRequest\x1a\x39.dlkit.proto.repository.AcknowledgeAssetNotificationReply\"\x00\x32\xbf\t\n\x16\x41ssetRepositorySession\x12\xa4\x01\n CanLookupAssetRepositoryMappings\x12?.dlkit.proto.repository.CanLookupAssetRepositoryMappingsRequest\x1a=.dlkit.proto.repository.CanLookupAssetRepositoryMappingsReply\"\x00\x12\x98\x01\n\x1cUseComparativeRepositoryView\x12;.dlkit.proto.repository.UseComparativeRepositoryViewRequest\x1a\x39.dlkit.proto.repository.UseComparativeRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryRepositoryView\x12\x37.dlkit.proto.repository.UsePlenaryRepositoryViewRequest\x1a\x35.dlkit.proto.repository.UsePlenaryRepositoryViewReply\"\x00\x12y\n\x17GetAssetIdsByRepository\x12\x36.dlkit.proto.repository.GetAssetIdsByRepositoryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12p\n\x15GetAssetsByRepository\x12\x34.dlkit.proto.repository.GetAssetsByRepositoryRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12}\n\x19GetAssetIdsByRepositories\x12\x38.dlkit.proto.repository.GetAssetIdsByRepositoriesRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12t\n\x17GetAssetsByRepositories\x12\x36.dlkit.proto.repository.GetAssetsByRepositoriesRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12y\n\x17GetRepositoryIdsByAsset\x12\x36.dlkit.proto.repository.GetRepositoryIdsByAssetRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12w\n\x16GetRepositoriesByAsset\x12\x35.dlkit.proto.repository.GetRepositoriesByAssetRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\xe4\x06\n AssetRepositoryAssignmentSession\x12q\n\x0f\x43\x61nAssignAssets\x12..dlkit.proto.repository.CanAssignAssetsRequest\x1a,.dlkit.proto.repository.CanAssignAssetsReply\"\x00\x12\x95\x01\n\x1b\x43\x61nAssignAssetsToRepository\x12:.dlkit.proto.repository.CanAssignAssetsToRepositoryRequest\x1a\x38.dlkit.proto.repository.CanAssignAssetsToRepositoryReply\"\x00\x12\x7f\n\x1aGetAssignableRepositoryIds\x12\x39.dlkit.proto.repository.GetAssignableRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x8f\x01\n\"GetAssignableRepositoryIdsForAsset\x12\x41.dlkit.proto.repository.GetAssignableRepositoryIdsForAssetRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x89\x01\n\x17\x41ssignAssetToRepository\x12\x36.dlkit.proto.repository.AssignAssetToRepositoryRequest\x1a\x34.dlkit.proto.repository.AssignAssetToRepositoryReply\"\x00\x12\x95\x01\n\x1bUnassignAssetFromRepository\x12:.dlkit.proto.repository.UnassignAssetFromRepositoryRequest\x1a\x38.dlkit.proto.repository.UnassignAssetFromRepositoryReply\"\x00\x32\xed\t\n\x17\x41ssetCompositionSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x92\x01\n\x1a\x43\x61nAccessAssetCompositions\x12\x39.dlkit.proto.repository.CanAccessAssetCompositionsRequest\x1a\x37.dlkit.proto.repository.CanAccessAssetCompositionsReply\"\x00\x12\xaa\x01\n\"UseComparativeAssetCompositionView\x12\x41.dlkit.proto.repository.UseComparativeAssetCompositionViewRequest\x1a?.dlkit.proto.repository.UseComparativeAssetCompositionViewReply\"\x00\x12\x9e\x01\n\x1eUsePlenaryAssetCompositionView\x12=.dlkit.proto.repository.UsePlenaryAssetCompositionViewRequest\x1a;.dlkit.proto.repository.UsePlenaryAssetCompositionViewReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12n\n\x14GetCompositionAssets\x12\x33.dlkit.proto.repository.GetCompositionAssetsRequest\x1a\x1d.dlkit.proto.repository.Asset\"\x00\x30\x01\x12x\n\x16GetCompositionsByAsset\x12\x35.dlkit.proto.repository.GetCompositionsByAssetRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x32\x84\x07\n\x1d\x41ssetCompositionDesignSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12t\n\x10\x43\x61nComposeAssets\x12/.dlkit.proto.repository.CanComposeAssetsRequest\x1a-.dlkit.proto.repository.CanComposeAssetsReply\"\x00\x12\\\n\x08\x41\x64\x64\x41sset\x12\'.dlkit.proto.repository.AddAssetRequest\x1a%.dlkit.proto.repository.AddAssetReply\"\x00\x12n\n\x0eMoveAssetAhead\x12-.dlkit.proto.repository.MoveAssetAheadRequest\x1a+.dlkit.proto.repository.MoveAssetAheadReply\"\x00\x12q\n\x0fMoveAssetBehind\x12..dlkit.proto.repository.MoveAssetBehindRequest\x1a,.dlkit.proto.repository.MoveAssetBehindReply\"\x00\x12\x65\n\x0bOrderAssets\x12*.dlkit.proto.repository.OrderAssetsRequest\x1a(.dlkit.proto.repository.OrderAssetsReply\"\x00\x12\x65\n\x0bRemoveAsset\x12*.dlkit.proto.repository.RemoveAssetRequest\x1a(.dlkit.proto.repository.RemoveAssetReply\"\x00\x32\xa9\x13\n\x18\x43ompositionLookupSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nLookupCompositions\x12\x34.dlkit.proto.repository.CanLookupCompositionsRequest\x1a\x32.dlkit.proto.repository.CanLookupCompositionsReply\"\x00\x12\x9b\x01\n\x1dUseComparativeCompositionView\x12<.dlkit.proto.repository.UseComparativeCompositionViewRequest\x1a:.dlkit.proto.repository.UseComparativeCompositionViewReply\"\x00\x12\x8f\x01\n\x19UsePlenaryCompositionView\x12\x38.dlkit.proto.repository.UsePlenaryCompositionViewRequest\x1a\x36.dlkit.proto.repository.UsePlenaryCompositionViewReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UseActiveCompositionView\x12\x37.dlkit.proto.repository.UseActiveCompositionViewRequest\x1a\x35.dlkit.proto.repository.UseActiveCompositionViewReply\"\x00\x12\x95\x01\n\x1bUseAnyStatusCompositionView\x12:.dlkit.proto.repository.UseAnyStatusCompositionViewRequest\x1a\x38.dlkit.proto.repository.UseAnyStatusCompositionViewReply\"\x00\x12\x9b\x01\n\x1dUseSequesteredCompositionView\x12<.dlkit.proto.repository.UseSequesteredCompositionViewRequest\x1a:.dlkit.proto.repository.UseSequesteredCompositionViewReply\"\x00\x12\xa1\x01\n\x1fUseUnsequesteredCompositionView\x12>.dlkit.proto.repository.UseUnsequesteredCompositionViewRequest\x1a<.dlkit.proto.repository.UseUnsequesteredCompositionViewReply\"\x00\x12n\n\x0eGetComposition\x12-.dlkit.proto.repository.GetCompositionRequest\x1a+.dlkit.proto.repository.GetCompositionReply\"\x00\x12t\n\x14GetCompositionsByIds\x12\x33.dlkit.proto.repository.GetCompositionsByIdsRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x80\x01\n\x1aGetCompositionsByGenusType\x12\x39.dlkit.proto.repository.GetCompositionsByGenusTypeRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x8c\x01\n GetCompositionsByParentGenusType\x12?.dlkit.proto.repository.GetCompositionsByParentGenusTypeRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x82\x01\n\x1bGetCompositionsByRecordType\x12:.dlkit.proto.repository.GetCompositionsByRecordTypeRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12~\n\x19GetCompositionsByProvider\x12\x38.dlkit.proto.repository.GetCompositionsByProviderRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12j\n\x0fGetCompositions\x12..dlkit.proto.repository.GetCompositionsRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x32\xe1\t\n\x17\x43ompositionQuerySession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nSearchCompositions\x12\x34.dlkit.proto.repository.CanSearchCompositionsRequest\x1a\x32.dlkit.proto.repository.CanSearchCompositionsReply\"\x00\x12\x92\x01\n\x1aUseFederatedRepositoryView\x12\x39.dlkit.proto.repository.UseFederatedRepositoryViewRequest\x1a\x37.dlkit.proto.repository.UseFederatedRepositoryViewReply\"\x00\x12\x8f\x01\n\x19UseIsolatedRepositoryView\x12\x38.dlkit.proto.repository.UseIsolatedRepositoryViewRequest\x1a\x36.dlkit.proto.repository.UseIsolatedRepositoryViewReply\"\x00\x12\x9b\x01\n\x1dUseSequesteredCompositionView\x12<.dlkit.proto.repository.UseSequesteredCompositionViewRequest\x1a:.dlkit.proto.repository.UseSequesteredCompositionViewReply\"\x00\x12\xa1\x01\n\x1fUseUnsequesteredCompositionView\x12>.dlkit.proto.repository.UseUnsequesteredCompositionViewRequest\x1a<.dlkit.proto.repository.UseUnsequesteredCompositionViewReply\"\x00\x12}\n\x13GetCompositionQuery\x12\x32.dlkit.proto.repository.GetCompositionQueryRequest\x1a\x30.dlkit.proto.repository.GetCompositionQueryReply\"\x00\x12x\n\x16GetCompositionsByQuery\x12\x35.dlkit.proto.repository.GetCompositionsByQueryRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x32\xe2\x04\n\x18\x43ompositionSearchSession\x12\x80\x01\n\x14GetCompositionSearch\x12\x33.dlkit.proto.repository.GetCompositionSearchRequest\x1a\x31.dlkit.proto.repository.GetCompositionSearchReply\"\x00\x12\x8f\x01\n\x19GetCompositionSearchOrder\x12\x38.dlkit.proto.repository.GetCompositionSearchOrderRequest\x1a\x36.dlkit.proto.repository.GetCompositionSearchOrderReply\"\x00\x12\x89\x01\n\x17GetCompositionsBySearch\x12\x36.dlkit.proto.repository.GetCompositionsBySearchRequest\x1a\x34.dlkit.proto.repository.GetCompositionsBySearchReply\"\x00\x12\xa4\x01\n GetCompositionQueryFromInspector\x12?.dlkit.proto.repository.GetCompositionQueryFromInspectorRequest\x1a=.dlkit.proto.repository.GetCompositionQueryFromInspectorReply\"\x00\x32\xf2\x10\n\x17\x43ompositionAdminSession\x12q\n\x0fGetRepositoryId\x12..dlkit.proto.repository.GetRepositoryIdRequest\x1a,.dlkit.proto.repository.GetRepositoryIdReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nCreateCompositions\x12\x34.dlkit.proto.repository.CanCreateCompositionsRequest\x1a\x32.dlkit.proto.repository.CanCreateCompositionsReply\"\x00\x12\xad\x01\n#CanCreateCompositionWithRecordTypes\x12\x42.dlkit.proto.repository.CanCreateCompositionWithRecordTypesRequest\x1a@.dlkit.proto.repository.CanCreateCompositionWithRecordTypesReply\"\x00\x12\x95\x01\n\x1bGetCompositionFormForCreate\x12:.dlkit.proto.repository.GetCompositionFormForCreateRequest\x1a\x38.dlkit.proto.repository.GetCompositionFormForCreateReply\"\x00\x12w\n\x11\x43reateComposition\x12\x30.dlkit.proto.repository.CreateCompositionRequest\x1a..dlkit.proto.repository.CreateCompositionReply\"\x00\x12\x83\x01\n\x15\x43\x61nUpdateCompositions\x12\x34.dlkit.proto.repository.CanUpdateCompositionsRequest\x1a\x32.dlkit.proto.repository.CanUpdateCompositionsReply\"\x00\x12\x95\x01\n\x1bGetCompositionFormForUpdate\x12:.dlkit.proto.repository.GetCompositionFormForUpdateRequest\x1a\x38.dlkit.proto.repository.GetCompositionFormForUpdateReply\"\x00\x12w\n\x11UpdateComposition\x12\x30.dlkit.proto.repository.UpdateCompositionRequest\x1a..dlkit.proto.repository.UpdateCompositionReply\"\x00\x12\x83\x01\n\x15\x43\x61nDeleteCompositions\x12\x34.dlkit.proto.repository.CanDeleteCompositionsRequest\x1a\x32.dlkit.proto.repository.CanDeleteCompositionsReply\"\x00\x12w\n\x11\x44\x65leteComposition\x12\x30.dlkit.proto.repository.DeleteCompositionRequest\x1a..dlkit.proto.repository.DeleteCompositionReply\"\x00\x12\x83\x01\n\x15\x44\x65leteCompositionNode\x12\x34.dlkit.proto.repository.DeleteCompositionNodeRequest\x1a\x32.dlkit.proto.repository.DeleteCompositionNodeReply\"\x00\x12}\n\x13\x41\x64\x64\x43ompositionChild\x12\x32.dlkit.proto.repository.AddCompositionChildRequest\x1a\x30.dlkit.proto.repository.AddCompositionChildReply\"\x00\x12\x86\x01\n\x16RemoveCompositionChild\x12\x35.dlkit.proto.repository.RemoveCompositionChildRequest\x1a\x33.dlkit.proto.repository.RemoveCompositionChildReply\"\x00\x12\x95\x01\n\x1b\x43\x61nManageCompositionAliases\x12:.dlkit.proto.repository.CanManageCompositionAliasesRequest\x1a\x38.dlkit.proto.repository.CanManageCompositionAliasesReply\"\x00\x12t\n\x10\x41liasComposition\x12/.dlkit.proto.repository.AliasCompositionRequest\x1a-.dlkit.proto.repository.AliasCompositionReply\"\x00\x32\xf3\n\n\x1c\x43ompositionRepositorySession\x12\xb9\x01\n\'UseComparativeCompositionRepositoryView\x12\x46.dlkit.proto.repository.UseComparativeCompositionRepositoryViewRequest\x1a\x44.dlkit.proto.repository.UseComparativeCompositionRepositoryViewReply\"\x00\x12\xad\x01\n#UsePlenaryCompositionRepositoryView\x12\x42.dlkit.proto.repository.UsePlenaryCompositionRepositoryViewRequest\x1a@.dlkit.proto.repository.UsePlenaryCompositionRepositoryViewReply\"\x00\x12\xb6\x01\n&CanLookupCompositionRepositoryMappings\x12\x45.dlkit.proto.repository.CanLookupCompositionRepositoryMappingsRequest\x1a\x43.dlkit.proto.repository.CanLookupCompositionRepositoryMappingsReply\"\x00\x12\x85\x01\n\x1dGetCompositionIdsByRepository\x12<.dlkit.proto.repository.GetCompositionIdsByRepositoryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x1bGetCompositionsByRepository\x12:.dlkit.proto.repository.GetCompositionsByRepositoryRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x89\x01\n\x1fGetCompositionIdsByRepositories\x12>.dlkit.proto.repository.GetCompositionIdsByRepositoriesRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x86\x01\n\x1dGetCompositionsByRepositories\x12<.dlkit.proto.repository.GetCompositionsByRepositoriesRequest\x1a#.dlkit.proto.repository.Composition\"\x00\x30\x01\x12\x85\x01\n\x1dGetRepositoryIdsByComposition\x12<.dlkit.proto.repository.GetRepositoryIdsByCompositionRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x83\x01\n\x1cGetRepositoriesByComposition\x12;.dlkit.proto.repository.GetRepositoriesByCompositionRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\xbf\x07\n&CompositionRepositoryAssignmentSession\x12\x83\x01\n\x15\x43\x61nAssignCompositions\x12\x34.dlkit.proto.repository.CanAssignCompositionsRequest\x1a\x32.dlkit.proto.repository.CanAssignCompositionsReply\"\x00\x12\xa7\x01\n!CanAssignCompositionsToRepository\x12@.dlkit.proto.repository.CanAssignCompositionsToRepositoryRequest\x1a>.dlkit.proto.repository.CanAssignCompositionsToRepositoryReply\"\x00\x12\x7f\n\x1aGetAssignableRepositoryIds\x12\x39.dlkit.proto.repository.GetAssignableRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n(GetAssignableRepositoryIdsForComposition\x12G.dlkit.proto.repository.GetAssignableRepositoryIdsForCompositionRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n\x1d\x41ssignCompositionToRepository\x12<.dlkit.proto.repository.AssignCompositionToRepositoryRequest\x1a:.dlkit.proto.repository.AssignCompositionToRepositoryReply\"\x00\x12\xa7\x01\n!UnassignCompositionFromRepository\x12@.dlkit.proto.repository.UnassignCompositionFromRepositoryRequest\x1a>.dlkit.proto.repository.UnassignCompositionFromRepositoryReply\"\x00\x32\xa8\n\n\x17RepositoryLookupSession\x12\x83\x01\n\x15\x43\x61nLookupRepositories\x12\x34.dlkit.proto.repository.CanLookupRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanLookupRepositoriesReply\"\x00\x12\x98\x01\n\x1cUseComparativeRepositoryView\x12;.dlkit.proto.repository.UseComparativeRepositoryViewRequest\x1a\x39.dlkit.proto.repository.UseComparativeRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryRepositoryView\x12\x37.dlkit.proto.repository.UsePlenaryRepositoryViewRequest\x1a\x35.dlkit.proto.repository.UsePlenaryRepositoryViewReply\"\x00\x12k\n\rGetRepository\x12,.dlkit.proto.repository.GetRepositoryRequest\x1a*.dlkit.proto.repository.GetRepositoryReply\"\x00\x12s\n\x14GetRepositoriesByIds\x12\x33.dlkit.proto.repository.GetRepositoriesByIdsRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x7f\n\x1aGetRepositoriesByGenusType\x12\x39.dlkit.proto.repository.GetRepositoriesByGenusTypeRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x8b\x01\n GetRepositoriesByParentGenusType\x12?.dlkit.proto.repository.GetRepositoriesByParentGenusTypeRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x81\x01\n\x1bGetRepositoriesByRecordType\x12:.dlkit.proto.repository.GetRepositoriesByRecordTypeRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12}\n\x19GetRepositoriesByProvider\x12\x38.dlkit.proto.repository.GetRepositoriesByProviderRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12i\n\x0fGetRepositories\x12..dlkit.proto.repository.GetRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\x93\x03\n\x16RepositoryQuerySession\x12\x83\x01\n\x15\x43\x61nSearchRepositories\x12\x34.dlkit.proto.repository.CanSearchRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanSearchRepositoriesReply\"\x00\x12z\n\x12GetRepositoryQuery\x12\x31.dlkit.proto.repository.GetRepositoryQueryRequest\x1a/.dlkit.proto.repository.GetRepositoryQueryReply\"\x00\x12w\n\x16GetRepositoriesByQuery\x12\x35.dlkit.proto.repository.GetRepositoriesByQueryRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x32\xeb\x0b\n\x16RepositoryAdminSession\x12\x83\x01\n\x15\x43\x61nCreateRepositories\x12\x34.dlkit.proto.repository.CanCreateRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanCreateRepositoriesReply\"\x00\x12\xaa\x01\n\"CanCreateRepositoryWithRecordTypes\x12\x41.dlkit.proto.repository.CanCreateRepositoryWithRecordTypesRequest\x1a?.dlkit.proto.repository.CanCreateRepositoryWithRecordTypesReply\"\x00\x12\x92\x01\n\x1aGetRepositoryFormForCreate\x12\x39.dlkit.proto.repository.GetRepositoryFormForCreateRequest\x1a\x37.dlkit.proto.repository.GetRepositoryFormForCreateReply\"\x00\x12t\n\x10\x43reateRepository\x12/.dlkit.proto.repository.CreateRepositoryRequest\x1a-.dlkit.proto.repository.CreateRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nUpdateRepositories\x12\x34.dlkit.proto.repository.CanUpdateRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanUpdateRepositoriesReply\"\x00\x12\x92\x01\n\x1aGetRepositoryFormForUpdate\x12\x39.dlkit.proto.repository.GetRepositoryFormForUpdateRequest\x1a\x37.dlkit.proto.repository.GetRepositoryFormForUpdateReply\"\x00\x12t\n\x10UpdateRepository\x12/.dlkit.proto.repository.UpdateRepositoryRequest\x1a-.dlkit.proto.repository.UpdateRepositoryReply\"\x00\x12\x83\x01\n\x15\x43\x61nDeleteRepositories\x12\x34.dlkit.proto.repository.CanDeleteRepositoriesRequest\x1a\x32.dlkit.proto.repository.CanDeleteRepositoriesReply\"\x00\x12t\n\x10\x44\x65leteRepository\x12/.dlkit.proto.repository.DeleteRepositoryRequest\x1a-.dlkit.proto.repository.DeleteRepositoryReply\"\x00\x12\x92\x01\n\x1a\x43\x61nManageRepositoryAliases\x12\x39.dlkit.proto.repository.CanManageRepositoryAliasesRequest\x1a\x37.dlkit.proto.repository.CanManageRepositoryAliasesReply\"\x00\x12q\n\x0f\x41liasRepository\x12..dlkit.proto.repository.AliasRepositoryRequest\x1a,.dlkit.proto.repository.AliasRepositoryReply\"\x00\x32\xdf\x13\n\x1aRepositoryHierarchySession\x12\x8c\x01\n\x18GetRepositoryHierarchyId\x12\x37.dlkit.proto.repository.GetRepositoryHierarchyIdRequest\x1a\x35.dlkit.proto.repository.GetRepositoryHierarchyIdReply\"\x00\x12\x86\x01\n\x16GetRepositoryHierarchy\x12\x35.dlkit.proto.repository.GetRepositoryHierarchyRequest\x1a\x33.dlkit.proto.repository.GetRepositoryHierarchyReply\"\x00\x12\x98\x01\n\x1c\x43\x61nAccessRepositoryHierarchy\x12;.dlkit.proto.repository.CanAccessRepositoryHierarchyRequest\x1a\x39.dlkit.proto.repository.CanAccessRepositoryHierarchyReply\"\x00\x12\x98\x01\n\x1cUseComparativeRepositoryView\x12;.dlkit.proto.repository.UseComparativeRepositoryViewRequest\x1a\x39.dlkit.proto.repository.UseComparativeRepositoryViewReply\"\x00\x12\x8c\x01\n\x18UsePlenaryRepositoryView\x12\x37.dlkit.proto.repository.UsePlenaryRepositoryViewRequest\x1a\x35.dlkit.proto.repository.UsePlenaryRepositoryViewReply\"\x00\x12s\n\x14GetRootRepositoryIds\x12\x33.dlkit.proto.repository.GetRootRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12q\n\x13GetRootRepositories\x12\x32.dlkit.proto.repository.GetRootRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x83\x01\n\x15HasParentRepositories\x12\x34.dlkit.proto.repository.HasParentRepositoriesRequest\x1a\x32.dlkit.proto.repository.HasParentRepositoriesReply\"\x00\x12\x80\x01\n\x14IsParentOfRepository\x12\x33.dlkit.proto.repository.IsParentOfRepositoryRequest\x1a\x31.dlkit.proto.repository.IsParentOfRepositoryReply\"\x00\x12w\n\x16GetParentRepositoryIds\x12\x35.dlkit.proto.repository.GetParentRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12u\n\x15GetParentRepositories\x12\x34.dlkit.proto.repository.GetParentRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x86\x01\n\x16IsAncestorOfRepository\x12\x35.dlkit.proto.repository.IsAncestorOfRepositoryRequest\x1a\x33.dlkit.proto.repository.IsAncestorOfRepositoryReply\"\x00\x12\x80\x01\n\x14HasChildRepositories\x12\x33.dlkit.proto.repository.HasChildRepositoriesRequest\x1a\x31.dlkit.proto.repository.HasChildRepositoriesReply\"\x00\x12}\n\x13IsChildOfRepository\x12\x32.dlkit.proto.repository.IsChildOfRepositoryRequest\x1a\x30.dlkit.proto.repository.IsChildOfRepositoryReply\"\x00\x12u\n\x15GetChildRepositoryIds\x12\x34.dlkit.proto.repository.GetChildRepositoryIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12s\n\x14GetChildRepositories\x12\x33.dlkit.proto.repository.GetChildRepositoriesRequest\x1a\".dlkit.proto.repository.Repository\"\x00\x30\x01\x12\x8c\x01\n\x18IsDescendantOfRepository\x12\x37.dlkit.proto.repository.IsDescendantOfRepositoryRequest\x1a\x35.dlkit.proto.repository.IsDescendantOfRepositoryReply\"\x00\x12\x80\x01\n\x14GetRepositoryNodeIds\x12\x33.dlkit.proto.repository.GetRepositoryNodeIdsRequest\x1a\x31.dlkit.proto.repository.GetRepositoryNodeIdsReply\"\x00\x12z\n\x12GetRepositoryNodes\x12\x31.dlkit.proto.repository.GetRepositoryNodesRequest\x1a/.dlkit.proto.repository.GetRepositoryNodesReply\"\x00\x32\xdf\x08\n RepositoryHierarchyDesignSession\x12\x8c\x01\n\x18GetRepositoryHierarchyId\x12\x37.dlkit.proto.repository.GetRepositoryHierarchyIdRequest\x1a\x35.dlkit.proto.repository.GetRepositoryHierarchyIdReply\"\x00\x12\x86\x01\n\x16GetRepositoryHierarchy\x12\x35.dlkit.proto.repository.GetRepositoryHierarchyRequest\x1a\x33.dlkit.proto.repository.GetRepositoryHierarchyReply\"\x00\x12\x98\x01\n\x1c\x43\x61nModifyRepositoryHierarchy\x12;.dlkit.proto.repository.CanModifyRepositoryHierarchyRequest\x1a\x39.dlkit.proto.repository.CanModifyRepositoryHierarchyReply\"\x00\x12w\n\x11\x41\x64\x64RootRepository\x12\x30.dlkit.proto.repository.AddRootRepositoryRequest\x1a..dlkit.proto.repository.AddRootRepositoryReply\"\x00\x12\x80\x01\n\x14RemoveRootRepository\x12\x33.dlkit.proto.repository.RemoveRootRepositoryRequest\x1a\x31.dlkit.proto.repository.RemoveRootRepositoryReply\"\x00\x12z\n\x12\x41\x64\x64\x43hildRepository\x12\x31.dlkit.proto.repository.AddChildRepositoryRequest\x1a/.dlkit.proto.repository.AddChildRepositoryReply\"\x00\x12\x83\x01\n\x15RemoveChildRepository\x12\x34.dlkit.proto.repository.RemoveChildRepositoryRequest\x1a\x32.dlkit.proto.repository.RemoveChildRepositoryReply\"\x00\x12\x89\x01\n\x17RemoveChildRepositories\x12\x36.dlkit.proto.repository.RemoveChildRepositoriesRequest\x1a\x34.dlkit.proto.repository.RemoveChildRepositoriesReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_transport_dot_objects__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -83,7 +83,7 @@ _ASSET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.repository.Asset.displayName', index=6,
+      name='display_name', full_name='dlkit.proto.repository.Asset.display_name', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -111,7 +111,7 @@ _ASSET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.repository.Asset.genusTypeId', index=10,
+      name='genus_type_id', full_name='dlkit.proto.repository.Asset.genus_type_id', index=10,
       number=11, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -160,7 +160,7 @@ _ASSET = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.repository.Asset.recordTypeIds', index=17,
+      name='record_type_ids', full_name='dlkit.proto.repository.Asset.record_type_ids', index=17,
       number=18, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -200,7 +200,7 @@ _ASSET = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=305,
-  serialized_end=1243,
+  serialized_end=1248,
 )
 
 
@@ -223,8 +223,8 @@ _ASSETQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1245,
-  serialized_end=1257,
+  serialized_start=1250,
+  serialized_end=1262,
 )
 
 
@@ -247,8 +247,8 @@ _ASSETQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1259,
-  serialized_end=1280,
+  serialized_start=1264,
+  serialized_end=1285,
 )
 
 
@@ -271,8 +271,8 @@ _ASSETFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1282,
-  serialized_end=1293,
+  serialized_start=1287,
+  serialized_end=1298,
 )
 
 
@@ -295,8 +295,8 @@ _ASSETSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1295,
-  serialized_end=1313,
+  serialized_start=1300,
+  serialized_end=1318,
 )
 
 
@@ -319,8 +319,8 @@ _ASSETSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1315,
-  serialized_end=1328,
+  serialized_start=1320,
+  serialized_end=1333,
 )
 
 
@@ -343,8 +343,8 @@ _ASSETSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1330,
-  serialized_end=1350,
+  serialized_start=1335,
+  serialized_end=1355,
 )
 
 
@@ -374,8 +374,8 @@ _ASSETLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1352,
-  serialized_end=1410,
+  serialized_start=1357,
+  serialized_end=1415,
 )
 
 
@@ -415,14 +415,14 @@ _ASSETCONTENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.repository.AssetContent.displayName', index=4,
+      name='display_name', full_name='dlkit.proto.repository.AssetContent.display_name', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.repository.AssetContent.genusTypeId', index=5,
+      name='genus_type_id', full_name='dlkit.proto.repository.AssetContent.genus_type_id', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -436,7 +436,7 @@ _ASSETCONTENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.repository.AssetContent.recordTypeIds', index=7,
+      name='record_type_ids', full_name='dlkit.proto.repository.AssetContent.record_type_ids', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -468,8 +468,8 @@ _ASSETCONTENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1413,
-  serialized_end=1989,
+  serialized_start=1418,
+  serialized_end=1999,
 )
 
 
@@ -492,8 +492,8 @@ _ASSETCONTENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1991,
-  serialized_end=2010,
+  serialized_start=2001,
+  serialized_end=2020,
 )
 
 
@@ -516,8 +516,8 @@ _ASSETCONTENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2012,
-  serialized_end=2040,
+  serialized_start=2022,
+  serialized_end=2050,
 )
 
 
@@ -540,8 +540,8 @@ _ASSETCONTENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2042,
-  serialized_end=2060,
+  serialized_start=2052,
+  serialized_end=2070,
 )
 
 
@@ -571,8 +571,8 @@ _ASSETCONTENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2062,
-  serialized_end=2142,
+  serialized_start=2072,
+  serialized_end=2152,
 )
 
 
@@ -598,14 +598,14 @@ _COMPOSITION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.repository.Composition.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.repository.Composition.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.repository.Composition.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.repository.Composition.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -619,7 +619,7 @@ _COMPOSITION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.repository.Composition.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.repository.Composition.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -644,8 +644,8 @@ _COMPOSITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2145,
-  serialized_end=2575,
+  serialized_start=2155,
+  serialized_end=2590,
 )
 
 
@@ -668,8 +668,8 @@ _COMPOSITIONQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2577,
-  serialized_end=2595,
+  serialized_start=2592,
+  serialized_end=2610,
 )
 
 
@@ -692,8 +692,8 @@ _COMPOSITIONQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2597,
-  serialized_end=2624,
+  serialized_start=2612,
+  serialized_end=2639,
 )
 
 
@@ -716,8 +716,8 @@ _COMPOSITIONFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2626,
-  serialized_end=2643,
+  serialized_start=2641,
+  serialized_end=2658,
 )
 
 
@@ -740,8 +740,8 @@ _COMPOSITIONSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2645,
-  serialized_end=2669,
+  serialized_start=2660,
+  serialized_end=2684,
 )
 
 
@@ -764,8 +764,8 @@ _COMPOSITIONSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2671,
-  serialized_end=2690,
+  serialized_start=2686,
+  serialized_end=2705,
 )
 
 
@@ -788,8 +788,8 @@ _COMPOSITIONSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2692,
-  serialized_end=2718,
+  serialized_start=2707,
+  serialized_end=2733,
 )
 
 
@@ -819,8 +819,8 @@ _COMPOSITIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2720,
-  serialized_end=2796,
+  serialized_start=2735,
+  serialized_end=2811,
 )
 
 
@@ -839,14 +839,14 @@ _REPOSITORY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.repository.Repository.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.repository.Repository.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.repository.Repository.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.repository.Repository.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -860,7 +860,7 @@ _REPOSITORY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.repository.Repository.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.repository.Repository.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -878,8 +878,8 @@ _REPOSITORY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2799,
-  serialized_end=3123,
+  serialized_start=2814,
+  serialized_end=3143,
 )
 
 
@@ -902,8 +902,8 @@ _REPOSITORYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3125,
-  serialized_end=3142,
+  serialized_start=3145,
+  serialized_end=3162,
 )
 
 
@@ -926,8 +926,8 @@ _REPOSITORYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3144,
-  serialized_end=3170,
+  serialized_start=3164,
+  serialized_end=3190,
 )
 
 
@@ -950,8 +950,8 @@ _REPOSITORYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3172,
-  serialized_end=3188,
+  serialized_start=3192,
+  serialized_end=3208,
 )
 
 
@@ -974,8 +974,8 @@ _REPOSITORYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3190,
-  serialized_end=3213,
+  serialized_start=3210,
+  serialized_end=3233,
 )
 
 
@@ -998,8 +998,8 @@ _REPOSITORYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3215,
-  serialized_end=3233,
+  serialized_start=3235,
+  serialized_end=3253,
 )
 
 
@@ -1022,8 +1022,8 @@ _REPOSITORYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3235,
-  serialized_end=3260,
+  serialized_start=3255,
+  serialized_end=3280,
 )
 
 
@@ -1053,8 +1053,8 @@ _REPOSITORYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3262,
-  serialized_end=3336,
+  serialized_start=3282,
+  serialized_end=3356,
 )
 
 
@@ -1077,8 +1077,8 @@ _REPOSITORYNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3338,
-  serialized_end=3354,
+  serialized_start=3358,
+  serialized_end=3374,
 )
 
 
@@ -1108,8 +1108,8 @@ _REPOSITORYNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3356,
-  serialized_end=3442,
+  serialized_start=3376,
+  serialized_end=3462,
 )
 
 
@@ -1139,8 +1139,8 @@ _GETREPOSITORYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3444,
-  serialized_end=3514,
+  serialized_start=3464,
+  serialized_end=3534,
 )
 
 
@@ -1163,8 +1163,8 @@ _GETREPOSITORYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3516,
-  serialized_end=3540,
+  serialized_start=3536,
+  serialized_end=3560,
 )
 
 
@@ -1194,8 +1194,8 @@ _GETREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3542,
-  serialized_end=3618,
+  serialized_start=3562,
+  serialized_end=3638,
 )
 
 
@@ -1218,8 +1218,8 @@ _GETREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3620,
-  serialized_end=3642,
+  serialized_start=3640,
+  serialized_end=3662,
 )
 
 
@@ -1249,8 +1249,8 @@ _CANLOOKUPASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3644,
-  serialized_end=3693,
+  serialized_start=3664,
+  serialized_end=3713,
 )
 
 
@@ -1273,8 +1273,8 @@ _CANLOOKUPASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3695,
-  serialized_end=3719,
+  serialized_start=3715,
+  serialized_end=3739,
 )
 
 
@@ -1297,8 +1297,8 @@ _USECOMPARATIVEASSETVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3721,
-  serialized_end=3751,
+  serialized_start=3741,
+  serialized_end=3771,
 )
 
 
@@ -1321,8 +1321,8 @@ _USECOMPARATIVEASSETVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3753,
-  serialized_end=3785,
+  serialized_start=3773,
+  serialized_end=3805,
 )
 
 
@@ -1345,8 +1345,8 @@ _USEPLENARYASSETVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3787,
-  serialized_end=3813,
+  serialized_start=3807,
+  serialized_end=3833,
 )
 
 
@@ -1369,8 +1369,8 @@ _USEPLENARYASSETVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3815,
-  serialized_end=3843,
+  serialized_start=3835,
+  serialized_end=3863,
 )
 
 
@@ -1393,8 +1393,8 @@ _USEFEDERATEDREPOSITORYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3845,
-  serialized_end=3878,
+  serialized_start=3865,
+  serialized_end=3898,
 )
 
 
@@ -1417,8 +1417,8 @@ _USEFEDERATEDREPOSITORYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3880,
-  serialized_end=3915,
+  serialized_start=3900,
+  serialized_end=3935,
 )
 
 
@@ -1441,8 +1441,8 @@ _USEISOLATEDREPOSITORYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3917,
-  serialized_end=3949,
+  serialized_start=3937,
+  serialized_end=3969,
 )
 
 
@@ -1465,8 +1465,8 @@ _USEISOLATEDREPOSITORYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3951,
-  serialized_end=3985,
+  serialized_start=3971,
+  serialized_end=4005,
 )
 
 
@@ -1496,8 +1496,8 @@ _GETASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3987,
-  serialized_end=4048,
+  serialized_start=4007,
+  serialized_end=4068,
 )
 
 
@@ -1527,8 +1527,8 @@ _GETASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4050,
-  serialized_end=4121,
+  serialized_start=4070,
+  serialized_end=4141,
 )
 
 
@@ -1558,8 +1558,8 @@ _GETASSETSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4123,
-  serialized_end=4201,
+  serialized_start=4143,
+  serialized_end=4221,
 )
 
 
@@ -1589,8 +1589,8 @@ _GETASSETSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4203,
-  serialized_end=4298,
+  serialized_start=4223,
+  serialized_end=4318,
 )
 
 
@@ -1620,8 +1620,8 @@ _GETASSETSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4300,
-  serialized_end=4401,
+  serialized_start=4320,
+  serialized_end=4421,
 )
 
 
@@ -1651,8 +1651,8 @@ _GETASSETSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4403,
-  serialized_end=4500,
+  serialized_start=4423,
+  serialized_end=4520,
 )
 
 
@@ -1682,8 +1682,8 @@ _GETASSETSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4502,
-  serialized_end=4587,
+  serialized_start=4522,
+  serialized_end=4607,
 )
 
 
@@ -1706,8 +1706,8 @@ _GETASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4589,
-  serialized_end=4607,
+  serialized_start=4609,
+  serialized_end=4627,
 )
 
 
@@ -1737,8 +1737,8 @@ _CANSEARCHASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4609,
-  serialized_end=4658,
+  serialized_start=4629,
+  serialized_end=4678,
 )
 
 
@@ -1761,8 +1761,8 @@ _CANSEARCHASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4660,
-  serialized_end=4684,
+  serialized_start=4680,
+  serialized_end=4704,
 )
 
 
@@ -1792,8 +1792,8 @@ _GETASSETQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4686,
-  serialized_end=4763,
+  serialized_start=4706,
+  serialized_end=4783,
 )
 
 
@@ -1816,8 +1816,8 @@ _GETASSETQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4765,
-  serialized_end=4787,
+  serialized_start=4785,
+  serialized_end=4807,
 )
 
 
@@ -1847,8 +1847,8 @@ _GETASSETSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4789,
-  serialized_end=4871,
+  serialized_start=4809,
+  serialized_end=4891,
 )
 
 
@@ -1878,8 +1878,8 @@ _GETASSETSEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4873,
-  serialized_end=4953,
+  serialized_start=4893,
+  serialized_end=4973,
 )
 
 
@@ -1902,8 +1902,8 @@ _GETASSETSEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4955,
-  serialized_end=4978,
+  serialized_start=4975,
+  serialized_end=4998,
 )
 
 
@@ -1933,8 +1933,8 @@ _GETASSETSEARCHORDERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4980,
-  serialized_end=5076,
+  serialized_start=5000,
+  serialized_end=5096,
 )
 
 
@@ -1957,8 +1957,8 @@ _GETASSETSEARCHORDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5078,
-  serialized_end=5106,
+  serialized_start=5098,
+  serialized_end=5126,
 )
 
 
@@ -1988,8 +1988,8 @@ _GETASSETSBYSEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5108,
-  serialized_end=5206,
+  serialized_start=5128,
+  serialized_end=5226,
 )
 
 
@@ -2026,8 +2026,8 @@ _GETASSETSBYSEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5209,
-  serialized_end=5351,
+  serialized_start=5229,
+  serialized_end=5371,
 )
 
 
@@ -2057,8 +2057,8 @@ _GETASSETQUERYFROMINSPECTORREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5353,
-  serialized_end=5443,
+  serialized_start=5373,
+  serialized_end=5463,
 )
 
 
@@ -2088,8 +2088,8 @@ _GETASSETQUERYFROMINSPECTORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5445,
-  serialized_end=5556,
+  serialized_start=5465,
+  serialized_end=5576,
 )
 
 
@@ -2119,8 +2119,8 @@ _CANCREATEASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5558,
-  serialized_end=5607,
+  serialized_start=5578,
+  serialized_end=5627,
 )
 
 
@@ -2143,8 +2143,8 @@ _CANCREATEASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5609,
-  serialized_end=5633,
+  serialized_start=5629,
+  serialized_end=5653,
 )
 
 
@@ -2174,8 +2174,8 @@ _CANCREATEASSETWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5635,
-  serialized_end=5715,
+  serialized_start=5655,
+  serialized_end=5735,
 )
 
 
@@ -2205,8 +2205,8 @@ _CANCREATEASSETWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5717,
-  serialized_end=5823,
+  serialized_start=5737,
+  serialized_end=5843,
 )
 
 
@@ -2236,8 +2236,8 @@ _GETASSETFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5825,
-  serialized_end=5908,
+  serialized_start=5845,
+  serialized_end=5928,
 )
 
 
@@ -2267,8 +2267,8 @@ _GETASSETFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5910,
-  serialized_end=6008,
+  serialized_start=5930,
+  serialized_end=6028,
 )
 
 
@@ -2298,8 +2298,8 @@ _CREATEASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6010,
-  serialized_end=6074,
+  serialized_start=6030,
+  serialized_end=6094,
 )
 
 
@@ -2329,8 +2329,8 @@ _CREATEASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6076,
-  serialized_end=6151,
+  serialized_start=6096,
+  serialized_end=6171,
 )
 
 
@@ -2360,8 +2360,8 @@ _CANUPDATEASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6153,
-  serialized_end=6202,
+  serialized_start=6173,
+  serialized_end=6222,
 )
 
 
@@ -2384,8 +2384,8 @@ _CANUPDATEASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6204,
-  serialized_end=6228,
+  serialized_start=6224,
+  serialized_end=6248,
 )
 
 
@@ -2415,8 +2415,8 @@ _GETASSETFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6230,
-  serialized_end=6313,
+  serialized_start=6250,
+  serialized_end=6333,
 )
 
 
@@ -2446,8 +2446,8 @@ _GETASSETFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6315,
-  serialized_end=6399,
+  serialized_start=6335,
+  serialized_end=6419,
 )
 
 
@@ -2470,8 +2470,8 @@ _UPDATEASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6401,
-  serialized_end=6419,
+  serialized_start=6421,
+  serialized_end=6439,
 )
 
 
@@ -2501,8 +2501,8 @@ _UPDATEASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6421,
-  serialized_end=6496,
+  serialized_start=6441,
+  serialized_end=6516,
 )
 
 
@@ -2532,8 +2532,8 @@ _CANDELETEASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6498,
-  serialized_end=6547,
+  serialized_start=6518,
+  serialized_end=6567,
 )
 
 
@@ -2556,8 +2556,8 @@ _CANDELETEASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6549,
-  serialized_end=6573,
+  serialized_start=6569,
+  serialized_end=6593,
 )
 
 
@@ -2580,8 +2580,8 @@ _DELETEASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6575,
-  serialized_end=6593,
+  serialized_start=6595,
+  serialized_end=6613,
 )
 
 
@@ -2611,8 +2611,8 @@ _DELETEASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6595,
-  serialized_end=6669,
+  serialized_start=6615,
+  serialized_end=6689,
 )
 
 
@@ -2642,8 +2642,8 @@ _CANMANAGEASSETALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6671,
-  serialized_end=6733,
+  serialized_start=6691,
+  serialized_end=6753,
 )
 
 
@@ -2666,8 +2666,8 @@ _CANMANAGEASSETALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6735,
-  serialized_end=6765,
+  serialized_start=6755,
+  serialized_end=6785,
 )
 
 
@@ -2690,8 +2690,8 @@ _ALIASASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6767,
-  serialized_end=6784,
+  serialized_start=6787,
+  serialized_end=6804,
 )
 
 
@@ -2728,8 +2728,8 @@ _ALIASASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6786,
-  serialized_end=6913,
+  serialized_start=6806,
+  serialized_end=6933,
 )
 
 
@@ -2759,8 +2759,8 @@ _CANCREATEASSETCONTENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6915,
-  serialized_end=6977,
+  serialized_start=6935,
+  serialized_end=6997,
 )
 
 
@@ -2783,8 +2783,8 @@ _CANCREATEASSETCONTENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6979,
-  serialized_end=7009,
+  serialized_start=6999,
+  serialized_end=7029,
 )
 
 
@@ -2814,8 +2814,8 @@ _CANCREATEASSETCONTENTWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7011,
-  serialized_end=7106,
+  serialized_start=7031,
+  serialized_end=7126,
 )
 
 
@@ -2845,8 +2845,8 @@ _CANCREATEASSETCONTENTWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7108,
-  serialized_end=7229,
+  serialized_start=7128,
+  serialized_end=7249,
 )
 
 
@@ -2876,8 +2876,8 @@ _GETASSETCONTENTFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7231,
-  serialized_end=7336,
+  serialized_start=7251,
+  serialized_end=7356,
 )
 
 
@@ -2914,8 +2914,8 @@ _GETASSETCONTENTFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7339,
-  serialized_end=7506,
+  serialized_start=7359,
+  serialized_end=7526,
 )
 
 
@@ -2945,8 +2945,8 @@ _CREATEASSETCONTENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7508,
-  serialized_end=7594,
+  serialized_start=7528,
+  serialized_end=7614,
 )
 
 
@@ -2976,8 +2976,8 @@ _CREATEASSETCONTENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7596,
-  serialized_end=7693,
+  serialized_start=7616,
+  serialized_end=7713,
 )
 
 
@@ -3007,8 +3007,8 @@ _CANUPDATEASSETCONTENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7695,
-  serialized_end=7759,
+  serialized_start=7715,
+  serialized_end=7779,
 )
 
 
@@ -3031,8 +3031,8 @@ _CANUPDATEASSETCONTENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7761,
-  serialized_end=7792,
+  serialized_start=7781,
+  serialized_end=7812,
 )
 
 
@@ -3062,8 +3062,8 @@ _GETASSETCONTENTFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7794,
-  serialized_end=7899,
+  serialized_start=7814,
+  serialized_end=7919,
 )
 
 
@@ -3093,8 +3093,8 @@ _GETASSETCONTENTFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7901,
-  serialized_end=8000,
+  serialized_start=7921,
+  serialized_end=8020,
 )
 
 
@@ -3117,8 +3117,8 @@ _UPDATEASSETCONTENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8002,
-  serialized_end=8027,
+  serialized_start=8022,
+  serialized_end=8047,
 )
 
 
@@ -3148,8 +3148,8 @@ _UPDATEASSETCONTENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8029,
-  serialized_end=8126,
+  serialized_start=8049,
+  serialized_end=8146,
 )
 
 
@@ -3179,8 +3179,8 @@ _CANDELETEASSETCONTENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8128,
-  serialized_end=8192,
+  serialized_start=8148,
+  serialized_end=8212,
 )
 
 
@@ -3203,8 +3203,8 @@ _CANDELETEASSETCONTENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8194,
-  serialized_end=8225,
+  serialized_start=8214,
+  serialized_end=8245,
 )
 
 
@@ -3227,8 +3227,8 @@ _DELETEASSETCONTENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8227,
-  serialized_end=8252,
+  serialized_start=8247,
+  serialized_end=8272,
 )
 
 
@@ -3258,8 +3258,8 @@ _DELETEASSETCONTENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8254,
-  serialized_end=8343,
+  serialized_start=8274,
+  serialized_end=8363,
 )
 
 
@@ -3289,8 +3289,8 @@ _CANREGISTERFORASSETNOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8345,
-  serialized_end=8430,
+  serialized_start=8365,
+  serialized_end=8450,
 )
 
 
@@ -3313,8 +3313,8 @@ _CANREGISTERFORASSETNOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8432,
-  serialized_end=8473,
+  serialized_start=8452,
+  serialized_end=8493,
 )
 
 
@@ -3337,8 +3337,8 @@ _REGISTERFORNEWASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8475,
-  serialized_end=8502,
+  serialized_start=8495,
+  serialized_end=8522,
 )
 
 
@@ -3361,8 +3361,8 @@ _REGISTERFORNEWASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8504,
-  serialized_end=8533,
+  serialized_start=8524,
+  serialized_end=8553,
 )
 
 
@@ -3385,8 +3385,8 @@ _REGISTERFORNEWASSETSBYGENUSTYPEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8535,
-  serialized_end=8573,
+  serialized_start=8555,
+  serialized_end=8593,
 )
 
 
@@ -3416,8 +3416,8 @@ _REGISTERFORNEWASSETSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8575,
-  serialized_end=8681,
+  serialized_start=8595,
+  serialized_end=8701,
 )
 
 
@@ -3440,8 +3440,8 @@ _REGISTERFORCHANGEDASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8683,
-  serialized_end=8714,
+  serialized_start=8703,
+  serialized_end=8734,
 )
 
 
@@ -3464,8 +3464,8 @@ _REGISTERFORCHANGEDASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8716,
-  serialized_end=8749,
+  serialized_start=8736,
+  serialized_end=8769,
 )
 
 
@@ -3488,8 +3488,8 @@ _REGISTERFORCHANGEDASSETSBYGENUSTYPEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8751,
-  serialized_end=8793,
+  serialized_start=8771,
+  serialized_end=8813,
 )
 
 
@@ -3519,8 +3519,8 @@ _REGISTERFORCHANGEDASSETSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8795,
-  serialized_end=8905,
+  serialized_start=8815,
+  serialized_end=8925,
 )
 
 
@@ -3543,8 +3543,8 @@ _REGISTERFORCHANGEDASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8907,
-  serialized_end=8937,
+  serialized_start=8927,
+  serialized_end=8957,
 )
 
 
@@ -3574,8 +3574,8 @@ _REGISTERFORCHANGEDASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8939,
-  serialized_end=9025,
+  serialized_start=8959,
+  serialized_end=9045,
 )
 
 
@@ -3598,8 +3598,8 @@ _REGISTERFORDELETEDASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9027,
-  serialized_end=9058,
+  serialized_start=9047,
+  serialized_end=9078,
 )
 
 
@@ -3622,8 +3622,8 @@ _REGISTERFORDELETEDASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9060,
-  serialized_end=9093,
+  serialized_start=9080,
+  serialized_end=9113,
 )
 
 
@@ -3646,8 +3646,8 @@ _REGISTERFORDELETEDASSETSBYGENUSTYPEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9095,
-  serialized_end=9137,
+  serialized_start=9115,
+  serialized_end=9157,
 )
 
 
@@ -3677,8 +3677,8 @@ _REGISTERFORDELETEDASSETSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9139,
-  serialized_end=9249,
+  serialized_start=9159,
+  serialized_end=9269,
 )
 
 
@@ -3701,8 +3701,8 @@ _REGISTERFORDELETEDASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9251,
-  serialized_end=9281,
+  serialized_start=9271,
+  serialized_end=9301,
 )
 
 
@@ -3732,8 +3732,8 @@ _REGISTERFORDELETEDASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9283,
-  serialized_end=9369,
+  serialized_start=9303,
+  serialized_end=9389,
 )
 
 
@@ -3756,8 +3756,8 @@ _RELIABLEASSETNOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9371,
-  serialized_end=9404,
+  serialized_start=9391,
+  serialized_end=9424,
 )
 
 
@@ -3780,8 +3780,8 @@ _RELIABLEASSETNOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9406,
-  serialized_end=9441,
+  serialized_start=9426,
+  serialized_end=9461,
 )
 
 
@@ -3804,8 +3804,8 @@ _UNRELIABLEASSETNOTIFICATIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9443,
-  serialized_end=9478,
+  serialized_start=9463,
+  serialized_end=9498,
 )
 
 
@@ -3828,8 +3828,8 @@ _UNRELIABLEASSETNOTIFICATIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9480,
-  serialized_end=9517,
+  serialized_start=9500,
+  serialized_end=9537,
 )
 
 
@@ -3852,8 +3852,8 @@ _ACKNOWLEDGEASSETNOTIFICATIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9519,
-  serialized_end=9554,
+  serialized_start=9539,
+  serialized_end=9574,
 )
 
 
@@ -3883,8 +3883,8 @@ _ACKNOWLEDGEASSETNOTIFICATIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9556,
-  serialized_end=9654,
+  serialized_start=9576,
+  serialized_end=9674,
 )
 
 
@@ -3914,8 +3914,8 @@ _CANLOOKUPASSETREPOSITORYMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9656,
-  serialized_end=9741,
+  serialized_start=9676,
+  serialized_end=9761,
 )
 
 
@@ -3938,8 +3938,8 @@ _CANLOOKUPASSETREPOSITORYMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9743,
-  serialized_end=9784,
+  serialized_start=9763,
+  serialized_end=9804,
 )
 
 
@@ -3962,8 +3962,8 @@ _USECOMPARATIVEREPOSITORYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9786,
-  serialized_end=9821,
+  serialized_start=9806,
+  serialized_end=9841,
 )
 
 
@@ -3986,8 +3986,8 @@ _USECOMPARATIVEREPOSITORYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9823,
-  serialized_end=9860,
+  serialized_start=9843,
+  serialized_end=9880,
 )
 
 
@@ -4010,8 +4010,8 @@ _USEPLENARYREPOSITORYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9862,
-  serialized_end=9893,
+  serialized_start=9882,
+  serialized_end=9913,
 )
 
 
@@ -4034,8 +4034,8 @@ _USEPLENARYREPOSITORYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9895,
-  serialized_end=9928,
+  serialized_start=9915,
+  serialized_end=9948,
 )
 
 
@@ -4065,8 +4065,8 @@ _GETASSETIDSBYREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9930,
-  serialized_end=10021,
+  serialized_start=9950,
+  serialized_end=10041,
 )
 
 
@@ -4096,8 +4096,8 @@ _GETASSETSBYREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10023,
-  serialized_end=10112,
+  serialized_start=10043,
+  serialized_end=10132,
 )
 
 
@@ -4127,8 +4127,8 @@ _GETASSETIDSBYREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10114,
-  serialized_end=10208,
+  serialized_start=10134,
+  serialized_end=10228,
 )
 
 
@@ -4158,8 +4158,8 @@ _GETASSETSBYREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10210,
-  serialized_end=10302,
+  serialized_start=10230,
+  serialized_end=10322,
 )
 
 
@@ -4189,8 +4189,8 @@ _GETREPOSITORYIDSBYASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10304,
-  serialized_end=10390,
+  serialized_start=10324,
+  serialized_end=10410,
 )
 
 
@@ -4220,8 +4220,8 @@ _GETREPOSITORIESBYASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10392,
-  serialized_end=10477,
+  serialized_start=10412,
+  serialized_end=10497,
 )
 
 
@@ -4251,8 +4251,8 @@ _CANASSIGNASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10479,
-  serialized_end=10528,
+  serialized_start=10499,
+  serialized_end=10548,
 )
 
 
@@ -4275,8 +4275,8 @@ _CANASSIGNASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10530,
-  serialized_end=10554,
+  serialized_start=10550,
+  serialized_end=10574,
 )
 
 
@@ -4306,8 +4306,8 @@ _CANASSIGNASSETSTOREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10556,
-  serialized_end=10631,
+  serialized_start=10576,
+  serialized_end=10651,
 )
 
 
@@ -4337,8 +4337,8 @@ _CANASSIGNASSETSTOREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10633,
-  serialized_end=10728,
+  serialized_start=10653,
+  serialized_end=10748,
 )
 
 
@@ -4368,8 +4368,8 @@ _GETASSIGNABLEREPOSITORYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10730,
-  serialized_end=10824,
+  serialized_start=10750,
+  serialized_end=10844,
 )
 
 
@@ -4406,8 +4406,8 @@ _GETASSIGNABLEREPOSITORYIDSFORASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10827,
-  serialized_end=10983,
+  serialized_start=10847,
+  serialized_end=11003,
 )
 
 
@@ -4430,8 +4430,8 @@ _ASSIGNASSETTOREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10985,
-  serialized_end=11015,
+  serialized_start=11005,
+  serialized_end=11035,
 )
 
 
@@ -4468,8 +4468,8 @@ _ASSIGNASSETTOREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11018,
-  serialized_end=11163,
+  serialized_start=11038,
+  serialized_end=11183,
 )
 
 
@@ -4492,8 +4492,8 @@ _UNASSIGNASSETFROMREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11165,
-  serialized_end=11199,
+  serialized_start=11185,
+  serialized_end=11219,
 )
 
 
@@ -4530,8 +4530,8 @@ _UNASSIGNASSETFROMREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11202,
-  serialized_end=11351,
+  serialized_start=11222,
+  serialized_end=11371,
 )
 
 
@@ -4561,8 +4561,8 @@ _CANACCESSASSETCOMPOSITIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11353,
-  serialized_end=11425,
+  serialized_start=11373,
+  serialized_end=11445,
 )
 
 
@@ -4585,8 +4585,8 @@ _CANACCESSASSETCOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11427,
-  serialized_end=11462,
+  serialized_start=11447,
+  serialized_end=11482,
 )
 
 
@@ -4609,8 +4609,8 @@ _USECOMPARATIVEASSETCOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11464,
-  serialized_end=11505,
+  serialized_start=11484,
+  serialized_end=11525,
 )
 
 
@@ -4633,8 +4633,8 @@ _USECOMPARATIVEASSETCOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11507,
-  serialized_end=11550,
+  serialized_start=11527,
+  serialized_end=11570,
 )
 
 
@@ -4657,8 +4657,8 @@ _USEPLENARYASSETCOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11552,
-  serialized_end=11589,
+  serialized_start=11572,
+  serialized_end=11609,
 )
 
 
@@ -4681,8 +4681,8 @@ _USEPLENARYASSETCOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11591,
-  serialized_end=11630,
+  serialized_start=11611,
+  serialized_end=11650,
 )
 
 
@@ -4712,8 +4712,8 @@ _GETCOMPOSITIONASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11632,
-  serialized_end=11721,
+  serialized_start=11652,
+  serialized_end=11741,
 )
 
 
@@ -4743,8 +4743,8 @@ _GETCOMPOSITIONSBYASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11723,
-  serialized_end=11808,
+  serialized_start=11743,
+  serialized_end=11828,
 )
 
 
@@ -4774,8 +4774,8 @@ _CANCOMPOSEASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11810,
-  serialized_end=11861,
+  serialized_start=11830,
+  serialized_end=11881,
 )
 
 
@@ -4798,8 +4798,8 @@ _CANCOMPOSEASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11863,
-  serialized_end=11888,
+  serialized_start=11883,
+  serialized_end=11908,
 )
 
 
@@ -4822,8 +4822,8 @@ _ADDASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11890,
-  serialized_end=11905,
+  serialized_start=11910,
+  serialized_end=11925,
 )
 
 
@@ -4860,8 +4860,8 @@ _ADDASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11908,
-  serialized_end=12039,
+  serialized_start=11928,
+  serialized_end=12059,
 )
 
 
@@ -4884,8 +4884,8 @@ _MOVEASSETAHEADREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12041,
-  serialized_end=12062,
+  serialized_start=12061,
+  serialized_end=12082,
 )
 
 
@@ -4929,8 +4929,8 @@ _MOVEASSETAHEADREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12065,
-  serialized_end=12260,
+  serialized_start=12085,
+  serialized_end=12280,
 )
 
 
@@ -4953,8 +4953,8 @@ _MOVEASSETBEHINDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12262,
-  serialized_end=12284,
+  serialized_start=12282,
+  serialized_end=12304,
 )
 
 
@@ -4998,8 +4998,8 @@ _MOVEASSETBEHINDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12287,
-  serialized_end=12483,
+  serialized_start=12307,
+  serialized_end=12503,
 )
 
 
@@ -5022,8 +5022,8 @@ _ORDERASSETSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12485,
-  serialized_end=12503,
+  serialized_start=12505,
+  serialized_end=12523,
 )
 
 
@@ -5060,8 +5060,8 @@ _ORDERASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12506,
-  serialized_end=12641,
+  serialized_start=12526,
+  serialized_end=12661,
 )
 
 
@@ -5084,8 +5084,8 @@ _REMOVEASSETREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12643,
-  serialized_end=12661,
+  serialized_start=12663,
+  serialized_end=12681,
 )
 
 
@@ -5122,8 +5122,8 @@ _REMOVEASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12664,
-  serialized_end=12798,
+  serialized_start=12684,
+  serialized_end=12818,
 )
 
 
@@ -5153,8 +5153,8 @@ _CANLOOKUPCOMPOSITIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12800,
-  serialized_end=12861,
+  serialized_start=12820,
+  serialized_end=12881,
 )
 
 
@@ -5177,8 +5177,8 @@ _CANLOOKUPCOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12863,
-  serialized_end=12893,
+  serialized_start=12883,
+  serialized_end=12913,
 )
 
 
@@ -5201,8 +5201,8 @@ _USECOMPARATIVECOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12895,
-  serialized_end=12931,
+  serialized_start=12915,
+  serialized_end=12951,
 )
 
 
@@ -5225,8 +5225,8 @@ _USECOMPARATIVECOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12933,
-  serialized_end=12971,
+  serialized_start=12953,
+  serialized_end=12991,
 )
 
 
@@ -5249,8 +5249,8 @@ _USEPLENARYCOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12973,
-  serialized_end=13005,
+  serialized_start=12993,
+  serialized_end=13025,
 )
 
 
@@ -5273,8 +5273,8 @@ _USEPLENARYCOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13007,
-  serialized_end=13041,
+  serialized_start=13027,
+  serialized_end=13061,
 )
 
 
@@ -5297,8 +5297,8 @@ _USEACTIVECOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13043,
-  serialized_end=13074,
+  serialized_start=13063,
+  serialized_end=13094,
 )
 
 
@@ -5321,8 +5321,8 @@ _USEACTIVECOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13076,
-  serialized_end=13109,
+  serialized_start=13096,
+  serialized_end=13129,
 )
 
 
@@ -5345,8 +5345,8 @@ _USEANYSTATUSCOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13111,
-  serialized_end=13145,
+  serialized_start=13131,
+  serialized_end=13165,
 )
 
 
@@ -5369,8 +5369,8 @@ _USEANYSTATUSCOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13147,
-  serialized_end=13183,
+  serialized_start=13167,
+  serialized_end=13203,
 )
 
 
@@ -5393,8 +5393,8 @@ _USESEQUESTEREDCOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13185,
-  serialized_end=13221,
+  serialized_start=13205,
+  serialized_end=13241,
 )
 
 
@@ -5417,8 +5417,8 @@ _USESEQUESTEREDCOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13223,
-  serialized_end=13261,
+  serialized_start=13243,
+  serialized_end=13281,
 )
 
 
@@ -5441,8 +5441,8 @@ _USEUNSEQUESTEREDCOMPOSITIONVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13263,
-  serialized_end=13301,
+  serialized_start=13283,
+  serialized_end=13321,
 )
 
 
@@ -5465,8 +5465,8 @@ _USEUNSEQUESTEREDCOMPOSITIONVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13303,
-  serialized_end=13343,
+  serialized_start=13323,
+  serialized_end=13363,
 )
 
 
@@ -5496,8 +5496,8 @@ _GETCOMPOSITIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13345,
-  serialized_end=13424,
+  serialized_start=13365,
+  serialized_end=13444,
 )
 
 
@@ -5527,8 +5527,8 @@ _GETCOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13426,
-  serialized_end=13509,
+  serialized_start=13446,
+  serialized_end=13529,
 )
 
 
@@ -5558,8 +5558,8 @@ _GETCOMPOSITIONSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13511,
-  serialized_end=13601,
+  serialized_start=13531,
+  serialized_end=13621,
 )
 
 
@@ -5589,8 +5589,8 @@ _GETCOMPOSITIONSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13603,
-  serialized_end=13710,
+  serialized_start=13623,
+  serialized_end=13730,
 )
 
 
@@ -5620,8 +5620,8 @@ _GETCOMPOSITIONSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13712,
-  serialized_end=13825,
+  serialized_start=13732,
+  serialized_end=13845,
 )
 
 
@@ -5651,8 +5651,8 @@ _GETCOMPOSITIONSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13827,
-  serialized_end=13936,
+  serialized_start=13847,
+  serialized_end=13956,
 )
 
 
@@ -5682,8 +5682,8 @@ _GETCOMPOSITIONSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13938,
-  serialized_end=14029,
+  serialized_start=13958,
+  serialized_end=14049,
 )
 
 
@@ -5706,8 +5706,8 @@ _GETCOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14031,
-  serialized_end=14055,
+  serialized_start=14051,
+  serialized_end=14075,
 )
 
 
@@ -5737,8 +5737,8 @@ _CANSEARCHCOMPOSITIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14057,
-  serialized_end=14118,
+  serialized_start=14077,
+  serialized_end=14138,
 )
 
 
@@ -5761,8 +5761,8 @@ _CANSEARCHCOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14120,
-  serialized_end=14150,
+  serialized_start=14140,
+  serialized_end=14170,
 )
 
 
@@ -5792,8 +5792,8 @@ _GETCOMPOSITIONQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14152,
-  serialized_end=14247,
+  serialized_start=14172,
+  serialized_end=14267,
 )
 
 
@@ -5816,8 +5816,8 @@ _GETCOMPOSITIONQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14249,
-  serialized_end=14277,
+  serialized_start=14269,
+  serialized_end=14297,
 )
 
 
@@ -5847,8 +5847,8 @@ _GETCOMPOSITIONSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14279,
-  serialized_end=14379,
+  serialized_start=14299,
+  serialized_end=14399,
 )
 
 
@@ -5878,8 +5878,8 @@ _GETCOMPOSITIONSEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14381,
-  serialized_end=14479,
+  serialized_start=14401,
+  serialized_end=14499,
 )
 
 
@@ -5902,8 +5902,8 @@ _GETCOMPOSITIONSEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14481,
-  serialized_end=14510,
+  serialized_start=14501,
+  serialized_end=14530,
 )
 
 
@@ -5933,8 +5933,8 @@ _GETCOMPOSITIONSEARCHORDERREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14512,
-  serialized_end=14626,
+  serialized_start=14532,
+  serialized_end=14646,
 )
 
 
@@ -5957,8 +5957,8 @@ _GETCOMPOSITIONSEARCHORDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14628,
-  serialized_end=14662,
+  serialized_start=14648,
+  serialized_end=14682,
 )
 
 
@@ -5988,8 +5988,8 @@ _GETCOMPOSITIONSBYSEARCHREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14664,
-  serialized_end=14780,
+  serialized_start=14684,
+  serialized_end=14800,
 )
 
 
@@ -6026,8 +6026,8 @@ _GETCOMPOSITIONSBYSEARCHREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14783,
-  serialized_end=14955,
+  serialized_start=14803,
+  serialized_end=14975,
 )
 
 
@@ -6057,8 +6057,8 @@ _GETCOMPOSITIONQUERYFROMINSPECTORREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14957,
-  serialized_end=15065,
+  serialized_start=14977,
+  serialized_end=15085,
 )
 
 
@@ -6088,8 +6088,8 @@ _GETCOMPOSITIONQUERYFROMINSPECTORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15068,
-  serialized_end=15197,
+  serialized_start=15088,
+  serialized_end=15217,
 )
 
 
@@ -6119,8 +6119,8 @@ _CANCREATECOMPOSITIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15199,
-  serialized_end=15260,
+  serialized_start=15219,
+  serialized_end=15280,
 )
 
 
@@ -6143,8 +6143,8 @@ _CANCREATECOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15262,
-  serialized_end=15292,
+  serialized_start=15282,
+  serialized_end=15312,
 )
 
 
@@ -6174,8 +6174,8 @@ _CANCREATECOMPOSITIONWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15294,
-  serialized_end=15386,
+  serialized_start=15314,
+  serialized_end=15406,
 )
 
 
@@ -6205,8 +6205,8 @@ _CANCREATECOMPOSITIONWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15388,
-  serialized_end=15506,
+  serialized_start=15408,
+  serialized_end=15526,
 )
 
 
@@ -6236,8 +6236,8 @@ _GETCOMPOSITIONFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15508,
-  serialized_end=15609,
+  serialized_start=15528,
+  serialized_end=15629,
 )
 
 
@@ -6267,8 +6267,8 @@ _GETCOMPOSITIONFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15611,
-  serialized_end=15721,
+  serialized_start=15631,
+  serialized_end=15741,
 )
 
 
@@ -6298,8 +6298,8 @@ _CREATECOMPOSITIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15723,
-  serialized_end=15805,
+  serialized_start=15743,
+  serialized_end=15825,
 )
 
 
@@ -6329,8 +6329,8 @@ _CREATECOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15807,
-  serialized_end=15900,
+  serialized_start=15827,
+  serialized_end=15920,
 )
 
 
@@ -6360,8 +6360,8 @@ _CANUPDATECOMPOSITIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15902,
-  serialized_end=15963,
+  serialized_start=15922,
+  serialized_end=15983,
 )
 
 
@@ -6384,8 +6384,8 @@ _CANUPDATECOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15965,
-  serialized_end=15995,
+  serialized_start=15985,
+  serialized_end=16015,
 )
 
 
@@ -6415,8 +6415,8 @@ _GETCOMPOSITIONFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15997,
-  serialized_end=16098,
+  serialized_start=16017,
+  serialized_end=16118,
 )
 
 
@@ -6446,8 +6446,8 @@ _GETCOMPOSITIONFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16100,
-  serialized_end=16196,
+  serialized_start=16120,
+  serialized_end=16216,
 )
 
 
@@ -6470,8 +6470,8 @@ _UPDATECOMPOSITIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16198,
-  serialized_end=16222,
+  serialized_start=16218,
+  serialized_end=16242,
 )
 
 
@@ -6501,8 +6501,8 @@ _UPDATECOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16224,
-  serialized_end=16317,
+  serialized_start=16244,
+  serialized_end=16337,
 )
 
 
@@ -6532,8 +6532,8 @@ _CANDELETECOMPOSITIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16319,
-  serialized_end=16380,
+  serialized_start=16339,
+  serialized_end=16400,
 )
 
 
@@ -6556,8 +6556,8 @@ _CANDELETECOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16382,
-  serialized_end=16412,
+  serialized_start=16402,
+  serialized_end=16432,
 )
 
 
@@ -6580,8 +6580,8 @@ _DELETECOMPOSITIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16414,
-  serialized_end=16438,
+  serialized_start=16434,
+  serialized_end=16458,
 )
 
 
@@ -6611,8 +6611,8 @@ _DELETECOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16440,
-  serialized_end=16526,
+  serialized_start=16460,
+  serialized_end=16546,
 )
 
 
@@ -6635,8 +6635,8 @@ _DELETECOMPOSITIONNODEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16528,
-  serialized_end=16556,
+  serialized_start=16548,
+  serialized_end=16576,
 )
 
 
@@ -6666,8 +6666,8 @@ _DELETECOMPOSITIONNODEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16558,
-  serialized_end=16648,
+  serialized_start=16578,
+  serialized_end=16668,
 )
 
 
@@ -6690,8 +6690,8 @@ _ADDCOMPOSITIONCHILDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16650,
-  serialized_end=16676,
+  serialized_start=16670,
+  serialized_end=16696,
 )
 
 
@@ -6728,8 +6728,8 @@ _ADDCOMPOSITIONCHILDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16679,
-  serialized_end=16833,
+  serialized_start=16699,
+  serialized_end=16853,
 )
 
 
@@ -6752,8 +6752,8 @@ _REMOVECOMPOSITIONCHILDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16835,
-  serialized_end=16864,
+  serialized_start=16855,
+  serialized_end=16884,
 )
 
 
@@ -6790,8 +6790,8 @@ _REMOVECOMPOSITIONCHILDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16867,
-  serialized_end=17024,
+  serialized_start=16887,
+  serialized_end=17044,
 )
 
 
@@ -6821,8 +6821,8 @@ _CANMANAGECOMPOSITIONALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17026,
-  serialized_end=17100,
+  serialized_start=17046,
+  serialized_end=17120,
 )
 
 
@@ -6845,8 +6845,8 @@ _CANMANAGECOMPOSITIONALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17102,
-  serialized_end=17138,
+  serialized_start=17122,
+  serialized_end=17158,
 )
 
 
@@ -6869,8 +6869,8 @@ _ALIASCOMPOSITIONREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17140,
-  serialized_end=17163,
+  serialized_start=17160,
+  serialized_end=17183,
 )
 
 
@@ -6907,8 +6907,8 @@ _ALIASCOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17166,
-  serialized_end=17305,
+  serialized_start=17186,
+  serialized_end=17325,
 )
 
 
@@ -6931,8 +6931,8 @@ _USECOMPARATIVECOMPOSITIONREPOSITORYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17307,
-  serialized_end=17353,
+  serialized_start=17327,
+  serialized_end=17373,
 )
 
 
@@ -6955,8 +6955,8 @@ _USECOMPARATIVECOMPOSITIONREPOSITORYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17355,
-  serialized_end=17403,
+  serialized_start=17375,
+  serialized_end=17423,
 )
 
 
@@ -6979,8 +6979,8 @@ _USEPLENARYCOMPOSITIONREPOSITORYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17405,
-  serialized_end=17447,
+  serialized_start=17425,
+  serialized_end=17467,
 )
 
 
@@ -7003,8 +7003,8 @@ _USEPLENARYCOMPOSITIONREPOSITORYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17449,
-  serialized_end=17493,
+  serialized_start=17469,
+  serialized_end=17513,
 )
 
 
@@ -7034,8 +7034,8 @@ _CANLOOKUPCOMPOSITIONREPOSITORYMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17495,
-  serialized_end=17592,
+  serialized_start=17515,
+  serialized_end=17612,
 )
 
 
@@ -7058,8 +7058,8 @@ _CANLOOKUPCOMPOSITIONREPOSITORYMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17594,
-  serialized_end=17641,
+  serialized_start=17614,
+  serialized_end=17661,
 )
 
 
@@ -7089,8 +7089,8 @@ _GETCOMPOSITIONIDSBYREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17643,
-  serialized_end=17740,
+  serialized_start=17663,
+  serialized_end=17760,
 )
 
 
@@ -7120,8 +7120,8 @@ _GETCOMPOSITIONSBYREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17742,
-  serialized_end=17837,
+  serialized_start=17762,
+  serialized_end=17857,
 )
 
 
@@ -7151,8 +7151,8 @@ _GETCOMPOSITIONIDSBYREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17839,
-  serialized_end=17939,
+  serialized_start=17859,
+  serialized_end=17959,
 )
 
 
@@ -7182,8 +7182,8 @@ _GETCOMPOSITIONSBYREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17941,
-  serialized_end=18039,
+  serialized_start=17961,
+  serialized_end=18059,
 )
 
 
@@ -7213,8 +7213,8 @@ _GETREPOSITORYIDSBYCOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18041,
-  serialized_end=18139,
+  serialized_start=18061,
+  serialized_end=18159,
 )
 
 
@@ -7244,8 +7244,8 @@ _GETREPOSITORIESBYCOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18141,
-  serialized_end=18238,
+  serialized_start=18161,
+  serialized_end=18258,
 )
 
 
@@ -7275,8 +7275,8 @@ _CANASSIGNCOMPOSITIONSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18240,
-  serialized_end=18301,
+  serialized_start=18260,
+  serialized_end=18321,
 )
 
 
@@ -7299,8 +7299,8 @@ _CANASSIGNCOMPOSITIONSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18303,
-  serialized_end=18333,
+  serialized_start=18323,
+  serialized_end=18353,
 )
 
 
@@ -7330,8 +7330,8 @@ _CANASSIGNCOMPOSITIONSTOREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18335,
-  serialized_end=18422,
+  serialized_start=18355,
+  serialized_end=18442,
 )
 
 
@@ -7361,8 +7361,8 @@ _CANASSIGNCOMPOSITIONSTOREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18424,
-  serialized_end=18525,
+  serialized_start=18444,
+  serialized_end=18545,
 )
 
 
@@ -7399,8 +7399,8 @@ _GETASSIGNABLEREPOSITORYIDSFORCOMPOSITIONREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18528,
-  serialized_end=18696,
+  serialized_start=18548,
+  serialized_end=18716,
 )
 
 
@@ -7423,8 +7423,8 @@ _ASSIGNCOMPOSITIONTOREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18698,
-  serialized_end=18734,
+  serialized_start=18718,
+  serialized_end=18754,
 )
 
 
@@ -7461,8 +7461,8 @@ _ASSIGNCOMPOSITIONTOREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18737,
-  serialized_end=18894,
+  serialized_start=18757,
+  serialized_end=18914,
 )
 
 
@@ -7485,8 +7485,8 @@ _UNASSIGNCOMPOSITIONFROMREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18896,
-  serialized_end=18936,
+  serialized_start=18916,
+  serialized_end=18956,
 )
 
 
@@ -7523,8 +7523,8 @@ _UNASSIGNCOMPOSITIONFROMREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18939,
-  serialized_end=19100,
+  serialized_start=18959,
+  serialized_end=19120,
 )
 
 
@@ -7554,8 +7554,8 @@ _CANLOOKUPREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19102,
-  serialized_end=19163,
+  serialized_start=19122,
+  serialized_end=19183,
 )
 
 
@@ -7578,8 +7578,8 @@ _CANLOOKUPREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19165,
-  serialized_end=19195,
+  serialized_start=19185,
+  serialized_end=19215,
 )
 
 
@@ -7609,8 +7609,8 @@ _GETREPOSITORIESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19197,
-  serialized_end=19286,
+  serialized_start=19217,
+  serialized_end=19306,
 )
 
 
@@ -7640,8 +7640,8 @@ _GETREPOSITORIESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19288,
-  serialized_end=19394,
+  serialized_start=19308,
+  serialized_end=19414,
 )
 
 
@@ -7671,8 +7671,8 @@ _GETREPOSITORIESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19396,
-  serialized_end=19508,
+  serialized_start=19416,
+  serialized_end=19528,
 )
 
 
@@ -7702,8 +7702,8 @@ _GETREPOSITORIESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19510,
-  serialized_end=19618,
+  serialized_start=19530,
+  serialized_end=19638,
 )
 
 
@@ -7733,8 +7733,8 @@ _GETREPOSITORIESBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19620,
-  serialized_end=19711,
+  serialized_start=19640,
+  serialized_end=19731,
 )
 
 
@@ -7757,8 +7757,8 @@ _GETREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19713,
-  serialized_end=19737,
+  serialized_start=19733,
+  serialized_end=19757,
 )
 
 
@@ -7788,8 +7788,8 @@ _CANSEARCHREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19739,
-  serialized_end=19800,
+  serialized_start=19759,
+  serialized_end=19820,
 )
 
 
@@ -7812,8 +7812,8 @@ _CANSEARCHREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19802,
-  serialized_end=19832,
+  serialized_start=19822,
+  serialized_end=19852,
 )
 
 
@@ -7843,8 +7843,8 @@ _GETREPOSITORYQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19834,
-  serialized_end=19926,
+  serialized_start=19854,
+  serialized_end=19946,
 )
 
 
@@ -7867,8 +7867,8 @@ _GETREPOSITORYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19928,
-  serialized_end=19955,
+  serialized_start=19948,
+  serialized_end=19975,
 )
 
 
@@ -7898,8 +7898,8 @@ _GETREPOSITORIESBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19957,
-  serialized_end=20055,
+  serialized_start=19977,
+  serialized_end=20075,
 )
 
 
@@ -7929,8 +7929,8 @@ _CANCREATEREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20057,
-  serialized_end=20118,
+  serialized_start=20077,
+  serialized_end=20138,
 )
 
 
@@ -7953,8 +7953,8 @@ _CANCREATEREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20120,
-  serialized_end=20150,
+  serialized_start=20140,
+  serialized_end=20170,
 )
 
 
@@ -7984,8 +7984,8 @@ _CANCREATEREPOSITORYWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20152,
-  serialized_end=20242,
+  serialized_start=20172,
+  serialized_end=20262,
 )
 
 
@@ -8015,8 +8015,8 @@ _CANCREATEREPOSITORYWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20244,
-  serialized_end=20360,
+  serialized_start=20264,
+  serialized_end=20380,
 )
 
 
@@ -8046,8 +8046,8 @@ _GETREPOSITORYFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20362,
-  serialized_end=20460,
+  serialized_start=20382,
+  serialized_end=20480,
 )
 
 
@@ -8077,8 +8077,8 @@ _GETREPOSITORYFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20462,
-  serialized_end=20570,
+  serialized_start=20482,
+  serialized_end=20590,
 )
 
 
@@ -8108,8 +8108,8 @@ _CREATEREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20572,
-  serialized_end=20651,
+  serialized_start=20592,
+  serialized_end=20671,
 )
 
 
@@ -8139,8 +8139,8 @@ _CREATEREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20653,
-  serialized_end=20743,
+  serialized_start=20673,
+  serialized_end=20763,
 )
 
 
@@ -8170,8 +8170,8 @@ _CANUPDATEREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20745,
-  serialized_end=20806,
+  serialized_start=20765,
+  serialized_end=20826,
 )
 
 
@@ -8194,8 +8194,8 @@ _CANUPDATEREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20808,
-  serialized_end=20838,
+  serialized_start=20828,
+  serialized_end=20858,
 )
 
 
@@ -8225,8 +8225,8 @@ _GETREPOSITORYFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20840,
-  serialized_end=20938,
+  serialized_start=20860,
+  serialized_end=20958,
 )
 
 
@@ -8256,8 +8256,8 @@ _GETREPOSITORYFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20940,
-  serialized_end=21034,
+  serialized_start=20960,
+  serialized_end=21054,
 )
 
 
@@ -8280,8 +8280,8 @@ _UPDATEREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21036,
-  serialized_end=21059,
+  serialized_start=21056,
+  serialized_end=21079,
 )
 
 
@@ -8311,8 +8311,8 @@ _UPDATEREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21061,
-  serialized_end=21151,
+  serialized_start=21081,
+  serialized_end=21171,
 )
 
 
@@ -8342,8 +8342,8 @@ _CANDELETEREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21153,
-  serialized_end=21214,
+  serialized_start=21173,
+  serialized_end=21234,
 )
 
 
@@ -8366,8 +8366,8 @@ _CANDELETEREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21216,
-  serialized_end=21246,
+  serialized_start=21236,
+  serialized_end=21266,
 )
 
 
@@ -8390,8 +8390,8 @@ _DELETEREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21248,
-  serialized_end=21271,
+  serialized_start=21268,
+  serialized_end=21291,
 )
 
 
@@ -8421,8 +8421,8 @@ _DELETEREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21273,
-  serialized_end=21357,
+  serialized_start=21293,
+  serialized_end=21377,
 )
 
 
@@ -8452,8 +8452,8 @@ _CANMANAGEREPOSITORYALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21359,
-  serialized_end=21431,
+  serialized_start=21379,
+  serialized_end=21451,
 )
 
 
@@ -8476,8 +8476,8 @@ _CANMANAGEREPOSITORYALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21433,
-  serialized_end=21468,
+  serialized_start=21453,
+  serialized_end=21488,
 )
 
 
@@ -8500,8 +8500,8 @@ _ALIASREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21470,
-  serialized_end=21492,
+  serialized_start=21490,
+  serialized_end=21512,
 )
 
 
@@ -8538,8 +8538,8 @@ _ALIASREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21495,
-  serialized_end=21632,
+  serialized_start=21515,
+  serialized_end=21652,
 )
 
 
@@ -8569,8 +8569,8 @@ _GETREPOSITORYHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21634,
-  serialized_end=21713,
+  serialized_start=21654,
+  serialized_end=21733,
 )
 
 
@@ -8593,8 +8593,8 @@ _GETREPOSITORYHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21715,
-  serialized_end=21748,
+  serialized_start=21735,
+  serialized_end=21768,
 )
 
 
@@ -8624,8 +8624,8 @@ _GETREPOSITORYHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21750,
-  serialized_end=21832,
+  serialized_start=21770,
+  serialized_end=21852,
 )
 
 
@@ -8648,8 +8648,8 @@ _GETREPOSITORYHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21834,
-  serialized_end=21865,
+  serialized_start=21854,
+  serialized_end=21885,
 )
 
 
@@ -8679,8 +8679,8 @@ _CANACCESSREPOSITORYHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21867,
-  serialized_end=21943,
+  serialized_start=21887,
+  serialized_end=21963,
 )
 
 
@@ -8703,8 +8703,8 @@ _CANACCESSREPOSITORYHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21945,
-  serialized_end=21982,
+  serialized_start=21965,
+  serialized_end=22002,
 )
 
 
@@ -8727,8 +8727,8 @@ _GETROOTREPOSITORYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21984,
-  serialized_end=22013,
+  serialized_start=22004,
+  serialized_end=22033,
 )
 
 
@@ -8751,8 +8751,8 @@ _GETROOTREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22015,
-  serialized_end=22043,
+  serialized_start=22035,
+  serialized_end=22063,
 )
 
 
@@ -8782,8 +8782,8 @@ _HASPARENTREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22045,
-  serialized_end=22106,
+  serialized_start=22065,
+  serialized_end=22126,
 )
 
 
@@ -8813,8 +8813,8 @@ _HASPARENTREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22108,
-  serialized_end=22197,
+  serialized_start=22128,
+  serialized_end=22217,
 )
 
 
@@ -8844,8 +8844,8 @@ _ISPARENTOFREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22199,
-  serialized_end=22259,
+  serialized_start=22219,
+  serialized_end=22279,
 )
 
 
@@ -8882,8 +8882,8 @@ _ISPARENTOFREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22262,
-  serialized_end=22399,
+  serialized_start=22282,
+  serialized_end=22419,
 )
 
 
@@ -8913,8 +8913,8 @@ _GETPARENTREPOSITORYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22401,
-  serialized_end=22491,
+  serialized_start=22421,
+  serialized_end=22511,
 )
 
 
@@ -8944,8 +8944,8 @@ _GETPARENTREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22493,
-  serialized_end=22582,
+  serialized_start=22513,
+  serialized_end=22602,
 )
 
 
@@ -8975,8 +8975,8 @@ _ISANCESTOROFREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22584,
-  serialized_end=22648,
+  serialized_start=22604,
+  serialized_end=22668,
 )
 
 
@@ -9013,8 +9013,8 @@ _ISANCESTOROFREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22651,
-  serialized_end=22790,
+  serialized_start=22671,
+  serialized_end=22810,
 )
 
 
@@ -9044,8 +9044,8 @@ _HASCHILDREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22792,
-  serialized_end=22851,
+  serialized_start=22812,
+  serialized_end=22871,
 )
 
 
@@ -9075,8 +9075,8 @@ _HASCHILDREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22853,
-  serialized_end=22941,
+  serialized_start=22873,
+  serialized_end=22961,
 )
 
 
@@ -9106,8 +9106,8 @@ _ISCHILDOFREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22943,
-  serialized_end=23001,
+  serialized_start=22963,
+  serialized_end=23021,
 )
 
 
@@ -9144,8 +9144,8 @@ _ISCHILDOFREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23004,
-  serialized_end=23140,
+  serialized_start=23024,
+  serialized_end=23160,
 )
 
 
@@ -9175,8 +9175,8 @@ _GETCHILDREPOSITORYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23142,
-  serialized_end=23231,
+  serialized_start=23162,
+  serialized_end=23251,
 )
 
 
@@ -9206,8 +9206,8 @@ _GETCHILDREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23233,
-  serialized_end=23321,
+  serialized_start=23253,
+  serialized_end=23341,
 )
 
 
@@ -9237,8 +9237,8 @@ _ISDESCENDANTOFREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23323,
-  serialized_end=23391,
+  serialized_start=23343,
+  serialized_end=23411,
 )
 
 
@@ -9275,8 +9275,8 @@ _ISDESCENDANTOFREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23394,
-  serialized_end=23535,
+  serialized_start=23414,
+  serialized_end=23555,
 )
 
 
@@ -9306,8 +9306,8 @@ _GETREPOSITORYNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23537,
-  serialized_end=23607,
+  serialized_start=23557,
+  serialized_end=23627,
 )
 
 
@@ -9358,8 +9358,8 @@ _GETREPOSITORYNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23610,
-  serialized_end=23776,
+  serialized_start=23630,
+  serialized_end=23796,
 )
 
 
@@ -9389,8 +9389,8 @@ _GETREPOSITORYNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23778,
-  serialized_end=23868,
+  serialized_start=23798,
+  serialized_end=23888,
 )
 
 
@@ -9441,8 +9441,8 @@ _GETREPOSITORYNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23871,
-  serialized_end=24035,
+  serialized_start=23891,
+  serialized_end=24055,
 )
 
 
@@ -9472,8 +9472,8 @@ _CANMODIFYREPOSITORYHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24037,
-  serialized_end=24113,
+  serialized_start=24057,
+  serialized_end=24133,
 )
 
 
@@ -9496,8 +9496,8 @@ _CANMODIFYREPOSITORYHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24115,
-  serialized_end=24152,
+  serialized_start=24135,
+  serialized_end=24172,
 )
 
 
@@ -9520,8 +9520,8 @@ _ADDROOTREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24154,
-  serialized_end=24178,
+  serialized_start=24174,
+  serialized_end=24198,
 )
 
 
@@ -9551,8 +9551,8 @@ _ADDROOTREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24180,
-  serialized_end=24265,
+  serialized_start=24200,
+  serialized_end=24285,
 )
 
 
@@ -9575,8 +9575,8 @@ _REMOVEROOTREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24267,
-  serialized_end=24294,
+  serialized_start=24287,
+  serialized_end=24314,
 )
 
 
@@ -9606,8 +9606,8 @@ _REMOVEROOTREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24296,
-  serialized_end=24384,
+  serialized_start=24316,
+  serialized_end=24404,
 )
 
 
@@ -9630,8 +9630,8 @@ _ADDCHILDREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24386,
-  serialized_end=24411,
+  serialized_start=24406,
+  serialized_end=24431,
 )
 
 
@@ -9668,8 +9668,8 @@ _ADDCHILDREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24414,
-  serialized_end=24554,
+  serialized_start=24434,
+  serialized_end=24574,
 )
 
 
@@ -9692,8 +9692,8 @@ _REMOVECHILDREPOSITORYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24556,
-  serialized_end=24584,
+  serialized_start=24576,
+  serialized_end=24604,
 )
 
 
@@ -9730,8 +9730,8 @@ _REMOVECHILDREPOSITORYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24587,
-  serialized_end=24730,
+  serialized_start=24607,
+  serialized_end=24750,
 )
 
 
@@ -9754,8 +9754,8 @@ _REMOVECHILDREPOSITORIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24732,
-  serialized_end=24762,
+  serialized_start=24752,
+  serialized_end=24782,
 )
 
 
@@ -9785,20 +9785,20 @@ _REMOVECHILDREPOSITORIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24764,
-  serialized_end=24855,
+  serialized_start=24784,
+  serialized_end=24875,
 )
 
 _ASSET.fields_by_name['asset_contents'].message_type = _ASSETCONTENT
 _ASSET.fields_by_name['composition'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSET.fields_by_name['created_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _ASSET.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSET.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSET.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSET.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ASSET.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSET.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSET.fields_by_name['provider_links'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSET.fields_by_name['published_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_ASSET.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSET.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSET.fields_by_name['repository'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ASSET.fields_by_name['source'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSETLIST.fields_by_name['assets'].message_type = _ASSET
@@ -9806,25 +9806,25 @@ _ASSETCONTENT.fields_by_name['accessibility_type'].message_type = dlkit_dot_prim
 _ASSETCONTENT.fields_by_name['asset'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ASSETCONTENT.fields_by_name['data'].message_type = dlkit_dot_primordium_dot_transport_dot_objects__pb2._DATAINPUTSTREAM
 _ASSETCONTENT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSETCONTENT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ASSETCONTENT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSETCONTENT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ASSETCONTENT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSETCONTENT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ASSETCONTENT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ASSETCONTENT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ASSETCONTENT.fields_by_name['repository'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _ASSETCONTENTLIST.fields_by_name['asset_contents'].message_type = _ASSETCONTENT
 _COMPOSITION.fields_by_name['children'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _COMPOSITION.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_COMPOSITION.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_COMPOSITION.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_COMPOSITION.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_COMPOSITION.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _COMPOSITION.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_COMPOSITION.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_COMPOSITION.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _COMPOSITION.fields_by_name['repository'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _COMPOSITIONLIST.fields_by_name['compositions'].message_type = _COMPOSITION
 _REPOSITORY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_REPOSITORY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_REPOSITORY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_REPOSITORY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_REPOSITORY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _REPOSITORY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_REPOSITORY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_REPOSITORY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _REPOSITORYLIST.fields_by_name['repositories'].message_type = _REPOSITORY
 _REPOSITORYNODELIST.fields_by_name['repository_nodes'].message_type = _REPOSITORYNODE
 _GETREPOSITORYIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -12648,8 +12648,8 @@ _ASSETLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=24858,
-  serialized_end=26523,
+  serialized_start=24878,
+  serialized_end=26543,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -12789,8 +12789,8 @@ _ASSETQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=26526,
-  serialized_end=27392,
+  serialized_start=26546,
+  serialized_end=27412,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -12867,8 +12867,8 @@ _ASSETSEARCHSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=27395,
-  serialized_end=27924,
+  serialized_start=27415,
+  serialized_end=27944,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetAssetSearch',
@@ -12918,8 +12918,8 @@ _ASSETADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=27927,
-  serialized_end=30753,
+  serialized_start=27947,
+  serialized_end=30773,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -13131,8 +13131,8 @@ _ASSETNOTIFICATIONSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=30756,
-  serialized_end=33140,
+  serialized_start=30776,
+  serialized_end=33160,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -13290,8 +13290,8 @@ _ASSETREPOSITORYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=33143,
-  serialized_end=34358,
+  serialized_start=33163,
+  serialized_end=34378,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupAssetRepositoryMappings',
@@ -13386,8 +13386,8 @@ _ASSETREPOSITORYASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=34361,
-  serialized_end=35229,
+  serialized_start=34381,
+  serialized_end=35249,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignAssets',
@@ -13455,8 +13455,8 @@ _ASSETCOMPOSITIONSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=35232,
-  serialized_end=36493,
+  serialized_start=35252,
+  serialized_end=36513,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -13551,8 +13551,8 @@ _ASSETCOMPOSITIONDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=36496,
-  serialized_end=37396,
+  serialized_start=36516,
+  serialized_end=37416,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -13638,8 +13638,8 @@ _COMPOSITIONLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=9,
   options=None,
-  serialized_start=37399,
-  serialized_end=39872,
+  serialized_start=37419,
+  serialized_end=39892,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -13815,8 +13815,8 @@ _COMPOSITIONQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=10,
   options=None,
-  serialized_start=39875,
-  serialized_end=41124,
+  serialized_start=39895,
+  serialized_end=41144,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -13911,8 +13911,8 @@ _COMPOSITIONSEARCHSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=11,
   options=None,
-  serialized_start=41127,
-  serialized_end=41737,
+  serialized_start=41147,
+  serialized_end=41757,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetCompositionSearch',
@@ -13962,8 +13962,8 @@ _COMPOSITIONADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=12,
   options=None,
-  serialized_start=41740,
-  serialized_end=43902,
+  serialized_start=41760,
+  serialized_end=43922,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryId',
@@ -14121,8 +14121,8 @@ _COMPOSITIONREPOSITORYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=13,
   options=None,
-  serialized_start=43905,
-  serialized_end=45300,
+  serialized_start=43925,
+  serialized_end=45320,
   methods=[
   _descriptor.MethodDescriptor(
     name='UseComparativeCompositionRepositoryView',
@@ -14217,8 +14217,8 @@ _COMPOSITIONREPOSITORYASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=14,
   options=None,
-  serialized_start=45303,
-  serialized_end=46262,
+  serialized_start=45323,
+  serialized_end=46282,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignCompositions',
@@ -14286,8 +14286,8 @@ _REPOSITORYLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=15,
   options=None,
-  serialized_start=46265,
-  serialized_end=47585,
+  serialized_start=46285,
+  serialized_end=47605,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupRepositories',
@@ -14391,8 +14391,8 @@ _REPOSITORYQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=16,
   options=None,
-  serialized_start=47588,
-  serialized_end=47991,
+  serialized_start=47608,
+  serialized_end=48011,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanSearchRepositories',
@@ -14433,8 +14433,8 @@ _REPOSITORYADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=17,
   options=None,
-  serialized_start=47994,
-  serialized_end=49509,
+  serialized_start=48014,
+  serialized_end=49529,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateRepositories',
@@ -14547,8 +14547,8 @@ _REPOSITORYHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=18,
   options=None,
-  serialized_start=49512,
-  serialized_end=52039,
+  serialized_start=49532,
+  serialized_end=52059,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryHierarchyId',
@@ -14733,8 +14733,8 @@ _REPOSITORYHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=19,
   options=None,
-  serialized_start=52042,
-  serialized_end=53161,
+  serialized_start=52062,
+  serialized_end=53181,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetRepositoryHierarchyId',

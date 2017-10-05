@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/rules.proto',
   package='dlkit.proto.rules',
   syntax='proto3',
-  serialized_pb=_b('\n\x17\x64lkit/proto/rules.proto\x12\x11\x64lkit.proto.rules\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\"\x06\n\x04Rule\"\x0b\n\tRuleQuery\"\x14\n\x12RuleQueryInspector\"\n\n\x08RuleForm\"\x11\n\x0fRuleSearchOrder\"\x0c\n\nRuleSearch\"\x13\n\x11RuleSearchResults\"2\n\x08RuleList\x12&\n\x05rules\x18\x01 \x03(\x0b\x32\x17.dlkit.proto.rules.Rule\"\xc0\x02\n\x06\x45ngine\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x45ngineQuery\"\x16\n\x14\x45ngineQueryInspector\"\x0c\n\nEngineForm\"\x13\n\x11\x45ngineSearchOrder\"\x0e\n\x0c\x45ngineSearch\"\x15\n\x13\x45ngineSearchResults\"8\n\nEngineList\x12*\n\x07\x65ngines\x18\x01 \x03(\x0b\x32\x19.dlkit.proto.rules.Engine\"\x0c\n\nEngineNode\"E\n\x0e\x45ngineNodeList\x12\x33\n\x0c\x65ngine_nodes\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.rules.EngineNode\"\x0b\n\tCondition\"\x08\n\x06Resultb\x06proto3')
+  serialized_pb=_b('\n\x17\x64lkit/proto/rules.proto\x12\x11\x64lkit.proto.rules\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\"\x06\n\x04Rule\"\x0b\n\tRuleQuery\"\x14\n\x12RuleQueryInspector\"\n\n\x08RuleForm\"\x11\n\x0fRuleSearchOrder\"\x0c\n\nRuleSearch\"\x13\n\x11RuleSearchResults\"2\n\x08RuleList\x12&\n\x05rules\x18\x01 \x03(\x0b\x32\x17.dlkit.proto.rules.Rule\"\xc5\x02\n\x06\x45ngine\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\r\n\x0b\x45ngineQuery\"\x16\n\x14\x45ngineQueryInspector\"\x0c\n\nEngineForm\"\x13\n\x11\x45ngineSearchOrder\"\x0e\n\x0c\x45ngineSearch\"\x15\n\x13\x45ngineSearchResults\"8\n\nEngineList\x12*\n\x07\x65ngines\x18\x01 \x03(\x0b\x32\x19.dlkit.proto.rules.Engine\"\x0c\n\nEngineNode\"E\n\x0e\x45ngineNodeList\x12\x33\n\x0c\x65ngine_nodes\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.rules.EngineNode\"\x0b\n\tCondition\"\x08\n\x06Resultb\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,])
 
@@ -243,14 +243,14 @@ _ENGINE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.rules.Engine.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.rules.Engine.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.rules.Engine.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.rules.Engine.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -264,7 +264,7 @@ _ENGINE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.rules.Engine.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.rules.Engine.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -283,7 +283,7 @@ _ENGINE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=328,
-  serialized_end=648,
+  serialized_end=653,
 )
 
 
@@ -306,8 +306,8 @@ _ENGINEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=650,
-  serialized_end=663,
+  serialized_start=655,
+  serialized_end=668,
 )
 
 
@@ -330,8 +330,8 @@ _ENGINEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=665,
-  serialized_end=687,
+  serialized_start=670,
+  serialized_end=692,
 )
 
 
@@ -354,8 +354,8 @@ _ENGINEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=689,
-  serialized_end=701,
+  serialized_start=694,
+  serialized_end=706,
 )
 
 
@@ -378,8 +378,8 @@ _ENGINESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=703,
-  serialized_end=722,
+  serialized_start=708,
+  serialized_end=727,
 )
 
 
@@ -402,8 +402,8 @@ _ENGINESEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=724,
-  serialized_end=738,
+  serialized_start=729,
+  serialized_end=743,
 )
 
 
@@ -426,8 +426,8 @@ _ENGINESEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=740,
-  serialized_end=761,
+  serialized_start=745,
+  serialized_end=766,
 )
 
 
@@ -457,8 +457,8 @@ _ENGINELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=763,
-  serialized_end=819,
+  serialized_start=768,
+  serialized_end=824,
 )
 
 
@@ -481,8 +481,8 @@ _ENGINENODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=821,
-  serialized_end=833,
+  serialized_start=826,
+  serialized_end=838,
 )
 
 
@@ -512,8 +512,8 @@ _ENGINENODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=835,
-  serialized_end=904,
+  serialized_start=840,
+  serialized_end=909,
 )
 
 
@@ -536,8 +536,8 @@ _CONDITION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=906,
-  serialized_end=917,
+  serialized_start=911,
+  serialized_end=922,
 )
 
 
@@ -560,16 +560,16 @@ _RESULT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=919,
-  serialized_end=927,
+  serialized_start=924,
+  serialized_end=932,
 )
 
 _RULELIST.fields_by_name['rules'].message_type = _RULE
 _ENGINE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ENGINE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ENGINE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ENGINE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ENGINE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ENGINE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ENGINE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ENGINE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ENGINELIST.fields_by_name['engines'].message_type = _ENGINE
 _ENGINENODELIST.fields_by_name['engine_nodes'].message_type = _ENGINENODE
 DESCRIPTOR.message_types_by_name['Rule'] = _RULE

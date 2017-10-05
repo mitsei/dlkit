@@ -26,7 +26,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/installation.proto',
   package='dlkit.proto.installation',
   syntax='proto3',
-  serialized_pb=_b('\n\x1e\x64lkit/proto/installation.proto\x12\x18\x64lkit.proto.installation\x1a$dlkit/primordium/id/primitives.proto\x1a.dlkit/primordium/installation/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a(dlkit/primordium/transport/objects.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x9e\x05\n\x07Package\x12\x11\n\tcopyright\x18\x01 \x01(\t\x12\x33\n\x07\x63reator\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x64\x65pendencies\x18\x03 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12,\n\x05\x64\x65pot\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x0crelease_date\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12(\n requires_license_acknowledgement\x18\x0b \x01(\x08\x12\x0b\n\x03url\x18\x0c \x01(\t\x12\x42\n\x07version\x18\r \x01(\x0b\x32\x31.dlkit.primordium.installation.primitives.Version\"\x0e\n\x0cPackageQuery\"\x17\n\x15PackageQueryInspector\"\r\n\x0bPackageForm\"\x14\n\x12PackageSearchOrder\"\x0f\n\rPackageSearch\"\x16\n\x14PackageSearchResults\"B\n\x0bPackageList\x12\x33\n\x08packages\x18\x01 \x03(\x0b\x32!.dlkit.proto.installation.Package\"\xf3\x03\n\x13InstallationContent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.dlkit.primordium.transport.objects.DataInputStream\x12,\n\x05\x64\x65pot\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07package\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1a\n\x18InstallationContentQuery\"#\n!InstallationContentQueryInspector\"\x19\n\x17InstallationContentForm\"g\n\x17InstallationContentList\x12L\n\x15installation_contents\x18\x01 \x03(\x0b\x32-.dlkit.proto.installation.InstallationContent\"\xbf\x02\n\x05\x44\x65pot\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nDepotQuery\"\x15\n\x13\x44\x65potQueryInspector\"\x0b\n\tDepotForm\"\x12\n\x10\x44\x65potSearchOrder\"\r\n\x0b\x44\x65potSearch\"\x14\n\x12\x44\x65potSearchResults\"<\n\tDepotList\x12/\n\x06\x64\x65pots\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.installation.Depot\"\x0b\n\tDepotNode\"I\n\rDepotNodeList\x12\x38\n\x0b\x64\x65pot_nodes\x18\x01 \x03(\x0b\x32#.dlkit.proto.installation.DepotNode\"\xad\x03\n\x0cInstallation\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07package\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x04site\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11InstallationQuery\"\x1c\n\x1aInstallationQueryInspector\"\x19\n\x17InstallationSearchOrder\"\x14\n\x12InstallationSearch\"\x1b\n\x19InstallationSearchResults\"Q\n\x10InstallationList\x12=\n\rinstallations\x18\x01 \x03(\x0b\x32&.dlkit.proto.installation.Installation\"\xbe\x02\n\x04Site\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tSiteQuery\"\x14\n\x12SiteQueryInspector\"\x11\n\x0fSiteSearchOrder\"9\n\x08SiteList\x12-\n\x05sites\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.installation.Siteb\x06proto3')
+  serialized_pb=_b('\n\x1e\x64lkit/proto/installation.proto\x12\x18\x64lkit.proto.installation\x1a$dlkit/primordium/id/primitives.proto\x1a.dlkit/primordium/installation/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a(dlkit/primordium/transport/objects.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xa3\x05\n\x07Package\x12\x11\n\tcopyright\x18\x01 \x01(\t\x12\x33\n\x07\x63reator\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x64\x65pendencies\x18\x03 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12,\n\x05\x64\x65pot\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x06 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x0crelease_date\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12(\n requires_license_acknowledgement\x18\x0b \x01(\x08\x12\x0b\n\x03url\x18\x0c \x01(\t\x12\x42\n\x07version\x18\r \x01(\x0b\x32\x31.dlkit.primordium.installation.primitives.Version\"\x0e\n\x0cPackageQuery\"\x17\n\x15PackageQueryInspector\"\r\n\x0bPackageForm\"\x14\n\x12PackageSearchOrder\"\x0f\n\rPackageSearch\"\x16\n\x14PackageSearchResults\"B\n\x0bPackageList\x12\x33\n\x08packages\x18\x01 \x03(\x0b\x32!.dlkit.proto.installation.Package\"\xf8\x03\n\x13InstallationContent\x12\x41\n\x04\x64\x61ta\x18\x01 \x01(\x0b\x32\x33.dlkit.primordium.transport.objects.DataInputStream\x12,\n\x05\x64\x65pot\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07package\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1a\n\x18InstallationContentQuery\"#\n!InstallationContentQueryInspector\"\x19\n\x17InstallationContentForm\"g\n\x17InstallationContentList\x12L\n\x15installation_contents\x18\x01 \x03(\x0b\x32-.dlkit.proto.installation.InstallationContent\"\xc4\x02\n\x05\x44\x65pot\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nDepotQuery\"\x15\n\x13\x44\x65potQueryInspector\"\x0b\n\tDepotForm\"\x12\n\x10\x44\x65potSearchOrder\"\r\n\x0b\x44\x65potSearch\"\x14\n\x12\x44\x65potSearchResults\"<\n\tDepotList\x12/\n\x06\x64\x65pots\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.installation.Depot\"\x0b\n\tDepotNode\"I\n\rDepotNodeList\x12\x38\n\x0b\x64\x65pot_nodes\x18\x01 \x03(\x0b\x32#.dlkit.proto.installation.DepotNode\"\xb2\x03\n\x0cInstallation\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07package\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x04site\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11InstallationQuery\"\x1c\n\x1aInstallationQueryInspector\"\x19\n\x17InstallationSearchOrder\"\x14\n\x12InstallationSearch\"\x1b\n\x19InstallationSearchResults\"Q\n\x10InstallationList\x12=\n\rinstallations\x18\x01 \x03(\x0b\x32&.dlkit.proto.installation.Installation\"\xc3\x02\n\x04Site\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tSiteQuery\"\x14\n\x12SiteQueryInspector\"\x11\n\x0fSiteSearchOrder\"9\n\x08SiteList\x12-\n\x05sites\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.installation.Siteb\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_installation_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_transport_dot_objects__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -76,14 +76,14 @@ _PACKAGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.installation.Package.displayName', index=5,
+      name='display_name', full_name='dlkit.proto.installation.Package.display_name', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.installation.Package.genusTypeId', index=6,
+      name='genus_type_id', full_name='dlkit.proto.installation.Package.genus_type_id', index=6,
       number=7, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -97,7 +97,7 @@ _PACKAGE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.installation.Package.recordTypeIds', index=8,
+      name='record_type_ids', full_name='dlkit.proto.installation.Package.record_type_ids', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -144,7 +144,7 @@ _PACKAGE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=328,
-  serialized_end=998,
+  serialized_end=1003,
 )
 
 
@@ -167,8 +167,8 @@ _PACKAGEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1000,
-  serialized_end=1014,
+  serialized_start=1005,
+  serialized_end=1019,
 )
 
 
@@ -191,8 +191,8 @@ _PACKAGEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1016,
-  serialized_end=1039,
+  serialized_start=1021,
+  serialized_end=1044,
 )
 
 
@@ -215,8 +215,8 @@ _PACKAGEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1041,
-  serialized_end=1054,
+  serialized_start=1046,
+  serialized_end=1059,
 )
 
 
@@ -239,8 +239,8 @@ _PACKAGESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1056,
-  serialized_end=1076,
+  serialized_start=1061,
+  serialized_end=1081,
 )
 
 
@@ -263,8 +263,8 @@ _PACKAGESEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1078,
-  serialized_end=1093,
+  serialized_start=1083,
+  serialized_end=1098,
 )
 
 
@@ -287,8 +287,8 @@ _PACKAGESEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1095,
-  serialized_end=1117,
+  serialized_start=1100,
+  serialized_end=1122,
 )
 
 
@@ -318,8 +318,8 @@ _PACKAGELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1119,
-  serialized_end=1185,
+  serialized_start=1124,
+  serialized_end=1190,
 )
 
 
@@ -352,14 +352,14 @@ _INSTALLATIONCONTENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.installation.InstallationContent.displayName', index=3,
+      name='display_name', full_name='dlkit.proto.installation.InstallationContent.display_name', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.installation.InstallationContent.genusTypeId', index=4,
+      name='genus_type_id', full_name='dlkit.proto.installation.InstallationContent.genus_type_id', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -380,7 +380,7 @@ _INSTALLATIONCONTENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.installation.InstallationContent.recordTypeIds', index=7,
+      name='record_type_ids', full_name='dlkit.proto.installation.InstallationContent.record_type_ids', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -398,8 +398,8 @@ _INSTALLATIONCONTENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1188,
-  serialized_end=1687,
+  serialized_start=1193,
+  serialized_end=1697,
 )
 
 
@@ -422,8 +422,8 @@ _INSTALLATIONCONTENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1689,
-  serialized_end=1715,
+  serialized_start=1699,
+  serialized_end=1725,
 )
 
 
@@ -446,8 +446,8 @@ _INSTALLATIONCONTENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1717,
-  serialized_end=1752,
+  serialized_start=1727,
+  serialized_end=1762,
 )
 
 
@@ -470,8 +470,8 @@ _INSTALLATIONCONTENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1754,
-  serialized_end=1779,
+  serialized_start=1764,
+  serialized_end=1789,
 )
 
 
@@ -501,8 +501,8 @@ _INSTALLATIONCONTENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1781,
-  serialized_end=1884,
+  serialized_start=1791,
+  serialized_end=1894,
 )
 
 
@@ -521,14 +521,14 @@ _DEPOT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.installation.Depot.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.installation.Depot.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.installation.Depot.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.installation.Depot.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -542,7 +542,7 @@ _DEPOT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.installation.Depot.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.installation.Depot.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -560,8 +560,8 @@ _DEPOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1887,
-  serialized_end=2206,
+  serialized_start=1897,
+  serialized_end=2221,
 )
 
 
@@ -584,8 +584,8 @@ _DEPOTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2208,
-  serialized_end=2220,
+  serialized_start=2223,
+  serialized_end=2235,
 )
 
 
@@ -608,8 +608,8 @@ _DEPOTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2222,
-  serialized_end=2243,
+  serialized_start=2237,
+  serialized_end=2258,
 )
 
 
@@ -632,8 +632,8 @@ _DEPOTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2245,
-  serialized_end=2256,
+  serialized_start=2260,
+  serialized_end=2271,
 )
 
 
@@ -656,8 +656,8 @@ _DEPOTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2258,
-  serialized_end=2276,
+  serialized_start=2273,
+  serialized_end=2291,
 )
 
 
@@ -680,8 +680,8 @@ _DEPOTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2278,
-  serialized_end=2291,
+  serialized_start=2293,
+  serialized_end=2306,
 )
 
 
@@ -704,8 +704,8 @@ _DEPOTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2293,
-  serialized_end=2313,
+  serialized_start=2308,
+  serialized_end=2328,
 )
 
 
@@ -735,8 +735,8 @@ _DEPOTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2315,
-  serialized_end=2375,
+  serialized_start=2330,
+  serialized_end=2390,
 )
 
 
@@ -759,8 +759,8 @@ _DEPOTNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2377,
-  serialized_end=2388,
+  serialized_start=2392,
+  serialized_end=2403,
 )
 
 
@@ -790,8 +790,8 @@ _DEPOTNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2390,
-  serialized_end=2463,
+  serialized_start=2405,
+  serialized_end=2478,
 )
 
 
@@ -810,14 +810,14 @@ _INSTALLATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.installation.Installation.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.installation.Installation.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.installation.Installation.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.installation.Installation.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -838,7 +838,7 @@ _INSTALLATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.installation.Installation.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.installation.Installation.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -863,8 +863,8 @@ _INSTALLATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2466,
-  serialized_end=2895,
+  serialized_start=2481,
+  serialized_end=2915,
 )
 
 
@@ -887,8 +887,8 @@ _INSTALLATIONQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2897,
-  serialized_end=2916,
+  serialized_start=2917,
+  serialized_end=2936,
 )
 
 
@@ -911,8 +911,8 @@ _INSTALLATIONQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2918,
-  serialized_end=2946,
+  serialized_start=2938,
+  serialized_end=2966,
 )
 
 
@@ -935,8 +935,8 @@ _INSTALLATIONSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2948,
-  serialized_end=2973,
+  serialized_start=2968,
+  serialized_end=2993,
 )
 
 
@@ -959,8 +959,8 @@ _INSTALLATIONSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2975,
-  serialized_end=2995,
+  serialized_start=2995,
+  serialized_end=3015,
 )
 
 
@@ -983,8 +983,8 @@ _INSTALLATIONSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2997,
-  serialized_end=3024,
+  serialized_start=3017,
+  serialized_end=3044,
 )
 
 
@@ -1014,8 +1014,8 @@ _INSTALLATIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3026,
-  serialized_end=3107,
+  serialized_start=3046,
+  serialized_end=3127,
 )
 
 
@@ -1034,14 +1034,14 @@ _SITE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.installation.Site.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.installation.Site.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.installation.Site.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.installation.Site.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1055,7 +1055,7 @@ _SITE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.installation.Site.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.installation.Site.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1073,8 +1073,8 @@ _SITE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3110,
-  serialized_end=3428,
+  serialized_start=3130,
+  serialized_end=3453,
 )
 
 
@@ -1097,8 +1097,8 @@ _SITEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3430,
-  serialized_end=3441,
+  serialized_start=3455,
+  serialized_end=3466,
 )
 
 
@@ -1121,8 +1121,8 @@ _SITEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3443,
-  serialized_end=3463,
+  serialized_start=3468,
+  serialized_end=3488,
 )
 
 
@@ -1145,8 +1145,8 @@ _SITESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3465,
-  serialized_end=3482,
+  serialized_start=3490,
+  serialized_end=3507,
 )
 
 
@@ -1176,50 +1176,50 @@ _SITELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3484,
-  serialized_end=3541,
+  serialized_start=3509,
+  serialized_end=3566,
 )
 
 _PACKAGE.fields_by_name['creator'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _PACKAGE.fields_by_name['dependencies'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _PACKAGE.fields_by_name['depot'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _PACKAGE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_PACKAGE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_PACKAGE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_PACKAGE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_PACKAGE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _PACKAGE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_PACKAGE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_PACKAGE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _PACKAGE.fields_by_name['release_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _PACKAGE.fields_by_name['version'].message_type = dlkit_dot_primordium_dot_installation_dot_primitives__pb2._VERSION
 _PACKAGELIST.fields_by_name['packages'].message_type = _PACKAGE
 _INSTALLATIONCONTENT.fields_by_name['data'].message_type = dlkit_dot_primordium_dot_transport_dot_objects__pb2._DATAINPUTSTREAM
 _INSTALLATIONCONTENT.fields_by_name['depot'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _INSTALLATIONCONTENT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_INSTALLATIONCONTENT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_INSTALLATIONCONTENT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_INSTALLATIONCONTENT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_INSTALLATIONCONTENT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _INSTALLATIONCONTENT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _INSTALLATIONCONTENT.fields_by_name['package'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_INSTALLATIONCONTENT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_INSTALLATIONCONTENT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _INSTALLATIONCONTENTLIST.fields_by_name['installation_contents'].message_type = _INSTALLATIONCONTENT
 _DEPOT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_DEPOT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_DEPOT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_DEPOT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_DEPOT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _DEPOT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_DEPOT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_DEPOT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _DEPOTLIST.fields_by_name['depots'].message_type = _DEPOT
 _DEPOTNODELIST.fields_by_name['depot_nodes'].message_type = _DEPOTNODE
 _INSTALLATION.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_INSTALLATION.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_INSTALLATION.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_INSTALLATION.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_INSTALLATION.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _INSTALLATION.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _INSTALLATION.fields_by_name['package'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_INSTALLATION.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_INSTALLATION.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _INSTALLATION.fields_by_name['site'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _INSTALLATIONLIST.fields_by_name['installations'].message_type = _INSTALLATION
 _SITE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_SITE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_SITE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SITE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_SITE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SITE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_SITE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SITE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SITELIST.fields_by_name['sites'].message_type = _SITE
 DESCRIPTOR.message_types_by_name['Package'] = _PACKAGE
 DESCRIPTOR.message_types_by_name['PackageQuery'] = _PACKAGEQUERY

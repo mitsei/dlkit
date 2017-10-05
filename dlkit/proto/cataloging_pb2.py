@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/cataloging.proto',
   package='dlkit.proto.cataloging',
   syntax='proto3',
-  serialized_pb=_b('\n\x1c\x64lkit/proto/cataloging.proto\x12\x16\x64lkit.proto.cataloging\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\"\xc1\x02\n\x07\x43\x61talog\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0e\n\x0c\x43\x61talogQuery\"\x17\n\x15\x43\x61talogQueryInspector\"\r\n\x0b\x43\x61talogForm\"\x14\n\x12\x43\x61talogSearchOrder\"\x0f\n\rCatalogSearch\"\x16\n\x14\x43\x61talogSearchResults\"@\n\x0b\x43\x61talogList\x12\x31\n\x08\x63\x61talogs\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.cataloging.Catalog\"\r\n\x0b\x43\x61talogNode\"M\n\x0f\x43\x61talogNodeList\x12:\n\rcatalog_nodes\x18\x01 \x03(\x0b\x32#.dlkit.proto.cataloging.CatalogNode\"5\n\x16\x43\x61nLookupCatalogsReply\x12\x1b\n\x13\x63\x61n_lookup_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nLookupCatalogsRequest\" \n\x1eUseComparativeCatalogViewReply\"\"\n UseComparativeCatalogViewRequest\"\x1c\n\x1aUsePlenaryCatalogViewReply\"\x1e\n\x1cUsePlenaryCatalogViewRequest\"C\n\x0fGetCatalogReply\x12\x30\n\x07\x63\x61talog\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.cataloging.Catalog\"K\n\x11GetCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x17GetCatalogsByIdsRequest\x12\x37\n\x0b\x63\x61talog_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1dGetCatalogsByGenusTypeRequest\x12\x42\n\x12\x63\x61talog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n#GetCatalogsByParentGenusTypeRequest\x12\x42\n\x12\x63\x61talog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n\x1eGetCatalogsByRecordTypeRequest\x12\x43\n\x13\x63\x61talog_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"W\n\x1cGetCatalogsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetCatalogsRequest\"5\n\x16\x43\x61nSearchCatalogsReply\x12\x1b\n\x13\x63\x61n_search_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nSearchCatalogsRequest\"S\n\x14GetCatalogQueryReply\x12;\n\rcatalog_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.cataloging.CatalogQuery\"\x18\n\x16GetCatalogQueryRequest\"X\n\x19GetCatalogsByQueryRequest\x12;\n\rcatalog_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.cataloging.CatalogQuery\"5\n\x16\x43\x61nCreateCatalogsReply\x12\x1b\n\x13\x63\x61n_create_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nCreateCatalogsRequest\"T\n$CanCreateCatalogWithRecordTypesReply\x12,\n$can_create_catalog_with_record_types\x18\x01 \x01(\x08\"n\n&CanCreateCatalogWithRecordTypesRequest\x12\x44\n\x14\x63\x61talog_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n\x1cGetCatalogFormForCreateReply\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"f\n\x1eGetCatalogFormForCreateRequest\x12\x44\n\x14\x63\x61talog_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"F\n\x12\x43reateCatalogReply\x12\x30\n\x07\x63\x61talog\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.cataloging.Catalog\"Q\n\x14\x43reateCatalogRequest\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"5\n\x16\x43\x61nUpdateCatalogsReply\x12\x1b\n\x13\x63\x61n_update_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nUpdateCatalogsRequest\"Y\n\x1cGetCatalogFormForUpdateReply\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"X\n\x1eGetCatalogFormForUpdateRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12UpdateCatalogReply\"Q\n\x14UpdateCatalogRequest\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"5\n\x16\x43\x61nDeleteCatalogsReply\x12\x1b\n\x13\x63\x61n_delete_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nDeleteCatalogsRequest\"\x14\n\x12\x44\x65leteCatalogReply\"N\n\x14\x44\x65leteCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nManageCatalogAliasesReply\x12\"\n\x1a\x63\x61n_manage_catalog_aliases\x18\x01 \x01(\x08\" \n\x1e\x43\x61nManageCatalogAliasesRequest\"\x13\n\x11\x41liasCatalogReply\"\x83\x01\n\x13\x41liasCatalogRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncatalog_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x1aGetCatalogHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cGetCatalogHierarchyIdRequest\"O\n\x18GetCatalogHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1c\n\x1aGetCatalogHierarchyRequest\"F\n\x1e\x43\x61nAccessCatalogHierarchyReply\x12$\n\x1c\x63\x61n_access_catalog_hierarchy\x18\x01 \x01(\x08\"\"\n CanAccessCatalogHierarchyRequest\"\x1a\n\x18GetRootCatalogIdsRequest\"\x18\n\x16GetRootCatalogsRequest\"5\n\x16HasParentCatalogsReply\x12\x1b\n\x13has_parent_catalogs\x18\x01 \x01(\x08\"R\n\x18HasParentCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsParentOfCatalogReply\x12\x1c\n\x14is_parent_of_catalog\x18\x01 \x01(\x08\"\x83\x01\n\x18IsParentOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1aGetParentCatalogIdsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x18GetParentCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsAncestorOfCatalogReply\x12\x1e\n\x16is_ancestor_of_catalog\x18\x01 \x01(\x08\"\x85\x01\n\x1aIsAncestorOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15HasChildCatalogsReply\x12\x1a\n\x12has_child_catalogs\x18\x01 \x01(\x08\"Q\n\x17HasChildCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsChildOfCatalogReply\x12\x1b\n\x13is_child_of_catalog\x18\x01 \x01(\x08\"\x82\x01\n\x17IsChildOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x19GetChildCatalogIdsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x17GetChildCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1aIsDescendantOfCatalogReply\x12 \n\x18is_descendant_of_catalog\x18\x01 \x01(\x08\"\x87\x01\n\x1cIsDescendantOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"C\n\x16GetCatalogNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa0\x01\n\x18GetCatalogNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x36\n\ncatalog_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"Q\n\x14GetCatalogNodesReply\x12\x39\n\x0c\x63\x61talog_node\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogNode\"\x9e\x01\n\x16GetCatalogNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x36\n\ncatalog_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"F\n\x1e\x43\x61nModifyCatalogHierarchyReply\x12$\n\x1c\x63\x61n_modify_catalog_hierarchy\x18\x01 \x01(\x08\"\"\n CanModifyCatalogHierarchyRequest\"\x15\n\x13\x41\x64\x64RootCatalogReply\"O\n\x15\x41\x64\x64RootCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveRootCatalogReply\"R\n\x18RemoveRootCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14\x41\x64\x64\x43hildCatalogReply\"\x86\x01\n\x16\x41\x64\x64\x43hildCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17RemoveChildCatalogReply\"\x89\x01\n\x19RemoveChildCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveChildCatalogsReply\"T\n\x1aRemoveChildCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xba\t\n\x14\x43\x61talogLookupSession\x12w\n\x11\x43\x61nLookupCatalogs\x12\x30.dlkit.proto.cataloging.CanLookupCatalogsRequest\x1a..dlkit.proto.cataloging.CanLookupCatalogsReply\"\x00\x12\x8f\x01\n\x19UseComparativeCatalogView\x12\x38.dlkit.proto.cataloging.UseComparativeCatalogViewRequest\x1a\x36.dlkit.proto.cataloging.UseComparativeCatalogViewReply\"\x00\x12\x83\x01\n\x15UsePlenaryCatalogView\x12\x34.dlkit.proto.cataloging.UsePlenaryCatalogViewRequest\x1a\x32.dlkit.proto.cataloging.UsePlenaryCatalogViewReply\"\x00\x12\x62\n\nGetCatalog\x12).dlkit.proto.cataloging.GetCatalogRequest\x1a\'.dlkit.proto.cataloging.GetCatalogReply\"\x00\x12h\n\x10GetCatalogsByIds\x12/.dlkit.proto.cataloging.GetCatalogsByIdsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12t\n\x16GetCatalogsByGenusType\x12\x35.dlkit.proto.cataloging.GetCatalogsByGenusTypeRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12\x80\x01\n\x1cGetCatalogsByParentGenusType\x12;.dlkit.proto.cataloging.GetCatalogsByParentGenusTypeRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12v\n\x17GetCatalogsByRecordType\x12\x36.dlkit.proto.cataloging.GetCatalogsByRecordTypeRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12r\n\x15GetCatalogsByProvider\x12\x34.dlkit.proto.cataloging.GetCatalogsByProviderRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12^\n\x0bGetCatalogs\x12*.dlkit.proto.cataloging.GetCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x32\xef\x02\n\x13\x43\x61talogQuerySession\x12w\n\x11\x43\x61nSearchCatalogs\x12\x30.dlkit.proto.cataloging.CanSearchCatalogsRequest\x1a..dlkit.proto.cataloging.CanSearchCatalogsReply\"\x00\x12q\n\x0fGetCatalogQuery\x12..dlkit.proto.cataloging.GetCatalogQueryRequest\x1a,.dlkit.proto.cataloging.GetCatalogQueryReply\"\x00\x12l\n\x12GetCatalogsByQuery\x12\x31.dlkit.proto.cataloging.GetCatalogsByQueryRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x32\xf9\n\n\x13\x43\x61talogAdminSession\x12w\n\x11\x43\x61nCreateCatalogs\x12\x30.dlkit.proto.cataloging.CanCreateCatalogsRequest\x1a..dlkit.proto.cataloging.CanCreateCatalogsReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nCreateCatalogWithRecordTypes\x12>.dlkit.proto.cataloging.CanCreateCatalogWithRecordTypesRequest\x1a<.dlkit.proto.cataloging.CanCreateCatalogWithRecordTypesReply\"\x00\x12\x89\x01\n\x17GetCatalogFormForCreate\x12\x36.dlkit.proto.cataloging.GetCatalogFormForCreateRequest\x1a\x34.dlkit.proto.cataloging.GetCatalogFormForCreateReply\"\x00\x12k\n\rCreateCatalog\x12,.dlkit.proto.cataloging.CreateCatalogRequest\x1a*.dlkit.proto.cataloging.CreateCatalogReply\"\x00\x12w\n\x11\x43\x61nUpdateCatalogs\x12\x30.dlkit.proto.cataloging.CanUpdateCatalogsRequest\x1a..dlkit.proto.cataloging.CanUpdateCatalogsReply\"\x00\x12\x89\x01\n\x17GetCatalogFormForUpdate\x12\x36.dlkit.proto.cataloging.GetCatalogFormForUpdateRequest\x1a\x34.dlkit.proto.cataloging.GetCatalogFormForUpdateReply\"\x00\x12k\n\rUpdateCatalog\x12,.dlkit.proto.cataloging.UpdateCatalogRequest\x1a*.dlkit.proto.cataloging.UpdateCatalogReply\"\x00\x12w\n\x11\x43\x61nDeleteCatalogs\x12\x30.dlkit.proto.cataloging.CanDeleteCatalogsRequest\x1a..dlkit.proto.cataloging.CanDeleteCatalogsReply\"\x00\x12k\n\rDeleteCatalog\x12,.dlkit.proto.cataloging.DeleteCatalogRequest\x1a*.dlkit.proto.cataloging.DeleteCatalogReply\"\x00\x12\x89\x01\n\x17\x43\x61nManageCatalogAliases\x12\x36.dlkit.proto.cataloging.CanManageCatalogAliasesRequest\x1a\x34.dlkit.proto.cataloging.CanManageCatalogAliasesReply\"\x00\x12h\n\x0c\x41liasCatalog\x12+.dlkit.proto.cataloging.AliasCatalogRequest\x1a).dlkit.proto.cataloging.AliasCatalogReply\"\x00\x32\xa8\x12\n\x17\x43\x61talogHierarchySession\x12\x83\x01\n\x15GetCatalogHierarchyId\x12\x34.dlkit.proto.cataloging.GetCatalogHierarchyIdRequest\x1a\x32.dlkit.proto.cataloging.GetCatalogHierarchyIdReply\"\x00\x12}\n\x13GetCatalogHierarchy\x12\x32.dlkit.proto.cataloging.GetCatalogHierarchyRequest\x1a\x30.dlkit.proto.cataloging.GetCatalogHierarchyReply\"\x00\x12\x8f\x01\n\x19\x43\x61nAccessCatalogHierarchy\x12\x38.dlkit.proto.cataloging.CanAccessCatalogHierarchyRequest\x1a\x36.dlkit.proto.cataloging.CanAccessCatalogHierarchyReply\"\x00\x12\x8f\x01\n\x19UseComparativeCatalogView\x12\x38.dlkit.proto.cataloging.UseComparativeCatalogViewRequest\x1a\x36.dlkit.proto.cataloging.UseComparativeCatalogViewReply\"\x00\x12\x83\x01\n\x15UsePlenaryCatalogView\x12\x34.dlkit.proto.cataloging.UsePlenaryCatalogViewRequest\x1a\x32.dlkit.proto.cataloging.UsePlenaryCatalogViewReply\"\x00\x12m\n\x11GetRootCatalogIds\x12\x30.dlkit.proto.cataloging.GetRootCatalogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\x0fGetRootCatalogs\x12..dlkit.proto.cataloging.GetRootCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12w\n\x11HasParentCatalogs\x12\x30.dlkit.proto.cataloging.HasParentCatalogsRequest\x1a..dlkit.proto.cataloging.HasParentCatalogsReply\"\x00\x12w\n\x11IsParentOfCatalog\x12\x30.dlkit.proto.cataloging.IsParentOfCatalogRequest\x1a..dlkit.proto.cataloging.IsParentOfCatalogReply\"\x00\x12q\n\x13GetParentCatalogIds\x12\x32.dlkit.proto.cataloging.GetParentCatalogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x11GetParentCatalogs\x12\x30.dlkit.proto.cataloging.GetParentCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12}\n\x13IsAncestorOfCatalog\x12\x32.dlkit.proto.cataloging.IsAncestorOfCatalogRequest\x1a\x30.dlkit.proto.cataloging.IsAncestorOfCatalogReply\"\x00\x12t\n\x10HasChildCatalogs\x12/.dlkit.proto.cataloging.HasChildCatalogsRequest\x1a-.dlkit.proto.cataloging.HasChildCatalogsReply\"\x00\x12t\n\x10IsChildOfCatalog\x12/.dlkit.proto.cataloging.IsChildOfCatalogRequest\x1a-.dlkit.proto.cataloging.IsChildOfCatalogReply\"\x00\x12o\n\x12GetChildCatalogIds\x12\x31.dlkit.proto.cataloging.GetChildCatalogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x10GetChildCatalogs\x12/.dlkit.proto.cataloging.GetChildCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12\x83\x01\n\x15IsDescendantOfCatalog\x12\x34.dlkit.proto.cataloging.IsDescendantOfCatalogRequest\x1a\x32.dlkit.proto.cataloging.IsDescendantOfCatalogReply\"\x00\x12w\n\x11GetCatalogNodeIds\x12\x30.dlkit.proto.cataloging.GetCatalogNodeIdsRequest\x1a..dlkit.proto.cataloging.GetCatalogNodeIdsReply\"\x00\x12q\n\x0fGetCatalogNodes\x12..dlkit.proto.cataloging.GetCatalogNodesRequest\x1a,.dlkit.proto.cataloging.GetCatalogNodesReply\"\x00\x32\x8d\x08\n\x1d\x43\x61talogHierarchyDesignSession\x12\x83\x01\n\x15GetCatalogHierarchyId\x12\x34.dlkit.proto.cataloging.GetCatalogHierarchyIdRequest\x1a\x32.dlkit.proto.cataloging.GetCatalogHierarchyIdReply\"\x00\x12}\n\x13GetCatalogHierarchy\x12\x32.dlkit.proto.cataloging.GetCatalogHierarchyRequest\x1a\x30.dlkit.proto.cataloging.GetCatalogHierarchyReply\"\x00\x12\x8f\x01\n\x19\x43\x61nModifyCatalogHierarchy\x12\x38.dlkit.proto.cataloging.CanModifyCatalogHierarchyRequest\x1a\x36.dlkit.proto.cataloging.CanModifyCatalogHierarchyReply\"\x00\x12n\n\x0e\x41\x64\x64RootCatalog\x12-.dlkit.proto.cataloging.AddRootCatalogRequest\x1a+.dlkit.proto.cataloging.AddRootCatalogReply\"\x00\x12w\n\x11RemoveRootCatalog\x12\x30.dlkit.proto.cataloging.RemoveRootCatalogRequest\x1a..dlkit.proto.cataloging.RemoveRootCatalogReply\"\x00\x12q\n\x0f\x41\x64\x64\x43hildCatalog\x12..dlkit.proto.cataloging.AddChildCatalogRequest\x1a,.dlkit.proto.cataloging.AddChildCatalogReply\"\x00\x12z\n\x12RemoveChildCatalog\x12\x31.dlkit.proto.cataloging.RemoveChildCatalogRequest\x1a/.dlkit.proto.cataloging.RemoveChildCatalogReply\"\x00\x12}\n\x13RemoveChildCatalogs\x12\x32.dlkit.proto.cataloging.RemoveChildCatalogsRequest\x1a\x30.dlkit.proto.cataloging.RemoveChildCatalogsReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1c\x64lkit/proto/cataloging.proto\x12\x16\x64lkit.proto.cataloging\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\"\xc6\x02\n\x07\x43\x61talog\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0e\n\x0c\x43\x61talogQuery\"\x17\n\x15\x43\x61talogQueryInspector\"\r\n\x0b\x43\x61talogForm\"\x14\n\x12\x43\x61talogSearchOrder\"\x0f\n\rCatalogSearch\"\x16\n\x14\x43\x61talogSearchResults\"@\n\x0b\x43\x61talogList\x12\x31\n\x08\x63\x61talogs\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.cataloging.Catalog\"\r\n\x0b\x43\x61talogNode\"M\n\x0f\x43\x61talogNodeList\x12:\n\rcatalog_nodes\x18\x01 \x03(\x0b\x32#.dlkit.proto.cataloging.CatalogNode\"5\n\x16\x43\x61nLookupCatalogsReply\x12\x1b\n\x13\x63\x61n_lookup_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nLookupCatalogsRequest\" \n\x1eUseComparativeCatalogViewReply\"\"\n UseComparativeCatalogViewRequest\"\x1c\n\x1aUsePlenaryCatalogViewReply\"\x1e\n\x1cUsePlenaryCatalogViewRequest\"C\n\x0fGetCatalogReply\x12\x30\n\x07\x63\x61talog\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.cataloging.Catalog\"K\n\x11GetCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x17GetCatalogsByIdsRequest\x12\x37\n\x0b\x63\x61talog_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1dGetCatalogsByGenusTypeRequest\x12\x42\n\x12\x63\x61talog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n#GetCatalogsByParentGenusTypeRequest\x12\x42\n\x12\x63\x61talog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n\x1eGetCatalogsByRecordTypeRequest\x12\x43\n\x13\x63\x61talog_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"W\n\x1cGetCatalogsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12GetCatalogsRequest\"5\n\x16\x43\x61nSearchCatalogsReply\x12\x1b\n\x13\x63\x61n_search_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nSearchCatalogsRequest\"S\n\x14GetCatalogQueryReply\x12;\n\rcatalog_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.cataloging.CatalogQuery\"\x18\n\x16GetCatalogQueryRequest\"X\n\x19GetCatalogsByQueryRequest\x12;\n\rcatalog_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.cataloging.CatalogQuery\"5\n\x16\x43\x61nCreateCatalogsReply\x12\x1b\n\x13\x63\x61n_create_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nCreateCatalogsRequest\"T\n$CanCreateCatalogWithRecordTypesReply\x12,\n$can_create_catalog_with_record_types\x18\x01 \x01(\x08\"n\n&CanCreateCatalogWithRecordTypesRequest\x12\x44\n\x14\x63\x61talog_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n\x1cGetCatalogFormForCreateReply\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"f\n\x1eGetCatalogFormForCreateRequest\x12\x44\n\x14\x63\x61talog_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"F\n\x12\x43reateCatalogReply\x12\x30\n\x07\x63\x61talog\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.cataloging.Catalog\"Q\n\x14\x43reateCatalogRequest\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"5\n\x16\x43\x61nUpdateCatalogsReply\x12\x1b\n\x13\x63\x61n_update_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nUpdateCatalogsRequest\"Y\n\x1cGetCatalogFormForUpdateReply\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"X\n\x1eGetCatalogFormForUpdateRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12UpdateCatalogReply\"Q\n\x14UpdateCatalogRequest\x12\x39\n\x0c\x63\x61talog_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogForm\"5\n\x16\x43\x61nDeleteCatalogsReply\x12\x1b\n\x13\x63\x61n_delete_catalogs\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nDeleteCatalogsRequest\"\x14\n\x12\x44\x65leteCatalogReply\"N\n\x14\x44\x65leteCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nManageCatalogAliasesReply\x12\"\n\x1a\x63\x61n_manage_catalog_aliases\x18\x01 \x01(\x08\" \n\x1e\x43\x61nManageCatalogAliasesRequest\"\x13\n\x11\x41liasCatalogReply\"\x83\x01\n\x13\x41liasCatalogRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncatalog_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x1aGetCatalogHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cGetCatalogHierarchyIdRequest\"O\n\x18GetCatalogHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1c\n\x1aGetCatalogHierarchyRequest\"F\n\x1e\x43\x61nAccessCatalogHierarchyReply\x12$\n\x1c\x63\x61n_access_catalog_hierarchy\x18\x01 \x01(\x08\"\"\n CanAccessCatalogHierarchyRequest\"\x1a\n\x18GetRootCatalogIdsRequest\"\x18\n\x16GetRootCatalogsRequest\"5\n\x16HasParentCatalogsReply\x12\x1b\n\x13has_parent_catalogs\x18\x01 \x01(\x08\"R\n\x18HasParentCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsParentOfCatalogReply\x12\x1c\n\x14is_parent_of_catalog\x18\x01 \x01(\x08\"\x83\x01\n\x18IsParentOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1aGetParentCatalogIdsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x18GetParentCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsAncestorOfCatalogReply\x12\x1e\n\x16is_ancestor_of_catalog\x18\x01 \x01(\x08\"\x85\x01\n\x1aIsAncestorOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"3\n\x15HasChildCatalogsReply\x12\x1a\n\x12has_child_catalogs\x18\x01 \x01(\x08\"Q\n\x17HasChildCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsChildOfCatalogReply\x12\x1b\n\x13is_child_of_catalog\x18\x01 \x01(\x08\"\x82\x01\n\x17IsChildOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x19GetChildCatalogIdsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x17GetChildCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1aIsDescendantOfCatalogReply\x12 \n\x18is_descendant_of_catalog\x18\x01 \x01(\x08\"\x87\x01\n\x1cIsDescendantOfCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"C\n\x16GetCatalogNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa0\x01\n\x18GetCatalogNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x36\n\ncatalog_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"Q\n\x14GetCatalogNodesReply\x12\x39\n\x0c\x63\x61talog_node\x18\x01 \x01(\x0b\x32#.dlkit.proto.cataloging.CatalogNode\"\x9e\x01\n\x16GetCatalogNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x36\n\ncatalog_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"F\n\x1e\x43\x61nModifyCatalogHierarchyReply\x12$\n\x1c\x63\x61n_modify_catalog_hierarchy\x18\x01 \x01(\x08\"\"\n CanModifyCatalogHierarchyRequest\"\x15\n\x13\x41\x64\x64RootCatalogReply\"O\n\x15\x41\x64\x64RootCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveRootCatalogReply\"R\n\x18RemoveRootCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14\x41\x64\x64\x43hildCatalogReply\"\x86\x01\n\x16\x41\x64\x64\x43hildCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17RemoveChildCatalogReply\"\x89\x01\n\x19RemoveChildCatalogRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveChildCatalogsReply\"T\n\x1aRemoveChildCatalogsRequest\x12\x36\n\ncatalog_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xba\t\n\x14\x43\x61talogLookupSession\x12w\n\x11\x43\x61nLookupCatalogs\x12\x30.dlkit.proto.cataloging.CanLookupCatalogsRequest\x1a..dlkit.proto.cataloging.CanLookupCatalogsReply\"\x00\x12\x8f\x01\n\x19UseComparativeCatalogView\x12\x38.dlkit.proto.cataloging.UseComparativeCatalogViewRequest\x1a\x36.dlkit.proto.cataloging.UseComparativeCatalogViewReply\"\x00\x12\x83\x01\n\x15UsePlenaryCatalogView\x12\x34.dlkit.proto.cataloging.UsePlenaryCatalogViewRequest\x1a\x32.dlkit.proto.cataloging.UsePlenaryCatalogViewReply\"\x00\x12\x62\n\nGetCatalog\x12).dlkit.proto.cataloging.GetCatalogRequest\x1a\'.dlkit.proto.cataloging.GetCatalogReply\"\x00\x12h\n\x10GetCatalogsByIds\x12/.dlkit.proto.cataloging.GetCatalogsByIdsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12t\n\x16GetCatalogsByGenusType\x12\x35.dlkit.proto.cataloging.GetCatalogsByGenusTypeRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12\x80\x01\n\x1cGetCatalogsByParentGenusType\x12;.dlkit.proto.cataloging.GetCatalogsByParentGenusTypeRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12v\n\x17GetCatalogsByRecordType\x12\x36.dlkit.proto.cataloging.GetCatalogsByRecordTypeRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12r\n\x15GetCatalogsByProvider\x12\x34.dlkit.proto.cataloging.GetCatalogsByProviderRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12^\n\x0bGetCatalogs\x12*.dlkit.proto.cataloging.GetCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x32\xef\x02\n\x13\x43\x61talogQuerySession\x12w\n\x11\x43\x61nSearchCatalogs\x12\x30.dlkit.proto.cataloging.CanSearchCatalogsRequest\x1a..dlkit.proto.cataloging.CanSearchCatalogsReply\"\x00\x12q\n\x0fGetCatalogQuery\x12..dlkit.proto.cataloging.GetCatalogQueryRequest\x1a,.dlkit.proto.cataloging.GetCatalogQueryReply\"\x00\x12l\n\x12GetCatalogsByQuery\x12\x31.dlkit.proto.cataloging.GetCatalogsByQueryRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x32\xf9\n\n\x13\x43\x61talogAdminSession\x12w\n\x11\x43\x61nCreateCatalogs\x12\x30.dlkit.proto.cataloging.CanCreateCatalogsRequest\x1a..dlkit.proto.cataloging.CanCreateCatalogsReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nCreateCatalogWithRecordTypes\x12>.dlkit.proto.cataloging.CanCreateCatalogWithRecordTypesRequest\x1a<.dlkit.proto.cataloging.CanCreateCatalogWithRecordTypesReply\"\x00\x12\x89\x01\n\x17GetCatalogFormForCreate\x12\x36.dlkit.proto.cataloging.GetCatalogFormForCreateRequest\x1a\x34.dlkit.proto.cataloging.GetCatalogFormForCreateReply\"\x00\x12k\n\rCreateCatalog\x12,.dlkit.proto.cataloging.CreateCatalogRequest\x1a*.dlkit.proto.cataloging.CreateCatalogReply\"\x00\x12w\n\x11\x43\x61nUpdateCatalogs\x12\x30.dlkit.proto.cataloging.CanUpdateCatalogsRequest\x1a..dlkit.proto.cataloging.CanUpdateCatalogsReply\"\x00\x12\x89\x01\n\x17GetCatalogFormForUpdate\x12\x36.dlkit.proto.cataloging.GetCatalogFormForUpdateRequest\x1a\x34.dlkit.proto.cataloging.GetCatalogFormForUpdateReply\"\x00\x12k\n\rUpdateCatalog\x12,.dlkit.proto.cataloging.UpdateCatalogRequest\x1a*.dlkit.proto.cataloging.UpdateCatalogReply\"\x00\x12w\n\x11\x43\x61nDeleteCatalogs\x12\x30.dlkit.proto.cataloging.CanDeleteCatalogsRequest\x1a..dlkit.proto.cataloging.CanDeleteCatalogsReply\"\x00\x12k\n\rDeleteCatalog\x12,.dlkit.proto.cataloging.DeleteCatalogRequest\x1a*.dlkit.proto.cataloging.DeleteCatalogReply\"\x00\x12\x89\x01\n\x17\x43\x61nManageCatalogAliases\x12\x36.dlkit.proto.cataloging.CanManageCatalogAliasesRequest\x1a\x34.dlkit.proto.cataloging.CanManageCatalogAliasesReply\"\x00\x12h\n\x0c\x41liasCatalog\x12+.dlkit.proto.cataloging.AliasCatalogRequest\x1a).dlkit.proto.cataloging.AliasCatalogReply\"\x00\x32\xa8\x12\n\x17\x43\x61talogHierarchySession\x12\x83\x01\n\x15GetCatalogHierarchyId\x12\x34.dlkit.proto.cataloging.GetCatalogHierarchyIdRequest\x1a\x32.dlkit.proto.cataloging.GetCatalogHierarchyIdReply\"\x00\x12}\n\x13GetCatalogHierarchy\x12\x32.dlkit.proto.cataloging.GetCatalogHierarchyRequest\x1a\x30.dlkit.proto.cataloging.GetCatalogHierarchyReply\"\x00\x12\x8f\x01\n\x19\x43\x61nAccessCatalogHierarchy\x12\x38.dlkit.proto.cataloging.CanAccessCatalogHierarchyRequest\x1a\x36.dlkit.proto.cataloging.CanAccessCatalogHierarchyReply\"\x00\x12\x8f\x01\n\x19UseComparativeCatalogView\x12\x38.dlkit.proto.cataloging.UseComparativeCatalogViewRequest\x1a\x36.dlkit.proto.cataloging.UseComparativeCatalogViewReply\"\x00\x12\x83\x01\n\x15UsePlenaryCatalogView\x12\x34.dlkit.proto.cataloging.UsePlenaryCatalogViewRequest\x1a\x32.dlkit.proto.cataloging.UsePlenaryCatalogViewReply\"\x00\x12m\n\x11GetRootCatalogIds\x12\x30.dlkit.proto.cataloging.GetRootCatalogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\x0fGetRootCatalogs\x12..dlkit.proto.cataloging.GetRootCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12w\n\x11HasParentCatalogs\x12\x30.dlkit.proto.cataloging.HasParentCatalogsRequest\x1a..dlkit.proto.cataloging.HasParentCatalogsReply\"\x00\x12w\n\x11IsParentOfCatalog\x12\x30.dlkit.proto.cataloging.IsParentOfCatalogRequest\x1a..dlkit.proto.cataloging.IsParentOfCatalogReply\"\x00\x12q\n\x13GetParentCatalogIds\x12\x32.dlkit.proto.cataloging.GetParentCatalogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x11GetParentCatalogs\x12\x30.dlkit.proto.cataloging.GetParentCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12}\n\x13IsAncestorOfCatalog\x12\x32.dlkit.proto.cataloging.IsAncestorOfCatalogRequest\x1a\x30.dlkit.proto.cataloging.IsAncestorOfCatalogReply\"\x00\x12t\n\x10HasChildCatalogs\x12/.dlkit.proto.cataloging.HasChildCatalogsRequest\x1a-.dlkit.proto.cataloging.HasChildCatalogsReply\"\x00\x12t\n\x10IsChildOfCatalog\x12/.dlkit.proto.cataloging.IsChildOfCatalogRequest\x1a-.dlkit.proto.cataloging.IsChildOfCatalogReply\"\x00\x12o\n\x12GetChildCatalogIds\x12\x31.dlkit.proto.cataloging.GetChildCatalogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x10GetChildCatalogs\x12/.dlkit.proto.cataloging.GetChildCatalogsRequest\x1a\x1f.dlkit.proto.cataloging.Catalog\"\x00\x30\x01\x12\x83\x01\n\x15IsDescendantOfCatalog\x12\x34.dlkit.proto.cataloging.IsDescendantOfCatalogRequest\x1a\x32.dlkit.proto.cataloging.IsDescendantOfCatalogReply\"\x00\x12w\n\x11GetCatalogNodeIds\x12\x30.dlkit.proto.cataloging.GetCatalogNodeIdsRequest\x1a..dlkit.proto.cataloging.GetCatalogNodeIdsReply\"\x00\x12q\n\x0fGetCatalogNodes\x12..dlkit.proto.cataloging.GetCatalogNodesRequest\x1a,.dlkit.proto.cataloging.GetCatalogNodesReply\"\x00\x32\x8d\x08\n\x1d\x43\x61talogHierarchyDesignSession\x12\x83\x01\n\x15GetCatalogHierarchyId\x12\x34.dlkit.proto.cataloging.GetCatalogHierarchyIdRequest\x1a\x32.dlkit.proto.cataloging.GetCatalogHierarchyIdReply\"\x00\x12}\n\x13GetCatalogHierarchy\x12\x32.dlkit.proto.cataloging.GetCatalogHierarchyRequest\x1a\x30.dlkit.proto.cataloging.GetCatalogHierarchyReply\"\x00\x12\x8f\x01\n\x19\x43\x61nModifyCatalogHierarchy\x12\x38.dlkit.proto.cataloging.CanModifyCatalogHierarchyRequest\x1a\x36.dlkit.proto.cataloging.CanModifyCatalogHierarchyReply\"\x00\x12n\n\x0e\x41\x64\x64RootCatalog\x12-.dlkit.proto.cataloging.AddRootCatalogRequest\x1a+.dlkit.proto.cataloging.AddRootCatalogReply\"\x00\x12w\n\x11RemoveRootCatalog\x12\x30.dlkit.proto.cataloging.RemoveRootCatalogRequest\x1a..dlkit.proto.cataloging.RemoveRootCatalogReply\"\x00\x12q\n\x0f\x41\x64\x64\x43hildCatalog\x12..dlkit.proto.cataloging.AddChildCatalogRequest\x1a,.dlkit.proto.cataloging.AddChildCatalogReply\"\x00\x12z\n\x12RemoveChildCatalog\x12\x31.dlkit.proto.cataloging.RemoveChildCatalogRequest\x1a/.dlkit.proto.cataloging.RemoveChildCatalogReply\"\x00\x12}\n\x13RemoveChildCatalogs\x12\x32.dlkit.proto.cataloging.RemoveChildCatalogsRequest\x1a\x30.dlkit.proto.cataloging.RemoveChildCatalogsReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,])
 
@@ -45,14 +45,14 @@ _CATALOG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.cataloging.Catalog.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.cataloging.Catalog.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.cataloging.Catalog.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.cataloging.Catalog.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -66,7 +66,7 @@ _CATALOG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.cataloging.Catalog.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.cataloging.Catalog.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -85,7 +85,7 @@ _CATALOG = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=206,
-  serialized_end=527,
+  serialized_end=532,
 )
 
 
@@ -108,8 +108,8 @@ _CATALOGQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=529,
-  serialized_end=543,
+  serialized_start=534,
+  serialized_end=548,
 )
 
 
@@ -132,8 +132,8 @@ _CATALOGQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=545,
-  serialized_end=568,
+  serialized_start=550,
+  serialized_end=573,
 )
 
 
@@ -156,8 +156,8 @@ _CATALOGFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=570,
-  serialized_end=583,
+  serialized_start=575,
+  serialized_end=588,
 )
 
 
@@ -180,8 +180,8 @@ _CATALOGSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=585,
-  serialized_end=605,
+  serialized_start=590,
+  serialized_end=610,
 )
 
 
@@ -204,8 +204,8 @@ _CATALOGSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=607,
-  serialized_end=622,
+  serialized_start=612,
+  serialized_end=627,
 )
 
 
@@ -228,8 +228,8 @@ _CATALOGSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=624,
-  serialized_end=646,
+  serialized_start=629,
+  serialized_end=651,
 )
 
 
@@ -259,8 +259,8 @@ _CATALOGLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=648,
-  serialized_end=712,
+  serialized_start=653,
+  serialized_end=717,
 )
 
 
@@ -283,8 +283,8 @@ _CATALOGNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=714,
-  serialized_end=727,
+  serialized_start=719,
+  serialized_end=732,
 )
 
 
@@ -314,8 +314,8 @@ _CATALOGNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=729,
-  serialized_end=806,
+  serialized_start=734,
+  serialized_end=811,
 )
 
 
@@ -345,8 +345,8 @@ _CANLOOKUPCATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=808,
-  serialized_end=861,
+  serialized_start=813,
+  serialized_end=866,
 )
 
 
@@ -369,8 +369,8 @@ _CANLOOKUPCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=863,
-  serialized_end=889,
+  serialized_start=868,
+  serialized_end=894,
 )
 
 
@@ -393,8 +393,8 @@ _USECOMPARATIVECATALOGVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=891,
-  serialized_end=923,
+  serialized_start=896,
+  serialized_end=928,
 )
 
 
@@ -417,8 +417,8 @@ _USECOMPARATIVECATALOGVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=925,
-  serialized_end=959,
+  serialized_start=930,
+  serialized_end=964,
 )
 
 
@@ -441,8 +441,8 @@ _USEPLENARYCATALOGVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=961,
-  serialized_end=989,
+  serialized_start=966,
+  serialized_end=994,
 )
 
 
@@ -465,8 +465,8 @@ _USEPLENARYCATALOGVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=991,
-  serialized_end=1021,
+  serialized_start=996,
+  serialized_end=1026,
 )
 
 
@@ -496,8 +496,8 @@ _GETCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1023,
-  serialized_end=1090,
+  serialized_start=1028,
+  serialized_end=1095,
 )
 
 
@@ -527,8 +527,8 @@ _GETCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1092,
-  serialized_end=1167,
+  serialized_start=1097,
+  serialized_end=1172,
 )
 
 
@@ -558,8 +558,8 @@ _GETCATALOGSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1169,
-  serialized_end=1251,
+  serialized_start=1174,
+  serialized_end=1256,
 )
 
 
@@ -589,8 +589,8 @@ _GETCATALOGSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1253,
-  serialized_end=1352,
+  serialized_start=1258,
+  serialized_end=1357,
 )
 
 
@@ -620,8 +620,8 @@ _GETCATALOGSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1354,
-  serialized_end=1459,
+  serialized_start=1359,
+  serialized_end=1464,
 )
 
 
@@ -651,8 +651,8 @@ _GETCATALOGSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1461,
-  serialized_end=1562,
+  serialized_start=1466,
+  serialized_end=1567,
 )
 
 
@@ -682,8 +682,8 @@ _GETCATALOGSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1564,
-  serialized_end=1651,
+  serialized_start=1569,
+  serialized_end=1656,
 )
 
 
@@ -706,8 +706,8 @@ _GETCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1653,
-  serialized_end=1673,
+  serialized_start=1658,
+  serialized_end=1678,
 )
 
 
@@ -737,8 +737,8 @@ _CANSEARCHCATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1675,
-  serialized_end=1728,
+  serialized_start=1680,
+  serialized_end=1733,
 )
 
 
@@ -761,8 +761,8 @@ _CANSEARCHCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1730,
-  serialized_end=1756,
+  serialized_start=1735,
+  serialized_end=1761,
 )
 
 
@@ -792,8 +792,8 @@ _GETCATALOGQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1758,
-  serialized_end=1841,
+  serialized_start=1763,
+  serialized_end=1846,
 )
 
 
@@ -816,8 +816,8 @@ _GETCATALOGQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1843,
-  serialized_end=1867,
+  serialized_start=1848,
+  serialized_end=1872,
 )
 
 
@@ -847,8 +847,8 @@ _GETCATALOGSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1869,
-  serialized_end=1957,
+  serialized_start=1874,
+  serialized_end=1962,
 )
 
 
@@ -878,8 +878,8 @@ _CANCREATECATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1959,
-  serialized_end=2012,
+  serialized_start=1964,
+  serialized_end=2017,
 )
 
 
@@ -902,8 +902,8 @@ _CANCREATECATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2014,
-  serialized_end=2040,
+  serialized_start=2019,
+  serialized_end=2045,
 )
 
 
@@ -933,8 +933,8 @@ _CANCREATECATALOGWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2042,
-  serialized_end=2126,
+  serialized_start=2047,
+  serialized_end=2131,
 )
 
 
@@ -964,8 +964,8 @@ _CANCREATECATALOGWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2128,
-  serialized_end=2238,
+  serialized_start=2133,
+  serialized_end=2243,
 )
 
 
@@ -995,8 +995,8 @@ _GETCATALOGFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2240,
-  serialized_end=2329,
+  serialized_start=2245,
+  serialized_end=2334,
 )
 
 
@@ -1026,8 +1026,8 @@ _GETCATALOGFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2331,
-  serialized_end=2433,
+  serialized_start=2336,
+  serialized_end=2438,
 )
 
 
@@ -1057,8 +1057,8 @@ _CREATECATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2435,
-  serialized_end=2505,
+  serialized_start=2440,
+  serialized_end=2510,
 )
 
 
@@ -1088,8 +1088,8 @@ _CREATECATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2507,
-  serialized_end=2588,
+  serialized_start=2512,
+  serialized_end=2593,
 )
 
 
@@ -1119,8 +1119,8 @@ _CANUPDATECATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2590,
-  serialized_end=2643,
+  serialized_start=2595,
+  serialized_end=2648,
 )
 
 
@@ -1143,8 +1143,8 @@ _CANUPDATECATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2645,
-  serialized_end=2671,
+  serialized_start=2650,
+  serialized_end=2676,
 )
 
 
@@ -1174,8 +1174,8 @@ _GETCATALOGFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2673,
-  serialized_end=2762,
+  serialized_start=2678,
+  serialized_end=2767,
 )
 
 
@@ -1205,8 +1205,8 @@ _GETCATALOGFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2764,
-  serialized_end=2852,
+  serialized_start=2769,
+  serialized_end=2857,
 )
 
 
@@ -1229,8 +1229,8 @@ _UPDATECATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2854,
-  serialized_end=2874,
+  serialized_start=2859,
+  serialized_end=2879,
 )
 
 
@@ -1260,8 +1260,8 @@ _UPDATECATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2876,
-  serialized_end=2957,
+  serialized_start=2881,
+  serialized_end=2962,
 )
 
 
@@ -1291,8 +1291,8 @@ _CANDELETECATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2959,
-  serialized_end=3012,
+  serialized_start=2964,
+  serialized_end=3017,
 )
 
 
@@ -1315,8 +1315,8 @@ _CANDELETECATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3014,
-  serialized_end=3040,
+  serialized_start=3019,
+  serialized_end=3045,
 )
 
 
@@ -1339,8 +1339,8 @@ _DELETECATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3042,
-  serialized_end=3062,
+  serialized_start=3047,
+  serialized_end=3067,
 )
 
 
@@ -1370,8 +1370,8 @@ _DELETECATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3064,
-  serialized_end=3142,
+  serialized_start=3069,
+  serialized_end=3147,
 )
 
 
@@ -1401,8 +1401,8 @@ _CANMANAGECATALOGALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3144,
-  serialized_end=3210,
+  serialized_start=3149,
+  serialized_end=3215,
 )
 
 
@@ -1425,8 +1425,8 @@ _CANMANAGECATALOGALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3212,
-  serialized_end=3244,
+  serialized_start=3217,
+  serialized_end=3249,
 )
 
 
@@ -1449,8 +1449,8 @@ _ALIASCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3246,
-  serialized_end=3265,
+  serialized_start=3251,
+  serialized_end=3270,
 )
 
 
@@ -1487,8 +1487,8 @@ _ALIASCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3268,
-  serialized_end=3399,
+  serialized_start=3273,
+  serialized_end=3404,
 )
 
 
@@ -1518,8 +1518,8 @@ _GETCATALOGHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3401,
-  serialized_end=3477,
+  serialized_start=3406,
+  serialized_end=3482,
 )
 
 
@@ -1542,8 +1542,8 @@ _GETCATALOGHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3479,
-  serialized_end=3509,
+  serialized_start=3484,
+  serialized_end=3514,
 )
 
 
@@ -1573,8 +1573,8 @@ _GETCATALOGHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3511,
-  serialized_end=3590,
+  serialized_start=3516,
+  serialized_end=3595,
 )
 
 
@@ -1597,8 +1597,8 @@ _GETCATALOGHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3592,
-  serialized_end=3620,
+  serialized_start=3597,
+  serialized_end=3625,
 )
 
 
@@ -1628,8 +1628,8 @@ _CANACCESSCATALOGHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3622,
-  serialized_end=3692,
+  serialized_start=3627,
+  serialized_end=3697,
 )
 
 
@@ -1652,8 +1652,8 @@ _CANACCESSCATALOGHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3694,
-  serialized_end=3728,
+  serialized_start=3699,
+  serialized_end=3733,
 )
 
 
@@ -1676,8 +1676,8 @@ _GETROOTCATALOGIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3730,
-  serialized_end=3756,
+  serialized_start=3735,
+  serialized_end=3761,
 )
 
 
@@ -1700,8 +1700,8 @@ _GETROOTCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3758,
-  serialized_end=3782,
+  serialized_start=3763,
+  serialized_end=3787,
 )
 
 
@@ -1731,8 +1731,8 @@ _HASPARENTCATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3784,
-  serialized_end=3837,
+  serialized_start=3789,
+  serialized_end=3842,
 )
 
 
@@ -1762,8 +1762,8 @@ _HASPARENTCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3839,
-  serialized_end=3921,
+  serialized_start=3844,
+  serialized_end=3926,
 )
 
 
@@ -1793,8 +1793,8 @@ _ISPARENTOFCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3923,
-  serialized_end=3977,
+  serialized_start=3928,
+  serialized_end=3982,
 )
 
 
@@ -1831,8 +1831,8 @@ _ISPARENTOFCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3980,
-  serialized_end=4111,
+  serialized_start=3985,
+  serialized_end=4116,
 )
 
 
@@ -1862,8 +1862,8 @@ _GETPARENTCATALOGIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4113,
-  serialized_end=4197,
+  serialized_start=4118,
+  serialized_end=4202,
 )
 
 
@@ -1893,8 +1893,8 @@ _GETPARENTCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4199,
-  serialized_end=4281,
+  serialized_start=4204,
+  serialized_end=4286,
 )
 
 
@@ -1924,8 +1924,8 @@ _ISANCESTOROFCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4283,
-  serialized_end=4341,
+  serialized_start=4288,
+  serialized_end=4346,
 )
 
 
@@ -1962,8 +1962,8 @@ _ISANCESTOROFCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4344,
-  serialized_end=4477,
+  serialized_start=4349,
+  serialized_end=4482,
 )
 
 
@@ -1993,8 +1993,8 @@ _HASCHILDCATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4479,
-  serialized_end=4530,
+  serialized_start=4484,
+  serialized_end=4535,
 )
 
 
@@ -2024,8 +2024,8 @@ _HASCHILDCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4532,
-  serialized_end=4613,
+  serialized_start=4537,
+  serialized_end=4618,
 )
 
 
@@ -2055,8 +2055,8 @@ _ISCHILDOFCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4615,
-  serialized_end=4667,
+  serialized_start=4620,
+  serialized_end=4672,
 )
 
 
@@ -2093,8 +2093,8 @@ _ISCHILDOFCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4670,
-  serialized_end=4800,
+  serialized_start=4675,
+  serialized_end=4805,
 )
 
 
@@ -2124,8 +2124,8 @@ _GETCHILDCATALOGIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4802,
-  serialized_end=4885,
+  serialized_start=4807,
+  serialized_end=4890,
 )
 
 
@@ -2155,8 +2155,8 @@ _GETCHILDCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4887,
-  serialized_end=4968,
+  serialized_start=4892,
+  serialized_end=4973,
 )
 
 
@@ -2186,8 +2186,8 @@ _ISDESCENDANTOFCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4970,
-  serialized_end=5032,
+  serialized_start=4975,
+  serialized_end=5037,
 )
 
 
@@ -2224,8 +2224,8 @@ _ISDESCENDANTOFCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5035,
-  serialized_end=5170,
+  serialized_start=5040,
+  serialized_end=5175,
 )
 
 
@@ -2255,8 +2255,8 @@ _GETCATALOGNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5172,
-  serialized_end=5239,
+  serialized_start=5177,
+  serialized_end=5244,
 )
 
 
@@ -2307,8 +2307,8 @@ _GETCATALOGNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5242,
-  serialized_end=5402,
+  serialized_start=5247,
+  serialized_end=5407,
 )
 
 
@@ -2338,8 +2338,8 @@ _GETCATALOGNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5404,
-  serialized_end=5485,
+  serialized_start=5409,
+  serialized_end=5490,
 )
 
 
@@ -2390,8 +2390,8 @@ _GETCATALOGNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5488,
-  serialized_end=5646,
+  serialized_start=5493,
+  serialized_end=5651,
 )
 
 
@@ -2421,8 +2421,8 @@ _CANMODIFYCATALOGHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5648,
-  serialized_end=5718,
+  serialized_start=5653,
+  serialized_end=5723,
 )
 
 
@@ -2445,8 +2445,8 @@ _CANMODIFYCATALOGHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5720,
-  serialized_end=5754,
+  serialized_start=5725,
+  serialized_end=5759,
 )
 
 
@@ -2469,8 +2469,8 @@ _ADDROOTCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5756,
-  serialized_end=5777,
+  serialized_start=5761,
+  serialized_end=5782,
 )
 
 
@@ -2500,8 +2500,8 @@ _ADDROOTCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5779,
-  serialized_end=5858,
+  serialized_start=5784,
+  serialized_end=5863,
 )
 
 
@@ -2524,8 +2524,8 @@ _REMOVEROOTCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5860,
-  serialized_end=5884,
+  serialized_start=5865,
+  serialized_end=5889,
 )
 
 
@@ -2555,8 +2555,8 @@ _REMOVEROOTCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5886,
-  serialized_end=5968,
+  serialized_start=5891,
+  serialized_end=5973,
 )
 
 
@@ -2579,8 +2579,8 @@ _ADDCHILDCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5970,
-  serialized_end=5992,
+  serialized_start=5975,
+  serialized_end=5997,
 )
 
 
@@ -2617,8 +2617,8 @@ _ADDCHILDCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5995,
-  serialized_end=6129,
+  serialized_start=6000,
+  serialized_end=6134,
 )
 
 
@@ -2641,8 +2641,8 @@ _REMOVECHILDCATALOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6131,
-  serialized_end=6156,
+  serialized_start=6136,
+  serialized_end=6161,
 )
 
 
@@ -2679,8 +2679,8 @@ _REMOVECHILDCATALOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6159,
-  serialized_end=6296,
+  serialized_start=6164,
+  serialized_end=6301,
 )
 
 
@@ -2703,8 +2703,8 @@ _REMOVECHILDCATALOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6298,
-  serialized_end=6324,
+  serialized_start=6303,
+  serialized_end=6329,
 )
 
 
@@ -2734,15 +2734,15 @@ _REMOVECHILDCATALOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6326,
-  serialized_end=6410,
+  serialized_start=6331,
+  serialized_end=6415,
 )
 
 _CATALOG.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CATALOG.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CATALOG.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CATALOG.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_CATALOG.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CATALOG.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_CATALOG.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CATALOG.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CATALOGLIST.fields_by_name['catalogs'].message_type = _CATALOG
 _CATALOGNODELIST.fields_by_name['catalog_nodes'].message_type = _CATALOGNODE
 _GETCATALOGREPLY.fields_by_name['catalog'].message_type = _CATALOG
@@ -3530,8 +3530,8 @@ _CATALOGLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=6413,
-  serialized_end=7623,
+  serialized_start=6418,
+  serialized_end=7628,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupCatalogs',
@@ -3635,8 +3635,8 @@ _CATALOGQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=7626,
-  serialized_end=7993,
+  serialized_start=7631,
+  serialized_end=7998,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanSearchCatalogs',
@@ -3677,8 +3677,8 @@ _CATALOGADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=7996,
-  serialized_end=9397,
+  serialized_start=8001,
+  serialized_end=9402,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateCatalogs',
@@ -3791,8 +3791,8 @@ _CATALOGHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=9400,
-  serialized_end=11744,
+  serialized_start=9405,
+  serialized_end=11749,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetCatalogHierarchyId',
@@ -3977,8 +3977,8 @@ _CATALOGHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=11747,
-  serialized_end=12784,
+  serialized_start=11752,
+  serialized_end=12789,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetCatalogHierarchyId',

@@ -19,18 +19,18 @@ message Asset {
   string copyright_registration = 4;
   google.protobuf.Timestamp created_date = 5;
   dlkit.primordium.locale.primitives.DisplayText description = 6;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 7;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 7;
   bool distribute_alterations = 8;
   bool distribute_compositions = 9;
   bool distribute_verbatim = 10;
-  dlkit.primordium.type.primitives.Type genusTypeId = 11;
+  dlkit.primordium.type.primitives.Type genus_type_id = 11;
   dlkit.primordium.id.primitives.Id id = 12;
   string principal_credit_string = 13;
   repeated dlkit.primordium.id.primitives.Id provider_links = 14;
   bool public_domain = 15;
   bool published = 16;
   google.protobuf.Timestamp published_date = 17;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 18;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 18;
   dlkit.proto.osid.OsidCatalog repository = 19;
   dlkit.primordium.id.primitives.Id source = 20;
   string title = 21;
@@ -69,10 +69,10 @@ message AssetContent {
   dlkit.primordium.id.primitives.Id asset = 2;
   dlkit.primordium.transport.objects.DataInputStream data = 3;
   dlkit.primordium.locale.primitives.DisplayText description = 4;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 5;
-  dlkit.primordium.type.primitives.Type genusTypeId = 6;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 5;
+  dlkit.primordium.type.primitives.Type genus_type_id = 6;
   dlkit.primordium.id.primitives.Id id = 7;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 8;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 8;
   dlkit.proto.osid.OsidCatalog repository = 9;
   string url = 10;
 }
@@ -96,10 +96,10 @@ message AssetContentList {
 message Composition {
   repeated dlkit.primordium.id.primitives.Id children = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
-  dlkit.primordium.type.primitives.Type genusTypeId = 4;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
+  dlkit.primordium.type.primitives.Type genus_type_id = 4;
   dlkit.primordium.id.primitives.Id id = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
   dlkit.proto.osid.OsidCatalog repository = 7;
 }
 
@@ -133,10 +133,10 @@ message CompositionList {
 
 message Repository {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message RepositoryQuery {

@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/hierarchy.proto',
   package='dlkit.proto.hierarchy',
   syntax='proto3',
-  serialized_pb=_b('\n\x1b\x64lkit/proto/hierarchy.proto\x12\x15\x64lkit.proto.hierarchy\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\"\xc3\x02\n\tHierarchy\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x10\n\x0eHierarchyQuery\"\x19\n\x17HierarchyQueryInspector\"\x0f\n\rHierarchyForm\"\x16\n\x14HierarchySearchOrder\"\x11\n\x0fHierarchySearch\"\x18\n\x16HierarchySearchResults\"F\n\rHierarchyList\x12\x35\n\x0bhierarchies\x18\x01 \x03(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x06\n\x04Node\"6\n\x08NodeList\x12*\n\x05nodes\x18\x01 \x03(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"E\n\x13GetHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15GetHierarchyIdRequest\"H\n\x11GetHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x15\n\x13GetHierarchyRequest\"7\n\x17\x43\x61nAccessHierarchyReply\x12\x1c\n\x14\x63\x61n_access_hierarchy\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nAccessHierarchyRequest\"\x11\n\x0fGetRootsRequest\"&\n\x0fHasParentsReply\x12\x13\n\x0bhas_parents\x18\x01 \x01(\x08\"D\n\x11HasParentsRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n\rIsParentReply\x12\x11\n\tis_parent\x18\x01 \x01(\x08\"y\n\x0fIsParentRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tparent_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x11GetParentsRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"&\n\x0fIsAncestorReply\x12\x13\n\x0bis_ancestor\x18\x01 \x01(\x08\"}\n\x11IsAncestorRequest\x12\x37\n\x0b\x61ncestor_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n\x10HasChildrenReply\x12\x14\n\x0chas_children\x18\x01 \x01(\x08\"E\n\x12HasChildrenRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x0cIsChildReply\x12\x10\n\x08is_child\x18\x01 \x01(\x08\"w\n\x0eIsChildRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x12GetChildrenRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"*\n\x11IsDescendantReply\x12\x15\n\ris_descendant\x18\x01 \x01(\x08\"\x81\x01\n\x13IsDescendantRequest\x12\x39\n\rdescendant_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\rGetNodesReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x90\x01\n\x0fGetNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12/\n\x03id_\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"7\n\x17\x43\x61nModifyHierarchyReply\x12\x1c\n\x14\x63\x61n_modify_hierarchy\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nModifyHierarchyRequest\"\x0e\n\x0c\x41\x64\x64RootReply\"A\n\x0e\x41\x64\x64RootRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rAddChildReply\"x\n\x0f\x41\x64\x64\x43hildRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fRemoveRootReply\"D\n\x11RemoveRootRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10RemoveChildReply\"{\n\x12RemoveChildRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveChildrenReply\"H\n\x15RemoveChildrenRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nLookupHierarchiesReply\x12\x1e\n\x16\x63\x61n_lookup_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nLookupHierarchiesRequest\"\"\n UseComparativeHierarchyViewReply\"$\n\"UseComparativeHierarchyViewRequest\"\x1e\n\x1cUsePlenaryHierarchyViewReply\" \n\x1eUsePlenaryHierarchyViewRequest\"W\n\x1aGetHierarchiesByIdsRequest\x12\x39\n\rhierarchy_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n GetHierarchiesByGenusTypeRequest\x12\x44\n\x14hierarchy_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"n\n&GetHierarchiesByParentGenusTypeRequest\x12\x44\n\x14hierarchy_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n!GetHierarchiesByRecordTypeRequest\x12\x45\n\x15hierarchy_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1fGetHierarchiesByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15GetHierarchiesRequest\";\n\x19\x43\x61nCreateHierarchiesReply\x12\x1e\n\x16\x63\x61n_create_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nCreateHierarchiesRequest\"X\n&CanCreateHierarchyWithRecordTypesReply\x12.\n&can_create_hierarchy_with_record_types\x18\x01 \x01(\x08\"r\n(CanCreateHierarchyWithRecordTypesRequest\x12\x46\n\x16hierarchy_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"^\n\x1eGetHierarchyFormForCreateReply\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\"j\n GetHierarchyFormForCreateRequest\x12\x46\n\x16hierarchy_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"K\n\x14\x43reateHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"V\n\x16\x43reateHierarchyRequest\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\";\n\x19\x43\x61nUpdateHierarchiesReply\x12\x1e\n\x16\x63\x61n_update_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nUpdateHierarchiesRequest\"^\n\x1eGetHierarchyFormForUpdateReply\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\"\\\n GetHierarchyFormForUpdateRequest\x12\x38\n\x0chierarchy_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14UpdateHierarchyReply\"V\n\x16UpdateHierarchyRequest\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\";\n\x19\x43\x61nDeleteHierarchiesReply\x12\x1e\n\x16\x63\x61n_delete_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nDeleteHierarchiesRequest\"\x16\n\x14\x44\x65leteHierarchyReply\"R\n\x16\x44\x65leteHierarchyRequest\x12\x38\n\x0chierarchy_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nManageHierarchyAliasesReply\x12$\n\x1c\x63\x61n_manage_hierarchy_aliases\x18\x01 \x01(\x08\"\"\n CanManageHierarchyAliasesRequest\"\x15\n\x13\x41liasHierarchyReply\"\x87\x01\n\x15\x41liasHierarchyRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0chierarchy_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xab\n\n\x19HierarchyTraversalSession\x12l\n\x0eGetHierarchyId\x12,.dlkit.proto.hierarchy.GetHierarchyIdRequest\x1a*.dlkit.proto.hierarchy.GetHierarchyIdReply\"\x00\x12\x66\n\x0cGetHierarchy\x12*.dlkit.proto.hierarchy.GetHierarchyRequest\x1a(.dlkit.proto.hierarchy.GetHierarchyReply\"\x00\x12x\n\x12\x43\x61nAccessHierarchy\x12\x30.dlkit.proto.hierarchy.CanAccessHierarchyRequest\x1a..dlkit.proto.hierarchy.CanAccessHierarchyReply\"\x00\x12Z\n\x08GetRoots\x12&.dlkit.proto.hierarchy.GetRootsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12`\n\nHasParents\x12(.dlkit.proto.hierarchy.HasParentsRequest\x1a&.dlkit.proto.hierarchy.HasParentsReply\"\x00\x12Z\n\x08IsParent\x12&.dlkit.proto.hierarchy.IsParentRequest\x1a$.dlkit.proto.hierarchy.IsParentReply\"\x00\x12^\n\nGetParents\x12(.dlkit.proto.hierarchy.GetParentsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12`\n\nIsAncestor\x12(.dlkit.proto.hierarchy.IsAncestorRequest\x1a&.dlkit.proto.hierarchy.IsAncestorReply\"\x00\x12\x63\n\x0bHasChildren\x12).dlkit.proto.hierarchy.HasChildrenRequest\x1a\'.dlkit.proto.hierarchy.HasChildrenReply\"\x00\x12W\n\x07IsChild\x12%.dlkit.proto.hierarchy.IsChildRequest\x1a#.dlkit.proto.hierarchy.IsChildReply\"\x00\x12`\n\x0bGetChildren\x12).dlkit.proto.hierarchy.GetChildrenRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\x0cIsDescendant\x12*.dlkit.proto.hierarchy.IsDescendantRequest\x1a(.dlkit.proto.hierarchy.IsDescendantReply\"\x00\x12Z\n\x08GetNodes\x12&.dlkit.proto.hierarchy.GetNodesRequest\x1a$.dlkit.proto.hierarchy.GetNodesReply\"\x00\x32\xd2\x06\n\x16HierarchyDesignSession\x12l\n\x0eGetHierarchyId\x12,.dlkit.proto.hierarchy.GetHierarchyIdRequest\x1a*.dlkit.proto.hierarchy.GetHierarchyIdReply\"\x00\x12\x66\n\x0cGetHierarchy\x12*.dlkit.proto.hierarchy.GetHierarchyRequest\x1a(.dlkit.proto.hierarchy.GetHierarchyReply\"\x00\x12x\n\x12\x43\x61nModifyHierarchy\x12\x30.dlkit.proto.hierarchy.CanModifyHierarchyRequest\x1a..dlkit.proto.hierarchy.CanModifyHierarchyReply\"\x00\x12W\n\x07\x41\x64\x64Root\x12%.dlkit.proto.hierarchy.AddRootRequest\x1a#.dlkit.proto.hierarchy.AddRootReply\"\x00\x12Z\n\x08\x41\x64\x64\x43hild\x12&.dlkit.proto.hierarchy.AddChildRequest\x1a$.dlkit.proto.hierarchy.AddChildReply\"\x00\x12`\n\nRemoveRoot\x12(.dlkit.proto.hierarchy.RemoveRootRequest\x1a&.dlkit.proto.hierarchy.RemoveRootReply\"\x00\x12\x63\n\x0bRemoveChild\x12).dlkit.proto.hierarchy.RemoveChildRequest\x1a\'.dlkit.proto.hierarchy.RemoveChildReply\"\x00\x12l\n\x0eRemoveChildren\x12,.dlkit.proto.hierarchy.RemoveChildrenRequest\x1a*.dlkit.proto.hierarchy.RemoveChildrenReply\"\x00\x32\xf3\t\n\x16HierarchyLookupSession\x12~\n\x14\x43\x61nLookupHierarchies\x12\x32.dlkit.proto.hierarchy.CanLookupHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanLookupHierarchiesReply\"\x00\x12\x93\x01\n\x1bUseComparativeHierarchyView\x12\x39.dlkit.proto.hierarchy.UseComparativeHierarchyViewRequest\x1a\x37.dlkit.proto.hierarchy.UseComparativeHierarchyViewReply\"\x00\x12\x87\x01\n\x17UsePlenaryHierarchyView\x12\x35.dlkit.proto.hierarchy.UsePlenaryHierarchyViewRequest\x1a\x33.dlkit.proto.hierarchy.UsePlenaryHierarchyViewReply\"\x00\x12\x66\n\x0cGetHierarchy\x12*.dlkit.proto.hierarchy.GetHierarchyRequest\x1a(.dlkit.proto.hierarchy.GetHierarchyReply\"\x00\x12n\n\x13GetHierarchiesByIds\x12\x31.dlkit.proto.hierarchy.GetHierarchiesByIdsRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12z\n\x19GetHierarchiesByGenusType\x12\x37.dlkit.proto.hierarchy.GetHierarchiesByGenusTypeRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12\x86\x01\n\x1fGetHierarchiesByParentGenusType\x12=.dlkit.proto.hierarchy.GetHierarchiesByParentGenusTypeRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12|\n\x1aGetHierarchiesByRecordType\x12\x38.dlkit.proto.hierarchy.GetHierarchiesByRecordTypeRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12x\n\x18GetHierarchiesByProvider\x12\x36.dlkit.proto.hierarchy.GetHierarchiesByProviderRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12\x64\n\x0eGetHierarchies\x12,.dlkit.proto.hierarchy.GetHierarchiesRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x32\xb0\x0b\n\x15HierarchyAdminSession\x12~\n\x14\x43\x61nCreateHierarchies\x12\x32.dlkit.proto.hierarchy.CanCreateHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanCreateHierarchiesReply\"\x00\x12\xa5\x01\n!CanCreateHierarchyWithRecordTypes\x12?.dlkit.proto.hierarchy.CanCreateHierarchyWithRecordTypesRequest\x1a=.dlkit.proto.hierarchy.CanCreateHierarchyWithRecordTypesReply\"\x00\x12\x8d\x01\n\x19GetHierarchyFormForCreate\x12\x37.dlkit.proto.hierarchy.GetHierarchyFormForCreateRequest\x1a\x35.dlkit.proto.hierarchy.GetHierarchyFormForCreateReply\"\x00\x12o\n\x0f\x43reateHierarchy\x12-.dlkit.proto.hierarchy.CreateHierarchyRequest\x1a+.dlkit.proto.hierarchy.CreateHierarchyReply\"\x00\x12~\n\x14\x43\x61nUpdateHierarchies\x12\x32.dlkit.proto.hierarchy.CanUpdateHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanUpdateHierarchiesReply\"\x00\x12\x8d\x01\n\x19GetHierarchyFormForUpdate\x12\x37.dlkit.proto.hierarchy.GetHierarchyFormForUpdateRequest\x1a\x35.dlkit.proto.hierarchy.GetHierarchyFormForUpdateReply\"\x00\x12o\n\x0fUpdateHierarchy\x12-.dlkit.proto.hierarchy.UpdateHierarchyRequest\x1a+.dlkit.proto.hierarchy.UpdateHierarchyReply\"\x00\x12~\n\x14\x43\x61nDeleteHierarchies\x12\x32.dlkit.proto.hierarchy.CanDeleteHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanDeleteHierarchiesReply\"\x00\x12o\n\x0f\x44\x65leteHierarchy\x12-.dlkit.proto.hierarchy.DeleteHierarchyRequest\x1a+.dlkit.proto.hierarchy.DeleteHierarchyReply\"\x00\x12\x8d\x01\n\x19\x43\x61nManageHierarchyAliases\x12\x37.dlkit.proto.hierarchy.CanManageHierarchyAliasesRequest\x1a\x35.dlkit.proto.hierarchy.CanManageHierarchyAliasesReply\"\x00\x12l\n\x0e\x41liasHierarchy\x12,.dlkit.proto.hierarchy.AliasHierarchyRequest\x1a*.dlkit.proto.hierarchy.AliasHierarchyReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1b\x64lkit/proto/hierarchy.proto\x12\x15\x64lkit.proto.hierarchy\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\"\xc8\x02\n\tHierarchy\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x10\n\x0eHierarchyQuery\"\x19\n\x17HierarchyQueryInspector\"\x0f\n\rHierarchyForm\"\x16\n\x14HierarchySearchOrder\"\x11\n\x0fHierarchySearch\"\x18\n\x16HierarchySearchResults\"F\n\rHierarchyList\x12\x35\n\x0bhierarchies\x18\x01 \x03(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x06\n\x04Node\"6\n\x08NodeList\x12*\n\x05nodes\x18\x01 \x03(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"E\n\x13GetHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15GetHierarchyIdRequest\"H\n\x11GetHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x15\n\x13GetHierarchyRequest\"7\n\x17\x43\x61nAccessHierarchyReply\x12\x1c\n\x14\x63\x61n_access_hierarchy\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nAccessHierarchyRequest\"\x11\n\x0fGetRootsRequest\"&\n\x0fHasParentsReply\x12\x13\n\x0bhas_parents\x18\x01 \x01(\x08\"D\n\x11HasParentsRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n\rIsParentReply\x12\x11\n\tis_parent\x18\x01 \x01(\x08\"y\n\x0fIsParentRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tparent_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x11GetParentsRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"&\n\x0fIsAncestorReply\x12\x13\n\x0bis_ancestor\x18\x01 \x01(\x08\"}\n\x11IsAncestorRequest\x12\x37\n\x0b\x61ncestor_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n\x10HasChildrenReply\x12\x14\n\x0chas_children\x18\x01 \x01(\x08\"E\n\x12HasChildrenRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x0cIsChildReply\x12\x10\n\x08is_child\x18\x01 \x01(\x08\"w\n\x0eIsChildRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x12GetChildrenRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"*\n\x11IsDescendantReply\x12\x15\n\ris_descendant\x18\x01 \x01(\x08\"\x81\x01\n\x13IsDescendantRequest\x12\x39\n\rdescendant_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\rGetNodesReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x90\x01\n\x0fGetNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12/\n\x03id_\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"7\n\x17\x43\x61nModifyHierarchyReply\x12\x1c\n\x14\x63\x61n_modify_hierarchy\x18\x01 \x01(\x08\"\x1b\n\x19\x43\x61nModifyHierarchyRequest\"\x0e\n\x0c\x41\x64\x64RootReply\"A\n\x0e\x41\x64\x64RootRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rAddChildReply\"x\n\x0f\x41\x64\x64\x43hildRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fRemoveRootReply\"D\n\x11RemoveRootRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10RemoveChildReply\"{\n\x12RemoveChildRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveChildrenReply\"H\n\x15RemoveChildrenRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\";\n\x19\x43\x61nLookupHierarchiesReply\x12\x1e\n\x16\x63\x61n_lookup_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nLookupHierarchiesRequest\"\"\n UseComparativeHierarchyViewReply\"$\n\"UseComparativeHierarchyViewRequest\"\x1e\n\x1cUsePlenaryHierarchyViewReply\" \n\x1eUsePlenaryHierarchyViewRequest\"W\n\x1aGetHierarchiesByIdsRequest\x12\x39\n\rhierarchy_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n GetHierarchiesByGenusTypeRequest\x12\x44\n\x14hierarchy_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"n\n&GetHierarchiesByParentGenusTypeRequest\x12\x44\n\x14hierarchy_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n!GetHierarchiesByRecordTypeRequest\x12\x45\n\x15hierarchy_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1fGetHierarchiesByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15GetHierarchiesRequest\";\n\x19\x43\x61nCreateHierarchiesReply\x12\x1e\n\x16\x63\x61n_create_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nCreateHierarchiesRequest\"X\n&CanCreateHierarchyWithRecordTypesReply\x12.\n&can_create_hierarchy_with_record_types\x18\x01 \x01(\x08\"r\n(CanCreateHierarchyWithRecordTypesRequest\x12\x46\n\x16hierarchy_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"^\n\x1eGetHierarchyFormForCreateReply\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\"j\n GetHierarchyFormForCreateRequest\x12\x46\n\x16hierarchy_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"K\n\x14\x43reateHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"V\n\x16\x43reateHierarchyRequest\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\";\n\x19\x43\x61nUpdateHierarchiesReply\x12\x1e\n\x16\x63\x61n_update_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nUpdateHierarchiesRequest\"^\n\x1eGetHierarchyFormForUpdateReply\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\"\\\n GetHierarchyFormForUpdateRequest\x12\x38\n\x0chierarchy_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14UpdateHierarchyReply\"V\n\x16UpdateHierarchyRequest\x12<\n\x0ehierarchy_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.hierarchy.HierarchyForm\";\n\x19\x43\x61nDeleteHierarchiesReply\x12\x1e\n\x16\x63\x61n_delete_hierarchies\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nDeleteHierarchiesRequest\"\x16\n\x14\x44\x65leteHierarchyReply\"R\n\x16\x44\x65leteHierarchyRequest\x12\x38\n\x0chierarchy_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nManageHierarchyAliasesReply\x12$\n\x1c\x63\x61n_manage_hierarchy_aliases\x18\x01 \x01(\x08\"\"\n CanManageHierarchyAliasesRequest\"\x15\n\x13\x41liasHierarchyReply\"\x87\x01\n\x15\x41liasHierarchyRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0chierarchy_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xab\n\n\x19HierarchyTraversalSession\x12l\n\x0eGetHierarchyId\x12,.dlkit.proto.hierarchy.GetHierarchyIdRequest\x1a*.dlkit.proto.hierarchy.GetHierarchyIdReply\"\x00\x12\x66\n\x0cGetHierarchy\x12*.dlkit.proto.hierarchy.GetHierarchyRequest\x1a(.dlkit.proto.hierarchy.GetHierarchyReply\"\x00\x12x\n\x12\x43\x61nAccessHierarchy\x12\x30.dlkit.proto.hierarchy.CanAccessHierarchyRequest\x1a..dlkit.proto.hierarchy.CanAccessHierarchyReply\"\x00\x12Z\n\x08GetRoots\x12&.dlkit.proto.hierarchy.GetRootsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12`\n\nHasParents\x12(.dlkit.proto.hierarchy.HasParentsRequest\x1a&.dlkit.proto.hierarchy.HasParentsReply\"\x00\x12Z\n\x08IsParent\x12&.dlkit.proto.hierarchy.IsParentRequest\x1a$.dlkit.proto.hierarchy.IsParentReply\"\x00\x12^\n\nGetParents\x12(.dlkit.proto.hierarchy.GetParentsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12`\n\nIsAncestor\x12(.dlkit.proto.hierarchy.IsAncestorRequest\x1a&.dlkit.proto.hierarchy.IsAncestorReply\"\x00\x12\x63\n\x0bHasChildren\x12).dlkit.proto.hierarchy.HasChildrenRequest\x1a\'.dlkit.proto.hierarchy.HasChildrenReply\"\x00\x12W\n\x07IsChild\x12%.dlkit.proto.hierarchy.IsChildRequest\x1a#.dlkit.proto.hierarchy.IsChildReply\"\x00\x12`\n\x0bGetChildren\x12).dlkit.proto.hierarchy.GetChildrenRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\x0cIsDescendant\x12*.dlkit.proto.hierarchy.IsDescendantRequest\x1a(.dlkit.proto.hierarchy.IsDescendantReply\"\x00\x12Z\n\x08GetNodes\x12&.dlkit.proto.hierarchy.GetNodesRequest\x1a$.dlkit.proto.hierarchy.GetNodesReply\"\x00\x32\xd2\x06\n\x16HierarchyDesignSession\x12l\n\x0eGetHierarchyId\x12,.dlkit.proto.hierarchy.GetHierarchyIdRequest\x1a*.dlkit.proto.hierarchy.GetHierarchyIdReply\"\x00\x12\x66\n\x0cGetHierarchy\x12*.dlkit.proto.hierarchy.GetHierarchyRequest\x1a(.dlkit.proto.hierarchy.GetHierarchyReply\"\x00\x12x\n\x12\x43\x61nModifyHierarchy\x12\x30.dlkit.proto.hierarchy.CanModifyHierarchyRequest\x1a..dlkit.proto.hierarchy.CanModifyHierarchyReply\"\x00\x12W\n\x07\x41\x64\x64Root\x12%.dlkit.proto.hierarchy.AddRootRequest\x1a#.dlkit.proto.hierarchy.AddRootReply\"\x00\x12Z\n\x08\x41\x64\x64\x43hild\x12&.dlkit.proto.hierarchy.AddChildRequest\x1a$.dlkit.proto.hierarchy.AddChildReply\"\x00\x12`\n\nRemoveRoot\x12(.dlkit.proto.hierarchy.RemoveRootRequest\x1a&.dlkit.proto.hierarchy.RemoveRootReply\"\x00\x12\x63\n\x0bRemoveChild\x12).dlkit.proto.hierarchy.RemoveChildRequest\x1a\'.dlkit.proto.hierarchy.RemoveChildReply\"\x00\x12l\n\x0eRemoveChildren\x12,.dlkit.proto.hierarchy.RemoveChildrenRequest\x1a*.dlkit.proto.hierarchy.RemoveChildrenReply\"\x00\x32\xf3\t\n\x16HierarchyLookupSession\x12~\n\x14\x43\x61nLookupHierarchies\x12\x32.dlkit.proto.hierarchy.CanLookupHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanLookupHierarchiesReply\"\x00\x12\x93\x01\n\x1bUseComparativeHierarchyView\x12\x39.dlkit.proto.hierarchy.UseComparativeHierarchyViewRequest\x1a\x37.dlkit.proto.hierarchy.UseComparativeHierarchyViewReply\"\x00\x12\x87\x01\n\x17UsePlenaryHierarchyView\x12\x35.dlkit.proto.hierarchy.UsePlenaryHierarchyViewRequest\x1a\x33.dlkit.proto.hierarchy.UsePlenaryHierarchyViewReply\"\x00\x12\x66\n\x0cGetHierarchy\x12*.dlkit.proto.hierarchy.GetHierarchyRequest\x1a(.dlkit.proto.hierarchy.GetHierarchyReply\"\x00\x12n\n\x13GetHierarchiesByIds\x12\x31.dlkit.proto.hierarchy.GetHierarchiesByIdsRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12z\n\x19GetHierarchiesByGenusType\x12\x37.dlkit.proto.hierarchy.GetHierarchiesByGenusTypeRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12\x86\x01\n\x1fGetHierarchiesByParentGenusType\x12=.dlkit.proto.hierarchy.GetHierarchiesByParentGenusTypeRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12|\n\x1aGetHierarchiesByRecordType\x12\x38.dlkit.proto.hierarchy.GetHierarchiesByRecordTypeRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12x\n\x18GetHierarchiesByProvider\x12\x36.dlkit.proto.hierarchy.GetHierarchiesByProviderRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x12\x64\n\x0eGetHierarchies\x12,.dlkit.proto.hierarchy.GetHierarchiesRequest\x1a .dlkit.proto.hierarchy.Hierarchy\"\x00\x30\x01\x32\xb0\x0b\n\x15HierarchyAdminSession\x12~\n\x14\x43\x61nCreateHierarchies\x12\x32.dlkit.proto.hierarchy.CanCreateHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanCreateHierarchiesReply\"\x00\x12\xa5\x01\n!CanCreateHierarchyWithRecordTypes\x12?.dlkit.proto.hierarchy.CanCreateHierarchyWithRecordTypesRequest\x1a=.dlkit.proto.hierarchy.CanCreateHierarchyWithRecordTypesReply\"\x00\x12\x8d\x01\n\x19GetHierarchyFormForCreate\x12\x37.dlkit.proto.hierarchy.GetHierarchyFormForCreateRequest\x1a\x35.dlkit.proto.hierarchy.GetHierarchyFormForCreateReply\"\x00\x12o\n\x0f\x43reateHierarchy\x12-.dlkit.proto.hierarchy.CreateHierarchyRequest\x1a+.dlkit.proto.hierarchy.CreateHierarchyReply\"\x00\x12~\n\x14\x43\x61nUpdateHierarchies\x12\x32.dlkit.proto.hierarchy.CanUpdateHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanUpdateHierarchiesReply\"\x00\x12\x8d\x01\n\x19GetHierarchyFormForUpdate\x12\x37.dlkit.proto.hierarchy.GetHierarchyFormForUpdateRequest\x1a\x35.dlkit.proto.hierarchy.GetHierarchyFormForUpdateReply\"\x00\x12o\n\x0fUpdateHierarchy\x12-.dlkit.proto.hierarchy.UpdateHierarchyRequest\x1a+.dlkit.proto.hierarchy.UpdateHierarchyReply\"\x00\x12~\n\x14\x43\x61nDeleteHierarchies\x12\x32.dlkit.proto.hierarchy.CanDeleteHierarchiesRequest\x1a\x30.dlkit.proto.hierarchy.CanDeleteHierarchiesReply\"\x00\x12o\n\x0f\x44\x65leteHierarchy\x12-.dlkit.proto.hierarchy.DeleteHierarchyRequest\x1a+.dlkit.proto.hierarchy.DeleteHierarchyReply\"\x00\x12\x8d\x01\n\x19\x43\x61nManageHierarchyAliases\x12\x37.dlkit.proto.hierarchy.CanManageHierarchyAliasesRequest\x1a\x35.dlkit.proto.hierarchy.CanManageHierarchyAliasesReply\"\x00\x12l\n\x0e\x41liasHierarchy\x12,.dlkit.proto.hierarchy.AliasHierarchyRequest\x1a*.dlkit.proto.hierarchy.AliasHierarchyReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,])
 
@@ -44,14 +44,14 @@ _HIERARCHY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.hierarchy.Hierarchy.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.hierarchy.Hierarchy.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.hierarchy.Hierarchy.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.hierarchy.Hierarchy.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -65,7 +65,7 @@ _HIERARCHY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.hierarchy.Hierarchy.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.hierarchy.Hierarchy.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -84,7 +84,7 @@ _HIERARCHY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=175,
-  serialized_end=498,
+  serialized_end=503,
 )
 
 
@@ -107,8 +107,8 @@ _HIERARCHYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=500,
-  serialized_end=516,
+  serialized_start=505,
+  serialized_end=521,
 )
 
 
@@ -131,8 +131,8 @@ _HIERARCHYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=518,
-  serialized_end=543,
+  serialized_start=523,
+  serialized_end=548,
 )
 
 
@@ -155,8 +155,8 @@ _HIERARCHYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=545,
-  serialized_end=560,
+  serialized_start=550,
+  serialized_end=565,
 )
 
 
@@ -179,8 +179,8 @@ _HIERARCHYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=562,
-  serialized_end=584,
+  serialized_start=567,
+  serialized_end=589,
 )
 
 
@@ -203,8 +203,8 @@ _HIERARCHYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=586,
-  serialized_end=603,
+  serialized_start=591,
+  serialized_end=608,
 )
 
 
@@ -227,8 +227,8 @@ _HIERARCHYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=605,
-  serialized_end=629,
+  serialized_start=610,
+  serialized_end=634,
 )
 
 
@@ -258,8 +258,8 @@ _HIERARCHYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=631,
-  serialized_end=701,
+  serialized_start=636,
+  serialized_end=706,
 )
 
 
@@ -282,8 +282,8 @@ _NODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=703,
-  serialized_end=709,
+  serialized_start=708,
+  serialized_end=714,
 )
 
 
@@ -313,8 +313,8 @@ _NODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=711,
-  serialized_end=765,
+  serialized_start=716,
+  serialized_end=770,
 )
 
 
@@ -344,8 +344,8 @@ _GETHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=767,
-  serialized_end=836,
+  serialized_start=772,
+  serialized_end=841,
 )
 
 
@@ -368,8 +368,8 @@ _GETHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=838,
-  serialized_end=861,
+  serialized_start=843,
+  serialized_end=866,
 )
 
 
@@ -399,8 +399,8 @@ _GETHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=863,
-  serialized_end=935,
+  serialized_start=868,
+  serialized_end=940,
 )
 
 
@@ -423,8 +423,8 @@ _GETHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=937,
-  serialized_end=958,
+  serialized_start=942,
+  serialized_end=963,
 )
 
 
@@ -454,8 +454,8 @@ _CANACCESSHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=960,
-  serialized_end=1015,
+  serialized_start=965,
+  serialized_end=1020,
 )
 
 
@@ -478,8 +478,8 @@ _CANACCESSHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1017,
-  serialized_end=1044,
+  serialized_start=1022,
+  serialized_end=1049,
 )
 
 
@@ -502,8 +502,8 @@ _GETROOTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1046,
-  serialized_end=1063,
+  serialized_start=1051,
+  serialized_end=1068,
 )
 
 
@@ -533,8 +533,8 @@ _HASPARENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1065,
-  serialized_end=1103,
+  serialized_start=1070,
+  serialized_end=1108,
 )
 
 
@@ -564,8 +564,8 @@ _HASPARENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1105,
-  serialized_end=1173,
+  serialized_start=1110,
+  serialized_end=1178,
 )
 
 
@@ -595,8 +595,8 @@ _ISPARENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1175,
-  serialized_end=1209,
+  serialized_start=1180,
+  serialized_end=1214,
 )
 
 
@@ -633,8 +633,8 @@ _ISPARENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1211,
-  serialized_end=1332,
+  serialized_start=1216,
+  serialized_end=1337,
 )
 
 
@@ -664,8 +664,8 @@ _GETPARENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1334,
-  serialized_end=1402,
+  serialized_start=1339,
+  serialized_end=1407,
 )
 
 
@@ -695,8 +695,8 @@ _ISANCESTORREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1404,
-  serialized_end=1442,
+  serialized_start=1409,
+  serialized_end=1447,
 )
 
 
@@ -733,8 +733,8 @@ _ISANCESTORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1444,
-  serialized_end=1569,
+  serialized_start=1449,
+  serialized_end=1574,
 )
 
 
@@ -764,8 +764,8 @@ _HASCHILDRENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1571,
-  serialized_end=1611,
+  serialized_start=1576,
+  serialized_end=1616,
 )
 
 
@@ -795,8 +795,8 @@ _HASCHILDRENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1613,
-  serialized_end=1682,
+  serialized_start=1618,
+  serialized_end=1687,
 )
 
 
@@ -826,8 +826,8 @@ _ISCHILDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1684,
-  serialized_end=1716,
+  serialized_start=1689,
+  serialized_end=1721,
 )
 
 
@@ -864,8 +864,8 @@ _ISCHILDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1718,
-  serialized_end=1837,
+  serialized_start=1723,
+  serialized_end=1842,
 )
 
 
@@ -895,8 +895,8 @@ _GETCHILDRENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1839,
-  serialized_end=1908,
+  serialized_start=1844,
+  serialized_end=1913,
 )
 
 
@@ -926,8 +926,8 @@ _ISDESCENDANTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1910,
-  serialized_end=1952,
+  serialized_start=1915,
+  serialized_end=1957,
 )
 
 
@@ -964,8 +964,8 @@ _ISDESCENDANTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1955,
-  serialized_end=2084,
+  serialized_start=1960,
+  serialized_end=2089,
 )
 
 
@@ -995,8 +995,8 @@ _GETNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2086,
-  serialized_end=2144,
+  serialized_start=2091,
+  serialized_end=2149,
 )
 
 
@@ -1047,8 +1047,8 @@ _GETNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2147,
-  serialized_end=2291,
+  serialized_start=2152,
+  serialized_end=2296,
 )
 
 
@@ -1078,8 +1078,8 @@ _CANMODIFYHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2293,
-  serialized_end=2348,
+  serialized_start=2298,
+  serialized_end=2353,
 )
 
 
@@ -1102,8 +1102,8 @@ _CANMODIFYHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2350,
-  serialized_end=2377,
+  serialized_start=2355,
+  serialized_end=2382,
 )
 
 
@@ -1126,8 +1126,8 @@ _ADDROOTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2379,
-  serialized_end=2393,
+  serialized_start=2384,
+  serialized_end=2398,
 )
 
 
@@ -1157,8 +1157,8 @@ _ADDROOTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2395,
-  serialized_end=2460,
+  serialized_start=2400,
+  serialized_end=2465,
 )
 
 
@@ -1181,8 +1181,8 @@ _ADDCHILDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2462,
-  serialized_end=2477,
+  serialized_start=2467,
+  serialized_end=2482,
 )
 
 
@@ -1219,8 +1219,8 @@ _ADDCHILDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2479,
-  serialized_end=2599,
+  serialized_start=2484,
+  serialized_end=2604,
 )
 
 
@@ -1243,8 +1243,8 @@ _REMOVEROOTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2601,
-  serialized_end=2618,
+  serialized_start=2606,
+  serialized_end=2623,
 )
 
 
@@ -1274,8 +1274,8 @@ _REMOVEROOTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2620,
-  serialized_end=2688,
+  serialized_start=2625,
+  serialized_end=2693,
 )
 
 
@@ -1298,8 +1298,8 @@ _REMOVECHILDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2690,
-  serialized_end=2708,
+  serialized_start=2695,
+  serialized_end=2713,
 )
 
 
@@ -1336,8 +1336,8 @@ _REMOVECHILDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2710,
-  serialized_end=2833,
+  serialized_start=2715,
+  serialized_end=2838,
 )
 
 
@@ -1360,8 +1360,8 @@ _REMOVECHILDRENREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2835,
-  serialized_end=2856,
+  serialized_start=2840,
+  serialized_end=2861,
 )
 
 
@@ -1391,8 +1391,8 @@ _REMOVECHILDRENREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2858,
-  serialized_end=2930,
+  serialized_start=2863,
+  serialized_end=2935,
 )
 
 
@@ -1422,8 +1422,8 @@ _CANLOOKUPHIERARCHIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2932,
-  serialized_end=2991,
+  serialized_start=2937,
+  serialized_end=2996,
 )
 
 
@@ -1446,8 +1446,8 @@ _CANLOOKUPHIERARCHIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2993,
-  serialized_end=3022,
+  serialized_start=2998,
+  serialized_end=3027,
 )
 
 
@@ -1470,8 +1470,8 @@ _USECOMPARATIVEHIERARCHYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3024,
-  serialized_end=3058,
+  serialized_start=3029,
+  serialized_end=3063,
 )
 
 
@@ -1494,8 +1494,8 @@ _USECOMPARATIVEHIERARCHYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3060,
-  serialized_end=3096,
+  serialized_start=3065,
+  serialized_end=3101,
 )
 
 
@@ -1518,8 +1518,8 @@ _USEPLENARYHIERARCHYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3098,
-  serialized_end=3128,
+  serialized_start=3103,
+  serialized_end=3133,
 )
 
 
@@ -1542,8 +1542,8 @@ _USEPLENARYHIERARCHYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3130,
-  serialized_end=3162,
+  serialized_start=3135,
+  serialized_end=3167,
 )
 
 
@@ -1573,8 +1573,8 @@ _GETHIERARCHIESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3164,
-  serialized_end=3251,
+  serialized_start=3169,
+  serialized_end=3256,
 )
 
 
@@ -1604,8 +1604,8 @@ _GETHIERARCHIESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3253,
-  serialized_end=3357,
+  serialized_start=3258,
+  serialized_end=3362,
 )
 
 
@@ -1635,8 +1635,8 @@ _GETHIERARCHIESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3359,
-  serialized_end=3469,
+  serialized_start=3364,
+  serialized_end=3474,
 )
 
 
@@ -1666,8 +1666,8 @@ _GETHIERARCHIESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3471,
-  serialized_end=3577,
+  serialized_start=3476,
+  serialized_end=3582,
 )
 
 
@@ -1697,8 +1697,8 @@ _GETHIERARCHIESBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3579,
-  serialized_end=3669,
+  serialized_start=3584,
+  serialized_end=3674,
 )
 
 
@@ -1721,8 +1721,8 @@ _GETHIERARCHIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3671,
-  serialized_end=3694,
+  serialized_start=3676,
+  serialized_end=3699,
 )
 
 
@@ -1752,8 +1752,8 @@ _CANCREATEHIERARCHIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3696,
-  serialized_end=3755,
+  serialized_start=3701,
+  serialized_end=3760,
 )
 
 
@@ -1776,8 +1776,8 @@ _CANCREATEHIERARCHIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3757,
-  serialized_end=3786,
+  serialized_start=3762,
+  serialized_end=3791,
 )
 
 
@@ -1807,8 +1807,8 @@ _CANCREATEHIERARCHYWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3788,
-  serialized_end=3876,
+  serialized_start=3793,
+  serialized_end=3881,
 )
 
 
@@ -1838,8 +1838,8 @@ _CANCREATEHIERARCHYWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3878,
-  serialized_end=3992,
+  serialized_start=3883,
+  serialized_end=3997,
 )
 
 
@@ -1869,8 +1869,8 @@ _GETHIERARCHYFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3994,
-  serialized_end=4088,
+  serialized_start=3999,
+  serialized_end=4093,
 )
 
 
@@ -1900,8 +1900,8 @@ _GETHIERARCHYFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4090,
-  serialized_end=4196,
+  serialized_start=4095,
+  serialized_end=4201,
 )
 
 
@@ -1931,8 +1931,8 @@ _CREATEHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4198,
-  serialized_end=4273,
+  serialized_start=4203,
+  serialized_end=4278,
 )
 
 
@@ -1962,8 +1962,8 @@ _CREATEHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4275,
-  serialized_end=4361,
+  serialized_start=4280,
+  serialized_end=4366,
 )
 
 
@@ -1993,8 +1993,8 @@ _CANUPDATEHIERARCHIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4363,
-  serialized_end=4422,
+  serialized_start=4368,
+  serialized_end=4427,
 )
 
 
@@ -2017,8 +2017,8 @@ _CANUPDATEHIERARCHIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4424,
-  serialized_end=4453,
+  serialized_start=4429,
+  serialized_end=4458,
 )
 
 
@@ -2048,8 +2048,8 @@ _GETHIERARCHYFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4455,
-  serialized_end=4549,
+  serialized_start=4460,
+  serialized_end=4554,
 )
 
 
@@ -2079,8 +2079,8 @@ _GETHIERARCHYFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4551,
-  serialized_end=4643,
+  serialized_start=4556,
+  serialized_end=4648,
 )
 
 
@@ -2103,8 +2103,8 @@ _UPDATEHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4645,
-  serialized_end=4667,
+  serialized_start=4650,
+  serialized_end=4672,
 )
 
 
@@ -2134,8 +2134,8 @@ _UPDATEHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4669,
-  serialized_end=4755,
+  serialized_start=4674,
+  serialized_end=4760,
 )
 
 
@@ -2165,8 +2165,8 @@ _CANDELETEHIERARCHIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4757,
-  serialized_end=4816,
+  serialized_start=4762,
+  serialized_end=4821,
 )
 
 
@@ -2189,8 +2189,8 @@ _CANDELETEHIERARCHIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4818,
-  serialized_end=4847,
+  serialized_start=4823,
+  serialized_end=4852,
 )
 
 
@@ -2213,8 +2213,8 @@ _DELETEHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4849,
-  serialized_end=4871,
+  serialized_start=4854,
+  serialized_end=4876,
 )
 
 
@@ -2244,8 +2244,8 @@ _DELETEHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4873,
-  serialized_end=4955,
+  serialized_start=4878,
+  serialized_end=4960,
 )
 
 
@@ -2275,8 +2275,8 @@ _CANMANAGEHIERARCHYALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4957,
-  serialized_end=5027,
+  serialized_start=4962,
+  serialized_end=5032,
 )
 
 
@@ -2299,8 +2299,8 @@ _CANMANAGEHIERARCHYALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5029,
-  serialized_end=5063,
+  serialized_start=5034,
+  serialized_end=5068,
 )
 
 
@@ -2323,8 +2323,8 @@ _ALIASHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5065,
-  serialized_end=5086,
+  serialized_start=5070,
+  serialized_end=5091,
 )
 
 
@@ -2361,15 +2361,15 @@ _ALIASHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5089,
-  serialized_end=5224,
+  serialized_start=5094,
+  serialized_end=5229,
 )
 
 _HIERARCHY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_HIERARCHY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_HIERARCHY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_HIERARCHY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_HIERARCHY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _HIERARCHY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_HIERARCHY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_HIERARCHY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _HIERARCHYLIST.fields_by_name['hierarchies'].message_type = _HIERARCHY
 _NODELIST.fields_by_name['nodes'].message_type = _NODE
 _GETHIERARCHYIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -3053,8 +3053,8 @@ _HIERARCHYTRAVERSALSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=5227,
-  serialized_end=6550,
+  serialized_start=5232,
+  serialized_end=6555,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetHierarchyId',
@@ -3185,8 +3185,8 @@ _HIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=6553,
-  serialized_end=7403,
+  serialized_start=6558,
+  serialized_end=7408,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetHierarchyId',
@@ -3272,8 +3272,8 @@ _HIERARCHYLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=7406,
-  serialized_end=8673,
+  serialized_start=7411,
+  serialized_end=8678,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupHierarchies',
@@ -3377,8 +3377,8 @@ _HIERARCHYADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=8676,
-  serialized_end=10132,
+  serialized_start=8681,
+  serialized_end=10137,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateHierarchies',

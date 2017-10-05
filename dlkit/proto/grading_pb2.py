@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/grading.proto',
   package='dlkit.proto.grading',
   syntax='proto3',
-  serialized_pb=_b('\n\x19\x64lkit/proto/grading.proto\x12\x13\x64lkit.proto.grading\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x81\x04\n\x05Grade\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cgrade_system\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\tgradebook\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1d\n\x15input_score_end_range\x18\x07 \x01(\x02\x12\x1f\n\x17input_score_start_range\x18\x08 \x01(\x02\x12\x14\n\x0coutput_score\x18\t \x01(\x02\x12=\n\rrecordTypeIds\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nGradeQuery\"\x15\n\x13GradeQueryInspector\"\x0b\n\tGradeForm\"\x12\n\x10GradeSearchOrder\"7\n\tGradeList\x12*\n\x06grades\x18\x01 \x03(\x0b\x32\x1a.dlkit.proto.grading.Grade\"\xee\x03\n\x0bGradeSystem\x12\x17\n\x0f\x62\x61sed_on_grades\x18\x01 \x01(\x08\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\tgradebook\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x1d\n\x15highest_numeric_score\x18\x06 \x01(\x02\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14lowest_numeric_score\x18\x08 \x01(\x02\x12\x1f\n\x17numeric_score_increment\x18\t \x01(\x02\x12=\n\rrecordTypeIds\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x12\n\x10GradeSystemQuery\"\x1b\n\x19GradeSystemQueryInspector\"\x11\n\x0fGradeSystemForm\"\x18\n\x16GradeSystemSearchOrder\"\x13\n\x11GradeSystemSearch\"\x1a\n\x18GradeSystemSearchResults\"J\n\x0fGradeSystemList\x12\x37\n\rgrade_systems\x18\x01 \x03(\x0b\x32 .dlkit.proto.grading.GradeSystem\"\x96\x02\n\nGradeEntry\x12\x31\n\x05grade\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\tgradebook\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12<\n\x10gradebook_column\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12 \n\x18ignored_for_calculations\x18\x04 \x01(\x08\x12\x34\n\x08resource\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\r\n\x05score\x18\x06 \x01(\x02\"\x11\n\x0fGradeEntryQuery\"\x1a\n\x18GradeEntryQueryInspector\"\x10\n\x0eGradeEntryForm\"\x17\n\x15GradeEntrySearchOrder\"\x12\n\x10GradeEntrySearch\"\x19\n\x17GradeEntrySearchResults\"H\n\x0eGradeEntryList\x12\x36\n\rgrade_entries\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"\xb5\x03\n\x0fGradebookColumn\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cgrade_system\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\tgradebook\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x16\n\x14GradebookColumnQuery\"\x1f\n\x1dGradebookColumnQueryInspector\"\x15\n\x13GradebookColumnForm\"\x1c\n\x1aGradebookColumnSearchOrder\"\x17\n\x15GradebookColumnSearch\"\x1e\n\x1cGradebookColumnSearchResults\"V\n\x13GradebookColumnList\x12?\n\x11gradebook_columns\x18\x01 \x03(\x0b\x32$.dlkit.proto.grading.GradebookColumn\"\x8e\x03\n\x16GradebookColumnSummary\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12<\n\x10gradebook_column\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1d\n\x1bGradebookColumnSummaryQuery\"&\n$GradebookColumnSummaryQueryInspector\"#\n!GradebookColumnSummarySearchOrder\"\xc3\x02\n\tGradebook\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x10\n\x0eGradebookQuery\"\x19\n\x17GradebookQueryInspector\"\x0f\n\rGradebookForm\"\x16\n\x14GradebookSearchOrder\"\x11\n\x0fGradebookSearch\"\x18\n\x16GradebookSearchResults\"C\n\rGradebookList\x12\x32\n\ngradebooks\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.grading.Gradebook\"\x0f\n\rGradebookNode\"P\n\x11GradebookNodeList\x12;\n\x0fgradebook_nodes\x18\x01 \x03(\x0b\x32\".dlkit.proto.grading.GradebookNode\"E\n\x13GetGradebookIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15GetGradebookIdRequest\"F\n\x11GetGradebookReply\x12\x31\n\tgradebook\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.Gradebook\"\x15\n\x13GetGradebookRequest\">\n\x1a\x43\x61nLookupGradeSystemsReply\x12 \n\x18\x63\x61n_lookup_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupGradeSystemsRequest\"$\n\"UseComparativeGradeSystemViewReply\"&\n$UseComparativeGradeSystemViewRequest\" \n\x1eUsePlenaryGradeSystemViewReply\"\"\n UsePlenaryGradeSystemViewRequest\" \n\x1eUseFederatedGradebookViewReply\"\"\n UseFederatedGradebookViewRequest\"\x1f\n\x1dUseIsolatedGradebookViewReply\"!\n\x1fUseIsolatedGradebookViewRequest\"M\n\x13GetGradeSystemReply\x12\x36\n\x0cgrade_system\x18\x01 \x01(\x0b\x32 .dlkit.proto.grading.GradeSystem\"T\n\x15GetGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1aGetGradeSystemByGradeReply\x12\x36\n\x0cgrade_system\x18\x01 \x01(\x0b\x32 .dlkit.proto.grading.GradeSystem\"T\n\x1cGetGradeSystemByGradeRequest\x12\x34\n\x08grade_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x1bGetGradeSystemsByIdsRequest\x12<\n\x10grade_system_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"l\n!GetGradeSystemsByGenusTypeRequest\x12G\n\x17grade_system_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n\'GetGradeSystemsByParentGenusTypeRequest\x12G\n\x17grade_system_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"n\n\"GetGradeSystemsByRecordTypeRequest\x12H\n\x18grade_system_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x18\n\x16GetGradeSystemsRequest\">\n\x1a\x43\x61nSearchGradeSystemsReply\x12 \n\x18\x63\x61n_search_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchGradeSystemsRequest\"]\n\x18GetGradeSystemQueryReply\x12\x41\n\x12grade_system_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.grading.GradeSystemQuery\"\x1c\n\x1aGetGradeSystemQueryRequest\"b\n\x1dGetGradeSystemsByQueryRequest\x12\x41\n\x12grade_system_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.grading.GradeSystemQuery\">\n\x1a\x43\x61nCreateGradeSystemsReply\x12 \n\x18\x63\x61n_create_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateGradeSystemsRequest\"]\n(CanCreateGradeSystemWithRecordTypesReply\x12\x31\n)can_create_grade_system_with_record_types\x18\x01 \x01(\x08\"w\n*CanCreateGradeSystemWithRecordTypesRequest\x12I\n\x19grade_system_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetGradeSystemFormForCreateReply\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\"o\n\"GetGradeSystemFormForCreateRequest\x12I\n\x19grade_system_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x16\x43reateGradeSystemReply\x12\x36\n\x0cgrade_system\x18\x01 \x01(\x0b\x32 .dlkit.proto.grading.GradeSystem\"[\n\x18\x43reateGradeSystemRequest\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\">\n\x1a\x43\x61nUpdateGradeSystemsReply\x12 \n\x18\x63\x61n_update_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateGradeSystemsRequest\"c\n GetGradeSystemFormForUpdateReply\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\"a\n\"GetGradeSystemFormForUpdateRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16UpdateGradeSystemReply\"[\n\x18UpdateGradeSystemRequest\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\">\n\x1a\x43\x61nDeleteGradeSystemsReply\x12 \n\x18\x63\x61n_delete_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteGradeSystemsRequest\"\x18\n\x16\x44\x65leteGradeSystemReply\"W\n\x18\x44\x65leteGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n CanManageGradeSystemAliasesReply\x12\'\n\x1f\x63\x61n_manage_grade_system_aliases\x18\x01 \x01(\x08\"$\n\"CanManageGradeSystemAliasesRequest\"\x17\n\x15\x41liasGradeSystemReply\"\x8c\x01\n\x17\x41liasGradeSystemRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0fgrade_system_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nCreateGradesReply\x12\x19\n\x11\x63\x61n_create_grades\x18\x01 \x01(\x08\"U\n\x16\x43\x61nCreateGradesRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\"CanCreateGradeWithRecordTypesReply\x12*\n\"can_create_grade_with_record_types\x18\x01 \x01(\x08\"\xa7\x01\n$CanCreateGradeWithRecordTypesRequest\x12\x42\n\x12grade_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12;\n\x0fgrade_system_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetGradeFormForCreateReply\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"\x9f\x01\n\x1cGetGradeFormForCreateRequest\x12\x42\n\x12grade_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12;\n\x0fgrade_system_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x10\x43reateGradeReply\x12)\n\x05grade\x18\x01 \x01(\x0b\x32\x1a.dlkit.proto.grading.Grade\"H\n\x12\x43reateGradeRequest\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"1\n\x14\x43\x61nUpdateGradesReply\x12\x19\n\x11\x63\x61n_update_grades\x18\x01 \x01(\x08\"U\n\x16\x43\x61nUpdateGradesRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetGradeFormForUpdateReply\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"T\n\x1cGetGradeFormForUpdateRequest\x12\x34\n\x08grade_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10UpdateGradeReply\"H\n\x12UpdateGradeRequest\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"1\n\x14\x43\x61nDeleteGradesReply\x12\x19\n\x11\x63\x61n_delete_grades\x18\x01 \x01(\x08\"U\n\x16\x43\x61nDeleteGradesRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10\x44\x65leteGradeReply\"J\n\x12\x44\x65leteGradeRequest\x12\x34\n\x08grade_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nManageGradeAliasesReply\x12 \n\x18\x63\x61n_manage_grade_aliases\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nManageGradeAliasesRequest\"\x11\n\x0f\x41liasGradeReply\"\x7f\n\x11\x41liasGradeRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08grade_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n UseComparativeGradebookViewReply\"$\n\"UseComparativeGradebookViewRequest\"\x1e\n\x1cUsePlenaryGradebookViewReply\" \n\x1eUsePlenaryGradebookViewRequest\"`\n*CanLookupGradeSystemGradebookMappingsReply\x12\x32\n*can_lookup_grade_system_gradebook_mappings\x18\x01 \x01(\x08\".\n,CanLookupGradeSystemGradebookMappingsRequest\"_\n#GetGradeSystemIdsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n!GetGradeSystemsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n$GetGradeSystemIdsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\"GetGradeSystemsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n#GetGradebookIdsByGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n!GetGradebooksByGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nAssignGradeSystemReply\x12\x1f\n\x17\x63\x61n_assign_grade_system\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nAssignGradeSystemRequest\"V\n%CanAssignGradeSystemsToGradebookReply\x12-\n%can_assign_grade_systems_to_gradebook\x18\x01 \x01(\x08\"c\n\'CanAssignGradeSystemsToGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n GetAssignableGradebookIdsRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa7\x01\n.GetAssignableGradebookIdsForGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"#\n!AssignGradeSystemToGradebookReply\"\x9c\x01\n#AssignGradeSystemToGradebookRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%UnassignGradeSystemFromGradebookReply\"\xa0\x01\n\'UnassignGradeSystemFromGradebookRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nLookupGradeEntriesReply\x12 \n\x18\x63\x61n_lookup_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupGradeEntriesRequest\"#\n!UseComparativeGradeEntryViewReply\"%\n#UseComparativeGradeEntryViewRequest\"\x1f\n\x1dUsePlenaryGradeEntryViewReply\"!\n\x1fUsePlenaryGradeEntryViewRequest\"!\n\x1fUseEffectiveGradeEntryViewReply\"#\n!UseEffectiveGradeEntryViewRequest\"$\n\"UseAnyEffectiveGradeEntryViewReply\"&\n$UseAnyEffectiveGradeEntryViewRequest\"J\n\x12GetGradeEntryReply\x12\x34\n\x0bgrade_entry\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"R\n\x14GetGradeEntryRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1bGetGradeEntriesByIdsRequest\x12;\n\x0fgrade_entry_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"k\n!GetGradeEntriesByGenusTypeRequest\x12\x46\n\x16grade_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n\'GetGradeEntriesByParentGenusTypeRequest\x12\x46\n\x16grade_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n\"GetGradeEntriesByRecordTypeRequest\x12G\n\x17grade_entry_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n\x1cGetGradeEntriesOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"k\n(GetGradeEntriesForGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xc4\x01\n.GetGradeEntriesForGradebookColumnOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\\\n!GetGradeEntriesForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb5\x01\n\'GetGradeEntriesForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xaf\x01\n3GetGradeEntriesForGradebookColumnAndResourceRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x88\x02\n9GetGradeEntriesForGradebookColumnAndResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Y\n\x1eGetGradeEntriesByGraderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetGradeEntriesRequest\">\n\x1a\x43\x61nSearchGradeEntriesReply\x12 \n\x18\x63\x61n_search_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchGradeEntriesRequest\"Z\n\x17GetGradeEntryQueryReply\x12?\n\x11grade_entry_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeEntryQuery\"\x1b\n\x19GetGradeEntryQueryRequest\"`\n\x1dGetGradeEntriesByQueryRequest\x12?\n\x11grade_entry_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeEntryQuery\">\n\x1a\x43\x61nCreateGradeEntriesReply\x12 \n\x18\x63\x61n_create_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateGradeEntriesRequest\"[\n\'CanCreateGradeEntryWithRecordTypesReply\x12\x30\n(can_create_grade_entry_with_record_types\x18\x01 \x01(\x08\"u\n)CanCreateGradeEntryWithRecordTypesRequest\x12H\n\x18grade_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"`\n\x1fGetGradeEntryFormForCreateReply\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"\xe7\x01\n!GetGradeEntryFormForCreateRequest\x12H\n\x18grade_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x15\x43reateGradeEntryReply\x12\x34\n\x0bgrade_entry\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"X\n\x17\x43reateGradeEntryRequest\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"V\n&CanOverridecalculatedGradeEntriesReply\x12,\n$can_overridecalculated_grade_entries\x18\x01 \x01(\x08\"*\n(CanOverridecalculatedGradeEntriesRequest\"b\n!GetGradeEntryFormForOverrideReply\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"\xab\x01\n#GetGradeEntryFormForOverrideRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12H\n\x18grade_entry_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n!OverrideCalculatedGradeEntryReply\x12\x34\n\x0bgrade_entry\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"d\n#OverrideCalculatedGradeEntryRequest\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\">\n\x1a\x43\x61nUpdateGradeEntriesReply\x12 \n\x18\x63\x61n_update_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateGradeEntriesRequest\"`\n\x1fGetGradeEntryFormForUpdateReply\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"_\n!GetGradeEntryFormForUpdateRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15UpdateGradeEntryReply\"X\n\x17UpdateGradeEntryRequest\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\">\n\x1a\x43\x61nDeleteGradeEntriesReply\x12 \n\x18\x63\x61n_delete_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteGradeEntriesRequest\"\x17\n\x15\x44\x65leteGradeEntryReply\"U\n\x17\x44\x65leteGradeEntryRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x1f\x43\x61nManageGradeEntryAliasesReply\x12&\n\x1e\x63\x61n_manage_grade_entry_aliases\x18\x01 \x01(\x08\"#\n!CanManageGradeEntryAliasesRequest\"\x16\n\x14\x41liasGradeEntryReply\"\x8a\x01\n\x16\x41liasGradeEntryRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0egrade_entry_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nLookupGradebookColumnsReply\x12$\n\x1c\x63\x61n_lookup_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanLookupGradebookColumnsRequest\"(\n&UseComparativeGradebookColumnViewReply\"*\n(UseComparativeGradebookColumnViewRequest\"$\n\"UsePlenaryGradebookColumnViewReply\"&\n$UsePlenaryGradebookColumnViewRequest\"Y\n\x17GetGradebookColumnReply\x12>\n\x10gradebook_column\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradebookColumn\"\\\n\x19GetGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1fGetGradebookColumnsByIdsRequest\x12@\n\x14gradebook_column_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"t\n%GetGradebookColumnsByGenusTypeRequest\x12K\n\x1bgradebook_column_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"z\n+GetGradebookColumnsByParentGenusTypeRequest\x12K\n\x1bgradebook_column_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n&GetGradebookColumnsByRecordTypeRequest\x12L\n\x1cgradebook_column_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1c\n\x1aGetGradebookColumnsRequest\"0\n\x14SupportsSummaryReply\x12\x18\n\x10supports_summary\x18\x01 \x01(\x08\"\x18\n\x16SupportsSummaryRequest\"o\n\x1eGetGradebookColumnSummaryReply\x12M\n\x18gradebook_column_summary\x18\x01 \x01(\x0b\x32+.dlkit.proto.grading.GradebookColumnSummary\"c\n GetGradebookColumnSummaryRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nSearchGradebookColumnsReply\x12$\n\x1c\x63\x61n_search_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanSearchGradebookColumnsRequest\"i\n\x1cGetGradebookColumnQueryReply\x12I\n\x16gradebook_column_query\x18\x01 \x01(\x0b\x32).dlkit.proto.grading.GradebookColumnQuery\" \n\x1eGetGradebookColumnQueryRequest\"n\n!GetGradebookColumnsByQueryRequest\x12I\n\x16gradebook_column_query\x18\x01 \x01(\x0b\x32).dlkit.proto.grading.GradebookColumnQuery\"F\n\x1e\x43\x61nCreateGradebookColumnsReply\x12$\n\x1c\x63\x61n_create_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanCreateGradebookColumnsRequest\"e\n,CanCreateGradebookColumnWithRecordTypesReply\x12\x35\n-can_create_gradebook_column_with_record_types\x18\x01 \x01(\x08\"\x7f\n.CanCreateGradebookColumnWithRecordTypesRequest\x12M\n\x1dgradebook_column_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"o\n$GetGradebookColumnFormForCreateReply\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"w\n&GetGradebookColumnFormForCreateRequest\x12M\n\x1dgradebook_column_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n\x1a\x43reateGradebookColumnReply\x12>\n\x10gradebook_column\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradebookColumn\"g\n\x1c\x43reateGradebookColumnRequest\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"F\n\x1e\x43\x61nUpdateGradebookColumnsReply\x12$\n\x1c\x63\x61n_update_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanUpdateGradebookColumnsRequest\"o\n$GetGradebookColumnFormForUpdateReply\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"i\n&GetGradebookColumnFormForUpdateRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUpdateGradebookColumnReply\"g\n\x1cUpdateGradebookColumnRequest\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"\x1f\n\x1dSequenceGradebookColumnsReply\"c\n\x1fSequenceGradebookColumnsRequest\x12@\n\x14gradebook_column_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18MoveGradebookColumnReply\"\xa9\x01\n\x1aMoveGradebookColumnRequest\x12\x44\n\x18\x62\x61\x63k_gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x45\n\x19\x66ront_gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1f\x43opyGradebookColumnEntriesReply\"\xb3\x01\n!CopyGradebookColumnEntriesRequest\x12\x46\n\x1asource_gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x1atarget_gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nDeleteGradebookColumnsReply\x12$\n\x1c\x63\x61n_delete_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanDeleteGradebookColumnsRequest\"\x1c\n\x1a\x44\x65leteGradebookColumnReply\"_\n\x1c\x44\x65leteGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanManageGradebookColumnAliasesReply\x12+\n#can_manage_gradebook_column_aliases\x18\x01 \x01(\x08\"(\n&CanManageGradebookColumnAliasesRequest\"\x1b\n\x19\x41liasGradebookColumnReply\"\x94\x01\n\x1b\x41liasGradebookColumnRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n.CanLookupGradebookColumnGradebookMappingsReply\x12\x36\n.can_lookup_gradebook_column_gradebook_mappings\x18\x01 \x01(\x08\"2\n0CanLookupGradebookColumnGradebookMappingsRequest\"c\n\'GetGradebookColumnIdsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n%GetGradebookColumnsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n(GetGradebookColumnIdsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n&GetGradebookColumnsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"j\n\'GetGradebookIdsByGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n%GetGradebooksByGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nAssignGradebookColumnsReply\x12$\n\x1c\x63\x61n_assign_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanAssignGradebookColumnsRequest\"^\n)CanAssignGradebookColumnsToGradebookReply\x12\x31\n)can_assign_gradebook_columns_to_gradebook\x18\x01 \x01(\x08\"g\n+CanAssignGradebookColumnsToGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xaf\x01\n2GetAssignableGradebookIdsForGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%AssignGradebookColumnToGradebookReply\"\xa4\x01\n\'AssignGradebookColumnToGradebookRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n)UnassignGradebookColumnFromGradebookReply\"\xa8\x01\n+UnassignGradebookColumnFromGradebookRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nLookupGradebooksReply\x12\x1d\n\x15\x63\x61n_lookup_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nLookupGradebooksRequest\"V\n\x19GetGradebooksByIdsRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1fGetGradebooksByGenusTypeRequest\x12\x44\n\x14gradebook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n%GetGradebooksByParentGenusTypeRequest\x12\x44\n\x14gradebook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n GetGradebooksByRecordTypeRequest\x12\x45\n\x15gradebook_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n\x1eGetGradebooksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14GetGradebooksRequest\"9\n\x18\x43\x61nCreateGradebooksReply\x12\x1d\n\x15\x63\x61n_create_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateGradebooksRequest\"X\n&CanCreateGradebookWithRecordTypesReply\x12.\n&can_create_gradebook_with_record_types\x18\x01 \x01(\x08\"r\n(CanCreateGradebookWithRecordTypesRequest\x12\x46\n\x16gradebook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n\x1eGetGradebookFormForCreateReply\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"j\n GetGradebookFormForCreateRequest\x12\x46\n\x16gradebook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"I\n\x14\x43reateGradebookReply\x12\x31\n\tgradebook\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.Gradebook\"T\n\x16\x43reateGradebookRequest\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"9\n\x18\x43\x61nUpdateGradebooksReply\x12\x1d\n\x15\x63\x61n_update_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateGradebooksRequest\"\\\n\x1eGetGradebookFormForUpdateReply\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"\\\n GetGradebookFormForUpdateRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14UpdateGradebookReply\"T\n\x16UpdateGradebookRequest\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"9\n\x18\x43\x61nDeleteGradebooksReply\x12\x1d\n\x15\x63\x61n_delete_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteGradebooksRequest\"\x16\n\x14\x44\x65leteGradebookReply\"R\n\x16\x44\x65leteGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nManageGradebookAliasesReply\x12$\n\x1c\x63\x61n_manage_gradebook_aliases\x18\x01 \x01(\x08\"\"\n CanManageGradebookAliasesRequest\"\x15\n\x13\x41liasGradebookReply\"\x87\x01\n\x15\x41liasGradebookRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x1cGetGradebookHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eGetGradebookHierarchyIdRequest\"Q\n\x1aGetGradebookHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1e\n\x1cGetGradebookHierarchyRequest\"J\n CanAccessGradebookHierarchyReply\x12&\n\x1e\x63\x61n_access_gradebook_hierarchy\x18\x01 \x01(\x08\"$\n\"CanAccessGradebookHierarchyRequest\"\x1c\n\x1aGetRootGradebookIdsRequest\"\x1a\n\x18GetRootGradebooksRequest\"9\n\x18HasParentGradebooksReply\x12\x1d\n\x15has_parent_gradebooks\x18\x01 \x01(\x08\"V\n\x1aHasParentGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsParentOfGradebookReply\x12\x1e\n\x16is_parent_of_gradebook\x18\x01 \x01(\x08\"\x87\x01\n\x1aIsParentOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1cGetParentGradebookIdsRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1aGetParentGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1aIsAncestorOfGradebookReply\x12 \n\x18is_ancestor_of_gradebook\x18\x01 \x01(\x08\"\x89\x01\n\x1cIsAncestorOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17HasChildGradebooksReply\x12\x1c\n\x14has_child_gradebooks\x18\x01 \x01(\x08\"U\n\x19HasChildGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsChildOfGradebookReply\x12\x1d\n\x15is_child_of_gradebook\x18\x01 \x01(\x08\"\x86\x01\n\x19IsChildOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1bGetChildGradebookIdsRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x19GetChildGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsDescendantOfGradebookReply\x12\"\n\x1ais_descendant_of_gradebook\x18\x01 \x01(\x08\"\x8b\x01\n\x1eIsDescendantOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x18GetGradebookNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa4\x01\n\x1aGetGradebookNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x38\n\x0cgradebook_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"T\n\x16GetGradebookNodesReply\x12:\n\x0egradebook_node\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookNode\"\xa2\x01\n\x18GetGradebookNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x38\n\x0cgradebook_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"J\n CanModifyGradebookHierarchyReply\x12&\n\x1e\x63\x61n_modify_gradebook_hierarchy\x18\x01 \x01(\x08\"$\n\"CanModifyGradebookHierarchyRequest\"\x17\n\x15\x41\x64\x64RootGradebookReply\"S\n\x17\x41\x64\x64RootGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveRootGradebookReply\"V\n\x1aRemoveRootGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16\x41\x64\x64\x43hildGradebookReply\"\x8a\x01\n\x18\x41\x64\x64\x43hildGradebookRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19RemoveChildGradebookReply\"\x8d\x01\n\x1bRemoveChildGradebookRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xe2\r\n\x18GradeSystemLookupSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nLookupGradeSystems\x12\x31.dlkit.proto.grading.CanLookupGradeSystemsRequest\x1a/.dlkit.proto.grading.CanLookupGradeSystemsReply\"\x00\x12\x95\x01\n\x1dUseComparativeGradeSystemView\x12\x39.dlkit.proto.grading.UseComparativeGradeSystemViewRequest\x1a\x37.dlkit.proto.grading.UseComparativeGradeSystemViewReply\"\x00\x12\x89\x01\n\x19UsePlenaryGradeSystemView\x12\x35.dlkit.proto.grading.UsePlenaryGradeSystemViewRequest\x1a\x33.dlkit.proto.grading.UsePlenaryGradeSystemViewReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12h\n\x0eGetGradeSystem\x12*.dlkit.proto.grading.GetGradeSystemRequest\x1a(.dlkit.proto.grading.GetGradeSystemReply\"\x00\x12}\n\x15GetGradeSystemByGrade\x12\x31.dlkit.proto.grading.GetGradeSystemByGradeRequest\x1a/.dlkit.proto.grading.GetGradeSystemByGradeReply\"\x00\x12n\n\x14GetGradeSystemsByIds\x12\x30.dlkit.proto.grading.GetGradeSystemsByIdsRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12z\n\x1aGetGradeSystemsByGenusType\x12\x36.dlkit.proto.grading.GetGradeSystemsByGenusTypeRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x86\x01\n GetGradeSystemsByParentGenusType\x12<.dlkit.proto.grading.GetGradeSystemsByParentGenusTypeRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12|\n\x1bGetGradeSystemsByRecordType\x12\x37.dlkit.proto.grading.GetGradeSystemsByRecordTypeRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x64\n\x0fGetGradeSystems\x12+.dlkit.proto.grading.GetGradeSystemsRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x32\xe8\x06\n\x17GradeSystemQuerySession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nSearchGradeSystems\x12\x31.dlkit.proto.grading.CanSearchGradeSystemsRequest\x1a/.dlkit.proto.grading.CanSearchGradeSystemsReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12w\n\x13GetGradeSystemQuery\x12/.dlkit.proto.grading.GetGradeSystemQueryRequest\x1a-.dlkit.proto.grading.GetGradeSystemQueryReply\"\x00\x12r\n\x16GetGradeSystemsByQuery\x12\x32.dlkit.proto.grading.GetGradeSystemsByQueryRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x32\xea\x16\n\x17GradeSystemAdminSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nCreateGradeSystems\x12\x31.dlkit.proto.grading.CanCreateGradeSystemsRequest\x1a/.dlkit.proto.grading.CanCreateGradeSystemsReply\"\x00\x12\xa7\x01\n#CanCreateGradeSystemWithRecordTypes\x12?.dlkit.proto.grading.CanCreateGradeSystemWithRecordTypesRequest\x1a=.dlkit.proto.grading.CanCreateGradeSystemWithRecordTypesReply\"\x00\x12\x8f\x01\n\x1bGetGradeSystemFormForCreate\x12\x37.dlkit.proto.grading.GetGradeSystemFormForCreateRequest\x1a\x35.dlkit.proto.grading.GetGradeSystemFormForCreateReply\"\x00\x12q\n\x11\x43reateGradeSystem\x12-.dlkit.proto.grading.CreateGradeSystemRequest\x1a+.dlkit.proto.grading.CreateGradeSystemReply\"\x00\x12}\n\x15\x43\x61nUpdateGradeSystems\x12\x31.dlkit.proto.grading.CanUpdateGradeSystemsRequest\x1a/.dlkit.proto.grading.CanUpdateGradeSystemsReply\"\x00\x12\x8f\x01\n\x1bGetGradeSystemFormForUpdate\x12\x37.dlkit.proto.grading.GetGradeSystemFormForUpdateRequest\x1a\x35.dlkit.proto.grading.GetGradeSystemFormForUpdateReply\"\x00\x12q\n\x11UpdateGradeSystem\x12-.dlkit.proto.grading.UpdateGradeSystemRequest\x1a+.dlkit.proto.grading.UpdateGradeSystemReply\"\x00\x12}\n\x15\x43\x61nDeleteGradeSystems\x12\x31.dlkit.proto.grading.CanDeleteGradeSystemsRequest\x1a/.dlkit.proto.grading.CanDeleteGradeSystemsReply\"\x00\x12q\n\x11\x44\x65leteGradeSystem\x12-.dlkit.proto.grading.DeleteGradeSystemRequest\x1a+.dlkit.proto.grading.DeleteGradeSystemReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nManageGradeSystemAliases\x12\x37.dlkit.proto.grading.CanManageGradeSystemAliasesRequest\x1a\x35.dlkit.proto.grading.CanManageGradeSystemAliasesReply\"\x00\x12n\n\x10\x41liasGradeSystem\x12,.dlkit.proto.grading.AliasGradeSystemRequest\x1a*.dlkit.proto.grading.AliasGradeSystemReply\"\x00\x12k\n\x0f\x43\x61nCreateGrades\x12+.dlkit.proto.grading.CanCreateGradesRequest\x1a).dlkit.proto.grading.CanCreateGradesReply\"\x00\x12\x95\x01\n\x1d\x43\x61nCreateGradeWithRecordTypes\x12\x39.dlkit.proto.grading.CanCreateGradeWithRecordTypesRequest\x1a\x37.dlkit.proto.grading.CanCreateGradeWithRecordTypesReply\"\x00\x12}\n\x15GetGradeFormForCreate\x12\x31.dlkit.proto.grading.GetGradeFormForCreateRequest\x1a/.dlkit.proto.grading.GetGradeFormForCreateReply\"\x00\x12_\n\x0b\x43reateGrade\x12\'.dlkit.proto.grading.CreateGradeRequest\x1a%.dlkit.proto.grading.CreateGradeReply\"\x00\x12k\n\x0f\x43\x61nUpdateGrades\x12+.dlkit.proto.grading.CanUpdateGradesRequest\x1a).dlkit.proto.grading.CanUpdateGradesReply\"\x00\x12}\n\x15GetGradeFormForUpdate\x12\x31.dlkit.proto.grading.GetGradeFormForUpdateRequest\x1a/.dlkit.proto.grading.GetGradeFormForUpdateReply\"\x00\x12_\n\x0bUpdateGrade\x12\'.dlkit.proto.grading.UpdateGradeRequest\x1a%.dlkit.proto.grading.UpdateGradeReply\"\x00\x12k\n\x0f\x43\x61nDeleteGrades\x12+.dlkit.proto.grading.CanDeleteGradesRequest\x1a).dlkit.proto.grading.CanDeleteGradesReply\"\x00\x12_\n\x0b\x44\x65leteGrade\x12\'.dlkit.proto.grading.DeleteGradeRequest\x1a%.dlkit.proto.grading.DeleteGradeReply\"\x00\x12}\n\x15\x43\x61nManageGradeAliases\x12\x31.dlkit.proto.grading.CanManageGradeAliasesRequest\x1a/.dlkit.proto.grading.CanManageGradeAliasesReply\"\x00\x12\\\n\nAliasGrade\x12&.dlkit.proto.grading.AliasGradeRequest\x1a$.dlkit.proto.grading.AliasGradeReply\"\x00\x32\xe4\t\n\x1bGradeSystemGradebookSession\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12\xad\x01\n%CanLookupGradeSystemGradebookMappings\x12\x41.dlkit.proto.grading.CanLookupGradeSystemGradebookMappingsRequest\x1a?.dlkit.proto.grading.CanLookupGradeSystemGradebookMappingsReply\"\x00\x12\x80\x01\n\x1cGetGradeSystemIdsByGradebook\x12\x38.dlkit.proto.grading.GetGradeSystemIdsByGradebookRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12z\n\x1aGetGradeSystemsByGradebook\x12\x36.dlkit.proto.grading.GetGradeSystemsByGradebookRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x82\x01\n\x1dGetGradeSystemIdsByGradebooks\x12\x39.dlkit.proto.grading.GetGradeSystemIdsByGradebooksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12|\n\x1bGetGradeSystemsByGradebooks\x12\x37.dlkit.proto.grading.GetGradeSystemsByGradebooksRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x80\x01\n\x1cGetGradebookIdsByGradeSystem\x12\x38.dlkit.proto.grading.GetGradebookIdsByGradeSystemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12x\n\x1aGetGradebooksByGradeSystem\x12\x36.dlkit.proto.grading.GetGradebooksByGradeSystemRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x32\x8f\x07\n%GradeSystemGradebookAssignmentSession\x12z\n\x14\x43\x61nAssignGradeSystem\x12\x30.dlkit.proto.grading.CanAssignGradeSystemRequest\x1a..dlkit.proto.grading.CanAssignGradeSystemReply\"\x00\x12\x9e\x01\n CanAssignGradeSystemsToGradebook\x12<.dlkit.proto.grading.CanAssignGradeSystemsToGradebookRequest\x1a:.dlkit.proto.grading.CanAssignGradeSystemsToGradebookReply\"\x00\x12z\n\x19GetAssignableGradebookIds\x12\x35.dlkit.proto.grading.GetAssignableGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x96\x01\n\'GetAssignableGradebookIdsForGradeSystem\x12\x43.dlkit.proto.grading.GetAssignableGradebookIdsForGradeSystemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x92\x01\n\x1c\x41ssignGradeSystemToGradebook\x12\x38.dlkit.proto.grading.AssignGradeSystemToGradebookRequest\x1a\x36.dlkit.proto.grading.AssignGradeSystemToGradebookReply\"\x00\x12\x9e\x01\n UnassignGradeSystemFromGradebook\x12<.dlkit.proto.grading.UnassignGradeSystemFromGradebookRequest\x1a:.dlkit.proto.grading.UnassignGradeSystemFromGradebookReply\"\x00\x32\xd0\x17\n\x17GradeEntryLookupSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nLookupGradeEntries\x12\x31.dlkit.proto.grading.CanLookupGradeEntriesRequest\x1a/.dlkit.proto.grading.CanLookupGradeEntriesReply\"\x00\x12\x92\x01\n\x1cUseComparativeGradeEntryView\x12\x38.dlkit.proto.grading.UseComparativeGradeEntryViewRequest\x1a\x36.dlkit.proto.grading.UseComparativeGradeEntryViewReply\"\x00\x12\x86\x01\n\x18UsePlenaryGradeEntryView\x12\x34.dlkit.proto.grading.UsePlenaryGradeEntryViewRequest\x1a\x32.dlkit.proto.grading.UsePlenaryGradeEntryViewReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12\x8c\x01\n\x1aUseEffectiveGradeEntryView\x12\x36.dlkit.proto.grading.UseEffectiveGradeEntryViewRequest\x1a\x34.dlkit.proto.grading.UseEffectiveGradeEntryViewReply\"\x00\x12\x95\x01\n\x1dUseAnyEffectiveGradeEntryView\x12\x39.dlkit.proto.grading.UseAnyEffectiveGradeEntryViewRequest\x1a\x37.dlkit.proto.grading.UseAnyEffectiveGradeEntryViewReply\"\x00\x12\x65\n\rGetGradeEntry\x12).dlkit.proto.grading.GetGradeEntryRequest\x1a\'.dlkit.proto.grading.GetGradeEntryReply\"\x00\x12m\n\x14GetGradeEntriesByIds\x12\x30.dlkit.proto.grading.GetGradeEntriesByIdsRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12y\n\x1aGetGradeEntriesByGenusType\x12\x36.dlkit.proto.grading.GetGradeEntriesByGenusTypeRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x85\x01\n GetGradeEntriesByParentGenusType\x12<.dlkit.proto.grading.GetGradeEntriesByParentGenusTypeRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12{\n\x1bGetGradeEntriesByRecordType\x12\x37.dlkit.proto.grading.GetGradeEntriesByRecordTypeRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12o\n\x15GetGradeEntriesOnDate\x12\x31.dlkit.proto.grading.GetGradeEntriesOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x87\x01\n!GetGradeEntriesForGradebookColumn\x12=.dlkit.proto.grading.GetGradeEntriesForGradebookColumnRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x93\x01\n\'GetGradeEntriesForGradebookColumnOnDate\x12\x43.dlkit.proto.grading.GetGradeEntriesForGradebookColumnOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12y\n\x1aGetGradeEntriesForResource\x12\x36.dlkit.proto.grading.GetGradeEntriesForResourceRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x85\x01\n GetGradeEntriesForResourceOnDate\x12<.dlkit.proto.grading.GetGradeEntriesForResourceOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x9d\x01\n,GetGradeEntriesForGradebookColumnAndResource\x12H.dlkit.proto.grading.GetGradeEntriesForGradebookColumnAndResourceRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\xa9\x01\n2GetGradeEntriesForGradebookColumnAndResourceOnDate\x12N.dlkit.proto.grading.GetGradeEntriesForGradebookColumnAndResourceOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12s\n\x17GetGradeEntriesByGrader\x12\x33.dlkit.proto.grading.GetGradeEntriesByGraderRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x63\n\x0fGetGradeEntries\x12+.dlkit.proto.grading.GetGradeEntriesRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x32\xe3\x06\n\x16GradeEntryQuerySession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nSearchGradeEntries\x12\x31.dlkit.proto.grading.CanSearchGradeEntriesRequest\x1a/.dlkit.proto.grading.CanSearchGradeEntriesReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12t\n\x12GetGradeEntryQuery\x12..dlkit.proto.grading.GetGradeEntryQueryRequest\x1a,.dlkit.proto.grading.GetGradeEntryQueryReply\"\x00\x12q\n\x16GetGradeEntriesByQuery\x12\x32.dlkit.proto.grading.GetGradeEntriesByQueryRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x32\xc2\x10\n\x16GradeEntryAdminSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nCreateGradeEntries\x12\x31.dlkit.proto.grading.CanCreateGradeEntriesRequest\x1a/.dlkit.proto.grading.CanCreateGradeEntriesReply\"\x00\x12\xa4\x01\n\"CanCreateGradeEntryWithRecordTypes\x12>.dlkit.proto.grading.CanCreateGradeEntryWithRecordTypesRequest\x1a<.dlkit.proto.grading.CanCreateGradeEntryWithRecordTypesReply\"\x00\x12\x8c\x01\n\x1aGetGradeEntryFormForCreate\x12\x36.dlkit.proto.grading.GetGradeEntryFormForCreateRequest\x1a\x34.dlkit.proto.grading.GetGradeEntryFormForCreateReply\"\x00\x12n\n\x10\x43reateGradeEntry\x12,.dlkit.proto.grading.CreateGradeEntryRequest\x1a*.dlkit.proto.grading.CreateGradeEntryReply\"\x00\x12\xa1\x01\n!CanOverridecalculatedGradeEntries\x12=.dlkit.proto.grading.CanOverridecalculatedGradeEntriesRequest\x1a;.dlkit.proto.grading.CanOverridecalculatedGradeEntriesReply\"\x00\x12\x92\x01\n\x1cGetGradeEntryFormForOverride\x12\x38.dlkit.proto.grading.GetGradeEntryFormForOverrideRequest\x1a\x36.dlkit.proto.grading.GetGradeEntryFormForOverrideReply\"\x00\x12\x92\x01\n\x1cOverrideCalculatedGradeEntry\x12\x38.dlkit.proto.grading.OverrideCalculatedGradeEntryRequest\x1a\x36.dlkit.proto.grading.OverrideCalculatedGradeEntryReply\"\x00\x12}\n\x15\x43\x61nUpdateGradeEntries\x12\x31.dlkit.proto.grading.CanUpdateGradeEntriesRequest\x1a/.dlkit.proto.grading.CanUpdateGradeEntriesReply\"\x00\x12\x8c\x01\n\x1aGetGradeEntryFormForUpdate\x12\x36.dlkit.proto.grading.GetGradeEntryFormForUpdateRequest\x1a\x34.dlkit.proto.grading.GetGradeEntryFormForUpdateReply\"\x00\x12n\n\x10UpdateGradeEntry\x12,.dlkit.proto.grading.UpdateGradeEntryRequest\x1a*.dlkit.proto.grading.UpdateGradeEntryReply\"\x00\x12}\n\x15\x43\x61nDeleteGradeEntries\x12\x31.dlkit.proto.grading.CanDeleteGradeEntriesRequest\x1a/.dlkit.proto.grading.CanDeleteGradeEntriesReply\"\x00\x12n\n\x10\x44\x65leteGradeEntry\x12,.dlkit.proto.grading.DeleteGradeEntryRequest\x1a*.dlkit.proto.grading.DeleteGradeEntryReply\"\x00\x12\x8c\x01\n\x1a\x43\x61nManageGradeEntryAliases\x12\x36.dlkit.proto.grading.CanManageGradeEntryAliasesRequest\x1a\x34.dlkit.proto.grading.CanManageGradeEntryAliasesReply\"\x00\x12k\n\x0f\x41liasGradeEntry\x12+.dlkit.proto.grading.AliasGradeEntryRequest\x1a).dlkit.proto.grading.AliasGradeEntryReply\"\x00\x32\xcf\x0f\n\x1cGradebookColumnLookupSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nLookupGradebookColumns\x12\x35.dlkit.proto.grading.CanLookupGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanLookupGradebookColumnsReply\"\x00\x12\xa1\x01\n!UseComparativeGradebookColumnView\x12=.dlkit.proto.grading.UseComparativeGradebookColumnViewRequest\x1a;.dlkit.proto.grading.UseComparativeGradebookColumnViewReply\"\x00\x12\x95\x01\n\x1dUsePlenaryGradebookColumnView\x12\x39.dlkit.proto.grading.UsePlenaryGradebookColumnViewRequest\x1a\x37.dlkit.proto.grading.UsePlenaryGradebookColumnViewReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12t\n\x12GetGradebookColumn\x12..dlkit.proto.grading.GetGradebookColumnRequest\x1a,.dlkit.proto.grading.GetGradebookColumnReply\"\x00\x12z\n\x18GetGradebookColumnsByIds\x12\x34.dlkit.proto.grading.GetGradebookColumnsByIdsRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x86\x01\n\x1eGetGradebookColumnsByGenusType\x12:.dlkit.proto.grading.GetGradebookColumnsByGenusTypeRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x92\x01\n$GetGradebookColumnsByParentGenusType\x12@.dlkit.proto.grading.GetGradebookColumnsByParentGenusTypeRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x88\x01\n\x1fGetGradebookColumnsByRecordType\x12;.dlkit.proto.grading.GetGradebookColumnsByRecordTypeRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12p\n\x13GetGradebookColumns\x12/.dlkit.proto.grading.GetGradebookColumnsRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12k\n\x0fSupportsSummary\x12+.dlkit.proto.grading.SupportsSummaryRequest\x1a).dlkit.proto.grading.SupportsSummaryReply\"\x00\x12\x89\x01\n\x19GetGradebookColumnSummary\x12\x35.dlkit.proto.grading.GetGradebookColumnSummaryRequest\x1a\x33.dlkit.proto.grading.GetGradebookColumnSummaryReply\"\x00\x32\x92\x07\n\x1bGradebookColumnQuerySession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nSearchGradebookColumns\x12\x35.dlkit.proto.grading.CanSearchGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanSearchGradebookColumnsReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12\x83\x01\n\x17GetGradebookColumnQuery\x12\x33.dlkit.proto.grading.GetGradebookColumnQueryRequest\x1a\x31.dlkit.proto.grading.GetGradebookColumnQueryReply\"\x00\x12~\n\x1aGetGradebookColumnsByQuery\x12\x36.dlkit.proto.grading.GetGradebookColumnsByQueryRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x32\xa9\x11\n\x1bGradebookColumnAdminSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nCreateGradebookColumns\x12\x35.dlkit.proto.grading.CanCreateGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanCreateGradebookColumnsReply\"\x00\x12\xb3\x01\n\'CanCreateGradebookColumnWithRecordTypes\x12\x43.dlkit.proto.grading.CanCreateGradebookColumnWithRecordTypesRequest\x1a\x41.dlkit.proto.grading.CanCreateGradebookColumnWithRecordTypesReply\"\x00\x12\x9b\x01\n\x1fGetGradebookColumnFormForCreate\x12;.dlkit.proto.grading.GetGradebookColumnFormForCreateRequest\x1a\x39.dlkit.proto.grading.GetGradebookColumnFormForCreateReply\"\x00\x12}\n\x15\x43reateGradebookColumn\x12\x31.dlkit.proto.grading.CreateGradebookColumnRequest\x1a/.dlkit.proto.grading.CreateGradebookColumnReply\"\x00\x12\x89\x01\n\x19\x43\x61nUpdateGradebookColumns\x12\x35.dlkit.proto.grading.CanUpdateGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanUpdateGradebookColumnsReply\"\x00\x12\x9b\x01\n\x1fGetGradebookColumnFormForUpdate\x12;.dlkit.proto.grading.GetGradebookColumnFormForUpdateRequest\x1a\x39.dlkit.proto.grading.GetGradebookColumnFormForUpdateReply\"\x00\x12}\n\x15UpdateGradebookColumn\x12\x31.dlkit.proto.grading.UpdateGradebookColumnRequest\x1a/.dlkit.proto.grading.UpdateGradebookColumnReply\"\x00\x12\x86\x01\n\x18SequenceGradebookColumns\x12\x34.dlkit.proto.grading.SequenceGradebookColumnsRequest\x1a\x32.dlkit.proto.grading.SequenceGradebookColumnsReply\"\x00\x12w\n\x13MoveGradebookColumn\x12/.dlkit.proto.grading.MoveGradebookColumnRequest\x1a-.dlkit.proto.grading.MoveGradebookColumnReply\"\x00\x12\x8c\x01\n\x1a\x43opyGradebookColumnEntries\x12\x36.dlkit.proto.grading.CopyGradebookColumnEntriesRequest\x1a\x34.dlkit.proto.grading.CopyGradebookColumnEntriesReply\"\x00\x12\x89\x01\n\x19\x43\x61nDeleteGradebookColumns\x12\x35.dlkit.proto.grading.CanDeleteGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanDeleteGradebookColumnsReply\"\x00\x12}\n\x15\x44\x65leteGradebookColumn\x12\x31.dlkit.proto.grading.DeleteGradebookColumnRequest\x1a/.dlkit.proto.grading.DeleteGradebookColumnReply\"\x00\x12\x9b\x01\n\x1f\x43\x61nManageGradebookColumnAliases\x12;.dlkit.proto.grading.CanManageGradebookColumnAliasesRequest\x1a\x39.dlkit.proto.grading.CanManageGradebookColumnAliasesReply\"\x00\x12z\n\x14\x41liasGradebookColumn\x12\x30.dlkit.proto.grading.AliasGradebookColumnRequest\x1a..dlkit.proto.grading.AliasGradebookColumnReply\"\x00\x32\xaf\n\n\x1fGradebookColumnGradebookSession\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12\xb9\x01\n)CanLookupGradebookColumnGradebookMappings\x12\x45.dlkit.proto.grading.CanLookupGradebookColumnGradebookMappingsRequest\x1a\x43.dlkit.proto.grading.CanLookupGradebookColumnGradebookMappingsReply\"\x00\x12\x88\x01\n GetGradebookColumnIdsByGradebook\x12<.dlkit.proto.grading.GetGradebookColumnIdsByGradebookRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x86\x01\n\x1eGetGradebookColumnsByGradebook\x12:.dlkit.proto.grading.GetGradebookColumnsByGradebookRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x8a\x01\n!GetGradebookColumnIdsByGradebooks\x12=.dlkit.proto.grading.GetGradebookColumnIdsByGradebooksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x88\x01\n\x1fGetGradebookColumnsByGradebooks\x12;.dlkit.proto.grading.GetGradebookColumnsByGradebooksRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x88\x01\n GetGradebookIdsByGradebookColumn\x12<.dlkit.proto.grading.GetGradebookIdsByGradebookColumnRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x80\x01\n\x1eGetGradebooksByGradebookColumn\x12:.dlkit.proto.grading.GetGradebooksByGradebookColumnRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x32\xcf\x07\n)GradebookColumnGradebookAssignmentSession\x12\x89\x01\n\x19\x43\x61nAssignGradebookColumns\x12\x35.dlkit.proto.grading.CanAssignGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanAssignGradebookColumnsReply\"\x00\x12\xaa\x01\n$CanAssignGradebookColumnsToGradebook\x12@.dlkit.proto.grading.CanAssignGradebookColumnsToGradebookRequest\x1a>.dlkit.proto.grading.CanAssignGradebookColumnsToGradebookReply\"\x00\x12z\n\x19GetAssignableGradebookIds\x12\x35.dlkit.proto.grading.GetAssignableGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9e\x01\n+GetAssignableGradebookIdsForGradebookColumn\x12G.dlkit.proto.grading.GetAssignableGradebookIdsForGradebookColumnRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9e\x01\n AssignGradebookColumnToGradebook\x12<.dlkit.proto.grading.AssignGradebookColumnToGradebookRequest\x1a:.dlkit.proto.grading.AssignGradebookColumnToGradebookReply\"\x00\x12\xaa\x01\n$UnassignGradebookColumnFromGradebook\x12@.dlkit.proto.grading.UnassignGradebookColumnFromGradebookRequest\x1a>.dlkit.proto.grading.UnassignGradebookColumnFromGradebookReply\"\x00\x32\xbc\t\n\x16GradebookLookupSession\x12w\n\x13\x43\x61nLookupGradebooks\x12/.dlkit.proto.grading.CanLookupGradebooksRequest\x1a-.dlkit.proto.grading.CanLookupGradebooksReply\"\x00\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12h\n\x12GetGradebooksByIds\x12..dlkit.proto.grading.GetGradebooksByIdsRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12t\n\x18GetGradebooksByGenusType\x12\x34.dlkit.proto.grading.GetGradebooksByGenusTypeRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12\x80\x01\n\x1eGetGradebooksByParentGenusType\x12:.dlkit.proto.grading.GetGradebooksByParentGenusTypeRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12v\n\x19GetGradebooksByRecordType\x12\x35.dlkit.proto.grading.GetGradebooksByRecordTypeRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12r\n\x17GetGradebooksByProvider\x12\x33.dlkit.proto.grading.GetGradebooksByProviderRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12^\n\rGetGradebooks\x12).dlkit.proto.grading.GetGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x32\xfb\n\n\x15GradebookAdminSession\x12w\n\x13\x43\x61nCreateGradebooks\x12/.dlkit.proto.grading.CanCreateGradebooksRequest\x1a-.dlkit.proto.grading.CanCreateGradebooksReply\"\x00\x12\xa1\x01\n!CanCreateGradebookWithRecordTypes\x12=.dlkit.proto.grading.CanCreateGradebookWithRecordTypesRequest\x1a;.dlkit.proto.grading.CanCreateGradebookWithRecordTypesReply\"\x00\x12\x89\x01\n\x19GetGradebookFormForCreate\x12\x35.dlkit.proto.grading.GetGradebookFormForCreateRequest\x1a\x33.dlkit.proto.grading.GetGradebookFormForCreateReply\"\x00\x12k\n\x0f\x43reateGradebook\x12+.dlkit.proto.grading.CreateGradebookRequest\x1a).dlkit.proto.grading.CreateGradebookReply\"\x00\x12w\n\x13\x43\x61nUpdateGradebooks\x12/.dlkit.proto.grading.CanUpdateGradebooksRequest\x1a-.dlkit.proto.grading.CanUpdateGradebooksReply\"\x00\x12\x89\x01\n\x19GetGradebookFormForUpdate\x12\x35.dlkit.proto.grading.GetGradebookFormForUpdateRequest\x1a\x33.dlkit.proto.grading.GetGradebookFormForUpdateReply\"\x00\x12k\n\x0fUpdateGradebook\x12+.dlkit.proto.grading.UpdateGradebookRequest\x1a).dlkit.proto.grading.UpdateGradebookReply\"\x00\x12w\n\x13\x43\x61nDeleteGradebooks\x12/.dlkit.proto.grading.CanDeleteGradebooksRequest\x1a-.dlkit.proto.grading.CanDeleteGradebooksReply\"\x00\x12k\n\x0f\x44\x65leteGradebook\x12+.dlkit.proto.grading.DeleteGradebookRequest\x1a).dlkit.proto.grading.DeleteGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nManageGradebookAliases\x12\x35.dlkit.proto.grading.CanManageGradebookAliasesRequest\x1a\x33.dlkit.proto.grading.CanManageGradebookAliasesReply\"\x00\x12h\n\x0e\x41liasGradebook\x12*.dlkit.proto.grading.AliasGradebookRequest\x1a(.dlkit.proto.grading.AliasGradebookReply\"\x00\x32\xad\x12\n\x19GradebookHierarchySession\x12\x83\x01\n\x17GetGradebookHierarchyId\x12\x33.dlkit.proto.grading.GetGradebookHierarchyIdRequest\x1a\x31.dlkit.proto.grading.GetGradebookHierarchyIdReply\"\x00\x12}\n\x15GetGradebookHierarchy\x12\x31.dlkit.proto.grading.GetGradebookHierarchyRequest\x1a/.dlkit.proto.grading.GetGradebookHierarchyReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nAccessGradebookHierarchy\x12\x37.dlkit.proto.grading.CanAccessGradebookHierarchyRequest\x1a\x35.dlkit.proto.grading.CanAccessGradebookHierarchyReply\"\x00\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12n\n\x13GetRootGradebookIds\x12/.dlkit.proto.grading.GetRootGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\x11GetRootGradebooks\x12-.dlkit.proto.grading.GetRootGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12w\n\x13HasParentGradebooks\x12/.dlkit.proto.grading.HasParentGradebooksRequest\x1a-.dlkit.proto.grading.HasParentGradebooksReply\"\x00\x12w\n\x13IsParentOfGradebook\x12/.dlkit.proto.grading.IsParentOfGradebookRequest\x1a-.dlkit.proto.grading.IsParentOfGradebookReply\"\x00\x12r\n\x15GetParentGradebookIds\x12\x31.dlkit.proto.grading.GetParentGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x13GetParentGradebooks\x12/.dlkit.proto.grading.GetParentGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12}\n\x15IsAncestorOfGradebook\x12\x31.dlkit.proto.grading.IsAncestorOfGradebookRequest\x1a/.dlkit.proto.grading.IsAncestorOfGradebookReply\"\x00\x12t\n\x12HasChildGradebooks\x12..dlkit.proto.grading.HasChildGradebooksRequest\x1a,.dlkit.proto.grading.HasChildGradebooksReply\"\x00\x12t\n\x12IsChildOfGradebook\x12..dlkit.proto.grading.IsChildOfGradebookRequest\x1a,.dlkit.proto.grading.IsChildOfGradebookReply\"\x00\x12p\n\x14GetChildGradebookIds\x12\x30.dlkit.proto.grading.GetChildGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x12GetChildGradebooks\x12..dlkit.proto.grading.GetChildGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12\x83\x01\n\x17IsDescendantOfGradebook\x12\x33.dlkit.proto.grading.IsDescendantOfGradebookRequest\x1a\x31.dlkit.proto.grading.IsDescendantOfGradebookReply\"\x00\x12w\n\x13GetGradebookNodeIds\x12/.dlkit.proto.grading.GetGradebookNodeIdsRequest\x1a-.dlkit.proto.grading.GetGradebookNodeIdsReply\"\x00\x12q\n\x11GetGradebookNodes\x12-.dlkit.proto.grading.GetGradebookNodesRequest\x1a+.dlkit.proto.grading.GetGradebookNodesReply\"\x00\x32\x90\x07\n\x1fGradebookHierarchyDesignSession\x12\x83\x01\n\x17GetGradebookHierarchyId\x12\x33.dlkit.proto.grading.GetGradebookHierarchyIdRequest\x1a\x31.dlkit.proto.grading.GetGradebookHierarchyIdReply\"\x00\x12}\n\x15GetGradebookHierarchy\x12\x31.dlkit.proto.grading.GetGradebookHierarchyRequest\x1a/.dlkit.proto.grading.GetGradebookHierarchyReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nModifyGradebookHierarchy\x12\x37.dlkit.proto.grading.CanModifyGradebookHierarchyRequest\x1a\x35.dlkit.proto.grading.CanModifyGradebookHierarchyReply\"\x00\x12n\n\x10\x41\x64\x64RootGradebook\x12,.dlkit.proto.grading.AddRootGradebookRequest\x1a*.dlkit.proto.grading.AddRootGradebookReply\"\x00\x12w\n\x13RemoveRootGradebook\x12/.dlkit.proto.grading.RemoveRootGradebookRequest\x1a-.dlkit.proto.grading.RemoveRootGradebookReply\"\x00\x12q\n\x11\x41\x64\x64\x43hildGradebook\x12-.dlkit.proto.grading.AddChildGradebookRequest\x1a+.dlkit.proto.grading.AddChildGradebookReply\"\x00\x12z\n\x14RemoveChildGradebook\x12\x30.dlkit.proto.grading.RemoveChildGradebookRequest\x1a..dlkit.proto.grading.RemoveChildGradebookReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x19\x64lkit/proto/grading.proto\x12\x13\x64lkit.proto.grading\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x86\x04\n\x05Grade\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cgrade_system\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\tgradebook\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1d\n\x15input_score_end_range\x18\x07 \x01(\x02\x12\x1f\n\x17input_score_start_range\x18\x08 \x01(\x02\x12\x14\n\x0coutput_score\x18\t \x01(\x02\x12?\n\x0frecord_type_ids\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0c\n\nGradeQuery\"\x15\n\x13GradeQueryInspector\"\x0b\n\tGradeForm\"\x12\n\x10GradeSearchOrder\"7\n\tGradeList\x12*\n\x06grades\x18\x01 \x03(\x0b\x32\x1a.dlkit.proto.grading.Grade\"\xf3\x03\n\x0bGradeSystem\x12\x17\n\x0f\x62\x61sed_on_grades\x18\x01 \x01(\x08\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\tgradebook\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x1d\n\x15highest_numeric_score\x18\x06 \x01(\x02\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14lowest_numeric_score\x18\x08 \x01(\x02\x12\x1f\n\x17numeric_score_increment\x18\t \x01(\x02\x12?\n\x0frecord_type_ids\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x12\n\x10GradeSystemQuery\"\x1b\n\x19GradeSystemQueryInspector\"\x11\n\x0fGradeSystemForm\"\x18\n\x16GradeSystemSearchOrder\"\x13\n\x11GradeSystemSearch\"\x1a\n\x18GradeSystemSearchResults\"J\n\x0fGradeSystemList\x12\x37\n\rgrade_systems\x18\x01 \x03(\x0b\x32 .dlkit.proto.grading.GradeSystem\"\x96\x02\n\nGradeEntry\x12\x31\n\x05grade\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\tgradebook\x18\x02 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12<\n\x10gradebook_column\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12 \n\x18ignored_for_calculations\x18\x04 \x01(\x08\x12\x34\n\x08resource\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\r\n\x05score\x18\x06 \x01(\x02\"\x11\n\x0fGradeEntryQuery\"\x1a\n\x18GradeEntryQueryInspector\"\x10\n\x0eGradeEntryForm\"\x17\n\x15GradeEntrySearchOrder\"\x12\n\x10GradeEntrySearch\"\x19\n\x17GradeEntrySearchResults\"H\n\x0eGradeEntryList\x12\x36\n\rgrade_entries\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"\xba\x03\n\x0fGradebookColumn\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cgrade_system\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x30\n\tgradebook\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x16\n\x14GradebookColumnQuery\"\x1f\n\x1dGradebookColumnQueryInspector\"\x15\n\x13GradebookColumnForm\"\x1c\n\x1aGradebookColumnSearchOrder\"\x17\n\x15GradebookColumnSearch\"\x1e\n\x1cGradebookColumnSearchResults\"V\n\x13GradebookColumnList\x12?\n\x11gradebook_columns\x18\x01 \x03(\x0b\x32$.dlkit.proto.grading.GradebookColumn\"\x93\x03\n\x16GradebookColumnSummary\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12<\n\x10gradebook_column\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1d\n\x1bGradebookColumnSummaryQuery\"&\n$GradebookColumnSummaryQueryInspector\"#\n!GradebookColumnSummarySearchOrder\"\xc8\x02\n\tGradebook\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x10\n\x0eGradebookQuery\"\x19\n\x17GradebookQueryInspector\"\x0f\n\rGradebookForm\"\x16\n\x14GradebookSearchOrder\"\x11\n\x0fGradebookSearch\"\x18\n\x16GradebookSearchResults\"C\n\rGradebookList\x12\x32\n\ngradebooks\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.grading.Gradebook\"\x0f\n\rGradebookNode\"P\n\x11GradebookNodeList\x12;\n\x0fgradebook_nodes\x18\x01 \x03(\x0b\x32\".dlkit.proto.grading.GradebookNode\"E\n\x13GetGradebookIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15GetGradebookIdRequest\"F\n\x11GetGradebookReply\x12\x31\n\tgradebook\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.Gradebook\"\x15\n\x13GetGradebookRequest\">\n\x1a\x43\x61nLookupGradeSystemsReply\x12 \n\x18\x63\x61n_lookup_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupGradeSystemsRequest\"$\n\"UseComparativeGradeSystemViewReply\"&\n$UseComparativeGradeSystemViewRequest\" \n\x1eUsePlenaryGradeSystemViewReply\"\"\n UsePlenaryGradeSystemViewRequest\" \n\x1eUseFederatedGradebookViewReply\"\"\n UseFederatedGradebookViewRequest\"\x1f\n\x1dUseIsolatedGradebookViewReply\"!\n\x1fUseIsolatedGradebookViewRequest\"M\n\x13GetGradeSystemReply\x12\x36\n\x0cgrade_system\x18\x01 \x01(\x0b\x32 .dlkit.proto.grading.GradeSystem\"T\n\x15GetGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1aGetGradeSystemByGradeReply\x12\x36\n\x0cgrade_system\x18\x01 \x01(\x0b\x32 .dlkit.proto.grading.GradeSystem\"T\n\x1cGetGradeSystemByGradeRequest\x12\x34\n\x08grade_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x1bGetGradeSystemsByIdsRequest\x12<\n\x10grade_system_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"l\n!GetGradeSystemsByGenusTypeRequest\x12G\n\x17grade_system_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n\'GetGradeSystemsByParentGenusTypeRequest\x12G\n\x17grade_system_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"n\n\"GetGradeSystemsByRecordTypeRequest\x12H\n\x18grade_system_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x18\n\x16GetGradeSystemsRequest\">\n\x1a\x43\x61nSearchGradeSystemsReply\x12 \n\x18\x63\x61n_search_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchGradeSystemsRequest\"]\n\x18GetGradeSystemQueryReply\x12\x41\n\x12grade_system_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.grading.GradeSystemQuery\"\x1c\n\x1aGetGradeSystemQueryRequest\"b\n\x1dGetGradeSystemsByQueryRequest\x12\x41\n\x12grade_system_query\x18\x01 \x01(\x0b\x32%.dlkit.proto.grading.GradeSystemQuery\">\n\x1a\x43\x61nCreateGradeSystemsReply\x12 \n\x18\x63\x61n_create_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateGradeSystemsRequest\"]\n(CanCreateGradeSystemWithRecordTypesReply\x12\x31\n)can_create_grade_system_with_record_types\x18\x01 \x01(\x08\"w\n*CanCreateGradeSystemWithRecordTypesRequest\x12I\n\x19grade_system_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetGradeSystemFormForCreateReply\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\"o\n\"GetGradeSystemFormForCreateRequest\x12I\n\x19grade_system_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x16\x43reateGradeSystemReply\x12\x36\n\x0cgrade_system\x18\x01 \x01(\x0b\x32 .dlkit.proto.grading.GradeSystem\"[\n\x18\x43reateGradeSystemRequest\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\">\n\x1a\x43\x61nUpdateGradeSystemsReply\x12 \n\x18\x63\x61n_update_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateGradeSystemsRequest\"c\n GetGradeSystemFormForUpdateReply\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\"a\n\"GetGradeSystemFormForUpdateRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16UpdateGradeSystemReply\"[\n\x18UpdateGradeSystemRequest\x12?\n\x11grade_system_form\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeSystemForm\">\n\x1a\x43\x61nDeleteGradeSystemsReply\x12 \n\x18\x63\x61n_delete_grade_systems\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteGradeSystemsRequest\"\x18\n\x16\x44\x65leteGradeSystemReply\"W\n\x18\x44\x65leteGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n CanManageGradeSystemAliasesReply\x12\'\n\x1f\x63\x61n_manage_grade_system_aliases\x18\x01 \x01(\x08\"$\n\"CanManageGradeSystemAliasesRequest\"\x17\n\x15\x41liasGradeSystemReply\"\x8c\x01\n\x17\x41liasGradeSystemRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12;\n\x0fgrade_system_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"1\n\x14\x43\x61nCreateGradesReply\x12\x19\n\x11\x63\x61n_create_grades\x18\x01 \x01(\x08\"U\n\x16\x43\x61nCreateGradesRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\"CanCreateGradeWithRecordTypesReply\x12*\n\"can_create_grade_with_record_types\x18\x01 \x01(\x08\"\xa7\x01\n$CanCreateGradeWithRecordTypesRequest\x12\x42\n\x12grade_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12;\n\x0fgrade_system_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetGradeFormForCreateReply\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"\x9f\x01\n\x1cGetGradeFormForCreateRequest\x12\x42\n\x12grade_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12;\n\x0fgrade_system_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x10\x43reateGradeReply\x12)\n\x05grade\x18\x01 \x01(\x0b\x32\x1a.dlkit.proto.grading.Grade\"H\n\x12\x43reateGradeRequest\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"1\n\x14\x43\x61nUpdateGradesReply\x12\x19\n\x11\x63\x61n_update_grades\x18\x01 \x01(\x08\"U\n\x16\x43\x61nUpdateGradesRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetGradeFormForUpdateReply\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"T\n\x1cGetGradeFormForUpdateRequest\x12\x34\n\x08grade_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10UpdateGradeReply\"H\n\x12UpdateGradeRequest\x12\x32\n\ngrade_form\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.GradeForm\"1\n\x14\x43\x61nDeleteGradesReply\x12\x19\n\x11\x63\x61n_delete_grades\x18\x01 \x01(\x08\"U\n\x16\x43\x61nDeleteGradesRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10\x44\x65leteGradeReply\"J\n\x12\x44\x65leteGradeRequest\x12\x34\n\x08grade_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nManageGradeAliasesReply\x12 \n\x18\x63\x61n_manage_grade_aliases\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nManageGradeAliasesRequest\"\x11\n\x0f\x41liasGradeReply\"\x7f\n\x11\x41liasGradeRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08grade_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n UseComparativeGradebookViewReply\"$\n\"UseComparativeGradebookViewRequest\"\x1e\n\x1cUsePlenaryGradebookViewReply\" \n\x1eUsePlenaryGradebookViewRequest\"`\n*CanLookupGradeSystemGradebookMappingsReply\x12\x32\n*can_lookup_grade_system_gradebook_mappings\x18\x01 \x01(\x08\".\n,CanLookupGradeSystemGradebookMappingsRequest\"_\n#GetGradeSystemIdsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n!GetGradeSystemsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n$GetGradeSystemIdsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\"GetGradeSystemsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n#GetGradebookIdsByGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n!GetGradebooksByGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nAssignGradeSystemReply\x12\x1f\n\x17\x63\x61n_assign_grade_system\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nAssignGradeSystemRequest\"V\n%CanAssignGradeSystemsToGradebookReply\x12-\n%can_assign_grade_systems_to_gradebook\x18\x01 \x01(\x08\"c\n\'CanAssignGradeSystemsToGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n GetAssignableGradebookIdsRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa7\x01\n.GetAssignableGradebookIdsForGradeSystemRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"#\n!AssignGradeSystemToGradebookReply\"\x9c\x01\n#AssignGradeSystemToGradebookRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%UnassignGradeSystemFromGradebookReply\"\xa0\x01\n\'UnassignGradeSystemFromGradebookRequest\x12;\n\x0fgrade_system_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nLookupGradeEntriesReply\x12 \n\x18\x63\x61n_lookup_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nLookupGradeEntriesRequest\"#\n!UseComparativeGradeEntryViewReply\"%\n#UseComparativeGradeEntryViewRequest\"\x1f\n\x1dUsePlenaryGradeEntryViewReply\"!\n\x1fUsePlenaryGradeEntryViewRequest\"!\n\x1fUseEffectiveGradeEntryViewReply\"#\n!UseEffectiveGradeEntryViewRequest\"$\n\"UseAnyEffectiveGradeEntryViewReply\"&\n$UseAnyEffectiveGradeEntryViewRequest\"J\n\x12GetGradeEntryReply\x12\x34\n\x0bgrade_entry\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"R\n\x14GetGradeEntryRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1bGetGradeEntriesByIdsRequest\x12;\n\x0fgrade_entry_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"k\n!GetGradeEntriesByGenusTypeRequest\x12\x46\n\x16grade_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n\'GetGradeEntriesByParentGenusTypeRequest\x12\x46\n\x16grade_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n\"GetGradeEntriesByRecordTypeRequest\x12G\n\x17grade_entry_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"q\n\x1cGetGradeEntriesOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"k\n(GetGradeEntriesForGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xc4\x01\n.GetGradeEntriesForGradebookColumnOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\\\n!GetGradeEntriesForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb5\x01\n\'GetGradeEntriesForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xaf\x01\n3GetGradeEntriesForGradebookColumnAndResourceRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x88\x02\n9GetGradeEntriesForGradebookColumnAndResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Y\n\x1eGetGradeEntriesByGraderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16GetGradeEntriesRequest\">\n\x1a\x43\x61nSearchGradeEntriesReply\x12 \n\x18\x63\x61n_search_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSearchGradeEntriesRequest\"Z\n\x17GetGradeEntryQueryReply\x12?\n\x11grade_entry_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeEntryQuery\"\x1b\n\x19GetGradeEntryQueryRequest\"`\n\x1dGetGradeEntriesByQueryRequest\x12?\n\x11grade_entry_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradeEntryQuery\">\n\x1a\x43\x61nCreateGradeEntriesReply\x12 \n\x18\x63\x61n_create_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nCreateGradeEntriesRequest\"[\n\'CanCreateGradeEntryWithRecordTypesReply\x12\x30\n(can_create_grade_entry_with_record_types\x18\x01 \x01(\x08\"u\n)CanCreateGradeEntryWithRecordTypesRequest\x12H\n\x18grade_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"`\n\x1fGetGradeEntryFormForCreateReply\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"\xe7\x01\n!GetGradeEntryFormForCreateRequest\x12H\n\x18grade_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x15\x43reateGradeEntryReply\x12\x34\n\x0bgrade_entry\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"X\n\x17\x43reateGradeEntryRequest\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"V\n&CanOverridecalculatedGradeEntriesReply\x12,\n$can_overridecalculated_grade_entries\x18\x01 \x01(\x08\"*\n(CanOverridecalculatedGradeEntriesRequest\"b\n!GetGradeEntryFormForOverrideReply\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"\xab\x01\n#GetGradeEntryFormForOverrideRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12H\n\x18grade_entry_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n!OverrideCalculatedGradeEntryReply\x12\x34\n\x0bgrade_entry\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.grading.GradeEntry\"d\n#OverrideCalculatedGradeEntryRequest\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\">\n\x1a\x43\x61nUpdateGradeEntriesReply\x12 \n\x18\x63\x61n_update_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nUpdateGradeEntriesRequest\"`\n\x1fGetGradeEntryFormForUpdateReply\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\"_\n!GetGradeEntryFormForUpdateRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15UpdateGradeEntryReply\"X\n\x17UpdateGradeEntryRequest\x12=\n\x10grade_entry_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.grading.GradeEntryForm\">\n\x1a\x43\x61nDeleteGradeEntriesReply\x12 \n\x18\x63\x61n_delete_grade_entries\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nDeleteGradeEntriesRequest\"\x17\n\x15\x44\x65leteGradeEntryReply\"U\n\x17\x44\x65leteGradeEntryRequest\x12:\n\x0egrade_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x1f\x43\x61nManageGradeEntryAliasesReply\x12&\n\x1e\x63\x61n_manage_grade_entry_aliases\x18\x01 \x01(\x08\"#\n!CanManageGradeEntryAliasesRequest\"\x16\n\x14\x41liasGradeEntryReply\"\x8a\x01\n\x16\x41liasGradeEntryRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0egrade_entry_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nLookupGradebookColumnsReply\x12$\n\x1c\x63\x61n_lookup_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanLookupGradebookColumnsRequest\"(\n&UseComparativeGradebookColumnViewReply\"*\n(UseComparativeGradebookColumnViewRequest\"$\n\"UsePlenaryGradebookColumnViewReply\"&\n$UsePlenaryGradebookColumnViewRequest\"Y\n\x17GetGradebookColumnReply\x12>\n\x10gradebook_column\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradebookColumn\"\\\n\x19GetGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1fGetGradebookColumnsByIdsRequest\x12@\n\x14gradebook_column_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"t\n%GetGradebookColumnsByGenusTypeRequest\x12K\n\x1bgradebook_column_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"z\n+GetGradebookColumnsByParentGenusTypeRequest\x12K\n\x1bgradebook_column_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n&GetGradebookColumnsByRecordTypeRequest\x12L\n\x1cgradebook_column_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x1c\n\x1aGetGradebookColumnsRequest\"0\n\x14SupportsSummaryReply\x12\x18\n\x10supports_summary\x18\x01 \x01(\x08\"\x18\n\x16SupportsSummaryRequest\"o\n\x1eGetGradebookColumnSummaryReply\x12M\n\x18gradebook_column_summary\x18\x01 \x01(\x0b\x32+.dlkit.proto.grading.GradebookColumnSummary\"c\n GetGradebookColumnSummaryRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nSearchGradebookColumnsReply\x12$\n\x1c\x63\x61n_search_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanSearchGradebookColumnsRequest\"i\n\x1cGetGradebookColumnQueryReply\x12I\n\x16gradebook_column_query\x18\x01 \x01(\x0b\x32).dlkit.proto.grading.GradebookColumnQuery\" \n\x1eGetGradebookColumnQueryRequest\"n\n!GetGradebookColumnsByQueryRequest\x12I\n\x16gradebook_column_query\x18\x01 \x01(\x0b\x32).dlkit.proto.grading.GradebookColumnQuery\"F\n\x1e\x43\x61nCreateGradebookColumnsReply\x12$\n\x1c\x63\x61n_create_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanCreateGradebookColumnsRequest\"e\n,CanCreateGradebookColumnWithRecordTypesReply\x12\x35\n-can_create_gradebook_column_with_record_types\x18\x01 \x01(\x08\"\x7f\n.CanCreateGradebookColumnWithRecordTypesRequest\x12M\n\x1dgradebook_column_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"o\n$GetGradebookColumnFormForCreateReply\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"w\n&GetGradebookColumnFormForCreateRequest\x12M\n\x1dgradebook_column_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n\x1a\x43reateGradebookColumnReply\x12>\n\x10gradebook_column\x18\x01 \x01(\x0b\x32$.dlkit.proto.grading.GradebookColumn\"g\n\x1c\x43reateGradebookColumnRequest\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"F\n\x1e\x43\x61nUpdateGradebookColumnsReply\x12$\n\x1c\x63\x61n_update_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanUpdateGradebookColumnsRequest\"o\n$GetGradebookColumnFormForUpdateReply\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"i\n&GetGradebookColumnFormForUpdateRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUpdateGradebookColumnReply\"g\n\x1cUpdateGradebookColumnRequest\x12G\n\x15gradebook_column_form\x18\x01 \x01(\x0b\x32(.dlkit.proto.grading.GradebookColumnForm\"\x1f\n\x1dSequenceGradebookColumnsReply\"c\n\x1fSequenceGradebookColumnsRequest\x12@\n\x14gradebook_column_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18MoveGradebookColumnReply\"\xa9\x01\n\x1aMoveGradebookColumnRequest\x12\x44\n\x18\x62\x61\x63k_gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x45\n\x19\x66ront_gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1f\x43opyGradebookColumnEntriesReply\"\xb3\x01\n!CopyGradebookColumnEntriesRequest\x12\x46\n\x1asource_gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x1atarget_gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nDeleteGradebookColumnsReply\x12$\n\x1c\x63\x61n_delete_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanDeleteGradebookColumnsRequest\"\x1c\n\x1a\x44\x65leteGradebookColumnReply\"_\n\x1c\x44\x65leteGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanManageGradebookColumnAliasesReply\x12+\n#can_manage_gradebook_column_aliases\x18\x01 \x01(\x08\"(\n&CanManageGradebookColumnAliasesRequest\"\x1b\n\x19\x41liasGradebookColumnReply\"\x94\x01\n\x1b\x41liasGradebookColumnRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13gradebook_column_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n.CanLookupGradebookColumnGradebookMappingsReply\x12\x36\n.can_lookup_gradebook_column_gradebook_mappings\x18\x01 \x01(\x08\"2\n0CanLookupGradebookColumnGradebookMappingsRequest\"c\n\'GetGradebookColumnIdsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n%GetGradebookColumnsByGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n(GetGradebookColumnIdsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n&GetGradebookColumnsByGradebooksRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"j\n\'GetGradebookIdsByGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n%GetGradebooksByGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nAssignGradebookColumnsReply\x12$\n\x1c\x63\x61n_assign_gradebook_columns\x18\x01 \x01(\x08\"\"\n CanAssignGradebookColumnsRequest\"^\n)CanAssignGradebookColumnsToGradebookReply\x12\x31\n)can_assign_gradebook_columns_to_gradebook\x18\x01 \x01(\x08\"g\n+CanAssignGradebookColumnsToGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xaf\x01\n2GetAssignableGradebookIdsForGradebookColumnRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%AssignGradebookColumnToGradebookReply\"\xa4\x01\n\'AssignGradebookColumnToGradebookRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n)UnassignGradebookColumnFromGradebookReply\"\xa8\x01\n+UnassignGradebookColumnFromGradebookRequest\x12?\n\x13gradebook_column_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nLookupGradebooksReply\x12\x1d\n\x15\x63\x61n_lookup_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nLookupGradebooksRequest\"V\n\x19GetGradebooksByIdsRequest\x12\x39\n\rgradebook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1fGetGradebooksByGenusTypeRequest\x12\x44\n\x14gradebook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n%GetGradebooksByParentGenusTypeRequest\x12\x44\n\x14gradebook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n GetGradebooksByRecordTypeRequest\x12\x45\n\x15gradebook_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n\x1eGetGradebooksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14GetGradebooksRequest\"9\n\x18\x43\x61nCreateGradebooksReply\x12\x1d\n\x15\x63\x61n_create_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateGradebooksRequest\"X\n&CanCreateGradebookWithRecordTypesReply\x12.\n&can_create_gradebook_with_record_types\x18\x01 \x01(\x08\"r\n(CanCreateGradebookWithRecordTypesRequest\x12\x46\n\x16gradebook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n\x1eGetGradebookFormForCreateReply\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"j\n GetGradebookFormForCreateRequest\x12\x46\n\x16gradebook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"I\n\x14\x43reateGradebookReply\x12\x31\n\tgradebook\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.grading.Gradebook\"T\n\x16\x43reateGradebookRequest\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"9\n\x18\x43\x61nUpdateGradebooksReply\x12\x1d\n\x15\x63\x61n_update_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateGradebooksRequest\"\\\n\x1eGetGradebookFormForUpdateReply\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"\\\n GetGradebookFormForUpdateRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14UpdateGradebookReply\"T\n\x16UpdateGradebookRequest\x12:\n\x0egradebook_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookForm\"9\n\x18\x43\x61nDeleteGradebooksReply\x12\x1d\n\x15\x63\x61n_delete_gradebooks\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteGradebooksRequest\"\x16\n\x14\x44\x65leteGradebookReply\"R\n\x16\x44\x65leteGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nManageGradebookAliasesReply\x12$\n\x1c\x63\x61n_manage_gradebook_aliases\x18\x01 \x01(\x08\"\"\n CanManageGradebookAliasesRequest\"\x15\n\x13\x41liasGradebookReply\"\x87\x01\n\x15\x41liasGradebookRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x1cGetGradebookHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eGetGradebookHierarchyIdRequest\"Q\n\x1aGetGradebookHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1e\n\x1cGetGradebookHierarchyRequest\"J\n CanAccessGradebookHierarchyReply\x12&\n\x1e\x63\x61n_access_gradebook_hierarchy\x18\x01 \x01(\x08\"$\n\"CanAccessGradebookHierarchyRequest\"\x1c\n\x1aGetRootGradebookIdsRequest\"\x1a\n\x18GetRootGradebooksRequest\"9\n\x18HasParentGradebooksReply\x12\x1d\n\x15has_parent_gradebooks\x18\x01 \x01(\x08\"V\n\x1aHasParentGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsParentOfGradebookReply\x12\x1e\n\x16is_parent_of_gradebook\x18\x01 \x01(\x08\"\x87\x01\n\x1aIsParentOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1cGetParentGradebookIdsRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1aGetParentGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1aIsAncestorOfGradebookReply\x12 \n\x18is_ancestor_of_gradebook\x18\x01 \x01(\x08\"\x89\x01\n\x1cIsAncestorOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17HasChildGradebooksReply\x12\x1c\n\x14has_child_gradebooks\x18\x01 \x01(\x08\"U\n\x19HasChildGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsChildOfGradebookReply\x12\x1d\n\x15is_child_of_gradebook\x18\x01 \x01(\x08\"\x86\x01\n\x19IsChildOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1bGetChildGradebookIdsRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x19GetChildGradebooksRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsDescendantOfGradebookReply\x12\"\n\x1ais_descendant_of_gradebook\x18\x01 \x01(\x08\"\x8b\x01\n\x1eIsDescendantOfGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x18GetGradebookNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa4\x01\n\x1aGetGradebookNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x38\n\x0cgradebook_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"T\n\x16GetGradebookNodesReply\x12:\n\x0egradebook_node\x18\x01 \x01(\x0b\x32\".dlkit.proto.grading.GradebookNode\"\xa2\x01\n\x18GetGradebookNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x38\n\x0cgradebook_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"J\n CanModifyGradebookHierarchyReply\x12&\n\x1e\x63\x61n_modify_gradebook_hierarchy\x18\x01 \x01(\x08\"$\n\"CanModifyGradebookHierarchyRequest\"\x17\n\x15\x41\x64\x64RootGradebookReply\"S\n\x17\x41\x64\x64RootGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveRootGradebookReply\"V\n\x1aRemoveRootGradebookRequest\x12\x38\n\x0cgradebook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16\x41\x64\x64\x43hildGradebookReply\"\x8a\x01\n\x18\x41\x64\x64\x43hildGradebookRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19RemoveChildGradebookReply\"\x8d\x01\n\x1bRemoveChildGradebookRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cgradebook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xe2\r\n\x18GradeSystemLookupSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nLookupGradeSystems\x12\x31.dlkit.proto.grading.CanLookupGradeSystemsRequest\x1a/.dlkit.proto.grading.CanLookupGradeSystemsReply\"\x00\x12\x95\x01\n\x1dUseComparativeGradeSystemView\x12\x39.dlkit.proto.grading.UseComparativeGradeSystemViewRequest\x1a\x37.dlkit.proto.grading.UseComparativeGradeSystemViewReply\"\x00\x12\x89\x01\n\x19UsePlenaryGradeSystemView\x12\x35.dlkit.proto.grading.UsePlenaryGradeSystemViewRequest\x1a\x33.dlkit.proto.grading.UsePlenaryGradeSystemViewReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12h\n\x0eGetGradeSystem\x12*.dlkit.proto.grading.GetGradeSystemRequest\x1a(.dlkit.proto.grading.GetGradeSystemReply\"\x00\x12}\n\x15GetGradeSystemByGrade\x12\x31.dlkit.proto.grading.GetGradeSystemByGradeRequest\x1a/.dlkit.proto.grading.GetGradeSystemByGradeReply\"\x00\x12n\n\x14GetGradeSystemsByIds\x12\x30.dlkit.proto.grading.GetGradeSystemsByIdsRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12z\n\x1aGetGradeSystemsByGenusType\x12\x36.dlkit.proto.grading.GetGradeSystemsByGenusTypeRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x86\x01\n GetGradeSystemsByParentGenusType\x12<.dlkit.proto.grading.GetGradeSystemsByParentGenusTypeRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12|\n\x1bGetGradeSystemsByRecordType\x12\x37.dlkit.proto.grading.GetGradeSystemsByRecordTypeRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x64\n\x0fGetGradeSystems\x12+.dlkit.proto.grading.GetGradeSystemsRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x32\xe8\x06\n\x17GradeSystemQuerySession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nSearchGradeSystems\x12\x31.dlkit.proto.grading.CanSearchGradeSystemsRequest\x1a/.dlkit.proto.grading.CanSearchGradeSystemsReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12w\n\x13GetGradeSystemQuery\x12/.dlkit.proto.grading.GetGradeSystemQueryRequest\x1a-.dlkit.proto.grading.GetGradeSystemQueryReply\"\x00\x12r\n\x16GetGradeSystemsByQuery\x12\x32.dlkit.proto.grading.GetGradeSystemsByQueryRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x32\xea\x16\n\x17GradeSystemAdminSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nCreateGradeSystems\x12\x31.dlkit.proto.grading.CanCreateGradeSystemsRequest\x1a/.dlkit.proto.grading.CanCreateGradeSystemsReply\"\x00\x12\xa7\x01\n#CanCreateGradeSystemWithRecordTypes\x12?.dlkit.proto.grading.CanCreateGradeSystemWithRecordTypesRequest\x1a=.dlkit.proto.grading.CanCreateGradeSystemWithRecordTypesReply\"\x00\x12\x8f\x01\n\x1bGetGradeSystemFormForCreate\x12\x37.dlkit.proto.grading.GetGradeSystemFormForCreateRequest\x1a\x35.dlkit.proto.grading.GetGradeSystemFormForCreateReply\"\x00\x12q\n\x11\x43reateGradeSystem\x12-.dlkit.proto.grading.CreateGradeSystemRequest\x1a+.dlkit.proto.grading.CreateGradeSystemReply\"\x00\x12}\n\x15\x43\x61nUpdateGradeSystems\x12\x31.dlkit.proto.grading.CanUpdateGradeSystemsRequest\x1a/.dlkit.proto.grading.CanUpdateGradeSystemsReply\"\x00\x12\x8f\x01\n\x1bGetGradeSystemFormForUpdate\x12\x37.dlkit.proto.grading.GetGradeSystemFormForUpdateRequest\x1a\x35.dlkit.proto.grading.GetGradeSystemFormForUpdateReply\"\x00\x12q\n\x11UpdateGradeSystem\x12-.dlkit.proto.grading.UpdateGradeSystemRequest\x1a+.dlkit.proto.grading.UpdateGradeSystemReply\"\x00\x12}\n\x15\x43\x61nDeleteGradeSystems\x12\x31.dlkit.proto.grading.CanDeleteGradeSystemsRequest\x1a/.dlkit.proto.grading.CanDeleteGradeSystemsReply\"\x00\x12q\n\x11\x44\x65leteGradeSystem\x12-.dlkit.proto.grading.DeleteGradeSystemRequest\x1a+.dlkit.proto.grading.DeleteGradeSystemReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nManageGradeSystemAliases\x12\x37.dlkit.proto.grading.CanManageGradeSystemAliasesRequest\x1a\x35.dlkit.proto.grading.CanManageGradeSystemAliasesReply\"\x00\x12n\n\x10\x41liasGradeSystem\x12,.dlkit.proto.grading.AliasGradeSystemRequest\x1a*.dlkit.proto.grading.AliasGradeSystemReply\"\x00\x12k\n\x0f\x43\x61nCreateGrades\x12+.dlkit.proto.grading.CanCreateGradesRequest\x1a).dlkit.proto.grading.CanCreateGradesReply\"\x00\x12\x95\x01\n\x1d\x43\x61nCreateGradeWithRecordTypes\x12\x39.dlkit.proto.grading.CanCreateGradeWithRecordTypesRequest\x1a\x37.dlkit.proto.grading.CanCreateGradeWithRecordTypesReply\"\x00\x12}\n\x15GetGradeFormForCreate\x12\x31.dlkit.proto.grading.GetGradeFormForCreateRequest\x1a/.dlkit.proto.grading.GetGradeFormForCreateReply\"\x00\x12_\n\x0b\x43reateGrade\x12\'.dlkit.proto.grading.CreateGradeRequest\x1a%.dlkit.proto.grading.CreateGradeReply\"\x00\x12k\n\x0f\x43\x61nUpdateGrades\x12+.dlkit.proto.grading.CanUpdateGradesRequest\x1a).dlkit.proto.grading.CanUpdateGradesReply\"\x00\x12}\n\x15GetGradeFormForUpdate\x12\x31.dlkit.proto.grading.GetGradeFormForUpdateRequest\x1a/.dlkit.proto.grading.GetGradeFormForUpdateReply\"\x00\x12_\n\x0bUpdateGrade\x12\'.dlkit.proto.grading.UpdateGradeRequest\x1a%.dlkit.proto.grading.UpdateGradeReply\"\x00\x12k\n\x0f\x43\x61nDeleteGrades\x12+.dlkit.proto.grading.CanDeleteGradesRequest\x1a).dlkit.proto.grading.CanDeleteGradesReply\"\x00\x12_\n\x0b\x44\x65leteGrade\x12\'.dlkit.proto.grading.DeleteGradeRequest\x1a%.dlkit.proto.grading.DeleteGradeReply\"\x00\x12}\n\x15\x43\x61nManageGradeAliases\x12\x31.dlkit.proto.grading.CanManageGradeAliasesRequest\x1a/.dlkit.proto.grading.CanManageGradeAliasesReply\"\x00\x12\\\n\nAliasGrade\x12&.dlkit.proto.grading.AliasGradeRequest\x1a$.dlkit.proto.grading.AliasGradeReply\"\x00\x32\xe4\t\n\x1bGradeSystemGradebookSession\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12\xad\x01\n%CanLookupGradeSystemGradebookMappings\x12\x41.dlkit.proto.grading.CanLookupGradeSystemGradebookMappingsRequest\x1a?.dlkit.proto.grading.CanLookupGradeSystemGradebookMappingsReply\"\x00\x12\x80\x01\n\x1cGetGradeSystemIdsByGradebook\x12\x38.dlkit.proto.grading.GetGradeSystemIdsByGradebookRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12z\n\x1aGetGradeSystemsByGradebook\x12\x36.dlkit.proto.grading.GetGradeSystemsByGradebookRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x82\x01\n\x1dGetGradeSystemIdsByGradebooks\x12\x39.dlkit.proto.grading.GetGradeSystemIdsByGradebooksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12|\n\x1bGetGradeSystemsByGradebooks\x12\x37.dlkit.proto.grading.GetGradeSystemsByGradebooksRequest\x1a .dlkit.proto.grading.GradeSystem\"\x00\x30\x01\x12\x80\x01\n\x1cGetGradebookIdsByGradeSystem\x12\x38.dlkit.proto.grading.GetGradebookIdsByGradeSystemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12x\n\x1aGetGradebooksByGradeSystem\x12\x36.dlkit.proto.grading.GetGradebooksByGradeSystemRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x32\x8f\x07\n%GradeSystemGradebookAssignmentSession\x12z\n\x14\x43\x61nAssignGradeSystem\x12\x30.dlkit.proto.grading.CanAssignGradeSystemRequest\x1a..dlkit.proto.grading.CanAssignGradeSystemReply\"\x00\x12\x9e\x01\n CanAssignGradeSystemsToGradebook\x12<.dlkit.proto.grading.CanAssignGradeSystemsToGradebookRequest\x1a:.dlkit.proto.grading.CanAssignGradeSystemsToGradebookReply\"\x00\x12z\n\x19GetAssignableGradebookIds\x12\x35.dlkit.proto.grading.GetAssignableGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x96\x01\n\'GetAssignableGradebookIdsForGradeSystem\x12\x43.dlkit.proto.grading.GetAssignableGradebookIdsForGradeSystemRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x92\x01\n\x1c\x41ssignGradeSystemToGradebook\x12\x38.dlkit.proto.grading.AssignGradeSystemToGradebookRequest\x1a\x36.dlkit.proto.grading.AssignGradeSystemToGradebookReply\"\x00\x12\x9e\x01\n UnassignGradeSystemFromGradebook\x12<.dlkit.proto.grading.UnassignGradeSystemFromGradebookRequest\x1a:.dlkit.proto.grading.UnassignGradeSystemFromGradebookReply\"\x00\x32\xd0\x17\n\x17GradeEntryLookupSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nLookupGradeEntries\x12\x31.dlkit.proto.grading.CanLookupGradeEntriesRequest\x1a/.dlkit.proto.grading.CanLookupGradeEntriesReply\"\x00\x12\x92\x01\n\x1cUseComparativeGradeEntryView\x12\x38.dlkit.proto.grading.UseComparativeGradeEntryViewRequest\x1a\x36.dlkit.proto.grading.UseComparativeGradeEntryViewReply\"\x00\x12\x86\x01\n\x18UsePlenaryGradeEntryView\x12\x34.dlkit.proto.grading.UsePlenaryGradeEntryViewRequest\x1a\x32.dlkit.proto.grading.UsePlenaryGradeEntryViewReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12\x8c\x01\n\x1aUseEffectiveGradeEntryView\x12\x36.dlkit.proto.grading.UseEffectiveGradeEntryViewRequest\x1a\x34.dlkit.proto.grading.UseEffectiveGradeEntryViewReply\"\x00\x12\x95\x01\n\x1dUseAnyEffectiveGradeEntryView\x12\x39.dlkit.proto.grading.UseAnyEffectiveGradeEntryViewRequest\x1a\x37.dlkit.proto.grading.UseAnyEffectiveGradeEntryViewReply\"\x00\x12\x65\n\rGetGradeEntry\x12).dlkit.proto.grading.GetGradeEntryRequest\x1a\'.dlkit.proto.grading.GetGradeEntryReply\"\x00\x12m\n\x14GetGradeEntriesByIds\x12\x30.dlkit.proto.grading.GetGradeEntriesByIdsRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12y\n\x1aGetGradeEntriesByGenusType\x12\x36.dlkit.proto.grading.GetGradeEntriesByGenusTypeRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x85\x01\n GetGradeEntriesByParentGenusType\x12<.dlkit.proto.grading.GetGradeEntriesByParentGenusTypeRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12{\n\x1bGetGradeEntriesByRecordType\x12\x37.dlkit.proto.grading.GetGradeEntriesByRecordTypeRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12o\n\x15GetGradeEntriesOnDate\x12\x31.dlkit.proto.grading.GetGradeEntriesOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x87\x01\n!GetGradeEntriesForGradebookColumn\x12=.dlkit.proto.grading.GetGradeEntriesForGradebookColumnRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x93\x01\n\'GetGradeEntriesForGradebookColumnOnDate\x12\x43.dlkit.proto.grading.GetGradeEntriesForGradebookColumnOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12y\n\x1aGetGradeEntriesForResource\x12\x36.dlkit.proto.grading.GetGradeEntriesForResourceRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x85\x01\n GetGradeEntriesForResourceOnDate\x12<.dlkit.proto.grading.GetGradeEntriesForResourceOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x9d\x01\n,GetGradeEntriesForGradebookColumnAndResource\x12H.dlkit.proto.grading.GetGradeEntriesForGradebookColumnAndResourceRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\xa9\x01\n2GetGradeEntriesForGradebookColumnAndResourceOnDate\x12N.dlkit.proto.grading.GetGradeEntriesForGradebookColumnAndResourceOnDateRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12s\n\x17GetGradeEntriesByGrader\x12\x33.dlkit.proto.grading.GetGradeEntriesByGraderRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x12\x63\n\x0fGetGradeEntries\x12+.dlkit.proto.grading.GetGradeEntriesRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x32\xe3\x06\n\x16GradeEntryQuerySession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nSearchGradeEntries\x12\x31.dlkit.proto.grading.CanSearchGradeEntriesRequest\x1a/.dlkit.proto.grading.CanSearchGradeEntriesReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12t\n\x12GetGradeEntryQuery\x12..dlkit.proto.grading.GetGradeEntryQueryRequest\x1a,.dlkit.proto.grading.GetGradeEntryQueryReply\"\x00\x12q\n\x16GetGradeEntriesByQuery\x12\x32.dlkit.proto.grading.GetGradeEntriesByQueryRequest\x1a\x1f.dlkit.proto.grading.GradeEntry\"\x00\x30\x01\x32\xc2\x10\n\x16GradeEntryAdminSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12}\n\x15\x43\x61nCreateGradeEntries\x12\x31.dlkit.proto.grading.CanCreateGradeEntriesRequest\x1a/.dlkit.proto.grading.CanCreateGradeEntriesReply\"\x00\x12\xa4\x01\n\"CanCreateGradeEntryWithRecordTypes\x12>.dlkit.proto.grading.CanCreateGradeEntryWithRecordTypesRequest\x1a<.dlkit.proto.grading.CanCreateGradeEntryWithRecordTypesReply\"\x00\x12\x8c\x01\n\x1aGetGradeEntryFormForCreate\x12\x36.dlkit.proto.grading.GetGradeEntryFormForCreateRequest\x1a\x34.dlkit.proto.grading.GetGradeEntryFormForCreateReply\"\x00\x12n\n\x10\x43reateGradeEntry\x12,.dlkit.proto.grading.CreateGradeEntryRequest\x1a*.dlkit.proto.grading.CreateGradeEntryReply\"\x00\x12\xa1\x01\n!CanOverridecalculatedGradeEntries\x12=.dlkit.proto.grading.CanOverridecalculatedGradeEntriesRequest\x1a;.dlkit.proto.grading.CanOverridecalculatedGradeEntriesReply\"\x00\x12\x92\x01\n\x1cGetGradeEntryFormForOverride\x12\x38.dlkit.proto.grading.GetGradeEntryFormForOverrideRequest\x1a\x36.dlkit.proto.grading.GetGradeEntryFormForOverrideReply\"\x00\x12\x92\x01\n\x1cOverrideCalculatedGradeEntry\x12\x38.dlkit.proto.grading.OverrideCalculatedGradeEntryRequest\x1a\x36.dlkit.proto.grading.OverrideCalculatedGradeEntryReply\"\x00\x12}\n\x15\x43\x61nUpdateGradeEntries\x12\x31.dlkit.proto.grading.CanUpdateGradeEntriesRequest\x1a/.dlkit.proto.grading.CanUpdateGradeEntriesReply\"\x00\x12\x8c\x01\n\x1aGetGradeEntryFormForUpdate\x12\x36.dlkit.proto.grading.GetGradeEntryFormForUpdateRequest\x1a\x34.dlkit.proto.grading.GetGradeEntryFormForUpdateReply\"\x00\x12n\n\x10UpdateGradeEntry\x12,.dlkit.proto.grading.UpdateGradeEntryRequest\x1a*.dlkit.proto.grading.UpdateGradeEntryReply\"\x00\x12}\n\x15\x43\x61nDeleteGradeEntries\x12\x31.dlkit.proto.grading.CanDeleteGradeEntriesRequest\x1a/.dlkit.proto.grading.CanDeleteGradeEntriesReply\"\x00\x12n\n\x10\x44\x65leteGradeEntry\x12,.dlkit.proto.grading.DeleteGradeEntryRequest\x1a*.dlkit.proto.grading.DeleteGradeEntryReply\"\x00\x12\x8c\x01\n\x1a\x43\x61nManageGradeEntryAliases\x12\x36.dlkit.proto.grading.CanManageGradeEntryAliasesRequest\x1a\x34.dlkit.proto.grading.CanManageGradeEntryAliasesReply\"\x00\x12k\n\x0f\x41liasGradeEntry\x12+.dlkit.proto.grading.AliasGradeEntryRequest\x1a).dlkit.proto.grading.AliasGradeEntryReply\"\x00\x32\xcf\x0f\n\x1cGradebookColumnLookupSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nLookupGradebookColumns\x12\x35.dlkit.proto.grading.CanLookupGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanLookupGradebookColumnsReply\"\x00\x12\xa1\x01\n!UseComparativeGradebookColumnView\x12=.dlkit.proto.grading.UseComparativeGradebookColumnViewRequest\x1a;.dlkit.proto.grading.UseComparativeGradebookColumnViewReply\"\x00\x12\x95\x01\n\x1dUsePlenaryGradebookColumnView\x12\x39.dlkit.proto.grading.UsePlenaryGradebookColumnViewRequest\x1a\x37.dlkit.proto.grading.UsePlenaryGradebookColumnViewReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12t\n\x12GetGradebookColumn\x12..dlkit.proto.grading.GetGradebookColumnRequest\x1a,.dlkit.proto.grading.GetGradebookColumnReply\"\x00\x12z\n\x18GetGradebookColumnsByIds\x12\x34.dlkit.proto.grading.GetGradebookColumnsByIdsRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x86\x01\n\x1eGetGradebookColumnsByGenusType\x12:.dlkit.proto.grading.GetGradebookColumnsByGenusTypeRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x92\x01\n$GetGradebookColumnsByParentGenusType\x12@.dlkit.proto.grading.GetGradebookColumnsByParentGenusTypeRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x88\x01\n\x1fGetGradebookColumnsByRecordType\x12;.dlkit.proto.grading.GetGradebookColumnsByRecordTypeRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12p\n\x13GetGradebookColumns\x12/.dlkit.proto.grading.GetGradebookColumnsRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12k\n\x0fSupportsSummary\x12+.dlkit.proto.grading.SupportsSummaryRequest\x1a).dlkit.proto.grading.SupportsSummaryReply\"\x00\x12\x89\x01\n\x19GetGradebookColumnSummary\x12\x35.dlkit.proto.grading.GetGradebookColumnSummaryRequest\x1a\x33.dlkit.proto.grading.GetGradebookColumnSummaryReply\"\x00\x32\x92\x07\n\x1bGradebookColumnQuerySession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nSearchGradebookColumns\x12\x35.dlkit.proto.grading.CanSearchGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanSearchGradebookColumnsReply\"\x00\x12\x89\x01\n\x19UseFederatedGradebookView\x12\x35.dlkit.proto.grading.UseFederatedGradebookViewRequest\x1a\x33.dlkit.proto.grading.UseFederatedGradebookViewReply\"\x00\x12\x86\x01\n\x18UseIsolatedGradebookView\x12\x34.dlkit.proto.grading.UseIsolatedGradebookViewRequest\x1a\x32.dlkit.proto.grading.UseIsolatedGradebookViewReply\"\x00\x12\x83\x01\n\x17GetGradebookColumnQuery\x12\x33.dlkit.proto.grading.GetGradebookColumnQueryRequest\x1a\x31.dlkit.proto.grading.GetGradebookColumnQueryReply\"\x00\x12~\n\x1aGetGradebookColumnsByQuery\x12\x36.dlkit.proto.grading.GetGradebookColumnsByQueryRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x32\xa9\x11\n\x1bGradebookColumnAdminSession\x12h\n\x0eGetGradebookId\x12*.dlkit.proto.grading.GetGradebookIdRequest\x1a(.dlkit.proto.grading.GetGradebookIdReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nCreateGradebookColumns\x12\x35.dlkit.proto.grading.CanCreateGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanCreateGradebookColumnsReply\"\x00\x12\xb3\x01\n\'CanCreateGradebookColumnWithRecordTypes\x12\x43.dlkit.proto.grading.CanCreateGradebookColumnWithRecordTypesRequest\x1a\x41.dlkit.proto.grading.CanCreateGradebookColumnWithRecordTypesReply\"\x00\x12\x9b\x01\n\x1fGetGradebookColumnFormForCreate\x12;.dlkit.proto.grading.GetGradebookColumnFormForCreateRequest\x1a\x39.dlkit.proto.grading.GetGradebookColumnFormForCreateReply\"\x00\x12}\n\x15\x43reateGradebookColumn\x12\x31.dlkit.proto.grading.CreateGradebookColumnRequest\x1a/.dlkit.proto.grading.CreateGradebookColumnReply\"\x00\x12\x89\x01\n\x19\x43\x61nUpdateGradebookColumns\x12\x35.dlkit.proto.grading.CanUpdateGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanUpdateGradebookColumnsReply\"\x00\x12\x9b\x01\n\x1fGetGradebookColumnFormForUpdate\x12;.dlkit.proto.grading.GetGradebookColumnFormForUpdateRequest\x1a\x39.dlkit.proto.grading.GetGradebookColumnFormForUpdateReply\"\x00\x12}\n\x15UpdateGradebookColumn\x12\x31.dlkit.proto.grading.UpdateGradebookColumnRequest\x1a/.dlkit.proto.grading.UpdateGradebookColumnReply\"\x00\x12\x86\x01\n\x18SequenceGradebookColumns\x12\x34.dlkit.proto.grading.SequenceGradebookColumnsRequest\x1a\x32.dlkit.proto.grading.SequenceGradebookColumnsReply\"\x00\x12w\n\x13MoveGradebookColumn\x12/.dlkit.proto.grading.MoveGradebookColumnRequest\x1a-.dlkit.proto.grading.MoveGradebookColumnReply\"\x00\x12\x8c\x01\n\x1a\x43opyGradebookColumnEntries\x12\x36.dlkit.proto.grading.CopyGradebookColumnEntriesRequest\x1a\x34.dlkit.proto.grading.CopyGradebookColumnEntriesReply\"\x00\x12\x89\x01\n\x19\x43\x61nDeleteGradebookColumns\x12\x35.dlkit.proto.grading.CanDeleteGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanDeleteGradebookColumnsReply\"\x00\x12}\n\x15\x44\x65leteGradebookColumn\x12\x31.dlkit.proto.grading.DeleteGradebookColumnRequest\x1a/.dlkit.proto.grading.DeleteGradebookColumnReply\"\x00\x12\x9b\x01\n\x1f\x43\x61nManageGradebookColumnAliases\x12;.dlkit.proto.grading.CanManageGradebookColumnAliasesRequest\x1a\x39.dlkit.proto.grading.CanManageGradebookColumnAliasesReply\"\x00\x12z\n\x14\x41liasGradebookColumn\x12\x30.dlkit.proto.grading.AliasGradebookColumnRequest\x1a..dlkit.proto.grading.AliasGradebookColumnReply\"\x00\x32\xaf\n\n\x1fGradebookColumnGradebookSession\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12\xb9\x01\n)CanLookupGradebookColumnGradebookMappings\x12\x45.dlkit.proto.grading.CanLookupGradebookColumnGradebookMappingsRequest\x1a\x43.dlkit.proto.grading.CanLookupGradebookColumnGradebookMappingsReply\"\x00\x12\x88\x01\n GetGradebookColumnIdsByGradebook\x12<.dlkit.proto.grading.GetGradebookColumnIdsByGradebookRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x86\x01\n\x1eGetGradebookColumnsByGradebook\x12:.dlkit.proto.grading.GetGradebookColumnsByGradebookRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x8a\x01\n!GetGradebookColumnIdsByGradebooks\x12=.dlkit.proto.grading.GetGradebookColumnIdsByGradebooksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x88\x01\n\x1fGetGradebookColumnsByGradebooks\x12;.dlkit.proto.grading.GetGradebookColumnsByGradebooksRequest\x1a$.dlkit.proto.grading.GradebookColumn\"\x00\x30\x01\x12\x88\x01\n GetGradebookIdsByGradebookColumn\x12<.dlkit.proto.grading.GetGradebookIdsByGradebookColumnRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x80\x01\n\x1eGetGradebooksByGradebookColumn\x12:.dlkit.proto.grading.GetGradebooksByGradebookColumnRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x32\xcf\x07\n)GradebookColumnGradebookAssignmentSession\x12\x89\x01\n\x19\x43\x61nAssignGradebookColumns\x12\x35.dlkit.proto.grading.CanAssignGradebookColumnsRequest\x1a\x33.dlkit.proto.grading.CanAssignGradebookColumnsReply\"\x00\x12\xaa\x01\n$CanAssignGradebookColumnsToGradebook\x12@.dlkit.proto.grading.CanAssignGradebookColumnsToGradebookRequest\x1a>.dlkit.proto.grading.CanAssignGradebookColumnsToGradebookReply\"\x00\x12z\n\x19GetAssignableGradebookIds\x12\x35.dlkit.proto.grading.GetAssignableGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9e\x01\n+GetAssignableGradebookIdsForGradebookColumn\x12G.dlkit.proto.grading.GetAssignableGradebookIdsForGradebookColumnRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9e\x01\n AssignGradebookColumnToGradebook\x12<.dlkit.proto.grading.AssignGradebookColumnToGradebookRequest\x1a:.dlkit.proto.grading.AssignGradebookColumnToGradebookReply\"\x00\x12\xaa\x01\n$UnassignGradebookColumnFromGradebook\x12@.dlkit.proto.grading.UnassignGradebookColumnFromGradebookRequest\x1a>.dlkit.proto.grading.UnassignGradebookColumnFromGradebookReply\"\x00\x32\xbc\t\n\x16GradebookLookupSession\x12w\n\x13\x43\x61nLookupGradebooks\x12/.dlkit.proto.grading.CanLookupGradebooksRequest\x1a-.dlkit.proto.grading.CanLookupGradebooksReply\"\x00\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12\x62\n\x0cGetGradebook\x12(.dlkit.proto.grading.GetGradebookRequest\x1a&.dlkit.proto.grading.GetGradebookReply\"\x00\x12h\n\x12GetGradebooksByIds\x12..dlkit.proto.grading.GetGradebooksByIdsRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12t\n\x18GetGradebooksByGenusType\x12\x34.dlkit.proto.grading.GetGradebooksByGenusTypeRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12\x80\x01\n\x1eGetGradebooksByParentGenusType\x12:.dlkit.proto.grading.GetGradebooksByParentGenusTypeRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12v\n\x19GetGradebooksByRecordType\x12\x35.dlkit.proto.grading.GetGradebooksByRecordTypeRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12r\n\x17GetGradebooksByProvider\x12\x33.dlkit.proto.grading.GetGradebooksByProviderRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12^\n\rGetGradebooks\x12).dlkit.proto.grading.GetGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x32\xfb\n\n\x15GradebookAdminSession\x12w\n\x13\x43\x61nCreateGradebooks\x12/.dlkit.proto.grading.CanCreateGradebooksRequest\x1a-.dlkit.proto.grading.CanCreateGradebooksReply\"\x00\x12\xa1\x01\n!CanCreateGradebookWithRecordTypes\x12=.dlkit.proto.grading.CanCreateGradebookWithRecordTypesRequest\x1a;.dlkit.proto.grading.CanCreateGradebookWithRecordTypesReply\"\x00\x12\x89\x01\n\x19GetGradebookFormForCreate\x12\x35.dlkit.proto.grading.GetGradebookFormForCreateRequest\x1a\x33.dlkit.proto.grading.GetGradebookFormForCreateReply\"\x00\x12k\n\x0f\x43reateGradebook\x12+.dlkit.proto.grading.CreateGradebookRequest\x1a).dlkit.proto.grading.CreateGradebookReply\"\x00\x12w\n\x13\x43\x61nUpdateGradebooks\x12/.dlkit.proto.grading.CanUpdateGradebooksRequest\x1a-.dlkit.proto.grading.CanUpdateGradebooksReply\"\x00\x12\x89\x01\n\x19GetGradebookFormForUpdate\x12\x35.dlkit.proto.grading.GetGradebookFormForUpdateRequest\x1a\x33.dlkit.proto.grading.GetGradebookFormForUpdateReply\"\x00\x12k\n\x0fUpdateGradebook\x12+.dlkit.proto.grading.UpdateGradebookRequest\x1a).dlkit.proto.grading.UpdateGradebookReply\"\x00\x12w\n\x13\x43\x61nDeleteGradebooks\x12/.dlkit.proto.grading.CanDeleteGradebooksRequest\x1a-.dlkit.proto.grading.CanDeleteGradebooksReply\"\x00\x12k\n\x0f\x44\x65leteGradebook\x12+.dlkit.proto.grading.DeleteGradebookRequest\x1a).dlkit.proto.grading.DeleteGradebookReply\"\x00\x12\x89\x01\n\x19\x43\x61nManageGradebookAliases\x12\x35.dlkit.proto.grading.CanManageGradebookAliasesRequest\x1a\x33.dlkit.proto.grading.CanManageGradebookAliasesReply\"\x00\x12h\n\x0e\x41liasGradebook\x12*.dlkit.proto.grading.AliasGradebookRequest\x1a(.dlkit.proto.grading.AliasGradebookReply\"\x00\x32\xad\x12\n\x19GradebookHierarchySession\x12\x83\x01\n\x17GetGradebookHierarchyId\x12\x33.dlkit.proto.grading.GetGradebookHierarchyIdRequest\x1a\x31.dlkit.proto.grading.GetGradebookHierarchyIdReply\"\x00\x12}\n\x15GetGradebookHierarchy\x12\x31.dlkit.proto.grading.GetGradebookHierarchyRequest\x1a/.dlkit.proto.grading.GetGradebookHierarchyReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nAccessGradebookHierarchy\x12\x37.dlkit.proto.grading.CanAccessGradebookHierarchyRequest\x1a\x35.dlkit.proto.grading.CanAccessGradebookHierarchyReply\"\x00\x12\x8f\x01\n\x1bUseComparativeGradebookView\x12\x37.dlkit.proto.grading.UseComparativeGradebookViewRequest\x1a\x35.dlkit.proto.grading.UseComparativeGradebookViewReply\"\x00\x12\x83\x01\n\x17UsePlenaryGradebookView\x12\x33.dlkit.proto.grading.UsePlenaryGradebookViewRequest\x1a\x31.dlkit.proto.grading.UsePlenaryGradebookViewReply\"\x00\x12n\n\x13GetRootGradebookIds\x12/.dlkit.proto.grading.GetRootGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x66\n\x11GetRootGradebooks\x12-.dlkit.proto.grading.GetRootGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12w\n\x13HasParentGradebooks\x12/.dlkit.proto.grading.HasParentGradebooksRequest\x1a-.dlkit.proto.grading.HasParentGradebooksReply\"\x00\x12w\n\x13IsParentOfGradebook\x12/.dlkit.proto.grading.IsParentOfGradebookRequest\x1a-.dlkit.proto.grading.IsParentOfGradebookReply\"\x00\x12r\n\x15GetParentGradebookIds\x12\x31.dlkit.proto.grading.GetParentGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x13GetParentGradebooks\x12/.dlkit.proto.grading.GetParentGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12}\n\x15IsAncestorOfGradebook\x12\x31.dlkit.proto.grading.IsAncestorOfGradebookRequest\x1a/.dlkit.proto.grading.IsAncestorOfGradebookReply\"\x00\x12t\n\x12HasChildGradebooks\x12..dlkit.proto.grading.HasChildGradebooksRequest\x1a,.dlkit.proto.grading.HasChildGradebooksReply\"\x00\x12t\n\x12IsChildOfGradebook\x12..dlkit.proto.grading.IsChildOfGradebookRequest\x1a,.dlkit.proto.grading.IsChildOfGradebookReply\"\x00\x12p\n\x14GetChildGradebookIds\x12\x30.dlkit.proto.grading.GetChildGradebookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x12GetChildGradebooks\x12..dlkit.proto.grading.GetChildGradebooksRequest\x1a\x1e.dlkit.proto.grading.Gradebook\"\x00\x30\x01\x12\x83\x01\n\x17IsDescendantOfGradebook\x12\x33.dlkit.proto.grading.IsDescendantOfGradebookRequest\x1a\x31.dlkit.proto.grading.IsDescendantOfGradebookReply\"\x00\x12w\n\x13GetGradebookNodeIds\x12/.dlkit.proto.grading.GetGradebookNodeIdsRequest\x1a-.dlkit.proto.grading.GetGradebookNodeIdsReply\"\x00\x12q\n\x11GetGradebookNodes\x12-.dlkit.proto.grading.GetGradebookNodesRequest\x1a+.dlkit.proto.grading.GetGradebookNodesReply\"\x00\x32\x90\x07\n\x1fGradebookHierarchyDesignSession\x12\x83\x01\n\x17GetGradebookHierarchyId\x12\x33.dlkit.proto.grading.GetGradebookHierarchyIdRequest\x1a\x31.dlkit.proto.grading.GetGradebookHierarchyIdReply\"\x00\x12}\n\x15GetGradebookHierarchy\x12\x31.dlkit.proto.grading.GetGradebookHierarchyRequest\x1a/.dlkit.proto.grading.GetGradebookHierarchyReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nModifyGradebookHierarchy\x12\x37.dlkit.proto.grading.CanModifyGradebookHierarchyRequest\x1a\x35.dlkit.proto.grading.CanModifyGradebookHierarchyReply\"\x00\x12n\n\x10\x41\x64\x64RootGradebook\x12,.dlkit.proto.grading.AddRootGradebookRequest\x1a*.dlkit.proto.grading.AddRootGradebookReply\"\x00\x12w\n\x13RemoveRootGradebook\x12/.dlkit.proto.grading.RemoveRootGradebookRequest\x1a-.dlkit.proto.grading.RemoveRootGradebookReply\"\x00\x12q\n\x11\x41\x64\x64\x43hildGradebook\x12-.dlkit.proto.grading.AddChildGradebookRequest\x1a+.dlkit.proto.grading.AddChildGradebookReply\"\x00\x12z\n\x14RemoveChildGradebook\x12\x30.dlkit.proto.grading.RemoveChildGradebookRequest\x1a..dlkit.proto.grading.RemoveChildGradebookReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -47,14 +47,14 @@ _GRADE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.grading.Grade.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.grading.Grade.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.grading.Grade.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.grading.Grade.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -103,7 +103,7 @@ _GRADE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.grading.Grade.recordTypeIds', index=9,
+      name='record_type_ids', full_name='dlkit.proto.grading.Grade.record_type_ids', index=9,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -122,7 +122,7 @@ _GRADE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=257,
-  serialized_end=770,
+  serialized_end=775,
 )
 
 
@@ -145,8 +145,8 @@ _GRADEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=772,
-  serialized_end=784,
+  serialized_start=777,
+  serialized_end=789,
 )
 
 
@@ -169,8 +169,8 @@ _GRADEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=786,
-  serialized_end=807,
+  serialized_start=791,
+  serialized_end=812,
 )
 
 
@@ -193,8 +193,8 @@ _GRADEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=809,
-  serialized_end=820,
+  serialized_start=814,
+  serialized_end=825,
 )
 
 
@@ -217,8 +217,8 @@ _GRADESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=822,
-  serialized_end=840,
+  serialized_start=827,
+  serialized_end=845,
 )
 
 
@@ -248,8 +248,8 @@ _GRADELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=842,
-  serialized_end=897,
+  serialized_start=847,
+  serialized_end=902,
 )
 
 
@@ -275,14 +275,14 @@ _GRADESYSTEM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.grading.GradeSystem.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.grading.GradeSystem.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.grading.GradeSystem.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.grading.GradeSystem.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -324,7 +324,7 @@ _GRADESYSTEM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.grading.GradeSystem.recordTypeIds', index=9,
+      name='record_type_ids', full_name='dlkit.proto.grading.GradeSystem.record_type_ids', index=9,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -342,8 +342,8 @@ _GRADESYSTEM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=900,
-  serialized_end=1394,
+  serialized_start=905,
+  serialized_end=1404,
 )
 
 
@@ -366,8 +366,8 @@ _GRADESYSTEMQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1396,
-  serialized_end=1414,
+  serialized_start=1406,
+  serialized_end=1424,
 )
 
 
@@ -390,8 +390,8 @@ _GRADESYSTEMQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1416,
-  serialized_end=1443,
+  serialized_start=1426,
+  serialized_end=1453,
 )
 
 
@@ -414,8 +414,8 @@ _GRADESYSTEMFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1445,
-  serialized_end=1462,
+  serialized_start=1455,
+  serialized_end=1472,
 )
 
 
@@ -438,8 +438,8 @@ _GRADESYSTEMSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1464,
-  serialized_end=1488,
+  serialized_start=1474,
+  serialized_end=1498,
 )
 
 
@@ -462,8 +462,8 @@ _GRADESYSTEMSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1490,
-  serialized_end=1509,
+  serialized_start=1500,
+  serialized_end=1519,
 )
 
 
@@ -486,8 +486,8 @@ _GRADESYSTEMSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1511,
-  serialized_end=1537,
+  serialized_start=1521,
+  serialized_end=1547,
 )
 
 
@@ -517,8 +517,8 @@ _GRADESYSTEMLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1539,
-  serialized_end=1613,
+  serialized_start=1549,
+  serialized_end=1623,
 )
 
 
@@ -583,8 +583,8 @@ _GRADEENTRY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1616,
-  serialized_end=1894,
+  serialized_start=1626,
+  serialized_end=1904,
 )
 
 
@@ -607,8 +607,8 @@ _GRADEENTRYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1896,
-  serialized_end=1913,
+  serialized_start=1906,
+  serialized_end=1923,
 )
 
 
@@ -631,8 +631,8 @@ _GRADEENTRYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1915,
-  serialized_end=1941,
+  serialized_start=1925,
+  serialized_end=1951,
 )
 
 
@@ -655,8 +655,8 @@ _GRADEENTRYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1943,
-  serialized_end=1959,
+  serialized_start=1953,
+  serialized_end=1969,
 )
 
 
@@ -679,8 +679,8 @@ _GRADEENTRYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1961,
-  serialized_end=1984,
+  serialized_start=1971,
+  serialized_end=1994,
 )
 
 
@@ -703,8 +703,8 @@ _GRADEENTRYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1986,
-  serialized_end=2004,
+  serialized_start=1996,
+  serialized_end=2014,
 )
 
 
@@ -727,8 +727,8 @@ _GRADEENTRYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2006,
-  serialized_end=2031,
+  serialized_start=2016,
+  serialized_end=2041,
 )
 
 
@@ -758,8 +758,8 @@ _GRADEENTRYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2033,
-  serialized_end=2105,
+  serialized_start=2043,
+  serialized_end=2115,
 )
 
 
@@ -778,14 +778,14 @@ _GRADEBOOKCOLUMN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.grading.GradebookColumn.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.grading.GradebookColumn.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.grading.GradebookColumn.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.grading.GradebookColumn.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -813,7 +813,7 @@ _GRADEBOOKCOLUMN = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.grading.GradebookColumn.recordTypeIds', index=6,
+      name='record_type_ids', full_name='dlkit.proto.grading.GradebookColumn.record_type_ids', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -831,8 +831,8 @@ _GRADEBOOKCOLUMN = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2108,
-  serialized_end=2545,
+  serialized_start=2118,
+  serialized_end=2560,
 )
 
 
@@ -855,8 +855,8 @@ _GRADEBOOKCOLUMNQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2547,
-  serialized_end=2569,
+  serialized_start=2562,
+  serialized_end=2584,
 )
 
 
@@ -879,8 +879,8 @@ _GRADEBOOKCOLUMNQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2571,
-  serialized_end=2602,
+  serialized_start=2586,
+  serialized_end=2617,
 )
 
 
@@ -903,8 +903,8 @@ _GRADEBOOKCOLUMNFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2604,
-  serialized_end=2625,
+  serialized_start=2619,
+  serialized_end=2640,
 )
 
 
@@ -927,8 +927,8 @@ _GRADEBOOKCOLUMNSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2627,
-  serialized_end=2655,
+  serialized_start=2642,
+  serialized_end=2670,
 )
 
 
@@ -951,8 +951,8 @@ _GRADEBOOKCOLUMNSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2657,
-  serialized_end=2680,
+  serialized_start=2672,
+  serialized_end=2695,
 )
 
 
@@ -975,8 +975,8 @@ _GRADEBOOKCOLUMNSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2682,
-  serialized_end=2712,
+  serialized_start=2697,
+  serialized_end=2727,
 )
 
 
@@ -1006,8 +1006,8 @@ _GRADEBOOKCOLUMNLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2714,
-  serialized_end=2800,
+  serialized_start=2729,
+  serialized_end=2815,
 )
 
 
@@ -1026,14 +1026,14 @@ _GRADEBOOKCOLUMNSUMMARY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.grading.GradebookColumnSummary.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.grading.GradebookColumnSummary.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.grading.GradebookColumnSummary.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.grading.GradebookColumnSummary.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1054,7 +1054,7 @@ _GRADEBOOKCOLUMNSUMMARY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.grading.GradebookColumnSummary.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.grading.GradebookColumnSummary.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1072,8 +1072,8 @@ _GRADEBOOKCOLUMNSUMMARY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2803,
-  serialized_end=3201,
+  serialized_start=2818,
+  serialized_end=3221,
 )
 
 
@@ -1096,8 +1096,8 @@ _GRADEBOOKCOLUMNSUMMARYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3203,
-  serialized_end=3232,
+  serialized_start=3223,
+  serialized_end=3252,
 )
 
 
@@ -1120,8 +1120,8 @@ _GRADEBOOKCOLUMNSUMMARYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3234,
-  serialized_end=3272,
+  serialized_start=3254,
+  serialized_end=3292,
 )
 
 
@@ -1144,8 +1144,8 @@ _GRADEBOOKCOLUMNSUMMARYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3274,
-  serialized_end=3309,
+  serialized_start=3294,
+  serialized_end=3329,
 )
 
 
@@ -1164,14 +1164,14 @@ _GRADEBOOK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.grading.Gradebook.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.grading.Gradebook.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.grading.Gradebook.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.grading.Gradebook.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1185,7 +1185,7 @@ _GRADEBOOK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.grading.Gradebook.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.grading.Gradebook.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1203,8 +1203,8 @@ _GRADEBOOK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3312,
-  serialized_end=3635,
+  serialized_start=3332,
+  serialized_end=3660,
 )
 
 
@@ -1227,8 +1227,8 @@ _GRADEBOOKQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3637,
-  serialized_end=3653,
+  serialized_start=3662,
+  serialized_end=3678,
 )
 
 
@@ -1251,8 +1251,8 @@ _GRADEBOOKQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3655,
-  serialized_end=3680,
+  serialized_start=3680,
+  serialized_end=3705,
 )
 
 
@@ -1275,8 +1275,8 @@ _GRADEBOOKFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3682,
-  serialized_end=3697,
+  serialized_start=3707,
+  serialized_end=3722,
 )
 
 
@@ -1299,8 +1299,8 @@ _GRADEBOOKSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3699,
-  serialized_end=3721,
+  serialized_start=3724,
+  serialized_end=3746,
 )
 
 
@@ -1323,8 +1323,8 @@ _GRADEBOOKSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3723,
-  serialized_end=3740,
+  serialized_start=3748,
+  serialized_end=3765,
 )
 
 
@@ -1347,8 +1347,8 @@ _GRADEBOOKSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3742,
-  serialized_end=3766,
+  serialized_start=3767,
+  serialized_end=3791,
 )
 
 
@@ -1378,8 +1378,8 @@ _GRADEBOOKLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3768,
-  serialized_end=3835,
+  serialized_start=3793,
+  serialized_end=3860,
 )
 
 
@@ -1402,8 +1402,8 @@ _GRADEBOOKNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3837,
-  serialized_end=3852,
+  serialized_start=3862,
+  serialized_end=3877,
 )
 
 
@@ -1433,8 +1433,8 @@ _GRADEBOOKNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3854,
-  serialized_end=3934,
+  serialized_start=3879,
+  serialized_end=3959,
 )
 
 
@@ -1464,8 +1464,8 @@ _GETGRADEBOOKIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3936,
-  serialized_end=4005,
+  serialized_start=3961,
+  serialized_end=4030,
 )
 
 
@@ -1488,8 +1488,8 @@ _GETGRADEBOOKIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4007,
-  serialized_end=4030,
+  serialized_start=4032,
+  serialized_end=4055,
 )
 
 
@@ -1519,8 +1519,8 @@ _GETGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4032,
-  serialized_end=4102,
+  serialized_start=4057,
+  serialized_end=4127,
 )
 
 
@@ -1543,8 +1543,8 @@ _GETGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4104,
-  serialized_end=4125,
+  serialized_start=4129,
+  serialized_end=4150,
 )
 
 
@@ -1574,8 +1574,8 @@ _CANLOOKUPGRADESYSTEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4127,
-  serialized_end=4189,
+  serialized_start=4152,
+  serialized_end=4214,
 )
 
 
@@ -1598,8 +1598,8 @@ _CANLOOKUPGRADESYSTEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4191,
-  serialized_end=4221,
+  serialized_start=4216,
+  serialized_end=4246,
 )
 
 
@@ -1622,8 +1622,8 @@ _USECOMPARATIVEGRADESYSTEMVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4223,
-  serialized_end=4259,
+  serialized_start=4248,
+  serialized_end=4284,
 )
 
 
@@ -1646,8 +1646,8 @@ _USECOMPARATIVEGRADESYSTEMVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4261,
-  serialized_end=4299,
+  serialized_start=4286,
+  serialized_end=4324,
 )
 
 
@@ -1670,8 +1670,8 @@ _USEPLENARYGRADESYSTEMVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4301,
-  serialized_end=4333,
+  serialized_start=4326,
+  serialized_end=4358,
 )
 
 
@@ -1694,8 +1694,8 @@ _USEPLENARYGRADESYSTEMVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4335,
-  serialized_end=4369,
+  serialized_start=4360,
+  serialized_end=4394,
 )
 
 
@@ -1718,8 +1718,8 @@ _USEFEDERATEDGRADEBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4371,
-  serialized_end=4403,
+  serialized_start=4396,
+  serialized_end=4428,
 )
 
 
@@ -1742,8 +1742,8 @@ _USEFEDERATEDGRADEBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4405,
-  serialized_end=4439,
+  serialized_start=4430,
+  serialized_end=4464,
 )
 
 
@@ -1766,8 +1766,8 @@ _USEISOLATEDGRADEBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4441,
-  serialized_end=4472,
+  serialized_start=4466,
+  serialized_end=4497,
 )
 
 
@@ -1790,8 +1790,8 @@ _USEISOLATEDGRADEBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4474,
-  serialized_end=4507,
+  serialized_start=4499,
+  serialized_end=4532,
 )
 
 
@@ -1821,8 +1821,8 @@ _GETGRADESYSTEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4509,
-  serialized_end=4586,
+  serialized_start=4534,
+  serialized_end=4611,
 )
 
 
@@ -1852,8 +1852,8 @@ _GETGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4588,
-  serialized_end=4672,
+  serialized_start=4613,
+  serialized_end=4697,
 )
 
 
@@ -1883,8 +1883,8 @@ _GETGRADESYSTEMBYGRADEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4674,
-  serialized_end=4758,
+  serialized_start=4699,
+  serialized_end=4783,
 )
 
 
@@ -1914,8 +1914,8 @@ _GETGRADESYSTEMBYGRADEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4760,
-  serialized_end=4844,
+  serialized_start=4785,
+  serialized_end=4869,
 )
 
 
@@ -1945,8 +1945,8 @@ _GETGRADESYSTEMSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4846,
-  serialized_end=4937,
+  serialized_start=4871,
+  serialized_end=4962,
 )
 
 
@@ -1976,8 +1976,8 @@ _GETGRADESYSTEMSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4939,
-  serialized_end=5047,
+  serialized_start=4964,
+  serialized_end=5072,
 )
 
 
@@ -2007,8 +2007,8 @@ _GETGRADESYSTEMSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5049,
-  serialized_end=5163,
+  serialized_start=5074,
+  serialized_end=5188,
 )
 
 
@@ -2038,8 +2038,8 @@ _GETGRADESYSTEMSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5165,
-  serialized_end=5275,
+  serialized_start=5190,
+  serialized_end=5300,
 )
 
 
@@ -2062,8 +2062,8 @@ _GETGRADESYSTEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5277,
-  serialized_end=5301,
+  serialized_start=5302,
+  serialized_end=5326,
 )
 
 
@@ -2093,8 +2093,8 @@ _CANSEARCHGRADESYSTEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5303,
-  serialized_end=5365,
+  serialized_start=5328,
+  serialized_end=5390,
 )
 
 
@@ -2117,8 +2117,8 @@ _CANSEARCHGRADESYSTEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5367,
-  serialized_end=5397,
+  serialized_start=5392,
+  serialized_end=5422,
 )
 
 
@@ -2148,8 +2148,8 @@ _GETGRADESYSTEMQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5399,
-  serialized_end=5492,
+  serialized_start=5424,
+  serialized_end=5517,
 )
 
 
@@ -2172,8 +2172,8 @@ _GETGRADESYSTEMQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5494,
-  serialized_end=5522,
+  serialized_start=5519,
+  serialized_end=5547,
 )
 
 
@@ -2203,8 +2203,8 @@ _GETGRADESYSTEMSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5524,
-  serialized_end=5622,
+  serialized_start=5549,
+  serialized_end=5647,
 )
 
 
@@ -2234,8 +2234,8 @@ _CANCREATEGRADESYSTEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5624,
-  serialized_end=5686,
+  serialized_start=5649,
+  serialized_end=5711,
 )
 
 
@@ -2258,8 +2258,8 @@ _CANCREATEGRADESYSTEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5688,
-  serialized_end=5718,
+  serialized_start=5713,
+  serialized_end=5743,
 )
 
 
@@ -2289,8 +2289,8 @@ _CANCREATEGRADESYSTEMWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5720,
-  serialized_end=5813,
+  serialized_start=5745,
+  serialized_end=5838,
 )
 
 
@@ -2320,8 +2320,8 @@ _CANCREATEGRADESYSTEMWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5815,
-  serialized_end=5934,
+  serialized_start=5840,
+  serialized_end=5959,
 )
 
 
@@ -2351,8 +2351,8 @@ _GETGRADESYSTEMFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5936,
-  serialized_end=6035,
+  serialized_start=5961,
+  serialized_end=6060,
 )
 
 
@@ -2382,8 +2382,8 @@ _GETGRADESYSTEMFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6037,
-  serialized_end=6148,
+  serialized_start=6062,
+  serialized_end=6173,
 )
 
 
@@ -2413,8 +2413,8 @@ _CREATEGRADESYSTEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6150,
-  serialized_end=6230,
+  serialized_start=6175,
+  serialized_end=6255,
 )
 
 
@@ -2444,8 +2444,8 @@ _CREATEGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6232,
-  serialized_end=6323,
+  serialized_start=6257,
+  serialized_end=6348,
 )
 
 
@@ -2475,8 +2475,8 @@ _CANUPDATEGRADESYSTEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6325,
-  serialized_end=6387,
+  serialized_start=6350,
+  serialized_end=6412,
 )
 
 
@@ -2499,8 +2499,8 @@ _CANUPDATEGRADESYSTEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6389,
-  serialized_end=6419,
+  serialized_start=6414,
+  serialized_end=6444,
 )
 
 
@@ -2530,8 +2530,8 @@ _GETGRADESYSTEMFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6421,
-  serialized_end=6520,
+  serialized_start=6446,
+  serialized_end=6545,
 )
 
 
@@ -2561,8 +2561,8 @@ _GETGRADESYSTEMFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6522,
-  serialized_end=6619,
+  serialized_start=6547,
+  serialized_end=6644,
 )
 
 
@@ -2585,8 +2585,8 @@ _UPDATEGRADESYSTEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6621,
-  serialized_end=6645,
+  serialized_start=6646,
+  serialized_end=6670,
 )
 
 
@@ -2616,8 +2616,8 @@ _UPDATEGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6647,
-  serialized_end=6738,
+  serialized_start=6672,
+  serialized_end=6763,
 )
 
 
@@ -2647,8 +2647,8 @@ _CANDELETEGRADESYSTEMSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6740,
-  serialized_end=6802,
+  serialized_start=6765,
+  serialized_end=6827,
 )
 
 
@@ -2671,8 +2671,8 @@ _CANDELETEGRADESYSTEMSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6804,
-  serialized_end=6834,
+  serialized_start=6829,
+  serialized_end=6859,
 )
 
 
@@ -2695,8 +2695,8 @@ _DELETEGRADESYSTEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6836,
-  serialized_end=6860,
+  serialized_start=6861,
+  serialized_end=6885,
 )
 
 
@@ -2726,8 +2726,8 @@ _DELETEGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6862,
-  serialized_end=6949,
+  serialized_start=6887,
+  serialized_end=6974,
 )
 
 
@@ -2757,8 +2757,8 @@ _CANMANAGEGRADESYSTEMALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6951,
-  serialized_end=7026,
+  serialized_start=6976,
+  serialized_end=7051,
 )
 
 
@@ -2781,8 +2781,8 @@ _CANMANAGEGRADESYSTEMALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7028,
-  serialized_end=7064,
+  serialized_start=7053,
+  serialized_end=7089,
 )
 
 
@@ -2805,8 +2805,8 @@ _ALIASGRADESYSTEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7066,
-  serialized_end=7089,
+  serialized_start=7091,
+  serialized_end=7114,
 )
 
 
@@ -2843,8 +2843,8 @@ _ALIASGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7092,
-  serialized_end=7232,
+  serialized_start=7117,
+  serialized_end=7257,
 )
 
 
@@ -2874,8 +2874,8 @@ _CANCREATEGRADESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7234,
-  serialized_end=7283,
+  serialized_start=7259,
+  serialized_end=7308,
 )
 
 
@@ -2905,8 +2905,8 @@ _CANCREATEGRADESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7285,
-  serialized_end=7370,
+  serialized_start=7310,
+  serialized_end=7395,
 )
 
 
@@ -2936,8 +2936,8 @@ _CANCREATEGRADEWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7372,
-  serialized_end=7452,
+  serialized_start=7397,
+  serialized_end=7477,
 )
 
 
@@ -2974,8 +2974,8 @@ _CANCREATEGRADEWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7455,
-  serialized_end=7622,
+  serialized_start=7480,
+  serialized_end=7647,
 )
 
 
@@ -3005,8 +3005,8 @@ _GETGRADEFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7624,
-  serialized_end=7704,
+  serialized_start=7649,
+  serialized_end=7729,
 )
 
 
@@ -3043,8 +3043,8 @@ _GETGRADEFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7707,
-  serialized_end=7866,
+  serialized_start=7732,
+  serialized_end=7891,
 )
 
 
@@ -3074,8 +3074,8 @@ _CREATEGRADEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7868,
-  serialized_end=7929,
+  serialized_start=7893,
+  serialized_end=7954,
 )
 
 
@@ -3105,8 +3105,8 @@ _CREATEGRADEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7931,
-  serialized_end=8003,
+  serialized_start=7956,
+  serialized_end=8028,
 )
 
 
@@ -3136,8 +3136,8 @@ _CANUPDATEGRADESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8005,
-  serialized_end=8054,
+  serialized_start=8030,
+  serialized_end=8079,
 )
 
 
@@ -3167,8 +3167,8 @@ _CANUPDATEGRADESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8056,
-  serialized_end=8141,
+  serialized_start=8081,
+  serialized_end=8166,
 )
 
 
@@ -3198,8 +3198,8 @@ _GETGRADEFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8143,
-  serialized_end=8223,
+  serialized_start=8168,
+  serialized_end=8248,
 )
 
 
@@ -3229,8 +3229,8 @@ _GETGRADEFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8225,
-  serialized_end=8309,
+  serialized_start=8250,
+  serialized_end=8334,
 )
 
 
@@ -3253,8 +3253,8 @@ _UPDATEGRADEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8311,
-  serialized_end=8329,
+  serialized_start=8336,
+  serialized_end=8354,
 )
 
 
@@ -3284,8 +3284,8 @@ _UPDATEGRADEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8331,
-  serialized_end=8403,
+  serialized_start=8356,
+  serialized_end=8428,
 )
 
 
@@ -3315,8 +3315,8 @@ _CANDELETEGRADESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8405,
-  serialized_end=8454,
+  serialized_start=8430,
+  serialized_end=8479,
 )
 
 
@@ -3346,8 +3346,8 @@ _CANDELETEGRADESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8456,
-  serialized_end=8541,
+  serialized_start=8481,
+  serialized_end=8566,
 )
 
 
@@ -3370,8 +3370,8 @@ _DELETEGRADEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8543,
-  serialized_end=8561,
+  serialized_start=8568,
+  serialized_end=8586,
 )
 
 
@@ -3401,8 +3401,8 @@ _DELETEGRADEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8563,
-  serialized_end=8637,
+  serialized_start=8588,
+  serialized_end=8662,
 )
 
 
@@ -3432,8 +3432,8 @@ _CANMANAGEGRADEALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8639,
-  serialized_end=8701,
+  serialized_start=8664,
+  serialized_end=8726,
 )
 
 
@@ -3456,8 +3456,8 @@ _CANMANAGEGRADEALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8703,
-  serialized_end=8733,
+  serialized_start=8728,
+  serialized_end=8758,
 )
 
 
@@ -3480,8 +3480,8 @@ _ALIASGRADEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8735,
-  serialized_end=8752,
+  serialized_start=8760,
+  serialized_end=8777,
 )
 
 
@@ -3518,8 +3518,8 @@ _ALIASGRADEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8754,
-  serialized_end=8881,
+  serialized_start=8779,
+  serialized_end=8906,
 )
 
 
@@ -3542,8 +3542,8 @@ _USECOMPARATIVEGRADEBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8883,
-  serialized_end=8917,
+  serialized_start=8908,
+  serialized_end=8942,
 )
 
 
@@ -3566,8 +3566,8 @@ _USECOMPARATIVEGRADEBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8919,
-  serialized_end=8955,
+  serialized_start=8944,
+  serialized_end=8980,
 )
 
 
@@ -3590,8 +3590,8 @@ _USEPLENARYGRADEBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8957,
-  serialized_end=8987,
+  serialized_start=8982,
+  serialized_end=9012,
 )
 
 
@@ -3614,8 +3614,8 @@ _USEPLENARYGRADEBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8989,
-  serialized_end=9021,
+  serialized_start=9014,
+  serialized_end=9046,
 )
 
 
@@ -3645,8 +3645,8 @@ _CANLOOKUPGRADESYSTEMGRADEBOOKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9023,
-  serialized_end=9119,
+  serialized_start=9048,
+  serialized_end=9144,
 )
 
 
@@ -3669,8 +3669,8 @@ _CANLOOKUPGRADESYSTEMGRADEBOOKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9121,
-  serialized_end=9167,
+  serialized_start=9146,
+  serialized_end=9192,
 )
 
 
@@ -3700,8 +3700,8 @@ _GETGRADESYSTEMIDSBYGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9169,
-  serialized_end=9264,
+  serialized_start=9194,
+  serialized_end=9289,
 )
 
 
@@ -3731,8 +3731,8 @@ _GETGRADESYSTEMSBYGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9266,
-  serialized_end=9359,
+  serialized_start=9291,
+  serialized_end=9384,
 )
 
 
@@ -3762,8 +3762,8 @@ _GETGRADESYSTEMIDSBYGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9361,
-  serialized_end=9458,
+  serialized_start=9386,
+  serialized_end=9483,
 )
 
 
@@ -3793,8 +3793,8 @@ _GETGRADESYSTEMSBYGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9460,
-  serialized_end=9555,
+  serialized_start=9485,
+  serialized_end=9580,
 )
 
 
@@ -3824,8 +3824,8 @@ _GETGRADEBOOKIDSBYGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9557,
-  serialized_end=9655,
+  serialized_start=9582,
+  serialized_end=9680,
 )
 
 
@@ -3855,8 +3855,8 @@ _GETGRADEBOOKSBYGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9657,
-  serialized_end=9753,
+  serialized_start=9682,
+  serialized_end=9778,
 )
 
 
@@ -3886,8 +3886,8 @@ _CANASSIGNGRADESYSTEMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9755,
-  serialized_end=9815,
+  serialized_start=9780,
+  serialized_end=9840,
 )
 
 
@@ -3910,8 +3910,8 @@ _CANASSIGNGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9817,
-  serialized_end=9846,
+  serialized_start=9842,
+  serialized_end=9871,
 )
 
 
@@ -3941,8 +3941,8 @@ _CANASSIGNGRADESYSTEMSTOGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9848,
-  serialized_end=9934,
+  serialized_start=9873,
+  serialized_end=9959,
 )
 
 
@@ -3972,8 +3972,8 @@ _CANASSIGNGRADESYSTEMSTOGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9936,
-  serialized_end=10035,
+  serialized_start=9961,
+  serialized_end=10060,
 )
 
 
@@ -4003,8 +4003,8 @@ _GETASSIGNABLEGRADEBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10037,
-  serialized_end=10129,
+  serialized_start=10062,
+  serialized_end=10154,
 )
 
 
@@ -4041,8 +4041,8 @@ _GETASSIGNABLEGRADEBOOKIDSFORGRADESYSTEMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10132,
-  serialized_end=10299,
+  serialized_start=10157,
+  serialized_end=10324,
 )
 
 
@@ -4065,8 +4065,8 @@ _ASSIGNGRADESYSTEMTOGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10301,
-  serialized_end=10336,
+  serialized_start=10326,
+  serialized_end=10361,
 )
 
 
@@ -4103,8 +4103,8 @@ _ASSIGNGRADESYSTEMTOGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10339,
-  serialized_end=10495,
+  serialized_start=10364,
+  serialized_end=10520,
 )
 
 
@@ -4127,8 +4127,8 @@ _UNASSIGNGRADESYSTEMFROMGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10497,
-  serialized_end=10536,
+  serialized_start=10522,
+  serialized_end=10561,
 )
 
 
@@ -4165,8 +4165,8 @@ _UNASSIGNGRADESYSTEMFROMGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10539,
-  serialized_end=10699,
+  serialized_start=10564,
+  serialized_end=10724,
 )
 
 
@@ -4196,8 +4196,8 @@ _CANLOOKUPGRADEENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10701,
-  serialized_end=10763,
+  serialized_start=10726,
+  serialized_end=10788,
 )
 
 
@@ -4220,8 +4220,8 @@ _CANLOOKUPGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10765,
-  serialized_end=10795,
+  serialized_start=10790,
+  serialized_end=10820,
 )
 
 
@@ -4244,8 +4244,8 @@ _USECOMPARATIVEGRADEENTRYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10797,
-  serialized_end=10832,
+  serialized_start=10822,
+  serialized_end=10857,
 )
 
 
@@ -4268,8 +4268,8 @@ _USECOMPARATIVEGRADEENTRYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10834,
-  serialized_end=10871,
+  serialized_start=10859,
+  serialized_end=10896,
 )
 
 
@@ -4292,8 +4292,8 @@ _USEPLENARYGRADEENTRYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10873,
-  serialized_end=10904,
+  serialized_start=10898,
+  serialized_end=10929,
 )
 
 
@@ -4316,8 +4316,8 @@ _USEPLENARYGRADEENTRYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10906,
-  serialized_end=10939,
+  serialized_start=10931,
+  serialized_end=10964,
 )
 
 
@@ -4340,8 +4340,8 @@ _USEEFFECTIVEGRADEENTRYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10941,
-  serialized_end=10974,
+  serialized_start=10966,
+  serialized_end=10999,
 )
 
 
@@ -4364,8 +4364,8 @@ _USEEFFECTIVEGRADEENTRYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10976,
-  serialized_end=11011,
+  serialized_start=11001,
+  serialized_end=11036,
 )
 
 
@@ -4388,8 +4388,8 @@ _USEANYEFFECTIVEGRADEENTRYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11013,
-  serialized_end=11049,
+  serialized_start=11038,
+  serialized_end=11074,
 )
 
 
@@ -4412,8 +4412,8 @@ _USEANYEFFECTIVEGRADEENTRYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11051,
-  serialized_end=11089,
+  serialized_start=11076,
+  serialized_end=11114,
 )
 
 
@@ -4443,8 +4443,8 @@ _GETGRADEENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11091,
-  serialized_end=11165,
+  serialized_start=11116,
+  serialized_end=11190,
 )
 
 
@@ -4474,8 +4474,8 @@ _GETGRADEENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11167,
-  serialized_end=11249,
+  serialized_start=11192,
+  serialized_end=11274,
 )
 
 
@@ -4505,8 +4505,8 @@ _GETGRADEENTRIESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11251,
-  serialized_end=11341,
+  serialized_start=11276,
+  serialized_end=11366,
 )
 
 
@@ -4536,8 +4536,8 @@ _GETGRADEENTRIESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11343,
-  serialized_end=11450,
+  serialized_start=11368,
+  serialized_end=11475,
 )
 
 
@@ -4567,8 +4567,8 @@ _GETGRADEENTRIESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11452,
-  serialized_end=11565,
+  serialized_start=11477,
+  serialized_end=11590,
 )
 
 
@@ -4598,8 +4598,8 @@ _GETGRADEENTRIESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11567,
-  serialized_end=11676,
+  serialized_start=11592,
+  serialized_end=11701,
 )
 
 
@@ -4636,8 +4636,8 @@ _GETGRADEENTRIESONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11678,
-  serialized_end=11791,
+  serialized_start=11703,
+  serialized_end=11816,
 )
 
 
@@ -4667,8 +4667,8 @@ _GETGRADEENTRIESFORGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11793,
-  serialized_end=11900,
+  serialized_start=11818,
+  serialized_end=11925,
 )
 
 
@@ -4712,8 +4712,8 @@ _GETGRADEENTRIESFORGRADEBOOKCOLUMNONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11903,
-  serialized_end=12099,
+  serialized_start=11928,
+  serialized_end=12124,
 )
 
 
@@ -4743,8 +4743,8 @@ _GETGRADEENTRIESFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12101,
-  serialized_end=12193,
+  serialized_start=12126,
+  serialized_end=12218,
 )
 
 
@@ -4788,8 +4788,8 @@ _GETGRADEENTRIESFORRESOURCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12196,
-  serialized_end=12377,
+  serialized_start=12221,
+  serialized_end=12402,
 )
 
 
@@ -4826,8 +4826,8 @@ _GETGRADEENTRIESFORGRADEBOOKCOLUMNANDRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12380,
-  serialized_end=12555,
+  serialized_start=12405,
+  serialized_end=12580,
 )
 
 
@@ -4878,8 +4878,8 @@ _GETGRADEENTRIESFORGRADEBOOKCOLUMNANDRESOURCEONDATEREQUEST = _descriptor.Descrip
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12558,
-  serialized_end=12822,
+  serialized_start=12583,
+  serialized_end=12847,
 )
 
 
@@ -4909,8 +4909,8 @@ _GETGRADEENTRIESBYGRADERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12824,
-  serialized_end=12913,
+  serialized_start=12849,
+  serialized_end=12938,
 )
 
 
@@ -4933,8 +4933,8 @@ _GETGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12915,
-  serialized_end=12939,
+  serialized_start=12940,
+  serialized_end=12964,
 )
 
 
@@ -4964,8 +4964,8 @@ _CANSEARCHGRADEENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12941,
-  serialized_end=13003,
+  serialized_start=12966,
+  serialized_end=13028,
 )
 
 
@@ -4988,8 +4988,8 @@ _CANSEARCHGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13005,
-  serialized_end=13035,
+  serialized_start=13030,
+  serialized_end=13060,
 )
 
 
@@ -5019,8 +5019,8 @@ _GETGRADEENTRYQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13037,
-  serialized_end=13127,
+  serialized_start=13062,
+  serialized_end=13152,
 )
 
 
@@ -5043,8 +5043,8 @@ _GETGRADEENTRYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13129,
-  serialized_end=13156,
+  serialized_start=13154,
+  serialized_end=13181,
 )
 
 
@@ -5074,8 +5074,8 @@ _GETGRADEENTRIESBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13158,
-  serialized_end=13254,
+  serialized_start=13183,
+  serialized_end=13279,
 )
 
 
@@ -5105,8 +5105,8 @@ _CANCREATEGRADEENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13256,
-  serialized_end=13318,
+  serialized_start=13281,
+  serialized_end=13343,
 )
 
 
@@ -5129,8 +5129,8 @@ _CANCREATEGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13320,
-  serialized_end=13350,
+  serialized_start=13345,
+  serialized_end=13375,
 )
 
 
@@ -5160,8 +5160,8 @@ _CANCREATEGRADEENTRYWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13352,
-  serialized_end=13443,
+  serialized_start=13377,
+  serialized_end=13468,
 )
 
 
@@ -5191,8 +5191,8 @@ _CANCREATEGRADEENTRYWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13445,
-  serialized_end=13562,
+  serialized_start=13470,
+  serialized_end=13587,
 )
 
 
@@ -5222,8 +5222,8 @@ _GETGRADEENTRYFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13564,
-  serialized_end=13660,
+  serialized_start=13589,
+  serialized_end=13685,
 )
 
 
@@ -5267,8 +5267,8 @@ _GETGRADEENTRYFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13663,
-  serialized_end=13894,
+  serialized_start=13688,
+  serialized_end=13919,
 )
 
 
@@ -5298,8 +5298,8 @@ _CREATEGRADEENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13896,
-  serialized_end=13973,
+  serialized_start=13921,
+  serialized_end=13998,
 )
 
 
@@ -5329,8 +5329,8 @@ _CREATEGRADEENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13975,
-  serialized_end=14063,
+  serialized_start=14000,
+  serialized_end=14088,
 )
 
 
@@ -5360,8 +5360,8 @@ _CANOVERRIDECALCULATEDGRADEENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14065,
-  serialized_end=14151,
+  serialized_start=14090,
+  serialized_end=14176,
 )
 
 
@@ -5384,8 +5384,8 @@ _CANOVERRIDECALCULATEDGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14153,
-  serialized_end=14195,
+  serialized_start=14178,
+  serialized_end=14220,
 )
 
 
@@ -5415,8 +5415,8 @@ _GETGRADEENTRYFORMFOROVERRIDEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14197,
-  serialized_end=14295,
+  serialized_start=14222,
+  serialized_end=14320,
 )
 
 
@@ -5453,8 +5453,8 @@ _GETGRADEENTRYFORMFOROVERRIDEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14298,
-  serialized_end=14469,
+  serialized_start=14323,
+  serialized_end=14494,
 )
 
 
@@ -5484,8 +5484,8 @@ _OVERRIDECALCULATEDGRADEENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14471,
-  serialized_end=14560,
+  serialized_start=14496,
+  serialized_end=14585,
 )
 
 
@@ -5515,8 +5515,8 @@ _OVERRIDECALCULATEDGRADEENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14562,
-  serialized_end=14662,
+  serialized_start=14587,
+  serialized_end=14687,
 )
 
 
@@ -5546,8 +5546,8 @@ _CANUPDATEGRADEENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14664,
-  serialized_end=14726,
+  serialized_start=14689,
+  serialized_end=14751,
 )
 
 
@@ -5570,8 +5570,8 @@ _CANUPDATEGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14728,
-  serialized_end=14758,
+  serialized_start=14753,
+  serialized_end=14783,
 )
 
 
@@ -5601,8 +5601,8 @@ _GETGRADEENTRYFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14760,
-  serialized_end=14856,
+  serialized_start=14785,
+  serialized_end=14881,
 )
 
 
@@ -5632,8 +5632,8 @@ _GETGRADEENTRYFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14858,
-  serialized_end=14953,
+  serialized_start=14883,
+  serialized_end=14978,
 )
 
 
@@ -5656,8 +5656,8 @@ _UPDATEGRADEENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14955,
-  serialized_end=14978,
+  serialized_start=14980,
+  serialized_end=15003,
 )
 
 
@@ -5687,8 +5687,8 @@ _UPDATEGRADEENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14980,
-  serialized_end=15068,
+  serialized_start=15005,
+  serialized_end=15093,
 )
 
 
@@ -5718,8 +5718,8 @@ _CANDELETEGRADEENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15070,
-  serialized_end=15132,
+  serialized_start=15095,
+  serialized_end=15157,
 )
 
 
@@ -5742,8 +5742,8 @@ _CANDELETEGRADEENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15134,
-  serialized_end=15164,
+  serialized_start=15159,
+  serialized_end=15189,
 )
 
 
@@ -5766,8 +5766,8 @@ _DELETEGRADEENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15166,
-  serialized_end=15189,
+  serialized_start=15191,
+  serialized_end=15214,
 )
 
 
@@ -5797,8 +5797,8 @@ _DELETEGRADEENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15191,
-  serialized_end=15276,
+  serialized_start=15216,
+  serialized_end=15301,
 )
 
 
@@ -5828,8 +5828,8 @@ _CANMANAGEGRADEENTRYALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15278,
-  serialized_end=15351,
+  serialized_start=15303,
+  serialized_end=15376,
 )
 
 
@@ -5852,8 +5852,8 @@ _CANMANAGEGRADEENTRYALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15353,
-  serialized_end=15388,
+  serialized_start=15378,
+  serialized_end=15413,
 )
 
 
@@ -5876,8 +5876,8 @@ _ALIASGRADEENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15390,
-  serialized_end=15412,
+  serialized_start=15415,
+  serialized_end=15437,
 )
 
 
@@ -5914,8 +5914,8 @@ _ALIASGRADEENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15415,
-  serialized_end=15553,
+  serialized_start=15440,
+  serialized_end=15578,
 )
 
 
@@ -5945,8 +5945,8 @@ _CANLOOKUPGRADEBOOKCOLUMNSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15555,
-  serialized_end=15625,
+  serialized_start=15580,
+  serialized_end=15650,
 )
 
 
@@ -5969,8 +5969,8 @@ _CANLOOKUPGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15627,
-  serialized_end=15661,
+  serialized_start=15652,
+  serialized_end=15686,
 )
 
 
@@ -5993,8 +5993,8 @@ _USECOMPARATIVEGRADEBOOKCOLUMNVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15663,
-  serialized_end=15703,
+  serialized_start=15688,
+  serialized_end=15728,
 )
 
 
@@ -6017,8 +6017,8 @@ _USECOMPARATIVEGRADEBOOKCOLUMNVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15705,
-  serialized_end=15747,
+  serialized_start=15730,
+  serialized_end=15772,
 )
 
 
@@ -6041,8 +6041,8 @@ _USEPLENARYGRADEBOOKCOLUMNVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15749,
-  serialized_end=15785,
+  serialized_start=15774,
+  serialized_end=15810,
 )
 
 
@@ -6065,8 +6065,8 @@ _USEPLENARYGRADEBOOKCOLUMNVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15787,
-  serialized_end=15825,
+  serialized_start=15812,
+  serialized_end=15850,
 )
 
 
@@ -6096,8 +6096,8 @@ _GETGRADEBOOKCOLUMNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15827,
-  serialized_end=15916,
+  serialized_start=15852,
+  serialized_end=15941,
 )
 
 
@@ -6127,8 +6127,8 @@ _GETGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15918,
-  serialized_end=16010,
+  serialized_start=15943,
+  serialized_end=16035,
 )
 
 
@@ -6158,8 +6158,8 @@ _GETGRADEBOOKCOLUMNSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16012,
-  serialized_end=16111,
+  serialized_start=16037,
+  serialized_end=16136,
 )
 
 
@@ -6189,8 +6189,8 @@ _GETGRADEBOOKCOLUMNSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16113,
-  serialized_end=16229,
+  serialized_start=16138,
+  serialized_end=16254,
 )
 
 
@@ -6220,8 +6220,8 @@ _GETGRADEBOOKCOLUMNSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16231,
-  serialized_end=16353,
+  serialized_start=16256,
+  serialized_end=16378,
 )
 
 
@@ -6251,8 +6251,8 @@ _GETGRADEBOOKCOLUMNSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16355,
-  serialized_end=16473,
+  serialized_start=16380,
+  serialized_end=16498,
 )
 
 
@@ -6275,8 +6275,8 @@ _GETGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16475,
-  serialized_end=16503,
+  serialized_start=16500,
+  serialized_end=16528,
 )
 
 
@@ -6306,8 +6306,8 @@ _SUPPORTSSUMMARYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16505,
-  serialized_end=16553,
+  serialized_start=16530,
+  serialized_end=16578,
 )
 
 
@@ -6330,8 +6330,8 @@ _SUPPORTSSUMMARYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16555,
-  serialized_end=16579,
+  serialized_start=16580,
+  serialized_end=16604,
 )
 
 
@@ -6361,8 +6361,8 @@ _GETGRADEBOOKCOLUMNSUMMARYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16581,
-  serialized_end=16692,
+  serialized_start=16606,
+  serialized_end=16717,
 )
 
 
@@ -6392,8 +6392,8 @@ _GETGRADEBOOKCOLUMNSUMMARYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16694,
-  serialized_end=16793,
+  serialized_start=16719,
+  serialized_end=16818,
 )
 
 
@@ -6423,8 +6423,8 @@ _CANSEARCHGRADEBOOKCOLUMNSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16795,
-  serialized_end=16865,
+  serialized_start=16820,
+  serialized_end=16890,
 )
 
 
@@ -6447,8 +6447,8 @@ _CANSEARCHGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16867,
-  serialized_end=16901,
+  serialized_start=16892,
+  serialized_end=16926,
 )
 
 
@@ -6478,8 +6478,8 @@ _GETGRADEBOOKCOLUMNQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16903,
-  serialized_end=17008,
+  serialized_start=16928,
+  serialized_end=17033,
 )
 
 
@@ -6502,8 +6502,8 @@ _GETGRADEBOOKCOLUMNQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17010,
-  serialized_end=17042,
+  serialized_start=17035,
+  serialized_end=17067,
 )
 
 
@@ -6533,8 +6533,8 @@ _GETGRADEBOOKCOLUMNSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17044,
-  serialized_end=17154,
+  serialized_start=17069,
+  serialized_end=17179,
 )
 
 
@@ -6564,8 +6564,8 @@ _CANCREATEGRADEBOOKCOLUMNSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17156,
-  serialized_end=17226,
+  serialized_start=17181,
+  serialized_end=17251,
 )
 
 
@@ -6588,8 +6588,8 @@ _CANCREATEGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17228,
-  serialized_end=17262,
+  serialized_start=17253,
+  serialized_end=17287,
 )
 
 
@@ -6619,8 +6619,8 @@ _CANCREATEGRADEBOOKCOLUMNWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17264,
-  serialized_end=17365,
+  serialized_start=17289,
+  serialized_end=17390,
 )
 
 
@@ -6650,8 +6650,8 @@ _CANCREATEGRADEBOOKCOLUMNWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17367,
-  serialized_end=17494,
+  serialized_start=17392,
+  serialized_end=17519,
 )
 
 
@@ -6681,8 +6681,8 @@ _GETGRADEBOOKCOLUMNFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17496,
-  serialized_end=17607,
+  serialized_start=17521,
+  serialized_end=17632,
 )
 
 
@@ -6712,8 +6712,8 @@ _GETGRADEBOOKCOLUMNFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17609,
-  serialized_end=17728,
+  serialized_start=17634,
+  serialized_end=17753,
 )
 
 
@@ -6743,8 +6743,8 @@ _CREATEGRADEBOOKCOLUMNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17730,
-  serialized_end=17822,
+  serialized_start=17755,
+  serialized_end=17847,
 )
 
 
@@ -6774,8 +6774,8 @@ _CREATEGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17824,
-  serialized_end=17927,
+  serialized_start=17849,
+  serialized_end=17952,
 )
 
 
@@ -6805,8 +6805,8 @@ _CANUPDATEGRADEBOOKCOLUMNSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17929,
-  serialized_end=17999,
+  serialized_start=17954,
+  serialized_end=18024,
 )
 
 
@@ -6829,8 +6829,8 @@ _CANUPDATEGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18001,
-  serialized_end=18035,
+  serialized_start=18026,
+  serialized_end=18060,
 )
 
 
@@ -6860,8 +6860,8 @@ _GETGRADEBOOKCOLUMNFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18037,
-  serialized_end=18148,
+  serialized_start=18062,
+  serialized_end=18173,
 )
 
 
@@ -6891,8 +6891,8 @@ _GETGRADEBOOKCOLUMNFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18150,
-  serialized_end=18255,
+  serialized_start=18175,
+  serialized_end=18280,
 )
 
 
@@ -6915,8 +6915,8 @@ _UPDATEGRADEBOOKCOLUMNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18257,
-  serialized_end=18285,
+  serialized_start=18282,
+  serialized_end=18310,
 )
 
 
@@ -6946,8 +6946,8 @@ _UPDATEGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18287,
-  serialized_end=18390,
+  serialized_start=18312,
+  serialized_end=18415,
 )
 
 
@@ -6970,8 +6970,8 @@ _SEQUENCEGRADEBOOKCOLUMNSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18392,
-  serialized_end=18423,
+  serialized_start=18417,
+  serialized_end=18448,
 )
 
 
@@ -7001,8 +7001,8 @@ _SEQUENCEGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18425,
-  serialized_end=18524,
+  serialized_start=18450,
+  serialized_end=18549,
 )
 
 
@@ -7025,8 +7025,8 @@ _MOVEGRADEBOOKCOLUMNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18526,
-  serialized_end=18552,
+  serialized_start=18551,
+  serialized_end=18577,
 )
 
 
@@ -7063,8 +7063,8 @@ _MOVEGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18555,
-  serialized_end=18724,
+  serialized_start=18580,
+  serialized_end=18749,
 )
 
 
@@ -7087,8 +7087,8 @@ _COPYGRADEBOOKCOLUMNENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18726,
-  serialized_end=18759,
+  serialized_start=18751,
+  serialized_end=18784,
 )
 
 
@@ -7125,8 +7125,8 @@ _COPYGRADEBOOKCOLUMNENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18762,
-  serialized_end=18941,
+  serialized_start=18787,
+  serialized_end=18966,
 )
 
 
@@ -7156,8 +7156,8 @@ _CANDELETEGRADEBOOKCOLUMNSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18943,
-  serialized_end=19013,
+  serialized_start=18968,
+  serialized_end=19038,
 )
 
 
@@ -7180,8 +7180,8 @@ _CANDELETEGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19015,
-  serialized_end=19049,
+  serialized_start=19040,
+  serialized_end=19074,
 )
 
 
@@ -7204,8 +7204,8 @@ _DELETEGRADEBOOKCOLUMNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19051,
-  serialized_end=19079,
+  serialized_start=19076,
+  serialized_end=19104,
 )
 
 
@@ -7235,8 +7235,8 @@ _DELETEGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19081,
-  serialized_end=19176,
+  serialized_start=19106,
+  serialized_end=19201,
 )
 
 
@@ -7266,8 +7266,8 @@ _CANMANAGEGRADEBOOKCOLUMNALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19178,
-  serialized_end=19261,
+  serialized_start=19203,
+  serialized_end=19286,
 )
 
 
@@ -7290,8 +7290,8 @@ _CANMANAGEGRADEBOOKCOLUMNALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19263,
-  serialized_end=19303,
+  serialized_start=19288,
+  serialized_end=19328,
 )
 
 
@@ -7314,8 +7314,8 @@ _ALIASGRADEBOOKCOLUMNREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19305,
-  serialized_end=19332,
+  serialized_start=19330,
+  serialized_end=19357,
 )
 
 
@@ -7352,8 +7352,8 @@ _ALIASGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19335,
-  serialized_end=19483,
+  serialized_start=19360,
+  serialized_end=19508,
 )
 
 
@@ -7383,8 +7383,8 @@ _CANLOOKUPGRADEBOOKCOLUMNGRADEBOOKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19485,
-  serialized_end=19589,
+  serialized_start=19510,
+  serialized_end=19614,
 )
 
 
@@ -7407,8 +7407,8 @@ _CANLOOKUPGRADEBOOKCOLUMNGRADEBOOKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19591,
-  serialized_end=19641,
+  serialized_start=19616,
+  serialized_end=19666,
 )
 
 
@@ -7438,8 +7438,8 @@ _GETGRADEBOOKCOLUMNIDSBYGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19643,
-  serialized_end=19742,
+  serialized_start=19668,
+  serialized_end=19767,
 )
 
 
@@ -7469,8 +7469,8 @@ _GETGRADEBOOKCOLUMNSBYGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19744,
-  serialized_end=19841,
+  serialized_start=19769,
+  serialized_end=19866,
 )
 
 
@@ -7500,8 +7500,8 @@ _GETGRADEBOOKCOLUMNIDSBYGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19843,
-  serialized_end=19944,
+  serialized_start=19868,
+  serialized_end=19969,
 )
 
 
@@ -7531,8 +7531,8 @@ _GETGRADEBOOKCOLUMNSBYGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19946,
-  serialized_end=20045,
+  serialized_start=19971,
+  serialized_end=20070,
 )
 
 
@@ -7562,8 +7562,8 @@ _GETGRADEBOOKIDSBYGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20047,
-  serialized_end=20153,
+  serialized_start=20072,
+  serialized_end=20178,
 )
 
 
@@ -7593,8 +7593,8 @@ _GETGRADEBOOKSBYGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20155,
-  serialized_end=20259,
+  serialized_start=20180,
+  serialized_end=20284,
 )
 
 
@@ -7624,8 +7624,8 @@ _CANASSIGNGRADEBOOKCOLUMNSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20261,
-  serialized_end=20331,
+  serialized_start=20286,
+  serialized_end=20356,
 )
 
 
@@ -7648,8 +7648,8 @@ _CANASSIGNGRADEBOOKCOLUMNSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20333,
-  serialized_end=20367,
+  serialized_start=20358,
+  serialized_end=20392,
 )
 
 
@@ -7679,8 +7679,8 @@ _CANASSIGNGRADEBOOKCOLUMNSTOGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20369,
-  serialized_end=20463,
+  serialized_start=20394,
+  serialized_end=20488,
 )
 
 
@@ -7710,8 +7710,8 @@ _CANASSIGNGRADEBOOKCOLUMNSTOGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20465,
-  serialized_end=20568,
+  serialized_start=20490,
+  serialized_end=20593,
 )
 
 
@@ -7748,8 +7748,8 @@ _GETASSIGNABLEGRADEBOOKIDSFORGRADEBOOKCOLUMNREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20571,
-  serialized_end=20746,
+  serialized_start=20596,
+  serialized_end=20771,
 )
 
 
@@ -7772,8 +7772,8 @@ _ASSIGNGRADEBOOKCOLUMNTOGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20748,
-  serialized_end=20787,
+  serialized_start=20773,
+  serialized_end=20812,
 )
 
 
@@ -7810,8 +7810,8 @@ _ASSIGNGRADEBOOKCOLUMNTOGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20790,
-  serialized_end=20954,
+  serialized_start=20815,
+  serialized_end=20979,
 )
 
 
@@ -7834,8 +7834,8 @@ _UNASSIGNGRADEBOOKCOLUMNFROMGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20956,
-  serialized_end=20999,
+  serialized_start=20981,
+  serialized_end=21024,
 )
 
 
@@ -7872,8 +7872,8 @@ _UNASSIGNGRADEBOOKCOLUMNFROMGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21002,
-  serialized_end=21170,
+  serialized_start=21027,
+  serialized_end=21195,
 )
 
 
@@ -7903,8 +7903,8 @@ _CANLOOKUPGRADEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21172,
-  serialized_end=21229,
+  serialized_start=21197,
+  serialized_end=21254,
 )
 
 
@@ -7927,8 +7927,8 @@ _CANLOOKUPGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21231,
-  serialized_end=21259,
+  serialized_start=21256,
+  serialized_end=21284,
 )
 
 
@@ -7958,8 +7958,8 @@ _GETGRADEBOOKSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21261,
-  serialized_end=21347,
+  serialized_start=21286,
+  serialized_end=21372,
 )
 
 
@@ -7989,8 +7989,8 @@ _GETGRADEBOOKSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21349,
-  serialized_end=21452,
+  serialized_start=21374,
+  serialized_end=21477,
 )
 
 
@@ -8020,8 +8020,8 @@ _GETGRADEBOOKSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21454,
-  serialized_end=21563,
+  serialized_start=21479,
+  serialized_end=21588,
 )
 
 
@@ -8051,8 +8051,8 @@ _GETGRADEBOOKSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21565,
-  serialized_end=21670,
+  serialized_start=21590,
+  serialized_end=21695,
 )
 
 
@@ -8082,8 +8082,8 @@ _GETGRADEBOOKSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21672,
-  serialized_end=21761,
+  serialized_start=21697,
+  serialized_end=21786,
 )
 
 
@@ -8106,8 +8106,8 @@ _GETGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21763,
-  serialized_end=21785,
+  serialized_start=21788,
+  serialized_end=21810,
 )
 
 
@@ -8137,8 +8137,8 @@ _CANCREATEGRADEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21787,
-  serialized_end=21844,
+  serialized_start=21812,
+  serialized_end=21869,
 )
 
 
@@ -8161,8 +8161,8 @@ _CANCREATEGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21846,
-  serialized_end=21874,
+  serialized_start=21871,
+  serialized_end=21899,
 )
 
 
@@ -8192,8 +8192,8 @@ _CANCREATEGRADEBOOKWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21876,
-  serialized_end=21964,
+  serialized_start=21901,
+  serialized_end=21989,
 )
 
 
@@ -8223,8 +8223,8 @@ _CANCREATEGRADEBOOKWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21966,
-  serialized_end=22080,
+  serialized_start=21991,
+  serialized_end=22105,
 )
 
 
@@ -8254,8 +8254,8 @@ _GETGRADEBOOKFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22082,
-  serialized_end=22174,
+  serialized_start=22107,
+  serialized_end=22199,
 )
 
 
@@ -8285,8 +8285,8 @@ _GETGRADEBOOKFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22176,
-  serialized_end=22282,
+  serialized_start=22201,
+  serialized_end=22307,
 )
 
 
@@ -8316,8 +8316,8 @@ _CREATEGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22284,
-  serialized_end=22357,
+  serialized_start=22309,
+  serialized_end=22382,
 )
 
 
@@ -8347,8 +8347,8 @@ _CREATEGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22359,
-  serialized_end=22443,
+  serialized_start=22384,
+  serialized_end=22468,
 )
 
 
@@ -8378,8 +8378,8 @@ _CANUPDATEGRADEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22445,
-  serialized_end=22502,
+  serialized_start=22470,
+  serialized_end=22527,
 )
 
 
@@ -8402,8 +8402,8 @@ _CANUPDATEGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22504,
-  serialized_end=22532,
+  serialized_start=22529,
+  serialized_end=22557,
 )
 
 
@@ -8433,8 +8433,8 @@ _GETGRADEBOOKFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22534,
-  serialized_end=22626,
+  serialized_start=22559,
+  serialized_end=22651,
 )
 
 
@@ -8464,8 +8464,8 @@ _GETGRADEBOOKFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22628,
-  serialized_end=22720,
+  serialized_start=22653,
+  serialized_end=22745,
 )
 
 
@@ -8488,8 +8488,8 @@ _UPDATEGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22722,
-  serialized_end=22744,
+  serialized_start=22747,
+  serialized_end=22769,
 )
 
 
@@ -8519,8 +8519,8 @@ _UPDATEGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22746,
-  serialized_end=22830,
+  serialized_start=22771,
+  serialized_end=22855,
 )
 
 
@@ -8550,8 +8550,8 @@ _CANDELETEGRADEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22832,
-  serialized_end=22889,
+  serialized_start=22857,
+  serialized_end=22914,
 )
 
 
@@ -8574,8 +8574,8 @@ _CANDELETEGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22891,
-  serialized_end=22919,
+  serialized_start=22916,
+  serialized_end=22944,
 )
 
 
@@ -8598,8 +8598,8 @@ _DELETEGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22921,
-  serialized_end=22943,
+  serialized_start=22946,
+  serialized_end=22968,
 )
 
 
@@ -8629,8 +8629,8 @@ _DELETEGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22945,
-  serialized_end=23027,
+  serialized_start=22970,
+  serialized_end=23052,
 )
 
 
@@ -8660,8 +8660,8 @@ _CANMANAGEGRADEBOOKALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23029,
-  serialized_end=23099,
+  serialized_start=23054,
+  serialized_end=23124,
 )
 
 
@@ -8684,8 +8684,8 @@ _CANMANAGEGRADEBOOKALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23101,
-  serialized_end=23135,
+  serialized_start=23126,
+  serialized_end=23160,
 )
 
 
@@ -8708,8 +8708,8 @@ _ALIASGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23137,
-  serialized_end=23158,
+  serialized_start=23162,
+  serialized_end=23183,
 )
 
 
@@ -8746,8 +8746,8 @@ _ALIASGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23161,
-  serialized_end=23296,
+  serialized_start=23186,
+  serialized_end=23321,
 )
 
 
@@ -8777,8 +8777,8 @@ _GETGRADEBOOKHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23298,
-  serialized_end=23376,
+  serialized_start=23323,
+  serialized_end=23401,
 )
 
 
@@ -8801,8 +8801,8 @@ _GETGRADEBOOKHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23378,
-  serialized_end=23410,
+  serialized_start=23403,
+  serialized_end=23435,
 )
 
 
@@ -8832,8 +8832,8 @@ _GETGRADEBOOKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23412,
-  serialized_end=23493,
+  serialized_start=23437,
+  serialized_end=23518,
 )
 
 
@@ -8856,8 +8856,8 @@ _GETGRADEBOOKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23495,
-  serialized_end=23525,
+  serialized_start=23520,
+  serialized_end=23550,
 )
 
 
@@ -8887,8 +8887,8 @@ _CANACCESSGRADEBOOKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23527,
-  serialized_end=23601,
+  serialized_start=23552,
+  serialized_end=23626,
 )
 
 
@@ -8911,8 +8911,8 @@ _CANACCESSGRADEBOOKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23603,
-  serialized_end=23639,
+  serialized_start=23628,
+  serialized_end=23664,
 )
 
 
@@ -8935,8 +8935,8 @@ _GETROOTGRADEBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23641,
-  serialized_end=23669,
+  serialized_start=23666,
+  serialized_end=23694,
 )
 
 
@@ -8959,8 +8959,8 @@ _GETROOTGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23671,
-  serialized_end=23697,
+  serialized_start=23696,
+  serialized_end=23722,
 )
 
 
@@ -8990,8 +8990,8 @@ _HASPARENTGRADEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23699,
-  serialized_end=23756,
+  serialized_start=23724,
+  serialized_end=23781,
 )
 
 
@@ -9021,8 +9021,8 @@ _HASPARENTGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23758,
-  serialized_end=23844,
+  serialized_start=23783,
+  serialized_end=23869,
 )
 
 
@@ -9052,8 +9052,8 @@ _ISPARENTOFGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23846,
-  serialized_end=23904,
+  serialized_start=23871,
+  serialized_end=23929,
 )
 
 
@@ -9090,8 +9090,8 @@ _ISPARENTOFGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23907,
-  serialized_end=24042,
+  serialized_start=23932,
+  serialized_end=24067,
 )
 
 
@@ -9121,8 +9121,8 @@ _GETPARENTGRADEBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24044,
-  serialized_end=24132,
+  serialized_start=24069,
+  serialized_end=24157,
 )
 
 
@@ -9152,8 +9152,8 @@ _GETPARENTGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24134,
-  serialized_end=24220,
+  serialized_start=24159,
+  serialized_end=24245,
 )
 
 
@@ -9183,8 +9183,8 @@ _ISANCESTOROFGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24222,
-  serialized_end=24284,
+  serialized_start=24247,
+  serialized_end=24309,
 )
 
 
@@ -9221,8 +9221,8 @@ _ISANCESTOROFGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24287,
-  serialized_end=24424,
+  serialized_start=24312,
+  serialized_end=24449,
 )
 
 
@@ -9252,8 +9252,8 @@ _HASCHILDGRADEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24426,
-  serialized_end=24481,
+  serialized_start=24451,
+  serialized_end=24506,
 )
 
 
@@ -9283,8 +9283,8 @@ _HASCHILDGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24483,
-  serialized_end=24568,
+  serialized_start=24508,
+  serialized_end=24593,
 )
 
 
@@ -9314,8 +9314,8 @@ _ISCHILDOFGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24570,
-  serialized_end=24626,
+  serialized_start=24595,
+  serialized_end=24651,
 )
 
 
@@ -9352,8 +9352,8 @@ _ISCHILDOFGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24629,
-  serialized_end=24763,
+  serialized_start=24654,
+  serialized_end=24788,
 )
 
 
@@ -9383,8 +9383,8 @@ _GETCHILDGRADEBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24765,
-  serialized_end=24852,
+  serialized_start=24790,
+  serialized_end=24877,
 )
 
 
@@ -9414,8 +9414,8 @@ _GETCHILDGRADEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24854,
-  serialized_end=24939,
+  serialized_start=24879,
+  serialized_end=24964,
 )
 
 
@@ -9445,8 +9445,8 @@ _ISDESCENDANTOFGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24941,
-  serialized_end=25007,
+  serialized_start=24966,
+  serialized_end=25032,
 )
 
 
@@ -9483,8 +9483,8 @@ _ISDESCENDANTOFGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25010,
-  serialized_end=25149,
+  serialized_start=25035,
+  serialized_end=25174,
 )
 
 
@@ -9514,8 +9514,8 @@ _GETGRADEBOOKNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25151,
-  serialized_end=25220,
+  serialized_start=25176,
+  serialized_end=25245,
 )
 
 
@@ -9566,8 +9566,8 @@ _GETGRADEBOOKNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25223,
-  serialized_end=25387,
+  serialized_start=25248,
+  serialized_end=25412,
 )
 
 
@@ -9597,8 +9597,8 @@ _GETGRADEBOOKNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25389,
-  serialized_end=25473,
+  serialized_start=25414,
+  serialized_end=25498,
 )
 
 
@@ -9649,8 +9649,8 @@ _GETGRADEBOOKNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25476,
-  serialized_end=25638,
+  serialized_start=25501,
+  serialized_end=25663,
 )
 
 
@@ -9680,8 +9680,8 @@ _CANMODIFYGRADEBOOKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25640,
-  serialized_end=25714,
+  serialized_start=25665,
+  serialized_end=25739,
 )
 
 
@@ -9704,8 +9704,8 @@ _CANMODIFYGRADEBOOKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25716,
-  serialized_end=25752,
+  serialized_start=25741,
+  serialized_end=25777,
 )
 
 
@@ -9728,8 +9728,8 @@ _ADDROOTGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25754,
-  serialized_end=25777,
+  serialized_start=25779,
+  serialized_end=25802,
 )
 
 
@@ -9759,8 +9759,8 @@ _ADDROOTGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25779,
-  serialized_end=25862,
+  serialized_start=25804,
+  serialized_end=25887,
 )
 
 
@@ -9783,8 +9783,8 @@ _REMOVEROOTGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25864,
-  serialized_end=25890,
+  serialized_start=25889,
+  serialized_end=25915,
 )
 
 
@@ -9814,8 +9814,8 @@ _REMOVEROOTGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25892,
-  serialized_end=25978,
+  serialized_start=25917,
+  serialized_end=26003,
 )
 
 
@@ -9838,8 +9838,8 @@ _ADDCHILDGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25980,
-  serialized_end=26004,
+  serialized_start=26005,
+  serialized_end=26029,
 )
 
 
@@ -9876,8 +9876,8 @@ _ADDCHILDGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26007,
-  serialized_end=26145,
+  serialized_start=26032,
+  serialized_end=26170,
 )
 
 
@@ -9900,8 +9900,8 @@ _REMOVECHILDGRADEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26147,
-  serialized_end=26174,
+  serialized_start=26172,
+  serialized_end=26199,
 )
 
 
@@ -9938,24 +9938,24 @@ _REMOVECHILDGRADEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26177,
-  serialized_end=26318,
+  serialized_start=26202,
+  serialized_end=26343,
 )
 
 _GRADE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_GRADE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADE.fields_by_name['grade_system'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _GRADE.fields_by_name['gradebook'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _GRADE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_GRADE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADELIST.fields_by_name['grades'].message_type = _GRADE
 _GRADESYSTEM.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADESYSTEM.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADESYSTEM.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADESYSTEM.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_GRADESYSTEM.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADESYSTEM.fields_by_name['gradebook'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _GRADESYSTEM.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_GRADESYSTEM.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADESYSTEM.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADESYSTEMLIST.fields_by_name['grade_systems'].message_type = _GRADESYSTEM
 _GRADEENTRY.fields_by_name['grade'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _GRADEENTRY.fields_by_name['gradebook'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
@@ -9963,24 +9963,24 @@ _GRADEENTRY.fields_by_name['gradebook_column'].message_type = dlkit_dot_primordi
 _GRADEENTRY.fields_by_name['resource'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _GRADEENTRYLIST.fields_by_name['grade_entries'].message_type = _GRADEENTRY
 _GRADEBOOKCOLUMN.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADEBOOKCOLUMN.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADEBOOKCOLUMN.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADEBOOKCOLUMN.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_GRADEBOOKCOLUMN.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADEBOOKCOLUMN.fields_by_name['grade_system'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _GRADEBOOKCOLUMN.fields_by_name['gradebook'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _GRADEBOOKCOLUMN.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_GRADEBOOKCOLUMN.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADEBOOKCOLUMN.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADEBOOKCOLUMNLIST.fields_by_name['gradebook_columns'].message_type = _GRADEBOOKCOLUMN
 _GRADEBOOKCOLUMNSUMMARY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADEBOOKCOLUMNSUMMARY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADEBOOKCOLUMNSUMMARY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADEBOOKCOLUMNSUMMARY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_GRADEBOOKCOLUMNSUMMARY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADEBOOKCOLUMNSUMMARY.fields_by_name['gradebook_column'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _GRADEBOOKCOLUMNSUMMARY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_GRADEBOOKCOLUMNSUMMARY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADEBOOKCOLUMNSUMMARY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADEBOOK.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADEBOOK.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_GRADEBOOK.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADEBOOK.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_GRADEBOOK.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADEBOOK.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_GRADEBOOK.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_GRADEBOOK.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _GRADEBOOKLIST.fields_by_name['gradebooks'].message_type = _GRADEBOOK
 _GRADEBOOKNODELIST.fields_by_name['gradebook_nodes'].message_type = _GRADEBOOKNODE
 _GETGRADEBOOKIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -12818,8 +12818,8 @@ _GRADESYSTEMLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=26321,
-  serialized_end=28083,
+  serialized_start=26346,
+  serialized_end=28108,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -12959,8 +12959,8 @@ _GRADESYSTEMQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=28086,
-  serialized_end=28958,
+  serialized_start=28111,
+  serialized_end=28983,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -13037,8 +13037,8 @@ _GRADESYSTEMADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=28961,
-  serialized_end=31883,
+  serialized_start=28986,
+  serialized_end=31908,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -13268,8 +13268,8 @@ _GRADESYSTEMGRADEBOOKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=31886,
-  serialized_end=33138,
+  serialized_start=31911,
+  serialized_end=33163,
   methods=[
   _descriptor.MethodDescriptor(
     name='UseComparativeGradebookView',
@@ -13364,8 +13364,8 @@ _GRADESYSTEMGRADEBOOKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=33141,
-  serialized_end=34052,
+  serialized_start=33166,
+  serialized_end=34077,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignGradeSystem',
@@ -13433,8 +13433,8 @@ _GRADEENTRYLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=34055,
-  serialized_end=37079,
+  serialized_start=34080,
+  serialized_end=37104,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -13655,8 +13655,8 @@ _GRADEENTRYQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=37082,
-  serialized_end=37949,
+  serialized_start=37107,
+  serialized_end=37974,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -13733,8 +13733,8 @@ _GRADEENTRYADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=37952,
-  serialized_end=40066,
+  serialized_start=37977,
+  serialized_end=40091,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -13892,8 +13892,8 @@ _GRADEBOOKCOLUMNLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=40069,
-  serialized_end=42068,
+  serialized_start=40094,
+  serialized_end=42093,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -14042,8 +14042,8 @@ _GRADEBOOKCOLUMNQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=9,
   options=None,
-  serialized_start=42071,
-  serialized_end=42985,
+  serialized_start=42096,
+  serialized_end=43010,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -14120,8 +14120,8 @@ _GRADEBOOKCOLUMNADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=10,
   options=None,
-  serialized_start=42988,
-  serialized_end=45205,
+  serialized_start=43013,
+  serialized_end=45230,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookId',
@@ -14279,8 +14279,8 @@ _GRADEBOOKCOLUMNGRADEBOOKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=11,
   options=None,
-  serialized_start=45208,
-  serialized_end=46535,
+  serialized_start=45233,
+  serialized_end=46560,
   methods=[
   _descriptor.MethodDescriptor(
     name='UseComparativeGradebookView',
@@ -14375,8 +14375,8 @@ _GRADEBOOKCOLUMNGRADEBOOKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=12,
   options=None,
-  serialized_start=46538,
-  serialized_end=47513,
+  serialized_start=46563,
+  serialized_end=47538,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignGradebookColumns',
@@ -14444,8 +14444,8 @@ _GRADEBOOKLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=13,
   options=None,
-  serialized_start=47516,
-  serialized_end=48728,
+  serialized_start=47541,
+  serialized_end=48753,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupGradebooks',
@@ -14549,8 +14549,8 @@ _GRADEBOOKADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=14,
   options=None,
-  serialized_start=48731,
-  serialized_end=50134,
+  serialized_start=48756,
+  serialized_end=50159,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateGradebooks',
@@ -14663,8 +14663,8 @@ _GRADEBOOKHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=15,
   options=None,
-  serialized_start=50137,
-  serialized_end=52486,
+  serialized_start=50162,
+  serialized_end=52511,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookHierarchyId',
@@ -14849,8 +14849,8 @@ _GRADEBOOKHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=16,
   options=None,
-  serialized_start=52489,
-  serialized_end=53401,
+  serialized_start=52514,
+  serialized_end=53426,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetGradebookHierarchyId',

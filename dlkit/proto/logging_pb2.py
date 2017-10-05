@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/logging.proto',
   package='dlkit.proto.logging',
   syntax='proto3',
-  serialized_pb=_b('\n\x19\x64lkit/proto/logging.proto\x12\x13\x64lkit.proto.logging\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8a\x04\n\x08LogEntry\x12\x31\n\x05\x61gent\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12*\n\x03log\x18\x06 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x38\n\x08priority\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12=\n\rrecordTypeIds\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12-\n\ttimestamp\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x0f\n\rLogEntryQuery\"\x18\n\x16LogEntryQueryInspector\"\x0e\n\x0cLogEntryForm\"\x15\n\x13LogEntrySearchOrder\"\x10\n\x0eLogEntrySearch\"\x17\n\x15LogEntrySearchResults\"B\n\x0cLogEntryList\x12\x32\n\x0blog_entries\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.logging.LogEntry\"\xbd\x02\n\x03Log\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\n\n\x08LogQuery\"\x13\n\x11LogQueryInspector\"\t\n\x07LogForm\"\x10\n\x0eLogSearchOrder\"\x0b\n\tLogSearch\"\x12\n\x10LogSearchResults\"1\n\x07LogList\x12&\n\x04logs\x18\x01 \x03(\x0b\x32\x18.dlkit.proto.logging.Log\"\t\n\x07LogNode\">\n\x0bLogNodeList\x12/\n\tlog_nodes\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.logging.LogNode\"?\n\rGetLogIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetLogIdRequest\"4\n\x0bGetLogReply\x12%\n\x03log\x18\x01 \x01(\x0b\x32\x18.dlkit.proto.logging.Log\"\x0f\n\rGetLogRequest\"\x1e\n\x0b\x43\x61nLogReply\x12\x0f\n\x07\x63\x61n_log\x18\x01 \x01(\x08\"\x0f\n\rCanLogRequest\"\n\n\x08LogReply\"[\n\nLogRequest\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\x12<\n\x0c\x63ontent_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x14\n\x12LogAtPriorityReply\"\xa4\x01\n\x14LogAtPriorityRequest\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\x12<\n\x0c\x63ontent_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12=\n\rpriority_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Q\n\x14GetLogEntryFormReply\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"\x18\n\x16GetLogEntryFormRequest\"\x15\n\x13\x43reateLogEntryReply\"R\n\x15\x43reateLogEntryRequest\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"\'\n\x0f\x43\x61nReadLogReply\x12\x14\n\x0c\x63\x61n_read_log\x18\x01 \x01(\x08\"\x13\n\x11\x43\x61nReadLogRequest\"!\n\x1fUseComparativeLogEntryViewReply\"#\n!UseComparativeLogEntryViewRequest\"\x1d\n\x1bUsePlenaryLogEntryViewReply\"\x1f\n\x1dUsePlenaryLogEntryViewRequest\"\x1a\n\x18UseFederatedLogViewReply\"\x1c\n\x1aUseFederatedLogViewRequest\"\x19\n\x17UseIsolatedLogViewReply\"\x1b\n\x19UseIsolatedLogViewRequest\"D\n\x10GetLogEntryReply\x12\x30\n\tlog_entry\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.logging.LogEntry\"N\n\x12GetLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x19GetLogEntriesByIdsRequest\x12\x39\n\rlog_entry_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1fGetLogEntriesByGenusTypeRequest\x12\x44\n\x14log_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n%GetLogEntriesByParentGenusTypeRequest\x12\x44\n\x14log_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"h\n GetLogEntriesByRecordTypeRequest\x12\x44\n\x14log_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n\"GetLogEntriesByPriorityTypeRequest\x12=\n\rpriority_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"p\n\x1aGetLogEntriesByDateRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12)\n\x05start\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xbe\x01\n)GetLogEntriesByPriorityTypeAndDateRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12=\n\rpriority_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Z\n\x1fGetLogEntriesForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb4\x01\n%GetLogEntriesByDateForResourceRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x82\x02\n4GetLogEntriesByPriorityTypeAndDateForResourceRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12=\n\rpriority_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05start\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x16\n\x14GetLogEntriesRequest\":\n\x18\x43\x61nSearchLogEntriesReply\x12\x1e\n\x16\x63\x61n_search_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nSearchLogEntriesRequest\"T\n\x15GetLogEntryQueryReply\x12;\n\x0flog_entry_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.logging.LogEntryQuery\"\x19\n\x17GetLogEntryQueryRequest\"Z\n\x1bGetLogEntriesByQueryRequest\x12;\n\x0flog_entry_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.logging.LogEntryQuery\":\n\x18\x43\x61nCreateLogEntriesReply\x12\x1e\n\x16\x63\x61n_create_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateLogEntriesRequest\"W\n%CanCreateLogEntryWithRecordTypesReply\x12.\n&can_create_log_entry_with_record_types\x18\x01 \x01(\x08\"q\n\'CanCreateLogEntryWithRecordTypesRequest\x12\x46\n\x16log_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1dGetLogEntryFormForCreateReply\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"i\n\x1fGetLogEntryFormForCreateRequest\x12\x46\n\x16log_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\":\n\x18\x43\x61nUpdateLogEntriesReply\x12\x1e\n\x16\x63\x61n_update_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateLogEntriesRequest\"Z\n\x1dGetLogEntryFormForUpdateReply\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"[\n\x1fGetLogEntryFormForUpdateRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateLogEntryReply\"R\n\x15UpdateLogEntryRequest\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\":\n\x18\x43\x61nDeleteLogEntriesReply\x12\x1e\n\x16\x63\x61n_delete_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteLogEntriesRequest\"\x15\n\x13\x44\x65leteLogEntryReply\"Q\n\x15\x44\x65leteLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x1d\x43\x61nManageLogEntryAliasesReply\x12$\n\x1c\x63\x61n_manage_log_entry_aliases\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nManageLogEntryAliasesRequest\"\x14\n\x12\x41liasLogEntryReply\"\x86\x01\n\x14\x41liasLogEntryRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0clog_entry_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUseComparativeLogViewReply\"\x1e\n\x1cUseComparativeLogViewRequest\"\x18\n\x16UsePlenaryLogViewReply\"\x1a\n\x18UsePlenaryLogViewRequest\"N\n!CanLookupLogEntryLogMappingsReply\x12)\n!can_lookup_log_entry_log_mappings\x18\x01 \x01(\x08\"%\n#CanLookupLogEntryLogMappingsRequest\"P\n\x1aGetLogEntryIdsByLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x19GetLogEntriesByLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x18GetLogEntrieByLogRequest\x12\x33\n\x07log_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1aGetLogIdsByLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x17GetLogByLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18\x43\x61nAssignLogEntriesReply\x12\x1e\n\x16\x63\x61n_assign_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignLogEntriesRequest\"F\n\x1d\x43\x61nAssignLogEntriesToLogReply\x12%\n\x1d\x63\x61n_assign_log_entries_to_log\x18\x01 \x01(\x08\"U\n\x1f\x43\x61nAssignLogEntriesToLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetAssignableLogIdsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x95\x01\n%GetAssignableLogIdsForLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41ssignLogEntryToLogReply\"\x8a\x01\n\x1a\x41ssignLogEntryToLogRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUnassignLogEntryFromLogReply\"\x8e\x01\n\x1eUnassignLogEntryFromLogRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aReassignLogEntryToLogReply\"\xc8\x01\n\x1cReassignLogEntryToLogRequest\x12\x37\n\x0b\x66rom_log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0clog_entry_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tto_log_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12\x43\x61nLookupLogsReply\x12\x17\n\x0f\x63\x61n_lookup_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nLookupLogsRequest\"J\n\x13GetLogsByIdsRequest\x12\x33\n\x07log_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x19GetLogsByGenusTypeRequest\x12>\n\x0elog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1fGetLogsByParentGenusTypeRequest\x12>\n\x0elog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\x1aGetLogsByRecordTypeRequest\x12?\n\x0flog_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"S\n\x18GetLogsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eGetLogsRequest\"-\n\x12\x43\x61nCreateLogsReply\x12\x17\n\x0f\x63\x61n_create_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nCreateLogsRequest\"L\n CanCreateLogWithRecordTypesReply\x12(\n can_create_log_with_record_types\x18\x01 \x01(\x08\"f\n\"CanCreateLogWithRecordTypesRequest\x12@\n\x10log_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"J\n\x18GetLogFormForCreateReply\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"^\n\x1aGetLogFormForCreateRequest\x12@\n\x10log_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"7\n\x0e\x43reateLogReply\x12%\n\x03log\x18\x01 \x01(\x0b\x32\x18.dlkit.proto.logging.Log\"B\n\x10\x43reateLogRequest\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"-\n\x12\x43\x61nUpdateLogsReply\x12\x17\n\x0f\x63\x61n_update_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nUpdateLogsRequest\"J\n\x18GetLogFormForUpdateReply\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"P\n\x1aGetLogFormForUpdateRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eUpdateLogReply\"B\n\x10UpdateLogRequest\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"-\n\x12\x43\x61nDeleteLogsReply\x12\x17\n\x0f\x63\x61n_delete_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nDeleteLogsRequest\"\x10\n\x0e\x44\x65leteLogReply\"F\n\x10\x44\x65leteLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18\x43\x61nManageLogAliasesReply\x12\x1e\n\x16\x63\x61n_manage_log_aliases\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nManageLogAliasesRequest\"\x0f\n\rAliasLogReply\"{\n\x0f\x41liasLogRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x16GetLogHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetLogHierarchyIdRequest\"K\n\x14GetLogHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x18\n\x16GetLogHierarchyRequest\">\n\x1a\x43\x61nAccessLogHierarchyReply\x12 \n\x18\x63\x61n_access_log_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nAccessLogHierarchyRequest\"\x16\n\x14GetRootLogIdsRequest\"\x14\n\x12GetRootLogsRequest\"-\n\x12HasParentLogsReply\x12\x17\n\x0fhas_parent_logs\x18\x01 \x01(\x08\"J\n\x14HasParentLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsParentOfLogReply\x12\x18\n\x10is_parent_of_log\x18\x01 \x01(\x08\"{\n\x14IsParentOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x16GetParentLogIdsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x14GetParentLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsAncestorOfLogReply\x12\x1a\n\x12is_ancestor_of_log\x18\x01 \x01(\x08\"}\n\x16IsAncestorOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n\x11HasChildLogsReply\x12\x16\n\x0ehas_child_logs\x18\x01 \x01(\x08\"I\n\x13HasChildLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\",\n\x11IsChildOfLogReply\x12\x17\n\x0fis_child_of_log\x18\x01 \x01(\x08\"z\n\x13IsChildOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x15GetChildLogIdsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x13GetChildLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsDescendantOfLogReply\x12\x1c\n\x14is_descendant_of_log\x18\x01 \x01(\x08\"\x7f\n\x18IsDescendantOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x12GetLogNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x98\x01\n\x14GetLogNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x32\n\x06log_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x10GetLogNodesReply\x12.\n\x08log_node\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogNode\"\x96\x01\n\x12GetLogNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x32\n\x06log_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nModifyLogHierarchyReply\x12 \n\x18\x63\x61n_modify_log_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nModifyLogHierarchyRequest\"\x11\n\x0f\x41\x64\x64RootLogReply\"G\n\x11\x41\x64\x64RootLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12RemoveRootLogReply\"J\n\x14RemoveRootLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10\x41\x64\x64\x43hildLogReply\"~\n\x12\x41\x64\x64\x43hildLogRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveChildLogReply\"\x81\x01\n\x15RemoveChildLogRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildLogsReply\"L\n\x16RemoveChildLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x93\x05\n\x0eLoggingSession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12P\n\x06\x43\x61nLog\x12\".dlkit.proto.logging.CanLogRequest\x1a .dlkit.proto.logging.CanLogReply\"\x00\x12G\n\x03Log\x12\x1f.dlkit.proto.logging.LogRequest\x1a\x1d.dlkit.proto.logging.LogReply\"\x00\x12\x65\n\rLogAtPriority\x12).dlkit.proto.logging.LogAtPriorityRequest\x1a\'.dlkit.proto.logging.LogAtPriorityReply\"\x00\x12k\n\x0fGetLogEntryForm\x12+.dlkit.proto.logging.GetLogEntryFormRequest\x1a).dlkit.proto.logging.GetLogEntryFormReply\"\x00\x12h\n\x0e\x43reateLogEntry\x12*.dlkit.proto.logging.CreateLogEntryRequest\x1a(.dlkit.proto.logging.CreateLogEntryReply\"\x00\x32\xbc\x11\n\x15LogEntryLookupSession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12\\\n\nCanReadLog\x12&.dlkit.proto.logging.CanReadLogRequest\x1a$.dlkit.proto.logging.CanReadLogReply\"\x00\x12\x8c\x01\n\x1aUseComparativeLogEntryView\x12\x36.dlkit.proto.logging.UseComparativeLogEntryViewRequest\x1a\x34.dlkit.proto.logging.UseComparativeLogEntryViewReply\"\x00\x12\x80\x01\n\x16UsePlenaryLogEntryView\x12\x32.dlkit.proto.logging.UsePlenaryLogEntryViewRequest\x1a\x30.dlkit.proto.logging.UsePlenaryLogEntryViewReply\"\x00\x12w\n\x13UseFederatedLogView\x12/.dlkit.proto.logging.UseFederatedLogViewRequest\x1a-.dlkit.proto.logging.UseFederatedLogViewReply\"\x00\x12t\n\x12UseIsolatedLogView\x12..dlkit.proto.logging.UseIsolatedLogViewRequest\x1a,.dlkit.proto.logging.UseIsolatedLogViewReply\"\x00\x12_\n\x0bGetLogEntry\x12\'.dlkit.proto.logging.GetLogEntryRequest\x1a%.dlkit.proto.logging.GetLogEntryReply\"\x00\x12g\n\x12GetLogEntriesByIds\x12..dlkit.proto.logging.GetLogEntriesByIdsRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12s\n\x18GetLogEntriesByGenusType\x12\x34.dlkit.proto.logging.GetLogEntriesByGenusTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x7f\n\x1eGetLogEntriesByParentGenusType\x12:.dlkit.proto.logging.GetLogEntriesByParentGenusTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12u\n\x19GetLogEntriesByRecordType\x12\x35.dlkit.proto.logging.GetLogEntriesByRecordTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12y\n\x1bGetLogEntriesByPriorityType\x12\x37.dlkit.proto.logging.GetLogEntriesByPriorityTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12i\n\x13GetLogEntriesByDate\x12/.dlkit.proto.logging.GetLogEntriesByDateRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x87\x01\n\"GetLogEntriesByPriorityTypeAndDate\x12>.dlkit.proto.logging.GetLogEntriesByPriorityTypeAndDateRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12s\n\x18GetLogEntriesForResource\x12\x34.dlkit.proto.logging.GetLogEntriesForResourceRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x7f\n\x1eGetLogEntriesByDateForResource\x12:.dlkit.proto.logging.GetLogEntriesByDateForResourceRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x9d\x01\n-GetLogEntriesByPriorityTypeAndDateForResource\x12I.dlkit.proto.logging.GetLogEntriesByPriorityTypeAndDateForResourceRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12]\n\rGetLogEntries\x12).dlkit.proto.logging.GetLogEntriesRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x32\x85\x06\n\x14LogEntryQuerySession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12w\n\x13\x43\x61nSearchLogEntries\x12/.dlkit.proto.logging.CanSearchLogEntriesRequest\x1a-.dlkit.proto.logging.CanSearchLogEntriesReply\"\x00\x12w\n\x13UseFederatedLogView\x12/.dlkit.proto.logging.UseFederatedLogViewRequest\x1a-.dlkit.proto.logging.UseFederatedLogViewReply\"\x00\x12t\n\x12UseIsolatedLogView\x12..dlkit.proto.logging.UseIsolatedLogViewRequest\x1a,.dlkit.proto.logging.UseIsolatedLogViewReply\"\x00\x12n\n\x10GetLogEntryQuery\x12,.dlkit.proto.logging.GetLogEntryQueryRequest\x1a*.dlkit.proto.logging.GetLogEntryQueryReply\"\x00\x12k\n\x14GetLogEntriesByQuery\x12\x30.dlkit.proto.logging.GetLogEntriesByQueryRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x32\x8c\x0c\n\x14LogEntryAdminSession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12w\n\x13\x43\x61nCreateLogEntries\x12/.dlkit.proto.logging.CanCreateLogEntriesRequest\x1a-.dlkit.proto.logging.CanCreateLogEntriesReply\"\x00\x12\x9e\x01\n CanCreateLogEntryWithRecordTypes\x12<.dlkit.proto.logging.CanCreateLogEntryWithRecordTypesRequest\x1a:.dlkit.proto.logging.CanCreateLogEntryWithRecordTypesReply\"\x00\x12\x86\x01\n\x18GetLogEntryFormForCreate\x12\x34.dlkit.proto.logging.GetLogEntryFormForCreateRequest\x1a\x32.dlkit.proto.logging.GetLogEntryFormForCreateReply\"\x00\x12h\n\x0e\x43reateLogEntry\x12*.dlkit.proto.logging.CreateLogEntryRequest\x1a(.dlkit.proto.logging.CreateLogEntryReply\"\x00\x12w\n\x13\x43\x61nUpdateLogEntries\x12/.dlkit.proto.logging.CanUpdateLogEntriesRequest\x1a-.dlkit.proto.logging.CanUpdateLogEntriesReply\"\x00\x12\x86\x01\n\x18GetLogEntryFormForUpdate\x12\x34.dlkit.proto.logging.GetLogEntryFormForUpdateRequest\x1a\x32.dlkit.proto.logging.GetLogEntryFormForUpdateReply\"\x00\x12h\n\x0eUpdateLogEntry\x12*.dlkit.proto.logging.UpdateLogEntryRequest\x1a(.dlkit.proto.logging.UpdateLogEntryReply\"\x00\x12w\n\x13\x43\x61nDeleteLogEntries\x12/.dlkit.proto.logging.CanDeleteLogEntriesRequest\x1a-.dlkit.proto.logging.CanDeleteLogEntriesReply\"\x00\x12h\n\x0e\x44\x65leteLogEntry\x12*.dlkit.proto.logging.DeleteLogEntryRequest\x1a(.dlkit.proto.logging.DeleteLogEntryReply\"\x00\x12\x86\x01\n\x18\x43\x61nManageLogEntryAliases\x12\x34.dlkit.proto.logging.CanManageLogEntryAliasesRequest\x1a\x32.dlkit.proto.logging.CanManageLogEntryAliasesReply\"\x00\x12\x65\n\rAliasLogEntry\x12).dlkit.proto.logging.AliasLogEntryRequest\x1a\'.dlkit.proto.logging.AliasLogEntryReply\"\x00\x32\xab\x07\n\x12LogEntryLogSession\x12}\n\x15UseComparativeLogView\x12\x31.dlkit.proto.logging.UseComparativeLogViewRequest\x1a/.dlkit.proto.logging.UseComparativeLogViewReply\"\x00\x12q\n\x11UsePlenaryLogView\x12-.dlkit.proto.logging.UsePlenaryLogViewRequest\x1a+.dlkit.proto.logging.UsePlenaryLogViewReply\"\x00\x12\x92\x01\n\x1c\x43\x61nLookupLogEntryLogMappings\x12\x38.dlkit.proto.logging.CanLookupLogEntryLogMappingsRequest\x1a\x36.dlkit.proto.logging.CanLookupLogEntryLogMappingsReply\"\x00\x12n\n\x13GetLogEntryIdsByLog\x12/.dlkit.proto.logging.GetLogEntryIdsByLogRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12g\n\x12GetLogEntriesByLog\x12..dlkit.proto.logging.GetLogEntriesByLogRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x65\n\x11GetLogEntrieByLog\x12-.dlkit.proto.logging.GetLogEntrieByLogRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12n\n\x13GetLogIdsByLogEntry\x12/.dlkit.proto.logging.GetLogIdsByLogEntryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12^\n\x10GetLogByLogEntry\x12,.dlkit.proto.logging.GetLogByLogEntryRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x32\x95\x07\n\x1cLogEntryLogAssignmentSession\x12w\n\x13\x43\x61nAssignLogEntries\x12/.dlkit.proto.logging.CanAssignLogEntriesRequest\x1a-.dlkit.proto.logging.CanAssignLogEntriesReply\"\x00\x12\x86\x01\n\x18\x43\x61nAssignLogEntriesToLog\x12\x34.dlkit.proto.logging.CanAssignLogEntriesToLogRequest\x1a\x32.dlkit.proto.logging.CanAssignLogEntriesToLogReply\"\x00\x12n\n\x13GetAssignableLogIds\x12/.dlkit.proto.logging.GetAssignableLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x84\x01\n\x1eGetAssignableLogIdsForLogEntry\x12:.dlkit.proto.logging.GetAssignableLogIdsForLogEntryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12w\n\x13\x41ssignLogEntryToLog\x12/.dlkit.proto.logging.AssignLogEntryToLogRequest\x1a-.dlkit.proto.logging.AssignLogEntryToLogReply\"\x00\x12\x83\x01\n\x17UnassignLogEntryFromLog\x12\x33.dlkit.proto.logging.UnassignLogEntryFromLogRequest\x1a\x31.dlkit.proto.logging.UnassignLogEntryFromLogReply\"\x00\x12}\n\x15ReassignLogEntryToLog\x12\x31.dlkit.proto.logging.ReassignLogEntryToLogRequest\x1a/.dlkit.proto.logging.ReassignLogEntryToLogReply\"\x00\x32\xff\x07\n\x10LogLookupSession\x12\x65\n\rCanLookupLogs\x12).dlkit.proto.logging.CanLookupLogsRequest\x1a\'.dlkit.proto.logging.CanLookupLogsReply\"\x00\x12}\n\x15UseComparativeLogView\x12\x31.dlkit.proto.logging.UseComparativeLogViewRequest\x1a/.dlkit.proto.logging.UseComparativeLogViewReply\"\x00\x12q\n\x11UsePlenaryLogView\x12-.dlkit.proto.logging.UsePlenaryLogViewRequest\x1a+.dlkit.proto.logging.UsePlenaryLogViewReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12V\n\x0cGetLogsByIds\x12(.dlkit.proto.logging.GetLogsByIdsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12\x62\n\x12GetLogsByGenusType\x12..dlkit.proto.logging.GetLogsByGenusTypeRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12n\n\x18GetLogsByParentGenusType\x12\x34.dlkit.proto.logging.GetLogsByParentGenusTypeRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12\x64\n\x13GetLogsByRecordType\x12/.dlkit.proto.logging.GetLogsByRecordTypeRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12`\n\x11GetLogsByProvider\x12-.dlkit.proto.logging.GetLogsByProviderRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12L\n\x07GetLogs\x12#.dlkit.proto.logging.GetLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x32\xac\t\n\x0fLogAdminSession\x12\x65\n\rCanCreateLogs\x12).dlkit.proto.logging.CanCreateLogsRequest\x1a\'.dlkit.proto.logging.CanCreateLogsReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nCreateLogWithRecordTypes\x12\x37.dlkit.proto.logging.CanCreateLogWithRecordTypesRequest\x1a\x35.dlkit.proto.logging.CanCreateLogWithRecordTypesReply\"\x00\x12w\n\x13GetLogFormForCreate\x12/.dlkit.proto.logging.GetLogFormForCreateRequest\x1a-.dlkit.proto.logging.GetLogFormForCreateReply\"\x00\x12Y\n\tCreateLog\x12%.dlkit.proto.logging.CreateLogRequest\x1a#.dlkit.proto.logging.CreateLogReply\"\x00\x12\x65\n\rCanUpdateLogs\x12).dlkit.proto.logging.CanUpdateLogsRequest\x1a\'.dlkit.proto.logging.CanUpdateLogsReply\"\x00\x12w\n\x13GetLogFormForUpdate\x12/.dlkit.proto.logging.GetLogFormForUpdateRequest\x1a-.dlkit.proto.logging.GetLogFormForUpdateReply\"\x00\x12Y\n\tUpdateLog\x12%.dlkit.proto.logging.UpdateLogRequest\x1a#.dlkit.proto.logging.UpdateLogReply\"\x00\x12\x65\n\rCanDeleteLogs\x12).dlkit.proto.logging.CanDeleteLogsRequest\x1a\'.dlkit.proto.logging.CanDeleteLogsReply\"\x00\x12Y\n\tDeleteLog\x12%.dlkit.proto.logging.DeleteLogRequest\x1a#.dlkit.proto.logging.DeleteLogReply\"\x00\x12w\n\x13\x43\x61nManageLogAliases\x12/.dlkit.proto.logging.CanManageLogAliasesRequest\x1a-.dlkit.proto.logging.CanManageLogAliasesReply\"\x00\x12V\n\x08\x41liasLog\x12$.dlkit.proto.logging.AliasLogRequest\x1a\".dlkit.proto.logging.AliasLogReply\"\x00\x32\xde\x0f\n\x13LogHierarchySession\x12q\n\x11GetLogHierarchyId\x12-.dlkit.proto.logging.GetLogHierarchyIdRequest\x1a+.dlkit.proto.logging.GetLogHierarchyIdReply\"\x00\x12k\n\x0fGetLogHierarchy\x12+.dlkit.proto.logging.GetLogHierarchyRequest\x1a).dlkit.proto.logging.GetLogHierarchyReply\"\x00\x12}\n\x15\x43\x61nAccessLogHierarchy\x12\x31.dlkit.proto.logging.CanAccessLogHierarchyRequest\x1a/.dlkit.proto.logging.CanAccessLogHierarchyReply\"\x00\x12}\n\x15UseComparativeLogView\x12\x31.dlkit.proto.logging.UseComparativeLogViewRequest\x1a/.dlkit.proto.logging.UseComparativeLogViewReply\"\x00\x12q\n\x11UsePlenaryLogView\x12-.dlkit.proto.logging.UsePlenaryLogViewRequest\x1a+.dlkit.proto.logging.UsePlenaryLogViewReply\"\x00\x12\x62\n\rGetRootLogIds\x12).dlkit.proto.logging.GetRootLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12T\n\x0bGetRootLogs\x12\'.dlkit.proto.logging.GetRootLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12\x65\n\rHasParentLogs\x12).dlkit.proto.logging.HasParentLogsRequest\x1a\'.dlkit.proto.logging.HasParentLogsReply\"\x00\x12\x65\n\rIsParentOfLog\x12).dlkit.proto.logging.IsParentOfLogRequest\x1a\'.dlkit.proto.logging.IsParentOfLogReply\"\x00\x12\x66\n\x0fGetParentLogIds\x12+.dlkit.proto.logging.GetParentLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12X\n\rGetParentLogs\x12).dlkit.proto.logging.GetParentLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12k\n\x0fIsAncestorOfLog\x12+.dlkit.proto.logging.IsAncestorOfLogRequest\x1a).dlkit.proto.logging.IsAncestorOfLogReply\"\x00\x12\x62\n\x0cHasChildLogs\x12(.dlkit.proto.logging.HasChildLogsRequest\x1a&.dlkit.proto.logging.HasChildLogsReply\"\x00\x12\x62\n\x0cIsChildOfLog\x12(.dlkit.proto.logging.IsChildOfLogRequest\x1a&.dlkit.proto.logging.IsChildOfLogReply\"\x00\x12\x64\n\x0eGetChildLogIds\x12*.dlkit.proto.logging.GetChildLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12V\n\x0cGetChildLogs\x12(.dlkit.proto.logging.GetChildLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12q\n\x11IsDescendantOfLog\x12-.dlkit.proto.logging.IsDescendantOfLogRequest\x1a+.dlkit.proto.logging.IsDescendantOfLogReply\"\x00\x12\x65\n\rGetLogNodeIds\x12).dlkit.proto.logging.GetLogNodeIdsRequest\x1a\'.dlkit.proto.logging.GetLogNodeIdsReply\"\x00\x12_\n\x0bGetLogNodes\x12\'.dlkit.proto.logging.GetLogNodesRequest\x1a%.dlkit.proto.logging.GetLogNodesReply\"\x00\x32\xf7\x06\n\x19LogHierarchyDesignSession\x12q\n\x11GetLogHierarchyId\x12-.dlkit.proto.logging.GetLogHierarchyIdRequest\x1a+.dlkit.proto.logging.GetLogHierarchyIdReply\"\x00\x12k\n\x0fGetLogHierarchy\x12+.dlkit.proto.logging.GetLogHierarchyRequest\x1a).dlkit.proto.logging.GetLogHierarchyReply\"\x00\x12}\n\x15\x43\x61nModifyLogHierarchy\x12\x31.dlkit.proto.logging.CanModifyLogHierarchyRequest\x1a/.dlkit.proto.logging.CanModifyLogHierarchyReply\"\x00\x12\\\n\nAddRootLog\x12&.dlkit.proto.logging.AddRootLogRequest\x1a$.dlkit.proto.logging.AddRootLogReply\"\x00\x12\x65\n\rRemoveRootLog\x12).dlkit.proto.logging.RemoveRootLogRequest\x1a\'.dlkit.proto.logging.RemoveRootLogReply\"\x00\x12_\n\x0b\x41\x64\x64\x43hildLog\x12\'.dlkit.proto.logging.AddChildLogRequest\x1a%.dlkit.proto.logging.AddChildLogReply\"\x00\x12h\n\x0eRemoveChildLog\x12*.dlkit.proto.logging.RemoveChildLogRequest\x1a(.dlkit.proto.logging.RemoveChildLogReply\"\x00\x12k\n\x0fRemoveChildLogs\x12+.dlkit.proto.logging.RemoveChildLogsRequest\x1a).dlkit.proto.logging.RemoveChildLogsReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x19\x64lkit/proto/logging.proto\x12\x13\x64lkit.proto.logging\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x8f\x04\n\x08LogEntry\x12\x31\n\x05\x61gent\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12*\n\x03log\x18\x06 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x38\n\x08priority\x18\x07 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12?\n\x0frecord_type_ids\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12-\n\ttimestamp\x18\t \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x0f\n\rLogEntryQuery\"\x18\n\x16LogEntryQueryInspector\"\x0e\n\x0cLogEntryForm\"\x15\n\x13LogEntrySearchOrder\"\x10\n\x0eLogEntrySearch\"\x17\n\x15LogEntrySearchResults\"B\n\x0cLogEntryList\x12\x32\n\x0blog_entries\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.logging.LogEntry\"\xc2\x02\n\x03Log\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\n\n\x08LogQuery\"\x13\n\x11LogQueryInspector\"\t\n\x07LogForm\"\x10\n\x0eLogSearchOrder\"\x0b\n\tLogSearch\"\x12\n\x10LogSearchResults\"1\n\x07LogList\x12&\n\x04logs\x18\x01 \x03(\x0b\x32\x18.dlkit.proto.logging.Log\"\t\n\x07LogNode\">\n\x0bLogNodeList\x12/\n\tlog_nodes\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.logging.LogNode\"?\n\rGetLogIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetLogIdRequest\"4\n\x0bGetLogReply\x12%\n\x03log\x18\x01 \x01(\x0b\x32\x18.dlkit.proto.logging.Log\"\x0f\n\rGetLogRequest\"\x1e\n\x0b\x43\x61nLogReply\x12\x0f\n\x07\x63\x61n_log\x18\x01 \x01(\x08\"\x0f\n\rCanLogRequest\"\n\n\x08LogReply\"[\n\nLogRequest\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\x12<\n\x0c\x63ontent_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x14\n\x12LogAtPriorityReply\"\xa4\x01\n\x14LogAtPriorityRequest\x12\x0f\n\x07\x63ontent\x18\x01 \x01(\x0c\x12<\n\x0c\x63ontent_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12=\n\rpriority_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Q\n\x14GetLogEntryFormReply\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"\x18\n\x16GetLogEntryFormRequest\"\x15\n\x13\x43reateLogEntryReply\"R\n\x15\x43reateLogEntryRequest\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"\'\n\x0f\x43\x61nReadLogReply\x12\x14\n\x0c\x63\x61n_read_log\x18\x01 \x01(\x08\"\x13\n\x11\x43\x61nReadLogRequest\"!\n\x1fUseComparativeLogEntryViewReply\"#\n!UseComparativeLogEntryViewRequest\"\x1d\n\x1bUsePlenaryLogEntryViewReply\"\x1f\n\x1dUsePlenaryLogEntryViewRequest\"\x1a\n\x18UseFederatedLogViewReply\"\x1c\n\x1aUseFederatedLogViewRequest\"\x19\n\x17UseIsolatedLogViewReply\"\x1b\n\x19UseIsolatedLogViewRequest\"D\n\x10GetLogEntryReply\x12\x30\n\tlog_entry\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.logging.LogEntry\"N\n\x12GetLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x19GetLogEntriesByIdsRequest\x12\x39\n\rlog_entry_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1fGetLogEntriesByGenusTypeRequest\x12\x44\n\x14log_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n%GetLogEntriesByParentGenusTypeRequest\x12\x44\n\x14log_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"h\n GetLogEntriesByRecordTypeRequest\x12\x44\n\x14log_entry_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n\"GetLogEntriesByPriorityTypeRequest\x12=\n\rpriority_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"p\n\x1aGetLogEntriesByDateRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12)\n\x05start\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xbe\x01\n)GetLogEntriesByPriorityTypeAndDateRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12=\n\rpriority_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Z\n\x1fGetLogEntriesForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb4\x01\n%GetLogEntriesByDateForResourceRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05start\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x82\x02\n4GetLogEntriesByPriorityTypeAndDateForResourceRequest\x12\'\n\x03\x65nd\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12=\n\rpriority_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12)\n\x05start\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x16\n\x14GetLogEntriesRequest\":\n\x18\x43\x61nSearchLogEntriesReply\x12\x1e\n\x16\x63\x61n_search_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nSearchLogEntriesRequest\"T\n\x15GetLogEntryQueryReply\x12;\n\x0flog_entry_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.logging.LogEntryQuery\"\x19\n\x17GetLogEntryQueryRequest\"Z\n\x1bGetLogEntriesByQueryRequest\x12;\n\x0flog_entry_query\x18\x01 \x01(\x0b\x32\".dlkit.proto.logging.LogEntryQuery\":\n\x18\x43\x61nCreateLogEntriesReply\x12\x1e\n\x16\x63\x61n_create_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateLogEntriesRequest\"W\n%CanCreateLogEntryWithRecordTypesReply\x12.\n&can_create_log_entry_with_record_types\x18\x01 \x01(\x08\"q\n\'CanCreateLogEntryWithRecordTypesRequest\x12\x46\n\x16log_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1dGetLogEntryFormForCreateReply\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"i\n\x1fGetLogEntryFormForCreateRequest\x12\x46\n\x16log_entry_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\":\n\x18\x43\x61nUpdateLogEntriesReply\x12\x1e\n\x16\x63\x61n_update_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateLogEntriesRequest\"Z\n\x1dGetLogEntryFormForUpdateReply\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\"[\n\x1fGetLogEntryFormForUpdateRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateLogEntryReply\"R\n\x15UpdateLogEntryRequest\x12\x39\n\x0elog_entry_form\x18\x01 \x01(\x0b\x32!.dlkit.proto.logging.LogEntryForm\":\n\x18\x43\x61nDeleteLogEntriesReply\x12\x1e\n\x16\x63\x61n_delete_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteLogEntriesRequest\"\x15\n\x13\x44\x65leteLogEntryReply\"Q\n\x15\x44\x65leteLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x1d\x43\x61nManageLogEntryAliasesReply\x12$\n\x1c\x63\x61n_manage_log_entry_aliases\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nManageLogEntryAliasesRequest\"\x14\n\x12\x41liasLogEntryReply\"\x86\x01\n\x14\x41liasLogEntryRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0clog_entry_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aUseComparativeLogViewReply\"\x1e\n\x1cUseComparativeLogViewRequest\"\x18\n\x16UsePlenaryLogViewReply\"\x1a\n\x18UsePlenaryLogViewRequest\"N\n!CanLookupLogEntryLogMappingsReply\x12)\n!can_lookup_log_entry_log_mappings\x18\x01 \x01(\x08\"%\n#CanLookupLogEntryLogMappingsRequest\"P\n\x1aGetLogEntryIdsByLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x19GetLogEntriesByLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x18GetLogEntrieByLogRequest\x12\x33\n\x07log_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1aGetLogIdsByLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x17GetLogByLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18\x43\x61nAssignLogEntriesReply\x12\x1e\n\x16\x63\x61n_assign_log_entries\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignLogEntriesRequest\"F\n\x1d\x43\x61nAssignLogEntriesToLogReply\x12%\n\x1d\x63\x61n_assign_log_entries_to_log\x18\x01 \x01(\x08\"U\n\x1f\x43\x61nAssignLogEntriesToLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x1aGetAssignableLogIdsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x95\x01\n%GetAssignableLogIdsForLogEntryRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41ssignLogEntryToLogReply\"\x8a\x01\n\x1a\x41ssignLogEntryToLogRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUnassignLogEntryFromLogReply\"\x8e\x01\n\x1eUnassignLogEntryFromLogRequest\x12\x38\n\x0clog_entry_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aReassignLogEntryToLogReply\"\xc8\x01\n\x1cReassignLogEntryToLogRequest\x12\x37\n\x0b\x66rom_log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0clog_entry_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tto_log_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12\x43\x61nLookupLogsReply\x12\x17\n\x0f\x63\x61n_lookup_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nLookupLogsRequest\"J\n\x13GetLogsByIdsRequest\x12\x33\n\x07log_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x19GetLogsByGenusTypeRequest\x12>\n\x0elog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"a\n\x1fGetLogsByParentGenusTypeRequest\x12>\n\x0elog_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\x1aGetLogsByRecordTypeRequest\x12?\n\x0flog_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"S\n\x18GetLogsByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eGetLogsRequest\"-\n\x12\x43\x61nCreateLogsReply\x12\x17\n\x0f\x63\x61n_create_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nCreateLogsRequest\"L\n CanCreateLogWithRecordTypesReply\x12(\n can_create_log_with_record_types\x18\x01 \x01(\x08\"f\n\"CanCreateLogWithRecordTypesRequest\x12@\n\x10log_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"J\n\x18GetLogFormForCreateReply\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"^\n\x1aGetLogFormForCreateRequest\x12@\n\x10log_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"7\n\x0e\x43reateLogReply\x12%\n\x03log\x18\x01 \x01(\x0b\x32\x18.dlkit.proto.logging.Log\"B\n\x10\x43reateLogRequest\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"-\n\x12\x43\x61nUpdateLogsReply\x12\x17\n\x0f\x63\x61n_update_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nUpdateLogsRequest\"J\n\x18GetLogFormForUpdateReply\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"P\n\x1aGetLogFormForUpdateRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eUpdateLogReply\"B\n\x10UpdateLogRequest\x12.\n\x08log_form\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogForm\"-\n\x12\x43\x61nDeleteLogsReply\x12\x17\n\x0f\x63\x61n_delete_logs\x18\x01 \x01(\x08\"\x16\n\x14\x43\x61nDeleteLogsRequest\"\x10\n\x0e\x44\x65leteLogReply\"F\n\x10\x44\x65leteLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18\x43\x61nManageLogAliasesReply\x12\x1e\n\x16\x63\x61n_manage_log_aliases\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nManageLogAliasesRequest\"\x0f\n\rAliasLogReply\"{\n\x0f\x41liasLogRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"H\n\x16GetLogHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetLogHierarchyIdRequest\"K\n\x14GetLogHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x18\n\x16GetLogHierarchyRequest\">\n\x1a\x43\x61nAccessLogHierarchyReply\x12 \n\x18\x63\x61n_access_log_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nAccessLogHierarchyRequest\"\x16\n\x14GetRootLogIdsRequest\"\x14\n\x12GetRootLogsRequest\"-\n\x12HasParentLogsReply\x12\x17\n\x0fhas_parent_logs\x18\x01 \x01(\x08\"J\n\x14HasParentLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsParentOfLogReply\x12\x18\n\x10is_parent_of_log\x18\x01 \x01(\x08\"{\n\x14IsParentOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x16GetParentLogIdsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n\x14GetParentLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"2\n\x14IsAncestorOfLogReply\x12\x1a\n\x12is_ancestor_of_log\x18\x01 \x01(\x08\"}\n\x16IsAncestorOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n\x11HasChildLogsReply\x12\x16\n\x0ehas_child_logs\x18\x01 \x01(\x08\"I\n\x13HasChildLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\",\n\x11IsChildOfLogReply\x12\x17\n\x0fis_child_of_log\x18\x01 \x01(\x08\"z\n\x13IsChildOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x15GetChildLogIdsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x13GetChildLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"6\n\x16IsDescendantOfLogReply\x12\x1c\n\x14is_descendant_of_log\x18\x01 \x01(\x08\"\x7f\n\x18IsDescendantOfLogRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x12GetLogNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x98\x01\n\x14GetLogNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x32\n\x06log_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x10GetLogNodesReply\x12.\n\x08log_node\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.logging.LogNode\"\x96\x01\n\x12GetLogNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x32\n\x06log_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1a\x43\x61nModifyLogHierarchyReply\x12 \n\x18\x63\x61n_modify_log_hierarchy\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nModifyLogHierarchyRequest\"\x11\n\x0f\x41\x64\x64RootLogReply\"G\n\x11\x41\x64\x64RootLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12RemoveRootLogReply\"J\n\x14RemoveRootLogRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10\x41\x64\x64\x43hildLogReply\"~\n\x12\x41\x64\x64\x43hildLogRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveChildLogReply\"\x81\x01\n\x15RemoveChildLogRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06log_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildLogsReply\"L\n\x16RemoveChildLogsRequest\x12\x32\n\x06log_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\x93\x05\n\x0eLoggingSession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12P\n\x06\x43\x61nLog\x12\".dlkit.proto.logging.CanLogRequest\x1a .dlkit.proto.logging.CanLogReply\"\x00\x12G\n\x03Log\x12\x1f.dlkit.proto.logging.LogRequest\x1a\x1d.dlkit.proto.logging.LogReply\"\x00\x12\x65\n\rLogAtPriority\x12).dlkit.proto.logging.LogAtPriorityRequest\x1a\'.dlkit.proto.logging.LogAtPriorityReply\"\x00\x12k\n\x0fGetLogEntryForm\x12+.dlkit.proto.logging.GetLogEntryFormRequest\x1a).dlkit.proto.logging.GetLogEntryFormReply\"\x00\x12h\n\x0e\x43reateLogEntry\x12*.dlkit.proto.logging.CreateLogEntryRequest\x1a(.dlkit.proto.logging.CreateLogEntryReply\"\x00\x32\xbc\x11\n\x15LogEntryLookupSession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12\\\n\nCanReadLog\x12&.dlkit.proto.logging.CanReadLogRequest\x1a$.dlkit.proto.logging.CanReadLogReply\"\x00\x12\x8c\x01\n\x1aUseComparativeLogEntryView\x12\x36.dlkit.proto.logging.UseComparativeLogEntryViewRequest\x1a\x34.dlkit.proto.logging.UseComparativeLogEntryViewReply\"\x00\x12\x80\x01\n\x16UsePlenaryLogEntryView\x12\x32.dlkit.proto.logging.UsePlenaryLogEntryViewRequest\x1a\x30.dlkit.proto.logging.UsePlenaryLogEntryViewReply\"\x00\x12w\n\x13UseFederatedLogView\x12/.dlkit.proto.logging.UseFederatedLogViewRequest\x1a-.dlkit.proto.logging.UseFederatedLogViewReply\"\x00\x12t\n\x12UseIsolatedLogView\x12..dlkit.proto.logging.UseIsolatedLogViewRequest\x1a,.dlkit.proto.logging.UseIsolatedLogViewReply\"\x00\x12_\n\x0bGetLogEntry\x12\'.dlkit.proto.logging.GetLogEntryRequest\x1a%.dlkit.proto.logging.GetLogEntryReply\"\x00\x12g\n\x12GetLogEntriesByIds\x12..dlkit.proto.logging.GetLogEntriesByIdsRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12s\n\x18GetLogEntriesByGenusType\x12\x34.dlkit.proto.logging.GetLogEntriesByGenusTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x7f\n\x1eGetLogEntriesByParentGenusType\x12:.dlkit.proto.logging.GetLogEntriesByParentGenusTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12u\n\x19GetLogEntriesByRecordType\x12\x35.dlkit.proto.logging.GetLogEntriesByRecordTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12y\n\x1bGetLogEntriesByPriorityType\x12\x37.dlkit.proto.logging.GetLogEntriesByPriorityTypeRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12i\n\x13GetLogEntriesByDate\x12/.dlkit.proto.logging.GetLogEntriesByDateRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x87\x01\n\"GetLogEntriesByPriorityTypeAndDate\x12>.dlkit.proto.logging.GetLogEntriesByPriorityTypeAndDateRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12s\n\x18GetLogEntriesForResource\x12\x34.dlkit.proto.logging.GetLogEntriesForResourceRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x7f\n\x1eGetLogEntriesByDateForResource\x12:.dlkit.proto.logging.GetLogEntriesByDateForResourceRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x9d\x01\n-GetLogEntriesByPriorityTypeAndDateForResource\x12I.dlkit.proto.logging.GetLogEntriesByPriorityTypeAndDateForResourceRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12]\n\rGetLogEntries\x12).dlkit.proto.logging.GetLogEntriesRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x32\x85\x06\n\x14LogEntryQuerySession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12w\n\x13\x43\x61nSearchLogEntries\x12/.dlkit.proto.logging.CanSearchLogEntriesRequest\x1a-.dlkit.proto.logging.CanSearchLogEntriesReply\"\x00\x12w\n\x13UseFederatedLogView\x12/.dlkit.proto.logging.UseFederatedLogViewRequest\x1a-.dlkit.proto.logging.UseFederatedLogViewReply\"\x00\x12t\n\x12UseIsolatedLogView\x12..dlkit.proto.logging.UseIsolatedLogViewRequest\x1a,.dlkit.proto.logging.UseIsolatedLogViewReply\"\x00\x12n\n\x10GetLogEntryQuery\x12,.dlkit.proto.logging.GetLogEntryQueryRequest\x1a*.dlkit.proto.logging.GetLogEntryQueryReply\"\x00\x12k\n\x14GetLogEntriesByQuery\x12\x30.dlkit.proto.logging.GetLogEntriesByQueryRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x32\x8c\x0c\n\x14LogEntryAdminSession\x12V\n\x08GetLogId\x12$.dlkit.proto.logging.GetLogIdRequest\x1a\".dlkit.proto.logging.GetLogIdReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12w\n\x13\x43\x61nCreateLogEntries\x12/.dlkit.proto.logging.CanCreateLogEntriesRequest\x1a-.dlkit.proto.logging.CanCreateLogEntriesReply\"\x00\x12\x9e\x01\n CanCreateLogEntryWithRecordTypes\x12<.dlkit.proto.logging.CanCreateLogEntryWithRecordTypesRequest\x1a:.dlkit.proto.logging.CanCreateLogEntryWithRecordTypesReply\"\x00\x12\x86\x01\n\x18GetLogEntryFormForCreate\x12\x34.dlkit.proto.logging.GetLogEntryFormForCreateRequest\x1a\x32.dlkit.proto.logging.GetLogEntryFormForCreateReply\"\x00\x12h\n\x0e\x43reateLogEntry\x12*.dlkit.proto.logging.CreateLogEntryRequest\x1a(.dlkit.proto.logging.CreateLogEntryReply\"\x00\x12w\n\x13\x43\x61nUpdateLogEntries\x12/.dlkit.proto.logging.CanUpdateLogEntriesRequest\x1a-.dlkit.proto.logging.CanUpdateLogEntriesReply\"\x00\x12\x86\x01\n\x18GetLogEntryFormForUpdate\x12\x34.dlkit.proto.logging.GetLogEntryFormForUpdateRequest\x1a\x32.dlkit.proto.logging.GetLogEntryFormForUpdateReply\"\x00\x12h\n\x0eUpdateLogEntry\x12*.dlkit.proto.logging.UpdateLogEntryRequest\x1a(.dlkit.proto.logging.UpdateLogEntryReply\"\x00\x12w\n\x13\x43\x61nDeleteLogEntries\x12/.dlkit.proto.logging.CanDeleteLogEntriesRequest\x1a-.dlkit.proto.logging.CanDeleteLogEntriesReply\"\x00\x12h\n\x0e\x44\x65leteLogEntry\x12*.dlkit.proto.logging.DeleteLogEntryRequest\x1a(.dlkit.proto.logging.DeleteLogEntryReply\"\x00\x12\x86\x01\n\x18\x43\x61nManageLogEntryAliases\x12\x34.dlkit.proto.logging.CanManageLogEntryAliasesRequest\x1a\x32.dlkit.proto.logging.CanManageLogEntryAliasesReply\"\x00\x12\x65\n\rAliasLogEntry\x12).dlkit.proto.logging.AliasLogEntryRequest\x1a\'.dlkit.proto.logging.AliasLogEntryReply\"\x00\x32\xab\x07\n\x12LogEntryLogSession\x12}\n\x15UseComparativeLogView\x12\x31.dlkit.proto.logging.UseComparativeLogViewRequest\x1a/.dlkit.proto.logging.UseComparativeLogViewReply\"\x00\x12q\n\x11UsePlenaryLogView\x12-.dlkit.proto.logging.UsePlenaryLogViewRequest\x1a+.dlkit.proto.logging.UsePlenaryLogViewReply\"\x00\x12\x92\x01\n\x1c\x43\x61nLookupLogEntryLogMappings\x12\x38.dlkit.proto.logging.CanLookupLogEntryLogMappingsRequest\x1a\x36.dlkit.proto.logging.CanLookupLogEntryLogMappingsReply\"\x00\x12n\n\x13GetLogEntryIdsByLog\x12/.dlkit.proto.logging.GetLogEntryIdsByLogRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12g\n\x12GetLogEntriesByLog\x12..dlkit.proto.logging.GetLogEntriesByLogRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12\x65\n\x11GetLogEntrieByLog\x12-.dlkit.proto.logging.GetLogEntrieByLogRequest\x1a\x1d.dlkit.proto.logging.LogEntry\"\x00\x30\x01\x12n\n\x13GetLogIdsByLogEntry\x12/.dlkit.proto.logging.GetLogIdsByLogEntryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12^\n\x10GetLogByLogEntry\x12,.dlkit.proto.logging.GetLogByLogEntryRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x32\x95\x07\n\x1cLogEntryLogAssignmentSession\x12w\n\x13\x43\x61nAssignLogEntries\x12/.dlkit.proto.logging.CanAssignLogEntriesRequest\x1a-.dlkit.proto.logging.CanAssignLogEntriesReply\"\x00\x12\x86\x01\n\x18\x43\x61nAssignLogEntriesToLog\x12\x34.dlkit.proto.logging.CanAssignLogEntriesToLogRequest\x1a\x32.dlkit.proto.logging.CanAssignLogEntriesToLogReply\"\x00\x12n\n\x13GetAssignableLogIds\x12/.dlkit.proto.logging.GetAssignableLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x84\x01\n\x1eGetAssignableLogIdsForLogEntry\x12:.dlkit.proto.logging.GetAssignableLogIdsForLogEntryRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12w\n\x13\x41ssignLogEntryToLog\x12/.dlkit.proto.logging.AssignLogEntryToLogRequest\x1a-.dlkit.proto.logging.AssignLogEntryToLogReply\"\x00\x12\x83\x01\n\x17UnassignLogEntryFromLog\x12\x33.dlkit.proto.logging.UnassignLogEntryFromLogRequest\x1a\x31.dlkit.proto.logging.UnassignLogEntryFromLogReply\"\x00\x12}\n\x15ReassignLogEntryToLog\x12\x31.dlkit.proto.logging.ReassignLogEntryToLogRequest\x1a/.dlkit.proto.logging.ReassignLogEntryToLogReply\"\x00\x32\xff\x07\n\x10LogLookupSession\x12\x65\n\rCanLookupLogs\x12).dlkit.proto.logging.CanLookupLogsRequest\x1a\'.dlkit.proto.logging.CanLookupLogsReply\"\x00\x12}\n\x15UseComparativeLogView\x12\x31.dlkit.proto.logging.UseComparativeLogViewRequest\x1a/.dlkit.proto.logging.UseComparativeLogViewReply\"\x00\x12q\n\x11UsePlenaryLogView\x12-.dlkit.proto.logging.UsePlenaryLogViewRequest\x1a+.dlkit.proto.logging.UsePlenaryLogViewReply\"\x00\x12P\n\x06GetLog\x12\".dlkit.proto.logging.GetLogRequest\x1a .dlkit.proto.logging.GetLogReply\"\x00\x12V\n\x0cGetLogsByIds\x12(.dlkit.proto.logging.GetLogsByIdsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12\x62\n\x12GetLogsByGenusType\x12..dlkit.proto.logging.GetLogsByGenusTypeRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12n\n\x18GetLogsByParentGenusType\x12\x34.dlkit.proto.logging.GetLogsByParentGenusTypeRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12\x64\n\x13GetLogsByRecordType\x12/.dlkit.proto.logging.GetLogsByRecordTypeRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12`\n\x11GetLogsByProvider\x12-.dlkit.proto.logging.GetLogsByProviderRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12L\n\x07GetLogs\x12#.dlkit.proto.logging.GetLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x32\xac\t\n\x0fLogAdminSession\x12\x65\n\rCanCreateLogs\x12).dlkit.proto.logging.CanCreateLogsRequest\x1a\'.dlkit.proto.logging.CanCreateLogsReply\"\x00\x12\x8f\x01\n\x1b\x43\x61nCreateLogWithRecordTypes\x12\x37.dlkit.proto.logging.CanCreateLogWithRecordTypesRequest\x1a\x35.dlkit.proto.logging.CanCreateLogWithRecordTypesReply\"\x00\x12w\n\x13GetLogFormForCreate\x12/.dlkit.proto.logging.GetLogFormForCreateRequest\x1a-.dlkit.proto.logging.GetLogFormForCreateReply\"\x00\x12Y\n\tCreateLog\x12%.dlkit.proto.logging.CreateLogRequest\x1a#.dlkit.proto.logging.CreateLogReply\"\x00\x12\x65\n\rCanUpdateLogs\x12).dlkit.proto.logging.CanUpdateLogsRequest\x1a\'.dlkit.proto.logging.CanUpdateLogsReply\"\x00\x12w\n\x13GetLogFormForUpdate\x12/.dlkit.proto.logging.GetLogFormForUpdateRequest\x1a-.dlkit.proto.logging.GetLogFormForUpdateReply\"\x00\x12Y\n\tUpdateLog\x12%.dlkit.proto.logging.UpdateLogRequest\x1a#.dlkit.proto.logging.UpdateLogReply\"\x00\x12\x65\n\rCanDeleteLogs\x12).dlkit.proto.logging.CanDeleteLogsRequest\x1a\'.dlkit.proto.logging.CanDeleteLogsReply\"\x00\x12Y\n\tDeleteLog\x12%.dlkit.proto.logging.DeleteLogRequest\x1a#.dlkit.proto.logging.DeleteLogReply\"\x00\x12w\n\x13\x43\x61nManageLogAliases\x12/.dlkit.proto.logging.CanManageLogAliasesRequest\x1a-.dlkit.proto.logging.CanManageLogAliasesReply\"\x00\x12V\n\x08\x41liasLog\x12$.dlkit.proto.logging.AliasLogRequest\x1a\".dlkit.proto.logging.AliasLogReply\"\x00\x32\xde\x0f\n\x13LogHierarchySession\x12q\n\x11GetLogHierarchyId\x12-.dlkit.proto.logging.GetLogHierarchyIdRequest\x1a+.dlkit.proto.logging.GetLogHierarchyIdReply\"\x00\x12k\n\x0fGetLogHierarchy\x12+.dlkit.proto.logging.GetLogHierarchyRequest\x1a).dlkit.proto.logging.GetLogHierarchyReply\"\x00\x12}\n\x15\x43\x61nAccessLogHierarchy\x12\x31.dlkit.proto.logging.CanAccessLogHierarchyRequest\x1a/.dlkit.proto.logging.CanAccessLogHierarchyReply\"\x00\x12}\n\x15UseComparativeLogView\x12\x31.dlkit.proto.logging.UseComparativeLogViewRequest\x1a/.dlkit.proto.logging.UseComparativeLogViewReply\"\x00\x12q\n\x11UsePlenaryLogView\x12-.dlkit.proto.logging.UsePlenaryLogViewRequest\x1a+.dlkit.proto.logging.UsePlenaryLogViewReply\"\x00\x12\x62\n\rGetRootLogIds\x12).dlkit.proto.logging.GetRootLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12T\n\x0bGetRootLogs\x12\'.dlkit.proto.logging.GetRootLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12\x65\n\rHasParentLogs\x12).dlkit.proto.logging.HasParentLogsRequest\x1a\'.dlkit.proto.logging.HasParentLogsReply\"\x00\x12\x65\n\rIsParentOfLog\x12).dlkit.proto.logging.IsParentOfLogRequest\x1a\'.dlkit.proto.logging.IsParentOfLogReply\"\x00\x12\x66\n\x0fGetParentLogIds\x12+.dlkit.proto.logging.GetParentLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12X\n\rGetParentLogs\x12).dlkit.proto.logging.GetParentLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12k\n\x0fIsAncestorOfLog\x12+.dlkit.proto.logging.IsAncestorOfLogRequest\x1a).dlkit.proto.logging.IsAncestorOfLogReply\"\x00\x12\x62\n\x0cHasChildLogs\x12(.dlkit.proto.logging.HasChildLogsRequest\x1a&.dlkit.proto.logging.HasChildLogsReply\"\x00\x12\x62\n\x0cIsChildOfLog\x12(.dlkit.proto.logging.IsChildOfLogRequest\x1a&.dlkit.proto.logging.IsChildOfLogReply\"\x00\x12\x64\n\x0eGetChildLogIds\x12*.dlkit.proto.logging.GetChildLogIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12V\n\x0cGetChildLogs\x12(.dlkit.proto.logging.GetChildLogsRequest\x1a\x18.dlkit.proto.logging.Log\"\x00\x30\x01\x12q\n\x11IsDescendantOfLog\x12-.dlkit.proto.logging.IsDescendantOfLogRequest\x1a+.dlkit.proto.logging.IsDescendantOfLogReply\"\x00\x12\x65\n\rGetLogNodeIds\x12).dlkit.proto.logging.GetLogNodeIdsRequest\x1a\'.dlkit.proto.logging.GetLogNodeIdsReply\"\x00\x12_\n\x0bGetLogNodes\x12\'.dlkit.proto.logging.GetLogNodesRequest\x1a%.dlkit.proto.logging.GetLogNodesReply\"\x00\x32\xf7\x06\n\x19LogHierarchyDesignSession\x12q\n\x11GetLogHierarchyId\x12-.dlkit.proto.logging.GetLogHierarchyIdRequest\x1a+.dlkit.proto.logging.GetLogHierarchyIdReply\"\x00\x12k\n\x0fGetLogHierarchy\x12+.dlkit.proto.logging.GetLogHierarchyRequest\x1a).dlkit.proto.logging.GetLogHierarchyReply\"\x00\x12}\n\x15\x43\x61nModifyLogHierarchy\x12\x31.dlkit.proto.logging.CanModifyLogHierarchyRequest\x1a/.dlkit.proto.logging.CanModifyLogHierarchyReply\"\x00\x12\\\n\nAddRootLog\x12&.dlkit.proto.logging.AddRootLogRequest\x1a$.dlkit.proto.logging.AddRootLogReply\"\x00\x12\x65\n\rRemoveRootLog\x12).dlkit.proto.logging.RemoveRootLogRequest\x1a\'.dlkit.proto.logging.RemoveRootLogReply\"\x00\x12_\n\x0b\x41\x64\x64\x43hildLog\x12\'.dlkit.proto.logging.AddChildLogRequest\x1a%.dlkit.proto.logging.AddChildLogReply\"\x00\x12h\n\x0eRemoveChildLog\x12*.dlkit.proto.logging.RemoveChildLogRequest\x1a(.dlkit.proto.logging.RemoveChildLogReply\"\x00\x12k\n\x0fRemoveChildLogs\x12+.dlkit.proto.logging.RemoveChildLogsRequest\x1a).dlkit.proto.logging.RemoveChildLogsReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -54,14 +54,14 @@ _LOGENTRY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.logging.LogEntry.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.logging.LogEntry.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.logging.LogEntry.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.logging.LogEntry.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -89,7 +89,7 @@ _LOGENTRY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.logging.LogEntry.recordTypeIds', index=7,
+      name='record_type_ids', full_name='dlkit.proto.logging.LogEntry.record_type_ids', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -115,7 +115,7 @@ _LOGENTRY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=257,
-  serialized_end=779,
+  serialized_end=784,
 )
 
 
@@ -138,8 +138,8 @@ _LOGENTRYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=781,
-  serialized_end=796,
+  serialized_start=786,
+  serialized_end=801,
 )
 
 
@@ -162,8 +162,8 @@ _LOGENTRYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=798,
-  serialized_end=822,
+  serialized_start=803,
+  serialized_end=827,
 )
 
 
@@ -186,8 +186,8 @@ _LOGENTRYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=824,
-  serialized_end=838,
+  serialized_start=829,
+  serialized_end=843,
 )
 
 
@@ -210,8 +210,8 @@ _LOGENTRYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=840,
-  serialized_end=861,
+  serialized_start=845,
+  serialized_end=866,
 )
 
 
@@ -234,8 +234,8 @@ _LOGENTRYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=863,
-  serialized_end=879,
+  serialized_start=868,
+  serialized_end=884,
 )
 
 
@@ -258,8 +258,8 @@ _LOGENTRYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=881,
-  serialized_end=904,
+  serialized_start=886,
+  serialized_end=909,
 )
 
 
@@ -289,8 +289,8 @@ _LOGENTRYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=906,
-  serialized_end=972,
+  serialized_start=911,
+  serialized_end=977,
 )
 
 
@@ -309,14 +309,14 @@ _LOG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.logging.Log.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.logging.Log.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.logging.Log.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.logging.Log.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -330,7 +330,7 @@ _LOG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.logging.Log.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.logging.Log.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -348,8 +348,8 @@ _LOG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=975,
-  serialized_end=1292,
+  serialized_start=980,
+  serialized_end=1302,
 )
 
 
@@ -372,8 +372,8 @@ _LOGQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1294,
-  serialized_end=1304,
+  serialized_start=1304,
+  serialized_end=1314,
 )
 
 
@@ -396,8 +396,8 @@ _LOGQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1306,
-  serialized_end=1325,
+  serialized_start=1316,
+  serialized_end=1335,
 )
 
 
@@ -420,8 +420,8 @@ _LOGFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1327,
-  serialized_end=1336,
+  serialized_start=1337,
+  serialized_end=1346,
 )
 
 
@@ -444,8 +444,8 @@ _LOGSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1338,
-  serialized_end=1354,
+  serialized_start=1348,
+  serialized_end=1364,
 )
 
 
@@ -468,8 +468,8 @@ _LOGSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1356,
-  serialized_end=1367,
+  serialized_start=1366,
+  serialized_end=1377,
 )
 
 
@@ -492,8 +492,8 @@ _LOGSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1369,
-  serialized_end=1387,
+  serialized_start=1379,
+  serialized_end=1397,
 )
 
 
@@ -523,8 +523,8 @@ _LOGLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1389,
-  serialized_end=1438,
+  serialized_start=1399,
+  serialized_end=1448,
 )
 
 
@@ -547,8 +547,8 @@ _LOGNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1440,
-  serialized_end=1449,
+  serialized_start=1450,
+  serialized_end=1459,
 )
 
 
@@ -578,8 +578,8 @@ _LOGNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1451,
-  serialized_end=1513,
+  serialized_start=1461,
+  serialized_end=1523,
 )
 
 
@@ -609,8 +609,8 @@ _GETLOGIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1515,
-  serialized_end=1578,
+  serialized_start=1525,
+  serialized_end=1588,
 )
 
 
@@ -633,8 +633,8 @@ _GETLOGIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1580,
-  serialized_end=1597,
+  serialized_start=1590,
+  serialized_end=1607,
 )
 
 
@@ -664,8 +664,8 @@ _GETLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1599,
-  serialized_end=1651,
+  serialized_start=1609,
+  serialized_end=1661,
 )
 
 
@@ -688,8 +688,8 @@ _GETLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1653,
-  serialized_end=1668,
+  serialized_start=1663,
+  serialized_end=1678,
 )
 
 
@@ -719,8 +719,8 @@ _CANLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1670,
-  serialized_end=1700,
+  serialized_start=1680,
+  serialized_end=1710,
 )
 
 
@@ -743,8 +743,8 @@ _CANLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1702,
-  serialized_end=1717,
+  serialized_start=1712,
+  serialized_end=1727,
 )
 
 
@@ -767,8 +767,8 @@ _LOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1719,
-  serialized_end=1729,
+  serialized_start=1729,
+  serialized_end=1739,
 )
 
 
@@ -805,8 +805,8 @@ _LOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1731,
-  serialized_end=1822,
+  serialized_start=1741,
+  serialized_end=1832,
 )
 
 
@@ -829,8 +829,8 @@ _LOGATPRIORITYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1824,
-  serialized_end=1844,
+  serialized_start=1834,
+  serialized_end=1854,
 )
 
 
@@ -874,8 +874,8 @@ _LOGATPRIORITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1847,
-  serialized_end=2011,
+  serialized_start=1857,
+  serialized_end=2021,
 )
 
 
@@ -905,8 +905,8 @@ _GETLOGENTRYFORMREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2013,
-  serialized_end=2094,
+  serialized_start=2023,
+  serialized_end=2104,
 )
 
 
@@ -929,8 +929,8 @@ _GETLOGENTRYFORMREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2096,
-  serialized_end=2120,
+  serialized_start=2106,
+  serialized_end=2130,
 )
 
 
@@ -953,8 +953,8 @@ _CREATELOGENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2122,
-  serialized_end=2143,
+  serialized_start=2132,
+  serialized_end=2153,
 )
 
 
@@ -984,8 +984,8 @@ _CREATELOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2145,
-  serialized_end=2227,
+  serialized_start=2155,
+  serialized_end=2237,
 )
 
 
@@ -1015,8 +1015,8 @@ _CANREADLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2229,
-  serialized_end=2268,
+  serialized_start=2239,
+  serialized_end=2278,
 )
 
 
@@ -1039,8 +1039,8 @@ _CANREADLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2270,
-  serialized_end=2289,
+  serialized_start=2280,
+  serialized_end=2299,
 )
 
 
@@ -1063,8 +1063,8 @@ _USECOMPARATIVELOGENTRYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2291,
-  serialized_end=2324,
+  serialized_start=2301,
+  serialized_end=2334,
 )
 
 
@@ -1087,8 +1087,8 @@ _USECOMPARATIVELOGENTRYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2326,
-  serialized_end=2361,
+  serialized_start=2336,
+  serialized_end=2371,
 )
 
 
@@ -1111,8 +1111,8 @@ _USEPLENARYLOGENTRYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2363,
-  serialized_end=2392,
+  serialized_start=2373,
+  serialized_end=2402,
 )
 
 
@@ -1135,8 +1135,8 @@ _USEPLENARYLOGENTRYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2394,
-  serialized_end=2425,
+  serialized_start=2404,
+  serialized_end=2435,
 )
 
 
@@ -1159,8 +1159,8 @@ _USEFEDERATEDLOGVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2427,
-  serialized_end=2453,
+  serialized_start=2437,
+  serialized_end=2463,
 )
 
 
@@ -1183,8 +1183,8 @@ _USEFEDERATEDLOGVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2455,
-  serialized_end=2483,
+  serialized_start=2465,
+  serialized_end=2493,
 )
 
 
@@ -1207,8 +1207,8 @@ _USEISOLATEDLOGVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2485,
-  serialized_end=2510,
+  serialized_start=2495,
+  serialized_end=2520,
 )
 
 
@@ -1231,8 +1231,8 @@ _USEISOLATEDLOGVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2512,
-  serialized_end=2539,
+  serialized_start=2522,
+  serialized_end=2549,
 )
 
 
@@ -1262,8 +1262,8 @@ _GETLOGENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2541,
-  serialized_end=2609,
+  serialized_start=2551,
+  serialized_end=2619,
 )
 
 
@@ -1293,8 +1293,8 @@ _GETLOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2611,
-  serialized_end=2689,
+  serialized_start=2621,
+  serialized_end=2699,
 )
 
 
@@ -1324,8 +1324,8 @@ _GETLOGENTRIESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2691,
-  serialized_end=2777,
+  serialized_start=2701,
+  serialized_end=2787,
 )
 
 
@@ -1355,8 +1355,8 @@ _GETLOGENTRIESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2779,
-  serialized_end=2882,
+  serialized_start=2789,
+  serialized_end=2892,
 )
 
 
@@ -1386,8 +1386,8 @@ _GETLOGENTRIESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2884,
-  serialized_end=2993,
+  serialized_start=2894,
+  serialized_end=3003,
 )
 
 
@@ -1417,8 +1417,8 @@ _GETLOGENTRIESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2995,
-  serialized_end=3099,
+  serialized_start=3005,
+  serialized_end=3109,
 )
 
 
@@ -1448,8 +1448,8 @@ _GETLOGENTRIESBYPRIORITYTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3101,
-  serialized_end=3200,
+  serialized_start=3111,
+  serialized_end=3210,
 )
 
 
@@ -1486,8 +1486,8 @@ _GETLOGENTRIESBYDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3202,
-  serialized_end=3314,
+  serialized_start=3212,
+  serialized_end=3324,
 )
 
 
@@ -1531,8 +1531,8 @@ _GETLOGENTRIESBYPRIORITYTYPEANDDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3317,
-  serialized_end=3507,
+  serialized_start=3327,
+  serialized_end=3517,
 )
 
 
@@ -1562,8 +1562,8 @@ _GETLOGENTRIESFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3509,
-  serialized_end=3599,
+  serialized_start=3519,
+  serialized_end=3609,
 )
 
 
@@ -1607,8 +1607,8 @@ _GETLOGENTRIESBYDATEFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3602,
-  serialized_end=3782,
+  serialized_start=3612,
+  serialized_end=3792,
 )
 
 
@@ -1659,8 +1659,8 @@ _GETLOGENTRIESBYPRIORITYTYPEANDDATEFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3785,
-  serialized_end=4043,
+  serialized_start=3795,
+  serialized_end=4053,
 )
 
 
@@ -1683,8 +1683,8 @@ _GETLOGENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4045,
-  serialized_end=4067,
+  serialized_start=4055,
+  serialized_end=4077,
 )
 
 
@@ -1714,8 +1714,8 @@ _CANSEARCHLOGENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4069,
-  serialized_end=4127,
+  serialized_start=4079,
+  serialized_end=4137,
 )
 
 
@@ -1738,8 +1738,8 @@ _CANSEARCHLOGENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4129,
-  serialized_end=4157,
+  serialized_start=4139,
+  serialized_end=4167,
 )
 
 
@@ -1769,8 +1769,8 @@ _GETLOGENTRYQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4159,
-  serialized_end=4243,
+  serialized_start=4169,
+  serialized_end=4253,
 )
 
 
@@ -1793,8 +1793,8 @@ _GETLOGENTRYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4245,
-  serialized_end=4270,
+  serialized_start=4255,
+  serialized_end=4280,
 )
 
 
@@ -1824,8 +1824,8 @@ _GETLOGENTRIESBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4272,
-  serialized_end=4362,
+  serialized_start=4282,
+  serialized_end=4372,
 )
 
 
@@ -1855,8 +1855,8 @@ _CANCREATELOGENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4364,
-  serialized_end=4422,
+  serialized_start=4374,
+  serialized_end=4432,
 )
 
 
@@ -1879,8 +1879,8 @@ _CANCREATELOGENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4424,
-  serialized_end=4452,
+  serialized_start=4434,
+  serialized_end=4462,
 )
 
 
@@ -1910,8 +1910,8 @@ _CANCREATELOGENTRYWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4454,
-  serialized_end=4541,
+  serialized_start=4464,
+  serialized_end=4551,
 )
 
 
@@ -1941,8 +1941,8 @@ _CANCREATELOGENTRYWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4543,
-  serialized_end=4656,
+  serialized_start=4553,
+  serialized_end=4666,
 )
 
 
@@ -1972,8 +1972,8 @@ _GETLOGENTRYFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4658,
-  serialized_end=4748,
+  serialized_start=4668,
+  serialized_end=4758,
 )
 
 
@@ -2003,8 +2003,8 @@ _GETLOGENTRYFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4750,
-  serialized_end=4855,
+  serialized_start=4760,
+  serialized_end=4865,
 )
 
 
@@ -2034,8 +2034,8 @@ _CANUPDATELOGENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4857,
-  serialized_end=4915,
+  serialized_start=4867,
+  serialized_end=4925,
 )
 
 
@@ -2058,8 +2058,8 @@ _CANUPDATELOGENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4917,
-  serialized_end=4945,
+  serialized_start=4927,
+  serialized_end=4955,
 )
 
 
@@ -2089,8 +2089,8 @@ _GETLOGENTRYFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4947,
-  serialized_end=5037,
+  serialized_start=4957,
+  serialized_end=5047,
 )
 
 
@@ -2120,8 +2120,8 @@ _GETLOGENTRYFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5039,
-  serialized_end=5130,
+  serialized_start=5049,
+  serialized_end=5140,
 )
 
 
@@ -2144,8 +2144,8 @@ _UPDATELOGENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5132,
-  serialized_end=5153,
+  serialized_start=5142,
+  serialized_end=5163,
 )
 
 
@@ -2175,8 +2175,8 @@ _UPDATELOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5155,
-  serialized_end=5237,
+  serialized_start=5165,
+  serialized_end=5247,
 )
 
 
@@ -2206,8 +2206,8 @@ _CANDELETELOGENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5239,
-  serialized_end=5297,
+  serialized_start=5249,
+  serialized_end=5307,
 )
 
 
@@ -2230,8 +2230,8 @@ _CANDELETELOGENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5299,
-  serialized_end=5327,
+  serialized_start=5309,
+  serialized_end=5337,
 )
 
 
@@ -2254,8 +2254,8 @@ _DELETELOGENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5329,
-  serialized_end=5350,
+  serialized_start=5339,
+  serialized_end=5360,
 )
 
 
@@ -2285,8 +2285,8 @@ _DELETELOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5352,
-  serialized_end=5433,
+  serialized_start=5362,
+  serialized_end=5443,
 )
 
 
@@ -2316,8 +2316,8 @@ _CANMANAGELOGENTRYALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5435,
-  serialized_end=5504,
+  serialized_start=5445,
+  serialized_end=5514,
 )
 
 
@@ -2340,8 +2340,8 @@ _CANMANAGELOGENTRYALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5506,
-  serialized_end=5539,
+  serialized_start=5516,
+  serialized_end=5549,
 )
 
 
@@ -2364,8 +2364,8 @@ _ALIASLOGENTRYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5541,
-  serialized_end=5561,
+  serialized_start=5551,
+  serialized_end=5571,
 )
 
 
@@ -2402,8 +2402,8 @@ _ALIASLOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5564,
-  serialized_end=5698,
+  serialized_start=5574,
+  serialized_end=5708,
 )
 
 
@@ -2426,8 +2426,8 @@ _USECOMPARATIVELOGVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5700,
-  serialized_end=5728,
+  serialized_start=5710,
+  serialized_end=5738,
 )
 
 
@@ -2450,8 +2450,8 @@ _USECOMPARATIVELOGVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5730,
-  serialized_end=5760,
+  serialized_start=5740,
+  serialized_end=5770,
 )
 
 
@@ -2474,8 +2474,8 @@ _USEPLENARYLOGVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5762,
-  serialized_end=5786,
+  serialized_start=5772,
+  serialized_end=5796,
 )
 
 
@@ -2498,8 +2498,8 @@ _USEPLENARYLOGVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5788,
-  serialized_end=5814,
+  serialized_start=5798,
+  serialized_end=5824,
 )
 
 
@@ -2529,8 +2529,8 @@ _CANLOOKUPLOGENTRYLOGMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5816,
-  serialized_end=5894,
+  serialized_start=5826,
+  serialized_end=5904,
 )
 
 
@@ -2553,8 +2553,8 @@ _CANLOOKUPLOGENTRYLOGMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5896,
-  serialized_end=5933,
+  serialized_start=5906,
+  serialized_end=5943,
 )
 
 
@@ -2584,8 +2584,8 @@ _GETLOGENTRYIDSBYLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5935,
-  serialized_end=6015,
+  serialized_start=5945,
+  serialized_end=6025,
 )
 
 
@@ -2615,8 +2615,8 @@ _GETLOGENTRIESBYLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6017,
-  serialized_end=6096,
+  serialized_start=6027,
+  serialized_end=6106,
 )
 
 
@@ -2646,8 +2646,8 @@ _GETLOGENTRIEBYLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6098,
-  serialized_end=6177,
+  serialized_start=6108,
+  serialized_end=6187,
 )
 
 
@@ -2677,8 +2677,8 @@ _GETLOGIDSBYLOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6179,
-  serialized_end=6265,
+  serialized_start=6189,
+  serialized_end=6275,
 )
 
 
@@ -2708,8 +2708,8 @@ _GETLOGBYLOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6267,
-  serialized_end=6350,
+  serialized_start=6277,
+  serialized_end=6360,
 )
 
 
@@ -2739,8 +2739,8 @@ _CANASSIGNLOGENTRIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6352,
-  serialized_end=6410,
+  serialized_start=6362,
+  serialized_end=6420,
 )
 
 
@@ -2763,8 +2763,8 @@ _CANASSIGNLOGENTRIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6412,
-  serialized_end=6440,
+  serialized_start=6422,
+  serialized_end=6450,
 )
 
 
@@ -2794,8 +2794,8 @@ _CANASSIGNLOGENTRIESTOLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6442,
-  serialized_end=6512,
+  serialized_start=6452,
+  serialized_end=6522,
 )
 
 
@@ -2825,8 +2825,8 @@ _CANASSIGNLOGENTRIESTOLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6514,
-  serialized_end=6599,
+  serialized_start=6524,
+  serialized_end=6609,
 )
 
 
@@ -2856,8 +2856,8 @@ _GETASSIGNABLELOGIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6601,
-  serialized_end=6681,
+  serialized_start=6611,
+  serialized_end=6691,
 )
 
 
@@ -2894,8 +2894,8 @@ _GETASSIGNABLELOGIDSFORLOGENTRYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6684,
-  serialized_end=6833,
+  serialized_start=6694,
+  serialized_end=6843,
 )
 
 
@@ -2918,8 +2918,8 @@ _ASSIGNLOGENTRYTOLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6835,
-  serialized_end=6861,
+  serialized_start=6845,
+  serialized_end=6871,
 )
 
 
@@ -2956,8 +2956,8 @@ _ASSIGNLOGENTRYTOLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6864,
-  serialized_end=7002,
+  serialized_start=6874,
+  serialized_end=7012,
 )
 
 
@@ -2980,8 +2980,8 @@ _UNASSIGNLOGENTRYFROMLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7004,
-  serialized_end=7034,
+  serialized_start=7014,
+  serialized_end=7044,
 )
 
 
@@ -3018,8 +3018,8 @@ _UNASSIGNLOGENTRYFROMLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7037,
-  serialized_end=7179,
+  serialized_start=7047,
+  serialized_end=7189,
 )
 
 
@@ -3042,8 +3042,8 @@ _REASSIGNLOGENTRYTOLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7181,
-  serialized_end=7209,
+  serialized_start=7191,
+  serialized_end=7219,
 )
 
 
@@ -3087,8 +3087,8 @@ _REASSIGNLOGENTRYTOLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7212,
-  serialized_end=7412,
+  serialized_start=7222,
+  serialized_end=7422,
 )
 
 
@@ -3118,8 +3118,8 @@ _CANLOOKUPLOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7414,
-  serialized_end=7459,
+  serialized_start=7424,
+  serialized_end=7469,
 )
 
 
@@ -3142,8 +3142,8 @@ _CANLOOKUPLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7461,
-  serialized_end=7483,
+  serialized_start=7471,
+  serialized_end=7493,
 )
 
 
@@ -3173,8 +3173,8 @@ _GETLOGSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7485,
-  serialized_end=7559,
+  serialized_start=7495,
+  serialized_end=7569,
 )
 
 
@@ -3204,8 +3204,8 @@ _GETLOGSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7561,
-  serialized_end=7652,
+  serialized_start=7571,
+  serialized_end=7662,
 )
 
 
@@ -3235,8 +3235,8 @@ _GETLOGSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7654,
-  serialized_end=7751,
+  serialized_start=7664,
+  serialized_end=7761,
 )
 
 
@@ -3266,8 +3266,8 @@ _GETLOGSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7753,
-  serialized_end=7846,
+  serialized_start=7763,
+  serialized_end=7856,
 )
 
 
@@ -3297,8 +3297,8 @@ _GETLOGSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7848,
-  serialized_end=7931,
+  serialized_start=7858,
+  serialized_end=7941,
 )
 
 
@@ -3321,8 +3321,8 @@ _GETLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7933,
-  serialized_end=7949,
+  serialized_start=7943,
+  serialized_end=7959,
 )
 
 
@@ -3352,8 +3352,8 @@ _CANCREATELOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7951,
-  serialized_end=7996,
+  serialized_start=7961,
+  serialized_end=8006,
 )
 
 
@@ -3376,8 +3376,8 @@ _CANCREATELOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7998,
-  serialized_end=8020,
+  serialized_start=8008,
+  serialized_end=8030,
 )
 
 
@@ -3407,8 +3407,8 @@ _CANCREATELOGWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8022,
-  serialized_end=8098,
+  serialized_start=8032,
+  serialized_end=8108,
 )
 
 
@@ -3438,8 +3438,8 @@ _CANCREATELOGWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8100,
-  serialized_end=8202,
+  serialized_start=8110,
+  serialized_end=8212,
 )
 
 
@@ -3469,8 +3469,8 @@ _GETLOGFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8204,
-  serialized_end=8278,
+  serialized_start=8214,
+  serialized_end=8288,
 )
 
 
@@ -3500,8 +3500,8 @@ _GETLOGFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8280,
-  serialized_end=8374,
+  serialized_start=8290,
+  serialized_end=8384,
 )
 
 
@@ -3531,8 +3531,8 @@ _CREATELOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8376,
-  serialized_end=8431,
+  serialized_start=8386,
+  serialized_end=8441,
 )
 
 
@@ -3562,8 +3562,8 @@ _CREATELOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8433,
-  serialized_end=8499,
+  serialized_start=8443,
+  serialized_end=8509,
 )
 
 
@@ -3593,8 +3593,8 @@ _CANUPDATELOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8501,
-  serialized_end=8546,
+  serialized_start=8511,
+  serialized_end=8556,
 )
 
 
@@ -3617,8 +3617,8 @@ _CANUPDATELOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8548,
-  serialized_end=8570,
+  serialized_start=8558,
+  serialized_end=8580,
 )
 
 
@@ -3648,8 +3648,8 @@ _GETLOGFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8572,
-  serialized_end=8646,
+  serialized_start=8582,
+  serialized_end=8656,
 )
 
 
@@ -3679,8 +3679,8 @@ _GETLOGFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8648,
-  serialized_end=8728,
+  serialized_start=8658,
+  serialized_end=8738,
 )
 
 
@@ -3703,8 +3703,8 @@ _UPDATELOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8730,
-  serialized_end=8746,
+  serialized_start=8740,
+  serialized_end=8756,
 )
 
 
@@ -3734,8 +3734,8 @@ _UPDATELOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8748,
-  serialized_end=8814,
+  serialized_start=8758,
+  serialized_end=8824,
 )
 
 
@@ -3765,8 +3765,8 @@ _CANDELETELOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8816,
-  serialized_end=8861,
+  serialized_start=8826,
+  serialized_end=8871,
 )
 
 
@@ -3789,8 +3789,8 @@ _CANDELETELOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8863,
-  serialized_end=8885,
+  serialized_start=8873,
+  serialized_end=8895,
 )
 
 
@@ -3813,8 +3813,8 @@ _DELETELOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8887,
-  serialized_end=8903,
+  serialized_start=8897,
+  serialized_end=8913,
 )
 
 
@@ -3844,8 +3844,8 @@ _DELETELOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8905,
-  serialized_end=8975,
+  serialized_start=8915,
+  serialized_end=8985,
 )
 
 
@@ -3875,8 +3875,8 @@ _CANMANAGELOGALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8977,
-  serialized_end=9035,
+  serialized_start=8987,
+  serialized_end=9045,
 )
 
 
@@ -3899,8 +3899,8 @@ _CANMANAGELOGALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9037,
-  serialized_end=9065,
+  serialized_start=9047,
+  serialized_end=9075,
 )
 
 
@@ -3923,8 +3923,8 @@ _ALIASLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9067,
-  serialized_end=9082,
+  serialized_start=9077,
+  serialized_end=9092,
 )
 
 
@@ -3961,8 +3961,8 @@ _ALIASLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9084,
-  serialized_end=9207,
+  serialized_start=9094,
+  serialized_end=9217,
 )
 
 
@@ -3992,8 +3992,8 @@ _GETLOGHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9209,
-  serialized_end=9281,
+  serialized_start=9219,
+  serialized_end=9291,
 )
 
 
@@ -4016,8 +4016,8 @@ _GETLOGHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9283,
-  serialized_end=9309,
+  serialized_start=9293,
+  serialized_end=9319,
 )
 
 
@@ -4047,8 +4047,8 @@ _GETLOGHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9311,
-  serialized_end=9386,
+  serialized_start=9321,
+  serialized_end=9396,
 )
 
 
@@ -4071,8 +4071,8 @@ _GETLOGHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9388,
-  serialized_end=9412,
+  serialized_start=9398,
+  serialized_end=9422,
 )
 
 
@@ -4102,8 +4102,8 @@ _CANACCESSLOGHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9414,
-  serialized_end=9476,
+  serialized_start=9424,
+  serialized_end=9486,
 )
 
 
@@ -4126,8 +4126,8 @@ _CANACCESSLOGHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9478,
-  serialized_end=9508,
+  serialized_start=9488,
+  serialized_end=9518,
 )
 
 
@@ -4150,8 +4150,8 @@ _GETROOTLOGIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9510,
-  serialized_end=9532,
+  serialized_start=9520,
+  serialized_end=9542,
 )
 
 
@@ -4174,8 +4174,8 @@ _GETROOTLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9534,
-  serialized_end=9554,
+  serialized_start=9544,
+  serialized_end=9564,
 )
 
 
@@ -4205,8 +4205,8 @@ _HASPARENTLOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9556,
-  serialized_end=9601,
+  serialized_start=9566,
+  serialized_end=9611,
 )
 
 
@@ -4236,8 +4236,8 @@ _HASPARENTLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9603,
-  serialized_end=9677,
+  serialized_start=9613,
+  serialized_end=9687,
 )
 
 
@@ -4267,8 +4267,8 @@ _ISPARENTOFLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9679,
-  serialized_end=9725,
+  serialized_start=9689,
+  serialized_end=9735,
 )
 
 
@@ -4305,8 +4305,8 @@ _ISPARENTOFLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9727,
-  serialized_end=9850,
+  serialized_start=9737,
+  serialized_end=9860,
 )
 
 
@@ -4336,8 +4336,8 @@ _GETPARENTLOGIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9852,
-  serialized_end=9928,
+  serialized_start=9862,
+  serialized_end=9938,
 )
 
 
@@ -4367,8 +4367,8 @@ _GETPARENTLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9930,
-  serialized_end=10004,
+  serialized_start=9940,
+  serialized_end=10014,
 )
 
 
@@ -4398,8 +4398,8 @@ _ISANCESTOROFLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10006,
-  serialized_end=10056,
+  serialized_start=10016,
+  serialized_end=10066,
 )
 
 
@@ -4436,8 +4436,8 @@ _ISANCESTOROFLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10058,
-  serialized_end=10183,
+  serialized_start=10068,
+  serialized_end=10193,
 )
 
 
@@ -4467,8 +4467,8 @@ _HASCHILDLOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10185,
-  serialized_end=10228,
+  serialized_start=10195,
+  serialized_end=10238,
 )
 
 
@@ -4498,8 +4498,8 @@ _HASCHILDLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10230,
-  serialized_end=10303,
+  serialized_start=10240,
+  serialized_end=10313,
 )
 
 
@@ -4529,8 +4529,8 @@ _ISCHILDOFLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10305,
-  serialized_end=10349,
+  serialized_start=10315,
+  serialized_end=10359,
 )
 
 
@@ -4567,8 +4567,8 @@ _ISCHILDOFLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10351,
-  serialized_end=10473,
+  serialized_start=10361,
+  serialized_end=10483,
 )
 
 
@@ -4598,8 +4598,8 @@ _GETCHILDLOGIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10475,
-  serialized_end=10550,
+  serialized_start=10485,
+  serialized_end=10560,
 )
 
 
@@ -4629,8 +4629,8 @@ _GETCHILDLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10552,
-  serialized_end=10625,
+  serialized_start=10562,
+  serialized_end=10635,
 )
 
 
@@ -4660,8 +4660,8 @@ _ISDESCENDANTOFLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10627,
-  serialized_end=10681,
+  serialized_start=10637,
+  serialized_end=10691,
 )
 
 
@@ -4698,8 +4698,8 @@ _ISDESCENDANTOFLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10683,
-  serialized_end=10810,
+  serialized_start=10693,
+  serialized_end=10820,
 )
 
 
@@ -4729,8 +4729,8 @@ _GETLOGNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10812,
-  serialized_end=10875,
+  serialized_start=10822,
+  serialized_end=10885,
 )
 
 
@@ -4781,8 +4781,8 @@ _GETLOGNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10878,
-  serialized_end=11030,
+  serialized_start=10888,
+  serialized_end=11040,
 )
 
 
@@ -4812,8 +4812,8 @@ _GETLOGNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11032,
-  serialized_end=11098,
+  serialized_start=11042,
+  serialized_end=11108,
 )
 
 
@@ -4864,8 +4864,8 @@ _GETLOGNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11101,
-  serialized_end=11251,
+  serialized_start=11111,
+  serialized_end=11261,
 )
 
 
@@ -4895,8 +4895,8 @@ _CANMODIFYLOGHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11253,
-  serialized_end=11315,
+  serialized_start=11263,
+  serialized_end=11325,
 )
 
 
@@ -4919,8 +4919,8 @@ _CANMODIFYLOGHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11317,
-  serialized_end=11347,
+  serialized_start=11327,
+  serialized_end=11357,
 )
 
 
@@ -4943,8 +4943,8 @@ _ADDROOTLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11349,
-  serialized_end=11366,
+  serialized_start=11359,
+  serialized_end=11376,
 )
 
 
@@ -4974,8 +4974,8 @@ _ADDROOTLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11368,
-  serialized_end=11439,
+  serialized_start=11378,
+  serialized_end=11449,
 )
 
 
@@ -4998,8 +4998,8 @@ _REMOVEROOTLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11441,
-  serialized_end=11461,
+  serialized_start=11451,
+  serialized_end=11471,
 )
 
 
@@ -5029,8 +5029,8 @@ _REMOVEROOTLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11463,
-  serialized_end=11537,
+  serialized_start=11473,
+  serialized_end=11547,
 )
 
 
@@ -5053,8 +5053,8 @@ _ADDCHILDLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11539,
-  serialized_end=11557,
+  serialized_start=11549,
+  serialized_end=11567,
 )
 
 
@@ -5091,8 +5091,8 @@ _ADDCHILDLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11559,
-  serialized_end=11685,
+  serialized_start=11569,
+  serialized_end=11695,
 )
 
 
@@ -5115,8 +5115,8 @@ _REMOVECHILDLOGREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11687,
-  serialized_end=11708,
+  serialized_start=11697,
+  serialized_end=11718,
 )
 
 
@@ -5153,8 +5153,8 @@ _REMOVECHILDLOGREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11711,
-  serialized_end=11840,
+  serialized_start=11721,
+  serialized_end=11850,
 )
 
 
@@ -5177,8 +5177,8 @@ _REMOVECHILDLOGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11842,
-  serialized_end=11864,
+  serialized_start=11852,
+  serialized_end=11874,
 )
 
 
@@ -5208,25 +5208,25 @@ _REMOVECHILDLOGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11866,
-  serialized_end=11942,
+  serialized_start=11876,
+  serialized_end=11952,
 )
 
 _LOGENTRY.fields_by_name['agent'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _LOGENTRY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_LOGENTRY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_LOGENTRY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_LOGENTRY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_LOGENTRY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _LOGENTRY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _LOGENTRY.fields_by_name['log'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _LOGENTRY.fields_by_name['priority'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
-_LOGENTRY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_LOGENTRY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _LOGENTRY.fields_by_name['timestamp'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _LOGENTRYLIST.fields_by_name['log_entries'].message_type = _LOGENTRY
 _LOG.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_LOG.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_LOG.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_LOG.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_LOG.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _LOG.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_LOG.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_LOG.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _LOGLIST.fields_by_name['logs'].message_type = _LOG
 _LOGNODELIST.fields_by_name['log_nodes'].message_type = _LOGNODE
 _GETLOGIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -6720,8 +6720,8 @@ _LOGGINGSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=11945,
-  serialized_end=12604,
+  serialized_start=11955,
+  serialized_end=12614,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetLogId',
@@ -6798,8 +6798,8 @@ _LOGENTRYLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=12607,
-  serialized_end=14843,
+  serialized_start=12617,
+  serialized_end=14853,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetLogId',
@@ -6984,8 +6984,8 @@ _LOGENTRYQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=14846,
-  serialized_end=15619,
+  serialized_start=14856,
+  serialized_end=15629,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetLogId',
@@ -7062,8 +7062,8 @@ _LOGENTRYADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=15622,
-  serialized_end=17170,
+  serialized_start=15632,
+  serialized_end=17180,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetLogId',
@@ -7194,8 +7194,8 @@ _LOGENTRYLOGSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=17173,
-  serialized_end=18112,
+  serialized_start=17183,
+  serialized_end=18122,
   methods=[
   _descriptor.MethodDescriptor(
     name='UseComparativeLogView',
@@ -7281,8 +7281,8 @@ _LOGENTRYLOGASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=18115,
-  serialized_end=19032,
+  serialized_start=18125,
+  serialized_end=19042,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignLogEntries',
@@ -7359,8 +7359,8 @@ _LOGLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=19035,
-  serialized_end=20058,
+  serialized_start=19045,
+  serialized_end=20068,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupLogs',
@@ -7464,8 +7464,8 @@ _LOGADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=20061,
-  serialized_end=21257,
+  serialized_start=20071,
+  serialized_end=21267,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateLogs',
@@ -7578,8 +7578,8 @@ _LOGHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=21260,
-  serialized_end=23274,
+  serialized_start=21270,
+  serialized_end=23284,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetLogHierarchyId',
@@ -7764,8 +7764,8 @@ _LOGHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=9,
   options=None,
-  serialized_start=23277,
-  serialized_end=24164,
+  serialized_start=23287,
+  serialized_end=24174,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetLogHierarchyId',

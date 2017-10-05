@@ -27,29 +27,29 @@ message OsidObject {
 
 message OsidRelationship {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
   OsidCatalog no_catalog = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
 }
 
 message OsidCatalog {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
   OsidCatalog no_catalog = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
 }
 
 message OsidRule {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
   OsidCatalog no_catalog = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
   dlkit.primordium.id.primitives.Id rule = 7;
 }
 
@@ -71,23 +71,23 @@ message OsidProcessor {
 
 message OsidGovernator {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
   OsidCatalog no_catalog = 5;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 6;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 6;
 }
 
 message OsidCompendium {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
   google.protobuf.Timestamp end_date = 3;
   bool extrapolated = 4;
-  dlkit.primordium.type.primitives.Type genusTypeId = 5;
+  dlkit.primordium.type.primitives.Type genus_type_id = 5;
   dlkit.primordium.id.primitives.Id id = 6;
   bool interpolated = 7;
   OsidCatalog no_catalog = 8;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 9;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 9;
   google.protobuf.Timestamp start_date = 10;
 }
 

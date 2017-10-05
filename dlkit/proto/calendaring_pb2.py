@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/calendaring.proto',
   package='dlkit.proto.calendaring',
   syntax='proto3',
-  serialized_pb=_b('\n\x1d\x64lkit/proto/calendaring.proto\x12\x17\x64lkit.proto.calendaring\x1a-dlkit/primordium/calendaring/primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xfa\x03\n\x05\x45vent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08location\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14location_description\x18\x07 \x01(\t\x12=\n\rrecordTypeIds\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x34\n\x08sponsors\x18\t \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0c\n\nEventQuery\"\x15\n\x13\x45ventQueryInspector\"\x0b\n\tEventForm\"\x12\n\x10\x45ventSearchOrder\"\r\n\x0b\x45ventSearch\"\x14\n\x12\x45ventSearchResults\";\n\tEventList\x12.\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.calendaring.Event\"w\n\x0eRecurringEvent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x34\n\x08sponsors\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RecurringEventQuery\"\x1e\n\x1cRecurringEventQueryInspector\"\x14\n\x12RecurringEventForm\"\x1b\n\x19RecurringEventSearchOrder\"\x16\n\x14RecurringEventSearch\"\x1d\n\x1bRecurringEventSearchResults\"W\n\x12RecurringEventList\x12\x41\n\x10recurring_events\x18\x01 \x03(\x0b\x32\'.dlkit.proto.calendaring.RecurringEvent\"\x98\x02\n\x10SupersedingEvent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x33\n\x0fsuperseded_date\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12<\n\x10superseded_event\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12!\n\x19superseded_event_position\x18\x04 \x01(\x11\x12=\n\x11superseding_event\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15SupersedingEventQuery\" \n\x1eSupersedingEventQueryInspector\"\x16\n\x14SupersedingEventForm\"\x1d\n\x1bSupersedingEventSearchOrder\"\x18\n\x16SupersedingEventSearch\"\x1f\n\x1dSupersedingEventSearchResults\"]\n\x14SupersedingEventList\x12\x45\n\x12superseding_events\x18\x01 \x03(\x0b\x32).dlkit.proto.calendaring.SupersedingEvent\"\xf3\x05\n\x0bOffsetEvent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x13\x65nd_reference_event\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12I\n\x0e\x66ixed_duration\x18\x03 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12K\n\x10\x66ixed_end_offset\x18\x04 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12M\n\x12\x66ixed_start_offset\x18\x05 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12\x34\n\x10\x66ixed_start_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x34\n\x08location\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14location_description\x18\x08 \x01(\t\x12\x1c\n\x14relative_end_weekday\x18\t \x01(\x11\x12\x1e\n\x16relative_start_weekday\x18\n \x01(\x11\x12#\n\x1brelative_weekday_end_offset\x18\x0b \x01(\x11\x12%\n\x1drelative_weekday_start_offset\x18\x0c \x01(\x11\x12\x34\n\x08sponsors\x18\r \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x15start_reference_event\x18\x0e \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10OffsetEventQuery\"\x1b\n\x19OffsetEventQueryInspector\"\x11\n\x0fOffsetEventForm\"\x18\n\x16OffsetEventSearchOrder\"\x13\n\x11OffsetEventSearch\"\x1a\n\x18OffsetEventSearchResults\"N\n\x0fOffsetEventList\x12;\n\roffset_events\x18\x01 \x03(\x0b\x32$.dlkit.proto.calendaring.OffsetEvent\"\xb0\x05\n\x08Schedule\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\r\n\x05limit\x18\x06 \x03(\x11\x12\x34\n\x08location\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14location_description\x18\x08 \x01(\t\x12=\n\rrecordTypeIds\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x0cschedule_end\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x39\n\rschedule_slot\x18\x0b \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x0eschedule_start\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0btime_period\x18\r \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rScheduleQuery\"\x18\n\x16ScheduleQueryInspector\"\x0e\n\x0cScheduleForm\"\x15\n\x13ScheduleSearchOrder\"\x10\n\x0eScheduleSearch\"\x17\n\x15ScheduleSearchResults\"D\n\x0cScheduleList\x12\x34\n\tschedules\x18\x01 \x03(\x0b\x32!.dlkit.proto.calendaring.Schedule\"\x8e\x05\n\x0cScheduleSlot\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x43\n\x08\x64uration\x18\x04 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12I\n\x0e\x66ixed_interval\x18\x05 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12;\n\x0bgenusTypeId\x18\x06 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x15\n\rweek_of_month\x18\t \x01(\x11\x12\x43\n\x0cweekday_time\x18\n \x01(\x0b\x32-.dlkit.primordium.calendaring.primitives.Time\x12\x10\n\x08weekdays\x18\x0b \x03(\x11\x12\x17\n\x0fweekly_interval\x18\x0c \x01(\x11\"\x13\n\x11ScheduleSlotQuery\"\x1c\n\x1aScheduleSlotQueryInspector\"\x12\n\x10ScheduleSlotForm\"\x19\n\x17ScheduleSlotSearchOrder\"\x14\n\x12ScheduleSlotSearch\"\x1b\n\x19ScheduleSlotSearchResults\"Q\n\x10ScheduleSlotList\x12=\n\x0eschedule_slots\x18\x01 \x03(\x0b\x32%.dlkit.proto.calendaring.ScheduleSlot\"\xc9\x03\n\nTimePeriod\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\'\n\x03\x65nd\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12;\n\x0bgenusTypeId\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05start\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x11\n\x0fTimePeriodQuery\"\x1a\n\x18TimePeriodQueryInspector\"\x10\n\x0eTimePeriodForm\"\x17\n\x15TimePeriodSearchOrder\"\x12\n\x10TimePeriodSearch\"\x19\n\x17TimePeriodSearchResults\"K\n\x0eTimePeriodList\x12\x39\n\x0ctime_periods\x18\x01 \x03(\x0b\x32#.dlkit.proto.calendaring.TimePeriod\"\xa6\x01\n\nCommitment\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x31\n\x05\x65vent\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08resource\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0f\x43ommitmentQuery\"\x1a\n\x18\x43ommitmentQueryInspector\"\x10\n\x0e\x43ommitmentForm\"\x17\n\x15\x43ommitmentSearchOrder\"\x12\n\x10\x43ommitmentSearch\"\x19\n\x17\x43ommitmentSearchResults\"J\n\x0e\x43ommitmentList\x12\x38\n\x0b\x63ommitments\x18\x01 \x03(\x0b\x32#.dlkit.proto.calendaring.Commitment\"\xc2\x02\n\x08\x43\x61lendar\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rCalendarQuery\"\x18\n\x16\x43\x61lendarQueryInspector\"\x0e\n\x0c\x43\x61lendarForm\"\x15\n\x13\x43\x61lendarSearchOrder\"\x10\n\x0e\x43\x61lendarSearch\"\x17\n\x15\x43\x61lendarSearchResults\"D\n\x0c\x43\x61lendarList\x12\x34\n\tcalendars\x18\x01 \x03(\x0b\x32!.dlkit.proto.calendaring.Calendar\"\x0e\n\x0c\x43\x61lendarNode\"Q\n\x10\x43\x61lendarNodeList\x12=\n\x0e\x63\x61lendar_nodes\x18\x01 \x03(\x0b\x32%.dlkit.proto.calendaring.CalendarNode\"\r\n\x0bMeetingTime\"N\n\x0fMeetingTimeList\x12;\n\rmeeting_times\x18\x01 \x03(\x0b\x32$.dlkit.proto.calendaring.MeetingTime\"H\n\x08TimeList\x12<\n\x05times\x18\x01 \x03(\x0b\x32-.dlkit.primordium.calendaring.primitives.Time\">\n\x0c\x44\x61teTimeList\x12.\n\ndate_times\x18\x01 \x03(\x0b\x32\x1a.google.protobuf.Timestamp\"T\n\x0c\x44urationList\x12\x44\n\tdurations\x18\x01 \x03(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\"\x12\n\x10\x44\x61teTimeInterval\"n\n\x14\x44\x61teTimeIntervalList\x12V\n\x13\x64\x61te_time_intervals\x18\x01 \x03(\x0b\x32\x39.dlkit.primordium.calendaring.primitives.DateTimeIntervalb\x06proto3')
+  serialized_pb=_b('\n\x1d\x64lkit/proto/calendaring.proto\x12\x17\x64lkit.proto.calendaring\x1a-dlkit/primordium/calendaring/primitives.proto\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xff\x03\n\x05\x45vent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08location\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14location_description\x18\x07 \x01(\t\x12?\n\x0frecord_type_ids\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x34\n\x08sponsors\x18\t \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0c\n\nEventQuery\"\x15\n\x13\x45ventQueryInspector\"\x0b\n\tEventForm\"\x12\n\x10\x45ventSearchOrder\"\r\n\x0b\x45ventSearch\"\x14\n\x12\x45ventSearchResults\";\n\tEventList\x12.\n\x06\x65vents\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.calendaring.Event\"w\n\x0eRecurringEvent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x34\n\x08sponsors\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RecurringEventQuery\"\x1e\n\x1cRecurringEventQueryInspector\"\x14\n\x12RecurringEventForm\"\x1b\n\x19RecurringEventSearchOrder\"\x16\n\x14RecurringEventSearch\"\x1d\n\x1bRecurringEventSearchResults\"W\n\x12RecurringEventList\x12\x41\n\x10recurring_events\x18\x01 \x03(\x0b\x32\'.dlkit.proto.calendaring.RecurringEvent\"\x98\x02\n\x10SupersedingEvent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x33\n\x0fsuperseded_date\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12<\n\x10superseded_event\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12!\n\x19superseded_event_position\x18\x04 \x01(\x11\x12=\n\x11superseding_event\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15SupersedingEventQuery\" \n\x1eSupersedingEventQueryInspector\"\x16\n\x14SupersedingEventForm\"\x1d\n\x1bSupersedingEventSearchOrder\"\x18\n\x16SupersedingEventSearch\"\x1f\n\x1dSupersedingEventSearchResults\"]\n\x14SupersedingEventList\x12\x45\n\x12superseding_events\x18\x01 \x03(\x0b\x32).dlkit.proto.calendaring.SupersedingEvent\"\xf3\x05\n\x0bOffsetEvent\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x13\x65nd_reference_event\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12I\n\x0e\x66ixed_duration\x18\x03 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12K\n\x10\x66ixed_end_offset\x18\x04 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12M\n\x12\x66ixed_start_offset\x18\x05 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12\x34\n\x10\x66ixed_start_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x34\n\x08location\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14location_description\x18\x08 \x01(\t\x12\x1c\n\x14relative_end_weekday\x18\t \x01(\x11\x12\x1e\n\x16relative_start_weekday\x18\n \x01(\x11\x12#\n\x1brelative_weekday_end_offset\x18\x0b \x01(\x11\x12%\n\x1drelative_weekday_start_offset\x18\x0c \x01(\x11\x12\x34\n\x08sponsors\x18\r \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x15start_reference_event\x18\x0e \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10OffsetEventQuery\"\x1b\n\x19OffsetEventQueryInspector\"\x11\n\x0fOffsetEventForm\"\x18\n\x16OffsetEventSearchOrder\"\x13\n\x11OffsetEventSearch\"\x1a\n\x18OffsetEventSearchResults\"N\n\x0fOffsetEventList\x12;\n\roffset_events\x18\x01 \x03(\x0b\x32$.dlkit.proto.calendaring.OffsetEvent\"\xb5\x05\n\x08Schedule\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x04 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\r\n\x05limit\x18\x06 \x03(\x11\x12\x34\n\x08location\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x1c\n\x14location_description\x18\x08 \x01(\t\x12?\n\x0frecord_type_ids\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x0cschedule_end\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x39\n\rschedule_slot\x18\x0b \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x0eschedule_start\x18\x0c \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0btime_period\x18\r \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x0f\n\rScheduleQuery\"\x18\n\x16ScheduleQueryInspector\"\x0e\n\x0cScheduleForm\"\x15\n\x13ScheduleSearchOrder\"\x10\n\x0eScheduleSearch\"\x17\n\x15ScheduleSearchResults\"D\n\x0cScheduleList\x12\x34\n\tschedules\x18\x01 \x03(\x0b\x32!.dlkit.proto.calendaring.Schedule\"\x93\x05\n\x0cScheduleSlot\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x43\n\x08\x64uration\x18\x04 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12I\n\x0e\x66ixed_interval\x18\x05 \x01(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\x12=\n\rgenus_type_id\x18\x06 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x08 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x15\n\rweek_of_month\x18\t \x01(\x11\x12\x43\n\x0cweekday_time\x18\n \x01(\x0b\x32-.dlkit.primordium.calendaring.primitives.Time\x12\x10\n\x08weekdays\x18\x0b \x03(\x11\x12\x17\n\x0fweekly_interval\x18\x0c \x01(\x11\"\x13\n\x11ScheduleSlotQuery\"\x1c\n\x1aScheduleSlotQueryInspector\"\x12\n\x10ScheduleSlotForm\"\x19\n\x17ScheduleSlotSearchOrder\"\x14\n\x12ScheduleSlotSearch\"\x1b\n\x19ScheduleSlotSearchResults\"Q\n\x10ScheduleSlotList\x12=\n\x0eschedule_slots\x18\x01 \x03(\x0b\x32%.dlkit.proto.calendaring.ScheduleSlot\"\xce\x03\n\nTimePeriod\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\'\n\x03\x65nd\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12=\n\rgenus_type_id\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x07 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05start\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x11\n\x0fTimePeriodQuery\"\x1a\n\x18TimePeriodQueryInspector\"\x10\n\x0eTimePeriodForm\"\x17\n\x15TimePeriodSearchOrder\"\x12\n\x10TimePeriodSearch\"\x19\n\x17TimePeriodSearchResults\"K\n\x0eTimePeriodList\x12\x39\n\x0ctime_periods\x18\x01 \x03(\x0b\x32#.dlkit.proto.calendaring.TimePeriod\"\xa6\x01\n\nCommitment\x12/\n\x08\x63\x61lendar\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x31\n\x05\x65vent\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08resource\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0f\x43ommitmentQuery\"\x1a\n\x18\x43ommitmentQueryInspector\"\x10\n\x0e\x43ommitmentForm\"\x17\n\x15\x43ommitmentSearchOrder\"\x12\n\x10\x43ommitmentSearch\"\x19\n\x17\x43ommitmentSearchResults\"J\n\x0e\x43ommitmentList\x12\x38\n\x0b\x63ommitments\x18\x01 \x03(\x0b\x32#.dlkit.proto.calendaring.Commitment\"\xc7\x02\n\x08\x43\x61lendar\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rCalendarQuery\"\x18\n\x16\x43\x61lendarQueryInspector\"\x0e\n\x0c\x43\x61lendarForm\"\x15\n\x13\x43\x61lendarSearchOrder\"\x10\n\x0e\x43\x61lendarSearch\"\x17\n\x15\x43\x61lendarSearchResults\"D\n\x0c\x43\x61lendarList\x12\x34\n\tcalendars\x18\x01 \x03(\x0b\x32!.dlkit.proto.calendaring.Calendar\"\x0e\n\x0c\x43\x61lendarNode\"Q\n\x10\x43\x61lendarNodeList\x12=\n\x0e\x63\x61lendar_nodes\x18\x01 \x03(\x0b\x32%.dlkit.proto.calendaring.CalendarNode\"\r\n\x0bMeetingTime\"N\n\x0fMeetingTimeList\x12;\n\rmeeting_times\x18\x01 \x03(\x0b\x32$.dlkit.proto.calendaring.MeetingTime\"H\n\x08TimeList\x12<\n\x05times\x18\x01 \x03(\x0b\x32-.dlkit.primordium.calendaring.primitives.Time\">\n\x0c\x44\x61teTimeList\x12.\n\ndate_times\x18\x01 \x03(\x0b\x32\x1a.google.protobuf.Timestamp\"T\n\x0c\x44urationList\x12\x44\n\tdurations\x18\x01 \x03(\x0b\x32\x31.dlkit.primordium.calendaring.primitives.Duration\"\x12\n\x10\x44\x61teTimeInterval\"n\n\x14\x44\x61teTimeIntervalList\x12V\n\x13\x64\x61te_time_intervals\x18\x01 \x03(\x0b\x32\x39.dlkit.primordium.calendaring.primitives.DateTimeIntervalb\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -54,14 +54,14 @@ _EVENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.calendaring.Event.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.calendaring.Event.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.calendaring.Event.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.calendaring.Event.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -89,7 +89,7 @@ _EVENT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.calendaring.Event.recordTypeIds', index=7,
+      name='record_type_ids', full_name='dlkit.proto.calendaring.Event.record_type_ids', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -115,7 +115,7 @@ _EVENT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=283,
-  serialized_end=789,
+  serialized_end=794,
 )
 
 
@@ -138,8 +138,8 @@ _EVENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=791,
-  serialized_end=803,
+  serialized_start=796,
+  serialized_end=808,
 )
 
 
@@ -162,8 +162,8 @@ _EVENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=805,
-  serialized_end=826,
+  serialized_start=810,
+  serialized_end=831,
 )
 
 
@@ -186,8 +186,8 @@ _EVENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=828,
-  serialized_end=839,
+  serialized_start=833,
+  serialized_end=844,
 )
 
 
@@ -210,8 +210,8 @@ _EVENTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=841,
-  serialized_end=859,
+  serialized_start=846,
+  serialized_end=864,
 )
 
 
@@ -234,8 +234,8 @@ _EVENTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=861,
-  serialized_end=874,
+  serialized_start=866,
+  serialized_end=879,
 )
 
 
@@ -258,8 +258,8 @@ _EVENTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=876,
-  serialized_end=896,
+  serialized_start=881,
+  serialized_end=901,
 )
 
 
@@ -289,8 +289,8 @@ _EVENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=898,
-  serialized_end=957,
+  serialized_start=903,
+  serialized_end=962,
 )
 
 
@@ -327,8 +327,8 @@ _RECURRINGEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=959,
-  serialized_end=1078,
+  serialized_start=964,
+  serialized_end=1083,
 )
 
 
@@ -351,8 +351,8 @@ _RECURRINGEVENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1080,
-  serialized_end=1101,
+  serialized_start=1085,
+  serialized_end=1106,
 )
 
 
@@ -375,8 +375,8 @@ _RECURRINGEVENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1103,
-  serialized_end=1133,
+  serialized_start=1108,
+  serialized_end=1138,
 )
 
 
@@ -399,8 +399,8 @@ _RECURRINGEVENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1135,
-  serialized_end=1155,
+  serialized_start=1140,
+  serialized_end=1160,
 )
 
 
@@ -423,8 +423,8 @@ _RECURRINGEVENTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1157,
-  serialized_end=1184,
+  serialized_start=1162,
+  serialized_end=1189,
 )
 
 
@@ -447,8 +447,8 @@ _RECURRINGEVENTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1186,
-  serialized_end=1208,
+  serialized_start=1191,
+  serialized_end=1213,
 )
 
 
@@ -471,8 +471,8 @@ _RECURRINGEVENTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1210,
-  serialized_end=1239,
+  serialized_start=1215,
+  serialized_end=1244,
 )
 
 
@@ -502,8 +502,8 @@ _RECURRINGEVENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1241,
-  serialized_end=1328,
+  serialized_start=1246,
+  serialized_end=1333,
 )
 
 
@@ -561,8 +561,8 @@ _SUPERSEDINGEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1331,
-  serialized_end=1611,
+  serialized_start=1336,
+  serialized_end=1616,
 )
 
 
@@ -585,8 +585,8 @@ _SUPERSEDINGEVENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1613,
-  serialized_end=1636,
+  serialized_start=1618,
+  serialized_end=1641,
 )
 
 
@@ -609,8 +609,8 @@ _SUPERSEDINGEVENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1638,
-  serialized_end=1670,
+  serialized_start=1643,
+  serialized_end=1675,
 )
 
 
@@ -633,8 +633,8 @@ _SUPERSEDINGEVENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1672,
-  serialized_end=1694,
+  serialized_start=1677,
+  serialized_end=1699,
 )
 
 
@@ -657,8 +657,8 @@ _SUPERSEDINGEVENTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1696,
-  serialized_end=1725,
+  serialized_start=1701,
+  serialized_end=1730,
 )
 
 
@@ -681,8 +681,8 @@ _SUPERSEDINGEVENTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1727,
-  serialized_end=1751,
+  serialized_start=1732,
+  serialized_end=1756,
 )
 
 
@@ -705,8 +705,8 @@ _SUPERSEDINGEVENTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1753,
-  serialized_end=1784,
+  serialized_start=1758,
+  serialized_end=1789,
 )
 
 
@@ -736,8 +736,8 @@ _SUPERSEDINGEVENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1786,
-  serialized_end=1879,
+  serialized_start=1791,
+  serialized_end=1884,
 )
 
 
@@ -858,8 +858,8 @@ _OFFSETEVENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1882,
-  serialized_end=2637,
+  serialized_start=1887,
+  serialized_end=2642,
 )
 
 
@@ -882,8 +882,8 @@ _OFFSETEVENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2639,
-  serialized_end=2657,
+  serialized_start=2644,
+  serialized_end=2662,
 )
 
 
@@ -906,8 +906,8 @@ _OFFSETEVENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2659,
-  serialized_end=2686,
+  serialized_start=2664,
+  serialized_end=2691,
 )
 
 
@@ -930,8 +930,8 @@ _OFFSETEVENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2688,
-  serialized_end=2705,
+  serialized_start=2693,
+  serialized_end=2710,
 )
 
 
@@ -954,8 +954,8 @@ _OFFSETEVENTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2707,
-  serialized_end=2731,
+  serialized_start=2712,
+  serialized_end=2736,
 )
 
 
@@ -978,8 +978,8 @@ _OFFSETEVENTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2733,
-  serialized_end=2752,
+  serialized_start=2738,
+  serialized_end=2757,
 )
 
 
@@ -1002,8 +1002,8 @@ _OFFSETEVENTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2754,
-  serialized_end=2780,
+  serialized_start=2759,
+  serialized_end=2785,
 )
 
 
@@ -1033,8 +1033,8 @@ _OFFSETEVENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2782,
-  serialized_end=2860,
+  serialized_start=2787,
+  serialized_end=2865,
 )
 
 
@@ -1060,14 +1060,14 @@ _SCHEDULE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.calendaring.Schedule.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.calendaring.Schedule.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.calendaring.Schedule.genusTypeId', index=3,
+      name='genus_type_id', full_name='dlkit.proto.calendaring.Schedule.genus_type_id', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1102,7 +1102,7 @@ _SCHEDULE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.calendaring.Schedule.recordTypeIds', index=8,
+      name='record_type_ids', full_name='dlkit.proto.calendaring.Schedule.record_type_ids', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1148,8 +1148,8 @@ _SCHEDULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2863,
-  serialized_end=3551,
+  serialized_start=2868,
+  serialized_end=3561,
 )
 
 
@@ -1172,8 +1172,8 @@ _SCHEDULEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3553,
-  serialized_end=3568,
+  serialized_start=3563,
+  serialized_end=3578,
 )
 
 
@@ -1196,8 +1196,8 @@ _SCHEDULEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3570,
-  serialized_end=3594,
+  serialized_start=3580,
+  serialized_end=3604,
 )
 
 
@@ -1220,8 +1220,8 @@ _SCHEDULEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3596,
-  serialized_end=3610,
+  serialized_start=3606,
+  serialized_end=3620,
 )
 
 
@@ -1244,8 +1244,8 @@ _SCHEDULESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3612,
-  serialized_end=3633,
+  serialized_start=3622,
+  serialized_end=3643,
 )
 
 
@@ -1268,8 +1268,8 @@ _SCHEDULESEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3635,
-  serialized_end=3651,
+  serialized_start=3645,
+  serialized_end=3661,
 )
 
 
@@ -1292,8 +1292,8 @@ _SCHEDULESEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3653,
-  serialized_end=3676,
+  serialized_start=3663,
+  serialized_end=3686,
 )
 
 
@@ -1323,8 +1323,8 @@ _SCHEDULELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3678,
-  serialized_end=3746,
+  serialized_start=3688,
+  serialized_end=3756,
 )
 
 
@@ -1350,7 +1350,7 @@ _SCHEDULESLOT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.calendaring.ScheduleSlot.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.calendaring.ScheduleSlot.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1371,7 +1371,7 @@ _SCHEDULESLOT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.calendaring.ScheduleSlot.genusTypeId', index=5,
+      name='genus_type_id', full_name='dlkit.proto.calendaring.ScheduleSlot.genus_type_id', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1385,7 +1385,7 @@ _SCHEDULESLOT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.calendaring.ScheduleSlot.recordTypeIds', index=7,
+      name='record_type_ids', full_name='dlkit.proto.calendaring.ScheduleSlot.record_type_ids', index=7,
       number=8, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1431,8 +1431,8 @@ _SCHEDULESLOT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3749,
-  serialized_end=4403,
+  serialized_start=3759,
+  serialized_end=4418,
 )
 
 
@@ -1455,8 +1455,8 @@ _SCHEDULESLOTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4405,
-  serialized_end=4424,
+  serialized_start=4420,
+  serialized_end=4439,
 )
 
 
@@ -1479,8 +1479,8 @@ _SCHEDULESLOTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4426,
-  serialized_end=4454,
+  serialized_start=4441,
+  serialized_end=4469,
 )
 
 
@@ -1503,8 +1503,8 @@ _SCHEDULESLOTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4456,
-  serialized_end=4474,
+  serialized_start=4471,
+  serialized_end=4489,
 )
 
 
@@ -1527,8 +1527,8 @@ _SCHEDULESLOTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4476,
-  serialized_end=4501,
+  serialized_start=4491,
+  serialized_end=4516,
 )
 
 
@@ -1551,8 +1551,8 @@ _SCHEDULESLOTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4503,
-  serialized_end=4523,
+  serialized_start=4518,
+  serialized_end=4538,
 )
 
 
@@ -1575,8 +1575,8 @@ _SCHEDULESLOTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4525,
-  serialized_end=4552,
+  serialized_start=4540,
+  serialized_end=4567,
 )
 
 
@@ -1606,8 +1606,8 @@ _SCHEDULESLOTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4554,
-  serialized_end=4635,
+  serialized_start=4569,
+  serialized_end=4650,
 )
 
 
@@ -1633,7 +1633,7 @@ _TIMEPERIOD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.calendaring.TimePeriod.displayName', index=2,
+      name='display_name', full_name='dlkit.proto.calendaring.TimePeriod.display_name', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1647,7 +1647,7 @@ _TIMEPERIOD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.calendaring.TimePeriod.genusTypeId', index=4,
+      name='genus_type_id', full_name='dlkit.proto.calendaring.TimePeriod.genus_type_id', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -1661,7 +1661,7 @@ _TIMEPERIOD = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.calendaring.TimePeriod.recordTypeIds', index=6,
+      name='record_type_ids', full_name='dlkit.proto.calendaring.TimePeriod.record_type_ids', index=6,
       number=7, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -1686,8 +1686,8 @@ _TIMEPERIOD = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4638,
-  serialized_end=5095,
+  serialized_start=4653,
+  serialized_end=5115,
 )
 
 
@@ -1710,8 +1710,8 @@ _TIMEPERIODQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5097,
-  serialized_end=5114,
+  serialized_start=5117,
+  serialized_end=5134,
 )
 
 
@@ -1734,8 +1734,8 @@ _TIMEPERIODQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5116,
-  serialized_end=5142,
+  serialized_start=5136,
+  serialized_end=5162,
 )
 
 
@@ -1758,8 +1758,8 @@ _TIMEPERIODFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5144,
-  serialized_end=5160,
+  serialized_start=5164,
+  serialized_end=5180,
 )
 
 
@@ -1782,8 +1782,8 @@ _TIMEPERIODSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5162,
-  serialized_end=5185,
+  serialized_start=5182,
+  serialized_end=5205,
 )
 
 
@@ -1806,8 +1806,8 @@ _TIMEPERIODSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5187,
-  serialized_end=5205,
+  serialized_start=5207,
+  serialized_end=5225,
 )
 
 
@@ -1830,8 +1830,8 @@ _TIMEPERIODSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5207,
-  serialized_end=5232,
+  serialized_start=5227,
+  serialized_end=5252,
 )
 
 
@@ -1861,8 +1861,8 @@ _TIMEPERIODLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5234,
-  serialized_end=5309,
+  serialized_start=5254,
+  serialized_end=5329,
 )
 
 
@@ -1906,8 +1906,8 @@ _COMMITMENT = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5312,
-  serialized_end=5478,
+  serialized_start=5332,
+  serialized_end=5498,
 )
 
 
@@ -1930,8 +1930,8 @@ _COMMITMENTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5480,
-  serialized_end=5497,
+  serialized_start=5500,
+  serialized_end=5517,
 )
 
 
@@ -1954,8 +1954,8 @@ _COMMITMENTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5499,
-  serialized_end=5525,
+  serialized_start=5519,
+  serialized_end=5545,
 )
 
 
@@ -1978,8 +1978,8 @@ _COMMITMENTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5527,
-  serialized_end=5543,
+  serialized_start=5547,
+  serialized_end=5563,
 )
 
 
@@ -2002,8 +2002,8 @@ _COMMITMENTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5545,
-  serialized_end=5568,
+  serialized_start=5565,
+  serialized_end=5588,
 )
 
 
@@ -2026,8 +2026,8 @@ _COMMITMENTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5570,
-  serialized_end=5588,
+  serialized_start=5590,
+  serialized_end=5608,
 )
 
 
@@ -2050,8 +2050,8 @@ _COMMITMENTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5590,
-  serialized_end=5615,
+  serialized_start=5610,
+  serialized_end=5635,
 )
 
 
@@ -2081,8 +2081,8 @@ _COMMITMENTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5617,
-  serialized_end=5691,
+  serialized_start=5637,
+  serialized_end=5711,
 )
 
 
@@ -2101,14 +2101,14 @@ _CALENDAR = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.calendaring.Calendar.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.calendaring.Calendar.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.calendaring.Calendar.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.calendaring.Calendar.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -2122,7 +2122,7 @@ _CALENDAR = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.calendaring.Calendar.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.calendaring.Calendar.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -2140,8 +2140,8 @@ _CALENDAR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5694,
-  serialized_end=6016,
+  serialized_start=5714,
+  serialized_end=6041,
 )
 
 
@@ -2164,8 +2164,8 @@ _CALENDARQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6018,
-  serialized_end=6033,
+  serialized_start=6043,
+  serialized_end=6058,
 )
 
 
@@ -2188,8 +2188,8 @@ _CALENDARQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6035,
-  serialized_end=6059,
+  serialized_start=6060,
+  serialized_end=6084,
 )
 
 
@@ -2212,8 +2212,8 @@ _CALENDARFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6061,
-  serialized_end=6075,
+  serialized_start=6086,
+  serialized_end=6100,
 )
 
 
@@ -2236,8 +2236,8 @@ _CALENDARSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6077,
-  serialized_end=6098,
+  serialized_start=6102,
+  serialized_end=6123,
 )
 
 
@@ -2260,8 +2260,8 @@ _CALENDARSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6100,
-  serialized_end=6116,
+  serialized_start=6125,
+  serialized_end=6141,
 )
 
 
@@ -2284,8 +2284,8 @@ _CALENDARSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6118,
-  serialized_end=6141,
+  serialized_start=6143,
+  serialized_end=6166,
 )
 
 
@@ -2315,8 +2315,8 @@ _CALENDARLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6143,
-  serialized_end=6211,
+  serialized_start=6168,
+  serialized_end=6236,
 )
 
 
@@ -2339,8 +2339,8 @@ _CALENDARNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6213,
-  serialized_end=6227,
+  serialized_start=6238,
+  serialized_end=6252,
 )
 
 
@@ -2370,8 +2370,8 @@ _CALENDARNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6229,
-  serialized_end=6310,
+  serialized_start=6254,
+  serialized_end=6335,
 )
 
 
@@ -2394,8 +2394,8 @@ _MEETINGTIME = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6312,
-  serialized_end=6325,
+  serialized_start=6337,
+  serialized_end=6350,
 )
 
 
@@ -2425,8 +2425,8 @@ _MEETINGTIMELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6327,
-  serialized_end=6405,
+  serialized_start=6352,
+  serialized_end=6430,
 )
 
 
@@ -2456,8 +2456,8 @@ _TIMELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6407,
-  serialized_end=6479,
+  serialized_start=6432,
+  serialized_end=6504,
 )
 
 
@@ -2487,8 +2487,8 @@ _DATETIMELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6481,
-  serialized_end=6543,
+  serialized_start=6506,
+  serialized_end=6568,
 )
 
 
@@ -2518,8 +2518,8 @@ _DURATIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6545,
-  serialized_end=6629,
+  serialized_start=6570,
+  serialized_end=6654,
 )
 
 
@@ -2542,8 +2542,8 @@ _DATETIMEINTERVAL = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6631,
-  serialized_end=6649,
+  serialized_start=6656,
+  serialized_end=6674,
 )
 
 
@@ -2573,17 +2573,17 @@ _DATETIMEINTERVALLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6651,
-  serialized_end=6761,
+  serialized_start=6676,
+  serialized_end=6786,
 )
 
 _EVENT.fields_by_name['calendar'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _EVENT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_EVENT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_EVENT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_EVENT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_EVENT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _EVENT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _EVENT.fields_by_name['location'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_EVENT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_EVENT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _EVENT.fields_by_name['sponsors'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _EVENTLIST.fields_by_name['events'].message_type = _EVENT
 _RECURRINGEVENT.fields_by_name['calendar'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
@@ -2606,11 +2606,11 @@ _OFFSETEVENT.fields_by_name['start_reference_event'].message_type = dlkit_dot_pr
 _OFFSETEVENTLIST.fields_by_name['offset_events'].message_type = _OFFSETEVENT
 _SCHEDULE.fields_by_name['calendar'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _SCHEDULE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_SCHEDULE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_SCHEDULE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SCHEDULE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_SCHEDULE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SCHEDULE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _SCHEDULE.fields_by_name['location'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_SCHEDULE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SCHEDULE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SCHEDULE.fields_by_name['schedule_end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _SCHEDULE.fields_by_name['schedule_slot'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _SCHEDULE.fields_by_name['schedule_start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
@@ -2618,21 +2618,21 @@ _SCHEDULE.fields_by_name['time_period'].message_type = dlkit_dot_primordium_dot_
 _SCHEDULELIST.fields_by_name['schedules'].message_type = _SCHEDULE
 _SCHEDULESLOT.fields_by_name['calendar'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _SCHEDULESLOT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_SCHEDULESLOT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_SCHEDULESLOT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
 _SCHEDULESLOT.fields_by_name['duration'].message_type = dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2._DURATION
 _SCHEDULESLOT.fields_by_name['fixed_interval'].message_type = dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2._DURATION
-_SCHEDULESLOT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SCHEDULESLOT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SCHEDULESLOT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_SCHEDULESLOT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SCHEDULESLOT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SCHEDULESLOT.fields_by_name['weekday_time'].message_type = dlkit_dot_primordium_dot_calendaring_dot_primitives__pb2._TIME
 _SCHEDULESLOTLIST.fields_by_name['schedule_slots'].message_type = _SCHEDULESLOT
 _TIMEPERIOD.fields_by_name['calendar'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
 _TIMEPERIOD.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_TIMEPERIOD.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_TIMEPERIOD.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
 _TIMEPERIOD.fields_by_name['end'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_TIMEPERIOD.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_TIMEPERIOD.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _TIMEPERIOD.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_TIMEPERIOD.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_TIMEPERIOD.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _TIMEPERIOD.fields_by_name['start'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _TIMEPERIODLIST.fields_by_name['time_periods'].message_type = _TIMEPERIOD
 _COMMITMENT.fields_by_name['calendar'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
@@ -2640,10 +2640,10 @@ _COMMITMENT.fields_by_name['event'].message_type = dlkit_dot_primordium_dot_id_d
 _COMMITMENT.fields_by_name['resource'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _COMMITMENTLIST.fields_by_name['commitments'].message_type = _COMMITMENT
 _CALENDAR.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CALENDAR.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_CALENDAR.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CALENDAR.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_CALENDAR.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CALENDAR.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_CALENDAR.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_CALENDAR.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _CALENDARLIST.fields_by_name['calendars'].message_type = _CALENDAR
 _CALENDARNODELIST.fields_by_name['calendar_nodes'].message_type = _CALENDARNODE
 _MEETINGTIMELIST.fields_by_name['meeting_times'].message_type = _MEETINGTIME

@@ -24,7 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/ontology.proto',
   package='dlkit.proto.ontology',
   syntax='proto3',
-  serialized_pb=_b('\n\x1a\x64lkit/proto/ontology.proto\x12\x14\x64lkit.proto.ontology\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\"\xf2\x02\n\x07Subject\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x08ontology\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0e\n\x0cSubjectQuery\"\x17\n\x15SubjectQueryInspector\"\r\n\x0bSubjectForm\"\x14\n\x12SubjectSearchOrder\"\x0f\n\rSubjectSearch\"\x16\n\x14SubjectSearchResults\">\n\x0bSubjectList\x12/\n\x08subjects\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.ontology.Subject\"\r\n\x0bSubjectNode\"K\n\x0fSubjectNodeList\x12\x38\n\rsubject_nodes\x18\x01 \x03(\x0b\x32!.dlkit.proto.ontology.SubjectNode\"\xd6\x01\n\tRelevancy\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06mapped\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x08ontology\x18\x03 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x33\n\x07subject\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eRelevancyQuery\"\x19\n\x17RelevancyQueryInspector\"\x0f\n\rRelevancyForm\"\x16\n\x14RelevancySearchOrder\"\x11\n\x0fRelevancySearch\"\x18\n\x16RelevancySearchResults\"D\n\rRelevancyList\x12\x33\n\nrelevancys\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.ontology.Relevancy\"\xc2\x02\n\x08Ontology\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rOntologyQuery\"\x18\n\x16OntologyQueryInspector\"\x0e\n\x0cOntologyForm\"\x15\n\x13OntologySearchOrder\"\x10\n\x0eOntologySearch\"\x17\n\x15OntologySearchResults\"B\n\x0cOntologyList\x12\x32\n\nontologies\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.ontology.Ontology\"\x0e\n\x0cOntologyNode\"N\n\x10OntologyNodeList\x12:\n\x0eontology_nodes\x18\x01 \x03(\x0b\x32\".dlkit.proto.ontology.OntologyNode\"L\n\x1aGetSubjectHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cGetSubjectHierarchyIdRequest\"O\n\x18GetSubjectHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1c\n\x1aGetSubjectHierarchyRequest\"F\n\x1e\x43\x61nModifySubjectHierarchyReply\x12$\n\x1c\x63\x61n_modify_subject_hierarchy\x18\x01 \x01(\x08\"\"\n CanModifySubjectHierarchyRequest\"\x15\n\x13\x41\x64\x64RootSubjectReply\"O\n\x15\x41\x64\x64RootSubjectRequest\x12\x36\n\nsubject_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveRootSubjectReply\"R\n\x18RemoveRootSubjectRequest\x12\x36\n\nsubject_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14\x41\x64\x64\x43hildSubjectReply\"\x86\x01\n\x16\x41\x64\x64\x43hildSubjectRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nsubject_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17RemoveChildSubjectReply\"\x89\x01\n\x19RemoveChildSubjectRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nsubject_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveChildSubjectsReply\"T\n\x1aRemoveChildSubjectsRequest\x12\x36\n\nsubject_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xec\x07\n\x1dSubjectHierarchyDesignSession\x12\x7f\n\x15GetSubjectHierarchyId\x12\x32.dlkit.proto.ontology.GetSubjectHierarchyIdRequest\x1a\x30.dlkit.proto.ontology.GetSubjectHierarchyIdReply\"\x00\x12y\n\x13GetSubjectHierarchy\x12\x30.dlkit.proto.ontology.GetSubjectHierarchyRequest\x1a..dlkit.proto.ontology.GetSubjectHierarchyReply\"\x00\x12\x8b\x01\n\x19\x43\x61nModifySubjectHierarchy\x12\x36.dlkit.proto.ontology.CanModifySubjectHierarchyRequest\x1a\x34.dlkit.proto.ontology.CanModifySubjectHierarchyReply\"\x00\x12j\n\x0e\x41\x64\x64RootSubject\x12+.dlkit.proto.ontology.AddRootSubjectRequest\x1a).dlkit.proto.ontology.AddRootSubjectReply\"\x00\x12s\n\x11RemoveRootSubject\x12..dlkit.proto.ontology.RemoveRootSubjectRequest\x1a,.dlkit.proto.ontology.RemoveRootSubjectReply\"\x00\x12m\n\x0f\x41\x64\x64\x43hildSubject\x12,.dlkit.proto.ontology.AddChildSubjectRequest\x1a*.dlkit.proto.ontology.AddChildSubjectReply\"\x00\x12v\n\x12RemoveChildSubject\x12/.dlkit.proto.ontology.RemoveChildSubjectRequest\x1a-.dlkit.proto.ontology.RemoveChildSubjectReply\"\x00\x12y\n\x13RemoveChildSubjects\x12\x30.dlkit.proto.ontology.RemoveChildSubjectsRequest\x1a..dlkit.proto.ontology.RemoveChildSubjectsReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1a\x64lkit/proto/ontology.proto\x12\x14\x64lkit.proto.ontology\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\"\xf7\x02\n\x07Subject\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x08ontology\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0e\n\x0cSubjectQuery\"\x17\n\x15SubjectQueryInspector\"\r\n\x0bSubjectForm\"\x14\n\x12SubjectSearchOrder\"\x0f\n\rSubjectSearch\"\x16\n\x14SubjectSearchResults\">\n\x0bSubjectList\x12/\n\x08subjects\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.ontology.Subject\"\r\n\x0bSubjectNode\"K\n\x0fSubjectNodeList\x12\x38\n\rsubject_nodes\x18\x01 \x03(\x0b\x32!.dlkit.proto.ontology.SubjectNode\"\xd6\x01\n\tRelevancy\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06mapped\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x08ontology\x18\x03 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x33\n\x07subject\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x10\n\x0eRelevancyQuery\"\x19\n\x17RelevancyQueryInspector\"\x0f\n\rRelevancyForm\"\x16\n\x14RelevancySearchOrder\"\x11\n\x0fRelevancySearch\"\x18\n\x16RelevancySearchResults\"D\n\rRelevancyList\x12\x33\n\nrelevancys\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.ontology.Relevancy\"\xc7\x02\n\x08Ontology\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rOntologyQuery\"\x18\n\x16OntologyQueryInspector\"\x0e\n\x0cOntologyForm\"\x15\n\x13OntologySearchOrder\"\x10\n\x0eOntologySearch\"\x17\n\x15OntologySearchResults\"B\n\x0cOntologyList\x12\x32\n\nontologies\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.ontology.Ontology\"\x0e\n\x0cOntologyNode\"N\n\x10OntologyNodeList\x12:\n\x0eontology_nodes\x18\x01 \x03(\x0b\x32\".dlkit.proto.ontology.OntologyNode\"L\n\x1aGetSubjectHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cGetSubjectHierarchyIdRequest\"O\n\x18GetSubjectHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1c\n\x1aGetSubjectHierarchyRequest\"F\n\x1e\x43\x61nModifySubjectHierarchyReply\x12$\n\x1c\x63\x61n_modify_subject_hierarchy\x18\x01 \x01(\x08\"\"\n CanModifySubjectHierarchyRequest\"\x15\n\x13\x41\x64\x64RootSubjectReply\"O\n\x15\x41\x64\x64RootSubjectRequest\x12\x36\n\nsubject_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16RemoveRootSubjectReply\"R\n\x18RemoveRootSubjectRequest\x12\x36\n\nsubject_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14\x41\x64\x64\x43hildSubjectReply\"\x86\x01\n\x16\x41\x64\x64\x43hildSubjectRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nsubject_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17RemoveChildSubjectReply\"\x89\x01\n\x19RemoveChildSubjectRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nsubject_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveChildSubjectsReply\"T\n\x1aRemoveChildSubjectsRequest\x12\x36\n\nsubject_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xec\x07\n\x1dSubjectHierarchyDesignSession\x12\x7f\n\x15GetSubjectHierarchyId\x12\x32.dlkit.proto.ontology.GetSubjectHierarchyIdRequest\x1a\x30.dlkit.proto.ontology.GetSubjectHierarchyIdReply\"\x00\x12y\n\x13GetSubjectHierarchy\x12\x30.dlkit.proto.ontology.GetSubjectHierarchyRequest\x1a..dlkit.proto.ontology.GetSubjectHierarchyReply\"\x00\x12\x8b\x01\n\x19\x43\x61nModifySubjectHierarchy\x12\x36.dlkit.proto.ontology.CanModifySubjectHierarchyRequest\x1a\x34.dlkit.proto.ontology.CanModifySubjectHierarchyReply\"\x00\x12j\n\x0e\x41\x64\x64RootSubject\x12+.dlkit.proto.ontology.AddRootSubjectRequest\x1a).dlkit.proto.ontology.AddRootSubjectReply\"\x00\x12s\n\x11RemoveRootSubject\x12..dlkit.proto.ontology.RemoveRootSubjectRequest\x1a,.dlkit.proto.ontology.RemoveRootSubjectReply\"\x00\x12m\n\x0f\x41\x64\x64\x43hildSubject\x12,.dlkit.proto.ontology.AddChildSubjectRequest\x1a*.dlkit.proto.ontology.AddChildSubjectReply\"\x00\x12v\n\x12RemoveChildSubject\x12/.dlkit.proto.ontology.RemoveChildSubjectRequest\x1a-.dlkit.proto.ontology.RemoveChildSubjectReply\"\x00\x12y\n\x13RemoveChildSubjects\x12\x30.dlkit.proto.ontology.RemoveChildSubjectsRequest\x1a..dlkit.proto.ontology.RemoveChildSubjectsReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,])
 
@@ -46,14 +46,14 @@ _SUBJECT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.ontology.Subject.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.ontology.Subject.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.ontology.Subject.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.ontology.Subject.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -74,7 +74,7 @@ _SUBJECT = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.ontology.Subject.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.ontology.Subject.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -93,7 +93,7 @@ _SUBJECT = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=226,
-  serialized_end=596,
+  serialized_end=601,
 )
 
 
@@ -116,8 +116,8 @@ _SUBJECTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=598,
-  serialized_end=612,
+  serialized_start=603,
+  serialized_end=617,
 )
 
 
@@ -140,8 +140,8 @@ _SUBJECTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=614,
-  serialized_end=637,
+  serialized_start=619,
+  serialized_end=642,
 )
 
 
@@ -164,8 +164,8 @@ _SUBJECTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=639,
-  serialized_end=652,
+  serialized_start=644,
+  serialized_end=657,
 )
 
 
@@ -188,8 +188,8 @@ _SUBJECTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=654,
-  serialized_end=674,
+  serialized_start=659,
+  serialized_end=679,
 )
 
 
@@ -212,8 +212,8 @@ _SUBJECTSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=676,
-  serialized_end=691,
+  serialized_start=681,
+  serialized_end=696,
 )
 
 
@@ -236,8 +236,8 @@ _SUBJECTSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=693,
-  serialized_end=715,
+  serialized_start=698,
+  serialized_end=720,
 )
 
 
@@ -267,8 +267,8 @@ _SUBJECTLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=717,
-  serialized_end=779,
+  serialized_start=722,
+  serialized_end=784,
 )
 
 
@@ -291,8 +291,8 @@ _SUBJECTNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=781,
-  serialized_end=794,
+  serialized_start=786,
+  serialized_end=799,
 )
 
 
@@ -322,8 +322,8 @@ _SUBJECTNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=796,
-  serialized_end=871,
+  serialized_start=801,
+  serialized_end=876,
 )
 
 
@@ -374,8 +374,8 @@ _RELEVANCY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=874,
-  serialized_end=1088,
+  serialized_start=879,
+  serialized_end=1093,
 )
 
 
@@ -398,8 +398,8 @@ _RELEVANCYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1090,
-  serialized_end=1106,
+  serialized_start=1095,
+  serialized_end=1111,
 )
 
 
@@ -422,8 +422,8 @@ _RELEVANCYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1108,
-  serialized_end=1133,
+  serialized_start=1113,
+  serialized_end=1138,
 )
 
 
@@ -446,8 +446,8 @@ _RELEVANCYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1135,
-  serialized_end=1150,
+  serialized_start=1140,
+  serialized_end=1155,
 )
 
 
@@ -470,8 +470,8 @@ _RELEVANCYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1152,
-  serialized_end=1174,
+  serialized_start=1157,
+  serialized_end=1179,
 )
 
 
@@ -494,8 +494,8 @@ _RELEVANCYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1176,
-  serialized_end=1193,
+  serialized_start=1181,
+  serialized_end=1198,
 )
 
 
@@ -518,8 +518,8 @@ _RELEVANCYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1195,
-  serialized_end=1219,
+  serialized_start=1200,
+  serialized_end=1224,
 )
 
 
@@ -549,8 +549,8 @@ _RELEVANCYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1221,
-  serialized_end=1289,
+  serialized_start=1226,
+  serialized_end=1294,
 )
 
 
@@ -569,14 +569,14 @@ _ONTOLOGY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.ontology.Ontology.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.ontology.Ontology.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.ontology.Ontology.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.ontology.Ontology.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -590,7 +590,7 @@ _ONTOLOGY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.ontology.Ontology.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.ontology.Ontology.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -608,8 +608,8 @@ _ONTOLOGY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1292,
-  serialized_end=1614,
+  serialized_start=1297,
+  serialized_end=1624,
 )
 
 
@@ -632,8 +632,8 @@ _ONTOLOGYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1616,
-  serialized_end=1631,
+  serialized_start=1626,
+  serialized_end=1641,
 )
 
 
@@ -656,8 +656,8 @@ _ONTOLOGYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1633,
-  serialized_end=1657,
+  serialized_start=1643,
+  serialized_end=1667,
 )
 
 
@@ -680,8 +680,8 @@ _ONTOLOGYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1659,
-  serialized_end=1673,
+  serialized_start=1669,
+  serialized_end=1683,
 )
 
 
@@ -704,8 +704,8 @@ _ONTOLOGYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1675,
-  serialized_end=1696,
+  serialized_start=1685,
+  serialized_end=1706,
 )
 
 
@@ -728,8 +728,8 @@ _ONTOLOGYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1698,
-  serialized_end=1714,
+  serialized_start=1708,
+  serialized_end=1724,
 )
 
 
@@ -752,8 +752,8 @@ _ONTOLOGYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1716,
-  serialized_end=1739,
+  serialized_start=1726,
+  serialized_end=1749,
 )
 
 
@@ -783,8 +783,8 @@ _ONTOLOGYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1741,
-  serialized_end=1807,
+  serialized_start=1751,
+  serialized_end=1817,
 )
 
 
@@ -807,8 +807,8 @@ _ONTOLOGYNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1809,
-  serialized_end=1823,
+  serialized_start=1819,
+  serialized_end=1833,
 )
 
 
@@ -838,8 +838,8 @@ _ONTOLOGYNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1825,
-  serialized_end=1903,
+  serialized_start=1835,
+  serialized_end=1913,
 )
 
 
@@ -869,8 +869,8 @@ _GETSUBJECTHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1905,
-  serialized_end=1981,
+  serialized_start=1915,
+  serialized_end=1991,
 )
 
 
@@ -893,8 +893,8 @@ _GETSUBJECTHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1983,
-  serialized_end=2013,
+  serialized_start=1993,
+  serialized_end=2023,
 )
 
 
@@ -924,8 +924,8 @@ _GETSUBJECTHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2015,
-  serialized_end=2094,
+  serialized_start=2025,
+  serialized_end=2104,
 )
 
 
@@ -948,8 +948,8 @@ _GETSUBJECTHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2096,
-  serialized_end=2124,
+  serialized_start=2106,
+  serialized_end=2134,
 )
 
 
@@ -979,8 +979,8 @@ _CANMODIFYSUBJECTHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2126,
-  serialized_end=2196,
+  serialized_start=2136,
+  serialized_end=2206,
 )
 
 
@@ -1003,8 +1003,8 @@ _CANMODIFYSUBJECTHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2198,
-  serialized_end=2232,
+  serialized_start=2208,
+  serialized_end=2242,
 )
 
 
@@ -1027,8 +1027,8 @@ _ADDROOTSUBJECTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2234,
-  serialized_end=2255,
+  serialized_start=2244,
+  serialized_end=2265,
 )
 
 
@@ -1058,8 +1058,8 @@ _ADDROOTSUBJECTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2257,
-  serialized_end=2336,
+  serialized_start=2267,
+  serialized_end=2346,
 )
 
 
@@ -1082,8 +1082,8 @@ _REMOVEROOTSUBJECTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2338,
-  serialized_end=2362,
+  serialized_start=2348,
+  serialized_end=2372,
 )
 
 
@@ -1113,8 +1113,8 @@ _REMOVEROOTSUBJECTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2364,
-  serialized_end=2446,
+  serialized_start=2374,
+  serialized_end=2456,
 )
 
 
@@ -1137,8 +1137,8 @@ _ADDCHILDSUBJECTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2448,
-  serialized_end=2470,
+  serialized_start=2458,
+  serialized_end=2480,
 )
 
 
@@ -1175,8 +1175,8 @@ _ADDCHILDSUBJECTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2473,
-  serialized_end=2607,
+  serialized_start=2483,
+  serialized_end=2617,
 )
 
 
@@ -1199,8 +1199,8 @@ _REMOVECHILDSUBJECTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2609,
-  serialized_end=2634,
+  serialized_start=2619,
+  serialized_end=2644,
 )
 
 
@@ -1237,8 +1237,8 @@ _REMOVECHILDSUBJECTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2637,
-  serialized_end=2774,
+  serialized_start=2647,
+  serialized_end=2784,
 )
 
 
@@ -1261,8 +1261,8 @@ _REMOVECHILDSUBJECTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2776,
-  serialized_end=2802,
+  serialized_start=2786,
+  serialized_end=2812,
 )
 
 
@@ -1292,16 +1292,16 @@ _REMOVECHILDSUBJECTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2804,
-  serialized_end=2888,
+  serialized_start=2814,
+  serialized_end=2898,
 )
 
 _SUBJECT.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_SUBJECT.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_SUBJECT.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SUBJECT.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_SUBJECT.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SUBJECT.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _SUBJECT.fields_by_name['ontology'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
-_SUBJECT.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_SUBJECT.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _SUBJECTLIST.fields_by_name['subjects'].message_type = _SUBJECT
 _SUBJECTNODELIST.fields_by_name['subject_nodes'].message_type = _SUBJECTNODE
 _RELEVANCY.fields_by_name['id_'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -1310,10 +1310,10 @@ _RELEVANCY.fields_by_name['ontology'].message_type = dlkit_dot_proto_dot_osid__p
 _RELEVANCY.fields_by_name['subject'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _RELEVANCYLIST.fields_by_name['relevancys'].message_type = _RELEVANCY
 _ONTOLOGY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ONTOLOGY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ONTOLOGY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ONTOLOGY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ONTOLOGY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ONTOLOGY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_ONTOLOGY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ONTOLOGY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ONTOLOGYLIST.fields_by_name['ontologies'].message_type = _ONTOLOGY
 _ONTOLOGYNODELIST.fields_by_name['ontology_nodes'].message_type = _ONTOLOGYNODE
 _GETSUBJECTHIERARCHYIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -1687,8 +1687,8 @@ _SUBJECTHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=2891,
-  serialized_end=3895,
+  serialized_start=2901,
+  serialized_end=3905,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetSubjectHierarchyId',

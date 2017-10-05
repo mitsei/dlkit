@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/mapping.proto',
   package='dlkit.proto.mapping',
   syntax='proto3',
-  serialized_pb=_b('\n\x19\x64lkit/proto/mapping.proto\x12\x13\x64lkit.proto.mapping\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a\x34\x64lkit/primordium/mapping/coordinate_primitives.proto\x1a,dlkit/primordium/mapping/spatial_units.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\"\xb9\x03\n\x08Location\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12*\n\x03map\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12I\n\x0cspatial_unit\x18\x07 \x01(\x0b\x32\x33.dlkit.primordium.mapping.spatial_units.SpatialUnit\"\x0f\n\rLocationQuery\"\x18\n\x16LocationQueryInspector\"\x0e\n\x0cLocationForm\"\x15\n\x13LocationSearchOrder\"\x10\n\x0eLocationSearch\"\x17\n\x15LocationSearchResults\"@\n\x0cLocationList\x12\x30\n\tlocations\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.mapping.Location\"\x0e\n\x0cLocationNode\"M\n\x10LocationNodeList\x12\x39\n\x0elocation_nodes\x18\x01 \x03(\x0b\x32!.dlkit.proto.mapping.LocationNode\"\xbd\x02\n\x03Map\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\n\n\x08MapQuery\"\x13\n\x11MapQueryInspector\"\t\n\x07MapForm\"\x10\n\x0eMapSearchOrder\"\x0b\n\tMapSearch\"\x12\n\x10MapSearchResults\"1\n\x07MapList\x12&\n\x04maps\x18\x01 \x03(\x0b\x32\x18.dlkit.proto.mapping.Map\"\t\n\x07MapNode\">\n\x0bMapNodeList\x12/\n\tmap_nodes\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.mapping.MapNode\"\x12\n\x10ResourceLocation\"Y\n\x14ResourceLocationList\x12\x41\n\x12resource_locations\x18\x01 \x03(\x0b\x32%.dlkit.proto.mapping.ResourceLocation\"a\n\x0e\x43oordinateList\x12O\n\x0b\x63oordinates\x18\x01 \x03(\x0b\x32:.dlkit.primordium.mapping.coordinate_primitives.Coordinate\"]\n\x0fSpatialUnitList\x12J\n\rspatial_units\x18\x01 \x03(\x0b\x32\x33.dlkit.primordium.mapping.spatial_units.SpatialUnitb\x06proto3')
+  serialized_pb=_b('\n\x19\x64lkit/proto/mapping.proto\x12\x13\x64lkit.proto.mapping\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a\x34\x64lkit/primordium/mapping/coordinate_primitives.proto\x1a,dlkit/primordium/mapping/spatial_units.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x16\x64lkit/proto/osid.proto\"\xbe\x03\n\x08Location\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12*\n\x03map\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12I\n\x0cspatial_unit\x18\x07 \x01(\x0b\x32\x33.dlkit.primordium.mapping.spatial_units.SpatialUnit\"\x0f\n\rLocationQuery\"\x18\n\x16LocationQueryInspector\"\x0e\n\x0cLocationForm\"\x15\n\x13LocationSearchOrder\"\x10\n\x0eLocationSearch\"\x17\n\x15LocationSearchResults\"@\n\x0cLocationList\x12\x30\n\tlocations\x18\x01 \x03(\x0b\x32\x1d.dlkit.proto.mapping.Location\"\x0e\n\x0cLocationNode\"M\n\x10LocationNodeList\x12\x39\n\x0elocation_nodes\x18\x01 \x03(\x0b\x32!.dlkit.proto.mapping.LocationNode\"\xc2\x02\n\x03Map\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\n\n\x08MapQuery\"\x13\n\x11MapQueryInspector\"\t\n\x07MapForm\"\x10\n\x0eMapSearchOrder\"\x0b\n\tMapSearch\"\x12\n\x10MapSearchResults\"1\n\x07MapList\x12&\n\x04maps\x18\x01 \x03(\x0b\x32\x18.dlkit.proto.mapping.Map\"\t\n\x07MapNode\">\n\x0bMapNodeList\x12/\n\tmap_nodes\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.mapping.MapNode\"\x12\n\x10ResourceLocation\"Y\n\x14ResourceLocationList\x12\x41\n\x12resource_locations\x18\x01 \x03(\x0b\x32%.dlkit.proto.mapping.ResourceLocation\"a\n\x0e\x43oordinateList\x12O\n\x0b\x63oordinates\x18\x01 \x03(\x0b\x32:.dlkit.primordium.mapping.coordinate_primitives.Coordinate\"]\n\x0fSpatialUnitList\x12J\n\rspatial_units\x18\x01 \x03(\x0b\x32\x33.dlkit.primordium.mapping.spatial_units.SpatialUnitb\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_mapping_dot_coordinate__primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_mapping_dot_spatial__units__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,])
 
@@ -47,14 +47,14 @@ _LOCATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.mapping.Location.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.mapping.Location.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.mapping.Location.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.mapping.Location.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -75,7 +75,7 @@ _LOCATION = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.mapping.Location.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.mapping.Location.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -101,7 +101,7 @@ _LOCATION = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=295,
-  serialized_end=736,
+  serialized_end=741,
 )
 
 
@@ -124,8 +124,8 @@ _LOCATIONQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=738,
-  serialized_end=753,
+  serialized_start=743,
+  serialized_end=758,
 )
 
 
@@ -148,8 +148,8 @@ _LOCATIONQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=755,
-  serialized_end=779,
+  serialized_start=760,
+  serialized_end=784,
 )
 
 
@@ -172,8 +172,8 @@ _LOCATIONFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=781,
-  serialized_end=795,
+  serialized_start=786,
+  serialized_end=800,
 )
 
 
@@ -196,8 +196,8 @@ _LOCATIONSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=797,
-  serialized_end=818,
+  serialized_start=802,
+  serialized_end=823,
 )
 
 
@@ -220,8 +220,8 @@ _LOCATIONSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=820,
-  serialized_end=836,
+  serialized_start=825,
+  serialized_end=841,
 )
 
 
@@ -244,8 +244,8 @@ _LOCATIONSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=838,
-  serialized_end=861,
+  serialized_start=843,
+  serialized_end=866,
 )
 
 
@@ -275,8 +275,8 @@ _LOCATIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=863,
-  serialized_end=927,
+  serialized_start=868,
+  serialized_end=932,
 )
 
 
@@ -299,8 +299,8 @@ _LOCATIONNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=929,
-  serialized_end=943,
+  serialized_start=934,
+  serialized_end=948,
 )
 
 
@@ -330,8 +330,8 @@ _LOCATIONNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=945,
-  serialized_end=1022,
+  serialized_start=950,
+  serialized_end=1027,
 )
 
 
@@ -350,14 +350,14 @@ _MAP = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.mapping.Map.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.mapping.Map.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.mapping.Map.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.mapping.Map.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -371,7 +371,7 @@ _MAP = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.mapping.Map.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.mapping.Map.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -389,8 +389,8 @@ _MAP = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1025,
-  serialized_end=1342,
+  serialized_start=1030,
+  serialized_end=1352,
 )
 
 
@@ -413,8 +413,8 @@ _MAPQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1344,
-  serialized_end=1354,
+  serialized_start=1354,
+  serialized_end=1364,
 )
 
 
@@ -437,8 +437,8 @@ _MAPQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1356,
-  serialized_end=1375,
+  serialized_start=1366,
+  serialized_end=1385,
 )
 
 
@@ -461,8 +461,8 @@ _MAPFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1377,
-  serialized_end=1386,
+  serialized_start=1387,
+  serialized_end=1396,
 )
 
 
@@ -485,8 +485,8 @@ _MAPSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1388,
-  serialized_end=1404,
+  serialized_start=1398,
+  serialized_end=1414,
 )
 
 
@@ -509,8 +509,8 @@ _MAPSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1406,
-  serialized_end=1417,
+  serialized_start=1416,
+  serialized_end=1427,
 )
 
 
@@ -533,8 +533,8 @@ _MAPSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1419,
-  serialized_end=1437,
+  serialized_start=1429,
+  serialized_end=1447,
 )
 
 
@@ -564,8 +564,8 @@ _MAPLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1439,
-  serialized_end=1488,
+  serialized_start=1449,
+  serialized_end=1498,
 )
 
 
@@ -588,8 +588,8 @@ _MAPNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1490,
-  serialized_end=1499,
+  serialized_start=1500,
+  serialized_end=1509,
 )
 
 
@@ -619,8 +619,8 @@ _MAPNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1501,
-  serialized_end=1563,
+  serialized_start=1511,
+  serialized_end=1573,
 )
 
 
@@ -643,8 +643,8 @@ _RESOURCELOCATION = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1565,
-  serialized_end=1583,
+  serialized_start=1575,
+  serialized_end=1593,
 )
 
 
@@ -674,8 +674,8 @@ _RESOURCELOCATIONLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1585,
-  serialized_end=1674,
+  serialized_start=1595,
+  serialized_end=1684,
 )
 
 
@@ -705,8 +705,8 @@ _COORDINATELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1676,
-  serialized_end=1773,
+  serialized_start=1686,
+  serialized_end=1783,
 )
 
 
@@ -736,24 +736,24 @@ _SPATIALUNITLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1775,
-  serialized_end=1868,
+  serialized_start=1785,
+  serialized_end=1878,
 )
 
 _LOCATION.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_LOCATION.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_LOCATION.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_LOCATION.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_LOCATION.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _LOCATION.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _LOCATION.fields_by_name['map'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
-_LOCATION.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_LOCATION.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _LOCATION.fields_by_name['spatial_unit'].message_type = dlkit_dot_primordium_dot_mapping_dot_spatial__units__pb2._SPATIALUNIT
 _LOCATIONLIST.fields_by_name['locations'].message_type = _LOCATION
 _LOCATIONNODELIST.fields_by_name['location_nodes'].message_type = _LOCATIONNODE
 _MAP.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_MAP.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_MAP.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_MAP.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_MAP.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _MAP.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_MAP.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_MAP.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _MAPLIST.fields_by_name['maps'].message_type = _MAP
 _MAPNODELIST.fields_by_name['map_nodes'].message_type = _MAPNODE
 _RESOURCELOCATIONLIST.fields_by_name['resource_locations'].message_type = _RESOURCELOCATION

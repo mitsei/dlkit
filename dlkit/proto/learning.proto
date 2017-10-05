@@ -15,12 +15,12 @@ message Objective {
   dlkit.primordium.id.primitives.Id assessment = 1;
   dlkit.primordium.id.primitives.Id cognitive_process = 2;
   dlkit.primordium.locale.primitives.DisplayText description = 3;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 4;
-  dlkit.primordium.type.primitives.Type genusTypeId = 5;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 4;
+  dlkit.primordium.type.primitives.Type genus_type_id = 5;
   dlkit.primordium.id.primitives.Id id = 6;
   dlkit.primordium.id.primitives.Id knowledge_category = 7;
   dlkit.proto.osid.OsidCatalog objective_bank = 8;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 9;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 9;
 }
 
 message ObjectiveQuery {
@@ -64,12 +64,12 @@ message Activity {
   repeated dlkit.primordium.id.primitives.Id assets = 2;
   repeated dlkit.primordium.id.primitives.Id courses = 3;
   dlkit.primordium.locale.primitives.DisplayText description = 4;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 5;
-  dlkit.primordium.type.primitives.Type genusTypeId = 6;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 5;
+  dlkit.primordium.type.primitives.Type genus_type_id = 6;
   dlkit.primordium.id.primitives.Id id = 7;
   dlkit.primordium.id.primitives.Id objective = 8;
   dlkit.proto.osid.OsidCatalog objective_bank = 9;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 10;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 10;
 }
 
 message ActivityQuery {
@@ -138,10 +138,10 @@ message ProficiencyList {
 
 message ObjectiveBank {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message ObjectiveBankQuery {

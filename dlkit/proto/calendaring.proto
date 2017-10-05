@@ -14,12 +14,12 @@ import "google/protobuf/timestamp.proto";
 message Event {
   dlkit.proto.osid.OsidCatalog calendar = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
-  dlkit.primordium.type.primitives.Type genusTypeId = 4;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
+  dlkit.primordium.type.primitives.Type genus_type_id = 4;
   dlkit.primordium.id.primitives.Id id = 5;
   dlkit.primordium.id.primitives.Id location = 6;
   string location_description = 7;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 8;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 8;
   repeated dlkit.primordium.id.primitives.Id sponsors = 9;
 }
 
@@ -168,13 +168,13 @@ message OffsetEventList {
 message Schedule {
   dlkit.proto.osid.OsidCatalog calendar = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
-  dlkit.primordium.type.primitives.Type genusTypeId = 4;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
+  dlkit.primordium.type.primitives.Type genus_type_id = 4;
   dlkit.primordium.id.primitives.Id id = 5;
   repeated sint32 limit = 6;
   dlkit.primordium.id.primitives.Id location = 7;
   string location_description = 8;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 9;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 9;
   google.protobuf.Timestamp schedule_end = 10;
   dlkit.primordium.id.primitives.Id schedule_slot = 11;
   google.protobuf.Timestamp schedule_start = 12;
@@ -212,12 +212,12 @@ message ScheduleList {
 message ScheduleSlot {
   dlkit.proto.osid.OsidCatalog calendar = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
   dlkit.primordium.calendaring.primitives.Duration duration = 4;
   dlkit.primordium.calendaring.primitives.Duration fixed_interval = 5;
-  dlkit.primordium.type.primitives.Type genusTypeId = 6;
+  dlkit.primordium.type.primitives.Type genus_type_id = 6;
   dlkit.primordium.id.primitives.Id id = 7;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 8;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 8;
   sint32 week_of_month = 9;
   dlkit.primordium.calendaring.primitives.Time weekday_time = 10;
   repeated sint32 weekdays = 11;
@@ -255,11 +255,11 @@ message ScheduleSlotList {
 message TimePeriod {
   dlkit.proto.osid.OsidCatalog calendar = 1;
   dlkit.primordium.locale.primitives.DisplayText description = 2;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 3;
   google.protobuf.Timestamp end = 4;
-  dlkit.primordium.type.primitives.Type genusTypeId = 5;
+  dlkit.primordium.type.primitives.Type genus_type_id = 5;
   dlkit.primordium.id.primitives.Id id = 6;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 7;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 7;
   google.protobuf.Timestamp start = 8;
 }
 
@@ -327,10 +327,10 @@ message CommitmentList {
 
 message Calendar {
   dlkit.primordium.locale.primitives.DisplayText description = 1;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 2;
-  dlkit.primordium.type.primitives.Type genusTypeId = 3;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 2;
+  dlkit.primordium.type.primitives.Type genus_type_id = 3;
   dlkit.primordium.id.primitives.Id id = 4;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 5;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 5;
 }
 
 message CalendarQuery {

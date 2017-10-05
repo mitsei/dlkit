@@ -17,10 +17,10 @@ message AssessmentPart {
   dlkit.primordium.id.primitives.Id assessment_part = 3;
   dlkit.proto.osid.OsidCatalog bank = 4;
   dlkit.primordium.locale.primitives.DisplayText description = 5;
-  dlkit.primordium.locale.primitives.DisplayText displayName = 6;
-  dlkit.primordium.type.primitives.Type genusTypeId = 7;
+  dlkit.primordium.locale.primitives.DisplayText display_name = 6;
+  dlkit.primordium.type.primitives.Type genus_type_id = 7;
   dlkit.primordium.id.primitives.Id id = 8;
-  repeated dlkit.primordium.type.primitives.Type recordTypeIds = 9;
+  repeated dlkit.primordium.type.primitives.Type record_type_ids = 9;
   sint32 weight = 10;
 }
 

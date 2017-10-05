@@ -23,7 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/osid.proto',
   package='dlkit.proto.osid',
   syntax='proto3',
-  serialized_pb=_b('\n\x16\x64lkit/proto/osid.proto\x12\x10\x64lkit.proto.osid\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0f\n\rOsidCondition\"\x0b\n\tOsidInput\"\x0c\n\nOsidResult\"\x0c\n\nOsidObject\"\xfd\x02\n\x10OsidRelationship\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\xf8\x02\n\x0bOsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\xa7\x03\n\x08OsidRule\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x04rule\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x9c\x02\n\x0bOsidEnabler\x12\x38\n\x0c\x63yclic_event\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0b\x64\x65mographic\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\x05\x65vent\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x34\n\x08schedule\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x0fOsidConstrainer\x12\x31\n\nno_catalog\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"B\n\rOsidProcessor\x12\x31\n\nno_catalog\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\xfb\x02\n\x0eOsidGovernator\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x85\x04\n\x0eOsidCompendium\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12,\n\x08\x65nd_date\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0c\x65xtrapolated\x18\x04 \x01(\x08\x12;\n\x0bgenusTypeId\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x14\n\x0cinterpolated\x18\x07 \x01(\x08\x12\x31\n\nno_catalog\x18\x08 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\nstart_date\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\r\n\x0bOsidCapsule\"\x0b\n\tOsidQuery\"\x17\n\x15OsidIdentifiableQuery\"\x15\n\x13OsidExtensibleQuery\"\x14\n\x12OsidBrowsableQuery\"\x13\n\x11OsidTemporalQuery\"\x18\n\x16OsidSubjugateableQuery\"\x18\n\x16OsidAggregateableQuery\"\x16\n\x14OsidContainableQuery\"\x15\n\x13OsidSourceableQuery\"\x17\n\x15OsidFederateableQuery\"\x13\n\x11OsidOperableQuery\"\x11\n\x0fOsidObjectQuery\"\x17\n\x15OsidRelationshipQuery\"\x12\n\x10OsidCatalogQuery\"\x0f\n\rOsidRuleQuery\"\x12\n\x10OsidEnablerQuery\"\x16\n\x14OsidConstrainerQuery\"\x14\n\x12OsidProcessorQuery\"\x15\n\x13OsidGovernatorQuery\"\x15\n\x13OsidCompendiumQuery\"\x12\n\x10OsidCapsuleQuery\"\x14\n\x12OsidQueryInspector\" \n\x1eOsidIdentifiableQueryInspector\"\x1e\n\x1cOsidExtensibleQueryInspector\"\x1d\n\x1bOsidBrowsableQueryInspector\"\x1c\n\x1aOsidTemporalQueryInspector\"!\n\x1fOsidSubjugateableQueryInspector\"!\n\x1fOsidAggregateableQueryInspector\"\x1f\n\x1dOsidContainableQueryInspector\"\x1e\n\x1cOsidSourceableQueryInspector\" \n\x1eOsidFederateableQueryInspector\"\x1c\n\x1aOsidOperableQueryInspector\"\x1a\n\x18OsidObjectQueryInspector\" \n\x1eOsidRelationshipQueryInspector\"\x1b\n\x19OsidCatalogQueryInspector\"\x18\n\x16OsidRuleQueryInspector\"\x1b\n\x19OsidEnablerQueryInspector\"\x1f\n\x1dOsidConstrainerQueryInspector\"\x1d\n\x1bOsidProcessorQueryInspector\"\x1e\n\x1cOsidGovernatorQueryInspector\"\x1e\n\x1cOsidCompendiumQueryInspector\"\x1b\n\x19OsidCapsuleQueryInspector\"\n\n\x08OsidForm\"\x16\n\x14OsidIdentifiableForm\"\x14\n\x12OsidExtensibleForm\"\x13\n\x11OsidBrowsableForm\"\x12\n\x10OsidTemporalForm\"\x17\n\x15OsidSubjugateableForm\"\x17\n\x15OsidAggregateableForm\"\x15\n\x13OsidContainableForm\"\x14\n\x12OsidSourceableForm\"\x16\n\x14OsidFederateableForm\"\x12\n\x10OsidOperableForm\"\x10\n\x0eOsidObjectForm\"\x16\n\x14OsidRelationshipForm\"\x11\n\x0fOsidCatalogForm\"\x0e\n\x0cOsidRuleForm\"\x11\n\x0fOsidEnablerForm\"\x15\n\x13OsidConstrainerForm\"\x13\n\x11OsidProcessorForm\"\x14\n\x12OsidGovernatorForm\"\x14\n\x12OsidCompendiumForm\"\x11\n\x0fOsidCapsuleForm\"\x11\n\x0fOsidSearchOrder\"\x1d\n\x1bOsidIdentifiableSearchOrder\"\x1b\n\x19OsidExtensibleSearchOrder\"\x1a\n\x18OsidBrowsableSearchOrder\"\x19\n\x17OsidTemporalSearchOrder\"\x1e\n\x1cOsidSubjugateableSearchOrder\"\x1e\n\x1cOsidAggregateableSearchOrder\"\x1c\n\x1aOsidContainableSearchOrder\"\x1b\n\x19OsidSourceableSearchOrder\"\x1d\n\x1bOsidFederateableSearchOrder\"\x19\n\x17OsidOperableSearchOrder\"\x17\n\x15OsidObjectSearchOrder\"\x1d\n\x1bOsidRelationshipSearchOrder\"\x18\n\x16OsidCatalogSearchOrder\"\x15\n\x13OsidRuleSearchOrder\"\x18\n\x16OsidEnablerSearchOrder\"\x1c\n\x1aOsidConstrainerSearchOrder\"\x1a\n\x18OsidProcessorSearchOrder\"\x1b\n\x19OsidGovernatorSearchOrder\"\x1b\n\x19OsidCompendiumSearchOrder\"\x18\n\x16OsidCapsuleSearchOrder\"\x0c\n\nOsidSearch\"\x13\n\x11OsidSearchResults\"1\n\x08OsidList\x12%\n\x05osids\x18\x01 \x03(\x0b\x32\x16.dlkit.proto.osid.Osid\"\x06\n\x04Osid\"\n\n\x08OsidNodeb\x06proto3')
+  serialized_pb=_b('\n\x16\x64lkit/proto/osid.proto\x12\x10\x64lkit.proto.osid\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\x0f\n\rOsidCondition\"\x0b\n\tOsidInput\"\x0c\n\nOsidResult\"\x0c\n\nOsidObject\"\x82\x03\n\x10OsidRelationship\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\xfd\x02\n\x0bOsidCatalog\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\xac\x03\n\x08OsidRule\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x30\n\x04rule\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x9c\x02\n\x0bOsidEnabler\x12\x38\n\x0c\x63yclic_event\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0b\x64\x65mographic\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\x05\x65vent\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x34\n\x08schedule\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x0fOsidConstrainer\x12\x31\n\nno_catalog\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"B\n\rOsidProcessor\x12\x31\n\nno_catalog\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\"\x80\x03\n\x0eOsidGovernator\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x31\n\nno_catalog\x18\x05 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\x06 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x8a\x04\n\x0eOsidCompendium\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12,\n\x08\x65nd_date\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x14\n\x0c\x65xtrapolated\x18\x04 \x01(\x08\x12=\n\rgenus_type_id\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x14\n\x0cinterpolated\x18\x07 \x01(\x08\x12\x31\n\nno_catalog\x18\x08 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\nstart_date\x18\n \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\r\n\x0bOsidCapsule\"\x0b\n\tOsidQuery\"\x17\n\x15OsidIdentifiableQuery\"\x15\n\x13OsidExtensibleQuery\"\x14\n\x12OsidBrowsableQuery\"\x13\n\x11OsidTemporalQuery\"\x18\n\x16OsidSubjugateableQuery\"\x18\n\x16OsidAggregateableQuery\"\x16\n\x14OsidContainableQuery\"\x15\n\x13OsidSourceableQuery\"\x17\n\x15OsidFederateableQuery\"\x13\n\x11OsidOperableQuery\"\x11\n\x0fOsidObjectQuery\"\x17\n\x15OsidRelationshipQuery\"\x12\n\x10OsidCatalogQuery\"\x0f\n\rOsidRuleQuery\"\x12\n\x10OsidEnablerQuery\"\x16\n\x14OsidConstrainerQuery\"\x14\n\x12OsidProcessorQuery\"\x15\n\x13OsidGovernatorQuery\"\x15\n\x13OsidCompendiumQuery\"\x12\n\x10OsidCapsuleQuery\"\x14\n\x12OsidQueryInspector\" \n\x1eOsidIdentifiableQueryInspector\"\x1e\n\x1cOsidExtensibleQueryInspector\"\x1d\n\x1bOsidBrowsableQueryInspector\"\x1c\n\x1aOsidTemporalQueryInspector\"!\n\x1fOsidSubjugateableQueryInspector\"!\n\x1fOsidAggregateableQueryInspector\"\x1f\n\x1dOsidContainableQueryInspector\"\x1e\n\x1cOsidSourceableQueryInspector\" \n\x1eOsidFederateableQueryInspector\"\x1c\n\x1aOsidOperableQueryInspector\"\x1a\n\x18OsidObjectQueryInspector\" \n\x1eOsidRelationshipQueryInspector\"\x1b\n\x19OsidCatalogQueryInspector\"\x18\n\x16OsidRuleQueryInspector\"\x1b\n\x19OsidEnablerQueryInspector\"\x1f\n\x1dOsidConstrainerQueryInspector\"\x1d\n\x1bOsidProcessorQueryInspector\"\x1e\n\x1cOsidGovernatorQueryInspector\"\x1e\n\x1cOsidCompendiumQueryInspector\"\x1b\n\x19OsidCapsuleQueryInspector\"\n\n\x08OsidForm\"\x16\n\x14OsidIdentifiableForm\"\x14\n\x12OsidExtensibleForm\"\x13\n\x11OsidBrowsableForm\"\x12\n\x10OsidTemporalForm\"\x17\n\x15OsidSubjugateableForm\"\x17\n\x15OsidAggregateableForm\"\x15\n\x13OsidContainableForm\"\x14\n\x12OsidSourceableForm\"\x16\n\x14OsidFederateableForm\"\x12\n\x10OsidOperableForm\"\x10\n\x0eOsidObjectForm\"\x16\n\x14OsidRelationshipForm\"\x11\n\x0fOsidCatalogForm\"\x0e\n\x0cOsidRuleForm\"\x11\n\x0fOsidEnablerForm\"\x15\n\x13OsidConstrainerForm\"\x13\n\x11OsidProcessorForm\"\x14\n\x12OsidGovernatorForm\"\x14\n\x12OsidCompendiumForm\"\x11\n\x0fOsidCapsuleForm\"\x11\n\x0fOsidSearchOrder\"\x1d\n\x1bOsidIdentifiableSearchOrder\"\x1b\n\x19OsidExtensibleSearchOrder\"\x1a\n\x18OsidBrowsableSearchOrder\"\x19\n\x17OsidTemporalSearchOrder\"\x1e\n\x1cOsidSubjugateableSearchOrder\"\x1e\n\x1cOsidAggregateableSearchOrder\"\x1c\n\x1aOsidContainableSearchOrder\"\x1b\n\x19OsidSourceableSearchOrder\"\x1d\n\x1bOsidFederateableSearchOrder\"\x19\n\x17OsidOperableSearchOrder\"\x17\n\x15OsidObjectSearchOrder\"\x1d\n\x1bOsidRelationshipSearchOrder\"\x18\n\x16OsidCatalogSearchOrder\"\x15\n\x13OsidRuleSearchOrder\"\x18\n\x16OsidEnablerSearchOrder\"\x1c\n\x1aOsidConstrainerSearchOrder\"\x1a\n\x18OsidProcessorSearchOrder\"\x1b\n\x19OsidGovernatorSearchOrder\"\x1b\n\x19OsidCompendiumSearchOrder\"\x18\n\x16OsidCapsuleSearchOrder\"\x0c\n\nOsidSearch\"\x13\n\x11OsidSearchResults\"1\n\x08OsidList\x12%\n\x05osids\x18\x01 \x03(\x0b\x32\x16.dlkit.proto.osid.Osid\"\x06\n\x04Osid\"\n\n\x08OsidNodeb\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -141,14 +141,14 @@ _OSIDRELATIONSHIP = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.osid.OsidRelationship.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.osid.OsidRelationship.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.osid.OsidRelationship.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.osid.OsidRelationship.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -169,7 +169,7 @@ _OSIDRELATIONSHIP = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.osid.OsidRelationship.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.osid.OsidRelationship.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -188,7 +188,7 @@ _OSIDRELATIONSHIP = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=256,
-  serialized_end=637,
+  serialized_end=642,
 )
 
 
@@ -207,14 +207,14 @@ _OSIDCATALOG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.osid.OsidCatalog.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.osid.OsidCatalog.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.osid.OsidCatalog.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.osid.OsidCatalog.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -235,7 +235,7 @@ _OSIDCATALOG = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.osid.OsidCatalog.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.osid.OsidCatalog.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -253,8 +253,8 @@ _OSIDCATALOG = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=640,
-  serialized_end=1016,
+  serialized_start=645,
+  serialized_end=1026,
 )
 
 
@@ -273,14 +273,14 @@ _OSIDRULE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.osid.OsidRule.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.osid.OsidRule.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.osid.OsidRule.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.osid.OsidRule.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -301,7 +301,7 @@ _OSIDRULE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.osid.OsidRule.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.osid.OsidRule.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -326,8 +326,8 @@ _OSIDRULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1019,
-  serialized_end=1442,
+  serialized_start=1029,
+  serialized_end=1457,
 )
 
 
@@ -385,8 +385,8 @@ _OSIDENABLER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1445,
-  serialized_end=1729,
+  serialized_start=1460,
+  serialized_end=1744,
 )
 
 
@@ -416,8 +416,8 @@ _OSIDCONSTRAINER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1731,
-  serialized_end=1799,
+  serialized_start=1746,
+  serialized_end=1814,
 )
 
 
@@ -447,8 +447,8 @@ _OSIDPROCESSOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1801,
-  serialized_end=1867,
+  serialized_start=1816,
+  serialized_end=1882,
 )
 
 
@@ -467,14 +467,14 @@ _OSIDGOVERNATOR = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.osid.OsidGovernator.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.osid.OsidGovernator.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.osid.OsidGovernator.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.osid.OsidGovernator.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -495,7 +495,7 @@ _OSIDGOVERNATOR = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.osid.OsidGovernator.recordTypeIds', index=5,
+      name='record_type_ids', full_name='dlkit.proto.osid.OsidGovernator.record_type_ids', index=5,
       number=6, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -513,8 +513,8 @@ _OSIDGOVERNATOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1870,
-  serialized_end=2249,
+  serialized_start=1885,
+  serialized_end=2269,
 )
 
 
@@ -533,7 +533,7 @@ _OSIDCOMPENDIUM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.osid.OsidCompendium.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.osid.OsidCompendium.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -554,7 +554,7 @@ _OSIDCOMPENDIUM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.osid.OsidCompendium.genusTypeId', index=4,
+      name='genus_type_id', full_name='dlkit.proto.osid.OsidCompendium.genus_type_id', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -582,7 +582,7 @@ _OSIDCOMPENDIUM = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.osid.OsidCompendium.recordTypeIds', index=8,
+      name='record_type_ids', full_name='dlkit.proto.osid.OsidCompendium.record_type_ids', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -607,8 +607,8 @@ _OSIDCOMPENDIUM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2252,
-  serialized_end=2769,
+  serialized_start=2272,
+  serialized_end=2794,
 )
 
 
@@ -631,8 +631,8 @@ _OSIDCAPSULE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2771,
-  serialized_end=2784,
+  serialized_start=2796,
+  serialized_end=2809,
 )
 
 
@@ -655,8 +655,8 @@ _OSIDQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2786,
-  serialized_end=2797,
+  serialized_start=2811,
+  serialized_end=2822,
 )
 
 
@@ -679,8 +679,8 @@ _OSIDIDENTIFIABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2799,
-  serialized_end=2822,
+  serialized_start=2824,
+  serialized_end=2847,
 )
 
 
@@ -703,8 +703,8 @@ _OSIDEXTENSIBLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2824,
-  serialized_end=2845,
+  serialized_start=2849,
+  serialized_end=2870,
 )
 
 
@@ -727,8 +727,8 @@ _OSIDBROWSABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2847,
-  serialized_end=2867,
+  serialized_start=2872,
+  serialized_end=2892,
 )
 
 
@@ -751,8 +751,8 @@ _OSIDTEMPORALQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2869,
-  serialized_end=2888,
+  serialized_start=2894,
+  serialized_end=2913,
 )
 
 
@@ -775,8 +775,8 @@ _OSIDSUBJUGATEABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2890,
-  serialized_end=2914,
+  serialized_start=2915,
+  serialized_end=2939,
 )
 
 
@@ -799,8 +799,8 @@ _OSIDAGGREGATEABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2916,
-  serialized_end=2940,
+  serialized_start=2941,
+  serialized_end=2965,
 )
 
 
@@ -823,8 +823,8 @@ _OSIDCONTAINABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2942,
-  serialized_end=2964,
+  serialized_start=2967,
+  serialized_end=2989,
 )
 
 
@@ -847,8 +847,8 @@ _OSIDSOURCEABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2966,
-  serialized_end=2987,
+  serialized_start=2991,
+  serialized_end=3012,
 )
 
 
@@ -871,8 +871,8 @@ _OSIDFEDERATEABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2989,
-  serialized_end=3012,
+  serialized_start=3014,
+  serialized_end=3037,
 )
 
 
@@ -895,8 +895,8 @@ _OSIDOPERABLEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3014,
-  serialized_end=3033,
+  serialized_start=3039,
+  serialized_end=3058,
 )
 
 
@@ -919,8 +919,8 @@ _OSIDOBJECTQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3035,
-  serialized_end=3052,
+  serialized_start=3060,
+  serialized_end=3077,
 )
 
 
@@ -943,8 +943,8 @@ _OSIDRELATIONSHIPQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3054,
-  serialized_end=3077,
+  serialized_start=3079,
+  serialized_end=3102,
 )
 
 
@@ -967,8 +967,8 @@ _OSIDCATALOGQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3079,
-  serialized_end=3097,
+  serialized_start=3104,
+  serialized_end=3122,
 )
 
 
@@ -991,8 +991,8 @@ _OSIDRULEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3099,
-  serialized_end=3114,
+  serialized_start=3124,
+  serialized_end=3139,
 )
 
 
@@ -1015,8 +1015,8 @@ _OSIDENABLERQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3116,
-  serialized_end=3134,
+  serialized_start=3141,
+  serialized_end=3159,
 )
 
 
@@ -1039,8 +1039,8 @@ _OSIDCONSTRAINERQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3136,
-  serialized_end=3158,
+  serialized_start=3161,
+  serialized_end=3183,
 )
 
 
@@ -1063,8 +1063,8 @@ _OSIDPROCESSORQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3160,
-  serialized_end=3180,
+  serialized_start=3185,
+  serialized_end=3205,
 )
 
 
@@ -1087,8 +1087,8 @@ _OSIDGOVERNATORQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3182,
-  serialized_end=3203,
+  serialized_start=3207,
+  serialized_end=3228,
 )
 
 
@@ -1111,8 +1111,8 @@ _OSIDCOMPENDIUMQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3205,
-  serialized_end=3226,
+  serialized_start=3230,
+  serialized_end=3251,
 )
 
 
@@ -1135,8 +1135,8 @@ _OSIDCAPSULEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3228,
-  serialized_end=3246,
+  serialized_start=3253,
+  serialized_end=3271,
 )
 
 
@@ -1159,8 +1159,8 @@ _OSIDQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3248,
-  serialized_end=3268,
+  serialized_start=3273,
+  serialized_end=3293,
 )
 
 
@@ -1183,8 +1183,8 @@ _OSIDIDENTIFIABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3270,
-  serialized_end=3302,
+  serialized_start=3295,
+  serialized_end=3327,
 )
 
 
@@ -1207,8 +1207,8 @@ _OSIDEXTENSIBLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3304,
-  serialized_end=3334,
+  serialized_start=3329,
+  serialized_end=3359,
 )
 
 
@@ -1231,8 +1231,8 @@ _OSIDBROWSABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3336,
-  serialized_end=3365,
+  serialized_start=3361,
+  serialized_end=3390,
 )
 
 
@@ -1255,8 +1255,8 @@ _OSIDTEMPORALQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3367,
-  serialized_end=3395,
+  serialized_start=3392,
+  serialized_end=3420,
 )
 
 
@@ -1279,8 +1279,8 @@ _OSIDSUBJUGATEABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3397,
-  serialized_end=3430,
+  serialized_start=3422,
+  serialized_end=3455,
 )
 
 
@@ -1303,8 +1303,8 @@ _OSIDAGGREGATEABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3432,
-  serialized_end=3465,
+  serialized_start=3457,
+  serialized_end=3490,
 )
 
 
@@ -1327,8 +1327,8 @@ _OSIDCONTAINABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3467,
-  serialized_end=3498,
+  serialized_start=3492,
+  serialized_end=3523,
 )
 
 
@@ -1351,8 +1351,8 @@ _OSIDSOURCEABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3500,
-  serialized_end=3530,
+  serialized_start=3525,
+  serialized_end=3555,
 )
 
 
@@ -1375,8 +1375,8 @@ _OSIDFEDERATEABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3532,
-  serialized_end=3564,
+  serialized_start=3557,
+  serialized_end=3589,
 )
 
 
@@ -1399,8 +1399,8 @@ _OSIDOPERABLEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3566,
-  serialized_end=3594,
+  serialized_start=3591,
+  serialized_end=3619,
 )
 
 
@@ -1423,8 +1423,8 @@ _OSIDOBJECTQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3596,
-  serialized_end=3622,
+  serialized_start=3621,
+  serialized_end=3647,
 )
 
 
@@ -1447,8 +1447,8 @@ _OSIDRELATIONSHIPQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3624,
-  serialized_end=3656,
+  serialized_start=3649,
+  serialized_end=3681,
 )
 
 
@@ -1471,8 +1471,8 @@ _OSIDCATALOGQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3658,
-  serialized_end=3685,
+  serialized_start=3683,
+  serialized_end=3710,
 )
 
 
@@ -1495,8 +1495,8 @@ _OSIDRULEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3687,
-  serialized_end=3711,
+  serialized_start=3712,
+  serialized_end=3736,
 )
 
 
@@ -1519,8 +1519,8 @@ _OSIDENABLERQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3713,
-  serialized_end=3740,
+  serialized_start=3738,
+  serialized_end=3765,
 )
 
 
@@ -1543,8 +1543,8 @@ _OSIDCONSTRAINERQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3742,
-  serialized_end=3773,
+  serialized_start=3767,
+  serialized_end=3798,
 )
 
 
@@ -1567,8 +1567,8 @@ _OSIDPROCESSORQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3775,
-  serialized_end=3804,
+  serialized_start=3800,
+  serialized_end=3829,
 )
 
 
@@ -1591,8 +1591,8 @@ _OSIDGOVERNATORQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3806,
-  serialized_end=3836,
+  serialized_start=3831,
+  serialized_end=3861,
 )
 
 
@@ -1615,8 +1615,8 @@ _OSIDCOMPENDIUMQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3838,
-  serialized_end=3868,
+  serialized_start=3863,
+  serialized_end=3893,
 )
 
 
@@ -1639,8 +1639,8 @@ _OSIDCAPSULEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3870,
-  serialized_end=3897,
+  serialized_start=3895,
+  serialized_end=3922,
 )
 
 
@@ -1663,8 +1663,8 @@ _OSIDFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3899,
-  serialized_end=3909,
+  serialized_start=3924,
+  serialized_end=3934,
 )
 
 
@@ -1687,8 +1687,8 @@ _OSIDIDENTIFIABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3911,
-  serialized_end=3933,
+  serialized_start=3936,
+  serialized_end=3958,
 )
 
 
@@ -1711,8 +1711,8 @@ _OSIDEXTENSIBLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3935,
-  serialized_end=3955,
+  serialized_start=3960,
+  serialized_end=3980,
 )
 
 
@@ -1735,8 +1735,8 @@ _OSIDBROWSABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3957,
-  serialized_end=3976,
+  serialized_start=3982,
+  serialized_end=4001,
 )
 
 
@@ -1759,8 +1759,8 @@ _OSIDTEMPORALFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3978,
-  serialized_end=3996,
+  serialized_start=4003,
+  serialized_end=4021,
 )
 
 
@@ -1783,8 +1783,8 @@ _OSIDSUBJUGATEABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3998,
-  serialized_end=4021,
+  serialized_start=4023,
+  serialized_end=4046,
 )
 
 
@@ -1807,8 +1807,8 @@ _OSIDAGGREGATEABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4023,
-  serialized_end=4046,
+  serialized_start=4048,
+  serialized_end=4071,
 )
 
 
@@ -1831,8 +1831,8 @@ _OSIDCONTAINABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4048,
-  serialized_end=4069,
+  serialized_start=4073,
+  serialized_end=4094,
 )
 
 
@@ -1855,8 +1855,8 @@ _OSIDSOURCEABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4071,
-  serialized_end=4091,
+  serialized_start=4096,
+  serialized_end=4116,
 )
 
 
@@ -1879,8 +1879,8 @@ _OSIDFEDERATEABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4093,
-  serialized_end=4115,
+  serialized_start=4118,
+  serialized_end=4140,
 )
 
 
@@ -1903,8 +1903,8 @@ _OSIDOPERABLEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4117,
-  serialized_end=4135,
+  serialized_start=4142,
+  serialized_end=4160,
 )
 
 
@@ -1927,8 +1927,8 @@ _OSIDOBJECTFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4137,
-  serialized_end=4153,
+  serialized_start=4162,
+  serialized_end=4178,
 )
 
 
@@ -1951,8 +1951,8 @@ _OSIDRELATIONSHIPFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4155,
-  serialized_end=4177,
+  serialized_start=4180,
+  serialized_end=4202,
 )
 
 
@@ -1975,8 +1975,8 @@ _OSIDCATALOGFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4179,
-  serialized_end=4196,
+  serialized_start=4204,
+  serialized_end=4221,
 )
 
 
@@ -1999,8 +1999,8 @@ _OSIDRULEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4198,
-  serialized_end=4212,
+  serialized_start=4223,
+  serialized_end=4237,
 )
 
 
@@ -2023,8 +2023,8 @@ _OSIDENABLERFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4214,
-  serialized_end=4231,
+  serialized_start=4239,
+  serialized_end=4256,
 )
 
 
@@ -2047,8 +2047,8 @@ _OSIDCONSTRAINERFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4233,
-  serialized_end=4254,
+  serialized_start=4258,
+  serialized_end=4279,
 )
 
 
@@ -2071,8 +2071,8 @@ _OSIDPROCESSORFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4256,
-  serialized_end=4275,
+  serialized_start=4281,
+  serialized_end=4300,
 )
 
 
@@ -2095,8 +2095,8 @@ _OSIDGOVERNATORFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4277,
-  serialized_end=4297,
+  serialized_start=4302,
+  serialized_end=4322,
 )
 
 
@@ -2119,8 +2119,8 @@ _OSIDCOMPENDIUMFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4299,
-  serialized_end=4319,
+  serialized_start=4324,
+  serialized_end=4344,
 )
 
 
@@ -2143,8 +2143,8 @@ _OSIDCAPSULEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4321,
-  serialized_end=4338,
+  serialized_start=4346,
+  serialized_end=4363,
 )
 
 
@@ -2167,8 +2167,8 @@ _OSIDSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4340,
-  serialized_end=4357,
+  serialized_start=4365,
+  serialized_end=4382,
 )
 
 
@@ -2191,8 +2191,8 @@ _OSIDIDENTIFIABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4359,
-  serialized_end=4388,
+  serialized_start=4384,
+  serialized_end=4413,
 )
 
 
@@ -2215,8 +2215,8 @@ _OSIDEXTENSIBLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4390,
-  serialized_end=4417,
+  serialized_start=4415,
+  serialized_end=4442,
 )
 
 
@@ -2239,8 +2239,8 @@ _OSIDBROWSABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4419,
-  serialized_end=4445,
+  serialized_start=4444,
+  serialized_end=4470,
 )
 
 
@@ -2263,8 +2263,8 @@ _OSIDTEMPORALSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4447,
-  serialized_end=4472,
+  serialized_start=4472,
+  serialized_end=4497,
 )
 
 
@@ -2287,8 +2287,8 @@ _OSIDSUBJUGATEABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4474,
-  serialized_end=4504,
+  serialized_start=4499,
+  serialized_end=4529,
 )
 
 
@@ -2311,8 +2311,8 @@ _OSIDAGGREGATEABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4506,
-  serialized_end=4536,
+  serialized_start=4531,
+  serialized_end=4561,
 )
 
 
@@ -2335,8 +2335,8 @@ _OSIDCONTAINABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4538,
-  serialized_end=4566,
+  serialized_start=4563,
+  serialized_end=4591,
 )
 
 
@@ -2359,8 +2359,8 @@ _OSIDSOURCEABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4568,
-  serialized_end=4595,
+  serialized_start=4593,
+  serialized_end=4620,
 )
 
 
@@ -2383,8 +2383,8 @@ _OSIDFEDERATEABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4597,
-  serialized_end=4626,
+  serialized_start=4622,
+  serialized_end=4651,
 )
 
 
@@ -2407,8 +2407,8 @@ _OSIDOPERABLESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4628,
-  serialized_end=4653,
+  serialized_start=4653,
+  serialized_end=4678,
 )
 
 
@@ -2431,8 +2431,8 @@ _OSIDOBJECTSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4655,
-  serialized_end=4678,
+  serialized_start=4680,
+  serialized_end=4703,
 )
 
 
@@ -2455,8 +2455,8 @@ _OSIDRELATIONSHIPSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4680,
-  serialized_end=4709,
+  serialized_start=4705,
+  serialized_end=4734,
 )
 
 
@@ -2479,8 +2479,8 @@ _OSIDCATALOGSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4711,
-  serialized_end=4735,
+  serialized_start=4736,
+  serialized_end=4760,
 )
 
 
@@ -2503,8 +2503,8 @@ _OSIDRULESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4737,
-  serialized_end=4758,
+  serialized_start=4762,
+  serialized_end=4783,
 )
 
 
@@ -2527,8 +2527,8 @@ _OSIDENABLERSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4760,
-  serialized_end=4784,
+  serialized_start=4785,
+  serialized_end=4809,
 )
 
 
@@ -2551,8 +2551,8 @@ _OSIDCONSTRAINERSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4786,
-  serialized_end=4814,
+  serialized_start=4811,
+  serialized_end=4839,
 )
 
 
@@ -2575,8 +2575,8 @@ _OSIDPROCESSORSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4816,
-  serialized_end=4842,
+  serialized_start=4841,
+  serialized_end=4867,
 )
 
 
@@ -2599,8 +2599,8 @@ _OSIDGOVERNATORSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4844,
-  serialized_end=4871,
+  serialized_start=4869,
+  serialized_end=4896,
 )
 
 
@@ -2623,8 +2623,8 @@ _OSIDCOMPENDIUMSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4873,
-  serialized_end=4900,
+  serialized_start=4898,
+  serialized_end=4925,
 )
 
 
@@ -2647,8 +2647,8 @@ _OSIDCAPSULESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4902,
-  serialized_end=4926,
+  serialized_start=4927,
+  serialized_end=4951,
 )
 
 
@@ -2671,8 +2671,8 @@ _OSIDSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4928,
-  serialized_end=4940,
+  serialized_start=4953,
+  serialized_end=4965,
 )
 
 
@@ -2695,8 +2695,8 @@ _OSIDSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4942,
-  serialized_end=4961,
+  serialized_start=4967,
+  serialized_end=4986,
 )
 
 
@@ -2726,8 +2726,8 @@ _OSIDLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4963,
-  serialized_end=5012,
+  serialized_start=4988,
+  serialized_end=5037,
 )
 
 
@@ -2750,8 +2750,8 @@ _OSID = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5014,
-  serialized_end=5020,
+  serialized_start=5039,
+  serialized_end=5045,
 )
 
 
@@ -2774,28 +2774,28 @@ _OSIDNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5022,
-  serialized_end=5032,
+  serialized_start=5047,
+  serialized_end=5057,
 )
 
 _OSIDRELATIONSHIP.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDRELATIONSHIP.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDRELATIONSHIP.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDRELATIONSHIP.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_OSIDRELATIONSHIP.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDRELATIONSHIP.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OSIDRELATIONSHIP.fields_by_name['no_catalog'].message_type = _OSIDCATALOG
-_OSIDRELATIONSHIP.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDRELATIONSHIP.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDCATALOG.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDCATALOG.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDCATALOG.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDCATALOG.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_OSIDCATALOG.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDCATALOG.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OSIDCATALOG.fields_by_name['no_catalog'].message_type = _OSIDCATALOG
-_OSIDCATALOG.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDCATALOG.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDRULE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDRULE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDRULE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDRULE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_OSIDRULE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDRULE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OSIDRULE.fields_by_name['no_catalog'].message_type = _OSIDCATALOG
-_OSIDRULE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDRULE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDRULE.fields_by_name['rule'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OSIDENABLER.fields_by_name['cyclic_event'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OSIDENABLER.fields_by_name['demographic'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -2805,18 +2805,18 @@ _OSIDENABLER.fields_by_name['schedule'].message_type = dlkit_dot_primordium_dot_
 _OSIDCONSTRAINER.fields_by_name['no_catalog'].message_type = _OSIDCATALOG
 _OSIDPROCESSOR.fields_by_name['no_catalog'].message_type = _OSIDCATALOG
 _OSIDGOVERNATOR.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDGOVERNATOR.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDGOVERNATOR.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDGOVERNATOR.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_OSIDGOVERNATOR.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDGOVERNATOR.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OSIDGOVERNATOR.fields_by_name['no_catalog'].message_type = _OSIDCATALOG
-_OSIDGOVERNATOR.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDGOVERNATOR.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDCOMPENDIUM.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OSIDCOMPENDIUM.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_OSIDCOMPENDIUM.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
 _OSIDCOMPENDIUM.fields_by_name['end_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
-_OSIDCOMPENDIUM.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDCOMPENDIUM.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDCOMPENDIUM.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OSIDCOMPENDIUM.fields_by_name['no_catalog'].message_type = _OSIDCATALOG
-_OSIDCOMPENDIUM.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OSIDCOMPENDIUM.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OSIDCOMPENDIUM.fields_by_name['start_date'].message_type = google_dot_protobuf_dot_timestamp__pb2._TIMESTAMP
 _OSIDLIST.fields_by_name['osids'].message_type = _OSID
 DESCRIPTOR.message_types_by_name['OsidCondition'] = _OSIDCONDITION

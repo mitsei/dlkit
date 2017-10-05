@@ -25,7 +25,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/learning.proto',
   package='dlkit.proto.learning',
   syntax='proto3',
-  serialized_pb=_b('\n\x1a\x64lkit/proto/learning.proto\x12\x14\x64lkit.proto.learning\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb1\x04\n\tObjective\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11\x63ognitive_process\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12>\n\x12knowledge_category\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\x0eobjective_bank\x18\x08 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x10\n\x0eObjectiveQuery\"\x19\n\x17ObjectiveQueryInspector\"\x0f\n\rObjectiveForm\"\x16\n\x14ObjectiveSearchOrder\"\x11\n\x0fObjectiveSearch\"\x18\n\x16ObjectiveSearchResults\"D\n\rObjectiveList\x12\x33\n\nobjectives\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.learning.Objective\"\x0f\n\rObjectiveNode\"Q\n\x11ObjectiveNodeList\x12<\n\x0fobjective_nodes\x18\x01 \x03(\x0b\x32#.dlkit.proto.learning.ObjectiveNode\"\xd2\x04\n\x08\x41\x63tivity\x12\x37\n\x0b\x61ssessments\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06\x61ssets\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x63ourses\x18\x03 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x06 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tobjective\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\x0eobjective_bank\x18\t \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12=\n\rrecordTypeIds\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rActivityQuery\"\x18\n\x16\x41\x63tivityQueryInspector\"\x0e\n\x0c\x41\x63tivityForm\"\x15\n\x13\x41\x63tivitySearchOrder\"\x10\n\x0e\x41\x63tivitySearch\"\x17\n\x15\x41\x63tivitySearchResults\"B\n\x0c\x41\x63tivityList\x12\x32\n\nactivities\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.learning.Activity\"\xf8\x01\n\x0bProficiency\x12\x12\n\ncompletion\x18\x01 \x01(\x02\x12\x31\n\x05level\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tobjective\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\x0eobjective_bank\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x34\n\x08resource\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10ProficiencyQuery\"\x1b\n\x19ProficiencyQueryInspector\"\x11\n\x0fProficiencyForm\"\x18\n\x16ProficiencySearchOrder\"\x13\n\x11ProficiencySearch\"\x1a\n\x18ProficiencySearchResults\"K\n\x0fProficiencyList\x12\x38\n\rproficiencies\x18\x01 \x03(\x0b\x32!.dlkit.proto.learning.Proficiency\"\xc7\x02\n\rObjectiveBank\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x14\n\x12ObjectiveBankQuery\"\x1d\n\x1bObjectiveBankQueryInspector\"\x13\n\x11ObjectiveBankForm\"\x1a\n\x18ObjectiveBankSearchOrder\"\x15\n\x13ObjectiveBankSearch\"\x1c\n\x1aObjectiveBankSearchResults\"Q\n\x11ObjectiveBankList\x12<\n\x0fobjective_banks\x18\x01 \x03(\x0b\x32#.dlkit.proto.learning.ObjectiveBank\"\x13\n\x11ObjectiveBankNode\"^\n\x15ObjectiveBankNodeList\x12\x45\n\x14objective_bank_nodes\x18\x01 \x03(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankNode\"I\n\x17GetObjectiveBankIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetObjectiveBankIdRequest\"T\n\x15GetObjectiveBankReply\x12;\n\x0eobjective_bank\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveBank\"\x19\n\x17GetObjectiveBankRequest\"9\n\x18\x43\x61nLookupObjectivesReply\x12\x1d\n\x15\x63\x61n_lookup_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nLookupObjectivesRequest\"\"\n UseComparativeObjectiveViewReply\"$\n\"UseComparativeObjectiveViewRequest\"\x1e\n\x1cUsePlenaryObjectiveViewReply\" \n\x1eUsePlenaryObjectiveViewRequest\"$\n\"UseFederatedObjectiveBankViewReply\"&\n$UseFederatedObjectiveBankViewRequest\"#\n!UseIsolatedObjectiveBankViewReply\"%\n#UseIsolatedObjectiveBankViewRequest\"G\n\x11GetObjectiveReply\x12\x32\n\tobjective\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.learning.Objective\"O\n\x13GetObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x19GetObjectivesByIdsRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1fGetObjectivesByGenusTypeRequest\x12\x44\n\x14objective_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n%GetObjectivesByParentGenusTypeRequest\x12\x44\n\x14objective_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n GetObjectivesByRecordTypeRequest\x12\x45\n\x15objective_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x16\n\x14GetObjectivesRequest\"9\n\x18\x43\x61nSearchObjectivesReply\x12\x1d\n\x15\x63\x61n_search_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nSearchObjectivesRequest\"W\n\x16GetObjectiveQueryReply\x12=\n\x0fobjective_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.learning.ObjectiveQuery\"\x1a\n\x18GetObjectiveQueryRequest\"\\\n\x1bGetObjectivesByQueryRequest\x12=\n\x0fobjective_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.learning.ObjectiveQuery\"9\n\x18\x43\x61nCreateObjectivesReply\x12\x1d\n\x15\x63\x61n_create_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateObjectivesRequest\"X\n&CanCreateObjectiveWithRecordTypesReply\x12.\n&can_create_objective_with_record_types\x18\x01 \x01(\x08\"r\n(CanCreateObjectiveWithRecordTypesRequest\x12\x46\n\x16objective_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\x1eGetObjectiveFormForCreateReply\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"j\n GetObjectiveFormForCreateRequest\x12\x46\n\x16objective_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"J\n\x14\x43reateObjectiveReply\x12\x32\n\tobjective\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.learning.Objective\"U\n\x16\x43reateObjectiveRequest\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"9\n\x18\x43\x61nUpdateObjectivesReply\x12\x1d\n\x15\x63\x61n_update_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateObjectivesRequest\"]\n\x1eGetObjectiveFormForUpdateReply\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"\\\n GetObjectiveFormForUpdateRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14UpdateObjectiveReply\"U\n\x16UpdateObjectiveRequest\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"9\n\x18\x43\x61nDeleteObjectivesReply\x12\x1d\n\x15\x63\x61n_delete_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteObjectivesRequest\"\x16\n\x14\x44\x65leteObjectiveReply\"R\n\x16\x44\x65leteObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nManageObjectiveAliasesReply\x12$\n\x1c\x63\x61n_manage_objective_aliases\x18\x01 \x01(\x08\"\"\n CanManageObjectiveAliasesRequest\"\x15\n\x13\x41liasObjectiveReply\"\x87\x01\n\x15\x41liasObjectiveRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x1cGetObjectiveHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eGetObjectiveHierarchyIdRequest\"Q\n\x1aGetObjectiveHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1e\n\x1cGetObjectiveHierarchyRequest\"J\n CanAccessObjectiveHierarchyReply\x12&\n\x1e\x63\x61n_access_objective_hierarchy\x18\x01 \x01(\x08\"$\n\"CanAccessObjectiveHierarchyRequest\"\x1c\n\x1aGetRootObjectiveIdsRequest\"\x1a\n\x18GetRootObjectivesRequest\"9\n\x18HasParentObjectivesReply\x12\x1d\n\x15has_parent_objectives\x18\x01 \x01(\x08\"V\n\x1aHasParentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsParentOfObjectiveReply\x12\x1e\n\x16is_parent_of_objective\x18\x01 \x01(\x08\"\x87\x01\n\x1aIsParentOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1cGetParentObjectiveIdsRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1aGetParentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1aIsAncestorOfObjectiveReply\x12 \n\x18is_ancestor_of_objective\x18\x01 \x01(\x08\"\x89\x01\n\x1cIsAncestorOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17HasChildObjectivesReply\x12\x1c\n\x14has_child_objectives\x18\x01 \x01(\x08\"U\n\x19HasChildObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsChildOfObjectiveReply\x12\x1d\n\x15is_child_of_objective\x18\x01 \x01(\x08\"\x86\x01\n\x19IsChildOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1bGetChildObjectiveIdsRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x19GetChildObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsDescendantOfObjectiveReply\x12\"\n\x1ais_descendant_of_objective\x18\x01 \x01(\x08\"\x8b\x01\n\x1eIsDescendantOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x18GetObjectiveNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa4\x01\n\x1aGetObjectiveNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x38\n\x0cobjective_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x16GetObjectiveNodesReply\x12;\n\x0eobjective_node\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveNode\"\xa2\x01\n\x18GetObjectiveNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x38\n\x0cobjective_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanModifyObjectiveHierarchyReply\x12&\n\x1e\x63\x61n_modify_objective_hierarchy\x18\x01 \x01(\x08\"$\n\"CanModifyObjectiveHierarchyRequest\"\x17\n\x15\x41\x64\x64RootObjectiveReply\"S\n\x17\x41\x64\x64RootObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveRootObjectiveReply\"V\n\x1aRemoveRootObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16\x41\x64\x64\x43hildObjectiveReply\"\x8a\x01\n\x18\x41\x64\x64\x43hildObjectiveRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19RemoveChildObjectiveReply\"\x8d\x01\n\x1bRemoveChildObjectiveRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aRemoveChildObjectivesReply\"X\n\x1cRemoveChildObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nSequenceObjectivesReply\x12\x1f\n\x17\x63\x61n_sequence_objectives\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSequenceObjectivesRequest\"\x19\n\x17MoveObjectiveAheadReply\"\xda\x01\n\x19MoveObjectiveAheadRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13parent_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16reference_objective_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18MoveObjectiveBehindReply\"\xdb\x01\n\x1aMoveObjectiveBehindRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13parent_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16reference_objective_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17SequenceObjectivesReply\"\x97\x01\n\x19SequenceObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13parent_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n,CanLookupObjectiveObjectiveBankMappingsReply\x12\x34\n,can_lookup_objective_objective_bank_mappings\x18\x01 \x01(\x08\"0\n.CanLookupObjectiveObjectiveBankMappingsRequest\"&\n$UseComparativeObjectiveBankViewReply\"(\n&UseComparativeObjectiveBankViewRequest\"\"\n UsePlenaryObjectiveBankViewReply\"$\n\"UsePlenaryObjectiveBankViewRequest\"f\n%GetObjectiveIdsByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n#GetObjectivesByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n&GetObjectiveIdsByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n$GetObjectivesByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n%GetObjectiveBankIdsByObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n#GetObjectiveBanksByObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nAssignObjectivesReply\x12\x1d\n\x15\x63\x61n_assign_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignObjectivesRequest\"Z\n\'CanAssignObjectivesToObjectiveBankReply\x12/\n\'can_assign_objectives_to_objective_bank\x18\x01 \x01(\x08\"j\n)CanAssignObjectivesToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n$GetAssignableObjectiveBankIdsRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xab\x01\n0GetAssignableObjectiveBankIdsForObjectiveRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"%\n#AssignObjectiveToObjectiveBankReply\"\xa0\x01\n%AssignObjectiveToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\")\n\'UnassignObjectiveFromObjectiveBankReply\"\xa4\x01\n)UnassignObjectiveFromObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\")\n\'ReassignProficiencyToObjectiveBankReply\"\xeb\x01\n)ReassignProficiencyToObjectiveBankRequest\x12\x42\n\x16\x66rom_objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12@\n\x14to_objective_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n$CanLookupObjectivePrerequisitesReply\x12*\n\"can_lookup_objective_prerequisites\x18\x01 \x01(\x08\"(\n&CanLookupObjectivePrerequisitesRequest\"Y\n\x1dGetRequisiteObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n GetAllRequisiteObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1dGetDependentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18IsObjectiveRequiredReply\x12\x1d\n\x15is_objective_required\x18\x01 \x01(\x08\"\x99\x01\n\x1aIsObjectiveRequiredRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x15required_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1eGetEquivalentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nAssignRequisitesReply\x12\x1d\n\x15\x63\x61n_assign_requisites\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignRequisitesRequest\"\x1f\n\x1d\x41ssignObjectiveRequisiteReply\"\x9f\x01\n\x1f\x41ssignObjectiveRequisiteRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16requisite_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fUnassignObjectiveRequisiteReply\"\xa1\x01\n!UnassignObjectiveRequisiteRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16requisite_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1e\x41ssignEquivalentObjectiveReply\"\xa1\x01\n AssignEquivalentObjectiveRequest\x12\x43\n\x17\x65quivalent_objective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n UnassignEquivalentObjectiveReply\"\xa3\x01\n\"UnassignEquivalentObjectiveRequest\x12\x43\n\x17\x65quivalent_objective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nLookupActivitiesReply\x12\x1d\n\x15\x63\x61n_lookup_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nLookupActivitiesRequest\"!\n\x1fUseComparativeActivityViewReply\"#\n!UseComparativeActivityViewRequest\"\x1d\n\x1bUsePlenaryActivityViewReply\"\x1f\n\x1dUsePlenaryActivityViewRequest\"D\n\x10GetActivityReply\x12\x30\n\x08\x61\x63tivity\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.learning.Activity\"M\n\x12GetActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x19GetActivitiesByIdsRequest\x12\x38\n\x0c\x61\x63tivity_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n\x1fGetActivitiesByGenusTypeRequest\x12\x43\n\x13\x61\x63tivity_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"l\n%GetActivitiesByParentGenusTypeRequest\x12\x43\n\x13\x61\x63tivity_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"h\n GetActivitiesByRecordTypeRequest\x12\x44\n\x14\x61\x63tivity_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n GetActivitiesForObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n!GetActivitiesForObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x1bGetActivitiesByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1cGetActivitiesByAssetsRequest\x12\x35\n\tasset_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14GetActivitiesRequest\"9\n\x18\x43\x61nSearchActivitiesReply\x12\x1d\n\x15\x63\x61n_search_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nSearchActivitiesRequest\"T\n\x15GetActivityQueryReply\x12;\n\x0e\x61\x63tivity_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ActivityQuery\"\x19\n\x17GetActivityQueryRequest\"Z\n\x1bGetActivitiesByQueryRequest\x12;\n\x0e\x61\x63tivity_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ActivityQuery\"9\n\x18\x43\x61nCreateActivitiesReply\x12\x1d\n\x15\x63\x61n_create_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateActivitiesRequest\"V\n%CanCreateActivityWithRecordTypesReply\x12-\n%can_create_activity_with_record_types\x18\x01 \x01(\x08\"p\n\'CanCreateActivityWithRecordTypesRequest\x12\x45\n\x15\x61\x63tivity_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1dGetActivityFormForCreateReply\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"\xa2\x01\n\x1fGetActivityFormForCreateRequest\x12\x45\n\x15\x61\x63tivity_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"G\n\x13\x43reateActivityReply\x12\x30\n\x08\x61\x63tivity\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.learning.Activity\"R\n\x15\x43reateActivityRequest\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"9\n\x18\x43\x61nUpdateActivitiesReply\x12\x1d\n\x15\x63\x61n_update_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateActivitiesRequest\"Z\n\x1dGetActivityFormForUpdateReply\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"Z\n\x1fGetActivityFormForUpdateRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateActivityReply\"R\n\x15UpdateActivityRequest\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"9\n\x18\x43\x61nDeleteActivitiesReply\x12\x1d\n\x15\x63\x61n_delete_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteActivitiesRequest\"\x15\n\x13\x44\x65leteActivityReply\"P\n\x15\x44\x65leteActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nManageActivityAliasesReply\x12#\n\x1b\x63\x61n_manage_activity_aliases\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nManageActivityAliasesRequest\"\x14\n\x12\x41liasActivityReply\"\x85\x01\n\x14\x41liasActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x61lias_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n+CanLookupActivityObjectiveBankMappingsReply\x12\x33\n+can_lookup_activity_objective_bank_mappings\x18\x01 \x01(\x08\"/\n-CanLookupActivityObjectiveBankMappingsRequest\"e\n$GetActivityIdsByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n#GetActivitiesByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n%GetActivityIdsByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n$GetActivitiesByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n$GetObjectiveBankIdsByActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\"GetObjectiveBanksByActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nAssignActivitiesReply\x12\x1d\n\x15\x63\x61n_assign_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignActivitiesRequest\"Z\n\'CanAssignActivitiesToObjectiveBankReply\x12/\n\'can_assign_activities_to_objective_bank\x18\x01 \x01(\x08\"j\n)CanAssignActivitiesToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa9\x01\n/GetAssignableObjectiveBankIdsForActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"AssignActivityToObjectiveBankReply\"\x9e\x01\n$AssignActivityToObjectiveBankRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n&UnassignActivityFromObjectiveBankReply\"\xa2\x01\n(UnassignActivityFromObjectiveBankRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"&\n$ReassignActivityToObjectiveBankReply\"\xe7\x01\n&ReassignActivityToObjectiveBankRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16\x66rom_objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12@\n\x14to_objective_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x1b\x43\x61nLookupProficienciesReply\x12 \n\x18\x63\x61n_lookup_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nLookupProficienciesRequest\"$\n\"UseComparativeProficiencyViewReply\"&\n$UseComparativeProficiencyViewRequest\" \n\x1eUsePlenaryProficiencyViewReply\"\"\n UsePlenaryProficiencyViewRequest\"\"\n UseEffectiveProficiencyViewReply\"$\n\"UseEffectiveProficiencyViewRequest\"%\n#UseAnyEffectiveProficiencyViewReply\"\'\n%UseAnyEffectiveProficiencyViewRequest\"M\n\x13GetProficiencyReply\x12\x36\n\x0bproficiency\x18\x01 \x01(\x0b\x32!.dlkit.proto.learning.Proficiency\"S\n\x15GetProficiencyRequest\x12:\n\x0eproficiency_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x1cGetProficienciesByIdsRequest\x12;\n\x0fproficiency_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"l\n\"GetProficienciesByGenusTypeRequest\x12\x46\n\x16proficiency_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n(GetProficienciesByParentGenusTypeRequest\x12\x46\n\x16proficiency_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"n\n#GetProficienciesByRecordTypeRequest\x12G\n\x17proficiency_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n\x1dGetProficienciesOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xc5\x01\n(GetProficienciesByGenusTypeOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"_\n#GetProficienciesForObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb8\x01\n)GetProficienciesForObjectiveOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb2\x01\n.GetProficienciesByGenusTypeForObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x8b\x02\n4GetProficienciesByGenusTypeForObjectiveOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"a\n$GetProficienciesForObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\"GetProficienciesForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb6\x01\n(GetProficienciesForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb0\x01\n-GetProficienciesByGenusTypeForResourceRequest\x12\x46\n\x16proficiency_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x89\x02\n3GetProficienciesByGenusTypeForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"_\n#GetProficienciesForResourcesRequest\x12\x38\n\x0cresource_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa3\x01\n.GetProficienciesForObjectiveAndResourceRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xfc\x01\n4GetProficienciesForObjectiveAndResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xf6\x01\n9GetProficienciesByGenusTypeForObjectiveAndResourceRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xcf\x02\n?GetProficienciesByGenusTypeForObjectiveAndResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x19\n\x17GetProficienciesRequest\"?\n\x1b\x43\x61nSearchProficienciesReply\x12 \n\x18\x63\x61n_search_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nSearchProficienciesRequest\"]\n\x18GetProficiencyQueryReply\x12\x41\n\x11proficiency_query\x18\x01 \x01(\x0b\x32&.dlkit.proto.learning.ProficiencyQuery\"\x1c\n\x1aGetProficiencyQueryRequest\"c\n\x1eGetProficienciesByQueryRequest\x12\x41\n\x11proficiency_query\x18\x01 \x01(\x0b\x32&.dlkit.proto.learning.ProficiencyQuery\"?\n\x1b\x43\x61nCreateProficienciesReply\x12 \n\x18\x63\x61n_create_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nCreateProficienciesRequest\"\\\n(CanCreateProficiencyWithRecordTypesReply\x12\x30\n(can_create_proficiency_with_record_types\x18\x01 \x01(\x08\"v\n*CanCreateProficiencyWithRecordTypesRequest\x12H\n\x18proficiency_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetProficiencyFormForCreateReply\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"\xe1\x01\n\"GetProficiencyFormForCreateRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12H\n\x18proficiency_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x16\x43reateProficiencyReply\x12\x36\n\x0bproficiency\x18\x01 \x01(\x0b\x32!.dlkit.proto.learning.Proficiency\"[\n\x18\x43reateProficiencyRequest\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"?\n\x1b\x43\x61nUpdateProficienciesReply\x12 \n\x18\x63\x61n_update_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateProficienciesRequest\"c\n GetProficiencyFormForUpdateReply\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"`\n\"GetProficiencyFormForUpdateRequest\x12:\n\x0eproficiency_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16UpdateProficiencyReply\"[\n\x18UpdateProficiencyRequest\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"?\n\x1b\x43\x61nDeleteProficienciesReply\x12 \n\x18\x63\x61n_delete_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteProficienciesRequest\"\x18\n\x16\x44\x65leteProficiencyReply\"V\n\x18\x44\x65leteProficiencyRequest\x12:\n\x0eproficiency_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x44\x65leteProficienciesReply\"\x1c\n\x1a\x44\x65leteProficienciesRequest\"J\n CanManageProficiencyAliasesReply\x12&\n\x1e\x63\x61n_manage_proficiency_aliases\x18\x01 \x01(\x08\"$\n\"CanManageProficiencyAliasesRequest\"\x17\n\x15\x41liasProficiencyReply\"\x8b\x01\n\x17\x41liasProficiencyRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x1b\x43\x61nAssignProficienciesReply\x12 \n\x18\x63\x61n_assign_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nAssignProficienciesRequest\"`\n*CanAssignProficienciesToObjectiveBankReply\x12\x32\n*can_assign_proficiencies_to_objective_bank\x18\x01 \x01(\x08\"m\n,CanAssignProficienciesToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xaf\x01\n2GetAssignableObjectiveBankIdsForProficiencyRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%AssignProficiencyToObjectiveBankReply\"\xa4\x01\n\'AssignProficiencyToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n)UnassignProficiencyFromObjectiveBankReply\"\xa8\x01\n+UnassignProficiencyFromObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nLookupObjectiveBanksReply\x12\"\n\x1a\x63\x61n_lookup_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nLookupObjectiveBanksRequest\"_\n\x1dGetObjectiveBanksByIdsRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"p\n#GetObjectiveBanksByGenusTypeRequest\x12I\n\x19objective_bank_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n)GetObjectiveBanksByParentGenusTypeRequest\x12I\n\x19objective_bank_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n$GetObjectiveBanksByRecordTypeRequest\x12J\n\x1aobjective_bank_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\"GetObjectiveBanksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetObjectiveBanksRequest\"B\n\x1c\x43\x61nCreateObjectiveBanksReply\x12\"\n\x1a\x63\x61n_create_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nCreateObjectiveBanksRequest\"a\n*CanCreateObjectiveBankWithRecordTypesReply\x12\x33\n+can_create_objective_bank_with_record_types\x18\x01 \x01(\x08\"{\n,CanCreateObjectiveBankWithRecordTypesRequest\x12K\n\x1bobjective_bank_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n\"GetObjectiveBankFormForCreateReply\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"s\n$GetObjectiveBankFormForCreateRequest\x12K\n\x1bobjective_bank_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"W\n\x18\x43reateObjectiveBankReply\x12;\n\x0eobjective_bank\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveBank\"b\n\x1a\x43reateObjectiveBankRequest\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"B\n\x1c\x43\x61nUpdateObjectiveBanksReply\x12\"\n\x1a\x63\x61n_update_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nUpdateObjectiveBanksRequest\"j\n\"GetObjectiveBankFormForUpdateReply\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"e\n$GetObjectiveBankFormForUpdateRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18UpdateObjectiveBankReply\"b\n\x1aUpdateObjectiveBankRequest\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"B\n\x1c\x43\x61nDeleteObjectiveBanksReply\x12\"\n\x1a\x63\x61n_delete_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nDeleteObjectiveBanksRequest\"\x1a\n\x18\x44\x65leteObjectiveBankReply\"[\n\x1a\x44\x65leteObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\"CanManageObjectiveBankAliasesReply\x12)\n!can_manage_objective_bank_aliases\x18\x01 \x01(\x08\"&\n$CanManageObjectiveBankAliasesRequest\"\x19\n\x17\x41liasObjectiveBankReply\"\x90\x01\n\x19\x41liasObjectiveBankRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n GetObjectiveBankHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"GetObjectiveBankHierarchyIdRequest\"U\n\x1eGetObjectiveBankHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\"\n GetObjectiveBankHierarchyRequest\"S\n$CanAccessObjectiveBankHierarchyReply\x12+\n#can_access_objective_bank_hierarchy\x18\x01 \x01(\x08\"(\n&CanAccessObjectiveBankHierarchyRequest\" \n\x1eGetRootObjectiveBankIdsRequest\"\x1e\n\x1cGetRootObjectiveBanksRequest\"B\n\x1cHasParentObjectiveBanksReply\x12\"\n\x1ahas_parent_objective_banks\x18\x01 \x01(\x08\"_\n\x1eHasParentObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"C\n\x1cIsParentOfObjectiveBankReply\x12#\n\x1bis_parent_of_objective_bank\x18\x01 \x01(\x08\"\x90\x01\n\x1eIsParentOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n GetParentObjectiveBankIdsRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1eGetParentObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"G\n\x1eIsAncestorOfObjectiveBankReply\x12%\n\x1dis_ancestor_of_objective_bank\x18\x01 \x01(\x08\"\x92\x01\n IsAncestorOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1bHasChildObjectiveBanksReply\x12!\n\x19has_child_objective_banks\x18\x01 \x01(\x08\"^\n\x1dHasChildObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x1bIsChildOfObjectiveBankReply\x12\"\n\x1ais_child_of_objective_bank\x18\x01 \x01(\x08\"\x8f\x01\n\x1dIsChildOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n\x1fGetChildObjectiveBankIdsRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\x1dGetChildObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n IsDescendantOfObjectiveBankReply\x12\'\n\x1fis_descendant_of_objective_bank\x18\x01 \x01(\x08\"\x94\x01\n\"IsDescendantOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x1cGetObjectiveBankNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xad\x01\n\x1eGetObjectiveBankNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12=\n\x11objective_bank_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x1aGetObjectiveBankNodesReply\x12\x44\n\x13objective_bank_node\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankNode\"\xab\x01\n\x1cGetObjectiveBankNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12=\n\x11objective_bank_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanModifyObjectiveBankHierarchyReply\x12+\n#can_modify_objective_bank_hierarchy\x18\x01 \x01(\x08\"(\n&CanModifyObjectiveBankHierarchyRequest\"\x1b\n\x19\x41\x64\x64RootObjectiveBankReply\"\\\n\x1b\x41\x64\x64RootObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cRemoveRootObjectiveBankReply\"_\n\x1eRemoveRootObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1a\x41\x64\x64\x43hildObjectiveBankReply\"\x93\x01\n\x1c\x41\x64\x64\x43hildObjectiveBankRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1f\n\x1dRemoveChildObjectiveBankReply\"\x96\x01\n\x1fRemoveChildObjectiveBankRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eRemoveChildObjectiveBanksReply\"a\n RemoveChildObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xf5\x0c\n\x16ObjectiveLookupSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nLookupObjectives\x12\x30.dlkit.proto.learning.CanLookupObjectivesRequest\x1a..dlkit.proto.learning.CanLookupObjectivesReply\"\x00\x12\x91\x01\n\x1bUseComparativeObjectiveView\x12\x38.dlkit.proto.learning.UseComparativeObjectiveViewRequest\x1a\x36.dlkit.proto.learning.UseComparativeObjectiveViewReply\"\x00\x12\x85\x01\n\x17UsePlenaryObjectiveView\x12\x34.dlkit.proto.learning.UsePlenaryObjectiveViewRequest\x1a\x32.dlkit.proto.learning.UsePlenaryObjectiveViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12\x64\n\x0cGetObjective\x12).dlkit.proto.learning.GetObjectiveRequest\x1a\'.dlkit.proto.learning.GetObjectiveReply\"\x00\x12j\n\x12GetObjectivesByIds\x12/.dlkit.proto.learning.GetObjectivesByIdsRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12v\n\x18GetObjectivesByGenusType\x12\x35.dlkit.proto.learning.GetObjectivesByGenusTypeRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x82\x01\n\x1eGetObjectivesByParentGenusType\x12;.dlkit.proto.learning.GetObjectivesByParentGenusTypeRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12x\n\x19GetObjectivesByRecordType\x12\x36.dlkit.proto.learning.GetObjectivesByRecordTypeRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12`\n\rGetObjectives\x12*.dlkit.proto.learning.GetObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x32\x92\x07\n\x15ObjectiveQuerySession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nSearchObjectives\x12\x30.dlkit.proto.learning.CanSearchObjectivesRequest\x1a..dlkit.proto.learning.CanSearchObjectivesReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12s\n\x11GetObjectiveQuery\x12..dlkit.proto.learning.GetObjectiveQueryRequest\x1a,.dlkit.proto.learning.GetObjectiveQueryReply\"\x00\x12n\n\x14GetObjectivesByQuery\x12\x31.dlkit.proto.learning.GetObjectivesByQueryRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x32\xfb\x0c\n\x15ObjectiveAdminSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nCreateObjectives\x12\x30.dlkit.proto.learning.CanCreateObjectivesRequest\x1a..dlkit.proto.learning.CanCreateObjectivesReply\"\x00\x12\xa3\x01\n!CanCreateObjectiveWithRecordTypes\x12>.dlkit.proto.learning.CanCreateObjectiveWithRecordTypesRequest\x1a<.dlkit.proto.learning.CanCreateObjectiveWithRecordTypesReply\"\x00\x12\x8b\x01\n\x19GetObjectiveFormForCreate\x12\x36.dlkit.proto.learning.GetObjectiveFormForCreateRequest\x1a\x34.dlkit.proto.learning.GetObjectiveFormForCreateReply\"\x00\x12m\n\x0f\x43reateObjective\x12,.dlkit.proto.learning.CreateObjectiveRequest\x1a*.dlkit.proto.learning.CreateObjectiveReply\"\x00\x12y\n\x13\x43\x61nUpdateObjectives\x12\x30.dlkit.proto.learning.CanUpdateObjectivesRequest\x1a..dlkit.proto.learning.CanUpdateObjectivesReply\"\x00\x12\x8b\x01\n\x19GetObjectiveFormForUpdate\x12\x36.dlkit.proto.learning.GetObjectiveFormForUpdateRequest\x1a\x34.dlkit.proto.learning.GetObjectiveFormForUpdateReply\"\x00\x12m\n\x0fUpdateObjective\x12,.dlkit.proto.learning.UpdateObjectiveRequest\x1a*.dlkit.proto.learning.UpdateObjectiveReply\"\x00\x12y\n\x13\x43\x61nDeleteObjectives\x12\x30.dlkit.proto.learning.CanDeleteObjectivesRequest\x1a..dlkit.proto.learning.CanDeleteObjectivesReply\"\x00\x12m\n\x0f\x44\x65leteObjective\x12,.dlkit.proto.learning.DeleteObjectiveRequest\x1a*.dlkit.proto.learning.DeleteObjectiveReply\"\x00\x12\x8b\x01\n\x19\x43\x61nManageObjectiveAliases\x12\x36.dlkit.proto.learning.CanManageObjectiveAliasesRequest\x1a\x34.dlkit.proto.learning.CanManageObjectiveAliasesReply\"\x00\x12j\n\x0e\x41liasObjective\x12+.dlkit.proto.learning.AliasObjectiveRequest\x1a).dlkit.proto.learning.AliasObjectiveReply\"\x00\x32\xd0\x12\n\x19ObjectiveHierarchySession\x12\x85\x01\n\x17GetObjectiveHierarchyId\x12\x34.dlkit.proto.learning.GetObjectiveHierarchyIdRequest\x1a\x32.dlkit.proto.learning.GetObjectiveHierarchyIdReply\"\x00\x12\x7f\n\x15GetObjectiveHierarchy\x12\x32.dlkit.proto.learning.GetObjectiveHierarchyRequest\x1a\x30.dlkit.proto.learning.GetObjectiveHierarchyReply\"\x00\x12\x91\x01\n\x1b\x43\x61nAccessObjectiveHierarchy\x12\x38.dlkit.proto.learning.CanAccessObjectiveHierarchyRequest\x1a\x36.dlkit.proto.learning.CanAccessObjectiveHierarchyReply\"\x00\x12\x91\x01\n\x1bUseComparativeObjectiveView\x12\x38.dlkit.proto.learning.UseComparativeObjectiveViewRequest\x1a\x36.dlkit.proto.learning.UseComparativeObjectiveViewReply\"\x00\x12\x85\x01\n\x17UsePlenaryObjectiveView\x12\x34.dlkit.proto.learning.UsePlenaryObjectiveViewRequest\x1a\x32.dlkit.proto.learning.UsePlenaryObjectiveViewReply\"\x00\x12o\n\x13GetRootObjectiveIds\x12\x30.dlkit.proto.learning.GetRootObjectiveIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x11GetRootObjectives\x12..dlkit.proto.learning.GetRootObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12y\n\x13HasParentObjectives\x12\x30.dlkit.proto.learning.HasParentObjectivesRequest\x1a..dlkit.proto.learning.HasParentObjectivesReply\"\x00\x12y\n\x13IsParentOfObjective\x12\x30.dlkit.proto.learning.IsParentOfObjectiveRequest\x1a..dlkit.proto.learning.IsParentOfObjectiveReply\"\x00\x12s\n\x15GetParentObjectiveIds\x12\x32.dlkit.proto.learning.GetParentObjectiveIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12l\n\x13GetParentObjectives\x12\x30.dlkit.proto.learning.GetParentObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x7f\n\x15IsAncestorOfObjective\x12\x32.dlkit.proto.learning.IsAncestorOfObjectiveRequest\x1a\x30.dlkit.proto.learning.IsAncestorOfObjectiveReply\"\x00\x12v\n\x12HasChildObjectives\x12/.dlkit.proto.learning.HasChildObjectivesRequest\x1a-.dlkit.proto.learning.HasChildObjectivesReply\"\x00\x12v\n\x12IsChildOfObjective\x12/.dlkit.proto.learning.IsChildOfObjectiveRequest\x1a-.dlkit.proto.learning.IsChildOfObjectiveReply\"\x00\x12q\n\x14GetChildObjectiveIds\x12\x31.dlkit.proto.learning.GetChildObjectiveIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x12GetChildObjectives\x12/.dlkit.proto.learning.GetChildObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x85\x01\n\x17IsDescendantOfObjective\x12\x34.dlkit.proto.learning.IsDescendantOfObjectiveRequest\x1a\x32.dlkit.proto.learning.IsDescendantOfObjectiveReply\"\x00\x12y\n\x13GetObjectiveNodeIds\x12\x30.dlkit.proto.learning.GetObjectiveNodeIdsRequest\x1a..dlkit.proto.learning.GetObjectiveNodeIdsReply\"\x00\x12s\n\x11GetObjectiveNodes\x12..dlkit.proto.learning.GetObjectiveNodesRequest\x1a,.dlkit.proto.learning.GetObjectiveNodesReply\"\x00\x32\x9f\x08\n\x1fObjectiveHierarchyDesignSession\x12\x85\x01\n\x17GetObjectiveHierarchyId\x12\x34.dlkit.proto.learning.GetObjectiveHierarchyIdRequest\x1a\x32.dlkit.proto.learning.GetObjectiveHierarchyIdReply\"\x00\x12\x7f\n\x15GetObjectiveHierarchy\x12\x32.dlkit.proto.learning.GetObjectiveHierarchyRequest\x1a\x30.dlkit.proto.learning.GetObjectiveHierarchyReply\"\x00\x12\x91\x01\n\x1b\x43\x61nModifyObjectiveHierarchy\x12\x38.dlkit.proto.learning.CanModifyObjectiveHierarchyRequest\x1a\x36.dlkit.proto.learning.CanModifyObjectiveHierarchyReply\"\x00\x12p\n\x10\x41\x64\x64RootObjective\x12-.dlkit.proto.learning.AddRootObjectiveRequest\x1a+.dlkit.proto.learning.AddRootObjectiveReply\"\x00\x12y\n\x13RemoveRootObjective\x12\x30.dlkit.proto.learning.RemoveRootObjectiveRequest\x1a..dlkit.proto.learning.RemoveRootObjectiveReply\"\x00\x12s\n\x11\x41\x64\x64\x43hildObjective\x12..dlkit.proto.learning.AddChildObjectiveRequest\x1a,.dlkit.proto.learning.AddChildObjectiveReply\"\x00\x12|\n\x14RemoveChildObjective\x12\x31.dlkit.proto.learning.RemoveChildObjectiveRequest\x1a/.dlkit.proto.learning.RemoveChildObjectiveReply\"\x00\x12\x7f\n\x15RemoveChildObjectives\x12\x32.dlkit.proto.learning.RemoveChildObjectivesRequest\x1a\x30.dlkit.proto.learning.RemoveChildObjectivesReply\"\x00\x32\x91\x06\n\x1aObjectiveSequencingSession\x12\x85\x01\n\x17GetObjectiveHierarchyId\x12\x34.dlkit.proto.learning.GetObjectiveHierarchyIdRequest\x1a\x32.dlkit.proto.learning.GetObjectiveHierarchyIdReply\"\x00\x12\x7f\n\x15GetObjectiveHierarchy\x12\x32.dlkit.proto.learning.GetObjectiveHierarchyRequest\x1a\x30.dlkit.proto.learning.GetObjectiveHierarchyReply\"\x00\x12\x7f\n\x15\x43\x61nSequenceObjectives\x12\x32.dlkit.proto.learning.CanSequenceObjectivesRequest\x1a\x30.dlkit.proto.learning.CanSequenceObjectivesReply\"\x00\x12v\n\x12MoveObjectiveAhead\x12/.dlkit.proto.learning.MoveObjectiveAheadRequest\x1a-.dlkit.proto.learning.MoveObjectiveAheadReply\"\x00\x12y\n\x13MoveObjectiveBehind\x12\x30.dlkit.proto.learning.MoveObjectiveBehindRequest\x1a..dlkit.proto.learning.MoveObjectiveBehindReply\"\x00\x12v\n\x12SequenceObjectives\x12/.dlkit.proto.learning.SequenceObjectivesRequest\x1a-.dlkit.proto.learning.SequenceObjectivesReply\"\x00\x32\xad\n\n\x1dObjectiveObjectiveBankSession\x12\xb5\x01\n\'CanLookupObjectiveObjectiveBankMappings\x12\x44.dlkit.proto.learning.CanLookupObjectiveObjectiveBankMappingsRequest\x1a\x42.dlkit.proto.learning.CanLookupObjectiveObjectiveBankMappingsReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12\x85\x01\n\x1eGetObjectiveIdsByObjectiveBank\x12;.dlkit.proto.learning.GetObjectiveIdsByObjectiveBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12~\n\x1cGetObjectivesByObjectiveBank\x12\x39.dlkit.proto.learning.GetObjectivesByObjectiveBankRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x87\x01\n\x1fGetObjectiveIdsByObjectiveBanks\x12<.dlkit.proto.learning.GetObjectiveIdsByObjectiveBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x80\x01\n\x1dGetObjectivesByObjectiveBanks\x12:.dlkit.proto.learning.GetObjectivesByObjectiveBanksRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x85\x01\n\x1eGetObjectiveBankIdsByObjective\x12;.dlkit.proto.learning.GetObjectiveBankIdsByObjectiveRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x1cGetObjectiveBanksByObjective\x12\x39.dlkit.proto.learning.GetObjectiveBanksByObjectiveRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x32\xe0\x08\n\'ObjectiveObjectiveBankAssignmentSession\x12y\n\x13\x43\x61nAssignObjectives\x12\x30.dlkit.proto.learning.CanAssignObjectivesRequest\x1a..dlkit.proto.learning.CanAssignObjectivesReply\"\x00\x12\xa6\x01\n\"CanAssignObjectivesToObjectiveBank\x12?.dlkit.proto.learning.CanAssignObjectivesToObjectiveBankRequest\x1a=.dlkit.proto.learning.CanAssignObjectivesToObjectiveBankReply\"\x00\x12\x83\x01\n\x1dGetAssignableObjectiveBankIds\x12:.dlkit.proto.learning.GetAssignableObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n)GetAssignableObjectiveBankIdsForObjective\x12\x46.dlkit.proto.learning.GetAssignableObjectiveBankIdsForObjectiveRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9a\x01\n\x1e\x41ssignObjectiveToObjectiveBank\x12;.dlkit.proto.learning.AssignObjectiveToObjectiveBankRequest\x1a\x39.dlkit.proto.learning.AssignObjectiveToObjectiveBankReply\"\x00\x12\xa6\x01\n\"UnassignObjectiveFromObjectiveBank\x12?.dlkit.proto.learning.UnassignObjectiveFromObjectiveBankRequest\x1a=.dlkit.proto.learning.UnassignObjectiveFromObjectiveBankReply\"\x00\x12\xa6\x01\n\"ReassignProficiencyToObjectiveBank\x12?.dlkit.proto.learning.ReassignProficiencyToObjectiveBankRequest\x1a=.dlkit.proto.learning.ReassignProficiencyToObjectiveBankReply\"\x00\x32\xc5\x0c\n\x19ObjectiveRequisiteSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x9d\x01\n\x1f\x43\x61nLookupObjectivePrerequisites\x12<.dlkit.proto.learning.CanLookupObjectivePrerequisitesRequest\x1a:.dlkit.proto.learning.CanLookupObjectivePrerequisitesReply\"\x00\x12\x91\x01\n\x1bUseComparativeObjectiveView\x12\x38.dlkit.proto.learning.UseComparativeObjectiveViewRequest\x1a\x36.dlkit.proto.learning.UseComparativeObjectiveViewReply\"\x00\x12\x85\x01\n\x17UsePlenaryObjectiveView\x12\x34.dlkit.proto.learning.UsePlenaryObjectiveViewRequest\x1a\x32.dlkit.proto.learning.UsePlenaryObjectiveViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12r\n\x16GetRequisiteObjectives\x12\x33.dlkit.proto.learning.GetRequisiteObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12x\n\x19GetAllRequisiteObjectives\x12\x36.dlkit.proto.learning.GetAllRequisiteObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12r\n\x16GetDependentObjectives\x12\x33.dlkit.proto.learning.GetDependentObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12y\n\x13IsObjectiveRequired\x12\x30.dlkit.proto.learning.IsObjectiveRequiredRequest\x1a..dlkit.proto.learning.IsObjectiveRequiredReply\"\x00\x12t\n\x17GetEquivalentObjectives\x12\x34.dlkit.proto.learning.GetEquivalentObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x32\xc8\x07\n#ObjectiveRequisiteAssignmentSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nAssignRequisites\x12\x30.dlkit.proto.learning.CanAssignRequisitesRequest\x1a..dlkit.proto.learning.CanAssignRequisitesReply\"\x00\x12\x88\x01\n\x18\x41ssignObjectiveRequisite\x12\x35.dlkit.proto.learning.AssignObjectiveRequisiteRequest\x1a\x33.dlkit.proto.learning.AssignObjectiveRequisiteReply\"\x00\x12\x8e\x01\n\x1aUnassignObjectiveRequisite\x12\x37.dlkit.proto.learning.UnassignObjectiveRequisiteRequest\x1a\x35.dlkit.proto.learning.UnassignObjectiveRequisiteReply\"\x00\x12\x8b\x01\n\x19\x41ssignEquivalentObjective\x12\x36.dlkit.proto.learning.AssignEquivalentObjectiveRequest\x1a\x34.dlkit.proto.learning.AssignEquivalentObjectiveReply\"\x00\x12\x91\x01\n\x1bUnassignEquivalentObjective\x12\x38.dlkit.proto.learning.UnassignEquivalentObjectiveRequest\x1a\x36.dlkit.proto.learning.UnassignEquivalentObjectiveReply\"\x00\x32\xba\x10\n\x15\x41\x63tivityLookupSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nLookupActivities\x12\x30.dlkit.proto.learning.CanLookupActivitiesRequest\x1a..dlkit.proto.learning.CanLookupActivitiesReply\"\x00\x12\x8e\x01\n\x1aUseComparativeActivityView\x12\x37.dlkit.proto.learning.UseComparativeActivityViewRequest\x1a\x35.dlkit.proto.learning.UseComparativeActivityViewReply\"\x00\x12\x82\x01\n\x16UsePlenaryActivityView\x12\x33.dlkit.proto.learning.UsePlenaryActivityViewRequest\x1a\x31.dlkit.proto.learning.UsePlenaryActivityViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12\x61\n\x0bGetActivity\x12(.dlkit.proto.learning.GetActivityRequest\x1a&.dlkit.proto.learning.GetActivityReply\"\x00\x12i\n\x12GetActivitiesByIds\x12/.dlkit.proto.learning.GetActivitiesByIdsRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12u\n\x18GetActivitiesByGenusType\x12\x35.dlkit.proto.learning.GetActivitiesByGenusTypeRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12\x81\x01\n\x1eGetActivitiesByParentGenusType\x12;.dlkit.proto.learning.GetActivitiesByParentGenusTypeRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12w\n\x19GetActivitiesByRecordType\x12\x36.dlkit.proto.learning.GetActivitiesByRecordTypeRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12w\n\x19GetActivitiesForObjective\x12\x36.dlkit.proto.learning.GetActivitiesForObjectiveRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12y\n\x1aGetActivitiesForObjectives\x12\x37.dlkit.proto.learning.GetActivitiesForObjectivesRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12m\n\x14GetActivitiesByAsset\x12\x31.dlkit.proto.learning.GetActivitiesByAssetRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12o\n\x15GetActivitiesByAssets\x12\x32.dlkit.proto.learning.GetActivitiesByAssetsRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12_\n\rGetActivities\x12*.dlkit.proto.learning.GetActivitiesRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x32\x8d\x07\n\x14\x41\x63tivityQuerySession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nSearchActivities\x12\x30.dlkit.proto.learning.CanSearchActivitiesRequest\x1a..dlkit.proto.learning.CanSearchActivitiesReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12p\n\x10GetActivityQuery\x12-.dlkit.proto.learning.GetActivityQueryRequest\x1a+.dlkit.proto.learning.GetActivityQueryReply\"\x00\x12m\n\x14GetActivitiesByQuery\x12\x31.dlkit.proto.learning.GetActivitiesByQueryRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x32\xe2\x0c\n\x14\x41\x63tivityAdminSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nCreateActivities\x12\x30.dlkit.proto.learning.CanCreateActivitiesRequest\x1a..dlkit.proto.learning.CanCreateActivitiesReply\"\x00\x12\xa0\x01\n CanCreateActivityWithRecordTypes\x12=.dlkit.proto.learning.CanCreateActivityWithRecordTypesRequest\x1a;.dlkit.proto.learning.CanCreateActivityWithRecordTypesReply\"\x00\x12\x88\x01\n\x18GetActivityFormForCreate\x12\x35.dlkit.proto.learning.GetActivityFormForCreateRequest\x1a\x33.dlkit.proto.learning.GetActivityFormForCreateReply\"\x00\x12j\n\x0e\x43reateActivity\x12+.dlkit.proto.learning.CreateActivityRequest\x1a).dlkit.proto.learning.CreateActivityReply\"\x00\x12y\n\x13\x43\x61nUpdateActivities\x12\x30.dlkit.proto.learning.CanUpdateActivitiesRequest\x1a..dlkit.proto.learning.CanUpdateActivitiesReply\"\x00\x12\x88\x01\n\x18GetActivityFormForUpdate\x12\x35.dlkit.proto.learning.GetActivityFormForUpdateRequest\x1a\x33.dlkit.proto.learning.GetActivityFormForUpdateReply\"\x00\x12j\n\x0eUpdateActivity\x12+.dlkit.proto.learning.UpdateActivityRequest\x1a).dlkit.proto.learning.UpdateActivityReply\"\x00\x12y\n\x13\x43\x61nDeleteActivities\x12\x30.dlkit.proto.learning.CanDeleteActivitiesRequest\x1a..dlkit.proto.learning.CanDeleteActivitiesReply\"\x00\x12j\n\x0e\x44\x65leteActivity\x12+.dlkit.proto.learning.DeleteActivityRequest\x1a).dlkit.proto.learning.DeleteActivityReply\"\x00\x12\x88\x01\n\x18\x43\x61nManageActivityAliases\x12\x35.dlkit.proto.learning.CanManageActivityAliasesRequest\x1a\x33.dlkit.proto.learning.CanManageActivityAliasesReply\"\x00\x12g\n\rAliasActivity\x12*.dlkit.proto.learning.AliasActivityRequest\x1a(.dlkit.proto.learning.AliasActivityReply\"\x00\x32\x9e\n\n\x1c\x41\x63tivityObjectiveBankSession\x12\xb2\x01\n&CanLookupActivityObjectiveBankMappings\x12\x43.dlkit.proto.learning.CanLookupActivityObjectiveBankMappingsRequest\x1a\x41.dlkit.proto.learning.CanLookupActivityObjectiveBankMappingsReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12\x83\x01\n\x1dGetActivityIdsByObjectiveBank\x12:.dlkit.proto.learning.GetActivityIdsByObjectiveBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12}\n\x1cGetActivitiesByObjectiveBank\x12\x39.dlkit.proto.learning.GetActivitiesByObjectiveBankRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12\x85\x01\n\x1eGetActivityIdsByObjectiveBanks\x12;.dlkit.proto.learning.GetActivityIdsByObjectiveBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x7f\n\x1dGetActivitiesByObjectiveBanks\x12:.dlkit.proto.learning.GetActivitiesByObjectiveBanksRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12\x83\x01\n\x1dGetObjectiveBankIdsByActivity\x12:.dlkit.proto.learning.GetObjectiveBankIdsByActivityRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x80\x01\n\x1bGetObjectiveBanksByActivity\x12\x38.dlkit.proto.learning.GetObjectiveBanksByActivityRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x32\xce\x08\n&ActivityObjectiveBankAssignmentSession\x12y\n\x13\x43\x61nAssignActivities\x12\x30.dlkit.proto.learning.CanAssignActivitiesRequest\x1a..dlkit.proto.learning.CanAssignActivitiesReply\"\x00\x12\xa6\x01\n\"CanAssignActivitiesToObjectiveBank\x12?.dlkit.proto.learning.CanAssignActivitiesToObjectiveBankRequest\x1a=.dlkit.proto.learning.CanAssignActivitiesToObjectiveBankReply\"\x00\x12\x83\x01\n\x1dGetAssignableObjectiveBankIds\x12:.dlkit.proto.learning.GetAssignableObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x99\x01\n(GetAssignableObjectiveBankIdsForActivity\x12\x45.dlkit.proto.learning.GetAssignableObjectiveBankIdsForActivityRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x97\x01\n\x1d\x41ssignActivityToObjectiveBank\x12:.dlkit.proto.learning.AssignActivityToObjectiveBankRequest\x1a\x38.dlkit.proto.learning.AssignActivityToObjectiveBankReply\"\x00\x12\xa3\x01\n!UnassignActivityFromObjectiveBank\x12>.dlkit.proto.learning.UnassignActivityFromObjectiveBankRequest\x1a<.dlkit.proto.learning.UnassignActivityFromObjectiveBankReply\"\x00\x12\x9d\x01\n\x1fReassignActivityToObjectiveBank\x12<.dlkit.proto.learning.ReassignActivityToObjectiveBankRequest\x1a:.dlkit.proto.learning.ReassignActivityToObjectiveBankReply\"\x00\x32\xb7\"\n\x18ProficiencyLookupSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x82\x01\n\x16\x43\x61nLookupProficiencies\x12\x33.dlkit.proto.learning.CanLookupProficienciesRequest\x1a\x31.dlkit.proto.learning.CanLookupProficienciesReply\"\x00\x12\x97\x01\n\x1dUseComparativeProficiencyView\x12:.dlkit.proto.learning.UseComparativeProficiencyViewRequest\x1a\x38.dlkit.proto.learning.UseComparativeProficiencyViewReply\"\x00\x12\x8b\x01\n\x19UsePlenaryProficiencyView\x12\x36.dlkit.proto.learning.UsePlenaryProficiencyViewRequest\x1a\x34.dlkit.proto.learning.UsePlenaryProficiencyViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUseEffectiveProficiencyView\x12\x38.dlkit.proto.learning.UseEffectiveProficiencyViewRequest\x1a\x36.dlkit.proto.learning.UseEffectiveProficiencyViewReply\"\x00\x12\x9a\x01\n\x1eUseAnyEffectiveProficiencyView\x12;.dlkit.proto.learning.UseAnyEffectiveProficiencyViewRequest\x1a\x39.dlkit.proto.learning.UseAnyEffectiveProficiencyViewReply\"\x00\x12j\n\x0eGetProficiency\x12+.dlkit.proto.learning.GetProficiencyRequest\x1a).dlkit.proto.learning.GetProficiencyReply\"\x00\x12r\n\x15GetProficienciesByIds\x12\x32.dlkit.proto.learning.GetProficienciesByIdsRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12~\n\x1bGetProficienciesByGenusType\x12\x38.dlkit.proto.learning.GetProficienciesByGenusTypeRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8a\x01\n!GetProficienciesByParentGenusType\x12>.dlkit.proto.learning.GetProficienciesByParentGenusTypeRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x80\x01\n\x1cGetProficienciesByRecordType\x12\x39.dlkit.proto.learning.GetProficienciesByRecordTypeRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12t\n\x16GetProficienciesOnDate\x12\x33.dlkit.proto.learning.GetProficienciesOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8a\x01\n!GetProficienciesByGenusTypeOnDate\x12>.dlkit.proto.learning.GetProficienciesByGenusTypeOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x80\x01\n\x1cGetProficienciesForObjective\x12\x39.dlkit.proto.learning.GetProficienciesForObjectiveRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8c\x01\n\"GetProficienciesForObjectiveOnDate\x12?.dlkit.proto.learning.GetProficienciesForObjectiveOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x96\x01\n\'GetProficienciesByGenusTypeForObjective\x12\x44.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xa2\x01\n-GetProficienciesByGenusTypeForObjectiveOnDate\x12J.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x82\x01\n\x1dGetProficienciesForObjectives\x12:.dlkit.proto.learning.GetProficienciesForObjectivesRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12~\n\x1bGetProficienciesForResource\x12\x38.dlkit.proto.learning.GetProficienciesForResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8a\x01\n!GetProficienciesForResourceOnDate\x12>.dlkit.proto.learning.GetProficienciesForResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x94\x01\n&GetProficienciesByGenusTypeForResource\x12\x43.dlkit.proto.learning.GetProficienciesByGenusTypeForResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xa0\x01\n,GetProficienciesByGenusTypeForResourceOnDate\x12I.dlkit.proto.learning.GetProficienciesByGenusTypeForResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x80\x01\n\x1cGetProficienciesForResources\x12\x39.dlkit.proto.learning.GetProficienciesForResourcesRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x96\x01\n\'GetProficienciesForObjectiveAndResource\x12\x44.dlkit.proto.learning.GetProficienciesForObjectiveAndResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xa2\x01\n-GetProficienciesForObjectiveAndResourceOnDate\x12J.dlkit.proto.learning.GetProficienciesForObjectiveAndResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xac\x01\n2GetProficienciesByGenusTypeForObjectiveAndResource\x12O.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveAndResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xb8\x01\n8GetProficienciesByGenusTypeForObjectiveAndResourceOnDate\x12U.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveAndResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12h\n\x10GetProficiencies\x12-.dlkit.proto.learning.GetProficienciesRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x32\xac\x07\n\x17ProficiencyQuerySession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x82\x01\n\x16\x43\x61nSearchProficiencies\x12\x33.dlkit.proto.learning.CanSearchProficienciesRequest\x1a\x31.dlkit.proto.learning.CanSearchProficienciesReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12y\n\x13GetProficiencyQuery\x12\x30.dlkit.proto.learning.GetProficiencyQueryRequest\x1a..dlkit.proto.learning.GetProficiencyQueryReply\"\x00\x12v\n\x17GetProficienciesByQuery\x12\x34.dlkit.proto.learning.GetProficienciesByQueryRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x32\xc6\x0e\n\x17ProficiencyAdminSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x82\x01\n\x16\x43\x61nCreateProficiencies\x12\x33.dlkit.proto.learning.CanCreateProficienciesRequest\x1a\x31.dlkit.proto.learning.CanCreateProficienciesReply\"\x00\x12\xa9\x01\n#CanCreateProficiencyWithRecordTypes\x12@.dlkit.proto.learning.CanCreateProficiencyWithRecordTypesRequest\x1a>.dlkit.proto.learning.CanCreateProficiencyWithRecordTypesReply\"\x00\x12\x91\x01\n\x1bGetProficiencyFormForCreate\x12\x38.dlkit.proto.learning.GetProficiencyFormForCreateRequest\x1a\x36.dlkit.proto.learning.GetProficiencyFormForCreateReply\"\x00\x12s\n\x11\x43reateProficiency\x12..dlkit.proto.learning.CreateProficiencyRequest\x1a,.dlkit.proto.learning.CreateProficiencyReply\"\x00\x12\x82\x01\n\x16\x43\x61nUpdateProficiencies\x12\x33.dlkit.proto.learning.CanUpdateProficienciesRequest\x1a\x31.dlkit.proto.learning.CanUpdateProficienciesReply\"\x00\x12\x91\x01\n\x1bGetProficiencyFormForUpdate\x12\x38.dlkit.proto.learning.GetProficiencyFormForUpdateRequest\x1a\x36.dlkit.proto.learning.GetProficiencyFormForUpdateReply\"\x00\x12s\n\x11UpdateProficiency\x12..dlkit.proto.learning.UpdateProficiencyRequest\x1a,.dlkit.proto.learning.UpdateProficiencyReply\"\x00\x12\x82\x01\n\x16\x43\x61nDeleteProficiencies\x12\x33.dlkit.proto.learning.CanDeleteProficienciesRequest\x1a\x31.dlkit.proto.learning.CanDeleteProficienciesReply\"\x00\x12s\n\x11\x44\x65leteProficiency\x12..dlkit.proto.learning.DeleteProficiencyRequest\x1a,.dlkit.proto.learning.DeleteProficiencyReply\"\x00\x12y\n\x13\x44\x65leteProficiencies\x12\x30.dlkit.proto.learning.DeleteProficienciesRequest\x1a..dlkit.proto.learning.DeleteProficienciesReply\"\x00\x12\x91\x01\n\x1b\x43\x61nManageProficiencyAliases\x12\x38.dlkit.proto.learning.CanManageProficiencyAliasesRequest\x1a\x36.dlkit.proto.learning.CanManageProficiencyAliasesReply\"\x00\x12p\n\x10\x41liasProficiency\x12-.dlkit.proto.learning.AliasProficiencyRequest\x1a+.dlkit.proto.learning.AliasProficiencyReply\"\x00\x32\x85\t\n)ProficiencyObjectiveBankAssignmentSession\x12\x82\x01\n\x16\x43\x61nAssignProficiencies\x12\x33.dlkit.proto.learning.CanAssignProficienciesRequest\x1a\x31.dlkit.proto.learning.CanAssignProficienciesReply\"\x00\x12\xaf\x01\n%CanAssignProficienciesToObjectiveBank\x12\x42.dlkit.proto.learning.CanAssignProficienciesToObjectiveBankRequest\x1a@.dlkit.proto.learning.CanAssignProficienciesToObjectiveBankReply\"\x00\x12\x83\x01\n\x1dGetAssignableObjectiveBankIds\x12:.dlkit.proto.learning.GetAssignableObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9f\x01\n+GetAssignableObjectiveBankIdsForProficiency\x12H.dlkit.proto.learning.GetAssignableObjectiveBankIdsForProficiencyRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\xa0\x01\n AssignProficiencyToObjectiveBank\x12=.dlkit.proto.learning.AssignProficiencyToObjectiveBankRequest\x1a;.dlkit.proto.learning.AssignProficiencyToObjectiveBankReply\"\x00\x12\xac\x01\n$UnassignProficiencyFromObjectiveBank\x12\x41.dlkit.proto.learning.UnassignProficiencyFromObjectiveBankRequest\x1a?.dlkit.proto.learning.UnassignProficiencyFromObjectiveBankReply\"\x00\x12\xa6\x01\n\"ReassignProficiencyToObjectiveBank\x12?.dlkit.proto.learning.ReassignProficiencyToObjectiveBankRequest\x1a=.dlkit.proto.learning.ReassignProficiencyToObjectiveBankReply\"\x00\x32\xd0\n\n\x1aObjectiveBankLookupSession\x12\x85\x01\n\x17\x43\x61nLookupObjectiveBanks\x12\x34.dlkit.proto.learning.CanLookupObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanLookupObjectiveBanksReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12v\n\x16GetObjectiveBanksByIds\x12\x33.dlkit.proto.learning.GetObjectiveBanksByIdsRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x82\x01\n\x1cGetObjectiveBanksByGenusType\x12\x39.dlkit.proto.learning.GetObjectiveBanksByGenusTypeRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x8e\x01\n\"GetObjectiveBanksByParentGenusType\x12?.dlkit.proto.learning.GetObjectiveBanksByParentGenusTypeRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x84\x01\n\x1dGetObjectiveBanksByRecordType\x12:.dlkit.proto.learning.GetObjectiveBanksByRecordTypeRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x80\x01\n\x1bGetObjectiveBanksByProvider\x12\x38.dlkit.proto.learning.GetObjectiveBanksByProviderRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12l\n\x11GetObjectiveBanks\x12..dlkit.proto.learning.GetObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x32\x9c\x0c\n\x19ObjectiveBankAdminSession\x12\x85\x01\n\x17\x43\x61nCreateObjectiveBanks\x12\x34.dlkit.proto.learning.CanCreateObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanCreateObjectiveBanksReply\"\x00\x12\xaf\x01\n%CanCreateObjectiveBankWithRecordTypes\x12\x42.dlkit.proto.learning.CanCreateObjectiveBankWithRecordTypesRequest\x1a@.dlkit.proto.learning.CanCreateObjectiveBankWithRecordTypesReply\"\x00\x12\x97\x01\n\x1dGetObjectiveBankFormForCreate\x12:.dlkit.proto.learning.GetObjectiveBankFormForCreateRequest\x1a\x38.dlkit.proto.learning.GetObjectiveBankFormForCreateReply\"\x00\x12y\n\x13\x43reateObjectiveBank\x12\x30.dlkit.proto.learning.CreateObjectiveBankRequest\x1a..dlkit.proto.learning.CreateObjectiveBankReply\"\x00\x12\x85\x01\n\x17\x43\x61nUpdateObjectiveBanks\x12\x34.dlkit.proto.learning.CanUpdateObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanUpdateObjectiveBanksReply\"\x00\x12\x97\x01\n\x1dGetObjectiveBankFormForUpdate\x12:.dlkit.proto.learning.GetObjectiveBankFormForUpdateRequest\x1a\x38.dlkit.proto.learning.GetObjectiveBankFormForUpdateReply\"\x00\x12y\n\x13UpdateObjectiveBank\x12\x30.dlkit.proto.learning.UpdateObjectiveBankRequest\x1a..dlkit.proto.learning.UpdateObjectiveBankReply\"\x00\x12\x85\x01\n\x17\x43\x61nDeleteObjectiveBanks\x12\x34.dlkit.proto.learning.CanDeleteObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanDeleteObjectiveBanksReply\"\x00\x12y\n\x13\x44\x65leteObjectiveBank\x12\x30.dlkit.proto.learning.DeleteObjectiveBankRequest\x1a..dlkit.proto.learning.DeleteObjectiveBankReply\"\x00\x12\x97\x01\n\x1d\x43\x61nManageObjectiveBankAliases\x12:.dlkit.proto.learning.CanManageObjectiveBankAliasesRequest\x1a\x38.dlkit.proto.learning.CanManageObjectiveBankAliasesReply\"\x00\x12v\n\x12\x41liasObjectiveBank\x12/.dlkit.proto.learning.AliasObjectiveBankRequest\x1a-.dlkit.proto.learning.AliasObjectiveBankReply\"\x00\x32\xb3\x14\n\x1dObjectiveBankHierarchySession\x12\x91\x01\n\x1bGetObjectiveBankHierarchyId\x12\x38.dlkit.proto.learning.GetObjectiveBankHierarchyIdRequest\x1a\x36.dlkit.proto.learning.GetObjectiveBankHierarchyIdReply\"\x00\x12\x8b\x01\n\x19GetObjectiveBankHierarchy\x12\x36.dlkit.proto.learning.GetObjectiveBankHierarchyRequest\x1a\x34.dlkit.proto.learning.GetObjectiveBankHierarchyReply\"\x00\x12\x9d\x01\n\x1f\x43\x61nAccessObjectiveBankHierarchy\x12<.dlkit.proto.learning.CanAccessObjectiveBankHierarchyRequest\x1a:.dlkit.proto.learning.CanAccessObjectiveBankHierarchyReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12w\n\x17GetRootObjectiveBankIds\x12\x34.dlkit.proto.learning.GetRootObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12t\n\x15GetRootObjectiveBanks\x12\x32.dlkit.proto.learning.GetRootObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x85\x01\n\x17HasParentObjectiveBanks\x12\x34.dlkit.proto.learning.HasParentObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.HasParentObjectiveBanksReply\"\x00\x12\x85\x01\n\x17IsParentOfObjectiveBank\x12\x34.dlkit.proto.learning.IsParentOfObjectiveBankRequest\x1a\x32.dlkit.proto.learning.IsParentOfObjectiveBankReply\"\x00\x12{\n\x19GetParentObjectiveBankIds\x12\x36.dlkit.proto.learning.GetParentObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12x\n\x17GetParentObjectiveBanks\x12\x34.dlkit.proto.learning.GetParentObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x8b\x01\n\x19IsAncestorOfObjectiveBank\x12\x36.dlkit.proto.learning.IsAncestorOfObjectiveBankRequest\x1a\x34.dlkit.proto.learning.IsAncestorOfObjectiveBankReply\"\x00\x12\x82\x01\n\x16HasChildObjectiveBanks\x12\x33.dlkit.proto.learning.HasChildObjectiveBanksRequest\x1a\x31.dlkit.proto.learning.HasChildObjectiveBanksReply\"\x00\x12\x82\x01\n\x16IsChildOfObjectiveBank\x12\x33.dlkit.proto.learning.IsChildOfObjectiveBankRequest\x1a\x31.dlkit.proto.learning.IsChildOfObjectiveBankReply\"\x00\x12y\n\x18GetChildObjectiveBankIds\x12\x35.dlkit.proto.learning.GetChildObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12v\n\x16GetChildObjectiveBanks\x12\x33.dlkit.proto.learning.GetChildObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x91\x01\n\x1bIsDescendantOfObjectiveBank\x12\x38.dlkit.proto.learning.IsDescendantOfObjectiveBankRequest\x1a\x36.dlkit.proto.learning.IsDescendantOfObjectiveBankReply\"\x00\x12\x85\x01\n\x17GetObjectiveBankNodeIds\x12\x34.dlkit.proto.learning.GetObjectiveBankNodeIdsRequest\x1a\x32.dlkit.proto.learning.GetObjectiveBankNodeIdsReply\"\x00\x12\x7f\n\x15GetObjectiveBankNodes\x12\x32.dlkit.proto.learning.GetObjectiveBankNodesRequest\x1a\x30.dlkit.proto.learning.GetObjectiveBankNodesReply\"\x00\x32\x87\t\n#ObjectiveBankHierarchyDesignSession\x12\x91\x01\n\x1bGetObjectiveBankHierarchyId\x12\x38.dlkit.proto.learning.GetObjectiveBankHierarchyIdRequest\x1a\x36.dlkit.proto.learning.GetObjectiveBankHierarchyIdReply\"\x00\x12\x8b\x01\n\x19GetObjectiveBankHierarchy\x12\x36.dlkit.proto.learning.GetObjectiveBankHierarchyRequest\x1a\x34.dlkit.proto.learning.GetObjectiveBankHierarchyReply\"\x00\x12\x9d\x01\n\x1f\x43\x61nModifyObjectiveBankHierarchy\x12<.dlkit.proto.learning.CanModifyObjectiveBankHierarchyRequest\x1a:.dlkit.proto.learning.CanModifyObjectiveBankHierarchyReply\"\x00\x12|\n\x14\x41\x64\x64RootObjectiveBank\x12\x31.dlkit.proto.learning.AddRootObjectiveBankRequest\x1a/.dlkit.proto.learning.AddRootObjectiveBankReply\"\x00\x12\x85\x01\n\x17RemoveRootObjectiveBank\x12\x34.dlkit.proto.learning.RemoveRootObjectiveBankRequest\x1a\x32.dlkit.proto.learning.RemoveRootObjectiveBankReply\"\x00\x12\x7f\n\x15\x41\x64\x64\x43hildObjectiveBank\x12\x32.dlkit.proto.learning.AddChildObjectiveBankRequest\x1a\x30.dlkit.proto.learning.AddChildObjectiveBankReply\"\x00\x12\x88\x01\n\x18RemoveChildObjectiveBank\x12\x35.dlkit.proto.learning.RemoveChildObjectiveBankRequest\x1a\x33.dlkit.proto.learning.RemoveChildObjectiveBankReply\"\x00\x12\x8b\x01\n\x19RemoveChildObjectiveBanks\x12\x36.dlkit.proto.learning.RemoveChildObjectiveBanksRequest\x1a\x34.dlkit.proto.learning.RemoveChildObjectiveBanksReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1a\x64lkit/proto/learning.proto\x12\x14\x64lkit.proto.learning\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xb6\x04\n\tObjective\x12\x36\n\nassessment\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11\x63ognitive_process\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x03 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x05 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x06 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12>\n\x12knowledge_category\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\x0eobjective_bank\x18\x08 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\t \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x10\n\x0eObjectiveQuery\"\x19\n\x17ObjectiveQueryInspector\"\x0f\n\rObjectiveForm\"\x16\n\x14ObjectiveSearchOrder\"\x11\n\x0fObjectiveSearch\"\x18\n\x16ObjectiveSearchResults\"D\n\rObjectiveList\x12\x33\n\nobjectives\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.learning.Objective\"\x0f\n\rObjectiveNode\"Q\n\x11ObjectiveNodeList\x12<\n\x0fobjective_nodes\x18\x01 \x03(\x0b\x32#.dlkit.proto.learning.ObjectiveNode\"\xd7\x04\n\x08\x41\x63tivity\x12\x37\n\x0b\x61ssessments\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x32\n\x06\x61ssets\x18\x02 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x63ourses\x18\x03 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x44\n\x0b\x64\x65scription\x18\x04 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x05 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x06 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x07 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tobjective\x18\x08 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\x0eobjective_bank\x18\t \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12?\n\x0frecord_type_ids\x18\n \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0f\n\rActivityQuery\"\x18\n\x16\x41\x63tivityQueryInspector\"\x0e\n\x0c\x41\x63tivityForm\"\x15\n\x13\x41\x63tivitySearchOrder\"\x10\n\x0e\x41\x63tivitySearch\"\x17\n\x15\x41\x63tivitySearchResults\"B\n\x0c\x41\x63tivityList\x12\x32\n\nactivities\x18\x01 \x03(\x0b\x32\x1e.dlkit.proto.learning.Activity\"\xf8\x01\n\x0bProficiency\x12\x12\n\ncompletion\x18\x01 \x01(\x02\x12\x31\n\x05level\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\tobjective\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\x0eobjective_bank\x18\x04 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x34\n\x08resource\x18\x05 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10ProficiencyQuery\"\x1b\n\x19ProficiencyQueryInspector\"\x11\n\x0fProficiencyForm\"\x18\n\x16ProficiencySearchOrder\"\x13\n\x11ProficiencySearch\"\x1a\n\x18ProficiencySearchResults\"K\n\x0fProficiencyList\x12\x38\n\rproficiencies\x18\x01 \x03(\x0b\x32!.dlkit.proto.learning.Proficiency\"\xcc\x02\n\rObjectiveBank\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x14\n\x12ObjectiveBankQuery\"\x1d\n\x1bObjectiveBankQueryInspector\"\x13\n\x11ObjectiveBankForm\"\x1a\n\x18ObjectiveBankSearchOrder\"\x15\n\x13ObjectiveBankSearch\"\x1c\n\x1aObjectiveBankSearchResults\"Q\n\x11ObjectiveBankList\x12<\n\x0fobjective_banks\x18\x01 \x03(\x0b\x32#.dlkit.proto.learning.ObjectiveBank\"\x13\n\x11ObjectiveBankNode\"^\n\x15ObjectiveBankNodeList\x12\x45\n\x14objective_bank_nodes\x18\x01 \x03(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankNode\"I\n\x17GetObjectiveBankIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetObjectiveBankIdRequest\"T\n\x15GetObjectiveBankReply\x12;\n\x0eobjective_bank\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveBank\"\x19\n\x17GetObjectiveBankRequest\"9\n\x18\x43\x61nLookupObjectivesReply\x12\x1d\n\x15\x63\x61n_lookup_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nLookupObjectivesRequest\"\"\n UseComparativeObjectiveViewReply\"$\n\"UseComparativeObjectiveViewRequest\"\x1e\n\x1cUsePlenaryObjectiveViewReply\" \n\x1eUsePlenaryObjectiveViewRequest\"$\n\"UseFederatedObjectiveBankViewReply\"&\n$UseFederatedObjectiveBankViewRequest\"#\n!UseIsolatedObjectiveBankViewReply\"%\n#UseIsolatedObjectiveBankViewRequest\"G\n\x11GetObjectiveReply\x12\x32\n\tobjective\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.learning.Objective\"O\n\x13GetObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x19GetObjectivesByIdsRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n\x1fGetObjectivesByGenusTypeRequest\x12\x44\n\x14objective_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n%GetObjectivesByParentGenusTypeRequest\x12\x44\n\x14objective_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n GetObjectivesByRecordTypeRequest\x12\x45\n\x15objective_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x16\n\x14GetObjectivesRequest\"9\n\x18\x43\x61nSearchObjectivesReply\x12\x1d\n\x15\x63\x61n_search_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nSearchObjectivesRequest\"W\n\x16GetObjectiveQueryReply\x12=\n\x0fobjective_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.learning.ObjectiveQuery\"\x1a\n\x18GetObjectiveQueryRequest\"\\\n\x1bGetObjectivesByQueryRequest\x12=\n\x0fobjective_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.learning.ObjectiveQuery\"9\n\x18\x43\x61nCreateObjectivesReply\x12\x1d\n\x15\x63\x61n_create_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateObjectivesRequest\"X\n&CanCreateObjectiveWithRecordTypesReply\x12.\n&can_create_objective_with_record_types\x18\x01 \x01(\x08\"r\n(CanCreateObjectiveWithRecordTypesRequest\x12\x46\n\x16objective_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\x1eGetObjectiveFormForCreateReply\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"j\n GetObjectiveFormForCreateRequest\x12\x46\n\x16objective_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"J\n\x14\x43reateObjectiveReply\x12\x32\n\tobjective\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.learning.Objective\"U\n\x16\x43reateObjectiveRequest\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"9\n\x18\x43\x61nUpdateObjectivesReply\x12\x1d\n\x15\x63\x61n_update_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateObjectivesRequest\"]\n\x1eGetObjectiveFormForUpdateReply\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"\\\n GetObjectiveFormForUpdateRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14UpdateObjectiveReply\"U\n\x16UpdateObjectiveRequest\x12;\n\x0eobjective_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveForm\"9\n\x18\x43\x61nDeleteObjectivesReply\x12\x1d\n\x15\x63\x61n_delete_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteObjectivesRequest\"\x16\n\x14\x44\x65leteObjectiveReply\"R\n\x16\x44\x65leteObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x1e\x43\x61nManageObjectiveAliasesReply\x12$\n\x1c\x63\x61n_manage_objective_aliases\x18\x01 \x01(\x08\"\"\n CanManageObjectiveAliasesRequest\"\x15\n\x13\x41liasObjectiveReply\"\x87\x01\n\x15\x41liasObjectiveRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x1cGetObjectiveHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eGetObjectiveHierarchyIdRequest\"Q\n\x1aGetObjectiveHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x1e\n\x1cGetObjectiveHierarchyRequest\"J\n CanAccessObjectiveHierarchyReply\x12&\n\x1e\x63\x61n_access_objective_hierarchy\x18\x01 \x01(\x08\"$\n\"CanAccessObjectiveHierarchyRequest\"\x1c\n\x1aGetRootObjectiveIdsRequest\"\x1a\n\x18GetRootObjectivesRequest\"9\n\x18HasParentObjectivesReply\x12\x1d\n\x15has_parent_objectives\x18\x01 \x01(\x08\"V\n\x1aHasParentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\":\n\x18IsParentOfObjectiveReply\x12\x1e\n\x16is_parent_of_objective\x18\x01 \x01(\x08\"\x87\x01\n\x1aIsParentOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"X\n\x1cGetParentObjectiveIdsRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"V\n\x1aGetParentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\">\n\x1aIsAncestorOfObjectiveReply\x12 \n\x18is_ancestor_of_objective\x18\x01 \x01(\x08\"\x89\x01\n\x1cIsAncestorOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"7\n\x17HasChildObjectivesReply\x12\x1c\n\x14has_child_objectives\x18\x01 \x01(\x08\"U\n\x19HasChildObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsChildOfObjectiveReply\x12\x1d\n\x15is_child_of_objective\x18\x01 \x01(\x08\"\x86\x01\n\x19IsChildOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"W\n\x1bGetChildObjectiveIdsRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x19GetChildObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1cIsDescendantOfObjectiveReply\x12\"\n\x1ais_descendant_of_objective\x18\x01 \x01(\x08\"\x8b\x01\n\x1eIsDescendantOfObjectiveRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"E\n\x18GetObjectiveNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xa4\x01\n\x1aGetObjectiveNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x38\n\x0cobjective_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x16GetObjectiveNodesReply\x12;\n\x0eobjective_node\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveNode\"\xa2\x01\n\x18GetObjectiveNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12\x38\n\x0cobjective_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"J\n CanModifyObjectiveHierarchyReply\x12&\n\x1e\x63\x61n_modify_objective_hierarchy\x18\x01 \x01(\x08\"$\n\"CanModifyObjectiveHierarchyRequest\"\x17\n\x15\x41\x64\x64RootObjectiveReply\"S\n\x17\x41\x64\x64RootObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18RemoveRootObjectiveReply\"V\n\x1aRemoveRootObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16\x41\x64\x64\x43hildObjectiveReply\"\x8a\x01\n\x18\x41\x64\x64\x43hildObjectiveRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19RemoveChildObjectiveReply\"\x8d\x01\n\x1bRemoveChildObjectiveRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aRemoveChildObjectivesReply\"X\n\x1cRemoveChildObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"=\n\x1a\x43\x61nSequenceObjectivesReply\x12\x1f\n\x17\x63\x61n_sequence_objectives\x18\x01 \x01(\x08\"\x1e\n\x1c\x43\x61nSequenceObjectivesRequest\"\x19\n\x17MoveObjectiveAheadReply\"\xda\x01\n\x19MoveObjectiveAheadRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13parent_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16reference_objective_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18MoveObjectiveBehindReply\"\xdb\x01\n\x1aMoveObjectiveBehindRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13parent_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16reference_objective_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x19\n\x17SequenceObjectivesReply\"\x97\x01\n\x19SequenceObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x13parent_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n,CanLookupObjectiveObjectiveBankMappingsReply\x12\x34\n,can_lookup_objective_objective_bank_mappings\x18\x01 \x01(\x08\"0\n.CanLookupObjectiveObjectiveBankMappingsRequest\"&\n$UseComparativeObjectiveBankViewReply\"(\n&UseComparativeObjectiveBankViewRequest\"\"\n UsePlenaryObjectiveBankViewReply\"$\n\"UsePlenaryObjectiveBankViewRequest\"f\n%GetObjectiveIdsByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n#GetObjectivesByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"h\n&GetObjectiveIdsByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n$GetObjectivesByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n%GetObjectiveBankIdsByObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n#GetObjectiveBanksByObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nAssignObjectivesReply\x12\x1d\n\x15\x63\x61n_assign_objectives\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignObjectivesRequest\"Z\n\'CanAssignObjectivesToObjectiveBankReply\x12/\n\'can_assign_objectives_to_objective_bank\x18\x01 \x01(\x08\"j\n)CanAssignObjectivesToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"e\n$GetAssignableObjectiveBankIdsRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xab\x01\n0GetAssignableObjectiveBankIdsForObjectiveRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"%\n#AssignObjectiveToObjectiveBankReply\"\xa0\x01\n%AssignObjectiveToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\")\n\'UnassignObjectiveFromObjectiveBankReply\"\xa4\x01\n)UnassignObjectiveFromObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\")\n\'ReassignProficiencyToObjectiveBankReply\"\xeb\x01\n)ReassignProficiencyToObjectiveBankRequest\x12\x42\n\x16\x66rom_objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12@\n\x14to_objective_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n$CanLookupObjectivePrerequisitesReply\x12*\n\"can_lookup_objective_prerequisites\x18\x01 \x01(\x08\"(\n&CanLookupObjectivePrerequisitesRequest\"Y\n\x1dGetRequisiteObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\\\n GetAllRequisiteObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Y\n\x1dGetDependentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18IsObjectiveRequiredReply\x12\x1d\n\x15is_objective_required\x18\x01 \x01(\x08\"\x99\x01\n\x1aIsObjectiveRequiredRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x41\n\x15required_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Z\n\x1eGetEquivalentObjectivesRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nAssignRequisitesReply\x12\x1d\n\x15\x63\x61n_assign_requisites\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignRequisitesRequest\"\x1f\n\x1d\x41ssignObjectiveRequisiteReply\"\x9f\x01\n\x1f\x41ssignObjectiveRequisiteRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16requisite_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"!\n\x1fUnassignObjectiveRequisiteReply\"\xa1\x01\n!UnassignObjectiveRequisiteRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16requisite_objective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1e\x41ssignEquivalentObjectiveReply\"\xa1\x01\n AssignEquivalentObjectiveRequest\x12\x43\n\x17\x65quivalent_objective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\"\n UnassignEquivalentObjectiveReply\"\xa3\x01\n\"UnassignEquivalentObjectiveRequest\x12\x43\n\x17\x65quivalent_objective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nLookupActivitiesReply\x12\x1d\n\x15\x63\x61n_lookup_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nLookupActivitiesRequest\"!\n\x1fUseComparativeActivityViewReply\"#\n!UseComparativeActivityViewRequest\"\x1d\n\x1bUsePlenaryActivityViewReply\"\x1f\n\x1dUsePlenaryActivityViewRequest\"D\n\x10GetActivityReply\x12\x30\n\x08\x61\x63tivity\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.learning.Activity\"M\n\x12GetActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x19GetActivitiesByIdsRequest\x12\x38\n\x0c\x61\x63tivity_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n\x1fGetActivitiesByGenusTypeRequest\x12\x43\n\x13\x61\x63tivity_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"l\n%GetActivitiesByParentGenusTypeRequest\x12\x43\n\x13\x61\x63tivity_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"h\n GetActivitiesByRecordTypeRequest\x12\x44\n\x14\x61\x63tivity_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\\\n GetActivitiesForObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n!GetActivitiesForObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x1bGetActivitiesByAssetRequest\x12\x34\n\x08\x61sset_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"U\n\x1cGetActivitiesByAssetsRequest\x12\x35\n\tasset_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14GetActivitiesRequest\"9\n\x18\x43\x61nSearchActivitiesReply\x12\x1d\n\x15\x63\x61n_search_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nSearchActivitiesRequest\"T\n\x15GetActivityQueryReply\x12;\n\x0e\x61\x63tivity_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ActivityQuery\"\x19\n\x17GetActivityQueryRequest\"Z\n\x1bGetActivitiesByQueryRequest\x12;\n\x0e\x61\x63tivity_query\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ActivityQuery\"9\n\x18\x43\x61nCreateActivitiesReply\x12\x1d\n\x15\x63\x61n_create_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nCreateActivitiesRequest\"V\n%CanCreateActivityWithRecordTypesReply\x12-\n%can_create_activity_with_record_types\x18\x01 \x01(\x08\"p\n\'CanCreateActivityWithRecordTypesRequest\x12\x45\n\x15\x61\x63tivity_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Z\n\x1dGetActivityFormForCreateReply\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"\xa2\x01\n\x1fGetActivityFormForCreateRequest\x12\x45\n\x15\x61\x63tivity_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"G\n\x13\x43reateActivityReply\x12\x30\n\x08\x61\x63tivity\x18\x01 \x01(\x0b\x32\x1e.dlkit.proto.learning.Activity\"R\n\x15\x43reateActivityRequest\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"9\n\x18\x43\x61nUpdateActivitiesReply\x12\x1d\n\x15\x63\x61n_update_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nUpdateActivitiesRequest\"Z\n\x1dGetActivityFormForUpdateReply\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"Z\n\x1fGetActivityFormForUpdateRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13UpdateActivityReply\"R\n\x15UpdateActivityRequest\x12\x39\n\ractivity_form\x18\x01 \x01(\x0b\x32\".dlkit.proto.learning.ActivityForm\"9\n\x18\x43\x61nDeleteActivitiesReply\x12\x1d\n\x15\x63\x61n_delete_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nDeleteActivitiesRequest\"\x15\n\x13\x44\x65leteActivityReply\"P\n\x15\x44\x65leteActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"D\n\x1d\x43\x61nManageActivityAliasesReply\x12#\n\x1b\x63\x61n_manage_activity_aliases\x18\x01 \x01(\x08\"!\n\x1f\x43\x61nManageActivityAliasesRequest\"\x14\n\x12\x41liasActivityReply\"\x85\x01\n\x14\x41liasActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x61lias_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n+CanLookupActivityObjectiveBankMappingsReply\x12\x33\n+can_lookup_activity_objective_bank_mappings\x18\x01 \x01(\x08\"/\n-CanLookupActivityObjectiveBankMappingsRequest\"e\n$GetActivityIdsByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"d\n#GetActivitiesByObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"g\n%GetActivityIdsByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"f\n$GetActivitiesByObjectiveBanksRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n$GetObjectiveBankIdsByActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\"GetObjectiveBanksByActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"9\n\x18\x43\x61nAssignActivitiesReply\x12\x1d\n\x15\x63\x61n_assign_activities\x18\x01 \x01(\x08\"\x1c\n\x1a\x43\x61nAssignActivitiesRequest\"Z\n\'CanAssignActivitiesToObjectiveBankReply\x12/\n\'can_assign_activities_to_objective_bank\x18\x01 \x01(\x08\"j\n)CanAssignActivitiesToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa9\x01\n/GetAssignableObjectiveBankIdsForActivityRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"AssignActivityToObjectiveBankReply\"\x9e\x01\n$AssignActivityToObjectiveBankRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"(\n&UnassignActivityFromObjectiveBankReply\"\xa2\x01\n(UnassignActivityFromObjectiveBankRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"&\n$ReassignActivityToObjectiveBankReply\"\xe7\x01\n&ReassignActivityToObjectiveBankRequest\x12\x37\n\x0b\x61\x63tivity_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x42\n\x16\x66rom_objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12@\n\x14to_objective_bank_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x1b\x43\x61nLookupProficienciesReply\x12 \n\x18\x63\x61n_lookup_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nLookupProficienciesRequest\"$\n\"UseComparativeProficiencyViewReply\"&\n$UseComparativeProficiencyViewRequest\" \n\x1eUsePlenaryProficiencyViewReply\"\"\n UsePlenaryProficiencyViewRequest\"\"\n UseEffectiveProficiencyViewReply\"$\n\"UseEffectiveProficiencyViewRequest\"%\n#UseAnyEffectiveProficiencyViewReply\"\'\n%UseAnyEffectiveProficiencyViewRequest\"M\n\x13GetProficiencyReply\x12\x36\n\x0bproficiency\x18\x01 \x01(\x0b\x32!.dlkit.proto.learning.Proficiency\"S\n\x15GetProficiencyRequest\x12:\n\x0eproficiency_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"[\n\x1cGetProficienciesByIdsRequest\x12;\n\x0fproficiency_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"l\n\"GetProficienciesByGenusTypeRequest\x12\x46\n\x16proficiency_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n(GetProficienciesByParentGenusTypeRequest\x12\x46\n\x16proficiency_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"n\n#GetProficienciesByRecordTypeRequest\x12G\n\x17proficiency_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n\x1dGetProficienciesOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xc5\x01\n(GetProficienciesByGenusTypeOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"_\n#GetProficienciesForObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb8\x01\n)GetProficienciesForObjectiveOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb2\x01\n.GetProficienciesByGenusTypeForObjectiveRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x8b\x02\n4GetProficienciesByGenusTypeForObjectiveOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"a\n$GetProficienciesForObjectivesRequest\x12\x39\n\robjective_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\"GetProficienciesForResourceRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb6\x01\n(GetProficienciesForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xb0\x01\n-GetProficienciesByGenusTypeForResourceRequest\x12\x46\n\x16proficiency_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x89\x02\n3GetProficienciesByGenusTypeForResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"_\n#GetProficienciesForResourcesRequest\x12\x38\n\x0cresource_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xa3\x01\n.GetProficienciesForObjectiveAndResourceRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xfc\x01\n4GetProficienciesForObjectiveAndResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xf6\x01\n9GetProficienciesByGenusTypeForObjectiveAndResourceRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x02 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xcf\x02\n?GetProficienciesByGenusTypeForObjectiveAndResourceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0cobjective_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x46\n\x16proficiency_genus_type\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x19\n\x17GetProficienciesRequest\"?\n\x1b\x43\x61nSearchProficienciesReply\x12 \n\x18\x63\x61n_search_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nSearchProficienciesRequest\"]\n\x18GetProficiencyQueryReply\x12\x41\n\x11proficiency_query\x18\x01 \x01(\x0b\x32&.dlkit.proto.learning.ProficiencyQuery\"\x1c\n\x1aGetProficiencyQueryRequest\"c\n\x1eGetProficienciesByQueryRequest\x12\x41\n\x11proficiency_query\x18\x01 \x01(\x0b\x32&.dlkit.proto.learning.ProficiencyQuery\"?\n\x1b\x43\x61nCreateProficienciesReply\x12 \n\x18\x63\x61n_create_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nCreateProficienciesRequest\"\\\n(CanCreateProficiencyWithRecordTypesReply\x12\x30\n(can_create_proficiency_with_record_types\x18\x01 \x01(\x08\"v\n*CanCreateProficiencyWithRecordTypesRequest\x12H\n\x18proficiency_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetProficiencyFormForCreateReply\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"\xe1\x01\n\"GetProficiencyFormForCreateRequest\x12\x38\n\x0cobjective_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12H\n\x18proficiency_record_types\x18\x02 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"P\n\x16\x43reateProficiencyReply\x12\x36\n\x0bproficiency\x18\x01 \x01(\x0b\x32!.dlkit.proto.learning.Proficiency\"[\n\x18\x43reateProficiencyRequest\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"?\n\x1b\x43\x61nUpdateProficienciesReply\x12 \n\x18\x63\x61n_update_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nUpdateProficienciesRequest\"c\n GetProficiencyFormForUpdateReply\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"`\n\"GetProficiencyFormForUpdateRequest\x12:\n\x0eproficiency_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x18\n\x16UpdateProficiencyReply\"[\n\x18UpdateProficiencyRequest\x12?\n\x10proficiency_form\x18\x01 \x01(\x0b\x32%.dlkit.proto.learning.ProficiencyForm\"?\n\x1b\x43\x61nDeleteProficienciesReply\x12 \n\x18\x63\x61n_delete_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nDeleteProficienciesRequest\"\x18\n\x16\x44\x65leteProficiencyReply\"V\n\x18\x44\x65leteProficiencyRequest\x12:\n\x0eproficiency_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x44\x65leteProficienciesReply\"\x1c\n\x1a\x44\x65leteProficienciesRequest\"J\n CanManageProficiencyAliasesReply\x12&\n\x1e\x63\x61n_manage_proficiency_aliases\x18\x01 \x01(\x08\"$\n\"CanManageProficiencyAliasesRequest\"\x17\n\x15\x41liasProficiencyReply\"\x8b\x01\n\x17\x41liasProficiencyRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"?\n\x1b\x43\x61nAssignProficienciesReply\x12 \n\x18\x63\x61n_assign_proficiencies\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nAssignProficienciesRequest\"`\n*CanAssignProficienciesToObjectiveBankReply\x12\x32\n*can_assign_proficiencies_to_objective_bank\x18\x01 \x01(\x08\"m\n,CanAssignProficienciesToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xaf\x01\n2GetAssignableObjectiveBankIdsForProficiencyRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\'\n%AssignProficiencyToObjectiveBankReply\"\xa4\x01\n\'AssignProficiencyToObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"+\n)UnassignProficiencyFromObjectiveBankReply\"\xa8\x01\n+UnassignProficiencyFromObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12:\n\x0eproficiency_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nLookupObjectiveBanksReply\x12\"\n\x1a\x63\x61n_lookup_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nLookupObjectiveBanksRequest\"_\n\x1dGetObjectiveBanksByIdsRequest\x12>\n\x12objective_bank_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"p\n#GetObjectiveBanksByGenusTypeRequest\x12I\n\x19objective_bank_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"v\n)GetObjectiveBanksByParentGenusTypeRequest\x12I\n\x19objective_bank_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"r\n$GetObjectiveBanksByRecordTypeRequest\x12J\n\x1aobjective_bank_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"]\n\"GetObjectiveBanksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18GetObjectiveBanksRequest\"B\n\x1c\x43\x61nCreateObjectiveBanksReply\x12\"\n\x1a\x63\x61n_create_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nCreateObjectiveBanksRequest\"a\n*CanCreateObjectiveBankWithRecordTypesReply\x12\x33\n+can_create_objective_bank_with_record_types\x18\x01 \x01(\x08\"{\n,CanCreateObjectiveBankWithRecordTypesRequest\x12K\n\x1bobjective_bank_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"j\n\"GetObjectiveBankFormForCreateReply\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"s\n$GetObjectiveBankFormForCreateRequest\x12K\n\x1bobjective_bank_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"W\n\x18\x43reateObjectiveBankReply\x12;\n\x0eobjective_bank\x18\x01 \x01(\x0b\x32#.dlkit.proto.learning.ObjectiveBank\"b\n\x1a\x43reateObjectiveBankRequest\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"B\n\x1c\x43\x61nUpdateObjectiveBanksReply\x12\"\n\x1a\x63\x61n_update_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nUpdateObjectiveBanksRequest\"j\n\"GetObjectiveBankFormForUpdateReply\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"e\n$GetObjectiveBankFormForUpdateRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18UpdateObjectiveBankReply\"b\n\x1aUpdateObjectiveBankRequest\x12\x44\n\x13objective_bank_form\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankForm\"B\n\x1c\x43\x61nDeleteObjectiveBanksReply\x12\"\n\x1a\x63\x61n_delete_objective_banks\x18\x01 \x01(\x08\" \n\x1e\x43\x61nDeleteObjectiveBanksRequest\"\x1a\n\x18\x44\x65leteObjectiveBankReply\"[\n\x1a\x44\x65leteObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\"CanManageObjectiveBankAliasesReply\x12)\n!can_manage_objective_bank_aliases\x18\x01 \x01(\x08\"&\n$CanManageObjectiveBankAliasesRequest\"\x19\n\x17\x41liasObjectiveBankReply\"\x90\x01\n\x19\x41liasObjectiveBankRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n GetObjectiveBankHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"$\n\"GetObjectiveBankHierarchyIdRequest\"U\n\x1eGetObjectiveBankHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\"\n GetObjectiveBankHierarchyRequest\"S\n$CanAccessObjectiveBankHierarchyReply\x12+\n#can_access_objective_bank_hierarchy\x18\x01 \x01(\x08\"(\n&CanAccessObjectiveBankHierarchyRequest\" \n\x1eGetRootObjectiveBankIdsRequest\"\x1e\n\x1cGetRootObjectiveBanksRequest\"B\n\x1cHasParentObjectiveBanksReply\x12\"\n\x1ahas_parent_objective_banks\x18\x01 \x01(\x08\"_\n\x1eHasParentObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"C\n\x1cIsParentOfObjectiveBankReply\x12#\n\x1bis_parent_of_objective_bank\x18\x01 \x01(\x08\"\x90\x01\n\x1eIsParentOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"a\n GetParentObjectiveBankIdsRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"_\n\x1eGetParentObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"G\n\x1eIsAncestorOfObjectiveBankReply\x12%\n\x1dis_ancestor_of_objective_bank\x18\x01 \x01(\x08\"\x92\x01\n IsAncestorOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x1bHasChildObjectiveBanksReply\x12!\n\x19has_child_objective_banks\x18\x01 \x01(\x08\"^\n\x1dHasChildObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"A\n\x1bIsChildOfObjectiveBankReply\x12\"\n\x1ais_child_of_objective_bank\x18\x01 \x01(\x08\"\x8f\x01\n\x1dIsChildOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"`\n\x1fGetChildObjectiveBankIdsRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"^\n\x1dGetChildObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n IsDescendantOfObjectiveBankReply\x12\'\n\x1fis_descendant_of_objective_bank\x18\x01 \x01(\x08\"\x94\x01\n\"IsDescendantOfObjectiveBankRequest\x12/\n\x03id_\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x1cGetObjectiveBankNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\xad\x01\n\x1eGetObjectiveBankNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12=\n\x11objective_bank_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"b\n\x1aGetObjectiveBankNodesReply\x12\x44\n\x13objective_bank_node\x18\x01 \x01(\x0b\x32\'.dlkit.proto.learning.ObjectiveBankNode\"\xab\x01\n\x1cGetObjectiveBankNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x19\n\x11\x64\x65scendant_levels\x18\x02 \x01(\x11\x12\x18\n\x10include_siblings\x18\x03 \x01(\x08\x12=\n\x11objective_bank_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n$CanModifyObjectiveBankHierarchyReply\x12+\n#can_modify_objective_bank_hierarchy\x18\x01 \x01(\x08\"(\n&CanModifyObjectiveBankHierarchyRequest\"\x1b\n\x19\x41\x64\x64RootObjectiveBankReply\"\\\n\x1b\x41\x64\x64RootObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cRemoveRootObjectiveBankReply\"_\n\x1eRemoveRootObjectiveBankRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1a\x41\x64\x64\x43hildObjectiveBankReply\"\x93\x01\n\x1c\x41\x64\x64\x43hildObjectiveBankRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1f\n\x1dRemoveChildObjectiveBankReply\"\x96\x01\n\x1fRemoveChildObjectiveBankRequest\x12\x34\n\x08\x63hild_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\x11objective_bank_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\" \n\x1eRemoveChildObjectiveBanksReply\"a\n RemoveChildObjectiveBanksRequest\x12=\n\x11objective_bank_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xf5\x0c\n\x16ObjectiveLookupSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nLookupObjectives\x12\x30.dlkit.proto.learning.CanLookupObjectivesRequest\x1a..dlkit.proto.learning.CanLookupObjectivesReply\"\x00\x12\x91\x01\n\x1bUseComparativeObjectiveView\x12\x38.dlkit.proto.learning.UseComparativeObjectiveViewRequest\x1a\x36.dlkit.proto.learning.UseComparativeObjectiveViewReply\"\x00\x12\x85\x01\n\x17UsePlenaryObjectiveView\x12\x34.dlkit.proto.learning.UsePlenaryObjectiveViewRequest\x1a\x32.dlkit.proto.learning.UsePlenaryObjectiveViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12\x64\n\x0cGetObjective\x12).dlkit.proto.learning.GetObjectiveRequest\x1a\'.dlkit.proto.learning.GetObjectiveReply\"\x00\x12j\n\x12GetObjectivesByIds\x12/.dlkit.proto.learning.GetObjectivesByIdsRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12v\n\x18GetObjectivesByGenusType\x12\x35.dlkit.proto.learning.GetObjectivesByGenusTypeRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x82\x01\n\x1eGetObjectivesByParentGenusType\x12;.dlkit.proto.learning.GetObjectivesByParentGenusTypeRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12x\n\x19GetObjectivesByRecordType\x12\x36.dlkit.proto.learning.GetObjectivesByRecordTypeRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12`\n\rGetObjectives\x12*.dlkit.proto.learning.GetObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x32\x92\x07\n\x15ObjectiveQuerySession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nSearchObjectives\x12\x30.dlkit.proto.learning.CanSearchObjectivesRequest\x1a..dlkit.proto.learning.CanSearchObjectivesReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12s\n\x11GetObjectiveQuery\x12..dlkit.proto.learning.GetObjectiveQueryRequest\x1a,.dlkit.proto.learning.GetObjectiveQueryReply\"\x00\x12n\n\x14GetObjectivesByQuery\x12\x31.dlkit.proto.learning.GetObjectivesByQueryRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x32\xfb\x0c\n\x15ObjectiveAdminSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nCreateObjectives\x12\x30.dlkit.proto.learning.CanCreateObjectivesRequest\x1a..dlkit.proto.learning.CanCreateObjectivesReply\"\x00\x12\xa3\x01\n!CanCreateObjectiveWithRecordTypes\x12>.dlkit.proto.learning.CanCreateObjectiveWithRecordTypesRequest\x1a<.dlkit.proto.learning.CanCreateObjectiveWithRecordTypesReply\"\x00\x12\x8b\x01\n\x19GetObjectiveFormForCreate\x12\x36.dlkit.proto.learning.GetObjectiveFormForCreateRequest\x1a\x34.dlkit.proto.learning.GetObjectiveFormForCreateReply\"\x00\x12m\n\x0f\x43reateObjective\x12,.dlkit.proto.learning.CreateObjectiveRequest\x1a*.dlkit.proto.learning.CreateObjectiveReply\"\x00\x12y\n\x13\x43\x61nUpdateObjectives\x12\x30.dlkit.proto.learning.CanUpdateObjectivesRequest\x1a..dlkit.proto.learning.CanUpdateObjectivesReply\"\x00\x12\x8b\x01\n\x19GetObjectiveFormForUpdate\x12\x36.dlkit.proto.learning.GetObjectiveFormForUpdateRequest\x1a\x34.dlkit.proto.learning.GetObjectiveFormForUpdateReply\"\x00\x12m\n\x0fUpdateObjective\x12,.dlkit.proto.learning.UpdateObjectiveRequest\x1a*.dlkit.proto.learning.UpdateObjectiveReply\"\x00\x12y\n\x13\x43\x61nDeleteObjectives\x12\x30.dlkit.proto.learning.CanDeleteObjectivesRequest\x1a..dlkit.proto.learning.CanDeleteObjectivesReply\"\x00\x12m\n\x0f\x44\x65leteObjective\x12,.dlkit.proto.learning.DeleteObjectiveRequest\x1a*.dlkit.proto.learning.DeleteObjectiveReply\"\x00\x12\x8b\x01\n\x19\x43\x61nManageObjectiveAliases\x12\x36.dlkit.proto.learning.CanManageObjectiveAliasesRequest\x1a\x34.dlkit.proto.learning.CanManageObjectiveAliasesReply\"\x00\x12j\n\x0e\x41liasObjective\x12+.dlkit.proto.learning.AliasObjectiveRequest\x1a).dlkit.proto.learning.AliasObjectiveReply\"\x00\x32\xd0\x12\n\x19ObjectiveHierarchySession\x12\x85\x01\n\x17GetObjectiveHierarchyId\x12\x34.dlkit.proto.learning.GetObjectiveHierarchyIdRequest\x1a\x32.dlkit.proto.learning.GetObjectiveHierarchyIdReply\"\x00\x12\x7f\n\x15GetObjectiveHierarchy\x12\x32.dlkit.proto.learning.GetObjectiveHierarchyRequest\x1a\x30.dlkit.proto.learning.GetObjectiveHierarchyReply\"\x00\x12\x91\x01\n\x1b\x43\x61nAccessObjectiveHierarchy\x12\x38.dlkit.proto.learning.CanAccessObjectiveHierarchyRequest\x1a\x36.dlkit.proto.learning.CanAccessObjectiveHierarchyReply\"\x00\x12\x91\x01\n\x1bUseComparativeObjectiveView\x12\x38.dlkit.proto.learning.UseComparativeObjectiveViewRequest\x1a\x36.dlkit.proto.learning.UseComparativeObjectiveViewReply\"\x00\x12\x85\x01\n\x17UsePlenaryObjectiveView\x12\x34.dlkit.proto.learning.UsePlenaryObjectiveViewRequest\x1a\x32.dlkit.proto.learning.UsePlenaryObjectiveViewReply\"\x00\x12o\n\x13GetRootObjectiveIds\x12\x30.dlkit.proto.learning.GetRootObjectiveIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12h\n\x11GetRootObjectives\x12..dlkit.proto.learning.GetRootObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12y\n\x13HasParentObjectives\x12\x30.dlkit.proto.learning.HasParentObjectivesRequest\x1a..dlkit.proto.learning.HasParentObjectivesReply\"\x00\x12y\n\x13IsParentOfObjective\x12\x30.dlkit.proto.learning.IsParentOfObjectiveRequest\x1a..dlkit.proto.learning.IsParentOfObjectiveReply\"\x00\x12s\n\x15GetParentObjectiveIds\x12\x32.dlkit.proto.learning.GetParentObjectiveIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12l\n\x13GetParentObjectives\x12\x30.dlkit.proto.learning.GetParentObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x7f\n\x15IsAncestorOfObjective\x12\x32.dlkit.proto.learning.IsAncestorOfObjectiveRequest\x1a\x30.dlkit.proto.learning.IsAncestorOfObjectiveReply\"\x00\x12v\n\x12HasChildObjectives\x12/.dlkit.proto.learning.HasChildObjectivesRequest\x1a-.dlkit.proto.learning.HasChildObjectivesReply\"\x00\x12v\n\x12IsChildOfObjective\x12/.dlkit.proto.learning.IsChildOfObjectiveRequest\x1a-.dlkit.proto.learning.IsChildOfObjectiveReply\"\x00\x12q\n\x14GetChildObjectiveIds\x12\x31.dlkit.proto.learning.GetChildObjectiveIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x12GetChildObjectives\x12/.dlkit.proto.learning.GetChildObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x85\x01\n\x17IsDescendantOfObjective\x12\x34.dlkit.proto.learning.IsDescendantOfObjectiveRequest\x1a\x32.dlkit.proto.learning.IsDescendantOfObjectiveReply\"\x00\x12y\n\x13GetObjectiveNodeIds\x12\x30.dlkit.proto.learning.GetObjectiveNodeIdsRequest\x1a..dlkit.proto.learning.GetObjectiveNodeIdsReply\"\x00\x12s\n\x11GetObjectiveNodes\x12..dlkit.proto.learning.GetObjectiveNodesRequest\x1a,.dlkit.proto.learning.GetObjectiveNodesReply\"\x00\x32\x9f\x08\n\x1fObjectiveHierarchyDesignSession\x12\x85\x01\n\x17GetObjectiveHierarchyId\x12\x34.dlkit.proto.learning.GetObjectiveHierarchyIdRequest\x1a\x32.dlkit.proto.learning.GetObjectiveHierarchyIdReply\"\x00\x12\x7f\n\x15GetObjectiveHierarchy\x12\x32.dlkit.proto.learning.GetObjectiveHierarchyRequest\x1a\x30.dlkit.proto.learning.GetObjectiveHierarchyReply\"\x00\x12\x91\x01\n\x1b\x43\x61nModifyObjectiveHierarchy\x12\x38.dlkit.proto.learning.CanModifyObjectiveHierarchyRequest\x1a\x36.dlkit.proto.learning.CanModifyObjectiveHierarchyReply\"\x00\x12p\n\x10\x41\x64\x64RootObjective\x12-.dlkit.proto.learning.AddRootObjectiveRequest\x1a+.dlkit.proto.learning.AddRootObjectiveReply\"\x00\x12y\n\x13RemoveRootObjective\x12\x30.dlkit.proto.learning.RemoveRootObjectiveRequest\x1a..dlkit.proto.learning.RemoveRootObjectiveReply\"\x00\x12s\n\x11\x41\x64\x64\x43hildObjective\x12..dlkit.proto.learning.AddChildObjectiveRequest\x1a,.dlkit.proto.learning.AddChildObjectiveReply\"\x00\x12|\n\x14RemoveChildObjective\x12\x31.dlkit.proto.learning.RemoveChildObjectiveRequest\x1a/.dlkit.proto.learning.RemoveChildObjectiveReply\"\x00\x12\x7f\n\x15RemoveChildObjectives\x12\x32.dlkit.proto.learning.RemoveChildObjectivesRequest\x1a\x30.dlkit.proto.learning.RemoveChildObjectivesReply\"\x00\x32\x91\x06\n\x1aObjectiveSequencingSession\x12\x85\x01\n\x17GetObjectiveHierarchyId\x12\x34.dlkit.proto.learning.GetObjectiveHierarchyIdRequest\x1a\x32.dlkit.proto.learning.GetObjectiveHierarchyIdReply\"\x00\x12\x7f\n\x15GetObjectiveHierarchy\x12\x32.dlkit.proto.learning.GetObjectiveHierarchyRequest\x1a\x30.dlkit.proto.learning.GetObjectiveHierarchyReply\"\x00\x12\x7f\n\x15\x43\x61nSequenceObjectives\x12\x32.dlkit.proto.learning.CanSequenceObjectivesRequest\x1a\x30.dlkit.proto.learning.CanSequenceObjectivesReply\"\x00\x12v\n\x12MoveObjectiveAhead\x12/.dlkit.proto.learning.MoveObjectiveAheadRequest\x1a-.dlkit.proto.learning.MoveObjectiveAheadReply\"\x00\x12y\n\x13MoveObjectiveBehind\x12\x30.dlkit.proto.learning.MoveObjectiveBehindRequest\x1a..dlkit.proto.learning.MoveObjectiveBehindReply\"\x00\x12v\n\x12SequenceObjectives\x12/.dlkit.proto.learning.SequenceObjectivesRequest\x1a-.dlkit.proto.learning.SequenceObjectivesReply\"\x00\x32\xad\n\n\x1dObjectiveObjectiveBankSession\x12\xb5\x01\n\'CanLookupObjectiveObjectiveBankMappings\x12\x44.dlkit.proto.learning.CanLookupObjectiveObjectiveBankMappingsRequest\x1a\x42.dlkit.proto.learning.CanLookupObjectiveObjectiveBankMappingsReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12\x85\x01\n\x1eGetObjectiveIdsByObjectiveBank\x12;.dlkit.proto.learning.GetObjectiveIdsByObjectiveBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12~\n\x1cGetObjectivesByObjectiveBank\x12\x39.dlkit.proto.learning.GetObjectivesByObjectiveBankRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x87\x01\n\x1fGetObjectiveIdsByObjectiveBanks\x12<.dlkit.proto.learning.GetObjectiveIdsByObjectiveBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x80\x01\n\x1dGetObjectivesByObjectiveBanks\x12:.dlkit.proto.learning.GetObjectivesByObjectiveBanksRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12\x85\x01\n\x1eGetObjectiveBankIdsByObjective\x12;.dlkit.proto.learning.GetObjectiveBankIdsByObjectiveRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x82\x01\n\x1cGetObjectiveBanksByObjective\x12\x39.dlkit.proto.learning.GetObjectiveBanksByObjectiveRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x32\xe0\x08\n\'ObjectiveObjectiveBankAssignmentSession\x12y\n\x13\x43\x61nAssignObjectives\x12\x30.dlkit.proto.learning.CanAssignObjectivesRequest\x1a..dlkit.proto.learning.CanAssignObjectivesReply\"\x00\x12\xa6\x01\n\"CanAssignObjectivesToObjectiveBank\x12?.dlkit.proto.learning.CanAssignObjectivesToObjectiveBankRequest\x1a=.dlkit.proto.learning.CanAssignObjectivesToObjectiveBankReply\"\x00\x12\x83\x01\n\x1dGetAssignableObjectiveBankIds\x12:.dlkit.proto.learning.GetAssignableObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9b\x01\n)GetAssignableObjectiveBankIdsForObjective\x12\x46.dlkit.proto.learning.GetAssignableObjectiveBankIdsForObjectiveRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9a\x01\n\x1e\x41ssignObjectiveToObjectiveBank\x12;.dlkit.proto.learning.AssignObjectiveToObjectiveBankRequest\x1a\x39.dlkit.proto.learning.AssignObjectiveToObjectiveBankReply\"\x00\x12\xa6\x01\n\"UnassignObjectiveFromObjectiveBank\x12?.dlkit.proto.learning.UnassignObjectiveFromObjectiveBankRequest\x1a=.dlkit.proto.learning.UnassignObjectiveFromObjectiveBankReply\"\x00\x12\xa6\x01\n\"ReassignProficiencyToObjectiveBank\x12?.dlkit.proto.learning.ReassignProficiencyToObjectiveBankRequest\x1a=.dlkit.proto.learning.ReassignProficiencyToObjectiveBankReply\"\x00\x32\xc5\x0c\n\x19ObjectiveRequisiteSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x9d\x01\n\x1f\x43\x61nLookupObjectivePrerequisites\x12<.dlkit.proto.learning.CanLookupObjectivePrerequisitesRequest\x1a:.dlkit.proto.learning.CanLookupObjectivePrerequisitesReply\"\x00\x12\x91\x01\n\x1bUseComparativeObjectiveView\x12\x38.dlkit.proto.learning.UseComparativeObjectiveViewRequest\x1a\x36.dlkit.proto.learning.UseComparativeObjectiveViewReply\"\x00\x12\x85\x01\n\x17UsePlenaryObjectiveView\x12\x34.dlkit.proto.learning.UsePlenaryObjectiveViewRequest\x1a\x32.dlkit.proto.learning.UsePlenaryObjectiveViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12r\n\x16GetRequisiteObjectives\x12\x33.dlkit.proto.learning.GetRequisiteObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12x\n\x19GetAllRequisiteObjectives\x12\x36.dlkit.proto.learning.GetAllRequisiteObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12r\n\x16GetDependentObjectives\x12\x33.dlkit.proto.learning.GetDependentObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x12y\n\x13IsObjectiveRequired\x12\x30.dlkit.proto.learning.IsObjectiveRequiredRequest\x1a..dlkit.proto.learning.IsObjectiveRequiredReply\"\x00\x12t\n\x17GetEquivalentObjectives\x12\x34.dlkit.proto.learning.GetEquivalentObjectivesRequest\x1a\x1f.dlkit.proto.learning.Objective\"\x00\x30\x01\x32\xc8\x07\n#ObjectiveRequisiteAssignmentSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nAssignRequisites\x12\x30.dlkit.proto.learning.CanAssignRequisitesRequest\x1a..dlkit.proto.learning.CanAssignRequisitesReply\"\x00\x12\x88\x01\n\x18\x41ssignObjectiveRequisite\x12\x35.dlkit.proto.learning.AssignObjectiveRequisiteRequest\x1a\x33.dlkit.proto.learning.AssignObjectiveRequisiteReply\"\x00\x12\x8e\x01\n\x1aUnassignObjectiveRequisite\x12\x37.dlkit.proto.learning.UnassignObjectiveRequisiteRequest\x1a\x35.dlkit.proto.learning.UnassignObjectiveRequisiteReply\"\x00\x12\x8b\x01\n\x19\x41ssignEquivalentObjective\x12\x36.dlkit.proto.learning.AssignEquivalentObjectiveRequest\x1a\x34.dlkit.proto.learning.AssignEquivalentObjectiveReply\"\x00\x12\x91\x01\n\x1bUnassignEquivalentObjective\x12\x38.dlkit.proto.learning.UnassignEquivalentObjectiveRequest\x1a\x36.dlkit.proto.learning.UnassignEquivalentObjectiveReply\"\x00\x32\xba\x10\n\x15\x41\x63tivityLookupSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nLookupActivities\x12\x30.dlkit.proto.learning.CanLookupActivitiesRequest\x1a..dlkit.proto.learning.CanLookupActivitiesReply\"\x00\x12\x8e\x01\n\x1aUseComparativeActivityView\x12\x37.dlkit.proto.learning.UseComparativeActivityViewRequest\x1a\x35.dlkit.proto.learning.UseComparativeActivityViewReply\"\x00\x12\x82\x01\n\x16UsePlenaryActivityView\x12\x33.dlkit.proto.learning.UsePlenaryActivityViewRequest\x1a\x31.dlkit.proto.learning.UsePlenaryActivityViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12\x61\n\x0bGetActivity\x12(.dlkit.proto.learning.GetActivityRequest\x1a&.dlkit.proto.learning.GetActivityReply\"\x00\x12i\n\x12GetActivitiesByIds\x12/.dlkit.proto.learning.GetActivitiesByIdsRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12u\n\x18GetActivitiesByGenusType\x12\x35.dlkit.proto.learning.GetActivitiesByGenusTypeRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12\x81\x01\n\x1eGetActivitiesByParentGenusType\x12;.dlkit.proto.learning.GetActivitiesByParentGenusTypeRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12w\n\x19GetActivitiesByRecordType\x12\x36.dlkit.proto.learning.GetActivitiesByRecordTypeRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12w\n\x19GetActivitiesForObjective\x12\x36.dlkit.proto.learning.GetActivitiesForObjectiveRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12y\n\x1aGetActivitiesForObjectives\x12\x37.dlkit.proto.learning.GetActivitiesForObjectivesRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12m\n\x14GetActivitiesByAsset\x12\x31.dlkit.proto.learning.GetActivitiesByAssetRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12o\n\x15GetActivitiesByAssets\x12\x32.dlkit.proto.learning.GetActivitiesByAssetsRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12_\n\rGetActivities\x12*.dlkit.proto.learning.GetActivitiesRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x32\x8d\x07\n\x14\x41\x63tivityQuerySession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nSearchActivities\x12\x30.dlkit.proto.learning.CanSearchActivitiesRequest\x1a..dlkit.proto.learning.CanSearchActivitiesReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12p\n\x10GetActivityQuery\x12-.dlkit.proto.learning.GetActivityQueryRequest\x1a+.dlkit.proto.learning.GetActivityQueryReply\"\x00\x12m\n\x14GetActivitiesByQuery\x12\x31.dlkit.proto.learning.GetActivitiesByQueryRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x32\xe2\x0c\n\x14\x41\x63tivityAdminSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12y\n\x13\x43\x61nCreateActivities\x12\x30.dlkit.proto.learning.CanCreateActivitiesRequest\x1a..dlkit.proto.learning.CanCreateActivitiesReply\"\x00\x12\xa0\x01\n CanCreateActivityWithRecordTypes\x12=.dlkit.proto.learning.CanCreateActivityWithRecordTypesRequest\x1a;.dlkit.proto.learning.CanCreateActivityWithRecordTypesReply\"\x00\x12\x88\x01\n\x18GetActivityFormForCreate\x12\x35.dlkit.proto.learning.GetActivityFormForCreateRequest\x1a\x33.dlkit.proto.learning.GetActivityFormForCreateReply\"\x00\x12j\n\x0e\x43reateActivity\x12+.dlkit.proto.learning.CreateActivityRequest\x1a).dlkit.proto.learning.CreateActivityReply\"\x00\x12y\n\x13\x43\x61nUpdateActivities\x12\x30.dlkit.proto.learning.CanUpdateActivitiesRequest\x1a..dlkit.proto.learning.CanUpdateActivitiesReply\"\x00\x12\x88\x01\n\x18GetActivityFormForUpdate\x12\x35.dlkit.proto.learning.GetActivityFormForUpdateRequest\x1a\x33.dlkit.proto.learning.GetActivityFormForUpdateReply\"\x00\x12j\n\x0eUpdateActivity\x12+.dlkit.proto.learning.UpdateActivityRequest\x1a).dlkit.proto.learning.UpdateActivityReply\"\x00\x12y\n\x13\x43\x61nDeleteActivities\x12\x30.dlkit.proto.learning.CanDeleteActivitiesRequest\x1a..dlkit.proto.learning.CanDeleteActivitiesReply\"\x00\x12j\n\x0e\x44\x65leteActivity\x12+.dlkit.proto.learning.DeleteActivityRequest\x1a).dlkit.proto.learning.DeleteActivityReply\"\x00\x12\x88\x01\n\x18\x43\x61nManageActivityAliases\x12\x35.dlkit.proto.learning.CanManageActivityAliasesRequest\x1a\x33.dlkit.proto.learning.CanManageActivityAliasesReply\"\x00\x12g\n\rAliasActivity\x12*.dlkit.proto.learning.AliasActivityRequest\x1a(.dlkit.proto.learning.AliasActivityReply\"\x00\x32\x9e\n\n\x1c\x41\x63tivityObjectiveBankSession\x12\xb2\x01\n&CanLookupActivityObjectiveBankMappings\x12\x43.dlkit.proto.learning.CanLookupActivityObjectiveBankMappingsRequest\x1a\x41.dlkit.proto.learning.CanLookupActivityObjectiveBankMappingsReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12\x83\x01\n\x1dGetActivityIdsByObjectiveBank\x12:.dlkit.proto.learning.GetActivityIdsByObjectiveBankRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12}\n\x1cGetActivitiesByObjectiveBank\x12\x39.dlkit.proto.learning.GetActivitiesByObjectiveBankRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12\x85\x01\n\x1eGetActivityIdsByObjectiveBanks\x12;.dlkit.proto.learning.GetActivityIdsByObjectiveBanksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x7f\n\x1dGetActivitiesByObjectiveBanks\x12:.dlkit.proto.learning.GetActivitiesByObjectiveBanksRequest\x1a\x1e.dlkit.proto.learning.Activity\"\x00\x30\x01\x12\x83\x01\n\x1dGetObjectiveBankIdsByActivity\x12:.dlkit.proto.learning.GetObjectiveBankIdsByActivityRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x80\x01\n\x1bGetObjectiveBanksByActivity\x12\x38.dlkit.proto.learning.GetObjectiveBanksByActivityRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x32\xce\x08\n&ActivityObjectiveBankAssignmentSession\x12y\n\x13\x43\x61nAssignActivities\x12\x30.dlkit.proto.learning.CanAssignActivitiesRequest\x1a..dlkit.proto.learning.CanAssignActivitiesReply\"\x00\x12\xa6\x01\n\"CanAssignActivitiesToObjectiveBank\x12?.dlkit.proto.learning.CanAssignActivitiesToObjectiveBankRequest\x1a=.dlkit.proto.learning.CanAssignActivitiesToObjectiveBankReply\"\x00\x12\x83\x01\n\x1dGetAssignableObjectiveBankIds\x12:.dlkit.proto.learning.GetAssignableObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x99\x01\n(GetAssignableObjectiveBankIdsForActivity\x12\x45.dlkit.proto.learning.GetAssignableObjectiveBankIdsForActivityRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x97\x01\n\x1d\x41ssignActivityToObjectiveBank\x12:.dlkit.proto.learning.AssignActivityToObjectiveBankRequest\x1a\x38.dlkit.proto.learning.AssignActivityToObjectiveBankReply\"\x00\x12\xa3\x01\n!UnassignActivityFromObjectiveBank\x12>.dlkit.proto.learning.UnassignActivityFromObjectiveBankRequest\x1a<.dlkit.proto.learning.UnassignActivityFromObjectiveBankReply\"\x00\x12\x9d\x01\n\x1fReassignActivityToObjectiveBank\x12<.dlkit.proto.learning.ReassignActivityToObjectiveBankRequest\x1a:.dlkit.proto.learning.ReassignActivityToObjectiveBankReply\"\x00\x32\xb7\"\n\x18ProficiencyLookupSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x82\x01\n\x16\x43\x61nLookupProficiencies\x12\x33.dlkit.proto.learning.CanLookupProficienciesRequest\x1a\x31.dlkit.proto.learning.CanLookupProficienciesReply\"\x00\x12\x97\x01\n\x1dUseComparativeProficiencyView\x12:.dlkit.proto.learning.UseComparativeProficiencyViewRequest\x1a\x38.dlkit.proto.learning.UseComparativeProficiencyViewReply\"\x00\x12\x8b\x01\n\x19UsePlenaryProficiencyView\x12\x36.dlkit.proto.learning.UsePlenaryProficiencyViewRequest\x1a\x34.dlkit.proto.learning.UsePlenaryProficiencyViewReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUseEffectiveProficiencyView\x12\x38.dlkit.proto.learning.UseEffectiveProficiencyViewRequest\x1a\x36.dlkit.proto.learning.UseEffectiveProficiencyViewReply\"\x00\x12\x9a\x01\n\x1eUseAnyEffectiveProficiencyView\x12;.dlkit.proto.learning.UseAnyEffectiveProficiencyViewRequest\x1a\x39.dlkit.proto.learning.UseAnyEffectiveProficiencyViewReply\"\x00\x12j\n\x0eGetProficiency\x12+.dlkit.proto.learning.GetProficiencyRequest\x1a).dlkit.proto.learning.GetProficiencyReply\"\x00\x12r\n\x15GetProficienciesByIds\x12\x32.dlkit.proto.learning.GetProficienciesByIdsRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12~\n\x1bGetProficienciesByGenusType\x12\x38.dlkit.proto.learning.GetProficienciesByGenusTypeRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8a\x01\n!GetProficienciesByParentGenusType\x12>.dlkit.proto.learning.GetProficienciesByParentGenusTypeRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x80\x01\n\x1cGetProficienciesByRecordType\x12\x39.dlkit.proto.learning.GetProficienciesByRecordTypeRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12t\n\x16GetProficienciesOnDate\x12\x33.dlkit.proto.learning.GetProficienciesOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8a\x01\n!GetProficienciesByGenusTypeOnDate\x12>.dlkit.proto.learning.GetProficienciesByGenusTypeOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x80\x01\n\x1cGetProficienciesForObjective\x12\x39.dlkit.proto.learning.GetProficienciesForObjectiveRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8c\x01\n\"GetProficienciesForObjectiveOnDate\x12?.dlkit.proto.learning.GetProficienciesForObjectiveOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x96\x01\n\'GetProficienciesByGenusTypeForObjective\x12\x44.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xa2\x01\n-GetProficienciesByGenusTypeForObjectiveOnDate\x12J.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x82\x01\n\x1dGetProficienciesForObjectives\x12:.dlkit.proto.learning.GetProficienciesForObjectivesRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12~\n\x1bGetProficienciesForResource\x12\x38.dlkit.proto.learning.GetProficienciesForResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x8a\x01\n!GetProficienciesForResourceOnDate\x12>.dlkit.proto.learning.GetProficienciesForResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x94\x01\n&GetProficienciesByGenusTypeForResource\x12\x43.dlkit.proto.learning.GetProficienciesByGenusTypeForResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xa0\x01\n,GetProficienciesByGenusTypeForResourceOnDate\x12I.dlkit.proto.learning.GetProficienciesByGenusTypeForResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x80\x01\n\x1cGetProficienciesForResources\x12\x39.dlkit.proto.learning.GetProficienciesForResourcesRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\x96\x01\n\'GetProficienciesForObjectiveAndResource\x12\x44.dlkit.proto.learning.GetProficienciesForObjectiveAndResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xa2\x01\n-GetProficienciesForObjectiveAndResourceOnDate\x12J.dlkit.proto.learning.GetProficienciesForObjectiveAndResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xac\x01\n2GetProficienciesByGenusTypeForObjectiveAndResource\x12O.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveAndResourceRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12\xb8\x01\n8GetProficienciesByGenusTypeForObjectiveAndResourceOnDate\x12U.dlkit.proto.learning.GetProficienciesByGenusTypeForObjectiveAndResourceOnDateRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x12h\n\x10GetProficiencies\x12-.dlkit.proto.learning.GetProficienciesRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x32\xac\x07\n\x17ProficiencyQuerySession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x82\x01\n\x16\x43\x61nSearchProficiencies\x12\x33.dlkit.proto.learning.CanSearchProficienciesRequest\x1a\x31.dlkit.proto.learning.CanSearchProficienciesReply\"\x00\x12\x97\x01\n\x1dUseFederatedObjectiveBankView\x12:.dlkit.proto.learning.UseFederatedObjectiveBankViewRequest\x1a\x38.dlkit.proto.learning.UseFederatedObjectiveBankViewReply\"\x00\x12\x94\x01\n\x1cUseIsolatedObjectiveBankView\x12\x39.dlkit.proto.learning.UseIsolatedObjectiveBankViewRequest\x1a\x37.dlkit.proto.learning.UseIsolatedObjectiveBankViewReply\"\x00\x12y\n\x13GetProficiencyQuery\x12\x30.dlkit.proto.learning.GetProficiencyQueryRequest\x1a..dlkit.proto.learning.GetProficiencyQueryReply\"\x00\x12v\n\x17GetProficienciesByQuery\x12\x34.dlkit.proto.learning.GetProficienciesByQueryRequest\x1a!.dlkit.proto.learning.Proficiency\"\x00\x30\x01\x32\xc6\x0e\n\x17ProficiencyAdminSession\x12v\n\x12GetObjectiveBankId\x12/.dlkit.proto.learning.GetObjectiveBankIdRequest\x1a-.dlkit.proto.learning.GetObjectiveBankIdReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12\x82\x01\n\x16\x43\x61nCreateProficiencies\x12\x33.dlkit.proto.learning.CanCreateProficienciesRequest\x1a\x31.dlkit.proto.learning.CanCreateProficienciesReply\"\x00\x12\xa9\x01\n#CanCreateProficiencyWithRecordTypes\x12@.dlkit.proto.learning.CanCreateProficiencyWithRecordTypesRequest\x1a>.dlkit.proto.learning.CanCreateProficiencyWithRecordTypesReply\"\x00\x12\x91\x01\n\x1bGetProficiencyFormForCreate\x12\x38.dlkit.proto.learning.GetProficiencyFormForCreateRequest\x1a\x36.dlkit.proto.learning.GetProficiencyFormForCreateReply\"\x00\x12s\n\x11\x43reateProficiency\x12..dlkit.proto.learning.CreateProficiencyRequest\x1a,.dlkit.proto.learning.CreateProficiencyReply\"\x00\x12\x82\x01\n\x16\x43\x61nUpdateProficiencies\x12\x33.dlkit.proto.learning.CanUpdateProficienciesRequest\x1a\x31.dlkit.proto.learning.CanUpdateProficienciesReply\"\x00\x12\x91\x01\n\x1bGetProficiencyFormForUpdate\x12\x38.dlkit.proto.learning.GetProficiencyFormForUpdateRequest\x1a\x36.dlkit.proto.learning.GetProficiencyFormForUpdateReply\"\x00\x12s\n\x11UpdateProficiency\x12..dlkit.proto.learning.UpdateProficiencyRequest\x1a,.dlkit.proto.learning.UpdateProficiencyReply\"\x00\x12\x82\x01\n\x16\x43\x61nDeleteProficiencies\x12\x33.dlkit.proto.learning.CanDeleteProficienciesRequest\x1a\x31.dlkit.proto.learning.CanDeleteProficienciesReply\"\x00\x12s\n\x11\x44\x65leteProficiency\x12..dlkit.proto.learning.DeleteProficiencyRequest\x1a,.dlkit.proto.learning.DeleteProficiencyReply\"\x00\x12y\n\x13\x44\x65leteProficiencies\x12\x30.dlkit.proto.learning.DeleteProficienciesRequest\x1a..dlkit.proto.learning.DeleteProficienciesReply\"\x00\x12\x91\x01\n\x1b\x43\x61nManageProficiencyAliases\x12\x38.dlkit.proto.learning.CanManageProficiencyAliasesRequest\x1a\x36.dlkit.proto.learning.CanManageProficiencyAliasesReply\"\x00\x12p\n\x10\x41liasProficiency\x12-.dlkit.proto.learning.AliasProficiencyRequest\x1a+.dlkit.proto.learning.AliasProficiencyReply\"\x00\x32\x85\t\n)ProficiencyObjectiveBankAssignmentSession\x12\x82\x01\n\x16\x43\x61nAssignProficiencies\x12\x33.dlkit.proto.learning.CanAssignProficienciesRequest\x1a\x31.dlkit.proto.learning.CanAssignProficienciesReply\"\x00\x12\xaf\x01\n%CanAssignProficienciesToObjectiveBank\x12\x42.dlkit.proto.learning.CanAssignProficienciesToObjectiveBankRequest\x1a@.dlkit.proto.learning.CanAssignProficienciesToObjectiveBankReply\"\x00\x12\x83\x01\n\x1dGetAssignableObjectiveBankIds\x12:.dlkit.proto.learning.GetAssignableObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x9f\x01\n+GetAssignableObjectiveBankIdsForProficiency\x12H.dlkit.proto.learning.GetAssignableObjectiveBankIdsForProficiencyRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\xa0\x01\n AssignProficiencyToObjectiveBank\x12=.dlkit.proto.learning.AssignProficiencyToObjectiveBankRequest\x1a;.dlkit.proto.learning.AssignProficiencyToObjectiveBankReply\"\x00\x12\xac\x01\n$UnassignProficiencyFromObjectiveBank\x12\x41.dlkit.proto.learning.UnassignProficiencyFromObjectiveBankRequest\x1a?.dlkit.proto.learning.UnassignProficiencyFromObjectiveBankReply\"\x00\x12\xa6\x01\n\"ReassignProficiencyToObjectiveBank\x12?.dlkit.proto.learning.ReassignProficiencyToObjectiveBankRequest\x1a=.dlkit.proto.learning.ReassignProficiencyToObjectiveBankReply\"\x00\x32\xd0\n\n\x1aObjectiveBankLookupSession\x12\x85\x01\n\x17\x43\x61nLookupObjectiveBanks\x12\x34.dlkit.proto.learning.CanLookupObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanLookupObjectiveBanksReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12p\n\x10GetObjectiveBank\x12-.dlkit.proto.learning.GetObjectiveBankRequest\x1a+.dlkit.proto.learning.GetObjectiveBankReply\"\x00\x12v\n\x16GetObjectiveBanksByIds\x12\x33.dlkit.proto.learning.GetObjectiveBanksByIdsRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x82\x01\n\x1cGetObjectiveBanksByGenusType\x12\x39.dlkit.proto.learning.GetObjectiveBanksByGenusTypeRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x8e\x01\n\"GetObjectiveBanksByParentGenusType\x12?.dlkit.proto.learning.GetObjectiveBanksByParentGenusTypeRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x84\x01\n\x1dGetObjectiveBanksByRecordType\x12:.dlkit.proto.learning.GetObjectiveBanksByRecordTypeRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x80\x01\n\x1bGetObjectiveBanksByProvider\x12\x38.dlkit.proto.learning.GetObjectiveBanksByProviderRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12l\n\x11GetObjectiveBanks\x12..dlkit.proto.learning.GetObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x32\x9c\x0c\n\x19ObjectiveBankAdminSession\x12\x85\x01\n\x17\x43\x61nCreateObjectiveBanks\x12\x34.dlkit.proto.learning.CanCreateObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanCreateObjectiveBanksReply\"\x00\x12\xaf\x01\n%CanCreateObjectiveBankWithRecordTypes\x12\x42.dlkit.proto.learning.CanCreateObjectiveBankWithRecordTypesRequest\x1a@.dlkit.proto.learning.CanCreateObjectiveBankWithRecordTypesReply\"\x00\x12\x97\x01\n\x1dGetObjectiveBankFormForCreate\x12:.dlkit.proto.learning.GetObjectiveBankFormForCreateRequest\x1a\x38.dlkit.proto.learning.GetObjectiveBankFormForCreateReply\"\x00\x12y\n\x13\x43reateObjectiveBank\x12\x30.dlkit.proto.learning.CreateObjectiveBankRequest\x1a..dlkit.proto.learning.CreateObjectiveBankReply\"\x00\x12\x85\x01\n\x17\x43\x61nUpdateObjectiveBanks\x12\x34.dlkit.proto.learning.CanUpdateObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanUpdateObjectiveBanksReply\"\x00\x12\x97\x01\n\x1dGetObjectiveBankFormForUpdate\x12:.dlkit.proto.learning.GetObjectiveBankFormForUpdateRequest\x1a\x38.dlkit.proto.learning.GetObjectiveBankFormForUpdateReply\"\x00\x12y\n\x13UpdateObjectiveBank\x12\x30.dlkit.proto.learning.UpdateObjectiveBankRequest\x1a..dlkit.proto.learning.UpdateObjectiveBankReply\"\x00\x12\x85\x01\n\x17\x43\x61nDeleteObjectiveBanks\x12\x34.dlkit.proto.learning.CanDeleteObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.CanDeleteObjectiveBanksReply\"\x00\x12y\n\x13\x44\x65leteObjectiveBank\x12\x30.dlkit.proto.learning.DeleteObjectiveBankRequest\x1a..dlkit.proto.learning.DeleteObjectiveBankReply\"\x00\x12\x97\x01\n\x1d\x43\x61nManageObjectiveBankAliases\x12:.dlkit.proto.learning.CanManageObjectiveBankAliasesRequest\x1a\x38.dlkit.proto.learning.CanManageObjectiveBankAliasesReply\"\x00\x12v\n\x12\x41liasObjectiveBank\x12/.dlkit.proto.learning.AliasObjectiveBankRequest\x1a-.dlkit.proto.learning.AliasObjectiveBankReply\"\x00\x32\xb3\x14\n\x1dObjectiveBankHierarchySession\x12\x91\x01\n\x1bGetObjectiveBankHierarchyId\x12\x38.dlkit.proto.learning.GetObjectiveBankHierarchyIdRequest\x1a\x36.dlkit.proto.learning.GetObjectiveBankHierarchyIdReply\"\x00\x12\x8b\x01\n\x19GetObjectiveBankHierarchy\x12\x36.dlkit.proto.learning.GetObjectiveBankHierarchyRequest\x1a\x34.dlkit.proto.learning.GetObjectiveBankHierarchyReply\"\x00\x12\x9d\x01\n\x1f\x43\x61nAccessObjectiveBankHierarchy\x12<.dlkit.proto.learning.CanAccessObjectiveBankHierarchyRequest\x1a:.dlkit.proto.learning.CanAccessObjectiveBankHierarchyReply\"\x00\x12\x9d\x01\n\x1fUseComparativeObjectiveBankView\x12<.dlkit.proto.learning.UseComparativeObjectiveBankViewRequest\x1a:.dlkit.proto.learning.UseComparativeObjectiveBankViewReply\"\x00\x12\x91\x01\n\x1bUsePlenaryObjectiveBankView\x12\x38.dlkit.proto.learning.UsePlenaryObjectiveBankViewRequest\x1a\x36.dlkit.proto.learning.UsePlenaryObjectiveBankViewReply\"\x00\x12w\n\x17GetRootObjectiveBankIds\x12\x34.dlkit.proto.learning.GetRootObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12t\n\x15GetRootObjectiveBanks\x12\x32.dlkit.proto.learning.GetRootObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x85\x01\n\x17HasParentObjectiveBanks\x12\x34.dlkit.proto.learning.HasParentObjectiveBanksRequest\x1a\x32.dlkit.proto.learning.HasParentObjectiveBanksReply\"\x00\x12\x85\x01\n\x17IsParentOfObjectiveBank\x12\x34.dlkit.proto.learning.IsParentOfObjectiveBankRequest\x1a\x32.dlkit.proto.learning.IsParentOfObjectiveBankReply\"\x00\x12{\n\x19GetParentObjectiveBankIds\x12\x36.dlkit.proto.learning.GetParentObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12x\n\x17GetParentObjectiveBanks\x12\x34.dlkit.proto.learning.GetParentObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x8b\x01\n\x19IsAncestorOfObjectiveBank\x12\x36.dlkit.proto.learning.IsAncestorOfObjectiveBankRequest\x1a\x34.dlkit.proto.learning.IsAncestorOfObjectiveBankReply\"\x00\x12\x82\x01\n\x16HasChildObjectiveBanks\x12\x33.dlkit.proto.learning.HasChildObjectiveBanksRequest\x1a\x31.dlkit.proto.learning.HasChildObjectiveBanksReply\"\x00\x12\x82\x01\n\x16IsChildOfObjectiveBank\x12\x33.dlkit.proto.learning.IsChildOfObjectiveBankRequest\x1a\x31.dlkit.proto.learning.IsChildOfObjectiveBankReply\"\x00\x12y\n\x18GetChildObjectiveBankIds\x12\x35.dlkit.proto.learning.GetChildObjectiveBankIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12v\n\x16GetChildObjectiveBanks\x12\x33.dlkit.proto.learning.GetChildObjectiveBanksRequest\x1a#.dlkit.proto.learning.ObjectiveBank\"\x00\x30\x01\x12\x91\x01\n\x1bIsDescendantOfObjectiveBank\x12\x38.dlkit.proto.learning.IsDescendantOfObjectiveBankRequest\x1a\x36.dlkit.proto.learning.IsDescendantOfObjectiveBankReply\"\x00\x12\x85\x01\n\x17GetObjectiveBankNodeIds\x12\x34.dlkit.proto.learning.GetObjectiveBankNodeIdsRequest\x1a\x32.dlkit.proto.learning.GetObjectiveBankNodeIdsReply\"\x00\x12\x7f\n\x15GetObjectiveBankNodes\x12\x32.dlkit.proto.learning.GetObjectiveBankNodesRequest\x1a\x30.dlkit.proto.learning.GetObjectiveBankNodesReply\"\x00\x32\x87\t\n#ObjectiveBankHierarchyDesignSession\x12\x91\x01\n\x1bGetObjectiveBankHierarchyId\x12\x38.dlkit.proto.learning.GetObjectiveBankHierarchyIdRequest\x1a\x36.dlkit.proto.learning.GetObjectiveBankHierarchyIdReply\"\x00\x12\x8b\x01\n\x19GetObjectiveBankHierarchy\x12\x36.dlkit.proto.learning.GetObjectiveBankHierarchyRequest\x1a\x34.dlkit.proto.learning.GetObjectiveBankHierarchyReply\"\x00\x12\x9d\x01\n\x1f\x43\x61nModifyObjectiveBankHierarchy\x12<.dlkit.proto.learning.CanModifyObjectiveBankHierarchyRequest\x1a:.dlkit.proto.learning.CanModifyObjectiveBankHierarchyReply\"\x00\x12|\n\x14\x41\x64\x64RootObjectiveBank\x12\x31.dlkit.proto.learning.AddRootObjectiveBankRequest\x1a/.dlkit.proto.learning.AddRootObjectiveBankReply\"\x00\x12\x85\x01\n\x17RemoveRootObjectiveBank\x12\x34.dlkit.proto.learning.RemoveRootObjectiveBankRequest\x1a\x32.dlkit.proto.learning.RemoveRootObjectiveBankReply\"\x00\x12\x7f\n\x15\x41\x64\x64\x43hildObjectiveBank\x12\x32.dlkit.proto.learning.AddChildObjectiveBankRequest\x1a\x30.dlkit.proto.learning.AddChildObjectiveBankReply\"\x00\x12\x88\x01\n\x18RemoveChildObjectiveBank\x12\x35.dlkit.proto.learning.RemoveChildObjectiveBankRequest\x1a\x33.dlkit.proto.learning.RemoveChildObjectiveBankReply\"\x00\x12\x8b\x01\n\x19RemoveChildObjectiveBanks\x12\x36.dlkit.proto.learning.RemoveChildObjectiveBanksRequest\x1a\x34.dlkit.proto.learning.RemoveChildObjectiveBanksReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -61,14 +61,14 @@ _OBJECTIVE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.learning.Objective.displayName', index=3,
+      name='display_name', full_name='dlkit.proto.learning.Objective.display_name', index=3,
       number=4, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.learning.Objective.genusTypeId', index=4,
+      name='genus_type_id', full_name='dlkit.proto.learning.Objective.genus_type_id', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -96,7 +96,7 @@ _OBJECTIVE = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.learning.Objective.recordTypeIds', index=8,
+      name='record_type_ids', full_name='dlkit.proto.learning.Objective.record_type_ids', index=8,
       number=9, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -115,7 +115,7 @@ _OBJECTIVE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=259,
-  serialized_end=820,
+  serialized_end=825,
 )
 
 
@@ -138,8 +138,8 @@ _OBJECTIVEQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=822,
-  serialized_end=838,
+  serialized_start=827,
+  serialized_end=843,
 )
 
 
@@ -162,8 +162,8 @@ _OBJECTIVEQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=840,
-  serialized_end=865,
+  serialized_start=845,
+  serialized_end=870,
 )
 
 
@@ -186,8 +186,8 @@ _OBJECTIVEFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=867,
-  serialized_end=882,
+  serialized_start=872,
+  serialized_end=887,
 )
 
 
@@ -210,8 +210,8 @@ _OBJECTIVESEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=884,
-  serialized_end=906,
+  serialized_start=889,
+  serialized_end=911,
 )
 
 
@@ -234,8 +234,8 @@ _OBJECTIVESEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=908,
-  serialized_end=925,
+  serialized_start=913,
+  serialized_end=930,
 )
 
 
@@ -258,8 +258,8 @@ _OBJECTIVESEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=927,
-  serialized_end=951,
+  serialized_start=932,
+  serialized_end=956,
 )
 
 
@@ -289,8 +289,8 @@ _OBJECTIVELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=953,
-  serialized_end=1021,
+  serialized_start=958,
+  serialized_end=1026,
 )
 
 
@@ -313,8 +313,8 @@ _OBJECTIVENODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1023,
-  serialized_end=1038,
+  serialized_start=1028,
+  serialized_end=1043,
 )
 
 
@@ -344,8 +344,8 @@ _OBJECTIVENODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1040,
-  serialized_end=1121,
+  serialized_start=1045,
+  serialized_end=1126,
 )
 
 
@@ -385,14 +385,14 @@ _ACTIVITY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.learning.Activity.displayName', index=4,
+      name='display_name', full_name='dlkit.proto.learning.Activity.display_name', index=4,
       number=5, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.learning.Activity.genusTypeId', index=5,
+      name='genus_type_id', full_name='dlkit.proto.learning.Activity.genus_type_id', index=5,
       number=6, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -420,7 +420,7 @@ _ACTIVITY = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.learning.Activity.recordTypeIds', index=9,
+      name='record_type_ids', full_name='dlkit.proto.learning.Activity.record_type_ids', index=9,
       number=10, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -438,8 +438,8 @@ _ACTIVITY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1124,
-  serialized_end=1718,
+  serialized_start=1129,
+  serialized_end=1728,
 )
 
 
@@ -462,8 +462,8 @@ _ACTIVITYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1720,
-  serialized_end=1735,
+  serialized_start=1730,
+  serialized_end=1745,
 )
 
 
@@ -486,8 +486,8 @@ _ACTIVITYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1737,
-  serialized_end=1761,
+  serialized_start=1747,
+  serialized_end=1771,
 )
 
 
@@ -510,8 +510,8 @@ _ACTIVITYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1763,
-  serialized_end=1777,
+  serialized_start=1773,
+  serialized_end=1787,
 )
 
 
@@ -534,8 +534,8 @@ _ACTIVITYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1779,
-  serialized_end=1800,
+  serialized_start=1789,
+  serialized_end=1810,
 )
 
 
@@ -558,8 +558,8 @@ _ACTIVITYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1802,
-  serialized_end=1818,
+  serialized_start=1812,
+  serialized_end=1828,
 )
 
 
@@ -582,8 +582,8 @@ _ACTIVITYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1820,
-  serialized_end=1843,
+  serialized_start=1830,
+  serialized_end=1853,
 )
 
 
@@ -613,8 +613,8 @@ _ACTIVITYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1845,
-  serialized_end=1911,
+  serialized_start=1855,
+  serialized_end=1921,
 )
 
 
@@ -672,8 +672,8 @@ _PROFICIENCY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1914,
-  serialized_end=2162,
+  serialized_start=1924,
+  serialized_end=2172,
 )
 
 
@@ -696,8 +696,8 @@ _PROFICIENCYQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2164,
-  serialized_end=2182,
+  serialized_start=2174,
+  serialized_end=2192,
 )
 
 
@@ -720,8 +720,8 @@ _PROFICIENCYQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2184,
-  serialized_end=2211,
+  serialized_start=2194,
+  serialized_end=2221,
 )
 
 
@@ -744,8 +744,8 @@ _PROFICIENCYFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2213,
-  serialized_end=2230,
+  serialized_start=2223,
+  serialized_end=2240,
 )
 
 
@@ -768,8 +768,8 @@ _PROFICIENCYSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2232,
-  serialized_end=2256,
+  serialized_start=2242,
+  serialized_end=2266,
 )
 
 
@@ -792,8 +792,8 @@ _PROFICIENCYSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2258,
-  serialized_end=2277,
+  serialized_start=2268,
+  serialized_end=2287,
 )
 
 
@@ -816,8 +816,8 @@ _PROFICIENCYSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2279,
-  serialized_end=2305,
+  serialized_start=2289,
+  serialized_end=2315,
 )
 
 
@@ -847,8 +847,8 @@ _PROFICIENCYLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2307,
-  serialized_end=2382,
+  serialized_start=2317,
+  serialized_end=2392,
 )
 
 
@@ -867,14 +867,14 @@ _OBJECTIVEBANK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.learning.ObjectiveBank.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.learning.ObjectiveBank.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.learning.ObjectiveBank.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.learning.ObjectiveBank.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -888,7 +888,7 @@ _OBJECTIVEBANK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.learning.ObjectiveBank.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.learning.ObjectiveBank.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -906,8 +906,8 @@ _OBJECTIVEBANK = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2385,
-  serialized_end=2712,
+  serialized_start=2395,
+  serialized_end=2727,
 )
 
 
@@ -930,8 +930,8 @@ _OBJECTIVEBANKQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2714,
-  serialized_end=2734,
+  serialized_start=2729,
+  serialized_end=2749,
 )
 
 
@@ -954,8 +954,8 @@ _OBJECTIVEBANKQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2736,
-  serialized_end=2765,
+  serialized_start=2751,
+  serialized_end=2780,
 )
 
 
@@ -978,8 +978,8 @@ _OBJECTIVEBANKFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2767,
-  serialized_end=2786,
+  serialized_start=2782,
+  serialized_end=2801,
 )
 
 
@@ -1002,8 +1002,8 @@ _OBJECTIVEBANKSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2788,
-  serialized_end=2814,
+  serialized_start=2803,
+  serialized_end=2829,
 )
 
 
@@ -1026,8 +1026,8 @@ _OBJECTIVEBANKSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2816,
-  serialized_end=2837,
+  serialized_start=2831,
+  serialized_end=2852,
 )
 
 
@@ -1050,8 +1050,8 @@ _OBJECTIVEBANKSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2839,
-  serialized_end=2867,
+  serialized_start=2854,
+  serialized_end=2882,
 )
 
 
@@ -1081,8 +1081,8 @@ _OBJECTIVEBANKLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2869,
-  serialized_end=2950,
+  serialized_start=2884,
+  serialized_end=2965,
 )
 
 
@@ -1105,8 +1105,8 @@ _OBJECTIVEBANKNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2952,
-  serialized_end=2971,
+  serialized_start=2967,
+  serialized_end=2986,
 )
 
 
@@ -1136,8 +1136,8 @@ _OBJECTIVEBANKNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2973,
-  serialized_end=3067,
+  serialized_start=2988,
+  serialized_end=3082,
 )
 
 
@@ -1167,8 +1167,8 @@ _GETOBJECTIVEBANKIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3069,
-  serialized_end=3142,
+  serialized_start=3084,
+  serialized_end=3157,
 )
 
 
@@ -1191,8 +1191,8 @@ _GETOBJECTIVEBANKIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3144,
-  serialized_end=3171,
+  serialized_start=3159,
+  serialized_end=3186,
 )
 
 
@@ -1222,8 +1222,8 @@ _GETOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3173,
-  serialized_end=3257,
+  serialized_start=3188,
+  serialized_end=3272,
 )
 
 
@@ -1246,8 +1246,8 @@ _GETOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3259,
-  serialized_end=3284,
+  serialized_start=3274,
+  serialized_end=3299,
 )
 
 
@@ -1277,8 +1277,8 @@ _CANLOOKUPOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3286,
-  serialized_end=3343,
+  serialized_start=3301,
+  serialized_end=3358,
 )
 
 
@@ -1301,8 +1301,8 @@ _CANLOOKUPOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3345,
-  serialized_end=3373,
+  serialized_start=3360,
+  serialized_end=3388,
 )
 
 
@@ -1325,8 +1325,8 @@ _USECOMPARATIVEOBJECTIVEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3375,
-  serialized_end=3409,
+  serialized_start=3390,
+  serialized_end=3424,
 )
 
 
@@ -1349,8 +1349,8 @@ _USECOMPARATIVEOBJECTIVEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3411,
-  serialized_end=3447,
+  serialized_start=3426,
+  serialized_end=3462,
 )
 
 
@@ -1373,8 +1373,8 @@ _USEPLENARYOBJECTIVEVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3449,
-  serialized_end=3479,
+  serialized_start=3464,
+  serialized_end=3494,
 )
 
 
@@ -1397,8 +1397,8 @@ _USEPLENARYOBJECTIVEVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3481,
-  serialized_end=3513,
+  serialized_start=3496,
+  serialized_end=3528,
 )
 
 
@@ -1421,8 +1421,8 @@ _USEFEDERATEDOBJECTIVEBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3515,
-  serialized_end=3551,
+  serialized_start=3530,
+  serialized_end=3566,
 )
 
 
@@ -1445,8 +1445,8 @@ _USEFEDERATEDOBJECTIVEBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3553,
-  serialized_end=3591,
+  serialized_start=3568,
+  serialized_end=3606,
 )
 
 
@@ -1469,8 +1469,8 @@ _USEISOLATEDOBJECTIVEBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3593,
-  serialized_end=3628,
+  serialized_start=3608,
+  serialized_end=3643,
 )
 
 
@@ -1493,8 +1493,8 @@ _USEISOLATEDOBJECTIVEBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3630,
-  serialized_end=3667,
+  serialized_start=3645,
+  serialized_end=3682,
 )
 
 
@@ -1524,8 +1524,8 @@ _GETOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3669,
-  serialized_end=3740,
+  serialized_start=3684,
+  serialized_end=3755,
 )
 
 
@@ -1555,8 +1555,8 @@ _GETOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3742,
-  serialized_end=3821,
+  serialized_start=3757,
+  serialized_end=3836,
 )
 
 
@@ -1586,8 +1586,8 @@ _GETOBJECTIVESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3823,
-  serialized_end=3909,
+  serialized_start=3838,
+  serialized_end=3924,
 )
 
 
@@ -1617,8 +1617,8 @@ _GETOBJECTIVESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3911,
-  serialized_end=4014,
+  serialized_start=3926,
+  serialized_end=4029,
 )
 
 
@@ -1648,8 +1648,8 @@ _GETOBJECTIVESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4016,
-  serialized_end=4125,
+  serialized_start=4031,
+  serialized_end=4140,
 )
 
 
@@ -1679,8 +1679,8 @@ _GETOBJECTIVESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4127,
-  serialized_end=4232,
+  serialized_start=4142,
+  serialized_end=4247,
 )
 
 
@@ -1703,8 +1703,8 @@ _GETOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4234,
-  serialized_end=4256,
+  serialized_start=4249,
+  serialized_end=4271,
 )
 
 
@@ -1734,8 +1734,8 @@ _CANSEARCHOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4258,
-  serialized_end=4315,
+  serialized_start=4273,
+  serialized_end=4330,
 )
 
 
@@ -1758,8 +1758,8 @@ _CANSEARCHOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4317,
-  serialized_end=4345,
+  serialized_start=4332,
+  serialized_end=4360,
 )
 
 
@@ -1789,8 +1789,8 @@ _GETOBJECTIVEQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4347,
-  serialized_end=4434,
+  serialized_start=4362,
+  serialized_end=4449,
 )
 
 
@@ -1813,8 +1813,8 @@ _GETOBJECTIVEQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4436,
-  serialized_end=4462,
+  serialized_start=4451,
+  serialized_end=4477,
 )
 
 
@@ -1844,8 +1844,8 @@ _GETOBJECTIVESBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4464,
-  serialized_end=4556,
+  serialized_start=4479,
+  serialized_end=4571,
 )
 
 
@@ -1875,8 +1875,8 @@ _CANCREATEOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4558,
-  serialized_end=4615,
+  serialized_start=4573,
+  serialized_end=4630,
 )
 
 
@@ -1899,8 +1899,8 @@ _CANCREATEOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4617,
-  serialized_end=4645,
+  serialized_start=4632,
+  serialized_end=4660,
 )
 
 
@@ -1930,8 +1930,8 @@ _CANCREATEOBJECTIVEWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4647,
-  serialized_end=4735,
+  serialized_start=4662,
+  serialized_end=4750,
 )
 
 
@@ -1961,8 +1961,8 @@ _CANCREATEOBJECTIVEWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4737,
-  serialized_end=4851,
+  serialized_start=4752,
+  serialized_end=4866,
 )
 
 
@@ -1992,8 +1992,8 @@ _GETOBJECTIVEFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4853,
-  serialized_end=4946,
+  serialized_start=4868,
+  serialized_end=4961,
 )
 
 
@@ -2023,8 +2023,8 @@ _GETOBJECTIVEFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4948,
-  serialized_end=5054,
+  serialized_start=4963,
+  serialized_end=5069,
 )
 
 
@@ -2054,8 +2054,8 @@ _CREATEOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5056,
-  serialized_end=5130,
+  serialized_start=5071,
+  serialized_end=5145,
 )
 
 
@@ -2085,8 +2085,8 @@ _CREATEOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5132,
-  serialized_end=5217,
+  serialized_start=5147,
+  serialized_end=5232,
 )
 
 
@@ -2116,8 +2116,8 @@ _CANUPDATEOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5219,
-  serialized_end=5276,
+  serialized_start=5234,
+  serialized_end=5291,
 )
 
 
@@ -2140,8 +2140,8 @@ _CANUPDATEOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5278,
-  serialized_end=5306,
+  serialized_start=5293,
+  serialized_end=5321,
 )
 
 
@@ -2171,8 +2171,8 @@ _GETOBJECTIVEFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5308,
-  serialized_end=5401,
+  serialized_start=5323,
+  serialized_end=5416,
 )
 
 
@@ -2202,8 +2202,8 @@ _GETOBJECTIVEFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5403,
-  serialized_end=5495,
+  serialized_start=5418,
+  serialized_end=5510,
 )
 
 
@@ -2226,8 +2226,8 @@ _UPDATEOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5497,
-  serialized_end=5519,
+  serialized_start=5512,
+  serialized_end=5534,
 )
 
 
@@ -2257,8 +2257,8 @@ _UPDATEOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5521,
-  serialized_end=5606,
+  serialized_start=5536,
+  serialized_end=5621,
 )
 
 
@@ -2288,8 +2288,8 @@ _CANDELETEOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5608,
-  serialized_end=5665,
+  serialized_start=5623,
+  serialized_end=5680,
 )
 
 
@@ -2312,8 +2312,8 @@ _CANDELETEOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5667,
-  serialized_end=5695,
+  serialized_start=5682,
+  serialized_end=5710,
 )
 
 
@@ -2336,8 +2336,8 @@ _DELETEOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5697,
-  serialized_end=5719,
+  serialized_start=5712,
+  serialized_end=5734,
 )
 
 
@@ -2367,8 +2367,8 @@ _DELETEOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5721,
-  serialized_end=5803,
+  serialized_start=5736,
+  serialized_end=5818,
 )
 
 
@@ -2398,8 +2398,8 @@ _CANMANAGEOBJECTIVEALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5805,
-  serialized_end=5875,
+  serialized_start=5820,
+  serialized_end=5890,
 )
 
 
@@ -2422,8 +2422,8 @@ _CANMANAGEOBJECTIVEALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5877,
-  serialized_end=5911,
+  serialized_start=5892,
+  serialized_end=5926,
 )
 
 
@@ -2446,8 +2446,8 @@ _ALIASOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5913,
-  serialized_end=5934,
+  serialized_start=5928,
+  serialized_end=5949,
 )
 
 
@@ -2484,8 +2484,8 @@ _ALIASOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5937,
-  serialized_end=6072,
+  serialized_start=5952,
+  serialized_end=6087,
 )
 
 
@@ -2515,8 +2515,8 @@ _GETOBJECTIVEHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6074,
-  serialized_end=6152,
+  serialized_start=6089,
+  serialized_end=6167,
 )
 
 
@@ -2539,8 +2539,8 @@ _GETOBJECTIVEHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6154,
-  serialized_end=6186,
+  serialized_start=6169,
+  serialized_end=6201,
 )
 
 
@@ -2570,8 +2570,8 @@ _GETOBJECTIVEHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6188,
-  serialized_end=6269,
+  serialized_start=6203,
+  serialized_end=6284,
 )
 
 
@@ -2594,8 +2594,8 @@ _GETOBJECTIVEHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6271,
-  serialized_end=6301,
+  serialized_start=6286,
+  serialized_end=6316,
 )
 
 
@@ -2625,8 +2625,8 @@ _CANACCESSOBJECTIVEHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6303,
-  serialized_end=6377,
+  serialized_start=6318,
+  serialized_end=6392,
 )
 
 
@@ -2649,8 +2649,8 @@ _CANACCESSOBJECTIVEHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6379,
-  serialized_end=6415,
+  serialized_start=6394,
+  serialized_end=6430,
 )
 
 
@@ -2673,8 +2673,8 @@ _GETROOTOBJECTIVEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6417,
-  serialized_end=6445,
+  serialized_start=6432,
+  serialized_end=6460,
 )
 
 
@@ -2697,8 +2697,8 @@ _GETROOTOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6447,
-  serialized_end=6473,
+  serialized_start=6462,
+  serialized_end=6488,
 )
 
 
@@ -2728,8 +2728,8 @@ _HASPARENTOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6475,
-  serialized_end=6532,
+  serialized_start=6490,
+  serialized_end=6547,
 )
 
 
@@ -2759,8 +2759,8 @@ _HASPARENTOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6534,
-  serialized_end=6620,
+  serialized_start=6549,
+  serialized_end=6635,
 )
 
 
@@ -2790,8 +2790,8 @@ _ISPARENTOFOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6622,
-  serialized_end=6680,
+  serialized_start=6637,
+  serialized_end=6695,
 )
 
 
@@ -2828,8 +2828,8 @@ _ISPARENTOFOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6683,
-  serialized_end=6818,
+  serialized_start=6698,
+  serialized_end=6833,
 )
 
 
@@ -2859,8 +2859,8 @@ _GETPARENTOBJECTIVEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6820,
-  serialized_end=6908,
+  serialized_start=6835,
+  serialized_end=6923,
 )
 
 
@@ -2890,8 +2890,8 @@ _GETPARENTOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6910,
-  serialized_end=6996,
+  serialized_start=6925,
+  serialized_end=7011,
 )
 
 
@@ -2921,8 +2921,8 @@ _ISANCESTOROFOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6998,
-  serialized_end=7060,
+  serialized_start=7013,
+  serialized_end=7075,
 )
 
 
@@ -2959,8 +2959,8 @@ _ISANCESTOROFOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7063,
-  serialized_end=7200,
+  serialized_start=7078,
+  serialized_end=7215,
 )
 
 
@@ -2990,8 +2990,8 @@ _HASCHILDOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7202,
-  serialized_end=7257,
+  serialized_start=7217,
+  serialized_end=7272,
 )
 
 
@@ -3021,8 +3021,8 @@ _HASCHILDOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7259,
-  serialized_end=7344,
+  serialized_start=7274,
+  serialized_end=7359,
 )
 
 
@@ -3052,8 +3052,8 @@ _ISCHILDOFOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7346,
-  serialized_end=7402,
+  serialized_start=7361,
+  serialized_end=7417,
 )
 
 
@@ -3090,8 +3090,8 @@ _ISCHILDOFOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7405,
-  serialized_end=7539,
+  serialized_start=7420,
+  serialized_end=7554,
 )
 
 
@@ -3121,8 +3121,8 @@ _GETCHILDOBJECTIVEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7541,
-  serialized_end=7628,
+  serialized_start=7556,
+  serialized_end=7643,
 )
 
 
@@ -3152,8 +3152,8 @@ _GETCHILDOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7630,
-  serialized_end=7715,
+  serialized_start=7645,
+  serialized_end=7730,
 )
 
 
@@ -3183,8 +3183,8 @@ _ISDESCENDANTOFOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7717,
-  serialized_end=7783,
+  serialized_start=7732,
+  serialized_end=7798,
 )
 
 
@@ -3221,8 +3221,8 @@ _ISDESCENDANTOFOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7786,
-  serialized_end=7925,
+  serialized_start=7801,
+  serialized_end=7940,
 )
 
 
@@ -3252,8 +3252,8 @@ _GETOBJECTIVENODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7927,
-  serialized_end=7996,
+  serialized_start=7942,
+  serialized_end=8011,
 )
 
 
@@ -3304,8 +3304,8 @@ _GETOBJECTIVENODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7999,
-  serialized_end=8163,
+  serialized_start=8014,
+  serialized_end=8178,
 )
 
 
@@ -3335,8 +3335,8 @@ _GETOBJECTIVENODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8165,
-  serialized_end=8250,
+  serialized_start=8180,
+  serialized_end=8265,
 )
 
 
@@ -3387,8 +3387,8 @@ _GETOBJECTIVENODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8253,
-  serialized_end=8415,
+  serialized_start=8268,
+  serialized_end=8430,
 )
 
 
@@ -3418,8 +3418,8 @@ _CANMODIFYOBJECTIVEHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8417,
-  serialized_end=8491,
+  serialized_start=8432,
+  serialized_end=8506,
 )
 
 
@@ -3442,8 +3442,8 @@ _CANMODIFYOBJECTIVEHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8493,
-  serialized_end=8529,
+  serialized_start=8508,
+  serialized_end=8544,
 )
 
 
@@ -3466,8 +3466,8 @@ _ADDROOTOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8531,
-  serialized_end=8554,
+  serialized_start=8546,
+  serialized_end=8569,
 )
 
 
@@ -3497,8 +3497,8 @@ _ADDROOTOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8556,
-  serialized_end=8639,
+  serialized_start=8571,
+  serialized_end=8654,
 )
 
 
@@ -3521,8 +3521,8 @@ _REMOVEROOTOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8641,
-  serialized_end=8667,
+  serialized_start=8656,
+  serialized_end=8682,
 )
 
 
@@ -3552,8 +3552,8 @@ _REMOVEROOTOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8669,
-  serialized_end=8755,
+  serialized_start=8684,
+  serialized_end=8770,
 )
 
 
@@ -3576,8 +3576,8 @@ _ADDCHILDOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8757,
-  serialized_end=8781,
+  serialized_start=8772,
+  serialized_end=8796,
 )
 
 
@@ -3614,8 +3614,8 @@ _ADDCHILDOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8784,
-  serialized_end=8922,
+  serialized_start=8799,
+  serialized_end=8937,
 )
 
 
@@ -3638,8 +3638,8 @@ _REMOVECHILDOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8924,
-  serialized_end=8951,
+  serialized_start=8939,
+  serialized_end=8966,
 )
 
 
@@ -3676,8 +3676,8 @@ _REMOVECHILDOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8954,
-  serialized_end=9095,
+  serialized_start=8969,
+  serialized_end=9110,
 )
 
 
@@ -3700,8 +3700,8 @@ _REMOVECHILDOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9097,
-  serialized_end=9125,
+  serialized_start=9112,
+  serialized_end=9140,
 )
 
 
@@ -3731,8 +3731,8 @@ _REMOVECHILDOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9127,
-  serialized_end=9215,
+  serialized_start=9142,
+  serialized_end=9230,
 )
 
 
@@ -3762,8 +3762,8 @@ _CANSEQUENCEOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9217,
-  serialized_end=9278,
+  serialized_start=9232,
+  serialized_end=9293,
 )
 
 
@@ -3786,8 +3786,8 @@ _CANSEQUENCEOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9280,
-  serialized_end=9310,
+  serialized_start=9295,
+  serialized_end=9325,
 )
 
 
@@ -3810,8 +3810,8 @@ _MOVEOBJECTIVEAHEADREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9312,
-  serialized_end=9337,
+  serialized_start=9327,
+  serialized_end=9352,
 )
 
 
@@ -3855,8 +3855,8 @@ _MOVEOBJECTIVEAHEADREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9340,
-  serialized_end=9558,
+  serialized_start=9355,
+  serialized_end=9573,
 )
 
 
@@ -3879,8 +3879,8 @@ _MOVEOBJECTIVEBEHINDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9560,
-  serialized_end=9586,
+  serialized_start=9575,
+  serialized_end=9601,
 )
 
 
@@ -3924,8 +3924,8 @@ _MOVEOBJECTIVEBEHINDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9589,
-  serialized_end=9808,
+  serialized_start=9604,
+  serialized_end=9823,
 )
 
 
@@ -3948,8 +3948,8 @@ _SEQUENCEOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9810,
-  serialized_end=9835,
+  serialized_start=9825,
+  serialized_end=9850,
 )
 
 
@@ -3986,8 +3986,8 @@ _SEQUENCEOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9838,
-  serialized_end=9989,
+  serialized_start=9853,
+  serialized_end=10004,
 )
 
 
@@ -4017,8 +4017,8 @@ _CANLOOKUPOBJECTIVEOBJECTIVEBANKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9991,
-  serialized_end=10091,
+  serialized_start=10006,
+  serialized_end=10106,
 )
 
 
@@ -4041,8 +4041,8 @@ _CANLOOKUPOBJECTIVEOBJECTIVEBANKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10093,
-  serialized_end=10141,
+  serialized_start=10108,
+  serialized_end=10156,
 )
 
 
@@ -4065,8 +4065,8 @@ _USECOMPARATIVEOBJECTIVEBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10143,
-  serialized_end=10181,
+  serialized_start=10158,
+  serialized_end=10196,
 )
 
 
@@ -4089,8 +4089,8 @@ _USECOMPARATIVEOBJECTIVEBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10183,
-  serialized_end=10223,
+  serialized_start=10198,
+  serialized_end=10238,
 )
 
 
@@ -4113,8 +4113,8 @@ _USEPLENARYOBJECTIVEBANKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10225,
-  serialized_end=10259,
+  serialized_start=10240,
+  serialized_end=10274,
 )
 
 
@@ -4137,8 +4137,8 @@ _USEPLENARYOBJECTIVEBANKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10261,
-  serialized_end=10297,
+  serialized_start=10276,
+  serialized_end=10312,
 )
 
 
@@ -4168,8 +4168,8 @@ _GETOBJECTIVEIDSBYOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10299,
-  serialized_end=10401,
+  serialized_start=10314,
+  serialized_end=10416,
 )
 
 
@@ -4199,8 +4199,8 @@ _GETOBJECTIVESBYOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10403,
-  serialized_end=10503,
+  serialized_start=10418,
+  serialized_end=10518,
 )
 
 
@@ -4230,8 +4230,8 @@ _GETOBJECTIVEIDSBYOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10505,
-  serialized_end=10609,
+  serialized_start=10520,
+  serialized_end=10624,
 )
 
 
@@ -4261,8 +4261,8 @@ _GETOBJECTIVESBYOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10611,
-  serialized_end=10713,
+  serialized_start=10626,
+  serialized_end=10728,
 )
 
 
@@ -4292,8 +4292,8 @@ _GETOBJECTIVEBANKIDSBYOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10715,
-  serialized_end=10812,
+  serialized_start=10730,
+  serialized_end=10827,
 )
 
 
@@ -4323,8 +4323,8 @@ _GETOBJECTIVEBANKSBYOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10814,
-  serialized_end=10909,
+  serialized_start=10829,
+  serialized_end=10924,
 )
 
 
@@ -4354,8 +4354,8 @@ _CANASSIGNOBJECTIVESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10911,
-  serialized_end=10968,
+  serialized_start=10926,
+  serialized_end=10983,
 )
 
 
@@ -4378,8 +4378,8 @@ _CANASSIGNOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10970,
-  serialized_end=10998,
+  serialized_start=10985,
+  serialized_end=11013,
 )
 
 
@@ -4409,8 +4409,8 @@ _CANASSIGNOBJECTIVESTOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11000,
-  serialized_end=11090,
+  serialized_start=11015,
+  serialized_end=11105,
 )
 
 
@@ -4440,8 +4440,8 @@ _CANASSIGNOBJECTIVESTOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11092,
-  serialized_end=11198,
+  serialized_start=11107,
+  serialized_end=11213,
 )
 
 
@@ -4471,8 +4471,8 @@ _GETASSIGNABLEOBJECTIVEBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11200,
-  serialized_end=11301,
+  serialized_start=11215,
+  serialized_end=11316,
 )
 
 
@@ -4509,8 +4509,8 @@ _GETASSIGNABLEOBJECTIVEBANKIDSFOROBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11304,
-  serialized_end=11475,
+  serialized_start=11319,
+  serialized_end=11490,
 )
 
 
@@ -4533,8 +4533,8 @@ _ASSIGNOBJECTIVETOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11477,
-  serialized_end=11514,
+  serialized_start=11492,
+  serialized_end=11529,
 )
 
 
@@ -4571,8 +4571,8 @@ _ASSIGNOBJECTIVETOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11517,
-  serialized_end=11677,
+  serialized_start=11532,
+  serialized_end=11692,
 )
 
 
@@ -4595,8 +4595,8 @@ _UNASSIGNOBJECTIVEFROMOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11679,
-  serialized_end=11720,
+  serialized_start=11694,
+  serialized_end=11735,
 )
 
 
@@ -4633,8 +4633,8 @@ _UNASSIGNOBJECTIVEFROMOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11723,
-  serialized_end=11887,
+  serialized_start=11738,
+  serialized_end=11902,
 )
 
 
@@ -4657,8 +4657,8 @@ _REASSIGNPROFICIENCYTOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11889,
-  serialized_end=11930,
+  serialized_start=11904,
+  serialized_end=11945,
 )
 
 
@@ -4702,8 +4702,8 @@ _REASSIGNPROFICIENCYTOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11933,
-  serialized_end=12168,
+  serialized_start=11948,
+  serialized_end=12183,
 )
 
 
@@ -4733,8 +4733,8 @@ _CANLOOKUPOBJECTIVEPREREQUISITESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12170,
-  serialized_end=12252,
+  serialized_start=12185,
+  serialized_end=12267,
 )
 
 
@@ -4757,8 +4757,8 @@ _CANLOOKUPOBJECTIVEPREREQUISITESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12254,
-  serialized_end=12294,
+  serialized_start=12269,
+  serialized_end=12309,
 )
 
 
@@ -4788,8 +4788,8 @@ _GETREQUISITEOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12296,
-  serialized_end=12385,
+  serialized_start=12311,
+  serialized_end=12400,
 )
 
 
@@ -4819,8 +4819,8 @@ _GETALLREQUISITEOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12387,
-  serialized_end=12479,
+  serialized_start=12402,
+  serialized_end=12494,
 )
 
 
@@ -4850,8 +4850,8 @@ _GETDEPENDENTOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12481,
-  serialized_end=12570,
+  serialized_start=12496,
+  serialized_end=12585,
 )
 
 
@@ -4881,8 +4881,8 @@ _ISOBJECTIVEREQUIREDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12572,
-  serialized_end=12629,
+  serialized_start=12587,
+  serialized_end=12644,
 )
 
 
@@ -4919,8 +4919,8 @@ _ISOBJECTIVEREQUIREDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12632,
-  serialized_end=12785,
+  serialized_start=12647,
+  serialized_end=12800,
 )
 
 
@@ -4950,8 +4950,8 @@ _GETEQUIVALENTOBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12787,
-  serialized_end=12877,
+  serialized_start=12802,
+  serialized_end=12892,
 )
 
 
@@ -4981,8 +4981,8 @@ _CANASSIGNREQUISITESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12879,
-  serialized_end=12936,
+  serialized_start=12894,
+  serialized_end=12951,
 )
 
 
@@ -5005,8 +5005,8 @@ _CANASSIGNREQUISITESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12938,
-  serialized_end=12966,
+  serialized_start=12953,
+  serialized_end=12981,
 )
 
 
@@ -5029,8 +5029,8 @@ _ASSIGNOBJECTIVEREQUISITEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12968,
-  serialized_end=12999,
+  serialized_start=12983,
+  serialized_end=13014,
 )
 
 
@@ -5067,8 +5067,8 @@ _ASSIGNOBJECTIVEREQUISITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13002,
-  serialized_end=13161,
+  serialized_start=13017,
+  serialized_end=13176,
 )
 
 
@@ -5091,8 +5091,8 @@ _UNASSIGNOBJECTIVEREQUISITEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13163,
-  serialized_end=13196,
+  serialized_start=13178,
+  serialized_end=13211,
 )
 
 
@@ -5129,8 +5129,8 @@ _UNASSIGNOBJECTIVEREQUISITEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13199,
-  serialized_end=13360,
+  serialized_start=13214,
+  serialized_end=13375,
 )
 
 
@@ -5153,8 +5153,8 @@ _ASSIGNEQUIVALENTOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13362,
-  serialized_end=13394,
+  serialized_start=13377,
+  serialized_end=13409,
 )
 
 
@@ -5191,8 +5191,8 @@ _ASSIGNEQUIVALENTOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13397,
-  serialized_end=13558,
+  serialized_start=13412,
+  serialized_end=13573,
 )
 
 
@@ -5215,8 +5215,8 @@ _UNASSIGNEQUIVALENTOBJECTIVEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13560,
-  serialized_end=13594,
+  serialized_start=13575,
+  serialized_end=13609,
 )
 
 
@@ -5253,8 +5253,8 @@ _UNASSIGNEQUIVALENTOBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13597,
-  serialized_end=13760,
+  serialized_start=13612,
+  serialized_end=13775,
 )
 
 
@@ -5284,8 +5284,8 @@ _CANLOOKUPACTIVITIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13762,
-  serialized_end=13819,
+  serialized_start=13777,
+  serialized_end=13834,
 )
 
 
@@ -5308,8 +5308,8 @@ _CANLOOKUPACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13821,
-  serialized_end=13849,
+  serialized_start=13836,
+  serialized_end=13864,
 )
 
 
@@ -5332,8 +5332,8 @@ _USECOMPARATIVEACTIVITYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13851,
-  serialized_end=13884,
+  serialized_start=13866,
+  serialized_end=13899,
 )
 
 
@@ -5356,8 +5356,8 @@ _USECOMPARATIVEACTIVITYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13886,
-  serialized_end=13921,
+  serialized_start=13901,
+  serialized_end=13936,
 )
 
 
@@ -5380,8 +5380,8 @@ _USEPLENARYACTIVITYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13923,
-  serialized_end=13952,
+  serialized_start=13938,
+  serialized_end=13967,
 )
 
 
@@ -5404,8 +5404,8 @@ _USEPLENARYACTIVITYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13954,
-  serialized_end=13985,
+  serialized_start=13969,
+  serialized_end=14000,
 )
 
 
@@ -5435,8 +5435,8 @@ _GETACTIVITYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13987,
-  serialized_end=14055,
+  serialized_start=14002,
+  serialized_end=14070,
 )
 
 
@@ -5466,8 +5466,8 @@ _GETACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14057,
-  serialized_end=14134,
+  serialized_start=14072,
+  serialized_end=14149,
 )
 
 
@@ -5497,8 +5497,8 @@ _GETACTIVITIESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14136,
-  serialized_end=14221,
+  serialized_start=14151,
+  serialized_end=14236,
 )
 
 
@@ -5528,8 +5528,8 @@ _GETACTIVITIESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14223,
-  serialized_end=14325,
+  serialized_start=14238,
+  serialized_end=14340,
 )
 
 
@@ -5559,8 +5559,8 @@ _GETACTIVITIESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14327,
-  serialized_end=14435,
+  serialized_start=14342,
+  serialized_end=14450,
 )
 
 
@@ -5590,8 +5590,8 @@ _GETACTIVITIESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14437,
-  serialized_end=14541,
+  serialized_start=14452,
+  serialized_end=14556,
 )
 
 
@@ -5621,8 +5621,8 @@ _GETACTIVITIESFOROBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14543,
-  serialized_end=14635,
+  serialized_start=14558,
+  serialized_end=14650,
 )
 
 
@@ -5652,8 +5652,8 @@ _GETACTIVITIESFOROBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14637,
-  serialized_end=14731,
+  serialized_start=14652,
+  serialized_end=14746,
 )
 
 
@@ -5683,8 +5683,8 @@ _GETACTIVITIESBYASSETREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14733,
-  serialized_end=14816,
+  serialized_start=14748,
+  serialized_end=14831,
 )
 
 
@@ -5714,8 +5714,8 @@ _GETACTIVITIESBYASSETSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14818,
-  serialized_end=14903,
+  serialized_start=14833,
+  serialized_end=14918,
 )
 
 
@@ -5738,8 +5738,8 @@ _GETACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14905,
-  serialized_end=14927,
+  serialized_start=14920,
+  serialized_end=14942,
 )
 
 
@@ -5769,8 +5769,8 @@ _CANSEARCHACTIVITIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14929,
-  serialized_end=14986,
+  serialized_start=14944,
+  serialized_end=15001,
 )
 
 
@@ -5793,8 +5793,8 @@ _CANSEARCHACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=14988,
-  serialized_end=15016,
+  serialized_start=15003,
+  serialized_end=15031,
 )
 
 
@@ -5824,8 +5824,8 @@ _GETACTIVITYQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15018,
-  serialized_end=15102,
+  serialized_start=15033,
+  serialized_end=15117,
 )
 
 
@@ -5848,8 +5848,8 @@ _GETACTIVITYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15104,
-  serialized_end=15129,
+  serialized_start=15119,
+  serialized_end=15144,
 )
 
 
@@ -5879,8 +5879,8 @@ _GETACTIVITIESBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15131,
-  serialized_end=15221,
+  serialized_start=15146,
+  serialized_end=15236,
 )
 
 
@@ -5910,8 +5910,8 @@ _CANCREATEACTIVITIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15223,
-  serialized_end=15280,
+  serialized_start=15238,
+  serialized_end=15295,
 )
 
 
@@ -5934,8 +5934,8 @@ _CANCREATEACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15282,
-  serialized_end=15310,
+  serialized_start=15297,
+  serialized_end=15325,
 )
 
 
@@ -5965,8 +5965,8 @@ _CANCREATEACTIVITYWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15312,
-  serialized_end=15398,
+  serialized_start=15327,
+  serialized_end=15413,
 )
 
 
@@ -5996,8 +5996,8 @@ _CANCREATEACTIVITYWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15400,
-  serialized_end=15512,
+  serialized_start=15415,
+  serialized_end=15527,
 )
 
 
@@ -6027,8 +6027,8 @@ _GETACTIVITYFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15514,
-  serialized_end=15604,
+  serialized_start=15529,
+  serialized_end=15619,
 )
 
 
@@ -6065,8 +6065,8 @@ _GETACTIVITYFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15607,
-  serialized_end=15769,
+  serialized_start=15622,
+  serialized_end=15784,
 )
 
 
@@ -6096,8 +6096,8 @@ _CREATEACTIVITYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15771,
-  serialized_end=15842,
+  serialized_start=15786,
+  serialized_end=15857,
 )
 
 
@@ -6127,8 +6127,8 @@ _CREATEACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15844,
-  serialized_end=15926,
+  serialized_start=15859,
+  serialized_end=15941,
 )
 
 
@@ -6158,8 +6158,8 @@ _CANUPDATEACTIVITIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15928,
-  serialized_end=15985,
+  serialized_start=15943,
+  serialized_end=16000,
 )
 
 
@@ -6182,8 +6182,8 @@ _CANUPDATEACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=15987,
-  serialized_end=16015,
+  serialized_start=16002,
+  serialized_end=16030,
 )
 
 
@@ -6213,8 +6213,8 @@ _GETACTIVITYFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16017,
-  serialized_end=16107,
+  serialized_start=16032,
+  serialized_end=16122,
 )
 
 
@@ -6244,8 +6244,8 @@ _GETACTIVITYFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16109,
-  serialized_end=16199,
+  serialized_start=16124,
+  serialized_end=16214,
 )
 
 
@@ -6268,8 +6268,8 @@ _UPDATEACTIVITYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16201,
-  serialized_end=16222,
+  serialized_start=16216,
+  serialized_end=16237,
 )
 
 
@@ -6299,8 +6299,8 @@ _UPDATEACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16224,
-  serialized_end=16306,
+  serialized_start=16239,
+  serialized_end=16321,
 )
 
 
@@ -6330,8 +6330,8 @@ _CANDELETEACTIVITIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16308,
-  serialized_end=16365,
+  serialized_start=16323,
+  serialized_end=16380,
 )
 
 
@@ -6354,8 +6354,8 @@ _CANDELETEACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16367,
-  serialized_end=16395,
+  serialized_start=16382,
+  serialized_end=16410,
 )
 
 
@@ -6378,8 +6378,8 @@ _DELETEACTIVITYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16397,
-  serialized_end=16418,
+  serialized_start=16412,
+  serialized_end=16433,
 )
 
 
@@ -6409,8 +6409,8 @@ _DELETEACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16420,
-  serialized_end=16500,
+  serialized_start=16435,
+  serialized_end=16515,
 )
 
 
@@ -6440,8 +6440,8 @@ _CANMANAGEACTIVITYALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16502,
-  serialized_end=16570,
+  serialized_start=16517,
+  serialized_end=16585,
 )
 
 
@@ -6464,8 +6464,8 @@ _CANMANAGEACTIVITYALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16572,
-  serialized_end=16605,
+  serialized_start=16587,
+  serialized_end=16620,
 )
 
 
@@ -6488,8 +6488,8 @@ _ALIASACTIVITYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16607,
-  serialized_end=16627,
+  serialized_start=16622,
+  serialized_end=16642,
 )
 
 
@@ -6526,8 +6526,8 @@ _ALIASACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16630,
-  serialized_end=16763,
+  serialized_start=16645,
+  serialized_end=16778,
 )
 
 
@@ -6557,8 +6557,8 @@ _CANLOOKUPACTIVITYOBJECTIVEBANKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16765,
-  serialized_end=16863,
+  serialized_start=16780,
+  serialized_end=16878,
 )
 
 
@@ -6581,8 +6581,8 @@ _CANLOOKUPACTIVITYOBJECTIVEBANKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16865,
-  serialized_end=16912,
+  serialized_start=16880,
+  serialized_end=16927,
 )
 
 
@@ -6612,8 +6612,8 @@ _GETACTIVITYIDSBYOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=16914,
-  serialized_end=17015,
+  serialized_start=16929,
+  serialized_end=17030,
 )
 
 
@@ -6643,8 +6643,8 @@ _GETACTIVITIESBYOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17017,
-  serialized_end=17117,
+  serialized_start=17032,
+  serialized_end=17132,
 )
 
 
@@ -6674,8 +6674,8 @@ _GETACTIVITYIDSBYOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17119,
-  serialized_end=17222,
+  serialized_start=17134,
+  serialized_end=17237,
 )
 
 
@@ -6705,8 +6705,8 @@ _GETACTIVITIESBYOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17224,
-  serialized_end=17326,
+  serialized_start=17239,
+  serialized_end=17341,
 )
 
 
@@ -6736,8 +6736,8 @@ _GETOBJECTIVEBANKIDSBYACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17328,
-  serialized_end=17423,
+  serialized_start=17343,
+  serialized_end=17438,
 )
 
 
@@ -6767,8 +6767,8 @@ _GETOBJECTIVEBANKSBYACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17425,
-  serialized_end=17518,
+  serialized_start=17440,
+  serialized_end=17533,
 )
 
 
@@ -6798,8 +6798,8 @@ _CANASSIGNACTIVITIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17520,
-  serialized_end=17577,
+  serialized_start=17535,
+  serialized_end=17592,
 )
 
 
@@ -6822,8 +6822,8 @@ _CANASSIGNACTIVITIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17579,
-  serialized_end=17607,
+  serialized_start=17594,
+  serialized_end=17622,
 )
 
 
@@ -6853,8 +6853,8 @@ _CANASSIGNACTIVITIESTOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17609,
-  serialized_end=17699,
+  serialized_start=17624,
+  serialized_end=17714,
 )
 
 
@@ -6884,8 +6884,8 @@ _CANASSIGNACTIVITIESTOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17701,
-  serialized_end=17807,
+  serialized_start=17716,
+  serialized_end=17822,
 )
 
 
@@ -6922,8 +6922,8 @@ _GETASSIGNABLEOBJECTIVEBANKIDSFORACTIVITYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17810,
-  serialized_end=17979,
+  serialized_start=17825,
+  serialized_end=17994,
 )
 
 
@@ -6946,8 +6946,8 @@ _ASSIGNACTIVITYTOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=17981,
-  serialized_end=18017,
+  serialized_start=17996,
+  serialized_end=18032,
 )
 
 
@@ -6984,8 +6984,8 @@ _ASSIGNACTIVITYTOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18020,
-  serialized_end=18178,
+  serialized_start=18035,
+  serialized_end=18193,
 )
 
 
@@ -7008,8 +7008,8 @@ _UNASSIGNACTIVITYFROMOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18180,
-  serialized_end=18220,
+  serialized_start=18195,
+  serialized_end=18235,
 )
 
 
@@ -7046,8 +7046,8 @@ _UNASSIGNACTIVITYFROMOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18223,
-  serialized_end=18385,
+  serialized_start=18238,
+  serialized_end=18400,
 )
 
 
@@ -7070,8 +7070,8 @@ _REASSIGNACTIVITYTOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18387,
-  serialized_end=18425,
+  serialized_start=18402,
+  serialized_end=18440,
 )
 
 
@@ -7115,8 +7115,8 @@ _REASSIGNACTIVITYTOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18428,
-  serialized_end=18659,
+  serialized_start=18443,
+  serialized_end=18674,
 )
 
 
@@ -7146,8 +7146,8 @@ _CANLOOKUPPROFICIENCIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18661,
-  serialized_end=18724,
+  serialized_start=18676,
+  serialized_end=18739,
 )
 
 
@@ -7170,8 +7170,8 @@ _CANLOOKUPPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18726,
-  serialized_end=18757,
+  serialized_start=18741,
+  serialized_end=18772,
 )
 
 
@@ -7194,8 +7194,8 @@ _USECOMPARATIVEPROFICIENCYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18759,
-  serialized_end=18795,
+  serialized_start=18774,
+  serialized_end=18810,
 )
 
 
@@ -7218,8 +7218,8 @@ _USECOMPARATIVEPROFICIENCYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18797,
-  serialized_end=18835,
+  serialized_start=18812,
+  serialized_end=18850,
 )
 
 
@@ -7242,8 +7242,8 @@ _USEPLENARYPROFICIENCYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18837,
-  serialized_end=18869,
+  serialized_start=18852,
+  serialized_end=18884,
 )
 
 
@@ -7266,8 +7266,8 @@ _USEPLENARYPROFICIENCYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18871,
-  serialized_end=18905,
+  serialized_start=18886,
+  serialized_end=18920,
 )
 
 
@@ -7290,8 +7290,8 @@ _USEEFFECTIVEPROFICIENCYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18907,
-  serialized_end=18941,
+  serialized_start=18922,
+  serialized_end=18956,
 )
 
 
@@ -7314,8 +7314,8 @@ _USEEFFECTIVEPROFICIENCYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18943,
-  serialized_end=18979,
+  serialized_start=18958,
+  serialized_end=18994,
 )
 
 
@@ -7338,8 +7338,8 @@ _USEANYEFFECTIVEPROFICIENCYVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=18981,
-  serialized_end=19018,
+  serialized_start=18996,
+  serialized_end=19033,
 )
 
 
@@ -7362,8 +7362,8 @@ _USEANYEFFECTIVEPROFICIENCYVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19020,
-  serialized_end=19059,
+  serialized_start=19035,
+  serialized_end=19074,
 )
 
 
@@ -7393,8 +7393,8 @@ _GETPROFICIENCYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19061,
-  serialized_end=19138,
+  serialized_start=19076,
+  serialized_end=19153,
 )
 
 
@@ -7424,8 +7424,8 @@ _GETPROFICIENCYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19140,
-  serialized_end=19223,
+  serialized_start=19155,
+  serialized_end=19238,
 )
 
 
@@ -7455,8 +7455,8 @@ _GETPROFICIENCIESBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19225,
-  serialized_end=19316,
+  serialized_start=19240,
+  serialized_end=19331,
 )
 
 
@@ -7486,8 +7486,8 @@ _GETPROFICIENCIESBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19318,
-  serialized_end=19426,
+  serialized_start=19333,
+  serialized_end=19441,
 )
 
 
@@ -7517,8 +7517,8 @@ _GETPROFICIENCIESBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19428,
-  serialized_end=19542,
+  serialized_start=19443,
+  serialized_end=19557,
 )
 
 
@@ -7548,8 +7548,8 @@ _GETPROFICIENCIESBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19544,
-  serialized_end=19654,
+  serialized_start=19559,
+  serialized_end=19669,
 )
 
 
@@ -7586,8 +7586,8 @@ _GETPROFICIENCIESONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19656,
-  serialized_end=19770,
+  serialized_start=19671,
+  serialized_end=19785,
 )
 
 
@@ -7631,8 +7631,8 @@ _GETPROFICIENCIESBYGENUSTYPEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19773,
-  serialized_end=19970,
+  serialized_start=19788,
+  serialized_end=19985,
 )
 
 
@@ -7662,8 +7662,8 @@ _GETPROFICIENCIESFOROBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=19972,
-  serialized_end=20067,
+  serialized_start=19987,
+  serialized_end=20082,
 )
 
 
@@ -7707,8 +7707,8 @@ _GETPROFICIENCIESFOROBJECTIVEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20070,
-  serialized_end=20254,
+  serialized_start=20085,
+  serialized_end=20269,
 )
 
 
@@ -7745,8 +7745,8 @@ _GETPROFICIENCIESBYGENUSTYPEFOROBJECTIVEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20257,
-  serialized_end=20435,
+  serialized_start=20272,
+  serialized_end=20450,
 )
 
 
@@ -7797,8 +7797,8 @@ _GETPROFICIENCIESBYGENUSTYPEFOROBJECTIVEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20438,
-  serialized_end=20705,
+  serialized_start=20453,
+  serialized_end=20720,
 )
 
 
@@ -7828,8 +7828,8 @@ _GETPROFICIENCIESFOROBJECTIVESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20707,
-  serialized_end=20804,
+  serialized_start=20722,
+  serialized_end=20819,
 )
 
 
@@ -7859,8 +7859,8 @@ _GETPROFICIENCIESFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20806,
-  serialized_end=20899,
+  serialized_start=20821,
+  serialized_end=20914,
 )
 
 
@@ -7904,8 +7904,8 @@ _GETPROFICIENCIESFORRESOURCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=20902,
-  serialized_end=21084,
+  serialized_start=20917,
+  serialized_end=21099,
 )
 
 
@@ -7942,8 +7942,8 @@ _GETPROFICIENCIESBYGENUSTYPEFORRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21087,
-  serialized_end=21263,
+  serialized_start=21102,
+  serialized_end=21278,
 )
 
 
@@ -7994,8 +7994,8 @@ _GETPROFICIENCIESBYGENUSTYPEFORRESOURCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21266,
-  serialized_end=21531,
+  serialized_start=21281,
+  serialized_end=21546,
 )
 
 
@@ -8025,8 +8025,8 @@ _GETPROFICIENCIESFORRESOURCESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21533,
-  serialized_end=21628,
+  serialized_start=21548,
+  serialized_end=21643,
 )
 
 
@@ -8063,8 +8063,8 @@ _GETPROFICIENCIESFOROBJECTIVEANDRESOURCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21631,
-  serialized_end=21794,
+  serialized_start=21646,
+  serialized_end=21809,
 )
 
 
@@ -8115,8 +8115,8 @@ _GETPROFICIENCIESFOROBJECTIVEANDRESOURCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=21797,
-  serialized_end=22049,
+  serialized_start=21812,
+  serialized_end=22064,
 )
 
 
@@ -8160,8 +8160,8 @@ _GETPROFICIENCIESBYGENUSTYPEFOROBJECTIVEANDRESOURCEREQUEST = _descriptor.Descrip
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22052,
-  serialized_end=22298,
+  serialized_start=22067,
+  serialized_end=22313,
 )
 
 
@@ -8219,8 +8219,8 @@ _GETPROFICIENCIESBYGENUSTYPEFOROBJECTIVEANDRESOURCEONDATEREQUEST = _descriptor.D
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22301,
-  serialized_end=22636,
+  serialized_start=22316,
+  serialized_end=22651,
 )
 
 
@@ -8243,8 +8243,8 @@ _GETPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22638,
-  serialized_end=22663,
+  serialized_start=22653,
+  serialized_end=22678,
 )
 
 
@@ -8274,8 +8274,8 @@ _CANSEARCHPROFICIENCIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22665,
-  serialized_end=22728,
+  serialized_start=22680,
+  serialized_end=22743,
 )
 
 
@@ -8298,8 +8298,8 @@ _CANSEARCHPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22730,
-  serialized_end=22761,
+  serialized_start=22745,
+  serialized_end=22776,
 )
 
 
@@ -8329,8 +8329,8 @@ _GETPROFICIENCYQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22763,
-  serialized_end=22856,
+  serialized_start=22778,
+  serialized_end=22871,
 )
 
 
@@ -8353,8 +8353,8 @@ _GETPROFICIENCYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22858,
-  serialized_end=22886,
+  serialized_start=22873,
+  serialized_end=22901,
 )
 
 
@@ -8384,8 +8384,8 @@ _GETPROFICIENCIESBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22888,
-  serialized_end=22987,
+  serialized_start=22903,
+  serialized_end=23002,
 )
 
 
@@ -8415,8 +8415,8 @@ _CANCREATEPROFICIENCIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22989,
-  serialized_end=23052,
+  serialized_start=23004,
+  serialized_end=23067,
 )
 
 
@@ -8439,8 +8439,8 @@ _CANCREATEPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23054,
-  serialized_end=23085,
+  serialized_start=23069,
+  serialized_end=23100,
 )
 
 
@@ -8470,8 +8470,8 @@ _CANCREATEPROFICIENCYWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23087,
-  serialized_end=23179,
+  serialized_start=23102,
+  serialized_end=23194,
 )
 
 
@@ -8501,8 +8501,8 @@ _CANCREATEPROFICIENCYWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23181,
-  serialized_end=23299,
+  serialized_start=23196,
+  serialized_end=23314,
 )
 
 
@@ -8532,8 +8532,8 @@ _GETPROFICIENCYFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23301,
-  serialized_end=23400,
+  serialized_start=23316,
+  serialized_end=23415,
 )
 
 
@@ -8577,8 +8577,8 @@ _GETPROFICIENCYFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23403,
-  serialized_end=23628,
+  serialized_start=23418,
+  serialized_end=23643,
 )
 
 
@@ -8608,8 +8608,8 @@ _CREATEPROFICIENCYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23630,
-  serialized_end=23710,
+  serialized_start=23645,
+  serialized_end=23725,
 )
 
 
@@ -8639,8 +8639,8 @@ _CREATEPROFICIENCYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23712,
-  serialized_end=23803,
+  serialized_start=23727,
+  serialized_end=23818,
 )
 
 
@@ -8670,8 +8670,8 @@ _CANUPDATEPROFICIENCIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23805,
-  serialized_end=23868,
+  serialized_start=23820,
+  serialized_end=23883,
 )
 
 
@@ -8694,8 +8694,8 @@ _CANUPDATEPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23870,
-  serialized_end=23901,
+  serialized_start=23885,
+  serialized_end=23916,
 )
 
 
@@ -8725,8 +8725,8 @@ _GETPROFICIENCYFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=23903,
-  serialized_end=24002,
+  serialized_start=23918,
+  serialized_end=24017,
 )
 
 
@@ -8756,8 +8756,8 @@ _GETPROFICIENCYFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24004,
-  serialized_end=24100,
+  serialized_start=24019,
+  serialized_end=24115,
 )
 
 
@@ -8780,8 +8780,8 @@ _UPDATEPROFICIENCYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24102,
-  serialized_end=24126,
+  serialized_start=24117,
+  serialized_end=24141,
 )
 
 
@@ -8811,8 +8811,8 @@ _UPDATEPROFICIENCYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24128,
-  serialized_end=24219,
+  serialized_start=24143,
+  serialized_end=24234,
 )
 
 
@@ -8842,8 +8842,8 @@ _CANDELETEPROFICIENCIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24221,
-  serialized_end=24284,
+  serialized_start=24236,
+  serialized_end=24299,
 )
 
 
@@ -8866,8 +8866,8 @@ _CANDELETEPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24286,
-  serialized_end=24317,
+  serialized_start=24301,
+  serialized_end=24332,
 )
 
 
@@ -8890,8 +8890,8 @@ _DELETEPROFICIENCYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24319,
-  serialized_end=24343,
+  serialized_start=24334,
+  serialized_end=24358,
 )
 
 
@@ -8921,8 +8921,8 @@ _DELETEPROFICIENCYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24345,
-  serialized_end=24431,
+  serialized_start=24360,
+  serialized_end=24446,
 )
 
 
@@ -8945,8 +8945,8 @@ _DELETEPROFICIENCIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24433,
-  serialized_end=24459,
+  serialized_start=24448,
+  serialized_end=24474,
 )
 
 
@@ -8969,8 +8969,8 @@ _DELETEPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24461,
-  serialized_end=24489,
+  serialized_start=24476,
+  serialized_end=24504,
 )
 
 
@@ -9000,8 +9000,8 @@ _CANMANAGEPROFICIENCYALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24491,
-  serialized_end=24565,
+  serialized_start=24506,
+  serialized_end=24580,
 )
 
 
@@ -9024,8 +9024,8 @@ _CANMANAGEPROFICIENCYALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24567,
-  serialized_end=24603,
+  serialized_start=24582,
+  serialized_end=24618,
 )
 
 
@@ -9048,8 +9048,8 @@ _ALIASPROFICIENCYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24605,
-  serialized_end=24628,
+  serialized_start=24620,
+  serialized_end=24643,
 )
 
 
@@ -9086,8 +9086,8 @@ _ALIASPROFICIENCYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24631,
-  serialized_end=24770,
+  serialized_start=24646,
+  serialized_end=24785,
 )
 
 
@@ -9117,8 +9117,8 @@ _CANASSIGNPROFICIENCIESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24772,
-  serialized_end=24835,
+  serialized_start=24787,
+  serialized_end=24850,
 )
 
 
@@ -9141,8 +9141,8 @@ _CANASSIGNPROFICIENCIESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24837,
-  serialized_end=24868,
+  serialized_start=24852,
+  serialized_end=24883,
 )
 
 
@@ -9172,8 +9172,8 @@ _CANASSIGNPROFICIENCIESTOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24870,
-  serialized_end=24966,
+  serialized_start=24885,
+  serialized_end=24981,
 )
 
 
@@ -9203,8 +9203,8 @@ _CANASSIGNPROFICIENCIESTOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=24968,
-  serialized_end=25077,
+  serialized_start=24983,
+  serialized_end=25092,
 )
 
 
@@ -9241,8 +9241,8 @@ _GETASSIGNABLEOBJECTIVEBANKIDSFORPROFICIENCYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25080,
-  serialized_end=25255,
+  serialized_start=25095,
+  serialized_end=25270,
 )
 
 
@@ -9265,8 +9265,8 @@ _ASSIGNPROFICIENCYTOOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25257,
-  serialized_end=25296,
+  serialized_start=25272,
+  serialized_end=25311,
 )
 
 
@@ -9303,8 +9303,8 @@ _ASSIGNPROFICIENCYTOOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25299,
-  serialized_end=25463,
+  serialized_start=25314,
+  serialized_end=25478,
 )
 
 
@@ -9327,8 +9327,8 @@ _UNASSIGNPROFICIENCYFROMOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25465,
-  serialized_end=25508,
+  serialized_start=25480,
+  serialized_end=25523,
 )
 
 
@@ -9365,8 +9365,8 @@ _UNASSIGNPROFICIENCYFROMOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25511,
-  serialized_end=25679,
+  serialized_start=25526,
+  serialized_end=25694,
 )
 
 
@@ -9396,8 +9396,8 @@ _CANLOOKUPOBJECTIVEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25681,
-  serialized_end=25747,
+  serialized_start=25696,
+  serialized_end=25762,
 )
 
 
@@ -9420,8 +9420,8 @@ _CANLOOKUPOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25749,
-  serialized_end=25781,
+  serialized_start=25764,
+  serialized_end=25796,
 )
 
 
@@ -9451,8 +9451,8 @@ _GETOBJECTIVEBANKSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25783,
-  serialized_end=25878,
+  serialized_start=25798,
+  serialized_end=25893,
 )
 
 
@@ -9482,8 +9482,8 @@ _GETOBJECTIVEBANKSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25880,
-  serialized_end=25992,
+  serialized_start=25895,
+  serialized_end=26007,
 )
 
 
@@ -9513,8 +9513,8 @@ _GETOBJECTIVEBANKSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=25994,
-  serialized_end=26112,
+  serialized_start=26009,
+  serialized_end=26127,
 )
 
 
@@ -9544,8 +9544,8 @@ _GETOBJECTIVEBANKSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26114,
-  serialized_end=26228,
+  serialized_start=26129,
+  serialized_end=26243,
 )
 
 
@@ -9575,8 +9575,8 @@ _GETOBJECTIVEBANKSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26230,
-  serialized_end=26323,
+  serialized_start=26245,
+  serialized_end=26338,
 )
 
 
@@ -9599,8 +9599,8 @@ _GETOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26325,
-  serialized_end=26351,
+  serialized_start=26340,
+  serialized_end=26366,
 )
 
 
@@ -9630,8 +9630,8 @@ _CANCREATEOBJECTIVEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26353,
-  serialized_end=26419,
+  serialized_start=26368,
+  serialized_end=26434,
 )
 
 
@@ -9654,8 +9654,8 @@ _CANCREATEOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26421,
-  serialized_end=26453,
+  serialized_start=26436,
+  serialized_end=26468,
 )
 
 
@@ -9685,8 +9685,8 @@ _CANCREATEOBJECTIVEBANKWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26455,
-  serialized_end=26552,
+  serialized_start=26470,
+  serialized_end=26567,
 )
 
 
@@ -9716,8 +9716,8 @@ _CANCREATEOBJECTIVEBANKWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26554,
-  serialized_end=26677,
+  serialized_start=26569,
+  serialized_end=26692,
 )
 
 
@@ -9747,8 +9747,8 @@ _GETOBJECTIVEBANKFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26679,
-  serialized_end=26785,
+  serialized_start=26694,
+  serialized_end=26800,
 )
 
 
@@ -9778,8 +9778,8 @@ _GETOBJECTIVEBANKFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26787,
-  serialized_end=26902,
+  serialized_start=26802,
+  serialized_end=26917,
 )
 
 
@@ -9809,8 +9809,8 @@ _CREATEOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26904,
-  serialized_end=26991,
+  serialized_start=26919,
+  serialized_end=27006,
 )
 
 
@@ -9840,8 +9840,8 @@ _CREATEOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=26993,
-  serialized_end=27091,
+  serialized_start=27008,
+  serialized_end=27106,
 )
 
 
@@ -9871,8 +9871,8 @@ _CANUPDATEOBJECTIVEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27093,
-  serialized_end=27159,
+  serialized_start=27108,
+  serialized_end=27174,
 )
 
 
@@ -9895,8 +9895,8 @@ _CANUPDATEOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27161,
-  serialized_end=27193,
+  serialized_start=27176,
+  serialized_end=27208,
 )
 
 
@@ -9926,8 +9926,8 @@ _GETOBJECTIVEBANKFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27195,
-  serialized_end=27301,
+  serialized_start=27210,
+  serialized_end=27316,
 )
 
 
@@ -9957,8 +9957,8 @@ _GETOBJECTIVEBANKFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27303,
-  serialized_end=27404,
+  serialized_start=27318,
+  serialized_end=27419,
 )
 
 
@@ -9981,8 +9981,8 @@ _UPDATEOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27406,
-  serialized_end=27432,
+  serialized_start=27421,
+  serialized_end=27447,
 )
 
 
@@ -10012,8 +10012,8 @@ _UPDATEOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27434,
-  serialized_end=27532,
+  serialized_start=27449,
+  serialized_end=27547,
 )
 
 
@@ -10043,8 +10043,8 @@ _CANDELETEOBJECTIVEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27534,
-  serialized_end=27600,
+  serialized_start=27549,
+  serialized_end=27615,
 )
 
 
@@ -10067,8 +10067,8 @@ _CANDELETEOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27602,
-  serialized_end=27634,
+  serialized_start=27617,
+  serialized_end=27649,
 )
 
 
@@ -10091,8 +10091,8 @@ _DELETEOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27636,
-  serialized_end=27662,
+  serialized_start=27651,
+  serialized_end=27677,
 )
 
 
@@ -10122,8 +10122,8 @@ _DELETEOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27664,
-  serialized_end=27755,
+  serialized_start=27679,
+  serialized_end=27770,
 )
 
 
@@ -10153,8 +10153,8 @@ _CANMANAGEOBJECTIVEBANKALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27757,
-  serialized_end=27836,
+  serialized_start=27772,
+  serialized_end=27851,
 )
 
 
@@ -10177,8 +10177,8 @@ _CANMANAGEOBJECTIVEBANKALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27838,
-  serialized_end=27876,
+  serialized_start=27853,
+  serialized_end=27891,
 )
 
 
@@ -10201,8 +10201,8 @@ _ALIASOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27878,
-  serialized_end=27903,
+  serialized_start=27893,
+  serialized_end=27918,
 )
 
 
@@ -10239,8 +10239,8 @@ _ALIASOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=27906,
-  serialized_end=28050,
+  serialized_start=27921,
+  serialized_end=28065,
 )
 
 
@@ -10270,8 +10270,8 @@ _GETOBJECTIVEBANKHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28052,
-  serialized_end=28134,
+  serialized_start=28067,
+  serialized_end=28149,
 )
 
 
@@ -10294,8 +10294,8 @@ _GETOBJECTIVEBANKHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28136,
-  serialized_end=28172,
+  serialized_start=28151,
+  serialized_end=28187,
 )
 
 
@@ -10325,8 +10325,8 @@ _GETOBJECTIVEBANKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28174,
-  serialized_end=28259,
+  serialized_start=28189,
+  serialized_end=28274,
 )
 
 
@@ -10349,8 +10349,8 @@ _GETOBJECTIVEBANKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28261,
-  serialized_end=28295,
+  serialized_start=28276,
+  serialized_end=28310,
 )
 
 
@@ -10380,8 +10380,8 @@ _CANACCESSOBJECTIVEBANKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28297,
-  serialized_end=28380,
+  serialized_start=28312,
+  serialized_end=28395,
 )
 
 
@@ -10404,8 +10404,8 @@ _CANACCESSOBJECTIVEBANKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28382,
-  serialized_end=28422,
+  serialized_start=28397,
+  serialized_end=28437,
 )
 
 
@@ -10428,8 +10428,8 @@ _GETROOTOBJECTIVEBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28424,
-  serialized_end=28456,
+  serialized_start=28439,
+  serialized_end=28471,
 )
 
 
@@ -10452,8 +10452,8 @@ _GETROOTOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28458,
-  serialized_end=28488,
+  serialized_start=28473,
+  serialized_end=28503,
 )
 
 
@@ -10483,8 +10483,8 @@ _HASPARENTOBJECTIVEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28490,
-  serialized_end=28556,
+  serialized_start=28505,
+  serialized_end=28571,
 )
 
 
@@ -10514,8 +10514,8 @@ _HASPARENTOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28558,
-  serialized_end=28653,
+  serialized_start=28573,
+  serialized_end=28668,
 )
 
 
@@ -10545,8 +10545,8 @@ _ISPARENTOFOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28655,
-  serialized_end=28722,
+  serialized_start=28670,
+  serialized_end=28737,
 )
 
 
@@ -10583,8 +10583,8 @@ _ISPARENTOFOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28725,
-  serialized_end=28869,
+  serialized_start=28740,
+  serialized_end=28884,
 )
 
 
@@ -10614,8 +10614,8 @@ _GETPARENTOBJECTIVEBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28871,
-  serialized_end=28968,
+  serialized_start=28886,
+  serialized_end=28983,
 )
 
 
@@ -10645,8 +10645,8 @@ _GETPARENTOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=28970,
-  serialized_end=29065,
+  serialized_start=28985,
+  serialized_end=29080,
 )
 
 
@@ -10676,8 +10676,8 @@ _ISANCESTOROFOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29067,
-  serialized_end=29138,
+  serialized_start=29082,
+  serialized_end=29153,
 )
 
 
@@ -10714,8 +10714,8 @@ _ISANCESTOROFOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29141,
-  serialized_end=29287,
+  serialized_start=29156,
+  serialized_end=29302,
 )
 
 
@@ -10745,8 +10745,8 @@ _HASCHILDOBJECTIVEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29289,
-  serialized_end=29353,
+  serialized_start=29304,
+  serialized_end=29368,
 )
 
 
@@ -10776,8 +10776,8 @@ _HASCHILDOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29355,
-  serialized_end=29449,
+  serialized_start=29370,
+  serialized_end=29464,
 )
 
 
@@ -10807,8 +10807,8 @@ _ISCHILDOFOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29451,
-  serialized_end=29516,
+  serialized_start=29466,
+  serialized_end=29531,
 )
 
 
@@ -10845,8 +10845,8 @@ _ISCHILDOFOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29519,
-  serialized_end=29662,
+  serialized_start=29534,
+  serialized_end=29677,
 )
 
 
@@ -10876,8 +10876,8 @@ _GETCHILDOBJECTIVEBANKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29664,
-  serialized_end=29760,
+  serialized_start=29679,
+  serialized_end=29775,
 )
 
 
@@ -10907,8 +10907,8 @@ _GETCHILDOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29762,
-  serialized_end=29856,
+  serialized_start=29777,
+  serialized_end=29871,
 )
 
 
@@ -10938,8 +10938,8 @@ _ISDESCENDANTOFOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29858,
-  serialized_end=29933,
+  serialized_start=29873,
+  serialized_end=29948,
 )
 
 
@@ -10976,8 +10976,8 @@ _ISDESCENDANTOFOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=29936,
-  serialized_end=30084,
+  serialized_start=29951,
+  serialized_end=30099,
 )
 
 
@@ -11007,8 +11007,8 @@ _GETOBJECTIVEBANKNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30086,
-  serialized_end=30159,
+  serialized_start=30101,
+  serialized_end=30174,
 )
 
 
@@ -11059,8 +11059,8 @@ _GETOBJECTIVEBANKNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30162,
-  serialized_end=30335,
+  serialized_start=30177,
+  serialized_end=30350,
 )
 
 
@@ -11090,8 +11090,8 @@ _GETOBJECTIVEBANKNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30337,
-  serialized_end=30435,
+  serialized_start=30352,
+  serialized_end=30450,
 )
 
 
@@ -11142,8 +11142,8 @@ _GETOBJECTIVEBANKNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30438,
-  serialized_end=30609,
+  serialized_start=30453,
+  serialized_end=30624,
 )
 
 
@@ -11173,8 +11173,8 @@ _CANMODIFYOBJECTIVEBANKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30611,
-  serialized_end=30694,
+  serialized_start=30626,
+  serialized_end=30709,
 )
 
 
@@ -11197,8 +11197,8 @@ _CANMODIFYOBJECTIVEBANKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30696,
-  serialized_end=30736,
+  serialized_start=30711,
+  serialized_end=30751,
 )
 
 
@@ -11221,8 +11221,8 @@ _ADDROOTOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30738,
-  serialized_end=30765,
+  serialized_start=30753,
+  serialized_end=30780,
 )
 
 
@@ -11252,8 +11252,8 @@ _ADDROOTOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30767,
-  serialized_end=30859,
+  serialized_start=30782,
+  serialized_end=30874,
 )
 
 
@@ -11276,8 +11276,8 @@ _REMOVEROOTOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30861,
-  serialized_end=30891,
+  serialized_start=30876,
+  serialized_end=30906,
 )
 
 
@@ -11307,8 +11307,8 @@ _REMOVEROOTOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30893,
-  serialized_end=30988,
+  serialized_start=30908,
+  serialized_end=31003,
 )
 
 
@@ -11331,8 +11331,8 @@ _ADDCHILDOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=30990,
-  serialized_end=31018,
+  serialized_start=31005,
+  serialized_end=31033,
 )
 
 
@@ -11369,8 +11369,8 @@ _ADDCHILDOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31021,
-  serialized_end=31168,
+  serialized_start=31036,
+  serialized_end=31183,
 )
 
 
@@ -11393,8 +11393,8 @@ _REMOVECHILDOBJECTIVEBANKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31170,
-  serialized_end=31201,
+  serialized_start=31185,
+  serialized_end=31216,
 )
 
 
@@ -11431,8 +11431,8 @@ _REMOVECHILDOBJECTIVEBANKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31204,
-  serialized_end=31354,
+  serialized_start=31219,
+  serialized_end=31369,
 )
 
 
@@ -11455,8 +11455,8 @@ _REMOVECHILDOBJECTIVEBANKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31356,
-  serialized_end=31388,
+  serialized_start=31371,
+  serialized_end=31403,
 )
 
 
@@ -11486,31 +11486,31 @@ _REMOVECHILDOBJECTIVEBANKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31390,
-  serialized_end=31487,
+  serialized_start=31405,
+  serialized_end=31502,
 )
 
 _OBJECTIVE.fields_by_name['assessment'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OBJECTIVE.fields_by_name['cognitive_process'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OBJECTIVE.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OBJECTIVE.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OBJECTIVE.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OBJECTIVE.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_OBJECTIVE.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OBJECTIVE.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OBJECTIVE.fields_by_name['knowledge_category'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _OBJECTIVE.fields_by_name['objective_bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
-_OBJECTIVE.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OBJECTIVE.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OBJECTIVELIST.fields_by_name['objectives'].message_type = _OBJECTIVE
 _OBJECTIVENODELIST.fields_by_name['objective_nodes'].message_type = _OBJECTIVENODE
 _ACTIVITY.fields_by_name['assessments'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ACTIVITY.fields_by_name['assets'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ACTIVITY.fields_by_name['courses'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ACTIVITY.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ACTIVITY.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_ACTIVITY.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ACTIVITY.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_ACTIVITY.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ACTIVITY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ACTIVITY.fields_by_name['objective'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _ACTIVITY.fields_by_name['objective_bank'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
-_ACTIVITY.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_ACTIVITY.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _ACTIVITYLIST.fields_by_name['activities'].message_type = _ACTIVITY
 _PROFICIENCY.fields_by_name['level'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _PROFICIENCY.fields_by_name['objective'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -11518,10 +11518,10 @@ _PROFICIENCY.fields_by_name['objective_bank'].message_type = dlkit_dot_proto_dot
 _PROFICIENCY.fields_by_name['resource'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _PROFICIENCYLIST.fields_by_name['proficiencies'].message_type = _PROFICIENCY
 _OBJECTIVEBANK.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OBJECTIVEBANK.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_OBJECTIVEBANK.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OBJECTIVEBANK.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_OBJECTIVEBANK.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OBJECTIVEBANK.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_OBJECTIVEBANK.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_OBJECTIVEBANK.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _OBJECTIVEBANKLIST.fields_by_name['objective_banks'].message_type = _OBJECTIVEBANK
 _OBJECTIVEBANKNODELIST.fields_by_name['objective_bank_nodes'].message_type = _OBJECTIVEBANKNODE
 _GETOBJECTIVEBANKIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -14797,8 +14797,8 @@ _OBJECTIVELOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=31490,
-  serialized_end=33143,
+  serialized_start=31505,
+  serialized_end=33158,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -14929,8 +14929,8 @@ _OBJECTIVEQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=33146,
-  serialized_end=34060,
+  serialized_start=33161,
+  serialized_end=34075,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -15007,8 +15007,8 @@ _OBJECTIVEADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=34063,
-  serialized_end=35722,
+  serialized_start=34078,
+  serialized_end=35737,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -15139,8 +15139,8 @@ _OBJECTIVEHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=35725,
-  serialized_end=38109,
+  serialized_start=35740,
+  serialized_end=38124,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveHierarchyId',
@@ -15325,8 +15325,8 @@ _OBJECTIVEHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=38112,
-  serialized_end=39167,
+  serialized_start=38127,
+  serialized_end=39182,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveHierarchyId',
@@ -15412,8 +15412,8 @@ _OBJECTIVESEQUENCINGSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=39170,
-  serialized_end=39955,
+  serialized_start=39185,
+  serialized_end=39970,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveHierarchyId',
@@ -15481,8 +15481,8 @@ _OBJECTIVEOBJECTIVEBANKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=39958,
-  serialized_end=41283,
+  serialized_start=39973,
+  serialized_end=41298,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupObjectiveObjectiveBankMappings',
@@ -15577,8 +15577,8 @@ _OBJECTIVEOBJECTIVEBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=41286,
-  serialized_end=42406,
+  serialized_start=41301,
+  serialized_end=42421,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignObjectives',
@@ -15655,8 +15655,8 @@ _OBJECTIVEREQUISITESESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=42409,
-  serialized_end=44014,
+  serialized_start=42424,
+  serialized_end=44029,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -15778,8 +15778,8 @@ _OBJECTIVEREQUISITEASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=9,
   options=None,
-  serialized_start=44017,
-  serialized_end=44985,
+  serialized_start=44032,
+  serialized_end=45000,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -15856,8 +15856,8 @@ _ACTIVITYLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=10,
   options=None,
-  serialized_start=44988,
-  serialized_end=47094,
+  serialized_start=45003,
+  serialized_end=47109,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -16024,8 +16024,8 @@ _ACTIVITYQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=11,
   options=None,
-  serialized_start=47097,
-  serialized_end=48006,
+  serialized_start=47112,
+  serialized_end=48021,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -16102,8 +16102,8 @@ _ACTIVITYADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=12,
   options=None,
-  serialized_start=48009,
-  serialized_end=49643,
+  serialized_start=48024,
+  serialized_end=49658,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -16234,8 +16234,8 @@ _ACTIVITYOBJECTIVEBANKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=13,
   options=None,
-  serialized_start=49646,
-  serialized_end=50956,
+  serialized_start=49661,
+  serialized_end=50971,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupActivityObjectiveBankMappings',
@@ -16330,8 +16330,8 @@ _ACTIVITYOBJECTIVEBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=14,
   options=None,
-  serialized_start=50959,
-  serialized_end=52061,
+  serialized_start=50974,
+  serialized_end=52076,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignActivities',
@@ -16408,8 +16408,8 @@ _PROFICIENCYLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=15,
   options=None,
-  serialized_start=52064,
-  serialized_end=56471,
+  serialized_start=52079,
+  serialized_end=56486,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -16702,8 +16702,8 @@ _PROFICIENCYQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=16,
   options=None,
-  serialized_start=56474,
-  serialized_end=57414,
+  serialized_start=56489,
+  serialized_end=57429,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -16780,8 +16780,8 @@ _PROFICIENCYADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=17,
   options=None,
-  serialized_start=57417,
-  serialized_end=59279,
+  serialized_start=57432,
+  serialized_end=59294,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankId',
@@ -16921,8 +16921,8 @@ _PROFICIENCYOBJECTIVEBANKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=18,
   options=None,
-  serialized_start=59282,
-  serialized_end=60439,
+  serialized_start=59297,
+  serialized_end=60454,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignProficiencies',
@@ -16999,8 +16999,8 @@ _OBJECTIVEBANKLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=19,
   options=None,
-  serialized_start=60442,
-  serialized_end=61802,
+  serialized_start=60457,
+  serialized_end=61817,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupObjectiveBanks',
@@ -17104,8 +17104,8 @@ _OBJECTIVEBANKADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=20,
   options=None,
-  serialized_start=61805,
-  serialized_end=63369,
+  serialized_start=61820,
+  serialized_end=63384,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateObjectiveBanks',
@@ -17218,8 +17218,8 @@ _OBJECTIVEBANKHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=21,
   options=None,
-  serialized_start=63372,
-  serialized_end=65983,
+  serialized_start=63387,
+  serialized_end=65998,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankHierarchyId',
@@ -17404,8 +17404,8 @@ _OBJECTIVEBANKHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=22,
   options=None,
-  serialized_start=65986,
-  serialized_end=67145,
+  serialized_start=66001,
+  serialized_end=67160,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetObjectiveBankHierarchyId',

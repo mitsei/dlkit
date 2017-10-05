@@ -26,7 +26,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='dlkit/proto/commenting.proto',
   package='dlkit.proto.commenting',
   syntax='proto3',
-  serialized_pb=_b('\n\x1c\x64lkit/proto/commenting.proto\x12\x16\x64lkit.proto.commenting\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1a\x64lkit/proto/resource.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe2\x01\n\x07\x43omment\x12+\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x31\n\tcommentor\x18\x02 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\x12\x32\n\x06rating\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\treference\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x0c\n\x04text\x18\x05 \x01(\t\"\x0e\n\x0c\x43ommentQuery\"\x17\n\x15\x43ommentQueryInspector\"\r\n\x0b\x43ommentForm\"\x14\n\x12\x43ommentSearchOrder\"\x0f\n\rCommentSearch\"\x16\n\x14\x43ommentSearchResults\"@\n\x0b\x43ommentList\x12\x31\n\x08\x63omments\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.commenting.Comment\"\xbe\x02\n\x04\x42ook\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x44\n\x0b\x64isplayName\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12;\n\x0bgenusTypeId\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12=\n\rrecordTypeIds\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tBookQuery\"\x14\n\x12\x42ookQueryInspector\"\n\n\x08\x42ookForm\"\x11\n\x0f\x42ookSearchOrder\"\x0c\n\nBookSearch\"\x13\n\x11\x42ookSearchResults\"7\n\x08\x42ookList\x12+\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.commenting.Book\"\n\n\x08\x42ookNode\"D\n\x0c\x42ookNodeList\x12\x34\n\nbook_nodes\x18\x01 \x03(\x0b\x32 .dlkit.proto.commenting.BookNode\"@\n\x0eGetBookIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetBookIdRequest\":\n\x0cGetBookReply\x12*\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.commenting.Book\"\x10\n\x0eGetBookRequest\"5\n\x16\x43\x61nLookupCommentsReply\x12\x1b\n\x13\x63\x61n_lookup_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nLookupCommentsRequest\" \n\x1eUseComparativeCommentViewReply\"\"\n UseComparativeCommentViewRequest\"\x1c\n\x1aUsePlenaryCommentViewReply\"\x1e\n\x1cUsePlenaryCommentViewRequest\"\x1b\n\x19UseFederatedBookViewReply\"\x1d\n\x1bUseFederatedBookViewRequest\"\x1a\n\x18UseIsolatedBookViewReply\"\x1c\n\x1aUseIsolatedBookViewRequest\"\x1e\n\x1cUseEffectiveCommentViewReply\" \n\x1eUseEffectiveCommentViewRequest\"!\n\x1fUseAnyEffectiveCommentViewReply\"#\n!UseAnyEffectiveCommentViewRequest\"C\n\x0fGetCommentReply\x12\x30\n\x07\x63omment\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.commenting.Comment\"K\n\x11GetCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x17GetCommentsByIdsRequest\x12\x37\n\x0b\x63omment_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1dGetCommentsByGenusTypeRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n#GetCommentsByParentGenusTypeRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n\x1eGetCommentsByRecordTypeRequest\x12\x43\n\x13\x63omment_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n\x18GetCommentsOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xbc\x01\n#GetCommentsByGenusTypeOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Y\n\x1eGetCommentsForCommentorRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb2\x01\n$GetCommentsForCommentorOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa8\x01\n)GetCommentsByGenusTypeForCommentorRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x81\x02\n/GetCommentsByGenusTypeForCommentorOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Z\n\x1eGetCommentsForReferenceRequest\x12\x38\n\x0creference_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb3\x01\n$GetCommentsForReferenceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa9\x01\n)GetCommentsByGenusTypeForReferenceRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x82\x02\n/GetCommentsByGenusTypeForReferenceOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x9f\x01\n*GetCommentsForCommentorAndReferenceRequest\x12\x38\n\x0creference_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xf8\x01\n0GetCommentsForCommentorAndReferenceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xee\x01\n5GetCommentsByGenusTypeForCommentorAndReferenceRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xc7\x02\n;GetCommentsByGenusTypeForCommentorAndReferenceOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x14\n\x12GetCommentsRequest\"5\n\x16\x43\x61nSearchCommentsReply\x12\x1b\n\x13\x63\x61n_search_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nSearchCommentsRequest\"S\n\x14GetCommentQueryReply\x12;\n\rcomment_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.commenting.CommentQuery\"\x18\n\x16GetCommentQueryRequest\"X\n\x19GetCommentsByQueryRequest\x12;\n\rcomment_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.commenting.CommentQuery\"5\n\x16\x43\x61nCreateCommentsReply\x12\x1b\n\x13\x63\x61n_create_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nCreateCommentsRequest\"T\n$CanCreateCommentWithRecordTypesReply\x12,\n$can_create_comment_with_record_types\x18\x01 \x01(\x08\"n\n&CanCreateCommentWithRecordTypesRequest\x12\x44\n\x14\x63omment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n\x1cGetCommentFormForCreateReply\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"\xa0\x01\n\x1eGetCommentFormForCreateRequest\x12\x44\n\x14\x63omment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x12\x43reateCommentReply\x12\x30\n\x07\x63omment\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.commenting.Comment\"Q\n\x14\x43reateCommentRequest\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"5\n\x16\x43\x61nUpdateCommentsReply\x12\x1b\n\x13\x63\x61n_update_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nUpdateCommentsRequest\"Y\n\x1cGetCommentFormForUpdateReply\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"X\n\x1eGetCommentFormForUpdateRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12UpdateCommentReply\"Q\n\x14UpdateCommentRequest\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"5\n\x16\x43\x61nDeleteCommentsReply\x12\x1b\n\x13\x63\x61n_delete_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nDeleteCommentsRequest\"\x14\n\x12\x44\x65leteCommentReply\"N\n\x14\x44\x65leteCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nManageCommentAliasesReply\x12\"\n\x1a\x63\x61n_manage_comment_aliases\x18\x01 \x01(\x08\" \n\x1e\x43\x61nManageCommentAliasesRequest\"\x13\n\x11\x41liasCommentReply\"\x83\x01\n\x13\x41liasCommentRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n!CanLookupCommentBookMappingsReply\x12(\n can_lookup_comment_book_mappings\x18\x01 \x01(\x08\"%\n#CanLookupCommentBookMappingsRequest\"\x1d\n\x1bUseComparativeBookViewReply\"\x1f\n\x1dUseComparativeBookViewRequest\"\x19\n\x17UsePlenaryBookViewReply\"\x1b\n\x19UsePlenaryBookViewRequest\"Q\n\x1aGetCommentIdsByBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x18GetCommentsByBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x1bGetCommentIdsByBooksRequest\x12\x34\n\x08\x62ook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x19GetCommentsByBooksRequest\x12\x34\n\x08\x62ook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1aGetBookIdsByCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x18GetBooksByCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"5\n\x16\x43\x61nAssignCommentsReply\x12\x1b\n\x13\x63\x61n_assign_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nAssignCommentsRequest\"C\n\x1c\x43\x61nAssignCommentsToBookReply\x12#\n\x1b\x63\x61n_assign_comments_to_book\x18\x01 \x01(\x08\"U\n\x1e\x43\x61nAssignCommentsToBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssignableBookIdsRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x94\x01\n%GetAssignableBookIdsForCommentRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41ssignCommentToBookReply\"\x89\x01\n\x1a\x41ssignCommentToBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUnassignCommentFromBookReply\"\x8d\x01\n\x1eUnassignCommentFromBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aReassignCommentToBookReply\"\xc8\x01\n\x1cReassignCommentToBookRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_book_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_book_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nLookupBooksReply\x12\x18\n\x10\x63\x61n_lookup_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nLookupBooksRequest\"L\n\x14GetBooksByIdsRequest\x12\x34\n\x08\x62ook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1aGetBooksByGenusTypeRequest\x12?\n\x0f\x62ook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetBooksByParentGenusTypeRequest\x12?\n\x0f\x62ook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1bGetBooksByRecordTypeRequest\x12@\n\x10\x62ook_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"T\n\x19GetBooksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetBooksRequest\"/\n\x13\x43\x61nCreateBooksReply\x12\x18\n\x10\x63\x61n_create_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nCreateBooksRequest\"N\n!CanCreateBookWithRecordTypesReply\x12)\n!can_create_book_with_record_types\x18\x01 \x01(\x08\"h\n#CanCreateBookWithRecordTypesRequest\x12\x41\n\x11\x62ook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x19GetBookFormForCreateReply\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"`\n\x1bGetBookFormForCreateRequest\x12\x41\n\x11\x62ook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"=\n\x0f\x43reateBookReply\x12*\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.commenting.Book\"H\n\x11\x43reateBookRequest\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"/\n\x13\x43\x61nUpdateBooksReply\x12\x18\n\x10\x63\x61n_update_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nUpdateBooksRequest\"P\n\x19GetBookFormForUpdateReply\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"R\n\x1bGetBookFormForUpdateRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fUpdateBookReply\"H\n\x11UpdateBookRequest\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"/\n\x13\x43\x61nDeleteBooksReply\x12\x18\n\x10\x63\x61n_delete_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nDeleteBooksRequest\"\x11\n\x0f\x44\x65leteBookReply\"H\n\x11\x44\x65leteBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nManageBookAliasesReply\x12\x1f\n\x17\x63\x61n_manage_book_aliases\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nManageBookAliasesRequest\"\x10\n\x0e\x41liasBookReply\"}\n\x10\x41liasBookRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62ook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x17GetBookHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetBookHierarchyIdRequest\"L\n\x15GetBookHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x19\n\x17GetBookHierarchyRequest\"@\n\x1b\x43\x61nAccessBookHierarchyReply\x12!\n\x19\x63\x61n_access_book_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nAccessBookHierarchyRequest\"\x17\n\x15GetRootBookIdsRequest\"\x15\n\x13GetRootBooksRequest\"/\n\x13HasParentBooksReply\x12\x18\n\x10has_parent_books\x18\x01 \x01(\x08\"L\n\x15HasParentBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"0\n\x13IsParentOfBookReply\x12\x19\n\x11is_parent_of_book\x18\x01 \x01(\x08\"}\n\x15IsParentOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x17GetParentBookIdsRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetParentBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsAncestorOfBookReply\x12\x1b\n\x13is_ancestor_of_book\x18\x01 \x01(\x08\"\x7f\n\x17IsAncestorOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12HasChildBooksReply\x12\x17\n\x0fhas_child_books\x18\x01 \x01(\x08\"K\n\x14HasChildBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsChildOfBookReply\x12\x18\n\x10is_child_of_book\x18\x01 \x01(\x08\"|\n\x14IsChildOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x16GetChildBookIdsRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x14GetChildBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsDescendantOfBookReply\x12\x1d\n\x15is_descendant_of_book\x18\x01 \x01(\x08\"\x81\x01\n\x19IsDescendantOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x13GetBookNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9a\x01\n\x15GetBookNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62ook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"H\n\x11GetBookNodesReply\x12\x33\n\tbook_node\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookNode\"\x98\x01\n\x13GetBookNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62ook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"@\n\x1b\x43\x61nModifyBookHierarchyReply\x12!\n\x19\x63\x61n_modify_book_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nModifyBookHierarchyRequest\"\x12\n\x10\x41\x64\x64RootBookReply\"I\n\x12\x41\x64\x64RootBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveRootBookReply\"L\n\x15RemoveRootBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11\x41\x64\x64\x43hildBookReply\"\x80\x01\n\x13\x41\x64\x64\x43hildBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildBookReply\"\x83\x01\n\x16RemoveChildBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveChildBooksReply\"N\n\x17RemoveChildBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xea\x1d\n\x14\x43ommentLookupSession\x12_\n\tGetBookId\x12(.dlkit.proto.commenting.GetBookIdRequest\x1a&.dlkit.proto.commenting.GetBookIdReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12w\n\x11\x43\x61nLookupComments\x12\x30.dlkit.proto.commenting.CanLookupCommentsRequest\x1a..dlkit.proto.commenting.CanLookupCommentsReply\"\x00\x12\x8f\x01\n\x19UseComparativeCommentView\x12\x38.dlkit.proto.commenting.UseComparativeCommentViewRequest\x1a\x36.dlkit.proto.commenting.UseComparativeCommentViewReply\"\x00\x12\x83\x01\n\x15UsePlenaryCommentView\x12\x34.dlkit.proto.commenting.UsePlenaryCommentViewRequest\x1a\x32.dlkit.proto.commenting.UsePlenaryCommentViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBookView\x12\x33.dlkit.proto.commenting.UseFederatedBookViewRequest\x1a\x31.dlkit.proto.commenting.UseFederatedBookViewReply\"\x00\x12}\n\x13UseIsolatedBookView\x12\x32.dlkit.proto.commenting.UseIsolatedBookViewRequest\x1a\x30.dlkit.proto.commenting.UseIsolatedBookViewReply\"\x00\x12\x89\x01\n\x17UseEffectiveCommentView\x12\x36.dlkit.proto.commenting.UseEffectiveCommentViewRequest\x1a\x34.dlkit.proto.commenting.UseEffectiveCommentViewReply\"\x00\x12\x92\x01\n\x1aUseAnyEffectiveCommentView\x12\x39.dlkit.proto.commenting.UseAnyEffectiveCommentViewRequest\x1a\x37.dlkit.proto.commenting.UseAnyEffectiveCommentViewReply\"\x00\x12\x62\n\nGetComment\x12).dlkit.proto.commenting.GetCommentRequest\x1a\'.dlkit.proto.commenting.GetCommentReply\"\x00\x12h\n\x10GetCommentsByIds\x12/.dlkit.proto.commenting.GetCommentsByIdsRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12t\n\x16GetCommentsByGenusType\x12\x35.dlkit.proto.commenting.GetCommentsByGenusTypeRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x80\x01\n\x1cGetCommentsByParentGenusType\x12;.dlkit.proto.commenting.GetCommentsByParentGenusTypeRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12v\n\x17GetCommentsByRecordType\x12\x36.dlkit.proto.commenting.GetCommentsByRecordTypeRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12j\n\x11GetCommentsOnDate\x12\x30.dlkit.proto.commenting.GetCommentsOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x80\x01\n\x1cGetCommentsByGenusTypeOnDate\x12;.dlkit.proto.commenting.GetCommentsByGenusTypeOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12v\n\x17GetCommentsForCommentor\x12\x36.dlkit.proto.commenting.GetCommentsForCommentorRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x82\x01\n\x1dGetCommentsForCommentorOnDate\x12<.dlkit.proto.commenting.GetCommentsForCommentorOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x8c\x01\n\"GetCommentsByGenusTypeForCommentor\x12\x41.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x98\x01\n(GetCommentsByGenusTypeForCommentorOnDate\x12G.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12v\n\x17GetCommentsForReference\x12\x36.dlkit.proto.commenting.GetCommentsForReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x82\x01\n\x1dGetCommentsForReferenceOnDate\x12<.dlkit.proto.commenting.GetCommentsForReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x8c\x01\n\"GetCommentsByGenusTypeForReference\x12\x41.dlkit.proto.commenting.GetCommentsByGenusTypeForReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x98\x01\n(GetCommentsByGenusTypeForReferenceOnDate\x12G.dlkit.proto.commenting.GetCommentsByGenusTypeForReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x8e\x01\n#GetCommentsForCommentorAndReference\x12\x42.dlkit.proto.commenting.GetCommentsForCommentorAndReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x9a\x01\n)GetCommentsForCommentorAndReferenceOnDate\x12H.dlkit.proto.commenting.GetCommentsForCommentorAndReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\xa4\x01\n.GetCommentsByGenusTypeForCommentorAndReference\x12M.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorAndReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\xb0\x01\n4GetCommentsByGenusTypeForCommentorAndReferenceOnDate\x12S.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorAndReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12^\n\x0bGetComments\x12*.dlkit.proto.commenting.GetCommentsRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x32\xad\x06\n\x13\x43ommentQuerySession\x12_\n\tGetBookId\x12(.dlkit.proto.commenting.GetBookIdRequest\x1a&.dlkit.proto.commenting.GetBookIdReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12w\n\x11\x43\x61nSearchComments\x12\x30.dlkit.proto.commenting.CanSearchCommentsRequest\x1a..dlkit.proto.commenting.CanSearchCommentsReply\"\x00\x12\x80\x01\n\x14UseFederatedBookView\x12\x33.dlkit.proto.commenting.UseFederatedBookViewRequest\x1a\x31.dlkit.proto.commenting.UseFederatedBookViewReply\"\x00\x12}\n\x13UseIsolatedBookView\x12\x32.dlkit.proto.commenting.UseIsolatedBookViewRequest\x1a\x30.dlkit.proto.commenting.UseIsolatedBookViewReply\"\x00\x12q\n\x0fGetCommentQuery\x12..dlkit.proto.commenting.GetCommentQueryRequest\x1a,.dlkit.proto.commenting.GetCommentQueryReply\"\x00\x12l\n\x12GetCommentsByQuery\x12\x31.dlkit.proto.commenting.GetCommentsByQueryRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x32\xb5\x0c\n\x13\x43ommentAdminSession\x12_\n\tGetBookId\x12(.dlkit.proto.commenting.GetBookIdRequest\x1a&.dlkit.proto.commenting.GetBookIdReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12w\n\x11\x43\x61nCreateComments\x12\x30.dlkit.proto.commenting.CanCreateCommentsRequest\x1a..dlkit.proto.commenting.CanCreateCommentsReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nCreateCommentWithRecordTypes\x12>.dlkit.proto.commenting.CanCreateCommentWithRecordTypesRequest\x1a<.dlkit.proto.commenting.CanCreateCommentWithRecordTypesReply\"\x00\x12\x89\x01\n\x17GetCommentFormForCreate\x12\x36.dlkit.proto.commenting.GetCommentFormForCreateRequest\x1a\x34.dlkit.proto.commenting.GetCommentFormForCreateReply\"\x00\x12k\n\rCreateComment\x12,.dlkit.proto.commenting.CreateCommentRequest\x1a*.dlkit.proto.commenting.CreateCommentReply\"\x00\x12w\n\x11\x43\x61nUpdateComments\x12\x30.dlkit.proto.commenting.CanUpdateCommentsRequest\x1a..dlkit.proto.commenting.CanUpdateCommentsReply\"\x00\x12\x89\x01\n\x17GetCommentFormForUpdate\x12\x36.dlkit.proto.commenting.GetCommentFormForUpdateRequest\x1a\x34.dlkit.proto.commenting.GetCommentFormForUpdateReply\"\x00\x12k\n\rUpdateComment\x12,.dlkit.proto.commenting.UpdateCommentRequest\x1a*.dlkit.proto.commenting.UpdateCommentReply\"\x00\x12w\n\x11\x43\x61nDeleteComments\x12\x30.dlkit.proto.commenting.CanDeleteCommentsRequest\x1a..dlkit.proto.commenting.CanDeleteCommentsReply\"\x00\x12k\n\rDeleteComment\x12,.dlkit.proto.commenting.DeleteCommentRequest\x1a*.dlkit.proto.commenting.DeleteCommentReply\"\x00\x12\x89\x01\n\x17\x43\x61nManageCommentAliases\x12\x36.dlkit.proto.commenting.CanManageCommentAliasesRequest\x1a\x34.dlkit.proto.commenting.CanManageCommentAliasesReply\"\x00\x12h\n\x0c\x41liasComment\x12+.dlkit.proto.commenting.AliasCommentRequest\x1a).dlkit.proto.commenting.AliasCommentReply\"\x00\x32\xd2\x08\n\x12\x43ommentBookSession\x12\x98\x01\n\x1c\x43\x61nLookupCommentBookMappings\x12;.dlkit.proto.commenting.CanLookupCommentBookMappingsRequest\x1a\x39.dlkit.proto.commenting.CanLookupCommentBookMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBookView\x12\x35.dlkit.proto.commenting.UseComparativeBookViewRequest\x1a\x33.dlkit.proto.commenting.UseComparativeBookViewReply\"\x00\x12z\n\x12UsePlenaryBookView\x12\x31.dlkit.proto.commenting.UsePlenaryBookViewRequest\x1a/.dlkit.proto.commenting.UsePlenaryBookViewReply\"\x00\x12q\n\x13GetCommentIdsByBook\x12\x32.dlkit.proto.commenting.GetCommentIdsByBookRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x11GetCommentsByBook\x12\x30.dlkit.proto.commenting.GetCommentsByBookRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12s\n\x14GetCommentIdsByBooks\x12\x33.dlkit.proto.commenting.GetCommentIdsByBooksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12l\n\x12GetCommentsByBooks\x12\x31.dlkit.proto.commenting.GetCommentsByBooksRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12q\n\x13GetBookIdsByComment\x12\x32.dlkit.proto.commenting.GetBookIdsByCommentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12g\n\x11GetBooksByComment\x12\x30.dlkit.proto.commenting.GetBooksByCommentRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x32\xb3\x07\n\x1c\x43ommentBookAssignmentSession\x12w\n\x11\x43\x61nAssignComments\x12\x30.dlkit.proto.commenting.CanAssignCommentsRequest\x1a..dlkit.proto.commenting.CanAssignCommentsReply\"\x00\x12\x89\x01\n\x17\x43\x61nAssignCommentsToBook\x12\x36.dlkit.proto.commenting.CanAssignCommentsToBookRequest\x1a\x34.dlkit.proto.commenting.CanAssignCommentsToBookReply\"\x00\x12s\n\x14GetAssignableBookIds\x12\x33.dlkit.proto.commenting.GetAssignableBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x87\x01\n\x1eGetAssignableBookIdsForComment\x12=.dlkit.proto.commenting.GetAssignableBookIdsForCommentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12}\n\x13\x41ssignCommentToBook\x12\x32.dlkit.proto.commenting.AssignCommentToBookRequest\x1a\x30.dlkit.proto.commenting.AssignCommentToBookReply\"\x00\x12\x89\x01\n\x17UnassignCommentFromBook\x12\x36.dlkit.proto.commenting.UnassignCommentFromBookRequest\x1a\x34.dlkit.proto.commenting.UnassignCommentFromBookReply\"\x00\x12\x83\x01\n\x15ReassignCommentToBook\x12\x34.dlkit.proto.commenting.ReassignCommentToBookRequest\x1a\x32.dlkit.proto.commenting.ReassignCommentToBookReply\"\x00\x32\xdb\x08\n\x11\x42ookLookupSession\x12n\n\x0e\x43\x61nLookupBooks\x12-.dlkit.proto.commenting.CanLookupBooksRequest\x1a+.dlkit.proto.commenting.CanLookupBooksReply\"\x00\x12\x86\x01\n\x16UseComparativeBookView\x12\x35.dlkit.proto.commenting.UseComparativeBookViewRequest\x1a\x33.dlkit.proto.commenting.UseComparativeBookViewReply\"\x00\x12z\n\x12UsePlenaryBookView\x12\x31.dlkit.proto.commenting.UsePlenaryBookViewRequest\x1a/.dlkit.proto.commenting.UsePlenaryBookViewReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12_\n\rGetBooksByIds\x12,.dlkit.proto.commenting.GetBooksByIdsRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12k\n\x13GetBooksByGenusType\x12\x32.dlkit.proto.commenting.GetBooksByGenusTypeRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12w\n\x19GetBooksByParentGenusType\x12\x38.dlkit.proto.commenting.GetBooksByParentGenusTypeRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12m\n\x14GetBooksByRecordType\x12\x33.dlkit.proto.commenting.GetBooksByRecordTypeRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12i\n\x12GetBooksByProvider\x12\x31.dlkit.proto.commenting.GetBooksByProviderRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12U\n\x08GetBooks\x12\'.dlkit.proto.commenting.GetBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x32\x93\n\n\x10\x42ookAdminSession\x12n\n\x0e\x43\x61nCreateBooks\x12-.dlkit.proto.commenting.CanCreateBooksRequest\x1a+.dlkit.proto.commenting.CanCreateBooksReply\"\x00\x12\x98\x01\n\x1c\x43\x61nCreateBookWithRecordTypes\x12;.dlkit.proto.commenting.CanCreateBookWithRecordTypesRequest\x1a\x39.dlkit.proto.commenting.CanCreateBookWithRecordTypesReply\"\x00\x12\x80\x01\n\x14GetBookFormForCreate\x12\x33.dlkit.proto.commenting.GetBookFormForCreateRequest\x1a\x31.dlkit.proto.commenting.GetBookFormForCreateReply\"\x00\x12\x62\n\nCreateBook\x12).dlkit.proto.commenting.CreateBookRequest\x1a\'.dlkit.proto.commenting.CreateBookReply\"\x00\x12n\n\x0e\x43\x61nUpdateBooks\x12-.dlkit.proto.commenting.CanUpdateBooksRequest\x1a+.dlkit.proto.commenting.CanUpdateBooksReply\"\x00\x12\x80\x01\n\x14GetBookFormForUpdate\x12\x33.dlkit.proto.commenting.GetBookFormForUpdateRequest\x1a\x31.dlkit.proto.commenting.GetBookFormForUpdateReply\"\x00\x12\x62\n\nUpdateBook\x12).dlkit.proto.commenting.UpdateBookRequest\x1a\'.dlkit.proto.commenting.UpdateBookReply\"\x00\x12n\n\x0e\x43\x61nDeleteBooks\x12-.dlkit.proto.commenting.CanDeleteBooksRequest\x1a+.dlkit.proto.commenting.CanDeleteBooksReply\"\x00\x12\x62\n\nDeleteBook\x12).dlkit.proto.commenting.DeleteBookRequest\x1a\'.dlkit.proto.commenting.DeleteBookReply\"\x00\x12\x80\x01\n\x14\x43\x61nManageBookAliases\x12\x33.dlkit.proto.commenting.CanManageBookAliasesRequest\x1a\x31.dlkit.proto.commenting.CanManageBookAliasesReply\"\x00\x12_\n\tAliasBook\x12(.dlkit.proto.commenting.AliasBookRequest\x1a&.dlkit.proto.commenting.AliasBookReply\"\x00\x32\x80\x11\n\x14\x42ookHierarchySession\x12z\n\x12GetBookHierarchyId\x12\x31.dlkit.proto.commenting.GetBookHierarchyIdRequest\x1a/.dlkit.proto.commenting.GetBookHierarchyIdReply\"\x00\x12t\n\x10GetBookHierarchy\x12/.dlkit.proto.commenting.GetBookHierarchyRequest\x1a-.dlkit.proto.commenting.GetBookHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nAccessBookHierarchy\x12\x35.dlkit.proto.commenting.CanAccessBookHierarchyRequest\x1a\x33.dlkit.proto.commenting.CanAccessBookHierarchyReply\"\x00\x12\x86\x01\n\x16UseComparativeBookView\x12\x35.dlkit.proto.commenting.UseComparativeBookViewRequest\x1a\x33.dlkit.proto.commenting.UseComparativeBookViewReply\"\x00\x12z\n\x12UsePlenaryBookView\x12\x31.dlkit.proto.commenting.UsePlenaryBookViewRequest\x1a/.dlkit.proto.commenting.UsePlenaryBookViewReply\"\x00\x12g\n\x0eGetRootBookIds\x12-.dlkit.proto.commenting.GetRootBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12]\n\x0cGetRootBooks\x12+.dlkit.proto.commenting.GetRootBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12n\n\x0eHasParentBooks\x12-.dlkit.proto.commenting.HasParentBooksRequest\x1a+.dlkit.proto.commenting.HasParentBooksReply\"\x00\x12n\n\x0eIsParentOfBook\x12-.dlkit.proto.commenting.IsParentOfBookRequest\x1a+.dlkit.proto.commenting.IsParentOfBookReply\"\x00\x12k\n\x10GetParentBookIds\x12/.dlkit.proto.commenting.GetParentBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetParentBooks\x12-.dlkit.proto.commenting.GetParentBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12t\n\x10IsAncestorOfBook\x12/.dlkit.proto.commenting.IsAncestorOfBookRequest\x1a-.dlkit.proto.commenting.IsAncestorOfBookReply\"\x00\x12k\n\rHasChildBooks\x12,.dlkit.proto.commenting.HasChildBooksRequest\x1a*.dlkit.proto.commenting.HasChildBooksReply\"\x00\x12k\n\rIsChildOfBook\x12,.dlkit.proto.commenting.IsChildOfBookRequest\x1a*.dlkit.proto.commenting.IsChildOfBookReply\"\x00\x12i\n\x0fGetChildBookIds\x12..dlkit.proto.commenting.GetChildBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12_\n\rGetChildBooks\x12,.dlkit.proto.commenting.GetChildBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12z\n\x12IsDescendantOfBook\x12\x31.dlkit.proto.commenting.IsDescendantOfBookRequest\x1a/.dlkit.proto.commenting.IsDescendantOfBookReply\"\x00\x12n\n\x0eGetBookNodeIds\x12-.dlkit.proto.commenting.GetBookNodeIdsRequest\x1a+.dlkit.proto.commenting.GetBookNodeIdsReply\"\x00\x12h\n\x0cGetBookNodes\x12+.dlkit.proto.commenting.GetBookNodesRequest\x1a).dlkit.proto.commenting.GetBookNodesReply\"\x00\x32\xc1\x07\n\x1a\x42ookHierarchyDesignSession\x12z\n\x12GetBookHierarchyId\x12\x31.dlkit.proto.commenting.GetBookHierarchyIdRequest\x1a/.dlkit.proto.commenting.GetBookHierarchyIdReply\"\x00\x12t\n\x10GetBookHierarchy\x12/.dlkit.proto.commenting.GetBookHierarchyRequest\x1a-.dlkit.proto.commenting.GetBookHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nModifyBookHierarchy\x12\x35.dlkit.proto.commenting.CanModifyBookHierarchyRequest\x1a\x33.dlkit.proto.commenting.CanModifyBookHierarchyReply\"\x00\x12\x65\n\x0b\x41\x64\x64RootBook\x12*.dlkit.proto.commenting.AddRootBookRequest\x1a(.dlkit.proto.commenting.AddRootBookReply\"\x00\x12n\n\x0eRemoveRootBook\x12-.dlkit.proto.commenting.RemoveRootBookRequest\x1a+.dlkit.proto.commenting.RemoveRootBookReply\"\x00\x12h\n\x0c\x41\x64\x64\x43hildBook\x12+.dlkit.proto.commenting.AddChildBookRequest\x1a).dlkit.proto.commenting.AddChildBookReply\"\x00\x12q\n\x0fRemoveChildBook\x12..dlkit.proto.commenting.RemoveChildBookRequest\x1a,.dlkit.proto.commenting.RemoveChildBookReply\"\x00\x12t\n\x10RemoveChildBooks\x12/.dlkit.proto.commenting.RemoveChildBooksRequest\x1a-.dlkit.proto.commenting.RemoveChildBooksReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x1c\x64lkit/proto/commenting.proto\x12\x16\x64lkit.proto.commenting\x1a$dlkit/primordium/id/primitives.proto\x1a(dlkit/primordium/locale/primitives.proto\x1a&dlkit/primordium/type/primitives.proto\x1a\x1b\x64lkit/proto/hierarchy.proto\x1a\x16\x64lkit/proto/osid.proto\x1a\x1a\x64lkit/proto/resource.proto\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe2\x01\n\x07\x43omment\x12+\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x1d.dlkit.proto.osid.OsidCatalog\x12\x31\n\tcommentor\x18\x02 \x01(\x0b\x32\x1e.dlkit.proto.resource.Resource\x12\x32\n\x06rating\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x35\n\treference\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x0c\n\x04text\x18\x05 \x01(\t\"\x0e\n\x0c\x43ommentQuery\"\x17\n\x15\x43ommentQueryInspector\"\r\n\x0b\x43ommentForm\"\x14\n\x12\x43ommentSearchOrder\"\x0f\n\rCommentSearch\"\x16\n\x14\x43ommentSearchResults\"@\n\x0b\x43ommentList\x12\x31\n\x08\x63omments\x18\x01 \x03(\x0b\x32\x1f.dlkit.proto.commenting.Comment\"\xc3\x02\n\x04\x42ook\x12\x44\n\x0b\x64\x65scription\x18\x01 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12\x45\n\x0c\x64isplay_name\x18\x02 \x01(\x0b\x32/.dlkit.primordium.locale.primitives.DisplayText\x12=\n\rgenus_type_id\x18\x03 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12.\n\x02id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12?\n\x0frecord_type_ids\x18\x05 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"\x0b\n\tBookQuery\"\x14\n\x12\x42ookQueryInspector\"\n\n\x08\x42ookForm\"\x11\n\x0f\x42ookSearchOrder\"\x0c\n\nBookSearch\"\x13\n\x11\x42ookSearchResults\"7\n\x08\x42ookList\x12+\n\x05\x62ooks\x18\x01 \x03(\x0b\x32\x1c.dlkit.proto.commenting.Book\"\n\n\x08\x42ookNode\"D\n\x0c\x42ookNodeList\x12\x34\n\nbook_nodes\x18\x01 \x03(\x0b\x32 .dlkit.proto.commenting.BookNode\"@\n\x0eGetBookIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x12\n\x10GetBookIdRequest\":\n\x0cGetBookReply\x12*\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.commenting.Book\"\x10\n\x0eGetBookRequest\"5\n\x16\x43\x61nLookupCommentsReply\x12\x1b\n\x13\x63\x61n_lookup_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nLookupCommentsRequest\" \n\x1eUseComparativeCommentViewReply\"\"\n UseComparativeCommentViewRequest\"\x1c\n\x1aUsePlenaryCommentViewReply\"\x1e\n\x1cUsePlenaryCommentViewRequest\"\x1b\n\x19UseFederatedBookViewReply\"\x1d\n\x1bUseFederatedBookViewRequest\"\x1a\n\x18UseIsolatedBookViewReply\"\x1c\n\x1aUseIsolatedBookViewRequest\"\x1e\n\x1cUseEffectiveCommentViewReply\" \n\x1eUseEffectiveCommentViewRequest\"!\n\x1fUseAnyEffectiveCommentViewReply\"#\n!UseAnyEffectiveCommentViewRequest\"C\n\x0fGetCommentReply\x12\x30\n\x07\x63omment\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.commenting.Comment\"K\n\x11GetCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x17GetCommentsByIdsRequest\x12\x37\n\x0b\x63omment_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"c\n\x1dGetCommentsByGenusTypeRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"i\n#GetCommentsByParentGenusTypeRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"e\n\x1eGetCommentsByRecordTypeRequest\x12\x43\n\x13\x63omment_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"m\n\x18GetCommentsOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xbc\x01\n#GetCommentsByGenusTypeOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Y\n\x1eGetCommentsForCommentorRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb2\x01\n$GetCommentsForCommentorOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa8\x01\n)GetCommentsByGenusTypeForCommentorRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x81\x02\n/GetCommentsByGenusTypeForCommentorOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"Z\n\x1eGetCommentsForReferenceRequest\x12\x38\n\x0creference_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xb3\x01\n$GetCommentsForReferenceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xa9\x01\n)GetCommentsByGenusTypeForReferenceRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x82\x02\n/GetCommentsByGenusTypeForReferenceOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x9f\x01\n*GetCommentsForCommentorAndReferenceRequest\x12\x38\n\x0creference_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xf8\x01\n0GetCommentsForCommentorAndReferenceOnDateRequest\x12)\n\x05\x66rom_\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x04 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\xee\x01\n5GetCommentsByGenusTypeForCommentorAndReferenceRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\xc7\x02\n;GetCommentsByGenusTypeForCommentorAndReferenceOnDateRequest\x12\x42\n\x12\x63omment_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12)\n\x05\x66rom_\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x38\n\x0creference_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x37\n\x0bresource_id\x18\x04 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12&\n\x02to\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\"\x14\n\x12GetCommentsRequest\"5\n\x16\x43\x61nSearchCommentsReply\x12\x1b\n\x13\x63\x61n_search_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nSearchCommentsRequest\"S\n\x14GetCommentQueryReply\x12;\n\rcomment_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.commenting.CommentQuery\"\x18\n\x16GetCommentQueryRequest\"X\n\x19GetCommentsByQueryRequest\x12;\n\rcomment_query\x18\x01 \x01(\x0b\x32$.dlkit.proto.commenting.CommentQuery\"5\n\x16\x43\x61nCreateCommentsReply\x12\x1b\n\x13\x63\x61n_create_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nCreateCommentsRequest\"T\n$CanCreateCommentWithRecordTypesReply\x12,\n$can_create_comment_with_record_types\x18\x01 \x01(\x08\"n\n&CanCreateCommentWithRecordTypesRequest\x12\x44\n\x14\x63omment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"Y\n\x1cGetCommentFormForCreateReply\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"\xa0\x01\n\x1eGetCommentFormForCreateRequest\x12\x44\n\x14\x63omment_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\x12\x38\n\x0creference_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"F\n\x12\x43reateCommentReply\x12\x30\n\x07\x63omment\x18\x01 \x01(\x0b\x32\x1f.dlkit.proto.commenting.Comment\"Q\n\x14\x43reateCommentRequest\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"5\n\x16\x43\x61nUpdateCommentsReply\x12\x1b\n\x13\x63\x61n_update_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nUpdateCommentsRequest\"Y\n\x1cGetCommentFormForUpdateReply\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"X\n\x1eGetCommentFormForUpdateRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x14\n\x12UpdateCommentReply\"Q\n\x14UpdateCommentRequest\x12\x39\n\x0c\x63omment_form\x18\x01 \x01(\x0b\x32#.dlkit.proto.commenting.CommentForm\"5\n\x16\x43\x61nDeleteCommentsReply\x12\x1b\n\x13\x63\x61n_delete_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nDeleteCommentsRequest\"\x14\n\x12\x44\x65leteCommentReply\"N\n\x14\x44\x65leteCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"B\n\x1c\x43\x61nManageCommentAliasesReply\x12\"\n\x1a\x63\x61n_manage_comment_aliases\x18\x01 \x01(\x08\" \n\x1e\x43\x61nManageCommentAliasesRequest\"\x13\n\x11\x41liasCommentReply\"\x83\x01\n\x13\x41liasCommentRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n!CanLookupCommentBookMappingsReply\x12(\n can_lookup_comment_book_mappings\x18\x01 \x01(\x08\"%\n#CanLookupCommentBookMappingsRequest\"\x1d\n\x1bUseComparativeBookViewReply\"\x1f\n\x1dUseComparativeBookViewRequest\"\x19\n\x17UsePlenaryBookViewReply\"\x1b\n\x19UsePlenaryBookViewRequest\"Q\n\x1aGetCommentIdsByBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"O\n\x18GetCommentsByBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"S\n\x1bGetCommentIdsByBooksRequest\x12\x34\n\x08\x62ook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"Q\n\x19GetCommentsByBooksRequest\x12\x34\n\x08\x62ook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"T\n\x1aGetBookIdsByCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x18GetBooksByCommentRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"5\n\x16\x43\x61nAssignCommentsReply\x12\x1b\n\x13\x63\x61n_assign_comments\x18\x01 \x01(\x08\"\x1a\n\x18\x43\x61nAssignCommentsRequest\"C\n\x1c\x43\x61nAssignCommentsToBookReply\x12#\n\x1b\x63\x61n_assign_comments_to_book\x18\x01 \x01(\x08\"U\n\x1e\x43\x61nAssignCommentsToBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"R\n\x1bGetAssignableBookIdsRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x94\x01\n%GetAssignableBookIdsForCommentRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1a\n\x18\x41ssignCommentToBookReply\"\x89\x01\n\x1a\x41ssignCommentToBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1e\n\x1cUnassignCommentFromBookReply\"\x8d\x01\n\x1eUnassignCommentFromBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\ncomment_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1c\n\x1aReassignCommentToBookReply\"\xc8\x01\n\x1cReassignCommentToBookRequest\x12\x36\n\ncomment_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x38\n\x0c\x66rom_book_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x36\n\nto_book_id\x18\x03 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"/\n\x13\x43\x61nLookupBooksReply\x12\x18\n\x10\x63\x61n_lookup_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nLookupBooksRequest\"L\n\x14GetBooksByIdsRequest\x12\x34\n\x08\x62ook_ids\x18\x01 \x03(\x0b\x32\".dlkit.primordium.id.primitives.Id\"]\n\x1aGetBooksByGenusTypeRequest\x12?\n\x0f\x62ook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"c\n GetBooksByParentGenusTypeRequest\x12?\n\x0f\x62ook_genus_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"_\n\x1bGetBooksByRecordTypeRequest\x12@\n\x10\x62ook_record_type\x18\x01 \x01(\x0b\x32&.dlkit.primordium.type.primitives.Type\"T\n\x19GetBooksByProviderRequest\x12\x37\n\x0bresource_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fGetBooksRequest\"/\n\x13\x43\x61nCreateBooksReply\x12\x18\n\x10\x63\x61n_create_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nCreateBooksRequest\"N\n!CanCreateBookWithRecordTypesReply\x12)\n!can_create_book_with_record_types\x18\x01 \x01(\x08\"h\n#CanCreateBookWithRecordTypesRequest\x12\x41\n\x11\x62ook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"P\n\x19GetBookFormForCreateReply\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"`\n\x1bGetBookFormForCreateRequest\x12\x41\n\x11\x62ook_record_types\x18\x01 \x03(\x0b\x32&.dlkit.primordium.type.primitives.Type\"=\n\x0f\x43reateBookReply\x12*\n\x04\x62ook\x18\x01 \x01(\x0b\x32\x1c.dlkit.proto.commenting.Book\"H\n\x11\x43reateBookRequest\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"/\n\x13\x43\x61nUpdateBooksReply\x12\x18\n\x10\x63\x61n_update_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nUpdateBooksRequest\"P\n\x19GetBookFormForUpdateReply\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"R\n\x1bGetBookFormForUpdateRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x11\n\x0fUpdateBookReply\"H\n\x11UpdateBookRequest\x12\x33\n\tbook_form\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookForm\"/\n\x13\x43\x61nDeleteBooksReply\x12\x18\n\x10\x63\x61n_delete_books\x18\x01 \x01(\x08\"\x17\n\x15\x43\x61nDeleteBooksRequest\"\x11\n\x0f\x44\x65leteBookReply\"H\n\x11\x44\x65leteBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"<\n\x19\x43\x61nManageBookAliasesReply\x12\x1f\n\x17\x63\x61n_manage_book_aliases\x18\x01 \x01(\x08\"\x1d\n\x1b\x43\x61nManageBookAliasesRequest\"\x10\n\x0e\x41liasBookReply\"}\n\x10\x41liasBookRequest\x12\x34\n\x08\x61lias_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x33\n\x07\x62ook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"I\n\x17GetBookHierarchyIdReply\x12.\n\x02id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x1b\n\x19GetBookHierarchyIdRequest\"L\n\x15GetBookHierarchyReply\x12\x33\n\thierarchy\x18\x01 \x01(\x0b\x32 .dlkit.proto.hierarchy.Hierarchy\"\x19\n\x17GetBookHierarchyRequest\"@\n\x1b\x43\x61nAccessBookHierarchyReply\x12!\n\x19\x63\x61n_access_book_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nAccessBookHierarchyRequest\"\x17\n\x15GetRootBookIdsRequest\"\x15\n\x13GetRootBooksRequest\"/\n\x13HasParentBooksReply\x12\x18\n\x10has_parent_books\x18\x01 \x01(\x08\"L\n\x15HasParentBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"0\n\x13IsParentOfBookReply\x12\x19\n\x11is_parent_of_book\x18\x01 \x01(\x08\"}\n\x15IsParentOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"N\n\x17GetParentBookIdsRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"L\n\x15GetParentBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"4\n\x15IsAncestorOfBookReply\x12\x1b\n\x13is_ancestor_of_book\x18\x01 \x01(\x08\"\x7f\n\x17IsAncestorOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"-\n\x12HasChildBooksReply\x12\x17\n\x0fhas_child_books\x18\x01 \x01(\x08\"K\n\x14HasChildBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\".\n\x12IsChildOfBookReply\x12\x18\n\x10is_child_of_book\x18\x01 \x01(\x08\"|\n\x14IsChildOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"M\n\x16GetChildBookIdsRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"K\n\x14GetChildBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"8\n\x17IsDescendantOfBookReply\x12\x1d\n\x15is_descendant_of_book\x18\x01 \x01(\x08\"\x81\x01\n\x19IsDescendantOfBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12/\n\x03id_\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"@\n\x13GetBookNodeIdsReply\x12)\n\x04node\x18\x01 \x01(\x0b\x32\x1b.dlkit.proto.hierarchy.Node\"\x9a\x01\n\x15GetBookNodeIdsRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62ook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"H\n\x11GetBookNodesReply\x12\x33\n\tbook_node\x18\x01 \x01(\x0b\x32 .dlkit.proto.commenting.BookNode\"\x98\x01\n\x13GetBookNodesRequest\x12\x17\n\x0f\x61ncestor_levels\x18\x01 \x01(\x11\x12\x33\n\x07\x62ook_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x19\n\x11\x64\x65scendant_levels\x18\x03 \x01(\x11\x12\x18\n\x10include_siblings\x18\x04 \x01(\x08\"@\n\x1b\x43\x61nModifyBookHierarchyReply\x12!\n\x19\x63\x61n_modify_book_hierarchy\x18\x01 \x01(\x08\"\x1f\n\x1d\x43\x61nModifyBookHierarchyRequest\"\x12\n\x10\x41\x64\x64RootBookReply\"I\n\x12\x41\x64\x64RootBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x15\n\x13RemoveRootBookReply\"L\n\x15RemoveRootBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x13\n\x11\x41\x64\x64\x43hildBookReply\"\x80\x01\n\x13\x41\x64\x64\x43hildBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x16\n\x14RemoveChildBookReply\"\x83\x01\n\x16RemoveChildBookRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\x12\x34\n\x08\x63hild_id\x18\x02 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id\"\x17\n\x15RemoveChildBooksReply\"N\n\x17RemoveChildBooksRequest\x12\x33\n\x07\x62ook_id\x18\x01 \x01(\x0b\x32\".dlkit.primordium.id.primitives.Id2\xea\x1d\n\x14\x43ommentLookupSession\x12_\n\tGetBookId\x12(.dlkit.proto.commenting.GetBookIdRequest\x1a&.dlkit.proto.commenting.GetBookIdReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12w\n\x11\x43\x61nLookupComments\x12\x30.dlkit.proto.commenting.CanLookupCommentsRequest\x1a..dlkit.proto.commenting.CanLookupCommentsReply\"\x00\x12\x8f\x01\n\x19UseComparativeCommentView\x12\x38.dlkit.proto.commenting.UseComparativeCommentViewRequest\x1a\x36.dlkit.proto.commenting.UseComparativeCommentViewReply\"\x00\x12\x83\x01\n\x15UsePlenaryCommentView\x12\x34.dlkit.proto.commenting.UsePlenaryCommentViewRequest\x1a\x32.dlkit.proto.commenting.UsePlenaryCommentViewReply\"\x00\x12\x80\x01\n\x14UseFederatedBookView\x12\x33.dlkit.proto.commenting.UseFederatedBookViewRequest\x1a\x31.dlkit.proto.commenting.UseFederatedBookViewReply\"\x00\x12}\n\x13UseIsolatedBookView\x12\x32.dlkit.proto.commenting.UseIsolatedBookViewRequest\x1a\x30.dlkit.proto.commenting.UseIsolatedBookViewReply\"\x00\x12\x89\x01\n\x17UseEffectiveCommentView\x12\x36.dlkit.proto.commenting.UseEffectiveCommentViewRequest\x1a\x34.dlkit.proto.commenting.UseEffectiveCommentViewReply\"\x00\x12\x92\x01\n\x1aUseAnyEffectiveCommentView\x12\x39.dlkit.proto.commenting.UseAnyEffectiveCommentViewRequest\x1a\x37.dlkit.proto.commenting.UseAnyEffectiveCommentViewReply\"\x00\x12\x62\n\nGetComment\x12).dlkit.proto.commenting.GetCommentRequest\x1a\'.dlkit.proto.commenting.GetCommentReply\"\x00\x12h\n\x10GetCommentsByIds\x12/.dlkit.proto.commenting.GetCommentsByIdsRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12t\n\x16GetCommentsByGenusType\x12\x35.dlkit.proto.commenting.GetCommentsByGenusTypeRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x80\x01\n\x1cGetCommentsByParentGenusType\x12;.dlkit.proto.commenting.GetCommentsByParentGenusTypeRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12v\n\x17GetCommentsByRecordType\x12\x36.dlkit.proto.commenting.GetCommentsByRecordTypeRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12j\n\x11GetCommentsOnDate\x12\x30.dlkit.proto.commenting.GetCommentsOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x80\x01\n\x1cGetCommentsByGenusTypeOnDate\x12;.dlkit.proto.commenting.GetCommentsByGenusTypeOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12v\n\x17GetCommentsForCommentor\x12\x36.dlkit.proto.commenting.GetCommentsForCommentorRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x82\x01\n\x1dGetCommentsForCommentorOnDate\x12<.dlkit.proto.commenting.GetCommentsForCommentorOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x8c\x01\n\"GetCommentsByGenusTypeForCommentor\x12\x41.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x98\x01\n(GetCommentsByGenusTypeForCommentorOnDate\x12G.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12v\n\x17GetCommentsForReference\x12\x36.dlkit.proto.commenting.GetCommentsForReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x82\x01\n\x1dGetCommentsForReferenceOnDate\x12<.dlkit.proto.commenting.GetCommentsForReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x8c\x01\n\"GetCommentsByGenusTypeForReference\x12\x41.dlkit.proto.commenting.GetCommentsByGenusTypeForReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x98\x01\n(GetCommentsByGenusTypeForReferenceOnDate\x12G.dlkit.proto.commenting.GetCommentsByGenusTypeForReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x8e\x01\n#GetCommentsForCommentorAndReference\x12\x42.dlkit.proto.commenting.GetCommentsForCommentorAndReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\x9a\x01\n)GetCommentsForCommentorAndReferenceOnDate\x12H.dlkit.proto.commenting.GetCommentsForCommentorAndReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\xa4\x01\n.GetCommentsByGenusTypeForCommentorAndReference\x12M.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorAndReferenceRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12\xb0\x01\n4GetCommentsByGenusTypeForCommentorAndReferenceOnDate\x12S.dlkit.proto.commenting.GetCommentsByGenusTypeForCommentorAndReferenceOnDateRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12^\n\x0bGetComments\x12*.dlkit.proto.commenting.GetCommentsRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x32\xad\x06\n\x13\x43ommentQuerySession\x12_\n\tGetBookId\x12(.dlkit.proto.commenting.GetBookIdRequest\x1a&.dlkit.proto.commenting.GetBookIdReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12w\n\x11\x43\x61nSearchComments\x12\x30.dlkit.proto.commenting.CanSearchCommentsRequest\x1a..dlkit.proto.commenting.CanSearchCommentsReply\"\x00\x12\x80\x01\n\x14UseFederatedBookView\x12\x33.dlkit.proto.commenting.UseFederatedBookViewRequest\x1a\x31.dlkit.proto.commenting.UseFederatedBookViewReply\"\x00\x12}\n\x13UseIsolatedBookView\x12\x32.dlkit.proto.commenting.UseIsolatedBookViewRequest\x1a\x30.dlkit.proto.commenting.UseIsolatedBookViewReply\"\x00\x12q\n\x0fGetCommentQuery\x12..dlkit.proto.commenting.GetCommentQueryRequest\x1a,.dlkit.proto.commenting.GetCommentQueryReply\"\x00\x12l\n\x12GetCommentsByQuery\x12\x31.dlkit.proto.commenting.GetCommentsByQueryRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x32\xb5\x0c\n\x13\x43ommentAdminSession\x12_\n\tGetBookId\x12(.dlkit.proto.commenting.GetBookIdRequest\x1a&.dlkit.proto.commenting.GetBookIdReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12w\n\x11\x43\x61nCreateComments\x12\x30.dlkit.proto.commenting.CanCreateCommentsRequest\x1a..dlkit.proto.commenting.CanCreateCommentsReply\"\x00\x12\xa1\x01\n\x1f\x43\x61nCreateCommentWithRecordTypes\x12>.dlkit.proto.commenting.CanCreateCommentWithRecordTypesRequest\x1a<.dlkit.proto.commenting.CanCreateCommentWithRecordTypesReply\"\x00\x12\x89\x01\n\x17GetCommentFormForCreate\x12\x36.dlkit.proto.commenting.GetCommentFormForCreateRequest\x1a\x34.dlkit.proto.commenting.GetCommentFormForCreateReply\"\x00\x12k\n\rCreateComment\x12,.dlkit.proto.commenting.CreateCommentRequest\x1a*.dlkit.proto.commenting.CreateCommentReply\"\x00\x12w\n\x11\x43\x61nUpdateComments\x12\x30.dlkit.proto.commenting.CanUpdateCommentsRequest\x1a..dlkit.proto.commenting.CanUpdateCommentsReply\"\x00\x12\x89\x01\n\x17GetCommentFormForUpdate\x12\x36.dlkit.proto.commenting.GetCommentFormForUpdateRequest\x1a\x34.dlkit.proto.commenting.GetCommentFormForUpdateReply\"\x00\x12k\n\rUpdateComment\x12,.dlkit.proto.commenting.UpdateCommentRequest\x1a*.dlkit.proto.commenting.UpdateCommentReply\"\x00\x12w\n\x11\x43\x61nDeleteComments\x12\x30.dlkit.proto.commenting.CanDeleteCommentsRequest\x1a..dlkit.proto.commenting.CanDeleteCommentsReply\"\x00\x12k\n\rDeleteComment\x12,.dlkit.proto.commenting.DeleteCommentRequest\x1a*.dlkit.proto.commenting.DeleteCommentReply\"\x00\x12\x89\x01\n\x17\x43\x61nManageCommentAliases\x12\x36.dlkit.proto.commenting.CanManageCommentAliasesRequest\x1a\x34.dlkit.proto.commenting.CanManageCommentAliasesReply\"\x00\x12h\n\x0c\x41liasComment\x12+.dlkit.proto.commenting.AliasCommentRequest\x1a).dlkit.proto.commenting.AliasCommentReply\"\x00\x32\xd2\x08\n\x12\x43ommentBookSession\x12\x98\x01\n\x1c\x43\x61nLookupCommentBookMappings\x12;.dlkit.proto.commenting.CanLookupCommentBookMappingsRequest\x1a\x39.dlkit.proto.commenting.CanLookupCommentBookMappingsReply\"\x00\x12\x86\x01\n\x16UseComparativeBookView\x12\x35.dlkit.proto.commenting.UseComparativeBookViewRequest\x1a\x33.dlkit.proto.commenting.UseComparativeBookViewReply\"\x00\x12z\n\x12UsePlenaryBookView\x12\x31.dlkit.proto.commenting.UsePlenaryBookViewRequest\x1a/.dlkit.proto.commenting.UsePlenaryBookViewReply\"\x00\x12q\n\x13GetCommentIdsByBook\x12\x32.dlkit.proto.commenting.GetCommentIdsByBookRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12j\n\x11GetCommentsByBook\x12\x30.dlkit.proto.commenting.GetCommentsByBookRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12s\n\x14GetCommentIdsByBooks\x12\x33.dlkit.proto.commenting.GetCommentIdsByBooksRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12l\n\x12GetCommentsByBooks\x12\x31.dlkit.proto.commenting.GetCommentsByBooksRequest\x1a\x1f.dlkit.proto.commenting.Comment\"\x00\x30\x01\x12q\n\x13GetBookIdsByComment\x12\x32.dlkit.proto.commenting.GetBookIdsByCommentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12g\n\x11GetBooksByComment\x12\x30.dlkit.proto.commenting.GetBooksByCommentRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x32\xb3\x07\n\x1c\x43ommentBookAssignmentSession\x12w\n\x11\x43\x61nAssignComments\x12\x30.dlkit.proto.commenting.CanAssignCommentsRequest\x1a..dlkit.proto.commenting.CanAssignCommentsReply\"\x00\x12\x89\x01\n\x17\x43\x61nAssignCommentsToBook\x12\x36.dlkit.proto.commenting.CanAssignCommentsToBookRequest\x1a\x34.dlkit.proto.commenting.CanAssignCommentsToBookReply\"\x00\x12s\n\x14GetAssignableBookIds\x12\x33.dlkit.proto.commenting.GetAssignableBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x87\x01\n\x1eGetAssignableBookIdsForComment\x12=.dlkit.proto.commenting.GetAssignableBookIdsForCommentRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12}\n\x13\x41ssignCommentToBook\x12\x32.dlkit.proto.commenting.AssignCommentToBookRequest\x1a\x30.dlkit.proto.commenting.AssignCommentToBookReply\"\x00\x12\x89\x01\n\x17UnassignCommentFromBook\x12\x36.dlkit.proto.commenting.UnassignCommentFromBookRequest\x1a\x34.dlkit.proto.commenting.UnassignCommentFromBookReply\"\x00\x12\x83\x01\n\x15ReassignCommentToBook\x12\x34.dlkit.proto.commenting.ReassignCommentToBookRequest\x1a\x32.dlkit.proto.commenting.ReassignCommentToBookReply\"\x00\x32\xdb\x08\n\x11\x42ookLookupSession\x12n\n\x0e\x43\x61nLookupBooks\x12-.dlkit.proto.commenting.CanLookupBooksRequest\x1a+.dlkit.proto.commenting.CanLookupBooksReply\"\x00\x12\x86\x01\n\x16UseComparativeBookView\x12\x35.dlkit.proto.commenting.UseComparativeBookViewRequest\x1a\x33.dlkit.proto.commenting.UseComparativeBookViewReply\"\x00\x12z\n\x12UsePlenaryBookView\x12\x31.dlkit.proto.commenting.UsePlenaryBookViewRequest\x1a/.dlkit.proto.commenting.UsePlenaryBookViewReply\"\x00\x12Y\n\x07GetBook\x12&.dlkit.proto.commenting.GetBookRequest\x1a$.dlkit.proto.commenting.GetBookReply\"\x00\x12_\n\rGetBooksByIds\x12,.dlkit.proto.commenting.GetBooksByIdsRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12k\n\x13GetBooksByGenusType\x12\x32.dlkit.proto.commenting.GetBooksByGenusTypeRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12w\n\x19GetBooksByParentGenusType\x12\x38.dlkit.proto.commenting.GetBooksByParentGenusTypeRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12m\n\x14GetBooksByRecordType\x12\x33.dlkit.proto.commenting.GetBooksByRecordTypeRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12i\n\x12GetBooksByProvider\x12\x31.dlkit.proto.commenting.GetBooksByProviderRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12U\n\x08GetBooks\x12\'.dlkit.proto.commenting.GetBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x32\x93\n\n\x10\x42ookAdminSession\x12n\n\x0e\x43\x61nCreateBooks\x12-.dlkit.proto.commenting.CanCreateBooksRequest\x1a+.dlkit.proto.commenting.CanCreateBooksReply\"\x00\x12\x98\x01\n\x1c\x43\x61nCreateBookWithRecordTypes\x12;.dlkit.proto.commenting.CanCreateBookWithRecordTypesRequest\x1a\x39.dlkit.proto.commenting.CanCreateBookWithRecordTypesReply\"\x00\x12\x80\x01\n\x14GetBookFormForCreate\x12\x33.dlkit.proto.commenting.GetBookFormForCreateRequest\x1a\x31.dlkit.proto.commenting.GetBookFormForCreateReply\"\x00\x12\x62\n\nCreateBook\x12).dlkit.proto.commenting.CreateBookRequest\x1a\'.dlkit.proto.commenting.CreateBookReply\"\x00\x12n\n\x0e\x43\x61nUpdateBooks\x12-.dlkit.proto.commenting.CanUpdateBooksRequest\x1a+.dlkit.proto.commenting.CanUpdateBooksReply\"\x00\x12\x80\x01\n\x14GetBookFormForUpdate\x12\x33.dlkit.proto.commenting.GetBookFormForUpdateRequest\x1a\x31.dlkit.proto.commenting.GetBookFormForUpdateReply\"\x00\x12\x62\n\nUpdateBook\x12).dlkit.proto.commenting.UpdateBookRequest\x1a\'.dlkit.proto.commenting.UpdateBookReply\"\x00\x12n\n\x0e\x43\x61nDeleteBooks\x12-.dlkit.proto.commenting.CanDeleteBooksRequest\x1a+.dlkit.proto.commenting.CanDeleteBooksReply\"\x00\x12\x62\n\nDeleteBook\x12).dlkit.proto.commenting.DeleteBookRequest\x1a\'.dlkit.proto.commenting.DeleteBookReply\"\x00\x12\x80\x01\n\x14\x43\x61nManageBookAliases\x12\x33.dlkit.proto.commenting.CanManageBookAliasesRequest\x1a\x31.dlkit.proto.commenting.CanManageBookAliasesReply\"\x00\x12_\n\tAliasBook\x12(.dlkit.proto.commenting.AliasBookRequest\x1a&.dlkit.proto.commenting.AliasBookReply\"\x00\x32\x80\x11\n\x14\x42ookHierarchySession\x12z\n\x12GetBookHierarchyId\x12\x31.dlkit.proto.commenting.GetBookHierarchyIdRequest\x1a/.dlkit.proto.commenting.GetBookHierarchyIdReply\"\x00\x12t\n\x10GetBookHierarchy\x12/.dlkit.proto.commenting.GetBookHierarchyRequest\x1a-.dlkit.proto.commenting.GetBookHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nAccessBookHierarchy\x12\x35.dlkit.proto.commenting.CanAccessBookHierarchyRequest\x1a\x33.dlkit.proto.commenting.CanAccessBookHierarchyReply\"\x00\x12\x86\x01\n\x16UseComparativeBookView\x12\x35.dlkit.proto.commenting.UseComparativeBookViewRequest\x1a\x33.dlkit.proto.commenting.UseComparativeBookViewReply\"\x00\x12z\n\x12UsePlenaryBookView\x12\x31.dlkit.proto.commenting.UsePlenaryBookViewRequest\x1a/.dlkit.proto.commenting.UsePlenaryBookViewReply\"\x00\x12g\n\x0eGetRootBookIds\x12-.dlkit.proto.commenting.GetRootBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12]\n\x0cGetRootBooks\x12+.dlkit.proto.commenting.GetRootBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12n\n\x0eHasParentBooks\x12-.dlkit.proto.commenting.HasParentBooksRequest\x1a+.dlkit.proto.commenting.HasParentBooksReply\"\x00\x12n\n\x0eIsParentOfBook\x12-.dlkit.proto.commenting.IsParentOfBookRequest\x1a+.dlkit.proto.commenting.IsParentOfBookReply\"\x00\x12k\n\x10GetParentBookIds\x12/.dlkit.proto.commenting.GetParentBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12\x61\n\x0eGetParentBooks\x12-.dlkit.proto.commenting.GetParentBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12t\n\x10IsAncestorOfBook\x12/.dlkit.proto.commenting.IsAncestorOfBookRequest\x1a-.dlkit.proto.commenting.IsAncestorOfBookReply\"\x00\x12k\n\rHasChildBooks\x12,.dlkit.proto.commenting.HasChildBooksRequest\x1a*.dlkit.proto.commenting.HasChildBooksReply\"\x00\x12k\n\rIsChildOfBook\x12,.dlkit.proto.commenting.IsChildOfBookRequest\x1a*.dlkit.proto.commenting.IsChildOfBookReply\"\x00\x12i\n\x0fGetChildBookIds\x12..dlkit.proto.commenting.GetChildBookIdsRequest\x1a\".dlkit.primordium.id.primitives.Id\"\x00\x30\x01\x12_\n\rGetChildBooks\x12,.dlkit.proto.commenting.GetChildBooksRequest\x1a\x1c.dlkit.proto.commenting.Book\"\x00\x30\x01\x12z\n\x12IsDescendantOfBook\x12\x31.dlkit.proto.commenting.IsDescendantOfBookRequest\x1a/.dlkit.proto.commenting.IsDescendantOfBookReply\"\x00\x12n\n\x0eGetBookNodeIds\x12-.dlkit.proto.commenting.GetBookNodeIdsRequest\x1a+.dlkit.proto.commenting.GetBookNodeIdsReply\"\x00\x12h\n\x0cGetBookNodes\x12+.dlkit.proto.commenting.GetBookNodesRequest\x1a).dlkit.proto.commenting.GetBookNodesReply\"\x00\x32\xc1\x07\n\x1a\x42ookHierarchyDesignSession\x12z\n\x12GetBookHierarchyId\x12\x31.dlkit.proto.commenting.GetBookHierarchyIdRequest\x1a/.dlkit.proto.commenting.GetBookHierarchyIdReply\"\x00\x12t\n\x10GetBookHierarchy\x12/.dlkit.proto.commenting.GetBookHierarchyRequest\x1a-.dlkit.proto.commenting.GetBookHierarchyReply\"\x00\x12\x86\x01\n\x16\x43\x61nModifyBookHierarchy\x12\x35.dlkit.proto.commenting.CanModifyBookHierarchyRequest\x1a\x33.dlkit.proto.commenting.CanModifyBookHierarchyReply\"\x00\x12\x65\n\x0b\x41\x64\x64RootBook\x12*.dlkit.proto.commenting.AddRootBookRequest\x1a(.dlkit.proto.commenting.AddRootBookReply\"\x00\x12n\n\x0eRemoveRootBook\x12-.dlkit.proto.commenting.RemoveRootBookRequest\x1a+.dlkit.proto.commenting.RemoveRootBookReply\"\x00\x12h\n\x0c\x41\x64\x64\x43hildBook\x12+.dlkit.proto.commenting.AddChildBookRequest\x1a).dlkit.proto.commenting.AddChildBookReply\"\x00\x12q\n\x0fRemoveChildBook\x12..dlkit.proto.commenting.RemoveChildBookRequest\x1a,.dlkit.proto.commenting.RemoveChildBookReply\"\x00\x12t\n\x10RemoveChildBooks\x12/.dlkit.proto.commenting.RemoveChildBooksRequest\x1a-.dlkit.proto.commenting.RemoveChildBooksReply\"\x00\x62\x06proto3')
   ,
   dependencies=[dlkit_dot_primordium_dot_id_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_locale_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_primordium_dot_type_dot_primitives__pb2.DESCRIPTOR,dlkit_dot_proto_dot_hierarchy__pb2.DESCRIPTOR,dlkit_dot_proto_dot_osid__pb2.DESCRIPTOR,dlkit_dot_proto_dot_resource__pb2.DESCRIPTOR,google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,])
 
@@ -282,14 +282,14 @@ _BOOK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='displayName', full_name='dlkit.proto.commenting.Book.displayName', index=1,
+      name='display_name', full_name='dlkit.proto.commenting.Book.display_name', index=1,
       number=2, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='genusTypeId', full_name='dlkit.proto.commenting.Book.genusTypeId', index=2,
+      name='genus_type_id', full_name='dlkit.proto.commenting.Book.genus_type_id', index=2,
       number=3, type=11, cpp_type=10, label=1,
       has_default_value=False, default_value=None,
       message_type=None, enum_type=None, containing_type=None,
@@ -303,7 +303,7 @@ _BOOK = _descriptor.Descriptor(
       is_extension=False, extension_scope=None,
       options=None),
     _descriptor.FieldDescriptor(
-      name='recordTypeIds', full_name='dlkit.proto.commenting.Book.recordTypeIds', index=4,
+      name='record_type_ids', full_name='dlkit.proto.commenting.Book.record_type_ids', index=4,
       number=5, type=11, cpp_type=10, label=3,
       has_default_value=False, default_value=[],
       message_type=None, enum_type=None, containing_type=None,
@@ -322,7 +322,7 @@ _BOOK = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=705,
-  serialized_end=1023,
+  serialized_end=1028,
 )
 
 
@@ -345,8 +345,8 @@ _BOOKQUERY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1025,
-  serialized_end=1036,
+  serialized_start=1030,
+  serialized_end=1041,
 )
 
 
@@ -369,8 +369,8 @@ _BOOKQUERYINSPECTOR = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1038,
-  serialized_end=1058,
+  serialized_start=1043,
+  serialized_end=1063,
 )
 
 
@@ -393,8 +393,8 @@ _BOOKFORM = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1060,
-  serialized_end=1070,
+  serialized_start=1065,
+  serialized_end=1075,
 )
 
 
@@ -417,8 +417,8 @@ _BOOKSEARCHORDER = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1072,
-  serialized_end=1089,
+  serialized_start=1077,
+  serialized_end=1094,
 )
 
 
@@ -441,8 +441,8 @@ _BOOKSEARCH = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1091,
-  serialized_end=1103,
+  serialized_start=1096,
+  serialized_end=1108,
 )
 
 
@@ -465,8 +465,8 @@ _BOOKSEARCHRESULTS = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1105,
-  serialized_end=1124,
+  serialized_start=1110,
+  serialized_end=1129,
 )
 
 
@@ -496,8 +496,8 @@ _BOOKLIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1126,
-  serialized_end=1181,
+  serialized_start=1131,
+  serialized_end=1186,
 )
 
 
@@ -520,8 +520,8 @@ _BOOKNODE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1183,
-  serialized_end=1193,
+  serialized_start=1188,
+  serialized_end=1198,
 )
 
 
@@ -551,8 +551,8 @@ _BOOKNODELIST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1195,
-  serialized_end=1263,
+  serialized_start=1200,
+  serialized_end=1268,
 )
 
 
@@ -582,8 +582,8 @@ _GETBOOKIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1265,
-  serialized_end=1329,
+  serialized_start=1270,
+  serialized_end=1334,
 )
 
 
@@ -606,8 +606,8 @@ _GETBOOKIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1331,
-  serialized_end=1349,
+  serialized_start=1336,
+  serialized_end=1354,
 )
 
 
@@ -637,8 +637,8 @@ _GETBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1351,
-  serialized_end=1409,
+  serialized_start=1356,
+  serialized_end=1414,
 )
 
 
@@ -661,8 +661,8 @@ _GETBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1411,
-  serialized_end=1427,
+  serialized_start=1416,
+  serialized_end=1432,
 )
 
 
@@ -692,8 +692,8 @@ _CANLOOKUPCOMMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1429,
-  serialized_end=1482,
+  serialized_start=1434,
+  serialized_end=1487,
 )
 
 
@@ -716,8 +716,8 @@ _CANLOOKUPCOMMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1484,
-  serialized_end=1510,
+  serialized_start=1489,
+  serialized_end=1515,
 )
 
 
@@ -740,8 +740,8 @@ _USECOMPARATIVECOMMENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1512,
-  serialized_end=1544,
+  serialized_start=1517,
+  serialized_end=1549,
 )
 
 
@@ -764,8 +764,8 @@ _USECOMPARATIVECOMMENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1546,
-  serialized_end=1580,
+  serialized_start=1551,
+  serialized_end=1585,
 )
 
 
@@ -788,8 +788,8 @@ _USEPLENARYCOMMENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1582,
-  serialized_end=1610,
+  serialized_start=1587,
+  serialized_end=1615,
 )
 
 
@@ -812,8 +812,8 @@ _USEPLENARYCOMMENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1612,
-  serialized_end=1642,
+  serialized_start=1617,
+  serialized_end=1647,
 )
 
 
@@ -836,8 +836,8 @@ _USEFEDERATEDBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1644,
-  serialized_end=1671,
+  serialized_start=1649,
+  serialized_end=1676,
 )
 
 
@@ -860,8 +860,8 @@ _USEFEDERATEDBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1673,
-  serialized_end=1702,
+  serialized_start=1678,
+  serialized_end=1707,
 )
 
 
@@ -884,8 +884,8 @@ _USEISOLATEDBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1704,
-  serialized_end=1730,
+  serialized_start=1709,
+  serialized_end=1735,
 )
 
 
@@ -908,8 +908,8 @@ _USEISOLATEDBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1732,
-  serialized_end=1760,
+  serialized_start=1737,
+  serialized_end=1765,
 )
 
 
@@ -932,8 +932,8 @@ _USEEFFECTIVECOMMENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1762,
-  serialized_end=1792,
+  serialized_start=1767,
+  serialized_end=1797,
 )
 
 
@@ -956,8 +956,8 @@ _USEEFFECTIVECOMMENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1794,
-  serialized_end=1826,
+  serialized_start=1799,
+  serialized_end=1831,
 )
 
 
@@ -980,8 +980,8 @@ _USEANYEFFECTIVECOMMENTVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1828,
-  serialized_end=1861,
+  serialized_start=1833,
+  serialized_end=1866,
 )
 
 
@@ -1004,8 +1004,8 @@ _USEANYEFFECTIVECOMMENTVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1863,
-  serialized_end=1898,
+  serialized_start=1868,
+  serialized_end=1903,
 )
 
 
@@ -1035,8 +1035,8 @@ _GETCOMMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1900,
-  serialized_end=1967,
+  serialized_start=1905,
+  serialized_end=1972,
 )
 
 
@@ -1066,8 +1066,8 @@ _GETCOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=1969,
-  serialized_end=2044,
+  serialized_start=1974,
+  serialized_end=2049,
 )
 
 
@@ -1097,8 +1097,8 @@ _GETCOMMENTSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2046,
-  serialized_end=2128,
+  serialized_start=2051,
+  serialized_end=2133,
 )
 
 
@@ -1128,8 +1128,8 @@ _GETCOMMENTSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2130,
-  serialized_end=2229,
+  serialized_start=2135,
+  serialized_end=2234,
 )
 
 
@@ -1159,8 +1159,8 @@ _GETCOMMENTSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2231,
-  serialized_end=2336,
+  serialized_start=2236,
+  serialized_end=2341,
 )
 
 
@@ -1190,8 +1190,8 @@ _GETCOMMENTSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2338,
-  serialized_end=2439,
+  serialized_start=2343,
+  serialized_end=2444,
 )
 
 
@@ -1228,8 +1228,8 @@ _GETCOMMENTSONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2441,
-  serialized_end=2550,
+  serialized_start=2446,
+  serialized_end=2555,
 )
 
 
@@ -1273,8 +1273,8 @@ _GETCOMMENTSBYGENUSTYPEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2553,
-  serialized_end=2741,
+  serialized_start=2558,
+  serialized_end=2746,
 )
 
 
@@ -1304,8 +1304,8 @@ _GETCOMMENTSFORCOMMENTORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2743,
-  serialized_end=2832,
+  serialized_start=2748,
+  serialized_end=2837,
 )
 
 
@@ -1349,8 +1349,8 @@ _GETCOMMENTSFORCOMMENTORONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=2835,
-  serialized_end=3013,
+  serialized_start=2840,
+  serialized_end=3018,
 )
 
 
@@ -1387,8 +1387,8 @@ _GETCOMMENTSBYGENUSTYPEFORCOMMENTORREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3016,
-  serialized_end=3184,
+  serialized_start=3021,
+  serialized_end=3189,
 )
 
 
@@ -1439,8 +1439,8 @@ _GETCOMMENTSBYGENUSTYPEFORCOMMENTORONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3187,
-  serialized_end=3444,
+  serialized_start=3192,
+  serialized_end=3449,
 )
 
 
@@ -1470,8 +1470,8 @@ _GETCOMMENTSFORREFERENCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3446,
-  serialized_end=3536,
+  serialized_start=3451,
+  serialized_end=3541,
 )
 
 
@@ -1515,8 +1515,8 @@ _GETCOMMENTSFORREFERENCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3539,
-  serialized_end=3718,
+  serialized_start=3544,
+  serialized_end=3723,
 )
 
 
@@ -1553,8 +1553,8 @@ _GETCOMMENTSBYGENUSTYPEFORREFERENCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3721,
-  serialized_end=3890,
+  serialized_start=3726,
+  serialized_end=3895,
 )
 
 
@@ -1605,8 +1605,8 @@ _GETCOMMENTSBYGENUSTYPEFORREFERENCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=3893,
-  serialized_end=4151,
+  serialized_start=3898,
+  serialized_end=4156,
 )
 
 
@@ -1643,8 +1643,8 @@ _GETCOMMENTSFORCOMMENTORANDREFERENCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4154,
-  serialized_end=4313,
+  serialized_start=4159,
+  serialized_end=4318,
 )
 
 
@@ -1695,8 +1695,8 @@ _GETCOMMENTSFORCOMMENTORANDREFERENCEONDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4316,
-  serialized_end=4564,
+  serialized_start=4321,
+  serialized_end=4569,
 )
 
 
@@ -1740,8 +1740,8 @@ _GETCOMMENTSBYGENUSTYPEFORCOMMENTORANDREFERENCEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4567,
-  serialized_end=4805,
+  serialized_start=4572,
+  serialized_end=4810,
 )
 
 
@@ -1799,8 +1799,8 @@ _GETCOMMENTSBYGENUSTYPEFORCOMMENTORANDREFERENCEONDATEREQUEST = _descriptor.Descr
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=4808,
-  serialized_end=5135,
+  serialized_start=4813,
+  serialized_end=5140,
 )
 
 
@@ -1823,8 +1823,8 @@ _GETCOMMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5137,
-  serialized_end=5157,
+  serialized_start=5142,
+  serialized_end=5162,
 )
 
 
@@ -1854,8 +1854,8 @@ _CANSEARCHCOMMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5159,
-  serialized_end=5212,
+  serialized_start=5164,
+  serialized_end=5217,
 )
 
 
@@ -1878,8 +1878,8 @@ _CANSEARCHCOMMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5214,
-  serialized_end=5240,
+  serialized_start=5219,
+  serialized_end=5245,
 )
 
 
@@ -1909,8 +1909,8 @@ _GETCOMMENTQUERYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5242,
-  serialized_end=5325,
+  serialized_start=5247,
+  serialized_end=5330,
 )
 
 
@@ -1933,8 +1933,8 @@ _GETCOMMENTQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5327,
-  serialized_end=5351,
+  serialized_start=5332,
+  serialized_end=5356,
 )
 
 
@@ -1964,8 +1964,8 @@ _GETCOMMENTSBYQUERYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5353,
-  serialized_end=5441,
+  serialized_start=5358,
+  serialized_end=5446,
 )
 
 
@@ -1995,8 +1995,8 @@ _CANCREATECOMMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5443,
-  serialized_end=5496,
+  serialized_start=5448,
+  serialized_end=5501,
 )
 
 
@@ -2019,8 +2019,8 @@ _CANCREATECOMMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5498,
-  serialized_end=5524,
+  serialized_start=5503,
+  serialized_end=5529,
 )
 
 
@@ -2050,8 +2050,8 @@ _CANCREATECOMMENTWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5526,
-  serialized_end=5610,
+  serialized_start=5531,
+  serialized_end=5615,
 )
 
 
@@ -2081,8 +2081,8 @@ _CANCREATECOMMENTWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5612,
-  serialized_end=5722,
+  serialized_start=5617,
+  serialized_end=5727,
 )
 
 
@@ -2112,8 +2112,8 @@ _GETCOMMENTFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5724,
-  serialized_end=5813,
+  serialized_start=5729,
+  serialized_end=5818,
 )
 
 
@@ -2150,8 +2150,8 @@ _GETCOMMENTFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5816,
-  serialized_end=5976,
+  serialized_start=5821,
+  serialized_end=5981,
 )
 
 
@@ -2181,8 +2181,8 @@ _CREATECOMMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=5978,
-  serialized_end=6048,
+  serialized_start=5983,
+  serialized_end=6053,
 )
 
 
@@ -2212,8 +2212,8 @@ _CREATECOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6050,
-  serialized_end=6131,
+  serialized_start=6055,
+  serialized_end=6136,
 )
 
 
@@ -2243,8 +2243,8 @@ _CANUPDATECOMMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6133,
-  serialized_end=6186,
+  serialized_start=6138,
+  serialized_end=6191,
 )
 
 
@@ -2267,8 +2267,8 @@ _CANUPDATECOMMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6188,
-  serialized_end=6214,
+  serialized_start=6193,
+  serialized_end=6219,
 )
 
 
@@ -2298,8 +2298,8 @@ _GETCOMMENTFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6216,
-  serialized_end=6305,
+  serialized_start=6221,
+  serialized_end=6310,
 )
 
 
@@ -2329,8 +2329,8 @@ _GETCOMMENTFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6307,
-  serialized_end=6395,
+  serialized_start=6312,
+  serialized_end=6400,
 )
 
 
@@ -2353,8 +2353,8 @@ _UPDATECOMMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6397,
-  serialized_end=6417,
+  serialized_start=6402,
+  serialized_end=6422,
 )
 
 
@@ -2384,8 +2384,8 @@ _UPDATECOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6419,
-  serialized_end=6500,
+  serialized_start=6424,
+  serialized_end=6505,
 )
 
 
@@ -2415,8 +2415,8 @@ _CANDELETECOMMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6502,
-  serialized_end=6555,
+  serialized_start=6507,
+  serialized_end=6560,
 )
 
 
@@ -2439,8 +2439,8 @@ _CANDELETECOMMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6557,
-  serialized_end=6583,
+  serialized_start=6562,
+  serialized_end=6588,
 )
 
 
@@ -2463,8 +2463,8 @@ _DELETECOMMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6585,
-  serialized_end=6605,
+  serialized_start=6590,
+  serialized_end=6610,
 )
 
 
@@ -2494,8 +2494,8 @@ _DELETECOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6607,
-  serialized_end=6685,
+  serialized_start=6612,
+  serialized_end=6690,
 )
 
 
@@ -2525,8 +2525,8 @@ _CANMANAGECOMMENTALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6687,
-  serialized_end=6753,
+  serialized_start=6692,
+  serialized_end=6758,
 )
 
 
@@ -2549,8 +2549,8 @@ _CANMANAGECOMMENTALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6755,
-  serialized_end=6787,
+  serialized_start=6760,
+  serialized_end=6792,
 )
 
 
@@ -2573,8 +2573,8 @@ _ALIASCOMMENTREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6789,
-  serialized_end=6808,
+  serialized_start=6794,
+  serialized_end=6813,
 )
 
 
@@ -2611,8 +2611,8 @@ _ALIASCOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6811,
-  serialized_end=6942,
+  serialized_start=6816,
+  serialized_end=6947,
 )
 
 
@@ -2642,8 +2642,8 @@ _CANLOOKUPCOMMENTBOOKMAPPINGSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=6944,
-  serialized_end=7021,
+  serialized_start=6949,
+  serialized_end=7026,
 )
 
 
@@ -2666,8 +2666,8 @@ _CANLOOKUPCOMMENTBOOKMAPPINGSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7023,
-  serialized_end=7060,
+  serialized_start=7028,
+  serialized_end=7065,
 )
 
 
@@ -2690,8 +2690,8 @@ _USECOMPARATIVEBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7062,
-  serialized_end=7091,
+  serialized_start=7067,
+  serialized_end=7096,
 )
 
 
@@ -2714,8 +2714,8 @@ _USECOMPARATIVEBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7093,
-  serialized_end=7124,
+  serialized_start=7098,
+  serialized_end=7129,
 )
 
 
@@ -2738,8 +2738,8 @@ _USEPLENARYBOOKVIEWREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7126,
-  serialized_end=7151,
+  serialized_start=7131,
+  serialized_end=7156,
 )
 
 
@@ -2762,8 +2762,8 @@ _USEPLENARYBOOKVIEWREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7153,
-  serialized_end=7180,
+  serialized_start=7158,
+  serialized_end=7185,
 )
 
 
@@ -2793,8 +2793,8 @@ _GETCOMMENTIDSBYBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7182,
-  serialized_end=7263,
+  serialized_start=7187,
+  serialized_end=7268,
 )
 
 
@@ -2824,8 +2824,8 @@ _GETCOMMENTSBYBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7265,
-  serialized_end=7344,
+  serialized_start=7270,
+  serialized_end=7349,
 )
 
 
@@ -2855,8 +2855,8 @@ _GETCOMMENTIDSBYBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7346,
-  serialized_end=7429,
+  serialized_start=7351,
+  serialized_end=7434,
 )
 
 
@@ -2886,8 +2886,8 @@ _GETCOMMENTSBYBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7431,
-  serialized_end=7512,
+  serialized_start=7436,
+  serialized_end=7517,
 )
 
 
@@ -2917,8 +2917,8 @@ _GETBOOKIDSBYCOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7514,
-  serialized_end=7598,
+  serialized_start=7519,
+  serialized_end=7603,
 )
 
 
@@ -2948,8 +2948,8 @@ _GETBOOKSBYCOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7600,
-  serialized_end=7682,
+  serialized_start=7605,
+  serialized_end=7687,
 )
 
 
@@ -2979,8 +2979,8 @@ _CANASSIGNCOMMENTSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7684,
-  serialized_end=7737,
+  serialized_start=7689,
+  serialized_end=7742,
 )
 
 
@@ -3003,8 +3003,8 @@ _CANASSIGNCOMMENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7739,
-  serialized_end=7765,
+  serialized_start=7744,
+  serialized_end=7770,
 )
 
 
@@ -3034,8 +3034,8 @@ _CANASSIGNCOMMENTSTOBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7767,
-  serialized_end=7834,
+  serialized_start=7772,
+  serialized_end=7839,
 )
 
 
@@ -3065,8 +3065,8 @@ _CANASSIGNCOMMENTSTOBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7836,
-  serialized_end=7921,
+  serialized_start=7841,
+  serialized_end=7926,
 )
 
 
@@ -3096,8 +3096,8 @@ _GETASSIGNABLEBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=7923,
-  serialized_end=8005,
+  serialized_start=7928,
+  serialized_end=8010,
 )
 
 
@@ -3134,8 +3134,8 @@ _GETASSIGNABLEBOOKIDSFORCOMMENTREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8008,
-  serialized_end=8156,
+  serialized_start=8013,
+  serialized_end=8161,
 )
 
 
@@ -3158,8 +3158,8 @@ _ASSIGNCOMMENTTOBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8158,
-  serialized_end=8184,
+  serialized_start=8163,
+  serialized_end=8189,
 )
 
 
@@ -3196,8 +3196,8 @@ _ASSIGNCOMMENTTOBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8187,
-  serialized_end=8324,
+  serialized_start=8192,
+  serialized_end=8329,
 )
 
 
@@ -3220,8 +3220,8 @@ _UNASSIGNCOMMENTFROMBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8326,
-  serialized_end=8356,
+  serialized_start=8331,
+  serialized_end=8361,
 )
 
 
@@ -3258,8 +3258,8 @@ _UNASSIGNCOMMENTFROMBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8359,
-  serialized_end=8500,
+  serialized_start=8364,
+  serialized_end=8505,
 )
 
 
@@ -3282,8 +3282,8 @@ _REASSIGNCOMMENTTOBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8502,
-  serialized_end=8530,
+  serialized_start=8507,
+  serialized_end=8535,
 )
 
 
@@ -3327,8 +3327,8 @@ _REASSIGNCOMMENTTOBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8533,
-  serialized_end=8733,
+  serialized_start=8538,
+  serialized_end=8738,
 )
 
 
@@ -3358,8 +3358,8 @@ _CANLOOKUPBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8735,
-  serialized_end=8782,
+  serialized_start=8740,
+  serialized_end=8787,
 )
 
 
@@ -3382,8 +3382,8 @@ _CANLOOKUPBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8784,
-  serialized_end=8807,
+  serialized_start=8789,
+  serialized_end=8812,
 )
 
 
@@ -3413,8 +3413,8 @@ _GETBOOKSBYIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8809,
-  serialized_end=8885,
+  serialized_start=8814,
+  serialized_end=8890,
 )
 
 
@@ -3444,8 +3444,8 @@ _GETBOOKSBYGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8887,
-  serialized_end=8980,
+  serialized_start=8892,
+  serialized_end=8985,
 )
 
 
@@ -3475,8 +3475,8 @@ _GETBOOKSBYPARENTGENUSTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=8982,
-  serialized_end=9081,
+  serialized_start=8987,
+  serialized_end=9086,
 )
 
 
@@ -3506,8 +3506,8 @@ _GETBOOKSBYRECORDTYPEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9083,
-  serialized_end=9178,
+  serialized_start=9088,
+  serialized_end=9183,
 )
 
 
@@ -3537,8 +3537,8 @@ _GETBOOKSBYPROVIDERREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9180,
-  serialized_end=9264,
+  serialized_start=9185,
+  serialized_end=9269,
 )
 
 
@@ -3561,8 +3561,8 @@ _GETBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9266,
-  serialized_end=9283,
+  serialized_start=9271,
+  serialized_end=9288,
 )
 
 
@@ -3592,8 +3592,8 @@ _CANCREATEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9285,
-  serialized_end=9332,
+  serialized_start=9290,
+  serialized_end=9337,
 )
 
 
@@ -3616,8 +3616,8 @@ _CANCREATEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9334,
-  serialized_end=9357,
+  serialized_start=9339,
+  serialized_end=9362,
 )
 
 
@@ -3647,8 +3647,8 @@ _CANCREATEBOOKWITHRECORDTYPESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9359,
-  serialized_end=9437,
+  serialized_start=9364,
+  serialized_end=9442,
 )
 
 
@@ -3678,8 +3678,8 @@ _CANCREATEBOOKWITHRECORDTYPESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9439,
-  serialized_end=9543,
+  serialized_start=9444,
+  serialized_end=9548,
 )
 
 
@@ -3709,8 +3709,8 @@ _GETBOOKFORMFORCREATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9545,
-  serialized_end=9625,
+  serialized_start=9550,
+  serialized_end=9630,
 )
 
 
@@ -3740,8 +3740,8 @@ _GETBOOKFORMFORCREATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9627,
-  serialized_end=9723,
+  serialized_start=9632,
+  serialized_end=9728,
 )
 
 
@@ -3771,8 +3771,8 @@ _CREATEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9725,
-  serialized_end=9786,
+  serialized_start=9730,
+  serialized_end=9791,
 )
 
 
@@ -3802,8 +3802,8 @@ _CREATEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9788,
-  serialized_end=9860,
+  serialized_start=9793,
+  serialized_end=9865,
 )
 
 
@@ -3833,8 +3833,8 @@ _CANUPDATEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9862,
-  serialized_end=9909,
+  serialized_start=9867,
+  serialized_end=9914,
 )
 
 
@@ -3857,8 +3857,8 @@ _CANUPDATEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9911,
-  serialized_end=9934,
+  serialized_start=9916,
+  serialized_end=9939,
 )
 
 
@@ -3888,8 +3888,8 @@ _GETBOOKFORMFORUPDATEREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=9936,
-  serialized_end=10016,
+  serialized_start=9941,
+  serialized_end=10021,
 )
 
 
@@ -3919,8 +3919,8 @@ _GETBOOKFORMFORUPDATEREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10018,
-  serialized_end=10100,
+  serialized_start=10023,
+  serialized_end=10105,
 )
 
 
@@ -3943,8 +3943,8 @@ _UPDATEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10102,
-  serialized_end=10119,
+  serialized_start=10107,
+  serialized_end=10124,
 )
 
 
@@ -3974,8 +3974,8 @@ _UPDATEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10121,
-  serialized_end=10193,
+  serialized_start=10126,
+  serialized_end=10198,
 )
 
 
@@ -4005,8 +4005,8 @@ _CANDELETEBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10195,
-  serialized_end=10242,
+  serialized_start=10200,
+  serialized_end=10247,
 )
 
 
@@ -4029,8 +4029,8 @@ _CANDELETEBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10244,
-  serialized_end=10267,
+  serialized_start=10249,
+  serialized_end=10272,
 )
 
 
@@ -4053,8 +4053,8 @@ _DELETEBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10269,
-  serialized_end=10286,
+  serialized_start=10274,
+  serialized_end=10291,
 )
 
 
@@ -4084,8 +4084,8 @@ _DELETEBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10288,
-  serialized_end=10360,
+  serialized_start=10293,
+  serialized_end=10365,
 )
 
 
@@ -4115,8 +4115,8 @@ _CANMANAGEBOOKALIASESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10362,
-  serialized_end=10422,
+  serialized_start=10367,
+  serialized_end=10427,
 )
 
 
@@ -4139,8 +4139,8 @@ _CANMANAGEBOOKALIASESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10424,
-  serialized_end=10453,
+  serialized_start=10429,
+  serialized_end=10458,
 )
 
 
@@ -4163,8 +4163,8 @@ _ALIASBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10455,
-  serialized_end=10471,
+  serialized_start=10460,
+  serialized_end=10476,
 )
 
 
@@ -4201,8 +4201,8 @@ _ALIASBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10473,
-  serialized_end=10598,
+  serialized_start=10478,
+  serialized_end=10603,
 )
 
 
@@ -4232,8 +4232,8 @@ _GETBOOKHIERARCHYIDREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10600,
-  serialized_end=10673,
+  serialized_start=10605,
+  serialized_end=10678,
 )
 
 
@@ -4256,8 +4256,8 @@ _GETBOOKHIERARCHYIDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10675,
-  serialized_end=10702,
+  serialized_start=10680,
+  serialized_end=10707,
 )
 
 
@@ -4287,8 +4287,8 @@ _GETBOOKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10704,
-  serialized_end=10780,
+  serialized_start=10709,
+  serialized_end=10785,
 )
 
 
@@ -4311,8 +4311,8 @@ _GETBOOKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10782,
-  serialized_end=10807,
+  serialized_start=10787,
+  serialized_end=10812,
 )
 
 
@@ -4342,8 +4342,8 @@ _CANACCESSBOOKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10809,
-  serialized_end=10873,
+  serialized_start=10814,
+  serialized_end=10878,
 )
 
 
@@ -4366,8 +4366,8 @@ _CANACCESSBOOKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10875,
-  serialized_end=10906,
+  serialized_start=10880,
+  serialized_end=10911,
 )
 
 
@@ -4390,8 +4390,8 @@ _GETROOTBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10908,
-  serialized_end=10931,
+  serialized_start=10913,
+  serialized_end=10936,
 )
 
 
@@ -4414,8 +4414,8 @@ _GETROOTBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10933,
-  serialized_end=10954,
+  serialized_start=10938,
+  serialized_end=10959,
 )
 
 
@@ -4445,8 +4445,8 @@ _HASPARENTBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=10956,
-  serialized_end=11003,
+  serialized_start=10961,
+  serialized_end=11008,
 )
 
 
@@ -4476,8 +4476,8 @@ _HASPARENTBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11005,
-  serialized_end=11081,
+  serialized_start=11010,
+  serialized_end=11086,
 )
 
 
@@ -4507,8 +4507,8 @@ _ISPARENTOFBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11083,
-  serialized_end=11131,
+  serialized_start=11088,
+  serialized_end=11136,
 )
 
 
@@ -4545,8 +4545,8 @@ _ISPARENTOFBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11133,
-  serialized_end=11258,
+  serialized_start=11138,
+  serialized_end=11263,
 )
 
 
@@ -4576,8 +4576,8 @@ _GETPARENTBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11260,
-  serialized_end=11338,
+  serialized_start=11265,
+  serialized_end=11343,
 )
 
 
@@ -4607,8 +4607,8 @@ _GETPARENTBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11340,
-  serialized_end=11416,
+  serialized_start=11345,
+  serialized_end=11421,
 )
 
 
@@ -4638,8 +4638,8 @@ _ISANCESTOROFBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11418,
-  serialized_end=11470,
+  serialized_start=11423,
+  serialized_end=11475,
 )
 
 
@@ -4676,8 +4676,8 @@ _ISANCESTOROFBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11472,
-  serialized_end=11599,
+  serialized_start=11477,
+  serialized_end=11604,
 )
 
 
@@ -4707,8 +4707,8 @@ _HASCHILDBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11601,
-  serialized_end=11646,
+  serialized_start=11606,
+  serialized_end=11651,
 )
 
 
@@ -4738,8 +4738,8 @@ _HASCHILDBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11648,
-  serialized_end=11723,
+  serialized_start=11653,
+  serialized_end=11728,
 )
 
 
@@ -4769,8 +4769,8 @@ _ISCHILDOFBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11725,
-  serialized_end=11771,
+  serialized_start=11730,
+  serialized_end=11776,
 )
 
 
@@ -4807,8 +4807,8 @@ _ISCHILDOFBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11773,
-  serialized_end=11897,
+  serialized_start=11778,
+  serialized_end=11902,
 )
 
 
@@ -4838,8 +4838,8 @@ _GETCHILDBOOKIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11899,
-  serialized_end=11976,
+  serialized_start=11904,
+  serialized_end=11981,
 )
 
 
@@ -4869,8 +4869,8 @@ _GETCHILDBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=11978,
-  serialized_end=12053,
+  serialized_start=11983,
+  serialized_end=12058,
 )
 
 
@@ -4900,8 +4900,8 @@ _ISDESCENDANTOFBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12055,
-  serialized_end=12111,
+  serialized_start=12060,
+  serialized_end=12116,
 )
 
 
@@ -4938,8 +4938,8 @@ _ISDESCENDANTOFBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12114,
-  serialized_end=12243,
+  serialized_start=12119,
+  serialized_end=12248,
 )
 
 
@@ -4969,8 +4969,8 @@ _GETBOOKNODEIDSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12245,
-  serialized_end=12309,
+  serialized_start=12250,
+  serialized_end=12314,
 )
 
 
@@ -5021,8 +5021,8 @@ _GETBOOKNODEIDSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12312,
-  serialized_end=12466,
+  serialized_start=12317,
+  serialized_end=12471,
 )
 
 
@@ -5052,8 +5052,8 @@ _GETBOOKNODESREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12468,
-  serialized_end=12540,
+  serialized_start=12473,
+  serialized_end=12545,
 )
 
 
@@ -5104,8 +5104,8 @@ _GETBOOKNODESREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12543,
-  serialized_end=12695,
+  serialized_start=12548,
+  serialized_end=12700,
 )
 
 
@@ -5135,8 +5135,8 @@ _CANMODIFYBOOKHIERARCHYREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12697,
-  serialized_end=12761,
+  serialized_start=12702,
+  serialized_end=12766,
 )
 
 
@@ -5159,8 +5159,8 @@ _CANMODIFYBOOKHIERARCHYREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12763,
-  serialized_end=12794,
+  serialized_start=12768,
+  serialized_end=12799,
 )
 
 
@@ -5183,8 +5183,8 @@ _ADDROOTBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12796,
-  serialized_end=12814,
+  serialized_start=12801,
+  serialized_end=12819,
 )
 
 
@@ -5214,8 +5214,8 @@ _ADDROOTBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12816,
-  serialized_end=12889,
+  serialized_start=12821,
+  serialized_end=12894,
 )
 
 
@@ -5238,8 +5238,8 @@ _REMOVEROOTBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12891,
-  serialized_end=12912,
+  serialized_start=12896,
+  serialized_end=12917,
 )
 
 
@@ -5269,8 +5269,8 @@ _REMOVEROOTBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12914,
-  serialized_end=12990,
+  serialized_start=12919,
+  serialized_end=12995,
 )
 
 
@@ -5293,8 +5293,8 @@ _ADDCHILDBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=12992,
-  serialized_end=13011,
+  serialized_start=12997,
+  serialized_end=13016,
 )
 
 
@@ -5331,8 +5331,8 @@ _ADDCHILDBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13014,
-  serialized_end=13142,
+  serialized_start=13019,
+  serialized_end=13147,
 )
 
 
@@ -5355,8 +5355,8 @@ _REMOVECHILDBOOKREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13144,
-  serialized_end=13166,
+  serialized_start=13149,
+  serialized_end=13171,
 )
 
 
@@ -5393,8 +5393,8 @@ _REMOVECHILDBOOKREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13169,
-  serialized_end=13300,
+  serialized_start=13174,
+  serialized_end=13305,
 )
 
 
@@ -5417,8 +5417,8 @@ _REMOVECHILDBOOKSREPLY = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13302,
-  serialized_end=13325,
+  serialized_start=13307,
+  serialized_end=13330,
 )
 
 
@@ -5448,8 +5448,8 @@ _REMOVECHILDBOOKSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=13327,
-  serialized_end=13405,
+  serialized_start=13332,
+  serialized_end=13410,
 )
 
 _COMMENT.fields_by_name['book'].message_type = dlkit_dot_proto_dot_osid__pb2._OSIDCATALOG
@@ -5458,10 +5458,10 @@ _COMMENT.fields_by_name['rating'].message_type = dlkit_dot_primordium_dot_id_dot
 _COMMENT.fields_by_name['reference'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
 _COMMENTLIST.fields_by_name['comments'].message_type = _COMMENT
 _BOOK.fields_by_name['description'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_BOOK.fields_by_name['displayName'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
-_BOOK.fields_by_name['genusTypeId'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_BOOK.fields_by_name['display_name'].message_type = dlkit_dot_primordium_dot_locale_dot_primitives__pb2._DISPLAYTEXT
+_BOOK.fields_by_name['genus_type_id'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _BOOK.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
-_BOOK.fields_by_name['recordTypeIds'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
+_BOOK.fields_by_name['record_type_ids'].message_type = dlkit_dot_primordium_dot_type_dot_primitives__pb2._TYPE
 _BOOKLIST.fields_by_name['books'].message_type = _BOOK
 _BOOKNODELIST.fields_by_name['book_nodes'].message_type = _BOOKNODE
 _GETBOOKIDREPLY.fields_by_name['id'].message_type = dlkit_dot_primordium_dot_id_dot_primitives__pb2._ID
@@ -7019,8 +7019,8 @@ _COMMENTLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=0,
   options=None,
-  serialized_start=13408,
-  serialized_end=17226,
+  serialized_start=13413,
+  serialized_end=17231,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBookId',
@@ -7295,8 +7295,8 @@ _COMMENTQUERYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=1,
   options=None,
-  serialized_start=17229,
-  serialized_end=18042,
+  serialized_start=17234,
+  serialized_end=18047,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBookId',
@@ -7373,8 +7373,8 @@ _COMMENTADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=2,
   options=None,
-  serialized_start=18045,
-  serialized_end=19634,
+  serialized_start=18050,
+  serialized_end=19639,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBookId',
@@ -7505,8 +7505,8 @@ _COMMENTBOOKSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=3,
   options=None,
-  serialized_start=19637,
-  serialized_end=20743,
+  serialized_start=19642,
+  serialized_end=20748,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupCommentBookMappings',
@@ -7601,8 +7601,8 @@ _COMMENTBOOKASSIGNMENTSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=4,
   options=None,
-  serialized_start=20746,
-  serialized_end=21693,
+  serialized_start=20751,
+  serialized_end=21698,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanAssignComments',
@@ -7679,8 +7679,8 @@ _BOOKLOOKUPSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=5,
   options=None,
-  serialized_start=21696,
-  serialized_end=22811,
+  serialized_start=21701,
+  serialized_end=22816,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanLookupBooks',
@@ -7784,8 +7784,8 @@ _BOOKADMINSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=6,
   options=None,
-  serialized_start=22814,
-  serialized_end=24113,
+  serialized_start=22819,
+  serialized_end=24118,
   methods=[
   _descriptor.MethodDescriptor(
     name='CanCreateBooks',
@@ -7898,8 +7898,8 @@ _BOOKHIERARCHYSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=7,
   options=None,
-  serialized_start=24116,
-  serialized_end=26292,
+  serialized_start=24121,
+  serialized_end=26297,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBookHierarchyId',
@@ -8084,8 +8084,8 @@ _BOOKHIERARCHYDESIGNSESSION = _descriptor.ServiceDescriptor(
   file=DESCRIPTOR,
   index=8,
   options=None,
-  serialized_start=26295,
-  serialized_end=27256,
+  serialized_start=26300,
+  serialized_end=27261,
   methods=[
   _descriptor.MethodDescriptor(
     name='GetBookHierarchyId',
