@@ -413,9 +413,9 @@ class MultiLanguageUtils(object):
 class ObjectInitRecord(osid_records.OsidRecord):
     """base record class"""
 
-    def __init__(self, osid_object):
-        self.my_osid_object = osid_object
-        super(ObjectInitRecord, self).__init__()
+    def __init__(self, **kwargs):
+        # self.my_osid_object = osid_object  # no longer using
+        super(ObjectInitRecord, self).__init__(**kwargs)
 
 
 class ProvenanceRecord(ObjectInitRecord):

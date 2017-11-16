@@ -291,10 +291,10 @@ class SimpleChildSequencingFormRecord(osid_records.OsidRecord):
         'simple_child_sequencing'
     ]
 
-    def __init__(self, osid_object_form=None):
+    def __init__(self, osid_object_form=None, **kwargs):
         if osid_object_form is not None:
             self.my_osid_object_form = osid_object_form
-        super(SimpleChildSequencingFormRecord, self).__init__()
+        super(SimpleChildSequencingFormRecord, self).__init__(**kwargs)
 
 
 class SimpleChildSequencingRecord(ObjectInitRecord):
