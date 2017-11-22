@@ -507,14 +507,10 @@ class VaultQuery(abc_authorization_queries.VaultQuery, osid_queries.OsidCatalogQ
     the same method produce a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._runtime = runtime
-        record_type_data_sets = get_registry('VAULT_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidCatalogQuery.__init__(self, runtime)
+    _namespace = 'authorization.'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidCatalogQuery.__init__(self, **kwargs)
 
     def _get_descendant_catalog_ids(self, catalog_id):
         hm = self._get_provider_manager('HIERARCHY')

@@ -483,29 +483,13 @@ class ProvenanceRecord(ObjectInitRecord):
 class ProvenanceFormRecord(osid_records.OsidRecord):
     """form to create / update a record's provenance itemId"""
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(ProvenanceFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(ProvenanceFormRecord, self).__init__(**kwargs)
+        self._provenance_metadata = {}
 
-    def _init_map(self):
-        """stub"""
-        self.my_osid_object_form._my_map['provenanceId'] = \
-            self._provenance_metadata['default_object_values'][0]
-        if not self.my_osid_object_form.is_for_update():
-            if 'effectiveAgentId' in self.my_osid_object_form._kwargs:
-                self.my_osid_object_form._my_map['creatorId'] = \
-                    str(self.my_osid_object_form._kwargs['effectiveAgentId'])
-            else:
-                self.my_osid_object_form._my_map['creatorId'] = ''
-            self.my_osid_object_form._my_map['creationTime'] = \
-                datetime.datetime.now()
-
-    def _init_metadata(self):
-        """stub"""
+    def _init_metadata(self, **kwargs):
+        """initializes form metadata for this record"""
+        super(ProvenanceFormRecord, self)._init_metadata(**kwargs)
         self._provenance_metadata = {
             'element_id': Id(self.my_osid_object_form._authority,
                              self.my_osid_object_form._namespace,
@@ -523,20 +507,33 @@ class ProvenanceFormRecord(osid_records.OsidRecord):
             'string_set': []
         }
 
+    def _init_map(self, **kwargs):
+        """initializes form map for this record"""
+        super(ProvenanceFormRecord, self)._init_map(**kwargs)
+        self._my_map['provenanceId'] = \
+            self._provenance_metadata['default_object_values'][0]
+        if not self.is_for_update():
+            if 'effectiveAgentId' in kwargs:
+                self._my_map['creatorId'] = \
+                    str(kwargs['effectiveAgentId'])
+            else:
+                self._my_map['creatorId'] = ''
+            self._my_map['creationTime'] = datetime.datetime.now()
+
     def get_provenance_metadata(self):
         """stub"""
         return Metadata(**self._provenance_metadata)
 
     def set_provenance(self, provenance_id):
         """stub"""
-        if not self.my_osid_object_form._is_valid_string(
+        if not self._is_valid_string(
                 provenance_id, self.get_provenance_metadata()):
             raise InvalidArgument('provenanceId')
-        self.my_osid_object_form._my_map['provenanceId'] = provenance_id
+        self._my_map['provenanceId'] = provenance_id
 
     def clear_provenance(self):
         """stub"""
-        self.my_osid_object_form._my_map['provenanceId'] = \
+        self._my_map['provenanceId'] = \
             self._provenance_metadata['default_object_values'][0]
 
 

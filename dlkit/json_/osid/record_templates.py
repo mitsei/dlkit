@@ -13,18 +13,32 @@ class OsidRecord(abc_osid_records.OsidRecord):
 
     """
 
-    def __init__(self):
+    def __init__(self, block_super=False, **kwargs):
         # This is set in implemented Records.  Should super __init__
         # self._implemented_record_type_identifiers = None
-        pass
+        if not block_super:
+            super(OsidRecord, self).__init__(**kwargs)
 
-    def __iter__(self):
-        for attr in dir(self):
-            if not attr.startswith('__'):
-                yield attr
+    def _init_metadata(self, block_super=False, **kwargs):
+        if not block_super:
+            super(OsidRecord, self)._init_metadata(**kwargs)
 
-    def __getitem__(self, item):
-        return getattr(self, item)
+    def _init_map(self, block_super=False, **kwargs):
+        if not block_super:
+            super(OsidRecord, self)._init_map(**kwargs)
+
+    # def __init__(self):
+    #     # This is set in implemented Records.  Should super __init__
+    #     # self._implemented_record_type_identifiers = None
+    #     pass
+    #
+    # def __iter__(self):
+    #     for attr in dir(self):
+    #         if not attr.startswith('__'):
+    #             yield attr
+    #
+    # def __getitem__(self, item):
+    #     return getattr(self, item)
 
     def implements_record_type(self, record_type=None):
         """Tests if the given type is implemented by this record.

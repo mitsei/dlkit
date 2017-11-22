@@ -771,23 +771,17 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         for arg in assessment_part_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if assessment_part_record_types == []:
-            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
-            obj_form = objects.AssessmentPartForm(
-                bank_id=self._catalog_id,
-                assessment_id=assessment_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.AssessmentPartForm(
-                bank_id=self._catalog_id,
-                record_types=assessment_part_record_types,
-                assessment_id=assessment_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        obj_form._for_update = False
+
+        obj_form = objects.AssessmentPartForm(
+            record_types=assessment_part_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           assessment_id=assessment_id,
+                           effective_agent_id=self.get_effective_agent_id())
+
+        # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -2576,6 +2570,7 @@ class SequenceRuleAdminSession(abc_assessment_authoring_sessions.SequenceRuleAdm
         result = collection.find_one({'_id': ObjectId(sequence_rule_id.get_identifier())})
 
         obj_form = objects.SequenceRuleForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form

@@ -29,15 +29,11 @@ class QuestionQuery(abc_assessment_queries.QuestionQuery, osid_queries.OsidObjec
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'assessment.Question'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('QUESTION_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'assessment.Question'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Bank'
 
     @utilities.arguments_not_none
     def get_question_query_record(self, question_record_type):
@@ -66,15 +62,11 @@ class AnswerQuery(abc_assessment_queries.AnswerQuery, osid_queries.OsidObjectQue
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'assessment.Answer'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('ANSWER_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'assessment.Answer'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Bank'
 
     @utilities.arguments_not_none
     def get_answer_query_record(self, answer_record_type):
@@ -103,15 +95,11 @@ class ItemQuery(abc_assessment_queries.ItemQuery, osid_queries.OsidObjectQuery, 
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'assessment.Item'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('ITEM_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'assessment.Item'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Bank'
 
     @utilities.arguments_not_none
     def match_learning_objective_id(self, objective_id, match):
@@ -497,15 +485,11 @@ class AssessmentQuery(abc_assessment_queries.AssessmentQuery, osid_queries.OsidO
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'assessment.Assessment'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('ASSESSMENT_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'assessment.Assessment'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Bank'
 
     @utilities.arguments_not_none
     def match_level_id(self, grade_id, match):
@@ -957,15 +941,11 @@ class AssessmentOfferedQuery(abc_assessment_queries.AssessmentOfferedQuery, osid
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'assessment.AssessmentOffered'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('ASSESSMENT_OFFERED_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'assessment.AssessmentOffered'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Bank'
 
     @utilities.arguments_not_none
     def match_assessment_id(self, assessment_id, match):
@@ -1644,15 +1624,11 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'assessment.AssessmentTaken'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('ASSESSMENT_TAKEN_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'assessment.AssessmentTaken'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Bank'
 
     @utilities.arguments_not_none
     def match_assessment_offered_id(self, assessment_offered_id, match):
@@ -2317,14 +2293,10 @@ class AssessmentTakenQuery(abc_assessment_queries.AssessmentTakenQuery, osid_que
 
 class BankQuery(abc_assessment_queries.BankQuery, osid_queries.OsidCatalogQuery):
     """This is the query for searching banks Each method specifies an ``AND`` term while multiple invocations of the same method produce a nested ``OR``."""
-    def __init__(self, runtime):
-        self._runtime = runtime
-        record_type_data_sets = get_registry('BANK_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidCatalogQuery.__init__(self, runtime)
+    _namespace = 'assessment.'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidCatalogQuery.__init__(self, **kwargs)
 
     def _get_descendant_catalog_ids(self, catalog_id):
         hm = self._get_provider_manager('HIERARCHY')
