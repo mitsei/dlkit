@@ -32,24 +32,22 @@ class AssessmentBankWithObjectiveBankFormRecord(ObjectInitRecord):
         'objective-bank'
     ]
 
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(AssessmentBankWithObjectiveBankFormRecord, self).__init__(osid_object_form)
+    def __init__(self, **kwargs):
+        super(AssessmentBankWithObjectiveBankFormRecord, self).__init__(**kwargs)
+        self._objective_bank_id_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['objectiveBankId'] = \
+        super(AssessmentBankWithObjectiveBankFormRecord, self)._init_map(**kwargs)
+        self._my_map['objectiveBankId'] = \
             self._objective_bank_id_metadata['default_id_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(AssessmentBankWithObjectiveBankFormRecord, self)._init_metadata(**kwargs)
         self._objective_bank_id_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'objective_bank_id'),
             'element_label': 'Objective Bank Id',
             'instructions': 'accepts a valid OSID Id string',
@@ -68,11 +66,11 @@ class AssessmentBankWithObjectiveBankFormRecord(ObjectInitRecord):
 
     def set_objective_bank_id(self, objective_bank_id):
         """stub"""
-        self.my_osid_object_form._my_map['objectiveBankId'] = str(objective_bank_id)
+        self._my_map['objectiveBankId'] = str(objective_bank_id)
 
     def clear_objective_bank_id(self):
         """stub"""
         if (self.get_objective_bank_id_metadata().is_read_only() or
                 self.get_objective_bank_id_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['objectiveBankId'] = ''
+        self._my_map['objectiveBankId'] = ''

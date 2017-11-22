@@ -26,15 +26,11 @@ class ObjectiveQuery(abc_learning_queries.ObjectiveQuery, osid_queries.OsidObjec
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'learning.Objective'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('OBJECTIVE_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'learning.Objective'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'ObjectiveBank'
 
     @utilities.arguments_not_none
     def match_assessment_id(self, assessment_id, match):
@@ -786,15 +782,11 @@ class ActivityQuery(abc_learning_queries.ActivityQuery, osid_queries.OsidObjectQ
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'learning.Activity'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('ACTIVITY_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'learning.Activity'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'ObjectiveBank'
 
     @utilities.arguments_not_none
     def match_objective_id(self, objective_id, match):
@@ -1539,14 +1531,10 @@ class ObjectiveBankQuery(abc_learning_queries.ObjectiveBankQuery, osid_queries.O
     the same method produce a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._runtime = runtime
-        record_type_data_sets = get_registry('OBJECTIVEBANK_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidCatalogQuery.__init__(self, runtime)
+    _namespace = 'learning.'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidCatalogQuery.__init__(self, **kwargs)
 
     def _get_descendant_catalog_ids(self, catalog_id):
         hm = self._get_provider_manager('HIERARCHY')

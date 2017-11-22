@@ -22,17 +22,20 @@ from dlkit.abstract_osid.osid import errors
 
 class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearch, osid_searches.OsidSearch):
     """The search interface for governing assessment part searches."""
-    def __init__(self, runtime):
-        self._namespace = 'assessment.authoring.AssessmentPart'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'assessment_authoring.AssessmentPart'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'assessment.authoring.AssessmentPart'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_assessment_parts(self, bank_ids):
@@ -87,14 +90,15 @@ class AssessmentPartSearch(abc_assessment_authoring_searches.AssessmentPartSearc
 
 class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPartSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'assessment.authoring.AssessmentPart'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'assessment.authoring.AssessmentPart'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_assessment_parts(self):
         """Gets the ``AssessmentPartList`` resulting from a search.
@@ -151,17 +155,20 @@ class AssessmentPartSearchResults(abc_assessment_authoring_searches.AssessmentPa
 
 class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, osid_searches.OsidSearch):
     """The search interface for governing sequence rule searches."""
-    def __init__(self, runtime):
-        self._namespace = 'assessment.authoring.SequenceRule'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'assessment_authoring.SequenceRule'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'assessment.authoring.SequenceRule'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_sequence_rules(self, bank_ids):
@@ -216,14 +223,15 @@ class SequenceRuleSearch(abc_assessment_authoring_searches.SequenceRuleSearch, o
 
 class SequenceRuleSearchResults(abc_assessment_authoring_searches.SequenceRuleSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'assessment.authoring.SequenceRule'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'assessment.authoring.SequenceRule'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_sequence_rules(self):
         """Gets the ``SequenceRuleList`` resulting from a search.

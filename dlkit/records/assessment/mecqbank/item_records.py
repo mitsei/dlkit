@@ -85,23 +85,6 @@ class MecQBankItemFormRecord(ItemTextsAndFilesMixin,
         'mecqbank-published'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MecQBankItemFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """stub"""
-        super(MecQBankItemFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(MecQBankItemFormRecord, self)._init_metadata()
-
 
 class MecQBankItemQueryRecord(QueryInitRecord):
     """to make mecqbank items queryable"""
@@ -122,33 +105,16 @@ class MecQBankAssessmentFormRecord(PublishedFormRecord):
         'mecqbank-published'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MecQBankAssessmentFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """stub"""
-        super(MecQBankAssessmentFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(MecQBankAssessmentFormRecord, self)._init_metadata()
-
 
 class MecQBankAssessmentQueryRecord(QueryInitRecord):
     """for querying mecqbank assessments"""
     def match_mecqbank_item_id(self, item_id):
         """stub"""
-        self._my_osid_query._add_match('itemIds', str(item_id), True)
+        self._add_match('itemIds', str(item_id), True)
 
     def clear_mecqbank_item_id(self):
         """stub"""
-        self._my_osid_query._clear_terms('itemIds')
+        self._clear_terms('itemIds')
 
 
 class MecQBankAnswerRecord(TextsAnswerRecord, ItemFilesRecord, PDFPreviewRecord):
@@ -180,23 +146,6 @@ class MecQBankAnswerFormRecord(ItemTextsAndFilesMixin,
         'texts-answer',
         'mecqbank-pdf-preview'
     ]
-
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MecQBankAnswerFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """stub"""
-        super(MecQBankAnswerFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(MecQBankAnswerFormRecord, self)._init_metadata()
 
 
 class MecQBankQuestionRecord(PDFPreviewRecord,
@@ -242,20 +191,3 @@ class MecQBankQuestionFormRecord(PDFPreviewFormRecord,
         'mecqbank-pdf-preview',
         'simple-difficulty',
     ]
-
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MecQBankQuestionFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """stub"""
-        super(MecQBankQuestionFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(MecQBankQuestionFormRecord, self)._init_metadata()

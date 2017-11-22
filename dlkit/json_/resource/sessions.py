@@ -633,7 +633,7 @@ class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, Resourc
             result = collection.find(query_terms)[resource_search.start:resource_search.end]
         else:
             result = collection.find(query_terms)
-        return searches.ResourceSearchResults(result, dict(resource_query._query_terms), runtime=self._runtime)
+        return searches.ResourceSearchResults(results=result, query_terms=dict(resource_query._query_terms), runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_resource_query_from_inspector(self, resource_query_inspector):

@@ -41,24 +41,22 @@ class NofMAssessmentOfferedFormRecord(osid_records.OsidRecord):
         'n-of-m'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(NofMAssessmentOfferedFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(NofMAssessmentOfferedFormRecord, self).__init__(**kwargs)
+        self._n_of_m_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['nOfM'] = \
+        super(NofMAssessmentOfferedFormRecord, self)._init_map(**kwargs)
+        self._my_map['nOfM'] = \
             int(self._n_of_m_metadata['default_object_values'][0])
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(NofMAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
         self._n_of_m_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'nOfM'),
             'element_label': 'nOfM',
             'instructions': 'Student is expected to do N of M questions',
@@ -89,17 +87,17 @@ class NofMAssessmentOfferedFormRecord(osid_records.OsidRecord):
             raise InvalidArgument('value must be integer')
         if self.get_n_of_m_metadata().is_read_only():
             raise NoAccess()
-        if not self.my_osid_object_form._is_valid_integer(value,
-                                                          self.get_n_of_m_metadata()):
+        if not self._is_valid_integer(value,
+                                      self.get_n_of_m_metadata()):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['nOfM'] = value
+        self._my_map['nOfM'] = value
 
     def clear_n_of_m(self):
         """stub"""
         if (self.get_n_of_m_metadata().is_read_only() or
                 self.get_n_of_m_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['nOfM'] = \
+        self._my_map['nOfM'] = \
             int(self._n_of_m_metadata['default_object_values'][0])
 
     n_of_m = property(fset=set_n_of_m, fdel=clear_n_of_m)
@@ -113,15 +111,15 @@ class UnlockPreviousButtonAssessmentOfferedRecord(ObjectInitRecord):
 
     def has_unlock_previous(self):
         """stub"""
-        if 'unlockPrevious' not in self.my_osid_object._my_map or \
-                self.my_osid_object._my_map['unlockPrevious'] is None:
+        if 'unlockPrevious' not in self._my_map or \
+                self._my_map['unlockPrevious'] is None:
             return False
         return True
 
     def get_unlock_previous(self):
         """stub"""
         if self.has_unlock_previous():
-            return self.my_osid_object._my_map['unlockPrevious']
+            return self._my_map['unlockPrevious']
         raise IllegalState()
 
     unlock_previous = property(fget=get_unlock_previous)
@@ -134,26 +132,24 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
         'unlock-previous-button'
     ]
 
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(UnlockPreviousButtonAssessmentOfferedFormRecord, self).__init__()
-
-    def _init_map(self):
-        """stub"""
-        self.my_osid_object_form._my_map['unlockPrevious'] = \
-            str(self._unlock_previous_metadata['default_string_values'][0])
-
-    def _init_metadata(self):
-        """stub"""
+    def __init__(self, **kwargs):
+        super(UnlockPreviousButtonAssessmentOfferedFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
+        self._unlock_previous_metadata = None
+
+    def _init_map(self, **kwargs):
+        """stub"""
+        super(UnlockPreviousButtonAssessmentOfferedFormRecord, self)._init_map(**kwargs)
+        self._my_map['unlockPrevious'] = \
+            str(self._unlock_previous_metadata['default_string_values'][0])
+
+    def _init_metadata(self, **kwargs):
+        """stub"""
+        super(UnlockPreviousButtonAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
         self._unlock_previous_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'unlock_previous'),
             'element_label': 'unlock_previous',
             'instructions': 'Indicator to UI on how to treat the previous button',
@@ -178,12 +174,12 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
             raise NullArgument('unlock_previous cannot be None')
         if unlock_previous is not None and not utilities.is_string(unlock_previous):
             raise InvalidArgument('unlock_previous must be a string')
-        self.my_osid_object_form._my_map['unlockPrevious'] = unlock_previous
+        self._my_map['unlockPrevious'] = unlock_previous
 
     def clear_unlock_previous(self):
         """stub"""
         if (self.get_unlock_previous_metadata().is_read_only() or
                 self.get_unlock_previous_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['unlockPrevious'] = \
+        self._my_map['unlockPrevious'] = \
             str(self._unlock_previous_metadata['default_string_values'][0])

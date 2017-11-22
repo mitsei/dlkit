@@ -22,17 +22,20 @@ from dlkit.abstract_osid.osid import errors
 
 class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
     """``ItemSearch`` defines the interface for specifying item search options."""
-    def __init__(self, runtime):
-        self._namespace = 'assessment.Item'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'assessment.Item'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'assessment.Item'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_items(self, item_ids):
@@ -83,14 +86,15 @@ class ItemSearch(abc_assessment_searches.ItemSearch, osid_searches.OsidSearch):
 
 class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'assessment.Item'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'assessment.Item'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_items(self):
         """Gets the item list resulting from the search.
@@ -143,17 +147,20 @@ class ItemSearchResults(abc_assessment_searches.ItemSearchResults, osid_searches
 
 class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.OsidSearch):
     """``AssessmentSearch`` defines the interface for specifying assessment search options."""
-    def __init__(self, runtime):
-        self._namespace = 'assessment.Assessment'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'assessment.Assessment'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'assessment.Assessment'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_assessments(self, assessment_ids):
@@ -206,14 +213,15 @@ class AssessmentSearch(abc_assessment_searches.AssessmentSearch, osid_searches.O
 
 class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'assessment.Assessment'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'assessment.Assessment'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_assessments(self):
         """Gets the assessment list resulting from the search.
@@ -268,17 +276,20 @@ class AssessmentSearchResults(abc_assessment_searches.AssessmentSearchResults, o
 
 class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, osid_searches.OsidSearch):
     """``AssessmentOfferedSearch`` defines the interface for specifying assessment search options."""
-    def __init__(self, runtime):
-        self._namespace = 'assessment.AssessmentOffered'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'assessment.AssessmentOffered'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'assessment.AssessmentOffered'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_assessments_offered(self, assessment_offrered_ids):
@@ -333,14 +344,15 @@ class AssessmentOfferedSearch(abc_assessment_searches.AssessmentOfferedSearch, o
 
 class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'assessment.AssessmentOffered'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'assessment.AssessmentOffered'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_assessments_offered(self):
         """Gets the assessment offered list resulting from the search.
@@ -397,17 +409,20 @@ class AssessmentOfferedSearchResults(abc_assessment_searches.AssessmentOfferedSe
 
 class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_searches.OsidSearch):
     """``AssessmentTakenSearch`` defines the interface for specifying assessment search options."""
-    def __init__(self, runtime):
-        self._namespace = 'assessment.AssessmentTaken'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'assessment.AssessmentTaken'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'assessment.AssessmentTaken'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_assessments_taken(self, assessment_taken_ids):
@@ -462,14 +477,15 @@ class AssessmentTakenSearch(abc_assessment_searches.AssessmentTakenSearch, osid_
 
 class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'assessment.AssessmentTaken'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'assessment.AssessmentTaken'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_assessments_taken(self):
         """Gets the assessment taken list resulting from the search.
@@ -526,17 +542,20 @@ class AssessmentTakenSearchResults(abc_assessment_searches.AssessmentTakenSearch
 
 class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
     """The interface for governing bank searches."""
-    def __init__(self, runtime):
-        self._namespace = 'assessment.Bank'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'assessment.Bank'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'assessment.Bank'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_banks(self, bank_ids):
@@ -587,14 +606,15 @@ class BankSearch(abc_assessment_searches.BankSearch, osid_searches.OsidSearch):
 
 class BankSearchResults(abc_assessment_searches.BankSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'assessment.Bank'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'assessment.Bank'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_banks(self):
         """Gets the bank list resulting from a search.

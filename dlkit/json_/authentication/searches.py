@@ -31,17 +31,20 @@ class AgentSearch(abc_authentication_searches.AgentSearch, osid_searches.OsidSea
     results.getAgents();
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'authentication.Agent'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'authentication.Agent'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'authentication.Agent'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_agents(self, agent_ids):
@@ -102,14 +105,15 @@ class AgentSearchResults(abc_authentication_searches.AgentSearchResults, osid_se
     results.getAgents();
 
     """
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'authentication.Agent'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'authentication.Agent'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_agents(self):
         """Gets the agent list resulting from the search.

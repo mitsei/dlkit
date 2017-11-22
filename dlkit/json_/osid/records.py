@@ -23,6 +23,27 @@ class OsidRecord(abc_osid_records.OsidRecord):
     interface specification is identified with a ``Type``.
 
     """
+    def __init__(self, block_super=False, **kwargs):
+        # This is set in implemented Records.  Should super __init__
+        # self._implemented_record_type_identifiers = None
+        if not block_super:
+            super(OsidRecord, self).__init__(**kwargs)
+
+    def _init_metadata(self, block_super=False, **kwargs):
+        if not block_super:
+            super(OsidRecord, self)._init_metadata(**kwargs)
+
+    def _init_map(self, block_super=False, **kwargs):
+        if not block_super:
+            super(OsidRecord, self)._init_map(**kwargs)
+
+    # def __iter__(self):
+    #     for attr in dir(self):
+    #         if not attr.startswith('__'):
+    #             yield attr
+    #
+    # def __getitem__(self, item):
+    #     return getattr(self, item)
 
     @utilities.arguments_not_none
     def implements_record_type(self, record_type):

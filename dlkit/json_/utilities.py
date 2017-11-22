@@ -817,7 +817,40 @@ def get_registry(entry, runtime):
     except (ImportError, AttributeError, KeyError, NotFound):
         return {}
 
+def get_record(data_sets, record_type, data_key):
+    """Returns a record class or None"""
+    try:
+        record_type_data = data_sets[record_type.get_identifier()]
+    except KeyError:
+        return None
+    module = import_module(record_type_data['module_path'])
+    return getattr(module, record_type_data[data_key], None)
 
+def get_records(object_name, record_types, data_key, runtime):
+    """Returns a tuple of record classes, in reverse order to force MRO"""
+    records = []
+    data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
+    for record_type in reversed(record_types):
+        record = get_record(data_sets, record_type, data_key)
+        if record is not None:
+            records.append(record)
+    return tuple(records)
+
+# def get_all_query_records(object_name, runtime):
+#     """Returns a tuple of all query record classes
+#
+#     Perhaps this should be done only once per object_name at runtime
+#     since the list of records will not change.
+#
+#     """
+#     records = []
+#     data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
+#     for data_set in data_sets:
+#         record_type_data = data_sets[record_type.get_identifier()]
+#         module = import_module(record_type_data['module_path'])
+#         record.append(getattr(module, record_type_data['query_record_class_name']))
+#     return records
+    
 def is_authenticated_with_proxy(proxy):
     """Given a Proxy, checks whether a user is authenticated"""
     if proxy is None:
@@ -826,7 +859,6 @@ def is_authenticated_with_proxy(proxy):
         return proxy.get_authentication().is_valid()
     else:
         return False
-
 
 def get_authenticated_agent_id_with_proxy(proxy):
     """Given a Proxy, returns the Id of the authenticated Agent"""
@@ -910,6 +942,14 @@ def camel_to_under(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
 
+def get_object_records(object_name, record_type_ids):
+    records = []
+    record_type_data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
+    for record_type_id in record_type_ids:
+        record_type_data = record_type_data_sets[Id(record_type_idstr).get_identifier()]
+        module = import_module(record_type_data['module_path'])
+        record = getattr(module, record_type_data['object_record_class_name'], None)
+    return tuple(records)
 
 def convert_catalog_id_to_object_id_string(catalog_id):
     """When doing hierarchies, need to convert a catalogId into an

@@ -77,7 +77,7 @@ class edXItemRecord(ItemTextsRecord,
         """stub"""
         if self.has_raw_edxml():
             has_python = False
-            my_files = self.my_osid_object.object_map['fileIds']
+            my_files = self.object_map['fileIds']
             raw_text = self.get_text('edxml').text
             soup = BeautifulSoup(raw_text, 'xml')
             # replace all file listings with an appropriate path...
@@ -121,7 +121,7 @@ class edXItemRecord(ItemTextsRecord,
                 return self.get_text('edxml').text
         else:
             # have to construct the edxml from various components
-            obj_map = self.my_osid_object.object_map
+            obj_map = self.object_map
             question = obj_map['question']
             answers = obj_map['answers']
             if 'edx-multi-choice-problem-type' in obj_map['genusTypeId']:
@@ -182,8 +182,8 @@ class edXItemRecord(ItemTextsRecord,
             'img': 'src'
         }
         # replace all file listings with an appropriate path...
-        if len(self.my_osid_object.object_map['fileIds']) > 0:
-            file_map = self.my_osid_object.get_files()
+        if len(self.object_map['fileIds']) > 0:
+            file_map = self.get_files()
             for file_label, url in file_map.items():
                 local_regex = re.compile(file_label + r'\.')
                 for key, attr in attrs.items():
@@ -206,22 +206,22 @@ class edXItemRecord(ItemTextsRecord,
         edxml_soup = BeautifulSoup(edxml, 'xml')
 
         expected_name = self.get_unique_name(tarball,
-                                             self.my_osid_object.url,
+                                             self.url,
                                              'problem',
                                              root_path)
         my_xml_path = '{0}problem/{1}.xml'.format(root_path,
                                                   expected_name)
 
-        # my_soup.problem['display_name'] = self.my_osid_object.display_name.text
-        # my_soup.problem['url_name'] = self.my_osid_object.url
+        # my_soup.problem['display_name'] = self.display_name.text
+        # my_soup.problem['url_name'] = self.url
         #
         # for attr in ['rerandomize', 'showanswer', 'weight', 'attempts']:
         #     if attr == 'rerandomize':
-        #         my_soup.problem['rerandomize'] = self.my_osid_object.get_question().rerandomize
+        #         my_soup.problem['rerandomize'] = self.get_question().rerandomize
         #     elif attr == 'attempts':
-        #         my_soup.problem['max_attempts'] = self.my_osid_object.attempts
+        #         my_soup.problem['max_attempts'] = self.attempts
         #     else:
-        #         my_soup.problem[attr] = getattr(self.my_osid_object, attr)
+        #         my_soup.problem[attr] = getattr(self, attr)
 
         attrs = {
             'draggable': 'icon',
@@ -232,8 +232,8 @@ class edXItemRecord(ItemTextsRecord,
             'script': 'src'
         }
         # replace all file listings with an appropriate path...
-        if len(self.my_osid_object.object_map['fileIds']) > 0:
-            file_map = self.my_osid_object.get_files()
+        if len(self.object_map['fileIds']) > 0:
+            file_map = self.get_files()
             for file_label, url in file_map.items():
                 local_regex = re.compile(file_label + r'\.')
                 for key, attr in attrs.items():
@@ -249,14 +249,14 @@ class edXItemRecord(ItemTextsRecord,
         return my_xml_path
 
     def export_standalone_olx(self):
-        filename = '{0}_{1}'.format(self.my_osid_object.display_name.text,
+        filename = '{0}_{1}'.format(self.display_name.text,
                                     str(int(time.time())))
         filename = clean_str(filename) + '.tar.gz'
         root_path = ''
 
         olx = StringIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
-        self.my_osid_object.export_olx(tarball, root_path)
+        self.export_olx(tarball, root_path)
 
         return filename, olx
 
@@ -393,36 +393,6 @@ class edXItemFormRecord(ItemTextsFormRecord,
         'provenance-item'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(edXItemFormRecord, self).__init__(osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """Have to call these all separately because they are "end" classes,
-        with no super() in them. Non-cooperative."""
-        ItemTextsFormRecord._init_map(self)
-        ItemFilesFormRecord._init_map(self)
-        edXBaseFormRecord._init_map(self)
-        IRTItemFormRecord._init_map(self)
-        TimeValueFormRecord._init_map(self)
-        ProvenanceFormRecord._init_map(self)
-        super(edXItemFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """Have to call these all separately because they are "end" classes,
-        with no super() in them. Non-cooperative."""
-        ItemTextsFormRecord._init_metadata(self)
-        ItemFilesFormRecord._init_metadata(self)
-        edXBaseFormRecord._init_metadata(self)
-        IRTItemFormRecord._init_metadata(self)
-        TimeValueFormRecord._init_metadata(self)
-        ProvenanceFormRecord._init_metadata(self)
-        super(edXItemFormRecord, self)._init_metadata()
-
 
 class edXItemQueryRecord(edXQueryMethods, QueryInitRecord):
     """make edX items queryable"""
@@ -432,7 +402,7 @@ class edXItemQueryRecord(edXQueryMethods, QueryInitRecord):
         else:
             inin = '$nin'
 
-        rm = self._my_osid_query._get_provider_manager('REPOSITORY')
+        rm = self._get_provider_manager('REPOSITORY')
         child_ids = self._get_descendant_ids(composition_id, repository_id, rm)
 
         # Now get all the assetIds that enclose Items,
@@ -450,7 +420,7 @@ class edXItemQueryRecord(edXQueryMethods, QueryInitRecord):
                        'assessment.Assessment' in asset._my_map['enclosedObjectId'])]
         assessments = list(set(assessments))
 
-        am = self._my_osid_query._get_provider_manager('ASSESSMENT')
+        am = self._get_provider_manager('ASSESSMENT')
         abas = am.get_assessment_basic_authoring_session()
         items = []
         for assessment in assessments:
@@ -458,7 +428,7 @@ class edXItemQueryRecord(edXQueryMethods, QueryInitRecord):
 
         items = [ObjectId(item.ident.identifier) for item in items]
         items = list(set(items))
-        self._my_osid_query._query_terms['_id'] = {inin: items}
+        self._query_terms['_id'] = {inin: items}
 
     def clear_match_composition_descendants(self):
-        self._my_osid_query._clear_terms('_id')
+        self._clear_terms('_id')

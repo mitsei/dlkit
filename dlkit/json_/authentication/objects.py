@@ -104,7 +104,7 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
     _namespace = 'authentication.Agent'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='AGENT', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_agent_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():

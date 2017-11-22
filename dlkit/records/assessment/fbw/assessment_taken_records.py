@@ -27,7 +27,7 @@ class AdvancedQueryAssessmentTakenQueryRecord(QueryInitRecord):
         else:
             inin = '$lte'
 
-        self._my_osid_query._query_terms['actualStartTime'] = {inin: start_time}
+        self._query_terms['actualStartTime'] = {inin: start_time}
 
     def clear_match_start_time(self):
-        self._my_osid_query._clear_terms('actualStartTime')
+        self._clear_terms('actualStartTime')

@@ -34,18 +34,18 @@ class ProvenanceItemRecord(ProvenanceRecord):
 
     def has_provenance(self):
         """to handle deprecated mecqbank data"""
-        if 'provenanceId' in self.my_osid_object._my_map:
-            return bool(self.my_osid_object._my_map['provenanceId'] != '')
+        if 'provenanceId' in self._my_map:
+            return bool(self._my_map['provenanceId'] != '')
         else:
-            return bool(self.my_osid_object._my_map['provenanceItemId'] != '')
+            return bool(self._my_map['provenanceItemId'] != '')
 
     def get_provenance_id(self):
         """to handle deprecated mecqbank data"""
         if self.has_provenance():
-            if 'provenanceId' in self.my_osid_object._my_map:
-                return self.my_osid_object._my_map['provenanceId']
+            if 'provenanceId' in self._my_map:
+                return self._my_map['provenanceId']
             else:
-                return self.my_osid_object._my_map['provenanceItemId']
+                return self._my_map['provenanceItemId']
         raise IllegalState()
 
     def get_provenance_parent(self):
@@ -53,23 +53,23 @@ class ProvenanceItemRecord(ProvenanceRecord):
         if self.has_provenance():
             collection = JSONClientValidated('assessment',
                                              collection='Item',
-                                             runtime=self.my_osid_object._runtime)
+                                             runtime=self._runtime)
             result = collection.find_one(
                 {'_id': ObjectId(Id(self.get_provenance_id()).get_identifier())})
             return Item(osid_object_map=result,
-                        runtime=self.my_osid_object._runtime,
-                        proxy=self.my_osid_object._proxy)
+                        runtime=self._runtime,
+                        proxy=self._proxy)
         raise IllegalState("Item has no provenance parent.")
 
     def has_provenance_children(self):
         """stub"""
         collection = JSONClientValidated('assessment',
                                          collection='Item',
-                                         runtime=self.my_osid_object._runtime)
+                                         runtime=self._runtime)
         if (collection.find(
-                {'provenanceId': self.my_osid_object.object_map['id']}).count() > 0 or
+                {'provenanceId': self.object_map['id']}).count() > 0 or
             collection.find(  # for backwards compatibility
-                    {'provenanceItemId': self.my_osid_object.object_map['id']}).count() > 0):
+                    {'provenanceItemId': self.object_map['id']}).count() > 0):
             return True
         else:
             return False
@@ -79,19 +79,19 @@ class ProvenanceItemRecord(ProvenanceRecord):
         if self.has_provenance_children():
             collection = JSONClientValidated('assessment',
                                              collection='Item',
-                                             runtime=self.my_osid_object._runtime)
+                                             runtime=self._runtime)
             try:
                 result = collection.find(
-                    {'provenanceId': self.my_osid_object.object_map['id']})
+                    {'provenanceId': self.object_map['id']})
                 if result.count() == 0:
                     raise KeyError
             except KeyError:
                 # For deprecated mecqbank data
                 result = collection.find(
-                    {'provenanceItemId': self.my_osid_object.object_map['id']})
+                    {'provenanceItemId': self.object_map['id']})
             return ItemList(result,
-                            runtime=self.my_osid_object._runtime,
-                            proxy=self.my_osid_object._proxy)
+                            runtime=self._runtime,
+                            proxy=self._proxy)
         raise IllegalState('No provenance children.')
 
     provenance_children = property(fget=get_provenance_children)
@@ -101,10 +101,10 @@ class ProvenanceItemRecord(ProvenanceRecord):
 class ItemWithWrongAnswerLOsRecord(ObjectInitRecord):
     def get_answer_for_response(self, response):
         response_set = set([str(c) for c in response.get_choice_ids()])
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if response_set == set([str(c) for c in answer.get_choice_ids()]):
                 return answer
-        for answer in self.my_osid_object.get_wrong_answers():
+        for answer in self.get_wrong_answers():
             if response_set == set([str(c) for c in answer.get_choice_ids()]):
                 return answer
         raise NotFound('no matching answer found for response')
@@ -123,7 +123,7 @@ class ItemWithWrongAnswerLOsRecord(ObjectInitRecord):
 class ItemWithSolutionRecord(ObjectInitRecord):
     def has_solution(self):
         """stub"""
-        if self.my_osid_object._my_map['solution'] is not None:
+        if self._my_map['solution'] is not None:
             return True
         return False
 
@@ -131,32 +131,30 @@ class ItemWithSolutionRecord(ObjectInitRecord):
         """stub"""
         if not self.has_solution():
             raise IllegalState()
-        return DisplayText(self.my_osid_object._my_map['solution'])
+        return DisplayText(self._my_map['solution'])
 
     solution = property(fget=get_solution)
 
 
 class ItemWithSolutionFormRecord(osid_records.OsidRecord):
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(ItemWithSolutionFormRecord, self).__init__()
-
-    def _init_map(self):
-        """stub"""
-        self.my_osid_object_form._my_map['solution'] = \
-            dict(self._solution_metadata['default_string_values'][0])
-
-    def _init_metadata(self):
-        """stub"""
+    def __init__(self, **kwargs):
+        super(ItemWithSolutionFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
+        self._solution_metadata = None
+
+    def _init_map(self, **kwargs):
+        """stub"""
+        super(ItemWithSolutionFormRecord, self)._init_map(**kwargs)
+        self._my_map['solution'] = \
+            dict(self._solution_metadata['default_string_values'][0])
+
+    def _init_metadata(self, **kwargs):
+        """stub"""
+        super(ItemWithSolutionFormRecord, self)._init_metadata(**kwargs)
         self._solution_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'solution'),
             'element_label': 'Solution',
             'required': False,
@@ -181,24 +179,24 @@ class ItemWithSolutionFormRecord(osid_records.OsidRecord):
 
     def set_solution(self, text):
         """stub"""
-        if not self.my_osid_object_form._is_valid_string(
+        if not self._is_valid_string(
                 text, self.get_solution_metadata()):
             raise InvalidArgument('text')
         if is_string(text):
-            self.my_osid_object_form._my_map['solution'] = {
+            self._my_map['solution'] = {
                 'text': text,
                 'languageTypeId': str(DEFAULT_LANGUAGE_TYPE),
                 'scriptTypeId': str(DEFAULT_SCRIPT_TYPE),
                 'formatTypeId': str(DEFAULT_FORMAT_TYPE)
             }
         else:
-            self.my_osid_object_form._my_map['solution'] = text
+            self._my_map['solution'] = text
 
     def clear_solution(self):
         """stub"""
-        if 'solution' not in self.my_osid_object_form._my_map:
+        if 'solution' not in self._my_map:
             raise NotFound()
-        self.my_osid_object_form._my_map['solution'] = \
+        self._my_map['solution'] = \
             dict(self._solution_metadata['default_string_values'][0])
 
 
@@ -211,9 +209,9 @@ class MultiLanguageQuestionRecord(MultiLanguageUtils,
     text = property(fget=get_text)
 
     def get_object_map(self):
-        obj_map = dict(self.my_osid_object._my_map)
+        obj_map = dict(self._my_map)
         del obj_map['itemId']
-        lo_ids = self.my_osid_object.get_learning_objective_ids()
+        lo_ids = self.get_learning_objective_ids()
         try:
             # python 2
             obj_map['learningObjectiveIds'] = [unicode(lo_id) for lo_id in lo_ids]
@@ -221,9 +219,9 @@ class MultiLanguageQuestionRecord(MultiLanguageUtils,
             # python 3
             obj_map['learningObjectiveIds'] = [str(lo_id) for lo_id in lo_ids]
 
-        obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
-        obj_map['id'] = str(self.my_osid_object.get_id())
-        obj_map['text'] = self._dict_display_text(self.my_osid_object.get_text())
+        obj_map = osid_objects.OsidObject.get_object_map(self, obj_map)
+        obj_map['id'] = str(self.get_id())
+        obj_map['text'] = self._dict_display_text(self.get_text())
         return obj_map
 
     object_map = property(fget=get_object_map)
@@ -231,24 +229,22 @@ class MultiLanguageQuestionRecord(MultiLanguageUtils,
 
 class MultiLanguageQuestionFormRecord(MultiLanguageUtils,
                                       osid_records.OsidRecord):
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MultiLanguageQuestionFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(MultiLanguageQuestionFormRecord, self).__init__(**kwargs)
+        self._texts_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['texts'] = \
+        super(MultiLanguageQuestionFormRecord, self)._init_map(**kwargs)
+        self._my_map['texts'] = \
             self._texts_metadata['default_object_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(MultiLanguageQuestionFormRecord, self)._init_metadata(**kwargs)
         self._texts_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'texts'),
             'element_label': 'Texts',
             'instructions': 'Enter as many text question strings as you wish',
@@ -274,7 +270,7 @@ class MultiLanguageQuestionFormRecord(MultiLanguageUtils,
         """stub"""
         if self.get_texts_metadata().is_read_only():
             raise NoAccess()
-        self.my_osid_object_form._my_map['texts'] = \
+        self._my_map['texts'] = \
             self._texts_metadata['default_object_values'][0]
 
     @arguments_not_none
@@ -292,5 +288,5 @@ class MultiLanguageQuestionFormRecord(MultiLanguageUtils,
 
         index = self.get_index_of_language_type('texts', new_text.language_type)
 
-        self.my_osid_object_form._my_map['texts'][index] = \
+        self._my_map['texts'][index] = \
             self._dict_display_text(new_text)

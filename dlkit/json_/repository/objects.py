@@ -112,7 +112,7 @@ class Asset(abc_repository_objects.Asset, osid_objects.OsidObject, osid_markers.
     _namespace = 'repository.Asset'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='ASSET', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Repository'
         if self.is_composition():
             self._composition = self.get_composition()
@@ -560,7 +560,7 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
     _namespace = 'repository.Asset'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='ASSET', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_asset_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -1371,8 +1371,13 @@ class AssetContent(abc_repository_objects.AssetContent, osid_objects.OsidObject,
     """
     _namespace = 'repository.AssetContent'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(AssetContent, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='ASSET_CONTENT', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Repository'
 
     def get_asset_id(self):
@@ -1541,7 +1546,7 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
     _namespace = 'repository.AssetContent'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='ASSET_CONTENT', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_asset_content_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -1808,8 +1813,13 @@ class Composition(abc_repository_objects.Composition, osid_objects.OsidObject, o
     """
     _namespace = 'repository.Composition'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(Composition, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='COMPOSITION', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Repository'
 
     def get_children_ids(self):
@@ -1895,7 +1905,7 @@ class CompositionForm(abc_repository_objects.CompositionForm, osid_objects.OsidO
     _namespace = 'repository.Composition'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='COMPOSITION', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_composition_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -2046,7 +2056,7 @@ class Repository(abc_repository_objects.Repository, osid_objects.OsidCatalog):
     _namespace = 'repository.Repository'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, object_name='REPOSITORY', **kwargs)
+        osid_objects.OsidCatalog.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def get_repository_record(self, repository_record_type):
@@ -2085,7 +2095,7 @@ class RepositoryForm(abc_repository_objects.RepositoryForm, osid_objects.OsidCat
     _namespace = 'repository.Repository'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, object_name='REPOSITORY', **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_repository_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():

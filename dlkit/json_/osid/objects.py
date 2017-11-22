@@ -110,11 +110,16 @@ class OsidObject(abc_osid_objects.OsidObject, osid_markers.Identifiable, osid_ma
     """
     _namespace = 'osid.OsidObject'
 
+    def __new__(cls, osid_object_map, runtime=None, **kwargs):
+        object_name = cls._namespace.split('.')[-1]
+        record_types = [Type(rtype_id) for rtype_id in osid_object_map['recordTypeIds']]
+        return osid_markers.Extensible.__new__(cls, object_name, 'Object', record_types, runtime)
+
     def __init__(self, osid_object_map, runtime=None, **kwargs):
         osid_markers.Identifiable.__init__(self, runtime=runtime)
         osid_markers.Extensible.__init__(self, runtime=runtime, **kwargs)
         self._my_map = osid_object_map
-        self._load_records(osid_object_map['recordTypeIds'])
+        # self._load_records(osid_object_map['recordTypeIds'])
 
     def get_object_map(self, obj_map=None):
         if obj_map is None:
@@ -135,14 +140,19 @@ class OsidObject(abc_osid_objects.OsidObject, osid_markers.Identifiable, osid_ma
             # catalogs do not have this attribute
             pass
 
-        try:  # Need to implement records for catalogs one of these days
-            for record in self._records:
-                try:
-                    self._records[record]._update_object_map(obj_map)
-                except AttributeError:
-                    pass
-        except AttributeError:
-            pass
+        # try:  # Need to implement records for catalogs one of these days
+        #     for record in self._records:
+        #         try:
+        #             self._records[record]._update_object_map(obj_map)
+        #         except AttributeError:
+        #             pass
+        # except AttributeError:
+        #     pass
+        for record_class in self.__class__.__bases__[1:]:
+            try:
+                record_class._update_object_map(self, obj_map)
+            except AttributeError:
+                pass
 
         obj_map.update(
             {'type': self._namespace.split('.')[-1],
@@ -1200,41 +1210,55 @@ class OsidExtensibleForm(abc_osid_objects.OsidExtensibleForm, OsidForm, osid_mar
     method of a session.
 
     """
+    def __new__(cls, osid_object_map=None, record_types=None, runtime=None, **kwargs):
+        object_name = cls._namespace.split('.')[-1]
+        if osid_object_map is not None:
+            record_types = [Type(rtype_id) for rtype_id in osid_object_map['recordTypeIds']]
+        return osid_markers.Extensible.__new__(cls, object_name, 'Form', record_types, runtime)
+
     def __init__(self, **kwargs):
         osid_markers.Extensible.__init__(self, **kwargs)
 
     def _init_map(self, record_types):
         self._my_map['recordTypeIds'] = []
         if record_types is not None:
-            self._init_records(record_types)
+            self._my_map['recordTypeIds'] = [str(rtype) for rtype in record_types]
         self._supported_record_type_ids = self._my_map['recordTypeIds']
 
     def _get_record(self, record_type):
-        """This overrides _get_record in osid.Extensible.
+        """This overrides _get_record in osid.Extensible."""
+        try:
+            return osid_markers.Extensible._get_record(self, record_type)
+        except errors.Unsupported:
+            self.add_form_record(record_type)
+        return self
 
-        Perhaps we should leverage it somehow?
+    def add_form_record(self, record_type):
+        """Adds a record to this object. Should to be associated with a morphable record type"""
+        object_name = self._namespace.split('.')[-1].upper()
+        data_sets = utilities.get_registry(object_name + '_RECORD_TYPES', self._runtime)
+        record_class = utilities.get_record(data_sets,
+                                            record_type,
+                                            'form_record_class_name')
+        if record_class is None:
+            raise errors.Unsupported
+        self.__class__.__bases__ = (record_class,) + self.__class__.__bases__
+        record_class.__init__(self, block_super=True)
+        record_class._init_metadata(self, block_super=True)
+        record_class._init_map(self, block_super=True)
+        self._my_map['recordTypeIds'].append(str(record_type))
 
-        """
-        if (not self.has_record_type(record_type) and
-                record_type.get_identifier() not in self._record_type_data_sets):
-            raise errors.Unsupported()
-        if str(record_type) not in self._records:
-            record_initialized = self._init_record(str(record_type))
-            if record_initialized and str(record_type) not in self._my_map['recordTypeIds']:
-                self._my_map['recordTypeIds'].append(str(record_type))
-        return self._records[str(record_type)]
-
-    def _init_record(self, record_type_idstr):
-        """Override this from osid.Extensible because Forms use a different
-        attribute in record_type_data."""
-        record_type_data = self._record_type_data_sets[Id(record_type_idstr).get_identifier()]
-        module = importlib.import_module(record_type_data['module_path'])
-        record = getattr(module, record_type_data['form_record_class_name'])
-        if record is not None:
-            self._records[record_type_idstr] = record(self)
-            return True
-        else:
-            return False
+    # def _init_record(self, record_type_idstr):
+    #     """Override this from osid.Extensible because Forms use a different
+    #     attribute in record_type_data."""
+    #     record_type_data = self._record_type_data_sets[Id(record_type_idstr).get_identifier()]
+    #     module = importlib.import_module(record_type_data['module_path'])
+    #     record = getattr(module, record_type_data['form_record_class_name'])
+    #     if record is not None:
+    #         self._records[record_type_idstr] = record(self)
+    #         return True
+    #     else:
+    #         return False
 
     def get_required_record_types(self):
         """Gets the required record types for this form.
@@ -1766,7 +1790,7 @@ class OsidObjectForm(abc_osid_objects.OsidObjectForm, OsidIdentifiableForm, Osid
         if osid_object_map is not None:
             self._for_update = True
             self._my_map = osid_object_map
-            self._load_records(osid_object_map['recordTypeIds'])
+            # self._load_records(osid_object_map['recordTypeIds'])
         else:
             self._for_update = False
             self._my_map = {}

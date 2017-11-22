@@ -5,7 +5,7 @@ from dlkit.abstract_osid.osid.errors import NotFound
 class edXQueryMethods(QueryInitRecord):
     def _get_descendant_ids(self, composition_id, repository_id, mgr=None):
         if mgr is None:
-            mgr = self._my_osid_query._get_provider_manager('REPOSITORY')
+            mgr = self._get_provider_manager('REPOSITORY')
         cls = mgr.get_composition_lookup_session_for_repository(repository_id)
         cls.use_unsequestered_composition_view()
         descendent_ids = []
@@ -22,4 +22,4 @@ class edXQueryMethods(QueryInitRecord):
 
     def match_edxml(self, edxml):
         """stub"""
-        self._my_osid_query._add_match('texts.edxml', str(edxml), True)
+        self._add_match('texts.edxml', str(edxml), True)

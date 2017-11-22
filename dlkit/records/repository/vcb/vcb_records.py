@@ -22,25 +22,21 @@ class TimeStampRecord(abc_repository_records.AssetContentRecord,
         'vcb-video-timestamp'
     ]
 
-    def __init__(self, osid_object):
-        self.my_osid_object = osid_object
-        super(TimeStampRecord, self).__init__()
-
     def has_start_timestamp(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['startTimestamp'])
+        return bool(self._my_map['startTimestamp'])
 
     def get_start_timestamp(self):
         """stub"""
-        return self.my_osid_object._my_map['startTimestamp']
+        return self._my_map['startTimestamp']
 
     def has_end_timestamp(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['endTimestamp'])
+        return bool(self._my_map['endTimestamp'])
 
     def get_end_timestamp(self):
         """stub"""
-        return self.my_osid_object._my_map['endTimestamp']
+        return self._my_map['endTimestamp']
 
 
 class TimeStampFormRecord(abc_repository_records.AssetContentFormRecord,
@@ -55,25 +51,25 @@ class TimeStampFormRecord(abc_repository_records.AssetContentFormRecord,
         'vcb-video-timestamp'
     ]
 
-    def __init__(self, osid_object_form):
-        self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(TimeStampFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(TimeStampFormRecord, self).__init__(**kwargs)
+        self._start_timestamp_metadata = None
+        self._end_timestamp_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['startTimestamp'] = \
+        super(TimeStampFormRecord, self)._init_map(**kwargs)
+        self._my_map['startTimestamp'] = \
             self._start_timestamp_metadata['default_integer_values'][0]
-        self.my_osid_object_form._my_map['endTimestamp'] = \
+        self._my_map['endTimestamp'] = \
             self._end_timestamp_metadata['default_integer_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(TimeStampFormRecord, self)._init_metadata(**kwargs)
         self._start_timestamp_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'start_timestamp'),
             'element_label': 'start timestamp',
             'instructions': 'enter an integer number of seconds for the start time',
@@ -88,8 +84,8 @@ class TimeStampFormRecord(abc_repository_records.AssetContentFormRecord,
             'default_integer_values': [0]
         }
         self._end_timestamp_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'end_timestamp'),
             'element_label': 'end timestamp',
             'instructions': 'enter an integer number of seconds for the end time',
@@ -114,18 +110,18 @@ class TimeStampFormRecord(abc_repository_records.AssetContentFormRecord,
             raise NullArgument()
         if self.get_start_timestamp_metadata().is_read_only():
             raise NoAccess()
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 start_timestamp,
                 self.get_start_timestamp_metadata()):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['startTimestamp'] = start_timestamp
+        self._my_map['startTimestamp'] = start_timestamp
 
     def clear_start_timestamp(self):
         """stub"""
         if (self.get_start_timestamp_metadata().is_read_only() or
                 self.get_start_timestamp_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['startTimestamp'] = \
+        self._my_map['startTimestamp'] = \
             self.get_start_timestamp_metadata().get_default_integer_values()
 
     def get_end_timestamp_metadata(self):
@@ -138,16 +134,16 @@ class TimeStampFormRecord(abc_repository_records.AssetContentFormRecord,
             raise NullArgument()
         if self.get_end_timestamp_metadata().is_read_only():
             raise NoAccess()
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 end_timestamp,
                 self.get_end_timestamp_metadata()):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['endTimestamp'] = end_timestamp
+        self._my_map['endTimestamp'] = end_timestamp
 
     def clear_end_timestamp(self):
         """stub"""
         if (self.get_end_timestamp_metadata().is_read_only() or
                 self.get_end_timestamp_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['endTimestamp'] = \
+        self._my_map['endTimestamp'] = \
             self.get_end_timestamp_metadata().get_default_integer_values()

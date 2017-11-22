@@ -22,17 +22,20 @@ from dlkit.abstract_osid.osid import errors
 
 class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSearch):
     """The search interface for governing the search query for ``Catalogs``."""
-    def __init__(self, runtime):
-        self._namespace = 'cataloging.Catalog'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'cataloging.Catalog'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'cataloging.Catalog'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_catalogs(self, catalog_ids):
@@ -85,14 +88,15 @@ class CatalogSearch(abc_cataloging_searches.CatalogSearch, osid_searches.OsidSea
 
 class CatalogSearchResults(abc_cataloging_searches.CatalogSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'cataloging.Catalog'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'cataloging.Catalog'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_catalogs(self):
         """Gets the catalog list resulting from the search.

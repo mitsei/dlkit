@@ -33,8 +33,13 @@ class LogEntry(abc_logging_objects.LogEntry, osid_objects.OsidObject):
     """A log entry consists of a time, an agent, and a priority type."""
     _namespace = 'logging.LogEntry'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(LogEntry, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='LOG_ENTRY', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Log'
 
     def get_priority(self):
@@ -177,7 +182,7 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
 
     """
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='LOG_ENTRY', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_log_entry_mdata()
         self._init_metadata(**kwargs)
 
@@ -400,7 +405,7 @@ class Log(abc_logging_objects.Log, osid_objects.OsidCatalog):
     _namespace = 'logging.Log'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, object_name='LOG', **kwargs)
+        osid_objects.OsidCatalog.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def get_log_record(self, log_record_type):
@@ -437,7 +442,7 @@ class LogForm(abc_logging_objects.LogForm, osid_objects.OsidCatalogForm):
     _namespace = 'logging.Log'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, object_name='LOG', **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_log_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():

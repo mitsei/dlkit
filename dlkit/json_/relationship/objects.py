@@ -35,8 +35,13 @@ class Relationship(abc_relationship_objects.Relationship, osid_objects.OsidRelat
     """
     _namespace = 'relationship.Relationship'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(Relationship, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='RELATIONSHIP', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Family'
 
     def get_source_id(self):
@@ -102,7 +107,7 @@ class RelationshipForm(abc_relationship_objects.RelationshipForm, osid_objects.O
     _namespace = 'relationship.Relationship'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidRelationshipForm.__init__(self, object_name='RELATIONSHIP', **kwargs)
+        osid_objects.OsidRelationshipForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_relationship_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -206,7 +211,7 @@ class Family(abc_relationship_objects.Family, osid_objects.OsidCatalog):
     _namespace = 'relationship.Family'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, object_name='FAMILY', **kwargs)
+        osid_objects.OsidCatalog.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def get_family_record(self, family_record_type):
@@ -246,7 +251,7 @@ class FamilyForm(abc_relationship_objects.FamilyForm, osid_objects.OsidCatalogFo
     _namespace = 'relationship.Family'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, object_name='FAMILY', **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_family_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():

@@ -35,8 +35,13 @@ class Objective(abc_learning_objects.Objective, osid_objects.OsidObject, osid_ma
     """An ``Objective`` is a statable learning objective."""
     _namespace = 'learning.Objective'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(Objective, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='OBJECTIVE', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'ObjectiveBank'
 
     def has_assessment(self):
@@ -223,7 +228,7 @@ class ObjectiveForm(abc_learning_objects.ObjectiveForm, osid_objects.OsidObjectF
     _namespace = 'learning.Objective'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='OBJECTIVE', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_objective_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -577,8 +582,13 @@ class Activity(abc_learning_objects.Activity, osid_objects.OsidObject, osid_mark
     """
     _namespace = 'learning.Activity'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(Activity, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='ACTIVITY', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'ObjectiveBank'
 
     def get_objective_id(self):
@@ -799,7 +809,7 @@ class ActivityForm(abc_learning_objects.ActivityForm, osid_objects.OsidObjectFor
     _namespace = 'learning.Activity'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='ACTIVITY', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_activity_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -1056,8 +1066,13 @@ class Proficiency(abc_learning_objects.Proficiency, osid_objects.OsidRelationshi
     """A ``Proficiency`` represents a competency of a leraning objective."""
     _namespace = 'learning.Proficiency'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(Proficiency, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='PROFICIENCY', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'ObjectiveBank'
 
     def get_resource_id(self):
@@ -1231,7 +1246,7 @@ class ProficiencyForm(abc_learning_objects.ProficiencyForm, osid_objects.OsidRel
     _namespace = 'learning.Proficiency'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidRelationshipForm.__init__(self, object_name='PROFICIENCY', **kwargs)
+        osid_objects.OsidRelationshipForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_proficiency_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -1438,7 +1453,7 @@ class ObjectiveBank(abc_learning_objects.ObjectiveBank, osid_objects.OsidCatalog
     _namespace = 'learning.ObjectiveBank'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, object_name='OBJECTIVE_BANK', **kwargs)
+        osid_objects.OsidCatalog.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def get_objective_bank_record(self, objective_bank_record_type):
@@ -1479,7 +1494,7 @@ class ObjectiveBankForm(abc_learning_objects.ObjectiveBankForm, osid_objects.Osi
     _namespace = 'learning.ObjectiveBank'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, object_name='OBJECTIVE_BANK', **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_objective_bank_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():

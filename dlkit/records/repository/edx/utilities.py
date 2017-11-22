@@ -78,7 +78,7 @@ class EdXUtilitiesMixin(object):
 
     @property
     def url(self):
-        return slugify(self.my_osid_object.display_name.text)
+        return slugify(self.display_name.text)
 
     def write_to_tarfile(self, tarball, path, soup=None, fileobj=None, prettify=True):
         fixed_path = remove_redundant_drafts(path)

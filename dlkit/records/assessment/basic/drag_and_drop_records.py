@@ -36,8 +36,8 @@ class DragAndDropItemRecord(FeedbackAnswerItemRecord):
         'drag-and-drop'
     ]
 
-    def __init__(self, osid_object_form=None):
-        super(DragAndDropItemRecord, self).__init__(osid_object_form)
+    def __init__(self, **kwargs):
+        super(DragAndDropItemRecord, self).__init__(**kwargs)
         self._zones = None
         self._condition_maps = {}
 
@@ -45,7 +45,7 @@ class DragAndDropItemRecord(FeedbackAnswerItemRecord):
         match_inc_exc = {True: 'include', False: 'exclude'}
         if self._zones is None:
             self._zones = {}
-            for zone in self.my_osid_object.get_question().get_zones():
+            for zone in self.get_question().get_zones():
                 zone['spatialUnit'] = SpatialUnitFactory().get_spatial_unit(spatial_unit_map=zone['spatialUnit'])
                 self._zones[zone['id']] = zone
         spatial_unit_conditions = {'include': {}, 'exclude': {}}
@@ -123,20 +123,20 @@ class DragAndDropItemRecord(FeedbackAnswerItemRecord):
 
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return True
         return False
 
     def get_correctness_for_response(self, response):
         """get measure of correctness available for a particular response"""
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
                 except AttributeError:
                     return 100
-        for answer in self.my_osid_object.get_wrong_answers():
+        for answer in self.get_wrong_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
@@ -145,14 +145,14 @@ class DragAndDropItemRecord(FeedbackAnswerItemRecord):
         return 0
 
     def get_answer_for_response(self, response):
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return answer
-        for answer in self.my_osid_object.get_wrong_answers():
+        for answer in self.get_wrong_answers():
             if self._is_match(response, answer):
                 return answer
         # look for a generic wrong-answer
-        for answer in self.my_osid_object.get_wrong_answers():
+        for answer in self.get_wrong_answers():
             if (not answer.has_coordinate_conditions() and
                     not answer.has_spatial_unit_conditions() and
                     not answer.has_zone_conditions()):
@@ -211,33 +211,29 @@ class DragAndDropAnswerRecord(osid_records.OsidRecord,
         'drag-and-drop'
     ]
 
-    def __init__(self, osid_object):
-        self.my_osid_object = osid_object
-        super(DragAndDropAnswerRecord, self).__init__()
-
     def has_zone_conditions(self):
-        return bool(self.my_osid_object._my_map['zoneConditions'])
+        return bool(self._my_map['zoneConditions'])
 
     def get_zone_conditions(self):
         """stub"""
-        return deepcopy(self.my_osid_object._my_map['zoneConditions'])
+        return deepcopy(self._my_map['zoneConditions'])
 
     def has_coordinate_conditions(self):
-        return bool(self.my_osid_object._my_map['coordinateConditions'])
+        return bool(self._my_map['coordinateConditions'])
 
     def get_coordinate_conditions(self):
         """stub"""
-        condition_list = deepcopy(self.my_osid_object._my_map['coordinateConditions'])
+        condition_list = deepcopy(self._my_map['coordinateConditions'])
         for condition in condition_list:
             condition['coordinate'] = BasicCoordinate(condition['coordinate'])
         return condition_list
 
     def has_spatial_unit_conditions(self):
-        return bool(self.my_osid_object._my_map['spatialUnitConditions'])
+        return bool(self._my_map['spatialUnitConditions'])
 
     def get_spatial_unit_conditions(self):
         """stub"""
-        condition_list = deepcopy(self.my_osid_object._my_map['spatialUnitConditions'])
+        condition_list = deepcopy(self._my_map['spatialUnitConditions'])
         for condition in condition_list:
             condition['spatialUnit'] = SpatialUnitFactory().get_spatial_unit(spatial_unit_map=condition['spatialUnit'])
         return condition_list
@@ -293,27 +289,28 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
         'drag-and-drop'
     ]
 
-    def __init__(self, osid_object_form):
-        self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(DragAndDropAnswerFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(DragAndDropAnswerFormRecord, self).__init__(**kwargs)
+        self._zone_conditions_metadata = None
+        self._coordinate_conditions_metadata = None
+        self._spatial_unit_conditions_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['zoneConditions'] = \
+        super(DragAndDropAnswerFormRecord, self)._init_map(**kwargs)
+        self._my_map['zoneConditions'] = \
             self._zone_conditions_metadata['default_object_values'][0]
-        self.my_osid_object_form._my_map['coordinateConditions'] = \
+        self._my_map['coordinateConditions'] = \
             self._coordinate_conditions_metadata['default_object_values'][0]
-        self.my_osid_object_form._my_map['spatialUnitConditions'] = \
+        self._my_map['spatialUnitConditions'] = \
             self._spatial_unit_conditions_metadata['default_object_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(DragAndDropAnswerFormRecord, self)._init_metadata(**kwargs)
         self._zone_conditions_metadata = {
-            'zone_matches': Id(self.my_osid_object_form._authority,
-                               self.my_osid_object_form._namespace,
+            'zone_matches': Id(self._authority,
+                               self._namespace,
                                'zone_conditions'),
             'element_label': 'zone conditions',
             'instructions': 'zone conditions for answer',
@@ -325,8 +322,8 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
             'syntax': 'OBJECT',
         }
         self._coordinate_conditions_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'coordinate_conditions'),
             'element_label': 'coordinate conditions',
             'instructions': 'coordinate conditions for answer',
@@ -338,8 +335,8 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
             'syntax': 'OBJECT',
         }
         self._spatial_unit_conditions_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'spatial_unit_conditions'),
             'element_label': 'spatial unit conditions',
             'instructions': 'spatial unit conditions for answer',
@@ -357,16 +354,16 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
 
     def add_zone_condition(self, droppable_id, zone_id, match=True):
         """stub"""
-        self.my_osid_object_form._my_map['zoneConditions'].append(
+        self._my_map['zoneConditions'].append(
             {'droppableId': droppable_id, 'zoneId': zone_id, 'match': match})
-        self.my_osid_object_form._my_map['zoneConditions'].sort(key=lambda k: k['zoneId'])
+        self._my_map['zoneConditions'].sort(key=lambda k: k['zoneId'])
 
     def clear_zone_conditions(self):
         """stub"""
         if (self.get_zone_conditions_metadata().is_read_only() or
                 self.get_zone_conditions_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['zoneConditions'] = \
+        self._my_map['zoneConditions'] = \
             self._zone_conditions_metadata['default_object_values'][0]
 
     def get_coordinate_conditions_metadata(self):
@@ -377,16 +374,16 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
         """stub"""
         if not isinstance(coordinate, BasicCoordinate):
             raise InvalidArgument('coordinate is not a BasicCoordinate')
-        self.my_osid_object_form._my_map['coordinateConditions'].append(
+        self._my_map['coordinateConditions'].append(
             {'droppableId': droppable_id, 'containerId': container_id, 'coordinate': coordinate.get_values(), 'match': match})
-        self.my_osid_object_form._my_map['coordinateConditions'].sort(key=lambda k: k['containerId'])
+        self._my_map['coordinateConditions'].sort(key=lambda k: k['containerId'])
 
     def clear_coordinate_conditions(self):
         """stub"""
         if (self.get_zone_conditions_metadata().is_read_only() or
                 self.get_zone_conditions_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['coordinateConditions'] = \
+        self._my_map['coordinateConditions'] = \
             self._coordinate_conditions_metadata['default_object_values'][0]
 
     def get_spatial_unit_conditions_metadata(self):
@@ -398,59 +395,58 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
         if not isinstance(spatial_unit, abc_mapping_primitives.SpatialUnit):
             raise InvalidArgument('spatial_unit is not a SpatialUnit')
 
-        self.my_osid_object_form._my_map['spatialUnitConditions'].append(
+        self._my_map['spatialUnitConditions'].append(
             {'droppableId': droppable_id, 'containerId': container_id, 'spatialUnit': spatial_unit.get_spatial_unit_map(), 'match': match})
-        self.my_osid_object_form._my_map['spatialUnitConditions'].sort()
+        self._my_map['spatialUnitConditions'].sort()
 
     def clear_spatial_unit_conditions(self):
         """stub"""
         if (self.get_spatial_unit_conditions_metadata().is_read_only() or
                 self.get_zone_conditions_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['spatialUnitConditions'] = \
+        self._my_map['spatialUnitConditions'] = \
             self._zone_conditions_metadata['default_object_values'][0]
 
 
 class MultiLanguageDragAndDropQuestionRecord(MultiLanguageQuestionRecord):
-    def __init__(self, osid_object):
-        self.my_osid_object = osid_object
-        self._original_droppable_order = deepcopy(osid_object._my_map['droppables'])
-        self._original_target_order = deepcopy(osid_object._my_map['targets'])
-        self._original_zone_order = deepcopy(osid_object._my_map['zones'])
+    def __init__(self, **kwargs):
+        self._original_droppable_order = deepcopy(self._my_map['droppables'])
+        self._original_target_order = deepcopy(self._my_map['targets'])
+        self._original_zone_order = deepcopy(self._my_map['zones'])
         try:
-            self.my_osid_object._my_map['multiLanguageDroppables'] = deepcopy(self.my_osid_object._original_droppable_order)
+            self._my_map['multiLanguageDroppables'] = deepcopy(self._original_droppable_order)
         except AttributeError:
-            self.my_osid_object._my_map['multiLanguageDroppables'] = deepcopy(self.my_osid_object._my_map['droppables'])
-
-        try:
-            self.my_osid_object._my_map['multiLanguageTargets'] = deepcopy(self.my_osid_object._original_target_order)
-        except AttributeError:
-            self.my_osid_object._my_map['multiLanguageTargets'] = deepcopy(self.my_osid_object._my_map['targets'])
+            self._my_map['multiLanguageDroppables'] = deepcopy(self._my_map['droppables'])
 
         try:
-            self.my_osid_object._my_map['multiLanguageZones'] = deepcopy(self.my_osid_object._original_zone_order)
+            self._my_map['multiLanguageTargets'] = deepcopy(self._original_target_order)
         except AttributeError:
-            self.my_osid_object._my_map['multiLanguageZones'] = deepcopy(self.my_osid_object._my_map['zones'])
+            self._my_map['multiLanguageTargets'] = deepcopy(self._my_map['targets'])
 
-        super(MultiLanguageDragAndDropQuestionRecord, self).__init__(osid_object)
+        try:
+            self._my_map['multiLanguageZones'] = deepcopy(self._original_zone_order)
+        except AttributeError:
+            self._my_map['multiLanguageZones'] = deepcopy(self._my_map['zones'])
 
-        if ('shuffleDroppables' not in self.my_osid_object._my_map or
-                self.my_osid_object._my_map['shuffleDroppables']):
-            droppables = self.my_osid_object._my_map['droppables']
+        super(MultiLanguageDragAndDropQuestionRecord, self).__init__(**kwargs)
+
+        if ('shuffleDroppables' not in self._my_map or
+                self._my_map['shuffleDroppables']):
+            droppables = self._my_map['droppables']
             shuffle(droppables)
-            self.my_osid_object._my_map['droppables'] = droppables
+            self._my_map['droppables'] = droppables
 
-        if ('shuffleTargets' not in self.my_osid_object._my_map or
-                self.my_osid_object._my_map['shuffleTargets']):
-            targets = self.my_osid_object._my_map['targets']
+        if ('shuffleTargets' not in self._my_map or
+                self._my_map['shuffleTargets']):
+            targets = self._my_map['targets']
             shuffle(targets)
-            self.my_osid_object._my_map['targets'] = targets
+            self._my_map['targets'] = targets
 
-        if ('shuffleZones' not in self.my_osid_object._my_map or
-                self.my_osid_object._my_map['shuffleZones']):
-            zones = self.my_osid_object._my_map['zones']
+        if ('shuffleZones' not in self._my_map or
+                self._my_map['shuffleZones']):
+            zones = self._my_map['zones']
             shuffle(zones)
-            self.my_osid_object._my_map['zones'] = zones
+            self._my_map['zones'] = zones
 
     def get_unrandomized_droppables(self):
         return self._original_droppable_order
@@ -458,7 +454,7 @@ class MultiLanguageDragAndDropQuestionRecord(MultiLanguageQuestionRecord):
     def get_droppables(self):
         """stub"""
         droppables = []
-        for current_droppable in self.my_osid_object._my_map['droppables']:
+        for current_droppable in self._my_map['droppables']:
             droppables.append({
                 'id': current_droppable['id'],
                 'text': self.get_matching_language_value('texts',
@@ -478,7 +474,7 @@ class MultiLanguageDragAndDropQuestionRecord(MultiLanguageQuestionRecord):
     def get_targets(self):
         """stub"""
         targets = []
-        for current_target in self.my_osid_object._my_map['targets']:
+        for current_target in self._my_map['targets']:
             targets.append({
                 'id': current_target['id'],
                 'text': self.get_matching_language_value('texts',
@@ -497,7 +493,7 @@ class MultiLanguageDragAndDropQuestionRecord(MultiLanguageQuestionRecord):
     def get_zones(self):
         """stub"""
         zones = []
-        for current_zone in self.my_osid_object._my_map['zones']:
+        for current_zone in self._my_map['zones']:
             zones.append({
                 'id': current_zone['id'],
                 'name': self.get_matching_language_value('names',
@@ -601,36 +597,37 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             }
     """
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MultiLanguageDragAndDropQuestionFormRecord, self).__init__(osid_object_form)
+    def __init__(self, **kwargs):
+        super(MultiLanguageDragAndDropQuestionFormRecord, self).__init__(**kwargs)
+        self._droppables_metadata = None
+        self._targets_metadata = None
+        self._zones_metadata = None
+        self._shuffle_droppables_metadata = None
+        self._shuffle_targets_metadata = None
+        self._shuffle_zones_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_map()
-        self.my_osid_object_form._my_map['droppables'] = \
+        super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_map(**kwargs)
+        self._my_map['droppables'] = \
             self._droppables_metadata['default_object_values'][0]
-        self.my_osid_object_form._my_map['targets'] = \
+        self._my_map['targets'] = \
             self._targets_metadata['default_object_values'][0]
-        self.my_osid_object_form._my_map['zones'] = \
+        self._my_map['zones'] = \
             self._zones_metadata['default_object_values'][0]
-        self.my_osid_object_form._my_map['shuffleDroppables'] = \
+        self._my_map['shuffleDroppables'] = \
             bool(self._shuffle_droppables_metadata['default_boolean_values'][0])
-        self.my_osid_object_form._my_map['shuffleTargets'] = \
+        self._my_map['shuffleTargets'] = \
             bool(self._shuffle_targets_metadata['default_boolean_values'][0])
-        self.my_osid_object_form._my_map['shuffleZones'] = \
+        self._my_map['shuffleZones'] = \
             bool(self._shuffle_zones_metadata['default_boolean_values'][0])
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_metadata()
+        super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_metadata(**kwargs)
         self._droppables_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'droppables'),
             'element_label': 'droppables',
             'instructions': 'Enter as many droppables as you wish',
@@ -643,8 +640,8 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'object_set': []
         }
         self._targets_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'targets'),
             'element_label': 'targets',
             'instructions': 'Enter as many targets as you wish',
@@ -657,8 +654,8 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'object_set': []
         }
         self._zones_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'zones'),
             'element_label': 'zones',
             'instructions': 'Enter as many zones as you wish',
@@ -671,8 +668,8 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'object_set': []
         }
         self._shuffle_droppables_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'shuffleDroppables'),
             'element_label': 'Shuffle Droppables',
             'instructions': 'Shuffle droppables',
@@ -684,8 +681,8 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'syntax': 'BOOLEAN',
         }
         self._shuffle_targets_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'shuffleTargets'),
             'element_label': 'Shuffle Targets',
             'instructions': 'Shuffle targets',
@@ -697,8 +694,8 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'syntax': 'BOOLEAN',
         }
         self._shuffle_zones_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'shuffleZones'),
             'element_label': 'Shuffle Zones',
             'instructions': 'Shuffle zones',
@@ -720,34 +717,34 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         return Metadata(**self._shuffle_zones_metadata)
 
     def clear_shuffle_droppables(self):
-        self.my_osid_object_form._my_map['shuffleDroppables'] = \
+        self._my_map['shuffleDroppables'] = \
             bool(self._shuffle_droppables_metadata['default_boolean_values'][0])
 
     def clear_shuffle_targets(self):
-        self.my_osid_object_form._my_map['shuffleTargets'] = \
+        self._my_map['shuffleTargets'] = \
             bool(self._shuffle_targets_metadata['default_boolean_values'][0])
 
     def clear_shuffle_zones(self):
-        self.my_osid_object_form._my_map['shuffleZones'] = \
+        self._my_map['shuffleZones'] = \
             bool(self._shuffle_zones_metadata['default_boolean_values'][0])
 
-    def set_shuffle_droppables(self, shuffle):
-        if not self.my_osid_object_form._is_valid_boolean(
-                shuffle):
+    def set_shuffle_droppables(self, shuffle_droppables):
+        if not self._is_valid_boolean(
+                shuffle_droppables):
             raise InvalidArgument('shuffleDroppables')
-        self.my_osid_object_form._my_map['shuffleDroppables'] = shuffle
+        self._my_map['shuffleDroppables'] = shuffle_droppables
 
-    def set_shuffle_targets(self, shuffle):
-        if not self.my_osid_object_form._is_valid_boolean(
-                shuffle):
+    def set_shuffle_targets(self, shuffle_targets):
+        if not self._is_valid_boolean(
+                shuffle_targets):
             raise InvalidArgument('shuffleTargets')
-        self.my_osid_object_form._my_map['shuffleTargets'] = shuffle
+        self._my_map['shuffleTargets'] = shuffle_targets
 
-    def set_shuffle_zones(self, shuffle):
-        if not self.my_osid_object_form._is_valid_boolean(
-                shuffle):
+    def set_shuffle_zones(self, shuffle_zones):
+        if not self._is_valid_boolean(
+                shuffle_zones):
             raise InvalidArgument('shuffleZones')
-        self.my_osid_object_form._my_map['shuffleZones'] = shuffle
+        self._my_map['shuffleZones'] = shuffle_zones
 
     def get_droppables_metadata(self):
         """stub"""
@@ -771,14 +768,14 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'reuse': reuse,
             'dropBehaviorType': drop_behavior_type
         }
-        self.my_osid_object_form._my_map['droppables'].append(droppable)
+        self._my_map['droppables'].append(droppable)
         return droppable
 
     def clear_droppables(self):
         """stub"""
         if self.get_droppables_metadata().is_read_only():
             raise NoAccess()
-        self.my_osid_object_form._my_map['droppables'] = \
+        self._my_map['droppables'] = \
             self._droppables_metadata['default_object_values'][0]
 
     @utilities.arguments_not_none
@@ -787,7 +784,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if self.get_droppables_metadata().is_read_only():
             raise NoAccess()
         updated_droppables = []
-        for current_droppable in self.my_osid_object_form._my_map['droppables']:
+        for current_droppable in self._my_map['droppables']:
             if current_droppable['id'] != droppable_id:
                 updated_droppables.append(current_droppable)
             else:
@@ -798,7 +795,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
                     'reuse': current_droppable['reuse'],
                     'dropBehaviorType': current_droppable['dropBehaviorType']
                 })
-        self.my_osid_object_form._my_map['droppables'] = updated_droppables
+        self._my_map['droppables'] = updated_droppables
 
     @utilities.arguments_not_none
     def clear_droppable_names(self, droppable_id):
@@ -806,7 +803,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if self.get_droppables_metadata().is_read_only():
             raise NoAccess()
         updated_droppables = []
-        for current_droppable in self.my_osid_object_form._my_map['droppables']:
+        for current_droppable in self._my_map['droppables']:
             if current_droppable['id'] != droppable_id:
                 updated_droppables.append(current_droppable)
             else:
@@ -817,18 +814,18 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
                     'reuse': current_droppable['reuse'],
                     'dropBehaviorType': current_droppable['dropBehaviorType']
                 })
-        self.my_osid_object_form._my_map['droppables'] = updated_droppables
+        self._my_map['droppables'] = updated_droppables
 
     @utilities.arguments_not_none
     def remove_droppable_text_language(self, language_type, droppable_id):
         if self.get_droppables_metadata().is_read_only():
             raise NoAccess()
 
-        droppables = [d for d in self.my_osid_object_form._my_map['droppables'] if d['id'] == droppable_id]
+        droppables = [d for d in self._my_map['droppables'] if d['id'] == droppable_id]
         if len(droppables) == 0:
             raise InvalidArgument('invalid droppable_id')
 
-        for current_droppable in self.my_osid_object_form._my_map['droppables']:
+        for current_droppable in self._my_map['droppables']:
             if droppable_id == current_droppable['id']:
                 self.remove_field_by_language('texts',
                                               language_type,
@@ -839,11 +836,11 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if self.get_droppables_metadata().is_read_only():
             raise NoAccess()
 
-        droppables = [d for d in self.my_osid_object_form._my_map['droppables'] if d['id'] == droppable_id]
+        droppables = [d for d in self._my_map['droppables'] if d['id'] == droppable_id]
         if len(droppables) == 0:
             raise InvalidArgument('invalid droppable_id')
 
-        for current_droppable in self.my_osid_object_form._my_map['droppables']:
+        for current_droppable in self._my_map['droppables']:
             if droppable_id == current_droppable['id']:
                 self.remove_field_by_language('names',
                                               language_type,
@@ -860,7 +857,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             raise InvalidArgument('reuse must be an integer')
         if reuse is not None and reuse < 0:
             raise InvalidArgument('reuse must be >= 0')
-        for current_droppable in self.my_osid_object_form._my_map['droppables']:
+        for current_droppable in self._my_map['droppables']:
             if droppable_id == current_droppable['id']:
                 if droppable_text is not None:
                     self.add_or_replace_value(
@@ -879,10 +876,10 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
     def remove_droppable(self, droppable_id):
         """remove a droppable, given the id"""
         updated_droppables = []
-        for droppable in self.my_osid_object_form._my_map['droppables']:
+        for droppable in self._my_map['droppables']:
             if droppable['id'] != droppable_id:
                 updated_droppables.append(droppable)
-        self.my_osid_object_form._my_map['droppables'] = updated_droppables
+        self._my_map['droppables'] = updated_droppables
 
     @utilities.arguments_not_none
     def set_droppable_order(self, droppable_ids):
@@ -891,17 +888,17 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         :return:
         """
         reordered_droppables = []
-        current_droppable_ids = [d['id'] for d in self.my_osid_object_form._my_map['droppables']]
+        current_droppable_ids = [d['id'] for d in self._my_map['droppables']]
         if set(droppable_ids) != set(current_droppable_ids):
             raise IllegalState('droppable_ids do not match existing droppables')
 
         for droppable_id in droppable_ids:
-            for current_droppable in self.my_osid_object_form._my_map['droppables']:
+            for current_droppable in self._my_map['droppables']:
                 if droppable_id == current_droppable['id']:
                     reordered_droppables.append(current_droppable)
                     break
 
-        self.my_osid_object_form._my_map['droppables'] = reordered_droppables
+        self._my_map['droppables'] = reordered_droppables
 
     def get_targets_metadata(self):
         """stub"""
@@ -920,14 +917,14 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'names': [self._dict_display_text(name)],
             'dropBehaviorType': drop_behavior_type
         }
-        self.my_osid_object_form._my_map['targets'].append(target)
+        self._my_map['targets'].append(target)
         return target
 
     def clear_targets(self):
         """stub"""
         if self.get_targets_metadata().is_read_only():
             raise NoAccess()
-        self.my_osid_object_form._my_map['targets'] = \
+        self._my_map['targets'] = \
             self._targets_metadata['default_object_values'][0]
 
     @utilities.arguments_not_none
@@ -936,7 +933,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if self.get_targets_metadata().is_read_only():
             raise NoAccess()
         updated_targets = []
-        for current_target in self.my_osid_object_form._my_map['targets']:
+        for current_target in self._my_map['targets']:
             if current_target['id'] != target_id:
                 updated_targets.append(current_target)
             else:
@@ -946,7 +943,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
                     'names': current_target['names'],
                     'dropBehaviorType': current_target['dropBehaviorType']
                 })
-        self.my_osid_object_form._my_map['targets'] = updated_targets
+        self._my_map['targets'] = updated_targets
 
     @utilities.arguments_not_none
     def clear_target_names(self, target_id):
@@ -954,7 +951,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if self.get_targets_metadata().is_read_only():
             raise NoAccess()
         updated_targets = []
-        for current_target in self.my_osid_object_form._my_map['targets']:
+        for current_target in self._my_map['targets']:
             if current_target['id'] != target_id:
                 updated_targets.append(current_target)
             else:
@@ -964,18 +961,18 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
                     'names': [],
                     'dropBehaviorType': current_target['dropBehaviorType']
                 })
-        self.my_osid_object_form._my_map['targets'] = updated_targets
+        self._my_map['targets'] = updated_targets
 
     @utilities.arguments_not_none
     def remove_target_text_language(self, language_type, target_id):
         if self.get_targets_metadata().is_read_only():
             raise NoAccess()
 
-        targets = [t for t in self.my_osid_object_form._my_map['targets'] if t['id'] == target_id]
+        targets = [t for t in self._my_map['targets'] if t['id'] == target_id]
         if len(targets) == 0:
             raise InvalidArgument('invalid target_id')
 
-        for current_target in self.my_osid_object_form._my_map['targets']:
+        for current_target in self._my_map['targets']:
             if target_id == current_target['id']:
                 self.remove_field_by_language('texts',
                                               language_type,
@@ -986,11 +983,11 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if self.get_targets_metadata().is_read_only():
             raise NoAccess()
 
-        targets = [t for t in self.my_osid_object_form._my_map['targets'] if t['id'] == target_id]
+        targets = [t for t in self._my_map['targets'] if t['id'] == target_id]
         if len(targets) == 0:
             raise InvalidArgument('invalid target_id')
 
-        for current_target in self.my_osid_object_form._my_map['targets']:
+        for current_target in self._my_map['targets']:
             if target_id == current_target['id']:
                 self.remove_field_by_language('names',
                                               language_type,
@@ -1003,7 +1000,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             raise InvalidArgument('target_text must be a DisplayText object')
         if name is not None and not isinstance(name, DisplayText):
             raise InvalidArgument('name must be a DisplayText object')
-        for current_target in self.my_osid_object_form._my_map['targets']:
+        for current_target in self._my_map['targets']:
             if target_id == current_target['id']:
                 if target_text is not None:
                     self.add_or_replace_value(
@@ -1020,10 +1017,10 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
     def remove_target(self, target_id):
         """remove a target, given the id"""
         updated_targets = []
-        for target in self.my_osid_object_form._my_map['targets']:
+        for target in self._my_map['targets']:
             if target['id'] != target_id:
                 updated_targets.append(target)
-        self.my_osid_object_form._my_map['targets'] = updated_targets
+        self._my_map['targets'] = updated_targets
 
     @utilities.arguments_not_none
     def set_target_order(self, target_ids):
@@ -1032,17 +1029,17 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         :return:
         """
         reordered_targets = []
-        current_target_ids = [t['id'] for t in self.my_osid_object_form._my_map['targets']]
+        current_target_ids = [t['id'] for t in self._my_map['targets']]
         if set(target_ids) != set(current_target_ids):
             raise IllegalState('target_ids do not match existing targets')
 
         for target_id in target_ids:
-            for current_target in self.my_osid_object_form._my_map['targets']:
+            for current_target in self._my_map['targets']:
                 if target_id == current_target['id']:
                     reordered_targets.append(current_target)
                     break
 
-        self.my_osid_object_form._my_map['targets'] = reordered_targets
+        self._my_map['targets'] = reordered_targets
 
     def get_zones_metadata(self):
         """stub"""
@@ -1075,21 +1072,21 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             'reuse': reuse,
             'dropBehaviorType': str(drop_behavior_type)
         }
-        self.my_osid_object_form._my_map['zones'].append(zone)
+        self._my_map['zones'].append(zone)
         return zone
 
     def clear_zones(self):
         """stub"""
         if self.get_zones_metadata().is_read_only():
             raise NoAccess()
-        self.my_osid_object_form._my_map['zones'] = \
+        self._my_map['zones'] = \
             self._zones_metadata['default_object_values'][0]
 
     def clear_zone_names(self, zone_id):
         if self.get_zones_metadata().is_read_only():
             raise NoAccess()
         updated_zones = []
-        for current_zone in self.my_osid_object_form._my_map['zones']:
+        for current_zone in self._my_map['zones']:
             if current_zone['id'] != zone_id:
                 updated_zones.append(current_zone)
             else:
@@ -1103,13 +1100,13 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
                     'reuse': current_zone['reuse'],
                     'dropBehaviorType': current_zone['dropBehaviorType']
                 })
-        self.my_osid_object_form._my_map['zones'] = updated_zones
+        self._my_map['zones'] = updated_zones
 
     def clear_zone_descriptions(self, zone_id):
         if self.get_zones_metadata().is_read_only():
             raise NoAccess()
         updated_zones = []
-        for current_zone in self.my_osid_object_form._my_map['zones']:
+        for current_zone in self._my_map['zones']:
             if current_zone['id'] != zone_id:
                 updated_zones.append(current_zone)
             else:
@@ -1123,18 +1120,18 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
                     'reuse': current_zone['reuse'],
                     'dropBehaviorType': current_zone['dropBehaviorType']
                 })
-        self.my_osid_object_form._my_map['zones'] = updated_zones
+        self._my_map['zones'] = updated_zones
 
     @utilities.arguments_not_none
     def remove_zone_name_language(self, language_type, zone_id):
         if self.get_zones_metadata().is_read_only():
             raise NoAccess()
 
-        zones = [z for z in self.my_osid_object_form._my_map['zones'] if z['id'] == zone_id]
+        zones = [z for z in self._my_map['zones'] if z['id'] == zone_id]
         if len(zones) == 0:
             raise InvalidArgument('invalid zone_id')
 
-        for current_zone in self.my_osid_object_form._my_map['zones']:
+        for current_zone in self._my_map['zones']:
             if zone_id == current_zone['id']:
                 self.remove_field_by_language('names',
                                               language_type,
@@ -1145,11 +1142,11 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         if self.get_zones_metadata().is_read_only():
             raise NoAccess()
 
-        zones = [z for z in self.my_osid_object_form._my_map['zones'] if z['id'] == zone_id]
+        zones = [z for z in self._my_map['zones'] if z['id'] == zone_id]
         if len(zones) == 0:
             raise InvalidArgument('invalid zone_id')
 
-        for current_zone in self.my_osid_object_form._my_map['zones']:
+        for current_zone in self._my_map['zones']:
             if zone_id == current_zone['id']:
                 self.remove_field_by_language('descriptions',
                                               language_type,
@@ -1168,7 +1165,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
             raise InvalidArgument('reuse must be an integer')
         if reuse is not None and reuse < 0:
             raise InvalidArgument('reuse must be >= 0')
-        for current_zone in self.my_osid_object_form._my_map['zones']:
+        for current_zone in self._my_map['zones']:
             if zone_id == current_zone['id']:
                 if spatial_unit is not None:
                     current_zone['spatialUnit'] = spatial_unit.get_spatial_unit_map()
@@ -1193,10 +1190,10 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
     def remove_zone(self, zone_id):
         """remove a zone, given the id"""
         updated_zones = []
-        for zone in self.my_osid_object_form._my_map['zones']:
+        for zone in self._my_map['zones']:
             if zone['id'] != zone_id:
                 updated_zones.append(zone)
-        self.my_osid_object_form._my_map['zones'] = updated_zones
+        self._my_map['zones'] = updated_zones
 
     @utilities.arguments_not_none
     def set_zone_order(self, zone_ids):
@@ -1205,14 +1202,14 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
         :return:
         """
         reordered_zones = []
-        current_zone_ids = [z['id'] for z in self.my_osid_object_form._my_map['zones']]
+        current_zone_ids = [z['id'] for z in self._my_map['zones']]
         if set(zone_ids) != set(current_zone_ids):
             raise IllegalState('zone_ids do not match existing zones')
 
         for zone_id in zone_ids:
-            for current_zone in self.my_osid_object_form._my_map['zones']:
+            for current_zone in self._my_map['zones']:
                 if zone_id == current_zone['id']:
                     reordered_zones.append(current_zone)
                     break
 
-        self.my_osid_object_form._my_map['zones'] = reordered_zones
+        self._my_map['zones'] = reordered_zones

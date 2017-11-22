@@ -26,15 +26,11 @@ class CommentQuery(abc_commenting_queries.CommentQuery, osid_queries.OsidRelatio
     the same method produce a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'commenting.Comment'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('COMMENT_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'commenting.Comment'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Book'
 
     @utilities.arguments_not_none
     def match_reference_id(self, source_id, match):
@@ -385,14 +381,10 @@ class BookQuery(abc_commenting_queries.BookQuery, osid_queries.OsidCatalogQuery)
     the same method produce a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._runtime = runtime
-        record_type_data_sets = get_registry('BOOK_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidCatalogQuery.__init__(self, runtime)
+    _namespace = 'commenting.'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidCatalogQuery.__init__(self, **kwargs)
 
     def _get_descendant_catalog_ids(self, catalog_id):
         hm = self._get_provider_manager('HIERARCHY')

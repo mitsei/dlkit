@@ -10,7 +10,9 @@
 #     Inheritance defined in specification
 
 
-from collections import OrderedDict
+import inflection
+
+
 from importlib import import_module
 
 
@@ -20,7 +22,7 @@ from ..primitives import DateTime
 from ..primitives import Id
 from ..primitives import Type
 from ..utilities import get_provider_manager
-from ..utilities import get_registry
+from ..utilities import get_records
 from dlkit.abstract_osid.osid import errors
 from dlkit.abstract_osid.osid import markers as abc_osid_markers
 from dlkit.primordium.id.primitives import Id
@@ -122,10 +124,23 @@ class Identifiable(abc_osid_markers.Identifiable):
 
 class Extensible(abc_osid_markers.Extensible):
     """A marker interface for objects that contain ``OsidRecords``."""
-    def __init__(self, object_name, runtime=None, proxy=None, **kwargs):
-        self._records = OrderedDict()
+    def __new__(cls, object_name, object_type, record_types, runtime, **kwargs):
+        # NOTE: All classes that inherit from osid.Extensible must override __new__
+        # and invoke this osid.Extensible.__new__ with the proper arguments.
+        # See osid.OsidObject and osid.OsidObjectForm for examples.
+        if record_types is not None:
+            data_key = object_type.lower() + '_record_class_name'
+            cls = type(object_name + object_type,
+                      get_records(inflection.underscore(object_name).upper(),
+                                           record_types,
+                                           data_key,
+                                           runtime) + (cls,), {})
+        return super(Extensible, cls).__new__(cls)
+
+    def __init__(self, runtime=None, proxy=None, **kwargs):
+        # self._records = {}
         self._supported_record_type_ids = []
-        self._record_type_data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
         self._runtime = runtime
         self._proxy = proxy
 
@@ -137,71 +152,78 @@ class Extensible(abc_osid_markers.Extensible):
     def __getitem__(self, item):
         return getattr(self, item)
 
-    def __getattribute__(self, name):
-        if not name.startswith('_'):
-            if '_records' in self.__dict__:
-                for record in reversed(self._records):
-                    try:
-                        return self._records[record][name]
-                    except AttributeError:
-                        pass
-        return object.__getattribute__(self, name)
-
-    def __getattr__(self, name):
-        if '_records' in self.__dict__:
-            for record in reversed(self._records):
-                try:
-                    return self._records[record][name]
-                except AttributeError:
-                    pass
-        raise AttributeError()
+    # def __getattribute__(self, name):
+    #     if not name.startswith('_'):
+    #         if '_records' in self.__dict__:
+    #             for record in self._records:
+    #                 try:
+    #                     return self._records[record][name]
+    #                 except AttributeError:
+    #                     pass
+    #     return object.__getattribute__(self, name)
+    #
+    # THIS DID NOT WORK:
+    # def __getattribute__(self, name):
+    #     if not name.startswith('_'):
+    #         if len(self.__class__.__bases__) > 1:
+    #             # Records override base class and each other in reverse order:
+    #             for record_class in reversed(self.__class__.__bases__[1:]):
+    #                 try:
+    #                     return record_class[name] # Need self somehow?
+    #                 except AttributeError:
+    #                     pass
+    #     return object.__getattribute__(self, name)
+    #
+    # def __getattr__(self, name):
+    #     if '_records' in self.__dict__:
+    #         for record in self._records:
+    #             try:
+    #                 return self._records[record][name]
+    #             except AttributeError:
+    #                 pass
+    #     raise AttributeError()
 
     def _get_record(self, record_type):
-        """Get the record string type value given the record_type."""
+        """Get the record for the given record_type. Really just self"""
         if not self.has_record_type(record_type):
             raise errors.Unsupported()
-        if str(record_type) not in self._records:
-            raise errors.Unimplemented()
-        return self._records[str(record_type)]
+        return self
 
-    def _load_records(self, record_type_idstrs):
-        """Load all records from given record_type_idstrs."""
-        for record_type_idstr in record_type_idstrs:
-            self._init_record(record_type_idstr)
-
-    def _init_records(self, record_types):
-        """Initalize all records for this form."""
-        for record_type in record_types:
-            # This conditional was inserted on 7/11/14. It may prove problematic:
-            if str(record_type) not in self._my_map['recordTypeIds']:
-                record_initialized = self._init_record(str(record_type))
-                if record_initialized:
-                    self._my_map['recordTypeIds'].append(str(record_type))
-
-    def _init_record(self, record_type_idstr):
-        """Initialize the record identified by the record_type_idstr."""
-        import importlib
-        record_type_data = self._record_type_data_sets[Id(record_type_idstr).get_identifier()]
-        module = importlib.import_module(record_type_data['module_path'])
-        record = getattr(module, record_type_data['object_record_class_name'], None)
-        # only add recognized records ... so apps don't break
-        # if new records are injected by another app
-        if record is not None:
-            self._records[record_type_idstr] = record(self)
-            return True
-        else:
-            return False
+    # def _load_records(self, record_type_idstrs):
+    #     """Load all records from given record_type_idstrs."""
+    #     for record_type_idstr in record_type_idstrs:
+    #         self._init_record(record_type_idstr)
+    #
+    # def _init_records(self, record_types):
+    #     """Initalize all records for this form."""
+    #     for record_type in record_types:
+    #         # This conditional was inserted on 7/11/14. It may prove problematic:
+    #         if str(record_type) not in self._my_map['recordTypeIds']:
+    #             record_initialized = self._init_record(str(record_type))
+    #             if record_initialized:
+    #                 self._my_map['recordTypeIds'].append(str(record_type))
+    #
+    # def _init_record(self, record_type_idstr):
+    #     """Initialize the record identified by the record_type_idstr."""
+    #     import importlib
+    #     record_type_data = self._record_type_data_sets[Id(record_type_idstr).get_identifier()]
+    #     module = importlib.import_module(record_type_data['module_path'])
+    #     record = getattr(module, record_type_data['object_record_class_name'], None)
+    #     # only add recognized records ... so apps don't break
+    #     # if new records are injected by another app
+    #     if record is not None:
+    #         self._records[record_type_idstr] = record(self)
+    #         return True
+    #     else:
+    #         return False
 
     def _delete(self):
-        """Override this method in inheriting objects to perform special clearing operations."""
-        try:
-            for record in self._records:
-                try:
-                    self._records[record]._delete()
-                except AttributeError:
-                    pass
-        except AttributeError:
-            pass
+        """Override this method in inheriting objects to perform special clearing operations.
+
+        And make sure to call super if you do
+
+        """
+        pass
 
     def _get_provider_manager(self, osid, local=False):
         """Gets the most appropriate provider manager depending on config."""

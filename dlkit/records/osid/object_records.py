@@ -26,10 +26,10 @@ class EnclosureRecord(ObjectInitRecord):
     def __init__(self, osid_object):
         self._enclosed_object = None
         super(EnclosureRecord, self).__init__(osid_object)
-        if (not hasattr(self.my_osid_object, '_supported_record_type_ids') or
-                self.my_osid_object._supported_record_type_ids is None):
-            self.my_osid_object._supported_record_type_ids = []
-        self.my_osid_object._supported_record_type_ids.append(
+        if (not hasattr(self, '_supported_record_type_ids') or
+                self._supported_record_type_ids is None):
+            self._supported_record_type_ids = []
+        self._supported_record_type_ids.append(
             str(ENCLOSURE_RECORD))
 
     def __getattr__(self, name):
@@ -65,7 +65,7 @@ class EnclosureRecord(ObjectInitRecord):
 
     def get_enclosed_object_id(self):
         """Return the osid Id of the enclosed object"""
-        return Id(self.my_osid_object._my_map['enclosedObjectId'])
+        return Id(self._my_map['enclosedObjectId'])
 
     enclosed_object_id = property(fget=get_enclosed_object_id)
 
@@ -75,9 +75,9 @@ class EnclosureRecord(ObjectInitRecord):
             enclosed_object_id = self.get_enclosed_object_id()
             package_name = enclosed_object_id.get_identifier_namespace().split('.')[0]
             obj_name = enclosed_object_id.get_identifier_namespace().split('.')[1]
-            mgr = self.my_osid_object._get_provider_manager(package_name.upper())
+            mgr = self._get_provider_manager(package_name.upper())
             try:
-                lookup_session = getattr(mgr, 'get_' + obj_name.lower() + '_lookup_session')(self.my_osid_object._proxy)
+                lookup_session = getattr(mgr, 'get_' + obj_name.lower() + '_lookup_session')(self._proxy)
             except TypeError:
                 lookup_session = getattr(mgr, 'get_' + obj_name.lower() + '_lookup_session')()
             getattr(lookup_session, 'use_federated_' + CATALOG_LOOKUP[package_name] + '_view')()
@@ -100,21 +100,21 @@ class EnclosureRecord(ObjectInitRecord):
 
             my_catalog_name = catalogs[package_name.lower()]
 
-            mgr = self.my_osid_object._get_provider_manager(package_name.upper())
+            mgr = self._get_provider_manager(package_name.upper())
 
-            if self.my_osid_object._proxy is not None:
+            if self._proxy is not None:
                 catalog_lookup_session = getattr(mgr, 'get_' + my_catalog_name + '_lookup_session')(
-                    proxy=self.my_osid_object._proxy
+                    proxy=self._proxy
                 )
             else:
                 catalog_lookup_session = getattr(mgr, 'get_' + my_catalog_name + '_lookup_session')()
 
             catalog = getattr(catalog_lookup_session, 'get_' + my_catalog_name)(target_catalog.ident)
 
-            if self.my_osid_object._proxy is not None:
+            if self._proxy is not None:
                 admin_session = getattr(mgr, 'get_' + obj_name + '_admin_session_for_' + my_catalog_name)(
                     catalog.ident,
-                    proxy=self.my_osid_object._proxy
+                    proxy=self._proxy
                 )
             else:
                 admin_session = getattr(mgr, 'get_' + obj_name + '_admin_session_for_' + my_catalog_name)(catalog.ident)
@@ -132,7 +132,7 @@ class EnclosureRecord(ObjectInitRecord):
         new_enclosed_object = _clone(enclosed_object_id)
 
         # Let's do the asset here
-        enclosure_id = self.my_osid_object.ident
+        enclosure_id = self.ident
         new_asset = _clone(enclosure_id)
         package_name = enclosure_id.get_identifier_namespace().split('.')[0]
         obj_name = enclosure_id.get_identifier_namespace().split('.')[1].lower()
@@ -144,20 +144,20 @@ class EnclosureRecord(ObjectInitRecord):
 
         my_catalog_name = catalogs[package_name.lower()]
 
-        mgr = self.my_osid_object._get_provider_manager(package_name.upper())
+        mgr = self._get_provider_manager(package_name.upper())
 
-        if self.my_osid_object._proxy is not None:
+        if self._proxy is not None:
             catalog_lookup_session = getattr(mgr, 'get_' + my_catalog_name + '_lookup_session')(
-                proxy=self.my_osid_object._proxy
+                proxy=self._proxy
             )
         else:
             catalog_lookup_session = getattr(mgr, 'get_' + my_catalog_name + '_lookup_session')()
         catalog = getattr(catalog_lookup_session, 'get_' + my_catalog_name)(target_catalog.ident)
 
-        if self.my_osid_object._proxy is not None:
+        if self._proxy is not None:
             admin_session = getattr(mgr, 'get_' + obj_name + '_admin_session_for_' + my_catalog_name)(
                 catalog.ident,
-                proxy=self.my_osid_object._proxy
+                proxy=self._proxy
             )
         else:
             admin_session = getattr(mgr, 'get_' + obj_name + '_admin_session_for_' + my_catalog_name)(catalog.ident)
@@ -172,28 +172,25 @@ class EnclosureQueryRecord(QueryInitRecord):
 
     def match_enclosed_object_id(self, object_id):
         """stub"""
-        self._my_osid_query._add_match('enclosedObjectId', str(object_id), True)
+        self._add_match('enclosedObjectId', str(object_id), True)
 
     def clear_mecqbank_item_id(self):
         """stub"""
-        self._my_osid_query._clear_terms('enclosedObjectId')
+        self._clear_terms('enclosedObjectId')
 
 
 class EnclosureFormRecord(ProvenanceFormRecord, osid_records.OsidRecord):
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(EnclosureFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(EnclosureFormRecord, self).__init__(**kwargs)
+        self._enclosed_object_metadata = None
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """Initialize metadata for this record"""
+        super(EnclosureFormRecord, self)._init_metadata(**kwargs)
         self._enclosed_object_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'enclosed_object'),
             'element_label': 'Enclosed Object',
             'instructions': 'accepts an osid object Id',
@@ -206,9 +203,10 @@ class EnclosureFormRecord(ProvenanceFormRecord, osid_records.OsidRecord):
             'id_set': []
         }
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """Initialize osid objects _my_map for this record"""
-        self.my_osid_object_form._my_map['enclosedObjectId'] = \
+        super(EnclosureFormRecord, self)._init_map(**kwargs)
+        self._my_map['enclosedObjectId'] = \
             self._enclosed_object_metadata['default_id_values'][0]
 
     def get_enclosed_object_metadata(self):
@@ -220,18 +218,18 @@ class EnclosureFormRecord(ProvenanceFormRecord, osid_records.OsidRecord):
     def set_enclosed_object(self, object_id):
         """Sets the Id of the object to enclose"""
         # Should add a test here to make sure the object is from this implementation
-        self.my_osid_object_form._my_map['enclosedObjectId'] = str(object_id)
+        self._my_map['enclosedObjectId'] = str(object_id)
 
     def clear_enclosed_object(self):
         """Clears the Id of the enclosed object"""
-        self.my_osid_object_form._my_map['enclosedObjectId'] = \
+        self._my_map['enclosedObjectId'] = \
             self._enclosed_object_metadata['default_id_values'][0]
 
     enclosed_object = property(fset=set_enclosed_object, fdel=clear_enclosed_object)
 
     def get_display_name_metadata(self):
         """Overrides get_display_name_metadata of extended object"""
-        metadata = dict(self.my_osid_object_form._mdata['display_name'])
+        metadata = dict(self._mdata['display_name'])
         metadata.update({'read_only': True})
         return Metadata(**metadata)
 
@@ -249,7 +247,7 @@ class EnclosureFormRecord(ProvenanceFormRecord, osid_records.OsidRecord):
 
     def get_description_metadata(self):
         """Overrides get_description_metadata of extended object"""
-        metadata = dict(self.my_osid_object_form._description_metadata)
+        metadata = dict(self._description_metadata)
         metadata.update({'read_only': True})
         return Metadata(**metadata)
 
@@ -267,7 +265,7 @@ class EnclosureFormRecord(ProvenanceFormRecord, osid_records.OsidRecord):
 
     def get_genus_type_metadata(self):
         """Overrides get_genus_type_metadata of extended object"""
-        metadata = dict(self.my_osid_object_form._genus_type_metadata)
+        metadata = dict(self._genus_type_metadata)
         metadata.update({'read_only': True})
         return Metadata(**metadata)
 
@@ -290,11 +288,6 @@ class SimpleChildSequencingFormRecord(osid_records.OsidRecord):
     _implemented_record_type_identifiers = [
         'simple_child_sequencing'
     ]
-
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(SimpleChildSequencingFormRecord, self).__init__()
 
 
 class SimpleChildSequencingRecord(ObjectInitRecord):

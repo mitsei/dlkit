@@ -1997,7 +1997,7 @@ class ItemSearchSession(abc_assessment_sessions.ItemSearchSession, ItemQuerySess
             result = collection.find(query_terms)[item_search.start:item_search.end]
         else:
             result = collection.find(query_terms)
-        return searches.ItemSearchResults(result, dict(item_query._query_terms), runtime=self._runtime)
+        return searches.ItemSearchResults(results=result, query_terms=dict(item_query._query_terms), runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_item_query_from_inspector(self, item_query_inspector):

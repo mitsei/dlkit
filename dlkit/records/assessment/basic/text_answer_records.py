@@ -47,13 +47,9 @@ class ShortTextAnswerFormRecord(TextAnswerFormRecord):
         'short-text-answer'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(ShortTextAnswerFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-        if not self.my_osid_object_form.is_for_update():
-            TextAnswerFormRecord._init_map(self)
+    def __init__(self, **kwargs):
+        super(ShortTextAnswerFormRecord, self).__init__(**kwargs)
+        # Need to call this method after __init__ so that it doesn't get over-written to the default
         self.set_max_string_length(128)
 
 
@@ -95,13 +91,9 @@ class ShortTextAnswersFormRecord(TextsAnswerFormRecord):
         'short-text-answers'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(ShortTextAnswersFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-        if not self.my_osid_object_form.is_for_update():
-            TextsAnswerFormRecord._init_map(self)
+    def __init__(self, **kwargs):
+        super(ShortTextAnswersFormRecord, self).__init__(**kwargs)
+        # Need to call this method after __init__ so that it doesn't get over-written to the default
         self.set_max_string_length(128)
 
 
@@ -141,11 +133,7 @@ class ExtendedTextAnswerFormRecord(TextAnswerFormRecord):
         'extended-text-answer'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(ExtendedTextAnswerFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-        if not self.my_osid_object_form.is_for_update():
-            TextAnswerFormRecord._init_map(self)
+    def __init__(self, **kwargs):
+        super(ExtendedTextAnswerFormRecord, self).__init__(**kwargs)
+        # Need to call this method after __init__ so that it doesn't get over-written to the default
         self.set_max_string_length(None)

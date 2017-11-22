@@ -45,8 +45,13 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
     """
     _namespace = 'assessment_authoring.AssessmentPart'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(AssessmentPart, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT_PART', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Bank'
 
     def get_assessment_id(self):
@@ -329,7 +334,7 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
     def __init__(self, **kwargs):
         osid_objects.OsidContainableForm.__init__(self)
         osid_objects.OsidOperableForm.__init__(self)
-        osid_objects.OsidObjectForm.__init__(self, object_name='ASSESSMENT_PART', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_assessment_part_mdata()
         self._init_metadata(**kwargs)
         if not self.is_for_update():
@@ -640,8 +645,13 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
     """A ``SequenceRule`` defines the ordering of ``AssessmentParts``."""
     _namespace = 'assessment_authoring.SequenceRule'
 
+    def __new__(cls, **kwargs):
+        if not kwargs:
+            return object.__new__(cls)  # To support things like deepcopy
+        return super(SequenceRule, cls).__new__(cls, **kwargs)
+
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, object_name='SEQUENCE_RULE', **kwargs)
+        osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Bank'
 
     def get_assessment_part_id(self):
