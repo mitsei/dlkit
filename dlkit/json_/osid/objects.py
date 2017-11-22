@@ -820,6 +820,9 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
     def __init__(self, runtime=None, proxy=None, **kwargs):
         self._identifier = str(uuid.uuid4())
         self._mdata = None
+        self._journal_comment = None
+        self._journal_comment_default = None
+        self._validation_messages = None
         self._for_update = None
         self._runtime = None  # This is now being set in Extensible by higher order objects
         self._proxy = None  # This is now being set in Extensible by higher order objects
@@ -837,9 +840,6 @@ class OsidForm(abc_osid_objects.OsidForm, osid_markers.Identifiable, osid_marker
 
     def _init_metadata(self):
         """Initialize OsidObjectForm metadata."""
-
-        # pylint: disable=attribute-defined-outside-init
-        # this method is called from descendent __init__
         self._mdata.update(default_mdata.get_osid_form_mdata())
         update_display_text_defaults(self._mdata['journal_comment'], self._locale_map)
         for element_name in self._mdata:
@@ -1781,7 +1781,7 @@ class OsidObjectForm(abc_osid_objects.OsidObjectForm, OsidIdentifiableForm, Osid
     """
     _namespace = "osid.OsidObjectForm"
 
-    def __init__(self, osid_object_map=None, **kwargs):  # removed record_types=None, runtime=None,
+    def __init__(self, osid_object_map=None, **kwargs):
         self._display_name_default = None
         self._description_default = None
         self._genus_type_default = None
@@ -1790,7 +1790,6 @@ class OsidObjectForm(abc_osid_objects.OsidObjectForm, OsidIdentifiableForm, Osid
         if osid_object_map is not None:
             self._for_update = True
             self._my_map = osid_object_map
-            # self._load_records(osid_object_map['recordTypeIds'])
         else:
             self._for_update = False
             self._my_map = {}

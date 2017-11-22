@@ -160,9 +160,10 @@ class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectF
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_question_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -302,9 +303,10 @@ class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm)
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_answer_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -674,9 +676,10 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_item_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -1027,9 +1030,10 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_assessment_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -1672,9 +1676,10 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_assessment_offered_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -2750,9 +2755,10 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_assessment_taken_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

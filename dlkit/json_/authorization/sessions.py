@@ -1608,6 +1608,7 @@ class AuthorizationAdminSession(abc_authorization_sessions.AuthorizationAdminSes
         result = collection.find_one({'_id': ObjectId(authorization_id.get_identifier())})
 
         obj_form = objects.AuthorizationForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -2597,19 +2598,15 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
         for arg in vault_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if vault_record_types == []:
-            result = objects.VaultForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.VaultForm(
-                record_types=vault_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        vault_form = objects.VaultForm(
+            record_types=vault_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        vault_form._init_metadata()
+        vault_form._init_map()
+        self._forms[vault_form.get_id().get_identifier()] = not CREATED
+        return vault_form
 
     @utilities.arguments_not_none
     def create_vault(self, vault_form):
@@ -2707,10 +2704,11 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(vault_id.get_identifier())})
 
-        cat_form = objects.VaultForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        vault_form = objects.VaultForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        vault_form._init_metadata()
+        self._forms[vault_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return vault_form
 
     @utilities.arguments_not_none
     def update_vault(self, vault_form):

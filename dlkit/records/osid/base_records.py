@@ -413,9 +413,9 @@ class MultiLanguageUtils(object):
 class ObjectInitRecord(osid_records.OsidRecord):
     """base record class"""
 
-    def __init__(self, osid_object):
-        self = osid_object
-        super(ObjectInitRecord, self).__init__()
+    def __init__(self, **kwargs):
+        # self.my_osid_object = osid_object  # no longer using
+        super(ObjectInitRecord, self).__init__(**kwargs)
 
 
 class ProvenanceRecord(ObjectInitRecord):
@@ -487,22 +487,8 @@ class ProvenanceFormRecord(osid_records.OsidRecord):
         super(ProvenanceFormRecord, self).__init__(**kwargs)
         self._provenance_metadata = None
 
-    def _init_map(self, **kwargs):
-        """stub"""
-        super(ProvenanceFormRecord, self)._init_map(**kwargs)
-        self._my_map['provenanceId'] = \
-            self._provenance_metadata['default_object_values'][0]
-        if not self.is_for_update():
-            if 'effectiveAgentId' in self._kwargs:
-                self._my_map['creatorId'] = \
-                    str(self._kwargs['effectiveAgentId'])
-            else:
-                self._my_map['creatorId'] = ''
-            self._my_map['creationTime'] = \
-                datetime.datetime.now()
-
     def _init_metadata(self, **kwargs):
-        """stub"""
+        """initializes form metadata for this record"""
         super(ProvenanceFormRecord, self)._init_metadata(**kwargs)
         self._provenance_metadata = {
             'element_id': Id(self._authority,
@@ -520,6 +506,19 @@ class ProvenanceFormRecord(osid_records.OsidRecord):
             'maximum_string_length': None,
             'string_set': []
         }
+
+    def _init_map(self, **kwargs):
+        """initializes form map for this record"""
+        super(ProvenanceFormRecord, self)._init_map(**kwargs)
+        self._my_map['provenanceId'] = \
+            self._provenance_metadata['default_object_values'][0]
+        if not self.is_for_update():
+            if 'effectiveAgentId' in kwargs:
+                self._my_map['creatorId'] = \
+                    str(kwargs['effectiveAgentId'])
+            else:
+                self._my_map['creatorId'] = ''
+            self._my_map['creationTime'] = datetime.datetime.now()
 
     def get_provenance_metadata(self):
         """stub"""

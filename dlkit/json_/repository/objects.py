@@ -562,9 +562,10 @@ class AssetForm(abc_repository_objects.AssetForm, osid_objects.OsidObjectForm, o
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_asset_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -1548,9 +1549,10 @@ class AssetContentForm(abc_repository_objects.AssetContentForm, osid_objects.Osi
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_asset_content_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -1907,9 +1909,10 @@ class CompositionForm(abc_repository_objects.CompositionForm, osid_objects.OsidO
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_composition_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

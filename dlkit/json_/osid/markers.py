@@ -131,10 +131,10 @@ class Extensible(abc_osid_markers.Extensible):
         if record_types is not None:
             data_key = object_type.lower() + '_record_class_name'
             cls = type(object_name + object_type,
-                      get_records(inflection.underscore(object_name).upper(),
-                                           record_types,
-                                           data_key,
-                                           runtime) + (cls,), {})
+                       get_records(inflection.underscore(object_name).upper(),
+                                   record_types,
+                                   data_key,
+                                   runtime) + (cls,), {})
         return super(Extensible, cls).__new__(cls)
 
     def __init__(self, runtime=None, proxy=None, **kwargs):

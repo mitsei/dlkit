@@ -2162,19 +2162,15 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         for arg in item_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if item_record_types == []:
-            obj_form = objects.ItemForm(
-                bank_id=self._catalog_id,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
-        else:
-            obj_form = objects.ItemForm(
-                bank_id=self._catalog_id,
-                record_types=item_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+        obj_form = objects.ItemForm(
+            # bank_id=self._catalog_id,
+            record_types=item_record_types,
+            runtime=self._runtime,
+            # effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           effective_agent_id=self.get_effective_agent_id())
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -2271,6 +2267,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         result = collection.find_one({'_id': ObjectId(item_id.get_identifier())})
 
         obj_form = objects.ItemForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -2483,23 +2480,17 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         for arg in question_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if question_record_types == []:
-            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
-            obj_form = objects.QuestionForm(
-                bank_id=self._catalog_id,
-                item_id=item_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.QuestionForm(
-                bank_id=self._catalog_id,
-                record_types=question_record_types,
-                item_id=item_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        obj_form._for_update = False
+
+        obj_form = objects.QuestionForm(
+            record_types=question_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           item_id=item_id,
+                           effective_agent_id=self.get_effective_agent_id())
+
+        # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -2763,23 +2754,17 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         for arg in answer_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if answer_record_types == []:
-            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
-            obj_form = objects.AnswerForm(
-                bank_id=self._catalog_id,
-                item_id=item_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.AnswerForm(
-                bank_id=self._catalog_id,
-                record_types=answer_record_types,
-                item_id=item_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        obj_form._for_update = False
+
+        obj_form = objects.AnswerForm(
+            record_types=answer_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           item_id=item_id,
+                           effective_agent_id=self.get_effective_agent_id())
+
+        # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -4367,19 +4352,15 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         for arg in assessment_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if assessment_record_types == []:
-            obj_form = objects.AssessmentForm(
-                bank_id=self._catalog_id,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
-        else:
-            obj_form = objects.AssessmentForm(
-                bank_id=self._catalog_id,
-                record_types=assessment_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+        obj_form = objects.AssessmentForm(
+            # bank_id=self._catalog_id,
+            record_types=assessment_record_types,
+            runtime=self._runtime,
+            # effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           effective_agent_id=self.get_effective_agent_id())
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -4478,6 +4459,7 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
         result = collection.find_one({'_id': ObjectId(assessment_id.get_identifier())})
 
         obj_form = objects.AssessmentForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -5903,23 +5885,17 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         for arg in assessment_offered_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if assessment_offered_record_types == []:
-            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
-            obj_form = objects.AssessmentOfferedForm(
-                bank_id=self._catalog_id,
-                assessment_id=assessment_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.AssessmentOfferedForm(
-                bank_id=self._catalog_id,
-                record_types=assessment_offered_record_types,
-                assessment_id=assessment_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        obj_form._for_update = False
+
+        obj_form = objects.AssessmentOfferedForm(
+            record_types=assessment_offered_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           assessment_id=assessment_id,
+                           effective_agent_id=self.get_effective_agent_id())
+
+        # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -6021,6 +5997,7 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         result = collection.find_one({'_id': ObjectId(assessment_offered_id.get_identifier())})
 
         obj_form = objects.AssessmentOfferedForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -7485,23 +7462,15 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
             # no deadline set
             pass
 
-        if assessment_taken_record_types == []:
-            # WHY are we passing bank_id = self._catalog_id below, seems redundant:
-            obj_form = objects.AssessmentTakenForm(
-                bank_id=self._catalog_id,
-                assessment_offered_id=assessment_offered_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.AssessmentTakenForm(
-                bank_id=self._catalog_id,
-                record_types=assessment_taken_record_types,
-                assessment_offered_id=assessment_offered_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        obj_form._for_update = False
+        obj_form = objects.AssessmentTakenForm(record_types=assessment_taken_record_types,
+                                               runtime=self._runtime,
+                                               proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           assessment_offered_id=assessment_offered_id,
+                           effective_agent_id=self.get_effective_agent_id())
+
+        # obj_form._for_update = False  # set in form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -7621,6 +7590,7 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
         result = collection.find_one({'_id': ObjectId(assessment_taken_id.get_identifier())})
 
         obj_form = objects.AssessmentTakenForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -8608,19 +8578,15 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
         for arg in bank_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if bank_record_types == []:
-            result = objects.BankForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.BankForm(
-                record_types=bank_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        bank_form = objects.BankForm(
+            record_types=bank_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        bank_form._init_metadata()
+        bank_form._init_map()
+        self._forms[bank_form.get_id().get_identifier()] = not CREATED
+        return bank_form
 
     @utilities.arguments_not_none
     def create_bank(self, bank_form):
@@ -8717,10 +8683,11 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(bank_id.get_identifier())})
 
-        cat_form = objects.BankForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        bank_form = objects.BankForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        bank_form._init_metadata()
+        self._forms[bank_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return bank_form
 
     @utilities.arguments_not_none
     def update_bank(self, bank_form):
