@@ -21,15 +21,16 @@ from dlkit.abstract_osid.osid import errors
 
 class AuthorizationQuery(abc_authorization_queries.AuthorizationQuery, osid_queries.OsidRelationshipQuery):
     """The query for authorizations."""
+    _namespace = 'authorization.Authorization'
+
     def __init__(self, runtime):
-        self._namespace = 'authorization.Authorization'
         self._runtime = runtime
         record_type_data_sets = get_registry('AUTHORIZATION_RECORD_TYPES', runtime)
         self._all_supported_record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_ids = []
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+        osid_queries.OsidObjectQuery.__init__(self, runtime=runtime)
 
     @utilities.arguments_not_none
     def match_explicit_authorizations(self, match):

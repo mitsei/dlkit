@@ -336,9 +336,9 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
         osid_objects.OsidOperableForm.__init__(self)
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_assessment_part_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -803,6 +803,10 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
 
         """
         return self._get_record(sequence_rule_record_type)
+
+    def _evaluates_true(self):
+        """should be overridden somewhere? Not in spec."""
+        return False
 
 
 class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_objects.OsidRuleForm):

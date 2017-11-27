@@ -693,7 +693,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(gradebook_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=grade_system_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -1021,7 +1022,8 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         obj_form._init_metadata()
         obj_form._init_map(gradebook_id=self._catalog_id,
                            grade_system_id=grade_system_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=grade_record_types)
 
         # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
@@ -1131,6 +1133,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             osid_object_map=result,
             runtime=self._runtime,
             proxy=self._proxy)
+        obj_form._init_metadata()
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -2445,27 +2448,16 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         for arg in grade_entry_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if grade_entry_record_types == []:
-            # WHY are we passing gradebook_id = self._catalog_id below, seems redundant:
-            # Probably don't need effective agent id since form can now get that from proxy.
-            obj_form = objects.GradeEntryForm(
-                gradebook_id=self._catalog_id,
-                gradebook_column_id=gradebook_column_id,
-                resource_id=resource_id,
-                effective_agent_id=str(self.get_effective_agent_id()),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.GradeEntryForm(
-                gradebook_id=self._catalog_id,
-                record_types=grade_entry_record_types,
-                gradebook_column_id=gradebook_column_id,
-                resource_id=resource_id,
-                effective_agent_id=str(self.get_effective_agent_id()),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
+        obj_form = objects.GradeEntryForm(
+            record_types=grade_entry_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(gradebook_id=self._catalog_id,
+                           gradebook_column_id=gradebook_column_id,
+                           resource_id=resource_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=grade_entry_record_types)
         obj_form._for_update = False
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
@@ -2629,6 +2621,7 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
             effective_agent_id=str(self.get_effective_agent_id()),
             runtime=self._runtime,
             proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -3426,7 +3419,8 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(gradebook_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=gradebook_column_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 

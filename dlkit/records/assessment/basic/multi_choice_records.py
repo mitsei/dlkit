@@ -670,9 +670,9 @@ class MultiChoiceFileAnswerFormRecord(MultiChoiceAnswerFormRecord):
 class MultiLanguageMultipleChoiceQuestionRecord(MultiLanguageQuestionRecord):
     def __init__(self, **kwargs):
         try:
-            self._my_map['multiLanguageChoices'] = deepcopy(self._original_choice_order)
+            kwargs['osid_object_map']['multiLanguageChoices'] = deepcopy(self._original_choice_order)
         except AttributeError:
-            self._my_map['multiLanguageChoices'] = deepcopy(self._my_map['choices'])
+            kwargs['osid_object_map']['multiLanguageChoices'] = deepcopy(kwargs['osid_object_map']['choices'])
         super(MultiLanguageMultipleChoiceQuestionRecord, self).__init__(**kwargs)
 
     def get_unrandomized_choices(self):

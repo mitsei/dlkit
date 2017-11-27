@@ -71,6 +71,8 @@ class Question(abc_assessment_objects.Question, osid_objects.OsidObject):
     and any persisted references should use the ``Id``.
 
     """
+    _namespace = "assessment.Question"
+
     def __init__(self, **kwargs):
         osid_objects.OsidObject.__init__(self, **kwargs)
         self._catalog_name = 'Bank'
@@ -1041,9 +1043,9 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         self._rubric_default = self._mdata['rubric']['default_id_values'][0]
         self._level_default = self._mdata['level']['default_id_values'][0]
 
-    def _init_map(self, record_types=None, **kwargs):
+    def _init_map(self, **kwargs):
         """Initialize form map"""
-        osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
+        osid_objects.OsidObjectForm._init_map(self, **kwargs)
         self._my_map['rubricId'] = self._rubric_default
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
         self._my_map['levelId'] = self._level_default
@@ -2630,7 +2632,11 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
             # This is the first time for this Taken, so start assessment
             # SHOULD THIS USE self._update_available_sections????
             assessment_id = self.get_assessment_offered().get_assessment().get_id()
-            first_part_id = get_first_part_id_for_assessment(assessment_id, runtime=self._runtime, proxy=self._proxy)
+            first_part_id = get_first_part_id_for_assessment(assessment_id,
+                                                             runtime=self._runtime,
+                                                             proxy=self._proxy,
+                                                             create=True,
+                                                             bank_id=Id(self._my_map['assignedBankIds'][0]))
             first_section = self._create_section(first_part_id)
             self._my_map['sections'] = [str(first_section.get_id())]
             self._my_map['actualStartTime'] = DateTime.utcnow()

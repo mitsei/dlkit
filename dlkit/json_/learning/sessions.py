@@ -659,7 +659,8 @@ class ObjectiveAdminSession(abc_learning_sessions.ObjectiveAdminSession, osid_se
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(objective_bank_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=objective_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -3163,7 +3164,8 @@ class ActivityAdminSession(abc_learning_sessions.ActivityAdminSession, osid_sess
         obj_form._init_metadata()
         obj_form._init_map(objective_bank_id=self._catalog_id,
                            objective_id=objective_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=activity_record_types)
 
         # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED

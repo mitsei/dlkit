@@ -11,6 +11,7 @@
 
 
 import importlib
+import inflection
 import re
 
 
@@ -362,7 +363,9 @@ class OsidExtensibleQuery(abc_osid_queries.OsidExtensibleQuery, OsidQuery, osid_
     def __new__(cls, osid_object_map=None, runtime=None, **kwargs):
         object_name = cls._namespace.split('.')[-1]
         # The following is not optimal since it means the registry is traversed twice:
-        record_types = [Type(data_set) for data_set in utilities.get_registry(object_name, runtime)]
+        record_types = [Type(data_set) for data_set in utilities.get_registry(
+            inflection.underscore(object_name).upper() + '_RECORD_TYPES',
+            runtime)]
         return osid_markers.Extensible.__new__(cls, object_name, 'Query', record_types, runtime)
 
     def __init__(self, runtime=None, proxy=None, **kwargs):
@@ -370,20 +373,20 @@ class OsidExtensibleQuery(abc_osid_queries.OsidExtensibleQuery, OsidQuery, osid_
         self._runtime = runtime
         self._proxy = proxy
 
-    def _load_records(self, record_type_idstrs):
-        """Loads query records"""
-        for record_type_idstr in record_type_idstrs:
-            try:
-                self._init_record(record_type_idstr)
-            except (ImportError, KeyError):
-                pass
-
-    def _init_record(self, record_type_idstr):
-        """Initializes a query record"""
-        record_type_data = self._all_supported_record_type_data_sets[Id(record_type_idstr).get_identifier()]
-        module = importlib.import_module(record_type_data['module_path'])
-        record = getattr(module, record_type_data['query_record_class_name'])
-        self._records[record_type_idstr] = record(self)
+    # def _load_records(self, record_type_idstrs):
+    #     """Loads query records"""
+    #     for record_type_idstr in record_type_idstrs:
+    #         try:
+    #             self._init_record(record_type_idstr)
+    #         except (ImportError, KeyError):
+    #             pass
+    #
+    # def _init_record(self, record_type_idstr):
+    #     """Initializes a query record"""
+    #     record_type_data = self._all_supported_record_type_data_sets[Id(record_type_idstr).get_identifier()]
+    #     module = importlib.import_module(record_type_data['module_path'])
+    #     record = getattr(module, record_type_data['query_record_class_name'])
+    #     self._records[record_type_idstr] = record(self)
 
     @utilities.arguments_not_none
     def match_record_type(self, record_type, match):

@@ -806,7 +806,8 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(bin_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=resource_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 

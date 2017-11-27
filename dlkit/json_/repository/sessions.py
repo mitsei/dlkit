@@ -1305,7 +1305,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(repository_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=asset_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -1620,7 +1621,8 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         obj_form._init_metadata()
         obj_form._init_map(repository_id=self._catalog_id,
                            asset_id=asset_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=asset_content_record_types)
 
         # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
@@ -1732,6 +1734,7 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             osid_object_map=result,
             runtime=self._runtime,
             proxy=self._proxy)
+        obj_form._init_metadata()
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -3865,7 +3868,8 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(repository_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=composition_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 

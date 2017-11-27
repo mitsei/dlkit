@@ -127,9 +127,6 @@ class MagicRandomizedMCItemFormRecord(osid_records.OsidRecord):
         'magic-randomized-multiple-choice'
     ]
 
-    def __init__(self, **kwargs):
-        super(MagicRandomizedMCItemFormRecord, self).__init__(**kwargs)
-
 
 class MultiChoiceRandomizeChoicesQuestionFormRecord(MultiChoiceTextAndFilesQuestionFormRecord):
     _implemented_record_type_identifiers = [
@@ -154,7 +151,7 @@ class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionR
     ]
 
     def __init__(self, **kwargs):
-        self._original_choice_order = deepcopy(self._my_map['choices'])
+        self._original_choice_order = deepcopy(kwargs['osid_object_map']['choices'])
         super(MultiChoiceRandomizeChoicesQuestionRecord, self).__init__(**kwargs)
         # it is possible to have no choices set yet --- so don't throw exceptions in that
         #   case

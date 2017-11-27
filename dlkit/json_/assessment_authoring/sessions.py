@@ -779,7 +779,8 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         obj_form._init_metadata()
         obj_form._init_map(bank_id=self._catalog_id,
                            assessment_id=assessment_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=assessment_part_record_types)
 
         # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
@@ -868,24 +869,27 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
         child_parts = lookup_session.get_assessment_parts_for_assessment_part(assessment_part_id)
         mdata = {}
         # Check for underlying Parts, whether Sections and set appropriate mdata overrides:
-        if child_parts.available == 0:
-            pass
+        # if child_parts.available() == 0:
+        #     pass
+        # else:
+        mdata['sequestered'] = {}
+        mdata['sequestered']['is_read_only'] = True
+        mdata['sequestered']['is_required'] = True
+        if child_parts.available() > 0 and child_parts.next().is_section():
+            mdata['sequestered']['default_boolean_values'] = [False]
         else:
-            mdata['sequestered'] = {}
-            mdata['sequestered']['is_read_only'] = True
-            mdata['sequestered']['is_required'] = True
-            if child_parts.available() > 0 and child_parts.next().is_section():
-                mdata['sequestered']['default_boolean_values'] = [False]
-            else:
-                mdata['sequestered']['default_boolean_values'] = [True]
+            mdata['sequestered']['default_boolean_values'] = [True]
         # WHY are we passing bank_id = self._catalog_id below, seems redundant:
         obj_form = objects.AssessmentPartForm(
-            bank_id=self._catalog_id,
             record_types=assessment_part_record_types,
-            assessment_part_id=assessment_part_id,
-            catalog_id=self._catalog_id,
             runtime=self._runtime,
-            mdata=mdata)
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bank_id=self._catalog_id,
+                           assessment_part_id=assessment_part_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=assessment_part_record_types,
+                           mdata=mdata)
         obj_form._for_update = False
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
@@ -1000,6 +1004,7 @@ class AssessmentPartAdminSession(abc_assessment_authoring_sessions.AssessmentPar
                                               runtime=self._runtime,
                                               proxy=self._proxy,
                                               mdata=mdata)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form

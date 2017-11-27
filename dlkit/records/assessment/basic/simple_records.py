@@ -341,6 +341,7 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
     ]
 
     def __init__(self, **kwargs):
+        super(TextsAnswerFormRecord, self).__init__(**kwargs)
         if self.is_for_update():
             self._min_string_length = \
                 self._my_map.get('minStringLength',
@@ -353,18 +354,18 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
             self._max_string_length = None
             self._min_string_length_metadata = None
             self._max_string_length_metadata = None
-        super(TextsAnswerFormRecord, self).__init__(**kwargs)
 
     def _init_map(self, **kwargs):
         """stub"""
+        super(TextsAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['minStringLength'] = \
             self._min_string_length_metadata['default_cardinal_values'][0]
         self._my_map['maxStringLength'] = \
             self._max_string_length_metadata['default_cardinal_values'][0]
-        super(TextsAnswerFormRecord, self)._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """stub"""
+        super(TextsAnswerFormRecord, self)._init_metadata(**kwargs)
         self._min_string_length_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -397,7 +398,6 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
             'maximum_cardinal': None,
             'cardinal_set': []
         }
-        super(TextsAnswerFormRecord, self)._init_metadata(**kwargs)
 
     def get_min_string_length_metadata(self):
         """stub"""

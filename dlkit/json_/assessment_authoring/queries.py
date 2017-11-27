@@ -429,15 +429,16 @@ class SequenceRuleQuery(abc_assessment_authoring_queries.SequenceRuleQuery, osid
     invocations of the same method produce a nested ``OR``.
 
     """
+    _namespace = 'assessment_authoring.SequenceRuleQuery'
+
     def __init__(self, runtime):
-        self._namespace = 'assessment_authoring.SequenceRuleQuery'
         self._runtime = runtime
         record_type_data_sets = get_registry('SEQUENCE_RULE_QUERY_RECORD_TYPES', runtime)
         self._all_supported_record_type_data_sets = record_type_data_sets
         self._all_supported_record_type_ids = []
         for data_set in record_type_data_sets:
             self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidRuleQuery.__init__(self, runtime)
+        osid_queries.OsidRuleQuery.__init__(self, runtime=runtime)
 
     @utilities.arguments_not_none
     def match_assessment_part_id(self, assessment_part_id, match):

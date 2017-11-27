@@ -733,13 +733,20 @@ class AssessmentSession(abc_assessment_sessions.AssessmentSession, osid_sessions
         # Thus endith the hack.
 
         obj_form = objects.AnswerForm(
+            # bank_id=self._catalog_id,
+            record_types=answer_record_types,
+            # item_id=item_id,
+            # catalog_id=self._catalog_id,
+            # assessment_section_id=assessment_section_id,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(
             bank_id=self._catalog_id,
             record_types=answer_record_types,
             item_id=item_id,
-            catalog_id=self._catalog_id,
-            assessment_section_id=assessment_section_id,
-            runtime=self._runtime,
-            proxy=self._proxy)
+            assessment_section_id=assessment_section_id
+        )
         obj_form._for_update = False  # This may be redundant
         self._forms[obj_form.get_id().get_identifier()] = not SUBMITTED
         return obj_form
@@ -2170,7 +2177,8 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(bank_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=item_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -2488,7 +2496,8 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         obj_form._init_metadata()
         obj_form._init_map(bank_id=self._catalog_id,
                            item_id=item_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=question_record_types)
 
         # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
@@ -2590,6 +2599,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         obj_form = objects.QuestionForm(osid_object_map=document['question'],
                                         runtime=self._runtime,
                                         proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
 
@@ -2762,7 +2772,8 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
         obj_form._init_metadata()
         obj_form._init_map(bank_id=self._catalog_id,
                            item_id=item_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=answer_record_types)
 
         # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
@@ -2872,6 +2883,7 @@ class ItemAdminSession(abc_assessment_sessions.ItemAdminSession, osid_sessions.O
             osid_object_map=result,
             runtime=self._runtime,
             proxy=self._proxy)
+        obj_form._init_metadata()
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -4360,7 +4372,8 @@ class AssessmentAdminSession(abc_assessment_sessions.AssessmentAdminSession, osi
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(bank_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=assessment_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -5893,7 +5906,8 @@ class AssessmentOfferedAdminSession(abc_assessment_sessions.AssessmentOfferedAdm
         obj_form._init_metadata()
         obj_form._init_map(bank_id=self._catalog_id,
                            assessment_id=assessment_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=assessment_offered_record_types)
 
         # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED

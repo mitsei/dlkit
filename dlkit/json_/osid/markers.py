@@ -128,7 +128,7 @@ class Extensible(abc_osid_markers.Extensible):
         # NOTE: All classes that inherit from osid.Extensible must override __new__
         # and invoke this osid.Extensible.__new__ with the proper arguments.
         # See osid.OsidObject and osid.OsidObjectForm for examples.
-        if record_types is not None:
+        if record_types:
             data_key = object_type.lower() + '_record_class_name'
             cls = type(object_name + object_type,
                        get_records(inflection.underscore(object_name).upper(),

@@ -774,10 +774,10 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
     ]
 
     # Does this need to be updated to match the new record scheme?
-    def __init__(self, osid_object):
-        self._original_choice_order = deepcopy(osid_object._my_map['choices'])
-        osid_object._my_map['multiLanguageChoices'] = deepcopy(osid_object._my_map['choices'])
-        super(MultiLanguageInlineChoiceQuestionRecord, self).__init__(osid_object)
+    def __init__(self, **kwargs):
+        self._original_choice_order = deepcopy(kwargs['osid_object_map']['choices'])
+        kwargs['osid_object_map']['multiLanguageChoices'] = deepcopy(kwargs['osid_object_map']['choices'])
+        super(MultiLanguageInlineChoiceQuestionRecord, self).__init__(**kwargs)
         # if not self._my_map['choices']:
         #     raise IllegalState()
         choices = self._my_map['choices']

@@ -934,7 +934,8 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
             proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(log_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id())
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=log_entry_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 

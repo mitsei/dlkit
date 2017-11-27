@@ -975,25 +975,15 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         for arg in comment_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if comment_record_types == []:
-            # WHY are we passing book_id = self._catalog_id below, seems redundant:
-            # Probably don't need to send effective_agent_id, since the form can get that from proxy.
-            obj_form = objects.CommentForm(
-                book_id=self._catalog_id,
-                reference_id=reference_id,
-                effective_agent_id=str(self.get_effective_agent_id()),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.CommentForm(
-                book_id=self._catalog_id,
-                record_types=comment_record_types,
-                reference_id=reference_id,
-                effective_agent_id=self.get_effective_agent_id(),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
+        obj_form = objects.CommentForm(
+            record_types=comment_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(book_id=self._catalog_id,
+                           reference_id=reference_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=comment_record_types)
         obj_form._for_update = False
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form

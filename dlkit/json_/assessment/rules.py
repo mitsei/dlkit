@@ -64,16 +64,16 @@ class Response(abc_assessment_rules.Response, osid_rules.OsidCondition):
 
         # Consider that responses may want to have their own records separate
         # from the enclosed Answer records:
-        self._record_type_data_sets = get_registry('RESPONSE_RECORD_TYPES', runtime)
-        if 'recordTypeIds' in osid_object_map:
-            record_type_ids = osid_object_map['recordTypeIds']
-        else:
-            record_type_ids = []
-        self._load_records(record_type_ids)
-
-    def _load_records(self, record_type_idstrs):
-        for record_type_idstr in record_type_idstrs:
-            self._init_record(record_type_idstr)
+    #     self._record_type_data_sets = get_registry('RESPONSE_RECORD_TYPES', runtime)
+    #     if 'recordTypeIds' in osid_object_map:
+    #         record_type_ids = osid_object_map['recordTypeIds']
+    #     else:
+    #         record_type_ids = []
+    #     self._load_records(record_type_ids)
+    #
+    # def _load_records(self, record_type_idstrs):
+    #     for record_type_idstr in record_type_idstrs:
+    #         self._init_record(record_type_idstr)
 
     def __iter__(self):
         for attr in dir(self):
