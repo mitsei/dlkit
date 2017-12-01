@@ -2450,6 +2450,8 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
         obj_form = objects.GradeEntryForm(
             record_types=grade_entry_record_types,
+            effective_agent_id=self.get_effective_agent_id(),  # needed here to set a property in __init__
+            gradebook_column_id=gradebook_column_id,  # needed here to get gradeSystemId
             runtime=self._runtime,
             proxy=self._proxy)
         obj_form._init_metadata()
@@ -4512,7 +4514,9 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         gradebook_form._init_metadata()
-        gradebook_form._init_map()
+        gradebook_form._init_map(
+            record_types=gradebook_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[gradebook_form.get_id().get_identifier()] = not CREATED
         return gradebook_form
 

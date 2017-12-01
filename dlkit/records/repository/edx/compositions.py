@@ -254,8 +254,8 @@ class EdXCompositionQueryRecord(edXQueryMethods, QueryInitRecord):
 class EdXCompositionRecord(TextsRecord, TemporalRecord,
                            ProvenanceCompositionRecord, EdXUtilitiesMixin):
     """edX compositions, like course / chapter / etc."""
-    def __init__(self, object_map):
-        super(EdXCompositionRecord, self).__init__(object_map)
+    def __init__(self, **kwargs):
+        super(EdXCompositionRecord, self).__init__(**kwargs)
         if (not hasattr(self, '_supported_record_type_ids') or
                 self._supported_record_type_ids is None):
             self._supported_record_type_ids = []
@@ -635,8 +635,8 @@ class EdXCourseRunCompositionFormRecord(TextsFormRecord):
 
 class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRecord):
     """edX user course run composition"""
-    def __init__(self, object_map):
-        super(EdXCourseRunCompositionRecord, self).__init__(object_map)
+    def __init__(self, **kwargs):
+        super(EdXCourseRunCompositionRecord, self).__init__(**kwargs)
         if not hasattr(self, '_supported_record_type_ids'):
             self._supported_record_type_ids = []
         self._supported_record_type_ids.append(

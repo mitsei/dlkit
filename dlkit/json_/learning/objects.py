@@ -1499,9 +1499,6 @@ class ObjectiveBankForm(abc_learning_objects.ObjectiveBankForm, osid_objects.Osi
     def __init__(self, **kwargs):
         osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_objective_bank_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

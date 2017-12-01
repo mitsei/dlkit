@@ -1605,15 +1605,11 @@ class GradebookColumnSummaryQuery(abc_grading_queries.GradebookColumnSummaryQuer
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'grading.GradebookColumnSummaryQuery'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('GRADEBOOK_COLUMN_SUMMARY_QUERY_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidRuleQuery.__init__(self, runtime)
+    _namespace = 'grading.GradebookColumnSummary'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidRuleQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Gradebook'
 
     @utilities.arguments_not_none
     def match_gradebook_column_id(self, gradebook_column_id, match):

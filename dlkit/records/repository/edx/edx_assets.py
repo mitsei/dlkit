@@ -175,8 +175,8 @@ class edXAssetRecord(TextsRecord, ProvenanceAssetRecord, EdXUtilitiesMixin):
         'provenance-asset'
     ]
 
-    def __init__(self, osid_object):
-        super(edXAssetRecord, self).__init__(osid_object)
+    def __init__(self, **kwargs):
+        super(edXAssetRecord, self).__init__(**kwargs)
         if (not hasattr(self, '_supported_record_type_ids') or
                 self._supported_record_type_ids is None):
             self._supported_record_type_ids = []

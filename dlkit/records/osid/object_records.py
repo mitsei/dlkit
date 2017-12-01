@@ -23,9 +23,9 @@ CATALOG_LOOKUP = {
 class EnclosureRecord(ObjectInitRecord):
     """Record extension to wrap an enclosed foreign object"""
 
-    def __init__(self, osid_object):
+    def __init__(self, **kwargs):
         self._enclosed_object = None
-        super(EnclosureRecord, self).__init__(osid_object)
+        super(EnclosureRecord, self).__init__(**kwargs)
         if (not hasattr(self, '_supported_record_type_ids') or
                 self._supported_record_type_ids is None):
             self._supported_record_type_ids = []

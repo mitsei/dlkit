@@ -523,7 +523,9 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         catalog_form._init_metadata()
-        catalog_form._init_map()
+        catalog_form._init_map(
+            record_types=catalog_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[catalog_form.get_id().get_identifier()] = not CREATED
         return catalog_form
 

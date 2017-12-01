@@ -17,9 +17,9 @@ DISPLAYNAME = 'Mongo authentication'
 
 DESCRIPTION = 'MongoDB based authentication implementation'
 
-VERSIONCOMPONENTS = [0, 1, 113]
+VERSIONCOMPONENTS = [0, 1, 126]
 
-RELEASEDATE = "2017-11-27"
+RELEASEDATE = "2017-12-01"
 
 SUPPORTS = [  # 'Remove the # when implementations exist:'
     # 'supports_journal_rollback',

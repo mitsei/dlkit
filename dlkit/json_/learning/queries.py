@@ -1155,15 +1155,11 @@ class ProficiencyQuery(abc_learning_queries.ProficiencyQuery, osid_queries.OsidR
     invocations of the same method produce a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = '${pkg_name}.${object_name}'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('${object_name_upper}_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'learning.Proficiency'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'ObjectiveBank'
 
     @utilities.arguments_not_none
     def match_resource_id(self, resource_id, match):

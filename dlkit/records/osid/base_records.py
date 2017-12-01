@@ -134,6 +134,8 @@ class AssetUtils(object):
                 catalog_id = Id(self._my_map['assignedBankIds'][0])
             elif 'assignedRepositoryIds' in self._my_map:
                 catalog_id = Id(self._my_map['assignedRepositoryIds'][0])
+            elif 'assignedBookIds' in self._my_map:
+                catalog_id = Id(self._my_map['assignedBookIds'][0])
 
         try:
             aas = rm.get_asset_admin_session_for_repository(
@@ -249,6 +251,15 @@ class AssetUtils(object):
 
 
 class MultiLanguageUtils(object):
+    def __init__(self, **kwargs):
+        super(MultiLanguageUtils, self).__init__(**kwargs)
+
+    def _init_metadata(self, **kwargs):
+        super(MultiLanguageUtils, self)._init_metadata(**kwargs)
+
+    def _init_map(self, **kwargs):
+        super(MultiLanguageUtils, self)._init_map(**kwargs)
+
     @staticmethod
     def _empty_display_text():
         return DisplayText(display_text_map={
@@ -259,10 +270,11 @@ class MultiLanguageUtils(object):
         })
 
     def _display_text_dict(self, text_string):
+        proxy = None
         try:
             proxy = self._proxy
         except AttributeError:
-            proxy = self._proxy
+            pass
         finally:
             if proxy is None or (proxy is not None and proxy.locale is None):
                 return {
@@ -2617,8 +2629,8 @@ class SourceableFormRecord(osid_records.OsidRecord):
             self._my_map['providerId'] = resource_idstr
         else:
             self._my_map['providerId'] = self._provider_default
-        self._my_map['brandingIds'] = self._branding_default
-        self._my_map['license'] = self._license_default
+        self._my_map['brandingIds'] = list(self._branding_default)
+        self._my_map['license'] = dict(self._license_default)
 
     def get_provider_metadata(self):
         """Gets the metadata for a provider.
@@ -2698,8 +2710,8 @@ class SourceableFormRecord(osid_records.OsidRecord):
         if not isinstance(asset_ids, list):
             raise InvalidArgument('asset_ids must be a list')
         if not self._is_valid_input(asset_ids,
-                                                        self.get_branding_metadata(),
-                                                        array=True):
+                                    self.get_branding_metadata(),
+                                    array=True):
             raise InvalidArgument()
         branding_ids = []
         for asset_id in asset_ids:

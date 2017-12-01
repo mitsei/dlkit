@@ -1941,7 +1941,9 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         log_form._init_metadata()
-        log_form._init_map()
+        log_form._init_map(
+            record_types=log_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[log_form.get_id().get_identifier()] = not CREATED
         return log_form
 

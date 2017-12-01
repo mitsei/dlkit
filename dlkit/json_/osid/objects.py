@@ -1242,7 +1242,8 @@ class OsidExtensibleForm(abc_osid_objects.OsidExtensibleForm, OsidForm, osid_mar
                                             'form_record_class_name')
         if record_class is None:
             raise errors.Unsupported
-        self.__class__.__bases__ = (record_class,) + self.__class__.__bases__
+        self.__class__ = type(object_name + 'Form',
+                              (record_class, self.__class__,), {})
         record_class.__init__(self, block_super=True)
         record_class._init_metadata(self, block_super=True)
         record_class._init_map(self, block_super=True)

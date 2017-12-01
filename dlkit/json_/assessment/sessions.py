@@ -7481,6 +7481,7 @@ class AssessmentTakenAdminSession(abc_assessment_sessions.AssessmentTakenAdminSe
                                                proxy=self._proxy)
         obj_form._init_metadata()
         obj_form._init_map(bank_id=self._catalog_id,
+                           record_types=assessment_taken_record_types,
                            assessment_offered_id=assessment_offered_id,
                            effective_agent_id=self.get_effective_agent_id())
 
@@ -8598,7 +8599,9 @@ class BankAdminSession(abc_assessment_sessions.BankAdminSession, osid_sessions.O
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         bank_form._init_metadata()
-        bank_form._init_map()
+        bank_form._init_map(
+            record_types=bank_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[bank_form.get_id().get_identifier()] = not CREATED
         return bank_form
 

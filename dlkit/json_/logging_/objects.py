@@ -181,13 +181,11 @@ class LogEntryForm(abc_logging_objects.LogEntryForm, osid_objects.OsidObjectForm
     constraints.
 
     """
+    _namespace = 'logging.LogEntry'
+
     def __init__(self, **kwargs):
         osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_log_entry_mdata()
-        self._init_metadata(**kwargs)
-
-        if not self.is_for_update():
-            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         osid_objects.OsidObjectForm._init_metadata(self, **kwargs)
@@ -444,9 +442,6 @@ class LogForm(abc_logging_objects.LogForm, osid_objects.OsidCatalogForm):
     def __init__(self, **kwargs):
         osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_log_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

@@ -5039,7 +5039,9 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         repository_form._init_metadata()
-        repository_form._init_map()
+        repository_form._init_map(
+            record_types=repository_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[repository_form.get_id().get_identifier()] = not CREATED
         return repository_form
 

@@ -410,23 +410,23 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
 
 class MultiLanguageDragAndDropQuestionRecord(MultiLanguageQuestionRecord):
     def __init__(self, **kwargs):
-        self._original_droppable_order = deepcopy(self._my_map['droppables'])
-        self._original_target_order = deepcopy(self._my_map['targets'])
-        self._original_zone_order = deepcopy(self._my_map['zones'])
+        self._original_droppable_order = deepcopy(kwargs['osid_object_map']['droppables'])
+        self._original_target_order = deepcopy(kwargs['osid_object_map']['targets'])
+        self._original_zone_order = deepcopy(kwargs['osid_object_map']['zones'])
         try:
-            self._my_map['multiLanguageDroppables'] = deepcopy(self._original_droppable_order)
+            kwargs['osid_object_map']['multiLanguageDroppables'] = deepcopy(self._original_droppable_order)
         except AttributeError:
-            self._my_map['multiLanguageDroppables'] = deepcopy(self._my_map['droppables'])
+            kwargs['osid_object_map']['multiLanguageDroppables'] = deepcopy(kwargs['osid_object_map']['droppables'])
 
         try:
-            self._my_map['multiLanguageTargets'] = deepcopy(self._original_target_order)
+            kwargs['osid_object_map']['multiLanguageTargets'] = deepcopy(self._original_target_order)
         except AttributeError:
-            self._my_map['multiLanguageTargets'] = deepcopy(self._my_map['targets'])
+            kwargs['osid_object_map']['multiLanguageTargets'] = deepcopy(kwargs['osid_object_map']['targets'])
 
         try:
-            self._my_map['multiLanguageZones'] = deepcopy(self._original_zone_order)
+            kwargs['osid_object_map']['multiLanguageZones'] = deepcopy(self._original_zone_order)
         except AttributeError:
-            self._my_map['multiLanguageZones'] = deepcopy(self._my_map['zones'])
+            kwargs['osid_object_map']['multiLanguageZones'] = deepcopy(kwargs['osid_object_map']['zones'])
 
         super(MultiLanguageDragAndDropQuestionRecord, self).__init__(**kwargs)
 

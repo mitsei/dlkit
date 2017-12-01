@@ -505,9 +505,6 @@ class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
     def __init__(self, **kwargs):
         osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_bin_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

@@ -1659,7 +1659,9 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         family_form._init_metadata()
-        family_form._init_map()
+        family_form._init_map(
+            record_types=family_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[family_form.get_id().get_identifier()] = not CREATED
         return family_form
 

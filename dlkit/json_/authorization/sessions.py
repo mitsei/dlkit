@@ -2604,7 +2604,9 @@ class VaultAdminSession(abc_authorization_sessions.VaultAdminSession, osid_sessi
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         vault_form._init_metadata()
-        vault_form._init_map()
+        vault_form._init_map(
+            record_types=vault_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[vault_form.get_id().get_identifier()] = not CREATED
         return vault_form
 

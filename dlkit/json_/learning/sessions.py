@@ -5668,7 +5668,9 @@ class ObjectiveBankAdminSession(abc_learning_sessions.ObjectiveBankAdminSession,
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         objective_bank_form._init_metadata()
-        objective_bank_form._init_map()
+        objective_bank_form._init_map(
+            record_types=objective_bank_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[objective_bank_form.get_id().get_identifier()] = not CREATED
         return objective_bank_form
 

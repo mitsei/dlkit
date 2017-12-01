@@ -26,3 +26,26 @@ TEST_OBJECT_MAP = {
         "scriptTypeId": "15924%3ALATN%40ISO"
     }
 }
+
+
+def add_class(original_object, new_class, initialize=False):
+    """The records tests require that we instantiate simple objects for each record class. With the current
+        record schema, where we modify the object's __class__.__bases__ instead of using .my_osid_object,
+        this helper method takes care of adding the new record.
+
+    Optional flag to run init_metadata and init_map"""
+    object_name = original_object._namespace.split('.')[-1]
+    if 'FormRecord' in str(new_class):
+        object_name += 'Form'
+    original_object.__class__ = type(object_name,
+                                     (new_class, original_object.__class__,), {})
+
+    if initialize:
+        new_class.__init__(original_object, block_super=True)
+        if original_object._mdata is None:
+            # Should only happen for tests for utils like MultiLanguageUtils
+            # Typically the mdata gets initialized in the object form initers
+            original_object._mdata = {}
+        new_class._init_metadata(original_object, block_super=True)
+        new_class._init_map(original_object, block_super=True)
+    return original_object

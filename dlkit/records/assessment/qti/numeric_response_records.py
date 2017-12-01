@@ -288,10 +288,9 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
         'qti-numeric-response'
     ]
 
-    def __init__(self, osid_object):
-        self = osid_object
+    def __init__(self, **kwargs):
         self._authority = MAGIC_AUTHORITY
-        super(CalculationInteractionQuestionRecord, self).__init__(osid_object)
+        super(CalculationInteractionQuestionRecord, self).__init__(**kwargs)
         # evaluate the randomly assigned variables and put values into the _my_map?
         self._vars = {}
         self._orig_question_text = str(self._my_map['text']['text'])  # get a copy, not a pointer
@@ -473,9 +472,8 @@ class CalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
         'qti-numeric-response'
     ]
 
-    def __init__(self, osid_object):
-        self = osid_object
-        super(CalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(osid_object)
+    def __init__(self, **kwargs):
+        super(CalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(**kwargs)
         self._value = None
 
     def has_tolerance_value(self):
@@ -602,10 +600,9 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
         'qti-numeric-response'
     ]
 
-    def __init__(self, osid_object):
-        self = osid_object
+    def __init__(self, **kwargs):
         self._authority = MAGIC_AUTHORITY
-        super(MultiLanguageCalculationInteractionQuestionRecord, self).__init__(osid_object)
+        super(MultiLanguageCalculationInteractionQuestionRecord, self).__init__(**kwargs)
         # evaluate the randomly assigned variables and put values into the _my_map?
         self._vars = {}
         self._orig_question_text = list(self._my_map['texts'])  # get a copy, not a pointer
@@ -789,9 +786,8 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord(DecimalVal
         'qti-numeric-response'
     ]
 
-    def __init__(self, osid_object):
-        self = osid_object
-        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(osid_object)
+    def __init__(self, **kwargs):
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(**kwargs)
         self._value = None
 
     def has_tolerance_value(self):

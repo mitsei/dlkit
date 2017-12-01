@@ -1973,7 +1973,9 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
             effective_agent_id=self.get_effective_agent_id(),
             proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
         book_form._init_metadata()
-        book_form._init_map()
+        book_form._init_map(
+            record_types=book_record_types,
+            effective_agent_id=self.get_effective_agent_id())
         self._forms[book_form.get_id().get_identifier()] = not CREATED
         return book_form
 
