@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 
+import sys
+
+
 TEST_OBJECT_MAP = {
     "displayName": {
         "text": "Test object",
@@ -37,6 +40,8 @@ def add_class(original_object, new_class, initialize=False):
     object_name = original_object._namespace.split('.')[-1]
     if 'FormRecord' in str(new_class):
         object_name += 'Form'
+    if sys.version_info < (3, 0, 0):
+        object_name = str(object_name)
     original_object.__class__ = type(object_name,
                                      (new_class, original_object.__class__,), {})
 
