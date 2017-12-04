@@ -30,6 +30,23 @@ from dlkit.runtime.proxy_example import SimpleRequest
 from ... import utilities
 
 
+COMPOSITION_STAMP = {
+    'texts': {
+        'fileName': {
+            'text': ''
+        },
+        'org': {
+            'text': ''
+        },
+        'userPartitionId': {
+            'text': ''
+        }
+    },
+    'learningObjectiveIds': [],
+    'draft': False
+}
+
+
 def get_assessment_manager():
     request = SimpleRequest(username='tester')
     condition = PROXY_SESSION.get_proxy_condition()
@@ -56,35 +73,35 @@ class DummyThing(object):
         return True
 
 
-@pytest.fixture(scope="class")
-def decorator_class_fixture(request):
+@pytest.fixture(scope="function")
+def decorator_test_fixture(request):
     obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
     request.cls.dummy_object = OsidObject(object_name='TEST_OBJECT',
                                           osid_object_map=obj_map)
+    request.cls.dummy_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                            osid_object_map=obj_map)
 
 
-@pytest.mark.usefixtures('decorator_class_fixture')
+@pytest.mark.usefixtures('decorator_test_fixture')
 class TestDecorator(object):
     def test_valid_for_works_for_forms(self):
-        test_form = DummyThing()
-        test_form.my_osid_object_form = self.dummy_object
-        test_form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Achapter%40ODL.MIT.EDU'
+        test_form = utilities.add_class(self.dummy_form, DummyThing)
+        test_form._my_map['genusTypeId'] = 'fake.Genus%3Achapter%40ODL.MIT.EDU'
 
         assert test_form.chapter_method()
 
-        test_form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
+        test_form._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
 
         with pytest.raises(errors.IllegalState):
             test_form.chapter_method()
 
     def test_valid_form_works_for_objects(self):
-        test_object = DummyThing()
-        test_object.my_osid_object = self.dummy_object
-        test_object.my_osid_object._my_map['genusTypeId'] = 'fake.Genus%3Achapter%40ODL.MIT.EDU'
+        test_object = utilities.add_class(self.dummy_object, DummyThing)
+        test_object._my_map['genusTypeId'] = 'fake.Genus%3Achapter%40ODL.MIT.EDU'
 
         assert test_object.chapter_method()
 
-        test_object.my_osid_object._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
+        test_object._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
 
         with pytest.raises(errors.IllegalState):
             test_object.chapter_method()
@@ -95,53 +112,56 @@ def edx_composition_form_test_fixture(request):
     request.cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
     request.cls.osid_object_form._authority = 'TESTING.MIT.EDU'
     request.cls.osid_object_form._namespace = 'records.Testing'
-    request.cls.osid_object_form._my_map = {
-        'texts': {
-            'fileName': {
-                'text': ''
-            }
-        }
-    }
+    request.cls.form = utilities.add_class(request.cls.osid_object_form, EdXCompositionFormRecord, initialize=True)
+    request.cls.form._my_map = deepcopy(COMPOSITION_STAMP)
+
+
+def get_edx_composition_form():
+    osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+    osid_object_form._authority = 'TESTING.MIT.EDU'
+    osid_object_form._namespace = 'records.Testing'
+    form = utilities.add_class(osid_object_form, EdXCompositionFormRecord, initialize=True)
+    form._my_map.update(deepcopy(COMPOSITION_STAMP))
+    return form
 
 
 @pytest.mark.usefixtures('edx_composition_form_test_fixture')
 class TestEdXCompositionFormRecord(object):
     def test_can_set_file_name(self):
         """Tests set_file_name"""
-        form = EdXCompositionFormRecord(self.osid_object_form)
-        form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Acourse%40ODL.MIT.EDU'
-        assert form.my_osid_object_form._my_map['texts']['fileName']['text'] == ''
-        form.set_file_name('foo')
-        assert form.my_osid_object_form._my_map['texts']['fileName']['text'] == 'course.xml'
+        self.form._my_map['genusTypeId'] = 'fake.Genus%3Acourse%40ODL.MIT.EDU'
+        assert self.form._my_map['texts']['fileName']['text'] == ''
+        self.form.set_file_name('foo')
+        assert self.form._my_map['texts']['fileName']['text'] == 'course.xml'
 
         for genus_type in ['fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU',
                            'fake.Genus%3Avertical%40ODL.MIT.EDU',
                            'fake.Genus%3Asplit_test%40ODL.MIT.EDU']:
-            form = EdXCompositionFormRecord(self.osid_object_form)
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
-            assert form.my_osid_object_form._my_map['texts']['fileName']['text'] == ''
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
+            assert form._my_map['texts']['fileName']['text'] == ''
             form.set_file_name('foo.xml')
-            assert form.my_osid_object_form._my_map['texts']['fileName']['text'] == 'foo.xml'
+            assert form._my_map['texts']['fileName']['text'] == 'foo.xml'
 
     def test_can_clear_file_name(self):
-        form = EdXCompositionFormRecord(self.osid_object_form)
         for genus_type in ['fake.Genus%3Acourse%40ODL.MIT.EDU',
                            'fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU',
                            'fake.Genus%3Avertical%40ODL.MIT.EDU',
                            'fake.Genus%3Asplit_test%40ODL.MIT.EDU']:
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
             form.set_file_name('foo.xml')
-            assert form.my_osid_object_form._my_map['texts']['fileName']['text'] != ''
+            assert form._my_map['texts']['fileName']['text'] != ''
             form.clear_file_name()
-            assert form.my_osid_object_form._my_map['texts']['fileName']['text'] == ''
+            assert form._my_map['texts']['fileName']['text'] == ''
 
     def test_chapter_sequential_can_set_start_date(self):
         for genus_type in ['fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU']:
-            form = EdXCompositionFormRecord(self.osid_object_form)
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
             future_date = datetime.datetime.utcnow() + datetime.timedelta(days=4)
             start_date = DateTime(year=future_date.year,
                                   month=future_date.month,
@@ -151,18 +171,18 @@ class TestEdXCompositionFormRecord(object):
                                   second=future_date.second,
                                   microsecond=future_date.microsecond)
 
-            assert isinstance(form.my_osid_object_form._my_map['startDate'],
+            assert isinstance(form._my_map['startDate'],
                               DateTime)
-            assert start_date != form.my_osid_object_form._my_map['startDate']
+            assert start_date != form._my_map['startDate']
 
             form.set_start_date(start_date)
-            assert form.my_osid_object_form._my_map['startDate'] == start_date
+            assert form._my_map['startDate'] == start_date
 
     def test_chapter_sequential_can_clear_start_date(self):
         for genus_type in ['fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU']:
-            form = EdXCompositionFormRecord(self.osid_object_form)
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
 
             default_start_date = form._start_date_metadata['default_date_time_values'][0]
             default_start_date = DateTime(year=default_start_date.year,
@@ -181,153 +201,152 @@ class TestEdXCompositionFormRecord(object):
                                   second=future_date.second,
                                   microsecond=future_date.microsecond)
             form.set_start_date(start_date)
-            assert form.my_osid_object_form._my_map['startDate'] == start_date
+            assert form._my_map['startDate'] == start_date
             form.clear_start_date()
-            assert form.my_osid_object_form._my_map['startDate'] == default_start_date
+            assert form._my_map['startDate'] == default_start_date
 
     def test_chapter_sequential_can_set_visible_to_students(self):
         for genus_type in ['fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU']:
-            form = EdXCompositionFormRecord(self.osid_object_form)
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
 
-            assert isinstance(form.my_osid_object_form._my_map['visibleToStudents'],
+            assert isinstance(form._my_map['visibleToStudents'],
                               bool)
-            assert form.my_osid_object_form._my_map['visibleToStudents']
+            assert form._my_map['visibleToStudents']
             form.set_visible_to_students(False)
-            assert not form.my_osid_object_form._my_map['visibleToStudents']
+            assert not form._my_map['visibleToStudents']
 
     def test_chapter_sequential_can_clear_visible_to_students(self):
         for genus_type in ['fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU']:
-            form = EdXCompositionFormRecord(self.osid_object_form)
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
 
             form.set_visible_to_students(False)
-            assert not form.my_osid_object_form._my_map['visibleToStudents']
+            assert not form._my_map['visibleToStudents']
             form.clear_visible_to_students()
-            assert form.my_osid_object_form._my_map['visibleToStudents']
+            assert form._my_map['visibleToStudents']
 
     def test_course_can_set_org(self):
-        form = EdXCompositionFormRecord(self.osid_object_form)
-        form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Acourse%40ODL.MIT.EDU'
-        assert form.my_osid_object_form._my_map['texts']['org']['text'] == ''
-        form.set_org('FooX')
-        assert form.my_osid_object_form._my_map['texts']['org']['text'] == 'FooX'
+        self.form._my_map['genusTypeId'] = 'fake.Genus%3Acourse%40ODL.MIT.EDU'
+        assert self.form._my_map['texts']['org']['text'] == ''
+        self.form.set_org('FooX')
+        assert self.form._my_map['texts']['org']['text'] == 'FooX'
 
     def test_course_can_clear_org(self):
-        form = EdXCompositionFormRecord(self.osid_object_form)
-        form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Acourse%40ODL.MIT.EDU'
-        form.set_org('FooX')
-        assert form.my_osid_object_form._my_map['texts']['org']['text'] == 'FooX'
-        form.clear_org()
-        assert form.my_osid_object_form._my_map['texts']['org']['text'] == ''
+        self.form._my_map['genusTypeId'] = 'fake.Genus%3Acourse%40ODL.MIT.EDU'
+        self.form.set_org('FooX')
+        assert self.form._my_map['texts']['org']['text'] == 'FooX'
+        self.form.clear_org()
+        assert self.form._my_map['texts']['org']['text'] == ''
 
     def test_vertical_can_set_draft(self):
-        form = EdXCompositionFormRecord(self.osid_object_form)
-        form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
-        assert isinstance(form.my_osid_object_form._my_map['draft'],
+        self.form._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
+        assert isinstance(self.form._my_map['draft'],
                           bool)
-        assert not form.my_osid_object_form._my_map['draft']
-        form.set_draft(True)
-        assert form.my_osid_object_form._my_map['draft']
+        assert not self.form._my_map['draft']
+        self.form.set_draft(True)
+        assert self.form._my_map['draft']
 
     def test_vertical_can_clear_draft(self):
-        form = EdXCompositionFormRecord(self.osid_object_form)
-        form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
-        form.set_draft(True)
-        assert form.my_osid_object_form._my_map['draft']
-        form.clear_draft()
-        assert not form.my_osid_object_form._my_map['draft']
+        self.form._my_map['genusTypeId'] = 'fake.Genus%3Avertical%40ODL.MIT.EDU'
+        self.form.set_draft(True)
+        assert self.form._my_map['draft']
+        self.form.clear_draft()
+        assert not self.form._my_map['draft']
 
     def test_split_test_can_set_user_partition_id(self):
-        form = EdXCompositionFormRecord(self.osid_object_form)
-        form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Asplit_test%40ODL.MIT.EDU'
-        assert form.my_osid_object_form._my_map['texts']['userPartitionId']['text'] == ''
-        form.set_user_partition_id('foo123')
-        assert form.my_osid_object_form._my_map['texts']['userPartitionId']['text'] == 'foo123'
+        self.form._my_map['genusTypeId'] = 'fake.Genus%3Asplit_test%40ODL.MIT.EDU'
+        assert self.form._my_map['texts']['userPartitionId']['text'] == ''
+        self.form.set_user_partition_id('foo123')
+        assert self.form._my_map['texts']['userPartitionId']['text'] == 'foo123'
 
     def test_split_test_can_clear_user_partition_id(self):
-        form = EdXCompositionFormRecord(self.osid_object_form)
-        form.my_osid_object_form._my_map['genusTypeId'] = 'fake.Genus%3Asplit_test%40ODL.MIT.EDU'
-        form.set_user_partition_id('foo123')
-        assert form.my_osid_object_form._my_map['texts']['userPartitionId']['text'] == 'foo123'
-        form.clear_user_partition_id()
-        assert form.my_osid_object_form._my_map['texts']['userPartitionId']['text'] == ''
+        self.form._my_map['genusTypeId'] = 'fake.Genus%3Asplit_test%40ODL.MIT.EDU'
+        self.form.set_user_partition_id('foo123')
+        assert self.form._my_map['texts']['userPartitionId']['text'] == 'foo123'
+        self.form.clear_user_partition_id()
+        assert self.form._my_map['texts']['userPartitionId']['text'] == ''
 
     def test_chapter_sequential_vertical_split_test_can_set_learning_objective_ids(self):
         for genus_type in ['fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU',
                            'fake.Genus%3Avertical%40ODL.MIT.EDU',
                            'fake.Genus%3Asplit_test%40ODL.MIT.EDU']:
-            form = EdXCompositionFormRecord(self.osid_object_form)
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
-            assert form.my_osid_object_form._my_map['learningObjectiveIds'] == []
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
+            assert form._my_map['learningObjectiveIds'] == []
             form.set_learning_objective_ids([1, 2, 3])
-            assert form.my_osid_object_form._my_map['learningObjectiveIds'] == ['1', '2', '3']
+            assert form._my_map['learningObjectiveIds'] == ['1', '2', '3']
 
     def test_chapter_sequential_vertical_split_test_can_clear_learning_objective_ids(self):
         for genus_type in ['fake.Genus%3Achapter%40ODL.MIT.EDU',
                            'fake.Genus%3Asequential%40ODL.MIT.EDU',
                            'fake.Genus%3Avertical%40ODL.MIT.EDU',
                            'fake.Genus%3Asplit_test%40ODL.MIT.EDU']:
-            form = EdXCompositionFormRecord(self.osid_object_form)
-            form.my_osid_object_form._my_map['genusTypeId'] = genus_type
+            form = get_edx_composition_form()
+            form._my_map['genusTypeId'] = genus_type
             form.set_learning_objective_ids([1, 2, 3])
-            assert form.my_osid_object_form._my_map['learningObjectiveIds'] == ['1', '2', '3']
+            assert form._my_map['learningObjectiveIds'] == ['1', '2', '3']
             form.clear_learning_objective_ids()
-            assert form.my_osid_object_form._my_map['learningObjectiveIds'] == []
+            assert form._my_map['learningObjectiveIds'] == []
 
 
 class QueryWrapper(OsidObjectQuery):
-    def __init__(self, runtime=None):
+    _namespace = 'osid.Query'
+
+    def __init__(self, **kwargs):
+        super(QueryWrapper, self).__init__(**kwargs)
         self._all_supported_record_type_ids = []
-        super(QueryWrapper, self).__init__(runtime)
+        self._mdata = {}
 
 
 @pytest.fixture(scope="function")
 def edx_composition_query_test_fixture(request):
     request.cls.osid_query = QueryWrapper()
-    request.cls.composition_query = EdXCompositionQueryRecord(request.cls.osid_query)
+    request.cls.composition_query = utilities.add_class(request.cls.osid_query,
+                                                        EdXCompositionQueryRecord,
+                                                        initialize=True)
 
 
 @pytest.mark.usefixtures('edx_composition_query_test_fixture')
 class TestEdXCompositionQueryRecord(object):
     def test_can_match_learning_objective(self):
-        assert self.composition_query._my_osid_query._query_terms == {}
+        assert self.composition_query._query_terms == {}
 
         self.composition_query.match_learning_objective('foo', True)
-        assert 'learningObjectiveIds' in self.composition_query._my_osid_query._query_terms
-        assert self.composition_query._my_osid_query._query_terms['learningObjectiveIds'] == {'$in': ['foo']}
+        assert 'learningObjectiveIds' in self.composition_query._query_terms
+        assert self.composition_query._query_terms['learningObjectiveIds'] == {'$in': ['foo']}
 
     def test_can_clear_match_learning_objective(self):
         self.composition_query.match_learning_objective('foo', True)
-        assert 'learningObjectiveIds' in self.composition_query._my_osid_query._query_terms
-        assert self.composition_query._my_osid_query._query_terms['learningObjectiveIds'] == {'$in': ['foo']}
+        assert 'learningObjectiveIds' in self.composition_query._query_terms
+        assert self.composition_query._query_terms['learningObjectiveIds'] == {'$in': ['foo']}
 
         self.composition_query.clear_match_learning_objective()
-        assert self.composition_query._my_osid_query._query_terms == {}
+        assert self.composition_query._query_terms == {}
 
     def test_match_any_learning_objective(self):
-        assert self.composition_query._my_osid_query._query_terms == {}
+        assert self.composition_query._query_terms == {}
 
         self.composition_query.match_any_learning_objective(True)
-        assert 'learningObjectiveIds' in self.composition_query._my_osid_query._query_terms
-        assert self.composition_query._my_osid_query._query_terms['learningObjectiveIds'] == {
+        assert 'learningObjectiveIds' in self.composition_query._query_terms
+        assert self.composition_query._query_terms['learningObjectiveIds'] == {
             '$nin': [[], ['']],
             '$exists': 'true'
         }
 
     def test_clear_learning_objective_terms(self):
         self.composition_query.match_any_learning_objective(True)
-        assert 'learningObjectiveIds' in self.composition_query._my_osid_query._query_terms
-        assert self.composition_query._my_osid_query._query_terms['learningObjectiveIds'] == {
+        assert 'learningObjectiveIds' in self.composition_query._query_terms
+        assert self.composition_query._query_terms['learningObjectiveIds'] == {
             '$nin': [[], ['']],
             '$exists': 'true'
         }
 
         self.composition_query.clear_learning_objective_terms()
-        assert self.composition_query._my_osid_query._query_terms == {}
+        assert self.composition_query._query_terms == {}
 
     def test_match_composition_descendants(self):
         rm = get_repository_manager()
@@ -338,13 +357,13 @@ class TestEdXCompositionQueryRecord(object):
         composition_id = Id('package.Resource%3A000000000000000000000000%40ODL.MIT.EDU')
 
         query = QueryWrapper(runtime=rm._provider_manager._runtime)
-        composition_query = EdXCompositionQueryRecord(query)
+        composition_query = utilities.add_class(query, EdXCompositionQueryRecord, initialize=True)
 
-        assert '_id' not in composition_query._my_osid_query._query_terms
+        assert '_id' not in composition_query._query_terms
         composition_query.match_composition_descendants(composition_id, repo.ident, True)
 
-        assert '_id' in composition_query._my_osid_query._query_terms
-        assert composition_query._my_osid_query._query_terms['_id'] == {
+        assert '_id' in composition_query._query_terms
+        assert composition_query._query_terms['_id'] == {
             '$in': [ObjectId('000000000000000000000000')]
         }
 
@@ -359,18 +378,18 @@ class TestEdXCompositionQueryRecord(object):
         composition_id = Id('package.Resource%3A000000000000000000000000%40ODL.MIT.EDU')
 
         query = QueryWrapper(runtime=rm._provider_manager._runtime)
-        composition_query = EdXCompositionQueryRecord(query)
+        composition_query = utilities.add_class(query, EdXCompositionQueryRecord, initialize=True)
 
         composition_query.match_composition_descendants(composition_id, repo.ident, True)
 
-        assert '_id' in composition_query._my_osid_query._query_terms
-        assert composition_query._my_osid_query._query_terms['_id'] == {
+        assert '_id' in composition_query._query_terms
+        assert composition_query._query_terms['_id'] == {
             '$in': [ObjectId('000000000000000000000000')]
         }
 
         composition_query.clear_match_composition_descendants()
 
-        assert '_id' not in composition_query._my_osid_query._query_terms
+        assert '_id' not in composition_query._query_terms
 
         rm.delete_repository(repo.ident)
 
@@ -451,7 +470,7 @@ class TestEdXCompositionRecord(object):
             osid_object = OsidObject(object_name='REPOSITORY',
                                      osid_object_map=self.obj_map,
                                      runtime=self.rm._provider_manager._runtime)
-            composition = EdXCompositionRecord(osid_object)
+            composition = utilities.add_class(osid_object, EdXCompositionRecord)
 
             result = composition.start_date
             assert isinstance(result, DateTime)
@@ -477,7 +496,7 @@ class TestEdXCompositionRecord(object):
             osid_object = OsidObject(object_name='REPOSITORY',
                                      osid_object_map=obj_map,
                                      runtime=self.rm._provider_manager._runtime)
-            composition = EdXCompositionRecord(osid_object)
+            composition = utilities.add_class(osid_object, EdXCompositionRecord)
             assert isinstance(composition.filename, DisplayText)
             assert composition.filename.text == 'foo-{0}.xml'.format(genus_type)
 
@@ -490,7 +509,7 @@ class TestEdXCompositionRecord(object):
             osid_object = OsidObject(object_name='REPOSITORY',
                                      osid_object_map=self.obj_map,
                                      runtime=self.rm._provider_manager._runtime)
-            composition = EdXCompositionRecord(osid_object)
+            composition = utilities.add_class(osid_object, EdXCompositionRecord)
 
             result = composition.visible_to_students
             assert isinstance(result, bool)
@@ -503,7 +522,7 @@ class TestEdXCompositionRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=self.obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        composition = EdXCompositionRecord(osid_object)
+        composition = utilities.add_class(osid_object, EdXCompositionRecord)
 
         result = composition.draft
         assert isinstance(result, bool)
@@ -523,7 +542,7 @@ class TestEdXCompositionRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=self.obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        composition = EdXCompositionRecord(osid_object)
+        composition = utilities.add_class(osid_object, EdXCompositionRecord)
 
         result = composition.org
         assert isinstance(result, DisplayText)
@@ -543,7 +562,7 @@ class TestEdXCompositionRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=self.obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        composition = EdXCompositionRecord(osid_object)
+        composition = utilities.add_class(osid_object, EdXCompositionRecord)
 
         result = composition.user_partition_id
         assert isinstance(result, DisplayText)
@@ -620,7 +639,7 @@ class TestEdXCompositionRecord(object):
             osid_object = OsidObject(object_name='REPOSITORY',
                                      osid_object_map=obj_map,
                                      runtime=self.rm._provider_manager._runtime)
-            composition = EdXCompositionRecord(osid_object)
+            composition = utilities.add_class(osid_object, EdXCompositionRecord)
             result = composition.learning_objective_ids
             assert isinstance(result, IdList)
             assert result.available() == 2
@@ -898,7 +917,7 @@ def course_run_composition_test_fixture(request):
     request.cls.osid_object = OsidObject(object_name='REPOSITORY',
                                          osid_object_map=obj_map,
                                          runtime=request.cls.rm._provider_manager._runtime)
-    request.cls.composition = EdXCourseRunCompositionRecord(request.cls.osid_object)
+    request.cls.composition = utilities.add_class(request.cls.osid_object, EdXCourseRunCompositionRecord)
 
     def test_tear_down():
         for repository in request.cls.rm.get_repositories():
@@ -974,7 +993,7 @@ class TestEdXCourseRunCompositionRecord(object):
         osid_object = OsidObject(object_name='COMPOSITION',
                                  osid_object_map=obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        composition = EdXCourseRunCompositionRecord(osid_object)
+        composition = utilities.add_class(osid_object, EdXCourseRunCompositionRecord)
         with pytest.raises(errors.IllegalState):
             composition.grading_policy
 
@@ -990,13 +1009,13 @@ class TestEdXCourseRunCompositionRecord(object):
         osid_object = OsidObject(object_name='COMPOSITION',
                                  osid_object_map=obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        composition = EdXCourseRunCompositionRecord(osid_object)
+        composition = utilities.add_class(osid_object, EdXCourseRunCompositionRecord)
         with pytest.raises(errors.IllegalState):
             composition.policy
 
     def test_can_export_run_olx(self):
         course_composition, run_composition = self._set_up_course_run()
-        self.composition.my_osid_object = run_composition
+        self.composition = run_composition
         filename, olx = self.composition.export_run_olx()
 
         assert '6_001x_2017_Fall' in filename
@@ -1021,44 +1040,41 @@ def course_run_composition_form_test_fixture(request):
     request.cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
     request.cls.osid_object_form._authority = 'TESTING.MIT.EDU'
     request.cls.osid_object_form._namespace = 'records.Testing'
+    request.cls.form = utilities.add_class(request.cls.osid_object_form,
+                                           EdXCourseRunCompositionFormRecord,
+                                           initialize=True)
 
 
 @pytest.mark.usefixtures('course_run_composition_form_test_fixture')
 class TestEdXCourseRunCompositionFormRecord(object):
     def test_can_set_policy(self):
-        form = EdXCourseRunCompositionFormRecord(self.osid_object_form)
-        assert 'policy' not in form.my_osid_object_form._my_map['texts']
-        form.set_policy('Stuff was due yesterday')
-        assert 'policy' in form.my_osid_object_form._my_map['texts']
-        assert form.my_osid_object_form._my_map['texts']['policy']['text'] == 'Stuff was due yesterday'
+        assert 'policy' not in self.form._my_map['texts']
+        self.form.set_policy('Stuff was due yesterday')
+        assert 'policy' in self.form._my_map['texts']
+        assert self.form._my_map['texts']['policy']['text'] == 'Stuff was due yesterday'
 
     def test_can_clear_policy(self):
-        form = EdXCourseRunCompositionFormRecord(self.osid_object_form)
-        form.set_policy('Stuff was due yesterday')
-        assert form.my_osid_object_form._my_map['texts']['policy']['text'] == 'Stuff was due yesterday'
-        form.clear_policy()
-        assert 'policy' not in form.my_osid_object_form._my_map['texts']
+        self.form.set_policy('Stuff was due yesterday')
+        assert self.form._my_map['texts']['policy']['text'] == 'Stuff was due yesterday'
+        self.form.clear_policy()
+        assert 'policy' not in self.form._my_map['texts']
 
     def test_clearing_policy_before_set_raises_not_found(self):
-        form = EdXCourseRunCompositionFormRecord(self.osid_object_form)
         with pytest.raises(errors.NotFound):
-            form.clear_policy()
+            self.form.clear_policy()
 
     def test_can_set_grading_policy(self):
-        form = EdXCourseRunCompositionFormRecord(self.osid_object_form)
-        assert 'gradingPolicy' not in form.my_osid_object_form._my_map['texts']
-        form.set_grading_policy('Everything is worth 100 points')
-        assert 'gradingPolicy' in form.my_osid_object_form._my_map['texts']
-        assert form.my_osid_object_form._my_map['texts']['gradingPolicy']['text'] == 'Everything is worth 100 points'
+        assert 'gradingPolicy' not in self.form._my_map['texts']
+        self.form.set_grading_policy('Everything is worth 100 points')
+        assert 'gradingPolicy' in self.form._my_map['texts']
+        assert self.form._my_map['texts']['gradingPolicy']['text'] == 'Everything is worth 100 points'
 
     def test_can_clear_grading_policy(self):
-        form = EdXCourseRunCompositionFormRecord(self.osid_object_form)
-        form.set_grading_policy('Everything is worth 100 points')
-        assert form.my_osid_object_form._my_map['texts']['gradingPolicy']['text'] == 'Everything is worth 100 points'
-        form.clear_grading_policy()
-        assert 'gradingPolicy' not in form.my_osid_object_form._my_map['texts']
+        self.form.set_grading_policy('Everything is worth 100 points')
+        assert self.form._my_map['texts']['gradingPolicy']['text'] == 'Everything is worth 100 points'
+        self.form.clear_grading_policy()
+        assert 'gradingPolicy' not in self.form._my_map['texts']
 
     def test_clearing_grading_policy_before_set_raises_not_found(self):
-        form = EdXCourseRunCompositionFormRecord(self.osid_object_form)
         with pytest.raises(errors.NotFound):
-            form.clear_grading_policy()
+            self.form.clear_grading_policy()

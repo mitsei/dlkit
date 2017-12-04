@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import os
 
+import base64
 import datetime
 import unittest
 
@@ -89,77 +90,56 @@ def get_proxy(with_locale=None):
 
 class TestProvenanceFormRecord(unittest.TestCase):
     """Tests for ProvenanceFormRecord"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
+        self.form = utilities.add_class(self.osid_object_form, ProvenanceFormRecord, initialize=True)
 
     def test_can_set_provenance(self):
         """Tests set_provenance"""
-        form = ProvenanceFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['provenanceId'],
+        self.assertEqual(self.form._my_map['provenanceId'],
                          '')
-        form.set_provenance('foo')
-        self.assertEqual(form.my_osid_object_form._my_map['provenanceId'],
+        self.form.set_provenance('foo')
+        self.assertEqual(self.form._my_map['provenanceId'],
                          'foo')
 
     def test_cannot_send_non_string(self):
-        form = ProvenanceFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_provenance(123)
+            self.form.set_provenance(123)
 
     def test_can_update_provenance(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['provenanceId'] = 'test1'
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = ProvenanceFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['provenanceId'],
-                         'test1')
-        form.set_provenance('test2')
-        self.assertEqual(form.my_osid_object_form._my_map['provenanceId'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['provenanceId'],
+                         '')
+        self.form.set_provenance('test2')
+        self.assertEqual(self.form._my_map['provenanceId'],
                          'test2')
 
     def test_can_clear_provenance(self):
-        form = ProvenanceFormRecord(self.osid_object_form)
-        form.set_provenance('foo')
-        self.assertEqual(form.my_osid_object_form._my_map['provenanceId'],
+        self.form.set_provenance('foo')
+        self.assertEqual(self.form._my_map['provenanceId'],
                          'foo')
-        form.clear_provenance()
-        self.assertEqual(form.my_osid_object_form._my_map['provenanceId'],
+        self.form.clear_provenance()
+        self.assertEqual(self.form._my_map['provenanceId'],
                          '')
 
     def test_can_get_provenance_metadata(self):
-        form = ProvenanceFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_provenance_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_provenance_metadata(), Metadata))
 
 
 class TestProvenanceRecord(unittest.TestCase):
     """Tests for ProvenanceRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['creatorId'] = 'foo%3Acreator%40ODL.MIT.EDU'
-        cls.now = datetime.datetime.utcnow()
-        obj_map['creationTime'] = cls.now
+        self.now = datetime.datetime.utcnow()
+        obj_map['creationTime'] = self.now
         obj_map['provenanceId'] = 'provenance'
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.provenance_object = ProvenanceRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.provenance_object = utilities.add_class(self.osid_object, ProvenanceRecord)
 
     def test_can_get_creator_id(self):
         self.assertTrue(isinstance(self.provenance_object.creator_id, Id))
@@ -187,86 +167,64 @@ class TestProvenanceRecord(unittest.TestCase):
         obj_map['provenanceId'] = ''
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        provenance_object = ProvenanceRecord(osid_object)
+        provenance_object = utilities.add_class(osid_object, ProvenanceRecord)
         with self.assertRaises(errors.IllegalState):
             provenance_object.provenance
 
 
 class TestResourceFormRecord(unittest.TestCase):
     """Tests for ResourceFormRecord"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
+        self.form = utilities.add_class(self.osid_object_form, ResourceFormRecord, initialize=True)
 
     def test_can_set_resource_id(self):
         """Tests set_resource_id"""
-        form = ResourceFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['resourceId'],
+        self.assertEqual(self.form._my_map['resourceId'],
                          '')
-        form.set_resource_id(Id('foo%3Afoo%40foo'))
-        self.assertEqual(str(form.my_osid_object_form._my_map['resourceId']),
+        self.form.set_resource_id(Id('foo%3Afoo%40foo'))
+        self.assertEqual(str(self.form._my_map['resourceId']),
                          'foo%3Afoo%40foo')
 
     def test_cannot_send_none_as_resource_id(self):
-        form = ResourceFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_resource_id()
+            self.form.set_resource_id()
 
     def test_cannot_send_non_id_as_resource_id(self):
-        form = ResourceFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_resource_id('foo%3Afoo%40foo')
+            self.form.set_resource_id('foo%3Afoo%40foo')
 
     def test_can_update_resource_id(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['resourceId'] = 'test1%3Atest1%40test1'
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = ResourceFormRecord(osid_object_form)
-        self.assertEqual(str(form.my_osid_object_form._my_map['resourceId']),
-                         'test1%3Atest1%40test1')
-        form.set_resource_id(Id('test2%3Atest2%40test2'))
-        self.assertEqual(str(form.my_osid_object_form._my_map['resourceId']),
+        self.form._for_update = True
+        self.assertEqual(str(self.form._my_map['resourceId']),
+                         '')
+        self.form.set_resource_id(Id('test2%3Atest2%40test2'))
+        self.assertEqual(str(self.form._my_map['resourceId']),
                          'test2%3Atest2%40test2')
 
     def test_can_clear_resource_id(self):
-        form = ResourceFormRecord(self.osid_object_form)
-        form.set_resource_id(Id('foo%3Afoo%40foo'))
-        self.assertEqual(str(form.my_osid_object_form._my_map['resourceId']),
+        self.form.set_resource_id(Id('foo%3Afoo%40foo'))
+        self.assertEqual(str(self.form._my_map['resourceId']),
                          'foo%3Afoo%40foo')
-        form.clear_resource_id()
-        self.assertEqual(form.my_osid_object_form._my_map['resourceId'],
+        self.form.clear_resource_id()
+        self.assertEqual(self.form._my_map['resourceId'],
                          '')
 
     def test_can_get_resource_id_metadata(self):
-        form = ResourceFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_resource_id_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_resource_id_metadata(), Metadata))
 
 
 class TestResourceIdRecord(unittest.TestCase):
     """Tests for ResourceIdRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['resourceId'] = 'foo%3Aresource%40ODL.MIT.EDU'
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.resource_id_object = ResourceIdRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.resource_id_object = utilities.add_class(self.osid_object, ResourceIdRecord)
 
     def test_can_get_resource_id(self):
         self.assertTrue(isinstance(self.resource_id_object.resource_id, Id))
@@ -281,79 +239,60 @@ class TestResourceIdRecord(unittest.TestCase):
         obj_map['resourceId'] = ''
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        resource_id_object = ResourceIdRecord(osid_object)
+        resource_id_object = utilities.add_class(osid_object, ResourceIdRecord)
         with self.assertRaises(errors.IllegalState):
             resource_id_object.resource_id
 
 
 class TestTextFormRecord(unittest.TestCase):
     """Tests for TextFormRecord"""
-
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
+        self.form = utilities.add_class(self.osid_object_form,
+                                        TextFormRecord,
+                                        initialize=True)
 
     def test_can_set_text(self):
         """Tests set_text"""
-        form = TextFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['text']['text'],
+        self.assertEqual(self.form._my_map['text']['text'],
                          '')
-        form.set_text('foo')
-        self.assertEqual(form.my_osid_object_form._my_map['text']['text'],
+        self.form.set_text('foo')
+        self.assertEqual(self.form._my_map['text']['text'],
                          'foo')
 
     def test_cannot_send_none_as_text(self):
-        form = TextFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_text()
+            self.form.set_text()
 
     def test_cannot_send_non_string(self):
-        form = TextFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_text(123)
+            self.form.set_text(123)
 
     def test_can_update_text(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['text'] = {
-            'text': 'test1'
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = TextFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['text']['text'],
-                         'test1')
-        form.set_text('test2')
-        self.assertEqual(form.my_osid_object_form._my_map['text']['text'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['text']['text'],
+                         '')
+        self.form.set_text('test2')
+        self.assertEqual(self.form._my_map['text']['text'],
                          'test2')
 
     def test_can_clear_text(self):
-        form = TextFormRecord(self.osid_object_form)
-        form.set_text('foo')
-        self.assertEqual(form.my_osid_object_form._my_map['text']['text'],
+        self.form.set_text('foo')
+        self.assertEqual(self.form._my_map['text']['text'],
                          'foo')
-        form.clear_text()
-        self.assertEqual(form.my_osid_object_form._my_map['text']['text'],
+        self.form.clear_text()
+        self.assertEqual(self.form._my_map['text']['text'],
                          '')
 
     def test_can_get_text_metadata(self):
-        form = TextFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_text_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_text_metadata(), Metadata))
 
 
 class TestTextRecord(unittest.TestCase):
     """Tests for TextRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['text'] = {
             'text': 'silly',
@@ -361,13 +300,9 @@ class TestTextRecord(unittest.TestCase):
             'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
             'scriptTypeId': '15924%3ALATN%40ISO'
         }
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.text_object = TextRecord(cls.osid_object)
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
+        self.text_object = utilities.add_class(self.osid_object, TextRecord)
 
     def test_can_get_text(self):
         self.assertTrue(isinstance(self.text_object.text, DisplayText))
@@ -387,86 +322,64 @@ class TestTextRecord(unittest.TestCase):
         }
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        text_object = TextRecord(osid_object)
+        text_object = utilities.add_class(osid_object, TextRecord)
         with self.assertRaises(errors.IllegalState):
             text_object.text
 
 
 class TestIntegerValueFormRecord(unittest.TestCase):
     """Tests for IntegerValueFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, IntegerValueFormRecord, initialize=True)
 
     def test_can_set_integer_value(self):
         """Tests set_integer_value"""
-        form = IntegerValueFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValue'],
+        self.assertEqual(self.form._my_map['integerValue'],
                          None)
-        form.set_integer_value(-1)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValue'],
+        self.form.set_integer_value(-1)
+        self.assertEqual(self.form._my_map['integerValue'],
                          -1)
 
     def test_cannot_send_none(self):
-        form = IntegerValueFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_integer_value()
+            self.form.set_integer_value()
 
     def test_cannot_send_non_integer(self):
-        form = IntegerValueFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_integer_value('1')
+            self.form.set_integer_value('1')
 
     def test_can_update_integer_value(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['integerValue'] = 29
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = IntegerValueFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValue'],
-                         29)
-        form.set_integer_value(21)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValue'],
+        self.form._for_update = True
+        self.assertIsNone(self.form._my_map['integerValue'])
+        self.form.set_integer_value(21)
+        self.assertEqual(self.form._my_map['integerValue'],
                          21)
 
     def test_can_clear_integer_value(self):
-        form = IntegerValueFormRecord(self.osid_object_form)
-        form.set_integer_value(23)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValue'],
+        self.form.set_integer_value(23)
+        self.assertEqual(self.form._my_map['integerValue'],
                          23)
-        form.clear_integer_value()
-        self.assertEqual(form.my_osid_object_form._my_map['integerValue'],
+        self.form.clear_integer_value()
+        self.assertEqual(self.form._my_map['integerValue'],
                          None)
 
     def test_can_get_integer_metadata(self):
-        form = IntegerValueFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_integer_value_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_integer_value_metadata(), Metadata))
 
 
 class TestIntegerValueRecord(unittest.TestCase):
     """Tests for IntegerValueRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValue'] = 42
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.integer_object = IntegerValueRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.integer_object = utilities.add_class(self.osid_object, IntegerValueRecord)
 
     def test_can_get_integer_value(self):
         self.assertTrue(isinstance(self.integer_object.integer, int))
@@ -481,7 +394,7 @@ class TestIntegerValueRecord(unittest.TestCase):
         obj_map['integerValue'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        integer_object = IntegerValueRecord(osid_object)
+        integer_object = utilities.add_class(osid_object, IntegerValueRecord)
         with self.assertRaises(errors.IllegalState):
             integer_object.integer
 
@@ -490,85 +403,64 @@ class TestIntegerValueRecord(unittest.TestCase):
         obj_map['integerValue'] = 0
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        integer_object = IntegerValueRecord(osid_object)
-        self.assertTrue(self.integer_object.has_integer())
+        integer_object = utilities.add_class(osid_object, IntegerValueRecord)
+        self.assertTrue(integer_object.has_integer())
 
 
 class TestDecimalValueFormRecord(unittest.TestCase):
     """Tests for DecimalValueFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, DecimalValueFormRecord, initialize=True)
 
     def test_can_set_decimal_value(self):
         """Tests set_decimal_value"""
-        form = DecimalValueFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+        self.assertEqual(self.form._my_map['decimalValue'],
                          None)
-        form.set_decimal_value(-1.1)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+        self.form.set_decimal_value(-1.1)
+        self.assertEqual(self.form._my_map['decimalValue'],
                          -1.1)
 
     def test_cannot_send_none(self):
-        form = DecimalValueFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_decimal_value()
+            self.form.set_decimal_value()
 
     def test_cannot_send_non_decimal(self):
-        form = DecimalValueFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_decimal_value(1)
+            self.form.set_decimal_value(1)
 
     def test_can_update_decimal_value(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['decimalValue'] = 29.25
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = DecimalValueFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
-                         29.25)
-        form.set_decimal_value(21.3)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['decimalValue'],
+                         None)
+        self.form.set_decimal_value(21.3)
+        self.assertEqual(self.form._my_map['decimalValue'],
                          21.3)
 
     def test_can_clear_decimal_value(self):
-        form = DecimalValueFormRecord(self.osid_object_form)
-        form.set_decimal_value(23.4)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+        self.form.set_decimal_value(23.4)
+        self.assertEqual(self.form._my_map['decimalValue'],
                          23.4)
-        form.clear_decimal_value()
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValue'],
+        self.form.clear_decimal_value()
+        self.assertEqual(self.form._my_map['decimalValue'],
                          None)
 
     def test_can_get_decimal_metadata(self):
-        form = DecimalValueFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_decimal_value_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_decimal_value_metadata(), Metadata))
 
 
 class TestDecimalValueRecord(unittest.TestCase):
     """Tests for DecimalValueRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValue'] = 42.12
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.decimal_object = DecimalValueRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.decimal_object = utilities.add_class(self.osid_object, DecimalValueRecord)
 
     def test_can_get_decimal_value(self):
         self.assertTrue(isinstance(self.decimal_object.decimal, float))
@@ -583,7 +475,7 @@ class TestDecimalValueRecord(unittest.TestCase):
         obj_map['decimalValue'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        decimal_object = DecimalValueRecord(osid_object)
+        decimal_object = utilities.add_class(osid_object, DecimalValueRecord)
         with self.assertRaises(errors.IllegalState):
             decimal_object.decimal
 
@@ -592,150 +484,117 @@ class TestDecimalValueRecord(unittest.TestCase):
         obj_map['decimalValue'] = 0.0
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        decimal_object = DecimalValueRecord(osid_object)
-        self.assertTrue(self.decimal_object.has_decimal())
+        decimal_object = utilities.add_class(osid_object, DecimalValueRecord)
+        self.assertTrue(decimal_object.has_decimal())
 
 
 class TestTextsFormRecord(unittest.TestCase):
     """Tests for TextsFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, TextsFormRecord, initialize=True)
 
     def test_can_set_text_with_string(self):
         """Tests set_text"""
-        form = TextsFormRecord(self.osid_object_form)
-        self.assertNotIn('foo', form.my_osid_object_form._my_map['texts'])
-        form.add_text('bar', label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+        self.assertNotIn('foo', self.form._my_map['texts'])
+        self.form.add_text('bar', label='foo')
+        self.assertEqual(self.form._my_map['texts']['foo']['text'],
                          'bar')
 
     def test_can_set_text_with_display_text(self):
         """Tests set_text"""
-        form = TextsFormRecord(self.osid_object_form)
-        self.assertNotIn('foo', form.my_osid_object_form._my_map['texts'])
+        self.assertNotIn('foo', self.form._my_map['texts'])
         display_text = DisplayText(display_text_map={
             'text': 'bar',
             'languageTypeId': '639-2%3AHIN%40ISO',
             'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
             'scriptTypeId': '15924%3ADEVA%40ISO'
         })
-        form.add_text(display_text, label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+        self.form.add_text(display_text, label='foo')
+        self.assertEqual(self.form._my_map['texts']['foo']['text'],
                          'bar')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['languageTypeId'],
+        self.assertEqual(self.form._my_map['texts']['foo']['languageTypeId'],
                          str(display_text.language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['scriptTypeId'],
+        self.assertEqual(self.form._my_map['texts']['foo']['scriptTypeId'],
                          str(display_text.script_type))
 
     def test_label_generated_if_not_provided(self):
-        form = TextsFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['texts'], {})
-        form.add_text('bar')
-        self.assertEqual(len(list(form.my_osid_object_form._my_map['texts'].keys())), 1)
-        label = list(form.my_osid_object_form._my_map['texts'].keys())[0]
+        self.assertEqual(self.form._my_map['texts'], {})
+        self.form.add_text('bar')
+        self.assertEqual(len(list(self.form._my_map['texts'].keys())), 1)
+        label = list(self.form._my_map['texts'].keys())[0]
         self.assertEqual(len(label), 24)
-        self.assertEqual(form.my_osid_object_form._my_map['texts'][label]['text'],
+        self.assertEqual(self.form._my_map['texts'][label]['text'],
                          'bar')
 
     def test_can_add_multiple_labels(self):
-        form = TextsFormRecord(self.osid_object_form)
-        form.add_text('bink', label='foo')
-        form.add_text('zing', label='bonk')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+        self.form.add_text('bink', label='foo')
+        self.form.add_text('zing', label='bonk')
+        self.assertEqual(self.form._my_map['texts']['foo']['text'],
                          'bink')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['bonk']['text'],
+        self.assertEqual(self.form._my_map['texts']['bonk']['text'],
                          'zing')
 
     def test_cannot_add_label_with_period(self):
-        form = TextsFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_text('boo', label='1.23')
+            self.form.add_text('boo', label='1.23')
 
     def test_cannot_send_none(self):
-        form = TextsFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_text(None, label='foo')
+            self.form.add_text(None, label='foo')
 
     def test_cannot_send_non_string_non_display_text(self):
-        form = TextsFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_text(1, label='foo')
+            self.form.add_text(1, label='foo')
 
     def test_can_update_text(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['texts'] = {
-            'foo': {
-                'text': 'bar',
-                'languageTypeId': '639-2%3AENG%40ISO',
-                'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
-                'scriptTypeId': '15924%3ALATN%40ISO'
-            }
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = TextsFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
-                         'bar')
-        form.add_text('bim', label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['texts'],
+                         {})
+        self.form.add_text('bim', label='foo')
+        self.assertEqual(self.form._my_map['texts']['foo']['text'],
                          'bim')
 
     def test_can_clear_texts(self):
-        form = TextsFormRecord(self.osid_object_form)
-        form.add_text('bink', label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+        self.form.add_text('bink', label='foo')
+        self.assertEqual(self.form._my_map['texts']['foo']['text'],
                          'bink')
-        form.clear_texts()
-        self.assertEqual(form.my_osid_object_form._my_map['texts'], {})
+        self.form.clear_texts()
+        self.assertEqual(self.form._my_map['texts'], {})
 
     def test_can_clear_text(self):
-        form = TextsFormRecord(self.osid_object_form)
-        form.add_text('bink', label='foo')
-        form.add_text('zing', label='bonk')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['foo']['text'],
+        self.form.add_text('bink', label='foo')
+        self.form.add_text('zing', label='bonk')
+        self.assertEqual(self.form._my_map['texts']['foo']['text'],
                          'bink')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['bonk']['text'],
+        self.assertEqual(self.form._my_map['texts']['bonk']['text'],
                          'zing')
-        form.clear_text('foo')
-        self.assertNotIn('foo', form.my_osid_object_form._my_map['texts'])
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['bonk']['text'],
+        self.form.clear_text('foo')
+        self.assertNotIn('foo', self.form._my_map['texts'])
+        self.assertEqual(self.form._my_map['texts']['bonk']['text'],
                          'zing')
 
     def test_clearing_non_existent_label_throws_exception(self):
-        form = TextsFormRecord(self.osid_object_form)
-        form.add_text('bink', label='foo')
+        self.form.add_text('bink', label='foo')
         with self.assertRaises(errors.NotFound):
-            form.clear_text('zoom')
+            self.form.clear_text('zoom')
 
     def test_can_get_texts_metadata(self):
-        form = TextsFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_texts_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_texts_metadata(), Metadata))
 
     def test_can_get_text_metadata(self):
-        form = TextsFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_text_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_text_metadata(), Metadata))
 
     def test_can_get_label_metadata(self):
-        form = TextsFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_label_metadata(), Metadata))
 
 
 class TestTextsRecord(unittest.TestCase):
     """Tests for TextsRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['texts'] = {
             'foo': {
@@ -745,13 +604,10 @@ class TestTextsRecord(unittest.TestCase):
                 'scriptTypeId': '15924%3ALATN%40ISO'
             }
         }
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.texts_object = TextsRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.texts_object = utilities.add_class(self.osid_object, TextsRecord)
 
     def test_can_get_texts_map(self):
         texts_map = self.texts_object.texts_map
@@ -782,7 +638,7 @@ class TestTextsRecord(unittest.TestCase):
         obj_map['texts'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        texts_object = TextsRecord(osid_object)
+        texts_object = utilities.add_class(osid_object, TextsRecord)
         with self.assertRaises(errors.IllegalState):
             texts_object.texts_map
 
@@ -793,132 +649,102 @@ class TestTextsRecord(unittest.TestCase):
 
 class TestIntegerValuesFormRecord(unittest.TestCase):
     """Tests for IntegerValuesFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, IntegerValuesFormRecord, initialize=True)
 
     def test_can_set_integer_value(self):
         """Tests set_integer_value"""
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        self.assertNotIn('foo', form.my_osid_object_form._my_map['integerValues'])
-        form.add_integer_value(0, label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+        self.assertNotIn('foo', self.form._my_map['integerValues'])
+        self.form.add_integer_value(0, label='foo')
+        self.assertEqual(self.form._my_map['integerValues']['foo'],
                          0)
 
     def test_label_generated_if_not_provided(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues'], {})
-        form.add_integer_value(23)
-        self.assertEqual(len(list(form.my_osid_object_form._my_map['integerValues'].keys())), 1)
-        label = list(form.my_osid_object_form._my_map['integerValues'].keys())[0]
+        self.assertEqual(self.form._my_map['integerValues'], {})
+        self.form.add_integer_value(23)
+        self.assertEqual(len(list(self.form._my_map['integerValues'].keys())), 1)
+        label = list(self.form._my_map['integerValues'].keys())[0]
         self.assertEqual(len(label), 24)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues'][label],
+        self.assertEqual(self.form._my_map['integerValues'][label],
                          23)
 
     def test_can_add_multiple_labels(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        form.add_integer_value(123, label='foo')
-        form.add_integer_value(321, label='bonk')
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+        self.form.add_integer_value(123, label='foo')
+        self.form.add_integer_value(321, label='bonk')
+        self.assertEqual(self.form._my_map['integerValues']['foo'],
                          123)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['bonk'],
+        self.assertEqual(self.form._my_map['integerValues']['bonk'],
                          321)
 
     def test_cannot_add_label_with_period(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_integer_value('boo', label='1.23')
+            self.form.add_integer_value('boo', label='1.23')
 
     def test_cannot_send_none(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_integer_value(None, label='foo')
+            self.form.add_integer_value(None, label='foo')
 
     def test_cannot_send_non_integer(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_integer_value(1.1, label='foo')
+            self.form.add_integer_value(1.1, label='foo')
 
     def test_can_update_integer(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['integerValues'] = {
-            'foo': 0
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = IntegerValuesFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
-                         0)
-        form.add_integer_value(-1, label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['integerValues'],
+                         {})
+        self.form.add_integer_value(-1, label='foo')
+        self.assertEqual(self.form._my_map['integerValues']['foo'],
                          -1)
 
     def test_can_clear_integer_values(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        form.add_integer_value(0, label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+        self.form.add_integer_value(0, label='foo')
+        self.assertEqual(self.form._my_map['integerValues']['foo'],
                          0)
-        form.clear_integer_values()
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues'], {})
+        self.form.clear_integer_values()
+        self.assertEqual(self.form._my_map['integerValues'], {})
 
     def test_can_clear_integer_value(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        form.add_integer_value(0, label='foo')
-        form.add_integer_value(23, label='bonk')
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['foo'],
+        self.form.add_integer_value(0, label='foo')
+        self.form.add_integer_value(23, label='bonk')
+        self.assertEqual(self.form._my_map['integerValues']['foo'],
                          0)
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['bonk'],
+        self.assertEqual(self.form._my_map['integerValues']['bonk'],
                          23)
-        form.clear_integer_value('foo')
-        self.assertNotIn('foo', form.my_osid_object_form._my_map['integerValues'])
-        self.assertEqual(form.my_osid_object_form._my_map['integerValues']['bonk'],
+        self.form.clear_integer_value('foo')
+        self.assertNotIn('foo', self.form._my_map['integerValues'])
+        self.assertEqual(self.form._my_map['integerValues']['bonk'],
                          23)
 
     def test_clearing_non_existent_label_throws_exception(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        form.add_integer_value(123, label='foo')
+        self.form.add_integer_value(123, label='foo')
         with self.assertRaises(errors.NotFound):
-            form.clear_integer_value('zoom')
+            self.form.clear_integer_value('zoom')
 
     def test_can_get_integer_values_metadata(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_integer_values_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_integer_values_metadata(), Metadata))
 
     def test_can_get_integer_value_metadata(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_integer_value_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_integer_value_metadata(), Metadata))
 
     def test_can_get_label_metadata(self):
-        form = IntegerValuesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_label_metadata(), Metadata))
 
 
 class TestIntegerValuesRecord(unittest.TestCase):
     """Tests for IntegerValuesRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['integerValues'] = {
             'foo': 123
         }
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.integer_values_object = IntegerValuesRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.integer_values_object = utilities.add_class(self.osid_object, IntegerValuesRecord)
 
     def test_can_get_integer_values_map(self):
         integer_values_map = self.integer_values_object.integer_values_map
@@ -944,7 +770,7 @@ class TestIntegerValuesRecord(unittest.TestCase):
         obj_map['integerValues'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        integer_values_object = IntegerValuesRecord(osid_object)
+        integer_values_object = utilities.add_class(osid_object, IntegerValuesRecord)
         with self.assertRaises(errors.IllegalState):
             integer_values_object.integer_values_map
 
@@ -955,132 +781,102 @@ class TestIntegerValuesRecord(unittest.TestCase):
 
 class TestDecimalValuesFormRecord(unittest.TestCase):
     """Tests for DecimalValuesFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, DecimalValuesFormRecord, initialize=True)
 
     def test_can_set_decimal_value(self):
         """Tests set_decimal_value"""
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        self.assertNotIn('foo', form.my_osid_object_form._my_map['decimalValues'])
-        form.add_decimal_value(0.9, label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+        self.assertNotIn('foo', self.form._my_map['decimalValues'])
+        self.form.add_decimal_value(0.9, label='foo')
+        self.assertEqual(self.form._my_map['decimalValues']['foo'],
                          0.9)
 
     def test_label_generated_if_not_provided(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues'], {})
-        form.add_decimal_value(2.3)
-        self.assertEqual(len(list(form.my_osid_object_form._my_map['decimalValues'].keys())), 1)
-        label = list(form.my_osid_object_form._my_map['decimalValues'].keys())[0]
+        self.assertEqual(self.form._my_map['decimalValues'], {})
+        self.form.add_decimal_value(2.3)
+        self.assertEqual(len(list(self.form._my_map['decimalValues'].keys())), 1)
+        label = list(self.form._my_map['decimalValues'].keys())[0]
         self.assertEqual(len(label), 24)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues'][label],
+        self.assertEqual(self.form._my_map['decimalValues'][label],
                          2.3)
 
     def test_can_add_multiple_labels(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        form.add_decimal_value(1.23, label='foo')
-        form.add_decimal_value(3.21, label='bonk')
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+        self.form.add_decimal_value(1.23, label='foo')
+        self.form.add_decimal_value(3.21, label='bonk')
+        self.assertEqual(self.form._my_map['decimalValues']['foo'],
                          1.23)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['bonk'],
+        self.assertEqual(self.form._my_map['decimalValues']['bonk'],
                          3.21)
 
     def test_cannot_add_label_with_period(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_decimal_value(1.1, label='1.23')
+            self.form.add_decimal_value(1.1, label='1.23')
 
     def test_cannot_send_none(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_decimal_value(None, label='foo')
+            self.form.add_decimal_value(None, label='foo')
 
     def test_cannot_send_non_decimal(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_decimal_value(1, label='foo')
+            self.form.add_decimal_value(1, label='foo')
 
     def test_can_update_decimal(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['decimalValues'] = {
-            'foo': 0.3
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = DecimalValuesFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
-                         0.3)
-        form.add_decimal_value(-1.5, label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['decimalValues'],
+                         {})
+        self.form.add_decimal_value(-1.5, label='foo')
+        self.assertEqual(self.form._my_map['decimalValues']['foo'],
                          -1.5)
 
     def test_can_clear_decimal_values(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        form.add_decimal_value(0.1, label='foo')
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+        self.form.add_decimal_value(0.1, label='foo')
+        self.assertEqual(self.form._my_map['decimalValues']['foo'],
                          0.1)
-        form.clear_decimal_values()
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues'], {})
+        self.form.clear_decimal_values()
+        self.assertEqual(self.form._my_map['decimalValues'], {})
 
     def test_can_clear_decimal_value(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        form.add_decimal_value(1.0, label='foo')
-        form.add_decimal_value(-2.3, label='bonk')
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['foo'],
+        self.form.add_decimal_value(1.0, label='foo')
+        self.form.add_decimal_value(-2.3, label='bonk')
+        self.assertEqual(self.form._my_map['decimalValues']['foo'],
                          1.0)
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['bonk'],
+        self.assertEqual(self.form._my_map['decimalValues']['bonk'],
                          -2.3)
-        form.clear_decimal_value('foo')
-        self.assertNotIn('foo', form.my_osid_object_form._my_map['decimalValues'])
-        self.assertEqual(form.my_osid_object_form._my_map['decimalValues']['bonk'],
+        self.form.clear_decimal_value('foo')
+        self.assertNotIn('foo', self.form._my_map['decimalValues'])
+        self.assertEqual(self.form._my_map['decimalValues']['bonk'],
                          -2.3)
 
     def test_clearing_non_existent_label_throws_exception(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        form.add_decimal_value(1.23, label='foo')
+        self.form.add_decimal_value(1.23, label='foo')
         with self.assertRaises(errors.NotFound):
-            form.clear_decimal_value('zoom')
+            self.form.clear_decimal_value('zoom')
 
     def test_can_get_decimal_values_metadata(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_decimal_values_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_decimal_values_metadata(), Metadata))
 
     def test_can_get_decimal_value_metadata(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_decimal_value_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_decimal_value_metadata(), Metadata))
 
     def test_can_get_label_metadata(self):
-        form = DecimalValuesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_label_metadata(), Metadata))
 
 
 class TestDecimalValuesRecord(unittest.TestCase):
     """Tests for DecimalValuesRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['decimalValues'] = {
             'foo': 123.45
         }
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.decimal_values_object = DecimalValuesRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.decimal_values_object = utilities.add_class(self.osid_object, DecimalValuesRecord)
 
     def test_can_get_decimal_values_map(self):
         decimal_values_map = self.decimal_values_object.decimal_values_map
@@ -1106,7 +902,7 @@ class TestDecimalValuesRecord(unittest.TestCase):
         obj_map['decimalValues'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        decimal_values_object = DecimalValuesRecord(osid_object)
+        decimal_values_object = utilities.add_class(osid_object, DecimalValuesRecord)
         with self.assertRaises(errors.IllegalState):
             decimal_values_object.decimal_values_map
 
@@ -1117,213 +913,156 @@ class TestDecimalValuesRecord(unittest.TestCase):
 
 class TestedXBaseFormRecord(unittest.TestCase):
     """Tests for edXBaseFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, edXBaseFormRecord, initialize=True)
 
     def test_can_set_attempts(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertNotEqual(2, form.my_osid_object_form._my_map['attempts'])
-        form.add_attempts(2)
-        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
+        self.assertNotEqual(2, self.form._my_map['attempts'])
+        self.form.add_attempts(2)
+        self.assertEqual(self.form._my_map['attempts'],
                          2)
 
     def test_can_set_weight(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertNotEqual(2.1, form.my_osid_object_form._my_map['weight'])
-        form.add_weight(2.1)
-        self.assertEqual(form.my_osid_object_form._my_map['weight'],
+        self.assertNotEqual(2.1, self.form._my_map['weight'])
+        self.form.add_weight(2.1)
+        self.assertEqual(self.form._my_map['weight'],
                          2.1)
 
     def test_can_set_showanswer(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertNotEqual('never', form.my_osid_object_form._my_map['showanswer'])
-        form.add_showanswer('never')
-        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+        self.assertNotEqual('never', self.form._my_map['showanswer'])
+        self.form.add_showanswer('never')
+        self.assertEqual(self.form._my_map['showanswer'],
                          'never')
 
     def test_can_set_markdown(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertNotEqual('<what />', form.my_osid_object_form._my_map['markdown'])
-        form.add_markdown('<what />')
-        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+        self.assertNotEqual('<what />', self.form._my_map['markdown'])
+        self.form.add_markdown('<what />')
+        self.assertEqual(self.form._my_map['markdown'],
                          '<what />')
 
     def test_cannot_send_none_to_attempts(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_attempts(None)
+            self.form.add_attempts(None)
 
     def test_cannot_send_non_integer_to_attempts(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_attempts(1.0)
+            self.form.add_attempts(1.0)
 
     def test_can_update_attempts(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['attempts'] = 3
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = edXBaseFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
-                         3)
-        form.add_attempts(1)
-        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['attempts'],
+                         0)
+        self.form.add_attempts(1)
+        self.assertEqual(self.form._my_map['attempts'],
                          1)
 
     def test_cannot_send_none_to_weight(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_weight(None)
+            self.form.add_weight(None)
 
     def test_cannot_send_non_float_to_weight(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_weight(1)
+            self.form.add_weight(1)
 
     def test_can_update_weight(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['weight'] = 1.23
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = edXBaseFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['weight'],
-                         1.23)
-        form.add_weight(0.15)
-        self.assertEqual(form.my_osid_object_form._my_map['weight'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['weight'],
+                         1.0)
+        self.form.add_weight(0.15)
+        self.assertEqual(self.form._my_map['weight'],
                          0.15)
 
     def test_cannot_send_none_to_showanswer(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_showanswer(None)
+            self.form.add_showanswer(None)
 
     def test_cannot_send_non_string_to_showanswer(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_showanswer(1)
+            self.form.add_showanswer(1)
 
     def test_can_update_showanswer(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['showanswer'] = 'always'
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = edXBaseFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
-                         'always')
-        form.add_showanswer('sometimes')
-        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['showanswer'],
+                         'closed')
+        self.form.add_showanswer('sometimes')
+        self.assertEqual(self.form._my_map['showanswer'],
                          'sometimes')
 
     def test_cannot_send_none_for_markdown(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_markdown(None)
+            self.form.add_markdown(None)
 
     def test_cannot_send_non_string_to_markdown(self):
-        form = edXBaseFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_markdown(1)
+            self.form.add_markdown(1)
 
     def test_can_update_markdown(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['markdown'] = '<here />'
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = edXBaseFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
-                         '<here />')
-        form.add_markdown('<there />')
-        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['markdown'],
+                         '')
+        self.form.add_markdown('<there />')
+        self.assertEqual(self.form._my_map['markdown'],
                          '<there />')
 
     def test_can_clear_attempts(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        form.add_attempts(5)
-        self.assertEqual(form.my_osid_object_form._my_map['attempts'],
+        self.form.add_attempts(5)
+        self.assertEqual(self.form._my_map['attempts'],
                          5)
-        form.clear_attempts()
-        self.assertEqual(form.my_osid_object_form._my_map['attempts'], 0)
+        self.form.clear_attempts()
+        self.assertEqual(self.form._my_map['attempts'], 0)
 
     def test_can_clear_weight(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        form.add_weight(0.2)
-        self.assertEqual(form.my_osid_object_form._my_map['weight'],
+        self.form.add_weight(0.2)
+        self.assertEqual(self.form._my_map['weight'],
                          0.2)
-        form.clear_weight()
-        self.assertEqual(form.my_osid_object_form._my_map['weight'], 1.0)
+        self.form.clear_weight()
+        self.assertEqual(self.form._my_map['weight'], 1.0)
 
     def test_can_clear_showanswer(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        form.add_showanswer('always')
-        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+        self.form.add_showanswer('always')
+        self.assertEqual(self.form._my_map['showanswer'],
                          'always')
-        form.clear_showanswer()
-        self.assertEqual(form.my_osid_object_form._my_map['showanswer'],
+        self.form.clear_showanswer()
+        self.assertEqual(self.form._my_map['showanswer'],
                          'closed')
 
     def test_can_clear_markdown(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        form.add_markdown('# Title')
-        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+        self.form.add_markdown('# Title')
+        self.assertEqual(self.form._my_map['markdown'],
                          '# Title')
-        form.clear_markdown()
-        self.assertEqual(form.my_osid_object_form._my_map['markdown'],
+        self.form.clear_markdown()
+        self.assertEqual(self.form._my_map['markdown'],
                          '')
 
     def test_can_get_attempts_metadata(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_attempts_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_attempts_metadata(), Metadata))
 
     def test_can_get_weight_metadata(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_weight_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_weight_metadata(), Metadata))
 
     def test_can_get_showanwer_metadata(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_showanswer_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_showanswer_metadata(), Metadata))
 
     def test_can_get_markdown_metadata(self):
-        form = edXBaseFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_markdown_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_markdown_metadata(), Metadata))
 
 
 class TestedXBaseRecord(unittest.TestCase):
     """Tests for edXBaseRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['attempts'] = 2
         obj_map['weight'] = 0.75
         obj_map['showanswer'] = 'always'
         obj_map['markdown'] = '<here />'
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.edx_base_object = edXBaseRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.edx_base_object = utilities.add_class(self.osid_object, edXBaseRecord)
 
     def test_can_get_attempts(self):
         self.assertTrue(isinstance(self.edx_base_object.attempts, int))
@@ -1358,7 +1097,7 @@ class TestedXBaseRecord(unittest.TestCase):
         obj_map['attempts'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        edx_base_object = edXBaseRecord(osid_object)
+        edx_base_object = utilities.add_class(osid_object, edXBaseRecord)
         with self.assertRaises(errors.IllegalState):
             edx_base_object.attempts
 
@@ -1367,7 +1106,7 @@ class TestedXBaseRecord(unittest.TestCase):
         obj_map['weight'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        edx_base_object = edXBaseRecord(osid_object)
+        edx_base_object = utilities.add_class(osid_object, edXBaseRecord)
         with self.assertRaises(errors.IllegalState):
             edx_base_object.weight
 
@@ -1376,7 +1115,7 @@ class TestedXBaseRecord(unittest.TestCase):
         obj_map['showanswer'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        edx_base_object = edXBaseRecord(osid_object)
+        edx_base_object = utilities.add_class(osid_object, edXBaseRecord)
         with self.assertRaises(errors.IllegalState):
             edx_base_object.showanswer
 
@@ -1385,131 +1124,104 @@ class TestedXBaseRecord(unittest.TestCase):
         obj_map['markdown'] = ''
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        edx_base_object = edXBaseRecord(osid_object)
+        edx_base_object = utilities.add_class(osid_object, edXBaseRecord)
         with self.assertRaises(errors.IllegalState):
             edx_base_object.markdown
 
 
 class TestTimeValueFormRecord(unittest.TestCase):
     """Tests for TimeValueFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, TimeValueFormRecord, initialize=True)
 
     def test_can_set_time_value_with_string(self):
-        form = TimeValueFormRecord(self.osid_object_form)
         self.assertNotEqual({
             'hours': 5,
             'minutes': 5,
             'seconds': 5
-        }, form.my_osid_object_form._my_map['timeValue'])
-        form.set_time_value('05:05:05')
-        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+        }, self.form._my_map['timeValue'])
+        self.form.set_time_value('05:05:05')
+        self.assertEqual(self.form._my_map['timeValue'], {
             'hours': 5,
             'minutes': 5,
             'seconds': 5
         })
 
     def test_can_set_time_value_with_duration(self):
-        form = TimeValueFormRecord(self.osid_object_form)
         test_duration = Duration(seconds=5 * 60 * 60 + 5 * 60 + 5)
         self.assertNotEqual({
             'hours': 5,
             'minutes': 5,
             'seconds': 5
-        }, form.my_osid_object_form._my_map['timeValue'])
-        form.set_time_value(test_duration)
-        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+        }, self.form._my_map['timeValue'])
+        self.form.set_time_value(test_duration)
+        self.assertEqual(self.form._my_map['timeValue'], {
             'hours': 5,
             'minutes': 5,
             'seconds': 5
         })
 
     def test_cannot_send_none_to_time_value(self):
-        form = TimeValueFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_time_value(None)
+            self.form.set_time_value(None)
 
     def test_cannot_send_non_duration_non_string_to_time_value(self):
-        form = TimeValueFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_time_value(1)
+            self.form.set_time_value(1)
 
     def test_cannot_send_incorrectly_formatted_time_string(self):
-        form = TimeValueFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_time_value('ninety')
+            self.form.set_time_value('ninety')
 
     def test_can_update_time_value(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['timeValue'] = {
-            'hours': 5,
-            'minutes': 5,
-            'seconds': 5
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-
-        form = TimeValueFormRecord(osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
-            'hours': 5,
-            'minutes': 5,
-            'seconds': 5
+        self.form._for_update = True
+        self.assertEqual(self.form._my_map['timeValue'], {
+            'hours': 0,
+            'minutes': 0,
+            'seconds': 0
         })
-        form.set_time_value('01:02:03')
-        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+        self.form.set_time_value('01:02:03')
+        self.assertEqual(self.form._my_map['timeValue'], {
             'hours': 1,
             'minutes': 2,
             'seconds': 3
         })
 
     def test_can_clear_time_value(self):
-        form = TimeValueFormRecord(self.osid_object_form)
-        form.set_time_value('01:02:03')
-        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+        self.form.set_time_value('01:02:03')
+        self.assertEqual(self.form._my_map['timeValue'], {
             'hours': 1,
             'minutes': 2,
             'seconds': 3
         })
-        form.clear_time_value()
-        self.assertEqual(form.my_osid_object_form._my_map['timeValue'], {
+        self.form.clear_time_value()
+        self.assertEqual(self.form._my_map['timeValue'], {
             'hours': 0,
             'minutes': 0,
             'seconds': 0
         })
 
     def test_can_get_time_value_metadata(self):
-        form = TimeValueFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_time_value_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_time_value_metadata(), Metadata))
 
 
 class TestTimeValueRecord(unittest.TestCase):
     """Tests for TimeValueRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['timeValue'] = {
             'hours': 1,
             'minutes': 2,
             'seconds': 3
         }
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.time_value_object = TimeValueRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.time_value_object = utilities.add_class(self.osid_object, TimeValueRecord)
 
     def test_can_get_time_value(self):
         self.assertTrue(isinstance(self.time_value_object.time, dict))
@@ -1527,7 +1239,7 @@ class TestTimeValueRecord(unittest.TestCase):
         obj_map['timeValue'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        time_value_object = TimeValueRecord(osid_object)
+        time_value_object = utilities.add_class(osid_object, TimeValueRecord)
         with self.assertRaises(errors.IllegalState):
             time_value_object.time
 
@@ -1539,351 +1251,300 @@ class TestTimeValueRecord(unittest.TestCase):
 class TestFilesFormRecord(unittest.TestCase):
     """Tests for FilesFormRecord"""
 
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         # Create a test repository for file creation
         #   all of the OsidObjectForm maps need to have
         #   ``assignedRepositoryIds[<test repository id>]``
         mgr = get_repository_manager()
         form = mgr.get_repository_form_for_create([])
         form.display_name = 'Test repository'
-        cls.repo = mgr.create_repository(form)
+        self.repo = mgr.create_repository(form)
 
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                              runtime=mgr._runtime)
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-        cls.osid_object_form._my_map['assignedRepositoryIds'] = [str(cls.repo.ident)]
-        cls.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                               runtime=mgr._runtime)
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
+        self.osid_object_form._my_map['assignedRepositoryIds'] = [str(self.repo.ident)]
+        self.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
 
-    @classmethod
-    def tearDownClass(cls):
+        self.form = utilities.add_class(self.osid_object_form, FilesFormRecord, initialize=True)
+
+    def tearDown(self):
         # NOTE: make sure to call form.clear_files() after any tests that
         #   adds a file to the form -- that will also delete the
         #   asset.
-        cls.test_file.close()
+        self.test_file.close()
         # Delete the test repository (used for file creation)
         mgr = get_repository_manager()
-        mgr.delete_repository(cls.repo.ident)
+        mgr.delete_repository(self.repo.ident)
 
     def test_can_add_file(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
-        form.add_file(DataInputStream(self.test_file),
-                      label='test_file',
-                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_record_types=[],
-                      asset_name='Test asset',
-                      asset_description='Test asset description')
+        self.assertEqual({}, self.form._my_map['fileIds'])
+        self.form.add_file(DataInputStream(self.test_file),
+                           label='test_file',
+                           asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_record_types=[],
+                           asset_name='Test asset',
+                           asset_description='Test asset description')
         self.assertIn('test_file',
-                      form.my_osid_object_form._my_map['fileIds'])
+                      self.form._my_map['fileIds'])
         for key in ['assetId', 'assetContentId', 'assetContentTypeId']:
             self.assertIn(key,
-                          form.my_osid_object_form._my_map['fileIds']['test_file'])
-        form.clear_files()
+                          self.form._my_map['fileIds']['test_file'])
+        self.form.clear_files()
 
     def test_can_add_existing_asset(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         asset_id = Id('repository.Asset%3A1%40ODL.MIT.EDU')
         asset_content_id = Id('repository.AssetContent%3A2%40ODL.MIT.EDU')
         asset_content_type = Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
-        form.add_asset(asset_id,
-                       label='test_file',
-                       asset_content_id=asset_content_id,
-                       asset_content_type=asset_content_type)
+        self.form.add_asset(asset_id,
+                            label='test_file',
+                            asset_content_id=asset_content_id,
+                            asset_content_type=asset_content_type)
         self.assertIn('test_file',
-                      form.my_osid_object_form._my_map['fileIds'])
+                      self.form._my_map['fileIds'])
         for key in ['assetId', 'assetContentId', 'assetContentTypeId']:
             self.assertIn(key,
-                          form.my_osid_object_form._my_map['fileIds']['test_file'])
+                          self.form._my_map['fileIds']['test_file'])
         self.assertEqual(str(asset_id),
-                         form.my_osid_object_form._my_map['fileIds']['test_file']['assetId'])
+                         self.form._my_map['fileIds']['test_file']['assetId'])
         self.assertEqual(str(asset_content_id),
-                         form.my_osid_object_form._my_map['fileIds']['test_file']['assetContentId'])
+                         self.form._my_map['fileIds']['test_file']['assetContentId'])
         self.assertEqual(str(asset_content_type),
-                         form.my_osid_object_form._my_map['fileIds']['test_file']['assetContentTypeId'])
+                         self.form._my_map['fileIds']['test_file']['assetContentTypeId'])
 
     def test_cannot_send_none_to_add_asset(self):
-        form = FilesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_asset(None)
+            self.form.add_asset(None)
 
     def test_cannot_send_none_to_add_file(self):
-        form = FilesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_file(None)
+            self.form.add_file(None)
 
     def test_cannot_send_non_data_stream_to_add_file(self):
-        form = FilesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_file(self.test_file)
+            self.form.add_file(self.test_file)
 
     def test_cannot_send_non_id_to_add_asset(self):
-        form = FilesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_asset('repository.Asset%3A1%40ODL.MIT.EDU')
+            self.form.add_asset('repository.Asset%3A1%40ODL.MIT.EDU')
 
     def test_cannot_send_label_with_period_in_name_to_add_asset(self):
-        form = FilesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_asset(Id('repository.Asset%3A1%40ODL.MIT.EDU'),
-                           label='foo.bar')
+            self.form.add_asset(Id('repository.Asset%3A1%40ODL.MIT.EDU'),
+                                label='foo.bar')
 
     def test_cannot_send_label_with_period_in_name_to_add_file(self):
-        form = FilesFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_file(DataInputStream(self.test_file),
-                          label='foo.bar')
+            self.form.add_file(DataInputStream(self.test_file),
+                               label='foo.bar')
 
     def test_label_auto_generated_if_not_sent_to_add_asset(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         asset_id = Id('repository.Asset%3A1%40ODL.MIT.EDU')
-        form.add_asset(asset_id)
-        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileIds'].keys())) == 1)
-        label = list(form.my_osid_object_form._my_map['fileIds'].keys())[0]
+        self.form.add_asset(asset_id)
+        self.assertTrue(len(list(self.form._my_map['fileIds'].keys())) == 1)
+        label = list(self.form._my_map['fileIds'].keys())[0]
         self.assertTrue(len(label), 24)
 
     def test_label_auto_generated_if_not_sent_to_add_file(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
-        form.add_file(DataInputStream(self.test_file))
-        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileIds'].keys())) == 1)
-        label = list(form.my_osid_object_form._my_map['fileIds'].keys())[0]
+        self.assertEqual({}, self.form._my_map['fileIds'])
+        self.form.add_file(DataInputStream(self.test_file))
+        self.assertTrue(len(list(self.form._my_map['fileIds'].keys())) == 1)
+        label = list(self.form._my_map['fileIds'].keys())[0]
         self.assertTrue(len(label), 24)
-        form.clear_files()
+        self.form.clear_files()
 
     def test_asset_content_id_must_be_id(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         asset_id = Id('repository.Asset%3A1%40ODL.MIT.EDU')
         asset_content_type = Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
         with self.assertRaises(errors.InvalidArgument):
-            form.add_asset(asset_id,
-                           label='test_file',
-                           asset_content_id='foo',
-                           asset_content_type=asset_content_type)
+            self.form.add_asset(asset_id,
+                                label='test_file',
+                                asset_content_id='foo',
+                                asset_content_type=asset_content_type)
 
     def test_asset_content_type_must_be_type_for_add_asset(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         asset_id = Id('repository.Asset%3A1%40ODL.MIT.EDU')
         asset_content_id = Id('repository.AssetContent%3A2%40ODL.MIT.EDU')
         with self.assertRaises(errors.InvalidArgument):
-            form.add_asset(asset_id,
-                           label='test_file',
-                           asset_content_id=asset_content_id,
-                           asset_content_type='foo')
+            self.form.add_asset(asset_id,
+                                label='test_file',
+                                asset_content_id=asset_content_id,
+                                asset_content_type='foo')
 
     def test_asset_type_must_be_type(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         with self.assertRaises(errors.InvalidArgument):
-            form.add_file(DataInputStream(self.test_file),
-                          label='test_file',
-                          asset_type='repository.Asset%3Amy-type%40ODL.MIT.EDU',
-                          asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_record_types=[],
-                          asset_name='Test asset',
-                          asset_description='Test asset description')
+            self.form.add_file(DataInputStream(self.test_file),
+                               label='test_file',
+                               asset_type='repository.Asset%3Amy-type%40ODL.MIT.EDU',
+                               asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_record_types=[],
+                               asset_name='Test asset',
+                               asset_description='Test asset description')
 
     def test_asset_content_type_must_be_type_for_add_file(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         with self.assertRaises(errors.InvalidArgument):
-            form.add_file(DataInputStream(self.test_file),
-                          label='test_file',
-                          asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU',
-                          asset_content_record_types=[],
-                          asset_name='Test asset',
-                          asset_description='Test asset description')
+            self.form.add_file(DataInputStream(self.test_file),
+                               label='test_file',
+                               asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU',
+                               asset_content_record_types=[],
+                               asset_name='Test asset',
+                               asset_description='Test asset description')
 
     def test_asset_content_record_types_must_be_list(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         with self.assertRaises(errors.InvalidArgument):
-            form.add_file(DataInputStream(self.test_file),
-                          label='test_file',
-                          asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_record_types='one',
-                          asset_name='Test asset',
-                          asset_description='Test asset description')
+            self.form.add_file(DataInputStream(self.test_file),
+                               label='test_file',
+                               asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_record_types='one',
+                               asset_name='Test asset',
+                               asset_description='Test asset description')
 
     def test_asset_content_record_types_must_be_types(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+        self.assertEqual({}, self.form._my_map['fileIds'])
         with self.assertRaises(errors.InvalidArgument):
-            form.add_file(DataInputStream(self.test_file),
-                          label='test_file',
-                          asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_record_types=['one'],
-                          asset_name='Test asset',
-                          asset_description='Test asset description')
+            self.form.add_file(DataInputStream(self.test_file),
+                               label='test_file',
+                               asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_record_types=['one'],
+                               asset_name='Test asset',
+                               asset_description='Test asset description')
 
     def test_can_update_file(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
-        obj_map['fileIds'] = {}
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map,
-                                          runtime=self.repo._runtime)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-        self.test_file.seek(0)
-        form = FilesFormRecord(osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
-        form.add_file(DataInputStream(self.test_file),
-                      label='foo')
-        self.assertIn('foo', form.my_osid_object_form._my_map['fileIds'])
-        asset_id_str = form.my_osid_object_form._my_map['fileIds']['foo']['assetId']
+        self.form._for_update = True
+        self.assertEqual({}, self.form._my_map['fileIds'])
+        self.form.add_file(DataInputStream(self.test_file),
+                           label='foo')
+        self.assertIn('foo', self.form._my_map['fileIds'])
+        asset_id_str = self.form._my_map['fileIds']['foo']['assetId']
         asset = self.repo.get_asset(Id(asset_id_str))
         asset_content = next(asset.get_asset_contents())
         self.test_file.seek(0)
         self.assertEqual(asset_content.get_data().read(),
                          self.test_file.read())
-        form.clear_files()
+        self.form.clear_files()
 
     def test_can_update_asset(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
-        obj_map['fileIds'] = {
-            'foo': {
-                'assetId': 'repository.Asset%3Aold-id%40ODL.MIT.EDU',
-                'assetContentId': 'repository.AssetContent%3Aold-ac-id%40ODL.MIT.EDU',
-                'assetContentTypeId': 'repository.AssetContent%3Aold-type%40ODL.MIT.EDU'
-            }
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map,
-                                          runtime=self.repo._runtime)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-        form = FilesFormRecord(osid_object_form)
-        self.assertIn('old-id',
-                      form.my_osid_object_form._my_map['fileIds']['foo']['assetId'])
-        self.assertIn('old-ac-id',
-                      form.my_osid_object_form._my_map['fileIds']['foo']['assetContentId'])
-        self.assertIn('old-type',
-                      form.my_osid_object_form._my_map['fileIds']['foo']['assetContentTypeId'])
-
-        form.add_asset(Id('repository.Asset%3Anew-id%40ODL.MIT.EDU'),
-                       label='foo',
-                       asset_content_id=Id('repository.AssetContent%3Anew-ac-id%40ODL.MIT.EDU'),
-                       asset_content_type=Type('repository.AssetContent%3Anew-type%40ODL.MIT.EDU'))
-        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileIds']['foo'].keys())), 1)
+        self.form._for_update = True
+        self.assertEqual({},
+                         self.form._my_map['fileIds'])
+        self.form.add_asset(Id('repository.Asset%3Anew-id%40ODL.MIT.EDU'),
+                            label='foo',
+                            asset_content_id=Id('repository.AssetContent%3Anew-ac-id%40ODL.MIT.EDU'),
+                            asset_content_type=Type('repository.AssetContent%3Anew-type%40ODL.MIT.EDU'))
+        self.assertTrue(len(list(self.form._my_map['fileIds']['foo'].keys())), 1)
         self.assertIn('new-id',
-                      form.my_osid_object_form._my_map['fileIds']['foo']['assetId'])
+                      self.form._my_map['fileIds']['foo']['assetId'])
         self.assertIn('new-ac-id',
-                      form.my_osid_object_form._my_map['fileIds']['foo']['assetContentId'])
+                      self.form._my_map['fileIds']['foo']['assetContentId'])
         self.assertIn('new-type',
-                      form.my_osid_object_form._my_map['fileIds']['foo']['assetContentTypeId'])
+                      self.form._my_map['fileIds']['foo']['assetContentTypeId'])
 
     def test_can_clear_file(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
-        form.add_file(DataInputStream(self.test_file),
-                      label='test_file',
-                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_record_types=[],
-                      asset_name='Test asset',
-                      asset_description='Test asset description')
+        self.assertEqual({}, self.form._my_map['fileIds'])
+        self.form.add_file(DataInputStream(self.test_file),
+                           label='test_file',
+                           asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_record_types=[],
+                           asset_name='Test asset',
+                           asset_description='Test asset description')
         self.assertIn('test_file',
-                      form.my_osid_object_form._my_map['fileIds'])
-        form.clear_file('test_file')
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+                      self.form._my_map['fileIds'])
+        self.form.clear_file('test_file')
+        self.assertEqual({}, self.form._my_map['fileIds'])
 
     def test_clearing_non_existent_label_throws_exception(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
-        form.add_file(DataInputStream(self.test_file),
-                      label='test_file',
-                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_record_types=[],
-                      asset_name='Test asset',
-                      asset_description='Test asset description')
+        self.assertEqual({}, self.form._my_map['fileIds'])
+        self.form.add_file(DataInputStream(self.test_file),
+                           label='test_file',
+                           asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_record_types=[],
+                           asset_name='Test asset',
+                           asset_description='Test asset description')
         self.assertIn('test_file',
-                      form.my_osid_object_form._my_map['fileIds'])
+                      self.form._my_map['fileIds'])
         with self.assertRaises(errors.NotFound):
-            form.clear_file('foo')
-        form.clear_files()
+            self.form.clear_file('foo')
+
+        self.form.clear_files()
 
     def test_can_clear_files(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
-        form.add_file(DataInputStream(self.test_file),
-                      label='test_file',
-                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_record_types=[],
-                      asset_name='Test asset',
-                      asset_description='Test asset description')
+        self.assertEqual({}, self.form._my_map['fileIds'])
+        self.form.add_file(DataInputStream(self.test_file),
+                           label='test_file',
+                           asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_record_types=[],
+                           asset_name='Test asset',
+                           asset_description='Test asset description')
         self.assertIn('test_file',
-                      form.my_osid_object_form._my_map['fileIds'])
-        form.clear_files()
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileIds'])
+                      self.form._my_map['fileIds'])
+        self.form.clear_files()
+        self.assertEqual({}, self.form._my_map['fileIds'])
 
     def test_can_get_file_metadata(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_file_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_file_metadata(), Metadata))
 
     def test_can_get_label_metadata(self):
-        form = FilesFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_label_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_label_metadata(), Metadata))
 
 
 class TestFilesRecord(unittest.TestCase):
     """Tests for FilesRecord"""
 
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         mgr = get_repository_manager()
         form = mgr.get_repository_form_for_create([])
         form.display_name = 'Test repository'
-        cls.repo = mgr.create_repository(form)
+        self.repo = mgr.create_repository(form)
 
-        form = cls.repo.get_asset_form_for_create([])
+        form = self.repo.get_asset_form_for_create([])
         form.display_name = 'Test asset'
-        cls.asset = cls.repo.create_asset(form)
+        self.asset = self.repo.create_asset(form)
 
-        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
-        form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
+        self.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
+        form = self.repo.get_asset_content_form_for_create(self.asset.ident, [])
         form.display_name = 'Test asset content'
-        form.set_data(DataInputStream(cls.test_image))
+        form.set_data(DataInputStream(self.test_image))
         form.set_url('example.com')
-        cls.repo.create_asset_content(form)
-        cls.asset = cls.repo.get_asset(cls.asset.ident)
+        self.repo.create_asset_content(form)
+        self.asset = self.repo.get_asset(self.asset.ident)
 
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {
             'foo': {
-                'assetId': str(cls.asset.ident),
-                'assetContentId': str(cls.asset.get_asset_contents().next().ident),
-                'assetContentTypeId': str(cls.asset.get_asset_contents().next().genus_type)
+                'assetId': str(self.asset.ident),
+                'assetContentId': str(self.asset.get_asset_contents().next().ident),
+                'assetContentTypeId': str(self.asset.get_asset_contents().next().genus_type)
             }
         }
-        obj_map['assignedBankIds'] = [str(cls.repo.ident)]
+        obj_map['assignedBankIds'] = [str(self.repo.ident)]
 
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map,
-                                     runtime=mgr._runtime)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map,
+                                      runtime=mgr._runtime)
+        self.item = utilities.add_class(self.osid_object, FilesRecord)
 
-        cls.item = FilesRecord(cls.osid_object)
-
-    @classmethod
-    def tearDownClass(cls):
-        cls.test_image.close()
+    def tearDown(self):
+        self.test_image.close()
         # Delete the asset
-        cls.repo.delete_asset(cls.asset.ident)
+        self.repo.delete_asset(self.asset.ident)
         # Delete the test repository (used for file creation)
         mgr = get_repository_manager()
-        mgr.delete_repository(cls.repo.ident)
+        mgr.delete_repository(self.repo.ident)
         # No test bank to delete, so no need to clean it up here
 
     def test_can_get_files_map(self):
@@ -1901,7 +1562,7 @@ class TestFilesRecord(unittest.TestCase):
         obj_map['fileIds'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        files_object = FilesRecord(osid_object)
+        files_object = utilities.add_class(osid_object, FilesRecord)
         with self.assertRaises(errors.IllegalState):
             files_object.files_map
 
@@ -1916,7 +1577,7 @@ class TestFilesRecord(unittest.TestCase):
         obj_map['fileIds'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        files_object = FilesRecord(osid_object)
+        files_object = utilities.add_class(osid_object, FilesRecord)
         with self.assertRaises(errors.IllegalState):
             files_object.file_urls_map
 
@@ -1952,7 +1613,7 @@ class TestFilesRecord(unittest.TestCase):
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
 
-        item = FilesRecord(osid_object)
+        item = utilities.add_class(osid_object, FilesRecord)
         self.test_image.seek(0)
         self.assertTrue(isinstance(item.get_files(),
                                    dict))
@@ -2038,7 +1699,7 @@ class TestFilesRecord(unittest.TestCase):
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
 
-        item = FilesRecord(osid_object)
+        item = utilities.add_class(osid_object, FilesRecord)
         item._update_object_map(obj_map)
         self.assertEqual(obj_map['text']['text'],
                          '<img src="example.com"/>')
@@ -2063,7 +1724,7 @@ class TestFilesRecord(unittest.TestCase):
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
 
-        item = FilesRecord(osid_object)
+        item = utilities.add_class(osid_object, FilesRecord)
         item._update_object_map(obj_map)
         self.assertEqual(obj_map['text']['text'],
                          None)
@@ -2071,225 +1732,187 @@ class TestFilesRecord(unittest.TestCase):
 
 class TestFileFormRecord(unittest.TestCase):
     """Tests for FileFormRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         # Create a test repository for file creation
         #   all of the OsidObjectForm maps need to have
         #   ``assignedRepositoryIds[<test repository id>]``
         mgr = get_repository_manager()
         form = mgr.get_repository_form_for_create([])
         form.display_name = 'Test repository'
-        cls.repo = mgr.create_repository(form)
+        self.repo = mgr.create_repository(form)
 
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                              runtime=mgr._runtime)
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-        cls.osid_object_form._my_map['assignedRepositoryIds'] = [str(cls.repo.ident)]
-        cls.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
+                                               runtime=mgr._runtime)
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
+        self.osid_object_form._my_map['assignedRepositoryIds'] = [str(self.repo.ident)]
+        self.test_file = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
 
-    @classmethod
-    def tearDownClass(cls):
+        self.form = utilities.add_class(self.osid_object_form, FileFormRecord, initialize=True)
+
+    def tearDown(self):
         # NOTE: make sure to call form.clear_files() after any tests that
         #   adds a file to the form -- that will also delete the
         #   asset.
-        cls.test_file.close()
+        self.test_file.close()
         # Delete the test repository (used for file creation)
         mgr = get_repository_manager()
-        mgr.delete_repository(cls.repo.ident)
+        mgr.delete_repository(self.repo.ident)
 
     def test_can_set_file(self):
-        form = FileFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
-        form.set_file(DataInputStream(self.test_file),
-                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                      asset_name='Test asset',
-                      asset_description='Test asset description')
+        self.assertEqual({}, self.form._my_map['fileId'])
+        self.form.set_file(DataInputStream(self.test_file),
+                           asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                           asset_name='Test asset',
+                           asset_description='Test asset description')
         for key in ['assetId', 'assetContentTypeId']:
             self.assertIn(key,
-                          form.my_osid_object_form._my_map['fileId'])
-        self.assertEqual(form.my_osid_object_form._my_map['fileId']['assetContentTypeId'],
+                          self.form._my_map['fileId'])
+        self.assertEqual(self.form._my_map['fileId']['assetContentTypeId'],
                          'repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
-        form.clear_file()
+        self.form.clear_file()
 
     def test_can_set_asset(self):
-        form = FileFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
+        self.assertEqual({}, self.form._my_map['fileId'])
         asset_id = Id('repository.Asset%3A1%40ODL.MIT.EDU')
         asset_content_type = Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
-        form.set_asset(asset_id,
-                       asset_content_type=asset_content_type)
+        self.form.set_asset(asset_id,
+                            asset_content_type=asset_content_type)
         for key in ['assetId', 'assetContentTypeId']:
             self.assertIn(key,
-                          form.my_osid_object_form._my_map['fileId'])
+                          self.form._my_map['fileId'])
         self.assertEqual(str(asset_id),
-                         form.my_osid_object_form._my_map['fileId']['assetId'])
+                         self.form._my_map['fileId']['assetId'])
         self.assertEqual(str(asset_content_type),
-                         form.my_osid_object_form._my_map['fileId']['assetContentTypeId'])
+                         self.form._my_map['fileId']['assetContentTypeId'])
 
     def test_cannot_send_none_to_set_asset(self):
-        form = FileFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_asset(None)
+            self.form.set_asset(None)
 
     def test_cannot_send_none_to_set_file(self):
-        form = FileFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_file(None)
+            self.form.set_file(None)
 
     def test_asset_data_must_be_data_input_stream(self):
-        form = FileFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_file(self.test_file,
-                          asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                          asset_name='Test asset',
-                          asset_description='Test asset description')
+            self.form.set_file(self.test_file,
+                               asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                               asset_name='Test asset',
+                               asset_description='Test asset description')
 
     def test_asset_id_must_be_id(self):
-        form = FileFormRecord(self.osid_object_form)
         asset_id = 'repository.Asset%3A1%40ODL.MIT.EDU'
         asset_content_type = Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
         with self.assertRaises(errors.InvalidArgument):
-            form.set_asset(asset_id,
-                           asset_content_type=asset_content_type)
+            self.form.set_asset(asset_id,
+                                asset_content_type=asset_content_type)
 
     def test_asset_type_must_be_type_for_set_file(self):
-        form = FileFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_file(DataInputStream(self.test_file),
-                          asset_type='repository.Asset%3Amy-type%40ODL.MIT.EDU',
-                          asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                          asset_name='Test asset',
-                          asset_description='Test asset description')
+            self.form.set_file(DataInputStream(self.test_file),
+                               asset_type='repository.Asset%3Amy-type%40ODL.MIT.EDU',
+                               asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                               asset_name='Test asset',
+                               asset_description='Test asset description')
 
     def test_asset_content_type_must_be_type_for_set_file(self):
-        form = FileFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_file(DataInputStream(self.test_file),
-                          asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                          asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU',
-                          asset_name='Test asset',
-                          asset_description='Test asset description')
+            self.form.set_file(DataInputStream(self.test_file),
+                               asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                               asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU',
+                               asset_name='Test asset',
+                               asset_description='Test asset description')
 
     def test_asset_content_type_must_be_type_for_set_asset(self):
-        form = FileFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_asset(Id('repository.Asset%3A1%40ODL.MIT.EDU'),
-                           asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
+            self.form.set_asset(Id('repository.Asset%3A1%40ODL.MIT.EDU'),
+                                asset_content_type='repository.AssetContent%3Amy-type%40ODL.MIT.EDU')
 
     def test_can_update_file(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
-        obj_map['fileId'] = {}
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map,
-                                          runtime=self.repo._runtime)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-        self.test_file.seek(0)
-        form = FileFormRecord(osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
-        form.set_file(DataInputStream(self.test_file))
-        self.assertIn('assetId', form.my_osid_object_form._my_map['fileId'])
-        self.assertIn('assetContentTypeId', form.my_osid_object_form._my_map['fileId'])
-        asset_id_str = form.my_osid_object_form._my_map['fileId']['assetId']
+        self.form._for_update = True
+        self.assertEqual({}, self.form._my_map['fileId'])
+        self.form.set_file(DataInputStream(self.test_file))
+        self.assertIn('assetId', self.form._my_map['fileId'])
+        self.assertIn('assetContentTypeId', self.form._my_map['fileId'])
+        asset_id_str = self.form._my_map['fileId']['assetId']
         asset = self.repo.get_asset(Id(asset_id_str))
         asset_content = next(asset.get_asset_contents())
         self.test_file.seek(0)
         self.assertEqual(asset_content.get_data().read(),
                          self.test_file.read())
-        form.clear_file()
+        self.form.clear_file()
 
     def test_can_update_asset(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['assignedRepositoryIds'] = [str(self.repo.ident)]
-        obj_map['fileId'] = {
-            'assetId': 'repository.Asset%3Aold-id%40ODL.MIT.EDU',
-            'assetContentTypeId': 'repository.AssetContent%3Aold-type%40ODL.MIT.EDU'
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map,
-                                          runtime=self.repo._runtime)
-        osid_object_form._authority = 'TESTING.MIT.EDU'
-        osid_object_form._namespace = 'records.Testing'
-        form = FileFormRecord(osid_object_form)
-        self.assertIn('old-id',
-                      form.my_osid_object_form._my_map['fileId']['assetId'])
-        self.assertIn('old-type',
-                      form.my_osid_object_form._my_map['fileId']['assetContentTypeId'])
-
-        form.set_asset(Id('repository.Asset%3Anew-id%40ODL.MIT.EDU'),
-                       asset_content_type=Type('repository.AssetContent%3Anew-type%40ODL.MIT.EDU'))
-        self.assertTrue(len(list(form.my_osid_object_form._my_map['fileId'].keys())), 2)
+        self.form._for_update = True
+        self.assertEqual({},
+                         self.form._my_map['fileId'])
+        self.form.set_asset(Id('repository.Asset%3Anew-id%40ODL.MIT.EDU'),
+                            asset_content_type=Type('repository.AssetContent%3Anew-type%40ODL.MIT.EDU'))
+        self.assertTrue(len(list(self.form._my_map['fileId'].keys())), 2)
         self.assertIn('new-id',
-                      form.my_osid_object_form._my_map['fileId']['assetId'])
+                      self.form._my_map['fileId']['assetId'])
         self.assertIn('new-type',
-                      form.my_osid_object_form._my_map['fileId']['assetContentTypeId'])
+                      self.form._my_map['fileId']['assetContentTypeId'])
 
     def test_can_clear_file(self):
-        form = FileFormRecord(self.osid_object_form)
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
-        form.set_file(DataInputStream(self.test_file),
-                      asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
-                      asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
-                      asset_name='Test asset',
-                      asset_description='Test asset description')
+        self.assertEqual({}, self.form._my_map['fileId'])
+        self.form.set_file(DataInputStream(self.test_file),
+                           asset_type=Type('repository.Asset%3Amy-type%40ODL.MIT.EDU'),
+                           asset_content_type=Type('repository.AssetContent%3Amy-type%40ODL.MIT.EDU'),
+                           asset_name='Test asset',
+                           asset_description='Test asset description')
         self.assertIn('assetId',
-                      form.my_osid_object_form._my_map['fileId'])
-        form.clear_file()
-        self.assertEqual({}, form.my_osid_object_form._my_map['fileId'])
+                      self.form._my_map['fileId'])
+        self.form.clear_file()
+        self.assertEqual({}, self.form._my_map['fileId'])
 
     def test_can_get_file_metadata(self):
-        form = FileFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_file_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_file_metadata(), Metadata))
 
 
 class TestFileRecord(unittest.TestCase):
     """Tests for FileRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         mgr = get_repository_manager()
         form = mgr.get_repository_form_for_create([])
         form.display_name = 'Test repository'
-        cls.repo = mgr.create_repository(form)
+        self.repo = mgr.create_repository(form)
 
-        form = cls.repo.get_asset_form_for_create([])
+        form = self.repo.get_asset_form_for_create([])
         form.display_name = 'Test asset'
-        cls.asset = cls.repo.create_asset(form)
+        self.asset = self.repo.create_asset(form)
 
-        cls.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
-        form = cls.repo.get_asset_content_form_for_create(cls.asset.ident, [])
+        self.test_image = open(os.path.join(ABS_PATH, 'files', 'test_image.png'), 'rb')
+        form = self.repo.get_asset_content_form_for_create(self.asset.ident, [])
         form.display_name = 'Test asset content'
-        form.set_data(DataInputStream(cls.test_image))
+        form.set_data(DataInputStream(self.test_image))
         form.set_url('example.com')
-        cls.repo.create_asset_content(form)
-        cls.asset = cls.repo.get_asset(cls.asset.ident)
+        self.repo.create_asset_content(form)
+        self.asset = self.repo.get_asset(self.asset.ident)
 
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileId'] = {
-            'assetId': str(cls.asset.ident),
-            'assetContentTypeId': str(cls.asset.get_asset_contents().next().genus_type)
+            'assetId': str(self.asset.ident),
+            'assetContentTypeId': str(self.asset.get_asset_contents().next().genus_type)
         }
-        obj_map['assignedBankIds'] = [str(cls.repo.ident)]
+        obj_map['assignedBankIds'] = [str(self.repo.ident)]
 
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map,
-                                     runtime=mgr._runtime)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map,
+                                      runtime=mgr._runtime)
 
-        cls.item = FileRecord(cls.osid_object)
+        self.item = utilities.add_class(self.osid_object, FileRecord)
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.test_image.close()
+    def tearDown(self):
+        self.test_image.close()
         # Delete the asset
-        cls.repo.delete_asset(cls.asset.ident)
+        self.repo.delete_asset(self.asset.ident)
         # Delete the test repository (used for file creation)
         mgr = get_repository_manager()
-        mgr.delete_repository(cls.repo.ident)
+        mgr.delete_repository(self.repo.ident)
         # No test bank to delete, so no need to clean it up here
 
     def test_can_get_file_asset_id(self):
@@ -2306,7 +1929,7 @@ class TestFileRecord(unittest.TestCase):
         obj_map['fileId'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        file_object = FileRecord(osid_object)
+        file_object = utilities.add_class(osid_object, FileRecord)
         with self.assertRaises(errors.IllegalState):
             file_object.file_asset_id
 
@@ -2342,7 +1965,7 @@ class TestFileRecord(unittest.TestCase):
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
 
-        item = FileRecord(osid_object)
+        item = utilities.add_class(osid_object, FileRecord)
         with self.assertRaises(errors.IllegalState):
             item.file_url
 
@@ -2361,114 +1984,87 @@ class TestFileRecord(unittest.TestCase):
         obj_map['fileId'] = {}
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        file_object = FileRecord(osid_object)
+        file_object = utilities.add_class(osid_object, FileRecord)
         with self.assertRaises(errors.IllegalState):
             file_object.file_
 
 
 class TestColorCoordinateFormRecord(unittest.TestCase):
     """Tests for ColorCoordinateFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, ColorCoordinateFormRecord, initialize=True)
 
     def test_can_set_color_coordinate(self):
-        form = ColorCoordinateFormRecord(self.osid_object_form)
         self.assertEqual({},
-                         form.my_osid_object_form._my_map['colorCoordinate'])
+                         self.form._my_map['colorCoordinate'])
         coordinate = RGBColorCoordinate(hexstr='0a21ff',
                                         uncertainty_minus=[15, 15, 15],
                                         uncertainty_plus=[15, 15, 15])
 
-        form.set_color_coordinate(coordinate)
-        self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {
+        self.form.set_color_coordinate(coordinate)
+        self.assertEqual(self.form._my_map['colorCoordinate'], {
             'values': [10, 33, 255],
             'uncertaintyPlus': [15, 15, 15],
             'uncertaintyMinus': [15, 15, 15]
         })
 
     def test_color_coordinate_cannot_be_none(self):
-        form = ColorCoordinateFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_color_coordinate(None)
+            self.form.set_color_coordinate(None)
 
     def test_color_coordinate_must_be_instance_of_coordinate(self):
-        form = ColorCoordinateFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_color_coordinate('0a21ff')
+            self.form.set_color_coordinate('0a21ff')
 
     def test_can_clear_color_coordinate(self):
-        form = ColorCoordinateFormRecord(self.osid_object_form)
         coordinate = RGBColorCoordinate(hexstr='0a21ff',
                                         uncertainty_minus=[15, 15, 15],
                                         uncertainty_plus=[15, 15, 15])
-        form.set_color_coordinate(coordinate)
-        self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {
+        self.form.set_color_coordinate(coordinate)
+        self.assertEqual(self.form._my_map['colorCoordinate'], {
             'values': [10, 33, 255],
             'uncertaintyPlus': [15, 15, 15],
             'uncertaintyMinus': [15, 15, 15]
         })
-        form.clear_color_coordinate()
-        self.assertEqual(form.my_osid_object_form._my_map['colorCoordinate'], {})
+        self.form.clear_color_coordinate()
+        self.assertEqual(self.form._my_map['colorCoordinate'], {})
 
     def test_can_update_color_coordinate(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['colorCoordinate'] = {
-            'values': [0, 0, 0],
-            'uncertaintyMinus': [5, 5, 5],
-            'uncertaintyPlus': [5, 5, 5]
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = ColorCoordinateFormRecord(osid_object_form)
-        self.assertEqual([0, 0, 0],
-                         form.my_osid_object_form._my_map['colorCoordinate']['values'])
-        self.assertEqual([5, 5, 5],
-                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyMinus'])
-        self.assertEqual([5, 5, 5],
-                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyPlus'])
-
+        self.form._for_update = True
+        self.assertEqual({},
+                         self.form._my_map['colorCoordinate'])
         coordinate = RGBColorCoordinate(hexstr='0a21ff',
                                         uncertainty_minus=[15, 15, 15],
                                         uncertainty_plus=[15, 15, 15])
-        form.set_color_coordinate(coordinate)
+        self.form.set_color_coordinate(coordinate)
         self.assertEqual([10, 33, 255],
-                         form.my_osid_object_form._my_map['colorCoordinate']['values'])
+                         self.form._my_map['colorCoordinate']['values'])
         self.assertEqual([15, 15, 15],
-                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyMinus'])
+                         self.form._my_map['colorCoordinate']['uncertaintyMinus'])
         self.assertEqual([15, 15, 15],
-                         form.my_osid_object_form._my_map['colorCoordinate']['uncertaintyPlus'])
+                         self.form._my_map['colorCoordinate']['uncertaintyPlus'])
 
     def test_can_get_color_coordinate_metadata(self):
-        form = ColorCoordinateFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_color_coordinate_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_color_coordinate_metadata(), Metadata))
 
 
 class TestColorCoordinateRecord(unittest.TestCase):
     """Tests for ColorCoordinateRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['colorCoordinate'] = {
             'values': [10, 33, 255],
             'uncertaintyMinus': [15, 15, 15],
             'uncertaintyPlus': [15, 15, 15]
         }
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.color_coordinate_object = ColorCoordinateRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.color_coordinate_object = utilities.add_class(self.osid_object, ColorCoordinateRecord)
 
     def test_can_get_color_coordinate(self):
         self.assertTrue(isinstance(self.color_coordinate_object.color_coordinate,
@@ -2486,7 +2082,7 @@ class TestColorCoordinateRecord(unittest.TestCase):
         obj_map['colorCoordinate'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        color_coordinate_object = ColorCoordinateRecord(osid_object)
+        color_coordinate_object = utilities.add_class(osid_object, ColorCoordinateRecord)
         with self.assertRaises(errors.IllegalState):
             color_coordinate_object.color_coordinate
 
@@ -2500,7 +2096,7 @@ class TestColorCoordinateRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
 
-        color_coordinate_object = ColorCoordinateRecord(osid_object)
+        color_coordinate_object = utilities.add_class(osid_object, ColorCoordinateRecord)
         color_coordinate_object._update_object_map(obj_map)
         self.assertEqual(obj_map['colorCoordinate']['values'],
                          [10, 33, 255])
@@ -2514,19 +2110,14 @@ class TestColorCoordinateRecord(unittest.TestCase):
 
 class TestTemporalFormRecord(unittest.TestCase):
     """Tests for TemporalFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, TemporalFormRecord, initialize=True)
 
     def test_can_set_start_date(self):
-        form = TemporalFormRecord(self.osid_object_form)
         future_date = datetime.datetime.utcnow() + datetime.timedelta(days=4)
         start_date = DateTime(year=future_date.year,
                               month=future_date.month,
@@ -2536,17 +2127,16 @@ class TestTemporalFormRecord(unittest.TestCase):
                               second=future_date.second,
                               microsecond=future_date.microsecond)
 
-        self.assertTrue(isinstance(form.my_osid_object_form._my_map['startDate'],
+        self.assertTrue(isinstance(self.form._my_map['startDate'],
                                    DateTime))
         self.assertNotEqual(start_date,
-                            form.my_osid_object_form._my_map['startDate'])
+                            self.form._my_map['startDate'])
 
-        form.set_start_date(start_date)
-        self.assertEqual(form.my_osid_object_form._my_map['startDate'],
+        self.form.set_start_date(start_date)
+        self.assertEqual(self.form._my_map['startDate'],
                          start_date)
 
     def test_can_set_end_date(self):
-        form = TemporalFormRecord(self.osid_object_form)
         now_date = datetime.datetime.utcnow()
         end_date = DateTime(year=now_date.year,
                             month=now_date.month,
@@ -2556,45 +2146,34 @@ class TestTemporalFormRecord(unittest.TestCase):
                             second=now_date.second,
                             microsecond=now_date.microsecond)
 
-        self.assertTrue(isinstance(form.my_osid_object_form._my_map['endDate'],
+        self.assertTrue(isinstance(self.form._my_map['endDate'],
                                    DateTime))
         self.assertNotEqual(end_date,
-                            form.my_osid_object_form._my_map['endDate'])
+                            self.form._my_map['endDate'])
 
-        form.set_end_date(end_date)
-        self.assertEqual(form.my_osid_object_form._my_map['endDate'],
+        self.form.set_end_date(end_date)
+        self.assertEqual(self.form._my_map['endDate'],
                          end_date)
 
     def test_start_date_cannot_be_none(self):
-        form = TemporalFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_start_date(None)
+            self.form.set_start_date(None)
 
     def test_end_date_cannot_be_none(self):
-        form = TemporalFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_end_date(None)
+            self.form.set_end_date(None)
 
     def test_start_date_must_be_instance_of_date_time(self):
-        form = TemporalFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_start_date(datetime.datetime.utcnow())
+            self.form.set_start_date(datetime.datetime.utcnow())
 
     def test_end_date_must_be_instance_of_date_time(self):
-        form = TemporalFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_end_date(datetime.datetime.utcnow())
+            self.form.set_end_date(datetime.datetime.utcnow())
 
     def test_can_update_start_date(self):
         now_date = datetime.datetime.utcnow()
         future_date = now_date + datetime.timedelta(days=4)
-        date_1 = DateTime(year=now_date.year,
-                          month=now_date.month,
-                          day=now_date.day,
-                          hour=now_date.hour,
-                          minute=now_date.minute,
-                          second=now_date.second,
-                          microsecond=now_date.microsecond)
 
         date_2 = DateTime(year=future_date.year,
                           month=future_date.month,
@@ -2604,28 +2183,17 @@ class TestTemporalFormRecord(unittest.TestCase):
                           second=future_date.second,
                           microsecond=future_date.microsecond)
 
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['startDate'] = date_1
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = TemporalFormRecord(osid_object_form)
-        self.assertEqual(date_1,
-                         form.my_osid_object_form._my_map['startDate'])
+        self.form._for_update = True
+        self.assertNotEqual(date_2,
+                            self.form._my_map['startDate'])
 
-        form.set_start_date(date_2)
+        self.form.set_start_date(date_2)
         self.assertEqual(date_2,
-                         form.my_osid_object_form._my_map['startDate'])
+                         self.form._my_map['startDate'])
 
     def test_can_update_end_date(self):
         now_date = datetime.datetime.utcnow()
         future_date = now_date + datetime.timedelta(days=4)
-        date_1 = DateTime(year=now_date.year,
-                          month=now_date.month,
-                          day=now_date.day,
-                          hour=now_date.hour,
-                          minute=now_date.minute,
-                          second=now_date.second,
-                          microsecond=now_date.microsecond)
 
         date_2 = DateTime(year=future_date.year,
                           month=future_date.month,
@@ -2635,21 +2203,16 @@ class TestTemporalFormRecord(unittest.TestCase):
                           second=future_date.second,
                           microsecond=future_date.microsecond)
 
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['endDate'] = date_1
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = TemporalFormRecord(osid_object_form)
-        self.assertEqual(date_1,
-                         form.my_osid_object_form._my_map['endDate'])
+        self.form._for_update = True
+        self.assertNotEqual(date_2,
+                            self.form._my_map['endDate'])
 
-        form.set_end_date(date_2)
+        self.form.set_end_date(date_2)
         self.assertEqual(date_2,
-                         form.my_osid_object_form._my_map['endDate'])
+                         self.form._my_map['endDate'])
 
     def test_can_clear_start_date(self):
-        form = TemporalFormRecord(self.osid_object_form)
-        default_start_date = form._start_date_metadata['default_date_time_values'][0]
+        default_start_date = self.form._start_date_metadata['default_date_time_values'][0]
         default_start_date = DateTime(year=default_start_date.year,
                                       month=default_start_date.month,
                                       day=default_start_date.day,
@@ -2665,16 +2228,15 @@ class TestTemporalFormRecord(unittest.TestCase):
                               minute=future_date.minute,
                               second=future_date.second,
                               microsecond=future_date.microsecond)
-        form.set_start_date(start_date)
-        self.assertEqual(form.my_osid_object_form._my_map['startDate'],
+        self.form.set_start_date(start_date)
+        self.assertEqual(self.form._my_map['startDate'],
                          start_date)
-        form.clear_start_date()
-        self.assertEqual(form.my_osid_object_form._my_map['startDate'],
+        self.form.clear_start_date()
+        self.assertEqual(self.form._my_map['startDate'],
                          default_start_date)
 
     def test_can_clear_end_date(self):
-        form = TemporalFormRecord(self.osid_object_form)
-        default_end_date = form._end_date_metadata['default_date_time_values'][0]
+        default_end_date = self.form._end_date_metadata['default_date_time_values'][0]
         default_end_date = DateTime(**default_end_date)
         future_date = datetime.datetime.utcnow() + datetime.timedelta(days=4)
         end_date = DateTime(year=future_date.year,
@@ -2684,20 +2246,18 @@ class TestTemporalFormRecord(unittest.TestCase):
                             minute=future_date.minute,
                             second=future_date.second,
                             microsecond=future_date.microsecond)
-        form.set_end_date(end_date)
-        self.assertEqual(form.my_osid_object_form._my_map['endDate'],
+        self.form.set_end_date(end_date)
+        self.assertEqual(self.form._my_map['endDate'],
                          end_date)
-        form.clear_end_date()
-        self.assertEqual(form.my_osid_object_form._my_map['endDate'],
+        self.form.clear_end_date()
+        self.assertEqual(self.form._my_map['endDate'],
                          default_end_date)
 
     def test_can_get_start_date_metadata(self):
-        form = TemporalFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_start_date_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_start_date_metadata(), Metadata))
 
     def test_can_get_end_date_metadata(self):
-        form = TemporalFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_end_date_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_end_date_metadata(), Metadata))
 
 
 class TestTemporalRecord(unittest.TestCase):
@@ -2713,36 +2273,31 @@ class TestTemporalRecord(unittest.TestCase):
         obj_map['endDate'] = end_date
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        return TemporalRecord(osid_object)
+        return utilities.add_class(osid_object, TemporalRecord)
 
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         start_date = datetime.datetime.utcnow() + datetime.timedelta(days=2)
-        cls.start_date = DateTime(year=start_date.year,
-                                  month=start_date.month,
-                                  day=start_date.day,
-                                  hour=start_date.hour,
-                                  minute=start_date.minute,
-                                  second=start_date.second,
-                                  microsecond=start_date.microsecond)
+        self.start_date = DateTime(year=start_date.year,
+                                   month=start_date.month,
+                                   day=start_date.day,
+                                   hour=start_date.hour,
+                                   minute=start_date.minute,
+                                   second=start_date.second,
+                                   microsecond=start_date.microsecond)
         end_date = datetime.datetime.utcnow() + datetime.timedelta(days=5)
-        cls.end_date = DateTime(year=end_date.year,
-                                month=end_date.month,
-                                day=end_date.day,
-                                hour=end_date.hour,
-                                minute=end_date.minute,
-                                second=end_date.second,
-                                microsecond=end_date.microsecond)
+        self.end_date = DateTime(year=end_date.year,
+                                 month=end_date.month,
+                                 day=end_date.day,
+                                 hour=end_date.hour,
+                                 minute=end_date.minute,
+                                 second=end_date.second,
+                                 microsecond=end_date.microsecond)
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['startDate'] = cls.start_date
-        obj_map['endDate'] = cls.end_date
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.temporal_object = TemporalRecord(cls.osid_object)
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        obj_map['startDate'] = self.start_date
+        obj_map['endDate'] = self.end_date
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
+        self.temporal_object = utilities.add_class(self.osid_object, TemporalRecord)
 
     def test_can_get_start_date(self):
         self.assertTrue(isinstance(self.temporal_object.start_date,
@@ -2797,7 +2352,7 @@ class TestTemporalRecord(unittest.TestCase):
         self.check_is_effective(near_future, future, False)
 
     def test_update_object_map_converts_start_date_to_dict(self):
-        obj_map_to_test = deepcopy(self.temporal_object.my_osid_object._my_map)
+        obj_map_to_test = deepcopy(self.temporal_object._my_map)
         self.temporal_object._update_object_map(obj_map_to_test)
         self.assertTrue(isinstance(obj_map_to_test['startDate'], dict))
         self.assertEqual(obj_map_to_test['startDate']['year'], self.start_date.year)
@@ -2808,7 +2363,7 @@ class TestTemporalRecord(unittest.TestCase):
         self.assertEqual(obj_map_to_test['startDate']['microsecond'], self.start_date.microsecond)
 
     def test_update_object_map_converts_end_date_to_dict(self):
-        obj_map_to_test = deepcopy(self.temporal_object.my_osid_object._my_map)
+        obj_map_to_test = deepcopy(self.temporal_object._my_map)
         self.temporal_object._update_object_map(obj_map_to_test)
         self.assertTrue(isinstance(obj_map_to_test['endDate'], dict))
         self.assertEqual(obj_map_to_test['endDate']['year'], self.end_date.year)
@@ -2821,221 +2376,177 @@ class TestTemporalRecord(unittest.TestCase):
 
 class TestSourceableFormRecord(unittest.TestCase):
     """Tests for SourceableFormRecord"""
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, SourceableFormRecord, initialize=True)
 
     def test_can_set_branding(self):
-        form = SourceableFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.my_osid_object_form._my_map['brandingIds'],
+        self.assertTrue(isinstance(self.form._my_map['brandingIds'],
                                    list))
-        self.assertEqual(len(form.my_osid_object_form._my_map['brandingIds']), 0)
+        self.assertEqual(len(self.form._my_map['brandingIds']), 0)
         branding = [Id('repository.Asset%3A1%40ODL.MIT.EDU')]
-        form.set_branding(branding)
-        self.assertEqual(len(form.my_osid_object_form._my_map['brandingIds']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['brandingIds'][0],
+        self.form.set_branding(branding)
+        self.assertEqual(len(self.form._my_map['brandingIds']), 1)
+        self.assertEqual(self.form._my_map['brandingIds'][0],
                          'repository.Asset%3A1%40ODL.MIT.EDU')
 
     def test_can_set_provider(self):
-        form = SourceableFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['providerId'], '')
+        self.assertEqual(self.form._my_map['providerId'], '')
         provider = Id('resource.Resource%3A1%40ODL.MIT.EDU')
-        form.set_provider(provider)
-        self.assertEqual(form.my_osid_object_form._my_map['providerId'],
+        self.form.set_provider(provider)
+        self.assertEqual(self.form._my_map['providerId'],
                          'resource.Resource%3A1%40ODL.MIT.EDU')
 
     def test_can_set_license(self):
-        form = SourceableFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['license']['text'], '')
+        self.assertEqual(self.form._my_map['license']['text'], '')
         license_ = 'CC-BY'
-        form.set_license(license_)
-        self.assertEqual(form.my_osid_object_form._my_map['license']['text'],
+        self.form.set_license(license_)
+        self.assertEqual(self.form._my_map['license']['text'],
                          'CC-BY')
 
     def test_branding_cannot_be_none(self):
-        form = SourceableFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_branding(None)
+            self.form.set_branding(None)
 
     def test_provider_cannot_be_none(self):
-        form = SourceableFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_provider(None)
+            self.form.set_provider(None)
 
     def test_license_cannot_be_none(self):
-        form = SourceableFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.set_license(None)
+            self.form.set_license(None)
 
     def test_branding_must_be_a_list(self):
-        form = SourceableFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_branding(Id('repository.Asset%3A1%40ODL.MIT.EDU'))
+            self.form.set_branding(Id('repository.Asset%3A1%40ODL.MIT.EDU'))
 
     def test_provider_must_be_instance_of_id(self):
-        form = SourceableFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_provider('resource.Resource%3A1%40ODL.MIT.EDU')
+            self.form.set_provider('resource.Resource%3A1%40ODL.MIT.EDU')
 
     def test_license_must_be_instance_of_string(self):
-        form = SourceableFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.set_license(2)
+            self.form.set_license(2)
 
     def test_can_update_branding(self):
-        id_1 = Id('repository.Asset%3A1%40ODL.MIT.EDU')
         id_2 = Id('repository.Asset%3A2%40ODL.MIT.EDU')
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['brandingIds'] = [str(id_1)]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = SourceableFormRecord(osid_object_form)
-        self.assertEqual([str(id_1)],
-                         form.my_osid_object_form._my_map['brandingIds'])
+        self.form._for_update = True
+        self.assertEqual([],
+                         self.form._my_map['brandingIds'])
 
-        form.set_branding([id_2])
+        self.form.set_branding([id_2])
         self.assertEqual([str(id_2)],
-                         form.my_osid_object_form._my_map['brandingIds'])
+                         self.form._my_map['brandingIds'])
 
     def test_can_update_provider(self):
-        id_1 = Id('resource.Resource%3A1%40ODL.MIT.EDU')
         id_2 = Id('resource.Resource%3A2%40ODL.MIT.EDU')
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['providerId'] = str(id_1)
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = SourceableFormRecord(osid_object_form)
-        self.assertEqual(str(id_1),
-                         form.my_osid_object_form._my_map['providerId'])
+        self.form._for_update = True
+        self.assertEqual('',
+                         self.form._my_map['providerId'])
 
-        form.set_provider(id_2)
+        self.form.set_provider(id_2)
         self.assertEqual(str(id_2),
-                         form.my_osid_object_form._my_map['providerId'])
+                         self.form._my_map['providerId'])
 
     def test_can_update_license(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['license'] = {
-            'text': 'foo'
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = SourceableFormRecord(osid_object_form)
-        self.assertEqual('foo',
-                         form.my_osid_object_form._my_map['license']['text'])
+        self.form._for_update = True
+        self.assertEqual({
+            'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
+            'languageTypeId': '639-2%3AENG%40ISO',
+            'scriptTypeId': '15924%3ALATN%40ISO',
+            'text': ''
+        },
+            self.form._my_map['license'])
 
-        form.set_license('bar')
+        self.form.set_license('bar')
         self.assertEqual('bar',
-                         form.my_osid_object_form._my_map['license']['text'])
+                         self.form._my_map['license']['text'])
 
     def test_can_clear_branding(self):
         id_1 = Id('repository.Asset%3A1%40ODL.MIT.EDU')
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['brandingIds'] = [str(id_1)]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = SourceableFormRecord(osid_object_form)
+        self.form.set_branding([id_1])
         self.assertEqual([str(id_1)],
-                         form.my_osid_object_form._my_map['brandingIds'])
+                         self.form._my_map['brandingIds'])
 
-        form.clear_branding()
+        self.form.clear_branding()
         self.assertEqual([],
-                         form.my_osid_object_form._my_map['brandingIds'])
+                         self.form._my_map['brandingIds'])
 
     def test_can_clear_provider(self):
         id_1 = Id('resource.Resource%3A1%40ODL.MIT.EDU')
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['providerId'] = str(id_1)
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = SourceableFormRecord(osid_object_form)
+        self.form.set_provider(id_1)
         self.assertEqual(str(id_1),
-                         form.my_osid_object_form._my_map['providerId'])
+                         self.form._my_map['providerId'])
 
-        form.clear_provider()
+        self.form.clear_provider()
         self.assertEqual('',
-                         form.my_osid_object_form._my_map['providerId'])
+                         self.form._my_map['providerId'])
 
     def test_can_clear_license(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['license'] = {
-            'text': 'foo'
-        }
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = SourceableFormRecord(osid_object_form)
+        self.form.set_license('foo')
         self.assertEqual('foo',
-                         form.my_osid_object_form._my_map['license']['text'])
+                         self.form._my_map['license']['text'])
 
-        form.clear_license()
+        self.form.clear_license()
         self.assertEqual('',
-                         form.my_osid_object_form._my_map['license']['text'])
+                         self.form._my_map['license']['text'])
 
     def test_can_get_branding_metadata(self):
-        form = SourceableFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_branding_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_branding_metadata(), Metadata))
 
     def test_can_get_provider_metadata(self):
-        form = SourceableFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_provider_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_provider_metadata(), Metadata))
 
     def test_can_get_license_metadata(self):
-        form = SourceableFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_license_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_license_metadata(), Metadata))
 
 
 class TestSourceableRecord(unittest.TestCase):
     """Tests for SourceableRecord"""
-
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         mgr = get_repository_manager()
         form = mgr.get_repository_form_for_create([])
         form.display_name = 'Test repository'
-        cls.repo = mgr.create_repository(form)
+        self.repo = mgr.create_repository(form)
 
-        form = cls.repo.get_asset_form_for_create([])
+        form = self.repo.get_asset_form_for_create([])
         form.display_name = 'Test asset'
-        cls.asset = cls.repo.create_asset(form)
+        self.asset = self.repo.create_asset(form)
 
         mgr = get_resource_manager()
-        cls.bin = mgr.get_bin(cls.repo.ident)
+        self.bin = mgr.get_bin(self.repo.ident)
 
-        form = cls.bin.get_resource_form_for_create([])
+        form = self.bin.get_resource_form_for_create([])
         form.display_name = 'Test resource'
-        cls.resource = cls.bin.create_resource(form)
+        self.resource = self.bin.create_resource(form)
 
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['providerId'] = str(cls.resource.ident)
-        obj_map['brandingIds'] = [str(cls.asset.ident)]
+        obj_map['providerId'] = str(self.resource.ident)
+        obj_map['brandingIds'] = [str(self.asset.ident)]
         obj_map['license'] = {
             'text': 'old-license',
             'languageTypeId': '639-2%3AENG%40ISO',
             'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
             'scriptTypeId': '15924%3ALATN%40ISO'
         }
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map,
-                                     runtime=mgr._runtime)
-        cls.sourceable_object = SourceableRecord(cls.osid_object)
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map,
+                                      runtime=mgr._runtime)
+        self.sourceable_object = utilities.add_class(self.osid_object, SourceableRecord)
 
-    @classmethod
-    def tearDownClass(cls):
-        cls.repo.delete_asset(cls.asset.ident)
+    def tearDown(self):
+        self.repo.delete_asset(self.asset.ident)
 
         mgr = get_repository_manager()
-        mgr.delete_repository(cls.repo.ident)
+        mgr.delete_repository(self.repo.ident)
 
-        cls.bin.delete_resource(cls.resource.ident)
+        self.bin.delete_resource(self.resource.ident)
 
         mgr = get_resource_manager()
-        mgr.delete_bin(cls.bin.ident)
+        mgr.delete_bin(self.bin.ident)
 
     def test_can_get_provider_id(self):
         self.assertTrue(isinstance(self.sourceable_object.provider_id,
@@ -3073,7 +2584,7 @@ class TestSourceableRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
-        sourceable_object = SourceableRecord(osid_object)
+        sourceable_object = utilities.add_class(osid_object, SourceableRecord)
         with self.assertRaises(errors.IllegalState):
             sourceable_object.provider_id
 
@@ -3082,7 +2593,7 @@ class TestSourceableRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
-        sourceable_object = SourceableRecord(osid_object)
+        sourceable_object = utilities.add_class(osid_object, SourceableRecord)
         with self.assertRaises(errors.IllegalState):
             sourceable_object.provider
 
@@ -3091,7 +2602,7 @@ class TestSourceableRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
-        sourceable_object = SourceableRecord(osid_object)
+        sourceable_object = utilities.add_class(osid_object, SourceableRecord)
         self.assertEqual(sourceable_object.branding_ids.available(), 0)
         self.assertTrue(isinstance(sourceable_object.branding_ids, IdList))
 
@@ -3100,7 +2611,7 @@ class TestSourceableRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._runtime)
-        sourceable_object = SourceableRecord(osid_object)
+        sourceable_object = utilities.add_class(osid_object, SourceableRecord)
         self.assertEqual(sourceable_object.branding.available(), 0)
         self.assertTrue(isinstance(sourceable_object.branding, AssetList))
 
@@ -3110,61 +2621,61 @@ class TestMultiLanguageUtils(unittest.TestCase):
 
     def remove_osid_object(self, form=False):
         if form:
-            del self.ml_obj.my_osid_object_form
+            del self.ml_obj
         else:
-            del self.ml_obj.my_osid_object
+            del self.ml_obj
 
     def set_no_proxy(self, form=False, map_initializer={}):
         osid_object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        osid_object_map.update(map_initializer)
 
         if form:
-            self.ml_obj.my_osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                                             osid_object_map=osid_object_map)
+            self.ml_obj = OsidObjectForm(object_name='TEST_OBJECT',
+                                         osid_object_map=osid_object_map)
         else:
-            self.ml_obj.my_osid_object = OsidObject(object_name='TEST_OBJECT',
-                                                    osid_object_map=osid_object_map)
+            self.ml_obj = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=osid_object_map)
+        self.ml_obj = utilities.add_class(self.ml_obj, MultiLanguageUtils, initialize=form)
+        self.ml_obj._my_map.update(map_initializer)
 
     def set_proxy_with_no_locale(self, form=False, map_initializer={}):
         osid_object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        osid_object_map.update(map_initializer)
 
         if form:
-            self.ml_obj.my_osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                                             osid_object_map=osid_object_map,
-                                                             proxy=get_proxy())
+            self.ml_obj = OsidObjectForm(object_name='TEST_OBJECT',
+                                         osid_object_map=osid_object_map,
+                                         proxy=get_proxy())
         else:
-            self.ml_obj.my_osid_object = OsidObject(object_name='TEST_OBJECT',
-                                                    osid_object_map=osid_object_map,
-                                                    proxy=get_proxy())
+            self.ml_obj = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=osid_object_map,
+                                     proxy=get_proxy())
+        self.ml_obj = utilities.add_class(self.ml_obj, MultiLanguageUtils, initialize=form)
+        self.ml_obj._proxy = get_proxy()
+        self.ml_obj._my_map.update(map_initializer)
 
     def set_proxy_with_locale(self, locale, form=False, map_initializer={}):
         osid_object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        osid_object_map.update(map_initializer)
 
         if form:
-            self.ml_obj.my_osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                                             osid_object_map=osid_object_map,
-                                                             proxy=get_proxy(with_locale=locale))
+            self.ml_obj = OsidObjectForm(object_name='TEST_OBJECT',
+                                         osid_object_map=osid_object_map,
+                                         proxy=get_proxy(with_locale=locale))
         else:
-            self.ml_obj.my_osid_object = OsidObject(object_name='TEST_OBJECT',
-                                                    osid_object_map=osid_object_map,
-                                                    proxy=get_proxy(with_locale=locale))
+            self.ml_obj = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=osid_object_map,
+                                     proxy=get_proxy(with_locale=locale))
+        self.ml_obj = utilities.add_class(self.ml_obj, MultiLanguageUtils, initialize=form)
+        self.ml_obj._proxy = get_proxy(with_locale=locale)
+        self.ml_obj._my_map.update(map_initializer)
 
-    @classmethod
-    def setUpClass(cls):
-        cls.ml_obj = MultiLanguageUtils()
-        cls.default_language_type = DEFAULT_LANGUAGE_TYPE
-        cls.default_format_type = DEFAULT_FORMAT_TYPE
-        cls.default_script_type = DEFAULT_SCRIPT_TYPE
-        cls.hindi_language_type = Type('639-2%3AHIN%40ISO')
-        cls.hindi_script_type = Type('15924%3ADEVA%40ISO')
-        cls.telugu_language_type = Type('639-2%3ATEL%40ISO')
-        cls.telugu_script_type = Type('15924%3ATELU%40ISO')
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUp(self):
+        self.ml_obj = MultiLanguageUtils()
+        self.default_language_type = DEFAULT_LANGUAGE_TYPE
+        self.default_format_type = DEFAULT_FORMAT_TYPE
+        self.default_script_type = DEFAULT_SCRIPT_TYPE
+        self.hindi_language_type = Type('639-2%3AHIN%40ISO')
+        self.hindi_script_type = Type('15924%3ADEVA%40ISO')
+        self.telugu_language_type = Type('639-2%3ATEL%40ISO')
+        self.telugu_script_type = Type('15924%3ATELU%40ISO')
 
     def test_empty_display_text_returns_display_text_instance(self):
         self.assertTrue(isinstance(self.ml_obj._empty_display_text(),
@@ -3399,21 +2910,21 @@ class TestMultiLanguageUtils(unittest.TestCase):
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }]})
-        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
+        self.assertEqual(len(self.ml_obj._my_map['foo']), 1)
         self.ml_obj.add_or_replace_value('foo', DisplayText(display_text_map={
             'text': 'new foo',
             'languageTypeId': str(self.telugu_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.telugu_script_type)
         }))
-        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 2)
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['text'],
+        self.assertEqual(len(self.ml_obj._my_map['foo']), 2)
+        self.assertEqual(self.ml_obj._my_map['foo'][1]['text'],
                          'new foo')
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['languageTypeId'],
+        self.assertEqual(self.ml_obj._my_map['foo'][1]['languageTypeId'],
                          str(self.telugu_language_type))
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['formatTypeId'],
+        self.assertEqual(self.ml_obj._my_map['foo'][1]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][1]['scriptTypeId'],
+        self.assertEqual(self.ml_obj._my_map['foo'][1]['scriptTypeId'],
                          str(self.telugu_script_type))
 
         self.remove_osid_object(form=True)
@@ -3425,21 +2936,21 @@ class TestMultiLanguageUtils(unittest.TestCase):
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.telugu_script_type)
         }]})
-        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
+        self.assertEqual(len(self.ml_obj._my_map['foo']), 1)
         self.ml_obj.add_or_replace_value('foo', DisplayText(display_text_map={
             'text': 'new foo',
             'languageTypeId': str(self.telugu_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.telugu_script_type)
         }))
-        self.assertEqual(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['text'],
+        self.assertEqual(len(self.ml_obj._my_map['foo']), 1)
+        self.assertEqual(self.ml_obj._my_map['foo'][0]['text'],
                          'new foo')
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['languageTypeId'],
+        self.assertEqual(self.ml_obj._my_map['foo'][0]['languageTypeId'],
                          str(self.telugu_language_type))
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['formatTypeId'],
+        self.assertEqual(self.ml_obj._my_map['foo'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['scriptTypeId'],
+        self.assertEqual(self.ml_obj._my_map['foo'][0]['scriptTypeId'],
                          str(self.telugu_script_type))
 
         self.remove_osid_object(form=True)
@@ -4114,8 +3625,8 @@ class TestMultiLanguageUtils(unittest.TestCase):
         })
         self.ml_obj.remove_field_by_language('foo',
                                              self.telugu_language_type)
-        self.assertTrue(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['languageTypeId'],
+        self.assertTrue(len(self.ml_obj._my_map['foo']), 1)
+        self.assertEqual(self.ml_obj._my_map['foo'][0]['languageTypeId'],
                          str(self.hindi_language_type))
         self.remove_osid_object(form=True)
 
@@ -4135,8 +3646,8 @@ class TestMultiLanguageUtils(unittest.TestCase):
         })
         self.ml_obj.remove_field_by_language('foo',
                                              self.hindi_language_type)
-        self.assertTrue(len(self.ml_obj.my_osid_object_form._my_map['foo']), 1)
-        self.assertEqual(self.ml_obj.my_osid_object_form._my_map['foo'][0]['languageTypeId'],
+        self.assertTrue(len(self.ml_obj._my_map['foo']), 1)
+        self.assertEqual(self.ml_obj._my_map['foo'][0]['languageTypeId'],
                          str(self.default_language_type))
         self.remove_osid_object(form=True)
 
@@ -4144,86 +3655,71 @@ class TestMultiLanguageUtils(unittest.TestCase):
 class TestMultiLanguageFormRecord(unittest.TestCase):
     """Tests for MultiLanguageFormRecord"""
 
-    @classmethod
-    def setUpClass(cls):
-        cls.default_language_type = DEFAULT_LANGUAGE_TYPE
-        cls.default_format_type = DEFAULT_FORMAT_TYPE
-        cls.default_script_type = DEFAULT_SCRIPT_TYPE
-        cls.hindi_language_type = Type('639-2%3AHIN%40ISO')
-        cls.hindi_script_type = Type('15924%3ADEVA%40ISO')
-        cls.telugu_language_type = Type('639-2%3ATEL%40ISO')
-        cls.telugu_script_type = Type('15924%3ATELU%40ISO')
+    def setUp(self):
+        self.default_language_type = DEFAULT_LANGUAGE_TYPE
+        self.default_format_type = DEFAULT_FORMAT_TYPE
+        self.default_script_type = DEFAULT_SCRIPT_TYPE
+        self.hindi_language_type = Type('639-2%3AHIN%40ISO')
+        self.hindi_script_type = Type('15924%3ADEVA%40ISO')
+        self.telugu_language_type = Type('639-2%3ATEL%40ISO')
+        self.telugu_script_type = Type('15924%3ATELU%40ISO')
 
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
 
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.form = utilities.add_class(self.osid_object_form, MultiLanguageFormRecord, initialize=True)
 
     def test_can_edit_description(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['descriptions'] = [{
+        self.form._my_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+        self.assertEqual(len(self.form._my_map['descriptions']), 1)
+        self.assertEqual(self.form._my_map['descriptions'][0]['text'],
                          'foo')
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['languageTypeId'],
                          str(self.default_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['scriptTypeId'],
                          str(self.default_script_type))
 
-        form.edit_description(DisplayText(text='new foo',
-                                          language_type=self.default_language_type,
-                                          format_type=self.default_format_type,
-                                          script_type=self.default_script_type))
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+        self.form.edit_description(DisplayText(text='new foo',
+                                               language_type=self.default_language_type,
+                                               format_type=self.default_format_type,
+                                               script_type=self.default_script_type))
+        self.assertEqual(len(self.form._my_map['descriptions']), 1)
+        self.assertEqual(self.form._my_map['descriptions'][0]['text'],
                          'new foo')
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['languageTypeId'],
                          str(self.default_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['scriptTypeId'],
                          str(self.default_script_type))
 
     def test_edit_description_requires_display_text(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['descriptions'] = [{
+        self.form._my_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.edit_description('foo')
+            self.form.edit_description('foo')
 
     def test_edit_description_throws_exception_if_language_not_exist(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['descriptions'] = [{
+        self.form._my_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.edit_description(DisplayText(display_text_map={
+            self.form.edit_description(DisplayText(display_text_map={
                 'text': 'hindi foo',
                 'languageTypeId': str(self.hindi_language_type),
                 'formatTypeId': str(self.default_format_type),
@@ -4231,181 +3727,162 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
             }))
 
     def test_can_add_display_name_new_language(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'],
+        self.assertEqual(self.form._my_map['displayNames'],
                          [])
-        form.add_display_name(DisplayText(display_text_map={
+        self.form.add_display_name(DisplayText(display_text_map={
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }))
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+        self.assertEqual(len(self.form._my_map['displayNames']), 1)
+        self.assertEqual(self.form._my_map['displayNames'][0]['text'],
                          'hindi foo')
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['languageTypeId'],
                          str(self.hindi_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['scriptTypeId'],
                          str(self.hindi_script_type))
 
     def test_can_add_display_name_existing_language(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'],
+        self.assertEqual(self.form._my_map['displayNames'],
                          [])
-        form.add_display_name(DisplayText(display_text_map={
+        self.form.add_display_name(DisplayText(display_text_map={
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }))
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+        self.assertEqual(len(self.form._my_map['displayNames']), 1)
+        self.assertEqual(self.form._my_map['displayNames'][0]['text'],
                          'hindi foo')
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['languageTypeId'],
                          str(self.hindi_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['scriptTypeId'],
                          str(self.hindi_script_type))
 
-        form.add_display_name(DisplayText(display_text_map={
+        self.form.add_display_name(DisplayText(display_text_map={
             'text': 'hindi foo 2',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }))
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+        self.assertEqual(len(self.form._my_map['displayNames']), 1)
+        self.assertEqual(self.form._my_map['displayNames'][0]['text'],
                          'hindi foo 2')
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['languageTypeId'],
                          str(self.hindi_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['scriptTypeId'],
                          str(self.hindi_script_type))
 
     def test_add_display_name_requires_display_text(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_display_name('foo')
+            self.form.add_display_name('foo')
 
     def test_can_add_description_new_language(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'],
+        self.assertEqual(self.form._my_map['descriptions'],
                          [])
-        form.add_description(DisplayText(display_text_map={
+        self.form.add_description(DisplayText(display_text_map={
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }))
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+        self.assertEqual(len(self.form._my_map['descriptions']), 1)
+        self.assertEqual(self.form._my_map['descriptions'][0]['text'],
                          'hindi foo')
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['languageTypeId'],
                          str(self.hindi_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['scriptTypeId'],
                          str(self.hindi_script_type))
 
     def test_can_add_description_existing_language(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'],
+        self.assertEqual(self.form._my_map['descriptions'],
                          [])
-        form.add_description(DisplayText(display_text_map={
+        self.form.add_description(DisplayText(display_text_map={
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }))
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+        self.assertEqual(len(self.form._my_map['descriptions']), 1)
+        self.assertEqual(self.form._my_map['descriptions'][0]['text'],
                          'hindi foo')
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['languageTypeId'],
                          str(self.hindi_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['scriptTypeId'],
                          str(self.hindi_script_type))
 
-        form.add_description(DisplayText(display_text_map={
+        self.form.add_description(DisplayText(display_text_map={
             'text': 'hindi foo 2',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }))
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+        self.assertEqual(len(self.form._my_map['descriptions']), 1)
+        self.assertEqual(self.form._my_map['descriptions'][0]['text'],
                          'hindi foo 2')
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['languageTypeId'],
                          str(self.hindi_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['scriptTypeId'],
                          str(self.hindi_script_type))
 
     def test_add_description_requires_display_text(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.add_description('foo')
+            self.form.add_description('foo')
 
     def test_remove_description_requires_type(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.remove_description_by_language(str(self.default_language_type))
+            self.form.remove_description_by_language(str(self.default_language_type))
 
     def test_can_remove_description_by_language_type(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['descriptions'] = [{
+        self.form._my_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        form.remove_description_by_language(self.default_language_type)
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 0)
+        self.form.remove_description_by_language(self.default_language_type)
+        self.assertEqual(len(self.form._my_map['descriptions']), 0)
 
     def test_remove_description_no_changes_if_language_not_exist(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['descriptions'] = [{
+        self.form._my_map['descriptions'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        form.remove_description_by_language(self.telugu_language_type)
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['text'],
+        self.form.remove_description_by_language(self.telugu_language_type)
+        self.assertEqual(len(self.form._my_map['descriptions']), 1)
+        self.assertEqual(self.form._my_map['descriptions'][0]['text'],
                          'foo')
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['languageTypeId'],
                          str(self.default_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['descriptions'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['descriptions'][0]['scriptTypeId'],
                          str(self.default_script_type))
 
     def test_edit_display_name_throws_exception_if_language_not_exist(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['displayNames'] = [{
+        self.form._my_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.edit_display_name(DisplayText(display_text_map={
+            self.form.edit_display_name(DisplayText(display_text_map={
                 'text': 'hindi foo',
                 'languageTypeId': str(self.hindi_language_type),
                 'formatTypeId': str(self.default_format_type),
@@ -4413,171 +3890,137 @@ class TestMultiLanguageFormRecord(unittest.TestCase):
             }))
 
     def test_can_edit_display_name(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['displayNames'] = [{
+        self.form._my_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+        self.assertEqual(len(self.form._my_map['displayNames']), 1)
+        self.assertEqual(self.form._my_map['displayNames'][0]['text'],
                          'foo')
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['languageTypeId'],
                          str(self.default_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['scriptTypeId'],
                          str(self.default_script_type))
 
-        form.edit_display_name(DisplayText(text='new foo',
-                                           language_type=self.default_language_type,
-                                           format_type=self.default_format_type,
-                                           script_type=self.default_script_type))
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+        self.form.edit_display_name(DisplayText(text='new foo',
+                                                language_type=self.default_language_type,
+                                                format_type=self.default_format_type,
+                                                script_type=self.default_script_type))
+        self.assertEqual(len(self.form._my_map['displayNames']), 1)
+        self.assertEqual(self.form._my_map['displayNames'][0]['text'],
                          'new foo')
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['languageTypeId'],
                          str(self.default_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['scriptTypeId'],
                          str(self.default_script_type))
 
     def test_edit_display_name_requires_display_text(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['displayNames'] = [{
+        self.form._my_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.edit_display_name('foo')
+            self.form.edit_display_name('foo')
 
     def test_remove_display_name_requires_type(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.InvalidArgument):
-            form.remove_display_name_by_language(str(self.default_language_type))
+            self.form.remove_display_name_by_language(str(self.default_language_type))
 
     def test_remove_display_name_changes_nothing_if_language_not_present(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['displayNames'] = [{
+        self.form._my_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        form.remove_display_name_by_language(self.telugu_language_type)
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['text'],
+        self.form.remove_display_name_by_language(self.telugu_language_type)
+        self.assertEqual(len(self.form._my_map['displayNames']), 1)
+        self.assertEqual(self.form._my_map['displayNames'][0]['text'],
                          'foo')
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['languageTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['languageTypeId'],
                          str(self.default_language_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['formatTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['formatTypeId'],
                          str(self.default_format_type))
-        self.assertEqual(form.my_osid_object_form._my_map['displayNames'][0]['scriptTypeId'],
+        self.assertEqual(self.form._my_map['displayNames'][0]['scriptTypeId'],
                          str(self.default_script_type))
 
     def test_can_remove_display_name_by_language_type(self):
-        object_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        object_map['displayNames'] = [{
+        self.form._my_map['displayNames'] = [{
             'text': 'foo',
             'languageTypeId': str(self.default_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.default_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=object_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        form.remove_display_name_by_language(self.default_language_type)
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 0)
+        self.form.remove_display_name_by_language(self.default_language_type)
+        self.assertEqual(len(self.form._my_map['displayNames']), 0)
 
     def test_can_clear_descriptions(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['descriptions'] = [{
+        self.form._my_map['descriptions'] = [{
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 1)
+        self.assertEqual(len(self.form._my_map['descriptions']), 1)
 
-        form.clear_descriptions()
-        self.assertEqual(len(form.my_osid_object_form._my_map['descriptions']), 0)
+        self.form.clear_descriptions()
+        self.assertEqual(len(self.form._my_map['descriptions']), 0)
 
     def test_can_clear_display_names(self):
-        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        obj_map['displayNames'] = [{
+        self.form._my_map['displayNames'] = [{
             'text': 'hindi foo',
             'languageTypeId': str(self.hindi_language_type),
             'formatTypeId': str(self.default_format_type),
             'scriptTypeId': str(self.hindi_script_type)
         }]
-        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT',
-                                          osid_object_map=obj_map)
-        form = MultiLanguageFormRecord(osid_object_form)
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 1)
+        self.assertEqual(len(self.form._my_map['displayNames']), 1)
 
-        form.clear_display_names()
-        self.assertEqual(len(form.my_osid_object_form._my_map['displayNames']), 0)
+        self.form.clear_display_names()
+        self.assertEqual(len(self.form._my_map['displayNames']), 0)
 
     def test_can_get_descriptions_metadata(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_descriptions_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_descriptions_metadata(), Metadata))
 
     def test_can_get_display_names_metadata(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
-        self.assertTrue(isinstance(form.get_display_names_metadata(), Metadata))
+        self.assertTrue(isinstance(self.form.get_display_names_metadata(), Metadata))
 
     def test_add_display_name_throws_exception_if_passed_none(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_display_name(None)
+            self.form.add_display_name(None)
 
     def test_remove_display_name_by_language_throws_exception_if_passed_none(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.remove_display_name_by_language(None)
+            self.form.remove_display_name_by_language(None)
 
     def test_edit_display_name_throws_exception_if_passed_none(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.edit_display_name(None)
+            self.form.edit_display_name(None)
 
     def test_add_description_throws_exception_if_passed_none(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.add_description(None)
+            self.form.add_description(None)
 
     def test_remove_description_by_language_throws_exception_if_passed_none(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.remove_description_by_language(None)
+            self.form.remove_description_by_language(None)
 
     def test_edit_description_throws_exception_if_passed_none(self):
-        form = MultiLanguageFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NullArgument):
-            form.edit_description(None)
+            self.form.edit_description(None)
 
 
 class TestMultiLanguageRecord(unittest.TestCase):
     """Tests for MultiLanguageRecord"""
 
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['descriptions'] = [{
             'text': 'foo description',
@@ -4591,13 +4034,9 @@ class TestMultiLanguageRecord(unittest.TestCase):
             'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
             'scriptTypeId': '15924%3ALATN%40ISO'
         }]
-        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                     osid_object_map=obj_map)
-        cls.multi_language_object = MultiLanguageRecord(cls.osid_object)
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                      osid_object_map=obj_map)
+        self.multi_language_object = utilities.add_class(self.osid_object, MultiLanguageRecord)
 
     # NOTE: we do not test for all possible scenarios of no
     #   entries, default language, proxy locale, etc., because
@@ -4632,22 +4071,20 @@ class TestMultiLanguageRecord(unittest.TestCase):
 
 
 class QueryWrapper(OsidObjectQuery):
-    def __init__(self):
+    _namespace = 'osid.Query'
+
+    def __init__(self, **kwargs):
+        super(QueryWrapper, self).__init__(**kwargs)
         self._all_supported_record_type_ids = []
-        super(QueryWrapper, self).__init__(None)
+        self._mdata = {}
 
 
 class TestMultiLanguageQueryRecord(unittest.TestCase):
     """Tests for MultiLanguageQueryRecord"""
 
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_query = QueryWrapper()
-        cls.multi_language_query = MultiLanguageQueryRecord(cls.osid_query)
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUp(self):
+        self.osid_query = QueryWrapper()
+        self.multi_language_query = utilities.add_class(self.osid_query, MultiLanguageQueryRecord, initialize=True)
 
     # NOTE: we do not test for all possible scenarios of no
     #   entries, default language, proxy locale, etc., because
@@ -4655,51 +4092,43 @@ class TestMultiLanguageQueryRecord(unittest.TestCase):
     #   MultiLanguageUtils
 
     def test_can_match_descriptions(self):
-        osid_query = QueryWrapper()
-        multi_language_query = MultiLanguageQueryRecord(osid_query)
-        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+        self.assertEqual(self.multi_language_query._query_terms,
                          {})
 
-        multi_language_query.match_descriptions('foo', True)
+        self.multi_language_query.match_descriptions('foo', True)
         self.assertIn('descriptions.text',
-                      multi_language_query._my_osid_query._query_terms)
-        self.assertEqual(multi_language_query._my_osid_query._query_terms['descriptions.text'],
+                      self.multi_language_query._query_terms)
+        self.assertEqual(self.multi_language_query._query_terms['descriptions.text'],
                          {'$in': ['foo']})
 
     def test_can_clear_match_descriptions(self):
-        osid_query = QueryWrapper()
-        multi_language_query = MultiLanguageQueryRecord(osid_query)
-        multi_language_query._my_osid_query._query_terms = {
+        self.multi_language_query._query_terms = {
             'descriptions.text': {
                 '$in': ['foo']
             }
         }
-        multi_language_query.clear_match_descriptions()
-        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+        self.multi_language_query.clear_match_descriptions()
+        self.assertEqual(self.multi_language_query._query_terms,
                          {})
 
     def test_can_match_display_names(self):
-        osid_query = QueryWrapper()
-        multi_language_query = MultiLanguageQueryRecord(osid_query)
-        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+        self.assertEqual(self.multi_language_query._query_terms,
                          {})
 
-        multi_language_query.match_display_names('foo', True)
+        self.multi_language_query.match_display_names('foo', True)
         self.assertIn('displayNames.text',
-                      multi_language_query._my_osid_query._query_terms)
-        self.assertEqual(multi_language_query._my_osid_query._query_terms['displayNames.text'],
+                      self.multi_language_query._query_terms)
+        self.assertEqual(self.multi_language_query._query_terms['displayNames.text'],
                          {'$in': ['foo']})
 
     def test_can_clear_match_display_names(self):
-        osid_query = QueryWrapper()
-        multi_language_query = MultiLanguageQueryRecord(osid_query)
-        multi_language_query._my_osid_query._query_terms = {
+        self.multi_language_query._query_terms = {
             'displayNames.text': {
                 '$in': ['foo']
             }
         }
-        multi_language_query.clear_match_display_names()
-        self.assertEqual(multi_language_query._my_osid_query._query_terms,
+        self.multi_language_query.clear_match_display_names()
+        self.assertEqual(self.multi_language_query._query_terms,
                          {})
 
     def test_null_value_throws_exception_match_descriptions(self):

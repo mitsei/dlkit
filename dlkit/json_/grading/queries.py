@@ -26,15 +26,11 @@ class GradeQuery(abc_grading_queries.GradeQuery, osid_queries.OsidObjectQuery, o
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'grading.Grade'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('GRADE_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'grading.Grade'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Gradebook'
 
     @utilities.arguments_not_none
     def match_grade_system_id(self, grade_system_id, match):
@@ -358,15 +354,11 @@ class GradeSystemQuery(abc_grading_queries.GradeSystemQuery, osid_queries.OsidOb
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'grading.GradeSystem'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('GRADE_SYSTEM_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'grading.GradeSystem'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Gradebook'
 
     @utilities.arguments_not_none
     def match_based_on_grades(self, match):
@@ -704,15 +696,11 @@ class GradeEntryQuery(abc_grading_queries.GradeEntryQuery, osid_queries.OsidRela
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'grading.GradeEntry'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('GRADE_ENTRY_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'grading.GradeEntry'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Gradebook'
 
     @utilities.arguments_not_none
     def match_gradebook_column_id(self, gradebook_column_id, match):
@@ -1336,15 +1324,11 @@ class GradebookColumnQuery(abc_grading_queries.GradebookColumnQuery, osid_querie
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'grading.GradebookColumn'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('GRADEBOOK_COLUMN_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidObjectQuery.__init__(self, runtime)
+    _namespace = 'grading.GradebookColumn'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Gradebook'
 
     @utilities.arguments_not_none
     def match_grade_system_id(self, grade_system_id, match):
@@ -1621,15 +1605,11 @@ class GradebookColumnSummaryQuery(abc_grading_queries.GradebookColumnSummaryQuer
     invocations of a method produces a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._namespace = 'grading.GradebookColumnSummaryQuery'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('GRADEBOOK_COLUMN_SUMMARY_QUERY_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidRuleQuery.__init__(self, runtime)
+    _namespace = 'grading.GradebookColumnSummary'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidRuleQuery.__init__(self, **kwargs)
+        self._catalog_name = 'Gradebook'
 
     @utilities.arguments_not_none
     def match_gradebook_column_id(self, gradebook_column_id, match):
@@ -2069,14 +2049,10 @@ class GradebookQuery(abc_grading_queries.GradebookQuery, osid_queries.OsidCatalo
     the same method produce a nested ``OR``.
 
     """
-    def __init__(self, runtime):
-        self._runtime = runtime
-        record_type_data_sets = get_registry('GRADEBOOK_RECORD_TYPES', runtime)
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_queries.OsidCatalogQuery.__init__(self, runtime)
+    _namespace = 'grading.'
+
+    def __init__(self, **kwargs):
+        osid_queries.OsidCatalogQuery.__init__(self, **kwargs)
 
     def _get_descendant_catalog_ids(self, catalog_id):
         hm = self._get_provider_manager('HIERARCHY')

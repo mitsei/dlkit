@@ -22,17 +22,20 @@ from dlkit.abstract_osid.relationship import searches as abc_relationship_search
 
 class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_searches.OsidSearch):
     """The search interface for governing relationship searches."""
-    def __init__(self, runtime):
-        self._namespace = 'relationship.Relationship'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'relationship.Relationship'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'relationship.Relationship'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_relationships(self, relationship_ids):
@@ -86,14 +89,15 @@ class RelationshipSearch(abc_relationship_searches.RelationshipSearch, osid_sear
 
 class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'relationship.Relationship'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'relationship.Relationship'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_relationships(self):
         """Gets the relationship list resulting from a search.
@@ -151,17 +155,20 @@ class RelationshipSearchResults(abc_relationship_searches.RelationshipSearchResu
 
 class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSearch):
     """The search interface for governing family searches."""
-    def __init__(self, runtime):
-        self._namespace = 'relationship.Family'
-        self._runtime = runtime
-        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        self._record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_data_sets = record_type_data_sets
-        self._all_supported_record_type_ids = []
+    _namespace = 'relationship.Family'
+
+    def __init__(self, **kwargs):
+        # Removed on 10/5/17:
+        # self._namespace = 'relationship.Family'
+        # self._runtime = runtime
+        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        # self._record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_data_sets = record_type_data_sets
+        # self._all_supported_record_type_ids = []
+        # for data_set in record_type_data_sets:
+        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
         self._id_list = None
-        for data_set in record_type_data_sets:
-            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
-        osid_searches.OsidSearch.__init__(self, runtime)
+        osid_searches.OsidSearch.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def search_among_families(self, family_ids):
@@ -214,14 +221,15 @@ class FamilySearch(abc_relationship_searches.FamilySearch, osid_searches.OsidSea
 
 class FamilySearchResults(abc_relationship_searches.FamilySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search and is used as a vehicle to perform a search within a previous result set."""
-    def __init__(self, results, query_terms, runtime):
-        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # self._results = [r for r in results]
-        self._namespace = 'relationship.Family'
-        self._results = results
-        self._query_terms = query_terms
-        self._runtime = runtime
-        self.retrieved = False
+    _namespace = 'relationship.Family'
+
+    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
+        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # # self._results = [r for r in results]
+        # self._results = results
+        # self._query_terms = query_terms
+        # self.retrieved = False
+        osid_searches.OsidSearchResults.__init__(self, **kwargs)
 
     def get_families(self):
         """Gets the family list resulting from a search.

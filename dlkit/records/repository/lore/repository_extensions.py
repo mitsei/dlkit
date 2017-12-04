@@ -30,11 +30,11 @@ class LoreRepositoryRecord(TextsRecord, abc_repository_records.RepositoryRecord)
 
     @property
     def id(self):
-        return self.my_osid_object.ident
+        return self.ident
 
     @property
     def name(self):
-        return self.my_osid_object.display_name
+        return self.display_name
 
     @property
     def slug(self):
@@ -44,14 +44,14 @@ class LoreRepositoryRecord(TextsRecord, abc_repository_records.RepositoryRecord)
             raised_exception = ImportError
         try:
             from django.utils.text import slugify
-            return slugify(self.my_osid_object.display_name.text)
+            return slugify(self.display_name.text)
         except raised_exception:
-            name = re.sub('[^\w\s-]', '', self.my_osid_object.display_name.text.lower())
+            name = re.sub('[^\w\s-]', '', self.display_name.text.lower())
             return re.sub('[-\s]+', '-', name)
 
     def _update_object_map(self, obj_map):
         obj_map.update({
-            'slug': self.my_osid_object.slug
+            'slug': self.slug
         })
         try:
             super(LoreRepositoryRecord, self)._update_object_map(obj_map)
@@ -65,19 +65,6 @@ class LoreRepositoryFormRecord(TextsFormRecord, abc_repository_records.Repositor
         'lore-repo',
         'texts'
     ]
-
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-
-    def _init_map(self):
-        TextsFormRecord._init_map(self)
-
-    def _init_metadata(self):
-        TextsFormRecord._init_metadata(self)
 
 
 class LoreCourseRepositoryRecord(TextsRecord, abc_repository_records.RepositoryRecord):
@@ -98,22 +85,6 @@ class LoreCourseRepositoryFormRecord(TextsFormRecord, abc_repository_records.Rep
         'course-repo',
         'texts-item'
     ]
-
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(LoreCourseRepositoryFormRecord, self).__init__()
-
-    def _init_map(self):
-        TextsFormRecord._init_map(self)
-        super(LoreCourseRepositoryFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        TextsFormRecord._init_metadata(self)
-        super(LoreCourseRepositoryFormRecord, self)._init_metadata()
 
     def set_org(self, org):
         self.add_text(str(org), 'org')
@@ -143,13 +114,13 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
 
     @property
     def course_node(self):
-        rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        if self.my_osid_object._proxy is None:
-            cls = rm.get_composition_lookup_session_for_repository(self.my_osid_object.ident)
+        rm = self._get_provider_manager('REPOSITORY')
+        if self._proxy is None:
+            cls = rm.get_composition_lookup_session_for_repository(self.ident)
         else:
             cls = rm.get_composition_lookup_session_for_repository(
-                self.my_osid_object.ident,
-                proxy=self.my_osid_object._proxy
+                self.ident,
+                proxy=self._proxy
             )
         cls.use_unsequestered_composition_view()
         try:
@@ -159,12 +130,12 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
             raise AttributeError
 
     def export_olx(self):
-        run_repo = self.my_osid_object
-        rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        if self.my_osid_object._proxy is None:
+        run_repo = self
+        rm = self._get_provider_manager('REPOSITORY')
+        if self._proxy is None:
             rhs = rm.get_repository_hierarchy_session()
         else:
-            rhs = rm.get_repository_hierarchy_session(proxy=self.my_osid_object._proxy)
+            rhs = rm.get_repository_hierarchy_session(proxy=self._proxy)
         course_repo = next(rhs.get_parent_repositories(run_repo.ident))
 
         filename = '{0}_{1}_{2}'.format(course_repo.display_name.text,
@@ -220,21 +191,21 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
                                                      run_repo.display_name.text)
         course_node = self.course_node
         for child_id in course_node.get_child_ids():
-            if self.my_osid_object._proxy is None:
+            if self._proxy is None:
                 cls = rm.get_composition_lookup_session_for_repository(run_repo.ident)
             else:
                 cls = rm.get_composition_lookup_session_for_repository(
                     run_repo.ident,
-                    proxy=self.my_osid_object._proxy
+                    proxy=self._proxy
                 )
 
             try:
                 child = cls.get_composition(child_id)
             except NotFound:
-                if self.my_osid_object._proxy is None:
+                if self._proxy is None:
                     cls = rm.get_composition_lookup_session()
                 else:
-                    cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
+                    cls = rm.get_composition_lookup_session(proxy=self._proxy)
 
                 cls.use_unsequestered_composition_view()
                 cls.use_federated_repository_view()
@@ -271,18 +242,18 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         # any assets / compositions referred to. If they belong to another
         # composition, keep them. If they will be orphaned,
         # remove them.
-        rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        am = self.my_osid_object._get_provider_manager('ASSESSMENT')
-        run_repo = self.my_osid_object
+        rm = self._get_provider_manager('REPOSITORY')
+        am = self._get_provider_manager('ASSESSMENT')
+        run_repo = self
 
-        if self.my_osid_object._proxy is None:
+        if self._proxy is None:
             bls = am.get_bank_lookup_session()
         else:
-            bls = am.get_bank_lookup_session(proxy=self.my_osid_object._proxy)
+            bls = am.get_bank_lookup_session(proxy=self._proxy)
 
         user_bank = bls.get_bank(user_repo.ident)
 
-        if self.my_osid_object._proxy is None:
+        if self._proxy is None:
             cls = rm.get_composition_lookup_session_for_repository(run_repo.ident)
             cqs = rm.get_composition_query_session_for_repository(run_repo.ident)
             cas = rm.get_composition_admin_session_for_repository(run_repo.ident)
@@ -297,30 +268,30 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
         else:
             cls = rm.get_composition_lookup_session_for_repository(
                 run_repo.ident,
-                proxy=self.my_osid_object._proxy
+                proxy=self._proxy
             )
             cqs = rm.get_composition_query_session_for_repository(
                 run_repo.ident,
-                proxy=self.my_osid_object._proxy
+                proxy=self._proxy
             )
             cas = rm.get_composition_admin_session_for_repository(
                 run_repo.ident,
-                proxy=self.my_osid_object._proxy
+                proxy=self._proxy
             )
-            cras = rm.get_composition_repository_assignment_session(proxy=self.my_osid_object._proxy)
-            crs = rm.get_composition_repository_session(proxy=self.my_osid_object._proxy)
+            cras = rm.get_composition_repository_assignment_session(proxy=self._proxy)
+            crs = rm.get_composition_repository_session(proxy=self._proxy)
             acs = rm.get_asset_composition_session_for_repository(user_repo.ident,
-                                                                  proxy=self.my_osid_object._proxy)
+                                                                  proxy=self._proxy)
             aas = rm.get_asset_admin_session_for_repository(user_repo.ident,
-                                                            proxy=self.my_osid_object._proxy)
+                                                            proxy=self._proxy)
             assessment_as = am.get_assessment_admin_session_for_bank(user_bank.ident,
-                                                                     proxy=self.my_osid_object._proxy)
+                                                                     proxy=self._proxy)
             abas = am.get_assessment_basic_authoring_session_for_bank(user_bank.ident,
-                                                                      proxy=self.my_osid_object._proxy)
+                                                                      proxy=self._proxy)
             ias = am.get_item_admin_session_for_bank(user_bank.ident,
-                                                     proxy=self.my_osid_object._proxy)
+                                                     proxy=self._proxy)
             aqs = am.get_assessment_query_session_for_bank(user_bank.ident,
-                                                           proxy=self.my_osid_object._proxy)
+                                                           proxy=self._proxy)
 
         cls.use_unsequestered_composition_view()
         cls.use_federated_repository_view()
@@ -376,10 +347,10 @@ class LoreCourseRunRepositoryRecord(TextsRecord, EdXUtilitiesMixin, abc_reposito
                 # unassign the composition from this repository
                 cras.unassign_composition_from_repository(composition.ident, run_repo.ident)
 
-        if self.my_osid_object._proxy is None:
+        if self._proxy is None:
             ras = rm.get_repository_admin_session()
         else:
-            ras = rm.get_repository_admin_session(proxy=self.my_osid_object._proxy)
+            ras = rm.get_repository_admin_session(proxy=self._proxy)
         ras.delete_repository(run_repo.ident)
 
 
@@ -389,22 +360,6 @@ class LoreCourseRunRepositoryFormRecord(TextsFormRecord, abc_repository_records.
         'run-repo',
         'texts-item'
     ]
-
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(LoreCourseRunRepositoryFormRecord, self).__init__()
-
-    def _init_map(self):
-        TextsFormRecord._init_map(self)
-        super(LoreCourseRunRepositoryFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        TextsFormRecord._init_metadata(self)
-        super(LoreCourseRunRepositoryFormRecord, self)._init_metadata()
 
     def set_platform(self, platform):
         self.add_text(str(platform), 'platform')

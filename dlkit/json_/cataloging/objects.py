@@ -38,7 +38,7 @@ class Catalog(abc_cataloging_objects.Catalog, osid_objects.OsidCatalog):
     _namespace = 'cataloging.Catalog'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, object_name='CATALOG', **kwargs)
+        osid_objects.OsidCatalog.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def get_catalog_record(self, catalog_record_type):
@@ -77,11 +77,8 @@ class CatalogForm(abc_cataloging_objects.CatalogForm, osid_objects.OsidCatalogFo
     _namespace = 'cataloging.Catalog'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, object_name='CATALOG', **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_catalog_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

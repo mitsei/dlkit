@@ -39,10 +39,10 @@ def valid_for(whitelist):
         def wrapper(self, *args):
             valid_item = False
             try:
-                if Id(self.my_osid_object_form._my_map['genusTypeId']).identifier in whitelist:
+                if Id(self._my_map['genusTypeId']).identifier in whitelist:
                     valid_item = True
             except AttributeError:
-                if Id(self.my_osid_object._my_map['genusTypeId']).identifier in whitelist:
+                if Id(self._my_map['genusTypeId']).identifier in whitelist:
                     valid_item = True
             finally:
                 if valid_item:
@@ -62,43 +62,37 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
         'provenance'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(EdXCompositionFormRecord, self).__init__()
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
+    def __init__(self, **kwargs):
+        super(EdXCompositionFormRecord, self).__init__(**kwargs)
+        self._visible_to_students_metadata = None
+        self._draft_metadata = None
+        self._learning_objective_ids_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        super(EdXCompositionFormRecord, self)._init_map()
-        TextsFormRecord._init_map(self)  # because the OsidForm breaks the MRO chain for super, in TemporalFormRecord
-        ProvenanceFormRecord._init_map(self)  # because the OsidForm breaks the MRO chain for super, in TemporalFormRecord
+        super(EdXCompositionFormRecord, self)._init_map(**kwargs)
 
-        self.my_osid_object_form._my_map['texts']['fileName'] = \
+        self._my_map['texts']['fileName'] = \
             self._text_metadata['default_string_values'][0]
-        self.my_osid_object_form._my_map['texts']['format'] = \
+        self._my_map['texts']['format'] = \
             self._text_metadata['default_string_values'][0]  # homework, exam, lab, etc.
-        self.my_osid_object_form._my_map['visibleToStudents'] = \
+        self._my_map['visibleToStudents'] = \
             self._visible_to_students_metadata['default_boolean_values'][0]
-        self.my_osid_object_form._my_map['draft'] = \
+        self._my_map['draft'] = \
             self._draft_metadata['default_boolean_values'][0]
-        self.my_osid_object_form._my_map['texts']['userPartitionId'] = \
+        self._my_map['texts']['userPartitionId'] = \
             self._text_metadata['default_string_values'][0]
-        self.my_osid_object_form._my_map['texts']['org'] = \
+        self._my_map['texts']['org'] = \
             self._text_metadata['default_string_values'][0]
-        self.my_osid_object_form._my_map['learningObjectiveIds'] = \
+        self._my_map['learningObjectiveIds'] = \
             self._learning_objective_ids_metadata['default_string_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(EdXCompositionFormRecord, self)._init_metadata()
-        TextsFormRecord._init_metadata(self)  # because the OsidForm breaks the MRO chain for super, in TemporalFormRecord
-        ProvenanceFormRecord._init_metadata(self)  # because the OsidForm breaks the MRO chain for super, in TemporalFormRecord
+        super(EdXCompositionFormRecord, self)._init_metadata(**kwargs)
         self._visible_to_students_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'visible_to_students'),
             'element_label': 'Visible to students',
             'instructions': 'enter a boolean value',
@@ -110,8 +104,8 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
             'syntax': 'BOOLEAN'
         }
         self._draft_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'draft'),
             'element_label': 'Draft',
             'instructions': 'enter a boolean value',
@@ -125,8 +119,8 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
         # ideally this would be type LIST?
         self._learning_objective_ids_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'learning_objectives'),
             'element_label': 'learning_objectives',
             'instructions': 'enter a list of strings',
@@ -142,12 +136,12 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
         }
 
     def set_file_name(self, file_name):
-        if Id(self.my_osid_object_form._my_map['genusTypeId']).identifier == 'course':
+        if Id(self._my_map['genusTypeId']).identifier == 'course':
             file_name = 'course.xml'  # this may not be true...also need one that is /<run>.xml?
         self.add_text(str(file_name), 'fileName')
 
     def clear_file_name(self):
-        self.my_osid_object_form._my_map['texts']['fileName'] = \
+        self._my_map['texts']['fileName'] = \
             self._text_metadata['default_string_values'][0]
 
     @valid_for(['chapter', 'sequential'])
@@ -160,11 +154,11 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
     @valid_for(['chapter', 'sequential'])
     def set_visible_to_students(self, visible):
-        self.my_osid_object_form._my_map['visibleToStudents'] = bool(visible)
+        self._my_map['visibleToStudents'] = bool(visible)
 
     @valid_for(['chapter', 'sequential'])
     def clear_visible_to_students(self):
-        self.my_osid_object_form._my_map['visibleToStudents'] = \
+        self._my_map['visibleToStudents'] = \
             self._visible_to_students_metadata['default_boolean_values'][0]
 
     @valid_for(['course'])
@@ -173,16 +167,16 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
     @valid_for(['course'])
     def clear_org(self):
-        self.my_osid_object_form._my_map['texts']['org'] = \
+        self._my_map['texts']['org'] = \
             self._text_metadata['default_string_values'][0]
 
     @valid_for(['vertical'])
     def set_draft(self, is_draft):
-        self.my_osid_object_form._my_map['draft'] = bool(is_draft)
+        self._my_map['draft'] = bool(is_draft)
 
     @valid_for(['vertical'])
     def clear_draft(self):
-        self.my_osid_object_form._my_map['draft'] = \
+        self._my_map['draft'] = \
             self._draft_metadata['default_boolean_values'][0]
 
     @valid_for(['split_test'])
@@ -191,26 +185,26 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
     @valid_for(['split_test'])
     def clear_user_partition_id(self):
-        self.my_osid_object_form._my_map['texts']['userPartitionId'] = \
+        self._my_map['texts']['userPartitionId'] = \
             self._text_metadata['default_string_values'][0]
 
     @valid_for(['vertical', 'chapter', 'sequential', 'split_test'])
     def set_learning_objective_ids(self, learning_objective_ids):
         lo_ids_str = [str(lo) for lo in learning_objective_ids]
-        self.my_osid_object_form._my_map['learningObjectiveIds'] = lo_ids_str
+        self._my_map['learningObjectiveIds'] = lo_ids_str
 
     @valid_for(['vertical', 'chapter', 'sequential', 'split_test'])
     def clear_learning_objective_ids(self):
-        self.my_osid_object_form._my_map['learningObjectiveIds'] = \
+        self._my_map['learningObjectiveIds'] = \
             self._learning_objective_ids_metadata['default_string_values'][0]
 
 
 class EdXCompositionQueryRecord(edXQueryMethods, QueryInitRecord):
     def match_learning_objective(self, learning_objective_id, match):
-        self._my_osid_query._add_match('learningObjectiveIds', str(learning_objective_id), match)
+        self._add_match('learningObjectiveIds', str(learning_objective_id), match)
 
     def clear_match_learning_objective(self):
-        self._my_osid_query._clear_terms('learningObjectiveIds')
+        self._clear_terms('learningObjectiveIds')
 
     def match_any_learning_objective(self, match):
         """Matches an item with any objective.
@@ -227,11 +221,11 @@ class EdXCompositionQueryRecord(edXQueryMethods, QueryInitRecord):
             flag = 'true'
         else:
             flag = 'false'
-        if match_key in self._my_osid_query._query_terms:
-            self._my_osid_query._query_terms[match_key][param] = flag
+        if match_key in self._query_terms:
+            self._query_terms[match_key][param] = flag
         else:
-            self._my_osid_query._query_terms[match_key] = {param: flag}
-        self._my_osid_query._query_terms[match_key]['$nin'] = [[], ['']]
+            self._query_terms[match_key] = {param: flag}
+        self._query_terms[match_key]['$nin'] = [[], ['']]
 
     def clear_learning_objective_terms(self):
         """Clears all learning objective terms.
@@ -239,33 +233,33 @@ class EdXCompositionQueryRecord(edXQueryMethods, QueryInitRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        self._my_osid_query._clear_terms('learningObjectiveIds')
+        self._clear_terms('learningObjectiveIds')
 
     def match_composition_descendants(self, composition_id, repository_id, match):
         if match:
             inin = '$in'
         else:
             inin = '$nin'
-        mgr = self._my_osid_query._get_provider_manager('REPOSITORY')
+        mgr = self._get_provider_manager('REPOSITORY')
         child_ids = self._get_descendant_ids(composition_id, repository_id, mgr)
         child_identifiers = [ObjectId(_id.identifier) for _id in child_ids]
         child_identifiers += [ObjectId(composition_id.identifier)]
         child_identifiers = list(set(child_identifiers))
-        self._my_osid_query._query_terms['_id'] = {inin: child_identifiers}
+        self._query_terms['_id'] = {inin: child_identifiers}
 
     def clear_match_composition_descendants(self):
-        self._my_osid_query._clear_terms('_id')
+        self._clear_terms('_id')
 
 
 class EdXCompositionRecord(TextsRecord, TemporalRecord,
                            ProvenanceCompositionRecord, EdXUtilitiesMixin):
     """edX compositions, like course / chapter / etc."""
-    def __init__(self, object_map):
-        super(EdXCompositionRecord, self).__init__(object_map)
-        if (not hasattr(self.my_osid_object, '_supported_record_type_ids') or
-                self.my_osid_object._supported_record_type_ids is None):
-            self.my_osid_object._supported_record_type_ids = []
-        self.my_osid_object._supported_record_type_ids.append(
+    def __init__(self, **kwargs):
+        super(EdXCompositionRecord, self).__init__(**kwargs)
+        if (not hasattr(self, '_supported_record_type_ids') or
+                self._supported_record_type_ids is None):
+            self._supported_record_type_ids = []
+        self._supported_record_type_ids.append(
             str(Type(**COMPOSITION_RECORD_TYPES['edx-composition'])))
 
     @valid_for(['chapter', 'sequential'])
@@ -276,29 +270,29 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
 
     @property
     def filename(self):
-        return DisplayText(display_text_map=self.my_osid_object._my_map['texts']['fileName'])
+        return DisplayText(display_text_map=self._my_map['texts']['fileName'])
 
     @valid_for(['chapter', 'sequential'])
     def get_visible_to_students(self):
-        return self.my_osid_object._my_map['visibleToStudents']
+        return self._my_map['visibleToStudents']
 
     visible_to_students = property(fget=get_visible_to_students)
 
     @valid_for(['vertical'])
     def get_draft(self):
-        return self.my_osid_object._my_map['draft']
+        return self._my_map['draft']
 
     draft = property(fget=get_draft)
 
     @valid_for(['course'])
     def get_org(self):
-        return DisplayText(display_text_map=self.my_osid_object._my_map['texts']['org'])
+        return DisplayText(display_text_map=self._my_map['texts']['org'])
 
     org = property(fget=get_org)
 
     @valid_for(['split_test'])
     def get_user_partition_id(self):
-        return DisplayText(display_text_map=self.my_osid_object._my_map['texts']['userPartitionId'])
+        return DisplayText(display_text_map=self._my_map['texts']['userPartitionId'])
 
     user_partition_id = property(fget=get_user_partition_id)
 
@@ -324,14 +318,14 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         # also need the course name...so go up the composition tree
         course_node = None
         found_course = False
-        rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        if self.my_osid_object._proxy is not None:
-            cqs = rm.get_composition_query_session_for_repository(Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
-                                                                  proxy=self.my_osid_object._proxy)
+        rm = self._get_provider_manager('REPOSITORY')
+        if self._proxy is not None:
+            cqs = rm.get_composition_query_session_for_repository(Id(self._my_map['assignedRepositoryIds'][0]),
+                                                                  proxy=self._proxy)
         else:
             cqs = rm.get_composition_query_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
-        search_node = self.my_osid_object
+                Id(self._my_map['assignedRepositoryIds'][0]))
+        search_node = self
         while not found_course:
             querier = cqs.get_composition_query()
             cqs.use_unsequestered_composition_view()
@@ -350,7 +344,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         if course_node is None:
             return ''
         else:
-            for index, child in enumerate(self.my_osid_object.get_children()):
+            for index, child in enumerate(self.get_children()):
                 group_ids[index] = 'i4x://{0}/{1}/{2}/{3}'.format(course_node.org.text,
                                                                   re.sub('[^\w\s-]', '', course_node.display_name.text),
                                                                   child.genus_type.identifier,
@@ -361,9 +355,9 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
 
     @valid_for(['vertical', 'chapter', 'sequential', 'split_test'])
     def get_learning_objective_ids(self):
-        return IdList(self.my_osid_object._my_map['learningObjectiveIds'],
-                      runtime=self.my_osid_object._runtime,
-                      proxy=self.my_osid_object._proxy)
+        return IdList(self._my_map['learningObjectiveIds'],
+                      runtime=self._runtime,
+                      proxy=self._proxy)
 
     learning_objective_ids = property(fget=get_learning_objective_ids)
 
@@ -371,27 +365,27 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
     def assets(self):
         resources = []
         try:
-            rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-            if self.my_osid_object._proxy is None:
+            rm = self._get_provider_manager('REPOSITORY')
+            if self._proxy is None:
                 acs = rm.get_asset_composition_session_for_repository(
-                    Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+                    Id(self._my_map['assignedRepositoryIds'][0]))
             else:
                 acs = rm.get_asset_composition_session_for_repository(
-                    Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
-                    proxy=self.my_osid_object._proxy)
-            for asset in acs.get_composition_assets(self.my_osid_object.ident):
+                    Id(self._my_map['assignedRepositoryIds'][0]),
+                    proxy=self._proxy)
+            for asset in acs.get_composition_assets(self.ident):
                 asset_map = asset.object_map
                 if 'enclosedObjectId' in asset_map:
                     enclosed_object = asset.get_enclosed_object()
                     if isinstance(enclosed_object, Assessment):
-                        am = self.my_osid_object._get_provider_manager('ASSESSMENT')
-                        if self.my_osid_object._proxy is None:
+                        am = self._get_provider_manager('ASSESSMENT')
+                        if self._proxy is None:
                             abas = am.get_assessment_basic_authoring_session_for_bank(
                                 Id(enclosed_object.object_map['assignedBankIds'][0]))
                         else:
                             abas = am.get_assessment_basic_authoring_session_for_bank(
                                 Id(enclosed_object.object_map['assignedBankIds'][0]),
-                                proxy=self.my_osid_object._proxy)
+                                proxy=self._proxy)
                         for item in abas.get_items(enclosed_object.ident):
                             resources.append(item)
                     elif isinstance(enclosed_object, Item):
@@ -405,20 +399,20 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
 
     def all_children(self, repository=None):
         child_objects = []
-        rm = self.my_osid_object._get_provider_manager('REPOSITORY')
+        rm = self._get_provider_manager('REPOSITORY')
         if repository is None:
-            repository_id = Id(self.my_osid_object.object_map['assignedRepositoryIds'][0])
-            if self.my_osid_object._proxy is None:
+            repository_id = Id(self.object_map['assignedRepositoryIds'][0])
+            if self._proxy is None:
                 rls = rm.get_repository_lookup_session()
             else:
-                rls = rm.get_repository_lookup_session(proxy=self.my_osid_object._proxy)
+                rls = rm.get_repository_lookup_session(proxy=self._proxy)
 
             repository = rls.get_repository(repository_id)
         append_error_child = False
         error_compositions = []
         missing_child_ids = []
 
-        for child_id in self.my_osid_object.get_child_ids():
+        for child_id in self.get_child_ids():
             if repository._proxy is not None:
                 composition_lookup_session = rm.get_composition_lookup_session_for_repository(
                     repository.ident,
@@ -481,7 +475,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                     child_objects.append((error_composition, False))
 
         if append_error_child:
-            current_child_ids = self.my_osid_object.get_child_ids()
+            current_child_ids = self.get_child_ids()
             current_child_idstrs = [str(i) for i in current_child_ids]
             for index, child_id in enumerate(current_child_idstrs):
                 if child_id in missing_child_ids:
@@ -495,19 +489,19 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                 )
             else:
                 cas = rm.get_composition_admin_session_for_repository(repository.ident)
-            form = cas.get_composition_form_for_update(self.my_osid_object.ident)
+            form = cas.get_composition_form_for_update(self.ident)
             form.set_children(updated_child_ids)
             cas.update_composition(form)
         return child_objects
 
     def clone_to(self, target_repo, target_parent=None):
-        new_composition = target_repo.duplicate_composition(self.my_osid_object.ident)
+        new_composition = target_repo.duplicate_composition(self.ident)
         form = target_repo.get_composition_form_for_update(new_composition.ident)
-        form.set_provenance(str(self.my_osid_object.ident))
+        form.set_provenance(str(self.ident))
         new_composition = target_repo.update_composition(form)
 
         if target_parent is not None:
-            original_id = str(self.my_osid_object.ident)
+            original_id = str(self.ident)
             new_id = str(new_composition.ident)
             target_repo.use_unsequestered_composition_view()
             updated_parent = target_repo.get_composition(target_parent.ident)
@@ -553,7 +547,7 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
             return filepath.split('/')[-1].replace('.xml', '')
 
         my_path = None
-        if self.my_osid_object.is_sequestered():
+        if self.is_sequestered():
             # just export assets
             for asset in self.assets:
                 try:
@@ -562,26 +556,26 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
                     pass
         else:
             # also add to the /<tag>/ folder
-            my_tag = self.my_osid_object.genus_type.identifier
+            my_tag = self.genus_type.identifier
             expected_name = self.get_unique_name(tarball, self.url, my_tag, root_path)
             my_path = '{0}{1}/{2}.xml'.format(root_path,
                                               my_tag,
                                               expected_name)
             my_soup = BeautifulSoup('<' + my_tag + '/>', 'xml')
-            getattr(my_soup, my_tag)['display_name'] = self.my_osid_object.display_name.text
+            getattr(my_soup, my_tag)['display_name'] = self.display_name.text
 
             if my_tag == 'split_test':
-                getattr(my_soup, my_tag)['group_id_to_child'] = self.my_osid_object.group_id_to_child
-                getattr(my_soup, my_tag)['user_partition_id'] = self.my_osid_object.user_partition_id.text
+                getattr(my_soup, my_tag)['group_id_to_child'] = self.group_id_to_child
+                getattr(my_soup, my_tag)['user_partition_id'] = self.user_partition_id.text
 
-            rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-            if self.my_osid_object._proxy is None:
+            rm = self._get_provider_manager('REPOSITORY')
+            if self._proxy is None:
                 cls = rm.get_composition_lookup_session()
             else:
-                cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
+                cls = rm.get_composition_lookup_session(proxy=self._proxy)
             cls.use_federated_repository_view()
             cls.use_unsequestered_composition_view()
-            for child_id in self.my_osid_object.get_child_ids():
+            for child_id in self.get_child_ids():
                 child = cls.get_composition(child_id)
                 if child.is_sequestered():
                     # append its assets here
@@ -604,14 +598,14 @@ class EdXCompositionRecord(TextsRecord, TemporalRecord,
         return my_path
 
     def export_standalone_olx(self):
-        filename = '{0}_{1}'.format(self.my_osid_object.display_name.text,
+        filename = '{0}_{1}'.format(self.display_name.text,
                                     str(int(time.time())))
         filename = clean_str(filename) + '.tar.gz'
         root_path = ''
 
         olx = BytesIO()
         tarball = tarfile.open(filename, mode='w', fileobj=olx)
-        self.my_osid_object.export_olx(tarball, root_path)
+        self.export_olx(tarball, root_path)
 
         tarball.close()
         olx.seek(0)
@@ -625,22 +619,6 @@ class EdXCourseRunCompositionFormRecord(TextsFormRecord):
         'edx-course-run',
         'text-records'
     ]
-
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(EdXCourseRunCompositionFormRecord, self).__init__()
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-
-    def _init_map(self):
-        """stub"""
-        super(EdXCourseRunCompositionFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(EdXCourseRunCompositionFormRecord, self)._init_metadata()
 
     def set_policy(self, policy):
         self.add_text(str(policy), 'policy')
@@ -657,11 +635,11 @@ class EdXCourseRunCompositionFormRecord(TextsFormRecord):
 
 class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRecord):
     """edX user course run composition"""
-    def __init__(self, object_map):
-        super(EdXCourseRunCompositionRecord, self).__init__(object_map)
-        if not hasattr(self.my_osid_object, '_supported_record_type_ids'):
-            self.my_osid_object._supported_record_type_ids = []
-        self.my_osid_object._supported_record_type_ids.append(
+    def __init__(self, **kwargs):
+        super(EdXCourseRunCompositionRecord, self).__init__(**kwargs)
+        if not hasattr(self, '_supported_record_type_ids'):
+            self._supported_record_type_ids = []
+        self._supported_record_type_ids.append(
             str(Type(**COMPOSITION_RECORD_TYPES['edx-course-run'])))
 
     @property
@@ -673,15 +651,15 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
         return self.get_text('policy')
 
     def export_run_olx(self):
-        run_comp = self.my_osid_object
-        rm = self.my_osid_object._get_provider_manager('REPOSITORY')
-        if self.my_osid_object._proxy is None:
+        run_comp = self
+        rm = self._get_provider_manager('REPOSITORY')
+        if self._proxy is None:
             cqs = rm.get_composition_query_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]))
+                Id(self._my_map['assignedRepositoryIds'][0]))
         else:
             cqs = rm.get_composition_query_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedRepositoryIds'][0]),
-                proxy=self.my_osid_object._proxy)
+                Id(self._my_map['assignedRepositoryIds'][0]),
+                proxy=self._proxy)
         cqs.use_unsequestered_composition_view()
         querier = cqs.get_composition_query()
         querier.match_contained_composition_id(run_comp.ident, True)
@@ -716,18 +694,18 @@ class EdXCourseRunCompositionRecord(EdXUtilitiesMixin, TextsRecord, ObjectInitRe
                                                      run_comp.display_name.text)
         for child_id in run_comp.get_child_ids():
             try:
-                if self.my_osid_object._proxy is None:
+                if self._proxy is None:
                     cls = rm.get_composition_lookup_session_for_repository(run_comp.ident)
                 else:
                     cls = rm.get_composition_lookup_session_for_repository(
                         run_comp.ident,
-                        proxy=self.my_osid_object._proxy)
+                        proxy=self._proxy)
                 child = cls.get_composition(child_id)
             except NotFound:
-                if self.my_osid_object._proxy is None:
+                if self._proxy is None:
                     cls = rm.get_composition_lookup_session()
                 else:
-                    cls = rm.get_composition_lookup_session(proxy=self.my_osid_object._proxy)
+                    cls = rm.get_composition_lookup_session(proxy=self._proxy)
                 cls.use_federated_repository_view()
                 cls.use_unsequestered_composition_view()
                 child = cls.get_composition(child_id)

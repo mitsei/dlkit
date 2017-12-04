@@ -975,25 +975,15 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         for arg in comment_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if comment_record_types == []:
-            # WHY are we passing book_id = self._catalog_id below, seems redundant:
-            # Probably don't need to send effective_agent_id, since the form can get that from proxy.
-            obj_form = objects.CommentForm(
-                book_id=self._catalog_id,
-                reference_id=reference_id,
-                effective_agent_id=str(self.get_effective_agent_id()),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.CommentForm(
-                book_id=self._catalog_id,
-                record_types=comment_record_types,
-                reference_id=reference_id,
-                effective_agent_id=self.get_effective_agent_id(),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
+        obj_form = objects.CommentForm(
+            record_types=comment_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(book_id=self._catalog_id,
+                           reference_id=reference_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=comment_record_types)
         obj_form._for_update = False
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
@@ -1092,6 +1082,7 @@ class CommentAdminSession(abc_commenting_sessions.CommentAdminSession, osid_sess
         result = collection.find_one({'_id': ObjectId(comment_id.get_identifier())})
 
         obj_form = objects.CommentForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -1976,19 +1967,17 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
         for arg in book_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if book_record_types == []:
-            result = objects.BookForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.BookForm(
-                record_types=book_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        book_form = objects.BookForm(
+            record_types=book_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        book_form._init_metadata()
+        book_form._init_map(
+            record_types=book_record_types,
+            effective_agent_id=self.get_effective_agent_id())
+        self._forms[book_form.get_id().get_identifier()] = not CREATED
+        return book_form
 
     @utilities.arguments_not_none
     def create_book(self, book_form):
@@ -2085,10 +2074,11 @@ class BookAdminSession(abc_commenting_sessions.BookAdminSession, osid_sessions.O
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(book_id.get_identifier())})
 
-        cat_form = objects.BookForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        book_form = objects.BookForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        book_form._init_metadata()
+        self._forms[book_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return book_form
 
     @utilities.arguments_not_none
     def update_book(self, book_form):

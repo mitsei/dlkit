@@ -31,7 +31,7 @@ class Hierarchy(abc_hierarchy_objects.Hierarchy, osid_objects.OsidCatalog):
     _namespace = 'hierarchy.Hierarchy'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, object_name='HIERARCHY', **kwargs)
+        osid_objects.OsidCatalog.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def get_hierarchy_record(self, hierarchy_record_type):
@@ -70,11 +70,8 @@ class HierarchyForm(abc_hierarchy_objects.HierarchyForm, osid_objects.OsidCatalo
     _namespace = 'hierarchy.Hierarchy'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, object_name='HIERARCHY', **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_hierarchy_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

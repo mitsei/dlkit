@@ -685,19 +685,16 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         for arg in grade_system_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if grade_system_record_types == []:
-            obj_form = objects.GradeSystemForm(
-                gradebook_id=self._catalog_id,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
-        else:
-            obj_form = objects.GradeSystemForm(
-                gradebook_id=self._catalog_id,
-                record_types=grade_system_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+        obj_form = objects.GradeSystemForm(
+            # gradebook_id=self._catalog_id,
+            record_types=grade_system_record_types,
+            runtime=self._runtime,
+            # effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(gradebook_id=self._catalog_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=grade_system_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -796,6 +793,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         result = collection.find_one({'_id': ObjectId(grade_system_id.get_identifier())})
 
         obj_form = objects.GradeSystemForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -1016,23 +1014,18 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
         for arg in grade_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if grade_record_types == []:
-            # WHY are we passing gradebook_id = self._catalog_id below, seems redundant:
-            obj_form = objects.GradeForm(
-                gradebook_id=self._catalog_id,
-                grade_system_id=grade_system_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.GradeForm(
-                gradebook_id=self._catalog_id,
-                record_types=grade_record_types,
-                grade_system_id=grade_system_id,
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        obj_form._for_update = False
+
+        obj_form = objects.GradeForm(
+            record_types=grade_record_types,
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(gradebook_id=self._catalog_id,
+                           grade_system_id=grade_system_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=grade_record_types)
+
+        # obj_form._for_update = False  # set in Form constructor
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -1140,6 +1133,7 @@ class GradeSystemAdminSession(abc_grading_sessions.GradeSystemAdminSession, osid
             osid_object_map=result,
             runtime=self._runtime,
             proxy=self._proxy)
+        obj_form._init_metadata()
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -2454,27 +2448,18 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
         for arg in grade_entry_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if grade_entry_record_types == []:
-            # WHY are we passing gradebook_id = self._catalog_id below, seems redundant:
-            # Probably don't need effective agent id since form can now get that from proxy.
-            obj_form = objects.GradeEntryForm(
-                gradebook_id=self._catalog_id,
-                gradebook_column_id=gradebook_column_id,
-                resource_id=resource_id,
-                effective_agent_id=str(self.get_effective_agent_id()),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
-        else:
-            obj_form = objects.GradeEntryForm(
-                gradebook_id=self._catalog_id,
-                record_types=grade_entry_record_types,
-                gradebook_column_id=gradebook_column_id,
-                resource_id=resource_id,
-                effective_agent_id=str(self.get_effective_agent_id()),
-                catalog_id=self._catalog_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
+        obj_form = objects.GradeEntryForm(
+            record_types=grade_entry_record_types,
+            effective_agent_id=self.get_effective_agent_id(),  # needed here to set a property in __init__
+            gradebook_column_id=gradebook_column_id,  # needed here to get gradeSystemId
+            runtime=self._runtime,
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(gradebook_id=self._catalog_id,
+                           gradebook_column_id=gradebook_column_id,
+                           resource_id=resource_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=grade_entry_record_types)
         obj_form._for_update = False
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
@@ -2638,6 +2623,7 @@ class GradeEntryAdminSession(abc_grading_sessions.GradeEntryAdminSession, osid_s
             effective_agent_id=str(self.get_effective_agent_id()),
             runtime=self._runtime,
             proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -3427,19 +3413,16 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         for arg in gradebook_column_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if gradebook_column_record_types == []:
-            obj_form = objects.GradebookColumnForm(
-                gradebook_id=self._catalog_id,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
-        else:
-            obj_form = objects.GradebookColumnForm(
-                gradebook_id=self._catalog_id,
-                record_types=gradebook_column_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+        obj_form = objects.GradebookColumnForm(
+            # gradebook_id=self._catalog_id,
+            record_types=gradebook_column_record_types,
+            runtime=self._runtime,
+            # effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(gradebook_id=self._catalog_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=gradebook_column_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -3544,6 +3527,7 @@ class GradebookColumnAdminSession(abc_grading_sessions.GradebookColumnAdminSessi
         result = collection.find_one({'_id': ObjectId(gradebook_column_id.get_identifier())})
 
         obj_form = objects.GradebookColumnForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -4524,19 +4508,17 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
         for arg in gradebook_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if gradebook_record_types == []:
-            result = objects.GradebookForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.GradebookForm(
-                record_types=gradebook_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        gradebook_form = objects.GradebookForm(
+            record_types=gradebook_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        gradebook_form._init_metadata()
+        gradebook_form._init_map(
+            record_types=gradebook_record_types,
+            effective_agent_id=self.get_effective_agent_id())
+        self._forms[gradebook_form.get_id().get_identifier()] = not CREATED
+        return gradebook_form
 
     @utilities.arguments_not_none
     def create_gradebook(self, gradebook_form):
@@ -4635,10 +4617,11 @@ class GradebookAdminSession(abc_grading_sessions.GradebookAdminSession, osid_ses
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(gradebook_id.get_identifier())})
 
-        cat_form = objects.GradebookForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        gradebook_form = objects.GradebookForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        gradebook_form._init_metadata()
+        self._forms[gradebook_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return gradebook_form
 
     @utilities.arguments_not_none
     def update_gradebook(self, gradebook_form):

@@ -118,9 +118,9 @@ class MagicRandomizedInlineChoiceItemRecord(ObjectInitRecord):
         self._magic_params = None
 
     def get_question(self):
-        question = Question(osid_object_map=self.my_osid_object._my_map['question'],
-                            runtime=self.my_osid_object._runtime,
-                            proxy=self.my_osid_object._proxy)
+        question = Question(osid_object_map=self._my_map['question'],
+                            runtime=self._runtime,
+                            proxy=self._proxy)
         if self._magic_params is not None:
             question.set_values(self._magic_params)
         return question
@@ -149,7 +149,7 @@ class MagicRandomizedInlineChoiceItemRecord(ObjectInitRecord):
 
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return True
         return False
@@ -170,13 +170,13 @@ class MagicRandomizedInlineChoiceItemRecord(ObjectInitRecord):
                     return 0
 
     def get_answer_for_response(self, response):
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return answer
 
         wrong_answers = None
         try:
-            wrong_answers = list(self.my_osid_object.get_wrong_answers())
+            wrong_answers = list(self.get_wrong_answers())
         except AttributeError:
             pass
         else:
@@ -225,11 +225,6 @@ class MagicRandomizedInlineChoiceItemFormRecord(osid_records.OsidRecord):
         'magic-randomized-inline-choice'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(MagicRandomizedInlineChoiceItemFormRecord, self).__init__()
-
 
 class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
                                          osid_records.OsidRecord):
@@ -238,26 +233,23 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
         'inline-choice-text'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(InlineChoiceTextQuestionFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(InlineChoiceTextQuestionFormRecord, self).__init__(**kwargs)
+        self._choices_metadata = None
+        self._choice_text_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        QuestionTextFormRecord._init_map(self)
-        self.my_osid_object_form._my_map['choices'] = \
+        super(InlineChoiceTextQuestionFormRecord, self)._init_map(**kwargs)
+        self._my_map['choices'] = \
             self._choices_metadata['default_object_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        QuestionTextFormRecord._init_metadata(self)
+        super(InlineChoiceTextQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choices_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choices'),
             'element_label': 'Choices',
             'instructions': 'Enter as many choices as you wish',
@@ -270,8 +262,8 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
             'object_set': []
         }
         self._choice_text_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choice_text'),
             'element_label': 'choice text',
             'instructions': 'enter the text for this choice',
@@ -306,17 +298,17 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
             'text': text,
             'name': name
         }
-        if inline_region in self.my_osid_object_form._my_map['choices']:
-            self.my_osid_object_form._my_map['choices'][inline_region].append(choice)
+        if inline_region in self._my_map['choices']:
+            self._my_map['choices'][inline_region].append(choice)
         else:
             raise IllegalState('that inline region does not exist')
         return choice
 
     def edit_choice(self, choice_id, text, inline_region, name=''):
         """edit an existing choice, to keep the ID the same"""
-        if inline_region not in self.my_osid_object_form._my_map['choices']:
+        if inline_region not in self._my_map['choices']:
             raise IllegalState('that inline region does not exist')
-        for choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+        for choice in self._my_map['choices'][inline_region]:
             if choice['id'] == choice_id:
                 if choice['text'] != text:
                     choice['text'] = text
@@ -325,26 +317,26 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
                 break
 
     def add_inline_region(self, inline_region):
-        if inline_region not in self.my_osid_object_form._my_map['choices']:
-            self.my_osid_object_form._my_map['choices'][inline_region] = []
+        if inline_region not in self._my_map['choices']:
+            self._my_map['choices'][inline_region] = []
         else:
             raise IllegalState('that inline region already exists')
 
     def remove_inline_region(self, inline_region):
-        if inline_region in self.my_osid_object_form._my_map['choices']:
-            del self.my_osid_object_form._my_map['choices'][inline_region]
+        if inline_region in self._my_map['choices']:
+            del self._my_map['choices'][inline_region]
         else:
             raise IllegalState('that inline region does not exist')
 
     @utilities.arguments_not_none
     def remove_choice(self, choice_id, inline_region):
         """remove a choice, given the id"""
-        if inline_region in self.my_osid_object_form._my_map['choices']:
+        if inline_region in self._my_map['choices']:
             updated_choices = []
-            for choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+            for choice in self._my_map['choices'][inline_region]:
                 if choice['id'] != choice_id:
                     updated_choices.append(choice)
-            self.my_osid_object_form._my_map['choices'][inline_region] = updated_choices
+            self._my_map['choices'][inline_region] = updated_choices
 
     @utilities.arguments_not_none
     def set_choice_order(self, choice_ids, inline_region):
@@ -353,17 +345,17 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
         :return:
         """
         reordered_choices = []
-        current_choice_ids = [c['id'] for c in self.my_osid_object_form._my_map['choices'][inline_region]]
+        current_choice_ids = [c['id'] for c in self._my_map['choices'][inline_region]]
         if set(choice_ids) != set(current_choice_ids):
             raise IllegalState('missing choices for choice order')
 
         for choice_id in choice_ids:
-            for current_choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+            for current_choice in self._my_map['choices'][inline_region]:
                 if choice_id == current_choice['id']:
                     reordered_choices.append(current_choice)
                     break
 
-        self.my_osid_object_form._my_map['choices'][inline_region] = reordered_choices
+        self._my_map['choices'][inline_region] = reordered_choices
 
 
 class InlineChoiceTextQuestionRecord(QuestionTextRecord,
@@ -379,26 +371,26 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
         'inline-choice-text'
     ]
 
-    def __init__(self, osid_object):
-        self._original_choice_order = deepcopy(osid_object._my_map['choices'])
-        super(InlineChoiceTextQuestionRecord, self).__init__(osid_object)
-        # if not self.my_osid_object._my_map['choices']:
+    def __init__(self, **kwargs):
+        self._original_choice_order = deepcopy(kwargs['osid_object_map']['choices'])
+        super(InlineChoiceTextQuestionRecord, self).__init__(**kwargs)
+        # if not self._my_map['choices']:
         #     raise IllegalState()
-        choices = self.my_osid_object._my_map['choices']
-        if self.my_osid_object._my_map['shuffle']:
+        choices = self._my_map['choices']
+        if self._my_map['shuffle']:
             for region, region_choices in choices.items():
                 shuffle(region_choices)
                 choices[region] = region_choices
-        self.my_osid_object._my_map['choices'] = choices
+        self._my_map['choices'] = choices
         # Claim authority on this object, until someone else does:
-        self.my_osid_object._authority = MAGIC_AUTHORITY
+        self._authority = MAGIC_AUTHORITY
 
     def get_choices(self):
         """stub"""
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
-        # return self.my_osid_object.object_map['choices']
-        return self.my_osid_object._my_map['choices']
+        # return self.object_map['choices']
+        return self._my_map['choices']
 
     choices = property(fget=get_choices)
 
@@ -408,13 +400,13 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
         # Check first to make sure no one else has claimed authority on my object.
         # This will likely occur when an AssessmentSection returns a Question
         # During an AssessmentSession
-        if self.my_osid_object._authority != MAGIC_AUTHORITY:
-            return self.my_osid_object._item_id
+        if self._authority != MAGIC_AUTHORITY:
+            return self._item_id
             # raise AttributeError
 
         # If not, go ahead and build magic Id:
-        choices = self.my_osid_object._my_map['choices']
-        magic_identifier = quote('{0}?{1}'.format(self.my_osid_object._my_map['_id'],
+        choices = self._my_map['choices']
+        magic_identifier = quote('{0}?{1}'.format(self._my_map['_id'],
                                                   json.dumps(choices)))
         return Id(namespace='assessment.Item',
                   identifier=magic_identifier,
@@ -424,7 +416,7 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
     id_ = property(fget=get_id)
 
     def get_unrandomized_choices(self):
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
         return self._original_choice_order
 
@@ -436,7 +428,7 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
                          "57978959cdfc5c42eefb36cf", "57978959cdfc5c42eefb36ce"]
          }
         """
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
         organized_regions = {}
         for region, choice_ids in choice_ids.items():
@@ -446,7 +438,7 @@ class InlineChoiceTextQuestionRecord(QuestionTextRecord,
                 choice_obj = [c for c in original_region_choices if c['id'] == choice['id']][0]
                 organized_choice_ids.append(choice_obj)
             organized_regions[region] = organized_choice_ids
-        self.my_osid_object._my_map['choices'] = organized_regions
+        self._my_map['choices'] = organized_regions
 
 
 class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
@@ -457,27 +449,24 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
         'inline-choice-text'
     ]
 
-    def __init__(self, osid_object_form):
-        self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
+        self._inline_regions_metadata = None
+        self._choice_ids_metadata = None
+        self._choice_id_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        FilesAnswerFormRecord._init_map(self)
-        FeedbackAnswerFormRecord._init_map(self)
-        self.my_osid_object_form._my_map['inlineRegions'] = \
+        super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
+        self._my_map['inlineRegions'] = \
             self._inline_regions_metadata['default_object_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        FilesAnswerFormRecord._init_metadata(self)
-        FeedbackAnswerFormRecord._init_metadata(self)
+        super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
         self._inline_regions_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'inline_regions'),
             'element_label': 'set of inline regions',
             'instructions': 'submit correct choice for answer for each region',
@@ -489,8 +478,8 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
             'syntax': 'OBJECT',
         }
         self._choice_ids_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choice_ids'),
             'element_label': 'response set with inline regions',
             'instructions': 'submit correct choice for answer for each region',
@@ -502,8 +491,8 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
             'syntax': 'OBJECT',
         }
         self._choice_id_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choice_id'),
             'element_label': 'response set',
             'instructions': 'submit correct choice for answer',
@@ -526,16 +515,16 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
 
     def add_choice_id(self, choice_id, inline_region):
         """stub"""
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region]['choiceIds'].append(choice_id)
+        if inline_region in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region]['choiceIds'].append(choice_id)
         else:
             raise IllegalState('that inline region is invalid')
 
     def set_choice_ids(self, choice_ids, inline_region):
         if not isinstance(choice_ids, list):
             raise IllegalState()
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region]['choiceIds'] = choice_ids
+        if inline_region in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region]['choiceIds'] = choice_ids
         else:
             raise IllegalState('that inline region is invalid')
 
@@ -544,15 +533,15 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
         if (self.get_choice_ids_metadata().is_read_only() or
                 self.get_choice_ids_metadata().is_required()):
             raise NoAccess()
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region]['choiceIds'] = \
+        if inline_region in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region]['choiceIds'] = \
                 deepcopy(self._choice_ids_metadata['default_object_values'][0])
         else:
             raise IllegalState('that inline region is invalid')
 
     def add_inline_region(self, inline_region):
-        if inline_region not in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region] = \
+        if inline_region not in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region] = \
                 {
                     "choiceIds": deepcopy(self._choice_ids_metadata['default_object_values'][0])
             }
@@ -560,8 +549,8 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
             raise IllegalState('that inline region already exists')
 
     def remove_inline_region(self, inline_region):
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            del self.my_osid_object_form._my_map['inlineRegions'][inline_region]
+        if inline_region in self._my_map['inlineRegions']:
+            del self._my_map['inlineRegions'][inline_region]
         else:
             raise IllegalState('that inline region does not exist')
 
@@ -574,14 +563,10 @@ class InlineChoiceFeedbackAndFilesAnswerRecord(FilesAnswerRecord,
         'inline-choice-text'
     ]
 
-    def __init__(self, osid_object):
-        self.my_osid_object = osid_object
-        super(InlineChoiceFeedbackAndFilesAnswerRecord, self).__init__(osid_object)
-
     def get_inline_choice_ids(self):
         """stub"""
         return_data = {}
-        for inline_region, data in self.my_osid_object._my_map['inlineRegions'].items():
+        for inline_region, data in self._my_map['inlineRegions'].items():
             return_data[inline_region] = {
                 'choiceIds': IdList(data['choiceIds'])
             }
@@ -594,26 +579,23 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
         'multi-language-inline-choice-text'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MultiLanguageInlineChoiceQuestionFormRecord, self).__init__(osid_object_form)
+    def __init__(self, **kwargs):
+        super(MultiLanguageInlineChoiceQuestionFormRecord, self).__init__(**kwargs)
+        self._choices_metadata = None
+        self._choice_text_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_map()
-        self.my_osid_object_form._my_map['choices'] = \
+        super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_map(**kwargs)
+        self._my_map['choices'] = \
             self._choices_metadata['default_object_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_metadata()
+        super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choices_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choices'),
             'element_label': 'Choices',
             'instructions': 'Enter as many choices as you wish',
@@ -626,8 +608,8 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
             'object_set': []
         }
         self._choice_text_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choice_text'),
             'element_label': 'choice text',
             'instructions': 'enter the text for this choice',
@@ -656,7 +638,7 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
         if self.get_choices_metadata().is_read_only():
             raise NoAccess()
         updated_choices = []
-        for current_choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+        for current_choice in self._my_map['choices'][inline_region]:
             if current_choice['id'] != choice_id:
                 updated_choices.append(current_choice)
             else:
@@ -665,21 +647,21 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
                     'texts': [],
                     'name': current_choice['name']
                 })
-        self.my_osid_object_form._my_map['choices'][inline_region] = updated_choices
+        self._my_map['choices'][inline_region] = updated_choices
 
     @utilities.arguments_not_none
     def remove_choice_language(self, language_type, choice_id, inline_region):
         """stub"""
-        if len(self.my_osid_object_form._my_map['choices'][inline_region]) == 0:
+        if len(self._my_map['choices'][inline_region]) == 0:
             raise IllegalState('there are currently no choices defined for this region')
         if self.get_choices_metadata().is_read_only():
             raise NoAccess()
 
-        choices = [c for c in self.my_osid_object_form._my_map['choices'][inline_region] if c['id'] == choice_id]
+        choices = [c for c in self._my_map['choices'][inline_region] if c['id'] == choice_id]
         if len(choices) == 0:
             raise InvalidArgument('invalid choice_id')
 
-        for current_choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+        for current_choice in self._my_map['choices'][inline_region]:
             if choice_id == current_choice['id']:
                 self.remove_field_by_language('texts',
                                               language_type,
@@ -689,27 +671,27 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
     def clear_choices(self, inline_region):
         if self.get_choices_metadata().is_read_only():
             raise NoAccess()
-        self.my_osid_object_form._my_map['choices'][inline_region] = \
+        self._my_map['choices'][inline_region] = \
             self._choices_metadata['default_object_values'][0]
 
     @utilities.arguments_not_none
     def add_choice(self, choice, inline_region, identifier=None, name=''):
         """stub"""
-        if inline_region not in self.my_osid_object_form._my_map['choices']:
+        if inline_region not in self._my_map['choices']:
             raise IllegalState('that inline region does not exist. Please call add_inline_region first')
 
         if identifier is None:
             identifier = str(ObjectId())
-        current_identifiers = [c['id'] for c in self.my_osid_object_form._my_map['choices'][inline_region]]
+        current_identifiers = [c['id'] for c in self._my_map['choices'][inline_region]]
         if identifier not in current_identifiers:
             choice = {
                 'id': identifier,
                 'texts': [self._dict_display_text(choice)],
                 'name': name
             }
-            self.my_osid_object_form._my_map['choices'][inline_region].append(choice)
+            self._my_map['choices'][inline_region].append(choice)
         else:
-            for current_choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+            for current_choice in self._my_map['choices'][inline_region]:
                 if current_choice['id'] == identifier:
                     self.add_or_replace_value('texts', choice, dictionary=current_choice)
                     choice = current_choice
@@ -718,15 +700,15 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
     @utilities.arguments_not_none
     def edit_choice(self, new_choice, choice_id, inline_region):
         """edit an existing choice, to keep the ID the same"""
-        if inline_region not in self.my_osid_object_form._my_map['choices']:
+        if inline_region not in self._my_map['choices']:
             raise IllegalState('that inline region does not exist')
         if not isinstance(new_choice, DisplayText):
             raise InvalidArgument('new choice is not a DisplayText object')
-        choices = [c for c in self.my_osid_object_form._my_map['choices'][inline_region] if c['id'] == choice_id]
+        choices = [c for c in self._my_map['choices'][inline_region] if c['id'] == choice_id]
         if len(choices) == 0:
             raise InvalidArgument('invalid choice_id for that region')
 
-        for current_choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+        for current_choice in self._my_map['choices'][inline_region]:
             if choice_id == current_choice['id']:
                 index = self.get_index_of_language_type('texts',
                                                         new_choice.language_type,
@@ -736,27 +718,27 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
 
     @utilities.arguments_not_none
     def add_inline_region(self, inline_region):
-        if inline_region not in self.my_osid_object_form._my_map['choices']:
-            self.my_osid_object_form._my_map['choices'][inline_region] = []
+        if inline_region not in self._my_map['choices']:
+            self._my_map['choices'][inline_region] = []
         else:
             raise IllegalState('that inline region already exists')
 
     @utilities.arguments_not_none
     def remove_inline_region(self, inline_region):
-        if inline_region in self.my_osid_object_form._my_map['choices']:
-            del self.my_osid_object_form._my_map['choices'][inline_region]
+        if inline_region in self._my_map['choices']:
+            del self._my_map['choices'][inline_region]
         else:
             raise IllegalState('that inline region does not exist')
 
     @utilities.arguments_not_none
     def remove_choice(self, choice_id, inline_region):
         """remove a choice, given the id"""
-        if inline_region in self.my_osid_object_form._my_map['choices']:
+        if inline_region in self._my_map['choices']:
             updated_choices = []
-            for choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+            for choice in self._my_map['choices'][inline_region]:
                 if choice['id'] != choice_id:
                     updated_choices.append(choice)
-            self.my_osid_object_form._my_map['choices'][inline_region] = updated_choices
+            self._my_map['choices'][inline_region] = updated_choices
 
     @utilities.arguments_not_none
     def set_choice_order(self, choice_ids, inline_region):
@@ -765,17 +747,17 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
         :return:
         """
         reordered_choices = []
-        current_choice_ids = [c['id'] for c in self.my_osid_object_form._my_map['choices'][inline_region]]
+        current_choice_ids = [c['id'] for c in self._my_map['choices'][inline_region]]
         if set(choice_ids) != set(current_choice_ids):
             raise IllegalState('missing choices for choice order')
 
         for choice_id in choice_ids:
-            for current_choice in self.my_osid_object_form._my_map['choices'][inline_region]:
+            for current_choice in self._my_map['choices'][inline_region]:
                 if choice_id == current_choice['id']:
                     reordered_choices.append(current_choice)
                     break
 
-        self.my_osid_object_form._my_map['choices'][inline_region] = reordered_choices
+        self._my_map['choices'][inline_region] = reordered_choices
 
 
 class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
@@ -790,20 +772,20 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
         'multi-language-inline-choice-text'
     ]
 
-    def __init__(self, osid_object):
-        self._original_choice_order = deepcopy(osid_object._my_map['choices'])
-        osid_object._my_map['multiLanguageChoices'] = deepcopy(osid_object._my_map['choices'])
-        super(MultiLanguageInlineChoiceQuestionRecord, self).__init__(osid_object)
-        # if not self.my_osid_object._my_map['choices']:
+    def __init__(self, **kwargs):
+        self._original_choice_order = deepcopy(kwargs['osid_object_map']['choices'])
+        kwargs['osid_object_map']['multiLanguageChoices'] = deepcopy(kwargs['osid_object_map']['choices'])
+        super(MultiLanguageInlineChoiceQuestionRecord, self).__init__(**kwargs)
+        # if not self._my_map['choices']:
         #     raise IllegalState()
-        choices = self.my_osid_object._my_map['choices']
-        if self.my_osid_object._my_map['shuffle']:
+        choices = self._my_map['choices']
+        if self._my_map['shuffle']:
             for region, region_choices in choices.items():
                 shuffle(region_choices)
                 choices[region] = region_choices
-        self.my_osid_object._my_map['choices'] = choices
+        self._my_map['choices'] = choices
         # Claim authority on this object, until someone else does:
-        self.my_osid_object._authority = MAGIC_AUTHORITY
+        self._authority = MAGIC_AUTHORITY
 
     def get_id(self):
         """override get_id to generate our "magic" ids that encode choice order"""
@@ -811,13 +793,13 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
         # Check first to make sure no one else has claimed authority on my object.
         # This will likely occur when an AssessmentSection returns a Question
         # During an AssessmentSession
-        if self.my_osid_object._authority != MAGIC_AUTHORITY:
-            return self.my_osid_object._item_id
+        if self._authority != MAGIC_AUTHORITY:
+            return self._item_id
             # raise AttributeError
 
         # If not, go ahead and build magic Id:
-        choices = self.my_osid_object._my_map['choices']
-        magic_identifier = quote('{0}?{1}'.format(self.my_osid_object._my_map['_id'],
+        choices = self._my_map['choices']
+        magic_identifier = quote('{0}?{1}'.format(self._my_map['_id'],
                                                   json.dumps(choices)))
         return Id(namespace='assessment.Item',
                   identifier=magic_identifier,
@@ -827,7 +809,7 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
     id_ = property(fget=get_id)
 
     def get_unrandomized_choices(self):
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
         if len(list(self._original_choice_order.keys())) > 0:
             for region, choices in self._original_choice_order.items():
@@ -852,7 +834,7 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
                          "57978959cdfc5c42eefb36cf", "57978959cdfc5c42eefb36ce"]
          }
         """
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
         organized_regions = {}
         for region, choice_ids in choice_ids.items():
@@ -862,15 +844,15 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
                 choice_obj = [c for c in original_region_choices if c['id'] == choice['id']][0]
                 organized_choice_ids.append(choice_obj)
             organized_regions[region] = organized_choice_ids
-        self.my_osid_object._my_map['choices'] = organized_regions
+        self._my_map['choices'] = organized_regions
 
     def get_choices(self):
         """stub"""
         # ideally would return a displayText object in text ... except for legacy
         # use cases like OEA, it expects a text string.
         choices = {}
-        # for region_name, region_choices in self.my_osid_object.object_map['choices'].items():
-        for region_name, region_choices in self.my_osid_object._my_map['choices'].items():
+        # for region_name, region_choices in self.object_map['choices'].items():
+        for region_name, region_choices in self._my_map['choices'].items():
             updated_region_choices = []
             for current_choice in region_choices:
                 filtered_choice = {
@@ -888,18 +870,18 @@ class MultiLanguageInlineChoiceQuestionRecord(MultiLanguageQuestionRecord):
     def get_object_map(self):
         # to get ['text'] from ['texts']
         obj_map = MultiLanguageQuestionRecord.get_object_map(self)
-        # obj_map = dict(self.my_osid_object._my_map)
+        # obj_map = dict(self._my_map)
         # del obj_map['itemId']
         # try:
-        #     lo_ids = self.my_osid_object.get_learning_objective_ids()
+        #     lo_ids = self.get_learning_objective_ids()
         #     obj_map['learningObjectiveIds'] = [str(lo_id) for lo_id in lo_ids]
         # except UnicodeEncodeError:
-        #     lo_ids = self.my_osid_object.get_learning_objective_ids()
+        #     lo_ids = self.get_learning_objective_ids()
         #     obj_map['learningObjectiveIds'] = [unicode(lo_id) for lo_id in lo_ids]
         #
-        # obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
-        # obj_map['id'] = str(self.my_osid_object.get_id())
-        obj_map['choices'] = self.my_osid_object.get_choices()
+        # obj_map = osid_objects.OsidObject.get_object_map(self, obj_map)
+        # obj_map['id'] = str(self.get_id())
+        obj_map['choices'] = self.get_choices()
         return obj_map
 
     object_map = property(fget=get_object_map)
@@ -911,23 +893,24 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
         'inline-choice-text'
     ]
 
-    def __init__(self, osid_object_form):
-        self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(InlineChoiceAnswerFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(InlineChoiceAnswerFormRecord, self).__init__(**kwargs)
+        self._inline_regions_metadata = None
+        self._choice_ids_metadata = None
+        self._choice_id_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['inlineRegions'] = \
+        super(InlineChoiceAnswerFormRecord, self)._init_map(**kwargs)
+        self._my_map['inlineRegions'] = \
             self._inline_regions_metadata['default_object_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(InlineChoiceAnswerFormRecord, self)._init_metadata(**kwargs)
         self._inline_regions_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'inline_regions'),
             'element_label': 'set of inline regions',
             'instructions': 'submit correct choice for answer for each region',
@@ -939,8 +922,8 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
             'syntax': 'OBJECT',
         }
         self._choice_ids_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choice_ids'),
             'element_label': 'response set with inline regions',
             'instructions': 'submit correct choice for answer for each region',
@@ -952,8 +935,8 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
             'syntax': 'OBJECT',
         }
         self._choice_id_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'choice_id'),
             'element_label': 'response set',
             'instructions': 'submit correct choice for answer',
@@ -976,16 +959,16 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
 
     def add_choice_id(self, choice_id, inline_region):
         """stub"""
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region]['choiceIds'].append(choice_id)
+        if inline_region in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region]['choiceIds'].append(choice_id)
         else:
             raise IllegalState('that inline region is invalid')
 
     def set_choice_ids(self, choice_ids, inline_region):
         if not isinstance(choice_ids, list):
             raise IllegalState()
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region]['choiceIds'] = choice_ids
+        if inline_region in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region]['choiceIds'] = choice_ids
         else:
             raise IllegalState('that inline region is invalid')
 
@@ -994,15 +977,15 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
         if (self.get_choice_ids_metadata().is_read_only() or
                 self.get_choice_ids_metadata().is_required()):
             raise NoAccess()
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region]['choiceIds'] = \
+        if inline_region in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region]['choiceIds'] = \
                 deepcopy(self._choice_ids_metadata['default_object_values'][0])
         else:
             raise IllegalState('that inline region is invalid')
 
     def add_inline_region(self, inline_region):
-        if inline_region not in self.my_osid_object_form._my_map['inlineRegions']:
-            self.my_osid_object_form._my_map['inlineRegions'][inline_region] = \
+        if inline_region not in self._my_map['inlineRegions']:
+            self._my_map['inlineRegions'][inline_region] = \
                 {
                     "choiceIds": deepcopy(self._choice_ids_metadata['default_object_values'][0])
             }
@@ -1010,8 +993,8 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
             raise IllegalState('that inline region already exists')
 
     def remove_inline_region(self, inline_region):
-        if inline_region in self.my_osid_object_form._my_map['inlineRegions']:
-            del self.my_osid_object_form._my_map['inlineRegions'][inline_region]
+        if inline_region in self._my_map['inlineRegions']:
+            del self._my_map['inlineRegions'][inline_region]
         else:
             raise IllegalState('that inline region does not exist')
 
@@ -1022,14 +1005,10 @@ class InlineChoiceAnswerRecord(osid_records.OsidRecord,
         'inline-choice-text'
     ]
 
-    def __init__(self, osid_object):
-        self.my_osid_object = osid_object
-        super(InlineChoiceAnswerRecord, self).__init__()
-
     def get_inline_choice_ids(self):
         """stub"""
         return_data = {}
-        for inline_region, data in self.my_osid_object._my_map['inlineRegions'].items():
+        for inline_region, data in self._my_map['inlineRegions'].items():
             return_data[inline_region] = {
                 'choiceIds': IdList(data['choiceIds'])
             }

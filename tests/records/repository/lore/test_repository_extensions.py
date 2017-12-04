@@ -36,8 +36,7 @@ def get_repository_manager():
 class TestLoreRepositoryRecord(unittest.TestCase):
     """Tests for LoreRepositoryRecord"""
 
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['displayName'] = {
             'text': 'Fake Display Name, 123',
@@ -48,14 +47,10 @@ class TestLoreRepositoryRecord(unittest.TestCase):
         obj_map['recordTypeIds'] = ['repository-record-type%3Alore-repo%40ODL.MIT.EDU']
         obj_map['_id'] = 'fake-id'
         rm = get_repository_manager()
-        cls.osid_object = OsidObject(object_name='REPOSITORY',
-                                     osid_object_map=obj_map,
-                                     runtime=rm._provider_manager._runtime)
-        cls.lore_repository = LoreRepositoryRecord(cls.osid_object)
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.osid_object = OsidObject(object_name='REPOSITORY',
+                                      osid_object_map=obj_map,
+                                      runtime=rm._provider_manager._runtime)
+        self.lore_repository = utilities.add_class(self.osid_object, LoreRepositoryRecord)
 
     def test_can_get_id(self):
         """Tests id"""
@@ -82,8 +77,7 @@ class TestLoreRepositoryFormRecord(unittest.TestCase):
 
 
 class TestLoreCourseRepositoryRecord(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['texts'] = {
             'org': {
@@ -96,14 +90,10 @@ class TestLoreCourseRepositoryRecord(unittest.TestCase):
         obj_map['recordTypeIds'] = ['repository-record-type%3Alore-repo%40ODL.MIT.EDU']
         obj_map['_id'] = 'fake-id'
         rm = get_repository_manager()
-        cls.osid_object = OsidObject(object_name='REPOSITORY',
-                                     osid_object_map=obj_map,
-                                     runtime=rm._provider_manager._runtime)
-        cls.lore_repository = LoreCourseRepositoryRecord(cls.osid_object)
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        self.osid_object = OsidObject(object_name='REPOSITORY',
+                                      osid_object_map=obj_map,
+                                      runtime=rm._provider_manager._runtime)
+        self.lore_repository = utilities.add_class(self.osid_object, LoreCourseRepositoryRecord)
 
     def test_can_get_org(self):
         """Tests org"""
@@ -112,35 +102,27 @@ class TestLoreCourseRepositoryRecord(unittest.TestCase):
 
 
 class TestLoreCourseRepositoryFormRecord(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
+        self.form = utilities.add_class(self.osid_object_form, LoreCourseRepositoryFormRecord, initialize=True)
 
     def test_can_set_org(self):
         """Tests set_org"""
-        form = LoreCourseRepositoryFormRecord(self.osid_object_form)
-        self.assertNotIn('org', form.my_osid_object_form._my_map['texts'])
-        form.set_org('foo')
-        self.assertIn('org', form.my_osid_object_form._my_map['texts'])
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['org']['text'], 'foo')
+        self.form.set_org('foo')
+        self.assertIn('org', self.form._my_map['texts'])
+        self.assertEqual(self.form._my_map['texts']['org']['text'], 'foo')
 
     def test_can_clear_org(self):
-        form = LoreCourseRepositoryFormRecord(self.osid_object_form)
-        form.set_org('foo')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['org']['text'], 'foo')
-        form.clear_org()
-        self.assertNotIn('org', form.my_osid_object_form._my_map['texts'])
+        self.form.set_org('foo')
+        self.assertEqual(self.form._my_map['texts']['org']['text'], 'foo')
+        self.form.clear_org()
+        self.assertNotIn('org', self.form._my_map['texts'])
 
     def test_clearing_org_before_set_raises_not_found(self):
-        form = LoreCourseRepositoryFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NotFound):
-            form.clear_org()
+            self.form.clear_org()
 
 
 class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
@@ -204,8 +186,7 @@ class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
 
         return course_repo, run_repo
 
-    @classmethod
-    def setUpClass(cls):
+    def setUp(self):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['texts'] = {
             'platform': {
@@ -228,15 +209,12 @@ class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
             },
         }
         obj_map['recordTypeIds'] = ['repository-record-type%3Arun-repo%40ODL.MIT.EDU']
-        cls.rm = get_repository_manager()
-        cls.osid_object = OsidObject(object_name='REPOSITORY',
-                                     osid_object_map=obj_map,
-                                     runtime=cls.rm._provider_manager._runtime)
-        cls.lore_repository = LoreCourseRunRepositoryRecord(cls.osid_object)
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+        obj_map['_id'] = Id(obj_map['id']).identifier
+        self.rm = get_repository_manager()
+        self.osid_object = OsidObject(object_name='REPOSITORY',
+                                      osid_object_map=obj_map,
+                                      runtime=self.rm._provider_manager._runtime)
+        self.lore_repository = utilities.add_class(self.osid_object, LoreCourseRunRepositoryRecord)
 
     def test_can_get_platform(self):
         """Tests platform"""
@@ -250,7 +228,7 @@ class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        lore_repository = LoreCourseRunRepositoryRecord(osid_object)
+        lore_repository = utilities.add_class(osid_object, LoreCourseRunRepositoryRecord)
         with self.assertRaises(errors.IllegalState):
             lore_repository.platform
 
@@ -266,7 +244,7 @@ class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        lore_repository = LoreCourseRunRepositoryRecord(osid_object)
+        lore_repository = utilities.add_class(osid_object, LoreCourseRunRepositoryRecord)
         with self.assertRaises(errors.IllegalState):
             lore_repository.grading_policy
 
@@ -282,7 +260,7 @@ class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.rm._provider_manager._runtime)
-        lore_repository = LoreCourseRunRepositoryRecord(osid_object)
+        lore_repository = utilities.add_class(osid_object, LoreCourseRunRepositoryRecord)
         with self.assertRaises(errors.IllegalState):
             lore_repository.policy
 
@@ -295,7 +273,7 @@ class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
         form = repo.get_composition_form_for_create([])
         form.set_genus_type(course_genus)
         composition = repo.create_composition(form)
-        self.lore_repository.my_osid_object._my_map['_id'] = repo.ident.identifier
+        self.lore_repository._my_map['_id'] = repo.ident.identifier
         self.assertTrue(isinstance(self.lore_repository.course_node, Composition))
         self.assertEqual(str(self.lore_repository.course_node.genus_type),
                          str(course_genus))
@@ -382,72 +360,59 @@ class TestLoreCourseRunRepositoryRecord(unittest.TestCase):
 
 
 class TestLoreCourseRunRepositoryFormRecord(unittest.TestCase):
-    @classmethod
-    def setUpClass(cls):
-        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
-        cls.osid_object_form._namespace = 'records.Testing'
-
-    @classmethod
-    def tearDownClass(cls):
-        pass
+    def setUp(self):
+        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        self.osid_object_form._authority = 'TESTING.MIT.EDU'
+        self.osid_object_form._namespace = 'records.Testing'
+        self.form = utilities.add_class(self.osid_object_form, LoreCourseRunRepositoryFormRecord, initialize=True)
 
     def test_can_set_platform(self):
         """Tests set_platform"""
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
-        self.assertNotIn('platform', form.my_osid_object_form._my_map['texts'])
-        form.set_platform('FooX')
-        self.assertIn('platform', form.my_osid_object_form._my_map['texts'])
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['platform']['text'], 'FooX')
+        self.assertNotIn('platform', self.form._my_map['texts'])
+        self.form.set_platform('FooX')
+        self.assertIn('platform', self.form._my_map['texts'])
+        self.assertEqual(self.form._my_map['texts']['platform']['text'], 'FooX')
 
     def test_can_clear_platform(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
-        form.set_platform('FooX')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['platform']['text'], 'FooX')
-        form.clear_platform()
-        self.assertNotIn('platform', form.my_osid_object_form._my_map['texts'])
+        self.form.set_platform('FooX')
+        self.assertEqual(self.form._my_map['texts']['platform']['text'], 'FooX')
+        self.form.clear_platform()
+        self.assertNotIn('platform', self.form._my_map['texts'])
 
     def test_clearing_platform_before_set_raises_not_found(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NotFound):
-            form.clear_platform()
+            self.form.clear_platform()
 
     def test_can_set_policy(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
-        self.assertNotIn('policy', form.my_osid_object_form._my_map['texts'])
-        form.set_policy('Stuff was due yesterday')
-        self.assertIn('policy', form.my_osid_object_form._my_map['texts'])
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['policy']['text'], 'Stuff was due yesterday')
+        self.assertNotIn('policy', self.form._my_map['texts'])
+        self.form.set_policy('Stuff was due yesterday')
+        self.assertIn('policy', self.form._my_map['texts'])
+        self.assertEqual(self.form._my_map['texts']['policy']['text'], 'Stuff was due yesterday')
 
     def test_can_clear_policy(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
-        form.set_policy('Stuff was due yesterday')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['policy']['text'], 'Stuff was due yesterday')
-        form.clear_policy()
-        self.assertNotIn('policy', form.my_osid_object_form._my_map['texts'])
+        self.form.set_policy('Stuff was due yesterday')
+        self.assertEqual(self.form._my_map['texts']['policy']['text'], 'Stuff was due yesterday')
+        self.form.clear_policy()
+        self.assertNotIn('policy', self.form._my_map['texts'])
 
     def test_clearing_policy_before_set_raises_not_found(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NotFound):
-            form.clear_policy()
+            self.form.clear_policy()
 
     def test_can_set_grading_policy(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
-        self.assertNotIn('gradingPolicy', form.my_osid_object_form._my_map['texts'])
-        form.set_grading_policy('Everything is worth 100 points')
-        self.assertIn('gradingPolicy', form.my_osid_object_form._my_map['texts'])
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['gradingPolicy']['text'],
+        self.assertNotIn('gradingPolicy', self.form._my_map['texts'])
+        self.form.set_grading_policy('Everything is worth 100 points')
+        self.assertIn('gradingPolicy', self.form._my_map['texts'])
+        self.assertEqual(self.form._my_map['texts']['gradingPolicy']['text'],
                          'Everything is worth 100 points')
 
     def test_can_clear_grading_policy(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
-        form.set_grading_policy('Everything is worth 100 points')
-        self.assertEqual(form.my_osid_object_form._my_map['texts']['gradingPolicy']['text'],
+        self.form.set_grading_policy('Everything is worth 100 points')
+        self.assertEqual(self.form._my_map['texts']['gradingPolicy']['text'],
                          'Everything is worth 100 points')
-        form.clear_grading_policy()
-        self.assertNotIn('gradingPolicy', form.my_osid_object_form._my_map['texts'])
+        self.form.clear_grading_policy()
+        self.assertNotIn('gradingPolicy', self.form._my_map['texts'])
 
     def test_clearing_grading_policy_before_set_raises_not_found(self):
-        form = LoreCourseRunRepositoryFormRecord(self.osid_object_form)
         with self.assertRaises(errors.NotFound):
-            form.clear_grading_policy()
+            self.form.clear_grading_policy()

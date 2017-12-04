@@ -633,7 +633,7 @@ class ResourceSearchSession(abc_resource_sessions.ResourceSearchSession, Resourc
             result = collection.find(query_terms)[resource_search.start:resource_search.end]
         else:
             result = collection.find(query_terms)
-        return searches.ResourceSearchResults(result, dict(resource_query._query_terms), runtime=self._runtime)
+        return searches.ResourceSearchResults(results=result, query_terms=dict(resource_query._query_terms), runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_resource_query_from_inspector(self, resource_query_inspector):
@@ -798,19 +798,16 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         for arg in resource_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if resource_record_types == []:
-            obj_form = objects.ResourceForm(
-                bin_id=self._catalog_id,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
-        else:
-            obj_form = objects.ResourceForm(
-                bin_id=self._catalog_id,
-                record_types=resource_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+        obj_form = objects.ResourceForm(
+            # bin_id=self._catalog_id,
+            record_types=resource_record_types,
+            runtime=self._runtime,
+            # effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(bin_id=self._catalog_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=resource_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -908,6 +905,7 @@ class ResourceAdminSession(abc_resource_sessions.ResourceAdminSession, osid_sess
         result = collection.find_one({'_id': ObjectId(resource_id.get_identifier())})
 
         obj_form = objects.ResourceForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -2459,19 +2457,17 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
         for arg in bin_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if bin_record_types == []:
-            result = objects.BinForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.BinForm(
-                record_types=bin_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        bin_form = objects.BinForm(
+            record_types=bin_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        bin_form._init_metadata()
+        bin_form._init_map(
+            record_types=bin_record_types,
+            effective_agent_id=self.get_effective_agent_id())
+        self._forms[bin_form.get_id().get_identifier()] = not CREATED
+        return bin_form
 
     @utilities.arguments_not_none
     def create_bin(self, bin_form):
@@ -2568,10 +2564,11 @@ class BinAdminSession(abc_resource_sessions.BinAdminSession, osid_sessions.OsidS
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(bin_id.get_identifier())})
 
-        cat_form = objects.BinForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        bin_form = objects.BinForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        bin_form._init_metadata()
+        self._forms[bin_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return bin_form
 
     @utilities.arguments_not_none
     def update_bin(self, bin_form):

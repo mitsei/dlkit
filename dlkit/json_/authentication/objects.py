@@ -104,11 +104,12 @@ class AgentForm(abc_authentication_objects.AgentForm, osid_objects.OsidObjectFor
     _namespace = 'authentication.Agent'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, object_name='AGENT', **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, **kwargs)
         self._mdata = default_mdata.get_agent_mdata()
-        self._init_metadata(**kwargs)
-        if not self.is_for_update():
-            self._init_map(**kwargs)
+        # The following are now being called in the AdminSession:
+        # self._init_metadata(**kwargs)
+        # if not self.is_for_update():
+        #     self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

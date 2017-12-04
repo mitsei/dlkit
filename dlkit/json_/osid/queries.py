@@ -11,6 +11,7 @@
 
 
 import importlib
+import inflection
 import re
 
 
@@ -67,13 +68,9 @@ class OsidQuery(abc_osid_queries.OsidQuery, osid_markers.Suppliable):
     locale appear in the objects.
 
     """
-    def __init__(self, runtime):
-        self._records = OrderedDict()
-        # _load_records is in OsidExtensibleQuery:
-        # _all_supported_record_type_ids comes from inheriting query object
-        # THIS SHOULD BE RE-DONE:
-        self._load_records(self._all_supported_record_type_ids)
-        self._runtime = runtime
+    def __init__(self, runtime=None, **kwargs):
+        # self._load_records(self._all_supported_record_type_ids)
+        # self._runtime = runtime
         self._query_terms = {}
         self._keyword_terms = {}
         self._keyword_fields = ['displayName.text', 'description.text']
@@ -363,20 +360,33 @@ class OsidExtensibleQuery(abc_osid_queries.OsidExtensibleQuery, OsidQuery, osid_
     matching all the given data (eg: AND) are returned.
 
     """
-    def _load_records(self, record_type_idstrs):
-        """Loads query records"""
-        for record_type_idstr in record_type_idstrs:
-            try:
-                self._init_record(record_type_idstr)
-            except (ImportError, KeyError):
-                pass
+    def __new__(cls, osid_object_map=None, runtime=None, **kwargs):
+        object_name = cls._namespace.split('.')[-1]
+        # The following is not optimal since it means the registry is traversed twice:
+        record_types = [Type(data_set) for data_set in utilities.get_registry(
+            inflection.underscore(object_name).upper() + '_RECORD_TYPES',
+            runtime)]
+        return osid_markers.Extensible.__new__(cls, object_name, 'Query', record_types, runtime)
 
-    def _init_record(self, record_type_idstr):
-        """Initializes a query record"""
-        record_type_data = self._all_supported_record_type_data_sets[Id(record_type_idstr).get_identifier()]
-        module = importlib.import_module(record_type_data['module_path'])
-        record = getattr(module, record_type_data['query_record_class_name'])
-        self._records[record_type_idstr] = record(self)
+    def __init__(self, runtime=None, proxy=None, **kwargs):
+        # self._supported_record_type_ids = []
+        self._runtime = runtime
+        self._proxy = proxy
+
+    # def _load_records(self, record_type_idstrs):
+    #     """Loads query records"""
+    #     for record_type_idstr in record_type_idstrs:
+    #         try:
+    #             self._init_record(record_type_idstr)
+    #         except (ImportError, KeyError):
+    #             pass
+    #
+    # def _init_record(self, record_type_idstr):
+    #     """Initializes a query record"""
+    #     record_type_data = self._all_supported_record_type_data_sets[Id(record_type_idstr).get_identifier()]
+    #     module = importlib.import_module(record_type_data['module_path'])
+    #     record = getattr(module, record_type_data['query_record_class_name'])
+    #     self._records[record_type_idstr] = record(self)
 
     @utilities.arguments_not_none
     def match_record_type(self, record_type, match):
@@ -623,6 +633,8 @@ class OsidContainableQuery(abc_osid_queries.OsidContainableQuery, OsidQuery):
 
 class OsidSourceableQuery(abc_osid_queries.OsidSourceableQuery, OsidQuery):
     """The ``OsidSourceableQuery`` is used to assemble search queries for sourceables."""
+    def __init__(self, **kwargs):
+        pass
 
     @utilities.arguments_not_none
     def match_provider_id(self, resource_id, match):
@@ -964,8 +976,9 @@ class OsidObjectQuery(abc_osid_queries.OsidObjectQuery, OsidIdentifiableQuery, O
       ObjectList list = session.getObjectsByQuery(query);
 
     """
-    def __init__(self, runtime):
-        OsidQuery.__init__(self, runtime)
+    def __init__(self, **kwargs):
+        OsidQuery.__init__(self, **kwargs)
+        OsidExtensibleQuery.__init__(self, **kwargs)
 
     @utilities.arguments_not_none
     def match_display_name(self, display_name, string_match_type=DEFAULT_STRING_MATCH_TYPE, match=True):
@@ -1730,6 +1743,9 @@ class OsidRelationshipQuery(abc_osid_queries.OsidRelationshipQuery, OsidObjectQu
 
 class OsidCatalogQuery(abc_osid_queries.OsidCatalogQuery, OsidObjectQuery, OsidSourceableQuery, OsidFederateableQuery):
     """The ``OsidCatalogQuery`` is used to assemble search queries for catalogs."""
+    def __init__(self, **kwargs):
+        OsidObjectQuery.__init__(self, **kwargs)
+        OsidSourceableQuery.__init__(self, **kwargs)
 
 
 class OsidRuleQuery(abc_osid_queries.OsidRuleQuery, OsidObjectQuery, OsidOperableQuery):

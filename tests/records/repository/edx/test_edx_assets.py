@@ -59,12 +59,12 @@ class DummyParent(object):
         })
 
 
-@pytest.fixture(scope="class")
-def edx_asset_content_class_fixture(request):
+@pytest.fixture(scope="function")
+def edx_asset_content_test_fixture(request):
     obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
     request.cls.osid_object = OsidObject(object_name='TEST_OBJECT',
                                          osid_object_map=obj_map)
-    request.cls.asset_content = edXAssetContentRecord(request.cls.osid_object)
+    request.cls.asset_content = utilities.add_class(request.cls.osid_object, edXAssetContentRecord)
 
     request.cls.test_file = open(os.path.join(ABS_PATH,
                                               '..',
@@ -99,22 +99,19 @@ def edx_asset_content_class_fixture(request):
 
     request.cls.asset = request.cls.repo.get_asset(asset.ident)
 
-    def class_tear_down():
-        request.cls.test_file.close()
-        for asset in request.cls.repo.get_assets():
-            request.cls.repo.delete_asset(asset.ident)
-        request.cls.rm.delete_repository(request.cls.repo.ident)
-
-    request.addfinalizer(class_tear_down)
-
-
-@pytest.fixture(scope="function")
-def edx_asset_content_test_fixture(request):
     request.cls.stream = BytesIO()
     request.cls.tarfile = tarfile.open(fileobj=request.cls.stream, mode='w')
 
+    def test_tear_down():
+        request.cls.test_file.close()
+        for asset_ in request.cls.repo.get_assets():
+            request.cls.repo.delete_asset(asset_.ident)
+        request.cls.rm.delete_repository(request.cls.repo.ident)
 
-@pytest.mark.usefixtures('edx_asset_content_class_fixture', 'edx_asset_content_test_fixture')
+    request.addfinalizer(test_tear_down)
+
+
+@pytest.mark.usefixtures('edx_asset_content_test_fixture')
 class TestedXAssetContentRecord(object):
     """ NOTE: for these tests, assume ``TEST_SERVICE_FILESYSTEM`` in get_repository_manager()
               above, so the asset_content URL is something like /api/v1/repository..../stream
@@ -145,7 +142,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         expected_path = 'html/a-fake-parent.xml'
         expected_html_path = 'html/a-fake-parent.html'
@@ -200,7 +197,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         expected_path = 'video/a-fake-parent.xml'
 
@@ -244,7 +241,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         expected_path = 'problem/a-fake-parent.xml'
 
@@ -282,7 +279,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         expected_path = 'discussion/a-fake-parent.xml'
 
@@ -324,7 +321,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         olx = asset_content.get_edxml_with_aws_urls()
 
@@ -352,7 +349,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         olx = asset_content.get_edxml_with_aws_urls()
 
@@ -384,7 +381,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         olx = asset_content.get_edxml_with_aws_urls()
 
@@ -410,7 +407,7 @@ class TestedXAssetContentRecord(object):
         osid_object = OsidObject(object_name='REPOSITORY',
                                  osid_object_map=obj_map,
                                  runtime=self.repo._catalog._runtime)
-        asset_content = edXAssetContentRecord(osid_object)
+        asset_content = utilities.add_class(osid_object, edXAssetContentRecord)
 
         olx = asset_content.get_edxml_with_aws_urls()
 
@@ -616,7 +613,7 @@ class TestedXAssetRecord(object):
                                            'package.Two%3A2%40ODL.MIT.EDU']
         osid_object = OsidObject(object_name='ASSET_CONTENT',
                                  osid_object_map=obj_map)
-        asset = edXAssetRecord(osid_object)
+        asset = utilities.add_class(osid_object, edXAssetRecord)
 
         result = asset.get_learning_objective_ids()
         assert isinstance(result, IdList)
@@ -626,72 +623,75 @@ class TestedXAssetRecord(object):
 
 
 class QueryWrapper(OsidObjectQuery):
-    def __init__(self, runtime=None):
+    _namespace = 'osid.Query'
+
+    def __init__(self, **kwargs):
+        super(QueryWrapper, self).__init__(**kwargs)
         self._all_supported_record_type_ids = []
-        super(QueryWrapper, self).__init__(runtime)
+        self._mdata = {}
 
 
 @pytest.fixture(scope="function")
 def edx_asset_query_test_fixture(request):
     request.cls.osid_query = QueryWrapper()
-    request.cls.query = edXAssetQueryRecord(request.cls.osid_query)
+    request.cls.query = utilities.add_class(request.cls.osid_query, edXAssetQueryRecord)
 
 
 @pytest.mark.usefixtures('edx_asset_query_test_fixture')
 class TestedXAssetQueryRecord(object):
     def test_match_asset_content_genus_type(self):
-        assert self.query._my_osid_query._query_terms == {}
+        assert self.query._query_terms == {}
 
         self.query.match_asset_content_genus_type(Type('fake%3Agenus%40MIT'), True)
-        assert 'assetContents.0.genusTypeId' in self.query._my_osid_query._query_terms
-        assert self.query._my_osid_query._query_terms['assetContents.0.genusTypeId'] == {'$in': ['fake%3Agenus%40MIT']}
+        assert 'assetContents.0.genusTypeId' in self.query._query_terms
+        assert self.query._query_terms['assetContents.0.genusTypeId'] == {'$in': ['fake%3Agenus%40MIT']}
 
     def test_clear_match_asset_content_genus_type(self):
         self.query.match_asset_content_genus_type(Type('fake%3Agenus%40MIT'), True)
-        assert 'assetContents.0.genusTypeId' in self.query._my_osid_query._query_terms
-        assert self.query._my_osid_query._query_terms['assetContents.0.genusTypeId'] == {'$in': ['fake%3Agenus%40MIT']}
+        assert 'assetContents.0.genusTypeId' in self.query._query_terms
+        assert self.query._query_terms['assetContents.0.genusTypeId'] == {'$in': ['fake%3Agenus%40MIT']}
 
         self.query.clear_match_asset_content_genus_type()
 
-        assert self.query._my_osid_query._query_terms == {}
+        assert self.query._query_terms == {}
 
     def test_match_learning_objective(self):
-        assert self.query._my_osid_query._query_terms == {}
+        assert self.query._query_terms == {}
 
         self.query.match_learning_objective(Id('fake%3Aidentifier%40MIT'), True)
-        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
-        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {'$in': ['fake%3Aidentifier%40MIT']}
+        assert 'learningObjectiveIds' in self.query._query_terms
+        assert self.query._query_terms['learningObjectiveIds'] == {'$in': ['fake%3Aidentifier%40MIT']}
 
     def test_clear_match_learning_objective(self):
         self.query.match_learning_objective(Id('fake%3Aidentifier%40MIT'), True)
-        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
-        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {'$in': ['fake%3Aidentifier%40MIT']}
+        assert 'learningObjectiveIds' in self.query._query_terms
+        assert self.query._query_terms['learningObjectiveIds'] == {'$in': ['fake%3Aidentifier%40MIT']}
 
         self.query.clear_match_learning_objective()
 
-        assert self.query._my_osid_query._query_terms == {}
+        assert self.query._query_terms == {}
 
     def test_match_any_learning_objective(self):
-        assert self.query._my_osid_query._query_terms == {}
+        assert self.query._query_terms == {}
 
         self.query.match_any_learning_objective(True)
-        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
-        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {
+        assert 'learningObjectiveIds' in self.query._query_terms
+        assert self.query._query_terms['learningObjectiveIds'] == {
             '$nin': [[], ['']],
             '$exists': 'true'
         }
 
     def test_clear_learning_objective_terms(self):
         self.query.match_any_learning_objective(True)
-        assert 'learningObjectiveIds' in self.query._my_osid_query._query_terms
-        assert self.query._my_osid_query._query_terms['learningObjectiveIds'] == {
+        assert 'learningObjectiveIds' in self.query._query_terms
+        assert self.query._query_terms['learningObjectiveIds'] == {
             '$nin': [[], ['']],
             '$exists': 'true'
         }
 
         self.query.clear_learning_objective_terms()
 
-        assert self.query._my_osid_query._query_terms == {}
+        assert self.query._query_terms == {}
 
     def test_match_composition_descendants(self):
         rm = get_repository_manager()
@@ -716,13 +716,13 @@ class TestedXAssetQueryRecord(object):
         composition = repo.create_composition(form)
 
         query = QueryWrapper(runtime=repo._catalog._runtime)
-        query = edXAssetQueryRecord(query)
+        query = utilities.add_class(query, edXAssetQueryRecord)
 
-        assert '_id' not in query._my_osid_query._query_terms
+        assert '_id' not in query._query_terms
         query.match_composition_descendants(composition.ident, repo.ident, True)
 
-        assert '_id' in query._my_osid_query._query_terms
-        assert query._my_osid_query._query_terms['_id'] == {
+        assert '_id' in query._query_terms
+        assert query._query_terms['_id'] == {
             '$in': [ObjectId(asset.ident.identifier)]
         }
 
@@ -755,18 +755,18 @@ class TestedXAssetQueryRecord(object):
         composition = repo.create_composition(form)
 
         query = QueryWrapper(runtime=repo._catalog._runtime)
-        query = edXAssetQueryRecord(query)
+        query = utilities.add_class(query, edXAssetQueryRecord)
 
         query.match_composition_descendants(composition.ident, repo.ident, True)
 
-        assert '_id' in query._my_osid_query._query_terms
-        assert query._my_osid_query._query_terms['_id'] == {
+        assert '_id' in query._query_terms
+        assert query._query_terms['_id'] == {
             '$in': [ObjectId(asset.ident.identifier)]
         }
 
         query.clear_match_composition_descendants()
 
-        assert '_id' not in query._my_osid_query._query_terms
+        assert '_id' not in query._query_terms
 
         for asset in repo.get_assets():
             repo.delete_asset(asset.ident)

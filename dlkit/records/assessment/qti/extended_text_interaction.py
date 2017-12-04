@@ -18,29 +18,28 @@ class QTIExtendedTextAnswerQuestionFormRecord(ExtendedTextAnswerQuestionFormReco
         'qti-extended-text-interaction'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(QTIExtendedTextAnswerQuestionFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(QTIExtendedTextAnswerQuestionFormRecord, self).__init__(**kwargs)
+        self._max_strings_metadata = None
+        self._expected_length_metadata = None
+        self._expected_lines_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['maxStrings'] = \
+        super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_map(**kwargs)
+        self._my_map['maxStrings'] = \
             self._max_strings_metadata['default_integer_values'][0]
-        self.my_osid_object_form._my_map['expectedLength'] = \
+        self._my_map['expectedLength'] = \
             self._expected_length_metadata['default_integer_values'][0]
-        self.my_osid_object_form._my_map['expectedLines'] = \
+        self._my_map['expectedLines'] = \
             self._expected_lines_metadata['default_integer_values'][0]
-        super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_map()
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata(**kwargs)
         self._max_strings_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'maxStrings'),
             'element_label': 'maxStrings',
             'instructions': 'QTI maxStrings settings',
@@ -56,8 +55,8 @@ class QTIExtendedTextAnswerQuestionFormRecord(ExtendedTextAnswerQuestionFormReco
             'integer_set': []
         }
         self._expected_length_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'expectedLength'),
             'element_label': 'expectedLength',
             'instructions': 'QTI expectedLength setting',
@@ -73,8 +72,8 @@ class QTIExtendedTextAnswerQuestionFormRecord(ExtendedTextAnswerQuestionFormReco
             'integer_set': []
         }
         self._expected_lines_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'expectedLines'),
             'element_label': 'expectedLines',
             'instructions': 'QTI expectedLines setting',
@@ -89,7 +88,6 @@ class QTIExtendedTextAnswerQuestionFormRecord(ExtendedTextAnswerQuestionFormReco
             'maximum_integer': None,
             'integer_set': []
         }
-        super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata()
 
     def get_max_strings_metadata(self):
         """stub"""
@@ -105,38 +103,38 @@ class QTIExtendedTextAnswerQuestionFormRecord(ExtendedTextAnswerQuestionFormReco
 
     def set_max_strings(self, max_strings):
         """stub"""
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 max_strings, self.get_max_strings_metadata()):
             raise InvalidArgument('maxStrings')
-        self.my_osid_object_form._my_map['maxStrings'] = max_strings
+        self._my_map['maxStrings'] = max_strings
 
     def clear_max_strings(self):
         """stub"""
-        self.my_osid_object_form._my_map['maxStrings'] = \
+        self._my_map['maxStrings'] = \
             self._max_strings_metadata['default_integer_values'][0]
 
     def set_expected_length(self, expected_length):
         """stub"""
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 expected_length, self.get_expected_length_metadata()):
             raise InvalidArgument('expectedLength')
-        self.my_osid_object_form._my_map['expectedLength'] = expected_length
+        self._my_map['expectedLength'] = expected_length
 
     def clear_expected_length(self):
         """stub"""
-        self.my_osid_object_form._my_map['expectedLength'] = \
+        self._my_map['expectedLength'] = \
             self._expected_length_metadata['default_integer_values'][0]
 
     def set_expected_lines(self, expected_lines):
         """stub"""
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 expected_lines, self.get_expected_lines_metadata()):
             raise InvalidArgument('expectedLines')
-        self.my_osid_object_form._my_map['expectedLines'] = expected_lines
+        self._my_map['expectedLines'] = expected_lines
 
     def clear_expected_lines(self):
         """stub"""
-        self.my_osid_object_form._my_map['expectedLines'] = \
+        self._my_map['expectedLines'] = \
             self._expected_lines_metadata['default_lines_values'][0]
 
 
@@ -152,32 +150,32 @@ class QTIExtendedTextAnswerQuestionRecord(ExtendedTextAnswerQuestionRecord):
 
     def has_max_strings(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['maxStrings'] is not None)
+        return bool(self._my_map['maxStrings'] is not None)
 
     def get_max_strings(self):
         """stub"""
         if self.has_max_strings():
-            return int(self.my_osid_object._my_map['maxStrings'])
+            return int(self._my_map['maxStrings'])
         raise IllegalState()
 
     def has_expected_length(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['expectedLength'] is not None)
+        return bool(self._my_map['expectedLength'] is not None)
 
     def get_expected_length(self):
         """stub"""
         if self.has_expected_length():
-            return int(self.my_osid_object._my_map['expectedLength'])
+            return int(self._my_map['expectedLength'])
         raise IllegalState()
 
     def has_expected_lines(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['expectedLines'] is not None)
+        return bool(self._my_map['expectedLines'] is not None)
 
     def get_expected_lines(self):
         """stub"""
         if self.has_expected_lines():
-            return int(self.my_osid_object._my_map['expectedLines'])
+            return int(self._my_map['expectedLines'])
         raise IllegalState()
 
     max_strings = property(fget=get_max_strings)
@@ -195,29 +193,28 @@ class MultiLanguageQTIExtendedTextAnswerQuestionFormRecord(MultiLanguageQuestion
         'multi-language-qti-extended-text-interaction'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self).__init__(**kwargs)
+        self._max_strings_metadata = None
+        self._expected_lines_metadata = None
+        self._expected_length_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['maxStrings'] = \
+        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_map(**kwargs)
+        self._my_map['maxStrings'] = \
             self._max_strings_metadata['default_integer_values'][0]
-        self.my_osid_object_form._my_map['expectedLength'] = \
+        self._my_map['expectedLength'] = \
             self._expected_length_metadata['default_integer_values'][0]
-        self.my_osid_object_form._my_map['expectedLines'] = \
+        self._my_map['expectedLines'] = \
             self._expected_lines_metadata['default_integer_values'][0]
-        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_map()
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata(**kwargs)
         self._max_strings_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'maxStrings'),
             'element_label': 'maxStrings',
             'instructions': 'QTI maxStrings settings',
@@ -233,8 +230,8 @@ class MultiLanguageQTIExtendedTextAnswerQuestionFormRecord(MultiLanguageQuestion
             'integer_set': []
         }
         self._expected_length_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'expectedLength'),
             'element_label': 'expectedLength',
             'instructions': 'QTI expectedLength setting',
@@ -250,8 +247,8 @@ class MultiLanguageQTIExtendedTextAnswerQuestionFormRecord(MultiLanguageQuestion
             'integer_set': []
         }
         self._expected_lines_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'expectedLines'),
             'element_label': 'expectedLines',
             'instructions': 'QTI expectedLines setting',
@@ -266,7 +263,6 @@ class MultiLanguageQTIExtendedTextAnswerQuestionFormRecord(MultiLanguageQuestion
             'maximum_integer': None,
             'integer_set': []
         }
-        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata()
 
     def get_max_strings_metadata(self):
         """stub"""
@@ -282,38 +278,38 @@ class MultiLanguageQTIExtendedTextAnswerQuestionFormRecord(MultiLanguageQuestion
 
     def set_max_strings(self, max_strings):
         """stub"""
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 max_strings, self.get_max_strings_metadata()):
             raise InvalidArgument('maxStrings')
-        self.my_osid_object_form._my_map['maxStrings'] = max_strings
+        self._my_map['maxStrings'] = max_strings
 
     def clear_max_strings(self):
         """stub"""
-        self.my_osid_object_form._my_map['maxStrings'] = \
+        self._my_map['maxStrings'] = \
             self._max_strings_metadata['default_integer_values'][0]
 
     def set_expected_length(self, expected_length):
         """stub"""
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 expected_length, self.get_expected_length_metadata()):
             raise InvalidArgument('expectedLength')
-        self.my_osid_object_form._my_map['expectedLength'] = expected_length
+        self._my_map['expectedLength'] = expected_length
 
     def clear_expected_length(self):
         """stub"""
-        self.my_osid_object_form._my_map['expectedLength'] = \
+        self._my_map['expectedLength'] = \
             self._expected_length_metadata['default_integer_values'][0]
 
     def set_expected_lines(self, expected_lines):
         """stub"""
-        if not self.my_osid_object_form._is_valid_integer(
+        if not self._is_valid_integer(
                 expected_lines, self.get_expected_lines_metadata()):
             raise InvalidArgument('expectedLines')
-        self.my_osid_object_form._my_map['expectedLines'] = expected_lines
+        self._my_map['expectedLines'] = expected_lines
 
     def clear_expected_lines(self):
         """stub"""
-        self.my_osid_object_form._my_map['expectedLines'] = \
+        self._my_map['expectedLines'] = \
             self._expected_lines_metadata['default_lines_values'][0]
 
 
@@ -329,32 +325,32 @@ class MultiLanguageQTIExtendedTextAnswerQuestionRecord(MultiLanguageQuestionReco
 
     def has_max_strings(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['maxStrings'] is not None)
+        return bool(self._my_map['maxStrings'] is not None)
 
     def get_max_strings(self):
         """stub"""
         if self.has_max_strings():
-            return int(self.my_osid_object._my_map['maxStrings'])
+            return int(self._my_map['maxStrings'])
         raise IllegalState()
 
     def has_expected_length(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['expectedLength'] is not None)
+        return bool(self._my_map['expectedLength'] is not None)
 
     def get_expected_length(self):
         """stub"""
         if self.has_expected_length():
-            return int(self.my_osid_object._my_map['expectedLength'])
+            return int(self._my_map['expectedLength'])
         raise IllegalState()
 
     def has_expected_lines(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['expectedLines'] is not None)
+        return bool(self._my_map['expectedLines'] is not None)
 
     def get_expected_lines(self):
         """stub"""
         if self.has_expected_lines():
-            return int(self.my_osid_object._my_map['expectedLines'])
+            return int(self._my_map['expectedLines'])
         raise IllegalState()
 
     max_strings = property(fget=get_max_strings)

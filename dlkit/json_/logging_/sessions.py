@@ -926,19 +926,16 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         for arg in log_entry_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if log_entry_record_types == []:
-            obj_form = objects.LogEntryForm(
-                log_id=self._catalog_id,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
-        else:
-            obj_form = objects.LogEntryForm(
-                log_id=self._catalog_id,
-                record_types=log_entry_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)
+        obj_form = objects.LogEntryForm(
+            # log_id=self._catalog_id,
+            record_types=log_entry_record_types,
+            runtime=self._runtime,
+            # effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)
+        obj_form._init_metadata()
+        obj_form._init_map(log_id=self._catalog_id,
+                           effective_agent_id=self.get_effective_agent_id(),
+                           record_types=log_entry_record_types)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -1042,6 +1039,7 @@ class LogEntryAdminSession(abc_logging_sessions.LogEntryAdminSession, osid_sessi
         result = collection.find_one({'_id': ObjectId(log_entry_id.get_identifier())})
 
         obj_form = objects.LogEntryForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -1937,19 +1935,17 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
         for arg in log_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if log_record_types == []:
-            result = objects.LogForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.LogForm(
-                record_types=log_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        log_form = objects.LogForm(
+            record_types=log_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        log_form._init_metadata()
+        log_form._init_map(
+            record_types=log_record_types,
+            effective_agent_id=self.get_effective_agent_id())
+        self._forms[log_form.get_id().get_identifier()] = not CREATED
+        return log_form
 
     @utilities.arguments_not_none
     def create_log(self, log_form):
@@ -2046,10 +2042,11 @@ class LogAdminSession(abc_logging_sessions.LogAdminSession, osid_sessions.OsidSe
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(log_id.get_identifier())})
 
-        cat_form = objects.LogForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        log_form = objects.LogForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        log_form._init_metadata()
+        self._forms[log_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return log_form
 
     @utilities.arguments_not_none
     def update_log(self, log_form):

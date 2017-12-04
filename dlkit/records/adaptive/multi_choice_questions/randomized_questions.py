@@ -103,9 +103,9 @@ class MagicRandomizedMCItemRecord(ItemWithWrongAnswerLOsRecord):
         self._magic_params = None
 
     def get_question(self):
-        question = Question(osid_object_map=self.my_osid_object._my_map['question'],
-                            runtime=self.my_osid_object._runtime,
-                            proxy=self.my_osid_object._proxy)
+        question = Question(osid_object_map=self._my_map['question'],
+                            runtime=self._runtime,
+                            proxy=self._proxy)
         if self._magic_params is not None:
             try:
                 if question.shuffle:
@@ -127,32 +127,22 @@ class MagicRandomizedMCItemFormRecord(osid_records.OsidRecord):
         'magic-randomized-multiple-choice'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        super(MagicRandomizedMCItemFormRecord, self).__init__()
-
 
 class MultiChoiceRandomizeChoicesQuestionFormRecord(MultiChoiceTextAndFilesQuestionFormRecord):
     _implemented_record_type_identifiers = [
         'randomize-choices'
     ]
 
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not osid_object_form.is_for_update():
-            self._init_map()
-        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self).__init__(osid_object_form)
+    def __init__(self, **kwargs):
+        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self).__init__(**kwargs)
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_map()
+        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_map(**kwargs)
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_metadata()
+        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_metadata(**kwargs)
 
 
 class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionRecord):
@@ -160,20 +150,20 @@ class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionR
         'randomize-choices'
     ]
 
-    def __init__(self, osid_object):
-        self._original_choice_order = deepcopy(osid_object._my_map['choices'])
-        super(MultiChoiceRandomizeChoicesQuestionRecord, self).__init__(osid_object)
+    def __init__(self, **kwargs):
+        self._original_choice_order = deepcopy(kwargs['osid_object_map']['choices'])
+        super(MultiChoiceRandomizeChoicesQuestionRecord, self).__init__(**kwargs)
         # it is possible to have no choices set yet --- so don't throw exceptions in that
         #   case
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
-        if ('shuffle' not in self.my_osid_object._my_map or
-                self.my_osid_object._my_map['shuffle']):
-            choices = self.my_osid_object._my_map['choices']
+        if ('shuffle' not in self._my_map or
+                self._my_map['shuffle']):
+            choices = self._my_map['choices']
             shuffle(choices)
-            self.my_osid_object._my_map['choices'] = choices
+            self._my_map['choices'] = choices
         # Claim authority on this object, until someone else does:
-        self.my_osid_object._authority = MAGIC_AUTHORITY
+        self._authority = MAGIC_AUTHORITY
 
     def get_id(self):
         """override get_id to generate our "magic" ids that encode choice order"""
@@ -181,14 +171,14 @@ class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionR
         # Check first to make sure no one else has claimed authority on my object.
         # This will likely occur when an AssessmentSection returns a Question
         # During an AssessmentSession
-        if self.my_osid_object._authority != MAGIC_AUTHORITY:
-            return self.my_osid_object._item_id
+        if self._authority != MAGIC_AUTHORITY:
+            return self._item_id
             # raise AttributeError
 
         # If not, go ahead and build magic Id:
-        choices = self.my_osid_object._my_map['choices']
+        choices = self._my_map['choices']
         choice_ids = [c['id'] for c in choices]
-        magic_identifier = quote('{0}?{1}'.format(self.my_osid_object._my_map['_id'],
+        magic_identifier = quote('{0}?{1}'.format(self._my_map['_id'],
                                                   json.dumps(choice_ids)))
         return Id(namespace='assessment.Item',
                   identifier=magic_identifier,
@@ -198,7 +188,7 @@ class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionR
     id_ = property(fget=get_id)
 
     def get_unrandomized_choices(self):
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
         return self._original_choice_order
 
@@ -207,14 +197,14 @@ class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionR
         ["57978959cdfc5c42eefb36d1", "57978959cdfc5c42eefb36d0",
         "57978959cdfc5c42eefb36cf", "57978959cdfc5c42eefb36ce"]
         """
-        # if not self.my_osid_object._my_map['choices']:
+        # if not self._my_map['choices']:
         #     raise IllegalState()
         organized_choices = []
         for choice_id in choice_ids:
             choice_obj = [c for c in self._original_choice_order if c['id'] == choice_id][0]
             organized_choices.append(choice_obj)
-        self.my_osid_object._my_map['choices'] = organized_choices
+        self._my_map['choices'] = organized_choices
 
     def set_display_label(self, display_label):
         """used to temporarily show a new name, like 1.1.1"""
-        self.my_osid_object._my_map['displayName']['text'] = str(display_label)
+        self._my_map['displayName']['text'] = str(display_label)

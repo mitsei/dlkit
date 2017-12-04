@@ -1026,19 +1026,17 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
         for arg in hierarchy_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if hierarchy_record_types == []:
-            result = objects.HierarchyForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.HierarchyForm(
-                record_types=hierarchy_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        hierarchy_form = objects.HierarchyForm(
+            record_types=hierarchy_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        hierarchy_form._init_metadata()
+        hierarchy_form._init_map(
+            record_types=hierarchy_record_types,
+            effective_agent_id=self.get_effective_agent_id())
+        self._forms[hierarchy_form.get_id().get_identifier()] = not CREATED
+        return hierarchy_form
 
     @utilities.arguments_not_none
     def create_hierarchy(self, hierarchy_form):
@@ -1137,10 +1135,11 @@ class HierarchyAdminSession(abc_hierarchy_sessions.HierarchyAdminSession, osid_s
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(hierarchy_id.get_identifier())})
 
-        cat_form = objects.HierarchyForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        hierarchy_form = objects.HierarchyForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        hierarchy_form._init_metadata()
+        self._forms[hierarchy_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return hierarchy_form
 
     @utilities.arguments_not_none
     def update_hierarchy(self, hierarchy_form):

@@ -25,8 +25,6 @@ class CLIxMagicItemLookupSession(MagicNumericResponseItemLookupSession,
     is no way to figure out which magic session is needed (since get_item_lookup_session
     doesn't have the item_id passed to it)
     """
-    def __init__(self, *args, **kwargs):
-        super(CLIxMagicItemLookupSession, self).__init__(*args, **kwargs)
 
     def get_item(self, item_id):
         authority = item_id.authority

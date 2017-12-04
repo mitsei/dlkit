@@ -38,20 +38,20 @@ class EdXNumericResponseItemRecord(ItemWithWrongAnswerLOsRecord,
 
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return True
         return False
 
     def get_correctness_for_response(self, response):
         """get measure of correctness available for a particular response"""
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
                 except AttributeError:
                     return 100
-        for answer in self.my_osid_object.get_wrong_answers():
+        for answer in self.get_wrong_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
@@ -59,13 +59,13 @@ class EdXNumericResponseItemRecord(ItemWithWrongAnswerLOsRecord,
                     return 0
 
     def get_answer_for_response(self, response):
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return answer
 
         wrong_answers = None
         try:
-            wrong_answers = list(self.my_osid_object.get_wrong_answers())
+            wrong_answers = list(self.get_wrong_answers())
         except AttributeError:
             pass
         else:
@@ -126,17 +126,17 @@ class edXNumericResponseQuestionRecord(edXItemRecord,
 
     def config(self, config):
         """stub"""
-        self.my_osid_object._my_map['text']['text'] = \
+        self._my_map['text']['text'] = \
             self._get_parameterized_text(config['paramaters'])
 
     def has_tolerance_value(self):
         """stub"""
-        return 'tolerance' in self.my_osid_object._my_map['decimalValues']
+        return 'tolerance' in self._my_map['decimalValues']
 
     def get_tolerance_value(self):
         """stub"""
         if self.has_tolerance_value():
-            return self.my_osid_object._my_map['decimalValues']['tolerance']
+            return self._my_map['decimalValues']['tolerance']
         raise IllegalState()
 
     tolerance = property(fget=get_tolerance_value)
@@ -153,27 +153,10 @@ class edXNumericResponseQuestionFormRecord(edXItemFormRecord,
         'numeric-response-edx'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(edXNumericResponseQuestionFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        super(edXNumericResponseQuestionFormRecord, self)._init_map()
-        QuestionTextFormRecord._init_map(self)
-        QuestionFilesFormRecord._init_map(self)
-        self.my_osid_object_form._my_map['text']['text'] = ''
-
-    def _init_metadata(self):
-        """stub"""
-        super(edXNumericResponseQuestionFormRecord, self)._init_metadata()
-        QuestionTextFormRecord._init_metadata(self)
-        QuestionFilesFormRecord._init_metadata(self)
+        super(edXNumericResponseQuestionFormRecord, self)._init_map(**kwargs)
+        self._my_map['text']['text'] = ''
 
 
 class edXNumericResponseAnswerRecord(DecimalAnswerRecord,
@@ -193,9 +176,9 @@ class edXNumericResponseAnswerRecord(DecimalAnswerRecord,
         return self.get_decimal_value('tolerance')
 
     def get_object_map(self):
-        obj_map = dict(self.my_osid_object._my_map)
-        obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
-        obj_map['decimalValue'] = self.my_osid_object.get_decimal()
+        obj_map = dict(self._my_map)
+        obj_map = osid_objects.OsidObject.get_object_map(self, obj_map)
+        obj_map['decimalValue'] = self.get_decimal()
         return obj_map
 
 
@@ -211,31 +194,6 @@ class edXNumericResponseAnswerFormRecord(DecimalAnswerFormRecord,
         'item-text-values',
         'numeric-response-edx'
     ]
-
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(edXNumericResponseAnswerFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """call these all manually because non-cooperative"""
-        DecimalAnswerFormRecord._init_map(self)
-        DecimalValuesFormRecord._init_map(self)
-        TextAnswerFormRecord._init_map(self)
-        TextsFormRecord._init_map(self)
-        super(edXNumericResponseAnswerFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        DecimalAnswerFormRecord._init_metadata(self)
-        DecimalValuesFormRecord._init_metadata(self)
-        TextAnswerFormRecord._init_metadata(self)
-        TextsFormRecord._init_metadata(self)
-        super(edXNumericResponseAnswerFormRecord, self)._init_metadata()
 
     def get_tolerance_metadata(self):
         """stub"""

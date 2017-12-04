@@ -517,19 +517,17 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
         for arg in catalog_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        if catalog_record_types == []:
-            result = objects.CatalogForm(
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        else:
-            result = objects.CatalogForm(
-                record_types=catalog_record_types,
-                runtime=self._runtime,
-                effective_agent_id=self.get_effective_agent_id(),
-                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        self._forms[result.get_id().get_identifier()] = not CREATED
-        return result
+        catalog_form = objects.CatalogForm(
+            record_types=catalog_record_types,
+            runtime=self._runtime,
+            effective_agent_id=self.get_effective_agent_id(),
+            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        catalog_form._init_metadata()
+        catalog_form._init_map(
+            record_types=catalog_record_types,
+            effective_agent_id=self.get_effective_agent_id())
+        self._forms[catalog_form.get_id().get_identifier()] = not CREATED
+        return catalog_form
 
     @utilities.arguments_not_none
     def create_catalog(self, catalog_form):
@@ -627,10 +625,11 @@ class CatalogAdminSession(abc_cataloging_sessions.CatalogAdminSession, osid_sess
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(catalog_id.get_identifier())})
 
-        cat_form = objects.CatalogForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
+        catalog_form = objects.CatalogForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        catalog_form._init_metadata()
+        self._forms[catalog_form.get_id().get_identifier()] = not UPDATED
 
-        return cat_form
+        return catalog_form
 
     @utilities.arguments_not_none
     def update_catalog(self, catalog_form):

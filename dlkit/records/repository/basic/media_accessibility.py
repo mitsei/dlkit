@@ -26,7 +26,7 @@ class AssetContentMultiLanguageAltTextRecord(MultiLanguageUtils, ObjectInitRecor
     ]
 
     def _update_object_map(self, obj_map):
-        obj_map['altText'] = self._dict_display_text(self.my_osid_object.get_alt_text())
+        obj_map['altText'] = self._dict_display_text(self.get_alt_text())
         return obj_map
 
     def get_alt_text(self):
@@ -41,18 +41,15 @@ class AssetContentMultiLanguageAltTextFormRecord(MultiLanguageUtils, osid_record
         'asset-content-alt-text'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(AssetContentMultiLanguageAltTextFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(AssetContentMultiLanguageAltTextFormRecord, self).__init__(**kwargs)
+        self._alt_texts_metadata = None
 
     def _init_metadata(self, **kwargs):
+        super(AssetContentMultiLanguageAltTextFormRecord, self)._init_metadata(**kwargs)
         self._alt_texts_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'alt_text'),
             'element_label': 'Alt Text',
             'instructions': 'Enter as many alt texts as you wish',
@@ -66,7 +63,8 @@ class AssetContentMultiLanguageAltTextFormRecord(MultiLanguageUtils, osid_record
         }
 
     def _init_map(self, **kwargs):
-        self.my_osid_object_form._my_map['altTexts'] = self._alt_texts_metadata['default_object_values'][0]
+        super(AssetContentMultiLanguageAltTextFormRecord, self)._init_map(**kwargs)
+        self._my_map['altTexts'] = self._alt_texts_metadata['default_object_values'][0]
 
     def get_alt_texts_metadata(self):
         """Gets the metadata for all alt_texts.
@@ -76,7 +74,7 @@ class AssetContentMultiLanguageAltTextFormRecord(MultiLanguageUtils, osid_record
 
         """
         metadata = dict(self._alt_texts_metadata)
-        metadata.update({'existing_string_values': [t['text'] for t in self.my_osid_object_form._my_map['altTexts']]})
+        metadata.update({'existing_string_values': [t['text'] for t in self._my_map['altTexts']]})
         return Metadata(**metadata)
 
     alt_texts_metadata = property(fget=get_alt_texts_metadata)
@@ -106,7 +104,7 @@ class AssetContentMultiLanguageAltTextFormRecord(MultiLanguageUtils, osid_record
         """
         if self.get_alt_texts_metadata().is_read_only():
             raise NoAccess()
-        self.my_osid_object_form._my_map['altTexts'] = []
+        self._my_map['altTexts'] = []
 
     @utilities.arguments_not_none
     def remove_alt_text_language(self, language_type):
@@ -131,7 +129,7 @@ class AssetContentMultiLanguageAltTextFormRecord(MultiLanguageUtils, osid_record
         index = self.get_index_of_language_type('altTexts',
                                                 new_alt_text.language_type)
 
-        self.my_osid_object_form._my_map['altTexts'][index] = self._dict_display_text(new_alt_text)
+        self._my_map['altTexts'][index] = self._dict_display_text(new_alt_text)
 
 
 class AssetContentMultiLanguageMediaDescriptionRecord(MultiLanguageUtils, ObjectInitRecord):
@@ -141,7 +139,7 @@ class AssetContentMultiLanguageMediaDescriptionRecord(MultiLanguageUtils, Object
     ]
 
     def _update_object_map(self, obj_map):
-        obj_map['mediaDescription'] = self._dict_display_text(self.my_osid_object.get_media_description())
+        obj_map['mediaDescription'] = self._dict_display_text(self.get_media_description())
         return obj_map
 
     def get_media_description(self):
@@ -156,18 +154,15 @@ class AssetContentMultiLanguageMediaDescriptionFormRecord(MultiLanguageUtils, os
         'asset-content-media-description'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(AssetContentMultiLanguageMediaDescriptionFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(AssetContentMultiLanguageMediaDescriptionFormRecord, self).__init__(**kwargs)
+        self._media_descriptions_metadata = None
 
     def _init_metadata(self, **kwargs):
+        super(AssetContentMultiLanguageMediaDescriptionFormRecord, self)._init_metadata(**kwargs)
         self._media_descriptions_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'media_description'),
             'element_label': 'Media Description',
             'instructions': 'Enter as many media descriptions as you wish',
@@ -181,7 +176,8 @@ class AssetContentMultiLanguageMediaDescriptionFormRecord(MultiLanguageUtils, os
         }
 
     def _init_map(self, **kwargs):
-        self.my_osid_object_form._my_map['mediaDescriptions'] = self._media_descriptions_metadata['default_object_values'][0]
+        super(AssetContentMultiLanguageMediaDescriptionFormRecord, self)._init_map(**kwargs)
+        self._my_map['mediaDescriptions'] = self._media_descriptions_metadata['default_object_values'][0]
 
     def get_media_descriptions_metadata(self):
         """Gets the metadata for all media descriptions.
@@ -191,7 +187,7 @@ class AssetContentMultiLanguageMediaDescriptionFormRecord(MultiLanguageUtils, os
 
         """
         metadata = dict(self._media_descriptions_metadata)
-        metadata.update({'existing_string_values': [t['text'] for t in self.my_osid_object_form._my_map['mediaDescriptions']]})
+        metadata.update({'existing_string_values': [t['text'] for t in self._my_map['mediaDescriptions']]})
         return Metadata(**metadata)
 
     media_descriptions_metadata = property(fget=get_media_descriptions_metadata)
@@ -221,7 +217,7 @@ class AssetContentMultiLanguageMediaDescriptionFormRecord(MultiLanguageUtils, os
         """
         if self.get_media_descriptions_metadata().is_read_only():
             raise NoAccess()
-        self.my_osid_object_form._my_map['mediaDescriptions'] = []
+        self._my_map['mediaDescriptions'] = []
 
     @utilities.arguments_not_none
     def remove_media_description_language(self, language_type):
@@ -246,7 +242,7 @@ class AssetContentMultiLanguageMediaDescriptionFormRecord(MultiLanguageUtils, os
         index = self.get_index_of_language_type('altTexts',
                                                 new_media_description.language_type)
 
-        self.my_osid_object_form._my_map['mediaDescriptions'][index] = self._dict_display_text(new_media_description)
+        self._my_map['mediaDescriptions'][index] = self._dict_display_text(new_media_description)
 
 
 class AssetContentMultiLanguageVTTRecord(FilesRecord):
@@ -257,7 +253,7 @@ class AssetContentMultiLanguageVTTRecord(FilesRecord):
 
     def get_vtt_locale_label(self):
         # Is there a way to derive this from the default language type?
-        locale = self.my_osid_object.get_vtt_locale_identifier()
+        locale = self.get_vtt_locale_identifier()
         if locale == 'HIN':
             return 'Hindi'
         elif locale == 'TEL':
@@ -266,11 +262,11 @@ class AssetContentMultiLanguageVTTRecord(FilesRecord):
 
     def get_vtt_locale_identifier(self):
         locale = DEFAULT_LANGUAGE_TYPE.identifier
-        proxy = self.my_osid_object._proxy
+        proxy = self._proxy
         if proxy.locale is not None:
             locale = proxy.locale.language_type.identifier
 
-        valid_locales = list(self.my_osid_object._my_map['fileIds'].keys())
+        valid_locales = list(self._my_map['fileIds'].keys())
         if locale in valid_locales:
             return locale
         elif DEFAULT_LANGUAGE_TYPE.identifier in valid_locales:
@@ -284,26 +280,26 @@ class AssetContentMultiLanguageVTTRecord(FilesRecord):
 
     def get_vtt_url(self):
         # deprecated method -- don't really use tis
-        locale = self.my_osid_object.get_vtt_locale_identifier()
+        locale = self.get_vtt_locale_identifier()
 
         if locale is not None:
             # Don't use the get_url_by_label method, because we actually
             # Need this to stream via this ID
-            # Calling self.my_osid_object.get_url() throws IllegalState in this case
+            # Calling self.get_url() throws IllegalState in this case
             #   because it doesn't have it's own, actual `url` value.
             # So just call ac.get_url() via filesystem_adapter
-            return self.my_osid_object.get_url()
-            # return self.my_osid_object.get_url_by_label(locale)  # locale here is the label
+            return self.get_url()
+            # return self.get_url_by_label(locale)  # locale here is the label
 
         return ''
 
     vtt_url = property(fget=get_vtt_url)
 
     def get_vtt_text(self):
-        locale = self.my_osid_object.get_vtt_locale_identifier()
+        locale = self.get_vtt_locale_identifier()
 
         if locale is not None:
-            return self.my_osid_object.get_file_by_label(locale).read()  # locale is the label
+            return self.get_file_by_label(locale).read()  # locale is the label
 
         return ''
 
@@ -336,10 +332,10 @@ class AssetContentMultiLanguageVTTFormRecord(FilesFormRecord):
         locale = DEFAULT_LANGUAGE_TYPE.identifier
         if language_type is not None:
             locale = language_type.identifier
-        self.my_osid_object_form.add_file(vtt_file,
-                                          locale,
-                                          asset_name="VTT File Container",
-                                          asset_description="Used by an asset content to manage multi-language VTT files")
+        self.add_file(vtt_file,
+                      locale,
+                      asset_name="VTT File Container",
+                      asset_description="Used by an asset content to manage multi-language VTT files")
 
     def clear_vtt_files(self):
         """Removes all vtt files.
@@ -349,7 +345,7 @@ class AssetContentMultiLanguageVTTFormRecord(FilesFormRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        self.my_osid_object_form.clear_files()
+        self.clear_files()
 
     @utilities.arguments_not_none
     def remove_vtt_file_language(self, language_type):
@@ -360,7 +356,7 @@ class AssetContentMultiLanguageVTTFormRecord(FilesFormRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        self.my_osid_object_form.clear_file(language_type.identifier)
+        self.clear_file(language_type.identifier)
 
     @utilities.arguments_not_none
     def edit_vtt_file(self, new_vtt_file, language_type):
@@ -368,11 +364,11 @@ class AssetContentMultiLanguageVTTFormRecord(FilesFormRecord):
             raise InvalidArgument('new_vtt_file')
         # for now, don't bother with genusTypeIds for the newly created
         # asset or assetContent...supposed to be managed via this one, I think
-        self.my_osid_object_form.clear_file(language_type.identifier)
-        self.my_osid_object_form.add_file(new_vtt_file,
-                                          language_type.identifier,
-                                          asset_name="VTT File Container",
-                                          asset_description="Used by an asset content to manage multi-language VTT files")
+        self.clear_file(language_type.identifier)
+        self.add_file(new_vtt_file,
+                      language_type.identifier,
+                      asset_name="VTT File Container",
+                      asset_description="Used by an asset content to manage multi-language VTT files")
 
 
 class AssetContentMultiLanguageTranscriptRecord(FilesRecord):
@@ -383,7 +379,7 @@ class AssetContentMultiLanguageTranscriptRecord(FilesRecord):
 
     def get_transcript_locale_label(self):
         # Is there a way to derive this from the default language type?
-        locale = self.my_osid_object.get_transcript_locale_identifier()
+        locale = self.get_transcript_locale_identifier()
         if locale == 'HIN':
             return 'वीडियो प्रतिलेख'
         elif locale == 'TEL':
@@ -392,11 +388,11 @@ class AssetContentMultiLanguageTranscriptRecord(FilesRecord):
 
     def get_transcript_locale_identifier(self):
         locale = DEFAULT_LANGUAGE_TYPE.identifier
-        proxy = self.my_osid_object._proxy
+        proxy = self._proxy
         if proxy.locale is not None:
             locale = proxy.locale.language_type.identifier
 
-        valid_locales = list(self.my_osid_object._my_map['fileIds'].keys())
+        valid_locales = list(self._my_map['fileIds'].keys())
         if locale in valid_locales:
             return locale
         elif DEFAULT_LANGUAGE_TYPE.identifier in valid_locales:
@@ -409,10 +405,10 @@ class AssetContentMultiLanguageTranscriptRecord(FilesRecord):
         return None
 
     def get_transcript_text(self):
-        locale = self.my_osid_object.get_transcript_locale_identifier()
+        locale = self.get_transcript_locale_identifier()
 
         if locale is not None:
-            return self.my_osid_object.get_file_by_label(locale).read()  # locale is the label
+            return self.get_file_by_label(locale).read()  # locale is the label
 
         return ''
 
@@ -444,10 +440,10 @@ class AssetContentMultiLanguageTranscriptFormRecord(FilesFormRecord):
         locale = DEFAULT_LANGUAGE_TYPE.identifier
         if language_type is not None:
             locale = language_type.identifier
-        self.my_osid_object_form.add_file(transcript_file,
-                                          locale,
-                                          asset_name="Transcript File Container",
-                                          asset_description="Used by an asset content to manage multi-language Transcript files")
+        self.add_file(transcript_file,
+                      locale,
+                      asset_name="Transcript File Container",
+                      asset_description="Used by an asset content to manage multi-language Transcript files")
 
     def clear_transcript_files(self):
         """Removes all transcript files.
@@ -457,7 +453,7 @@ class AssetContentMultiLanguageTranscriptFormRecord(FilesFormRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        self.my_osid_object_form.clear_files()
+        self.clear_files()
 
     @utilities.arguments_not_none
     def remove_transcript_file_language(self, language_type):
@@ -468,7 +464,7 @@ class AssetContentMultiLanguageTranscriptFormRecord(FilesFormRecord):
         *compliance: mandatory -- This method must be implemented.*
 
         """
-        self.my_osid_object_form.clear_file(language_type.identifier)
+        self.clear_file(language_type.identifier)
 
     @utilities.arguments_not_none
     def edit_transcript_file(self, new_transcript_file, language_type):
@@ -476,8 +472,8 @@ class AssetContentMultiLanguageTranscriptFormRecord(FilesFormRecord):
             raise InvalidArgument('new_transcript_file')
         # for now, don't bother with genusTypeIds for the newly created
         # asset or assetContent...supposed to be managed via this one, I think
-        self.my_osid_object_form.clear_file(language_type.identifier)
-        self.my_osid_object_form.add_file(new_transcript_file,
-                                          language_type.identifier,
-                                          asset_name="Transcript File Container",
-                                          asset_description="Used by an asset content to manage multi-language transcript files")
+        self.clear_file(language_type.identifier)
+        self.add_file(new_transcript_file,
+                      language_type.identifier,
+                      asset_name="Transcript File Container",
+                      asset_description="Used by an asset content to manage multi-language transcript files")

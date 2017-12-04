@@ -35,7 +35,7 @@ class FirstAngleProjectionRecord(ObjectInitRecord):
 
     def is_first_angle_projection(self):
         """stub"""
-        return bool(self.my_osid_object._my_map['firstAngle'])
+        return bool(self._my_map['firstAngle'])
 
 
 class FirstAngleProjectionFormRecord(ObjectInitRecord):
@@ -44,24 +44,22 @@ class FirstAngleProjectionFormRecord(ObjectInitRecord):
         'first-angle-projection'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(FirstAngleProjectionFormRecord, self).__init__(osid_object_form)
+    def __init__(self, **kwargs):
+        super(FirstAngleProjectionFormRecord, self).__init__(**kwargs)
+        self._first_angle_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['firstAngle'] = \
+        super(FirstAngleProjectionFormRecord, self)._init_map(**kwargs)
+        self._my_map['firstAngle'] = \
             self._first_angle_metadata['default_boolean_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(FirstAngleProjectionFormRecord, self)._init_metadata(**kwargs)
         self._first_angle_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'first_angle'),
             'element_label': 'First Angle',
             'instructions': 'set boolean, is this a first angle projection',
@@ -83,16 +81,16 @@ class FirstAngleProjectionFormRecord(ObjectInitRecord):
             raise NullArgument()
         if self.get_first_angle_projection_metadata().is_read_only():
             raise NoAccess()
-        if not self.my_osid_object_form._is_valid_boolean(value):
+        if not self._is_valid_boolean(value):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['firstAngle'] = value
+        self._my_map['firstAngle'] = value
 
     def clear_first_angle_projection(self):
         """stub"""
         if (self.get_first_angle_projection_metadata().is_read_only() or
                 self.get_first_angle_projection_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['firstAngle'] = \
+        self._my_map['firstAngle'] = \
             self._first_angle_metadata['default_boolean_values'][0]
 
     first_angle_projection = property(fset=set_first_angle_projection,
@@ -168,15 +166,6 @@ class BaseInitMixin(QuestionTextAndFilesMixin,
     for _init_map and _init_metadata
 
     """
-    def _init_map(self):
-        """stub"""
-        FirstAngleProjectionFormRecord._init_map(self)
-        super(BaseInitMixin, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        FirstAngleProjectionFormRecord._init_metadata(self)
-        super(BaseInitMixin, self)._init_metadata()
 
 
 class BaseOrthoQuestionFormRecord(BaseInitMixin):
@@ -194,25 +183,16 @@ class BaseOrthoQuestionFormRecord(BaseInitMixin):
         'first-angle-projection'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(BaseOrthoQuestionFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
+    def __init__(self, **kwargs):
+        super(BaseOrthoQuestionFormRecord, self).__init__(**kwargs)
+        self._ortho_view_set_metadata = None
 
-    def _init_map(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(BaseOrthoQuestionFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(BaseOrthoQuestionFormRecord, self)._init_metadata()
+        super(BaseOrthoQuestionFormRecord, self)._init_metadata(**kwargs)
         self._ortho_view_set_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'ortho_view_set'),
             'element_label': 'Orthographic View Set',
             'instructions': '',
@@ -345,20 +325,20 @@ class LabelOrthoFacesItemRecord(ObjectInitRecord):
 
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return True
         return False
 
     def get_correctness_for_response(self, response):
         """get measure of correctness available for a particular response"""
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
                 except AttributeError:
                     return 100
-        for answer in self.my_osid_object.get_wrong_answers():
+        for answer in self.get_wrong_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
@@ -366,13 +346,13 @@ class LabelOrthoFacesItemRecord(ObjectInitRecord):
                     return 0
 
     def get_answer_for_response(self, response):
-        for answer in self.my_osid_object.get_answers():
+        for answer in self.get_answers():
             if self._is_match(response, answer):
                 return answer
 
         wrong_answers = None
         try:
-            wrong_answers = list(self.my_osid_object.get_wrong_answers())
+            wrong_answers = list(self.get_wrong_answers())
         except AttributeError:
             pass
         else:
@@ -446,25 +426,16 @@ class LabelOrthoFacesAnswerFormRecord(IntegerAnswersFormRecord):
         'label-ortho-faces'
     ]
 
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(LabelOrthoFacesAnswerFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
+    def __init__(self, **kwargs):
+        super(LabelOrthoFacesAnswerFormRecord, self).__init__(**kwargs)
+        self._face_values_metadata = None
 
-    def _init_map(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(LabelOrthoFacesAnswerFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(LabelOrthoFacesAnswerFormRecord, self)._init_metadata()
+        super(LabelOrthoFacesAnswerFormRecord, self)._init_metadata(**kwargs)
         self._face_values_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'face_values'),
             'element_label': 'Orthographic Face Values',
             'instructions': '',
@@ -550,25 +521,16 @@ class EulerRotationAnswerFormRecord(IntegerAnswersFormRecord):
         'euler-rotation'
     ]
 
-    def __init__(self, osid_object_form):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(EulerRotationAnswerFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
+    def __init__(self, **kwargs):
+        super(EulerRotationAnswerFormRecord, self).__init__(**kwargs)
+        self._euler_rotation_metadata = None
 
-    def _init_map(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(EulerRotationAnswerFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(EulerRotationAnswerFormRecord, self)._init_metadata()
+        super(EulerRotationAnswerFormRecord, self)._init_metadata(**kwargs)
         self._euler_rotation_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'angle_values'),
             'element_label': 'Euler Angle Values',
             'instructions': 'Provide X, Y, and Z euler angle rotation values',

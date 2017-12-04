@@ -60,11 +60,11 @@ class PDFPreviewRecord(FilesRecord):
         """stub"""
         # I had to add the following check because file record types don't seem to be implemented
         # correctly for raw edx Question objects
-        if ('fileIds' not in self.my_osid_object._my_map or
-                'preview' not in self.my_osid_object._my_map['fileIds'] or
-                self.my_osid_object._my_map['fileIds']['preview'] is None):
+        if ('fileIds' not in self._my_map or
+                'preview' not in self._my_map['fileIds'] or
+                self._my_map['fileIds']['preview'] is None):
             return False
-        return bool(self.my_osid_object._my_map['fileIds']['preview'])
+        return bool(self._my_map['fileIds']['preview'])
 
     def get_preview(self):
         """stub"""
@@ -88,24 +88,16 @@ class PDFPreviewFormRecord(FilesFormRecord):
         'mecqbank-pdf-preview'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(PDFPreviewFormRecord, self).__init__(osid_object_form=osid_object_form)
+    def __init__(self, **kwargs):
+        super(PDFPreviewFormRecord, self).__init__(**kwargs)
+        self._preview_metadata = None
 
-    def _init_map(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
-        super(PDFPreviewFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        super(PDFPreviewFormRecord, self)._init_metadata()
+        super(PDFPreviewFormRecord, self)._init_metadata(**kwargs)
         self._preview_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'file'),
             'element_label': 'File',
             'instructions': 'accepts an Asset Id',
@@ -137,21 +129,21 @@ class PDFPreviewFormRecord(FilesFormRecord):
     def clear_preview(self):
         """stub"""
         try:
-            rm = self.my_osid_object._get_provider_manager('REPOSITORY')
+            rm = self._get_provider_manager('REPOSITORY')
         except AttributeError:
-            rm = self.my_osid_object_form._get_provider_manager('REPOSITORY')
+            rm = self._get_provider_manager('REPOSITORY')
         try:
             aas = rm.get_asset_admin_session_for_repository(
-                Id(self.my_osid_object._my_map['assignedBankIds'][0]))
+                Id(self._my_map['assignedBankIds'][0]))
         except AttributeError:
             # for update forms
             aas = rm.get_asset_admin_session_for_repository(
-                Id(self.my_osid_object_form._my_map['assignedBankIds'][0]))
-        if 'preview' not in self.my_osid_object_form._my_map['fileIds']:
+                Id(self._my_map['assignedBankIds'][0]))
+        if 'preview' not in self._my_map['fileIds']:
             raise NotFound()
         aas.delete_asset(
-            Id(self.my_osid_object_form._my_map['fileIds']['preview']['assetId']))
-        del self.my_osid_object_form._my_map['fileIds']['preview']
+            Id(self._my_map['fileIds']['preview']['assetId']))
+        del self._my_map['fileIds']['preview']
 
 
 class SimpleDifficultyItemRecord(TextsRecord):
@@ -163,12 +155,12 @@ class SimpleDifficultyItemRecord(TextsRecord):
 
     def has_difficulty_value(self):
         """stub"""
-        return 'difficulty' in self.my_osid_object._my_map['texts']
+        return 'difficulty' in self._my_map['texts']
 
     def get_difficulty_value(self):
         """stub"""
         if self.has_difficulty_value():
-            return self.my_osid_object._my_map['texts']['difficulty']['text']
+            return self._my_map['texts']['difficulty']['text']
         raise IllegalState()
 
     difficulty = property(fget=get_difficulty_value)
@@ -181,29 +173,24 @@ class SimpleDifficultyItemFormRecord(TextsFormRecord):
         'texts-record'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(SimpleDifficultyItemFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """stub"""
-        super(SimpleDifficultyItemFormRecord, self)._init_map()
-        self.my_osid_object_form._my_map['texts']['difficulty'] = \
-            self._difficulty_metadata['default_string_values'][0]
-
-    def _init_metadata(self):
-        """stub"""
-        super(SimpleDifficultyItemFormRecord, self)._init_metadata()
+    def __init__(self, **kwargs):
+        super(SimpleDifficultyItemFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
+        self._difficulty_metadata = None
+
+    def _init_map(self, **kwargs):
+        """stub"""
+        super(SimpleDifficultyItemFormRecord, self)._init_map(**kwargs)
+        self._my_map['texts']['difficulty'] = \
+            self._difficulty_metadata['default_string_values'][0]
+
+    def _init_metadata(self, **kwargs):
+        """stub"""
+        super(SimpleDifficultyItemFormRecord, self)._init_metadata(**kwargs)
         self._difficulty_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'text'),
             'element_label': 'Text',
             'instructions': 'enter a text string',
@@ -233,14 +220,14 @@ class SimpleDifficultyItemFormRecord(TextsFormRecord):
             raise InvalidArgument('difficulty value must be a string')
         if difficulty.lower() not in ['low', 'medium', 'hard']:
             raise InvalidArgument('difficulty value must be low, medium, or hard')
-        self.my_osid_object_form._my_map['texts']['difficulty']['text'] = difficulty
+        self._my_map['texts']['difficulty']['text'] = difficulty
 
     def clear_difficulty(self):
         """stub"""
         if (self.get_difficulty_metadata().is_read_only() or
                 self.get_difficulty_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['texts']['difficulty'] = \
+        self._my_map['texts']['difficulty'] = \
             self._difficulty_metadata['default_string_values'][0]
 
 
@@ -248,11 +235,11 @@ class SimpleDifficultyItemQueryRecord(QueryInitRecord):
     """make difficulty a queryable field"""
     def match_difficulty(self, value):
         """stub"""
-        self._my_osid_query._add_match('texts.difficulty', str(value).lower(), True)
+        self._add_match('texts.difficulty', str(value).lower(), True)
 
     def clear_match_difficulty(self):
         """stub"""
-        self._my_osid_query._add_match('texts.difficulty')
+        self._add_match('texts.difficulty')
 
 
 class SourceItemRecord(TextsRecord):
@@ -264,12 +251,12 @@ class SourceItemRecord(TextsRecord):
 
     def has_source_value(self):
         """stub"""
-        return 'source' in self.my_osid_object._my_map['texts']
+        return 'source' in self._my_map['texts']
 
     def get_source_value(self):
         """stub"""
         if self.has_source_value():
-            return self.my_osid_object._my_map['texts']['source']['text']
+            return self._my_map['texts']['source']['text']
         raise IllegalState()
 
     source = property(fget=get_source_value)
@@ -282,29 +269,24 @@ class SourceItemFormRecord(TextsFormRecord):
         'texts-record'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(SourceItemFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """stub"""
-        super(SourceItemFormRecord, self)._init_map()
-        self.my_osid_object_form._my_map['texts']['source'] = \
-            self._source_metadata['default_string_values'][0]
-
-    def _init_metadata(self):
-        """stub"""
-        super(SourceItemFormRecord, self)._init_metadata()
+    def __init__(self, **kwargs):
+        super(SourceItemFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
+        self._source_metadata = None
+
+    def _init_map(self, **kwargs):
+        """stub"""
+        super(SourceItemFormRecord, self)._init_map(**kwargs)
+        self._my_map['texts']['source'] = \
+            self._source_metadata['default_string_values'][0]
+
+    def _init_metadata(self, **kwargs):
+        """stub"""
+        super(SourceItemFormRecord, self)._init_metadata(**kwargs)
         self._source_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'text'),
             'element_label': 'Text',
             'instructions': 'enter a text string',
@@ -332,14 +314,14 @@ class SourceItemFormRecord(TextsFormRecord):
         """stub"""
         if not is_string(source):
             raise InvalidArgument('source value must be a string')
-        self.my_osid_object_form._my_map['texts']['source']['text'] = source
+        self._my_map['texts']['source']['text'] = source
 
     def clear_source(self):
         """stub"""
         if (self.get_source_metadata().is_read_only() or
                 self.get_source_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['texts']['source'] = \
+        self._my_map['texts']['source'] = \
             self._source_metadata['default_string_values'][0]
 
 
@@ -348,11 +330,11 @@ class SourceItemQueryRecord(QueryInitRecord):
 
     def match_source(self, value):
         """stub"""
-        self._my_osid_query._add_match('texts.source', str(value), True)
+        self._add_match('texts.source', str(value), True)
 
     def clear_match_source(self):
         """stub"""
-        self._my_osid_query._add_match('texts.source')
+        self._add_match('texts.source')
 
 
 class PublishedRecord(ObjectInitRecord):
@@ -363,9 +345,9 @@ class PublishedRecord(ObjectInitRecord):
 
     def is_published(self):
         """stub"""
-        if 'published' not in self.my_osid_object._my_map:
+        if 'published' not in self._my_map:
             return False
-        return bool(self.my_osid_object._my_map['published'])
+        return bool(self._my_map['published'])
 
     published = property(fget=is_published)
 
@@ -376,24 +358,22 @@ class PublishedFormRecord(osid_records.OsidRecord):
         'mecqbank-published'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(PublishedFormRecord, self).__init__()
+    def __init__(self, **kwargs):
+        super(PublishedFormRecord, self).__init__(**kwargs)
+        self._published_metadata = None
 
-    def _init_map(self):
+    def _init_map(self, **kwargs):
         """stub"""
-        self.my_osid_object_form._my_map['published'] = \
+        super(PublishedFormRecord, self)._init_map(**kwargs)
+        self._my_map['published'] = \
             self._published_metadata['default_published_values'][0]
 
-    def _init_metadata(self):
+    def _init_metadata(self, **kwargs):
         """stub"""
+        super(PublishedFormRecord, self)._init_metadata(**kwargs)
         self._published_metadata = {
-            'element_id': Id(self.my_osid_object_form._authority,
-                             self.my_osid_object_form._namespace,
+            'element_id': Id(self._authority,
+                             self._namespace,
                              'published'),
             'element_label': 'Published',
             'instructions': 'flags if item is published or not',
@@ -415,16 +395,16 @@ class PublishedFormRecord(osid_records.OsidRecord):
             raise NullArgument()
         if self.get_published_metadata().is_read_only():
             raise NoAccess()
-        if not self.my_osid_object_form._is_valid_boolean(value):
+        if not self._is_valid_boolean(value):
             raise InvalidArgument()
-        self.my_osid_object_form._my_map['published'] = value
+        self._my_map['published'] = value
 
     def clear_published(self):
         """stub"""
         if (self.get_published_metadata().is_read_only() or
                 self.get_published_metadata().is_required()):
             raise NoAccess()
-        self.my_osid_object_form._my_map['published'] = \
+        self._my_map['published'] = \
             self._published_metadata['default_published_values'][0]
 
     published = property(fset=set_published, fdel=clear_published)
@@ -436,21 +416,3 @@ class MecQBankBaseMixin(SimpleDifficultyItemFormRecord,
                         PublishedFormRecord,
                         ProvenanceFormRecord):
     """to make this cooperative with super()"""
-
-    def _init_map(self):
-        """stub"""
-        SimpleDifficultyItemFormRecord._init_map(self)
-        SourceItemFormRecord._init_map(self)
-        PDFPreviewFormRecord._init_map(self)
-        PublishedFormRecord._init_map(self)
-        ProvenanceFormRecord._init_map(self)
-        super(MecQBankBaseMixin, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        SimpleDifficultyItemFormRecord._init_metadata(self)
-        SourceItemFormRecord._init_metadata(self)
-        PDFPreviewFormRecord._init_metadata(self)
-        PublishedFormRecord._init_metadata(self)
-        ProvenanceFormRecord._init_metadata(self)
-        super(MecQBankBaseMixin, self)._init_metadata()

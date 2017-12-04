@@ -14,18 +14,18 @@ class ProvenanceAssetRecord(ProvenanceRecord):
         if self.has_provenance():
             collection = JSONClientValidated('repository',
                                              collection='Asset',
-                                             runtime=self.my_osid_object._runtime)
+                                             runtime=self._runtime)
             result = collection.find_one({'_id': ObjectId(Id(self.get_provenance_id()).get_identifier())})
             return Asset(osid_object_map=result,
-                         runtime=self.my_osid_object._runtime,
-                         proxy=self.my_osid_object._proxy)
+                         runtime=self._runtime,
+                         proxy=self._proxy)
         raise IllegalState("Asset has no provenance parent.")
 
     def has_provenance_children(self):
         collection = JSONClientValidated('repository',
                                          collection='Asset',
-                                         runtime=self.my_osid_object._runtime)
-        if collection.find({'provenanceId': self.my_osid_object.object_map['id']}).count() > 0:
+                                         runtime=self._runtime)
+        if collection.find({'provenanceId': self.object_map['id']}).count() > 0:
             return True
         else:
             return False
@@ -34,11 +34,11 @@ class ProvenanceAssetRecord(ProvenanceRecord):
         if self.has_provenance_children():
             collection = JSONClientValidated('repository',
                                              collection='Asset',
-                                             runtime=self.my_osid_object._runtime)
-            result = collection.find({'provenanceId': self.my_osid_object.object_map['id']})
+                                             runtime=self._runtime)
+            result = collection.find({'provenanceId': self.object_map['id']})
             return AssetList(result,
-                             runtime=self.my_osid_object._runtime,
-                             proxy=self.my_osid_object._proxy)
+                             runtime=self._runtime,
+                             proxy=self._proxy)
         raise IllegalState('No provenance children.')
 
     provenance_children = property(fget=get_provenance_children)
@@ -50,18 +50,18 @@ class ProvenanceCompositionRecord(ProvenanceRecord):
         if self.has_provenance():
             collection = JSONClientValidated('repository',
                                              collection='Composition',
-                                             runtime=self.my_osid_object._runtime)
+                                             runtime=self._runtime)
             result = collection.find_one({'_id': ObjectId(Id(self.get_provenance_id()).get_identifier())})
             return Asset(osid_object_map=result,
-                         runtime=self.my_osid_object._runtime,
-                         proxy=self.my_osid_object._proxy)
+                         runtime=self._runtime,
+                         proxy=self._proxy)
         raise IllegalState("Composition has no provenance parent.")
 
     def has_provenance_children(self):
         collection = JSONClientValidated('repository',
                                          collection='Composition',
-                                         runtime=self.my_osid_object._runtime)
-        if collection.find({'provenanceId': self.my_osid_object.object_map['id']}).count() > 0:
+                                         runtime=self._runtime)
+        if collection.find({'provenanceId': self.object_map['id']}).count() > 0:
             return True
         else:
             return False
@@ -70,11 +70,11 @@ class ProvenanceCompositionRecord(ProvenanceRecord):
         if self.has_provenance_children():
             collection = JSONClientValidated('repository',
                                              collection='Composition',
-                                             runtime=self.my_osid_object._runtime)
-            result = collection.find({'provenanceId': self.my_osid_object.object_map['id']})
+                                             runtime=self._runtime)
+            result = collection.find({'provenanceId': self.object_map['id']})
             return AssetList(result,
-                             runtime=self.my_osid_object._runtime,
-                             proxy=self.my_osid_object._proxy)
+                             runtime=self._runtime,
+                             proxy=self._proxy)
         raise IllegalState('No provenance children.')
 
     provenance_children = property(fget=get_provenance_children)

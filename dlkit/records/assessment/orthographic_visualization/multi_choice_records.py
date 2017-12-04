@@ -131,27 +131,6 @@ class MultiChoiceOrthoQuestionFormRecord(BaseInitMixin,
         'first-angle-projection'
     ]
 
-    def __init__(self, osid_object_form=None):
-        if osid_object_form is not None:
-            self.my_osid_object_form = osid_object_form
-        self._init_metadata()
-        if not self.my_osid_object_form.is_for_update():
-            self._init_map()
-        super(MultiChoiceOrthoQuestionFormRecord, self).__init__(
-            osid_object_form=osid_object_form)
-
-    def _init_map(self):
-        """stub"""
-        QuestionFilesFormRecord._init_map(self)
-        FirstAngleProjectionFormRecord._init_map(self)
-        super(MultiChoiceOrthoQuestionFormRecord, self)._init_map()
-
-    def _init_metadata(self):
-        """stub"""
-        QuestionFilesFormRecord._init_metadata(self)
-        FirstAngleProjectionFormRecord._init_metadata(self)
-        super(MultiChoiceOrthoQuestionFormRecord, self)._init_metadata()
-
     def get_manip_metadata(self):
         """stub"""
         return self.get_file_metadata()
