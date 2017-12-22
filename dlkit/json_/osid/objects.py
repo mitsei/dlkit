@@ -148,7 +148,7 @@ class OsidObject(abc_osid_objects.OsidObject, osid_markers.Identifiable, osid_ma
         #             pass
         # except AttributeError:
         #     pass
-        for record_class in self.__class__.__bases__[1:]:
+        for record_class in self.__class__.__bases__:
             try:
                 record_class._update_object_map(self, obj_map)
             except AttributeError:
