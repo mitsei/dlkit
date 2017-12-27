@@ -182,12 +182,14 @@ class EnclosureQueryRecord(QueryInitRecord):
 class EnclosureFormRecord(ProvenanceFormRecord, osid_records.OsidRecord):
 
     def __init__(self, **kwargs):
-        super(EnclosureFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(EnclosureFormRecord, self).__init__(**kwargs)
         self._enclosed_object_metadata = None
 
     def _init_metadata(self, **kwargs):
         """Initialize metadata for this record"""
-        super(EnclosureFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(EnclosureFormRecord, self)._init_metadata(**kwargs)
         self._enclosed_object_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -205,7 +207,8 @@ class EnclosureFormRecord(ProvenanceFormRecord, osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         """Initialize osid objects _my_map for this record"""
-        super(EnclosureFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(EnclosureFormRecord, self)._init_map(**kwargs)
         self._my_map['enclosedObjectId'] = \
             self._enclosed_object_metadata['default_id_values'][0]
 

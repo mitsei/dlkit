@@ -33,13 +33,15 @@ class AssessmentPartWithLearningObjectiveFormRecord(ObjectInitRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(AssessmentPartWithLearningObjectiveFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(AssessmentPartWithLearningObjectiveFormRecord, self).__init__(**kwargs)
         self._learning_objective_id_metadata = None
         self._minimum_proficiency_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(AssessmentPartWithLearningObjectiveFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(AssessmentPartWithLearningObjectiveFormRecord, self)._init_map(**kwargs)
         self._my_map['learningObjectiveId'] = \
             str(self._learning_objective_id_metadata['default_id_values'][0])
         self._my_map['minimumProficiency'] = \
@@ -47,7 +49,8 @@ class AssessmentPartWithLearningObjectiveFormRecord(ObjectInitRecord):
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(AssessmentPartWithLearningObjectiveFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(AssessmentPartWithLearningObjectiveFormRecord, self)._init_metadata(**kwargs)
         self._learning_objective_id_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

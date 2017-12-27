@@ -292,17 +292,20 @@ class edXAssetFormRecord(TextsFormRecord, ProvenanceFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(edXAssetFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXAssetFormRecord, self).__init__(**kwargs)
         self._learning_objective_ids_metadata = None
 
     def _init_map(self, **kwargs):
-        super(edXAssetFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXAssetFormRecord, self)._init_map(**kwargs)
 
         self._my_map['learningObjectiveIds'] = \
             self._learning_objective_ids_metadata['default_string_values'][0]
 
     def _init_metadata(self, **kwargs):
-        super(edXAssetFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXAssetFormRecord, self)._init_metadata(**kwargs)
 
         # ideally this would be type LIST?
         self._learning_objective_ids_metadata = {

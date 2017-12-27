@@ -63,33 +63,38 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
     ]
 
     def __init__(self, **kwargs):
-        super(EdXCompositionFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(EdXCompositionFormRecord, self).__init__(**kwargs)
         self._visible_to_students_metadata = None
         self._draft_metadata = None
         self._learning_objective_ids_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(EdXCompositionFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(EdXCompositionFormRecord, self)._init_map(**kwargs)
 
-        self._my_map['texts']['fileName'] = \
-            self._text_metadata['default_string_values'][0]
-        self._my_map['texts']['format'] = \
-            self._text_metadata['default_string_values'][0]  # homework, exam, lab, etc.
+        if hasattr(self, '_text_metadata'):
+            self._my_map['texts']['fileName'] = \
+                self._text_metadata['default_string_values'][0]
+            self._my_map['texts']['format'] = \
+                self._text_metadata['default_string_values'][0]  # homework, exam, lab, etc.
+            self._my_map['texts']['userPartitionId'] = \
+                self._text_metadata['default_string_values'][0]
+            self._my_map['texts']['org'] = \
+                self._text_metadata['default_string_values'][0]
+
         self._my_map['visibleToStudents'] = \
             self._visible_to_students_metadata['default_boolean_values'][0]
         self._my_map['draft'] = \
             self._draft_metadata['default_boolean_values'][0]
-        self._my_map['texts']['userPartitionId'] = \
-            self._text_metadata['default_string_values'][0]
-        self._my_map['texts']['org'] = \
-            self._text_metadata['default_string_values'][0]
         self._my_map['learningObjectiveIds'] = \
             self._learning_objective_ids_metadata['default_string_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(EdXCompositionFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(EdXCompositionFormRecord, self)._init_metadata(**kwargs)
         self._visible_to_students_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -130,8 +135,8 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
             'array': True,
             'default_string_values': [[]],
             'syntax': 'STRING',
-            'minimum_string_length': self._min_string_length,
-            'maximum_string_length': self._max_string_length,
+            'minimum_string_length': self._min_string_length if hasattr(self, '_min_string_length') else None,
+            'maximum_string_length': self._max_string_length if hasattr(self, '_max_string_length') else None,
             'string_set': []
         }
 

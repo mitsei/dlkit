@@ -19,14 +19,16 @@ class QTIExtendedTextAnswerQuestionFormRecord(ExtendedTextAnswerQuestionFormReco
     ]
 
     def __init__(self, **kwargs):
-        super(QTIExtendedTextAnswerQuestionFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(QTIExtendedTextAnswerQuestionFormRecord, self).__init__(**kwargs)
         self._max_strings_metadata = None
         self._expected_length_metadata = None
         self._expected_lines_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['maxStrings'] = \
             self._max_strings_metadata['default_integer_values'][0]
         self._my_map['expectedLength'] = \
@@ -36,7 +38,8 @@ class QTIExtendedTextAnswerQuestionFormRecord(ExtendedTextAnswerQuestionFormReco
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(QTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata(**kwargs)
         self._max_strings_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -194,14 +197,16 @@ class MultiLanguageQTIExtendedTextAnswerQuestionFormRecord(MultiLanguageQuestion
     ]
 
     def __init__(self, **kwargs):
-        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self).__init__(**kwargs)
         self._max_strings_metadata = None
         self._expected_lines_metadata = None
         self._expected_length_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['maxStrings'] = \
             self._max_strings_metadata['default_integer_values'][0]
         self._my_map['expectedLength'] = \
@@ -211,7 +216,8 @@ class MultiLanguageQTIExtendedTextAnswerQuestionFormRecord(MultiLanguageQuestion
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageQTIExtendedTextAnswerQuestionFormRecord, self)._init_metadata(**kwargs)
         self._max_strings_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
