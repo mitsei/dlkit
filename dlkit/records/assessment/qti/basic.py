@@ -394,7 +394,7 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
             choice_interaction['responseIdentifier'] = 'RESPONSE_1'
             choice_interaction['shuffle'] = self.shuffle
             if str(self.genus_type) in [str(CHOICE_INTERACTION_QUESTION_GENUS),
-                                                       str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS)]:
+                                        str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS)]:
                 choice_interaction['maxChoices'] = '1'
             else:
                 choice_interaction['maxChoices'] = '0'
@@ -496,7 +496,7 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
                     choice_text = self._wrap_xml(choice['text'], 'simpleChoice')
                 else:
                     choice_text = self._wrap_xml(self.get_matching_language_value('texts',
-                                                                                                 dictionary=choice).text,
+                                                                                  dictionary=choice).text,
                                                  'simpleChoice')
                 choice_tag = BeautifulSoup(choice_text, 'xml').simpleChoice
                 choice_tag['identifier'] = choice['id']
@@ -581,7 +581,7 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
                         choice_text = self._wrap_xml(choice['text'], 'inlineChoice')
                     else:
                         choice_text = self._wrap_xml(self.get_matching_language_value('texts',
-                                                                                                     dictionary=choice).text,
+                                                                                      dictionary=choice).text,
                                                      'inlineChoice')
 
                     inline_choice = BeautifulSoup(choice_text, 'xml').inlineChoice
