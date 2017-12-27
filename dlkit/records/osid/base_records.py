@@ -489,12 +489,14 @@ class ProvenanceFormRecord(osid_records.OsidRecord):
     """form to create / update a record's provenance itemId"""
 
     def __init__(self, **kwargs):
-        super(ProvenanceFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ProvenanceFormRecord, self).__init__(**kwargs)
         self._provenance_metadata = None
 
     def _init_metadata(self, **kwargs):
         """initializes form metadata for this record"""
-        super(ProvenanceFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(ProvenanceFormRecord, self)._init_metadata(**kwargs)
         self._provenance_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -514,7 +516,8 @@ class ProvenanceFormRecord(osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         """initializes form map for this record"""
-        super(ProvenanceFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(ProvenanceFormRecord, self)._init_map(**kwargs)
         self._my_map['provenanceId'] = \
             self._provenance_metadata['default_object_values'][0]
         if not self.is_for_update():
@@ -570,18 +573,21 @@ class ResourceFormRecord(osid_records.OsidRecord):
     """basic form record"""
 
     def __init__(self, **kwargs):
-        super(ResourceFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ResourceFormRecord, self).__init__(**kwargs)
         self._resource_id_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(ResourceFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(ResourceFormRecord, self)._init_map(**kwargs)
         self._my_map['resourceId'] = \
             self._resource_id_metadata['default_id_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(ResourceFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(ResourceFormRecord, self)._init_metadata(**kwargs)
         self._resource_id_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -643,20 +649,23 @@ class TextFormRecord(osid_records.OsidRecord):
     """form to create / update the text value"""
 
     def __init__(self, **kwargs):
-        super(TextFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(TextFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
         self._text_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(TextFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(TextFormRecord, self)._init_map(**kwargs)
         self._my_map['text'] = \
             dict(self._text_metadata['default_string_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(TextFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(TextFormRecord, self)._init_metadata(**kwargs)
         self._text_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -726,20 +735,23 @@ class IntegerValueFormRecord(osid_records.OsidRecord):
     """form to create / update an integer value"""
 
     def __init__(self, **kwargs):
-        super(IntegerValueFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(IntegerValueFormRecord, self).__init__(**kwargs)
         self._min_integer_value = None
         self._max_integer_value = None
         self._integer_value_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(IntegerValueFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(IntegerValueFormRecord, self)._init_map(**kwargs)
         self._my_map['integerValue'] = \
             self._integer_value_metadata['default_integer_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(IntegerValueFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(IntegerValueFormRecord, self)._init_map(**kwargs)
         self._integer_value_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -804,20 +816,23 @@ class DecimalValueFormRecord(osid_records.OsidRecord):
     """form to create / update a decimal value"""
 
     def __init__(self, **kwargs):
-        super(DecimalValueFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(DecimalValueFormRecord, self).__init__(**kwargs)
         self._min_decimal_value = None
         self._max_decimal_value = None
         self._decimal_value_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(DecimalValueFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(DecimalValueFormRecord, self)._init_map(**kwargs)
         self._my_map['decimalValue'] = \
             self._decimal_value_metadata['default_decimal_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(DecimalValueFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(DecimalValueFormRecord, self)._init_metadata(**kwargs)
         self._decimal_value_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -896,7 +911,8 @@ class TextsFormRecord(osid_records.OsidRecord):
     """form to create / update text values"""
 
     def __init__(self, **kwargs):
-        super(TextsFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(TextsFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
         self._texts_metadata = None
@@ -905,13 +921,15 @@ class TextsFormRecord(osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(TextsFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(TextsFormRecord, self)._init_map(**kwargs)
         self._my_map['texts'] = \
             dict(self._texts_metadata['default_object_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(TextsFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(TextsFormRecord, self)._init_metadata(**kwargs)
         self._texts_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -1050,7 +1068,8 @@ class IntegerValuesFormRecord(osid_records.OsidRecord):
     """form for create / update of multiple integer values"""
 
     def __init__(self, **kwargs):
-        super(IntegerValuesFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(IntegerValuesFormRecord, self).__init__(**kwargs)
         self._min_integer_value = None
         self._max_integer_value = None
         self._integer_value_metadata = None
@@ -1059,13 +1078,15 @@ class IntegerValuesFormRecord(osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(IntegerValuesFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(IntegerValuesFormRecord, self)._init_map(**kwargs)
         self._my_map['integerValues'] = \
             dict(self._integer_values_metadata['default_object_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(IntegerValuesFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(IntegerValuesFormRecord, self)._init_metadata(**kwargs)
         self._integer_values_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -1187,7 +1208,8 @@ class DecimalValuesFormRecord(osid_records.OsidRecord):
     """form for create / update of multiple decimal values"""
 
     def __init__(self, **kwargs):
-        super(DecimalValuesFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(DecimalValuesFormRecord, self).__init__(**kwargs)
         self._min_decimal_value = None
         self._max_decimal_value = None
         self._decimal_value_metadata = None
@@ -1196,13 +1218,15 @@ class DecimalValuesFormRecord(osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(DecimalValuesFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(DecimalValuesFormRecord, self)._init_map(**kwargs)
         self._my_map['decimalValues'] = \
             dict(self._decimal_values_metadata['default_object_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(DecimalValuesFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(DecimalValuesFormRecord, self)._init_metadata(**kwargs)
         self._decimal_values_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -1357,7 +1381,8 @@ class edXBaseFormRecord(osid_records.OsidRecord):
     """form for create / update of edX metadata fields"""
 
     def __init__(self, **kwargs):
-        super(edXBaseFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXBaseFormRecord, self).__init__(**kwargs)
         self._attempts_metadata = None
         self._showanswer_metadata = None
         self._markdown_metadata = None
@@ -1365,7 +1390,8 @@ class edXBaseFormRecord(osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(edXBaseFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXBaseFormRecord, self)._init_map(**kwargs)
         self._my_map['attempts'] = \
             int(self._attempts_metadata['default_object_values'][0])
         self._my_map['weight'] = \
@@ -1379,7 +1405,8 @@ class edXBaseFormRecord(osid_records.OsidRecord):
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(edXBaseFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXBaseFormRecord, self)._init_metadata(**kwargs)
         self._attempts_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -1582,20 +1609,23 @@ class TimeValueFormRecord(osid_records.OsidRecord):
     """form to create / update the time value"""
 
     def __init__(self, **kwargs):
-        super(TimeValueFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(TimeValueFormRecord, self).__init__(**kwargs)
         self._min_time_value = None
         self._max_time_value = None
         self._time_value_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(TimeValueFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(TimeValueFormRecord, self)._init_map(**kwargs)
         self._my_map['timeValue'] = \
             dict(self._time_value_metadata['default_duration_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(TimeValueFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(TimeValueFormRecord, self)._init_metadata(**kwargs)
         self._time_value_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -1906,20 +1936,23 @@ class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
     """form to create / update attached files"""
 
     def __init__(self, **kwargs):
-        super(FilesFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(FilesFormRecord, self).__init__(**kwargs)
         self._files_metadata = None
         self._file_metadata = None
         self._label_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(FilesFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(FilesFormRecord, self)._init_map(**kwargs)
         self._my_map['fileIds'] = \
             dict(self._files_metadata['default_object_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(FilesFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(FilesFormRecord, self)._init_metadata(**kwargs)
         self._files_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -2157,18 +2190,21 @@ class FileFormRecord(osid_records.OsidRecord, AssetUtils):
     """form for create / update of a single file"""
 
     def __init__(self, **kwargs):
-        super(FileFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(FileFormRecord, self).__init__(**kwargs)
         self._file_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(FileFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(FileFormRecord, self)._init_map(**kwargs)
         self._my_map['fileId'] = \
             dict(self._file_metadata['default_object_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(FileFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(FileFormRecord, self)._init_metadata(**kwargs)
         self._file_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -2300,20 +2336,23 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
     """form to create / update the color of an object"""
 
     def __init__(self, **kwargs):
-        super(ColorCoordinateFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ColorCoordinateFormRecord, self).__init__(**kwargs)
         self._min_decimal_value = None
         self._max_decimal_value = None
         self._color_coordinate_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(ColorCoordinateFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(ColorCoordinateFormRecord, self)._init_map(**kwargs)
         self._my_map['colorCoordinate'] = \
             dict(self._color_coordinate_metadata['default_coordinate_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(ColorCoordinateFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(ColorCoordinateFormRecord, self)._init_metadata(**kwargs)
         self._color_coordinate_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -2362,13 +2401,15 @@ class ColorCoordinateFormRecord(osid_records.OsidRecord):
 class TemporalFormRecord(osid_records.OsidRecord):
     """This form is used to create and update temporals."""
     def __init__(self, **kwargs):
-        super(TemporalFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(TemporalFormRecord, self).__init__(**kwargs)
         self._start_date_metadata = None
         self._end_date_metadata = None
 
     def _init_metadata(self, **kwargs):
         # pylint: disable=attribute-defined-outside-init
-        super(TemporalFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(TemporalFormRecord, self)._init_metadata(**kwargs)
         self._start_date_metadata = {
             'element_id': Id(authority=self._authority,
                              namespace=self._namespace,
@@ -2387,7 +2428,8 @@ class TemporalFormRecord(osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         # pylint: disable=attribute-defined-outside-init
-        super(TemporalFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(TemporalFormRecord, self)._init_map(**kwargs)
         default_start_date = self._start_date_metadata['default_date_time_values'][0]
         self._my_map['startDate'] = DateTime(year=default_start_date.year,
                                                                  month=default_start_date.month,
@@ -2582,7 +2624,8 @@ class SourceableFormRecord(osid_records.OsidRecord):
     """
 
     def __init__(self, **kwargs):
-        super(SourceableFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(SourceableFormRecord, self).__init__(**kwargs)
         self._provider_metadata = None
         self._provider_default = None
         self._branding_default = None
@@ -2591,7 +2634,8 @@ class SourceableFormRecord(osid_records.OsidRecord):
         self._license_metadata = None
 
     def _init_metadata(self, **kwargs):
-        super(SourceableFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(SourceableFormRecord, self)._init_metadata(**kwargs)
         self._provider_metadata = {
             'element_id': Id(authority=self._authority,
                              namespace=self._namespace,
@@ -2614,7 +2658,8 @@ class SourceableFormRecord(osid_records.OsidRecord):
         self._license_default = dict(self._license_metadata['default_string_values'][0])
 
     def _init_map(self, **kwargs):
-        super(SourceableFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(SourceableFormRecord, self)._init_map(**kwargs)
         if 'effective_agent_id' in kwargs:
             try:
                 mgr = self._get_provider_manager('RESOURCE', local=True)
@@ -2877,12 +2922,14 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
     """
 
     def __init__(self, **kwargs):
-        super(MultiLanguageFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageFormRecord, self).__init__(**kwargs)
         self._display_names_metadata = None
         self._descriptions_metadata = None
 
     def _init_metadata(self, **kwargs):
-        super(MultiLanguageFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageFormRecord, self)._init_metadata(**kwargs)
         self._display_names_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -2913,7 +2960,8 @@ class MultiLanguageFormRecord(MultiLanguageUtils,
         }
 
     def _init_map(self, **kwargs):
-        super(MultiLanguageFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageFormRecord, self)._init_map(**kwargs)
         self._my_map['displayNames'] = self._display_names_metadata['default_object_values'][0]
         self._my_map['descriptions'] = self._descriptions_metadata['default_object_values'][0]
 

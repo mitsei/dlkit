@@ -52,13 +52,15 @@ class TimeStampFormRecord(abc_repository_records.AssetContentFormRecord,
     ]
 
     def __init__(self, **kwargs):
-        super(TimeStampFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(TimeStampFormRecord, self).__init__(**kwargs)
         self._start_timestamp_metadata = None
         self._end_timestamp_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(TimeStampFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(TimeStampFormRecord, self)._init_map(**kwargs)
         self._my_map['startTimestamp'] = \
             self._start_timestamp_metadata['default_integer_values'][0]
         self._my_map['endTimestamp'] = \
@@ -66,7 +68,8 @@ class TimeStampFormRecord(abc_repository_records.AssetContentFormRecord,
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(TimeStampFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(TimeStampFormRecord, self)._init_metadata(**kwargs)
         self._start_timestamp_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

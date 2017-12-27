@@ -36,7 +36,7 @@ def add_class(original_object, new_class, initialize=False):
         record schema, where we modify the object's __class__.__bases__ instead of using .my_osid_object,
         this helper method takes care of adding the new record.
 
-    Optional flag to run init_metadata and init_map"""
+    initialize = Optional flag to run init_metadata and init_map"""
     object_name = original_object._namespace.split('.')[-1]
     if 'FormRecord' in str(new_class):
         object_name += 'Form'

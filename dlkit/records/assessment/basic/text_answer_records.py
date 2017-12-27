@@ -48,7 +48,8 @@ class ShortTextAnswerFormRecord(TextAnswerFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(ShortTextAnswerFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ShortTextAnswerFormRecord, self).__init__(**kwargs)
         # Need to call this method after __init__ so that it doesn't get over-written to the default
         self.set_max_string_length(128)
 
@@ -92,7 +93,8 @@ class ShortTextAnswersFormRecord(TextsAnswerFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(ShortTextAnswersFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ShortTextAnswersFormRecord, self).__init__(**kwargs)
         # Need to call this method after __init__ so that it doesn't get over-written to the default
         self.set_max_string_length(128)
 
@@ -134,6 +136,7 @@ class ExtendedTextAnswerFormRecord(TextAnswerFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(ExtendedTextAnswerFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ExtendedTextAnswerFormRecord, self).__init__(**kwargs)
         # Need to call this method after __init__ so that it doesn't get over-written to the default
         self.set_max_string_length(None)

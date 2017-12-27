@@ -29,7 +29,8 @@ class ItemDecimalValuesFormRecord(DecimalValuesFormRecord,
     ]
 
     def __init__(self, **kwargs):
-        super(ItemDecimalValuesFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ItemDecimalValuesFormRecord, self).__init__(**kwargs)
 
 
 class IRTItemRecord(DecimalValuesRecord):
@@ -84,11 +85,13 @@ class IRTItemFormRecord(ItemDecimalValuesFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(IRTItemFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(IRTItemFormRecord, self).__init__(**kwargs)
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(IRTItemFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(IRTItemFormRecord, self)._init_map(**kwargs)
         self._my_map['decimalValues']['difficulty'] = \
             self._decimal_value_metadata['default_decimal_values'][1]
         self._my_map['decimalValues']['discrimination'] = \

@@ -112,7 +112,9 @@ def edx_composition_form_test_fixture(request):
     request.cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
     request.cls.osid_object_form._authority = 'TESTING.MIT.EDU'
     request.cls.osid_object_form._namespace = 'records.Testing'
-    request.cls.form = utilities.add_class(request.cls.osid_object_form, EdXCompositionFormRecord, initialize=True)
+    request.cls.form = utilities.add_class(request.cls.osid_object_form,
+                                           EdXCompositionFormRecord,
+                                           initialize=True)
     request.cls.form._my_map = deepcopy(COMPOSITION_STAMP)
 
 
@@ -120,7 +122,9 @@ def get_edx_composition_form():
     osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
     osid_object_form._authority = 'TESTING.MIT.EDU'
     osid_object_form._namespace = 'records.Testing'
-    form = utilities.add_class(osid_object_form, EdXCompositionFormRecord, initialize=True)
+    form = utilities.add_class(osid_object_form,
+                               EdXCompositionFormRecord,
+                               initialize=True)
     form._my_map.update(deepcopy(COMPOSITION_STAMP))
     return form
 
@@ -291,6 +295,45 @@ class TestEdXCompositionFormRecord(object):
             assert form._my_map['learningObjectiveIds'] == ['1', '2', '3']
             form.clear_learning_objective_ids()
             assert form._my_map['learningObjectiveIds'] == []
+
+    def test_block_super_never_invoked_for_initer(self):
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        osid_object_form._min_string_length = 255
+        osid_object_form._max_string_length = 255
+        form = utilities.add_class(osid_object_form,
+                                   EdXCompositionFormRecord,
+                                   initialize=True)
+        assert form._min_string_length is None
+        assert form._max_string_length is None
+
+    def test_block_super_never_invoked_for_init_metadata(self):
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        form = utilities.add_class(osid_object_form,
+                                   EdXCompositionFormRecord,
+                                   initialize=True)
+        assert hasattr(form, '_text_metadata')
+
+    def test_block_super_never_invoked_for_init_map(self):
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        osid_object_form._my_map['texts'] = {
+            'label': {
+                'text': 'foo'
+            }
+        }
+        form = utilities.add_class(osid_object_form,
+                                   EdXCompositionFormRecord,
+                                   initialize=True)
+        assert not form._my_map['texts'] == {
+            'label': {
+                'text': 'foo'
+            }
+        }
 
 
 class QueryWrapper(OsidObjectQuery):
@@ -1078,3 +1121,38 @@ class TestEdXCourseRunCompositionFormRecord(object):
     def test_clearing_grading_policy_before_set_raises_not_found(self):
         with pytest.raises(errors.NotFound):
             self.form.clear_grading_policy()
+
+    def test_block_super_still_calls_initer_of_texts_superclass(self):
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        osid_object_form._min_string_length = 255
+        osid_object_form._max_string_length = 255
+        form = utilities.add_class(osid_object_form,
+                                   EdXCourseRunCompositionFormRecord,
+                                   initialize=True)
+        assert form._min_string_length is None
+        assert form._max_string_length is None
+
+    def test_block_super_still_calls_init_metadata_of_texts_superclass(self):
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        form = utilities.add_class(osid_object_form,
+                                   EdXCourseRunCompositionFormRecord,
+                                   initialize=True)
+        assert hasattr(form, '_text_metadata')
+
+    def test_block_super_still_calls_init_map_of_texts_superclass(self):
+        osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        osid_object_form._authority = 'TESTING.MIT.EDU'
+        osid_object_form._namespace = 'records.Testing'
+        osid_object_form._my_map['texts'] = {
+            'label': {
+                'text': 'foo'
+            }
+        }
+        form = utilities.add_class(osid_object_form,
+                                   EdXCourseRunCompositionFormRecord,
+                                   initialize=True)
+        assert form._my_map['texts'] == {}

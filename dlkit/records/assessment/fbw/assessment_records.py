@@ -29,18 +29,21 @@ class AssessmentWithFollowOnPhaseFormRecord(ObjectInitRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(AssessmentWithFollowOnPhaseFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(AssessmentWithFollowOnPhaseFormRecord, self).__init__(**kwargs)
         self._follow_on_phase_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(AssessmentWithFollowOnPhaseFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(AssessmentWithFollowOnPhaseFormRecord, self)._init_map(**kwargs)
         self._my_map['hasSpawnedFollowOnPhase'] = \
             bool(self._follow_on_phase_metadata['default_boolean_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(AssessmentWithFollowOnPhaseFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(AssessmentWithFollowOnPhaseFormRecord, self)._init_metadata(**kwargs)
         self._follow_on_phase_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -89,18 +92,21 @@ class GeneratedAssessmentFormRecord(ObjectInitRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(GeneratedAssessmentFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(GeneratedAssessmentFormRecord, self).__init__(**kwargs)
         self._source_assessment_taken_id_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(GeneratedAssessmentFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(GeneratedAssessmentFormRecord, self)._init_map(**kwargs)
         self._my_map['sourceAssessmentTakenId'] = \
             str(self._source_assessment_taken_id_metadata['default_id_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(GeneratedAssessmentFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(GeneratedAssessmentFormRecord, self)._init_metadata(**kwargs)
         self._source_assessment_taken_id_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

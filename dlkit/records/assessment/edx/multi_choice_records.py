@@ -41,7 +41,8 @@ class edXMultiChoiceQuestionRecord(MultiChoiceTextQuestionRecord,
     ]
 
     def __init__(self, **kwargs):
-        super(edXMultiChoiceQuestionRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXMultiChoiceQuestionRecord, self).__init__(**kwargs)
 
         # change my_map
         if ('rerandomize' in self._my_map and
@@ -90,18 +91,21 @@ class edXMultiChoiceQuestionFormRecord(QuestionTextAndFilesMixin,
     ]
 
     def __init__(self, **kwargs):
-        super(edXMultiChoiceQuestionFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXMultiChoiceQuestionFormRecord, self).__init__(**kwargs)
         self._rerandomize_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(edXMultiChoiceQuestionFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXMultiChoiceQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['rerandomize'] = \
             self._rerandomize_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(edXMultiChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(edXMultiChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
         self._rerandomize_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

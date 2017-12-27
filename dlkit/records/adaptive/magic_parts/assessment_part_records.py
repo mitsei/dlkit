@@ -454,7 +454,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
     ]
 
     def __init__(self, **kwargs):
-        super(ScaffoldDownAssessmentPartFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(ScaffoldDownAssessmentPartFormRecord, self).__init__(**kwargs)
         self._item_ids_metadata = None
         self._learning_objective_ids_metadata = None
         self._max_levels_metadata = None
@@ -464,7 +465,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
         self._allow_repeat_items_metadata = None
 
     def _init_metadata(self, **kwargs):
-        super(ScaffoldDownAssessmentPartFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(ScaffoldDownAssessmentPartFormRecord, self)._init_metadata(**kwargs)
         self._item_ids_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -571,7 +573,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(ScaffoldDownAssessmentPartFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(ScaffoldDownAssessmentPartFormRecord, self)._init_map(**kwargs)
         self._my_map['itemIds'] = \
             [str(self._item_ids_metadata['default_id_values'][0])]
         self._my_map['learningObjectiveIds'] = \

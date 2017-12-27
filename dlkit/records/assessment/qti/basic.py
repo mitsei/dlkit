@@ -214,9 +214,9 @@ class QTIFormWithMediaFiles(object):
         media_file_elements += media_file_data_elements
         if len(media_file_elements) > 0 and media_files is not None:
             if 'Question' in self._namespace:
-                self.get_question_form_record(FILES_QUESTION_RECORD)
+                self.add_form_record(FILES_QUESTION_RECORD)
             else:
-                self.get_answer_form_record(FILES_ANSWER_RECORD)
+                self.add_form_record(FILES_ANSWER_RECORD)
 
             for media_file_element in media_file_elements:
                 if 'src' in media_file_element.attrs:
@@ -237,12 +237,12 @@ class QTIFormWithMediaFiles(object):
                 # they are all unique from Onyx...
                 if media_file_name in media_files:
                     self.add_file(DataInputStream(media_files[media_file_name]),
-                                                      label=media_file_name,
-                                                      asset_type=asset_type,
-                                                      asset_content_type=ac_genus_type,
-                                                      asset_content_record_types=[MULTI_LANGUAGE_ASSET_CONTENTS],
-                                                      asset_name=media_file_id,
-                                                      asset_description='QTI media file')
+                                                  label=media_file_name,
+                                                  asset_type=asset_type,
+                                                  asset_content_type=ac_genus_type,
+                                                  asset_content_record_types=[MULTI_LANGUAGE_ASSET_CONTENTS],
+                                                  asset_name=media_file_id,
+                                                  asset_description='QTI media file')
 
                     media_file_element[key] = 'AssetContent:{0}'.format(media_file_name)
 
@@ -251,48 +251,48 @@ class QTITypeRecordMixin(object):
     """Helper mixing to detect item / question type based on genusTypeId"""
     def _is_multiple_choice(self):
         return str(self.genus_type) in [str(CHOICE_INTERACTION_QUESTION_GENUS),
-                                                       str(CHOICE_INTERACTION_MULTI_QUESTION_GENUS),
-                                                       str(CHOICE_INTERACTION_GENUS),
-                                                       str(CHOICE_INTERACTION_MULTI_GENUS)]
+                                        str(CHOICE_INTERACTION_MULTI_QUESTION_GENUS),
+                                        str(CHOICE_INTERACTION_GENUS),
+                                        str(CHOICE_INTERACTION_MULTI_GENUS)]
 
     def _is_reflection(self):
         return str(self.genus_type) in [str(CHOICE_INTERACTION_SURVEY_GENUS),
-                                                       str(CHOICE_INTERACTION_MULTI_SELECT_SURVEY_GENUS),
-                                                       str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS),
-                                                       str(CHOICE_INTERACTION_MULTI_SELECT_SURVEY_QUESTION_GENUS)]
+                                        str(CHOICE_INTERACTION_MULTI_SELECT_SURVEY_GENUS),
+                                        str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS),
+                                        str(CHOICE_INTERACTION_MULTI_SELECT_SURVEY_QUESTION_GENUS)]
 
     def _is_file_upload(self):
         return str(self.genus_type) in [str(UPLOAD_INTERACTION_GENERIC_GENUS),
-                                                       str(UPLOAD_INTERACTION_GENERIC_QUESTION_GENUS)]
+                                        str(UPLOAD_INTERACTION_GENERIC_QUESTION_GENUS)]
 
     def _is_audio_record(self):
         # excludes MW sandbox
         return str(self.genus_type) in [str(UPLOAD_INTERACTION_AUDIO_QUESTION_GENUS),
-                                                       str(UPLOAD_INTERACTION_AUDIO_GENUS)]
+                                        str(UPLOAD_INTERACTION_AUDIO_GENUS)]
 
     def _is_image_sequence(self):
         return str(self.genus_type) in [str(ORDER_INTERACTION_OBJECT_MANIPULATION_GENUS),
-                                                       str(ORDER_INTERACTION_OBJECT_MANIPULATION_QUESTION_GENUS)]
+                                        str(ORDER_INTERACTION_OBJECT_MANIPULATION_QUESTION_GENUS)]
 
     def _is_mw_sentence(self):
         return str(self.genus_type) in [str(ORDER_INTERACTION_MW_SENTENCE_QUESTION_GENUS),
-                                                       str(ORDER_INTERACTION_MW_SENTENCE_GENUS)]
+                                        str(ORDER_INTERACTION_MW_SENTENCE_GENUS)]
 
     def _is_mw_sandbox(self):
         return str(self.genus_type) in [str(ORDER_INTERACTION_MW_SANDBOX_GENUS),
-                                                       str(ORDER_INTERACTION_MW_SANDBOX_QUESTION_GENUS)]
+                                        str(ORDER_INTERACTION_MW_SANDBOX_QUESTION_GENUS)]
 
     def _is_fitb(self):
         return str(self.genus_type) in [str(INLINE_CHOICE_MW_FITB_INTERACTION_QUESTION_GENUS),
-                                                       str(INLINE_CHOICE_MW_FITB_INTERACTION_GENUS)]
+                                        str(INLINE_CHOICE_MW_FITB_INTERACTION_GENUS)]
 
     def _is_numeric_response(self):
         return str(self.genus_type) in [str(NUMERIC_RESPONSE_QUESTION_GENUS),
-                                                       str(NUMERIC_RESPONSE_GENUS)]
+                                        str(NUMERIC_RESPONSE_GENUS)]
 
     def _is_short_answer(self):
         return str(self.genus_type) in [str(EXTENDED_TEXT_INTERACTION_QUESTION_GENUS),
-                                                       str(EXTENDED_TEXT_INTERACTION_GENUS)]
+                                        str(EXTENDED_TEXT_INTERACTION_GENUS)]
 
     def _only_generic_right_feedback(self):
         return (self._is_file_upload() or
@@ -394,7 +394,7 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
             choice_interaction['responseIdentifier'] = 'RESPONSE_1'
             choice_interaction['shuffle'] = self.shuffle
             if str(self.genus_type) in [str(CHOICE_INTERACTION_QUESTION_GENUS),
-                                                       str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS)]:
+                                        str(CHOICE_INTERACTION_SURVEY_QUESTION_GENUS)]:
                 choice_interaction['maxChoices'] = '1'
             else:
                 choice_interaction['maxChoices'] = '0'
@@ -496,7 +496,7 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
                     choice_text = self._wrap_xml(choice['text'], 'simpleChoice')
                 else:
                     choice_text = self._wrap_xml(self.get_matching_language_value('texts',
-                                                                                                 dictionary=choice).text,
+                                                                                  dictionary=choice).text,
                                                  'simpleChoice')
                 choice_tag = BeautifulSoup(choice_text, 'xml').simpleChoice
                 choice_tag['identifier'] = choice['id']
@@ -581,7 +581,7 @@ class QTIQuestionRecord(QTITypeRecordMixin, ObjectInitRecord):
                         choice_text = self._wrap_xml(choice['text'], 'inlineChoice')
                     else:
                         choice_text = self._wrap_xml(self.get_matching_language_value('texts',
-                                                                                                     dictionary=choice).text,
+                                                                                      dictionary=choice).text,
                                                      'inlineChoice')
 
                     inline_choice = BeautifulSoup(choice_text, 'xml').inlineChoice
@@ -654,18 +654,21 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
     ]
 
     def __init__(self, **kwargs):
-        super(QTIQuestionFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(QTIQuestionFormRecord, self).__init__(**kwargs)
         self._shuffle_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(QTIQuestionFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(QTIQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['shuffle'] = \
             bool(self._shuffle_metadata['default_boolean_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(QTIQuestionFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(QTIQuestionFormRecord, self)._init_metadata(**kwargs)
         self._shuffle_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -829,7 +832,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 interaction = soup.itemBody.orderInteraction
             if ('shuffle' not in interaction.attrs or
                     json.loads(interaction['shuffle'])):
-                self.get_question_form_record(RANDOMIZED_MULTI_CHOICE_QUESTION_RECORD)
+                self.add_form_record(RANDOMIZED_MULTI_CHOICE_QUESTION_RECORD)
                 self.set_shuffle(True)
             else:
                 self.set_shuffle(False)
@@ -855,7 +858,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         description = create_display_text(item_name, language_code)
 
         if soup.itemBody.choiceInteraction:
-            self.get_question_form_record(MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD)
+            self.add_form_record(MULTI_LANGUAGE_MULTIPLE_CHOICE_QUESTION_RECORD)
             try:
                 self.add_display_name(display_name)
             except AttributeError:
@@ -867,7 +870,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             choice_interaction = soup.itemBody.choiceInteraction.extract()
 
             self.add_text(create_display_text(_stringify(soup.itemBody),
-                                                                  language_code))
+                                              language_code))
             for choice in choice_interaction.find_all('simpleChoice'):
                 choice_text = create_display_text(_stringify(choice),
                                                   language_code)
@@ -886,7 +889,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                     self.set_genus_type(CHOICE_INTERACTION_MULTI_QUESTION_GENUS)
 
         elif soup.itemBody.uploadInteraction:
-            self.get_question_form_record(MULTI_LANGUAGE_FILE_UPLOAD_QUESTION_RECORD)
+            self.add_form_record(MULTI_LANGUAGE_FILE_UPLOAD_QUESTION_RECORD)
             try:
                 self.add_display_name(display_name)
             except AttributeError:
@@ -897,7 +900,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 self.add_description(description)  # Is there a description in QTI?
             upload_interaction = soup.itemBody.uploadInteraction.extract()
             self.add_text(create_display_text(_stringify(soup.itemBody),
-                                                                  language_code))
+                                              language_code))
             # now check the keywords for the specific upload type
             # out of band agreement
             if len(keywords) > 0 and 'audiort' in [k.lower() for k in keywords]:
@@ -907,7 +910,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         elif soup.itemBody.orderInteraction:
             # the main difference here (MW Sentence) will be that
             # the answer has multiple choices used, not a single choice
-            self.get_question_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
+            self.add_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
             try:
                 self.add_display_name(display_name)
             except AttributeError:
@@ -918,7 +921,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 self.add_description(description)  # Is there a description in QTI?
             order_interaction = soup.itemBody.orderInteraction.extract()
             self.add_text(create_display_text(_stringify(soup.itemBody),
-                                                                  language_code))
+                                              language_code))
 
             is_object_manipulation = False
             if len(keywords) > 0 and 'mwsentence' in [k.lower() for k in keywords]:
@@ -941,7 +944,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
         elif soup.itemBody.extendedTextInteraction:
             # do the multi language one second so that the texts fields and metadata
             # do not get wiped out
-            self.get_question_form_record(MULTI_LANGUAGE_EXTENDED_TEXT_INTERACTION_QUESTION_RECORD)
+            self.add_form_record(MULTI_LANGUAGE_EXTENDED_TEXT_INTERACTION_QUESTION_RECORD)
             try:
                 self.add_display_name(display_name)
             except AttributeError:
@@ -952,7 +955,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 self.add_description(description)  # Is there a description in QTI?
             text_interaction = soup.itemBody.extendedTextInteraction.extract()
             self.add_text(create_display_text(_stringify(soup.itemBody),
-                                                                  language_code))
+                                              language_code))
 
             # capture the metadata values for extended text interaction
             if 'maxStrings' in text_interaction.attrs:
@@ -963,7 +966,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 self.set_expected_lines(int(text_interaction['expectedLines']))
             self.set_genus_type(EXTENDED_TEXT_INTERACTION_QUESTION_GENUS)
         elif soup.itemBody.inlineChoiceInteraction:
-            self.get_question_form_record(MULTI_LANGUAGE_INLINE_CHOICE_QUESTION_RECORD)
+            self.add_form_record(MULTI_LANGUAGE_INLINE_CHOICE_QUESTION_RECORD)
             try:
                 self.add_display_name(display_name)
             except AttributeError:
@@ -982,18 +985,18 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                     choice_text = create_display_text(str(choice),
                                                       language_code)
                     self.add_choice(choice_text,
-                                                        region_identifier,
-                                                        identifier=choice['identifier'])
+                                    region_identifier,
+                                    identifier=choice['identifier'])
                     choice.extract()
 
             # now try to wrap the words in the itemBody ...
             self._recursively_wrap_words_in_item_body(soup.itemBody)
 
             self.add_text(create_display_text(_stringify(soup.itemBody),
-                                                                  language_code))
+                                                         language_code))
             self.set_genus_type(INLINE_CHOICE_MW_FITB_INTERACTION_QUESTION_GENUS)
         elif soup.itemBody.textEntryInteraction and soup.templateDeclaration:
-            self.get_question_form_record(MULTI_LANGUAGE_NUMERIC_RESPONSE_QUESTION_RECORD)
+            self.add_form_record(MULTI_LANGUAGE_NUMERIC_RESPONSE_QUESTION_RECORD)
             try:
                 self.add_display_name(display_name)
             except AttributeError:
@@ -1026,7 +1029,7 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
             self.set_expression(expression)
 
             self.add_text(create_display_text(original_item_body,
-                                                                  language_code))
+                                              language_code))
 
             variables = {}
             for var in soup.find_all('templateDeclaration'):
@@ -1062,11 +1065,11 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
                 else:
                     step = 1
                 self.add_variable(var_name.lower(),  # why does it lowercase? see the simple_numeric_response_test_file
-                                                      var_data['type'],
-                                                      var_data['min'],
-                                                      var_data['max'],
-                                                      var_step=step,
-                                                      format=var_format)
+                                  var_data['type'],
+                                  var_data['min'],
+                                  var_data['max'],
+                                  var_step=step,
+                                  format=var_format)
         else:
             raise OperationFailed('Item type not supported or unrecognized')
 
