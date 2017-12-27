@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.16] - 2017-12-27
+### Changed
+- Make (most) records honor / inspect for `block_super` kwarg.
+
 ## [0.5.15] - 2017-12-27
 ### Fixed
 - Bug where the first record was not having `_update_object_map()` called.
@@ -226,6 +230,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.16]: https://github.com/mitsei/dlkit/compare/0.5.15...0.5.16
 [0.5.15]: https://github.com/mitsei/dlkit/compare/0.5.14...0.5.15
 [0.5.14]: https://github.com/mitsei/dlkit/compare/0.5.13...0.5.14
 [0.5.13]: https://github.com/mitsei/dlkit/compare/0.5.12...0.5.13
