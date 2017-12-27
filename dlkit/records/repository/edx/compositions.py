@@ -65,6 +65,7 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
     def __init__(self, **kwargs):
         # Do NOT call "self._block_super()" for these methods, because we want to ALWAYS
         #   call the inherited initers.
+        kwargs['block_super'] = False
         super(EdXCompositionFormRecord, self).__init__(**kwargs)
         self._visible_to_students_metadata = None
         self._draft_metadata = None
@@ -72,6 +73,7 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
     def _init_map(self, **kwargs):
         """stub"""
+        kwargs['block_super'] = False
         super(EdXCompositionFormRecord, self)._init_map(**kwargs)
 
         self._my_map['texts']['fileName'] = \
@@ -92,6 +94,7 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
     def _init_metadata(self, **kwargs):
         """stub"""
+        kwargs['block_super'] = False
         super(EdXCompositionFormRecord, self)._init_metadata(**kwargs)
         self._visible_to_students_metadata = {
             'element_id': Id(self._authority,
