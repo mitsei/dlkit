@@ -63,26 +63,25 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(EdXCompositionFormRecord, self).__init__(**kwargs)
+        # Do NOT call "self._block_super()" for these methods, because we want to ALWAYS
+        #   call the inherited initers.
+        super(EdXCompositionFormRecord, self).__init__(**kwargs)
         self._visible_to_students_metadata = None
         self._draft_metadata = None
         self._learning_objective_ids_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(EdXCompositionFormRecord, self)._init_map(**kwargs)
+        super(EdXCompositionFormRecord, self)._init_map(**kwargs)
 
-        if hasattr(self, '_text_metadata'):
-            self._my_map['texts']['fileName'] = \
-                self._text_metadata['default_string_values'][0]
-            self._my_map['texts']['format'] = \
-                self._text_metadata['default_string_values'][0]  # homework, exam, lab, etc.
-            self._my_map['texts']['userPartitionId'] = \
-                self._text_metadata['default_string_values'][0]
-            self._my_map['texts']['org'] = \
-                self._text_metadata['default_string_values'][0]
+        self._my_map['texts']['fileName'] = \
+            self._text_metadata['default_string_values'][0]
+        self._my_map['texts']['format'] = \
+            self._text_metadata['default_string_values'][0]  # homework, exam, lab, etc.
+        self._my_map['texts']['userPartitionId'] = \
+            self._text_metadata['default_string_values'][0]
+        self._my_map['texts']['org'] = \
+            self._text_metadata['default_string_values'][0]
 
         self._my_map['visibleToStudents'] = \
             self._visible_to_students_metadata['default_boolean_values'][0]
@@ -93,8 +92,7 @@ class EdXCompositionFormRecord(TemporalFormRecord, TextsFormRecord, ProvenanceFo
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(EdXCompositionFormRecord, self)._init_metadata(**kwargs)
+        super(EdXCompositionFormRecord, self)._init_metadata(**kwargs)
         self._visible_to_students_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
