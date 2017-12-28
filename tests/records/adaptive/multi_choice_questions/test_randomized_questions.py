@@ -1,9 +1,14 @@
 import unittest
 
+from copy import deepcopy
+
+from dlkit.abstract_osid.osid import errors
+from dlkit.json_ import utilities as dlkit_utilities
+from dlkit.json_.osid.metadata import Metadata
 from dlkit.json_.osid.objects import OsidObject, OsidObjectForm
 from dlkit.records.adaptive.multi_choice_questions.randomized_questions import *
 
-from dlkit.tests.records import utilities
+from ... import utilities
 
 
 class TestMultiChoiceRandomizeChoicesQuestionFormRecord(unittest.TestCase):
