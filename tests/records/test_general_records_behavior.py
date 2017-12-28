@@ -206,8 +206,9 @@ class TestRecordsOverwritingMap(unittest.TestCase):
             self.bank.delete_item(item.ident)
         self.file.close()
 
-    def test_existing_files_should_remain_after_adding_record(self):
-        form = self.bank.get_question_form_for_create(self.item.ident, [MULTI_CHOICE_RANDOMIZE_CHOICES_QUESTION_FORM_RECORD])
+    def test_existing_files_should_remain_after_adding_record_on_create(self):
+        form = self.bank.get_question_form_for_create(self.item.ident,
+                                                      [MULTI_CHOICE_RANDOMIZE_CHOICES_QUESTION_FORM_RECORD])
         form.add_file(DataInputStream(self.file),
                       label='test_file',
                       asset_type=IMAGE_ASSET_GENUS_TYPE,
@@ -217,6 +218,27 @@ class TestRecordsOverwritingMap(unittest.TestCase):
                       asset_description='QTI media file')
         self.assertNotEqual(form._my_map['fileIds'], {})
         expected_value = deepcopy(form._my_map['fileIds'])
+
+        form.add_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
+
+        self.assertNotEqual(form._my_map['fileIds'], {})
+        self.assertEqual(form._my_map['fileIds'], expected_value)
+
+    def test_existing_files_should_remain_after_adding_record_on_update(self):
+        form = self.bank.get_question_form_for_create(self.item.ident,
+                                                      [MULTI_CHOICE_RANDOMIZE_CHOICES_QUESTION_FORM_RECORD])
+        form.add_file(DataInputStream(self.file),
+                      label='test_file',
+                      asset_type=IMAGE_ASSET_GENUS_TYPE,
+                      asset_content_type=PNG_ASSET_CONTENT_GENUS_TYPE,
+                      asset_content_record_types=[],
+                      asset_name='test_file',
+                      asset_description='QTI media file')
+        self.assertNotEqual(form._my_map['fileIds'], {})
+        expected_value = deepcopy(form._my_map['fileIds'])
+        self.bank.create_question(form)
+
+        form = self.bank.get_question_form_for_update(self.item.ident)
 
         form.add_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
 
