@@ -731,20 +731,21 @@ class MultiLanguageMultipleChoiceQuestionRecord(MultiLanguageQuestionRecord):
 
 class MultiLanguageMultipleChoiceQuestionFormRecord(MultiLanguageQuestionFormRecord):
     def __init__(self, **kwargs):
-        # Do NOT call "self._block_super()" for these methods, because we want to ALWAYS
-        #   call the inherited initers.
-        super(MultiLanguageMultipleChoiceQuestionFormRecord, self).__init__(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageMultipleChoiceQuestionFormRecord, self).__init__(**kwargs)
         self._choices_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_map(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['choices'] = \
             self._choices_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
+        if not self._block_super(kwargs):
+            super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choices_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
