@@ -362,15 +362,13 @@ class CalculationInteractionQuestionFormRecord(QuestionTextFormRecord,
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(CalculationInteractionQuestionFormRecord, self).__init__(**kwargs)
+        super(CalculationInteractionQuestionFormRecord, self).__init__(**kwargs)
         self._variables_metadata = None
         self._expression_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionQuestionFormRecord, self)._init_map(**kwargs)
+        super(CalculationInteractionQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['text']['text'] = ''
         self._my_map['variables'] = \
             self._variables_metadata['default_object_values'][0]
@@ -379,8 +377,7 @@ class CalculationInteractionQuestionFormRecord(QuestionTextFormRecord,
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(CalculationInteractionQuestionFormRecord, self)._init_metadata(**kwargs)
         self._variables_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -537,21 +534,18 @@ class CalculationInteractionFeedbackAndFilesAnswerFormRecord(DecimalValuesFormRe
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
+        super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
         self._tolerance_mode_metadata = None
 
     def _init_map(self, **kwargs):
         """call these all manually because non-cooperative"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
+        super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['toleranceMode'] = \
             self._tolerance_mode_metadata['default_string_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
         self._tolerance_mode_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -686,15 +680,13 @@ class MultiLanguageCalculationInteractionQuestionFormRecord(MultiLanguageQuestio
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionQuestionFormRecord, self).__init__(**kwargs)
+        super(MultiLanguageCalculationInteractionQuestionFormRecord, self).__init__(**kwargs)
         self._variables_metadata = None
         self._expression_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_map(**kwargs)
+        super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['variables'] = \
             self._variables_metadata['default_object_values'][0]
         self._my_map['expression'] = \
@@ -702,8 +694,7 @@ class MultiLanguageCalculationInteractionQuestionFormRecord(MultiLanguageQuestio
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_metadata(**kwargs)
         self._variables_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -854,21 +845,18 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord(Decima
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
         self._tolerance_mode_metadata = None
 
     def _init_map(self, **kwargs):
         """call these all manually because non-cooperative"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['toleranceMode'] = \
             self._tolerance_mode_metadata['default_string_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
         self._tolerance_mode_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

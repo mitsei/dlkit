@@ -106,8 +106,7 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(ReviewOptionsAssessmentOfferedFormRecord, self).__init__(**kwargs)
+        super(ReviewOptionsAssessmentOfferedFormRecord, self).__init__(**kwargs)
         self._review_options_metadata = None
         self._whether_correct_metadata = None
         self._solutions_metadata = None
@@ -121,8 +120,7 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(ReviewOptionsAssessmentOfferedFormRecord, self)._init_map(**kwargs)
+        super(ReviewOptionsAssessmentOfferedFormRecord, self)._init_map(**kwargs)
         self._my_map['reviewOptions'] = \
             dict(self._review_options_metadata['default_object_values'][0])
         self._my_map['reviewOptions']['whetherCorrect'] = \
@@ -151,8 +149,7 @@ class ReviewOptionsAssessmentOfferedFormRecord(abc_assessment_records.Assessment
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(ReviewOptionsAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
+        super(ReviewOptionsAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
         self._review_options_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -429,5 +426,4 @@ class ReviewOptionsAssessmentTakenFormRecord(abc_assessment_records.AssessmentTa
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(ReviewOptionsAssessmentTakenFormRecord, self).__init__(**kwargs)
+        super(ReviewOptionsAssessmentTakenFormRecord, self).__init__(**kwargs)

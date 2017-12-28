@@ -67,8 +67,7 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(FeedbackAnswerFormRecord, self).__init__(**kwargs)
+        super(FeedbackAnswerFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
         self._confused_learning_objectives_metadata = None
@@ -76,8 +75,7 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(FeedbackAnswerFormRecord, self)._init_map(**kwargs)
+        super(FeedbackAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['confusedLearningObjectiveIds'] = \
             self._confused_learning_objectives_metadata['default_list_values'][0]
         self._my_map['feedback'] = \
@@ -85,8 +83,7 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(FeedbackAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(FeedbackAnswerFormRecord, self)._init_metadata(**kwargs)
         self._confused_learning_objectives_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -184,22 +181,19 @@ class MultiLanguageFeedbacksAnswerRecord(MultiLanguageUtils,
 class MultiLanguageFeedbacksAnswerFormRecord(MultiLanguageUtils,
                                              osid_records.OsidRecord):
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageFeedbacksAnswerFormRecord, self).__init__(**kwargs)
+        super(MultiLanguageFeedbacksAnswerFormRecord, self).__init__(**kwargs)
         self._confused_learning_objectives_metadata = None
         self._feedbacks_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageFeedbacksAnswerFormRecord, self)._init_map(**kwargs)
+        super(MultiLanguageFeedbacksAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['feedbacks'] = \
             self._feedbacks_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageFeedbacksAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(MultiLanguageFeedbacksAnswerFormRecord, self)._init_metadata(**kwargs)
         self._confused_learning_objectives_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

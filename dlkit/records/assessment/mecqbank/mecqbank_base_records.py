@@ -89,14 +89,12 @@ class PDFPreviewFormRecord(FilesFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(PDFPreviewFormRecord, self).__init__(**kwargs)
+        super(PDFPreviewFormRecord, self).__init__(**kwargs)
         self._preview_metadata = None
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(PDFPreviewFormRecord, self)._init_metadata(**kwargs)
+        super(PDFPreviewFormRecord, self)._init_metadata(**kwargs)
         self._preview_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -176,23 +174,20 @@ class SimpleDifficultyItemFormRecord(TextsFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(SimpleDifficultyItemFormRecord, self).__init__(**kwargs)
+        super(SimpleDifficultyItemFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
         self._difficulty_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(SimpleDifficultyItemFormRecord, self)._init_map(**kwargs)
+        super(SimpleDifficultyItemFormRecord, self)._init_map(**kwargs)
         self._my_map['texts']['difficulty'] = \
             self._difficulty_metadata['default_string_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(SimpleDifficultyItemFormRecord, self)._init_metadata(**kwargs)
+        super(SimpleDifficultyItemFormRecord, self)._init_metadata(**kwargs)
         self._difficulty_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -275,23 +270,20 @@ class SourceItemFormRecord(TextsFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(SourceItemFormRecord, self).__init__(**kwargs)
+        super(SourceItemFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
         self._source_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(SourceItemFormRecord, self)._init_map(**kwargs)
+        super(SourceItemFormRecord, self)._init_map(**kwargs)
         self._my_map['texts']['source'] = \
             self._source_metadata['default_string_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(SourceItemFormRecord, self)._init_metadata(**kwargs)
+        super(SourceItemFormRecord, self)._init_metadata(**kwargs)
         self._source_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -367,21 +359,18 @@ class PublishedFormRecord(osid_records.OsidRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(PublishedFormRecord, self).__init__(**kwargs)
+        super(PublishedFormRecord, self).__init__(**kwargs)
         self._published_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(PublishedFormRecord, self)._init_map(**kwargs)
+        super(PublishedFormRecord, self)._init_map(**kwargs)
         self._my_map['published'] = \
             self._published_metadata['default_published_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(PublishedFormRecord, self)._init_metadata(**kwargs)
+        super(PublishedFormRecord, self)._init_metadata(**kwargs)
         self._published_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

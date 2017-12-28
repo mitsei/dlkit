@@ -42,13 +42,11 @@ class AssetContentMultiLanguageAltTextFormRecord(MultiLanguageUtils, osid_record
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssetContentMultiLanguageAltTextFormRecord, self).__init__(**kwargs)
+        super(AssetContentMultiLanguageAltTextFormRecord, self).__init__(**kwargs)
         self._alt_texts_metadata = None
 
     def _init_metadata(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssetContentMultiLanguageAltTextFormRecord, self)._init_metadata(**kwargs)
+        super(AssetContentMultiLanguageAltTextFormRecord, self)._init_metadata(**kwargs)
         self._alt_texts_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -65,8 +63,7 @@ class AssetContentMultiLanguageAltTextFormRecord(MultiLanguageUtils, osid_record
         }
 
     def _init_map(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssetContentMultiLanguageAltTextFormRecord, self)._init_map(**kwargs)
+        super(AssetContentMultiLanguageAltTextFormRecord, self)._init_map(**kwargs)
         self._my_map['altTexts'] = self._alt_texts_metadata['default_object_values'][0]
 
     def get_alt_texts_metadata(self):
@@ -158,13 +155,11 @@ class AssetContentMultiLanguageMediaDescriptionFormRecord(MultiLanguageUtils, os
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssetContentMultiLanguageMediaDescriptionFormRecord, self).__init__(**kwargs)
+        super(AssetContentMultiLanguageMediaDescriptionFormRecord, self).__init__(**kwargs)
         self._media_descriptions_metadata = None
 
     def _init_metadata(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssetContentMultiLanguageMediaDescriptionFormRecord, self)._init_metadata(**kwargs)
+        super(AssetContentMultiLanguageMediaDescriptionFormRecord, self)._init_metadata(**kwargs)
         self._media_descriptions_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -181,8 +176,7 @@ class AssetContentMultiLanguageMediaDescriptionFormRecord(MultiLanguageUtils, os
         }
 
     def _init_map(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssetContentMultiLanguageMediaDescriptionFormRecord, self)._init_map(**kwargs)
+        super(AssetContentMultiLanguageMediaDescriptionFormRecord, self)._init_map(**kwargs)
         self._my_map['mediaDescriptions'] = self._media_descriptions_metadata['default_object_values'][0]
 
     def get_media_descriptions_metadata(self):

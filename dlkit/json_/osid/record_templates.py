@@ -27,10 +27,6 @@ class OsidRecord(abc_osid_records.OsidRecord):
         if not block_super:
             super(OsidRecord, self)._init_map(**kwargs)
 
-    @staticmethod
-    def _block_super(kwargs):
-        return 'block_super' in kwargs and kwargs['block_super']
-
     # def __init__(self):
     #     # This is set in implemented Records.  Should super __init__
     #     # self._implemented_record_type_identifiers = None

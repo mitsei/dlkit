@@ -234,22 +234,19 @@ class InlineChoiceTextQuestionFormRecord(QuestionTextFormRecord,
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(InlineChoiceTextQuestionFormRecord, self).__init__(**kwargs)
+        super(InlineChoiceTextQuestionFormRecord, self).__init__(**kwargs)
         self._choices_metadata = None
         self._choice_text_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(InlineChoiceTextQuestionFormRecord, self)._init_map(**kwargs)
+        super(InlineChoiceTextQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['choices'] = \
             self._choices_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(InlineChoiceTextQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(InlineChoiceTextQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choices_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -453,23 +450,20 @@ class InlineChoiceFeedbackAndFilesAnswerFormRecord(FilesAnswerFormRecord,
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
+        super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
         self._inline_regions_metadata = None
         self._choice_ids_metadata = None
         self._choice_id_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
+        super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['inlineRegions'] = \
             self._inline_regions_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(InlineChoiceFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
         self._inline_regions_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -586,22 +580,19 @@ class MultiLanguageInlineChoiceQuestionFormRecord(MultiLanguageQuestionFormRecor
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageInlineChoiceQuestionFormRecord, self).__init__(**kwargs)
+        super(MultiLanguageInlineChoiceQuestionFormRecord, self).__init__(**kwargs)
         self._choices_metadata = None
         self._choice_text_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_map(**kwargs)
+        super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['choices'] = \
             self._choices_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(MultiLanguageInlineChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choices_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -903,23 +894,20 @@ class InlineChoiceAnswerFormRecord(osid_records.OsidRecord,
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(InlineChoiceAnswerFormRecord, self).__init__(**kwargs)
+        super(InlineChoiceAnswerFormRecord, self).__init__(**kwargs)
         self._inline_regions_metadata = None
         self._choice_ids_metadata = None
         self._choice_id_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(InlineChoiceAnswerFormRecord, self)._init_map(**kwargs)
+        super(InlineChoiceAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['inlineRegions'] = \
             self._inline_regions_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(InlineChoiceAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(InlineChoiceAnswerFormRecord, self)._init_metadata(**kwargs)
         self._inline_regions_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

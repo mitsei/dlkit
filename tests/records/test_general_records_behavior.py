@@ -15,7 +15,6 @@ from dlkit.runtime.proxy_example import SimpleRequest
 
 ITEM_FORM_WITH_SOLUTION = Type(**registry.ITEM_RECORD_TYPES['with-solution'])
 PROVENANCE_ITEM = Type(**registry.ITEM_RECORD_TYPES['provenance'])
-MULTI_CHOICE_RANDOMIZED_QUESTION = Type(**registry.QUESTION_RECORD_TYPES['multi-choice-randomized'])
 
 
 def get_assessment_manager():
@@ -136,65 +135,3 @@ class TestUpdateObjectMapCalled(unittest.TestCase):
 
     def test_first_record_should_be_called(self):
         self.assertTrue(isinstance(self.item_1.object_map['creationTime'], dict))
-
-
-class TestAddFormRecord(unittest.TestCase):
-    """ This is to make sure that ``add_form_record()`` passes the ``block_super`` argument,
-        at least for the tested records. Each record should have its own unit test for this argument, too. """
-
-    @classmethod
-    def setUpClass(cls):
-        cls.mgr = get_assessment_manager()
-        form = cls.mgr.get_bank_form_for_create([])
-        form.display_name = 'Bank for testing'
-        cls.bank = cls.mgr.create_bank(form)
-
-    def setUp(self):
-        self.test_display_name = 'my test item'
-        form = self.bank.get_item_form_for_create([])
-        form.display_name = self.test_display_name
-        self.item_1 = self.bank.create_item(form)
-
-    @classmethod
-    def tearDownClass(cls):
-        for assessment in cls.bank.get_assessments():
-            for assessment_offered in cls.bank.get_assessments_offered_for_assessment(assessment.ident):
-                for assessment_taken in cls.bank.get_assessments_taken_for_assessment_offered(assessment_offered.ident):
-                    cls.bank.delete_assessment_taken(assessment_taken.ident)
-                cls.bank.delete_assessment_offered(assessment_offered.ident)
-            cls.bank.delete_assessment(assessment.ident)
-        for item in cls.bank.get_items():
-            cls.bank.delete_item(item.ident)
-        cls.mgr.delete_bank(cls.bank.ident)
-
-    def tearDown(self):
-        for item in self.bank.get_items():
-            self.bank.delete_item(item.ident)
-
-    def test_block_super_prevents_calling_initer(self):
-        form = self.bank.get_item_form_for_update(self.item_1.ident)
-        form._min_string_length = 255
-        form.add_form_record(MULTI_CHOICE_RANDOMIZED_QUESTION)
-        self.assertEqual(form._min_string_length, 255)
-
-    def test_block_super_prevents_calling_init_metadata(self):
-        form = self.bank.get_item_form_for_update(self.item_1.ident)
-        form._text_metadata = 'foo'
-        form.add_form_record(MULTI_CHOICE_RANDOMIZED_QUESTION)
-        self.assertEqual(form._text_metadata, 'foo')
-
-    def test_block_super_prevents_calling_init_map(self):
-        form = self.bank.get_item_form_for_update(self.item_1.ident)
-
-        form._my_map['fileIds'] = {
-            'label': {
-                'assetContentId': '123'
-            }
-        }
-        form.add_form_record(MULTI_CHOICE_RANDOMIZED_QUESTION)
-        self.assertEqual(form._my_map['fileIds'],
-                         {
-            'label': {
-                'assetContentId': '123'
-            }
-        })

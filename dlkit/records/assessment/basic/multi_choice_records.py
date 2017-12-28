@@ -75,23 +75,20 @@ class BaseMultiChoiceQuestionFormRecord(osid_records.OsidRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(BaseMultiChoiceQuestionFormRecord, self).__init__(**kwargs)
+        super(BaseMultiChoiceQuestionFormRecord, self).__init__(**kwargs)
         self._choices_metadata = None
         self._choice_name_metadata = None
         self._multi_answer_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(BaseMultiChoiceQuestionFormRecord, self)._init_map(**kwargs)
+        super(BaseMultiChoiceQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['choices'] = []
         self._my_map['multiAnswer'] = False
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(BaseMultiChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(BaseMultiChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choices_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -185,14 +182,12 @@ class BaseMultiChoiceTextQuestionFormRecord(BaseMultiChoiceQuestionFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(BaseMultiChoiceTextQuestionFormRecord, self).__init__(**kwargs)
+        super(BaseMultiChoiceTextQuestionFormRecord, self).__init__(**kwargs)
         self._choice_text_metadata = None
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(BaseMultiChoiceTextQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(BaseMultiChoiceTextQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choice_text_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -295,14 +290,12 @@ class BaseMultiChoiceFileQuestionFormRecord(BaseMultiChoiceQuestionFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(BaseMultiChoiceFileQuestionFormRecord, self).__init__(**kwargs)
+        super(BaseMultiChoiceFileQuestionFormRecord, self).__init__(**kwargs)
         self._choice_file_metadata = None
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(BaseMultiChoiceFileQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(BaseMultiChoiceFileQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choice_file_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -542,22 +535,19 @@ class MultiChoiceAnswerFormRecord(osid_records.OsidRecord,
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiChoiceAnswerFormRecord, self).__init__(**kwargs)
+        super(MultiChoiceAnswerFormRecord, self).__init__(**kwargs)
         self._choice_ids_metadata = None
         self._choice_id_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiChoiceAnswerFormRecord, self)._init_map(**kwargs)
+        super(MultiChoiceAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['choiceIds'] = \
             self._choice_ids_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiChoiceAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(MultiChoiceAnswerFormRecord, self)._init_metadata(**kwargs)
         self._choice_ids_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -731,21 +721,18 @@ class MultiLanguageMultipleChoiceQuestionRecord(MultiLanguageQuestionRecord):
 
 class MultiLanguageMultipleChoiceQuestionFormRecord(MultiLanguageQuestionFormRecord):
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageMultipleChoiceQuestionFormRecord, self).__init__(**kwargs)
+        super(MultiLanguageMultipleChoiceQuestionFormRecord, self).__init__(**kwargs)
         self._choices_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_map(**kwargs)
+        super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['choices'] = \
             self._choices_metadata['default_object_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(MultiLanguageMultipleChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
         self._choices_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

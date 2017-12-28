@@ -45,21 +45,18 @@ class FirstAngleProjectionFormRecord(ObjectInitRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(FirstAngleProjectionFormRecord, self).__init__(**kwargs)
+        super(FirstAngleProjectionFormRecord, self).__init__(**kwargs)
         self._first_angle_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(FirstAngleProjectionFormRecord, self)._init_map(**kwargs)
+        super(FirstAngleProjectionFormRecord, self)._init_map(**kwargs)
         self._my_map['firstAngle'] = \
             self._first_angle_metadata['default_boolean_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(FirstAngleProjectionFormRecord, self)._init_metadata(**kwargs)
+        super(FirstAngleProjectionFormRecord, self)._init_metadata(**kwargs)
         self._first_angle_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -187,14 +184,12 @@ class BaseOrthoQuestionFormRecord(BaseInitMixin):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(BaseOrthoQuestionFormRecord, self).__init__(**kwargs)
+        super(BaseOrthoQuestionFormRecord, self).__init__(**kwargs)
         self._ortho_view_set_metadata = None
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(BaseOrthoQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(BaseOrthoQuestionFormRecord, self)._init_metadata(**kwargs)
         self._ortho_view_set_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -432,14 +427,12 @@ class LabelOrthoFacesAnswerFormRecord(IntegerAnswersFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(LabelOrthoFacesAnswerFormRecord, self).__init__(**kwargs)
+        super(LabelOrthoFacesAnswerFormRecord, self).__init__(**kwargs)
         self._face_values_metadata = None
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(LabelOrthoFacesAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(LabelOrthoFacesAnswerFormRecord, self)._init_metadata(**kwargs)
         self._face_values_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -529,14 +522,12 @@ class EulerRotationAnswerFormRecord(IntegerAnswersFormRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(EulerRotationAnswerFormRecord, self).__init__(**kwargs)
+        super(EulerRotationAnswerFormRecord, self).__init__(**kwargs)
         self._euler_rotation_metadata = None
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(EulerRotationAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(EulerRotationAnswerFormRecord, self)._init_metadata(**kwargs)
         self._euler_rotation_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

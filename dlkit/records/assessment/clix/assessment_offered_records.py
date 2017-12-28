@@ -42,21 +42,18 @@ class NofMAssessmentOfferedFormRecord(osid_records.OsidRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(NofMAssessmentOfferedFormRecord, self).__init__(**kwargs)
+        super(NofMAssessmentOfferedFormRecord, self).__init__(**kwargs)
         self._n_of_m_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(NofMAssessmentOfferedFormRecord, self)._init_map(**kwargs)
+        super(NofMAssessmentOfferedFormRecord, self)._init_map(**kwargs)
         self._my_map['nOfM'] = \
             int(self._n_of_m_metadata['default_object_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(NofMAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
+        super(NofMAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
         self._n_of_m_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
@@ -136,23 +133,20 @@ class UnlockPreviousButtonAssessmentOfferedFormRecord(osid_records.OsidRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(UnlockPreviousButtonAssessmentOfferedFormRecord, self).__init__(**kwargs)
+        super(UnlockPreviousButtonAssessmentOfferedFormRecord, self).__init__(**kwargs)
         self._min_string_length = None
         self._max_string_length = None
         self._unlock_previous_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(UnlockPreviousButtonAssessmentOfferedFormRecord, self)._init_map(**kwargs)
+        super(UnlockPreviousButtonAssessmentOfferedFormRecord, self)._init_map(**kwargs)
         self._my_map['unlockPrevious'] = \
             str(self._unlock_previous_metadata['default_string_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(UnlockPreviousButtonAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
+        super(UnlockPreviousButtonAssessmentOfferedFormRecord, self)._init_metadata(**kwargs)
         self._unlock_previous_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

@@ -33,21 +33,18 @@ class AssessmentBankWithObjectiveBankFormRecord(ObjectInitRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssessmentBankWithObjectiveBankFormRecord, self).__init__(**kwargs)
+        super(AssessmentBankWithObjectiveBankFormRecord, self).__init__(**kwargs)
         self._objective_bank_id_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(AssessmentBankWithObjectiveBankFormRecord, self)._init_map(**kwargs)
+        super(AssessmentBankWithObjectiveBankFormRecord, self)._init_map(**kwargs)
         self._my_map['objectiveBankId'] = \
             self._objective_bank_id_metadata['default_id_values'][0]
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(AssessmentBankWithObjectiveBankFormRecord, self)._init_metadata(**kwargs)
+        super(AssessmentBankWithObjectiveBankFormRecord, self)._init_metadata(**kwargs)
         self._objective_bank_id_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

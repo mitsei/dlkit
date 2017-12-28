@@ -654,21 +654,18 @@ class QTIQuestionFormRecord(QTIFormWithMediaFiles, osid_records.OsidRecord):
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(QTIQuestionFormRecord, self).__init__(**kwargs)
+        super(QTIQuestionFormRecord, self).__init__(**kwargs)
         self._shuffle_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(QTIQuestionFormRecord, self)._init_map(**kwargs)
+        super(QTIQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['shuffle'] = \
             bool(self._shuffle_metadata['default_boolean_values'][0])
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(QTIQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(QTIQuestionFormRecord, self)._init_metadata(**kwargs)
         self._shuffle_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,

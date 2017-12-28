@@ -64,8 +64,7 @@ class EdXDragAndDropQuestionFormRecord(edXItemFormRecord,
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(EdXDragAndDropQuestionFormRecord, self)._init_map(**kwargs)
+        super(EdXDragAndDropQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['text']['text'] = ''
 
 

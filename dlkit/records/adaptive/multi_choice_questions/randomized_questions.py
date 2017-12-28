@@ -134,18 +134,15 @@ class MultiChoiceRandomizeChoicesQuestionFormRecord(MultiChoiceTextAndFilesQuest
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiChoiceRandomizeChoicesQuestionFormRecord, self).__init__(**kwargs)
+        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self).__init__(**kwargs)
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_map(**kwargs)
+        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(MultiChoiceRandomizeChoicesQuestionFormRecord, self)._init_metadata(**kwargs)
 
 
 class MultiChoiceRandomizeChoicesQuestionRecord(MultiChoiceTextAndFilesQuestionRecord):

@@ -290,16 +290,14 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
     ]
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(DragAndDropAnswerFormRecord, self).__init__(**kwargs)
+        super(DragAndDropAnswerFormRecord, self).__init__(**kwargs)
         self._zone_conditions_metadata = None
         self._coordinate_conditions_metadata = None
         self._spatial_unit_conditions_metadata = None
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(DragAndDropAnswerFormRecord, self)._init_map(**kwargs)
+        super(DragAndDropAnswerFormRecord, self)._init_map(**kwargs)
         self._my_map['zoneConditions'] = \
             self._zone_conditions_metadata['default_object_values'][0]
         self._my_map['coordinateConditions'] = \
@@ -309,8 +307,7 @@ class DragAndDropAnswerFormRecord(osid_records.OsidRecord,
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(DragAndDropAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(DragAndDropAnswerFormRecord, self)._init_metadata(**kwargs)
         self._zone_conditions_metadata = {
             'zone_matches': Id(self._authority,
                                self._namespace,
@@ -601,8 +598,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
     """
 
     def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageDragAndDropQuestionFormRecord, self).__init__(**kwargs)
+        super(MultiLanguageDragAndDropQuestionFormRecord, self).__init__(**kwargs)
         self._droppables_metadata = None
         self._targets_metadata = None
         self._zones_metadata = None
@@ -612,8 +608,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
 
     def _init_map(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_map(**kwargs)
+        super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_map(**kwargs)
         self._my_map['droppables'] = \
             self._droppables_metadata['default_object_values'][0]
         self._my_map['targets'] = \
@@ -629,8 +624,7 @@ class MultiLanguageDragAndDropQuestionFormRecord(MultiLanguageQuestionFormRecord
 
     def _init_metadata(self, **kwargs):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(MultiLanguageDragAndDropQuestionFormRecord, self)._init_metadata(**kwargs)
         self._droppables_metadata = {
             'element_id': Id(self._authority,
                              self._namespace,
