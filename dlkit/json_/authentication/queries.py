@@ -39,11 +39,15 @@ class AgentQuery(abc_authentication_queries.AgentQuery, osid_queries.OsidObjectQ
       AgentList agentList = session.getAgentsByQuery(query);
 
     """
-    _namespace = 'authentication.Agent'
-
-    def __init__(self, **kwargs):
-        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
-        self._catalog_name = 'Agency'
+    def __init__(self, runtime):
+        self._namespace = 'authentication.Agent'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('AGENT_RECORD_TYPES', runtime)
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_queries.OsidObjectQuery.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def match_resource_id(self, agency_id, match):

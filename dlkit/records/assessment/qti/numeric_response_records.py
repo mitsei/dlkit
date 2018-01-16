@@ -104,9 +104,9 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
         self._magic_params = None
 
     def get_question(self):
-        question = Question(osid_object_map=self._my_map['question'],
-                            runtime=self._runtime,
-                            proxy=self._proxy)
+        question = Question(osid_object_map=self.my_osid_object._my_map['question'],
+                            runtime=self.my_osid_object._runtime,
+                            proxy=self.my_osid_object._proxy)
         if self._magic_params is not None:
             question.set_values(self._magic_params)
         return question
@@ -121,11 +121,11 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
             return int(_format.split('.')[-1][0:-1])
 
         updated_answers = []
-        # answers = AnswerList(self._my_map['answers'],
-        #                      runtime=self._runtime,
-        #                      proxy=self._proxy)
+        # answers = AnswerList(self.my_osid_object._my_map['answers'],
+        #                      runtime=self.my_osid_object._runtime,
+        #                      proxy=self.my_osid_object._proxy)
         answers = super(CalculationInteractionItemRecord, self).get_answers()
-        if str(self.genus_type) == str(NUMERIC_RESPONSE_GENUS_TYPE):
+        if str(self.my_osid_object.genus_type) == str(NUMERIC_RESPONSE_GENUS_TYPE):
             try:
                 question = self.question
             except TypeError:
@@ -175,8 +175,8 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
             updated_answers = answers
 
         return AnswerList(updated_answers,
-                          runtime=self._runtime,
-                          proxy=self._proxy)
+                          runtime=self.my_osid_object._runtime,
+                          proxy=self.my_osid_object._proxy)
 
     answers = property(fget=get_answers)
 
@@ -200,20 +200,20 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
 
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
-        for answer in self.get_answers():
+        for answer in self.my_osid_object.get_answers():
             if self._is_match(response, answer):
                 return True
         return False
 
     def get_correctness_for_response(self, response):
         """get measure of correctness available for a particular response"""
-        for answer in self.get_answers():
+        for answer in self.my_osid_object.get_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
                 except AttributeError:
                     return 100
-        for answer in self.get_wrong_answers():
+        for answer in self.my_osid_object.get_wrong_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
@@ -221,13 +221,13 @@ class CalculationInteractionItemRecord(WrongAnswerItemRecord):
                     return 0
 
     def get_answer_for_response(self, response):
-        for answer in self.get_answers():
+        for answer in self.my_osid_object.get_answers():
             if self._is_match(response, answer):
                 return answer
 
         wrong_answers = None
         try:
-            wrong_answers = list(self.get_wrong_answers())
+            wrong_answers = list(self.my_osid_object.get_wrong_answers())
         except AttributeError:
             pass
         else:
@@ -278,6 +278,11 @@ class CalculationInteractionItemFormRecord(WrongAnswerItemFormRecord):
         'qti-numeric-response'
     ]
 
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        super(CalculationInteractionItemFormRecord, self).__init__(osid_object_form)
+
 
 class CalculationInteractionQuestionRecord(QuestionTextRecord,
                                            QuestionFilesRecord):
@@ -288,13 +293,14 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        self._authority = MAGIC_AUTHORITY
-        super(CalculationInteractionQuestionRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object):
+        self.my_osid_object = osid_object
+        self.my_osid_object._authority = MAGIC_AUTHORITY
+        super(CalculationInteractionQuestionRecord, self).__init__(osid_object)
         # evaluate the randomly assigned variables and put values into the _my_map?
         self._vars = {}
-        self._orig_question_text = str(self._my_map['text']['text'])  # get a copy, not a pointer
-        for variable, params in self._my_map['variables'].items():
+        self._orig_question_text = str(self.my_osid_object._my_map['text']['text'])  # get a copy, not a pointer
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if params['type'] == 'integer':
                 self._vars[variable] = randint(int(params['min_value']), int(params['max_value']))
             elif params['type'] == 'float':
@@ -304,22 +310,22 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
             self._set_variable_value(variable, self._vars[variable])
 
     def _set_variable_value(self, variable_name, value):
-        for variable, params in self._my_map['variables'].items():
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if variable == variable_name and params['min_value'] <= value <= params['max_value']:
                 if params['type'] == 'integer':
-                    orig_text = self._my_map['text']['text']
+                    orig_text = self.my_osid_object._my_map['text']['text']
                     simple_var_label = '{{{0}}}'.format(variable)
                     if simple_var_label in orig_text:
-                        self._my_map['text']['text'] = orig_text.replace(simple_var_label,
+                        self.my_osid_object._my_map['text']['text'] = orig_text.replace(simple_var_label,
                                                                                         str(value))
                     else:
                         item_body_soup = BeautifulSoup(orig_text, 'xml').itemBody
                         placeholder = item_body_soup.find('printedVariable', identifier=variable)
                         if placeholder:
                             placeholder.replace_with(str(value))
-                            self._my_map['text']['text'] = str(item_body_soup)
+                            self.my_osid_object._my_map['text']['text'] = str(item_body_soup)
                 elif params['type'] == 'float':
-                    orig_text = self._my_map['text']['text']
+                    orig_text = self.my_osid_object._my_map['text']['text']
                     item_body_soup = BeautifulSoup(orig_text, 'xml').itemBody
                     placeholder = item_body_soup.find('printedVariable', identifier=variable)
                     if placeholder:
@@ -327,15 +333,15 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
                             placeholder.replace_with(params['format'] % (value,))
                         else:
                             placeholder.replace_with(str(value))
-                        self._my_map['text']['text'] = str(item_body_soup)
+                        self.my_osid_object._my_map['text']['text'] = str(item_body_soup)
 
     def get_id(self):
         # to handle new, unique session question IDs
-        if self._authority != MAGIC_AUTHORITY:
-            return self._item_id
+        if self.my_osid_object._authority != MAGIC_AUTHORITY:
+            return self.my_osid_object._item_id
 
         encoded_data = json.dumps(self._vars)
-        magic_identifier = quote('{0}?{1}'.format(str(self._my_map['_id']),
+        magic_identifier = quote('{0}?{1}'.format(str(self.my_osid_object._my_map['_id']),
                                                   encoded_data))
         magic_id = Id(namespace='assessment.Item',
                       authority=MAGIC_AUTHORITY,
@@ -346,7 +352,7 @@ class CalculationInteractionQuestionRecord(QuestionTextRecord,
     id_ = property(fget=get_id)
 
     def set_values(self, variable_values):
-        self._my_map['text']['text'] = str(self._orig_question_text)
+        self.my_osid_object._my_map['text']['text'] = str(self._orig_question_text)
         self._vars = variable_values
         for variable, value in variable_values.items():
             self._set_variable_value(variable, value)
@@ -361,29 +367,34 @@ class CalculationInteractionQuestionFormRecord(QuestionTextFormRecord,
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(CalculationInteractionQuestionFormRecord, self).__init__(**kwargs)
-        self._variables_metadata = None
-        self._expression_metadata = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(CalculationInteractionQuestionFormRecord, self).__init__(
+            osid_object_form=osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionQuestionFormRecord, self)._init_map(**kwargs)
-        self._my_map['text']['text'] = ''
-        self._my_map['variables'] = \
+        super(CalculationInteractionQuestionFormRecord, self)._init_map()
+        QuestionTextFormRecord._init_map(self)
+        QuestionFilesFormRecord._init_map(self)
+        self.my_osid_object_form._my_map['text']['text'] = ''
+        self.my_osid_object_form._my_map['variables'] = \
             self._variables_metadata['default_object_values'][0]
-        self._my_map['expression'] = \
+        self.my_osid_object_form._my_map['expression'] = \
             self._expression_metadata['default_string_values'][0]
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(CalculationInteractionQuestionFormRecord, self)._init_metadata()
+        QuestionTextFormRecord._init_metadata(self)
+        QuestionFilesFormRecord._init_metadata(self)
         self._variables_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'variables'),
             'element_label': 'variables',
             'instructions': 'Enter the variables',
@@ -396,8 +407,8 @@ class CalculationInteractionQuestionFormRecord(QuestionTextFormRecord,
             'object_set': []
         }
         self._expression_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'expression'),
             'element_label': 'expression',
             'instructions': 'enter the expression',
@@ -418,20 +429,20 @@ class CalculationInteractionQuestionFormRecord(QuestionTextFormRecord,
         }
 
     def clear_variables(self):
-        self._my_map['variables'] = {}
+        self.my_osid_object_form._my_map['variables'] = {}
 
     def add_variable(self, variable_name, variable_type, var_min, var_max, var_step=1, format=''):
-        if variable_name in self._my_map['variables']:
+        if variable_name in self.my_osid_object_form._my_map['variables']:
             raise IllegalState('variable already exists')
         if variable_type == 'integer':
-            self._my_map['variables'][variable_name] = {
+            self.my_osid_object_form._my_map['variables'][variable_name] = {
                 'type': variable_type,
                 'min_value': int(var_min),
                 'max_value': int(var_max),
                 'step': int(var_step)
             }
         elif variable_type == 'float':
-            self._my_map['variables'][variable_name] = {
+            self.my_osid_object_form._my_map['variables'][variable_name] = {
                 'type': variable_type,
                 'format': format,
                 'min_value': float(var_min),
@@ -439,12 +450,12 @@ class CalculationInteractionQuestionFormRecord(QuestionTextFormRecord,
             }
 
     def remove_variable(self, variable_name):
-        if variable_name not in self._my_map['variables']:
+        if variable_name not in self.my_osid_object_form._my_map['variables']:
             raise IllegalState('variable not present')
-        del self._my_map['variables'][variable_name]
+        del self.my_osid_object_form._my_map['variables'][variable_name]
 
     def clear_expression(self):
-        self._my_map['expression'] = ''
+        self.my_osid_object_form._my_map['expression'] = ''
 
     def set_expression(self, expression):
         # list of possible problems from
@@ -458,7 +469,7 @@ class CalculationInteractionQuestionFormRecord(QuestionTextFormRecord,
                                          'f_code', 'f_exc_traceback', 'f_exc_type', 'f_exc_value',
                                          'f_globals', 'f_locals']):
             raise IllegalState('bad expression')
-        self._my_map['expression'] = str(expression)
+        self.my_osid_object_form._my_map['expression'] = str(expression)
 
 
 class CalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
@@ -475,13 +486,14 @@ class CalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        super(CalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object):
+        self.my_osid_object = osid_object
+        super(CalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(osid_object)
         self._value = None
 
     def has_tolerance_value(self):
         """stub"""
-        return 'tolerance' in self._my_map['decimalValues']
+        return 'tolerance' in self.my_osid_object._my_map['decimalValues']
 
     def get_tolerance_value(self):
         """stub"""
@@ -492,8 +504,8 @@ class CalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
     tolerance = property(fget=get_tolerance_value)
 
     def get_object_map(self):
-        obj_map = dict(self._my_map)
-        obj_map = osid_objects.OsidObject.get_object_map(self, obj_map)
+        obj_map = dict(self.my_osid_object._my_map)
+        obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
         for label, value in obj_map['decimalValues'].items():
             obj_map['decimalValues'][label] = float(value)
         return obj_map
@@ -536,25 +548,37 @@ class CalculationInteractionFeedbackAndFilesAnswerFormRecord(DecimalValuesFormRe
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
-        self._tolerance_mode_metadata = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(
+            osid_object_form=osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """call these all manually because non-cooperative"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
-        self._my_map['toleranceMode'] = \
+        DecimalValuesFormRecord._init_map(self)
+        IntegerValuesFormRecord._init_map(self)
+        TextAnswerFormRecord._init_map(self)
+        FilesAnswerFormRecord._init_map(self)
+        FeedbackAnswerFormRecord._init_map(self)
+        super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map()
+        self.my_osid_object_form._my_map['toleranceMode'] = \
             self._tolerance_mode_metadata['default_string_values'][0]
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
+        DecimalValuesFormRecord._init_metadata(self)
+        IntegerValuesFormRecord._init_metadata(self)
+        TextAnswerFormRecord._init_metadata(self)
+        FilesAnswerFormRecord._init_metadata(self)
+        FeedbackAnswerFormRecord._init_metadata(self)
+        super(CalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata()
         self._tolerance_mode_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'tolerance_mode'),
             'element_label': 'tolerance_mode',
             'instructions': 'enter the tolerance mode',
@@ -591,10 +615,10 @@ class CalculationInteractionFeedbackAndFilesAnswerFormRecord(DecimalValuesFormRe
     def set_tolerance_mode(self, tolerance_mode):
         """stub"""
         # include index because could be multiple response / tolerance pairs
-        self._my_map['toleranceMode'] = str(tolerance_mode)
+        self.my_osid_object_form._my_map['toleranceMode'] = str(tolerance_mode)
 
     def clear_tolerance_mode(self):
-        self._my_map['toleranceMode'] = ''
+        self.my_osid_object_form._my_map['toleranceMode'] = ''
 
 
 class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRecord,
@@ -606,13 +630,14 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        self._authority = MAGIC_AUTHORITY
-        super(MultiLanguageCalculationInteractionQuestionRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object):
+        self.my_osid_object = osid_object
+        self.my_osid_object._authority = MAGIC_AUTHORITY
+        super(MultiLanguageCalculationInteractionQuestionRecord, self).__init__(osid_object)
         # evaluate the randomly assigned variables and put values into the _my_map?
         self._vars = {}
-        self._orig_question_text = list(self._my_map['texts'])  # get a copy, not a pointer
-        for variable, params in self._my_map['variables'].items():
+        self._orig_question_text = list(self.my_osid_object._my_map['texts'])  # get a copy, not a pointer
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if params['type'] == 'integer':
                 self._vars[variable] = randint(int(params['min_value']), int(params['max_value']))
             elif params['type'] == 'float':
@@ -622,24 +647,24 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
             self._set_variable_value(variable, self._vars[variable])
 
     def _set_variable_value(self, variable_name, value):
-        for variable, params in self._my_map['variables'].items():
+        for variable, params in self.my_osid_object._my_map['variables'].items():
             if variable == variable_name and params['min_value'] <= value <= params['max_value']:
                 if params['type'] == 'integer':
-                    # cannot do self.get_text().text because it can't
+                    # cannot do self.my_osid_object.get_text().text because it can't
                     # find the record methods yet...
                     orig_text = self.get_matching_language_value('texts').text
                     simple_var_label = '{{{0}}}'.format(variable)
                     if simple_var_label in orig_text:
-                        self._my_map['texts'] = [self._display_text_dict(orig_text.replace(simple_var_label,
+                        self.my_osid_object._my_map['texts'] = [self._display_text_dict(orig_text.replace(simple_var_label,
                                                                                                           str(value)))]
                     else:
                         item_body_soup = BeautifulSoup(orig_text, 'lxml-xml').itemBody
                         placeholder = item_body_soup.find('printedVariable', identifier=variable)
                         if placeholder:
                             placeholder.replace_with(str(value))
-                            self._my_map['texts'] = [self._display_text_dict(str(item_body_soup))]
+                            self.my_osid_object._my_map['texts'] = [self._display_text_dict(str(item_body_soup))]
                 elif params['type'] == 'float':
-                    # cannot do self.get_text().text because it can't
+                    # cannot do self.my_osid_object.get_text().text because it can't
                     # find the record methods yet...
                     orig_text = self.get_matching_language_value('texts').text
                     if '<itemBody' not in orig_text:
@@ -651,15 +676,15 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
                             placeholder.replace_with(params['format'] % (value,))
                         else:
                             placeholder.replace_with(str(value))
-                        self._my_map['texts'] = [self._display_text_dict(str(item_body_soup))]
+                        self.my_osid_object._my_map['texts'] = [self._display_text_dict(str(item_body_soup))]
 
     def get_id(self):
         # to handle new, unique session question IDs
-        if self._authority != MAGIC_AUTHORITY:
-            return self._item_id
+        if self.my_osid_object._authority != MAGIC_AUTHORITY:
+            return self.my_osid_object._item_id
 
         encoded_data = json.dumps(self._vars)
-        magic_identifier = quote('{0}?{1}'.format(str(self._my_map['_id']),
+        magic_identifier = quote('{0}?{1}'.format(str(self.my_osid_object._my_map['_id']),
                                                   encoded_data))
         magic_id = Id(namespace='assessment.Item',
                       authority=MAGIC_AUTHORITY,
@@ -670,7 +695,7 @@ class MultiLanguageCalculationInteractionQuestionRecord(MultiLanguageQuestionRec
     id_ = property(fget=get_id)
 
     def set_values(self, variable_values):
-        self._my_map['texts'] = list(self._orig_question_text)
+        self.my_osid_object._my_map['texts'] = list(self._orig_question_text)
         self._vars = variable_values
         for variable, value in variable_values.items():
             self._set_variable_value(variable, value)
@@ -685,28 +710,33 @@ class MultiLanguageCalculationInteractionQuestionFormRecord(MultiLanguageQuestio
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionQuestionFormRecord, self).__init__(**kwargs)
-        self._variables_metadata = None
-        self._expression_metadata = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(MultiLanguageCalculationInteractionQuestionFormRecord, self).__init__(
+            osid_object_form=osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_map(**kwargs)
-        self._my_map['variables'] = \
+        super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_map()
+        MultiLanguageQuestionFormRecord._init_map(self)
+        QuestionFilesFormRecord._init_map(self)
+        self.my_osid_object_form._my_map['variables'] = \
             self._variables_metadata['default_object_values'][0]
-        self._my_map['expression'] = \
+        self.my_osid_object_form._my_map['expression'] = \
             self._expression_metadata['default_string_values'][0]
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_metadata(**kwargs)
+        super(MultiLanguageCalculationInteractionQuestionFormRecord, self)._init_metadata()
+        MultiLanguageQuestionFormRecord._init_metadata(self)
+        QuestionFilesFormRecord._init_metadata(self)
         self._variables_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'variables'),
             'element_label': 'variables',
             'instructions': 'Enter the variables',
@@ -719,8 +749,8 @@ class MultiLanguageCalculationInteractionQuestionFormRecord(MultiLanguageQuestio
             'object_set': []
         }
         self._expression_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'expression'),
             'element_label': 'expression',
             'instructions': 'enter the expression',
@@ -741,20 +771,20 @@ class MultiLanguageCalculationInteractionQuestionFormRecord(MultiLanguageQuestio
         }
 
     def clear_variables(self):
-        self._my_map['variables'] = {}
+        self.my_osid_object_form._my_map['variables'] = {}
 
     def add_variable(self, variable_name, variable_type, var_min, var_max, var_step=1, format=''):
-        if variable_name in self._my_map['variables']:
+        if variable_name in self.my_osid_object_form._my_map['variables']:
             raise IllegalState('variable already exists')
         if variable_type == 'integer':
-            self._my_map['variables'][variable_name] = {
+            self.my_osid_object_form._my_map['variables'][variable_name] = {
                 'type': variable_type,
                 'min_value': int(var_min),
                 'max_value': int(var_max),
                 'step': int(var_step)
             }
         elif variable_type == 'float':
-            self._my_map['variables'][variable_name] = {
+            self.my_osid_object_form._my_map['variables'][variable_name] = {
                 'type': variable_type,
                 'format': format,
                 'min_value': float(var_min),
@@ -762,12 +792,12 @@ class MultiLanguageCalculationInteractionQuestionFormRecord(MultiLanguageQuestio
             }
 
     def remove_variable(self, variable_name):
-        if variable_name not in self._my_map['variables']:
+        if variable_name not in self.my_osid_object_form._my_map['variables']:
             raise IllegalState('variable not present')
-        del self._my_map['variables'][variable_name]
+        del self.my_osid_object_form._my_map['variables'][variable_name]
 
     def clear_expression(self):
-        self._my_map['expression'] = ''
+        self.my_osid_object_form._my_map['expression'] = ''
 
     def set_expression(self, expression):
         # list of possible problems from
@@ -781,7 +811,7 @@ class MultiLanguageCalculationInteractionQuestionFormRecord(MultiLanguageQuestio
                                          'f_code', 'f_exc_traceback', 'f_exc_type', 'f_exc_value',
                                          'f_globals', 'f_locals']):
             raise IllegalState('bad expression')
-        self._my_map['expression'] = str(expression)
+        self.my_osid_object_form._my_map['expression'] = str(expression)
 
 
 class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord(DecimalValuesRecord,
@@ -795,13 +825,14 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord(DecimalVal
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object):
+        self.my_osid_object = osid_object
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord, self).__init__(osid_object)
         self._value = None
 
     def has_tolerance_value(self):
         """stub"""
-        return 'tolerance' in self._my_map['decimalValues']
+        return 'tolerance' in self.my_osid_object._my_map['decimalValues']
 
     def get_tolerance_value(self):
         """stub"""
@@ -812,8 +843,8 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerRecord(DecimalVal
     tolerance = property(fget=get_tolerance_value)
 
     def get_object_map(self):
-        obj_map = dict(self._my_map)
-        obj_map = osid_objects.OsidObject.get_object_map(self, obj_map)
+        obj_map = dict(self.my_osid_object._my_map)
+        obj_map = osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
         for label, value in obj_map['decimalValues'].items():
             obj_map['decimalValues'][label] = float(value)
         return obj_map
@@ -853,25 +884,33 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord(Decima
         'qti-numeric-response'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(**kwargs)
-        self._tolerance_mode_metadata = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self).__init__(
+            osid_object_form=osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """call these all manually because non-cooperative"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map(**kwargs)
-        self._my_map['toleranceMode'] = \
+        DecimalValuesFormRecord._init_map(self)
+        IntegerValuesFormRecord._init_map(self)
+        TextAnswerFormRecord._init_map(self)
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_map()
+        self.my_osid_object_form._my_map['toleranceMode'] = \
             self._tolerance_mode_metadata['default_string_values'][0]
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata(**kwargs)
+        DecimalValuesFormRecord._init_metadata(self)
+        IntegerValuesFormRecord._init_metadata(self)
+        TextAnswerFormRecord._init_metadata(self)
+        super(MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord, self)._init_metadata()
         self._tolerance_mode_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'tolerance_mode'),
             'element_label': 'tolerance_mode',
             'instructions': 'enter the tolerance mode',
@@ -908,7 +947,7 @@ class MultiLanguageCalculationInteractionFeedbackAndFilesAnswerFormRecord(Decima
     def set_tolerance_mode(self, tolerance_mode):
         """stub"""
         # include index because could be multiple response / tolerance pairs
-        self._my_map['toleranceMode'] = str(tolerance_mode)
+        self.my_osid_object_form._my_map['toleranceMode'] = str(tolerance_mode)
 
     def clear_tolerance_mode(self):
-        self._my_map['toleranceMode'] = ''
+        self.my_osid_object_form._my_map['toleranceMode'] = ''

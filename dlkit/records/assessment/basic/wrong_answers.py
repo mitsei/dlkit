@@ -27,12 +27,12 @@ class WrongAnswerItemRecord(ObjectInitRecord):
         """ override this so only right answers are returned
         :return:
         """
-        all_answers = self._my_map['answers']
+        all_answers = self.my_osid_object._my_map['answers']
         right_answers = [a for a in all_answers
                          if a['genusTypeId'] != str(WRONG_ANSWER_GENUS_TYPE)]
         return AnswerList(right_answers,
-                          runtime=self._runtime,
-                          proxy=self._proxy)
+                          runtime=self.my_osid_object._runtime,
+                          proxy=self.my_osid_object._proxy)
 
     answers = property(fget=get_answers)
 
@@ -51,12 +51,12 @@ class WrongAnswerItemRecord(ObjectInitRecord):
         """ provide this method to return only wrong answers
         :return:
         """
-        all_answers = self._my_map['answers']
+        all_answers = self.my_osid_object._my_map['answers']
         wrong_answers = [a for a in all_answers
                          if a['genusTypeId'] == str(WRONG_ANSWER_GENUS_TYPE)]
         return AnswerList(wrong_answers,
-                          runtime=self._runtime,
-                          proxy=self._proxy)
+                          runtime=self.my_osid_object._runtime,
+                          proxy=self.my_osid_object._proxy)
 
     wrong_answers = property(fget=get_wrong_answers)
 

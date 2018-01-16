@@ -43,13 +43,8 @@ class Resource(abc_resource_objects.Resource, osid_objects.OsidObject):
     """
     _namespace = 'resource.Resource'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(Resource, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='RESOURCE', **kwargs)
         self._catalog_name = 'Bin'
 
     def is_group(self):
@@ -175,12 +170,11 @@ class ResourceForm(abc_resource_objects.ResourceForm, osid_objects.OsidObjectFor
     _namespace = 'resource.Resource'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='RESOURCE', **kwargs)
         self._mdata = default_mdata.get_resource_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -467,7 +461,7 @@ class Bin(abc_resource_objects.Bin, osid_objects.OsidCatalog):
     _namespace = 'resource.Bin'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, **kwargs)
+        osid_objects.OsidCatalog.__init__(self, object_name='BIN', **kwargs)
 
     @utilities.arguments_not_none
     def get_bin_record(self, bin_record_type):
@@ -503,8 +497,11 @@ class BinForm(abc_resource_objects.BinForm, osid_objects.OsidCatalogForm):
     _namespace = 'resource.Bin'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, object_name='BIN', **kwargs)
         self._mdata = default_mdata.get_bin_mdata()
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

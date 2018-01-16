@@ -273,7 +273,15 @@ class OsidSession(abc_osid_sessions.OsidSession):
             pass
         if use_caching:
             import memcache
-            mc = memcache.Client(['127.0.0.1:11211'], debug=0)
+            caching_host = '127.0.0.1:11211'
+            try:
+                config = self._runtime.get_configuration()
+                parameter_id = Id('parameter:cachingHostURI@json')
+                caching_host = config.get_value_by_parameter(parameter_id).get_string_value()
+            except (AttributeError, KeyError, errors.NotFound):
+                pass
+
+            mc = memcache.Client([caching_host], debug=0)
 
             key = 'descendent-catalog-ids-{0}'.format(str(cat_id))
 

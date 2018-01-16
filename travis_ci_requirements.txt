@@ -1,5 +1,4 @@
-# Core project/common application testing requirements for Travis CI
-# Removes ``tox`` in favor of ``tox-travis``, which is installed from the .travis.yml file
+# Core project/common application testing requirements
 
 boto3==1.4.4
 numpy==1.12.1
@@ -12,6 +11,7 @@ requests==2.14.2
 python-memcached==1.58
 pytest
 pytest-pep8
+# pytest-pylint
 coverage==4.3.4
 pytest-cov
 envoy==0.0.3

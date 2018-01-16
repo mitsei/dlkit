@@ -40,8 +40,10 @@ class TestUtilityMethods(object):
         assert slugify('6.001X, 123-') == '6001x-123-'
 
 
-@pytest.fixture(scope="function")
-def edx_utilities_mixin_test_fixture(request):
+@pytest.fixture(scope="class")
+def edx_utilities_mixin_class_fixture(request):
+    request.cls.mixin = EdXUtilitiesMixin()
+
     obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
     obj_map['displayName'] = {
         'text': 'Fake Display Name, 123',
@@ -49,9 +51,8 @@ def edx_utilities_mixin_test_fixture(request):
         'formatTypeId': 'TextFormats%3APLAIN%40okapia.net',
         'scriptTypeId': '15924%3ALATN%40ISO'
     }
-    osid_object = OsidObject(object_name='TEST_OBJECT',
-                             osid_object_map=obj_map)
-    request.cls.mixin = utilities.add_class(osid_object, EdXUtilitiesMixin)
+    request.cls.mixin.my_osid_object = OsidObject(object_name='TEST_OBJECT',
+                                                  osid_object_map=obj_map)
 
     request.cls.test_file = open(os.path.join(ABS_PATH,
                                               '..',
@@ -62,19 +63,22 @@ def edx_utilities_mixin_test_fixture(request):
                                               'assets',
                                               'draggable.green.dot.png'), 'rb')
 
+    def class_tear_down():
+        request.cls.test_file.close()
+
+    request.addfinalizer(class_tear_down)
+
+
+@pytest.fixture(scope="function")
+def edx_utilities_mixin_test_fixture(request):
     stream = BytesIO()
     request.cls.tarfile = tarfile.open(fileobj=stream, mode='w')
     test_file = tarfile.TarInfo(name='/vertical/a-simple-path.xml')
     test_data = BytesIO('foo'.encode('utf-8'))
     request.cls.tarfile.addfile(test_file, test_data)
 
-    def test_tear_down():
-        request.cls.test_file.close()
 
-    request.addfinalizer(test_tear_down)
-
-
-@pytest.mark.usefixtures('edx_utilities_mixin_test_fixture')
+@pytest.mark.usefixtures('edx_utilities_mixin_class_fixture', 'edx_utilities_mixin_test_fixture')
 class TestEdXUtilitiesMixin(object):
     def test_get_unique_name_works(self):
         assert self.mixin.get_unique_name(self.tarfile, 'a-simple-path', 'vertical', '/') == 'a-simple-path-1'

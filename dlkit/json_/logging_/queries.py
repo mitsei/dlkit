@@ -26,11 +26,15 @@ class LogEntryQuery(abc_logging_queries.LogEntryQuery, osid_queries.OsidObjectQu
     the same method produce a nested ``OR``.
 
     """
-    _namespace = 'logging.LogEntry'
-
-    def __init__(self, **kwargs):
-        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
-        self._catalog_name = 'Log'
+    def __init__(self, runtime):
+        self._namespace = 'logging.LogEntry'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('LOG_ENTRY_RECORD_TYPES', runtime)
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_queries.OsidObjectQuery.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def match_priority(self, priority_type, match):
@@ -323,10 +327,14 @@ class LogQuery(abc_logging_queries.LogQuery, osid_queries.OsidCatalogQuery):
     the same method produce a nested ``OR``.
 
     """
-    _namespace = 'logging.'
-
-    def __init__(self, **kwargs):
-        osid_queries.OsidCatalogQuery.__init__(self, **kwargs)
+    def __init__(self, runtime):
+        self._runtime = runtime
+        record_type_data_sets = get_registry('LOG_RECORD_TYPES', runtime)
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_queries.OsidCatalogQuery.__init__(self, runtime)
 
     def _get_descendant_catalog_ids(self, catalog_id):
         hm = self._get_provider_manager('HIERARCHY')

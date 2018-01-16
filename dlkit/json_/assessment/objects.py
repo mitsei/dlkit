@@ -71,10 +71,8 @@ class Question(abc_assessment_objects.Question, osid_objects.OsidObject):
     and any persisted references should use the ``Id``.
 
     """
-    _namespace = "assessment.Question"
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='QUESTION', **kwargs)
         self._catalog_name = 'Bank'
         if 'item_id' in kwargs:
             self._item_id = kwargs['item_id']
@@ -160,12 +158,11 @@ class QuestionForm(abc_assessment_objects.QuestionForm, osid_objects.OsidObjectF
     _namespace = 'assessment.Question'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='QUESTION', **kwargs)
         self._mdata = default_mdata.get_question_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -258,13 +255,8 @@ class Answer(abc_assessment_objects.Answer, osid_objects.OsidObject):
     """
     _namespace = 'assessment.Answer'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(Answer, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='ANSWER', **kwargs)
         self._catalog_name = 'Bank'
 
     @utilities.arguments_not_none
@@ -303,12 +295,11 @@ class AnswerForm(abc_assessment_objects.AnswerForm, osid_objects.OsidObjectForm)
     _namespace = 'assessment.Answer'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='ANSWER', **kwargs)
         self._mdata = default_mdata.get_answer_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -403,13 +394,8 @@ class Item(abc_assessment_objects.Item, osid_objects.OsidObject, osid_markers.Ag
     """
     _namespace = 'assessment.Item'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(Item, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='ITEM', **kwargs)
         self._catalog_name = 'Bank'
 
     def get_learning_objective_ids(self):
@@ -676,12 +662,11 @@ class ItemForm(abc_assessment_objects.ItemForm, osid_objects.OsidObjectForm, osi
     _namespace = 'assessment.Item'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='ITEM', **kwargs)
         self._mdata = default_mdata.get_item_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -830,13 +815,8 @@ class Assessment(abc_assessment_objects.Assessment, osid_objects.OsidObject):
     """
     _namespace = 'assessment.Assessment'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(Assessment, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT', **kwargs)
         self._catalog_name = 'Bank'
 
     def get_level_id(self):
@@ -1030,12 +1010,11 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
     _namespace = 'assessment.Assessment'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='ASSESSMENT', **kwargs)
         self._mdata = default_mdata.get_assessment_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -1043,9 +1022,9 @@ class AssessmentForm(abc_assessment_objects.AssessmentForm, osid_objects.OsidObj
         self._rubric_default = self._mdata['rubric']['default_id_values'][0]
         self._level_default = self._mdata['level']['default_id_values'][0]
 
-    def _init_map(self, **kwargs):
+    def _init_map(self, record_types=None, **kwargs):
         """Initialize form map"""
-        osid_objects.OsidObjectForm._init_map(self, **kwargs)
+        osid_objects.OsidObjectForm._init_map(self, record_types=record_types)
         self._my_map['rubricId'] = self._rubric_default
         self._my_map['assignedBankIds'] = [str(kwargs['bank_id'])]
         self._my_map['levelId'] = self._level_default
@@ -1238,13 +1217,8 @@ class AssessmentOffered(abc_assessment_objects.AssessmentOffered, osid_objects.O
     """
     _namespace = 'assessment.AssessmentOffered'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(AssessmentOffered, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT_OFFERED', **kwargs)
         self._catalog_name = 'Bank'
 
     def get_assessment_id(self):
@@ -1676,12 +1650,11 @@ class AssessmentOfferedForm(abc_assessment_objects.AssessmentOfferedForm, osid_o
     _namespace = 'assessment.AssessmentOffered'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='ASSESSMENT_OFFERED', **kwargs)
         self._mdata = default_mdata.get_assessment_offered_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -2182,7 +2155,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
     _namespace = 'assessment.AssessmentTaken'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT_TAKEN', **kwargs)
         self._catalog_name = 'Bank'
         self._assessment_sections = dict()
 
@@ -2632,11 +2605,7 @@ class AssessmentTaken(abc_assessment_objects.AssessmentTaken, osid_objects.OsidO
             # This is the first time for this Taken, so start assessment
             # SHOULD THIS USE self._update_available_sections????
             assessment_id = self.get_assessment_offered().get_assessment().get_id()
-            first_part_id = get_first_part_id_for_assessment(assessment_id,
-                                                             runtime=self._runtime,
-                                                             proxy=self._proxy,
-                                                             create=True,
-                                                             bank_id=Id(self._my_map['assignedBankIds'][0]))
+            first_part_id = get_first_part_id_for_assessment(assessment_id, runtime=self._runtime, proxy=self._proxy)
             first_section = self._create_section(first_part_id)
             self._my_map['sections'] = [str(first_section.get_id())]
             self._my_map['actualStartTime'] = DateTime.utcnow()
@@ -2759,12 +2728,11 @@ class AssessmentTakenForm(abc_assessment_objects.AssessmentTakenForm, osid_objec
     _namespace = 'assessment.AssessmentTaken'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='ASSESSMENT_TAKEN', **kwargs)
         self._mdata = default_mdata.get_assessment_taken_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -2915,7 +2883,7 @@ class AssessmentSection(abc_assessment_objects.AssessmentSection, osid_objects.O
     _namespace = 'assessment.AssessmentSection'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='AssessmentSection', **kwargs)
         self._assessment_part_id = Id(self._my_map['assessmentPartId'])
         self._assessment_taken_id = Id(self._my_map['assessmentTakenId'])
 
@@ -3220,7 +3188,7 @@ class Bank(abc_assessment_objects.Bank, osid_objects.OsidCatalog):
     _namespace = 'assessment.Bank'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, **kwargs)
+        osid_objects.OsidCatalog.__init__(self, object_name='BANK', **kwargs)
 
     @utilities.arguments_not_none
     def get_bank_record(self, bank_record_type):
@@ -3257,8 +3225,11 @@ class BankForm(abc_assessment_objects.BankForm, osid_objects.OsidCatalogForm):
     _namespace = 'assessment.Bank'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, object_name='BANK', **kwargs)
         self._mdata = default_mdata.get_bank_mdata()
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

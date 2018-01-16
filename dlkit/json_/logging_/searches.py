@@ -22,20 +22,17 @@ from dlkit.abstract_osid.osid import errors
 
 class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSearch):
     """The search interface for governing log entry searches."""
-    _namespace = 'logging.LogEntry'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'logging.LogEntry'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'logging.LogEntry'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_log_entries(self, log_entry_ids):
@@ -88,15 +85,14 @@ class LogEntrySearch(abc_logging_searches.LogEntrySearch, osid_searches.OsidSear
 
 class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'logging.LogEntry'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'logging.LogEntry'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_log_entries(self):
         """Gets the log entry list resulting from a search.
@@ -150,20 +146,17 @@ class LogEntrySearchResults(abc_logging_searches.LogEntrySearchResults, osid_sea
 
 class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
     """The search interface for governing log searches."""
-    _namespace = 'logging.Log'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'logging.Log'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'logging.Log'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_logs(self, log_ids):
@@ -213,15 +206,14 @@ class LogSearch(abc_logging_searches.LogSearch, osid_searches.OsidSearch):
 
 class LogSearchResults(abc_logging_searches.LogSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'logging.Log'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'logging.Log'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_logs(self):
         """Gets the log list resulting from a search.

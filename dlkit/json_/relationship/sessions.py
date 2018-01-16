@@ -1013,18 +1013,25 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         for arg in relationship_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-
-        obj_form = objects.RelationshipForm(
-            record_types=relationship_record_types,
-            runtime=self._runtime,
-            proxy=self._proxy)
-        obj_form._init_metadata()
-        obj_form._init_map(
-            family_id=self._catalog_id,
-            source_id=source_id,
-            destination_id=destination_id,
-            effective_agent_id=self.get_effective_agent_id())
-        # obj_form._for_update = False  # set in form constructor
+        if relationship_record_types == []:
+            # WHY are we passing family_id = self._catalog_id below, seems redundant:
+            obj_form = objects.RelationshipForm(
+                family_id=self._catalog_id,
+                source_id=source_id,
+                destination_id=destination_id,
+                catalog_id=self._catalog_id,
+                runtime=self._runtime,
+                proxy=self._proxy)
+        else:
+            obj_form = objects.RelationshipForm(
+                family_id=self._catalog_id,
+                record_types=relationship_record_types,
+                source_id=source_id,
+                destination_id=destination_id,
+                catalog_id=self._catalog_id,
+                runtime=self._runtime,
+                proxy=self._proxy)
+        obj_form._for_update = False
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -1125,7 +1132,6 @@ class RelationshipAdminSession(abc_relationship_sessions.RelationshipAdminSessio
         result = collection.find_one({'_id': ObjectId(relationship_id.get_identifier())})
 
         obj_form = objects.RelationshipForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -1653,17 +1659,19 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
         for arg in family_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        family_form = objects.FamilyForm(
-            record_types=family_record_types,
-            runtime=self._runtime,
-            effective_agent_id=self.get_effective_agent_id(),
-            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        family_form._init_metadata()
-        family_form._init_map(
-            record_types=family_record_types,
-            effective_agent_id=self.get_effective_agent_id())
-        self._forms[family_form.get_id().get_identifier()] = not CREATED
-        return family_form
+        if family_record_types == []:
+            result = objects.FamilyForm(
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        else:
+            result = objects.FamilyForm(
+                record_types=family_record_types,
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        self._forms[result.get_id().get_identifier()] = not CREATED
+        return result
 
     @utilities.arguments_not_none
     def create_family(self, family_form):
@@ -1761,11 +1769,10 @@ class FamilyAdminSession(abc_relationship_sessions.FamilyAdminSession, osid_sess
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(family_id.get_identifier())})
 
-        family_form = objects.FamilyForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        family_form._init_metadata()
-        self._forms[family_form.get_id().get_identifier()] = not UPDATED
+        cat_form = objects.FamilyForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
 
-        return family_form
+        return cat_form
 
     @utilities.arguments_not_none
     def update_family(self, family_form):

@@ -85,12 +85,34 @@ class ItemTextsAndFilesMixin(ItemTextsFormRecord,
     for _init_map and _init_metadata
 
     """
+    def _init_map(self):
+        """stub"""
+        ItemTextsFormRecord._init_map(self)
+        ItemFilesFormRecord._init_map(self)
+        super(ItemTextsAndFilesMixin, self)._init_map()
+
+    def _init_metadata(self):
+        """stub"""
+        ItemTextsFormRecord._init_metadata(self)
+        ItemFilesFormRecord._init_metadata(self)
+        super(ItemTextsAndFilesMixin, self)._init_metadata()
+
 
 class ProvenanceMixin(ProvenanceFormRecord):
     """Mixin class to make the ProvenanceFormRecord classes compatible with super()
     for _init_map and _init_metadata
 
     """
+    def _init_map(self):
+        """stub"""
+        super(ProvenanceMixin, self)._init_map()
+        ProvenanceFormRecord._init_map(self)
+
+    def _init_metadata(self):
+        """stub"""
+        super(ProvenanceMixin, self)._init_metadata()
+        ProvenanceFormRecord._init_metadata(self)
+
 
 class QuestionTextRecord(TextRecord, abc_assessment_records.QuestionRecord):
     """Text question"""
@@ -154,6 +176,17 @@ class QuestionTextAndFilesMixin(QuestionTextFormRecord,
     for _init_map and _init_metadata
 
     """
+    def _init_map(self):
+        """stub"""
+        QuestionTextFormRecord._init_map(self)
+        QuestionFilesFormRecord._init_map(self)
+        super(QuestionTextAndFilesMixin, self)._init_map()
+
+    def _init_metadata(self):
+        """stub"""
+        QuestionTextFormRecord._init_metadata(self)
+        QuestionFilesFormRecord._init_metadata(self)
+        super(QuestionTextAndFilesMixin, self)._init_metadata()
 
 
 class QuestionTextsAndFilesMixin(QuestionTextsFormRecord,
@@ -162,6 +195,17 @@ class QuestionTextsAndFilesMixin(QuestionTextsFormRecord,
     for _init_map and _init_metadata
 
     """
+    def _init_map(self):
+        """stub"""
+        QuestionTextsFormRecord._init_map(self)
+        QuestionFilesFormRecord._init_map(self)
+        super(QuestionTextsAndFilesMixin, self)._init_map()
+
+    def _init_metadata(self):
+        """stub"""
+        QuestionTextsFormRecord._init_metadata(self)
+        QuestionFilesFormRecord._init_metadata(self)
+        super(QuestionTextsAndFilesMixin, self)._init_metadata()
 
 
 class TextAnswerRecord(TextRecord, abc_assessment_records.AnswerFormRecord):
@@ -172,22 +216,22 @@ class TextAnswerRecord(TextRecord, abc_assessment_records.AnswerFormRecord):
 
     def has_min_string_length(self):
         """stub"""
-        return bool(self._my_map['minStringLength'])
+        return bool(self.my_osid_object._my_map['minStringLength'])
 
     def get_min_string_length(self):
         """stub"""
         if self.has_max_string_length():
-            return bool(self._my_map['minStringLength'])
+            return bool(self.my_osid_object._my_map['minStringLength'])
         raise IllegalState()
 
     def has_max_string_length(self):
         """stub"""
-        return bool(self._my_map['maxStringLength'])
+        return bool(self.my_osid_object._my_map['maxStringLength'])
 
     def get_max_string_length(self):
         """stub"""
         if self.has_max_string_length() is None:
-            return bool(self._my_map['maxStringLength'])
+            return bool(self.my_osid_object._my_map['maxStringLength'])
         raise IllegalState()
 
 
@@ -197,34 +241,32 @@ class TextAnswerFormRecord(TextFormRecord, abc_assessment_records.AnswerFormReco
         'text-answer'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(TextAnswerFormRecord, self).__init__(**kwargs)
-        if self.is_for_update():
-            self._min_string_length = self._my_map['minStringLength']
-            self._max_string_length = self._my_map['maxStringLength']
-        else:
-            self._min_string_length_metadata = None
-            self._max_string_length_metadata = None
-            self._min_string_length = None
-            self._max_string_length = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        if self.my_osid_object_form.is_for_update():
+            self._min_string_length = self.my_osid_object_form._my_map['minStringLength']
+            self._max_string_length = self.my_osid_object_form._my_map['maxStringLength']
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
 
-    def _init_map(self, **kwargs):
+        super(TextAnswerFormRecord, self).__init__(osid_object_form=osid_object_form)
+
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(TextAnswerFormRecord, self)._init_map(**kwargs)
-        self._my_map['minStringLength'] = \
+        super(TextAnswerFormRecord, self)._init_map()
+        self.my_osid_object_form._my_map['minStringLength'] = \
             self._min_string_length_metadata['default_cardinal_values'][0]
-        self._my_map['maxStringLength'] = \
+        self.my_osid_object_form._my_map['maxStringLength'] = \
             self._max_string_length_metadata['default_cardinal_values'][0]
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(TextAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(TextAnswerFormRecord, self)._init_metadata()
         self._min_string_length_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'min-string-length'),
             'element_label': 'min string length',
             'instructions': 'enter minimum string length',
@@ -239,8 +281,8 @@ class TextAnswerFormRecord(TextFormRecord, abc_assessment_records.AnswerFormReco
             'cardinal_set': []
         }
         self._max_string_length_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'max-string-length'),
             'element_label': 'max string length',
             'instructions': 'enter maximum string length',
@@ -263,13 +305,13 @@ class TextAnswerFormRecord(TextFormRecord, abc_assessment_records.AnswerFormReco
         """stub"""
         if self.get_min_string_length_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_cardinal(
+        if not self.my_osid_object_form._is_valid_cardinal(
                 length,
                 self.get_min_string_length_metadata()):
             raise InvalidArgument()
         if self._max_string_length is not None and length > self._max_string_length - 1:
             raise InvalidArgument()
-        self._my_map['minStringLength'] = length
+        self.my_osid_object_form._my_map['minStringLength'] = length
         self._min_string_length = length
 
     def clear_min_string_length(self):
@@ -277,7 +319,7 @@ class TextAnswerFormRecord(TextFormRecord, abc_assessment_records.AnswerFormReco
         if (self.get_min_string_length_metadata().is_read_only() or
                 self.get_min_string_length_metadata().is_required()):
             raise NoAccess()
-        self._my_map['minStringLength'] = \
+        self.my_osid_object_form._my_map['minStringLength'] = \
             self.get_min_string_length_metadata().get_default_cardinal_values()[0]
 
     min_string_length = property(fset=set_min_string_length, fdel=clear_min_string_length)
@@ -290,13 +332,13 @@ class TextAnswerFormRecord(TextFormRecord, abc_assessment_records.AnswerFormReco
         """stub"""
         if self.get_max_string_length_metadata().is_read_only():
             raise NoAccess()
-        if length is not None and not self._is_valid_cardinal(
+        if length is not None and not self.my_osid_object_form._is_valid_cardinal(
                 length,
                 self.get_max_string_length_metadata()):
             raise InvalidArgument()
         if self._min_string_length is not None and length < self._min_string_length + 1:
             raise InvalidArgument()
-        self._my_map['maxStringLength'] = length
+        self.my_osid_object_form._my_map['maxStringLength'] = length
         self._max_string_length = length
 
     def clear_max_string_length(self):
@@ -304,7 +346,7 @@ class TextAnswerFormRecord(TextFormRecord, abc_assessment_records.AnswerFormReco
         if (self.get_max_string_length_metadata().is_read_only() or
                 self.get_max_string_length_metadata().is_required()):
             raise NoAccess()
-        self._my_map['maxStringLength'] = \
+        self.my_osid_object_form._my_map['maxStringLength'] = \
             self.get_max_string_length_metadata().get_default_cardinal_values()[0]
 
     max_string_length = property(fset=set_max_string_length, fdel=clear_max_string_length)
@@ -318,22 +360,22 @@ class TextsAnswerRecord(TextsRecord, abc_assessment_records.AnswerRecord):
 
     def has_min_string_length(self):
         """stub"""
-        return bool(self._my_map['minStringLength'])
+        return bool(self.my_osid_object._my_map['minStringLength'])
 
     def get_min_string_length(self):
         """stub"""
         if self.has_max_string_length():
-            return bool(self._my_map['minStringLength'])
+            return bool(self.my_osid_object._my_map['minStringLength'])
         raise IllegalState()
 
     def has_max_string_length(self):
         """stub"""
-        return bool(self._my_map['maxStringLength'])
+        return bool(self.my_osid_object._my_map['maxStringLength'])
 
     def get_max_string_length(self):
         """stub"""
         if self.has_max_string_length() is None:
-            return bool(self._my_map['maxStringLength'])
+            return bool(self.my_osid_object._my_map['maxStringLength'])
         raise IllegalState()
 
 
@@ -343,38 +385,37 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
         'texts-answer'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(TextsAnswerFormRecord, self).__init__(**kwargs)
-        if self.is_for_update():
-            self._min_string_length = \
-                self._my_map.get('minStringLength',
-                                 self._min_string_length_metadata['default_cardinal_values'][0])
-            self._max_string_length = \
-                self._my_map.get('maxStringLength',
-                                 self._max_string_length_metadata['default_cardinal_values'][0])
-        else:
-            self._min_string_length = None
-            self._max_string_length = None
-            self._min_string_length_metadata = None
-            self._max_string_length_metadata = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
 
-    def _init_map(self, **kwargs):
+        if self.my_osid_object_form.is_for_update():
+            self._min_string_length = \
+                self.my_osid_object_form._my_map.get('minStringLength',
+                                                     self._min_string_length_metadata['default_cardinal_values'][0])
+            self._max_string_length = \
+                self.my_osid_object_form._my_map.get('maxStringLength',
+                                                     self._max_string_length_metadata['default_cardinal_values'][0])
+        if (not self.my_osid_object_form.is_for_update() or
+                'texts' not in self.my_osid_object_form._my_map):
+            self._init_map()
+        super(TextsAnswerFormRecord, self).__init__(osid_object_form=osid_object_form)
+
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(TextsAnswerFormRecord, self)._init_map(**kwargs)
-        self._my_map['minStringLength'] = \
+        super(TextsAnswerFormRecord, self)._init_map()
+        self.my_osid_object_form._my_map['minStringLength'] = \
             self._min_string_length_metadata['default_cardinal_values'][0]
-        self._my_map['maxStringLength'] = \
+        self.my_osid_object_form._my_map['maxStringLength'] = \
             self._max_string_length_metadata['default_cardinal_values'][0]
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(TextsAnswerFormRecord, self)._init_metadata(**kwargs)
+        super(TextsAnswerFormRecord, self)._init_metadata()
         self._min_string_length_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'min-string-length'),
             'element_label': 'min string length',
             'instructions': 'enter minimum string length',
@@ -389,8 +430,8 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
             'cardinal_set': []
         }
         self._max_string_length_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'max-string-length'),
             'element_label': 'max string length',
             'instructions': 'enter maximum string length',
@@ -413,14 +454,14 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
         """stub"""
         if self.get_min_string_length_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_cardinal(
+        if not self.my_osid_object_form._is_valid_cardinal(
                 length,
                 self.get_min_string_length_metadata()):
             raise InvalidArgument()
-        if self._max_string_length is not None and \
-                length > self._max_string_length - 1:
+        if self.my_osid_object_form.max_string_length is not None and \
+                length > self.my_osid_object_form.max_string_length - 1:
             raise InvalidArgument()
-        self._my_map['minStringLength'] = length
+        self.my_osid_object_form._my_map['minStringLength'] = length
         self._min_string_length = length
 
     def clear_min_string_length(self):
@@ -428,7 +469,7 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
         if (self.get_min_string_length_metadata().is_read_only() or
                 self.get_min_string_length_metadata().is_required()):
             raise NoAccess()
-        self._my_map['minStringLength'] = \
+        self.my_osid_object_form._my_map['minStringLength'] = \
             self.get_min_string_length_metadata().get_default_cardinal_values()[0]
 
     min_string_length = property(fset=set_min_string_length,
@@ -442,14 +483,14 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
         """stub"""
         if self.get_max_string_length_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_cardinal(
+        if not self.my_osid_object_form._is_valid_cardinal(
                 length,
                 self.get_max_string_length_metadata()):
             raise InvalidArgument()
-        if self._min_string_length is not None and \
-                length < self._min_string_length + 1:
+        if self.my_osid_object_form.min_string_length is not None and \
+                length < self.my_osid_object_form.min_string_length + 1:
             raise InvalidArgument()
-        self._my_map['maxStringLength'] = length
+        self.my_osid_object_form._my_map['maxStringLength'] = length
         self._max_string_length = length
 
     def clear_max_string_length(self):
@@ -457,7 +498,7 @@ class TextsAnswerFormRecord(TextsFormRecord, abc_assessment_records.AnswerFormRe
         if (self.get_max_string_length_metadata().is_read_only() or
                 self.get_max_string_length_metadata().is_required()):
             raise NoAccess()
-        self._my_map['maxStringLength'] = \
+        self.my_osid_object_form._my_map['maxStringLength'] = \
             self.get_max_string_length_metadata().get_default_cardinal_values()[0]
 
     max_string_length = property(fset=set_max_string_length,
@@ -586,3 +627,14 @@ class AnswerTextAndFilesMixin(TextAnswerFormRecord,
     for _init_map and _init_metadata
 
     """
+    def _init_map(self):
+        """stub"""
+        TextAnswerFormRecord._init_map(self)
+        FilesAnswerFormRecord._init_map(self)
+        super(AnswerTextAndFilesMixin, self)._init_map()
+
+    def _init_metadata(self):
+        """stub"""
+        TextAnswerFormRecord._init_metadata(self)
+        FilesAnswerFormRecord._init_metadata(self)
+        super(AnswerTextAndFilesMixin, self)._init_metadata()

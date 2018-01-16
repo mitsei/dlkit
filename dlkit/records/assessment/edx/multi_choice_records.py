@@ -40,26 +40,25 @@ class edXMultiChoiceQuestionRecord(MultiChoiceTextQuestionRecord,
         'question-files'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(edXMultiChoiceQuestionRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object, **kwargs):
+        super(edXMultiChoiceQuestionRecord, self).__init__(osid_object)
 
         # change my_map
-        if ('rerandomize' in self._my_map and
-                self._my_map['rerandomize'] == 'always'):
-            shuffle(self._my_map['choices'])
+        if ('rerandomize' in self.my_osid_object._my_map and
+                self.my_osid_object._my_map['rerandomize'] == 'always'):
+            shuffle(self.my_osid_object._my_map['choices'])
         # handle deprecated data...this should go away once Luwen re-loads
         # her data with newer assessmentsv2/views.py code
         try:
-            am = self._get_provider_manager('ASSESSMENT', local=True)
+            am = self.my_osid_object._get_provider_manager('ASSESSMENT', local=True)
             try:
-                ils = am.get_item_lookup_session_for_bank(Id(self._my_map['assignedBankIds'][0]),
-                                                          proxy=self._proxy)
+                ils = am.get_item_lookup_session_for_bank(Id(self.my_osid_object._my_map['assignedBankIds'][0]),
+                                                          proxy=self.my_osid_object._proxy)
             except TypeError:  # not a proxy manager
-                ils = am.get_item_lookup_session_for_bank(Id(self._my_map['assignedBankIds'][0]))
-            item = ils.get_item(Id(self._my_map['itemId']))
+                ils = am.get_item_lookup_session_for_bank(Id(self.my_osid_object._my_map['assignedBankIds'][0]))
+            item = ils.get_item(Id(self.my_osid_object._my_map['itemId']))
             if 'rerandomize' in item._my_map and item._my_map['rerandomize'] == 'always':
-                shuffle(self._my_map['choices'])
+                shuffle(self.my_osid_object._my_map['choices'])
         except (KeyError, NotFound, IllegalState, AttributeError) as ex:
             import logging
             logging.info(ex.args[0])
@@ -69,12 +68,12 @@ class edXMultiChoiceQuestionRecord(MultiChoiceTextQuestionRecord,
 
     def has_rerandomize(self):
         """stub"""
-        return bool(self._my_map['rerandomize'] is not None)
+        return bool(self.my_osid_object._my_map['rerandomize'] is not None)
 
     def get_rerandomize(self):
         """stub"""
         if self.has_rerandomize():
-            return self._my_map['rerandomize']
+            return self.my_osid_object._my_map['rerandomize']
         raise IllegalState()
 
     rerandomize = property(fget=get_rerandomize)
@@ -90,25 +89,26 @@ class edXMultiChoiceQuestionFormRecord(QuestionTextAndFilesMixin,
         'question-files'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(edXMultiChoiceQuestionFormRecord, self).__init__(**kwargs)
-        self._rerandomize_metadata = None
+    def __init__(self, osid_object_form):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not osid_object_form.is_for_update():
+            self._init_map()
+        super(edXMultiChoiceQuestionFormRecord, self).__init__(
+            osid_object_form=osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(edXMultiChoiceQuestionFormRecord, self)._init_map(**kwargs)
-        self._my_map['rerandomize'] = \
+        self.my_osid_object_form._my_map['rerandomize'] = \
             self._rerandomize_metadata['default_object_values'][0]
+        super(edXMultiChoiceQuestionFormRecord, self)._init_map()
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(edXMultiChoiceQuestionFormRecord, self)._init_metadata(**kwargs)
         self._rerandomize_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'rerandomize'),
             'element_label': 'Randomize',
             'instructions': 'How to rerandomize the parameters',
@@ -122,6 +122,7 @@ class edXMultiChoiceQuestionFormRecord(QuestionTextAndFilesMixin,
             'maximum_string_length': None,
             'string_set': []
         }
+        super(edXMultiChoiceQuestionFormRecord, self)._init_metadata()
 
     def get_rerandomize_metadata(self):
         """stub"""
@@ -129,14 +130,14 @@ class edXMultiChoiceQuestionFormRecord(QuestionTextAndFilesMixin,
 
     def add_rerandomize(self, rerandomize):
         """stub"""
-        if not self._is_valid_string(
+        if not self.my_osid_object_form._is_valid_string(
                 rerandomize, self.get_rerandomize_metadata()):
             raise InvalidArgument('rerandomize')
-        self._my_map['rerandomize'] = rerandomize
+        self.my_osid_object_form._my_map['rerandomize'] = rerandomize
 
     def clear_rerandomize(self):
         """stub"""
-        self._my_map['rerandomize'] = \
+        self.my_osid_object_form._my_map['rerandomize'] = \
             self._rerandomize_metadata['default_object_values'][0]
 
 

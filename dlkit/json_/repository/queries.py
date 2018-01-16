@@ -27,11 +27,15 @@ class AssetQuery(abc_repository_queries.AssetQuery, osid_queries.OsidObjectQuery
     identified by the ``Asset Type``.
 
     """
-    _namespace = 'repository.Asset'
-
-    def __init__(self, **kwargs):
-        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
-        self._catalog_name = 'Repository'
+    def __init__(self, runtime):
+        self._namespace = 'repository.Asset'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('ASSET_RECORD_TYPES', runtime)
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_queries.OsidObjectQuery.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def match_title(self, title, string_match_type, match):
@@ -886,11 +890,15 @@ class AssetContentQuery(abc_repository_queries.AssetContentQuery, osid_queries.O
     same method produce a nested ``OR``.
 
     """
-    _namespace = 'repository.AssetContent'
-
-    def __init__(self, **kwargs):
-        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
-        self._catalog_name = 'Repository'
+    def __init__(self, runtime):
+        self._namespace = 'repository.AssetContent'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('ASSET_CONTENT_RECORD_TYPES', runtime)
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_queries.OsidObjectQuery.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def match_accessibility_type(self, accessibility_type, match):
@@ -1077,11 +1085,15 @@ class CompositionQuery(abc_repository_queries.CompositionQuery, osid_queries.Osi
     the same method produces a nested ``OR``.
 
     """
-    _namespace = 'repository.Composition'
-
-    def __init__(self, **kwargs):
-        osid_queries.OsidObjectQuery.__init__(self, **kwargs)
-        self._catalog_name = 'Repository'
+    def __init__(self, runtime):
+        self._namespace = 'repository.Composition'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('COMPOSITION_RECORD_TYPES', runtime)
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_queries.OsidObjectQuery.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def match_asset_id(self, asset_id, match):
@@ -1386,10 +1398,14 @@ class RepositoryQuery(abc_repository_queries.RepositoryQuery, osid_queries.OsidC
     the same method produce a nested ``OR``.
 
     """
-    _namespace = 'repository.'
-
-    def __init__(self, **kwargs):
-        osid_queries.OsidCatalogQuery.__init__(self, **kwargs)
+    def __init__(self, runtime):
+        self._runtime = runtime
+        record_type_data_sets = get_registry('REPOSITORY_RECORD_TYPES', runtime)
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_queries.OsidCatalogQuery.__init__(self, runtime)
 
     def _get_descendant_catalog_ids(self, catalog_id):
         hm = self._get_provider_manager('HIERARCHY')

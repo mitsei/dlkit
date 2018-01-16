@@ -1088,7 +1088,7 @@ class AssetSearchSession(abc_repository_sessions.AssetSearchSession, AssetQueryS
             result = collection.find(query_terms)[asset_search.start:asset_search.end]
         else:
             result = collection.find(query_terms)
-        return searches.AssetSearchResults(results=result, query_terms=dict(asset_query._query_terms), runtime=self._runtime)
+        return searches.AssetSearchResults(result, dict(asset_query._query_terms), runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_asset_query_from_inspector(self, asset_query_inspector):
@@ -1297,16 +1297,19 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         for arg in asset_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        obj_form = objects.AssetForm(
-            # repository_id=self._catalog_id,
-            record_types=asset_record_types,
-            runtime=self._runtime,
-            # effective_agent_id=self.get_effective_agent_id(),
-            proxy=self._proxy)
-        obj_form._init_metadata()
-        obj_form._init_map(repository_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id(),
-                           record_types=asset_record_types)
+        if asset_record_types == []:
+            obj_form = objects.AssetForm(
+                repository_id=self._catalog_id,
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)
+        else:
+            obj_form = objects.AssetForm(
+                repository_id=self._catalog_id,
+                record_types=asset_record_types,
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -1404,7 +1407,6 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         result = collection.find_one({'_id': ObjectId(asset_id.get_identifier())})
 
         obj_form = objects.AssetForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -1613,18 +1615,23 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         for arg in asset_content_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-
-        obj_form = objects.AssetContentForm(
-            record_types=asset_content_record_types,
-            runtime=self._runtime,
-            proxy=self._proxy)
-        obj_form._init_metadata()
-        obj_form._init_map(repository_id=self._catalog_id,
-                           asset_id=asset_id,
-                           effective_agent_id=self.get_effective_agent_id(),
-                           record_types=asset_content_record_types)
-
-        # obj_form._for_update = False  # set in Form constructor
+        if asset_content_record_types == []:
+            # WHY are we passing repository_id = self._catalog_id below, seems redundant:
+            obj_form = objects.AssetContentForm(
+                repository_id=self._catalog_id,
+                asset_id=asset_id,
+                catalog_id=self._catalog_id,
+                runtime=self._runtime,
+                proxy=self._proxy)
+        else:
+            obj_form = objects.AssetContentForm(
+                repository_id=self._catalog_id,
+                record_types=asset_content_record_types,
+                asset_id=asset_id,
+                catalog_id=self._catalog_id,
+                runtime=self._runtime,
+                proxy=self._proxy)
+        obj_form._for_update = False
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -1734,7 +1741,6 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
             osid_object_map=result,
             runtime=self._runtime,
             proxy=self._proxy)
-        obj_form._init_metadata()
         obj_form._for_update = True
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
         return obj_form
@@ -3691,7 +3697,7 @@ class CompositionSearchSession(abc_repository_sessions.CompositionSearchSession,
             result = collection.find(query_terms)[composition_search.start:composition_search.end]
         else:
             result = collection.find(query_terms)
-        return searches.CompositionSearchResults(results=result, query_terms=dict(composition_query._query_terms), runtime=self._runtime)
+        return searches.CompositionSearchResults(result, dict(composition_query._query_terms), runtime=self._runtime)
 
     @utilities.arguments_not_none
     def get_composition_query_from_inspector(self, composition_query_inspector):
@@ -3860,16 +3866,19 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         for arg in composition_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        obj_form = objects.CompositionForm(
-            # repository_id=self._catalog_id,
-            record_types=composition_record_types,
-            runtime=self._runtime,
-            # effective_agent_id=self.get_effective_agent_id(),
-            proxy=self._proxy)
-        obj_form._init_metadata()
-        obj_form._init_map(repository_id=self._catalog_id,
-                           effective_agent_id=self.get_effective_agent_id(),
-                           record_types=composition_record_types)
+        if composition_record_types == []:
+            obj_form = objects.CompositionForm(
+                repository_id=self._catalog_id,
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)
+        else:
+            obj_form = objects.CompositionForm(
+                repository_id=self._catalog_id,
+                record_types=composition_record_types,
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)
         self._forms[obj_form.get_id().get_identifier()] = not CREATED
         return obj_form
 
@@ -3968,7 +3977,6 @@ class CompositionAdminSession(abc_repository_sessions.CompositionAdminSession, o
         result = collection.find_one({'_id': ObjectId(composition_id.get_identifier())})
 
         obj_form = objects.CompositionForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        obj_form._init_metadata()
         self._forms[obj_form.get_id().get_identifier()] = not UPDATED
 
         return obj_form
@@ -5033,17 +5041,19 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
         for arg in repository_record_types:
             if not isinstance(arg, ABCType):
                 raise errors.InvalidArgument('one or more argument array elements is not a valid OSID Type')
-        repository_form = objects.RepositoryForm(
-            record_types=repository_record_types,
-            runtime=self._runtime,
-            effective_agent_id=self.get_effective_agent_id(),
-            proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
-        repository_form._init_metadata()
-        repository_form._init_map(
-            record_types=repository_record_types,
-            effective_agent_id=self.get_effective_agent_id())
-        self._forms[repository_form.get_id().get_identifier()] = not CREATED
-        return repository_form
+        if repository_record_types == []:
+            result = objects.RepositoryForm(
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        else:
+            result = objects.RepositoryForm(
+                record_types=repository_record_types,
+                runtime=self._runtime,
+                effective_agent_id=self.get_effective_agent_id(),
+                proxy=self._proxy)  # Probably don't need effective agent id now that we have proxy in form.
+        self._forms[result.get_id().get_identifier()] = not CREATED
+        return result
 
     @utilities.arguments_not_none
     def create_repository(self, repository_form):
@@ -5142,11 +5152,10 @@ class RepositoryAdminSession(abc_repository_sessions.RepositoryAdminSession, osi
             raise errors.InvalidArgument('the argument is not a valid OSID Id')
         result = collection.find_one({'_id': ObjectId(repository_id.get_identifier())})
 
-        repository_form = objects.RepositoryForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
-        repository_form._init_metadata()
-        self._forms[repository_form.get_id().get_identifier()] = not UPDATED
+        cat_form = objects.RepositoryForm(osid_object_map=result, runtime=self._runtime, proxy=self._proxy)
+        self._forms[cat_form.get_id().get_identifier()] = not UPDATED
 
-        return repository_form
+        return cat_form
 
     @utilities.arguments_not_none
     def update_repository(self, repository_form):

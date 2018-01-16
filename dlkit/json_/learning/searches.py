@@ -22,20 +22,17 @@ from dlkit.abstract_osid.osid import errors
 
 class ObjectiveSearch(abc_learning_searches.ObjectiveSearch, osid_searches.OsidSearch):
     """``ObjectiveSearch`` defines the interface for specifying objective search options."""
-    _namespace = 'learning.Objective'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'learning.Objective'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'learning.Objective'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_objectives(self, objective_ids):
@@ -88,15 +85,14 @@ class ObjectiveSearch(abc_learning_searches.ObjectiveSearch, osid_searches.OsidS
 
 class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'learning.Objective'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'learning.Objective'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_objectives(self):
         """Gets the objective list resulting from the search.
@@ -150,20 +146,17 @@ class ObjectiveSearchResults(abc_learning_searches.ObjectiveSearchResults, osid_
 
 class ActivitySearch(abc_learning_searches.ActivitySearch, osid_searches.OsidSearch):
     """``ActivitySearch`` defines the interface for specifying activity search options."""
-    _namespace = 'learning.Activity'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'learning.Activity'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'learning.Activity'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_activities(self, activity_ids):
@@ -216,15 +209,14 @@ class ActivitySearch(abc_learning_searches.ActivitySearch, osid_searches.OsidSea
 
 class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'learning.Activity'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'learning.Activity'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_activities(self):
         """Gets the activity list resulting from the search.
@@ -278,20 +270,17 @@ class ActivitySearchResults(abc_learning_searches.ActivitySearchResults, osid_se
 
 class ProficiencySearch(abc_learning_searches.ProficiencySearch, osid_searches.OsidSearch):
     """The search interface for governing proficiency searches."""
-    _namespace = 'learning.Proficiency'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'learning.Proficiency'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'learning.Proficiency'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_proficiencies(self, proficiency_ids):
@@ -344,15 +333,14 @@ class ProficiencySearch(abc_learning_searches.ProficiencySearch, osid_searches.O
 
 class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'learning.Proficiency'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'learning.Proficiency'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_proficiencies(self):
         """Gets the proficiency list resulting from a search.
@@ -406,20 +394,17 @@ class ProficiencySearchResults(abc_learning_searches.ProficiencySearchResults, o
 
 class ObjectiveBankSearch(abc_learning_searches.ObjectiveBankSearch, osid_searches.OsidSearch):
     """The interface for governing objective bank searches."""
-    _namespace = 'learning.ObjectiveBank'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'learning.ObjectiveBank'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'learning.ObjectiveBank'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_objective_banks(self, objective_bank_ids):
@@ -473,15 +458,14 @@ class ObjectiveBankSearch(abc_learning_searches.ObjectiveBankSearch, osid_search
 
 class ObjectiveBankSearchResults(abc_learning_searches.ObjectiveBankSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'learning.ObjectiveBank'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'learning.ObjectiveBank'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_objective_banks(self):
         """Gets the objective bank list resulting from the search.
