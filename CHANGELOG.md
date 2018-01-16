@@ -4,13 +4,17 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## [0.5.16] - 2018-01-16
+## [0.5.17] - 2018-01-16
 ### Added
 - memcached URI configuration flag.
 
 ### Changed
 - Reverted to previous records scheme.
 - Travis CI settings.
+
+## [0.5.16] - 2017-12-27
+### Changed
+- Failed attempt to fix records...removed from PyPI.
 
 ## [0.5.15] - 2017-12-27
 ### Changed
@@ -234,6 +238,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.17]: https://github.com/mitsei/dlkit/compare/0.5.16...0.5.17
 [0.5.16]: https://github.com/mitsei/dlkit/compare/0.5.15...0.5.16
 [0.5.15]: https://github.com/mitsei/dlkit/compare/0.5.14...0.5.15
 [0.5.14]: https://github.com/mitsei/dlkit/compare/0.5.13...0.5.14
