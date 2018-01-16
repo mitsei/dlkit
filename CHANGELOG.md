@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.16] - 2018-01-16
+### Added
+- memcached URI configuration flag.
+
+### Changed
+- Reverted to previous records scheme.
+- Travis CI settings.
+
+## [0.5.15] - 2017-12-27
+### Changed
+- Attempted to implement new records scheme.
+
+## [0.5.14] - 2017-12-05
+### Added
+- License file to pypi bundle.
+
 ## [0.5.13] - 2017-09-13
 ### Fixed
 - Consider cases where `django` settings already configured.
@@ -218,6 +234,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.16]: https://github.com/mitsei/dlkit/compare/0.5.15...0.5.16
+[0.5.15]: https://github.com/mitsei/dlkit/compare/0.5.14...0.5.15
+[0.5.14]: https://github.com/mitsei/dlkit/compare/0.5.13...0.5.14
 [0.5.13]: https://github.com/mitsei/dlkit/compare/0.5.12...0.5.13
 [0.5.12]: https://github.com/mitsei/dlkit/compare/0.5.11...0.5.12
 [0.5.11]: https://github.com/mitsei/dlkit/compare/0.5.10...0.5.11
