@@ -44,13 +44,8 @@ class Grade(abc_grading_objects.Grade, osid_objects.OsidObject, osid_markers.Sub
     """
     _namespace = 'grading.Grade'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(Grade, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='GRADE', **kwargs)
         self._catalog_name = 'Gradebook'
 
     def get_grade_system_id(self):
@@ -167,12 +162,11 @@ class GradeForm(abc_grading_objects.GradeForm, osid_objects.OsidObjectForm, osid
     _namespace = 'grading.Grade'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='GRADE', **kwargs)
         self._mdata = default_mdata.get_grade_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -424,13 +418,8 @@ class GradeSystem(abc_grading_objects.GradeSystem, osid_objects.OsidObject, osid
     """
     _namespace = 'grading.GradeSystem'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(GradeSystem, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='GRADE_SYSTEM', **kwargs)
         self._catalog_name = 'Gradebook'
 
     def is_based_on_grades(self):
@@ -580,12 +569,11 @@ class GradeSystemForm(abc_grading_objects.GradeSystemForm, osid_objects.OsidObje
     _namespace = 'grading.GradeSystem'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='GRADE_SYSTEM', **kwargs)
         self._mdata = default_mdata.get_grade_system_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -883,13 +871,8 @@ class GradeEntry(abc_grading_objects.GradeEntry, osid_objects.OsidRelationship):
     """A ``GradeEntry`` represents an entry in a ``Gradebook``."""
     _namespace = 'grading.GradeEntry'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(GradeEntry, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='GRADE_ENTRY', **kwargs)
         self._catalog_name = 'Gradebook'
 
     def get_gradebook_column_id(self):
@@ -1209,7 +1192,7 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
     _namespace = 'grading.GradeEntry'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidRelationshipForm.__init__(self, **kwargs)
+        osid_objects.OsidRelationshipForm.__init__(self, object_name='GRADE_ENTRY', **kwargs)
         self._mdata = default_mdata.get_grade_entry_mdata()
         self._effective_agent_id = kwargs['effective_agent_id']
 
@@ -1223,6 +1206,10 @@ class GradeEntryForm(abc_grading_objects.GradeEntryForm, osid_objects.OsidRelati
         else:
             raise errors.NullArgument('gradebook_column_id required for create forms.')
         self._grade_system = gradebook_column.get_grade_system()
+        self._init_metadata(**kwargs)
+
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         osid_objects.OsidRelationshipForm._init_metadata(self, **kwargs)
@@ -1501,13 +1488,8 @@ class GradebookColumn(abc_grading_objects.GradebookColumn, osid_objects.OsidObje
     """
     _namespace = 'grading.GradebookColumn'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(GradebookColumn, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='GRADEBOOK_COLUMN', **kwargs)
         self._catalog_name = 'Gradebook'
 
     def get_grade_system_id(self):
@@ -1583,12 +1565,11 @@ class GradebookColumnForm(abc_grading_objects.GradebookColumnForm, osid_objects.
     _namespace = 'grading.GradebookColumn'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='GRADEBOOK_COLUMN', **kwargs)
         self._mdata = default_mdata.get_gradebook_column_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -1730,7 +1711,7 @@ class GradebookColumnSummary(abc_grading_objects.GradebookColumnSummary, osid_ob
     _namespace = 'grading.GradebookColumnSummary'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='GRADEBOOK_COLUMN_SUMMARY', **kwargs)
         self._catalog_name = 'gradebook'
 
         # Not set the entries to be included in the calculation
@@ -1907,7 +1888,7 @@ class Gradebook(abc_grading_objects.Gradebook, osid_objects.OsidCatalog):
     _namespace = 'grading.Gradebook'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, **kwargs)
+        osid_objects.OsidCatalog.__init__(self, object_name='GRADEBOOK', **kwargs)
 
     @utilities.arguments_not_none
     def get_gradebook_record(self, gradebook_record_type):
@@ -1946,8 +1927,11 @@ class GradebookForm(abc_grading_objects.GradebookForm, osid_objects.OsidCatalogF
     _namespace = 'grading.Gradebook'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, object_name='GRADEBOOK', **kwargs)
         self._mdata = default_mdata.get_gradebook_mdata()
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

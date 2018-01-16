@@ -31,27 +31,27 @@ class FeedbackAnswerRecord(ObjectInitRecord):
     ]
 
     def has_feedback(self):
-        if self._my_map['feedback']:
+        if self.my_osid_object._my_map['feedback']:
             return True
         return False
 
     def get_feedback(self):
         if self.has_feedback():
-            return DisplayText(display_text_map=self._my_map['feedback'])
+            return DisplayText(display_text_map=self.my_osid_object._my_map['feedback'])
         raise IllegalState()
 
     feedback = property(fget=get_feedback)
 
     def has_confused_learning_objective_ids(self):
-        return 'confusedLearningObjectiveIds' in self._my_map
+        return 'confusedLearningObjectiveIds' in self.my_osid_object._my_map
 
     def get_confused_learning_objective_ids(self):
         confused_lo_ids = []
-        if self.has_confused_learning_objective_ids():
-            confused_lo_ids = self._my_map['confusedLearningObjectiveIds']
+        if self.my_osid_object.has_confused_learning_objective_ids():
+            confused_lo_ids = self.my_osid_object._my_map['confusedLearningObjectiveIds']
         return ObjectiveList(confused_lo_ids,
-                             runtime=self._runtime,
-                             proxy=self._proxy)
+                             runtime=self.my_osid_object._runtime,
+                             proxy=self.my_osid_object._proxy)
 
     confused_learning_objective_ids = property(fget=get_confused_learning_objective_ids)
 
@@ -66,30 +66,29 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
         'texts-answer'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(FeedbackAnswerFormRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(FeedbackAnswerFormRecord, self).__init__()
+
+    def _init_map(self):
+        """stub"""
+        self.my_osid_object_form._my_map['confusedLearningObjectiveIds'] = \
+            self._confused_learning_objectives_metadata['default_list_values'][0]
+        self.my_osid_object_form._my_map['feedback'] = \
+            self._feedback_metadata['default_string_values'][0]
+        # super(FeedbackAnswerFormRecord, self)._init_map()
+
+    def _init_metadata(self):
+        """stub"""
         self._min_string_length = None
         self._max_string_length = None
-        self._confused_learning_objectives_metadata = None
-        self._feedback_metadata = None
-
-    def _init_map(self, **kwargs):
-        """stub"""
-        if not self._block_super(kwargs):
-            super(FeedbackAnswerFormRecord, self)._init_map(**kwargs)
-        self._my_map['confusedLearningObjectiveIds'] = \
-            self._confused_learning_objectives_metadata['default_list_values'][0]
-        self._my_map['feedback'] = \
-            self._feedback_metadata['default_string_values'][0]
-
-    def _init_metadata(self, **kwargs):
-        """stub"""
-        if not self._block_super(kwargs):
-            super(FeedbackAnswerFormRecord, self)._init_metadata(**kwargs)
         self._confused_learning_objectives_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'confusedLearningObjectiveIds'),
             'element_label': 'Confused Learning Objectives',
             'instructions': 'List of IDs',
@@ -101,8 +100,8 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
             'syntax': 'LIST'
         }
         self._feedback_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'feedback'),
             'element_label': 'Feedback',
             'instructions': 'enter a feedback string',
@@ -121,17 +120,18 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
             'maximum_string_length': self._max_string_length,
             'string_set': []
         }
+        # super(FeedbackAnswerFormRecord, self)._init_metadata()
 
     def get_feedback_metadata(self):
         """stub"""
         return Metadata(**self._feedback_metadata)
 
     def set_feedback(self, text):
-        self._my_map['feedback'] = self._get_display_text(
+        self.my_osid_object_form._my_map['feedback'] = self.my_osid_object_form._get_display_text(
             text, self.get_feedback_metadata())
 
     def clear_feedback(self):
-        self._my_map['feedback'] = \
+        self.my_osid_object_form._my_map['feedback'] = \
             self.get_feedback_metadata().get_default_string_values()[0]
 
     def get_confused_learning_objective_ids_metadata(self):
@@ -141,10 +141,10 @@ class FeedbackAnswerFormRecord(osid_records.OsidRecord):
     def set_confused_learning_objective_ids(self, objectives_list):
         if not isinstance(objectives_list, list):
             raise InvalidArgument()
-        self._my_map['confusedLearningObjectiveIds'] = objectives_list
+        self.my_osid_object_form._my_map['confusedLearningObjectiveIds'] = objectives_list
 
     def clear_confused_learning_objective_ids(self):
-        self._my_map['confusedLearningObjectiveIds'] = \
+        self.my_osid_object_form._my_map['confusedLearningObjectiveIds'] = \
             self._confused_learning_objectives_metadata['default_list_values'][0]
 
 
@@ -159,50 +159,48 @@ class MultiLanguageFeedbacksAnswerRecord(MultiLanguageUtils,
     feedback = property(fget=get_feedback)
 
     def has_confused_learning_objective_ids(self):
-        return 'confusedLearningObjectiveIds' in self._my_map
+        return 'confusedLearningObjectiveIds' in self.my_osid_object._my_map
 
     def get_confused_learning_objective_ids(self):
         confused_lo_ids = []
-        if self.has_confused_learning_objective_ids():
-            confused_lo_ids = self._my_map['confusedLearningObjectiveIds']
+        if self.my_osid_object.has_confused_learning_objective_ids():
+            confused_lo_ids = self.my_osid_object._my_map['confusedLearningObjectiveIds']
 
         return ObjectiveList(confused_lo_ids,
-                             runtime=self._runtime,
-                             proxy=self._proxy)
+                             runtime=self.my_osid_object._runtime,
+                             proxy=self.my_osid_object._proxy)
 
     confused_learning_objective_ids = property(fget=get_confused_learning_objective_ids)
 
     def get_object_map(self):
-        obj_map = dict(self._my_map)
+        obj_map = dict(self.my_osid_object._my_map)
         del obj_map['itemId']
-        obj_map['feedback'] = self._dict_display_text(self.feedback)
-        return osid_objects.OsidObject.get_object_map(self, obj_map)
+        obj_map['feedback'] = self._dict_display_text(self.my_osid_object.feedback)
+        return osid_objects.OsidObject.get_object_map(self.my_osid_object, obj_map)
 
     object_map = property(fget=get_object_map)
 
 
 class MultiLanguageFeedbacksAnswerFormRecord(MultiLanguageUtils,
                                              osid_records.OsidRecord):
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(MultiLanguageFeedbacksAnswerFormRecord, self).__init__(**kwargs)
-        self._confused_learning_objectives_metadata = None
-        self._feedbacks_metadata = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(MultiLanguageFeedbacksAnswerFormRecord, self).__init__()
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageFeedbacksAnswerFormRecord, self)._init_map(**kwargs)
-        self._my_map['feedbacks'] = \
+        self.my_osid_object_form._my_map['feedbacks'] = \
             self._feedbacks_metadata['default_object_values'][0]
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(MultiLanguageFeedbacksAnswerFormRecord, self)._init_metadata(**kwargs)
         self._confused_learning_objectives_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'confusedLearningObjectiveIds'),
             'element_label': 'Confused Learning Objectives',
             'instructions': 'List of IDs',
@@ -214,8 +212,8 @@ class MultiLanguageFeedbacksAnswerFormRecord(MultiLanguageUtils,
             'syntax': 'LIST'
         }
         self._feedbacks_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'feedbacks'),
             'element_label': 'Feedbacks',
             'instructions': 'Enter as many text feedback strings as you wish',
@@ -241,7 +239,7 @@ class MultiLanguageFeedbacksAnswerFormRecord(MultiLanguageUtils,
         """stub"""
         if self.get_feedbacks_metadata().is_read_only():
             raise NoAccess()
-        self._my_map['feedbacks'] = \
+        self.my_osid_object_form._my_map['feedbacks'] = \
             self._feedbacks_metadata['default_object_values'][0]
 
     @utilities.arguments_not_none
@@ -257,7 +255,7 @@ class MultiLanguageFeedbacksAnswerFormRecord(MultiLanguageUtils,
         if not isinstance(new_feedback, DisplayText):
             raise InvalidArgument('new feedback is not a DisplayText object')
         index = self.get_index_of_language_type('feedbacks', new_feedback.language_type)
-        self._my_map['feedbacks'][index] = self._dict_display_text(new_feedback)
+        self.my_osid_object_form._my_map['feedbacks'][index] = self._dict_display_text(new_feedback)
 
     def get_confused_learning_objective_ids_metadata(self):
         """stub"""
@@ -266,8 +264,8 @@ class MultiLanguageFeedbacksAnswerFormRecord(MultiLanguageUtils,
     def set_confused_learning_objective_ids(self, objectives_list):
         if not isinstance(objectives_list, list):
             raise InvalidArgument()
-        self._my_map['confusedLearningObjectiveIds'] = objectives_list
+        self.my_osid_object_form._my_map['confusedLearningObjectiveIds'] = objectives_list
 
     def clear_confused_learning_objective_ids(self):
-        self._my_map['confusedLearningObjectiveIds'] = \
+        self.my_osid_object_form._my_map['confusedLearningObjectiveIds'] = \
             self._confused_learning_objectives_metadata['default_list_values'][0]

@@ -55,16 +55,16 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
         self._level = 0
         self._part_map = dict()
         self._child_parts = None
-        if self._my_map['maxWaypointItems'] is None:
+        if self.my_osid_object._my_map['maxWaypointItems'] is None:
             self._max_waypoints = ENDLESS
         else:
-            self._max_waypoints = self._my_map['maxWaypointItems']
+            self._max_waypoints = self.my_osid_object._my_map['maxWaypointItems']
 
     def get_id(self):
         """override get_id to generate our "magic" id that encodes scaffolding information"""
         waypoint_index = 0
-        if 'waypointIndex' in self._my_map:
-            waypoint_index = self._my_map['waypointIndex']
+        if 'waypointIndex' in self.my_osid_object._my_map:
+            waypoint_index = self.my_osid_object._my_map['waypointIndex']
         # NOTE that the order of the dict **must** match the order in generate_children()
         #   when creating the child_part_id
         #   1) level
@@ -73,13 +73,13 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
         #   4) waypoint_index
         magic_identifier = OrderedDict({
             'level': self._level,
-            'objective_ids': self._my_map['learningObjectiveIds'],
+            'objective_ids': self.my_osid_object._my_map['learningObjectiveIds'],
         })
         if self._magic_parent_id is not None:
             magic_identifier['parent_id'] = str(self._magic_parent_id)
         magic_identifier['waypoint_index'] = waypoint_index
 
-        identifier = quote('{0}?{1}'.format(str(self._my_map['_id']),
+        identifier = quote('{0}?{1}'.format(str(self.my_osid_object._my_map['_id']),
                                             json.dumps(magic_identifier)))
         return Id(namespace='assessment_authoring.AssessmentPart',
                   identifier=identifier,
@@ -108,19 +108,19 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             self._level = 0
         if 'parent_id' in arg_map:
             self._magic_parent_id = Id(arg_map['parent_id'])
-        self._my_map['learningObjectiveIds'] = arg_map['objective_ids']
-        self._my_map['waypointIndex'] = arg_map['waypoint_index']
+        self.my_osid_object._my_map['learningObjectiveIds'] = arg_map['objective_ids']
+        self.my_osid_object._my_map['waypointIndex'] = arg_map['waypoint_index']
 
-        if self._my_map['learningObjectiveIds'] != ['']:
+        if self.my_osid_object._my_map['learningObjectiveIds'] != ['']:
             try:
-                self._my_map['itemIds'] = [str(self.get_my_item_id_from_section(assessment_section))]
+                self.my_osid_object._my_map['itemIds'] = [str(self.get_my_item_id_from_section(assessment_section))]
             except IllegalState:
                 self.load_item_for_objective()
             except AttributeError:
                 # when the magic part is being retrieved without a section ...
                 # i.e. when authoring, but no itemId explicitly set (perhaps it
                 #      was only set with a learningObjectiveId)
-                self._my_map['itemIds'] = []
+                self.my_osid_object._my_map['itemIds'] = []
 
     def get_parts(self, parts=None, reference_level=0):
         """Recursively returns a depth-first list of all known magic parts"""
@@ -130,7 +130,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
         else:
             self._level_in_section = self._level + reference_level
             new_reference_level = self._level_in_section
-            parts.append(self)
+            parts.append(self.my_osid_object)
         if self._child_parts is None:
             if self.has_magic_children():
                 self.generate_children()
@@ -151,21 +151,21 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
 
     def load_item_for_objective(self):
         """if this is the first time for this magic part, find an LO linked item"""
-        mgr = self._get_provider_manager('ASSESSMENT', local=True)
-        if self._my_map['itemBankId']:
-            item_query_session = mgr.get_item_query_session_for_bank(Id(self._my_map['itemBankId']),
-                                                                     proxy=self._proxy)
+        mgr = self.my_osid_object._get_provider_manager('ASSESSMENT', local=True)
+        if self.my_osid_object._my_map['itemBankId']:
+            item_query_session = mgr.get_item_query_session_for_bank(Id(self.my_osid_object._my_map['itemBankId']),
+                                                                     proxy=self.my_osid_object._proxy)
         else:
-            item_query_session = mgr.get_item_query_session(proxy=self._proxy)
+            item_query_session = mgr.get_item_query_session(proxy=self.my_osid_object._proxy)
         item_query_session.use_federated_bank_view()
         item_query = item_query_session.get_item_query()
-        for objective_id_str in self._my_map['learningObjectiveIds']:
+        for objective_id_str in self.my_osid_object._my_map['learningObjectiveIds']:
             item_query.match_learning_objective_id(Id(objective_id_str), True)
         item_list = list(item_query_session.get_items_by_query(item_query))
         # Let's query all takens and their children sections for questions, to
         # remove seen ones
         taking_agent_id = self._assessment_section._assessment_taken.taking_agent_id
-        atqs = mgr.get_assessment_taken_query_session(proxy=self._proxy)
+        atqs = mgr.get_assessment_taken_query_session(proxy=self.my_osid_object._proxy)
         atqs.use_federated_bank_view()
         querier = atqs.get_assessment_taken_query()
         querier.match_taking_agent_id(taking_agent_id, match=True)
@@ -179,7 +179,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
         # because standing up all the sections is wasteful
         collection = JSONClientValidated('assessment',
                                          collection='AssessmentSection',
-                                         runtime=self._runtime)
+                                         runtime=self.my_osid_object._runtime)
         results = collection.find({"assessmentTakenId": {"$in": taken_ids}})
         for section in results:
             if 'questions' in section:
@@ -192,22 +192,22 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
                 unseen_item_id = item.get_id()
                 break
         if unseen_item_id is not None:
-            self._my_map['itemIds'] = [str(unseen_item_id)]
-        elif self._my_map['allowRepeatItems']:
+            self.my_osid_object._my_map['itemIds'] = [str(unseen_item_id)]
+        elif self.my_osid_object._my_map['allowRepeatItems']:
             if len(item_list) > 0:
-                self._my_map['itemIds'] = [str(item_list[0].ident)]
+                self.my_osid_object._my_map['itemIds'] = [str(item_list[0].ident)]
             else:
-                self._my_map['itemIds'] = []  # don't put '' here, it will break when it tries to find an item with id ''
+                self.my_osid_object._my_map['itemIds'] = []  # don't put '' here, it will break when it tries to find an item with id ''
         else:
-            self._my_map['itemIds'] = []  # don't put '' here, it will break when it tries to find an item with id ''
+            self.my_osid_object._my_map['itemIds'] = []  # don't put '' here, it will break when it tries to find an item with id ''
 
     def has_magic_children(self):
         """checks if child parts are currently available for this part"""
         if self._child_parts is not None:  # generate_children has already been called
             return bool(self._child_parts)
         if self._assessment_section is not None:
-            if (self._my_map['maxLevels'] is None or
-                    self._my_map['maxLevels'] > self._level):
+            if (self.my_osid_object._my_map['maxLevels'] is None or
+                    self.my_osid_object._my_map['maxLevels'] > self._level):
                 try:
                     section = self._assessment_section
                     item_id = self.get_my_item_id_from_section(section)
@@ -237,7 +237,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
                     num_correct += 1
             except IllegalState:
                 pass
-        if num_correct >= self._my_map['waypointQuota']:
+        if num_correct >= self.my_osid_object._my_map['waypointQuota']:
             return True
         return False
 
@@ -258,7 +258,7 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
 
         # Prepare common Id elements for children:
         objective_id = next(scaffold_objective_ids)  # Assume just one for now
-        my_id = self.get_id()
+        my_id = self.my_osid_object.get_id()
         namespace = 'assessment_authoring.AssessmentPart'
         level = self._level + 1
         # NOTE that the order of the dict **must** match the order in get_id()
@@ -291,8 +291,8 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
                     # child_part = get_part_from_magic_part_lookup_session(
                     #     section=self._assessment_section,
                     #     part_id=child_part_id,
-                    #     runtime=self._runtime,
-                    #     proxy=self._proxy)
+                    #     runtime=self.my_osid_object._runtime,
+                    #     proxy=self.my_osid_object._proxy)
                 self._child_parts.append(child_part)
             else:
                 break
@@ -328,14 +328,14 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             except OperationFailed:
                 pass  # there is a new question that hasn't appeared in the section yet
 
-        waypoint_quota_met = (num_correct >= self._my_map['waypointQuota'])
+        waypoint_quota_met = (num_correct >= self.my_osid_object._my_map['waypointQuota'])
 
         if not self._child_parts or (should_add_new_sibling and not waypoint_quota_met and num_not_answered == 0):
             child_part = get_part_from_magic_part_lookup_session(
                 section=self._assessment_section,
                 part_id=child_part_id,
-                runtime=self._runtime,
-                proxy=self._proxy)
+                runtime=self.my_osid_object._runtime,
+                proxy=self.my_osid_object._proxy)
             self._child_parts.append(child_part)
 
     def get_child_ids(self):
@@ -347,8 +347,8 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
             for part in self._child_parts:
                 child_ids.append(part.get_id())
             return IdList(child_ids,
-                          runtime=self._runtime,
-                          proxy=self._runtime)
+                          runtime=self.my_osid_object._runtime,
+                          proxy=self.my_osid_object._runtime)
         raise IllegalState()
 
     def get_children(self):
@@ -361,31 +361,31 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
 
     def has_item_ids(self):
         """does this part have any item ids associated with it"""
-        return bool(self._my_map['itemIds'])
+        return bool(self.my_osid_object._my_map['itemIds'])
 
     def get_item_ids(self):
         """get item ids associated with this assessment part"""
         if self.has_item_ids():
-            return IdList(self._my_map['itemIds'],
-                          runtime=self._runtime,
-                          proxy=self._proxy)
+            return IdList(self.my_osid_object._my_map['itemIds'],
+                          runtime=self.my_osid_object._runtime,
+                          proxy=self.my_osid_object._proxy)
         raise IllegalState()
 
     def get_learning_objective_ids(self):
         """gets all LO ids associated with this assessment part (should be only one for now)"""
-        return IdList(self._my_map['learningObjectiveIds'],
-                      runtime=self._runtime,
-                      proxy=self._proxy)
+        return IdList(self.my_osid_object._my_map['learningObjectiveIds'],
+                      runtime=self.my_osid_object._runtime,
+                      proxy=self.my_osid_object._proxy)
 
     learning_objective_ids = property(fget=get_learning_objective_ids)
 
     def has_waypoint_quota(self):
         """is a quota on the number of required correct waypoint answers available"""
-        return bool(self._my_map['waypointQuota'])
+        return bool(self.my_osid_object._my_map['waypointQuota'])
 
     def get_waypoint_quota(self):
         """get the correct answer quota for this waypoint"""
-        return self._my_map['waypointQuota']
+        return self.my_osid_object._my_map['waypointQuota']
 
     waypoint_quota = property(fget=get_waypoint_quota)
 
@@ -408,18 +408,18 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
         orig_identifier = magic_identifier.split('?')[0]
         collection = JSONClientValidated('assessment_authoring',
                                          collection='AssessmentPart',
-                                         runtime=self._runtime)
+                                         runtime=self.my_osid_object._runtime)
         collection.delete_one({'_id': ObjectId(orig_identifier)})
 
     def has_parent_part(self):
         if self._magic_parent_id is None:
             # let my_osid_object handle it
-            return bool(self._my_map['assessmentPartId'])
+            return bool(self.my_osid_object._my_map['assessmentPartId'])
         return True
 
     def get_assessment_part_id(self):
         if self._magic_parent_id is None:
-            return Id(self._my_map['assessmentPartId'])
+            return Id(self.my_osid_object._my_map['assessmentPartId'])
             # raise AttributeError()  # let my_osid_object handle it
         return self._magic_parent_id
 
@@ -431,14 +431,14 @@ class ScaffoldDownAssessmentPartRecord(ObjectInitRecord):
 
         """
         if self._magic_parent_id is None:
-            assessment_part_id = Id(self._my_map['assessmentPartId'])
+            assessment_part_id = Id(self.my_osid_object._my_map['assessmentPartId'])
         else:
             assessment_part_id = self._magic_parent_id
         if self._assessment_section is not None:
             return self._assessment_section._get_assessment_part(assessment_part_id)
         # else:
-        apls = get_assessment_part_lookup_session(runtime=self._runtime,
-                                                  proxy=self._proxy,
+        apls = get_assessment_part_lookup_session(runtime=self.my_osid_object._runtime,
+                                                  proxy=self.my_osid_object._proxy,
                                                   section=self._assessment_section)
         apls.use_federated_bank_view()
         apls.use_unsequestered_assessment_part_view()
@@ -453,23 +453,18 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
         'scaffold-down'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(ScaffoldDownAssessmentPartFormRecord, self).__init__(**kwargs)
-        self._item_ids_metadata = None
-        self._learning_objective_ids_metadata = None
-        self._max_levels_metadata = None
-        self._max_waypoint_items_metadata = None
-        self._waypoint_quota_metadata = None
-        self._item_bank_id_metadata = None
-        self._allow_repeat_items_metadata = None
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(ScaffoldDownAssessmentPartFormRecord, self).__init__()
 
-    def _init_metadata(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(ScaffoldDownAssessmentPartFormRecord, self)._init_metadata(**kwargs)
+    def _init_metadata(self):
         self._item_ids_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'item'),
             'element_label': 'Item',
             'instructions': 'accepts an Item id',
@@ -482,8 +477,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
             'id_set': []
         }
         self._learning_objective_ids_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'learning-objective'),
             'element_label': 'Learning Objective',
             'instructions': 'accepts a Learning Objective id',
@@ -496,8 +491,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
             'id_set': []
         }
         self._max_levels_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'max-levels'),
             'element_label': 'Max Levels',
             'instructions': 'accepts an integer value',
@@ -512,8 +507,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
             'cardinal_set': []
         }
         self._max_waypoint_items_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'max-waypoint-items'),
             'element_label': 'Max Waypoint Items',
             'instructions': 'accepts an integer value',
@@ -528,8 +523,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
             'cardinal_set': []
         }
         self._waypoint_quota_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'waypoint-quota'),
             'element_label': 'Waypoint Quota',
             'instructions': 'accepts an integer value',
@@ -544,8 +539,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
             'cardinal_set': []
         }
         self._item_bank_id_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'item-bank'),
             'element_label': 'Item Bank',
             'instructions': 'accepts an assessment Bank Id',
@@ -558,8 +553,8 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
             'id_set': []
         }
         self._allow_repeat_items_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'allow-repeat-items'),
             'element_label': 'Allow Repeat Items',
             'instructions': 'accepts a boolean value',
@@ -571,57 +566,56 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
             'syntax': 'BOOLEAN'
         }
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(ScaffoldDownAssessmentPartFormRecord, self)._init_map(**kwargs)
-        self._my_map['itemIds'] = \
+        # super(ScaffoldDownAssessmentPartFormRecord, self)._init_map()
+        self.my_osid_object_form._my_map['itemIds'] = \
             [str(self._item_ids_metadata['default_id_values'][0])]
-        self._my_map['learningObjectiveIds'] = \
+        self.my_osid_object_form._my_map['learningObjectiveIds'] = \
             [str(self._learning_objective_ids_metadata['default_id_values'][0])]
-        self._my_map['maxLevels'] = \
+        self.my_osid_object_form._my_map['maxLevels'] = \
             self._max_levels_metadata['default_cardinal_values'][0]
-        self._my_map['maxWaypointItems'] = \
+        self.my_osid_object_form._my_map['maxWaypointItems'] = \
             self._max_waypoint_items_metadata['default_cardinal_values'][0]
-        self._my_map['waypointQuota'] = \
+        self.my_osid_object_form._my_map['waypointQuota'] = \
             self._waypoint_quota_metadata['default_cardinal_values'][0]
-        self._my_map['itemBankId'] = \
+        self.my_osid_object_form._my_map['itemBankId'] = \
             self._item_bank_id_metadata['default_id_values'][0]
-        self._my_map['allowRepeatItems'] = \
+        self.my_osid_object_form._my_map['allowRepeatItems'] = \
             bool(self._allow_repeat_items_metadata['default_boolean_values'][0])
 
     def get_item_ids_metadata(self):
         """get the metadata for item"""
         metadata = dict(self._item_ids_metadata)
-        metadata.update({'existing_id_values': self._my_map['itemIds']})
+        metadata.update({'existing_id_values': self.my_osid_object_form._my_map['itemIds']})
         return Metadata(**metadata)
 
     def set_item_ids(self, item_ids):
-        """the target Item
+        '''the target Item
 
         This can only be set if there is no learning objective set
 
-        """
+        '''
         if self.get_item_ids_metadata().is_read_only():
             raise NoAccess()
         for item_id in item_ids:
-            if not self._is_valid_id(item_id):
+            if not self.my_osid_object_form._is_valid_id(item_id):
                 raise InvalidArgument()
-        if self._my_map['learningObjectiveIds'][0]:
+        if self.my_osid_object_form._my_map['learningObjectiveIds'][0]:
             raise IllegalState()
-        self._my_map['itemIds'] = [str(i) for i in item_ids]
+        self.my_osid_object_form._my_map['itemIds'] = [str(i) for i in item_ids]
 
     def clear_item_ids(self):
         if (self.get_item_ids_metadata().is_read_only() or
                 self.get_item_ids_metadata().is_required()):
             raise NoAccess()
-        self._my_map['itemIds'] = \
+        self.my_osid_object_form._my_map['itemIds'] = \
             [str(self.get_item_ids_metadata().get_default_id_values()[0])]
 
     def get_learning_objective_ids_metadata(self):
         """get the metadata for learning objective"""
         metadata = dict(self._learning_objective_ids_metadata)
-        metadata.update({'existing_id_values': self._my_map['learningObjectiveIds'][0]})
+        metadata.update({'existing_id_values': self.my_osid_object_form._my_map['learningObjectiveIds'][0]})
         return Metadata(**metadata)
 
     def set_learning_objective_ids(self, learning_objective_ids):
@@ -633,124 +627,124 @@ class ScaffoldDownAssessmentPartFormRecord(abc_assessment_authoring_records.Asse
         if self.get_learning_objective_ids_metadata().is_read_only():
             raise NoAccess()
         for learning_objective_id in learning_objective_ids:
-            if not self._is_valid_id(learning_objective_id):
+            if not self.my_osid_object_form._is_valid_id(learning_objective_id):
                 raise InvalidArgument()
-        if self._my_map['itemIds'][0]:
+        if self.my_osid_object_form._my_map['itemIds'][0]:
             raise IllegalState()
-        self._my_map['learningObjectiveIds'] = [str(lo) for lo in learning_objective_ids]
+        self.my_osid_object_form._my_map['learningObjectiveIds'] = [str(lo) for lo in learning_objective_ids]
 
     def clear_learning_objective_ids(self):
         if (self.get_learning_objective_ids_metadata().is_read_only() or
                 self.get_learning_objective_ids_metadata().is_required()):
             raise NoAccess()
-        self._my_map['learningObjectiveIds'] = \
+        self.my_osid_object_form._my_map['learningObjectiveIds'] = \
             [str(self.get_learning_objective_ids_metadata().get_default_id_values()[0])]
 
     def get_max_levels_metadata(self):
         """get the metadata for max levels"""
         metadata = dict(self._max_levels_metadata)
-        metadata.update({'existing_cardinal_values': self._my_map['maxLevels']})
+        metadata.update({'existing_cardinal_values': self.my_osid_object_form._my_map['maxLevels']})
         return Metadata(**metadata)
 
     def set_max_levels(self, max_levels):
         if self.get_max_levels_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_cardinal(max_levels):
+        if not self.my_osid_object_form._is_valid_cardinal(max_levels):
             raise InvalidArgument()
-        self._my_map['maxLevels'] = max_levels
+        self.my_osid_object_form._my_map['maxLevels'] = max_levels
 
     def clear_max_levels(self):
         if (self.get_max_levels_metadata().is_read_only() or
                 self.get_max_levels_metadata().is_required()):
             raise NoAccess()
-        self._my_map['maxLevels'] = \
+        self.my_osid_object_form._my_map['maxLevels'] = \
             self.get_max_levels_metadata().get_default_cardinal_values()[0]
 
     def get_max_waypoint_items_metadata(self):
         """get the metadata for max waypoint items"""
         metadata = dict(self._max_waypoint_items_metadata)
-        metadata.update({'existing_cardinal_values': self._my_map['maxWaypointItems']})
+        metadata.update({'existing_cardinal_values': self.my_osid_object_form._my_map['maxWaypointItems']})
         return Metadata(**metadata)
 
     def set_max_waypoint_items(self, max_waypoint_items):
         """This determines how many waypoint items will be seen for a scaffolded wrong answer"""
         if self.get_max_waypoint_items_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_cardinal(max_waypoint_items,
+        if not self.my_osid_object_form._is_valid_cardinal(max_waypoint_items,
                                                            self.get_max_waypoint_items_metadata()):
             raise InvalidArgument()
-        self._my_map['maxWaypointItems'] = max_waypoint_items
+        self.my_osid_object_form._my_map['maxWaypointItems'] = max_waypoint_items
 
     def clear_max_waypoint_items(self):
         if (self.get_max_waypoint_items_metadata().is_read_only() or
                 self.get_max_waypoint_items_metadata().is_required()):
             raise NoAccess()
-        self._my_map['maxWaypointItems'] = \
+        self.my_osid_object_form._my_map['maxWaypointItems'] = \
             self.get_max_waypoint_items_metadata().get_default_cardinal_values()[0]
 
     def get_waypoint_quota_metadata(self):
         """get the metadata for waypoint quota"""
         metadata = dict(self._waypoint_quota_metadata)
-        metadata.update({'existing_cardinal_values': self._my_map['waypointQuota']})
+        metadata.update({'existing_cardinal_values': self.my_osid_object_form._my_map['waypointQuota']})
         return Metadata(**metadata)
 
     def set_waypoint_quota(self, waypoint_quota):
         """how many waypoint questions need to be answered correctly"""
         if self.get_waypoint_quota_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_cardinal(waypoint_quota,
+        if not self.my_osid_object_form._is_valid_cardinal(waypoint_quota,
                                                            self.get_waypoint_quota_metadata()):
             raise InvalidArgument()
-        self._my_map['waypointQuota'] = waypoint_quota
+        self.my_osid_object_form._my_map['waypointQuota'] = waypoint_quota
 
     def clear_waypoint_quota(self):
         if (self.get_waypoint_quota_metadata().is_read_only() or
                 self.get_waypoint_quota_metadata().is_required()):
             raise NoAccess()
-        self._my_map['waypointQuota'] = \
+        self.my_osid_object_form._my_map['waypointQuota'] = \
             self.get_waypoint_quota_metadata().get_default_cardinal_values()[0]
 
     def get_item_bank_id_metadata(self):
         """get the metadata for item bank"""
         metadata = dict(self._item_bank_id_metadata)
-        metadata.update({'existing_id_values': self._my_map['itemBankId']})
+        metadata.update({'existing_id_values': self.my_osid_object_form._my_map['itemBankId']})
         return Metadata(**metadata)
 
     def set_item_bank_id(self, bank_id):
         """the assessment bank in which to search for items, such as related to an objective"""
         if self.get_item_bank_id_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_id(bank_id):
+        if not self.my_osid_object_form._is_valid_id(bank_id):
             raise InvalidArgument()
-        self._my_map['itemBankId'] = str(bank_id)
+        self.my_osid_object_form._my_map['itemBankId'] = str(bank_id)
 
     def clear_item_bank_id(self):
         if (self.get_item_bank_id_metadata().is_read_only() or
                 self.get_item_bank_id_metadata().is_required()):
             raise NoAccess()
-        self._my_map['itemBankId'] = \
+        self.my_osid_object_form._my_map['itemBankId'] = \
             self.get_item_bank_id_metadata().get_default_id_values()[0]
 
     def get_allow_repeat_items_metadata(self):
         """get the metadata for allow repeat items"""
         metadata = dict(self._allow_repeat_items_metadata)
-        metadata.update({'existing_id_values': self._my_map['allowRepeatItems']})
+        metadata.update({'existing_id_values': self.my_osid_object_form._my_map['allowRepeatItems']})
         return Metadata(**metadata)
 
     def set_allow_repeat_items(self, allow_repeat_items):
         """determines if repeat items will be shown, or if the scaffold iteration will simply stop"""
         if self.get_allow_repeat_items_metadata().is_read_only():
             raise NoAccess()
-        if not self._is_valid_boolean(allow_repeat_items):
+        if not self.my_osid_object_form._is_valid_boolean(allow_repeat_items):
             raise InvalidArgument()
-        self._my_map['allowRepeatItems'] = allow_repeat_items
+        self.my_osid_object_form._my_map['allowRepeatItems'] = allow_repeat_items
 
     def clear_allow_repeat_items(self):
         """reset allow repeat itmes to default value"""
         if (self.get_allow_repeat_items_metadata().is_read_only() or
                 self.get_allow_repeat_items_metadata().is_required()):
             raise NoAccess()
-        self._my_map['allowRepeatItems'] = \
+        self.my_osid_object_form._my_map['allowRepeatItems'] = \
             bool(self._allow_repeat_items_metadata['default_boolean_values'][0])
 
 

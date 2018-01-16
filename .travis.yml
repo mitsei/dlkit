@@ -15,7 +15,7 @@ before_install:
 - pip install --upgrade pytest
 - pip install coveralls tox-travis
 install:
-- pip install -r travis_ci_requirements.txt
-script: tox -- -x -q
+- pip install -r test_requirements.txt
+script: tox -- -x
 after_success:
 - coveralls

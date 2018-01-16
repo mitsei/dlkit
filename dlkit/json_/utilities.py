@@ -1,17 +1,20 @@
 """JSON utilities.py"""
 import binascii
 import codecs
-import datetime
-import glob
-import inflection
-import json
-import keyword
+import time
+import sys
 import os
 import re
-import sys
+import glob
+import json
+import datetime
+import keyword
 
-from pymongo import MongoClient
+from threading import Thread
+from pymongo import MongoClient, ASCENDING, DESCENDING
+from pymongo.errors import OperationFailure as PyMongoOperationFailed
 from bson import ObjectId
+from bson.timestamp import Timestamp
 from bson.errors import InvalidId
 
 from .osid.osid_errors import NullArgument, NotFound,\
@@ -815,44 +818,6 @@ def get_registry(entry, runtime):
         return {}
 
 
-def get_record(data_sets, record_type, data_key):
-    """Returns a record class or None"""
-    try:
-        record_type_data = data_sets[record_type.get_identifier()]
-    except KeyError:
-        return None
-    module_ = import_module(record_type_data['module_path'])
-    if data_key not in record_type_data:
-        return None
-    return getattr(module_, record_type_data[data_key], None)
-
-
-def get_records(object_name, record_types, data_key, runtime):
-    """Returns a tuple of record classes, in reverse order to force MRO"""
-    records = []
-    data_sets = get_registry(inflection.underscore(object_name).upper() + '_RECORD_TYPES', runtime)
-    for record_type in reversed(record_types):
-        record = get_record(data_sets, record_type, data_key)
-        if record is not None:
-            records.append(record)
-    return tuple(records)
-
-# def get_all_query_records(object_name, runtime):
-#     """Returns a tuple of all query record classes
-#
-#     Perhaps this should be done only once per object_name at runtime
-#     since the list of records will not change.
-#
-#     """
-#     records = []
-#     data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
-#     for data_set in data_sets:
-#         record_type_data = data_sets[record_type.get_identifier()]
-#         module = import_module(record_type_data['module_path'])
-#         record.append(getattr(module, record_type_data['query_record_class_name']))
-#     return records
-
-
 def is_authenticated_with_proxy(proxy):
     """Given a Proxy, checks whether a user is authenticated"""
     if proxy is None:
@@ -944,17 +909,6 @@ def make_catalog_map(cat_name, identifier=PHANTOM_ROOT_IDENTIFIER, default_text=
 def camel_to_under(name):
     s1 = re.sub('(.)([A-Z][a-z]+)', r'\1_\2', name)
     return re.sub('([a-z0-9])([A-Z])', r'\1_\2', s1).lower()
-
-
-# def get_object_records(object_name, record_type_ids):
-#     records = []
-#     record_type_data_sets = get_registry(object_name + '_RECORD_TYPES', runtime)
-#     for record_type_idstr in record_type_ids:
-#         record_type_data = record_type_data_sets[Id(record_type_idstr).get_identifier()]
-#         module = import_module(record_type_data['module_path'])
-#         record = getattr(module, record_type_data['object_record_class_name'], None)
-#         records.append(record)
-#     return tuple(records)
 
 
 def convert_catalog_id_to_object_id_string(catalog_id):

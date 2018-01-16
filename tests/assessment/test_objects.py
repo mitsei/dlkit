@@ -2371,7 +2371,7 @@ def response_list_class_fixture(request):
 
         create_form = request.cls.catalog.get_assessment_form_for_create([SEQUENCE_ASSESSMENT])
         create_form.display_name = 'Test Assessment'
-        create_form.description = 'Test Assessment for ResponseList tests'
+        create_form.description = 'Test Assessment for AssessmentSession tests'
         request.cls.assessment = request.cls.catalog.create_assessment(create_form)
 
         for number in ['One', 'Two', 'Three', 'Four']:

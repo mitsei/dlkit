@@ -39,20 +39,20 @@ class OrderedChoiceItemRecord(ObjectInitRecord):
 
     def is_response_correct(self, response):
         """returns True if response evaluates to an Item Answer that is 100 percent correct"""
-        for answer in self.get_answers():
+        for answer in self.my_osid_object.get_answers():
             if self._is_match(response, answer):
                 return True
         return False
 
     def get_correctness_for_response(self, response):
         """get measure of correctness available for a particular response"""
-        for answer in self.get_answers():
+        for answer in self.my_osid_object.get_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
                 except AttributeError:
                     return 100
-        for answer in self.get_wrong_answers():
+        for answer in self.my_osid_object.get_wrong_answers():
             if self._is_match(response, answer):
                 try:
                     return answer.get_score()
@@ -60,13 +60,13 @@ class OrderedChoiceItemRecord(ObjectInitRecord):
                     return 0
 
     def get_answer_for_response(self, response):
-        for answer in self.get_answers():
+        for answer in self.my_osid_object.get_answers():
             if self._is_match(response, answer):
                 return answer
 
         wrong_answers = None
         try:
-            wrong_answers = list(self.get_wrong_answers())
+            wrong_answers = list(self.my_osid_object.get_wrong_answers())
         except AttributeError:
             pass
         else:

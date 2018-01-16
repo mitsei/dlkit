@@ -19,7 +19,7 @@ class AssessmentWithFollowOnPhaseRecord(ObjectInitRecord):
     # show the new parameters?
     @property
     def spawned(self):
-        return bool(self._my_map['hasSpawnedFollowOnPhase'])
+        return bool(self.my_osid_object._my_map['hasSpawnedFollowOnPhase'])
 
 
 class AssessmentWithFollowOnPhaseFormRecord(ObjectInitRecord):
@@ -28,25 +28,24 @@ class AssessmentWithFollowOnPhaseFormRecord(ObjectInitRecord):
         'assessment-with-follow-on-phase'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssessmentWithFollowOnPhaseFormRecord, self).__init__(**kwargs)
-        self._follow_on_phase_metadata = None
+    def __init__(self, osid_object_form):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not osid_object_form.is_for_update():
+            self._init_map()
+        super(AssessmentWithFollowOnPhaseFormRecord, self).__init__(osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(AssessmentWithFollowOnPhaseFormRecord, self)._init_map(**kwargs)
-        self._my_map['hasSpawnedFollowOnPhase'] = \
+        self.my_osid_object_form._my_map['hasSpawnedFollowOnPhase'] = \
             bool(self._follow_on_phase_metadata['default_boolean_values'][0])
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(AssessmentWithFollowOnPhaseFormRecord, self)._init_metadata(**kwargs)
         self._follow_on_phase_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'has_spawned_follow_on_phase'),
             'element_label': 'Has Spawned Follow On Phase',
             'instructions': 'accepts a valid boolean',
@@ -63,13 +62,13 @@ class AssessmentWithFollowOnPhaseFormRecord(ObjectInitRecord):
         return Metadata(**self._follow_on_phase_metadata)
 
     def set_follow_on_phase_state(self, follow_on_phase_state):
-        self._my_map['hasSpawnedFollowOnPhase'] = bool(follow_on_phase_state)
+        self.my_osid_object_form._my_map['hasSpawnedFollowOnPhase'] = bool(follow_on_phase_state)
 
     def clear_follow_on_phase_state(self):
         if (self.get_follow_on_phase_metadata().is_read_only() or
                 self.get_follow_on_phase_metadata().is_required()):
             raise NoAccess()
-        self._my_map['hasSpawnedFollowOnPhase'] = \
+        self.my_osid_object_form._my_map['hasSpawnedFollowOnPhase'] = \
             bool(self._follow_on_phase_metadata['default_boolean_values'][0])
 
 
@@ -82,7 +81,7 @@ class GeneratedAssessmentRecord(ObjectInitRecord):
     # show the new parameters?
     @property
     def source_assessment_taken_id(self):
-        return Id(self._my_map['sourceAssessmentTakenId'])
+        return Id(self.my_osid_object._my_map['sourceAssessmentTakenId'])
 
 
 class GeneratedAssessmentFormRecord(ObjectInitRecord):
@@ -91,25 +90,24 @@ class GeneratedAssessmentFormRecord(ObjectInitRecord):
         'generated-assessment'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(GeneratedAssessmentFormRecord, self).__init__(**kwargs)
-        self._source_assessment_taken_id_metadata = None
+    def __init__(self, osid_object_form):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not osid_object_form.is_for_update():
+            self._init_map()
+        super(GeneratedAssessmentFormRecord, self).__init__(osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(GeneratedAssessmentFormRecord, self)._init_map(**kwargs)
-        self._my_map['sourceAssessmentTakenId'] = \
+        self.my_osid_object_form._my_map['sourceAssessmentTakenId'] = \
             str(self._source_assessment_taken_id_metadata['default_id_values'][0])
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(GeneratedAssessmentFormRecord, self)._init_metadata(**kwargs)
         self._source_assessment_taken_id_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'source_assessment_taken_id'),
             'element_label': 'Source Assessment Taken ID that generated this one',
             'instructions': 'accepts a valid OSID Id string',
@@ -129,13 +127,13 @@ class GeneratedAssessmentFormRecord(ObjectInitRecord):
     def set_source_assessment_taken_id(self, assessment_taken_id):
         if not isinstance(assessment_taken_id, Id):
             raise InvalidArgument('assessment_taken_id')
-        self._my_map['sourceAssessmentTakenId'] = str(assessment_taken_id)
+        self.my_osid_object_form._my_map['sourceAssessmentTakenId'] = str(assessment_taken_id)
 
     def clear_source_assessment_taken_id(self):
         if (self.get_source_assessment_taken_id_metadata().is_read_only() or
                 self.get_source_assessment_taken_id_metadata().is_required()):
             raise NoAccess()
-        self._my_map['sourceAssessmentTakenId'] = \
+        self.my_osid_object_form._my_map['sourceAssessmentTakenId'] = \
             str(self._source_assessment_taken_id_metadata['default_id_values'][0])
 
 
@@ -144,7 +142,7 @@ class GeneratedAssessmentQueryRecord(QueryInitRecord):
     def match_source_assessment_taken_id(self, assessment_taken_id, match):
         if not isinstance(assessment_taken_id, Id):
             raise InvalidArgument('assessment_taken_id')
-        self._add_match('sourceAssessmentTakenId', str(assessment_taken_id), match)
+        self._my_osid_query._add_match('sourceAssessmentTakenId', str(assessment_taken_id), match)
 
     def clear_source_assessment_taken_id(self):
-        self._clear_terms('sourceAssessmentTakenId')
+        self._my_osid_query._clear_terms('sourceAssessmentTakenId')

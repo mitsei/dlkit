@@ -40,9 +40,11 @@ def get_assessment_manager():
 
 class TestReviewOptionsAssessmentOfferedRecord(unittest.TestCase):
     """Tests for ReviewOptionsAssessmentOfferedRecord"""
-    def setUp(self):
-        self.obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
-        self.obj_map['reviewOptions'] = {
+
+    @classmethod
+    def setUpClass(cls):
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
+        obj_map['reviewOptions'] = {
             'whetherCorrect': {
                 'duringAttempt': False,
                 'afterAttempt': False,
@@ -56,9 +58,15 @@ class TestReviewOptionsAssessmentOfferedRecord(unittest.TestCase):
                 'afterDeadline': False
             }
         }
-        self.osid_object = OsidObject(object_name='TEST_OBJECT',
-                                      osid_object_map=self.obj_map)
-        self.review_offered_object = utilities.add_class(self.osid_object, ReviewOptionsAssessmentOfferedRecord)
+        cls.osid_object = OsidObject(object_name='TEST_OBJECT',
+                                     osid_object_map=obj_map)
+
+    def setUp(self):
+        self.review_offered_object = ReviewOptionsAssessmentOfferedRecord(self.osid_object)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
     def test_can_get_review_correct_during_attempt(self):
         self.assertTrue(isinstance(self.review_offered_object.can_review_whether_correct_during_attempt(),
@@ -105,7 +113,7 @@ class TestReviewOptionsAssessmentOfferedRecord(unittest.TestCase):
         obj_map['maxAttempts'] = 5
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        review_offered_object = utilities.add_class(osid_object, ReviewOptionsAssessmentOfferedRecord)
+        review_offered_object = ReviewOptionsAssessmentOfferedRecord(osid_object)
         self.assertTrue(review_offered_object.has_max_attempts())
         self.assertFalse(self.review_offered_object.has_max_attempts())
 
@@ -118,7 +126,7 @@ class TestReviewOptionsAssessmentOfferedRecord(unittest.TestCase):
         obj_map['maxAttempts'] = None
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        review_offered_object = utilities.add_class(osid_object, ReviewOptionsAssessmentOfferedRecord)
+        review_offered_object = ReviewOptionsAssessmentOfferedRecord(osid_object)
         self.assertFalse(review_offered_object.has_max_attempts())
 
     def test_can_get_max_attempts(self):
@@ -126,7 +134,7 @@ class TestReviewOptionsAssessmentOfferedRecord(unittest.TestCase):
         obj_map['maxAttempts'] = 2
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        review_offered_object = utilities.add_class(osid_object, ReviewOptionsAssessmentOfferedRecord)
+        review_offered_object = ReviewOptionsAssessmentOfferedRecord(osid_object)
         self.assertEqual(review_offered_object.max_attempts, 2)
 
     def test_can_get_object_map(self):
@@ -138,7 +146,7 @@ class TestReviewOptionsAssessmentOfferedRecord(unittest.TestCase):
         obj_map['deadline'] = utcfuture
         osid_object = OsidObject(object_name='TEST_OBJECT',
                                  osid_object_map=obj_map)
-        review_offered_object = utilities.add_class(osid_object, ReviewOptionsAssessmentOfferedRecord)
+        review_offered_object = ReviewOptionsAssessmentOfferedRecord(osid_object)
         object_map = review_offered_object.object_map
         self.assertIn('startTime', object_map)
         self.assertIn('deadline', object_map)
@@ -164,14 +172,19 @@ class TestReviewOptionsAssessmentOfferedRecord(unittest.TestCase):
 
 class TestReviewOptionsAssessmentOfferedFormRecord(unittest.TestCase):
     """Tests for ReviewOptionsAssessmentOfferedFormRecord"""
-    def setUp(self):
-        self.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
-        self.osid_object_form._authority = 'TESTING.MIT.EDU'
-        self.osid_object_form._namespace = 'records.Testing'
 
-        self.form = utilities.add_class(self.osid_object_form,
-                                        ReviewOptionsAssessmentOfferedFormRecord,
-                                        initialize=True)
+    @classmethod
+    def setUpClass(cls):
+        cls.osid_object_form = OsidObjectForm(object_name='TEST_OBJECT')
+        cls.osid_object_form._authority = 'TESTING.MIT.EDU'
+        cls.osid_object_form._namespace = 'records.Testing'
+
+    def setUp(self):
+        self.form = ReviewOptionsAssessmentOfferedFormRecord(self.osid_object_form)
+
+    @classmethod
+    def tearDownClass(cls):
+        pass
 
     def test_can_get_review_options_metadata(self):
         self.assertTrue(isinstance(self.form.get_review_options_metadata(), Metadata))
@@ -192,40 +205,40 @@ class TestReviewOptionsAssessmentOfferedFormRecord(unittest.TestCase):
         self.assertTrue(isinstance(self.form.get_after_deadline_metadata(), Metadata))
 
     def test_can_set_whether_correct(self):
-        self.assertTrue(self.form._my_map['reviewOptions']['whetherCorrect']['duringAttempt'])
-        self.assertTrue(self.form._my_map['reviewOptions']['whetherCorrect']['afterAttempt'])
-        self.assertTrue(self.form._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'])
-        self.assertTrue(self.form._my_map['reviewOptions']['whetherCorrect']['afterDeadline'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['duringAttempt'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterAttempt'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterDeadline'])
         self.form.set_review_whether_correct(during_attempt=False,
                                              after_attempt=False,
                                              before_deadline=False,
                                              after_deadline=False)
-        self.assertFalse(self.form._my_map['reviewOptions']['whetherCorrect']['duringAttempt'])
-        self.assertFalse(self.form._my_map['reviewOptions']['whetherCorrect']['afterAttempt'])
-        self.assertFalse(self.form._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'])
-        self.assertFalse(self.form._my_map['reviewOptions']['whetherCorrect']['afterDeadline'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['duringAttempt'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterAttempt'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['beforeDeadline'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['whetherCorrect']['afterDeadline'])
 
     def test_can_set_review_solution(self):
-        self.assertFalse(self.form._my_map['reviewOptions']['solution']['duringAttempt'])
-        self.assertTrue(self.form._my_map['reviewOptions']['solution']['afterAttempt'])
-        self.assertTrue(self.form._my_map['reviewOptions']['solution']['beforeDeadline'])
-        self.assertTrue(self.form._my_map['reviewOptions']['solution']['afterDeadline'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['duringAttempt'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['afterAttempt'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['beforeDeadline'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['afterDeadline'])
         self.form.set_review_solution(during_attempt=True,
                                       after_attempt=False,
                                       before_deadline=False,
                                       after_deadline=False)
-        self.assertTrue(self.form._my_map['reviewOptions']['solution']['duringAttempt'])
-        self.assertFalse(self.form._my_map['reviewOptions']['solution']['afterAttempt'])
-        self.assertFalse(self.form._my_map['reviewOptions']['solution']['beforeDeadline'])
-        self.assertFalse(self.form._my_map['reviewOptions']['solution']['afterDeadline'])
+        self.assertTrue(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['duringAttempt'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['afterAttempt'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['beforeDeadline'])
+        self.assertFalse(self.form.my_osid_object_form._my_map['reviewOptions']['solution']['afterDeadline'])
 
     def test_can_get_max_attempts_metadata(self):
         self.assertTrue(isinstance(self.form.get_max_attempts_metadata(), Metadata))
 
     def test_can_set_max_attempts(self):
-        self.assertIsNone(self.form._my_map['maxAttempts'])
+        self.assertIsNone(self.form.my_osid_object_form._my_map['maxAttempts'])
         self.form.set_max_attempts(4)
-        self.assertEqual(self.form._my_map['maxAttempts'], 4)
+        self.assertEqual(self.form.my_osid_object_form._my_map['maxAttempts'], 4)
 
     def test_setting_max_attempts_with_none_throws_exception(self):
         with self.assertRaises(errors.InvalidArgument):
@@ -239,44 +252,46 @@ class TestReviewOptionsAssessmentOfferedFormRecord(unittest.TestCase):
 
     def test_can_clear_max_attempts(self):
         self.form.set_max_attempts(4)
-        self.assertEqual(self.form._my_map['maxAttempts'], 4)
+        self.assertEqual(self.form.my_osid_object_form._my_map['maxAttempts'], 4)
         self.form.clear_max_attempts()
-        self.assertIsNone(self.form._my_map['maxAttempts'])
+        self.assertIsNone(self.form.my_osid_object_form._my_map['maxAttempts'])
 
 
 class TestReviewOptionsAssessmentTakenRecord(unittest.TestCase):
     """Tests for ReviewOptionsAssessmentTakenRecord"""
 
-    def setUp(self):
-        self.mgr = get_assessment_manager()
-        form = self.mgr.get_bank_form_for_create([])
+    @classmethod
+    def setUpClass(cls):
+        cls.mgr = get_assessment_manager()
+        form = cls.mgr.get_bank_form_for_create([])
         form.display_name = 'Bank for testing'
-        self.bank = self.mgr.create_bank(form)
+        cls.bank = cls.mgr.create_bank(form)
 
-        form = self.bank.get_item_form_for_create([ITEM_FORM_WITH_SOLUTION])
+        form = cls.bank.get_item_form_for_create([ITEM_FORM_WITH_SOLUTION])
         form.set_solution('a solution')
-        self.item_1 = self.bank.create_item(form)
+        cls.item_1 = cls.bank.create_item(form)
 
-        form = self.bank.get_question_form_for_create(self.item_1.ident, [])
-        self.bank.create_question(form)
+        form = cls.bank.get_question_form_for_create(cls.item_1.ident, [])
+        cls.bank.create_question(form)
 
-        form = self.bank.get_item_form_for_create([ITEM_FORM_WITH_SOLUTION])
+        form = cls.bank.get_item_form_for_create([ITEM_FORM_WITH_SOLUTION])
         form.set_solution('a solution 2')
-        self.item_2 = self.bank.create_item(form)
+        cls.item_2 = cls.bank.create_item(form)
 
-        form = self.bank.get_question_form_for_create(self.item_2.ident, [])
-        self.bank.create_question(form)
+        form = cls.bank.get_question_form_for_create(cls.item_2.ident, [])
+        cls.bank.create_question(form)
 
-        form = self.bank.get_assessment_form_for_create([ASSESSMENT_FORM_SIMPLE_SEQUENCING])
+        form = cls.bank.get_assessment_form_for_create([ASSESSMENT_FORM_SIMPLE_SEQUENCING])
         form.display_name = 'assessment 1'
-        self.assessment = self.bank.create_assessment(form)
+        cls.assessment = cls.bank.create_assessment(form)
 
-        self.bank.add_item(self.assessment.ident, self.item_1.ident)
+        cls.bank.add_item(cls.assessment.ident, cls.item_1.ident)
 
-        form = self.bank.get_assessment_offered_form_for_create(self.assessment.ident,
-                                                                [ASSESSMENT_OFFERED_REVIEWABLE])
-        self.offered = self.bank.create_assessment_offered(form)
+        form = cls.bank.get_assessment_offered_form_for_create(cls.assessment.ident,
+                                                               [ASSESSMENT_OFFERED_REVIEWABLE])
+        cls.offered = cls.bank.create_assessment_offered(form)
 
+    def setUp(self):
         form = self.bank.get_assessment_taken_form_for_create(self.offered.ident,
                                                               [ASSESSMENT_TAKEN_REVIEWABLE])
         self.taken = self.bank.create_assessment_taken(form)
@@ -284,16 +299,17 @@ class TestReviewOptionsAssessmentTakenRecord(unittest.TestCase):
         question = self.bank.get_first_question(section.ident)
         self.taken = self.bank.get_assessment_taken(self.taken.ident)  # to update the taken map
 
-    def tearDown(self):
-        for assessment in self.bank.get_assessments():
-            for assessment_offered in self.bank.get_assessments_offered_for_assessment(assessment.ident):
-                for assessment_taken in self.bank.get_assessments_taken_for_assessment_offered(assessment_offered.ident):
-                    self.bank.delete_assessment_taken(assessment_taken.ident)
-                    self.bank.delete_assessment_offered(assessment_offered.ident)
-            self.bank.delete_assessment(assessment.ident)
-        for item in self.bank.get_items():
-            self.bank.delete_item(item.ident)
-        self.mgr.delete_bank(self.bank.ident)
+    @classmethod
+    def tearDownClass(cls):
+        for assessment in cls.bank.get_assessments():
+            for assessment_offered in cls.bank.get_assessments_offered_for_assessment(assessment.ident):
+                for assessment_taken in cls.bank.get_assessments_taken_for_assessment_offered(assessment_offered.ident):
+                    cls.bank.delete_assessment_taken(assessment_taken.ident)
+                cls.bank.delete_assessment_offered(assessment_offered.ident)
+            cls.bank.delete_assessment(assessment.ident)
+        for item in cls.bank.get_items():
+            cls.bank.delete_item(item.ident)
+        cls.mgr.delete_bank(cls.bank.ident)
 
     def test_can_get_section_for_question(self):
         section = self.bank.get_first_assessment_section(self.taken.ident)

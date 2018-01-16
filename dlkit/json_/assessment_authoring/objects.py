@@ -45,13 +45,8 @@ class AssessmentPart(abc_assessment_authoring_objects.AssessmentPart, osid_objec
     """
     _namespace = 'assessment_authoring.AssessmentPart'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(AssessmentPart, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='ASSESSMENT_PART', **kwargs)
         self._catalog_name = 'Bank'
 
     def get_assessment_id(self):
@@ -334,11 +329,11 @@ class AssessmentPartForm(abc_assessment_authoring_objects.AssessmentPartForm, os
     def __init__(self, **kwargs):
         osid_objects.OsidContainableForm.__init__(self)
         osid_objects.OsidOperableForm.__init__(self)
-        osid_objects.OsidObjectForm.__init__(self, **kwargs)
+        osid_objects.OsidObjectForm.__init__(self, object_name='ASSESSMENT_PART', **kwargs)
         self._mdata = default_mdata.get_assessment_part_mdata()
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -645,13 +640,8 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
     """A ``SequenceRule`` defines the ordering of ``AssessmentParts``."""
     _namespace = 'assessment_authoring.SequenceRule'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(SequenceRule, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='SEQUENCE_RULE', **kwargs)
         self._catalog_name = 'Bank'
 
     def get_assessment_part_id(self):
@@ -803,10 +793,6 @@ class SequenceRule(abc_assessment_authoring_objects.SequenceRule, osid_objects.O
 
         """
         return self._get_record(sequence_rule_record_type)
-
-    def _evaluates_true(self):
-        """should be overridden somewhere? Not in spec."""
-        return False
 
 
 class SequenceRuleForm(abc_assessment_authoring_objects.SequenceRuleForm, osid_objects.OsidRuleForm):

@@ -59,13 +59,8 @@ class Authorization(abc_authorization_objects.Authorization, osid_objects.OsidRe
     """
     _namespace = 'authorization.Authorization'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(Authorization, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='AUTHORIZATION', **kwargs)
         self._catalog_name = 'Vault'
 
     def is_implicit(self):
@@ -361,7 +356,7 @@ class AuthorizationForm(abc_authorization_objects.AuthorizationForm, osid_object
     _namespace = 'authorization.Authorization'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidRelationshipForm.__init__(self, **kwargs)
+        osid_objects.OsidRelationshipForm.__init__(self, object_name='AUTHORIZATION', **kwargs)
         self._mdata = default_mdata.get_authorization_mdata()  # Don't know if we need default mdata for this
         self._init_metadata(**kwargs)
 
@@ -466,7 +461,7 @@ class Vault(abc_authorization_objects.Vault, osid_objects.OsidCatalog):
     _namespace = 'authorization.Vault'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, **kwargs)
+        osid_objects.OsidCatalog.__init__(self, object_name='VAULT', **kwargs)
 
     @utilities.arguments_not_none
     def get_vault_record(self, vault_record_type):
@@ -504,8 +499,11 @@ class VaultForm(abc_authorization_objects.VaultForm, osid_objects.OsidCatalogFor
     _namespace = 'authorization.Vault'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, object_name='VAULT', **kwargs)
         self._mdata = default_mdata.get_vault_mdata()
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

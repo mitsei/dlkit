@@ -22,20 +22,17 @@ from dlkit.abstract_osid.osid import errors
 
 class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSearch):
     """The search interface for governing comment searches."""
-    _namespace = 'commenting.Comment'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'commenting.Comment'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'commenting.Comment'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_comments(self, comment_ids):
@@ -88,15 +85,14 @@ class CommentSearch(abc_commenting_searches.CommentSearch, osid_searches.OsidSea
 
 class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'commenting.Comment'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'commenting.Comment'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_comments(self):
         """Gets the comment list resulting from a search.
@@ -150,20 +146,17 @@ class CommentSearchResults(abc_commenting_searches.CommentSearchResults, osid_se
 
 class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
     """The search interface for governing book searches."""
-    _namespace = 'commenting.Book'
-
-    def __init__(self, **kwargs):
-        # Removed on 10/5/17:
-        # self._namespace = 'commenting.Book'
-        # self._runtime = runtime
-        # record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
-        # self._record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_data_sets = record_type_data_sets
-        # self._all_supported_record_type_ids = []
-        # for data_set in record_type_data_sets:
-        #     self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+    def __init__(self, runtime):
+        self._namespace = 'commenting.Book'
+        self._runtime = runtime
+        record_type_data_sets = get_registry('RESOURCE_RECORD_TYPES', runtime)
+        self._record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_data_sets = record_type_data_sets
+        self._all_supported_record_type_ids = []
         self._id_list = None
-        osid_searches.OsidSearch.__init__(self, **kwargs)
+        for data_set in record_type_data_sets:
+            self._all_supported_record_type_ids.append(str(Id(**record_type_data_sets[data_set])))
+        osid_searches.OsidSearch.__init__(self, runtime)
 
     @utilities.arguments_not_none
     def search_among_books(self, book_ids):
@@ -214,15 +207,14 @@ class BookSearch(abc_commenting_searches.BookSearch, osid_searches.OsidSearch):
 
 class BookSearchResults(abc_commenting_searches.BookSearchResults, osid_searches.OsidSearchResults):
     """This interface provides a means to capture results of a search."""
-    _namespace = 'commenting.Book'
-
-    def __init__(self, **kwargs):  # removed results, query_terms, runtime on 10/18/17
-        # # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
-        # # self._results = [r for r in results]
-        # self._results = results
-        # self._query_terms = query_terms
-        # self.retrieved = False
-        osid_searches.OsidSearchResults.__init__(self, **kwargs)
+    def __init__(self, results, query_terms, runtime):
+        # if you don't iterate, then .count() on the cursor is an inaccurate representation of limit / skip
+        # self._results = [r for r in results]
+        self._namespace = 'commenting.Book'
+        self._results = results
+        self._query_terms = query_terms
+        self._runtime = runtime
+        self.retrieved = False
 
     def get_books(self):
         """Gets the book list resulting from a search.

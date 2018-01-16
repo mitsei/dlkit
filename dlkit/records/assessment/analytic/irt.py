@@ -28,9 +28,13 @@ class ItemDecimalValuesFormRecord(DecimalValuesFormRecord,
         'item-decimal-values'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(ItemDecimalValuesFormRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(ItemDecimalValuesFormRecord, self).__init__(osid_object_form=osid_object_form)
 
 
 class IRTItemRecord(DecimalValuesRecord):
@@ -43,32 +47,32 @@ class IRTItemRecord(DecimalValuesRecord):
 
     def has_difficulty_value(self):
         """stub"""
-        return 'difficulty' in self._my_map['decimalValues']
+        return 'difficulty' in self.my_osid_object._my_map['decimalValues']
 
     def get_difficulty_value(self):
         """stub"""
         if self.has_difficulty_value():
-            return self._my_map['decimalValues']['difficulty']
+            return self.my_osid_object._my_map['decimalValues']['difficulty']
         raise IllegalState()
 
     def has_discrimination_value(self):
         """stub"""
-        return 'discrimination' in self._my_map['decimalValues']
+        return 'discrimination' in self.my_osid_object._my_map['decimalValues']
 
     def get_discrimination_value(self):
         """stub"""
         if self.has_discrimination_value():
-            return self._my_map['decimalValues']['discrimination']
+            return self.my_osid_object._my_map['decimalValues']['discrimination']
         raise IllegalState()
 
     def has_pseudo_guessing_value(self):
         """stub"""
-        return 'pseudoGuessing' in self._my_map['decimalValues']
+        return 'pseudoGuessing' in self.my_osid_object._my_map['decimalValues']
 
     def get_pseudo_guessing_value(self):
         """stub"""
         if self.has_pseudo_guessing_value():
-            return self._my_map['decimalValues']['pseudoGuessing']
+            return self.my_osid_object._my_map['decimalValues']['pseudoGuessing']
         raise IllegalState()
 
     difficulty = property(fget=get_difficulty_value)
@@ -84,19 +88,22 @@ class IRTItemFormRecord(ItemDecimalValuesFormRecord):
         'item-decimal-values'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(IRTItemFormRecord, self).__init__(**kwargs)
+    def __init__(self, osid_object_form=None):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not self.my_osid_object_form.is_for_update():
+            self._init_map()
+        super(IRTItemFormRecord, self).__init__(osid_object_form=osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(IRTItemFormRecord, self)._init_map(**kwargs)
-        self._my_map['decimalValues']['difficulty'] = \
+        super(IRTItemFormRecord, self)._init_map()
+        self.my_osid_object_form._my_map['decimalValues']['difficulty'] = \
             self._decimal_value_metadata['default_decimal_values'][1]
-        self._my_map['decimalValues']['discrimination'] = \
+        self.my_osid_object_form._my_map['decimalValues']['discrimination'] = \
             self._decimal_value_metadata['default_decimal_values'][1]
-        self._my_map['decimalValues']['pseudoGuessing'] = \
+        self.my_osid_object_form._my_map['decimalValues']['pseudoGuessing'] = \
             self._decimal_value_metadata['default_decimal_values'][1]
 
     def get_difficulty_value_metadata(self):
@@ -135,60 +142,60 @@ class IRTItemQueryRecord(QueryInitRecord):
 
     def match_minimum_difficulty(self, value, match):
         """stub"""
-        self._match_minimum_decimal('decimalValues.difficulty',
+        self._my_osid_query._match_minimum_decimal('decimalValues.difficulty',
                                                    value,
                                                    match)
 
     def clear_minimum_difficulty_terms(self):
         """stub"""
-        self._clear_minimum_terms('decimalValues.difficulty')
+        self._my_osid_query._clear_minimum_terms('decimalValues.difficulty')
 
     def match_maximum_difficulty(self, value, match):
         """stub"""
-        self._match_maximum_decimal('decimalValues.difficulty',
+        self._my_osid_query._match_maximum_decimal('decimalValues.difficulty',
                                                    value,
                                                    match)
 
     def clear_maximum_difficulty_terms(self):
         """stub"""
-        self._clear_maximum_terms('decimalValues.difficulty')
+        self._my_osid_query._clear_maximum_terms('decimalValues.difficulty')
 
     def match_minimum_discrimination(self, value, match):
         """stub"""
-        self._match_minimum_decimal('decimalValues.discrimination',
+        self._my_osid_query._match_minimum_decimal('decimalValues.discrimination',
                                                    value,
                                                    match)
 
     def clear_miniumum_discrimination_terms(self):
         """stub"""
-        self._clear_minimum_terms('decimalValues.discrimination')
+        self._my_osid_query._clear_minimum_terms('decimalValues.discrimination')
 
     def match_maximum_discrimination(self, value, match):
         """stub"""
-        self._match_maximum_decimal('decimalValues.discrimination',
+        self._my_osid_query._match_maximum_decimal('decimalValues.discrimination',
                                                    value,
                                                    match)
 
     def clear_maximum_discrimination_terms(self):
         """stub"""
-        self._clear_maximum_terms('decimalValues.discrimination')
+        self._my_osid_query._clear_maximum_terms('decimalValues.discrimination')
 
     def match_minimum_pseudo_guessing(self, value, match):
         """stub"""
-        self._match_minimum_decimal('decimalValues.pseudo_guessing',
+        self._my_osid_query._match_minimum_decimal('decimalValues.pseudo_guessing',
                                                    value,
                                                    match)
 
     def clear_miniumum_pseudo_guessing_terms(self):
         """stub"""
-        self._clear_minimum_terms('decimalValues.pseudo_guessing')
+        self._my_osid_query._clear_minimum_terms('decimalValues.pseudo_guessing')
 
     def match_maximum_pseudo_guessing(self, value, match):
         """stub"""
-        self._match_maximum_decimal('decimalValues.pseudo_guessing',
+        self._my_osid_query._match_maximum_decimal('decimalValues.pseudo_guessing',
                                                    value,
                                                    match)
 
     def clear_maximum_pseudo_guessing_terms(self):
         """stub"""
-        self._clear_maximum_terms('decimalValues.pseudo_guessing')
+        self._my_osid_query._clear_maximum_terms('decimalValues.pseudo_guessing')

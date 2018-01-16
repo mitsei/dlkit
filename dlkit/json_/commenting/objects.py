@@ -31,13 +31,8 @@ class Comment(abc_commenting_objects.Comment, osid_objects.OsidRelationship):
     """A ``Comment`` represents a comment and/or rating related to a reference object in a book."""
     _namespace = 'commenting.Comment'
 
-    def __new__(cls, **kwargs):
-        if not kwargs:
-            return object.__new__(cls)  # To support things like deepcopy
-        return super(Comment, cls).__new__(cls, **kwargs)
-
     def __init__(self, **kwargs):
-        osid_objects.OsidObject.__init__(self, **kwargs)
+        osid_objects.OsidObject.__init__(self, object_name='COMMENT', **kwargs)
         self._catalog_name = 'Book'
 
     def get_reference_id(self):
@@ -224,12 +219,11 @@ class CommentForm(abc_commenting_objects.CommentForm, osid_objects.OsidRelations
     _namespace = 'commenting.Comment'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidRelationshipForm.__init__(self, **kwargs)
+        osid_objects.OsidRelationshipForm.__init__(self, object_name='COMMENT', **kwargs)
         self._mdata = default_mdata.get_comment_mdata()
-        # The following are now being called in the AdminSession:
-        # self._init_metadata(**kwargs)
-        # if not self.is_for_update():
-        #     self._init_map(**kwargs)
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""
@@ -424,7 +418,7 @@ class Book(abc_commenting_objects.Book, osid_objects.OsidCatalog):
     _namespace = 'commenting.Book'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalog.__init__(self, **kwargs)
+        osid_objects.OsidCatalog.__init__(self, object_name='BOOK', **kwargs)
 
     @utilities.arguments_not_none
     def get_book_record(self, book_record_type):
@@ -462,8 +456,11 @@ class BookForm(abc_commenting_objects.BookForm, osid_objects.OsidCatalogForm):
     _namespace = 'commenting.Book'
 
     def __init__(self, **kwargs):
-        osid_objects.OsidCatalogForm.__init__(self, **kwargs)
+        osid_objects.OsidCatalogForm.__init__(self, object_name='BOOK', **kwargs)
         self._mdata = default_mdata.get_book_mdata()
+        self._init_metadata(**kwargs)
+        if not self.is_for_update():
+            self._init_map(**kwargs)
 
     def _init_metadata(self, **kwargs):
         """Initialize form metadata"""

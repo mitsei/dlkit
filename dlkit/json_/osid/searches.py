@@ -13,7 +13,6 @@
 from collections import OrderedDict
 
 
-from . import rules as osid_rules
 from .. import utilities
 from ..osid import rules as osid_rules
 from dlkit.abstract_osid.osid import errors
@@ -41,27 +40,24 @@ class OsidSearch(abc_osid_searches.OsidSearch, osid_rules.OsidCondition):
       ObjectList list = results.getObjectList();
 
     """
-    def __new__(cls, **kwargs):
-        return osid_rules.OsidCondition.__new__(cls, 'Search', **kwargs)
-
     def __init__(self, runtime):
-        # self._records = OrderedDict()
-        # # _load_records is in OsidExtensibleQuery:
-        # # _all_supported_record_type_ids comes from inheriting query object
-        # # THIS SHOULD BE RE-DONE:
-        # self._load_records(self._all_supported_record_type_ids)
-        # self._runtime = runtime
-        # self._query_terms = {}
-        # self._keyword_terms = {}
-        # self._keyword_fields = ['displayName.text', 'description.text']
-        # try:
-        #     # Try to get additional keyword fields from the runtime, if available:
-        #     config = runtime.get_configuration()
-        #     parameter_id = Id('parameter:keywordFields@json')
-        #     additional_keyword_fields = config.get_value_by_parameter(parameter_id).get_object_value()
-        #     self._keyword_fields += additional_keyword_fields[self._namespace]
-        # except (AttributeError, KeyError, errors.NotFound):
-        #     pass
+        self._records = OrderedDict()
+        # _load_records is in OsidExtensibleQuery:
+        # _all_supported_record_type_ids comes from inheriting query object
+        # THIS SHOULD BE RE-DONE:
+        self._load_records(self._all_supported_record_type_ids)
+        self._runtime = runtime
+        self._query_terms = {}
+        self._keyword_terms = {}
+        self._keyword_fields = ['displayName.text', 'description.text']
+        try:
+            # Try to get additional keyword fields from the runtime, if available:
+            config = runtime.get_configuration()
+            parameter_id = Id('parameter:keywordFields@json')
+            additional_keyword_fields = config.get_value_by_parameter(parameter_id).get_object_value()
+            self._keyword_fields += additional_keyword_fields[self._namespace]
+        except (AttributeError, KeyError, errors.NotFound):
+            pass
         self._limit_result_set_start = None
         self._limit_result_set_end = None
 
@@ -118,14 +114,6 @@ class OsidSearchResults(abc_osid_searches.OsidSearchResults, osid_rules.OsidResu
     duration = record.getTimeForSearch();
 
     """
-    def __new__(cls, **kwargs):
-        return osid_rules.OsidResult.__new__(cls, 'SearchResults', **kwargs)
-
-    def __init__(self, results, query_terms, **kwargs):
-        self._results = results
-        self._query_terms = query_terms
-        self.retrieved = False
-        osid_rules.OsidResult.__init__(self, **kwargs)
 
     def get_result_size(self):
         """Returns the size of a result set from a search query.

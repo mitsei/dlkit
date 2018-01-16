@@ -19,11 +19,11 @@ class AssessmentPartWithLearningObjectiveRecord(ObjectInitRecord):
     # show the new parameters?
     @property
     def learning_objective_id(self):
-        return self._my_map['learningObjectiveId']
+        return self.my_osid_object._my_map['learningObjectiveId']
 
     @property
     def minimum_proficiency(self):
-        return self._my_map['minimumProficiency']
+        return self.my_osid_object._my_map['minimumProficiency']
 
 
 class AssessmentPartWithLearningObjectiveFormRecord(ObjectInitRecord):
@@ -32,28 +32,26 @@ class AssessmentPartWithLearningObjectiveFormRecord(ObjectInitRecord):
         'learning-objective'
     ]
 
-    def __init__(self, **kwargs):
-        if not self._block_super(kwargs):
-            super(AssessmentPartWithLearningObjectiveFormRecord, self).__init__(**kwargs)
-        self._learning_objective_id_metadata = None
-        self._minimum_proficiency_metadata = None
+    def __init__(self, osid_object_form):
+        if osid_object_form is not None:
+            self.my_osid_object_form = osid_object_form
+        self._init_metadata()
+        if not osid_object_form.is_for_update():
+            self._init_map()
+        super(AssessmentPartWithLearningObjectiveFormRecord, self).__init__(osid_object_form)
 
-    def _init_map(self, **kwargs):
+    def _init_map(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(AssessmentPartWithLearningObjectiveFormRecord, self)._init_map(**kwargs)
-        self._my_map['learningObjectiveId'] = \
+        self.my_osid_object_form._my_map['learningObjectiveId'] = \
             str(self._learning_objective_id_metadata['default_id_values'][0])
-        self._my_map['minimumProficiency'] = \
+        self.my_osid_object_form._my_map['minimumProficiency'] = \
             str(self._minimum_proficiency_metadata['default_id_values'][0])
 
-    def _init_metadata(self, **kwargs):
+    def _init_metadata(self):
         """stub"""
-        if not self._block_super(kwargs):
-            super(AssessmentPartWithLearningObjectiveFormRecord, self)._init_metadata(**kwargs)
         self._learning_objective_id_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'learning_objective_id'),
             'element_label': 'Learning Objective Id',
             'instructions': 'accepts a valid OSID Id string',
@@ -66,8 +64,8 @@ class AssessmentPartWithLearningObjectiveFormRecord(ObjectInitRecord):
             'id_set': []
         }
         self._minimum_proficiency_metadata = {
-            'element_id': Id(self._authority,
-                             self._namespace,
+            'element_id': Id(self.my_osid_object_form._authority,
+                             self.my_osid_object_form._namespace,
                              'minimum_proficiency'),
             'element_label': 'Minimum Proficiency in the given Objective to "pass"',
             'instructions': 'accepts a valid OSID Id string',
@@ -89,21 +87,21 @@ class AssessmentPartWithLearningObjectiveFormRecord(ObjectInitRecord):
         return Metadata(**self._minimum_proficiency_metadata)
 
     def set_learning_objective_id(self, learning_objective_id):
-        self._my_map['learningObjectiveId'] = str(learning_objective_id)
+        self.my_osid_object_form._my_map['learningObjectiveId'] = str(learning_objective_id)
 
     def clear_learning_objective_id(self):
         if (self.get_learning_objective_id_metadata().is_read_only() or
                 self.get_learning_objective_id_metadata().is_required()):
             raise NoAccess()
-        self._my_map['learningObjectiveId'] = \
+        self.my_osid_object_form._my_map['learningObjectiveId'] = \
             str(self._learning_objective_id_metadata['default_id_values'][0])
 
     def set_minimum_proficiency(self, minimum_proficiency):
-        if not self._is_valid_id(
+        if not self.my_osid_object_form._is_valid_id(
                 minimum_proficiency):
             raise InvalidArgument('minimumProficiency')
-        self._my_map['minimumProficiency'] = str(minimum_proficiency)
+        self.my_osid_object_form._my_map['minimumProficiency'] = str(minimum_proficiency)
 
     def clear_minimum_proficiency(self):
-        self._my_map['minimumProficiency'] = \
+        self.my_osid_object_form._my_map['minimumProficiency'] = \
             int(self._minimum_proficiency_metadata['default_id_values'][0])
