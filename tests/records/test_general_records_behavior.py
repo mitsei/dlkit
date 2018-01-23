@@ -27,6 +27,8 @@ MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD = Type(**registry.QUESTION_RECORD_
 IMAGE_ASSET_GENUS_TYPE = Type(**registry.ASSET_GENUS_TYPES['image'])
 PNG_ASSET_CONTENT_GENUS_TYPE = Type(**registry.ASSET_CONTENT_GENUS_TYPES['png'])
 
+TIME_VALUE_RECORD = Type(**registry.OSID_OBJECT_RECORD_TYPES['time-value'])
+
 
 def get_assessment_manager():
     request = SimpleRequest(username='tester')
@@ -218,7 +220,8 @@ class TestRecordsOverwritingMap(unittest.TestCase):
         self.assertNotEqual(form._my_map['fileIds'], {})
         expected_value = deepcopy(form._my_map['fileIds'])
 
-        form.add_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
+        # form.add_form_record(MULTI_LANGUAGE_ORDERED_CHOICE_QUESTION_RECORD)
+        form.add_form_record(TIME_VALUE_RECORD)
 
         self.assertNotEqual(form._my_map['fileIds'], {})
         self.assertEqual(form._my_map['fileIds'], expected_value)
