@@ -1175,11 +1175,12 @@ class AssetAdminSession(abc_repository_sessions.AssetAdminSession, osid_sessions
         os.rename(filepath, new_path)
 
         # Should also rename the file stored in the secondary path
-        old_path = '{0}/repository/AssetContent'.format(relative_path)
-        filepath = os.path.join(datastore_path, ac._my_map['url']).replace(old_path, secondary_data_store_path)
-        old_filename = os.path.splitext(os.path.basename(filepath))[0]
-        new_path = filepath.replace(old_filename, ac.ident.identifier)
-        os.rename(filepath, new_path)
+        if has_secondary_storage():
+            old_path = '{0}/repository/AssetContent'.format(relative_path)
+            filepath = os.path.join(datastore_path, ac._my_map['url']).replace(old_path, secondary_data_store_path)
+            old_filename = os.path.splitext(os.path.basename(filepath))[0]
+            new_path = filepath.replace(old_filename, ac.ident.identifier)
+            os.rename(filepath, new_path)
 
     def _update_asset_content_url_to_match_id(self, ac):
         """update the ac URL value to match the ident"""
