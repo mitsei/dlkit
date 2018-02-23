@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.5.18] - 2018-02-23
+### Added
+- microseconds data for AssessmentTaken results.
+
+### Fixed
+- AssetContent filenames with `filesystem_adapter` are
+  correctly renamed for secondary storage paths, if
+  provided.
+
 ## [0.5.17] - 2018-01-16
 ### Added
 - memcached URI configuration flag.
@@ -238,6 +247,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.5.18]: https://github.com/mitsei/dlkit/compare/0.5.17...0.5.18
 [0.5.17]: https://github.com/mitsei/dlkit/compare/0.5.16...0.5.17
 [0.5.16]: https://github.com/mitsei/dlkit/compare/0.5.15...0.5.16
 [0.5.15]: https://github.com/mitsei/dlkit/compare/0.5.14...0.5.15
