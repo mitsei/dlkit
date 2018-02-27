@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo hierarchy'
 
 DESCRIPTION = 'MongoDB based hierarchy implementation'
 
-VERSIONCOMPONENTS = [0, 1, 38]
+VERSIONCOMPONENTS = [0, 1, 39]
 
 RELEASEDATE = "2018-02-27"
 

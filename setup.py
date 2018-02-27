@@ -93,7 +93,7 @@ setup(
         'test': ['pymongo', 'numpy', 'envoy', 'lxml', 'sympy',
                  'bs4', 'python-memcached', 'requests',
                  'rsa', 'requests', 'vcrpy', 'future',
-                 'html5lib',
+                 'html5lib', 'diskcache',
                  'pytest', 'pytest-pep8', 'pytest-cov'],
     },
 

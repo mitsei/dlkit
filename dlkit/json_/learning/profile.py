@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo learning'
 
 DESCRIPTION = 'MongoDB based learning implementation'
 
-VERSIONCOMPONENTS = [0, 1, 38]
+VERSIONCOMPONENTS = [0, 1, 39]
 
 RELEASEDATE = "2018-02-27"
 
