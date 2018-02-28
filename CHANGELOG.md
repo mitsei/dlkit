@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.6.0] - 2018-02-28
+### Added
+- diskcache and configuration options. Changes default caching
+  behavior when turned on to use `diskcache` instead of `memcache`.
+
 ## [0.5.18] - 2018-02-23
 ### Added
 - microseconds data for AssessmentTaken results.
@@ -247,6 +252,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.6.0]: https://github.com/mitsei/dlkit/compare/0.5.18...0.6.0
 [0.5.18]: https://github.com/mitsei/dlkit/compare/0.5.17...0.5.18
 [0.5.17]: https://github.com/mitsei/dlkit/compare/0.5.16...0.5.17
 [0.5.16]: https://github.com/mitsei/dlkit/compare/0.5.15...0.5.16
