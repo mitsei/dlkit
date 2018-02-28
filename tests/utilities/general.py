@@ -3,7 +3,7 @@ def is_never_authz(config):
 
 
 def is_no_authz(config):
-    return config in ['TEST_SERVICE'] or uses_cataloging(config) or uses_filesystem_only(config)
+    return config in ['TEST_SERVICE', 'TEST_SERVICE_MEMCACHE'] or uses_cataloging(config) or uses_filesystem_only(config)
 
 
 def uses_cataloging(config):
