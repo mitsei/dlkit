@@ -1812,8 +1812,9 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                     media_label = media_file_element[media_key].split(':')[-1]
 
                     if media_label in dict_files_map:
+                        asset_id = Id(dict_files_map[media_label]['assetId'])
                         ac_id = Id(dict_files_map[media_label]['assetContentId'])
-                        ac = acls.get_asset_content(ac_id)
+                        ac = self._get_asset_content(asset_id=asset_id, asset_content_id=ac_id)
 
                         if media_file_element.name == 'track':
                             try:
@@ -1854,8 +1855,9 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                     if 'alt' in media_file_element.attrs:
                         alt_tag_label = media_file_element['alt'].split(':')[-1]
                         if alt_tag_label in dict_files_map:
+                            asset_id = Id(dict_files_map[alt_tag_label]['assetId'])
                             ac_id = Id(dict_files_map[alt_tag_label]['assetContentId'])
-                            ac = acls.get_asset_content(ac_id)
+                            ac = self._get_asset_content(asset_id=asset_id, asset_content_id=ac_id)
                             try:
                                 media_file_element['alt'] = ac.get_alt_text().text
                             except AttributeError:
@@ -1885,28 +1887,16 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                     updated_list.append(child)
             return updated_list
 
-        # One assumption is that the object's catalogId can be used
-        # as the repositoryId
-        manager = self.my_osid_object._get_provider_manager('REPOSITORY')
-        try:
-            if self.my_osid_object._proxy is not None:
-                acls = manager.get_asset_content_lookup_session(proxy=self.my_osid_object._proxy)
-            else:
-                acls = manager.get_asset_content_lookup_session()
-        except AttributeError:
-            pass
-        else:
-            acls.use_federated_repository_view()
-            media_regex = re.compile('(AssetContent:)')
-            original_files_map = {}
-            if 'fileIds' in obj_map:
-                original_files_map = obj_map['fileIds']
+        media_regex = re.compile('(AssetContent:)')
+        original_files_map = {}
+        if 'fileIds' in obj_map:
+            original_files_map = obj_map['fileIds']
 
-            for key, data in obj_map.items():
-                if isinstance(data, dict):
-                    obj_map[key] = replace_url_in_display_text(data, original_files_map)
-                elif isinstance(data, list):
-                    obj_map[key] = check_list_children(data, original_files_map)
+        for key, data in obj_map.items():
+            if isinstance(data, dict):
+                obj_map[key] = replace_url_in_display_text(data, original_files_map)
+            elif isinstance(data, list):
+                obj_map[key] = check_list_children(data, original_files_map)
 
 
 class FilesFormRecord(osid_records.OsidRecord, AssetUtils):
