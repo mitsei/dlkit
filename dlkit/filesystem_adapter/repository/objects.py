@@ -1512,12 +1512,16 @@ class AssetContentList(abc_repository_objects.AssetContentList,
 
     def next(self):
         asset_content = next(self._payload_list)
-        try:
-            if asset_content.has_url() and 'repository/AssetContent' in asset_content.get_url():
-                return AssetContent(asset_content, self._config_map)
-        except TypeError:
-            pass
-        return asset_content
+        # It seems like if you're using the filesystem_adapter, you will always want a filesystem_adapter
+        #   wrapped AssetContent(). We think this won't break anything -- but the behavior is different,
+        #   so here be dragons...
+        # try:
+        #     if asset_content.has_url() and 'repository/AssetContent' in asset_content.get_url():
+        #         return AssetContent(asset_content, self._config_map)
+        # except TypeError:
+        #     pass
+        # return asset_content
+        return AssetContent(asset_content, self._config_map)
 
     __next__ = next
 
@@ -1544,11 +1548,14 @@ class AssetContentList(abc_repository_objects.AssetContentList,
             raise InvalidArgument()
         provider_list = self._payload_list.get_next_asset_contents(n)
         new_list = []
+        # It seems like if you're using the filesystem_adapter, you will always want a filesystem_adapter
+        #   wrapped AssetContent(). We think this won't break anything -- but the behavior is different,
+        #   so here be dragons...
         for asset_content in provider_list:
-            if asset_content.has_url() and 'repository/AssetContent' in asset_content.get_url():
-                new_list.append(AssetContent(asset_content, self._config_map))
-            else:
-                new_list.append(asset_content)
+            # if asset_content.has_url() and 'repository/AssetContent' in asset_content.get_url():
+            new_list.append(AssetContent(asset_content, self._config_map))
+            # else:
+            #     new_list.append(asset_content)
         return new_list
 
 
