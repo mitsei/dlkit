@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.6.2] - 2018-03-01
+### Changed
+- `filesystem_adapter` always returns a wrapped `AssetContent`
+  from an `AssetContentList`. 
+
 ## [0.6.1] - 2018-03-01
 ### Changed
 - FilesRecord uses internal helper method and AssetLookup
@@ -257,6 +262,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.6.2]: https://github.com/mitsei/dlkit/compare/0.6.1...0.6.2
 [0.6.1]: https://github.com/mitsei/dlkit/compare/0.6.0...0.6.1
 [0.6.0]: https://github.com/mitsei/dlkit/compare/0.5.18...0.6.0
 [0.5.18]: https://github.com/mitsei/dlkit/compare/0.5.17...0.5.18
