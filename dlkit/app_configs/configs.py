@@ -86,6 +86,13 @@ else:
         settings.configure()
     except RuntimeError:
         pass  # already configured
+    else:
+        # Should not be called because should happen in handcar_configs.py
+        import django
+        if django.VERSION < (1, 8):
+            settings._setup()
+        else:
+            django.setup()
     try:
         HANDCAR_IMPL = getattr(settings, 'HANDCAR_IMPL', '')
         CLOUDFRONT_PUBLIC_KEY = getattr(settings, 'CLOUDFRONT_PUBLIC_KEY', '')
