@@ -22,6 +22,13 @@ else:
         settings.configure()
     except RuntimeError:
         pass  # already configured
+    else:
+        # This should always be called from here (not configs.py), if it is needed
+        import django
+        if django.VERSION < (1, 8):
+            settings._setup()
+        else:
+            django.setup()
     try:
         MC3_HOST = getattr(settings, 'MC3_HOST', '')
         MC3_HANDCAR_APP_KEY = getattr(settings, 'MC3_HANDCAR_APP_KEY', None)
