@@ -135,9 +135,10 @@ class OsidSession(abc_osid_sessions.OsidSession):
                 cataloging_manager = self._runtime.get_manager('CATALOGING',
                                                                provider_impl)  # need to add version argument
                 lookup_session = cataloging_manager.get_catalog_lookup_session()
-                self._my_catalog_map = lookup_session.get_catalog(catalog_id)._my_map
-                self._catalog = Catalog(osid_object_map=self._my_catalog_map, runtime=self._runtime,
-                                        proxy=self._proxy)
+                # self._my_catalog_map = lookup_session.get_catalog(catalog_id)._my_map
+                # self._catalog = Catalog(osid_object_map=self._my_catalog_map, runtime=self._runtime,
+                #                         proxy=self._proxy)
+                self._catalog = lookup_session.get_catalog(catalog_id)
         else:
             self._catalog_identifier = PHANTOM_ROOT_IDENTIFIER
             self._my_catalog_map = make_catalog_map(cat_name, identifier=self._catalog_identifier)
