@@ -18,6 +18,7 @@ from dlkit.primordium.locale.primitives import DisplayText
 from dlkit.primordium.type.primitives import Type
 from dlkit.runtime import PROXY_SESSION, proxy_example
 from dlkit.runtime.managers import Runtime
+from dlkit.runtime.primitives import DateTime
 
 
 REQUEST = proxy_example.SimpleRequest()
@@ -223,12 +224,20 @@ def asset_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_repository(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def asset_form_test_fixture(request):
     # From test_templates/resource.py::ResourceForm::init_template
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_asset_form_for_create([])
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("asset_form_class_fixture", "asset_form_test_fixture")
@@ -237,249 +246,273 @@ class TestAssetForm(object):
     def test_get_title_metadata(self):
         """Tests get_title_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_title_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'STRING'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_title_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'STRING'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_title(self):
         """Tests set_title"""
         # From test_templates/repository.py::AssetForm::set_title_template
-        default_value = self.form.get_title_metadata().get_default_string_values()[0]
-        assert self.form._my_map['title'] == default_value
-        self.form.set_title('String')
-        assert self.form._my_map['title']['text'] == 'String'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_title(42)
+        if not is_never_authz(self.service_config):
+            default_value = self.form.get_title_metadata().get_default_string_values()[0]
+            assert self.form._my_map['title'] == default_value
+            self.form.set_title('String')
+            assert self.form._my_map['title']['text'] == 'String'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_title(42)
 
     def test_clear_title(self):
         """Tests clear_title"""
         # From test_templates/repository.py::AssetForm::clear_title_template
-        self.form.set_title('A String to Clear')
-        assert self.form._my_map['title']['text'] == 'A String to Clear'
-        self.form.clear_title()
-        assert self.form._my_map['title'] == self.form.get_title_metadata().get_default_string_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_title('A String to Clear')
+            assert self.form._my_map['title']['text'] == 'A String to Clear'
+            self.form.clear_title()
+            assert self.form._my_map['title'] == self.form.get_title_metadata().get_default_string_values()[0]
 
     def test_get_public_domain_metadata(self):
         """Tests get_public_domain_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_public_domain_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_public_domain_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_public_domain(self):
         """Tests set_public_domain"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        self.form.set_public_domain(True)
-        assert self.form._my_map['publicDomain']
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_public_domain('false')
+        if not is_never_authz(self.service_config):
+            self.form.set_public_domain(True)
+            assert self.form._my_map['publicDomain']
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_public_domain('false')
 
     def test_clear_public_domain(self):
         """Tests clear_public_domain"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_public_domain(True)
-        assert self.form._my_map['publicDomain']
-        self.form.clear_public_domain()
-        assert self.form._my_map['publicDomain'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_public_domain(True)
+            assert self.form._my_map['publicDomain']
+            self.form.clear_public_domain()
+            assert self.form._my_map['publicDomain'] is None
 
     def test_get_copyright_metadata(self):
         """Tests get_copyright_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_copyright_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'STRING'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_copyright_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'STRING'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_copyright(self):
         """Tests set_copyright"""
         # From test_templates/repository.py::AssetForm::set_title_template
-        default_value = self.form.get_copyright_metadata().get_default_string_values()[0]
-        assert self.form._my_map['copyright'] == default_value
-        self.form.set_copyright('String')
-        assert self.form._my_map['copyright']['text'] == 'String'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_copyright(42)
+        if not is_never_authz(self.service_config):
+            default_value = self.form.get_copyright_metadata().get_default_string_values()[0]
+            assert self.form._my_map['copyright'] == default_value
+            self.form.set_copyright('String')
+            assert self.form._my_map['copyright']['text'] == 'String'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_copyright(42)
 
     def test_clear_copyright(self):
         """Tests clear_copyright"""
         # From test_templates/repository.py::AssetForm::clear_title_template
-        self.form.set_copyright('A String to Clear')
-        assert self.form._my_map['copyright']['text'] == 'A String to Clear'
-        self.form.clear_copyright()
-        assert self.form._my_map['copyright'] == self.form.get_copyright_metadata().get_default_string_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_copyright('A String to Clear')
+            assert self.form._my_map['copyright']['text'] == 'A String to Clear'
+            self.form.clear_copyright()
+            assert self.form._my_map['copyright'] == self.form.get_copyright_metadata().get_default_string_values()[0]
 
     def test_get_copyright_registration_metadata(self):
         """Tests get_copyright_registration_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_copyright_registration_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'STRING'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_copyright_registration_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'STRING'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_copyright_registration(self):
         """Tests set_copyright_registration"""
         # From test_templates/repository.py::AssetContentForm::set_url_template
-        default_value = self.form.get_copyright_registration_metadata().get_default_string_values()[0]
-        assert self.form._my_map['copyrightRegistration'] == default_value
-        self.form.set_copyright_registration('String')
-        assert self.form._my_map['copyrightRegistration'] == 'String'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_copyright_registration(42)
+        if not is_never_authz(self.service_config):
+            default_value = self.form.get_copyright_registration_metadata().get_default_string_values()[0]
+            assert self.form._my_map['copyrightRegistration'] == default_value
+            self.form.set_copyright_registration('String')
+            assert self.form._my_map['copyrightRegistration'] == 'String'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_copyright_registration(42)
 
     def test_clear_copyright_registration(self):
         """Tests clear_copyright_registration"""
         # From test_templates/repository.py::AssetContentForm::clear_url_template
-        self.form.set_copyright_registration('A String to Clear')
-        assert self.form._my_map['copyrightRegistration'] == 'A String to Clear'
-        self.form.clear_copyright_registration()
-        assert self.form._my_map['copyrightRegistration'] == self.form.get_copyright_registration_metadata().get_default_string_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_copyright_registration('A String to Clear')
+            assert self.form._my_map['copyrightRegistration'] == 'A String to Clear'
+            self.form.clear_copyright_registration()
+            assert self.form._my_map['copyrightRegistration'] == self.form.get_copyright_registration_metadata().get_default_string_values()[0]
 
     def test_get_distribute_verbatim_metadata(self):
         """Tests get_distribute_verbatim_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_distribute_verbatim_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_distribute_verbatim_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_distribute_verbatim(self):
         """Tests set_distribute_verbatim"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        self.form.set_distribute_verbatim(True)
-        assert self.form._my_map['distributeVerbatim']
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_distribute_verbatim('false')
+        if not is_never_authz(self.service_config):
+            self.form.set_distribute_verbatim(True)
+            assert self.form._my_map['distributeVerbatim']
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_distribute_verbatim('false')
 
     def test_clear_distribute_verbatim(self):
         """Tests clear_distribute_verbatim"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_distribute_verbatim(True)
-        assert self.form._my_map['distributeVerbatim']
-        self.form.clear_distribute_verbatim()
-        assert self.form._my_map['distributeVerbatim'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_distribute_verbatim(True)
+            assert self.form._my_map['distributeVerbatim']
+            self.form.clear_distribute_verbatim()
+            assert self.form._my_map['distributeVerbatim'] is None
 
     def test_get_distribute_alterations_metadata(self):
         """Tests get_distribute_alterations_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_distribute_alterations_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_distribute_alterations_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_distribute_alterations(self):
         """Tests set_distribute_alterations"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        self.form.set_distribute_alterations(True)
-        assert self.form._my_map['distributeAlterations']
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_distribute_alterations('false')
+        if not is_never_authz(self.service_config):
+            self.form.set_distribute_alterations(True)
+            assert self.form._my_map['distributeAlterations']
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_distribute_alterations('false')
 
     def test_clear_distribute_alterations(self):
         """Tests clear_distribute_alterations"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_distribute_alterations(True)
-        assert self.form._my_map['distributeAlterations']
-        self.form.clear_distribute_alterations()
-        assert self.form._my_map['distributeAlterations'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_distribute_alterations(True)
+            assert self.form._my_map['distributeAlterations']
+            self.form.clear_distribute_alterations()
+            assert self.form._my_map['distributeAlterations'] is None
 
     def test_get_distribute_compositions_metadata(self):
         """Tests get_distribute_compositions_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_distribute_compositions_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_distribute_compositions_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_distribute_compositions(self):
         """Tests set_distribute_compositions"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        self.form.set_distribute_compositions(True)
-        assert self.form._my_map['distributeCompositions']
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_distribute_compositions('false')
+        if not is_never_authz(self.service_config):
+            self.form.set_distribute_compositions(True)
+            assert self.form._my_map['distributeCompositions']
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_distribute_compositions('false')
 
     def test_clear_distribute_compositions(self):
         """Tests clear_distribute_compositions"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_distribute_compositions(True)
-        assert self.form._my_map['distributeCompositions']
-        self.form.clear_distribute_compositions()
-        assert self.form._my_map['distributeCompositions'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_distribute_compositions(True)
+            assert self.form._my_map['distributeCompositions']
+            self.form.clear_distribute_compositions()
+            assert self.form._my_map['distributeCompositions'] is None
 
     def test_get_source_metadata(self):
         """Tests get_source_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_source_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_source_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_source(self):
         """Tests set_source"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['sourceId'] == ''
-        self.form.set_source(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['sourceId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_source(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['sourceId'] == ''
+            self.form.set_source(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['sourceId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_source(True)
 
     def test_clear_source(self):
         """Tests clear_source"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_source(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['sourceId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_source()
-        assert self.form._my_map['sourceId'] == self.form.get_source_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_source(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['sourceId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_source()
+            assert self.form._my_map['sourceId'] == self.form.get_source_metadata().get_default_id_values()[0]
 
     def test_get_provider_links_metadata(self):
         """Tests get_provider_links_metadata"""
@@ -514,29 +547,29 @@ class TestAssetForm(object):
     def test_get_created_date_metadata(self):
         """Tests get_created_date_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_created_date_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DATETIME'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_created_date_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DATETIME'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_created_date(self):
         """Tests set_created_date"""
-        # From test_templates/assessment.py::AssessmentOfferedForm::set_start_time_template
+        # From test_templates/repository.py::AssetForm::set_created_date
         if not is_never_authz(self.service_config):
-            test_time = DateTime.utcnow()
-            assert self.form._my_map['createdDate'] is None
-            self.form.set_created_date(test_time)
-            assert self.form._my_map['createdDate'] == test_time
+            default_value = self.form.get_created_date_metadata().get_default_date_time_values()[0]
+            assert self.form._my_map['createdDate'] == default_value
+            now = DateTime.utcnow()
+            self.form.set_created_date(now)
+            assert self.form._my_map['createdDate'] == now
             with pytest.raises(errors.InvalidArgument):
-                self.form.set_created_date(True)
-            # reset this for other tests
-            self.form._my_map['createdDate'] = None
+                self.form.set_created_date(42)
 
     def test_clear_created_date(self):
         """Tests clear_created_date"""
@@ -552,46 +585,50 @@ class TestAssetForm(object):
     def test_get_published_metadata(self):
         """Tests get_published_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_published_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_published_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_published(self):
         """Tests set_published"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        self.form.set_published(True)
-        assert self.form._my_map['published']
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_published('false')
+        if not is_never_authz(self.service_config):
+            self.form.set_published(True)
+            assert self.form._my_map['published']
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_published('false')
 
     def test_clear_published(self):
         """Tests clear_published"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_published(True)
-        assert self.form._my_map['published']
-        self.form.clear_published()
-        assert self.form._my_map['published'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_published(True)
+            assert self.form._my_map['published']
+            self.form.clear_published()
+            assert self.form._my_map['published'] is None
 
     def test_get_published_date_metadata(self):
         """Tests get_published_date_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_published_date_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DATETIME'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_published_date_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DATETIME'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_published_date(self):
         """Tests set_published_date"""
@@ -620,71 +657,78 @@ class TestAssetForm(object):
     def test_get_principal_credit_string_metadata(self):
         """Tests get_principal_credit_string_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_principal_credit_string_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'STRING'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_principal_credit_string_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'STRING'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_principal_credit_string(self):
         """Tests set_principal_credit_string"""
         # From test_templates/repository.py::AssetForm::set_title_template
-        default_value = self.form.get_principal_credit_string_metadata().get_default_string_values()[0]
-        assert self.form._my_map['principalCreditString'] == default_value
-        self.form.set_principal_credit_string('String')
-        assert self.form._my_map['principalCreditString']['text'] == 'String'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_principal_credit_string(42)
+        if not is_never_authz(self.service_config):
+            default_value = self.form.get_principal_credit_string_metadata().get_default_string_values()[0]
+            assert self.form._my_map['principalCreditString'] == default_value
+            self.form.set_principal_credit_string('String')
+            assert self.form._my_map['principalCreditString']['text'] == 'String'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_principal_credit_string(42)
 
     def test_clear_principal_credit_string(self):
         """Tests clear_principal_credit_string"""
         # From test_templates/repository.py::AssetForm::clear_title_template
-        self.form.set_principal_credit_string('A String to Clear')
-        assert self.form._my_map['principalCreditString']['text'] == 'A String to Clear'
-        self.form.clear_principal_credit_string()
-        assert self.form._my_map['principalCreditString'] == self.form.get_principal_credit_string_metadata().get_default_string_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_principal_credit_string('A String to Clear')
+            assert self.form._my_map['principalCreditString']['text'] == 'A String to Clear'
+            self.form.clear_principal_credit_string()
+            assert self.form._my_map['principalCreditString'] == self.form.get_principal_credit_string_metadata().get_default_string_values()[0]
 
     def test_get_composition_metadata(self):
         """Tests get_composition_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_composition_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_composition_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_composition(self):
         """Tests set_composition"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['compositionId'] == ''
-        self.form.set_composition(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['compositionId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_composition(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['compositionId'] == ''
+            self.form.set_composition(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['compositionId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_composition(True)
 
     def test_clear_composition(self):
         """Tests clear_composition"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_composition(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['compositionId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_composition()
-        assert self.form._my_map['compositionId'] == self.form.get_composition_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_composition(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['compositionId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_composition()
+            assert self.form._my_map['compositionId'] == self.form.get_composition_metadata().get_default_id_values()[0]
 
     def test_get_asset_form_record(self):
         """Tests get_asset_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_asset_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_asset_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -943,64 +987,71 @@ class TestAssetContentForm(object):
     def test_get_data_metadata(self):
         """Tests get_data_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_data_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'OBJECT'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_data_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'OBJECT'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_data(self):
         """Tests set_data"""
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_data('foo')
-        # TODO: should test setting actual data...
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_data('foo')
+            # TODO: should test setting actual data...
 
     def test_clear_data(self):
         """Tests clear_data"""
-        self.form.clear_data()
+        if not is_never_authz(self.service_config):
+            self.form.clear_data()
 
     def test_get_url_metadata(self):
         """Tests get_url_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_url_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'STRING'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_url_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'STRING'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_url(self):
         """Tests set_url"""
         # From test_templates/repository.py::AssetContentForm::set_url_template
-        default_value = self.form.get_url_metadata().get_default_string_values()[0]
-        assert self.form._my_map['url'] == default_value
-        self.form.set_url('String')
-        assert self.form._my_map['url'] == 'String'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_url(42)
+        if not is_never_authz(self.service_config):
+            default_value = self.form.get_url_metadata().get_default_string_values()[0]
+            assert self.form._my_map['url'] == default_value
+            self.form.set_url('String')
+            assert self.form._my_map['url'] == 'String'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_url(42)
 
     def test_clear_url(self):
         """Tests clear_url"""
         # From test_templates/repository.py::AssetContentForm::clear_url_template
-        self.form.set_url('A String to Clear')
-        assert self.form._my_map['url'] == 'A String to Clear'
-        self.form.clear_url()
-        assert self.form._my_map['url'] == self.form.get_url_metadata().get_default_string_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_url('A String to Clear')
+            assert self.form._my_map['url'] == 'A String to Clear'
+            self.form.clear_url()
+            assert self.form._my_map['url'] == self.form.get_url_metadata().get_default_string_values()[0]
 
     def test_get_asset_content_form_record(self):
         """Tests get_asset_content_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_asset_content_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_asset_content_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -1149,6 +1200,8 @@ def composition_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_repository(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def composition_form_test_fixture(request):
@@ -1156,15 +1209,22 @@ def composition_form_test_fixture(request):
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_composition_form_for_create([])
 
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
+
 
 @pytest.mark.usefixtures("composition_form_class_fixture", "composition_form_test_fixture")
 class TestCompositionForm(object):
     """Tests for CompositionForm"""
     def test_get_composition_form_record(self):
         """Tests get_composition_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_composition_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_composition_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",

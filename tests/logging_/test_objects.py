@@ -124,12 +124,20 @@ def log_entry_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_log(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def log_entry_form_test_fixture(request):
     # From test_templates/resource.py::ResourceForm::init_template
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_log_entry_form_for_create([])
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("log_entry_form_class_fixture", "log_entry_form_test_fixture")
@@ -168,16 +176,17 @@ class TestLogEntryForm(object):
     def test_get_timestamp_metadata(self):
         """Tests get_timestamp_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_timestamp_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DATETIME'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_timestamp_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DATETIME'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_timestamp(self):
         """Tests set_timestamp"""
@@ -192,31 +201,34 @@ class TestLogEntryForm(object):
     def test_get_agent_metadata(self):
         """Tests get_agent_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_agent_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_agent_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_agent(self):
         """Tests set_agent"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['agentId'] == ''
-        self.form.set_agent(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['agentId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_agent(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['agentId'] == ''
+            self.form.set_agent(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['agentId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_agent(True)
 
     def test_get_log_entry_form_record(self):
         """Tests get_log_entry_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_log_entry_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_log_entry_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",

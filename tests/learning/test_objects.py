@@ -152,12 +152,20 @@ def objective_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_objective_bank(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def objective_form_test_fixture(request):
     # From test_templates/resource.py::ResourceForm::init_template
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_objective_form_for_create([])
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("objective_form_class_fixture", "objective_form_test_fixture")
@@ -166,101 +174,111 @@ class TestObjectiveForm(object):
     def test_get_assessment_metadata(self):
         """Tests get_assessment_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_assessment_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_assessment_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_assessment(self):
         """Tests set_assessment"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['assessmentId'] == ''
-        self.form.set_assessment(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['assessmentId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_assessment(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['assessmentId'] == ''
+            self.form.set_assessment(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['assessmentId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_assessment(True)
 
     def test_clear_assessment(self):
         """Tests clear_assessment"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_assessment(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['assessmentId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_assessment()
-        assert self.form._my_map['assessmentId'] == self.form.get_assessment_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_assessment(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['assessmentId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_assessment()
+            assert self.form._my_map['assessmentId'] == self.form.get_assessment_metadata().get_default_id_values()[0]
 
     def test_get_knowledge_category_metadata(self):
         """Tests get_knowledge_category_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_knowledge_category_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_knowledge_category_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_knowledge_category(self):
         """Tests set_knowledge_category"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['knowledgeCategoryId'] == ''
-        self.form.set_knowledge_category(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['knowledgeCategoryId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_knowledge_category(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['knowledgeCategoryId'] == ''
+            self.form.set_knowledge_category(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['knowledgeCategoryId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_knowledge_category(True)
 
     def test_clear_knowledge_category(self):
         """Tests clear_knowledge_category"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_knowledge_category(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['knowledgeCategoryId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_knowledge_category()
-        assert self.form._my_map['knowledgeCategoryId'] == self.form.get_knowledge_category_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_knowledge_category(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['knowledgeCategoryId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_knowledge_category()
+            assert self.form._my_map['knowledgeCategoryId'] == self.form.get_knowledge_category_metadata().get_default_id_values()[0]
 
     def test_get_cognitive_process_metadata(self):
         """Tests get_cognitive_process_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_cognitive_process_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_cognitive_process_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_cognitive_process(self):
         """Tests set_cognitive_process"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['cognitiveProcessId'] == ''
-        self.form.set_cognitive_process(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['cognitiveProcessId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_cognitive_process(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['cognitiveProcessId'] == ''
+            self.form.set_cognitive_process(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['cognitiveProcessId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_cognitive_process(True)
 
     def test_clear_cognitive_process(self):
         """Tests clear_cognitive_process"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_cognitive_process(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['cognitiveProcessId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_cognitive_process()
-        assert self.form._my_map['cognitiveProcessId'] == self.form.get_cognitive_process_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_cognitive_process(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['cognitiveProcessId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_cognitive_process()
+            assert self.form._my_map['cognitiveProcessId'] == self.form.get_cognitive_process_metadata().get_default_id_values()[0]
 
     def test_get_objective_form_record(self):
         """Tests get_objective_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_objective_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_objective_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -721,9 +739,10 @@ class TestActivityForm(object):
 
     def test_get_activity_form_record(self):
         """Tests get_activity_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_activity_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_activity_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -954,16 +973,17 @@ class TestProficiencyForm(object):
     def test_get_completion_metadata(self):
         """Tests get_completion_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_completion_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_completion_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_completion(self):
         """Tests set_completion"""
@@ -983,16 +1003,17 @@ class TestProficiencyForm(object):
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_level_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_level_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_level(self):
         """Tests set_level"""
@@ -1012,9 +1033,10 @@ class TestProficiencyForm(object):
 
     def test_get_proficiency_form_record(self):
         """Tests get_proficiency_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_proficiency_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_proficiency_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
