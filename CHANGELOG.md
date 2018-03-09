@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.6.6] - 2018-03-09
+### Added
+- Tests for `set_created_date()`.
+
 ## [0.6.5] - 2018-03-09
 ### Added
 - `Asset` `createdDate` method implementations.
@@ -275,6 +279,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Initial public release.
 
+[0.6.6]: https://github.com/mitsei/dlkit/compare/0.6.5...0.6.6
 [0.6.5]: https://github.com/mitsei/dlkit/compare/0.6.4...0.6.5
 [0.6.4]: https://github.com/mitsei/dlkit/compare/0.6.3...0.6.4
 [0.6.3]: https://github.com/mitsei/dlkit/compare/0.6.2...0.6.3
