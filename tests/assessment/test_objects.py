@@ -126,9 +126,10 @@ class TestQuestionForm(object):
     """Tests for QuestionForm"""
     def test_get_question_form_record(self):
         """Tests get_question_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_question_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_question_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -283,9 +284,10 @@ class TestAnswerForm(object):
     """Tests for AnswerForm"""
     def test_get_answer_form_record(self):
         """Tests get_answer_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_answer_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_answer_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -492,12 +494,20 @@ def item_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def item_form_test_fixture(request):
     # From test_templates/resource.py::ResourceForm::init_template
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_item_form_for_create([])
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("item_form_class_fixture", "item_form_test_fixture")
@@ -535,9 +545,10 @@ class TestItemForm(object):
 
     def test_get_item_form_record(self):
         """Tests get_item_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_item_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_item_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -701,12 +712,20 @@ def assessment_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_bank(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def assessment_form_test_fixture(request):
     # From test_templates/resource.py::ResourceForm::init_template
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_assessment_form_for_create([])
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("assessment_form_class_fixture", "assessment_form_test_fixture")
@@ -715,70 +734,77 @@ class TestAssessmentForm(object):
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_level_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_level_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_level(self):
         """Tests set_level"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['levelId'] == ''
-        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_level(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['levelId'] == ''
+            self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_level(True)
 
     def test_clear_level(self):
         """Tests clear_level"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_level()
-        assert self.form._my_map['levelId'] == self.form.get_level_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_level()
+            assert self.form._my_map['levelId'] == self.form.get_level_metadata().get_default_id_values()[0]
 
     def test_get_rubric_metadata(self):
         """Tests get_rubric_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_rubric_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_rubric_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_rubric(self):
         """Tests set_rubric"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['rubricId'] == ''
-        self.form.set_rubric(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['rubricId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_rubric(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['rubricId'] == ''
+            self.form.set_rubric(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['rubricId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_rubric(True)
 
     def test_clear_rubric(self):
         """Tests clear_rubric"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_rubric(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['rubricId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_rubric()
-        assert self.form._my_map['rubricId'] == self.form.get_rubric_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_rubric(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['rubricId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_rubric()
+            assert self.form._my_map['rubricId'] == self.form.get_rubric_metadata().get_default_id_values()[0]
 
     def test_get_assessment_form_record(self):
         """Tests get_assessment_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_assessment_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_assessment_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -1091,107 +1117,117 @@ class TestAssessmentOfferedForm(object):
     def test_get_level_metadata(self):
         """Tests get_level_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_level_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_level_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_level(self):
         """Tests set_level"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['levelId'] == ''
-        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_level(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['levelId'] == ''
+            self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_level(True)
 
     def test_clear_level(self):
         """Tests clear_level"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_level()
-        assert self.form._my_map['levelId'] == self.form.get_level_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_level(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['levelId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_level()
+            assert self.form._my_map['levelId'] == self.form.get_level_metadata().get_default_id_values()[0]
 
     def test_get_items_sequential_metadata(self):
         """Tests get_items_sequential_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_items_sequential_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_items_sequential_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_items_sequential(self):
         """Tests set_items_sequential"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        self.form.set_items_sequential(True)
-        assert self.form._my_map['itemsSequential']
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_items_sequential('false')
+        if not is_never_authz(self.service_config):
+            self.form.set_items_sequential(True)
+            assert self.form._my_map['itemsSequential']
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_items_sequential('false')
 
     def test_clear_items_sequential(self):
         """Tests clear_items_sequential"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_items_sequential(True)
-        assert self.form._my_map['itemsSequential']
-        self.form.clear_items_sequential()
-        assert self.form._my_map['itemsSequential'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_items_sequential(True)
+            assert self.form._my_map['itemsSequential']
+            self.form.clear_items_sequential()
+            assert self.form._my_map['itemsSequential'] is None
 
     def test_get_items_shuffled_metadata(self):
         """Tests get_items_shuffled_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_items_shuffled_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_items_shuffled_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_items_shuffled(self):
         """Tests set_items_shuffled"""
         # From test_templates/resource.py::ResourceForm::set_group_template
-        self.form.set_items_shuffled(True)
-        assert self.form._my_map['itemsShuffled']
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_items_shuffled('false')
+        if not is_never_authz(self.service_config):
+            self.form.set_items_shuffled(True)
+            assert self.form._my_map['itemsShuffled']
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_items_shuffled('false')
 
     def test_clear_items_shuffled(self):
         """Tests clear_items_shuffled"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_items_shuffled(True)
-        assert self.form._my_map['itemsShuffled']
-        self.form.clear_items_shuffled()
-        assert self.form._my_map['itemsShuffled'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_items_shuffled(True)
+            assert self.form._my_map['itemsShuffled']
+            self.form.clear_items_shuffled()
+            assert self.form._my_map['itemsShuffled'] is None
 
     def test_get_start_time_metadata(self):
         """Tests get_start_time_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_start_time_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DATETIME'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_start_time_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DATETIME'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_start_time(self):
         """Tests set_start_time"""
@@ -1220,16 +1256,17 @@ class TestAssessmentOfferedForm(object):
     def test_get_deadline_metadata(self):
         """Tests get_deadline_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_deadline_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DATETIME'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_deadline_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DATETIME'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_deadline(self):
         """Tests set_deadline"""
@@ -1258,16 +1295,17 @@ class TestAssessmentOfferedForm(object):
     def test_get_duration_metadata(self):
         """Tests get_duration_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_duration_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DURATION'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_duration_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DURATION'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_duration(self):
         """Tests set_duration"""
@@ -1300,70 +1338,77 @@ class TestAssessmentOfferedForm(object):
     def test_get_score_system_metadata(self):
         """Tests get_score_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_score_system_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_score_system_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_score_system(self):
         """Tests set_score_system"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['scoreSystemId'] == ''
-        self.form.set_score_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['scoreSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_score_system(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['scoreSystemId'] == ''
+            self.form.set_score_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['scoreSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_score_system(True)
 
     def test_clear_score_system(self):
         """Tests clear_score_system"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_score_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['scoreSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_score_system()
-        assert self.form._my_map['scoreSystemId'] == self.form.get_score_system_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_score_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['scoreSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_score_system()
+            assert self.form._my_map['scoreSystemId'] == self.form.get_score_system_metadata().get_default_id_values()[0]
 
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_grade_system_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_grade_system_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_grade_system(self):
         """Tests set_grade_system"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['gradeSystemId'] == ''
-        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_grade_system(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['gradeSystemId'] == ''
+            self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_grade_system(True)
 
     def test_clear_grade_system(self):
         """Tests clear_grade_system"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_grade_system()
-        assert self.form._my_map['gradeSystemId'] == self.form.get_grade_system_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_grade_system()
+            assert self.form._my_map['gradeSystemId'] == self.form.get_grade_system_metadata().get_default_id_values()[0]
 
     def test_get_assessment_offered_form_record(self):
         """Tests get_assessment_offered_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_assessment_offered_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_assessment_offered_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -1750,39 +1795,43 @@ class TestAssessmentTakenForm(object):
     def test_get_taker_metadata(self):
         """Tests get_taker_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_taker_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_taker_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_taker(self):
         """Tests set_taker"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['takerId'] == ''
-        self.form.set_taker(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['takerId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_taker(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['takerId'] == ''
+            self.form.set_taker(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['takerId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_taker(True)
 
     def test_clear_taker(self):
         """Tests clear_taker"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_taker(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['takerId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_taker()
-        assert self.form._my_map['takerId'] == self.form.get_taker_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_taker(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['takerId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_taker()
+            assert self.form._my_map['takerId'] == self.form.get_taker_metadata().get_default_id_values()[0]
 
     def test_get_assessment_taken_form_record(self):
         """Tests get_assessment_taken_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_assessment_taken_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_assessment_taken_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",

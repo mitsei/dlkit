@@ -210,16 +210,17 @@ class TestGradeForm(object):
     def test_get_input_score_start_range_metadata(self):
         """Tests get_input_score_start_range_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_input_score_start_range_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_input_score_start_range_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_input_score_start_range(self):
         """Tests set_input_score_start_range"""
@@ -239,16 +240,17 @@ class TestGradeForm(object):
     def test_get_input_score_end_range_metadata(self):
         """Tests get_input_score_end_range_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_input_score_end_range_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_input_score_end_range_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_input_score_end_range(self):
         """Tests set_input_score_end_range"""
@@ -268,16 +270,17 @@ class TestGradeForm(object):
     def test_get_output_score_metadata(self):
         """Tests get_output_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_output_score_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_output_score_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_output_score(self):
         """Tests set_output_score"""
@@ -296,9 +299,10 @@ class TestGradeForm(object):
 
     def test_get_grade_form_record(self):
         """Tests get_grade_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_grade_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_grade_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -501,12 +505,20 @@ def grade_system_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def grade_system_form_test_fixture(request):
     # From test_templates/resource.py::ResourceForm::init_template
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_grade_system_form_for_create([])
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("grade_system_form_class_fixture", "grade_system_form_test_fixture")
@@ -515,16 +527,17 @@ class TestGradeSystemForm(object):
     def test_get_based_on_grades_metadata(self):
         """Tests get_based_on_grades_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_based_on_grades_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_based_on_grades_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_based_on_grades(self):
         """Tests set_based_on_grades"""
@@ -544,16 +557,17 @@ class TestGradeSystemForm(object):
     def test_get_lowest_numeric_score_metadata(self):
         """Tests get_lowest_numeric_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_lowest_numeric_score_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_lowest_numeric_score_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_lowest_numeric_score(self):
         """Tests set_lowest_numeric_score"""
@@ -573,16 +587,17 @@ class TestGradeSystemForm(object):
     def test_get_numeric_score_increment_metadata(self):
         """Tests get_numeric_score_increment_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_numeric_score_increment_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_numeric_score_increment_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_numeric_score_increment(self):
         """Tests set_numeric_score_increment"""
@@ -602,16 +617,17 @@ class TestGradeSystemForm(object):
     def test_get_highest_numeric_score_metadata(self):
         """Tests get_highest_numeric_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_highest_numeric_score_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_highest_numeric_score_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_highest_numeric_score(self):
         """Tests set_highest_numeric_score"""
@@ -630,9 +646,10 @@ class TestGradeSystemForm(object):
 
     def test_get_grade_system_form_record(self):
         """Tests get_grade_system_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_grade_system_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_grade_system_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -936,16 +953,17 @@ class TestGradeEntryForm(object):
     def test_get_ignored_for_calculations_metadata(self):
         """Tests get_ignored_for_calculations_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_ignored_for_calculations_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_ignored_for_calculations_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_ignored_for_calculations(self):
         """Tests set_ignored_for_calculations"""
@@ -957,24 +975,26 @@ class TestGradeEntryForm(object):
     def test_clear_ignored_for_calculations(self):
         """Tests clear_ignored_for_calculations"""
         # From test_templates/resource.py::ResourceForm::clear_group_template
-        self.form.set_ignored_for_calculations(True)
-        assert self.form._my_map['ignoredForCalculations']
-        self.form.clear_ignored_for_calculations()
-        assert self.form._my_map['ignoredForCalculations'] is None
+        if not is_never_authz(self.service_config):
+            self.form.set_ignored_for_calculations(True)
+            assert self.form._my_map['ignoredForCalculations']
+            self.form.clear_ignored_for_calculations()
+            assert self.form._my_map['ignoredForCalculations'] is None
 
     def test_get_grade_metadata(self):
         """Tests get_grade_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_grade_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_grade_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_grade(self):
         """Tests set_grade"""
@@ -997,16 +1017,17 @@ class TestGradeEntryForm(object):
     def test_get_score_metadata(self):
         """Tests get_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_score_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DECIMAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_score_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DECIMAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_score(self):
         """Tests set_score"""
@@ -1029,9 +1050,10 @@ class TestGradeEntryForm(object):
 
     def test_get_grade_entry_form_record(self):
         """Tests get_grade_entry_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_grade_entry_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_grade_entry_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -1201,12 +1223,20 @@ def gradebook_column_form_class_fixture(request):
         if not is_never_authz(request.cls.service_config):
             request.cls.svc_mgr.delete_gradebook(request.cls.catalog.ident)
 
+    request.addfinalizer(class_tear_down)
+
 
 @pytest.fixture(scope="function")
 def gradebook_column_form_test_fixture(request):
     # From test_templates/resource.py::ResourceForm::init_template
     if not is_never_authz(request.cls.service_config):
         request.cls.form = request.cls.catalog.get_gradebook_column_form_for_create([])
+
+    def test_tear_down():
+        if not is_never_authz(request.cls.service_config):
+            request.cls.form = None
+
+    request.addfinalizer(test_tear_down)
 
 
 @pytest.mark.usefixtures("gradebook_column_form_class_fixture", "gradebook_column_form_test_fixture")
@@ -1215,39 +1245,43 @@ class TestGradebookColumnForm(object):
     def test_get_grade_system_metadata(self):
         """Tests get_grade_system_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_grade_system_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_grade_system_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_grade_system(self):
         """Tests set_grade_system"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['gradeSystemId'] == ''
-        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_grade_system(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['gradeSystemId'] == ''
+            self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_grade_system(True)
 
     def test_clear_grade_system(self):
         """Tests clear_grade_system"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_grade_system()
-        assert self.form._my_map['gradeSystemId'] == self.form.get_grade_system_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_grade_system(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['gradeSystemId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_grade_system()
+            assert self.form._my_map['gradeSystemId'] == self.form.get_grade_system_metadata().get_default_id_values()[0]
 
     def test_get_gradebook_column_form_record(self):
         """Tests get_gradebook_column_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_gradebook_column_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_gradebook_column_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",

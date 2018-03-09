@@ -209,9 +209,10 @@ class TestAuthorizationForm(object):
     """Tests for AuthorizationForm"""
     def test_get_authorization_form_record(self):
         """Tests get_authorization_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_authorization_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_authorization_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",

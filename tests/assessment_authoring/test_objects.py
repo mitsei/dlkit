@@ -231,16 +231,17 @@ class TestAssessmentPartForm(object):
     def test_get_weight_metadata(self):
         """Tests get_weight_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_weight_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'CARDINAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_weight_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'CARDINAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_weight(self):
         """Tests set_weight"""
@@ -263,16 +264,17 @@ class TestAssessmentPartForm(object):
     def test_get_allocated_time_metadata(self):
         """Tests get_allocated_time_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_allocated_time_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'DURATION'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_allocated_time_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'DURATION'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_allocated_time(self):
         """Tests set_allocated_time"""
@@ -304,9 +306,10 @@ class TestAssessmentPartForm(object):
 
     def test_get_assessment_part_form_record(self):
         """Tests get_assessment_part_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_assessment_part_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_assessment_part_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
@@ -562,16 +565,17 @@ class TestSequenceRuleForm(object):
     def test_get_minimum_score_metadata(self):
         """Tests get_minimum_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_minimum_score_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'CARDINAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_minimum_score_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'CARDINAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_minimum_score(self):
         """Tests set_minimum_score"""
@@ -586,16 +590,17 @@ class TestSequenceRuleForm(object):
     def test_get_maximum_score_metadata(self):
         """Tests get_maximum_score_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_maximum_score_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'CARDINAL'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_maximum_score_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'CARDINAL'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_maximum_score(self):
         """Tests set_maximum_score"""
@@ -610,16 +615,17 @@ class TestSequenceRuleForm(object):
     def test_get_cumulative_metadata(self):
         """Tests get_cumulative_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_cumulative_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'BOOLEAN'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_cumulative_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'BOOLEAN'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_cumulative(self):
         """Tests set_cumulative"""
@@ -650,9 +656,10 @@ class TestSequenceRuleForm(object):
 
     def test_get_sequence_rule_form_record(self):
         """Tests get_sequence_rule_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_sequence_rule_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_sequence_rule_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",

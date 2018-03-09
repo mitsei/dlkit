@@ -167,71 +167,78 @@ class TestCommentForm(object):
     def test_get_text_metadata(self):
         """Tests get_text_metadata"""
         # From test_templates/resource.py::ResourceForm::get_group_metadata_template
-        mdata = self.form.get_text_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'STRING'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_text_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'STRING'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_text(self):
         """Tests set_text"""
         # From test_templates/repository.py::AssetForm::set_title_template
-        default_value = self.form.get_text_metadata().get_default_string_values()[0]
-        assert self.form._my_map['text'] == default_value
-        self.form.set_text('String')
-        assert self.form._my_map['text']['text'] == 'String'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_text(42)
+        if not is_never_authz(self.service_config):
+            default_value = self.form.get_text_metadata().get_default_string_values()[0]
+            assert self.form._my_map['text'] == default_value
+            self.form.set_text('String')
+            assert self.form._my_map['text']['text'] == 'String'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_text(42)
 
     def test_clear_text(self):
         """Tests clear_text"""
         # From test_templates/repository.py::AssetForm::clear_title_template
-        self.form.set_text('A String to Clear')
-        assert self.form._my_map['text']['text'] == 'A String to Clear'
-        self.form.clear_text()
-        assert self.form._my_map['text'] == self.form.get_text_metadata().get_default_string_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_text('A String to Clear')
+            assert self.form._my_map['text']['text'] == 'A String to Clear'
+            self.form.clear_text()
+            assert self.form._my_map['text'] == self.form.get_text_metadata().get_default_string_values()[0]
 
     def test_get_rating_metadata(self):
         """Tests get_rating_metadata"""
         # From test_templates/resource.py::ResourceForm::get_avatar_metadata_template
-        mdata = self.form.get_rating_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'ID'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_rating_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'ID'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_set_rating(self):
         """Tests set_rating"""
         # From test_templates/resource.py::ResourceForm::set_avatar_template
-        assert self.form._my_map['ratingId'] == ''
-        self.form.set_rating(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['ratingId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        with pytest.raises(errors.InvalidArgument):
-            self.form.set_rating(True)
+        if not is_never_authz(self.service_config):
+            assert self.form._my_map['ratingId'] == ''
+            self.form.set_rating(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['ratingId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            with pytest.raises(errors.InvalidArgument):
+                self.form.set_rating(True)
 
     def test_clear_rating(self):
         """Tests clear_rating"""
         # From test_templates/resource.py::ResourceForm::clear_avatar_template
-        self.form.set_rating(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
-        assert self.form._my_map['ratingId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
-        self.form.clear_rating()
-        assert self.form._my_map['ratingId'] == self.form.get_rating_metadata().get_default_id_values()[0]
+        if not is_never_authz(self.service_config):
+            self.form.set_rating(Id('repository.Asset%3Afake-id%40ODL.MIT.EDU'))
+            assert self.form._my_map['ratingId'] == 'repository.Asset%3Afake-id%40ODL.MIT.EDU'
+            self.form.clear_rating()
+            assert self.form._my_map['ratingId'] == self.form.get_rating_metadata().get_default_id_values()[0]
 
     def test_get_comment_form_record(self):
         """Tests get_comment_form_record"""
-        with pytest.raises(errors.Unsupported):
-            self.form.get_comment_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
-        # Here check for a real record?
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.Unsupported):
+                self.form.get_comment_form_record(Type('osid.Osid%3Afake-record%40ODL.MIT.EDU'))
+            # Here check for a real record?
 
 
 @pytest.fixture(scope="class",
