@@ -945,16 +945,17 @@ class TestAssetContentForm(object):
     def test_get_accessibility_type_metadata(self):
         """Tests get_accessibility_type_metadata"""
         # From test_templates/logging.py::LogEntryForm::get_priority_metadata_template
-        mdata = self.form.get_accessibility_type_metadata()
-        assert isinstance(mdata, Metadata)
-        assert isinstance(mdata.get_element_id(), ABC_Id)
-        assert isinstance(mdata.get_element_label(), ABC_DisplayText)
-        assert isinstance(mdata.get_instructions(), ABC_DisplayText)
-        assert mdata.get_syntax() == 'TYPE'
-        assert not mdata.is_array()
-        assert isinstance(mdata.is_required(), bool)
-        assert isinstance(mdata.is_read_only(), bool)
-        assert isinstance(mdata.is_linked(), bool)
+        if not is_never_authz(self.service_config):
+            mdata = self.form.get_accessibility_type_metadata()
+            assert isinstance(mdata, Metadata)
+            assert isinstance(mdata.get_element_id(), ABC_Id)
+            assert isinstance(mdata.get_element_label(), ABC_DisplayText)
+            assert isinstance(mdata.get_instructions(), ABC_DisplayText)
+            assert mdata.get_syntax() == 'TYPE'
+            assert not mdata.is_array()
+            assert isinstance(mdata.is_required(), bool)
+            assert isinstance(mdata.is_read_only(), bool)
+            assert isinstance(mdata.is_linked(), bool)
 
     def test_add_accessibility_type(self):
         """Tests add_accessibility_type"""
