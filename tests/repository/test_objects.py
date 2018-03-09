@@ -142,11 +142,12 @@ class TestAsset(object):
 
     def test_get_created_date(self):
         """Tests get_created_date"""
-        with pytest.raises(errors.IllegalState):
-            self.object.get_created_date()
-        fake_data = 'blah'
-        self.object._my_map['createdDate'] = fake_data
-        self.object.get_created_date() == fake_data
+        if not is_never_authz(self.service_config):
+            with pytest.raises(errors.IllegalState):
+                self.object.get_created_date()
+            fake_data = 'blah'
+            self.object._my_map['createdDate'] = fake_data
+            self.object.get_created_date() == fake_data
 
     def test_is_published(self):
         """Tests is_published"""
