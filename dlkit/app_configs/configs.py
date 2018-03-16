@@ -34,12 +34,29 @@ DLKIT_MONGO_KEYWORD_FIELDS = {
 }
 MONGO_HOST_URI = 'localhost:27017'
 
-try:
-    # If you are using Django, you can also configure dlkit from your
-    # Django settings.py file.
-    from django.conf import settings
-except ImportError:
-    #   Try to get them from the environment.
+
+def get_os_settings():
+    global HANDCAR_IMPL
+    global CLOUDFRONT_PUBLIC_KEY
+    global CLOUDFRONT_PRIVATE_KEY
+    global CLOUDFRONT_SIGNING_KEYPAIR_ID
+    global CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE
+    global CLOUDFRONT_DISTRO
+    global CLOUDFRONT_DISTRO_ID
+    global CLOUDFRONT_TEST_DISTRO
+    global CLOUDFRONT_TEST_DISTRO_ID
+    global S3_PRIVATE_KEY
+    global S3_PUBLIC_KEY
+    global S3_BUCKET
+    global S3_TEST_BUCKET
+    global S3_TEST_PRIVATE_KEY
+    global S3_TEST_PUBLIC_KEY
+    global DLKIT_MONGO_DB_PREFIX
+    global DLKIT_AUTHORITY
+    global DLKIT_MONGO_DB_INDEXES
+    global DLKIT_MONGO_KEYWORD_FIELDS
+    global MONGO_HOST_URI
+#   Try to get them from the environment.
     if 'HANDCAR_IMPL' in os.environ:
         HANDCAR_IMPL = os.environ['HANDCAR_IMPL']
     if 'CLOUDFRONT_PUBLIC_KEY' in os.environ:
@@ -80,42 +97,54 @@ except ImportError:
         DLKIT_MONGO_KEYWORD_FIELDS = os.environ['DLKIT_MONGO_KEYWORD_FIELDS']
     if 'MONGO_HOST_URI' in os.environ:
         MONGO_HOST_URI = os.environ['MONGO_HOST_URI']
+
+
+try:
+    # If you are using Django, you can also configure dlkit from your
+    # Django settings.py file.
+    from django.conf import settings
+except ImportError:
+    get_os_settings()
 else:
     from django.core.exceptions import ImproperlyConfigured
     try:
-        settings.configure()
-    except RuntimeError:
-        pass  # already configured
-    else:
-        # Should not be called because should happen in handcar_configs.py
-        import django
-        if django.VERSION < (1, 8):
-            settings._setup()
+        try:
+            settings.configure()
+        except RuntimeError:
+            pass  # already configured
         else:
-            django.setup()
-    try:
-        HANDCAR_IMPL = getattr(settings, 'HANDCAR_IMPL', '')
-        CLOUDFRONT_PUBLIC_KEY = getattr(settings, 'CLOUDFRONT_PUBLIC_KEY', '')
-        CLOUDFRONT_PRIVATE_KEY = getattr(settings, 'CLOUDFRONT_PRIVATE_KEY', '')
-        CLOUDFRONT_SIGNING_KEYPAIR_ID = getattr(settings, 'CLOUDFRONT_SIGNING_KEYPAIR_ID', '')
-        CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE = getattr(settings, 'CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE', '')
-        CLOUDFRONT_DISTRO = getattr(settings, 'CLOUDFRONT_DISTRO', '')
-        CLOUDFRONT_DISTRO_ID = getattr(settings, 'CLOUDFRONT_DISTRO_ID', '')
-        CLOUDFRONT_TEST_DISTRO = getattr(settings, 'CLOUDFRONT_TEST_DISTRO', '')
-        CLOUDFRONT_TEST_DISTRO_ID = getattr(settings, 'CLOUDFRONT_TEST_DISTRO_ID', '')
-        S3_PRIVATE_KEY = getattr(settings, 'S3_PRIVATE_KEY', '')
-        S3_PUBLIC_KEY = getattr(settings, 'S3_PUBLIC_KEY', '')
-        S3_BUCKET = getattr(settings, 'S3_BUCKET', '')
-        S3_TEST_BUCKET = getattr(settings, 'S3_TEST_BUCKET', '')
-        S3_TEST_PRIVATE_KEY = getattr(settings, 'S3_TEST_PRIVATE_KEY', '')
-        S3_TEST_PUBLIC_KEY = getattr(settings, 'S3_TEST_PUBLIC_KEY', '')
-        DLKIT_MONGO_DB_PREFIX = getattr(settings, 'DLKIT_MONGO_DB_PREFIX', '')
-        DLKIT_AUTHORITY = getattr(settings, 'DLKIT_AUTHORITY', '')
-        DLKIT_MONGO_DB_INDEXES = getattr(settings, 'DLKIT_MONGO_DB_INDEXES', '')
-        DLKIT_MONGO_KEYWORD_FIELDS = getattr(settings, 'DLKIT_MONGO_KEYWORD_FIELDS', '')
-        MONGO_HOST_URI = getattr(settings, 'MONGO_HOST_URI', '')
+            # Should not be called because should happen in handcar_configs.py
+            import django
+            if django.VERSION < (1, 8):
+                settings._setup()
+            else:
+                django.setup()
+        try:
+            HANDCAR_IMPL = getattr(settings, 'HANDCAR_IMPL', '')
+            CLOUDFRONT_PUBLIC_KEY = getattr(settings, 'CLOUDFRONT_PUBLIC_KEY', '')
+            CLOUDFRONT_PRIVATE_KEY = getattr(settings, 'CLOUDFRONT_PRIVATE_KEY', '')
+            CLOUDFRONT_SIGNING_KEYPAIR_ID = getattr(settings, 'CLOUDFRONT_SIGNING_KEYPAIR_ID', '')
+            CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE = getattr(settings, 'CLOUDFRONT_SIGNING_PRIVATE_KEY_FILE', '')
+            CLOUDFRONT_DISTRO = getattr(settings, 'CLOUDFRONT_DISTRO', '')
+            CLOUDFRONT_DISTRO_ID = getattr(settings, 'CLOUDFRONT_DISTRO_ID', '')
+            CLOUDFRONT_TEST_DISTRO = getattr(settings, 'CLOUDFRONT_TEST_DISTRO', '')
+            CLOUDFRONT_TEST_DISTRO_ID = getattr(settings, 'CLOUDFRONT_TEST_DISTRO_ID', '')
+            S3_PRIVATE_KEY = getattr(settings, 'S3_PRIVATE_KEY', '')
+            S3_PUBLIC_KEY = getattr(settings, 'S3_PUBLIC_KEY', '')
+            S3_BUCKET = getattr(settings, 'S3_BUCKET', '')
+            S3_TEST_BUCKET = getattr(settings, 'S3_TEST_BUCKET', '')
+            S3_TEST_PRIVATE_KEY = getattr(settings, 'S3_TEST_PRIVATE_KEY', '')
+            S3_TEST_PUBLIC_KEY = getattr(settings, 'S3_TEST_PUBLIC_KEY', '')
+            DLKIT_MONGO_DB_PREFIX = getattr(settings, 'DLKIT_MONGO_DB_PREFIX', '')
+            DLKIT_AUTHORITY = getattr(settings, 'DLKIT_AUTHORITY', '')
+            DLKIT_MONGO_DB_INDEXES = getattr(settings, 'DLKIT_MONGO_DB_INDEXES', '')
+            DLKIT_MONGO_KEYWORD_FIELDS = getattr(settings, 'DLKIT_MONGO_KEYWORD_FIELDS', '')
+            MONGO_HOST_URI = getattr(settings, 'MONGO_HOST_URI', '')
+        except ImproperlyConfigured:
+            pass
     except ImproperlyConfigured:
-        pass
+        get_os_settings()
+
 
 # Set up the file path for testing, use filesystem_adapter
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
