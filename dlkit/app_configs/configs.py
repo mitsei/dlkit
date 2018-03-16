@@ -120,7 +120,7 @@ else:
             else:
                 django.setup()
         try:
-            HANDCAR_IMPL = getattr(settings, 'HANDCAR_IMPL', '')
+            HANDCAR_IMPL = getattr(settings, 'HANDCAR_IMPL', HANDCAR_IMPL)
             CLOUDFRONT_PUBLIC_KEY = getattr(settings, 'CLOUDFRONT_PUBLIC_KEY', '')
             CLOUDFRONT_PRIVATE_KEY = getattr(settings, 'CLOUDFRONT_PRIVATE_KEY', '')
             CLOUDFRONT_SIGNING_KEYPAIR_ID = getattr(settings, 'CLOUDFRONT_SIGNING_KEYPAIR_ID', '')
@@ -132,14 +132,14 @@ else:
             S3_PRIVATE_KEY = getattr(settings, 'S3_PRIVATE_KEY', '')
             S3_PUBLIC_KEY = getattr(settings, 'S3_PUBLIC_KEY', '')
             S3_BUCKET = getattr(settings, 'S3_BUCKET', '')
-            S3_TEST_BUCKET = getattr(settings, 'S3_TEST_BUCKET', '')
+            S3_TEST_BUCKET = getattr(settings, 'S3_TEST_BUCKET', S3_TEST_BUCKET)
             S3_TEST_PRIVATE_KEY = getattr(settings, 'S3_TEST_PRIVATE_KEY', '')
             S3_TEST_PUBLIC_KEY = getattr(settings, 'S3_TEST_PUBLIC_KEY', '')
-            DLKIT_MONGO_DB_PREFIX = getattr(settings, 'DLKIT_MONGO_DB_PREFIX', '')
-            DLKIT_AUTHORITY = getattr(settings, 'DLKIT_AUTHORITY', '')
-            DLKIT_MONGO_DB_INDEXES = getattr(settings, 'DLKIT_MONGO_DB_INDEXES', '')
-            DLKIT_MONGO_KEYWORD_FIELDS = getattr(settings, 'DLKIT_MONGO_KEYWORD_FIELDS', '')
-            MONGO_HOST_URI = getattr(settings, 'MONGO_HOST_URI', '')
+            DLKIT_MONGO_DB_PREFIX = getattr(settings, 'DLKIT_MONGO_DB_PREFIX', DLKIT_MONGO_DB_PREFIX)
+            DLKIT_AUTHORITY = getattr(settings, 'DLKIT_AUTHORITY', DLKIT_AUTHORITY)
+            DLKIT_MONGO_DB_INDEXES = getattr(settings, 'DLKIT_MONGO_DB_INDEXES', DLKIT_MONGO_DB_INDEXES)
+            DLKIT_MONGO_KEYWORD_FIELDS = getattr(settings, 'DLKIT_MONGO_KEYWORD_FIELDS', DLKIT_MONGO_KEYWORD_FIELDS)
+            MONGO_HOST_URI = getattr(settings, 'MONGO_HOST_URI', MONGO_HOST_URI)
         except ImproperlyConfigured:
             pass
     except ImproperlyConfigured:
