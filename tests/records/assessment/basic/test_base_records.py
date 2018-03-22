@@ -5,7 +5,10 @@ import unittest
 
 from copy import deepcopy
 
-from mock import patch, MagicMock
+try:
+    from mock import patch, MagicMock
+except ImportError:
+    from unittest.mock import patch, MagickMock
 
 from dlkit.abstract_osid.osid import errors
 from dlkit.primordium.type.primitives import Type
