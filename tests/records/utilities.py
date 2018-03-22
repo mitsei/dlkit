@@ -19,6 +19,7 @@ TEST_OBJECT_MAP = {
     "genusTypeId": "DEFAULT%3ADEFAULT%40DEFAULT",
     "type": "Object",
     "id": "testing.Object%3A577fcf75c89cd90cbd1216f8%40ODL.MIT.EDU",
+    "_id": "testing.Object%3A577fcf75c89cd90cbd1216f8%40ODL.MIT.EDU",
     "description": {
         "text": "Test object",
         "languageTypeId": "639-2%3AENG%40ISO",
