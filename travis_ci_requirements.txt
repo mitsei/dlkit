@@ -19,3 +19,4 @@ envoy==0.0.3
 rsa==3.4.2
 vcrpy==1.11.0
 future==0.16.0
+mock==2.0.0
