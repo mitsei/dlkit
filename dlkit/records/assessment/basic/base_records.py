@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from dlkit.json_ import types
 from dlkit.json_.id.objects import IdList
-from dlkit.json_.assessment.objects import ItemList, Item
+from dlkit.json_.assessment.objects import ItemList, Item, AssessmentTaken, AssessmentTakenList
 from dlkit.json_.utilities import JSONClientValidated, arguments_not_none, is_string
 from dlkit.json_.osid import record_templates as osid_records
 from dlkit.json_.osid import objects as osid_objects
@@ -92,6 +92,56 @@ class ProvenanceItemRecord(ProvenanceRecord):
             return ItemList(result,
                             runtime=self.my_osid_object._runtime,
                             proxy=self.my_osid_object._proxy)
+        raise IllegalState('No provenance children.')
+
+    provenance_children = property(fget=get_provenance_children)
+    provenance_parent = property(fget=get_provenance_parent)
+
+
+class ProvenanceAssessmentTakenFormRecord(ProvenanceFormRecord):
+    """Provenance == "parent record" of this record...simple way to track
+    item inheritance."""
+
+
+class ProvenanceAssessmentTakenRecord(ProvenanceRecord):
+    """Provenance == "parent record" of this record...simple way to track
+    item inheritance."""
+
+    def get_provenance_parent(self):
+        """stub"""
+        if self.has_provenance():
+            collection = JSONClientValidated('assessment',
+                                             collection='AssessmentTaken',
+                                             runtime=self.my_osid_object._runtime)
+            result = collection.find_one(
+                {'_id': ObjectId(Id(self.get_provenance_id()).get_identifier())})
+            return AssessmentTaken(osid_object_map=result,
+                                   runtime=self.my_osid_object._runtime,
+                                   proxy=self.my_osid_object._proxy)
+        raise IllegalState("AssessmentTaken has no provenance parent.")
+
+    def has_provenance_children(self):
+        """stub"""
+        collection = JSONClientValidated('assessment',
+                                         collection='AssessmentTaken',
+                                         runtime=self.my_osid_object._runtime)
+        if (collection.find(
+                {'provenanceId': self.my_osid_object.object_map['id']}).count() > 0):
+            return True
+        else:
+            return False
+
+    def get_provenance_children(self):
+        """stub"""
+        if self.has_provenance_children():
+            collection = JSONClientValidated('assessment',
+                                             collection='AssessmentTaken',
+                                             runtime=self.my_osid_object._runtime)
+            result = collection.find(
+                {'provenanceId': self.my_osid_object.object_map['id']})
+            return AssessmentTakenList(result,
+                                       runtime=self.my_osid_object._runtime,
+                                       proxy=self.my_osid_object._proxy)
         raise IllegalState('No provenance children.')
 
     provenance_children = property(fget=get_provenance_children)

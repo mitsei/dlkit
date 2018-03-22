@@ -647,6 +647,17 @@ ASSESSMENT_TAKEN_RECORD_TYPES = {
         'object_record_class_name': 'AdvancedQueryAssessmentTakenRecord',
         'form_record_class_name': 'AdvancedQueryAssessmentTakenFormRecord',
         'query_record_class_name': 'AdvancedQueryAssessmentTakenQueryRecord'},
+    'provenance': {
+        'authority': 'ODL.MIT.EDU',
+        'namespace': 'assessment-taken-record-type',
+        'identifier': 'provenance',
+        'display_name': 'Provenance',
+        'display_label': 'Provenance',
+        'description': 'AssessmentTaken record extension with Provenance',
+        'domain': 'assessment.AssessmentTaken',
+        'module_path': 'dlkit.records.assessment.basic.base_records',
+        'object_record_class_name': 'ProvenanceAssessmentTakenRecord',
+        'form_record_class_name': 'ProvenanceAssessmentTakenFormRecord'},
 }
 
 ASSESSMENT_TAKEN_RECORD_TYPES.update(osid_registry.__dict__.get('OSID_OBJECT_RECORD_TYPES', {}))
