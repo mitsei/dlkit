@@ -1791,6 +1791,16 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
         except AttributeError:
             pass
 
+        bypass_asset_content_authorization = False
+        acls = None
+
+        try:
+            config = self.my_osid_object._runtime.get_configuration()
+            parameter_id = Id('parameter:bypassAuthorizationForFilesRecordAssetContentLookup@json')
+            bypass_asset_content_authorization = config.get_value_by_parameter(parameter_id).get_boolean_value()
+        except (AttributeError, KeyError, NotFound):
+            pass
+
         def replace_url_in_display_text(potential_display_text, dict_files_map):
             if ('text' in potential_display_text and
                     potential_display_text['text'] is not None and
@@ -1814,7 +1824,10 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                     if media_label in dict_files_map:
                         asset_id = Id(dict_files_map[media_label]['assetId'])
                         ac_id = Id(dict_files_map[media_label]['assetContentId'])
-                        ac = self._get_asset_content(asset_id=asset_id, asset_content_id=ac_id)
+                        if bypass_asset_content_authorization:
+                            ac = acls.get_asset_content(ac_id)
+                        else:
+                            ac = self._get_asset_content(asset_id=asset_id, asset_content_id=ac_id)
 
                         if media_file_element.name == 'track':
                             try:
@@ -1857,7 +1870,10 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                         if alt_tag_label in dict_files_map:
                             asset_id = Id(dict_files_map[alt_tag_label]['assetId'])
                             ac_id = Id(dict_files_map[alt_tag_label]['assetContentId'])
-                            ac = self._get_asset_content(asset_id=asset_id, asset_content_id=ac_id)
+                            if bypass_asset_content_authorization:
+                                ac = acls.get_asset_content(ac_id)
+                            else:
+                                ac = self._get_asset_content(asset_id=asset_id, asset_content_id=ac_id)
                             try:
                                 media_file_element['alt'] = ac.get_alt_text().text
                             except AttributeError:
@@ -1886,6 +1902,21 @@ class FilesRecord(AssetUtils, ObjectInitRecord):
                 else:
                     updated_list.append(child)
             return updated_list
+
+        if bypass_asset_content_authorization:
+            # One assumption is that the object's catalogId can be used
+            # as the repositoryId
+            manager = self.my_osid_object._get_provider_manager('REPOSITORY')
+
+            try:
+                if self.my_osid_object._proxy is not None:
+                    acls = manager.get_asset_content_lookup_session(proxy=self.my_osid_object._proxy)
+                else:
+                    acls = manager.get_asset_content_lookup_session()
+            except AttributeError:
+                pass
+            else:
+                acls.use_federated_repository_view()
 
         media_regex = re.compile('(AssetContent:)')
         original_files_map = {}
