@@ -2043,6 +2043,39 @@ class TestFilesRecord(unittest.TestCase):
         self.assertEqual(obj_map['text']['text'],
                          '<img src="example.com"/>')
 
+    def test_object_map_updated_with_url_when_configured_to_bypass_asset_lookup(self):
+        # Note that currently this does not handle the more complicated
+        #   case of multilanguage altText or transcripts. Those are
+        #   tested in `qbank` functional tests
+        obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
+        obj_map['fileIds'] = {
+            'foo': {
+                'assetId': str('fake-id%3A000000000000000000000000%40ODL.MIT.EDU'),
+                'assetContentId': str(self.asset.get_asset_contents().next().ident),
+                'assetContentTypeId': str(self.asset.get_asset_contents().next().genus_type)
+            }
+        }
+        obj_map['assignedBankIds'] = [str(self.repo.ident)]
+        obj_map['text'] = {
+            'text': '<img src="AssetContent:foo" />'
+        }
+
+        tmp_runtime = deepcopy(self.repo._runtime)
+        tmp_runtime._configuration.__dict__['_config_map']['parameters']['bypassAuthorizationForFilesRecordAssetContentLookup'] = {
+            'syntax': 'BOOLEAN',
+            'displayName': 'Use direct AssetContentLookup for FilesRecord map',
+            'description': 'Bypasses any catalog-hierarchy based authorization for (Asset) AssetContent lookup',
+            'values': [{'value': True, 'priority': 1}]
+        }
+        osid_object = OsidObject(object_name='TEST_OBJECT',
+                                 osid_object_map=obj_map,
+                                 runtime=tmp_runtime)
+
+        item = FilesRecord(osid_object)
+        item._update_object_map(obj_map)
+        self.assertEqual(obj_map['text']['text'],
+                         '<img src="example.com"/>')
+
     def test_none_text_field_does_not_break(self):
         # Note that currently this does not handle the more complicated
         #   case of multilanguage altText or transcripts. Those are
