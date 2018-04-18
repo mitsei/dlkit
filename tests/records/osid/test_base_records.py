@@ -2050,7 +2050,7 @@ class TestFilesRecord(unittest.TestCase):
         obj_map = deepcopy(utilities.TEST_OBJECT_MAP)
         obj_map['fileIds'] = {
             'foo': {
-                'assetId': str(self.asset.ident),
+                'assetId': str('fake-id%3A000000000000000000000000%40ODL.MIT.EDU'),
                 'assetContentId': str(self.asset.get_asset_contents().next().ident),
                 'assetContentTypeId': str(self.asset.get_asset_contents().next().genus_type)
             }
