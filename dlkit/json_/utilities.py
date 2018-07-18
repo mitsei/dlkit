@@ -250,8 +250,8 @@ def query_is_match(query, contents):
             if isinstance(value[value_key], list) and len(value[value_key]) > 0:
                 if isinstance(value[value_key][0], ObjectId):
                     mod_value = [str(v) for v in value[value_key]]
-                elif isinstance(value[value_key][0], re._pattern_type):
-                    # then we need to do a regex comparison on the content value
+                else:
+                    # test if it is a regex
                     regex = value[value_key][0]
                     if '.' in key:
                         # assume two levels deep?
@@ -259,13 +259,18 @@ def query_is_match(query, contents):
                     else:
                         haystack = contents[key]
                     regex_key = list(value.keys())[0]
-                    if regex_key == '$in':
-                        if regex.search(haystack):
-                            num_matches += 1
-                    elif regex_key == '$nin':
-                        if regex.search(haystack) is None:
-                            num_matches += 1
-                    matches_already_calculated = True
+
+                    try:
+                        if regex_key == '$in':
+                            if regex.search(haystack):
+                                num_matches += 1
+                        elif regex_key == '$nin':
+                            if regex.search(haystack) is None:
+                                num_matches += 1
+                    except AttributeError:
+                        pass
+                    else:
+                        matches_already_calculated = True
 
             if not matches_already_calculated:
                 if '.' in key:

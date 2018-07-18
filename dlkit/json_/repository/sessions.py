@@ -954,12 +954,14 @@ class AssetQuerySession(abc_repository_sessions.AssetQuerySession, osid_sessions
                                 search_value = asset_content_query._query_terms[term]
                                 if isinstance(search_value, dict):
                                     search_value = search_value['$in'][0]
-                                if isinstance(search_value, re._pattern_type):
-                                    # then we need to do a regex comparison on the content value
+                                try:
+                                    # see if it is a regex
                                     if search_value.match(value) is None:
                                         is_match = False
-                                elif value != asset_content_query._query_terms[term]:
-                                    is_match = False
+                                except AttributeError:
+                                    # not a regex
+                                    if value != asset_content_query._query_terms[term]:
+                                        is_match = False
                     else:
                         if asset_content[term] != asset_content_query._query_terms[term]:
                             is_match = False

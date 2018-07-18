@@ -17,8 +17,8 @@ DISPLAYNAME = 'Mongo osid'
 
 DESCRIPTION = 'MongoDB based osid implementation'
 
-VERSIONCOMPONENTS = [0, 1, 45]
+VERSIONCOMPONENTS = [0, 1, 47]
 
-RELEASEDATE = "2018-03-08"
+RELEASEDATE = "2018-07-18"
 
 SUPPORTS = ['# Remove the # when implementations exist:', '#supports_journal_rollback', '#supports_journal_branching']
