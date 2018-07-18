@@ -253,24 +253,29 @@ def query_is_match(query, contents):
                 else:
                     # test if it is a regex
                     regex = value[value_key][0]
-                    if '.' in key:
-                        # assume two levels deep?
-                        haystack = contents[key.split('.')[0]][key.split('.')[1]]
-                    else:
-                        haystack = contents[key]
-                    regex_key = list(value.keys())[0]
-
                     try:
-                        if regex_key == '$in':
-                            if regex.search(haystack):
-                                num_matches += 1
-                        elif regex_key == '$nin':
-                            if regex.search(haystack) is None:
-                                num_matches += 1
-                    except AttributeError:
+                        if '.' in key:
+                            # assume two levels deep?
+                            haystack = contents[key.split('.')[0]][key.split('.')[1]]
+                        else:
+                            haystack = contents[key]
+                    except KeyError:
+                        # not a regex because key would be in contents if it were
                         pass
                     else:
-                        matches_already_calculated = True
+                        regex_key = list(value.keys())[0]
+
+                        try:
+                            if regex_key == '$in':
+                                if regex.search(haystack):
+                                    num_matches += 1
+                            elif regex_key == '$nin':
+                                if regex.search(haystack) is None:
+                                    num_matches += 1
+                        except AttributeError:
+                            pass
+                        else:
+                            matches_already_calculated = True
 
             if not matches_already_calculated:
                 if '.' in key:

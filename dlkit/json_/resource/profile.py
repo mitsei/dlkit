@@ -17,7 +17,7 @@ DISPLAYNAME = 'Mongo resource'
 
 DESCRIPTION = 'MongoDB based resource implementation'
 
-VERSIONCOMPONENTS = [0, 1, 47]
+VERSIONCOMPONENTS = [0, 1, 48]
 
 RELEASEDATE = "2018-07-18"
 
