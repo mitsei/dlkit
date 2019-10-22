@@ -8,7 +8,7 @@ diskcache==3.0.1
 html5lib==0.999999999
 lxml==3.7.3
 sympy==1.0
-requests==2.14.2
+requests==2.20.0
 python-memcached==1.58
 pytest
 pytest-pep8
