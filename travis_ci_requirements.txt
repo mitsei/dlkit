@@ -16,7 +16,7 @@ pytest-pep8
 coverage==4.3.4
 pytest-cov
 envoy==0.0.3
-rsa==3.4.2
+rsa==4.7
 vcrpy==1.11.0
 future==0.16.0
 mock==2.0.0
